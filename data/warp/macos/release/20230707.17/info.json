@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 52,
+	"version": "20230707.17",
+	"short_version": "2023.7.8.0",
+	"size": 63442069,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a95713f8b2184fb95371907e4c91ad29",
+	"fingerprint": "cfb1092fda15111ab28941e82ae3f556",
+	"uploaded_at": "2023-07-07T19:12:43.737Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains new features, reliability improvements and bug fixes from both the previous beta and the previous GA build.\n \n## Notable updates\n- Added support for \"SWG without DNS Filtering\" mode. All DNS functionality from the WARP client is disabled while in this service mode\n- Added support for ProductVersionExtra to be used in OS Version device posture checks\n- Improved performance of domain-based split tunneling when an IP address is already split tunneled (seen frequently with Zoom domains and IPs being used)\n- Improved performance of the client when in the \"Proxy Only\" service mode\n- Modified `warp-cli settings` to show if the applied settings came from local (mdm) or network (warp settings profile) policy to make debugging profile issues easier\n- Fixed an issue that could result in increased latency when resolving queries\n- Fixed an issue where inputting a license key of excessive length in the consumer login could result in high CPU usage\n- Optimized the performance of DNS queries to prevent minor memory leaks\n- Fixed an issue when service token information was removed from .plist the client would not prompt for user authentication as expected\n- Fixed 3rd party VPN Compatibility by adding a default /32 subnet to interfaces that don't have them by default (this was specifically to fix compat with NordLayer but may help others)\n- Fixed an issue where re-authentication button could show up in consumer 1.1.1.1 mode even though it is just a Zero Trust feature\n- Fixed an issue that could cause many requests for authentication to open in the browser\n- Fixed an issue that could cause registration errors when auth ID or other parameters are removed from a local MDM/.plist file\n- Fixed an issue where the client would attempt to connect even when the \"AUTO CONNECT\" setting was Disabled in WARP Settings or not specified either in an MDM file\n- Fixed an issue where the client could open multiple browser tabs to \"cloudflareportal.com/test\" during authentication scenarios\n- Fixed an issue where the GUI application would auto-populate upon return from a standby power state\n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

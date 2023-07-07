@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 61,
+	"version": "2023.7.7.0",
+	"short_version": "",
+	"size": 110821376,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "5a366809ac5eb2e9556b133ec836c64f",
+	"fingerprint": "4d25c46a2500da4f08c8549910841d2e",
+	"uploaded_at": "2023-07-07T18:46:21.316Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains new features, reliability improvements and bug fixes from both the previous beta and the previous GA build. We strongly encourage customers with domain based split tunneling rules to upgrade to this version.\r\n \r\n## Notable updates\r\n- Added more status messages to the UI when the client is unable to connect\r\n- Added support for \"SWG without DNS Filtering\" mode. All DNS functionality from the WARP client is disabled while in this service mode \r\n- Improved performance of the client when in the \"Proxy Only\" service mode\r\n- Improved performance of domain-based split tunneling when the IP was already split tunneled (seen frequently with Zoom domains and IPs being used)\r\n- Modified `warp-cli settings` to show if the applied settings came from local (mdm) or network (warp settings profile) policy to make debugging profile issues easier\r\n- Fixed an issue that could result in increased latency when resolving queries\r\n- Fixed an issue where the GUI could indicate the incorrect service mode after entering an admin override code\r\n- Fixed an issue with re-authentication policies that could result in the browser loading a broken URL\r\n- Optimized the performance of DNS queries to prevent minor memory leaks\r\n- Fixed an issue when service token information was removed from an mdm.xml file the client would not prompt for user authentication as expected\r\n- Fixed an issue where localhost DNS proxy could not be set properly in certain VPN and VM configuration\r\n- Fixed localization issues in en-MX UI that caused longer strings to get truncated\r\n- Fixed an issue with certain tools like nslookup that was introduced in previous beta where DNS could appear broken\r\n- Fixed an issue where the WARP Client wouldn't properly detect if IPv6 was disabled via \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters\"\r\n- Fixed an issue where onboarding being set to False would not work if the GUI app started before the service \r\n- Fixed an issue where the client would attempt to connect even when the \"AUTO CONNECT\" setting was Disabled in WARP Settings or not specified either in an MDM file\r\n- Fixed an issue where the client would not correctly detect and apply alternate network configuration between network changes\r\n \r\n## Known issues\r\n- Customers may experience a DPC_WATCHDOG_VIOLATION Blue Screen when connecting. This error was introduced with the 2023.3 GA release and happens more frequently with larger split tunnel configurations, especially on more resource constrained machines. We are actively working on a fix. Until then we recommend staying on 2022.12 GA release OR reducing your split tunnel configuration if possible.\r\n- Managed network detection on certain Windows machines doesn't consistently apply the expected profile upon network changes. We will address this issue in a future release.\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"bbd6783a19e6d2f7d7388f81a7958ebddf7ad6c5edaabc36e37bc9ba95bd256f"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
