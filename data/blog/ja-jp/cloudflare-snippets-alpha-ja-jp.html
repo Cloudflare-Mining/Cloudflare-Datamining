@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<p>本日、<a href="https://blog.cloudflare.com/ja-jp/snippets-announcement-ja-jp">Cloudflare Snippets</a>のアルファ版が利用可能となりました。ウェイティングリストの方々も数週間以内にご利用いただける予定です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image5-9.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<h3 id="snippets%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">Snippetsについて</h3>
+	<p>Cloudflareはこの2年の間に、変換ルール、キャッシュルール、オリジンルール、コンフィグルール、リダイレクトルールといった多くの新しいルール製品をリリースしました。お客様は、これらの新製品により、グローバルネットワークを通過するトラフィックの処理方法をより細かく制御できます。これまでのところ、これらの製品については圧倒的に多くの肯定的なフィードバックをいただいています。ただし、お客様は、すぐに使用できる機能以上のものを必要とする場合があります。それはHTTPヘッダーの追加にとどまらず、高度な計算を実行して出力を作成します。<br><br>こうしたケースでお役に立てるのがCloudflare Snippetsです。SnippetsはWebサイト、API、あるいはアプリケーションをユーザーに提供する前に、Cloudflareがユーザーの作成したJavaScriptの断片を実行するというものです。普段から<a href="https://developers.cloudflare.com/workers" target="_blank">Cloudflare Workers</a>をご使用であれば、当社の堅牢な開発者プラットフォームでSnippetsが使い慣れた追加機能だということを体感していただけると思います。また、Workersをご使用されていない方でも、Snippetsは簡単に作成、テスト、展開できる設計となっています。お客様のカスタムしたJavaScript スニペットを数秒で<a href="https://www.cloudflare.com/en-gb/network" target="_blank">グローバル ネットワークネットワーク</a>にデプロイできる機能がご利用できます。</p>
+	<p>Snippetsは Workers Platform上に構築されていますが、多くの点で異なります。まず1 つ目は、<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets" target="_blank">変換ルール</a>や<a href="https://blog.cloudflare.com/transform-rules-requests-transform-and-roll-out">キャッシュルール</a>と同様に、Snippetsが専用の新しいフェーズとして<a href="https://blog.cloudflare.com/introducing-cache-rules">ルールセットエンジン</a>内でどのように動作するかにあります。これはお客様がルールセットエンジン フィルターをもとにSnippetsを選択と実行ができることを意味します。これにより、リクエストごとにSnippetsを実行したり、特定のボットスコア、生成国、特定のCookieなど、提供されるさまざまな基準に沿って Snippetsの選択的な適用が可能になるという柔軟性が得られます。</p>
+	<p>それだけではありません。Snippetsはもともと累積的な性質を持っているので、ユーザーは定義された条件を満たした場合に実行される複数のSnippetsを持つことができます。たとえば、1 つのSnippetsでHTTPヘッダーを追加してから別のSnippetsでURLを書き換えられるのです。条件が満たされた場合にどちらも実行できます。</p>
+	<p>ユーザーはコード不要の単純なタスクにルールを使用するかどうかを柔軟に選択したり（例：変換ルールを使用して基本的なリクエストCookieヘッダーを追加）、より複雑なCookie機能向けのCloudflare Snippetsを作成する（例：Cookie値内のホストや日付を動的に変更）こともできます。Snippetsを使用すればお客様は余分なコストをかけることなく、Cloudflareのエコシステム内で迅速かつ手間をかけずに仕事を完了できるようになります （ただし、公正使用上限が適用されます）。</p>
+	<h3 id="snippets%E3%81%A8workers%E3%81%AE%E9%81%95%E3%81%84%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">SnippetsとWorkersの違いについて</h3>
+	<p>Cloudflare Snippetsのもう1つの大きな利点として、すべてのプランレベルで追加料金なしで利用できることがあります。これにより、お客様は単純なワークロードをVCLといった従来のソリューションからCloudflareプラットフォームに移行することで、毎月のコストをどんどん削減できるようになります。</p>
+	<p>Free、Pro、Business、Enterpriseプランのいずれのプランでも、Snippetsを自由にご利用いただけます。Freeプランの方は、ゾーン1つにつき5つのSnippetsをご利用できますが、Pro,、Business、Enterpriseのプランではゾーン1つにつき、それぞれ10、25、50のSnippetsをご用意しています。 </p>
+	<p>リソースの点において、Cloudflare SnippetsはWorkersよりも軽量です。最大実行時間は5msで最大メモリは2MB、パッケージの合計サイズは32KBとなっています。こうした制限はありますが、HTTPヘッダーの変更、URLの書き換え、Cloudflare Workersが提供する追加機能やリソースを必要としないトラフィックタスクのルーティングなど、一般的なユースケースでは困ることがないでしょう。</p>
+	<p>SnippetsはWorkersの前でも実行できます。つまり、ユーザーが単純なロジックをCloudflare WorkersからSnippetsに移動したり、Cloudflare Workersとその機能を使用してリクエストをさらに変更したりできるということです。<a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first">Traffic Sequence UI</a>も更新してSnippetsを組み込んで、すべての製品がどのように連携し、製品間におけるHTTPリクエストフローの状況を簡単に理解できるようになりました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image4-13.png" class="kg-image" alt="" loading="lazy" width="1386" height="884"></figure>
+	<h3 id="cloudflare-snippets%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8">Cloudflare Snippetsで構築できること</h3>
+	<p>Snippetsにより、顧客は既存のワークロードをCloudflareに移行することができます。たとえば、一定の割合のリクエストに対するすべてのリクエストに動的Cookieを設定したいお客様は、Snippet内の「math.random」機能が使用できます。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Screenshot-2023-06-12-at-15.40.26.png" class="kg-image" alt="" loading="lazy" width="1600" height="902"></figure>
+	<p>ルールセットエンジンを活用すればリクエストごとに実行したり、Snippets内で処理したりするのではなく、設定されたCookieロジックをルールに移動することで実装を改善できます。たとえば、このCookieをショップのサブドメインにのみ設定し、ドイツまたは英国の顧客に対してのみ設定したい場合は、次のルールを作成できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="1334"></figure>
+	<p>この方法を取ることで、スニペットは必要な場合にのみ実行され、追加の処理が最小限に抑えられ、コードに必要な複雑さが軽減されます。</p>
+	<p>Cloudflare Snippetsが、お客様のためにどのようなユースケースに道を開くのかがとても楽しみです。</p>
+	<h3 id="snippets%E3%81%AE%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">Snippetsの使用方法</h3>
+	<p>SnippetsはCloudflareダッシュボードの「ルール」セクション内にあります。ここでお客様はUIを使用し、まず最初のSnippetsを作成、プレビュー、デプロイします。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy" width="1600" height="677"></figure>
+	<p>Cloudflare全製品と同様に、ユーザーはAPIとTerraformを介してSnippetsをデプロイできます。CI/CDパイプライン内にスSnippetsを簡単に組み込めるようにするのです。ルールセットエンジンを使用するさらなるメリットで、トラフィックのサブセットでコードをテストできるようになります。たとえば、フィルター内に独自のオフィスIPかシークレットヘッダーを指定すれば、Snippetsが存在する場合にのみトリガーできるようになります。最終的には、<a href="https://developers.cloudflare.com/api/operations/account-request-tracer-request-trace" target="_blank">アカウントリクエストトレーサー</a>内にSnippetsを統合し、特定のリクエストで実行されているすべてのルールをユーザーが簡単に識別できるようにしたいと考えています。</p>
+	<h3 id="snippets%E3%81%AE%E6%A7%8B%E7%AF%89%E6%96%B9%E6%B3%95">Snippetsの構築方法</h3>
+	<p>Developer Week期間中、私たちはCloudflare Workers開発者プラットフォームを使用して<a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">「Cloudflare上にCloudflareを構築」</a>し、速度、堅牢性、開発の容易さの点で製品を強化するプロセスについて話し合いました。最新のCloudflare製品であるSnippetsは、Workers for Platforms上に構築されています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="434"></figure>
+	<p>スニペットは作成時に一意のSnippet IDを生成するユーザー定義のJavaScriptの一部になります。このSnippet ID は、ルールエンジン構文を使用して作成されたユーザー定義のルールに関連付けられます。ルールが作成されると一意のルール IDが割り当てられます。その後、Snippet IDとルール ID が対の関係でリンクされます。お客様はそれぞれに固有のSnippetとルールを持つ複数のスニペットとルールの作成が柔軟に行えます。複数のスニペットをお持ちのお客様は、他のルールベースの製品と同様に、ユーザーインターフェイス （UI）内かAPI 経由で、スニペットに簡単に優先順位を付けることができます。</p>
+	<p>お客様のリクエストがCloudflareに到達すると、ユーザーのゾーン内で作成されたSnippetルールに対して、リクエストパラメータを評価します。Snippetルールに一致すると、対応する一意のSnippet IDがSnippetテーブルに追加されます。すべてのルールが評価され、Snippetテーブルがコンパイルされると、完成したテーブルがSnippets Internal Worker Serviceに渡されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy" width="1600" height="660"></figure>
+	<p>このWorkerサービスは順次実行されるテーブル内に保存されたすべてのSnippet IDを受け取ります。このシステムはSnippetsをシンプルに保つ柔軟性を持った設計となっており、ユーザーは同じリクエストで実行される個々のスニペットを独立して管理できます。以上の方法により、ユーザーは個々のスニペットを1つのエンティティに統合するのではなく、自由に制御して微調整が行えるようになります。</p>
+	<p>各Snippetは前のSnippetから変更されたリクエストを受け取ると、そちらにも新しい変更を適用します。最終的なSnippet IDを実行した後、結果として修正されたリクエストは、リクエスト処理の次のステップのためにFLに戻されます。</p>
+	<h3 id="snip-into-action%EF%BC%88snippets%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B%EF%BC%89">Snip Into Action（Snippetsを使ってみる）</h3>
+	<p>Snippetsを使用したお客様の画期的なユースケースを楽しみにしています。ウェイティングリストに登録されている方々も、数週間のうちにアルファ版をご利用いただけるかと思います。ウェイティングリストに登録されていない方も、今年末にオープンベータ版の<a href="https://www.cloudflare.com/en-gb/lp/cloudflare-snippets" target="_blank">サインアップ</a>が可能になる予定です。</p>
+</div>
