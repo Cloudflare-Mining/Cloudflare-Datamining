@@ -686,10 +686,6 @@
 																		"type": "string"
 																	}
 																},
-																"required": [
-																	"type",
-																	"domain"
-																],
 																"title": "Self Hosted Application",
 																"type": "object"
 															}
@@ -1037,10 +1033,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type",
-																			"domain"
-																		],
 																		"title": "Self Hosted Application",
 																		"type": "object"
 																	},
@@ -1240,10 +1232,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type",
-																			"domain"
-																		],
 																		"title": "Self Hosted Application",
 																		"type": "object"
 																	},
@@ -1346,9 +1334,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type"
-																		],
 																		"type": "object"
 																	},
 																	{
@@ -1459,9 +1444,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type"
-																		],
 																		"type": "object"
 																	},
 																	{
@@ -1572,9 +1554,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type"
-																		],
 																		"type": "object"
 																	},
 																	{
@@ -1659,10 +1638,6 @@
 																		"type": "string"
 																	}
 																},
-																"required": [
-																	"type",
-																	"domain"
-																],
 																"title": "Bookmark Application",
 																"type": "object"
 															}
@@ -1988,10 +1963,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type",
-																			"domain"
-																		],
 																		"title": "Self Hosted Application",
 																		"type": "object"
 																	}
@@ -2339,10 +2310,6 @@
 																						"type": "string"
 																					}
 																				},
-																				"required": [
-																					"type",
-																					"domain"
-																				],
 																				"title": "Self Hosted Application",
 																				"type": "object"
 																			},
@@ -2542,10 +2509,6 @@
 																						"type": "string"
 																					}
 																				},
-																				"required": [
-																					"type",
-																					"domain"
-																				],
 																				"title": "Self Hosted Application",
 																				"type": "object"
 																			},
@@ -2648,9 +2611,6 @@
 																						"type": "string"
 																					}
 																				},
-																				"required": [
-																					"type"
-																				],
 																				"type": "object"
 																			},
 																			{
@@ -2761,9 +2721,6 @@
 																						"type": "string"
 																					}
 																				},
-																				"required": [
-																					"type"
-																				],
 																				"type": "object"
 																			},
 																			{
@@ -2874,9 +2831,6 @@
 																						"type": "string"
 																					}
 																				},
-																				"required": [
-																					"type"
-																				],
 																				"type": "object"
 																			},
 																			{
@@ -2961,10 +2915,6 @@
 																				"type": "string"
 																			}
 																		},
-																		"required": [
-																			"type",
-																			"domain"
-																		],
 																		"title": "Bookmark Application",
 																		"type": "object"
 																	}
@@ -3197,7 +3147,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -3387,10 +3338,6 @@
 																	"type": "string"
 																}
 															},
-															"required": [
-																"type",
-																"domain"
-															],
 															"title": "Self Hosted Application",
 															"type": "object"
 														}
@@ -3738,10 +3685,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Self Hosted Application",
 																	"type": "object"
 																},
@@ -3941,10 +3884,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Self Hosted Application",
 																	"type": "object"
 																},
@@ -4047,9 +3986,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type"
-																	],
 																	"type": "object"
 																},
 																{
@@ -4160,9 +4096,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type"
-																	],
 																	"type": "object"
 																},
 																{
@@ -4273,9 +4206,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type"
-																	],
 																	"type": "object"
 																},
 																{
@@ -4360,10 +4290,6 @@
 																	"type": "string"
 																}
 															},
-															"required": [
-																"type",
-																"domain"
-															],
 															"title": "Bookmark Application",
 															"type": "object"
 														}
@@ -4476,7 +4402,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -4666,10 +4593,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Self Hosted Application",
 																	"type": "object"
 																}
@@ -5017,10 +4940,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		},
@@ -5220,10 +5139,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		},
@@ -5326,9 +5241,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -5439,9 +5351,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -5552,9 +5461,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -5639,10 +5545,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Bookmark Application",
 																	"type": "object"
 																}
@@ -5873,7 +5775,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -6091,7 +5994,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -7596,7 +7500,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -7786,10 +7691,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Self Hosted Application",
 																	"type": "object"
 																}
@@ -8137,10 +8038,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		},
@@ -8340,10 +8237,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		},
@@ -8446,9 +8339,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -8559,9 +8449,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -8672,9 +8559,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -8759,10 +8643,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Bookmark Application",
 																	"type": "object"
 																}
@@ -10051,7 +9931,8 @@
 																		{
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"nullable": true
 																}
 															}
 														}
@@ -10241,10 +10122,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		}
@@ -10592,10 +10469,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type",
-																						"domain"
-																					],
 																					"title": "Self Hosted Application",
 																					"type": "object"
 																				},
@@ -10795,10 +10668,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type",
-																						"domain"
-																					],
 																					"title": "Self Hosted Application",
 																					"type": "object"
 																				},
@@ -10901,9 +10770,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type"
-																					],
 																					"type": "object"
 																				},
 																				{
@@ -11014,9 +10880,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type"
-																					],
 																					"type": "object"
 																				},
 																				{
@@ -11127,9 +10990,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type"
-																					],
 																					"type": "object"
 																				},
 																				{
@@ -11214,10 +11074,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Bookmark Application",
 																			"type": "object"
 																		}
@@ -12880,7 +12736,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -13070,10 +12927,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Self Hosted Application",
 																	"type": "object"
 																}
@@ -13421,10 +13274,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		},
@@ -13624,10 +13473,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		},
@@ -13730,9 +13575,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -13843,9 +13685,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -13956,9 +13795,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type"
-																			],
 																			"type": "object"
 																		},
 																		{
@@ -14043,10 +13879,6 @@
 																			"type": "string"
 																		}
 																	},
-																	"required": [
-																		"type",
-																		"domain"
-																	],
 																	"title": "Bookmark Application",
 																	"type": "object"
 																}
@@ -15335,7 +15167,8 @@
 																		{
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"nullable": true
 																}
 															}
 														}
@@ -15525,10 +15358,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Self Hosted Application",
 																			"type": "object"
 																		}
@@ -15876,10 +15705,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type",
-																						"domain"
-																					],
 																					"title": "Self Hosted Application",
 																					"type": "object"
 																				},
@@ -16079,10 +15904,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type",
-																						"domain"
-																					],
 																					"title": "Self Hosted Application",
 																					"type": "object"
 																				},
@@ -16185,9 +16006,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type"
-																					],
 																					"type": "object"
 																				},
 																				{
@@ -16298,9 +16116,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type"
-																					],
 																					"type": "object"
 																				},
 																				{
@@ -16411,9 +16226,6 @@
 																							"type": "string"
 																						}
 																					},
-																					"required": [
-																						"type"
-																					],
 																					"type": "object"
 																				},
 																				{
@@ -16498,10 +16310,6 @@
 																					"type": "string"
 																				}
 																			},
-																			"required": [
-																				"type",
-																				"domain"
-																			],
 																			"title": "Bookmark Application",
 																			"type": "object"
 																		}
