@@ -77,9 +77,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
 	global_banner: {
-		cta: "Click here",
-		part_1: "Domain fees will be changing soon.",
-		part_2: "for more info."
+		notification: "Domain fees will be changing soon. <0>Click here</0> for more info."
 	},
 	domain_page: {
 		title: (0, a.d)(C(), "domainName"),
@@ -344,8 +342,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment. Don't worry, we're attempting to determine the current state of each  domain. This process may take some time so please try back in 5 minutes. If we are still unable to make a determination please contact support for assistance.",
 	instructions_enom: j,
 	instructions_godaddy: Y,
-	instructions_namecheap: L,
-	instructions_network_solutions: W,
+	instructions_namecheap: W,
+	instructions_network_solutions: L,
 	instructions_one_and_one: U,
 	instructions_unknown: E,
 	instructions_uk: M,
@@ -655,12 +653,11 @@ Payment will be charged in US dollars.`,
 		pendingtransfer: "Registry status: Pending transfer",
 		clienttransferprohibited: "Registry status: Client transfer prohibited. Please unlock and allow a few hours to update."
 	},
-	pricing_title: "Upcoming Price Changes",
-	pricing_description: "Due to changes in the Registry pricing, our fees for the following TLDs will be changing. All transactions, including auto-renewals, that occur on or after the effective date will be billed at the new price. As a reminder, renewals can be submitted manually at any time.",
-	pricing_table_header_tld: "TLD",
-	pricing_table_header_current_fee: "Current Fee (per year)",
-	pricing_table_header_new_fee: "New Fee (per year)",
-	pricing_table_header_date: "Effective Date",
+	domain_price_change_description: "Due to changes in the Registry pricing, our fees for the following TLDs will be changing. All transactions, including auto-renewals, that occur on or after the effective date will be billed at the new price. As a reminder, renewals can be submitted manually at any time.",
+	domain_price_change_table_header_tld: "Extension",
+	domain_price_change_table_header_current_fee: "Current fee (per year)",
+	domain_price_change_table_header_new_fee: "New fee (per year)",
+	domain_price_change_table_header_date: "Effective from",
 	tld_page_title: "Supported Extensions",
 	tld_page_description: "These are the extensions Cloudflare Registrar currently supports. We are constantly working to support more extensions, so if you don't see what you're looking for, check back with us soon.",
 	tld_no_results: "No results found. Try a different extension.",
