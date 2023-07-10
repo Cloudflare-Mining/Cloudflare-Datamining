@@ -1289,23 +1289,6 @@
 															"example": "enam",
 															"type": "string"
 														},
-														"scannedFrom": {
-															"properties": {
-																"colo": {
-																	"example": "MAD",
-																	"type": "string"
-																},
-																"location": {
-																	"example": "US",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"colo",
-																"location"
-															],
-															"type": "object"
-														},
 														"status": {
 															"enum": [
 																"Queued",
@@ -1357,8 +1340,7 @@
 														"clientLocation",
 														"clientType",
 														"region",
-														"effectiveUrl",
-														"scannedFrom"
+														"effectiveUrl"
 													],
 													"type": "object"
 												},
@@ -3261,23 +3243,6 @@
 														"example": "enam",
 														"type": "string"
 													},
-													"scannedFrom": {
-														"properties": {
-															"colo": {
-																"example": "MAD",
-																"type": "string"
-															},
-															"location": {
-																"example": "US",
-																"type": "string"
-															}
-														},
-														"required": [
-															"colo",
-															"location"
-														],
-														"type": "object"
-													},
 													"status": {
 														"enum": [
 															"Queued",
@@ -3329,8 +3294,7 @@
 													"clientLocation",
 													"clientType",
 													"region",
-													"effectiveUrl",
-													"scannedFrom"
+													"effectiveUrl"
 												],
 												"type": "object"
 											},
