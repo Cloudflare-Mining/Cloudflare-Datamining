@@ -1,5 +1,19 @@
 # Change Log
 
+## 5.3.0
+
+### Minor Changes
+
+- 156005dc8b: Render DateCell with formatDate function, add dateFormat property
+- 156005dc8b: Add a number of extra type exports
+- 156005dc8b: Add Form and SearchForm components, add yupToFormErrors function
+- 156005dc8b: Add FieldArray component to component-forms-formik
+- 156005dc8b: Make Checkboxes and Radios stylable
+
+### Patch Changes
+
+- 156005dc8b: Simplify typing
+
 ## 5.2.15
 
 ### Patch Changes

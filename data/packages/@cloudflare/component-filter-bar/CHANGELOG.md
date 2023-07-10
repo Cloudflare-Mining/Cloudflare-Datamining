@@ -1,5 +1,17 @@
 # Change Log
 
+## 6.1.3
+
+### Patch Changes
+
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+  - @cloudflare/component-forms@5.3.0
+
 ## 6.1.2
 
 ### Patch Changes

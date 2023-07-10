@@ -1,5 +1,24 @@
 # Change Log
 
+## 6.4.0
+
+### Minor Changes
+
+- 156005dc8b: Add Form and SearchForm components, add yupToFormErrors function
+- 156005dc8b: Add FieldArray component to component-forms-formik
+- 156005dc8b: Make Checkboxes and Radios stylable
+
+### Patch Changes
+
+- 156005dc8b: Simplify typing
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+- Updated dependencies [156005dc8b]
+  - @cloudflare/component-forms@5.3.0
+
 ## 6.3.14
 
 ### Patch Changes
