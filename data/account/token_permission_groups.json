@@ -1064,6 +1064,22 @@
 		]
 	},
 	{
+		"id": "ce18edbdcebf465e9d6d1d2fc80ffd42",
+		"name": "Notifications Read",
+		"description": "Grants read access to notifications",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "c3c847c5802d4ce3ba00e3e97b3c8555",
+		"name": "Notifications Write",
+		"description": "Grants write access to Notifications",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "7b32a91ece3140d4b3c2c56f23fc8e35",
 		"name": "Origin Read",
 		"description": "Grants read access to origin phase",
@@ -1149,6 +1165,22 @@
 		"description": "Grants full access to Pubsub Configurations\n",
 		"scopes": [
 			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "93ae59e7a40c4287a57ff6e501186a63",
+		"name": "Response Compression Read",
+		"description": "Grants read access to the response compression phase",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "4bd3fb513a23494aa1341a7e1eb6e080",
+		"name": "Response Compression Write",
+		"description": "Grants write access to the response compression phase",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
 		]
 	},
 	{
