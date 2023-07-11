@@ -7,8 +7,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Keyless certificate identifier tag.",
-					"example": "4d2844d2ce78891c34d0b6c0535a291e",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
@@ -126,8 +126,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -139,8 +138,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Keyless certificate identifier tag.",
-													"example": "4d2844d2ce78891c34d0b6c0535a291e",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
@@ -156,7 +155,7 @@
 				},
 				"description": "Delete Keyless SSL Configuration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -250,8 +249,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -263,8 +261,8 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Keyless certificate identifier tag.",
-															"example": "4d2844d2ce78891c34d0b6c0535a291e",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
 															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
@@ -371,9 +369,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Keyless SSL Configuration",
@@ -589,7 +584,7 @@
 															},
 															"port": {
 																"default": 24008,
-																"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+																"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 																"example": 24008,
 																"maxLength": 65535,
 																"type": "number"
@@ -603,6 +598,26 @@
 																"example": "active",
 																"readOnly": true,
 																"type": "string"
+															},
+															"tunnel": {
+																"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																"properties": {
+																	"private_ip": {
+																		"description": "Private IP of the Key Server Host",
+																		"example": "10.0.0.1",
+																		"type": "string"
+																	},
+																	"vnet_id": {
+																		"description": "Cloudflare Tunnel Virtual Network ID",
+																		"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"private_ip",
+																	"vnet_id"
+																],
+																"type": "object"
 															}
 														},
 														"required": [
@@ -631,7 +646,7 @@
 				},
 				"description": "List Keyless SSL Configurations response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -812,7 +827,7 @@
 																	},
 																	"port": {
 																		"default": 24008,
-																		"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+																		"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 																		"example": 24008,
 																		"maxLength": 65535,
 																		"type": "number"
@@ -826,6 +841,26 @@
 																		"example": "active",
 																		"readOnly": true,
 																		"type": "string"
+																	},
+																	"tunnel": {
+																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																		"properties": {
+																			"private_ip": {
+																				"description": "Private IP of the Key Server Host",
+																				"example": "10.0.0.1",
+																				"type": "string"
+																			},
+																			"vnet_id": {
+																				"description": "Cloudflare Tunnel Virtual Network ID",
+																				"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"private_ip",
+																			"vnet_id"
+																		],
+																		"type": "object"
 																	}
 																},
 																"required": [
@@ -945,9 +980,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Keyless SSL Configurations",
@@ -975,8 +1007,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Keyless certificate identifier tag.",
-					"example": "4d2844d2ce78891c34d0b6c0535a291e",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
@@ -1088,8 +1120,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1099,6 +1130,112 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"description": "When the Keyless SSL was created.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether or not the Keyless SSL is on or off.",
+															"example": false,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"host": {
+															"description": "The keyless SSL name.",
+															"example": "example.com",
+															"format": "hostname",
+															"maxLength": 253,
+															"type": "string"
+														},
+														"id": {
+															"description": "Keyless certificate identifier tag.",
+															"example": "4d2844d2ce78891c34d0b6c0535a291e",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "When the Keyless SSL was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The keyless SSL name.",
+															"example": "example.com Keyless SSL",
+															"maxLength": 180,
+															"readOnly": true,
+															"type": "string"
+														},
+														"permissions": {
+															"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+															"example": [
+																"#ssl:read",
+																"#ssl:edit"
+															],
+															"items": {},
+															"readOnly": true,
+															"type": "array"
+														},
+														"port": {
+															"default": 24008,
+															"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+															"example": 24008,
+															"maxLength": 65535,
+															"type": "number"
+														},
+														"status": {
+															"description": "Status of the Keyless SSL.",
+															"enum": [
+																"active",
+																"deleted"
+															],
+															"example": "active",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tunnel": {
+															"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+															"properties": {
+																"private_ip": {
+																	"description": "Private IP of the Key Server Host",
+																	"example": "10.0.0.1",
+																	"type": "string"
+																},
+																"vnet_id": {
+																	"description": "Cloudflare Tunnel Virtual Network ID",
+																	"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"private_ip",
+																"vnet_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"host",
+														"port",
+														"status",
+														"enabled",
+														"permissions",
+														"created_on",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -1109,7 +1246,7 @@
 				},
 				"description": "Get Keyless SSL Configuration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1203,8 +1340,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1214,6 +1350,112 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether or not the Keyless SSL is on or off.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"host": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com",
+																	"format": "hostname",
+																	"maxLength": 253,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Keyless certificate identifier tag.",
+																	"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com Keyless SSL",
+																	"maxLength": 180,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"default": 24008,
+																	"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																	"example": 24008,
+																	"maxLength": 65535,
+																	"type": "number"
+																},
+																"status": {
+																	"description": "Status of the Keyless SSL.",
+																	"enum": [
+																		"active",
+																		"deleted"
+																	],
+																	"example": "active",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"tunnel": {
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"properties": {
+																		"private_ip": {
+																			"description": "Private IP of the Key Server Host",
+																			"example": "10.0.0.1",
+																			"type": "string"
+																		},
+																		"vnet_id": {
+																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"private_ip",
+																		"vnet_id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -1315,9 +1557,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Keyless SSL Configuration",
@@ -1337,7 +1576,7 @@
 		}
 	},
 	"PATCH /zones/{zone_identifier}/keyless_certificates/{identifier}": {
-		"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port,certificate,enabled.",
+		"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port.",
 		"operationId": "keyless-ssl-for-a-zone-edit-keyless-ssl-configuration",
 		"parameters": [
 			{
@@ -1345,8 +1584,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Keyless certificate identifier tag.",
-					"example": "4d2844d2ce78891c34d0b6c0535a291e",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
@@ -1371,9 +1610,9 @@
 					"schema": {
 						"properties": {
 							"enabled": {
+								"deprecated": true,
 								"description": "Whether or not the Keyless SSL is on or off.",
 								"example": false,
-								"readOnly": true,
 								"type": "boolean"
 							},
 							"host": {
@@ -1387,15 +1626,34 @@
 								"description": "The keyless SSL name.",
 								"example": "example.com Keyless SSL",
 								"maxLength": 180,
-								"readOnly": true,
 								"type": "string"
 							},
 							"port": {
 								"default": 24008,
-								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+								"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 								"example": 24008,
 								"maxLength": 65535,
 								"type": "number"
+							},
+							"tunnel": {
+								"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+								"properties": {
+									"private_ip": {
+										"description": "Private IP of the Key Server Host",
+										"example": "10.0.0.1",
+										"type": "string"
+									},
+									"vnet_id": {
+										"description": "Cloudflare Tunnel Virtual Network ID",
+										"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+										"type": "string"
+									}
+								},
+								"required": [
+									"private_ip",
+									"vnet_id"
+								],
+								"type": "object"
 							}
 						},
 						"type": "object"
@@ -1497,8 +1755,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1508,6 +1765,112 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"description": "When the Keyless SSL was created.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether or not the Keyless SSL is on or off.",
+															"example": false,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"host": {
+															"description": "The keyless SSL name.",
+															"example": "example.com",
+															"format": "hostname",
+															"maxLength": 253,
+															"type": "string"
+														},
+														"id": {
+															"description": "Keyless certificate identifier tag.",
+															"example": "4d2844d2ce78891c34d0b6c0535a291e",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "When the Keyless SSL was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The keyless SSL name.",
+															"example": "example.com Keyless SSL",
+															"maxLength": 180,
+															"readOnly": true,
+															"type": "string"
+														},
+														"permissions": {
+															"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+															"example": [
+																"#ssl:read",
+																"#ssl:edit"
+															],
+															"items": {},
+															"readOnly": true,
+															"type": "array"
+														},
+														"port": {
+															"default": 24008,
+															"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+															"example": 24008,
+															"maxLength": 65535,
+															"type": "number"
+														},
+														"status": {
+															"description": "Status of the Keyless SSL.",
+															"enum": [
+																"active",
+																"deleted"
+															],
+															"example": "active",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tunnel": {
+															"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+															"properties": {
+																"private_ip": {
+																	"description": "Private IP of the Key Server Host",
+																	"example": "10.0.0.1",
+																	"type": "string"
+																},
+																"vnet_id": {
+																	"description": "Cloudflare Tunnel Virtual Network ID",
+																	"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"private_ip",
+																"vnet_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"host",
+														"port",
+														"status",
+														"enabled",
+														"permissions",
+														"created_on",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -1518,7 +1881,7 @@
 				},
 				"description": "Edit Keyless SSL Configuration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1612,8 +1975,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1623,6 +1985,112 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether or not the Keyless SSL is on or off.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"host": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com",
+																	"format": "hostname",
+																	"maxLength": 253,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Keyless certificate identifier tag.",
+																	"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com Keyless SSL",
+																	"maxLength": 180,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"default": 24008,
+																	"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																	"example": 24008,
+																	"maxLength": 65535,
+																	"type": "number"
+																},
+																"status": {
+																	"description": "Status of the Keyless SSL.",
+																	"enum": [
+																		"active",
+																		"deleted"
+																	],
+																	"example": "active",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"tunnel": {
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"properties": {
+																		"private_ip": {
+																			"description": "Private IP of the Key Server Host",
+																			"example": "10.0.0.1",
+																			"type": "string"
+																		},
+																		"vnet_id": {
+																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"private_ip",
+																		"vnet_id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -1724,9 +2192,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Edit Keyless SSL Configuration",
@@ -1793,15 +2258,34 @@
 								"description": "The keyless SSL name.",
 								"example": "example.com Keyless SSL",
 								"maxLength": 180,
-								"readOnly": true,
 								"type": "string"
 							},
 							"port": {
 								"default": 24008,
-								"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+								"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 								"example": 24008,
 								"maxLength": 65535,
 								"type": "number"
+							},
+							"tunnel": {
+								"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+								"properties": {
+									"private_ip": {
+										"description": "Private IP of the Key Server Host",
+										"example": "10.0.0.1",
+										"type": "string"
+									},
+									"vnet_id": {
+										"description": "Cloudflare Tunnel Virtual Network ID",
+										"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+										"type": "string"
+									}
+								},
+								"required": [
+									"private_ip",
+									"vnet_id"
+								],
+								"type": "object"
 							}
 						},
 						"required": [
@@ -1908,8 +2392,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1919,6 +2402,112 @@
 								{
 									"properties": {
 										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"created_on": {
+															"description": "When the Keyless SSL was created.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"enabled": {
+															"description": "Whether or not the Keyless SSL is on or off.",
+															"example": false,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"host": {
+															"description": "The keyless SSL name.",
+															"example": "example.com",
+															"format": "hostname",
+															"maxLength": 253,
+															"type": "string"
+														},
+														"id": {
+															"description": "Keyless certificate identifier tag.",
+															"example": "4d2844d2ce78891c34d0b6c0535a291e",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "When the Keyless SSL was last modified.",
+															"example": "2014-01-01T05:20:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "The keyless SSL name.",
+															"example": "example.com Keyless SSL",
+															"maxLength": 180,
+															"readOnly": true,
+															"type": "string"
+														},
+														"permissions": {
+															"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+															"example": [
+																"#ssl:read",
+																"#ssl:edit"
+															],
+															"items": {},
+															"readOnly": true,
+															"type": "array"
+														},
+														"port": {
+															"default": 24008,
+															"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+															"example": 24008,
+															"maxLength": 65535,
+															"type": "number"
+														},
+														"status": {
+															"description": "Status of the Keyless SSL.",
+															"enum": [
+																"active",
+																"deleted"
+															],
+															"example": "active",
+															"readOnly": true,
+															"type": "string"
+														},
+														"tunnel": {
+															"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+															"properties": {
+																"private_ip": {
+																	"description": "Private IP of the Key Server Host",
+																	"example": "10.0.0.1",
+																	"type": "string"
+																},
+																"vnet_id": {
+																	"description": "Cloudflare Tunnel Virtual Network ID",
+																	"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"private_ip",
+																"vnet_id"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"id",
+														"name",
+														"host",
+														"port",
+														"status",
+														"enabled",
+														"permissions",
+														"created_on",
+														"modified_on"
+													],
+													"type": "object"
+												}
+											],
 											"type": "object"
 										}
 									}
@@ -1929,7 +2518,7 @@
 				},
 				"description": "Create Keyless SSL Configuration response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2023,8 +2612,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2034,6 +2622,112 @@
 										{
 											"properties": {
 												"result": {
+													"allOf": [
+														{
+															"properties": {
+																"created_on": {
+																	"description": "When the Keyless SSL was created.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"enabled": {
+																	"description": "Whether or not the Keyless SSL is on or off.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"host": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com",
+																	"format": "hostname",
+																	"maxLength": 253,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "Keyless certificate identifier tag.",
+																	"example": "4d2844d2ce78891c34d0b6c0535a291e",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "When the Keyless SSL was last modified.",
+																	"example": "2014-01-01T05:20:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The keyless SSL name.",
+																	"example": "example.com Keyless SSL",
+																	"maxLength": 180,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"permissions": {
+																	"description": "Available permissions for the Keyless SSL for the current user requesting the item.",
+																	"example": [
+																		"#ssl:read",
+																		"#ssl:edit"
+																	],
+																	"items": {},
+																	"readOnly": true,
+																	"type": "array"
+																},
+																"port": {
+																	"default": 24008,
+																	"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
+																	"example": 24008,
+																	"maxLength": 65535,
+																	"type": "number"
+																},
+																"status": {
+																	"description": "Status of the Keyless SSL.",
+																	"enum": [
+																		"active",
+																		"deleted"
+																	],
+																	"example": "active",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"tunnel": {
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"properties": {
+																		"private_ip": {
+																			"description": "Private IP of the Key Server Host",
+																			"example": "10.0.0.1",
+																			"type": "string"
+																		},
+																		"vnet_id": {
+																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"private_ip",
+																		"vnet_id"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"host",
+																"port",
+																"status",
+																"enabled",
+																"permissions",
+																"created_on",
+																"modified_on"
+															],
+															"type": "object"
+														}
+													],
 													"type": "object"
 												}
 											}
@@ -2135,9 +2829,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Keyless SSL Configuration",
