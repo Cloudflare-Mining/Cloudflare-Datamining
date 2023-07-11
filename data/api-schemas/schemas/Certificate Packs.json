@@ -8,9 +8,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier for a certificate_pack.",
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 					"readOnly": true,
 					"type": "string"
 				}
@@ -127,7 +126,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -139,9 +139,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "The unique identifier for a certificate_pack.",
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 													"readOnly": true,
 													"type": "string"
 												}
@@ -157,7 +156,7 @@
 				},
 				"description": "Delete Advanced Certificate Manager Certificate Pack response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -251,7 +250,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -263,9 +263,8 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "The unique identifier for a certificate_pack.",
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 															"readOnly": true,
 															"type": "string"
 														}
@@ -372,6 +371,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete Advanced Certificate Manager Certificate Pack",
@@ -555,7 +557,7 @@
 				},
 				"description": "List Certificate Packs response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -783,6 +785,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List Certificate Packs",
@@ -810,9 +815,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier for a certificate_pack.",
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 					"readOnly": true,
 					"type": "string"
 				}
@@ -923,7 +927,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -944,7 +949,7 @@
 				},
 				"description": "Get Certificate Pack response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1038,7 +1043,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -1150,6 +1156,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get Certificate Pack",
@@ -1278,7 +1287,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -1314,7 +1324,7 @@
 				},
 				"description": "Get Certificate Pack Quotas response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1408,7 +1418,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -1535,6 +1546,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get Certificate Pack Quotas",
@@ -1562,9 +1576,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier for a certificate_pack.",
+					"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1681,7 +1694,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -1720,9 +1734,8 @@
 													"type": "array"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "The unique identifier for a certificate_pack.",
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -1794,7 +1807,7 @@
 				},
 				"description": "Restart Validation for Advanced Certificate Manager Certificate Pack response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1888,7 +1901,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -1927,9 +1941,8 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "The unique identifier for a certificate_pack.",
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2092,6 +2105,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Restart Validation for Advanced Certificate Manager Certificate Pack",
@@ -2295,7 +2311,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -2334,9 +2351,8 @@
 													"type": "array"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "The unique identifier for a certificate_pack.",
+													"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 													"readOnly": true,
 													"type": "string"
 												},
@@ -2408,7 +2424,7 @@
 				},
 				"description": "Order Advanced Certificate Manager Certificate Pack response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2502,7 +2518,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -2541,9 +2558,8 @@
 															"type": "array"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "The unique identifier for a certificate_pack.",
+															"example": "3822ff90-ea29-44df-9e55-21300bb9419b",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2706,6 +2722,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Order Advanced Certificate Manager Certificate Pack",
