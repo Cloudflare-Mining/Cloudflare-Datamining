@@ -354,6 +354,17 @@ export interface Performance {
 export interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
+  webSocketMessage(
+    ws: WebSocket,
+    message: string | ArrayBuffer
+  ): void | Promise<void>;
+  webSocketClose(
+    ws: WebSocket,
+    code: number,
+    reason: string,
+    wasClean: boolean
+  ): void | Promise<void>;
+  webSocketError(ws: WebSocket, error: unknown): void | Promise<void>;
 }
 export interface DurableObjectStub extends Fetcher {
   readonly id: DurableObjectId;
@@ -2884,6 +2895,9 @@ export type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
 export type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
+// Copyright (c) 2022-2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
 export interface D1Result<T = unknown> {
   results: T[];
   success: true;
@@ -2908,6 +2922,9 @@ export declare abstract class D1PreparedStatement {
   all<T = unknown>(): Promise<D1Result<T[]>>;
   raw<T = unknown>(): Promise<T[]>;
 }
+// Copyright (c) 2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
 /**
  * An email message that can be sent from a Worker.
  */
@@ -2965,6 +2982,9 @@ export type EmailExportedHandler<Env = unknown> = (
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
+// Copyright (c) 2022-2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
 export type Params<P extends string = any> = Record<P, string | string[]>;
 export type EventContext<Env, P extends string, Data> = {
   request: Request;
@@ -3008,6 +3028,9 @@ export type PagesPluginFunction<
 > = (
   context: EventPluginContext<Env, Params, Data, PluginArgs>
 ) => Response | Promise<Response>;
+// Copyright (c) 2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
 // https://developers.cloudflare.com/pub-sub/
 // PubSubMessage represents an incoming PubSub message.
 // The message includes metadata about the broker, the client, and the payload
@@ -3042,6 +3065,9 @@ export interface JsonWebKeyWithKid extends JsonWebKey {
   // Key Identifier of the JWK
   readonly kid: string;
 }
+// Copyright (c) 2023 Cloudflare, Inc.
+// Licensed under the Apache 2.0 license found in the LICENSE file or at:
+//     https://opensource.org/licenses/Apache-2.0
 // https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/
 export interface DynamicDispatchLimits {
   /**
