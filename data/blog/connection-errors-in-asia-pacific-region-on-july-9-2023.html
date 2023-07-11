@@ -41,7 +41,7 @@
 	<p><strong>2023-07-09 06:50</strong> In order to remediate the impact, we reroute DNS traffic via IPv4 for the .com and .net Verisign nameserver IPs to US west IPs instead. This immediately leads to a substantial drop in the error rate.</p>
 	<p><strong>2023-07-09 07:06</strong> We also reroute DNS traffic via IPv6 for the .com and .net Verisign nameserver IPs to US west IPs. This leads to the error rate going down to zero.</p>
 	<p><strong>2023-07-10 09:23</strong> The rerouting is still in place, but the underlying issue with expired signatures in the Asia Pacific region has still not been resolved.</p>
-	<p><strong>2023-07-10 18:23</strong> Versign gets back to us confirming that they “were serving stale data” at their local site and have resolved the issues.</p>
+	<p><strong>2023-07-10 18:23</strong> Verisign gets back to us confirming that they “were serving stale data” at their local site and have resolved the issues.</p>
 	<h3 id="technical-description-of-the-error-and-how-it-happened">Technical description of the error and how it happened</h3>
 	<p>As mentioned in the introduction, the underlying cause for this incident was expired DNSSEC signatures for .net and .com zones. Expired DNSSEC signatures will cause a DNS response to be interpreted as invalid. There are two main scenarios in which this error was observed by a user:</p>
 	<ol>
