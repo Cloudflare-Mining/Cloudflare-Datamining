@@ -121,7 +121,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -133,8 +134,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-													"readOnly": true
+													"example": "17b5962d775c646f3f9725cbc7a53df4"
 												}
 											},
 											"type": "object"
@@ -241,7 +241,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -253,8 +254,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
-															"readOnly": true
+															"example": "17b5962d775c646f3f9725cbc7a53df4"
 														}
 													},
 													"type": "object"
