@@ -55,10 +55,10 @@
 	<p>When exploring additional candidates for replacing some of the key infrastructure of our old pipeline, we realized that using a column oriented database might be well suited to our analytics workloads. We wanted to identify a column oriented database that was horizontally scalable and fault tolerant to help us deliver good uptime guarantees, and extremely performant and space efficient such that it could handle our scale. We quickly realized that ClickHouse could satisfy these criteria, and then some.</p>
 	<p><a href="https://clickhouse.yandex" target="_blank">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
 	<ul>
-		<li>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#topk" target="_blank">topK</a> by <a href="https://github.com/vavrusa" target="_blank">Marek Vavruša</a></li>
+		<li>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk" target="_blank">topK</a> by <a href="https://github.com/vavrusa" target="_blank">Marek Vavruša</a></li>
 		<li>IP prefix dictionary by Marek Vavruša</li>
 		<li>SummingMergeTree engine optimizations by Marek Vavruša</li>
-		<li><a href="https://clickhouse.yandex/docs/en/single/index.html#kafka" target="_blank">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</li>
+		<li><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka" target="_blank">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</li>
 		<li>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value" target="_blank">sumMap</a> by <a href="https://github.com/bocharov" target="_blank">Alex Bocharov</a>. Without this function it would be impossible to build our new Zone Analytics API.</li>
 		<li><a href="https://github.com/yandex/ClickHouse/pull/1636" target="_blank">Mark cache fix</a> by Alex Bocharov</li>
 		<li><a href="https://github.com/yandex/ClickHouse/pull/1844" target="_blank">uniqHLL12 function fix</a> for big cardinalities by Alex Bocharov. The description of the issue and its fix should be an interesting reading.<br>
@@ -114,7 +114,7 @@
 	<h4 id="aggregationsschemadesign1">Aggregations schema design #1</h4>
 	<p>According to the <a href="https://api.cloudflare.com/#zone-analytics-dashboard" target="_blank">API documentation</a>, we need to provide lots of different requests breakdowns and to satisfy these requirements we decided to test the following approach:</p>
 	<ol>
-		<li>Create Cickhouse <a href="https://clickhouse.yandex/docs/en/single/index.html#create-view" target="_blank">materialized views</a> with <a href="https://clickhouse.yandex/docs/en/single/index.html#replicatedaggregatingmergetree" target="_blank">ReplicatedAggregatingMergeTree</a> engine pointing to non-aggregated requests table and containing minutely aggregates data for each of the breakdowns:
+		<li>Create Cickhouse <a href="https://clickhouse.com/docs/en/sql-reference/statements/create/view" target="_blank">materialized views</a> with <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/aggregatingmergetree" target="_blank">ReplicatedAggregatingMergeTree</a> engine pointing to non-aggregated requests table and containing minutely aggregates data for each of the breakdowns:
 			<ul>
 				<li><strong>Requests totals</strong> - containing numbers like total requests, bytes, threats, uniques, etc.</li>
 				<li><strong>Requests by colo</strong> - containing requests, bytes, etc. breakdown by edgeColoId - each of 120+ Cloudflare datacenters</li>
@@ -138,7 +138,7 @@
 		Schema design #1 didn't work out well. ClickHouse JOIN syntax forces to write monstrous query over 300 lines of SQL, repeating the selected columns many times because you can do only <a href="https://github.com/yandex/ClickHouse/issues/873" target="_blank">pairwise joins</a> in ClickHouse.</p>
 	<p>As for querying each of materialized views separately in parallel, benchmark showed prominent, but moderate results - query throughput would be a little bit better than using our Citus based old pipeline.</p>
 	<h4 id="aggregationsschemadesign2">Aggregations schema design #2</h4>
-	<p>In our second iteration of the schema design, we strove to keep a similar structure to our existing Citus tables. To do this, we experimented with the SummingMergeTree engine, which is described in detail by the excellent ClickHouse <a href="https://clickhouse.yandex/docs/en/single/index.html#summingmergetree" target="_blank">documentation</a>:</p>
+	<p>In our second iteration of the schema design, we strove to keep a similar structure to our existing Citus tables. To do this, we experimented with the SummingMergeTree engine, which is described in detail by the excellent ClickHouse <a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/summingmergetree" target="_blank">documentation</a>:</p>
 	<blockquote>
 		<p>In addition, a table can have nested data structures that are processed in a special way. If the name of a nested table ends in 'Map' and it contains at least two columns that meet the following criteria... then this nested table is interpreted as a mapping of key =&gt; (values...), and when merging its rows, the elements of two data sets are merged by 'key' with a summation of the corresponding (values...).</p>
 	</blockquote>
