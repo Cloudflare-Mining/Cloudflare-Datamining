@@ -134,7 +134,7 @@
 														startTime: x(),
 														versions: {
 															fl: m ? m.version : "",
-															js: "2023.4.2",
+															js: "2023.7.0",
 															timings: 1
 														},
 														pageloadId: v,
@@ -202,7 +202,7 @@
 												referrer: document.referrer || "",
 												eventType: i.EventType.WebVitalsV2,
 												versions: {
-													js: "2023.4.2"
+													js: "2023.7.0"
 												},
 												pageloadId: v,
 												location: e(),
@@ -328,16 +328,17 @@
 					} catch (e) {}
 					if (navigator && "function" == typeof navigator.sendBeacon && a && r) {
 						t.st = 1;
-						var u = JSON.stringify(t);
-						navigator.sendBeacon(o, new Blob([u], {
+						var u = JSON.stringify(t),
+							s = navigator.sendBeacon && navigator.sendBeacon.bind(navigator);
+						null == s || s(o, new Blob([u], {
 							type: "application/json"
 						}))
 					} else {
 						t.st = 2, u = JSON.stringify(t);
-						var s = new XMLHttpRequest;
-						n && (s.onreadystatechange = function() {
+						var f = new XMLHttpRequest;
+						n && (f.onreadystatechange = function() {
 							4 == this.readyState && 204 == this.status && n()
-						}), s.open("POST", o, !0), s.setRequestHeader("content-type", "application/json"), s.send(u)
+						}), f.open("POST", o, !0), f.setRequestHeader("content-type", "application/json"), f.send(u)
 					}
 				}
 			},
