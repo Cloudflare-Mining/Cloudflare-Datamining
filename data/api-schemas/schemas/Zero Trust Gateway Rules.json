@@ -704,6 +704,11 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"ip_indicator_feeds": {
+																"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
+																"example": true,
+																"type": "boolean"
+															},
 															"l4override": {
 																"description": "Send matching traffic to the supplied destination IP address and port.",
 																"properties": {
@@ -1172,6 +1177,11 @@
 																	},
 																	"ip_categories": {
 																		"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"ip_indicator_feeds": {
+																		"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
 																		"example": true,
 																		"type": "boolean"
 																	},
@@ -1746,6 +1756,11 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"ip_indicator_feeds": {
+															"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
 														"l4override": {
 															"description": "Send matching traffic to the supplied destination IP address and port.",
 															"properties": {
@@ -2194,6 +2209,11 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"ip_indicator_feeds": {
+																	"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"l4override": {
 																	"description": "Send matching traffic to the supplied destination IP address and port.",
 																	"properties": {
@@ -2634,6 +2654,11 @@
 										"example": true,
 										"type": "boolean"
 									},
+									"ip_indicator_feeds": {
+										"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
+										"example": true,
+										"type": "boolean"
+									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port.",
 										"properties": {
@@ -3071,6 +3096,11 @@
 														},
 														"ip_categories": {
 															"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"ip_indicator_feeds": {
+															"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -3519,6 +3549,11 @@
 																},
 																"ip_categories": {
 																	"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -3973,6 +4008,11 @@
 										"example": true,
 										"type": "boolean"
 									},
+									"ip_indicator_feeds": {
+										"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
+										"example": true,
+										"type": "boolean"
+									},
 									"l4override": {
 										"description": "Send matching traffic to the supplied destination IP address and port.",
 										"properties": {
@@ -4410,6 +4450,11 @@
 														},
 														"ip_categories": {
 															"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"ip_indicator_feeds": {
+															"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -4858,6 +4903,11 @@
 																},
 																"ip_categories": {
 																	"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block on domain names.",
 																	"example": true,
 																	"type": "boolean"
 																},
