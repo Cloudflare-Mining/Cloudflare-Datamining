@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.4.1
+
+### Patch Changes
+
+- 4ef43a8109: Fix typing for Form and Error components
+- 4ef43a8109: Downgrade Yup to match stratus version
+- Updated dependencies [4ef43a8109]
+  - @cloudflare/component-forms@5.3.1
+
 ## 6.4.0
 
 ### Minor Changes

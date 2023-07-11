@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.1
+
+### Patch Changes
+
+- 4ef43a8109: Fix typescript error
+
 ## 5.3.0
 
 ### Minor Changes
