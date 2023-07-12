@@ -10972,6 +10972,13 @@
 		"modified_on": "2022-03-23T17:02:33.91756Z",
 		"permissions": [
 			{
+				"id": "4775db6425d940d8aa438a6a03125058",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-select-configuration.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
 				"id": "abdae82f7da64cb785915e4de62f4891",
 				"key": "com.cloudflare.api.account.zone.bot-management.feedback.*"
 			},
@@ -11006,6 +11013,13 @@
 			{
 				"id": "0fe857ebc0934967b32854e3f4ec2af3",
 				"key": "com.cloudflare.ipam.regional-hostname.*"
+			},
+			{
+				"id": "b0ef22d48ef645f9b04d7f86818387c3",
+				"key": "com.cloudflare.api.account.zone.versioning.*",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read,#zone_versioning:edit"
+				}
 			},
 			{
 				"id": "0c1bcad524554405bfa2e65416b367fc",
@@ -11777,6 +11791,20 @@
 		"modified_on": "2022-03-23T17:02:33.91756Z",
 		"permissions": [
 			{
+				"id": "5567eba343b84ad794da164ef06fb1b2",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-select-configuration.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "c6d329d272bb49a983400393c4859650",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-select-configuration.list",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
 				"id": "e2c6ad6994b84158b4a4314e3def1058",
 				"key": "com.cloudflare.api.account.zone.bot-management.feedback.list"
 			},
@@ -11813,6 +11841,20 @@
 				"key": "com.cloudflare.api.account.zone.email.security.dmarc-reports.list",
 				"attributes": {
 					"legacy_name": "#zone_settings:read,#dns_records:read"
+				}
+			},
+			{
+				"id": "1ed710a15f1a4a3db74eba42d7aef44a",
+				"key": "com.cloudflare.api.account.zone.versioning.list",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read"
+				}
+			},
+			{
+				"id": "508958592b2441348995a4db5c7cd990",
+				"key": "com.cloudflare.api.account.zone.versioning.read",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read"
 				}
 			},
 			{
