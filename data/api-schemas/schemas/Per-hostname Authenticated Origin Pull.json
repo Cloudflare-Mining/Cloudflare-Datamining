@@ -7,9 +7,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "Certificate identifier tag.",
+					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -126,7 +126,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -150,9 +151,9 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "Certificate identifier tag.",
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
@@ -203,7 +204,7 @@
 				},
 				"description": "Delete Hostname Client Certificate response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -297,7 +298,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -321,9 +323,9 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "Certificate identifier tag.",
+															"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
@@ -465,6 +467,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete Hostname Client Certificate",
@@ -603,7 +608,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -615,9 +621,9 @@
 										"result": {
 											"properties": {
 												"cert_id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "Certificate identifier tag.",
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
@@ -727,7 +733,7 @@
 				},
 				"description": "Get the Hostname Status for Client Authentication response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -821,7 +827,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -833,9 +840,9 @@
 												"result": {
 													"properties": {
 														"cert_id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "Certificate identifier tag.",
+															"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
@@ -1036,6 +1043,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get the Hostname Status for Client Authentication",
@@ -1198,9 +1208,9 @@
 													{
 														"properties": {
 															"cert_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"description": "Certificate identifier tag.",
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -1305,9 +1315,9 @@
 												],
 												"properties": {
 													"cert_id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"description": "Certificate identifier tag.",
+														"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+														"maxLength": 36,
 														"readOnly": true,
 														"type": "string"
 													},
@@ -1329,9 +1339,9 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"description": "Certificate identifier tag.",
+														"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+														"maxLength": 36,
 														"readOnly": true,
 														"type": "string"
 													},
@@ -1353,7 +1363,7 @@
 				},
 				"description": "List Certificates response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1482,9 +1492,9 @@
 															{
 																"properties": {
 																	"cert_id": {
-																		"description": "Identifier",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
+																		"description": "Certificate identifier tag.",
+																		"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																		"maxLength": 36,
 																		"readOnly": true,
 																		"type": "string"
 																	},
@@ -1589,9 +1599,9 @@
 														],
 														"properties": {
 															"cert_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"description": "Certificate identifier tag.",
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -1613,9 +1623,9 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"description": "Certificate identifier tag.",
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -1728,6 +1738,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List Certificates",
@@ -1755,9 +1768,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "Certificate identifier tag.",
+					"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1868,7 +1881,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -1892,9 +1906,9 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "Certificate identifier tag.",
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
@@ -1945,7 +1959,7 @@
 				},
 				"description": "Get the Hostname Client Certificate response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2039,7 +2053,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -2063,9 +2078,9 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "Certificate identifier tag.",
+															"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2207,6 +2222,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get the Hostname Client Certificate",
@@ -2361,7 +2379,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -2385,9 +2404,9 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
+													"description": "Certificate identifier tag.",
+													"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
 												},
@@ -2438,7 +2457,7 @@
 				},
 				"description": "Upload a Hostname Client Certificate response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2532,7 +2551,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -2556,9 +2576,9 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
+															"description": "Certificate identifier tag.",
+															"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
 														},
@@ -2700,6 +2720,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Upload a Hostname Client Certificate",
@@ -2747,6 +2770,7 @@
 											"description": "Certificate identifier tag.",
 											"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 											"maxLength": 36,
+											"readOnly": true,
 											"type": "string"
 										},
 										"enabled": {
@@ -2903,9 +2927,9 @@
 													{
 														"properties": {
 															"cert_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"description": "Certificate identifier tag.",
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -3010,9 +3034,9 @@
 												],
 												"properties": {
 													"cert_id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"description": "Certificate identifier tag.",
+														"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+														"maxLength": 36,
 														"readOnly": true,
 														"type": "string"
 													},
@@ -3034,9 +3058,9 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
+														"description": "Certificate identifier tag.",
+														"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+														"maxLength": 36,
 														"readOnly": true,
 														"type": "string"
 													},
@@ -3058,7 +3082,7 @@
 				},
 				"description": "Enable or Disable a Hostname for Client Authentication response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3187,9 +3211,9 @@
 															{
 																"properties": {
 																	"cert_id": {
-																		"description": "Identifier",
-																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																		"maxLength": 32,
+																		"description": "Certificate identifier tag.",
+																		"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																		"maxLength": 36,
 																		"readOnly": true,
 																		"type": "string"
 																	},
@@ -3294,9 +3318,9 @@
 														],
 														"properties": {
 															"cert_id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"description": "Certificate identifier tag.",
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -3318,9 +3342,9 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "Identifier",
-																"example": "023e105f4ecef8ad9ca31a8372d0c353",
-																"maxLength": 32,
+																"description": "Certificate identifier tag.",
+																"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -3433,6 +3457,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Enable or Disable a Hostname for Client Authentication",
