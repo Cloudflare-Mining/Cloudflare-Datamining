@@ -8,8 +8,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The x509 serial number of the Origin CA certificate.",
-					"example": "328578533902268680212849205732770752308931942346",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -116,8 +117,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -139,8 +139,9 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "The x509 serial number of the Origin CA certificate.",
-													"example": "328578533902268680212849205732770752308931942346",
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
 												}
@@ -154,7 +155,7 @@
 				},
 				"description": "Revoke Certificate response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -250,8 +251,7 @@
 																		{
 																			"type": "string"
 																		}
-																	],
-																	"nullable": true
+																	]
 																}
 															}
 														}
@@ -273,8 +273,9 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "The x509 serial number of the Origin CA certificate.",
-															"example": "328578533902268680212849205732770752308931942346",
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
 														}
@@ -378,9 +379,6 @@
 		"security": [
 			{
 				"user_service_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Revoke Certificate",
@@ -398,18 +396,6 @@
 		"description": "List all existing Origin CA certificates for a given zone. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-list-certificates",
 		"parameters": [
-			{
-				"in": "query",
-				"name": "zone_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			},
 			{
 				"in": "query",
 				"name": "identifier",
@@ -625,7 +611,7 @@
 				},
 				"description": "List Certificates response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -919,9 +905,6 @@
 		"security": [
 			{
 				"user_service_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Certificates",
@@ -944,8 +927,9 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"description": "The x509 serial number of the Origin CA certificate.",
-					"example": "328578533902268680212849205732770752308931942346",
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1044,8 +1028,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1066,7 +1049,7 @@
 				},
 				"description": "Get Certificate response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1160,8 +1143,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1272,9 +1254,6 @@
 		"security": [
 			{
 				"user_service_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Certificate",
@@ -1435,8 +1414,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1457,7 +1435,7 @@
 				},
 				"description": "Create Certificate response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1551,8 +1529,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1663,9 +1640,6 @@
 		"security": [
 			{
 				"user_service_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Certificate",
