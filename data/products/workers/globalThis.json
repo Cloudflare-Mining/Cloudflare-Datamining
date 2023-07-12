@@ -3647,6 +3647,110 @@
 				"_prototype": {}
 			}
 		},
+		"diagnostics_channel": {
+			"hasSubscribers": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"channel": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"arguments": "undefined",
+					"caller": "undefined",
+					"prototype": "undefined",
+					"hasSubscribers": "function",
+					"publish": "function",
+					"subscribe": "function",
+					"unsubscribe": "function",
+					"bindStore": "function",
+					"unbindStore": "function",
+					"runStores": "function"
+				}
+			},
+			"subscribe": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"unsubscribe": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"tracingChannel": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Channel": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"hasSubscribers": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"publish": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"subscribe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"unsubscribe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"bindStore": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"unbindStore": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"runStores": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					}
+				}
+			}
+		},
 		"events": {
 			"on": {
 				"__proto": "function",
