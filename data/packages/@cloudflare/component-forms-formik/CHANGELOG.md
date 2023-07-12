@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.4.2
+
+### Patch Changes
+
+- 9e962f6ab9: Painful typescript fixes
+- Updated dependencies [9e962f6ab9]
+  - @cloudflare/component-forms@5.3.2
+
 ## 6.4.1
 
 ### Patch Changes

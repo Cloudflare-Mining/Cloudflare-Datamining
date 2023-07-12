@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.2
+
+### Patch Changes
+
+- 9e962f6ab9: Painful typescript fixes
+
 ## 5.3.1
 
 ### Patch Changes
