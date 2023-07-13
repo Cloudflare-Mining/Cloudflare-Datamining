@@ -8,7 +8,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -118,13 +119,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -136,7 +138,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"example": "17b5962d775c646f3f9725cbc7a53df4"
+													"example": "17b5962d775c646f3f9725cbc7a53df4",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -149,7 +152,7 @@
 				},
 				"description": "Delete Pool response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -238,13 +241,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -256,7 +260,8 @@
 												"result": {
 													"properties": {
 														"id": {
-															"example": "17b5962d775c646f3f9725cbc7a53df4"
+															"example": "17b5962d775c646f3f9725cbc7a53df4",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -359,7 +364,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Delete Pool",
@@ -569,7 +575,8 @@
 														"type": "boolean"
 													},
 													"id": {
-														"example": "17b5962d775c646f3f9725cbc7a53df4"
+														"example": "17b5962d775c646f3f9725cbc7a53df4",
+														"type": "string"
 													},
 													"latitude": {
 														"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -777,7 +784,7 @@
 				},
 				"description": "List Pools response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -956,7 +963,8 @@
 																"type": "boolean"
 															},
 															"id": {
-																"example": "17b5962d775c646f3f9725cbc7a53df4"
+																"example": "17b5962d775c646f3f9725cbc7a53df4",
+																"type": "string"
 															},
 															"latitude": {
 																"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -1254,7 +1262,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Pools",
@@ -1271,7 +1280,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -1375,13 +1385,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1445,7 +1456,8 @@
 													"type": "boolean"
 												},
 												"id": {
-													"example": "17b5962d775c646f3f9725cbc7a53df4"
+													"example": "17b5962d775c646f3f9725cbc7a53df4",
+													"type": "string"
 												},
 												"latitude": {
 													"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -1651,7 +1663,7 @@
 				},
 				"description": "Pool Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1740,13 +1752,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1810,7 +1823,8 @@
 															"type": "boolean"
 														},
 														"id": {
-															"example": "17b5962d775c646f3f9725cbc7a53df4"
+															"example": "17b5962d775c646f3f9725cbc7a53df4",
+															"type": "string"
 														},
 														"latitude": {
 															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -2106,7 +2120,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Pool Details",
@@ -2123,7 +2138,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -2227,13 +2243,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2272,7 +2289,7 @@
 				},
 				"description": "Pool Health Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2361,13 +2378,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2496,7 +2514,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Pool Health Details",
@@ -2513,7 +2532,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -2699,7 +2719,7 @@
 				},
 				"description": "List Pool References response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2960,7 +2980,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List Pool References",
@@ -2995,7 +3016,7 @@
 								"enum": [
 									"\"\""
 								],
-								"example": "",
+								"example": "\"\"",
 								"type": "string"
 							}
 						}
@@ -3182,7 +3203,8 @@
 														"type": "boolean"
 													},
 													"id": {
-														"example": "17b5962d775c646f3f9725cbc7a53df4"
+														"example": "17b5962d775c646f3f9725cbc7a53df4",
+														"type": "string"
 													},
 													"latitude": {
 														"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -3390,7 +3412,7 @@
 				},
 				"description": "Patch Pools response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3569,7 +3591,8 @@
 																"type": "boolean"
 															},
 															"id": {
-																"example": "17b5962d775c646f3f9725cbc7a53df4"
+																"example": "17b5962d775c646f3f9725cbc7a53df4",
+																"type": "string"
 															},
 															"latitude": {
 																"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -3867,7 +3890,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Patch Pools",
@@ -3884,7 +3908,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -4232,13 +4257,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -4302,7 +4328,8 @@
 													"type": "boolean"
 												},
 												"id": {
-													"example": "17b5962d775c646f3f9725cbc7a53df4"
+													"example": "17b5962d775c646f3f9725cbc7a53df4",
+													"type": "string"
 												},
 												"latitude": {
 													"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -4508,7 +4535,7 @@
 				},
 				"description": "Patch Pool response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4597,13 +4624,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -4667,7 +4695,8 @@
 															"type": "boolean"
 														},
 														"id": {
-															"example": "17b5962d775c646f3f9725cbc7a53df4"
+															"example": "17b5962d775c646f3f9725cbc7a53df4",
+															"type": "string"
 														},
 														"latitude": {
 															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -4963,7 +4992,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Patch Pool",
@@ -5289,13 +5319,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -5359,7 +5390,8 @@
 													"type": "boolean"
 												},
 												"id": {
-													"example": "17b5962d775c646f3f9725cbc7a53df4"
+													"example": "17b5962d775c646f3f9725cbc7a53df4",
+													"type": "string"
 												},
 												"latitude": {
 													"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -5565,7 +5597,7 @@
 				},
 				"description": "Create Pool response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5654,13 +5686,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -5724,7 +5757,8 @@
 															"type": "boolean"
 														},
 														"id": {
-															"example": "17b5962d775c646f3f9725cbc7a53df4"
+															"example": "17b5962d775c646f3f9725cbc7a53df4",
+															"type": "string"
 														},
 														"latitude": {
 															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -6020,7 +6054,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Create Pool",
@@ -6037,7 +6072,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -6236,13 +6272,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -6266,7 +6303,8 @@
 													"type": "object"
 												},
 												"preview_id": {
-													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -6279,7 +6317,7 @@
 				},
 				"description": "Preview Pool response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -6368,13 +6406,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -6398,7 +6437,8 @@
 															"type": "object"
 														},
 														"preview_id": {
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -6501,7 +6541,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Preview Pool",
@@ -6518,7 +6559,8 @@
 				"name": "identifier",
 				"required": true,
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4"
+					"example": "17b5962d775c646f3f9725cbc7a53df4",
+					"type": "string"
 				}
 			},
 			{
@@ -6870,13 +6912,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -6940,7 +6983,8 @@
 													"type": "boolean"
 												},
 												"id": {
-													"example": "17b5962d775c646f3f9725cbc7a53df4"
+													"example": "17b5962d775c646f3f9725cbc7a53df4",
+													"type": "string"
 												},
 												"latitude": {
 													"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -7146,7 +7190,7 @@
 				},
 				"description": "Update Pool response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -7235,13 +7279,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -7305,7 +7350,8 @@
 															"type": "boolean"
 														},
 														"id": {
-															"example": "17b5962d775c646f3f9725cbc7a53df4"
+															"example": "17b5962d775c646f3f9725cbc7a53df4",
+															"type": "string"
 														},
 														"latitude": {
 															"description": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.",
@@ -7601,7 +7647,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update Pool",
