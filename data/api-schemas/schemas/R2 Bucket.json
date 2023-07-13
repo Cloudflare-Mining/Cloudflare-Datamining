@@ -1,17 +1,15 @@
 {
 	"DELETE /accounts/{account_identifier}/r2/buckets/{bucket_name}": {
 		"description": "Deletes an existing R2 bucket.",
-		"operationId": "r2-delete-bucket",
+		"operationId": "r-2-bucket-delete-bucket",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "bucket_name",
 				"required": true,
 				"schema": {
-					"description": "Name of the bucket",
+					"description": "Name of the bucket. The name must be greater than 2 and less than 64 characters.",
 					"example": "example-bucket",
-					"maxLength": 64,
-					"minLength": 3,
 					"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
 					"type": "string"
 				}
@@ -21,122 +19,290 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
-											"message": {
-												"type": "string"
-											}
+											"type": "array"
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
 									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"result": {
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
 									"type": "object"
 								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										true
-									],
-									"type": "boolean"
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
 				"description": "Delete Bucket response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"message": {
-												"type": "string"
-											}
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
 								},
-								"messages": {
-									"items": {
-										"type": "string"
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
 									},
-									"type": "array"
-								},
-								"result": {
-									"enum": [
-										null
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"nullable": true,
 									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
@@ -160,16 +326,17 @@
 	},
 	"GET /accounts/{account_identifier}/r2/buckets": {
 		"description": "Lists all R2 buckets on your account",
-		"operationId": "r2-list-buckets",
+		"operationId": "r-2-bucket-list-buckets",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -242,10 +409,104 @@
 						"schema": {
 							"allOf": [
 								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Buckets response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
 									"allOf": [
 										{
 											"properties": {
 												"errors": {
+													"example": [],
 													"items": {
 														"properties": {
 															"code": {
@@ -266,19 +527,46 @@
 													"type": "array"
 												},
 												"messages": {
+													"example": [],
 													"items": {
-														"type": "string"
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
 													},
 													"type": "array"
 												},
 												"result": {
-													"type": "object"
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
 												},
 												"success": {
 													"description": "Whether the API call was successful",
 													"enum": [
 														true
 													],
+													"example": true,
 													"type": "boolean"
 												}
 											},
@@ -292,123 +580,98 @@
 										},
 										{
 											"properties": {
-												"result_info": {
-													"properties": {
-														"cursor": {
-															"description": "A continuation token that should be used to fetch the next page of results",
-															"example": "1-JTdCJTIydiUyMiUzQTElMkMlMjJzdGFydEFmdGVyJTIyJTNBJTIyZGF2aWRwdWJsaWMlMjIlN0Q=",
-															"type": "string"
-														},
-														"per_page": {
-															"description": "Maximum number of results on this page",
-															"example": 20,
-															"type": "number"
-														}
-													},
+												"result": {
 													"type": "object"
 												}
-											},
-											"type": "object"
+											}
 										}
 									]
 								},
 								{
 									"properties": {
-										"result": {
-											"items": {
-												"description": "A single R2 bucket",
-												"properties": {
-													"creation_date": {
-														"description": "Creation timestamp",
-														"type": "string"
-													},
-													"location": {
-														"description": "Location of the bucket",
-														"enum": [
-															"apac",
-															"eeur",
-															"enam",
-															"weur",
-															"wnam"
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
 														],
-														"type": "string"
+														"type": "object",
+														"uniqueItems": true
 													},
-													"name": {
-														"description": "Name of the bucket",
-														"example": "example-bucket",
-														"maxLength": 64,
-														"minLength": 3,
-														"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
 										}
 									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
 									"type": "object"
 								}
 							]
-						}
-					}
-				},
-				"description": "List Buckets response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
-											},
-											"message": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"result": {
-									"enum": [
-										null
-									],
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
 						}
 					}
 				},
@@ -629,16 +892,17 @@
 	},
 	"POST /accounts/{account_identifier}/r2/buckets": {
 		"description": "Creates a new R2 bucket.",
-		"operationId": "r2-create-bucket",
+		"operationId": "r-2-bucket-create-bucket",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Account ID",
+					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -647,32 +911,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"example": "{\"name\": \"example-bucket\"}",
-						"properties": {
-							"locationHint": {
-								"description": "Location of the bucket",
-								"enum": [
-									"apac",
-									"eeur",
-									"enam",
-									"weur",
-									"wnam"
-								],
-								"type": "string"
-							},
-							"name": {
-								"description": "Name of the bucket",
-								"example": "example-bucket",
-								"maxLength": 64,
-								"minLength": 3,
-								"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-								"type": "string"
-							}
-						},
-						"required": [
-							"name"
-						],
-						"type": "object"
+						"example": "{'name': 'example-bucket'}"
 					}
 				}
 			},
@@ -687,6 +926,7 @@
 								{
 									"properties": {
 										"errors": {
+											"example": [],
 											"items": {
 												"properties": {
 													"code": {
@@ -707,19 +947,46 @@
 											"type": "array"
 										},
 										"messages": {
+											"example": [],
 											"items": {
-												"type": "string"
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
 											},
 											"type": "array"
 										},
 										"result": {
-											"type": "object"
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
 										},
 										"success": {
 											"description": "Whether the API call was successful",
 											"enum": [
 												true
 											],
+											"example": true,
 											"type": "boolean"
 										}
 									},
@@ -734,36 +1001,9 @@
 								{
 									"properties": {
 										"result": {
-											"description": "A single R2 bucket",
-											"properties": {
-												"creation_date": {
-													"description": "Creation timestamp",
-													"type": "string"
-												},
-												"location": {
-													"description": "Location of the bucket",
-													"enum": [
-														"apac",
-														"eeur",
-														"enam",
-														"weur",
-														"wnam"
-													],
-													"type": "string"
-												},
-												"name": {
-													"description": "Name of the bucket",
-													"example": "example-bucket",
-													"maxLength": 64,
-													"minLength": 3,
-													"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-													"type": "string"
-												}
-											},
 											"type": "object"
 										}
-									},
-									"type": "object"
+									}
 								}
 							]
 						}
@@ -771,60 +1011,182 @@
 				},
 				"description": "Create Bucket response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"code": {
-												"minimum": 1000,
-												"type": "integer"
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"message": {
-												"type": "string"
-											}
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
-										"required": [
-											"code",
-											"message"
-										],
-										"type": "object",
-										"uniqueItems": true
-									},
-									"type": "array"
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
 								},
-								"messages": {
-									"items": {
-										"type": "string"
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
 									},
-									"type": "array"
-								},
-								"result": {
-									"enum": [
-										null
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
 									],
-									"nullable": true,
 									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"enum": [
-										false
-									],
-									"example": false,
-									"type": "boolean"
 								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
+							]
 						}
 					}
 				},
