@@ -19,5 +19,12 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"bump-version",
+		"major-release",
+		"master",
+		"multiple-children",
+		"release"
+	]
 }

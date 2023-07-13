@@ -19,5 +19,12 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"4.x-compat",
+		"4.x-current",
+		"feature/audio-meters",
+		"macos-cli",
+		"master"
+	]
 }

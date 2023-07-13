@@ -19,5 +19,31 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"2016-08-tcp",
+		"2018-11-memory-refresh",
+		"2019-01-io-submit",
+		"2022-02-connectx",
+		"marek/bind-to-star",
+		"marek/mmwatch-add-float-support",
+		"marek/slow-downloads",
+		"marek/2017-06-29-ssdp",
+		"marek/2017-10-accept-balancing",
+		"marek/2017-11-perfect-locality",
+		"marek/2018-01-syn-floods",
+		"marek/2018-03-ebpf",
+		"marek/2018-07-dropping-packets",
+		"marek/2019-01-splice",
+		"marek/2019-02-tcp-splice-zerocopy",
+		"marek/2019-07-fuzzing-kernel",
+		"marek/2019-09-keepalives",
+		"marek/2020-02-bloom-filter",
+		"marek/2020-04-conntrack-syn",
+		"marek/2020-12-mmdist",
+		"marek/2021-05-branch-prediction",
+		"marek/2022-07-rmem-a",
+		"master",
+		"nm-single-rx-queue"
+	]
 }

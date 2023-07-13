@@ -19,5 +19,11 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"master",
+		"noah/backport-histogram-perf",
+		"noah/fast-histograms",
+		"release-v0.18"
+	]
 }

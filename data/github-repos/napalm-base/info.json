@@ -19,5 +19,14 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "develop"
+	"default_branch": "develop",
+	"branches": [
+		"Release-0.14.0",
+		"Release-0.14.1",
+		"develop",
+		"hotfix-missing-comma",
+		"hotfix-typo",
+		"master",
+		"test_framework"
+	]
 }

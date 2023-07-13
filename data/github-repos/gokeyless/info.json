@@ -19,5 +19,18 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"leland/add-dockerfile",
+		"leland/retry-timeout-testing",
+		"master",
+		"nicky/buildvcs",
+		"nicky/conn-mgmt",
+		"nicky/conn-trace",
+		"nicky/ctx-sign",
+		"nicky/lints",
+		"nicky/release-env-var-fix",
+		"tanya/test-proxy",
+		"zi/init-cert"
+	]
 }

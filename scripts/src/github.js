@@ -6,6 +6,7 @@ import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
 import {Octokit} from '@octokit/rest';
 import pick from 'object.pick';
+import pLimit from 'p-limit';
 
 import {tryAndPush} from './utils.js';
 
@@ -30,7 +31,9 @@ const wantedKeys = [
 ];
 
 async function run() {
-	const octokit = new Octokit();
+	const octokit = new Octokit({
+		auth: process.env.GH_API_TOKEN,
+	});
 	console.log('Fetching GitHub Data...');
 
 	try{
@@ -38,18 +41,43 @@ async function run() {
 			org: 'cloudflare',
 		});
 		const getDataAndWriteFiles = [];
+		const limit = pLimit(1);
 		for(const repo of repos) {
 			const filename = filenamify(repo.name, {replacement: '__'});
-			getDataAndWriteFiles.push(async () => {
+			getDataAndWriteFiles.push(limit(async () => {
+				console.log('Fetching data for ' + repo.name);
 				await fs.ensureDir(path.resolve('../data/github-repos/' + filename));
-				const info = pick(repo, wantedKeys);
+
+				// get branches
+				const branches = [];
+				try{
+					const rawBranches = await octokit.paginate(octokit.rest.repos.listBranches, {
+						owner: 'cloudflare',
+						repo: repo.name,
+					});
+					for(const branch of rawBranches) {
+						if(!branch || !branch.name || branch.name.startsWith('dependabot/')) {
+							continue;
+						}
+						branches.push(branch.name);
+					}
+
+				}catch(err) {
+					console.error('Failed to get branches for ' + repo.name);
+					console.error(err);
+				}
+				const info = {
+					...pick(repo, wantedKeys),
+					branches,
+				};
 				fs.writeFile(
 					path.resolve(`../data/github-repos/${filename}/info.json`),
 					JSON.stringify(info, null, '\t'),
 				);
-			});
+
+			}));
 		}
-		await Promise.all(getDataAndWriteFiles.map(fn => fn()));
+		await Promise.all(getDataAndWriteFiles);
 
 		console.log('Pushing!');
 		const prefix = dateFormat(new Date(), 'd mmmm yyyy');

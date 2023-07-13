@@ -19,5 +19,21 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"bors-test",
+		"cbranch/benchmark",
+		"cbranch/2-per-poll",
+		"ci-no-master",
+		"dns",
+		"iface-sockets",
+		"lohith/congestion_controller",
+		"lohith/enable_sack",
+		"master",
+		"medium-ip",
+		"staging",
+		"test",
+		"trying",
+		"v0.7.x"
+	]
 }

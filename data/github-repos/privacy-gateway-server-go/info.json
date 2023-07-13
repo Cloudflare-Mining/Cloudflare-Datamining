@@ -19,5 +19,29 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "main"
+	"default_branch": "main",
+	"branches": [
+		"caw/add-metadata-endpoint",
+		"caw/add-more-methods",
+		"caw/add-origin-acl",
+		"caw/admit-custom-encodings",
+		"caw/control-config-id",
+		"caw/custom-content-types",
+		"caw/debug-mode",
+		"caw/dump-request",
+		"caw/endpoint-configuration",
+		"caw/fix-legacy-config",
+		"caw/improve-docs",
+		"caw/improve-localhost-debug",
+		"caw/multiple-configs",
+		"caw/protobuf-encoding",
+		"caw/return-unauthorized-for-invalid-key",
+		"caw/rewrite-handlers",
+		"caw/simplify-resources",
+		"caw/statsd-metrics",
+		"caw/trial-encap-handler",
+		"caw/update-ohttp-go-and-tests",
+		"caw/update-vendor",
+		"main"
+	]
 }

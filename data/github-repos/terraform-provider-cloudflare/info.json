@@ -19,5 +19,29 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"2.x",
+		"3.x",
+		"access-rules-account-id-support",
+		"add-virtual-networks",
+		"allow-saas-for-access-application",
+		"allow-timeouts-0",
+		"automated-make-docs",
+		"bump-cloudflare-go-to-0.72.0",
+		"cloudflare-go-0.58.0",
+		"eherot/resource_cloudflare_zone_updateType",
+		"feature/tristate-ruleset-override-enable",
+		"fix-superfluous-id",
+		"lungiman/master",
+		"maleblond/add-cache-variants-docs",
+		"master",
+		"pages-updates",
+		"revathyrams/master",
+		"stable-website",
+		"teams_route",
+		"update-ruleset-usage",
+		"v4-upgrade-docs",
+		"validate-filter-expressions-in-schema"
+	]
 }

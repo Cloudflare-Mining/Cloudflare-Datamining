@@ -19,5 +19,28 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"exp/largeblocks",
+		"feat/add-wrap-fixes",
+		"feat/expose-tests",
+		"feat/ipld-in-ipfs",
+		"feat/mfs",
+		"feat/name-search-test",
+		"feat/node-api",
+		"feat/readme-stub",
+		"feat/refactor",
+		"feat/remove-all-pins",
+		"feat/streaming-pin",
+		"feat/travis",
+		"fix/dht-wait",
+		"fix/ls-dir-only",
+		"fix-staticcheck",
+		"gx/update-szor28",
+		"linksystem",
+		"maint/v0.2",
+		"master",
+		"petar/namefmt",
+		"test/pin-ls"
+	]
 }

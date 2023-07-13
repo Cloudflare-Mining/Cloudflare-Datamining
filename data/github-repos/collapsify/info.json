@@ -19,5 +19,21 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"master",
+		"sgoo/fix-inline-css",
+		"sgoo/fix-package-lock",
+		"sgoodhew/add-error-messages",
+		"sgoodhew/change-html-parser",
+		"sgoodhew/cleanup",
+		"sgoodhew/convert-to-ts",
+		"sgoodhew/fix-parse5-dep",
+		"sgoodhew/license",
+		"sgoodhew/ready-for-release",
+		"sgoodhew/remove-lint-staged",
+		"sgoodhew/worker-compatibility",
+		"terin/post",
+		"update-terser"
+	]
 }

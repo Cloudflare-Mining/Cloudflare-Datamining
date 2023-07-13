@@ -19,5 +19,25 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"add-invalid-signature-check",
+		"bug/deb-package-con",
+		"bug/hotfix-cert-validity",
+		"bug/manifest-invalidation",
+		"feature/arin-autoconfig",
+		"feature/crl-validity",
+		"feature/crl-validity-update",
+		"feature/error-loging-local",
+		"feature/infos-page",
+		"feature/useragent-rrdp",
+		"fix/Dockerfile",
+		"fix/rsync",
+		"master",
+		"ogh/ct",
+		"ogh/go",
+		"takt/arin",
+		"takt/filter",
+		"takt/service"
+	]
 }

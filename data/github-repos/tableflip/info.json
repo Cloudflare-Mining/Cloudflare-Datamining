@@ -19,5 +19,12 @@
 	},
 	"allow_forking": true,
 	"is_template": false,
-	"default_branch": "master"
+	"default_branch": "master",
+	"branches": [
+		"fix-arg-passing",
+		"fix-test-with-closed-stdin",
+		"julien/fix-fmt",
+		"lmb/error-clean-up",
+		"master"
+	]
 }
