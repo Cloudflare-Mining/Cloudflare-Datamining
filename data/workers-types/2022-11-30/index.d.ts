@@ -362,17 +362,17 @@ declare interface Performance {
 declare interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
-  webSocketMessage(
+  webSocketMessage?(
     ws: WebSocket,
     message: string | ArrayBuffer
   ): void | Promise<void>;
-  webSocketClose(
+  webSocketClose?(
     ws: WebSocket,
     code: number,
     reason: string,
     wasClean: boolean
   ): void | Promise<void>;
-  webSocketError(ws: WebSocket, error: unknown): void | Promise<void>;
+  webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
 }
 declare interface DurableObjectStub extends Fetcher {
   readonly id: DurableObjectId;
