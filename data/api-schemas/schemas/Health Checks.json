@@ -120,15 +120,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -244,15 +244,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -372,9 +372,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Health Check",
@@ -509,15 +506,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -633,15 +630,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -761,9 +758,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Preview Health Check",
@@ -1572,9 +1566,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Health Checks",
@@ -1703,15 +1694,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -2025,15 +2016,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -2351,9 +2342,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Health Check Details",
@@ -2482,15 +2470,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -2804,15 +2792,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -3130,9 +3118,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Health Check Preview Details",
@@ -3445,15 +3430,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -3767,15 +3752,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -4093,9 +4078,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Patch Health Check",
@@ -4396,15 +4378,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -4718,15 +4700,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -5044,9 +5026,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Health Check",
@@ -5347,15 +5326,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -5669,15 +5648,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -5995,9 +5974,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Preview Health Check",
@@ -6310,15 +6286,15 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														}
-													],
-													"nullable": true
+														},
+														{}
+													]
 												}
 											}
 										}
@@ -6632,15 +6608,15 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																}
-															],
-															"nullable": true
+																},
+																{}
+															]
 														}
 													}
 												}
@@ -6958,9 +6934,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Health Check",
