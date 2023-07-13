@@ -145,7 +145,6 @@
 														"description": "Role identifier tag.",
 														"example": "3536bcfad5faccb999b47003c79917fb",
 														"maxLength": 32,
-														"readOnly": true,
 														"type": "string"
 													},
 													"name": {
@@ -531,13 +530,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -647,13 +647,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
