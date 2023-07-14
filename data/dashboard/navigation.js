@@ -594,7 +594,7 @@ const navigation = {
 		}, {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
-			navigationType: "global-settings",
+			navigationType: "both",
 			hasPermission: function(g) {
 				return Object.values((0, v.H_)(g)).some(Boolean)
 			}
