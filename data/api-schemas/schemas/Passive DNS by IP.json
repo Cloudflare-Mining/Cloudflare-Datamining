@@ -215,7 +215,7 @@
 				},
 				"description": "Get Passive DNS by IP response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -461,6 +461,9 @@
 			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get Passive DNS by IP",
