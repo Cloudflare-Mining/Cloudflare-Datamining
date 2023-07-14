@@ -105,14 +105,13 @@
 										{
 											"properties": {
 												"result": {
-													"oneOf": [
+													"anyOf": [
 														{
 															"type": "object"
 														},
 														{
 															"type": "string"
-														},
-														{}
+														}
 													]
 												}
 											}
@@ -125,11 +124,8 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
+													"example": "269d8f4853475ca241c4e730be286b20",
+													"readOnly": true
 												}
 											},
 											"type": "object"
@@ -229,14 +225,13 @@
 												{
 													"properties": {
 														"result": {
-															"oneOf": [
+															"anyOf": [
 																{
 																	"type": "object"
 																},
 																{
 																	"type": "string"
-																},
-																{}
+																}
 															]
 														}
 													}
@@ -249,11 +244,8 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "Identifier",
-															"example": "023e105f4ecef8ad9ca31a8372d0c353",
-															"maxLength": 32,
-															"readOnly": true,
-															"type": "string"
+															"example": "269d8f4853475ca241c4e730be286b20",
+															"readOnly": true
 														}
 													},
 													"type": "object"
