@@ -584,7 +584,7 @@
 															},
 															"port": {
 																"default": 24008,
-																"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+																"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 																"example": 24008,
 																"maxLength": 65535,
 																"type": "number"
@@ -598,6 +598,26 @@
 																"example": "active",
 																"readOnly": true,
 																"type": "string"
+															},
+															"tunnel": {
+																"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																"properties": {
+																	"private_ip": {
+																		"description": "Private IP of the Key Server Host",
+																		"example": "10.0.0.1",
+																		"type": "string"
+																	},
+																	"vnet_id": {
+																		"description": "Cloudflare Tunnel Virtual Network ID",
+																		"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"private_ip",
+																	"vnet_id"
+																],
+																"type": "object"
 															}
 														},
 														"required": [
@@ -807,7 +827,7 @@
 																	},
 																	"port": {
 																		"default": 24008,
-																		"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server.",
+																		"description": "The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.",
 																		"example": 24008,
 																		"maxLength": 65535,
 																		"type": "number"
@@ -821,6 +841,26 @@
 																		"example": "active",
 																		"readOnly": true,
 																		"type": "string"
+																	},
+																	"tunnel": {
+																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																		"properties": {
+																			"private_ip": {
+																				"description": "Private IP of the Key Server Host",
+																				"example": "10.0.0.1",
+																				"type": "string"
+																			},
+																			"vnet_id": {
+																				"description": "Cloudflare Tunnel Virtual Network ID",
+																				"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"private_ip",
+																			"vnet_id"
+																		],
+																		"type": "object"
 																	}
 																},
 																"required": [

@@ -1285,10 +1285,6 @@
 															},
 															"type": "array"
 														},
-														"region": {
-															"example": "enam",
-															"type": "string"
-														},
 														"status": {
 															"enum": [
 																"Queued",
@@ -1339,7 +1335,6 @@
 														"visibility",
 														"clientLocation",
 														"clientType",
-														"region",
 														"effectiveUrl"
 													],
 													"type": "object"
@@ -3239,10 +3234,6 @@
 														},
 														"type": "array"
 													},
-													"region": {
-														"example": "enam",
-														"type": "string"
-													},
 													"status": {
 														"enum": [
 															"Queued",
@@ -3293,7 +3284,6 @@
 													"visibility",
 													"clientLocation",
 													"clientType",
-													"region",
 													"effectiveUrl"
 												],
 												"type": "object"
@@ -3321,7 +3311,7 @@
 						}
 					}
 				},
-				"description": "Scan request denied: url was recently scanned."
+				"description": "Scan request denied: hostname was recently scanned."
 			},
 			"429": {
 				"content": {
