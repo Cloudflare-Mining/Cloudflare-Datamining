@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2909,
+	"version": "2023.7.77.1",
+	"short_version": "",
+	"size": 111443968,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "481e5e0a99d9a3c9e2baeeaad7785ce6",
+	"fingerprint": "14e4951f2a04dc7d17f59ed39a5c69f4",
+	"uploaded_at": "2023-07-14T23:12:43.705Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains reliability improvements and general bug fixes. No new features are introduced with this release.\r\n \r\n## Notable updates\r\n- Added support for IPv6 DEX Traceroute tests\r\n- Improved reliability and efficiency in configurating split tunnel rules. Most `error petting the dog` errors should now be gone and organizations with large split tunnel configuration should see reliability improvements\r\n- Fixed issue where DEX tests would not properly run immediately after a device came out of sleep\r\n- Fixed issue where DEX tests will all execute at the same time causing performance issues for accounts with a large number of tests configured\r\n- Fixed issue where DNS status would flap between Connected / Disconnect in Connectivity panel\r\n \r\n## Known issues\r\n- Customers may experience a DPC_WATCHDOG_VIOLATION Blue Screen when connecting. This error was introduced with the 2023.3 GA release and happens more frequently with larger split tunnel configurations, especially on more resource constrained machines. We are actively working on a fix. Until then we recommend staying on 2022.12 GA release OR reducing your split tunnel configuration if possible.\r\n- Managed network detection on certain Windows machines doesn't consistently apply the expected profile upon network changes. We will address this issue in a future release.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"935388b863ee45722f3d1d91064366e41de1831c0d1c31d4aff0be85ab4020fd"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2733,
+	"version": "20230714.28",
+	"short_version": "2023.7.76.1",
+	"size": 65514112,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "d9fb651807796e2c23a82f79758d6ca8",
+	"fingerprint": "be68041bc5c59613bbc9bfa3de1d62f4",
+	"uploaded_at": "2023-07-14T23:03:07.654Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This release contains reliability improvements and general bug fixes. No new features are introduced with this release.\n \n## Notable updates\n- Added support for IPv6 DEX Traceroute tests\n- Improved reliability and efficiency in configurating split tunnel rules. Most `error petting the dog` errors should now be gone and organizations with large split tunnel configuration should see reliability improvements\n- Fixed issue where DEX tests would not properly run immediately after a device came out of sleep\n- Fixed issue where DEX tests will all execute at the same time causing performance issues for accounts with a large number of tests configured\n \n \n ## Known issues\n- Improved reliability and efficiency in configurating split tunnel rules. Most `error petting the dog` errors should now be gone and organizations with large split tunnel configuration should see reliability improvements.\n- If you are having issues with upgrading to new beta, please uninstall current app, install the GA version from https://1.1.1.1/ and participate in beta program from Preferences->Advanced.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
