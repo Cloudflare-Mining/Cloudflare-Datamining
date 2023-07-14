@@ -168,13 +168,16 @@
 	"zaraz.settings.workflow.disabled.tooltip": "This feature is available for users with Workers Paid plan",
 	"zaraz.settings.workflow.options.realtime": "Real-time",
 	"zaraz.settings.workflow.options.preview": "Preview & Publish",
-	"zaraz.settings.workflow.modal.title": "Switch to Real-time workflow",
-	"zaraz.settings.workflow.modal.description": "Please choose what to do with your current pending changes on Preview mode",
+	"zaraz.settings.workflow.modal.title": "Disable Preview & Publish Workflow",
+	"zaraz.settings.workflow.modal.description": "Please choose what to do with your current pending changes on Preview & Publish Workflow",
 	"zaraz.settings.workflow.description": "Choose whether changes should take effect in real time, or preview changes on your website before publishing to all users.",
+	"zaraz.history.workflow.title": "Preview & Publish Workflow",
+	"zaraz.history.workflow.switch_title": "Enable Preview & Publish Workflow",
+	"zaraz.history.workflow.description": "Enable the Preview & Publish Workflow to activate all Zaraz History features, including: <ul> <li>Testing changes before publishing them to all users</li> <li>Viewing a comprehensive list of previous changes, including the author, time, and details of each published change</li> <li>Easily reverting to a previous version of your Zaraz configuration</li> </ul>",
 	"zaraz.workflow.actions.delete.changes": "Delete all changes",
 	"zaraz.workflow.actions.publish.changes": "Publish all changes",
 	"zaraz.workflow.actions.publish": "Publish",
-	"zaraz.workflow.actions.publish.tooltip": "You are working in Preview mode. Click Publish if you want to push the changes live.",
+	"zaraz.workflow.actions.publish.tooltip": "You are working in Preview & Publish Workflow. Click Publish if you want to push the changes live.",
 	"zaraz.workflow.actions.publish.tooltipNoPublish": "You do not have publish permissions.",
 	"zaraz.workflow.modal.description": "Are you sure you would like to publish the current Zaraz config state?",
 	"zaraz.workflow.modal.enter_description": "Please add a description of the changes made",
@@ -461,5 +464,6 @@
 	"zaraz.tool.details.settings.header.defaultFields": "Default fields",
 	"zaraz.tool.details.custom_mc.title": "Select Custom MC",
 	"zaraz.tool.details.custom_mc.description": "Define which custom Managed Component you would like to use for this tool.",
-	"zaraz.tool.details.custom_mc": "Custom MC"
+	"zaraz.tool.details.custom_mc": "Custom MC",
+	"zaraz.version_history.not.available": "Version history will appear here after enabling <strong>Preview & Publish Workflow</strong>."
 }
