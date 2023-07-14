@@ -1285,6 +1285,19 @@
 															},
 															"type": "array"
 														},
+														"scannedFrom": {
+															"properties": {
+																"colo": {
+																	"description": "IATA code of Cloudflare datacenter",
+																	"example": "MAD",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"colo"
+															],
+															"type": "object"
+														},
 														"status": {
 															"enum": [
 																"Queued",
@@ -1335,7 +1348,8 @@
 														"visibility",
 														"clientLocation",
 														"clientType",
-														"effectiveUrl"
+														"effectiveUrl",
+														"scannedFrom"
 													],
 													"type": "object"
 												},
@@ -3234,6 +3248,19 @@
 														},
 														"type": "array"
 													},
+													"scannedFrom": {
+														"properties": {
+															"colo": {
+																"description": "IATA code of Cloudflare datacenter",
+																"example": "MAD",
+																"type": "string"
+															}
+														},
+														"required": [
+															"colo"
+														],
+														"type": "object"
+													},
 													"status": {
 														"enum": [
 															"Queued",
@@ -3284,7 +3311,8 @@
 													"visibility",
 													"clientLocation",
 													"clientType",
-													"effectiveUrl"
+													"effectiveUrl",
+													"scannedFrom"
 												],
 												"type": "object"
 											},
