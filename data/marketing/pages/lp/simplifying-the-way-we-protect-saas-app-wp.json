@@ -7,15 +7,15 @@
 				"pageName": "[ACQ] Q4'22 WEB - NAMER - Simplifying the way we protect SaaS applications WP - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
-					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,7 +27,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/1c28d510cb5bb9a44e56916e37a889b6/Cloudflare_default_OG_.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						}
 					},
 					"facebookCustomImage": null
@@ -86,7 +86,7 @@
 							},
 							"marketoFormPdfDownloadI18n": null,
 							"marketoFormAssetDownloadButtonText": "READ THE WHITEPAPER",
-							"marketoFormSuccessRedirectUrl": null,
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/JiJDoAf8NVVPm61vLsuC6/be82459e309677057e1ea129c1087519/Simplifying_SaaS_Security_White_Paper.pdf",
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -118,10 +118,8 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "7ct9l9U5DcyPa6u0NfbQGN",
-						"buttonExtraClass": "acq-q422-web-namer-simplifying-the-way-we-protect-saas-applications-wp-modal",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
 						"title": "Simplifying the way we protect SaaS applications Whitepaper",
+						"titleSize": null,
 						"backgroundColor": "blue",
 						"buttonText": null,
 						"buttonUrl": "#",
@@ -130,12 +128,9 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
-							"buttonWidth": "auto",
-							"buttonColor": "orange",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "3Z79TAREGXQj5ZGTLHCXJN",
@@ -170,7 +165,7 @@
 									},
 									"marketoFormPdfDownloadI18n": null,
 									"marketoFormAssetDownloadButtonText": "READ THE WHITEPAPER",
-									"marketoFormSuccessRedirectUrl": null,
+									"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/JiJDoAf8NVVPm61vLsuC6/be82459e309677057e1ea129c1087519/Simplifying_SaaS_Security_White_Paper.pdf",
 									"sendAdRoll": true,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
@@ -192,7 +187,8 @@
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": null
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
@@ -223,7 +219,7 @@
 							},
 							"marketoFormPdfDownloadI18n": null,
 							"marketoFormAssetDownloadButtonText": "READ THE WHITEPAPER",
-							"marketoFormSuccessRedirectUrl": null,
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/JiJDoAf8NVVPm61vLsuC6/be82459e309677057e1ea129c1087519/Simplifying_SaaS_Security_White_Paper.pdf",
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -256,7 +252,17 @@
 			"pathname": "/lp/simplifying-the-way-we-protect-saas-app-wp/",
 			"contentfulId": "5UgWgmaGIJu5E7ivAqttYo",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
