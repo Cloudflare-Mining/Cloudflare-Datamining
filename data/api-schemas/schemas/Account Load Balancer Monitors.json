@@ -1114,13 +1114,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1188,7 +1189,8 @@
 													"type": "object"
 												},
 												"id": {
-													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+													"type": "string"
 												},
 												"interval": {
 													"default": 60,
@@ -1347,13 +1349,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1421,7 +1424,8 @@
 															"type": "object"
 														},
 														"id": {
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+															"type": "string"
 														},
 														"interval": {
 															"default": 60,
@@ -2737,13 +2741,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2811,7 +2816,8 @@
 													"type": "object"
 												},
 												"id": {
-													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+													"type": "string"
 												},
 												"interval": {
 													"default": 60,
@@ -2970,13 +2976,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -3044,7 +3051,8 @@
 															"type": "object"
 														},
 														"id": {
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+															"type": "string"
 														},
 														"interval": {
 															"default": 60,
@@ -3433,13 +3441,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -3507,7 +3516,8 @@
 													"type": "object"
 												},
 												"id": {
-													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+													"type": "string"
 												},
 												"interval": {
 													"default": 60,
@@ -3666,13 +3676,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -3740,7 +3751,8 @@
 															"type": "object"
 														},
 														"id": {
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+															"type": "string"
 														},
 														"interval": {
 															"default": 60,
@@ -4625,13 +4637,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -4699,7 +4712,8 @@
 													"type": "object"
 												},
 												"id": {
-													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+													"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+													"type": "string"
 												},
 												"interval": {
 													"default": 60,
@@ -4858,13 +4872,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -4932,7 +4947,8 @@
 															"type": "object"
 														},
 														"id": {
-															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc"
+															"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+															"type": "string"
 														},
 														"interval": {
 															"default": 60,
