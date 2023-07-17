@@ -2240,12 +2240,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = yn({}, {
-					branch: "APIOPS-7483-version-custom-fields",
+					branch: "release-Jul.17.2023-1689602870",
 					isReleaseCandidate: "true",
-					commit: "231801b8eb72c430b36671b8ec691491c55e1233",
+					commit: "b37da690cf865b6ef3c37674d3d2848d5e9c075f",
 					env: "production",
-					builtAt: 1689374319583,
-					dashVersion: "10a98366fad266fd5f9dd89cbc85c8b9361d6a9f",
+					builtAt: 1689603286339,
+					dashVersion: "432e273a291825b4f35999151e695e1ec8bd0da1",
 					versions: {
 						"@cloudflare/app-dash": "25.155.17",
 						node: "16.16.0",
