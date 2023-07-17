@@ -335,12 +335,6 @@
 				"description": "Delete an operation response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Delete an operation",
 		"tags": [
 			"API Shield Endpoint Management"
@@ -780,12 +774,6 @@
 				"description": "Retrieve API Discovery results for a zone response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Retrieve API Discovery results for a zone",
 		"tags": [
 			"API Shield Endpoint Management"
@@ -1183,7 +1171,6 @@
 																													},
 																													"responses": {
 																														"description": "An empty response object. This field is required to yield a valid operation schema.",
-																														"nullable": true,
 																														"readOnly": true,
 																														"type": "object"
 																													}
@@ -1431,7 +1418,6 @@
 																									},
 																									"responses": {
 																										"description": "An empty response object. This field is required to yield a valid operation schema.",
-																										"nullable": true,
 																										"readOnly": true,
 																										"type": "object"
 																									}
@@ -1761,7 +1747,6 @@
 																											},
 																											"responses": {
 																												"description": "An empty response object. This field is required to yield a valid operation schema.",
-																												"nullable": true,
 																												"readOnly": true,
 																												"type": "object"
 																											}
@@ -2113,7 +2098,6 @@
 																															},
 																															"responses": {
 																																"description": "An empty response object. This field is required to yield a valid operation schema.",
-																																"nullable": true,
 																																"readOnly": true,
 																																"type": "object"
 																															}
@@ -2361,7 +2345,6 @@
 																											},
 																											"responses": {
 																												"description": "An empty response object. This field is required to yield a valid operation schema.",
-																												"nullable": true,
 																												"readOnly": true,
 																												"type": "object"
 																											}
@@ -2691,7 +2674,6 @@
 																													},
 																													"responses": {
 																														"description": "An empty response object. This field is required to yield a valid operation schema.",
-																														"nullable": true,
 																														"readOnly": true,
 																														"type": "object"
 																													}
@@ -2868,12 +2850,6 @@
 				"description": "Retrieve information about all operations on a zone response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Retrieve information about all operations on a zone",
 		"tags": [
 			"API Shield Endpoint Management"
@@ -3173,7 +3149,6 @@
 																						},
 																						"responses": {
 																							"description": "An empty response object. This field is required to yield a valid operation schema.",
-																							"nullable": true,
 																							"readOnly": true,
 																							"type": "object"
 																						}
@@ -3488,7 +3463,6 @@
 																								},
 																								"responses": {
 																									"description": "An empty response object. This field is required to yield a valid operation schema.",
-																									"nullable": true,
 																									"readOnly": true,
 																									"type": "object"
 																								}
@@ -3654,12 +3628,6 @@
 				"description": "Retrieve information about an operation response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Retrieve information about an operation",
 		"tags": [
 			"API Shield Endpoint Management"
@@ -4131,12 +4099,6 @@
 				"description": "Retrieve operations and features as OpenAPI schemas response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Retrieve operations and features as OpenAPI schemas",
 		"tags": [
 			"API Shield Endpoint Management"
@@ -4478,7 +4440,6 @@
 																									},
 																									"responses": {
 																										"description": "An empty response object. This field is required to yield a valid operation schema.",
-																										"nullable": true,
 																										"readOnly": true,
 																										"type": "object"
 																									}
@@ -4824,7 +4785,6 @@
 																											},
 																											"responses": {
 																												"description": "An empty response object. This field is required to yield a valid operation schema.",
-																												"nullable": true,
 																												"readOnly": true,
 																												"type": "object"
 																											}
@@ -4999,12 +4959,6 @@
 				"description": "Add operations to a zone response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
 		"summary": "Add operations to a zone",
 		"tags": [
 			"API Shield Endpoint Management"
