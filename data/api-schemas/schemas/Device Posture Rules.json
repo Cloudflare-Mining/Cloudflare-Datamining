@@ -123,7 +123,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -246,7 +247,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -826,6 +828,27 @@
 															},
 															{
 																"properties": {
+																	"certificate_id": {
+																		"description": "UUID of Cloudflare managed certificate.",
+																		"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																		"maxLength": 36,
+																		"type": "string"
+																	},
+																	"cn": {
+																		"description": "Common Name that is protected by the certificate",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"certificate_id",
+																	"cn"
+																],
+																"title": "Client Certificate",
+																"type": "object"
+															},
+															{
+																"properties": {
 																	"compliance_status": {
 																		"description": "Compliance Status",
 																		"enum": [
@@ -1000,6 +1023,58 @@
 																],
 																"title": "Tanium S2S Input",
 																"type": "object"
+															},
+															{
+																"properties": {
+																	"active_threats": {
+																		"description": "The Number of active threats.",
+																		"example": 1,
+																		"type": "number"
+																	},
+																	"connection_id": {
+																		"description": "Posture Integration ID.",
+																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																		"type": "string"
+																	},
+																	"infected": {
+																		"description": "Whether device is infected.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"is_active": {
+																		"description": "Whether device is active.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"network_status": {
+																		"description": "Network status of device.",
+																		"enum": [
+																			"connected",
+																			"disconnected",
+																			"disconnecting",
+																			"connecting"
+																		],
+																		"example": "connected",
+																		"type": "string"
+																	},
+																	"operator": {
+																		"description": "operator",
+																		"enum": [
+																			"<",
+																			"<=",
+																			">",
+																			">=",
+																			"=="
+																		],
+																		"example": ">",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"connection_id"
+																],
+																"title": "SentinelOne S2S Input",
+																"type": "object"
 															}
 														],
 														"type": "object"
@@ -1048,12 +1123,14 @@
 															"firewall",
 															"os_version",
 															"domain_joined",
+															"client_certificate",
 															"unique_client_id",
 															"kolide",
 															"tanium_s2s",
 															"crowdstrike_s2s",
 															"intune",
-															"workspace_one"
+															"workspace_one",
+															"sentinelone_s2s"
 														],
 														"example": "file",
 														"type": "string"
@@ -1513,6 +1590,27 @@
 																	},
 																	{
 																		"properties": {
+																			"certificate_id": {
+																				"description": "UUID of Cloudflare managed certificate.",
+																				"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																				"maxLength": 36,
+																				"type": "string"
+																			},
+																			"cn": {
+																				"description": "Common Name that is protected by the certificate",
+																				"example": "example.com",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"certificate_id",
+																			"cn"
+																		],
+																		"title": "Client Certificate",
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
 																			"compliance_status": {
 																				"description": "Compliance Status",
 																				"enum": [
@@ -1687,6 +1785,58 @@
 																		],
 																		"title": "Tanium S2S Input",
 																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"active_threats": {
+																				"description": "The Number of active threats.",
+																				"example": 1,
+																				"type": "number"
+																			},
+																			"connection_id": {
+																				"description": "Posture Integration ID.",
+																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																				"type": "string"
+																			},
+																			"infected": {
+																				"description": "Whether device is infected.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"is_active": {
+																				"description": "Whether device is active.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"network_status": {
+																				"description": "Network status of device.",
+																				"enum": [
+																					"connected",
+																					"disconnected",
+																					"disconnecting",
+																					"connecting"
+																				],
+																				"example": "connected",
+																				"type": "string"
+																			},
+																			"operator": {
+																				"description": "operator",
+																				"enum": [
+																					"<",
+																					"<=",
+																					">",
+																					">=",
+																					"=="
+																				],
+																				"example": ">",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"connection_id"
+																		],
+																		"title": "SentinelOne S2S Input",
+																		"type": "object"
 																	}
 																],
 																"type": "object"
@@ -1735,12 +1885,14 @@
 																	"firewall",
 																	"os_version",
 																	"domain_joined",
+																	"client_certificate",
 																	"unique_client_id",
 																	"kolide",
 																	"tanium_s2s",
 																	"crowdstrike_s2s",
 																	"intune",
-																	"workspace_one"
+																	"workspace_one",
+																	"sentinelone_s2s"
 																],
 																"example": "file",
 																"type": "string"
@@ -1974,7 +2126,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -2301,6 +2454,27 @@
 														},
 														{
 															"properties": {
+																"certificate_id": {
+																	"description": "UUID of Cloudflare managed certificate.",
+																	"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																	"maxLength": 36,
+																	"type": "string"
+																},
+																"cn": {
+																	"description": "Common Name that is protected by the certificate",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"certificate_id",
+																"cn"
+															],
+															"title": "Client Certificate",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status",
 																	"enum": [
@@ -2475,6 +2649,58 @@
 															],
 															"title": "Tanium S2S Input",
 															"type": "object"
+														},
+														{
+															"properties": {
+																"active_threats": {
+																	"description": "The Number of active threats.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"connection_id": {
+																	"description": "Posture Integration ID.",
+																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																	"type": "string"
+																},
+																"infected": {
+																	"description": "Whether device is infected.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"is_active": {
+																	"description": "Whether device is active.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"network_status": {
+																	"description": "Network status of device.",
+																	"enum": [
+																		"connected",
+																		"disconnected",
+																		"disconnecting",
+																		"connecting"
+																	],
+																	"example": "connected",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "operator",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"connection_id"
+															],
+															"title": "SentinelOne S2S Input",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -2523,12 +2749,14 @@
 														"firewall",
 														"os_version",
 														"domain_joined",
+														"client_certificate",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
 														"crowdstrike_s2s",
 														"intune",
-														"workspace_one"
+														"workspace_one",
+														"sentinelone_s2s"
 													],
 													"example": "file",
 													"type": "string"
@@ -2639,7 +2867,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -2966,6 +3195,27 @@
 																},
 																{
 																	"properties": {
+																		"certificate_id": {
+																			"description": "UUID of Cloudflare managed certificate.",
+																			"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																			"maxLength": 36,
+																			"type": "string"
+																		},
+																		"cn": {
+																			"description": "Common Name that is protected by the certificate",
+																			"example": "example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"certificate_id",
+																		"cn"
+																	],
+																	"title": "Client Certificate",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status",
 																			"enum": [
@@ -3140,6 +3390,58 @@
 																	],
 																	"title": "Tanium S2S Input",
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"active_threats": {
+																			"description": "The Number of active threats.",
+																			"example": 1,
+																			"type": "number"
+																		},
+																		"connection_id": {
+																			"description": "Posture Integration ID.",
+																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																			"type": "string"
+																		},
+																		"infected": {
+																			"description": "Whether device is infected.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"is_active": {
+																			"description": "Whether device is active.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"network_status": {
+																			"description": "Network status of device.",
+																			"enum": [
+																				"connected",
+																				"disconnected",
+																				"disconnecting",
+																				"connecting"
+																			],
+																			"example": "connected",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "operator",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"connection_id"
+																	],
+																	"title": "SentinelOne S2S Input",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -3188,12 +3490,14 @@
 																"firewall",
 																"os_version",
 																"domain_joined",
+																"client_certificate",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
 																"crowdstrike_s2s",
 																"intune",
-																"workspace_one"
+																"workspace_one",
+																"sentinelone_s2s"
 															],
 															"example": "file",
 															"type": "string"
@@ -3635,6 +3939,27 @@
 									},
 									{
 										"properties": {
+											"certificate_id": {
+												"description": "UUID of Cloudflare managed certificate.",
+												"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+												"maxLength": 36,
+												"type": "string"
+											},
+											"cn": {
+												"description": "Common Name that is protected by the certificate",
+												"example": "example.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"certificate_id",
+											"cn"
+										],
+										"title": "Client Certificate",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"compliance_status": {
 												"description": "Compliance Status",
 												"enum": [
@@ -3809,6 +4134,58 @@
 										],
 										"title": "Tanium S2S Input",
 										"type": "object"
+									},
+									{
+										"properties": {
+											"active_threats": {
+												"description": "The Number of active threats.",
+												"example": 1,
+												"type": "number"
+											},
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"infected": {
+												"description": "Whether device is infected.",
+												"example": true,
+												"type": "boolean"
+											},
+											"is_active": {
+												"description": "Whether device is active.",
+												"example": true,
+												"type": "boolean"
+											},
+											"network_status": {
+												"description": "Network status of device.",
+												"enum": [
+													"connected",
+													"disconnected",
+													"disconnecting",
+													"connecting"
+												],
+												"example": "connected",
+												"type": "string"
+											},
+											"operator": {
+												"description": "operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id"
+										],
+										"title": "SentinelOne S2S Input",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -3857,12 +4234,14 @@
 									"firewall",
 									"os_version",
 									"domain_joined",
+									"client_certificate",
 									"unique_client_id",
 									"kolide",
 									"tanium_s2s",
 									"crowdstrike_s2s",
 									"intune",
-									"workspace_one"
+									"workspace_one",
+									"sentinelone_s2s"
 								],
 								"example": "file",
 								"type": "string"
@@ -3971,7 +4350,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -4298,6 +4678,27 @@
 														},
 														{
 															"properties": {
+																"certificate_id": {
+																	"description": "UUID of Cloudflare managed certificate.",
+																	"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																	"maxLength": 36,
+																	"type": "string"
+																},
+																"cn": {
+																	"description": "Common Name that is protected by the certificate",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"certificate_id",
+																"cn"
+															],
+															"title": "Client Certificate",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status",
 																	"enum": [
@@ -4472,6 +4873,58 @@
 															],
 															"title": "Tanium S2S Input",
 															"type": "object"
+														},
+														{
+															"properties": {
+																"active_threats": {
+																	"description": "The Number of active threats.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"connection_id": {
+																	"description": "Posture Integration ID.",
+																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																	"type": "string"
+																},
+																"infected": {
+																	"description": "Whether device is infected.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"is_active": {
+																	"description": "Whether device is active.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"network_status": {
+																	"description": "Network status of device.",
+																	"enum": [
+																		"connected",
+																		"disconnected",
+																		"disconnecting",
+																		"connecting"
+																	],
+																	"example": "connected",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "operator",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"connection_id"
+															],
+															"title": "SentinelOne S2S Input",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -4520,12 +4973,14 @@
 														"firewall",
 														"os_version",
 														"domain_joined",
+														"client_certificate",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
 														"crowdstrike_s2s",
 														"intune",
-														"workspace_one"
+														"workspace_one",
+														"sentinelone_s2s"
 													],
 													"example": "file",
 													"type": "string"
@@ -4636,7 +5091,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -4963,6 +5419,27 @@
 																},
 																{
 																	"properties": {
+																		"certificate_id": {
+																			"description": "UUID of Cloudflare managed certificate.",
+																			"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																			"maxLength": 36,
+																			"type": "string"
+																		},
+																		"cn": {
+																			"description": "Common Name that is protected by the certificate",
+																			"example": "example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"certificate_id",
+																		"cn"
+																	],
+																	"title": "Client Certificate",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status",
 																			"enum": [
@@ -5137,6 +5614,58 @@
 																	],
 																	"title": "Tanium S2S Input",
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"active_threats": {
+																			"description": "The Number of active threats.",
+																			"example": 1,
+																			"type": "number"
+																		},
+																		"connection_id": {
+																			"description": "Posture Integration ID.",
+																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																			"type": "string"
+																		},
+																		"infected": {
+																			"description": "Whether device is infected.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"is_active": {
+																			"description": "Whether device is active.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"network_status": {
+																			"description": "Network status of device.",
+																			"enum": [
+																				"connected",
+																				"disconnected",
+																				"disconnecting",
+																				"connecting"
+																			],
+																			"example": "connected",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "operator",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"connection_id"
+																	],
+																	"title": "SentinelOne S2S Input",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -5185,12 +5714,14 @@
 																"firewall",
 																"os_version",
 																"domain_joined",
+																"client_certificate",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
 																"crowdstrike_s2s",
 																"intune",
-																"workspace_one"
+																"workspace_one",
+																"sentinelone_s2s"
 															],
 															"example": "file",
 															"type": "string"
@@ -5643,6 +6174,27 @@
 									},
 									{
 										"properties": {
+											"certificate_id": {
+												"description": "UUID of Cloudflare managed certificate.",
+												"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+												"maxLength": 36,
+												"type": "string"
+											},
+											"cn": {
+												"description": "Common Name that is protected by the certificate",
+												"example": "example.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"certificate_id",
+											"cn"
+										],
+										"title": "Client Certificate",
+										"type": "object"
+									},
+									{
+										"properties": {
 											"compliance_status": {
 												"description": "Compliance Status",
 												"enum": [
@@ -5817,6 +6369,58 @@
 										],
 										"title": "Tanium S2S Input",
 										"type": "object"
+									},
+									{
+										"properties": {
+											"active_threats": {
+												"description": "The Number of active threats.",
+												"example": 1,
+												"type": "number"
+											},
+											"connection_id": {
+												"description": "Posture Integration ID.",
+												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+												"type": "string"
+											},
+											"infected": {
+												"description": "Whether device is infected.",
+												"example": true,
+												"type": "boolean"
+											},
+											"is_active": {
+												"description": "Whether device is active.",
+												"example": true,
+												"type": "boolean"
+											},
+											"network_status": {
+												"description": "Network status of device.",
+												"enum": [
+													"connected",
+													"disconnected",
+													"disconnecting",
+													"connecting"
+												],
+												"example": "connected",
+												"type": "string"
+											},
+											"operator": {
+												"description": "operator",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											}
+										},
+										"required": [
+											"connection_id"
+										],
+										"title": "SentinelOne S2S Input",
+										"type": "object"
 									}
 								],
 								"type": "object"
@@ -5865,12 +6469,14 @@
 									"firewall",
 									"os_version",
 									"domain_joined",
+									"client_certificate",
 									"unique_client_id",
 									"kolide",
 									"tanium_s2s",
 									"crowdstrike_s2s",
 									"intune",
-									"workspace_one"
+									"workspace_one",
+									"sentinelone_s2s"
 								],
 								"example": "file",
 								"type": "string"
@@ -5979,7 +6585,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -6306,6 +6913,27 @@
 														},
 														{
 															"properties": {
+																"certificate_id": {
+																	"description": "UUID of Cloudflare managed certificate.",
+																	"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																	"maxLength": 36,
+																	"type": "string"
+																},
+																"cn": {
+																	"description": "Common Name that is protected by the certificate",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"certificate_id",
+																"cn"
+															],
+															"title": "Client Certificate",
+															"type": "object"
+														},
+														{
+															"properties": {
 																"compliance_status": {
 																	"description": "Compliance Status",
 																	"enum": [
@@ -6480,6 +7108,58 @@
 															],
 															"title": "Tanium S2S Input",
 															"type": "object"
+														},
+														{
+															"properties": {
+																"active_threats": {
+																	"description": "The Number of active threats.",
+																	"example": 1,
+																	"type": "number"
+																},
+																"connection_id": {
+																	"description": "Posture Integration ID.",
+																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																	"type": "string"
+																},
+																"infected": {
+																	"description": "Whether device is infected.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"is_active": {
+																	"description": "Whether device is active.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"network_status": {
+																	"description": "Network status of device.",
+																	"enum": [
+																		"connected",
+																		"disconnected",
+																		"disconnecting",
+																		"connecting"
+																	],
+																	"example": "connected",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "operator",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"connection_id"
+															],
+															"title": "SentinelOne S2S Input",
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -6528,12 +7208,14 @@
 														"firewall",
 														"os_version",
 														"domain_joined",
+														"client_certificate",
 														"unique_client_id",
 														"kolide",
 														"tanium_s2s",
 														"crowdstrike_s2s",
 														"intune",
-														"workspace_one"
+														"workspace_one",
+														"sentinelone_s2s"
 													],
 													"example": "file",
 													"type": "string"
@@ -6644,7 +7326,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -6971,6 +7654,27 @@
 																},
 																{
 																	"properties": {
+																		"certificate_id": {
+																			"description": "UUID of Cloudflare managed certificate.",
+																			"example": "b14ddcc4-bcd2-4df4-bd4f-eb27d5a50c30",
+																			"maxLength": 36,
+																			"type": "string"
+																		},
+																		"cn": {
+																			"description": "Common Name that is protected by the certificate",
+																			"example": "example.com",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"certificate_id",
+																		"cn"
+																	],
+																	"title": "Client Certificate",
+																	"type": "object"
+																},
+																{
+																	"properties": {
 																		"compliance_status": {
 																			"description": "Compliance Status",
 																			"enum": [
@@ -7145,6 +7849,58 @@
 																	],
 																	"title": "Tanium S2S Input",
 																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"active_threats": {
+																			"description": "The Number of active threats.",
+																			"example": 1,
+																			"type": "number"
+																		},
+																		"connection_id": {
+																			"description": "Posture Integration ID.",
+																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
+																			"type": "string"
+																		},
+																		"infected": {
+																			"description": "Whether device is infected.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"is_active": {
+																			"description": "Whether device is active.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"network_status": {
+																			"description": "Network status of device.",
+																			"enum": [
+																				"connected",
+																				"disconnected",
+																				"disconnecting",
+																				"connecting"
+																			],
+																			"example": "connected",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "operator",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"connection_id"
+																	],
+																	"title": "SentinelOne S2S Input",
+																	"type": "object"
 																}
 															],
 															"type": "object"
@@ -7193,12 +7949,14 @@
 																"firewall",
 																"os_version",
 																"domain_joined",
+																"client_certificate",
 																"unique_client_id",
 																"kolide",
 																"tanium_s2s",
 																"crowdstrike_s2s",
 																"intune",
-																"workspace_one"
+																"workspace_one",
+																"sentinelone_s2s"
 															],
 															"example": "file",
 															"type": "string"

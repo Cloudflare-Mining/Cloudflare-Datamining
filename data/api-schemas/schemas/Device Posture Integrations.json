@@ -123,7 +123,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -133,7 +134,8 @@
 								{
 									"properties": {
 										"result": {
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										}
 									}
 								}
@@ -238,7 +240,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -248,7 +251,8 @@
 										{
 											"properties": {
 												"result": {
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -555,7 +559,8 @@
 															"uptycs",
 															"intune",
 															"kolide",
-															"tanium"
+															"tanium",
+															"sentinelone_s2s"
 														],
 														"example": "workspace_one",
 														"type": "string"
@@ -760,7 +765,8 @@
 																	"uptycs",
 																	"intune",
 																	"kolide",
-																	"tanium"
+																	"tanium",
+																	"sentinelone_s2s"
 																],
 																"example": "workspace_one",
 																"type": "string"
@@ -994,7 +1000,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -1066,7 +1073,8 @@
 														"uptycs",
 														"intune",
 														"kolide",
-														"tanium"
+														"tanium",
+														"sentinelone_s2s"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -1177,7 +1185,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -1249,7 +1258,8 @@
 																"uptycs",
 																"intune",
 																"kolide",
-																"tanium"
+																"tanium",
+																"sentinelone_s2s"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -1557,10 +1567,30 @@
 											}
 										},
 										"required": [
-											"client_id",
+											"api_url",
 											"client_secret"
 										],
 										"title": "Tanium Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"api_url": {
+												"description": "The SentinelOne S2S API URL.",
+												"example": "https://example.sentinelone.net",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The SentinelOne S2S client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"api_url",
+											"client_secret"
+										],
+										"title": "SentinelOne S2S Config",
 										"type": "object"
 									}
 								],
@@ -1584,7 +1614,8 @@
 									"uptycs",
 									"intune",
 									"kolide",
-									"tanium"
+									"tanium",
+									"sentinelone_s2s"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -1689,7 +1720,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -1761,7 +1793,8 @@
 														"uptycs",
 														"intune",
 														"kolide",
-														"tanium"
+														"tanium",
+														"sentinelone_s2s"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -1872,7 +1905,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -1944,7 +1978,8 @@
 																"uptycs",
 																"intune",
 																"kolide",
-																"tanium"
+																"tanium",
+																"sentinelone_s2s"
 															],
 															"example": "workspace_one",
 															"type": "string"
@@ -2241,10 +2276,30 @@
 											}
 										},
 										"required": [
-											"client_id",
+											"api_url",
 											"client_secret"
 										],
 										"title": "Tanium Config",
+										"type": "object"
+									},
+									{
+										"properties": {
+											"api_url": {
+												"description": "The SentinelOne S2S API URL.",
+												"example": "https://example.sentinelone.net",
+												"type": "string"
+											},
+											"client_secret": {
+												"description": "The SentinelOne S2S client secret.",
+												"example": "example client secret",
+												"type": "string"
+											}
+										},
+										"required": [
+											"api_url",
+											"client_secret"
+										],
+										"title": "SentinelOne S2S Config",
 										"type": "object"
 									}
 								],
@@ -2268,7 +2323,8 @@
 									"uptycs",
 									"intune",
 									"kolide",
-									"tanium"
+									"tanium",
+									"sentinelone_s2s"
 								],
 								"example": "workspace_one",
 								"type": "string"
@@ -2379,7 +2435,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -2451,7 +2508,8 @@
 														"uptycs",
 														"intune",
 														"kolide",
-														"tanium"
+														"tanium",
+														"sentinelone_s2s"
 													],
 													"example": "workspace_one",
 													"type": "string"
@@ -2562,7 +2620,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -2634,7 +2693,8 @@
 																"uptycs",
 																"intune",
 																"kolide",
-																"tanium"
+																"tanium",
+																"sentinelone_s2s"
 															],
 															"example": "workspace_one",
 															"type": "string"
