@@ -5,27 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Responsibilities</strong><span style="font-weight: 400;">:</span></p>
-<p><span style="font-weight: 400;">We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 200 points of presence spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operation and engineering of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</span></p>
-<p><strong>Requirements</strong><span style="font-weight: 400;">:</span></p>
+<h4><strong>About the department</strong></h4>
+<p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
+<p><strong>About the role:</strong></p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 300 cities spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operations, engineering and architecture of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
+<p><strong>Requirements</strong>:</p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years of experience working in large scale network engineering environments</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert knowledge of Junos</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong understanding of BGP and anycast routing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing network configuration and design documentation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working with automation frameworks such as SaltStack and/or Ansible</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience solving problems through automation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to prioritise when faced with high pressure scenarios</span></li>
+	<li>Experience working in large scale network engineering environments</li>
+	<li>Experience working with automation frameworks such as SaltStack and/or Ansible</li>
+	<li>Experience solving problems through automation</li>
+	<li>Experience with BGP and anycast routing</li>
+	<li>Understanding of MPLS and Segment Routing&nbsp;</li>
+	<li>Optimize end user experience by architecting the network to lower latency, packet loss, and jitter while increasing scale</li>
+	<li>Proficient in multiple vendor operating systems</li>
+	<li>Experience writing network configuration and design documentation</li>
+	<li>Ability to prioritize when faced with high pressure scenarios</li>
 </ul>
 <p><strong>Bonus Points but not required:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with optical transport technologies such as CWDM/DWDM</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good working knowledge of NX-OS and EOS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional level network certification(s) (JNCIP , CCNP , etc) or higher</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Linux system administration</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Multilingual</span></li>
+	<li>Experience with optical transport technologies such as CWDM/DWDM</li>
+	<li>Professional level network certification(s) (JNCIP , CCNP , etc) or higher</li>
+	<li>Linux system administration</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
