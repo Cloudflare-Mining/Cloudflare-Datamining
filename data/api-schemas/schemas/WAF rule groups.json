@@ -795,15 +795,16 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -910,15 +911,16 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1189,15 +1191,16 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1304,15 +1307,16 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
