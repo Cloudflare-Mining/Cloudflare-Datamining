@@ -117,8 +117,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -252,8 +251,7 @@
 																		{
 																			"type": "string"
 																		}
-																	],
-																	"nullable": true
+																	]
 																}
 															}
 														}
@@ -563,8 +561,9 @@
 														"type": "array"
 													},
 													"id": {
-														"description": "The x509 serial number of the Origin CA certificate.",
-														"example": "328578533902268680212849205732770752308931942346",
+														"description": "Identifier",
+														"example": "023e105f4ecef8ad9ca31a8372d0c353",
+														"maxLength": 32,
 														"readOnly": true,
 														"type": "string"
 													},
@@ -767,8 +766,9 @@
 																"type": "array"
 															},
 															"id": {
-																"description": "The x509 serial number of the Origin CA certificate.",
-																"example": "328578533902268680212849205732770752308931942346",
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
 																"readOnly": true,
 																"type": "string"
 															},
@@ -1030,8 +1030,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1146,8 +1145,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1418,8 +1416,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1534,8 +1531,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
