@@ -36,8 +36,7 @@
 				"in": "query",
 				"name": "identifier",
 				"schema": {
-					"example": "17b5962d775c646f3f9725cbc7a53df4",
-					"type": "string"
+					"example": "17b5962d775c646f3f9725cbc7a53df4"
 				}
 			},
 			{
@@ -242,7 +241,7 @@
 				},
 				"description": "List Healthcheck Events response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -505,7 +504,9 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
+				"api_key": []
+			},
+			{
 				"api_token": []
 			}
 		],
