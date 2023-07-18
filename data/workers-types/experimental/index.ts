@@ -1127,10 +1127,12 @@ export type KVNamespaceListResult<Metadata, Key extends string = string> =
       list_complete: false;
       keys: KVNamespaceListKey<Metadata, Key>[];
       cursor: string;
+      cacheStatus: string | null;
     }
   | {
       list_complete: true;
       keys: KVNamespaceListKey<Metadata, Key>[];
+      cacheStatus: string | null;
     };
 export interface KVNamespace<Key extends string = string> {
   get(
@@ -1223,6 +1225,7 @@ export interface KVNamespacePutOptions {
 export interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   value: Value | null;
   metadata: Metadata | null;
+  cacheStatus: string | null;
 }
 export interface Queue<Body> {
   send(message: Body): Promise<void>;

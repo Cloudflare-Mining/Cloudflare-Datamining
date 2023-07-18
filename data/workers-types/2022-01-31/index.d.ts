@@ -1096,10 +1096,12 @@ declare type KVNamespaceListResult<Metadata, Key extends string = string> =
       list_complete: false;
       keys: KVNamespaceListKey<Metadata, Key>[];
       cursor: string;
+      cacheStatus: string | null;
     }
   | {
       list_complete: true;
       keys: KVNamespaceListKey<Metadata, Key>[];
+      cacheStatus: string | null;
     };
 declare interface KVNamespace<Key extends string = string> {
   get(
@@ -1192,6 +1194,7 @@ declare interface KVNamespacePutOptions {
 declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   value: Value | null;
   metadata: Metadata | null;
+  cacheStatus: string | null;
 }
 declare interface Queue<Body> {
   send(message: Body): Promise<void>;
