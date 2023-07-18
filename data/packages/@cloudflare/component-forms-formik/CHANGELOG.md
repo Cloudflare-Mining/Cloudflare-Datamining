@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.4.3
+
+### Patch Changes
+
+- 07061a20b0: Fix Select onChange event not being called
+
 ## 6.4.2
 
 ### Patch Changes
