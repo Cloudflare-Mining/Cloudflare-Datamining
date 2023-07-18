@@ -498,6 +498,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	wizard_one_unsupported_title: "The following domain is unavailable for transfer, for the following reason: |||| None of your domains are available for transfer, for the following reasons:",
 	wizard_one_unsupported_body: "Some domains cannot be transferred to Cloudflare Registrar. If you registered, transferred, or modified the contact information on a domain in the last 60 days, we cannot transfer yet. In other cases, we do not yet support the TLD. We're constantly working to improve that list, though. Check back soon.",
 	wizard_one_footer_text: "Confirm Domains",
+	wizard_one_supported_extensions: "<0>Review instructions</0> and <1>supported extensions</1>.",
 	wizard_two_title: "First, let's transfer your domains from GoDaddy",
 	wizard_two_body: "You can use your GoDaddy credentials to transfer your domains automatically, or input the details manually.",
 	wizard_two_radio_yes: "Yes, I'd like to log into GoDaddy and transfer these domains automatically",

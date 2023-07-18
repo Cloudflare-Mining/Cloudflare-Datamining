@@ -685,6 +685,7 @@
 	"url-scanner.summary.console_messages": "Console Log Messages",
 	"url-scanner.network": "Network",
 	"url-scanner.behavior": "Behavior",
+	"url-scanner.security": "Security Analysis",
 	"url-scanner.network.http_table.title": "HTTP Transactions: %{number} detected",
 	"url-scanner.network.http_table.description": "A list of all the HTTP requests and responses made by the resource during the current session",
 	"url-scanner.network.http_table.method": "Method",
@@ -728,5 +729,19 @@
 	"url-scanner.behavior.links.title": "Links: %{number} found",
 	"url-scanner.behavior.links.description": "The outgoing links identified from the page",
 	"url-scanner.behavior.links_table.link": "Link",
-	"url-scanner.behavior.links_table.text": "Text"
+	"url-scanner.behavior.links_table.text": "Text",
+	"url-scanner.security.risks.title": "Risks: %{number} found",
+	"url-scanner.security.risks.description": "Practices that may pose security risks",
+	"url-scanner.security.risks.safe": "Safe",
+	"url-scanner.security.certificates_table.title": "Certificates: %{number} found",
+	"url-scanner.security.certificates_table.description": "SSL/TLS Certificates enable websites to encrypt transactions between the client and the server and provide server identity verification",
+	"url-scanner.behavior.certificates_table.subject": "Subject",
+	"url-scanner.behavior.certificates_table.issue": "Issue date",
+	"url-scanner.behavior.certificates_table.expiry": "Expiry date",
+	"url-scanner.security.csp.title": "Content Security Policy: %{number} found",
+	"url-scanner.security.csp.description": "CSP (Content Security Policy) headers help mitigate some attacks like cross-site scripting (XSS) and data injection",
+	"url-scanner.behavior.csp.found": "Found",
+	"url-scanner.behavior.csp.not_set": "Not set",
+	"url-scanner.behavior.csp_table.directive": "Directive",
+	"url-scanner.behavior.csp_table.source": "Source"
 }
