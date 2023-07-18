@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/networks/{uuid}": {
-		"description": "Delete a Device Managed Network. Returns the remaining device managed networks for the account.",
+		"description": "Delete a Device Managed Network. Returns the remaining Device Managed Networks for the account.",
 		"operationId": "device-managed-networks-delete-device-managed-network",
 		"parameters": [
 			{
@@ -215,7 +215,7 @@
 				},
 				"description": "Delete Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -493,9 +493,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete Device Managed Network",
@@ -702,7 +699,7 @@
 				},
 				"description": "List Device Managed Networks response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -980,9 +977,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List Device Managed Networks",
@@ -1108,7 +1102,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -1178,7 +1173,7 @@
 				},
 				"description": "Device Managed Network Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1273,7 +1268,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -1434,9 +1430,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Device Managed Network Details",
@@ -1608,7 +1601,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -1678,7 +1672,7 @@
 				},
 				"description": "Create Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1773,7 +1767,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -1934,9 +1929,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create Device Managed Network",
@@ -2114,7 +2106,8 @@
 															"type": "string"
 														}
 													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -2184,7 +2177,7 @@
 				},
 				"description": "Update Device Managed Network response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2279,7 +2272,8 @@
 																	"type": "string"
 																}
 															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -2440,9 +2434,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Device Managed Network",
