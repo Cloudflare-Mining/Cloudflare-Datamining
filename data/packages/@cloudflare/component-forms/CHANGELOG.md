@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.3
+
+### Patch Changes
+
+- 853068af45: Remove replaceAll
+
 ## 5.3.2
 
 ### Patch Changes
