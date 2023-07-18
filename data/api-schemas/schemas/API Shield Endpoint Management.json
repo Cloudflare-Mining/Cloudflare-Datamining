@@ -460,14 +460,13 @@
 														"result": {
 															"anyOf": [
 																{
-																	"nullable": true,
 																	"type": "object"
 																},
 																{
-																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -621,14 +620,13 @@
 																"result": {
 																	"anyOf": [
 																		{
-																			"nullable": true,
 																			"type": "object"
 																		},
 																		{
-																			"nullable": true,
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"nullable": true
 																}
 															}
 														}
@@ -1175,7 +1173,6 @@
 																													},
 																													"responses": {
 																														"description": "An empty response object. This field is required to yield a valid operation schema.",
-																														"nullable": true,
 																														"readOnly": true,
 																														"type": "object"
 																													}
@@ -1423,7 +1420,6 @@
 																									},
 																									"responses": {
 																										"description": "An empty response object. This field is required to yield a valid operation schema.",
-																										"nullable": true,
 																										"readOnly": true,
 																										"type": "object"
 																									}
@@ -1753,7 +1749,6 @@
 																											},
 																											"responses": {
 																												"description": "An empty response object. This field is required to yield a valid operation schema.",
-																												"nullable": true,
 																												"readOnly": true,
 																												"type": "object"
 																											}
@@ -2105,7 +2100,6 @@
 																															},
 																															"responses": {
 																																"description": "An empty response object. This field is required to yield a valid operation schema.",
-																																"nullable": true,
 																																"readOnly": true,
 																																"type": "object"
 																															}
@@ -2353,7 +2347,6 @@
 																											},
 																											"responses": {
 																												"description": "An empty response object. This field is required to yield a valid operation schema.",
-																												"nullable": true,
 																												"readOnly": true,
 																												"type": "object"
 																											}
@@ -2683,7 +2676,6 @@
 																													},
 																													"responses": {
 																														"description": "An empty response object. This field is required to yield a valid operation schema.",
-																														"nullable": true,
 																														"readOnly": true,
 																														"type": "object"
 																													}
@@ -3160,7 +3152,6 @@
 																						},
 																						"responses": {
 																							"description": "An empty response object. This field is required to yield a valid operation schema.",
-																							"nullable": true,
 																							"readOnly": true,
 																							"type": "object"
 																						}
@@ -3476,7 +3467,6 @@
 																								},
 																								"responses": {
 																									"description": "An empty response object. This field is required to yield a valid operation schema.",
-																									"nullable": true,
 																									"readOnly": true,
 																									"type": "object"
 																								}
@@ -3797,14 +3787,13 @@
 														"result": {
 															"anyOf": [
 																{
-																	"nullable": true,
 																	"type": "object"
 																},
 																{
-																	"nullable": true,
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -3958,14 +3947,13 @@
 																"result": {
 																	"anyOf": [
 																		{
-																			"nullable": true,
 																			"type": "object"
 																		},
 																		{
-																			"nullable": true,
 																			"type": "string"
 																		}
-																	]
+																	],
+																	"nullable": true
 																}
 															}
 														}
@@ -4456,7 +4444,6 @@
 																									},
 																									"responses": {
 																										"description": "An empty response object. This field is required to yield a valid operation schema.",
-																										"nullable": true,
 																										"readOnly": true,
 																										"type": "object"
 																									}
@@ -4802,7 +4789,6 @@
 																											},
 																											"responses": {
 																												"description": "An empty response object. This field is required to yield a valid operation schema.",
-																												"nullable": true,
 																												"readOnly": true,
 																												"type": "object"
 																											}
