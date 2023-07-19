@@ -154,8 +154,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -215,7 +214,7 @@
 				},
 				"description": "Get Passive DNS by IP response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -309,8 +308,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -457,15 +455,6 @@
 				"description": "Get Passive DNS by IP response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_token": []
-			}
-		],
 		"summary": "Get Passive DNS by IP",
 		"tags": [
 			"Passive DNS by IP"

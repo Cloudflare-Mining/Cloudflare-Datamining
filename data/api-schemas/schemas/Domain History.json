@@ -18,7 +18,7 @@
 				"in": "query",
 				"name": "domain",
 				"schema": {
-					"type": "string"
+					"example": "example.com"
 				}
 			}
 		],
@@ -189,7 +189,7 @@
 				},
 				"description": "Get Domain History response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -444,15 +444,6 @@
 				"description": "Get Domain History response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_token": []
-			}
-		],
 		"summary": "Get Domain History",
 		"tags": [
 			"Domain History"
