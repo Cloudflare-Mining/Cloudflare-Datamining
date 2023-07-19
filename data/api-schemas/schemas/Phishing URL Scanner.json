@@ -131,7 +131,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -204,7 +205,7 @@
 				},
 				"description": "Submit suspicious URL for scanning response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -298,7 +299,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -458,6 +460,15 @@
 				"description": "Submit suspicious URL for scanning response failure"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
 		"summary": "Submit suspicious URL for scanning",
 		"tags": [
 			"Phishing URL Scanner"
