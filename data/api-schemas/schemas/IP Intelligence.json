@@ -219,7 +219,7 @@
 				},
 				"description": "Get IP Overview response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -497,15 +497,6 @@
 				"description": "Get IP Overview response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_token": []
-			}
-		],
 		"summary": "Get IP Overview",
 		"tags": [
 			"IP Intelligence"

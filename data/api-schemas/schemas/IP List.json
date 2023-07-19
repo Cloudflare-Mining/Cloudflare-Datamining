@@ -162,7 +162,7 @@
 				},
 				"description": "Get IP Lists response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -397,15 +397,6 @@
 				"description": "Get IP Lists response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_token": []
-			}
-		],
 		"summary": "Get IP Lists",
 		"tags": [
 			"IP List"
