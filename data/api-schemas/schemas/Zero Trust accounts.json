@@ -1013,6 +1013,17 @@
 																	},
 																	"type": "object"
 																},
+																"protocol_detection": {
+																	"description": "Protocol Detection settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable detecting protocol on initial bytes of client traffic.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
 																"tls_decrypt": {
 																	"description": "TLS interception settings.",
 																	"properties": {
@@ -1308,6 +1319,17 @@
 																			"properties": {
 																				"tls": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"example": true,
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"protocol_detection": {
+																			"description": "Protocol Detection settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -2014,6 +2036,17 @@
 										},
 										"type": "object"
 									},
+									"protocol_detection": {
+										"description": "Protocol Detection settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable detecting protocol on initial bytes of client traffic.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
 										"properties": {
@@ -2284,6 +2317,17 @@
 																	"properties": {
 																		"tls": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"protocol_detection": {
+																	"description": "Protocol Detection settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
 																		}
@@ -2585,6 +2629,17 @@
 																			"properties": {
 																				"tls": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"example": true,
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"protocol_detection": {
+																			"description": "Protocol Detection settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -3689,6 +3744,17 @@
 										},
 										"type": "object"
 									},
+									"protocol_detection": {
+										"description": "Protocol Detection settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable detecting protocol on initial bytes of client traffic.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"tls_decrypt": {
 										"description": "TLS interception settings.",
 										"properties": {
@@ -3959,6 +4025,17 @@
 																	"properties": {
 																		"tls": {
 																			"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"protocol_detection": {
+																	"description": "Protocol Detection settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable detecting protocol on initial bytes of client traffic.",
 																			"example": true,
 																			"type": "boolean"
 																		}
@@ -4260,6 +4337,17 @@
 																			"properties": {
 																				"tls": {
 																					"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2.",
+																					"example": true,
+																					"type": "boolean"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"protocol_detection": {
+																			"description": "Protocol Detection settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable detecting protocol on initial bytes of client traffic.",
 																					"example": true,
 																					"type": "boolean"
 																				}
