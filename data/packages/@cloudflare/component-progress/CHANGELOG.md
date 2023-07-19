@@ -1,5 +1,13 @@
 # Change Log
 
+## 8.0.10
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-link@7.1.12
+  - @cloudflare/component-visually-hidden@1.0.85
+
 ## 8.0.9
 
 ### Patch Changes

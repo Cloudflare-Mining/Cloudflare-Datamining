@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.1.16
+
+### Patch Changes
+
+- @cloudflare/component-card@8.0.2
+- @cloudflare/component-dynamic-content@3.0.1
+- @cloudflare/component-loading@6.0.1
+
 ## 7.1.15
 
 ### Patch Changes

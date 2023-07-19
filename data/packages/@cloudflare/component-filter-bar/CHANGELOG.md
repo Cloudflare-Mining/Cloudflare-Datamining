@@ -1,5 +1,21 @@
 # Change Log
 
+## 6.1.7
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-box@4.0.1
+  - @cloudflare/component-forms@5.3.4
+  - @cloudflare/component-link@7.1.12
+  - @cloudflare/component-select@5.0.1
+  - @cloudflare/component-text@4.0.1
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-input@8.1.1
+  - @cloudflare/component-arrow-swivel@7.0.9
+  - @cloudflare/component-button@7.0.9
+  - @cloudflare/component-time-period-picker@5.0.11
+
 ## 6.1.6
 
 ### Patch Changes

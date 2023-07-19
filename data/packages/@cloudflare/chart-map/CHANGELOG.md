@@ -1,5 +1,15 @@
 # Change Log
 
+## 8.0.3
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-box@4.0.1
+  - @cloudflare/component-text@4.0.1
+  - @cloudflare/chart-color-legend@5.0.1
+  - @cloudflare/component-tooltip@4.2.1
+
 ## 8.0.2
 
 ### Patch Changes

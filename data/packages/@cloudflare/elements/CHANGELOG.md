@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.2
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+
 ## 3.0.1
 
 ### Patch Changes

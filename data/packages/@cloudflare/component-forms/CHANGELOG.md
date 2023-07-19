@@ -1,5 +1,24 @@
 # Change Log
 
+## 5.3.4
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-checkbox@5.3.1
+  - @cloudflare/component-listbox@1.9.3
+  - @cloudflare/component-search@7.0.9
+  - @cloudflare/component-textarea@4.1.1
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-input@8.1.1
+  - @cloudflare/component-select-2@6.0.9
+  - @cloudflare/util-responsive@1.4.11
+  - @cloudflare/component-button@7.0.9
+  - @cloudflare/component-time-period-picker@5.0.11
+  - @cloudflare/component-radio@5.0.1
+  - @cloudflare/component-toast@5.1.1
+
 ## 5.3.3
 
 ### Patch Changes

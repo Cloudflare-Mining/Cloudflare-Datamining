@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.13
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-legend@5.0.10
+
 ## 3.0.12
 
 ### Patch Changes

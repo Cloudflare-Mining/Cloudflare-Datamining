@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.1.12
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-icon@11.5.2
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/util-sparrow@5.3.46
+  - @cloudflare/component-arrow-swivel@7.0.9
+  - @cloudflare/component-button@7.0.9
+
 ## 7.1.11
 
 ### Patch Changes

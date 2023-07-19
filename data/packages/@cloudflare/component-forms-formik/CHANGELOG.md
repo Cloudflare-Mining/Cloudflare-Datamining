@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.4.5
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-forms@5.3.4
+  - @cloudflare/component-listbox@1.9.3
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-button@7.0.9
+
 ## 6.4.4
 
 ### Patch Changes

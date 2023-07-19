@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.11
+
+### Patch Changes
+
+- @cloudflare/util-responsive@1.4.11
+
 ## 5.0.10
 
 ### Patch Changes

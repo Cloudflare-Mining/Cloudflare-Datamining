@@ -1,5 +1,16 @@
 # Change Log
 
+## 4.0.2
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-box@4.0.1
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-button@7.0.9
+  - @cloudflare/component-loading@6.0.1
+
 ## 4.0.1
 
 ## 4.0.0

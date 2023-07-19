@@ -1,5 +1,14 @@
 # Change Log
 
+## 5.1.18
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-forms@5.3.4
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-button@7.0.9
+
 ## 5.1.17
 
 ### Patch Changes

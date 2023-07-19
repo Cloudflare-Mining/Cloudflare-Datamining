@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.2
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-box@4.0.1
+  - @cloudflare/component-text@4.0.1
+
 ## 5.0.1
 
 ### Patch Changes

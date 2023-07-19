@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.12.1
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+
 ## 7.12.0
 
 ### Minor Changes

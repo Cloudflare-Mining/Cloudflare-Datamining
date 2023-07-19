@@ -1,5 +1,13 @@
 # Change Log
 
+## 9.0.9
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/elements@3.0.2
+
 ## 9.0.8
 
 ## 9.0.7

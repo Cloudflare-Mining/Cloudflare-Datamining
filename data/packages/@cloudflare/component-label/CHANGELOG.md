@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.3
+
+### Patch Changes
+
+- 8f95dab06a: bump @cloudflare/types
+
 ## 5.0.2
 
 ### Patch Changes

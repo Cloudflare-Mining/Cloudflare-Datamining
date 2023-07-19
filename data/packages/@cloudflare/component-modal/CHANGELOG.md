@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.0.9
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-checkbox@5.3.1
+  - @cloudflare/component-button@7.0.9
+
 ## 7.0.8
 
 ### Patch Changes

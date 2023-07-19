@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.2.1
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/elements@3.0.2
+
 ## 4.2.0
 
 ### Minor Changes

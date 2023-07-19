@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.0.11
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-listbox@1.9.3
+  - @cloudflare/elements@3.0.2
+  - @cloudflare/component-calendar@6.0.9
+  - @cloudflare/component-form@5.0.1
+
 ## 5.0.10
 
 ### Patch Changes

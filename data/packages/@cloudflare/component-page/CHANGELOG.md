@@ -1,5 +1,14 @@
 # Change Log
 
+## 8.0.2
+
+### Patch Changes
+
+- Updated dependencies [8f95dab06a]
+  - @cloudflare/component-label@5.0.3
+  - @cloudflare/component-link@7.1.12
+  - @cloudflare/elements@3.0.2
+
 ## 8.0.1
 
 ### Patch Changes
