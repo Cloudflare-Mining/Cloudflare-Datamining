@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[ZT PMM] Cloudflare Zero Trust Enterprise Form - NEW products/zero-trust",
+				"pageName": "[ZT PMM] Cloudflare Zero Trust - Contact Us (Enterprise Form) - NEW products/zero-trust",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -33,7 +33,7 @@
 					"nbNO": "English for Locale"
 				},
 				"relativePath": "products/zero-trust/plans/enterprise",
-				"topNavOptions": "default",
+				"topNavOptions": "empty",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
@@ -52,31 +52,33 @@
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
-				"customTopNav": [
-					{}
-				],
+				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentTypeId": "bladeEnterpriseForm",
-						"contentfulId": "861SH0cYlx5Vxd7JMSZyz",
-						"bladeName": "Cloudflare Zero Trust Plans Enterprise Demo Form",
-						"bladeBorder": null,
+						"contentTypeId": "bladeSignUpForm",
+						"contentfulId": "343YctNsm7owpB8ZsrGbKl",
+						"bladeName": "Contact Us (Request a Workshop) - Zero Trust ",
+						"formType": "formRight",
+						"formTitle": "Contact us",
+						"buttonText": "Request a workshop",
+						"buttonColor": "orange",
+						"htmlId": null,
 						"marketoEmbeddedForm": {
 							"contentTypeId": "marketoEmbeddedForm",
 							"contentfulId": "6islLzMNjysyQ0qaPkTuhY",
-							"bladeName": "Zero Trust Plans Enterprise Demo Us Form (1341)",
+							"bladeName": "Zero Trust Contact Us Form (1341)",
 							"backgroundColor": "purple",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Teams Contact Us - Ent Plan",
+							"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Zero Trust Contact Us - Ent Plan",
 							"marketoFormHeaderText": null,
 							"marketoFormDefaultComment": null,
 							"showCommentBox": true,
 							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": "Someone from Cloudflare will be in touch! <br>In the meantime, instantly start a trial using our Free Plan. <br><br><a class=\"button button--new-orange\" href=\"https://dash.cloudflare.com/sign-up/teams\">Sign up now</a>",
+							"marketoFormCustomSuccessMessage": "Someone from Cloudflare will be in touch! In the meantime, instantly start a trial using our Free Plan.",
 							"marketoFormPdfDownload": null,
 							"marketoFormPdfDownloadI18n": null,
 							"marketoFormAssetDownloadButtonText": null,
@@ -84,193 +86,239 @@
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonText": "Request a Workshop",
 							"marketoFormSubmitButtonColor": null,
 							"enableEmailVerification": null,
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
+						"title": "Let's discuss Zero Trust for your organization",
+						"subtitle": "Collaborate with Cloudflare experts and build your roadmap to modernize security",
+						"copy": "\n- __Identify challenges of existing architecture:__ Evaluate your current architecture to identify pain points, vulnerabilities, and inefficiencies. \n- __Begin building a business case:__ Articulate the strategic value of modernizing security.\n- __Map a migration plan:__ Outline step-by-step guidance to transition from your current state to your aspirational state.\n- __Find your starting point:__ Prioritize key use cases and 'quick wins,' so you can begin realizing value as swiftly as possible.\n\nWhether you're just getting started or several years into your Zero Trust journey, Cloudflare can help.\n\nNot quite ready for a live conversation? Keep exploring our [Zero Trust platform](https://www.cloudflare.com/zero-trust/).",
+						"iconList": null,
+						"iconTitleList": null,
+						"iconCopyList": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamOptions": null,
+						"rightSideCopy": null,
+						"rightSideCopyPosition": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"extraClass": null,
+						"sectionPadding": null,
+						"customPrivacyPolicy": false,
+						"customPrivacyPolicyText": null
+					},
+					{
+						"contentfulId": "1jVODUDCgmqf91dpwFdCJB",
+						"title": "Top use cases",
+						"copy": "- __Secure access__ - Simultaneously improve user experience and accelerate IT integration while securing access between any user and app, on any device, in any location, without a VPN.\n- __Threat defense__ - Defend against multi-channel phishing and ransomware threats across distributed workplaces and remote workers.\n- __Secure with Microsoft__ - Simply eliminate implicit trust within cloud email and productivity suites while bolstering them — like Microsoft and other SaaS security.\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "/solutions/secure-hybrid-work/",
+						"learnMoreText": "Explore hybrid work use cases",
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "f68a4f3e-8d25-52d6-af0d-47f4d140cfc3",
+							"altText": "Cloudflare Zero Trust",
+							"title": "Cloudflare Zero Trust",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Fjo8z0O1iJopdtnoCZuhx/3815fb77e54e167adec2946917bf639c/Zero_Trust_main_page.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Secure hybrid work ",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "GxoUMT5xSz2tQv0XvNrZq",
+						"title": "Zero Trust platform",
+						"copy": "- One uniform and composable platform for easy setup and operations.\n- Single-pass inspection for all traffic to ensure consistent, high-speed protections.\n- 100% uptime SLA for paid plans that only an Anycast architecture can deliver. ",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": "Verify, filter, isolate, inspect on all devices you manage, and even devices you don't.",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": "blue",
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "fca0376e-5437-5d30-8bb5-fa48f4dcf041",
+							"altText": "Cloudflare Zero Trust",
+							"title": "Cloudflare Zero Trust marketecture graphic (lt blue bg)",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6dcGfbICYHM7pe2IwL8EFo/1d289f9c8e15a1af6dd215fa7ceb5fa9/Zero_Trust_Marketecture_SVG_-_June_2023.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Our services",
+						"htmlId": null,
+						"titleSize": "large",
+						"sectionPadding": null,
 						"backgroundColor": "light-blue",
-						"leftTitle": null,
-						"leftSubtitle": null,
-						"rightTitle": "Contact us to discuss Cloudflare Zero Trust for your enterprise",
-						"rightSubtitle": "Verify, filter, inspect, and isolate traffic between any user and app with the fastest Zero Trust browsing and application access platform",
-						"rightImage": null,
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "extra-large",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "7yzUeNR8UP5T4k12xpr3F2",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Analyst Recognition",
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7m7Ta4PRTRwYXkbCzCyxYk",
-								"title": "Zero Trust Network Access",
-								"titleSize": null,
-								"description": "Enforce identity- and device-aware access controls and visibility across public cloud, private network, and SaaS applications",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"contentfulId": "4v8WQXNxB95wnnT75RdlXq",
+								"title": "Cloudflare is the only new vendor in the 2023 Gartner® Magic Quadrant™ for SSE",
+								"titleSize": "medium",
+								"description": "Cloudflare has been recognized in the 2023 Gartner® Magic Quadrant™ for Security Service Edge (SSE) report. We believe our recognition validates our commitment to continue advancing our Zero Trust platform to help secure hybrid work.",
+								"learnMoreUrl": "https://cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
+								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"icon": null,
 								"iconAssetFile": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "5fea919a-6858-5f63-bd0b-f6d9280e229a",
+									"altText": null,
+									"title": "Gartner Logo narrow aspect ratio with space",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4240PZb3bpC5ZrndcMV4nt/ba4fc6174ff1439a4f00ff2e7d763853/Gartner_Logo_SVG_Narrow.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "37UScXXPqNzQadRGkaUTiz",
-								"title": "Secure Web Gateway",
-								"titleSize": null,
-								"description": "Block ransomware and phishing with intelligence from our network firewall and Zero Trust rules.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"contentfulId": "3ZUEcF8N8L6Vh1y6B3Rgxd",
+								"title": "Cloudflare named a \"Leader\" in 2023 Forrester Wave™ for Enterprise Email Security",
+								"titleSize": "medium",
+								"description": "Cloudflare tied for the top score in the strategy category, and received the highest scores possible in the criteria of vision and innovation. We believe this recognition highlights our rapid pace of innovation and groundbreaking approach to protecting users and data across all channels. ",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-email-security-2023/",
+								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"icon": null,
 								"iconAssetFile": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "396844b0-b0fd-5171-b459-1afe95b4556d",
+									"altText": null,
+									"title": "Forrester Logo narrow aspect ratio with space",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/01y0PxwjDZJSpU7Y00ec93/1f9bc3fe214cf77efe69cb9f2264e0f8/Forrester_Logo_SVG_Narrow.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6f39rjgtarnUQBua6hyb98",
-								"title": "Natively-integrated Zero Trust browsing",
-								"titleSize": null,
-								"description": "Isolate browsing activity from corporate or unmanaged endpoints, mitigating the impact of breaches and controlling data flows within apps\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
+								"contentfulId": "1gzjLP7JxkstgNJACuAdpC",
+								"title": "Cloudflare named a \"Leader\" in 2023 IDC MarketScape for Zero Trust Network Access (ZTNA)",
+								"titleSize": "medium",
+								"description": "IDC cites Cloudflare's \"aggressive product strategy to support enterprise security needs.\" We believe our recognition validates our approach to help businesses of any size get started with Zero Trust and secure access for any user to any resource, without VPNs.",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/idc-marketscape-ztna-2023/",
+								"learnMoreText": "Read the report",
 								"displayBorder": false,
-								"openLinkInNewTab": null,
+								"openLinkInNewTab": true,
 								"icon": null,
 								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3c8j4WvteWOfLRqhczuegf",
-								"title": "Enterprise features",
-								"titleSize": null,
-								"description": "Including: 24/7/365 support via chat, email, and phone; specialist onboarding service; 6 months log retention, and more \n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "71e4J5Bxl9zTwcn8ysnSb3",
-								"title": "One management interface",
-								"titleSize": null,
-								"description": "Provide better ease of use for administrators with a natively \nbuilt dashboard and API for application and Internet access including integrations with identity providers, endpoint protections, and network onramps.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "524PbNILpuAN8ASKYkrbYR",
-								"title": "One natively-integrated platform",
-								"titleSize": null,
-								"description": "Reduce complexity by consolidating Secure Web Gateway, Zero Trust Network Access, DNS Filtering, Cloud Access Security Broker (CASB), VPN/FWaaS, and Data Loss Prevention into one streamlined control plane on one network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2eXcD2FDkl8k0bmA1uHkdx",
-								"title": "One unrivaled end-user experience",
-								"titleSize": null,
-								"description": "Cloudflare routes access requests through every service faster utilizing our optimized, intelligence-drivenAnycast network in 250+ locations around the world.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
+								"imageAssetFile": {
+									"id": "8713c5ba-dbe3-5ec4-940d-a0026527ebe1",
+									"altText": null,
+									"title": "IDC Logo narrow aspect ratio with space",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6aOMsvYCwRijXm1q8lZU0R/78321861e616292df7de589c42ff788f/IDC_Logo_SVG_Narrow.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
-						],
-						"sectionPadding": null,
-						"moreFeatures": null,
-						"moreFeaturesModalTitle": null,
-						"moreFeaturesLinkText": null,
-						"moreFeaturesModalLearnMoreText": null,
-						"moreFeaturesModalLearnMoreUrl": null,
-						"logos": [
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YQ86TUxQRqonIWiQ5I5a5/ed3ec1225644fd468031657a09f46602/BlockFi-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6l3uXN7rkllTveH1HRSct1/2725dc80c3773d23bbc382089c885a42/Delivery-Hero-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/57ox6kZdsCZBSqhDUa0vBD/7ae8539f70a2db3a1566b3a375406cba/Canva-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/lVTtN2g25V3qRxLBJquB7/97f7637745ee1222f76dbb1863a57e30/PayNet-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Sjx4ZVSwUCm4STib20hBG/c2592fdb19ddef806a8e9fd75c92f45c/ZiffMedia-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/z4dEAjCkLg48nCqhqzE96/8e18c72e29608c99e6b32b8c20bdddea/Kathmandu-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3N0npaMxlGf7sFDe5w8Y25/eb29f4658a2c4a0adb97ff904b3de0e6/Insead-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2x1AgM10BcMFrIHXw3ye7k/d22413985484dfd7295fee3fb4e98621/ezCater-grayscale.png"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QqegCVRghNpJ5u3koSMIT/150638cc91b792966719e79e2fad1f4b/eTeacherGroup-grayscale.png"
-								}
-							}
-						],
-						"htmlId": null
+						]
 					}
 				],
 				"noindex": false,
