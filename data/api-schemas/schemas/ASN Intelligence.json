@@ -150,7 +150,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -160,7 +161,41 @@
 								{
 									"properties": {
 										"result": {
-											"type": "integer"
+											"properties": {
+												"asn": {
+													"type": "integer"
+												},
+												"country": {
+													"example": "US",
+													"type": "string"
+												},
+												"description": {
+													"example": "CLOUDFLARENET",
+													"type": "string"
+												},
+												"domain_count": {
+													"type": "integer"
+												},
+												"top_domains": {
+													"example": [
+														"example.com"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"type": {
+													"description": "Infrastructure type of this ASN.",
+													"enum": [
+														"hosting_provider",
+														"isp",
+														"organization"
+													],
+													"example": "hosting_provider",
+													"type": "string"
+												}
+											}
 										}
 									}
 								}
@@ -170,7 +205,7 @@
 				},
 				"description": "Get ASN Overview response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -264,7 +299,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -274,7 +310,41 @@
 										{
 											"properties": {
 												"result": {
-													"type": "integer"
+													"properties": {
+														"asn": {
+															"type": "integer"
+														},
+														"country": {
+															"example": "US",
+															"type": "string"
+														},
+														"description": {
+															"example": "CLOUDFLARENET",
+															"type": "string"
+														},
+														"domain_count": {
+															"type": "integer"
+														},
+														"top_domains": {
+															"example": [
+																"example.com"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"type": {
+															"description": "Infrastructure type of this ASN.",
+															"enum": [
+																"hosting_provider",
+																"isp",
+																"organization"
+															],
+															"example": "hosting_provider",
+															"type": "string"
+														}
+													}
 												}
 											}
 										}
@@ -371,6 +441,15 @@
 				"description": "Get ASN Overview response failure"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
 		"summary": "Get ASN Overview",
 		"tags": [
 			"ASN Intelligence"
@@ -384,7 +463,41 @@
 				"name": "asn",
 				"required": true,
 				"schema": {
-					"type": "integer"
+					"properties": {
+						"asn": {
+							"type": "integer"
+						},
+						"country": {
+							"example": "US",
+							"type": "string"
+						},
+						"description": {
+							"example": "CLOUDFLARENET",
+							"type": "string"
+						},
+						"domain_count": {
+							"type": "integer"
+						},
+						"top_domains": {
+							"example": [
+								"example.com"
+							],
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						},
+						"type": {
+							"description": "Infrastructure type of this ASN.",
+							"enum": [
+								"hosting_provider",
+								"isp",
+								"organization"
+							],
+							"example": "hosting_provider",
+							"type": "string"
+						}
+					}
 				}
 			},
 			{
@@ -444,7 +557,7 @@
 				},
 				"description": "Get ASN Subnets response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -576,6 +689,15 @@
 				"description": "Get ASN Subnets response failure"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
 		"summary": "Get ASN Subnets",
 		"tags": [
 			"ASN Intelligence"
