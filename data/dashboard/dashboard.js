@@ -1244,7 +1244,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Xn = t("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				$n = t("../react/app/components/LoadingSuspense.tsx"),
 				qn = c().lazy(function() {
-					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(57217), t.e(43672), t.e(58583), t.e(29695), t.e(51557), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx"))
+					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(72019), t.e(57217), t.e(43672), t.e(58583), t.e(6175), t.e(6520), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx"))
 				}),
 				er = function() {
 					return c().createElement($n.Z, null, c().createElement(qn, null))
@@ -1306,10 +1306,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, [o.search])
 				},
 				ur = c().lazy(function() {
-					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(57217), t.e(43672), t.e(29604), t.e(72019), t.e(30930), t.e(29695), t.e(51557), t.e(47261), t.e(99820), t.e(77637), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.js"))
+					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(72019), t.e(57217), t.e(43672), t.e(29604), t.e(30930), t.e(6175), t.e(6520), t.e(47261), t.e(99820), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.js"))
 				}),
 				lr = c().lazy(function() {
-					return Promise.all([t.e(81175), t.e(51167), t.e(29604), t.e(29695), t.e(69088), t.e(99820), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx"))
+					return Promise.all([t.e(81175), t.e(51167), t.e(29604), t.e(69088), t.e(99820), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx"))
 				}),
 				dr = function(o) {
 					var p, P = o.userIsAuthed;
@@ -2240,12 +2240,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = yn({}, {
-					branch: "release-Jul.18.2023-1689694979",
+					branch: "nick/incident-4089",
 					isReleaseCandidate: "true",
-					commit: "4e33ca9187ee5dc30e366f7842b7f786f7307e7b",
+					commit: "038132ac66081409a7bf8505a729f38280993818",
 					env: "production",
-					builtAt: 1689698094543,
-					dashVersion: "7c2032ec596243665f4ecbc9c8ed1b757b4e5e2a",
+					builtAt: 1689857100794,
+					dashVersion: "726bab81214b721b8d6e8faefe332ff11e3df1cc",
 					versions: {
 						"@cloudflare/app-dash": "25.155.17",
 						node: "16.16.0",
@@ -2987,7 +2987,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return regeneratorRuntime.wrap(function(X) {
 						for (;;) switch (X.prev = X.next) {
 							case 0:
-								return L.start(), B = ge(R), X.next = 4, Promise.all([t.e(32375), t.e(72019), t.e(78839), t.e(77637), t.e(18013)]).then(t.bind(t, "../react/app/components/DeepLink/resolvers/index.ts"));
+								return L.start(), B = ge(R), X.next = 4, Promise.all([t.e(32375), t.e(72019), t.e(78839), t.e(6175), t.e(54744)]).then(t.bind(t, "../react/app/components/DeepLink/resolvers/index.ts"));
 							case 4:
 								return I = X.sent.default, X.next = 7, I();
 							case 7:
