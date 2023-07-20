@@ -1,0 +1,4301 @@
+{
+	"GET /account/{account_identifier}/dex/http-tests/{test_id}": {
+		"description": "Get test details and aggregate performance metrics for an http test for a given time period between 1 hour and 7 days.",
+		"operationId": "dex-endpoints-http-test-details",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path.",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "unique identifier for a specific test",
+				"in": "path",
+				"name": "test_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a specific device(s)",
+				"in": "query",
+				"name": "deviceId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start time for aggregate metrics in ISO ms",
+				"in": "query",
+				"name": "timeStart",
+				"required": true,
+				"schema": {
+					"example": 1689520412000,
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for aggregate metrics in ISO ms",
+				"in": "query",
+				"name": "timeEnd",
+				"required": true,
+				"schema": {
+					"example": 1689606812000,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Time interval for aggregate time slots.",
+				"in": "query",
+				"name": "interval",
+				"required": true,
+				"schema": {
+					"enum": [
+						"minute",
+						"hour"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"host": {
+													"description": "The url of the HTTP synthetic application test",
+													"example": "http://example.com",
+													"type": "string"
+												},
+												"httpStats": {
+													"properties": {
+														"dnsResponseTimeMs": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"type": "integer"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"type": "integer"
+																},
+																"min": {
+																	"description": "lowest observed in the time period",
+																	"type": "integer"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"type": "integer"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"type": "integer"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"type": "integer"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"type": "integer"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"httpStatusCode": {
+															"items": {
+																"properties": {
+																	"status200": {
+																		"type": "integer"
+																	},
+																	"status300": {
+																		"type": "integer"
+																	},
+																	"status400": {
+																		"type": "integer"
+																	},
+																	"status500": {
+																		"type": "integer"
+																	},
+																	"timestamp": {
+																		"example": "2023-07-16 15:00:00+00",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"timestamp",
+																	"status200",
+																	"status300",
+																	"status400",
+																	"status500"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"resourceFetchTimeMs": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"type": "integer"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"type": "integer"
+																},
+																"min": {
+																	"description": "lowest observed in the time period",
+																	"type": "integer"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"type": "integer"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"type": "integer"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"type": "integer"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"type": "integer"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"serverResponseTimeMs": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"type": "integer"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"type": "integer"
+																},
+																"min": {
+																	"description": "lowest observed in the time period",
+																	"type": "integer"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"type": "integer"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"type": "integer"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"type": "integer"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"type": "integer"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"uniqueDevicesTotal": {
+															"description": "Count of unique devices that have run this test in the given time period",
+															"example": 57,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"uniqueDevicesTotal",
+														"resourceFetchTimeMs",
+														"serverResponseTimeMs",
+														"dnsResponseTimeMs",
+														"httpStatusCode"
+													],
+													"type": "object"
+												},
+												"interval": {
+													"description": "The interval at which the HTTP synthetic application test is set to run.",
+													"example": "0h5m0s",
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"http"
+													]
+												},
+												"method": {
+													"description": "The HTTP method to use when running the test",
+													"example": "GET",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the HTTP synthetic application test",
+													"example": "Atlassian Sign In Page",
+													"type": "string"
+												}
+											},
+											"required": [
+												"kind",
+												"name",
+												"host",
+												"interval",
+												"method"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX HTTP test details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"host": {
+															"description": "The url of the HTTP synthetic application test",
+															"example": "http://example.com",
+															"type": "string"
+														},
+														"httpStats": {
+															"properties": {
+																"dnsResponseTimeMs": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"type": "integer"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"type": "integer"
+																		},
+																		"min": {
+																			"description": "lowest observed in the time period",
+																			"type": "integer"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"type": "integer"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"httpStatusCode": {
+																	"items": {
+																		"properties": {
+																			"status200": {
+																				"type": "integer"
+																			},
+																			"status300": {
+																				"type": "integer"
+																			},
+																			"status400": {
+																				"type": "integer"
+																			},
+																			"status500": {
+																				"type": "integer"
+																			},
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"status200",
+																			"status300",
+																			"status400",
+																			"status500"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"resourceFetchTimeMs": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"type": "integer"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"type": "integer"
+																		},
+																		"min": {
+																			"description": "lowest observed in the time period",
+																			"type": "integer"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"type": "integer"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"serverResponseTimeMs": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"type": "integer"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"type": "integer"
+																		},
+																		"min": {
+																			"description": "lowest observed in the time period",
+																			"type": "integer"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"type": "integer"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"uniqueDevicesTotal": {
+																	"description": "Count of unique devices that have run this test in the given time period",
+																	"example": 57,
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"uniqueDevicesTotal",
+																"resourceFetchTimeMs",
+																"serverResponseTimeMs",
+																"dnsResponseTimeMs",
+																"httpStatusCode"
+															],
+															"type": "object"
+														},
+														"interval": {
+															"description": "The interval at which the HTTP synthetic application test is set to run.",
+															"example": "0h5m0s",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"http"
+															]
+														},
+														"method": {
+															"description": "The HTTP method to use when running the test",
+															"example": "GET",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the HTTP synthetic application test",
+															"example": "Atlassian Sign In Page",
+															"type": "string"
+														}
+													},
+													"required": [
+														"kind",
+														"name",
+														"host",
+														"interval",
+														"method"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX HTTP test details failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get details and aggregate metrics for a test",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /account/{account_identifier}/dex/traceroute-test-results/{test_result_id}/network_path": {
+		"description": "Get a breakdown of hops and performance metrics for a specific traceroute test run",
+		"operationId": "dex-endpoints-traceroute-test-result-network-path",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "unique identifier for a specific traceroute test",
+				"in": "path",
+				"name": "test_result_id",
+				"required": true,
+				"schema": {
+					"example": "23ff594956f20c2a721606e94745a8aa",
+					"readOnly": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deviceName": {
+													"description": "name of the device associated with this network path response",
+													"type": "string"
+												},
+												"hops": {
+													"description": "an array of the hops taken by the device to reach the end destination",
+													"items": {
+														"properties": {
+															"asn": {
+																"type": "string"
+															},
+															"aso": {
+																"type": "string"
+															},
+															"ipAddress": {
+																"type": "string"
+															},
+															"location": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"state": {
+																		"type": "string"
+																	},
+																	"zip": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"mile": {
+																"enum": [
+																	"client-to-app",
+																	"client-to-cf-egress",
+																	"client-to-cf-ingress"
+																]
+															},
+															"name": {
+																"type": "string"
+															},
+															"packetLossPct": {
+																"type": "integer"
+															},
+															"rttMs": {
+																"type": "integer"
+															},
+															"ttl": {
+																"type": "integer"
+															}
+														},
+														"required": [
+															"ttl"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"resultId": {
+													"example": "23ff594956f20c2a721606e94745a8aa",
+													"readOnly": true
+												},
+												"testId": {
+													"example": "23ff594956f20c2a721606e94745a8aa",
+													"readOnly": true
+												},
+												"testName": {
+													"description": "name of the tracroute test",
+													"type": "string"
+												},
+												"timeStart": {
+													"description": "date time of this traceroute test",
+													"example": "2023-07-16 15:00:00+00",
+													"type": "string"
+												}
+											},
+											"required": [
+												"resultId",
+												"testId",
+												"testName",
+												"deviceName",
+												"timeStart",
+												"hops"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX traceroute test result network path response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"deviceName": {
+															"description": "name of the device associated with this network path response",
+															"type": "string"
+														},
+														"hops": {
+															"description": "an array of the hops taken by the device to reach the end destination",
+															"items": {
+																"properties": {
+																	"asn": {
+																		"type": "string"
+																	},
+																	"aso": {
+																		"type": "string"
+																	},
+																	"ipAddress": {
+																		"type": "string"
+																	},
+																	"location": {
+																		"properties": {
+																			"city": {
+																				"type": "string"
+																			},
+																			"state": {
+																				"type": "string"
+																			},
+																			"zip": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"mile": {
+																		"enum": [
+																			"client-to-app",
+																			"client-to-cf-egress",
+																			"client-to-cf-ingress"
+																		]
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"packetLossPct": {
+																		"type": "integer"
+																	},
+																	"rttMs": {
+																		"type": "integer"
+																	},
+																	"ttl": {
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"ttl"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"resultId": {
+															"example": "23ff594956f20c2a721606e94745a8aa",
+															"readOnly": true
+														},
+														"testId": {
+															"example": "23ff594956f20c2a721606e94745a8aa",
+															"readOnly": true
+														},
+														"testName": {
+															"description": "name of the tracroute test",
+															"type": "string"
+														},
+														"timeStart": {
+															"description": "date time of this traceroute test",
+															"example": "2023-07-16 15:00:00+00",
+															"type": "string"
+														}
+													},
+													"required": [
+														"resultId",
+														"testId",
+														"testName",
+														"deviceName",
+														"timeStart",
+														"hops"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX traceroute test result network path failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get details for a specific traceroute test run",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /account/{account_identifier}/dex/traceroute-tests/{test_id}": {
+		"description": "Get test details and aggregate performance metrics for an traceroute test for a given time period between 1 hour and 7 days.",
+		"operationId": "dex-endpoints-traceroute-test-details",
+		"parameters": [
+			{
+				"description": "Unique identifier linked to an account",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "Unique identifier for a specific test",
+				"in": "path",
+				"name": "test_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a specific device(s)",
+				"in": "query",
+				"name": "deviceId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start time for aggregate metrics in ISO ms",
+				"in": "query",
+				"name": "timeStart",
+				"required": true,
+				"schema": {
+					"example": 1689520412000,
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for aggregate metrics in ISO ms",
+				"in": "query",
+				"name": "timeEnd",
+				"required": true,
+				"schema": {
+					"example": 1689606812000,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Time interval for aggregate time slots.",
+				"in": "query",
+				"name": "interval",
+				"required": true,
+				"schema": {
+					"enum": [
+						"minute",
+						"hour"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"host": {
+													"description": "The host of the Traceroute synthetic application test",
+													"example": "1.1.1.1",
+													"type": "string"
+												},
+												"interval": {
+													"description": "The interval at which the Traceroute synthetic application test is set to run.",
+													"example": "0h5m0s",
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"traceroute"
+													]
+												},
+												"name": {
+													"description": "The name of the Traceroute synthetic application test",
+													"example": "Atlassian Sign In Page",
+													"type": "string"
+												},
+												"tracerouteStats": {
+													"properties": {
+														"availabilityPct": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"min": {
+																	"description": "lowest  observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"hopsCount": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"type": "integer"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"type": "integer"
+																},
+																"min": {
+																	"description": "lowest observed in the time period",
+																	"type": "integer"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"type": "integer"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"type": "integer"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"type": "integer"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"type": "integer"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"packetLossPct": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"min": {
+																	"description": "lowest  observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"format": "float",
+																	"type": "number"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"roundTripTimeMs": {
+															"properties": {
+																"avg": {
+																	"description": "average observed in the time period",
+																	"type": "integer"
+																},
+																"max": {
+																	"description": "highest observed in the time period",
+																	"type": "integer"
+																},
+																"min": {
+																	"description": "lowest observed in the time period",
+																	"type": "integer"
+																},
+																"p50": {
+																	"description": "p50 observed in the time period",
+																	"type": "integer"
+																},
+																"p90": {
+																	"description": "p90 observed in the time period",
+																	"type": "integer"
+																},
+																"p95": {
+																	"description": "p95 observed in the time period",
+																	"type": "integer"
+																},
+																"p99": {
+																	"description": "p99 observed in the time period",
+																	"type": "integer"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"timestamp",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														},
+														"uniqueDevicesTotal": {
+															"description": "Count of unique devices that have run this test in the given time period",
+															"example": 57,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"uniqueDevicesTotal",
+														"roundTripTimeMs",
+														"hopsCount",
+														"packetLossPct",
+														"availabilityPct"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"kind",
+												"name",
+												"host",
+												"interval"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX traceroute test details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"host": {
+															"description": "The host of the Traceroute synthetic application test",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
+														"interval": {
+															"description": "The interval at which the Traceroute synthetic application test is set to run.",
+															"example": "0h5m0s",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"traceroute"
+															]
+														},
+														"name": {
+															"description": "The name of the Traceroute synthetic application test",
+															"example": "Atlassian Sign In Page",
+															"type": "string"
+														},
+														"tracerouteStats": {
+															"properties": {
+																"availabilityPct": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"min": {
+																			"description": "lowest  observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"hopsCount": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"type": "integer"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"type": "integer"
+																		},
+																		"min": {
+																			"description": "lowest observed in the time period",
+																			"type": "integer"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"type": "integer"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"packetLossPct": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"min": {
+																			"description": "lowest  observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"format": "float",
+																			"type": "number"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"roundTripTimeMs": {
+																	"properties": {
+																		"avg": {
+																			"description": "average observed in the time period",
+																			"type": "integer"
+																		},
+																		"max": {
+																			"description": "highest observed in the time period",
+																			"type": "integer"
+																		},
+																		"min": {
+																			"description": "lowest observed in the time period",
+																			"type": "integer"
+																		},
+																		"p50": {
+																			"description": "p50 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p90": {
+																			"description": "p90 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p95": {
+																			"description": "p95 observed in the time period",
+																			"type": "integer"
+																		},
+																		"p99": {
+																			"description": "p99 observed in the time period",
+																			"type": "integer"
+																		},
+																		"slots": {
+																			"items": {
+																				"properties": {
+																					"timestamp": {
+																						"example": "2023-07-16 15:00:00+00",
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"timestamp",
+																					"value"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"slots"
+																	],
+																	"type": "object"
+																},
+																"uniqueDevicesTotal": {
+																	"description": "Count of unique devices that have run this test in the given time period",
+																	"example": 57,
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"uniqueDevicesTotal",
+																"roundTripTimeMs",
+																"hopsCount",
+																"packetLossPct",
+																"availabilityPct"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"kind",
+														"name",
+														"host",
+														"interval"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX traceroute test details response failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get details and aggregate metrics for a traceroute test",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /account/{account_identifier}/dex/traceroute-tests/{test_id}/network_path": {
+		"description": "Get a breakdown of metrics by hop for individual traceroute test runs",
+		"operationId": "dex-endpoints-traceroute-test-network-path",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "unique identifier for a specific test",
+				"in": "path",
+				"name": "test_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "Device to filter tracroute result runs to",
+				"in": "query",
+				"name": "deviceId",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start time for aggregate metrics in ISO ms",
+				"in": "query",
+				"name": "timeStart",
+				"required": true,
+				"schema": {
+					"example": 1689520412000,
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for aggregate metrics in ISO ms",
+				"in": "query",
+				"name": "timeEnd",
+				"required": true,
+				"schema": {
+					"example": 1689606812000,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Time interval for aggregate time slots.",
+				"in": "query",
+				"name": "interval",
+				"required": true,
+				"schema": {
+					"enum": [
+						"minute",
+						"hour"
+					]
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deviceName": {
+													"type": "string"
+												},
+												"host": {
+													"description": "The host of the Traceroute synthetic application test",
+													"example": "1.1.1.1",
+													"type": "string"
+												},
+												"id": {
+													"example": "23ff594956f20c2a721606e94745a8aa",
+													"readOnly": true
+												},
+												"interval": {
+													"description": "The interval at which the Traceroute synthetic application test is set to run.",
+													"example": "0h5m0s",
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"traceroute"
+													]
+												},
+												"name": {
+													"type": "string"
+												},
+												"networkPath": {
+													"properties": {
+														"sampling": {
+															"description": "Specifies the sampling applied, if any, to the slots response. When sampled, results shown represent the first test run to the start of each sampling interval.",
+															"properties": {
+																"unit": {
+																	"enum": [
+																		"hours"
+																	]
+																},
+																"value": {
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"value",
+																"unit"
+															],
+															"type": "object"
+														},
+														"slots": {
+															"items": {
+																"properties": {
+																	"clientToAppRttMs": {
+																		"description": "Round trip time in ms of the client to app mile",
+																		"type": "integer"
+																	},
+																	"clientToCfEgressRtMs": {
+																		"description": "Round trip time in ms of the client to Cloudflare egress mile",
+																		"type": "integer"
+																	},
+																	"clientToCfIngressRttMs": {
+																		"description": "Round trip time in ms of the client to Cloudflare ingress mile",
+																		"type": "integer"
+																	},
+																	"id": {
+																		"example": "23ff594956f20c2a721606e94745a8aa",
+																		"readOnly": true
+																	},
+																	"timestamp": {
+																		"example": "2023-07-16 15:00:00+00",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"timestamp",
+																	"clientToAppRttMs",
+																	"clientToCfIngressRttMs",
+																	"clientToCfEgressRtMs"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"slots"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"kind",
+												"name",
+												"deviceName",
+												"host",
+												"interval"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX traceroute test network path response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"deviceName": {
+															"type": "string"
+														},
+														"host": {
+															"description": "The host of the Traceroute synthetic application test",
+															"example": "1.1.1.1",
+															"type": "string"
+														},
+														"id": {
+															"example": "23ff594956f20c2a721606e94745a8aa",
+															"readOnly": true
+														},
+														"interval": {
+															"description": "The interval at which the Traceroute synthetic application test is set to run.",
+															"example": "0h5m0s",
+															"type": "string"
+														},
+														"kind": {
+															"enum": [
+																"traceroute"
+															]
+														},
+														"name": {
+															"type": "string"
+														},
+														"networkPath": {
+															"properties": {
+																"sampling": {
+																	"description": "Specifies the sampling applied, if any, to the slots response. When sampled, results shown represent the first test run to the start of each sampling interval.",
+																	"properties": {
+																		"unit": {
+																			"enum": [
+																				"hours"
+																			]
+																		},
+																		"value": {
+																			"type": "integer"
+																		}
+																	},
+																	"required": [
+																		"value",
+																		"unit"
+																	],
+																	"type": "object"
+																},
+																"slots": {
+																	"items": {
+																		"properties": {
+																			"clientToAppRttMs": {
+																				"description": "Round trip time in ms of the client to app mile",
+																				"type": "integer"
+																			},
+																			"clientToCfEgressRtMs": {
+																				"description": "Round trip time in ms of the client to Cloudflare egress mile",
+																				"type": "integer"
+																			},
+																			"clientToCfIngressRttMs": {
+																				"description": "Round trip time in ms of the client to Cloudflare ingress mile",
+																				"type": "integer"
+																			},
+																			"id": {
+																				"example": "23ff594956f20c2a721606e94745a8aa",
+																				"readOnly": true
+																			},
+																			"timestamp": {
+																				"example": "2023-07-16 15:00:00+00",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"timestamp",
+																			"clientToAppRttMs",
+																			"clientToCfIngressRttMs",
+																			"clientToCfEgressRtMs"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"required": [
+																"slots"
+															],
+															"type": "object"
+														}
+													},
+													"required": [
+														"id",
+														"kind",
+														"name",
+														"deviceName",
+														"host",
+														"interval"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX traceroute test network path failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get network path breakdown for a traceroute test",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/tests": {
+		"description": "List DEX tests",
+		"operationId": "dex-endpoints-list-tests",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path.",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "Optionally filter results by test name",
+				"in": "query",
+				"name": "testName",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a specific device(s)",
+				"in": "query",
+				"name": "deviceId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"overviewMetrics": {
+													"properties": {
+														"avgTracerouteAvailabilityPct": {
+															"description": "percentage availability for all traceroutes results in response",
+															"format": "float",
+															"type": "number"
+														},
+														"testsTotal": {
+															"description": "number of  tests.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"testsTotal"
+													],
+													"type": "object"
+												},
+												"tests": {
+													"description": "array of test results objects.",
+													"items": {
+														"properties": {
+															"created": {
+																"description": "date the test was created.",
+																"type": "string"
+															},
+															"description": {
+																"description": "the test description defined during configuration",
+																"type": "string"
+															},
+															"enabled": {
+																"description": "if true, then the test will run on targeted devices. Else, the test will not run.",
+																"type": "boolean"
+															},
+															"host": {
+																"type": "string"
+															},
+															"httpResults": {
+																"properties": {
+																	"resourceFetchTime": {
+																		"properties": {
+																			"avgMs": {
+																				"type": "integer"
+																			},
+																			"history": {
+																				"items": {
+																					"properties": {
+																						"avgMs": {
+																							"type": "integer"
+																						},
+																						"deltaPct": {
+																							"format": "float",
+																							"type": "number"
+																						},
+																						"timePeriod": {
+																							"properties": {
+																								"units": {
+																									"enum": [
+																										"hours",
+																										"days",
+																										"testRuns"
+																									],
+																									"type": "string"
+																								},
+																								"value": {
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"value",
+																								"units"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"timePeriod"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"overTime": {
+																				"properties": {
+																					"timePeriod": {
+																						"properties": {
+																							"units": {
+																								"enum": [
+																									"hours",
+																									"days",
+																									"testRuns"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "integer"
+																							}
+																						},
+																						"required": [
+																							"value",
+																							"units"
+																						],
+																						"type": "object"
+																					},
+																					"values": {
+																						"items": {
+																							"properties": {
+																								"avgMs": {
+																									"type": "integer"
+																								},
+																								"timestamp": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"timestamp",
+																								"avgMs"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"values",
+																					"timePeriod"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"history"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"resourceFetchTime"
+																],
+																"type": "object"
+															},
+															"id": {
+																"example": "23ff594956f20c2a721606e94745a8aa",
+																"readOnly": true
+															},
+															"interval": {
+																"description": "The interval at which the synthetic application test is set to run.",
+																"type": "string"
+															},
+															"kind": {
+																"description": "test type, http or traceroute",
+																"enum": [
+																	"http",
+																	"traceroute"
+																],
+																"type": "string"
+															},
+															"method": {
+																"description": "for HTTP, the method to use when running the test",
+																"type": "string"
+															},
+															"name": {
+																"description": "name given to this test",
+																"type": "string"
+															},
+															"tracerouteResults": {
+																"properties": {
+																	"roundTripTime": {
+																		"properties": {
+																			"avgMs": {
+																				"type": "integer"
+																			},
+																			"history": {
+																				"items": {
+																					"properties": {
+																						"avgMs": {
+																							"type": "integer"
+																						},
+																						"deltaPct": {
+																							"format": "float",
+																							"type": "number"
+																						},
+																						"timePeriod": {
+																							"properties": {
+																								"units": {
+																									"enum": [
+																										"hours",
+																										"days",
+																										"testRuns"
+																									],
+																									"type": "string"
+																								},
+																								"value": {
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"value",
+																								"units"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"timePeriod"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"overTime": {
+																				"properties": {
+																					"timePeriod": {
+																						"properties": {
+																							"units": {
+																								"enum": [
+																									"hours",
+																									"days",
+																									"testRuns"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"type": "integer"
+																							}
+																						},
+																						"required": [
+																							"value",
+																							"units"
+																						],
+																						"type": "object"
+																					},
+																					"values": {
+																						"items": {
+																							"properties": {
+																								"avgMs": {
+																									"type": "integer"
+																								},
+																								"timestamp": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"timestamp",
+																								"avgMs"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"values",
+																					"timePeriod"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"history"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"roundTripTime"
+																],
+																"type": "object"
+															},
+															"updated": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"name",
+															"kind",
+															"interval",
+															"enabled",
+															"description",
+															"updated",
+															"created",
+															"host"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"overviewMetrics",
+												"tests"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX tests list response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"overviewMetrics": {
+															"properties": {
+																"avgTracerouteAvailabilityPct": {
+																	"description": "percentage availability for all traceroutes results in response",
+																	"format": "float",
+																	"type": "number"
+																},
+																"testsTotal": {
+																	"description": "number of  tests.",
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"testsTotal"
+															],
+															"type": "object"
+														},
+														"tests": {
+															"description": "array of test results objects.",
+															"items": {
+																"properties": {
+																	"created": {
+																		"description": "date the test was created.",
+																		"type": "string"
+																	},
+																	"description": {
+																		"description": "the test description defined during configuration",
+																		"type": "string"
+																	},
+																	"enabled": {
+																		"description": "if true, then the test will run on targeted devices. Else, the test will not run.",
+																		"type": "boolean"
+																	},
+																	"host": {
+																		"type": "string"
+																	},
+																	"httpResults": {
+																		"properties": {
+																			"resourceFetchTime": {
+																				"properties": {
+																					"avgMs": {
+																						"type": "integer"
+																					},
+																					"history": {
+																						"items": {
+																							"properties": {
+																								"avgMs": {
+																									"type": "integer"
+																								},
+																								"deltaPct": {
+																									"format": "float",
+																									"type": "number"
+																								},
+																								"timePeriod": {
+																									"properties": {
+																										"units": {
+																											"enum": [
+																												"hours",
+																												"days",
+																												"testRuns"
+																											],
+																											"type": "string"
+																										},
+																										"value": {
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"value",
+																										"units"
+																									],
+																									"type": "object"
+																								}
+																							},
+																							"required": [
+																								"timePeriod"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"overTime": {
+																						"properties": {
+																							"timePeriod": {
+																								"properties": {
+																									"units": {
+																										"enum": [
+																											"hours",
+																											"days",
+																											"testRuns"
+																										],
+																										"type": "string"
+																									},
+																									"value": {
+																										"type": "integer"
+																									}
+																								},
+																								"required": [
+																									"value",
+																									"units"
+																								],
+																								"type": "object"
+																							},
+																							"values": {
+																								"items": {
+																									"properties": {
+																										"avgMs": {
+																											"type": "integer"
+																										},
+																										"timestamp": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"timestamp",
+																										"avgMs"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							}
+																						},
+																						"required": [
+																							"values",
+																							"timePeriod"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"history"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"resourceFetchTime"
+																		],
+																		"type": "object"
+																	},
+																	"id": {
+																		"example": "23ff594956f20c2a721606e94745a8aa",
+																		"readOnly": true
+																	},
+																	"interval": {
+																		"description": "The interval at which the synthetic application test is set to run.",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"description": "test type, http or traceroute",
+																		"enum": [
+																			"http",
+																			"traceroute"
+																		],
+																		"type": "string"
+																	},
+																	"method": {
+																		"description": "for HTTP, the method to use when running the test",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "name given to this test",
+																		"type": "string"
+																	},
+																	"tracerouteResults": {
+																		"properties": {
+																			"roundTripTime": {
+																				"properties": {
+																					"avgMs": {
+																						"type": "integer"
+																					},
+																					"history": {
+																						"items": {
+																							"properties": {
+																								"avgMs": {
+																									"type": "integer"
+																								},
+																								"deltaPct": {
+																									"format": "float",
+																									"type": "number"
+																								},
+																								"timePeriod": {
+																									"properties": {
+																										"units": {
+																											"enum": [
+																												"hours",
+																												"days",
+																												"testRuns"
+																											],
+																											"type": "string"
+																										},
+																										"value": {
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"value",
+																										"units"
+																									],
+																									"type": "object"
+																								}
+																							},
+																							"required": [
+																								"timePeriod"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"overTime": {
+																						"properties": {
+																							"timePeriod": {
+																								"properties": {
+																									"units": {
+																										"enum": [
+																											"hours",
+																											"days",
+																											"testRuns"
+																										],
+																										"type": "string"
+																									},
+																									"value": {
+																										"type": "integer"
+																									}
+																								},
+																								"required": [
+																									"value",
+																									"units"
+																								],
+																								"type": "object"
+																							},
+																							"values": {
+																								"items": {
+																									"properties": {
+																										"avgMs": {
+																											"type": "integer"
+																										},
+																										"timestamp": {
+																											"type": "string"
+																										}
+																									},
+																									"required": [
+																										"timestamp",
+																										"avgMs"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							}
+																						},
+																						"required": [
+																							"values",
+																							"timePeriod"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"history"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"roundTripTime"
+																		],
+																		"type": "object"
+																	},
+																	"updated": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"kind",
+																	"interval",
+																	"enabled",
+																	"description",
+																	"updated",
+																	"created",
+																	"host"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"required": [
+														"overviewMetrics",
+														"tests"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List DEX tests failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List DEX test analytics",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/tests/unique-devices": {
+		"description": "Returns unique count of devices that have run synthetic application monitoring tests in the past 7 days.",
+		"operationId": "dex-endpoints-tests-unique-devices",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path.",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"readOnly": true
+				}
+			},
+			{
+				"description": "Optionally filter results by test name",
+				"in": "query",
+				"name": "testName",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a specific device(s)",
+				"in": "query",
+				"name": "deviceId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"uniqueDevicesTotal": {
+													"description": "total number of unique devices",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"uniqueDevicesTotal"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX unique devices targeted response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"uniqueDevicesTotal": {
+															"description": "total number of unique devices",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"uniqueDevicesTotal"
+													],
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX unique devices targeted failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get count of devices targeted",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	}
+}
