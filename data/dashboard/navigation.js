@@ -672,7 +672,7 @@ const navigation = {
 		hasPermission: function(h) {
 			var R = (0, l.nA)(h);
 			if ((0, s.yD)(h) || !(0, o.wB)(h, "zone_settings", "spectrum.app") || !R) return !1;
-			var G = !!((0, N.l8)(h) || (0, l.DQ)(h)),
+			var G = !!((0, P.l8)(h) || (0, l.DQ)(h)),
 				Y = !!(0, l.ZB)(h, "spectrum", "enabled"),
 				Q = !!(0, l.Ns)(R);
 			return Y || G || !Q
@@ -1011,9 +1011,8 @@ const navigation = {
 		url: "/zaraz",
 		navigationType: "global-settings",
 		labels: function(h) {
-			var R = [],
-				G = (0, l.nA)(h);
-			return G && !(0, l.tU)(G, "pro") && R.push("beta"), R
+			var R = [];
+			return R
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -1028,12 +1027,7 @@ const navigation = {
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
-			url: "/zaraz/consent",
-			labels: function(h) {
-				var R = [],
-					G = (0, l.nA)(h);
-				return G && (0, l.tU)(G, "pro") && R.push("beta"), R
-			}
+			url: "/zaraz/consent"
 		}, {
 			title: "navigation.zone.zaraz.history",
 			navigationType: "global-settings",
