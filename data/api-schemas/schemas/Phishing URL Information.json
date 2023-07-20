@@ -128,7 +128,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -250,7 +251,7 @@
 				},
 				"description": "Get results for a URL scan response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -344,7 +345,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -553,6 +555,15 @@
 				"description": "Get results for a URL scan response failure"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
 		"summary": "Get results for a URL scan",
 		"tags": [
 			"Phishing URL Information"

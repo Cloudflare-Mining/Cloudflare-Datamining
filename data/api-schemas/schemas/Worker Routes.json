@@ -1,6 +1,5 @@
 {
 	"DELETE /zones/{zone_id}/workers/routes/{route_id}": {
-		"description": "Deletes a route.",
 		"operationId": "worker-routes-delete-route",
 		"parameters": [
 			{
@@ -118,14 +117,20 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
+											"nullable": true,
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
 													"type": "string"
 												}
-											]
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -136,7 +141,7 @@
 				},
 				"description": "Delete Route response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -221,14 +226,20 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
+													"nullable": true,
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
 															"type": "string"
 														}
-													]
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -328,11 +339,11 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Delete Route",
@@ -346,7 +357,6 @@
 		}
 	},
 	"GET /zones/{zone_id}/workers/routes": {
-		"description": "Returns routes for a zone.",
 		"operationId": "worker-routes-list-routes",
 		"parameters": [
 			{
@@ -461,7 +471,7 @@
 														"type": "string"
 													},
 													"script": {
-														"description": "Name of the script, used in URLs and route configuration.",
+														"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 														"example": "this-is_my_script-01",
 														"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 														"type": "string"
@@ -484,7 +494,7 @@
 				},
 				"description": "List Routes response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -584,7 +594,7 @@
 																"type": "string"
 															},
 															"script": {
-																"description": "Name of the script, used in URLs and route configuration.",
+																"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 																"example": "this-is_my_script-01",
 																"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 																"type": "string"
@@ -696,11 +706,11 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "List Routes",
@@ -714,7 +724,6 @@
 		}
 	},
 	"GET /zones/{zone_id}/workers/routes/{route_id}": {
-		"description": "Returns information about a route, including URL pattern and Worker.",
 		"operationId": "worker-routes-get-route",
 		"parameters": [
 			{
@@ -835,7 +844,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -859,7 +869,7 @@
 													"type": "string"
 												},
 												"script": {
-													"description": "Name of the script, used in URLs and route configuration.",
+													"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 													"example": "this-is_my_script-01",
 													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 													"type": "string"
@@ -880,7 +890,7 @@
 				},
 				"description": "Get Route response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -974,7 +984,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -998,7 +1009,7 @@
 															"type": "string"
 														},
 														"script": {
-															"description": "Name of the script, used in URLs and route configuration.",
+															"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 															"example": "this-is_my_script-01",
 															"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 															"type": "string"
@@ -1108,11 +1119,11 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Get Route",
@@ -1126,7 +1137,6 @@
 		}
 	},
 	"POST /zones/{zone_id}/workers/routes": {
-		"description": "Creates a route that maps a URL pattern to a Worker.",
 		"operationId": "worker-routes-create-route",
 		"parameters": [
 			{
@@ -1153,7 +1163,7 @@
 								"type": "string"
 							},
 							"script": {
-								"description": "Name of the script, used in URLs and route configuration.",
+								"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 								"example": "this-is_my_script-01",
 								"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 								"type": "string"
@@ -1251,14 +1261,20 @@
 								{
 									"properties": {
 										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
+											"nullable": true,
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
 													"type": "string"
 												}
-											]
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
 										}
 									}
 								}
@@ -1269,7 +1285,7 @@
 				},
 				"description": "Create Route response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1354,14 +1370,20 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
+													"nullable": true,
+													"properties": {
+														"id": {
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
 															"type": "string"
 														}
-													]
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
 												}
 											}
 										}
@@ -1461,11 +1483,11 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Create Route",
@@ -1479,7 +1501,6 @@
 		}
 	},
 	"PUT /zones/{zone_id}/workers/routes/{route_id}": {
-		"description": "Updates the URL pattern or Worker associated with a route.",
 		"operationId": "worker-routes-update-route",
 		"parameters": [
 			{
@@ -1518,7 +1539,7 @@
 								"type": "string"
 							},
 							"script": {
-								"description": "Name of the script, used in URLs and route configuration.",
+								"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 								"example": "this-is_my_script-01",
 								"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 								"type": "string"
@@ -1625,7 +1646,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -1649,7 +1671,7 @@
 													"type": "string"
 												},
 												"script": {
-													"description": "Name of the script, used in URLs and route configuration.",
+													"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 													"example": "this-is_my_script-01",
 													"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 													"type": "string"
@@ -1670,7 +1692,7 @@
 				},
 				"description": "Update Route response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1764,7 +1786,8 @@
 																{
 																	"type": "string"
 																}
-															]
+															],
+															"nullable": true
 														}
 													}
 												}
@@ -1788,7 +1811,7 @@
 															"type": "string"
 														},
 														"script": {
-															"description": "Name of the script, used in URLs and route configuration.",
+															"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
 															"example": "this-is_my_script-01",
 															"pattern": "^[a-z0-9_][a-z0-9-_]*$",
 															"type": "string"
@@ -1898,11 +1921,11 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
+			},
+			{
+				"api_token": []
 			}
 		],
 		"summary": "Update Route",
