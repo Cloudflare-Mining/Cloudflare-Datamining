@@ -134,7 +134,7 @@
 														startTime: x(),
 														versions: {
 															fl: m ? m.version : "",
-															js: "2023.7.0",
+															js: "2023.7.1",
 															timings: 1
 														},
 														pageloadId: v,
@@ -202,7 +202,7 @@
 												referrer: document.referrer || "",
 												eventType: i.EventType.WebVitalsV2,
 												versions: {
-													js: "2023.7.0"
+													js: "2023.7.1"
 												},
 												pageloadId: v,
 												location: e(),
