@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.4.7
+
+### Patch Changes
+
+- d2b3982d50: Add validate function to useMemo dependency array
+
 ## 6.4.6
 
 ### Patch Changes
