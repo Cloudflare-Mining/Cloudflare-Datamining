@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.4.6
+
+### Patch Changes
+
+- ad7acb3fcc: Ensure validators run in correct order
+
 ## 6.4.5
 
 ### Patch Changes
