@@ -586,7 +586,6 @@
 																	"description": "Role identifier tag.",
 																	"example": "3536bcfad5faccb999b47003c79917fb",
 																	"maxLength": 32,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"name": {
@@ -2336,13 +2335,6 @@
 						"allOf": [
 							{
 								"properties": {
-									"code": {
-										"description": "The unique activation code for the account membership.",
-										"example": "05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0",
-										"maxLength": 64,
-										"readOnly": true,
-										"type": "string"
-									},
 									"id": {
 										"description": "Membership identifier tag.",
 										"example": "4536bcfad5faccb111b47003c79917fa",
@@ -2364,7 +2356,6 @@
 													"description": "Role identifier tag.",
 													"example": "3536bcfad5faccb999b47003c79917fb",
 													"maxLength": 32,
-													"readOnly": true,
 													"type": "string"
 												},
 												"name": {
@@ -2375,223 +2366,230 @@
 													"type": "string"
 												},
 												"permissions": {
-													"example": {
-														"analytics": {
-															"read": true,
-															"write": false
+													"allOf": [
+														{
+															"example": {
+																"analytics": {
+																	"read": true,
+																	"write": false
+																},
+																"zones": {
+																	"read": true,
+																	"write": true
+																}
+															},
+															"properties": {
+																"analytics": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"billing": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"cache_purge": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"dns_records": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"lb": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"logs": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"organization": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"ssl": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"waf": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"zone_settings": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"zones": {
+																	"example": {
+																		"read": true,
+																		"write": false
+																	},
+																	"properties": {
+																		"read": {
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"write": {
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
 														},
-														"zones": {
-															"read": true,
-															"write": true
+														{
+															"readOnly": true
 														}
-													},
-													"properties": {
-														"analytics": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"billing": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"cache_purge": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"dns": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"dns_records": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"lb": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"logs": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"organization": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"ssl": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"waf": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"zone_settings": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														},
-														"zones": {
-															"example": {
-																"read": true,
-																"write": false
-															},
-															"properties": {
-																"read": {
-																	"example": true,
-																	"type": "boolean"
-																},
-																"write": {
-																	"example": true,
-																	"type": "boolean"
-																}
-															},
-															"type": "object"
-														}
-													},
-													"type": "object"
+													]
 												}
 											},
 											"required": [
