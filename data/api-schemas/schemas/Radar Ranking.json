@@ -26,6 +26,20 @@
 				}
 			},
 			{
+				"description": "The ranking type.",
+				"in": "query",
+				"name": "rankingType",
+				"schema": {
+					"default": "POPULAR",
+					"enum": [
+						"POPULAR",
+						"TRENDING_RISE",
+						"TRENDING_STEADY"
+					],
+					"type": "string"
+				}
+			},
+			{
 				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
@@ -76,6 +90,7 @@
 										"details_0": {
 											"properties": {
 												"bucket": {
+													"description": "Only available in POPULAR ranking for the most recent ranking.",
 													"example": "2000",
 													"type": "string"
 												},
@@ -135,7 +150,6 @@
 												}
 											},
 											"required": [
-												"bucket",
 												"categories",
 												"top_locations"
 											],
@@ -230,6 +244,20 @@
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
+				}
+			},
+			{
+				"description": "The ranking type.",
+				"in": "query",
+				"name": "rankingType",
+				"schema": {
+					"default": "POPULAR",
+					"enum": [
+						"POPULAR",
+						"TRENDING_RISE",
+						"TRENDING_STEADY"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -476,7 +504,7 @@
 		}
 	},
 	"GET /radar/ranking/top": {
-		"description": "Get top domains based on their rank. Rank is determined by various factors, for more information see https://blog.cloudflare.com/radar-domain-rankings/",
+		"description": "Get top or trending domains based on their rank. Popular domains are domains of broad appeal based on how people use the Internet. Trending domains are domains that are generating a surge in interest. For more information on top domains, see https://blog.cloudflare.com/radar-domain-rankings/.",
 		"operationId": "radar-get-ranking-top-domains",
 		"parameters": [
 			{
@@ -528,6 +556,20 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"description": "The ranking type.",
+				"in": "query",
+				"name": "rankingType",
+				"schema": {
+					"default": "POPULAR",
+					"enum": [
+						"POPULAR",
+						"TRENDING_RISE",
+						"TRENDING_STEADY"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -602,6 +644,11 @@
 													"domain": {
 														"example": "google.com",
 														"type": "string"
+													},
+													"pctRankChange": {
+														"description": "Only available in TRENDING rankings.",
+														"example": 10.8,
+														"type": "number"
 													},
 													"rank": {
 														"example": 1,
@@ -678,7 +725,7 @@
 				"description": "Bad Request"
 			}
 		},
-		"summary": "Get Top Domains",
+		"summary": "Get Top or Trending Domains",
 		"tags": [
 			"Radar Ranking"
 		],

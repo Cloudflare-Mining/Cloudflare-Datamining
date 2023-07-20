@@ -40,100 +40,6 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Delete a virtual network response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
 									"allOf": [
 										{
 											"properties": {
@@ -207,6 +113,140 @@
 												"errors",
 												"messages",
 												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a virtual network response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
 											],
 											"type": "object"
 										},
@@ -890,100 +930,6 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Update a virtual network response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
 									"allOf": [
 										{
 											"properties": {
@@ -1057,6 +1003,140 @@
 												"errors",
 												"messages",
 												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a virtual network response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
 											],
 											"type": "object"
 										},
@@ -1225,100 +1305,6 @@
 						"schema": {
 							"allOf": [
 								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"type": "object"
-										}
-									},
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "Create a virtual network response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
 									"allOf": [
 										{
 											"properties": {
@@ -1392,6 +1378,140 @@
 												"errors",
 												"messages",
 												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a virtual network response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true
+														}
+													}
+												}
 											],
 											"type": "object"
 										},
