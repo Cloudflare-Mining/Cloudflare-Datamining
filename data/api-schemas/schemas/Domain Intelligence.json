@@ -115,8 +115,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -165,6 +164,44 @@
 													"example": "cloudflare.com",
 													"type": "string"
 												},
+												"inherited_content_categories": {
+													"example": [],
+													"items": {
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"name": {
+																"type": "string"
+															},
+															"super_category_id": {
+																"type": "integer"
+															}
+														}
+													},
+													"type": "array"
+												},
+												"inherited_from": {
+													"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
+													"type": "string"
+												},
+												"inherited_risk_types": {
+													"example": [],
+													"items": {
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"name": {
+																"type": "string"
+															},
+															"super_category_id": {
+																"type": "integer"
+															}
+														}
+													},
+													"type": "array"
+												},
 												"popularity_rank": {
 													"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 													"type": "integer"
@@ -205,7 +242,7 @@
 				},
 				"description": "Get Domain Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -299,8 +336,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -348,6 +384,44 @@
 														"domain": {
 															"example": "cloudflare.com",
 															"type": "string"
+														},
+														"inherited_content_categories": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"id": {
+																		"type": "integer"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"super_category_id": {
+																		"type": "integer"
+																	}
+																}
+															},
+															"type": "array"
+														},
+														"inherited_from": {
+															"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
+															"type": "string"
+														},
+														"inherited_risk_types": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"id": {
+																		"type": "integer"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"super_category_id": {
+																		"type": "integer"
+																	}
+																}
+															},
+															"type": "array"
 														},
 														"popularity_rank": {
 															"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
@@ -476,15 +550,6 @@
 				"description": "Get Domain Details response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_token": []
-			}
-		],
 		"summary": "Get Domain Details",
 		"tags": [
 			"Domain Intelligence"
@@ -676,6 +741,44 @@
 														"example": "cloudflare.com",
 														"type": "string"
 													},
+													"inherited_content_categories": {
+														"example": [],
+														"items": {
+															"properties": {
+																"id": {
+																	"type": "integer"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"super_category_id": {
+																	"type": "integer"
+																}
+															}
+														},
+														"type": "array"
+													},
+													"inherited_from": {
+														"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
+														"type": "string"
+													},
+													"inherited_risk_types": {
+														"example": [],
+														"items": {
+															"properties": {
+																"id": {
+																	"type": "integer"
+																},
+																"name": {
+																	"type": "string"
+																},
+																"super_category_id": {
+																	"type": "integer"
+																}
+															}
+														},
+														"type": "array"
+													},
 													"popularity_rank": {
 														"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 														"type": "integer"
@@ -699,7 +802,7 @@
 				},
 				"description": "Get Multiple Domain Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -863,6 +966,44 @@
 																"example": "cloudflare.com",
 																"type": "string"
 															},
+															"inherited_content_categories": {
+																"example": [],
+																"items": {
+																	"properties": {
+																		"id": {
+																			"type": "integer"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"super_category_id": {
+																			"type": "integer"
+																		}
+																	}
+																},
+																"type": "array"
+															},
+															"inherited_from": {
+																"description": "Domain from which `inherited_content_categories` and `inherited_risk_types` are inherited, if applicable.",
+																"type": "string"
+															},
+															"inherited_risk_types": {
+																"example": [],
+																"items": {
+																	"properties": {
+																		"id": {
+																			"type": "integer"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"super_category_id": {
+																			"type": "integer"
+																		}
+																	}
+																},
+																"type": "array"
+															},
 															"popularity_rank": {
 																"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000.",
 																"type": "integer"
@@ -973,15 +1114,6 @@
 				"description": "Get Multiple Domain Details response failure"
 			}
 		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
-				"api_token": []
-			}
-		],
 		"summary": "Get Multiple Domain Details",
 		"tags": [
 			"Domain Intelligence"
