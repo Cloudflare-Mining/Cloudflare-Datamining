@@ -8,6 +8,10 @@
 				"read": true,
 				"edit": false
 			},
+			"page_shield": {
+				"read": true,
+				"edit": false
+			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -24,6 +28,10 @@
 		"description": "Grants write access to Page Shield across the whole account",
 		"permissions": {
 			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"page_shield": {
 				"read": true,
 				"edit": true
 			},
@@ -705,11 +713,19 @@
 				"read": true,
 				"edit": true
 			},
+			"r2_bucket": {
+				"read": true,
+				"edit": true
+			},
 			"image": {
 				"read": true,
 				"edit": true
 			},
 			"dash_sso": {
+				"read": true,
+				"edit": true
+			},
+			"page_shield": {
 				"read": true,
 				"edit": true
 			},
@@ -980,6 +996,10 @@
 				"edit": false
 			},
 			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"r2_bucket": {
 				"read": true,
 				"edit": true
 			},
@@ -1265,6 +1285,10 @@
 				"read": true,
 				"edit": false
 			},
+			"page_shield": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -1279,6 +1303,10 @@
 				"edit": false
 			},
 			"web3": {
+				"read": true,
+				"edit": false
+			},
+			"r2_bucket": {
 				"read": true,
 				"edit": false
 			},
@@ -1383,6 +1411,10 @@
 				"read": true,
 				"edit": true
 			},
+			"fbm_acc": {
+				"read": false,
+				"edit": true
+			},
 			"http_applications": {
 				"read": true,
 				"edit": true
@@ -1399,6 +1431,10 @@
 				"read": true,
 				"edit": true
 			},
+			"page_shield": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -1409,6 +1445,10 @@
 				"edit": true
 			},
 			"web3": {
+				"read": true,
+				"edit": true
+			},
+			"r2_bucket": {
 				"read": true,
 				"edit": true
 			},
