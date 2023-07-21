@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 53,
+	"version": "20230721.2",
+	"short_version": "2023.7.159.0",
+	"size": 63885141,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "2853001e5a987d121154330dea7d3e4d",
+	"fingerprint": "b26eb12f433da33d75f4a712e8828593",
+	"uploaded_at": "2023-07-21T01:15:03.874Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "zip",
+	"is_latest": true,
+	"release_notes": "This update is recommended for all customers and includes an important reliability fix.\n \n## Notable updates\n- Fixed issue where client could take up to 1-2 minutes to recover connectivity instead of 1-2 seconds in the event of a service issue  \n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}
