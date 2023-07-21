@@ -158,7 +158,8 @@
 												{
 													"type": "string"
 												}
-											]
+											],
+											"nullable": true
 										}
 									}
 								}
@@ -169,7 +170,7 @@
 				},
 				"description": "Create Miscategorization response"
 			},
-			"4XX": {
+			"4xx": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -261,7 +262,8 @@
 														{
 															"type": "string"
 														}
-													]
+													],
+													"nullable": true
 												}
 											}
 										}
@@ -359,6 +361,15 @@
 				"description": "Create Miscategorization response failure"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			}
+		],
 		"summary": "Create Miscategorization",
 		"tags": [
 			"Miscategorization"
