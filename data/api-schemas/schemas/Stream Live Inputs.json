@@ -280,6 +280,12 @@
 																"format": "date-time",
 																"type": "string"
 															},
+															"deleteRecordingAfterDays": {
+																"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+																"example": 45,
+																"minimum": 30,
+																"type": "number"
+															},
 															"meta": {
 																"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
 																"example": {
@@ -566,6 +572,12 @@
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
 													"type": "string"
+												},
+												"deleteRecordingAfterDays": {
+													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"example": 45,
+													"minimum": 30,
+													"type": "number"
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -1172,6 +1184,12 @@
 								"description": "Sets the creator ID asssociated with this live input.",
 								"type": "string"
 							},
+							"deleteRecordingAfterDays": {
+								"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+								"example": 45,
+								"minimum": 30,
+								"type": "number"
+							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
 								"example": {
@@ -1337,6 +1355,12 @@
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
 													"type": "string"
+												},
+												"deleteRecordingAfterDays": {
+													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"example": 45,
+													"minimum": 30,
+													"type": "number"
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
@@ -1962,6 +1986,12 @@
 								"description": "Sets the creator ID asssociated with this live input.",
 								"type": "string"
 							},
+							"deleteRecordingAfterDays": {
+								"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+								"example": 45,
+								"minimum": 30,
+								"type": "number"
+							},
 							"meta": {
 								"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
 								"example": {
@@ -2127,6 +2157,12 @@
 													"example": "2014-01-02T02:20:00Z",
 													"format": "date-time",
 													"type": "string"
+												},
+												"deleteRecordingAfterDays": {
+													"description": "Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.",
+													"example": 45,
+													"minimum": 30,
+													"type": "number"
 												},
 												"meta": {
 													"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",

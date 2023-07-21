@@ -370,6 +370,12 @@
 														"example": true,
 														"type": "boolean"
 													},
+													"scheduledDeletion": {
+														"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+														"example": "2014-01-02T02:20:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
 													"size": {
 														"description": "The size of the media item in bytes.",
 														"example": 4190963,
@@ -870,6 +876,12 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"scheduledDeletion": {
+													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
 												"size": {
 													"description": "The size of the media item in bytes.",
 													"example": 4190963,
@@ -1310,7 +1322,7 @@
 				"in": "header",
 				"name": "Upload-Metadata",
 				"schema": {
-					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: name, requiresignedurls, allowedorigins, thumbnailtimestamppct, watermark.",
+					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: name, requiresignedurls, allowedorigins, thumbnailtimestamppct, watermark, scheduleddeletion.",
 					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=",
 					"type": "string"
 				}
@@ -1425,6 +1437,12 @@
 								"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 								"example": true,
 								"type": "boolean"
+							},
+							"scheduledDeletion": {
+								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+								"example": "2014-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
 							},
 							"thumbnailTimestampPct": {
 								"default": 0,
@@ -1646,6 +1664,12 @@
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 													"example": true,
 													"type": "boolean"
+												},
+												"scheduledDeletion": {
+													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
 												},
 												"size": {
 													"description": "The size of the media item in bytes.",
@@ -2314,6 +2338,12 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"scheduledDeletion": {
+								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+								"example": "2014-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
 							"thumbnailTimestampPct": {
 								"default": 0,
 								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
@@ -2547,6 +2577,12 @@
 													"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 													"example": true,
 													"type": "boolean"
+												},
+												"scheduledDeletion": {
+													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
 												},
 												"size": {
 													"description": "The size of the media item in bytes.",
@@ -2878,6 +2914,12 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"scheduledDeletion": {
+								"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+								"example": "2014-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
 							"thumbnailTimestampPct": {
 								"default": 0,
 								"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
@@ -3011,6 +3053,12 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"scheduledDeletion": {
+													"description": "Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.",
+													"example": "2014-01-02T02:20:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
 												"uid": {
 													"description": "A Cloudflare-generated unique identifier for a media item.",
 													"example": "ea95132c15732412d22c1476fa83f27a",
