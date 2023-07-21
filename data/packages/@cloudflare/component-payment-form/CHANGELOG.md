@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.7](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.6...@cloudflare/component-payment-form@4.0.7) (2023-07-21)
+
+
+### Bug Fixes
+
+* **component-payment-form:** BILL-19572 Fix bug where api url base was n ([a86b79b](http://stash.cfops.it:7999/fe/stratus/commits/a86b79b))
+
+
+
+
+
 ## [4.0.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.1...@cloudflare/component-payment-form@4.0.6) (2023-07-21)
 
 
