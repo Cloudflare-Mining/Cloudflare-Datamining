@@ -3,12 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.0.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.1...@cloudflare/component-payment-form@4.0.5) (2023-07-18)
+## [4.0.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.1...@cloudflare/component-payment-form@4.0.6) (2023-07-21)
 
 
 ### Bug Fixes
 
 * UI-000 fix npm publish build mismatching versions ([d3e9732](http://stash.cfops.it:7999/fe/stratus/commits/d3e9732))
+* UI-000 fix publishing for component-payment-form ([b3dfb4e](http://stash.cfops.it:7999/fe/stratus/commits/b3dfb4e))
 * UI-000 update worldserver-cli and payment form to latest semver ([76967d4](http://stash.cfops.it:7999/fe/stratus/commits/76967d4))
 
 
