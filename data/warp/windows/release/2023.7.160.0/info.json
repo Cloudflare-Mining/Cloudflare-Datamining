@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 62,
+	"version": "2023.7.160.0",
+	"short_version": "",
+	"size": 110792704,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a79e56347cfa97a71310ef2105be7b2d",
+	"fingerprint": "518448cbcd28347ca9190dd59ea31dad",
+	"uploaded_at": "2023-07-21T01:11:04.325Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This is a critical hotfix for organizations that have long running deployment cycles. The certificate used to sign and validate our installer will expire on August 9th 2023 and may cause windows SmartScreen warnings on installation.\r\n \r\nThis update is recommended for all customers and includes an important reliability fix.\r\n \r\n## Notable updates\r\n- Updated signing certificate\r\n- Fixed issue where client could take up to 1-2 minutes to recover connectivity instead of 1-2 seconds in the event of a service issue\r\n \r\n## Known issues\r\n- Customers may experience a DPC_WATCHDOG_VIOLATION Blue Screen when connecting. This error was introduced with the 2023.3 GA release and happens more frequently with larger split tunnel configurations, especially on more resource constrained machines. We are actively working on a fix. Until then we recommend staying on 2022.12 GA release OR reducing your split tunnel configuration if possible.\r\n- Managed network detection on certain Windows machines doesn't consistently apply the expected profile upon network changes. We will address this issue in a future release.\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"436daa23178b437f1716f5b4516c8254342b20dff005a2064c69583fab7990ba"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
