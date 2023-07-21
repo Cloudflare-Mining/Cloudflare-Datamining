@@ -95,9 +95,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -124,31 +121,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -170,13 +142,14 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
 				"description": "Delete a list response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -237,9 +210,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -266,31 +236,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -312,7 +257,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -409,9 +355,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete a list",
@@ -540,9 +483,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -569,31 +509,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -622,7 +537,7 @@
 				},
 				"description": "Delete list items response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -683,9 +598,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -712,31 +624,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -856,9 +743,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete list items",
@@ -949,9 +833,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -978,31 +859,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -1023,7 +879,7 @@
 															},
 															"description": {
 																"description": "An informative summary of the list.",
-																"example": "This is a note.",
+																"example": "This is a note",
 																"maxLength": 500,
 																"type": "string"
 															},
@@ -1036,14 +892,14 @@
 																"type": "string"
 															},
 															"kind": {
-																"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+																"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 																"enum": [
 																	"ip",
 																	"redirect",
-																	"hostname"
+																	"hostname",
+																	"asn"
 																],
-																"example": "ip",
-																"type": "string"
+																"example": "ip"
 															},
 															"modified_on": {
 																"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -1067,7 +923,8 @@
 																"example": 2,
 																"type": "number"
 															}
-														}
+														},
+														"type": "object"
 													},
 													{
 														"required": [
@@ -1087,13 +944,14 @@
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
 				"description": "Get lists response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1154,9 +1012,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -1183,31 +1038,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -1228,7 +1058,7 @@
 																	},
 																	"description": {
 																		"description": "An informative summary of the list.",
-																		"example": "This is a note.",
+																		"example": "This is a note",
 																		"maxLength": 500,
 																		"type": "string"
 																	},
@@ -1241,14 +1071,14 @@
 																		"type": "string"
 																	},
 																	"kind": {
-																		"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+																		"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 																		"enum": [
 																			"ip",
 																			"redirect",
-																			"hostname"
+																			"hostname",
+																			"asn"
 																		],
-																		"example": "ip",
-																		"type": "string"
+																		"example": "ip"
 																	},
 																	"modified_on": {
 																		"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -1272,7 +1102,8 @@
 																		"example": 2,
 																		"type": "number"
 																	}
-																}
+																},
+																"type": "object"
 															},
 															{
 																"required": [
@@ -1292,7 +1123,8 @@
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1389,9 +1221,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get lists",
@@ -1495,9 +1324,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -1524,31 +1350,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -1566,7 +1367,7 @@
 												},
 												"description": {
 													"description": "An informative summary of the list.",
-													"example": "This is a note.",
+													"example": "This is a note",
 													"maxLength": 500,
 													"type": "string"
 												},
@@ -1579,14 +1380,14 @@
 													"type": "string"
 												},
 												"kind": {
-													"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 													"enum": [
 														"ip",
 														"redirect",
-														"hostname"
+														"hostname",
+														"asn"
 													],
-													"example": "ip",
-													"type": "string"
+													"example": "ip"
 												},
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -1610,18 +1411,20 @@
 													"example": 2,
 													"type": "number"
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
 				"description": "Get a list response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1682,9 +1485,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -1711,31 +1511,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -1753,7 +1528,7 @@
 														},
 														"description": {
 															"description": "An informative summary of the list.",
-															"example": "This is a note.",
+															"example": "This is a note",
 															"maxLength": 500,
 															"type": "string"
 														},
@@ -1766,14 +1541,14 @@
 															"type": "string"
 														},
 														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 															"enum": [
 																"ip",
 																"redirect",
-																"hostname"
+																"hostname",
+																"asn"
 															],
-															"example": "ip",
-															"type": "string"
+															"example": "ip"
 														},
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -1797,12 +1572,14 @@
 															"example": 2,
 															"type": "number"
 														}
-													}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -1899,9 +1676,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get a list",
@@ -2014,9 +1788,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -2043,31 +1814,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -2087,66 +1833,11 @@
 												},
 												"oneOf": [
 													{
-														"required": [
-															"ip"
-														]
-													},
-													{
-														"required": [
-															"redirect"
-														]
-													},
-													{
-														"required": [
-															"hostname"
-														]
-													}
-												],
-												"properties": {
-													"comment": {
-														"description": "An informative summary of the list item.",
-														"example": "Private IP address",
-														"type": "string"
-													},
-													"created_on": {
-														"description": "The RFC 3339 timestamp of when the item was created.",
-														"example": "2020-01-01T08:00:00Z",
-														"readOnly": true,
-														"type": "string"
-													},
-													"hostname": {
-														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-														"properties": {
-															"url_hostname": {
-																"example": "example.com",
-																"type": "string"
-															}
-														},
-														"required": [
-															"url_hostname"
-														],
-														"type": "string"
-													},
-													"id": {
-														"description": "The unique ID of the list.",
-														"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-														"maxLength": 32,
-														"minLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"ip": {
 														"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 														"example": "10.0.0.1",
 														"type": "string"
 													},
-													"modified_on": {
-														"description": "The RFC 3339 timestamp of when the item was last modified.",
-														"example": "2020-01-10T14:00:00Z",
-														"readOnly": true,
-														"type": "string"
-													},
-													"redirect": {
+													{
 														"description": "The definition of the redirect.",
 														"properties": {
 															"include_subdomains": {
@@ -2154,7 +1845,7 @@
 																"type": "boolean"
 															},
 															"preserve_path_suffix": {
-																"default": true,
+																"default": false,
 																"type": "boolean"
 															},
 															"preserve_query_string": {
@@ -2187,8 +1878,116 @@
 														"required": [
 															"source_url",
 															"target_url"
-														],
-														"type": "object"
+														]
+													},
+													{
+														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+														"properties": {
+															"url_hostname": {
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"url_hostname"
+														]
+													},
+													{
+														"description": "A non-negative 32 bit integer",
+														"example": 5567,
+														"type": "integer"
+													}
+												],
+												"properties": {
+													"asn": {
+														"description": "A non-negative 32 bit integer",
+														"example": 5567,
+														"type": "integer"
+													},
+													"comment": {
+														"description": "An informative summary of the list item.",
+														"example": "Private IP address",
+														"type": "string"
+													},
+													"created_on": {
+														"description": "The RFC 3339 timestamp of when the item was created.",
+														"example": "2020-01-01T08:00:00Z",
+														"readOnly": true,
+														"type": "string"
+													},
+													"hostname": {
+														"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+														"properties": {
+															"url_hostname": {
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"required": [
+															"url_hostname"
+														]
+													},
+													"id": {
+														"description": "The unique ID of the list.",
+														"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+														"maxLength": 32,
+														"minLength": 32,
+														"readOnly": true,
+														"type": "string"
+													},
+													"ip": {
+														"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+														"example": "10.0.0.1",
+														"type": "string"
+													},
+													"modified_on": {
+														"description": "The RFC 3339 timestamp of when the item was last modified.",
+														"example": "2020-01-10T14:00:00Z",
+														"readOnly": true,
+														"type": "string"
+													},
+													"redirect": {
+														"description": "The definition of the redirect.",
+														"properties": {
+															"include_subdomains": {
+																"default": false,
+																"type": "boolean"
+															},
+															"preserve_path_suffix": {
+																"default": false,
+																"type": "boolean"
+															},
+															"preserve_query_string": {
+																"default": false,
+																"type": "boolean"
+															},
+															"source_url": {
+																"example": "example.com/arch",
+																"type": "string"
+															},
+															"status_code": {
+																"default": 301,
+																"enum": [
+																	301,
+																	302,
+																	307,
+																	308
+																],
+																"type": "integer"
+															},
+															"subpath_matching": {
+																"default": false,
+																"type": "boolean"
+															},
+															"target_url": {
+																"example": "https://archlinux.org/",
+																"type": "string"
+															}
+														},
+														"required": [
+															"source_url",
+															"target_url"
+														]
 													}
 												},
 												"type": "object"
@@ -2222,7 +2021,7 @@
 				},
 				"description": "Get list items response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2283,9 +2082,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -2312,31 +2108,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -2356,66 +2127,11 @@
 														},
 														"oneOf": [
 															{
-																"required": [
-																	"ip"
-																]
-															},
-															{
-																"required": [
-																	"redirect"
-																]
-															},
-															{
-																"required": [
-																	"hostname"
-																]
-															}
-														],
-														"properties": {
-															"comment": {
-																"description": "An informative summary of the list item.",
-																"example": "Private IP address",
-																"type": "string"
-															},
-															"created_on": {
-																"description": "The RFC 3339 timestamp of when the item was created.",
-																"example": "2020-01-01T08:00:00Z",
-																"readOnly": true,
-																"type": "string"
-															},
-															"hostname": {
-																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-																"properties": {
-																	"url_hostname": {
-																		"example": "example.com",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"url_hostname"
-																],
-																"type": "string"
-															},
-															"id": {
-																"description": "The unique ID of the list.",
-																"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-																"maxLength": 32,
-																"minLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"ip": {
 																"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 																"example": "10.0.0.1",
 																"type": "string"
 															},
-															"modified_on": {
-																"description": "The RFC 3339 timestamp of when the item was last modified.",
-																"example": "2020-01-10T14:00:00Z",
-																"readOnly": true,
-																"type": "string"
-															},
-															"redirect": {
+															{
 																"description": "The definition of the redirect.",
 																"properties": {
 																	"include_subdomains": {
@@ -2423,7 +2139,7 @@
 																		"type": "boolean"
 																	},
 																	"preserve_path_suffix": {
-																		"default": true,
+																		"default": false,
 																		"type": "boolean"
 																	},
 																	"preserve_query_string": {
@@ -2456,8 +2172,116 @@
 																"required": [
 																	"source_url",
 																	"target_url"
-																],
-																"type": "object"
+																]
+															},
+															{
+																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																"properties": {
+																	"url_hostname": {
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"url_hostname"
+																]
+															},
+															{
+																"description": "A non-negative 32 bit integer",
+																"example": 5567,
+																"type": "integer"
+															}
+														],
+														"properties": {
+															"asn": {
+																"description": "A non-negative 32 bit integer",
+																"example": 5567,
+																"type": "integer"
+															},
+															"comment": {
+																"description": "An informative summary of the list item.",
+																"example": "Private IP address",
+																"type": "string"
+															},
+															"created_on": {
+																"description": "The RFC 3339 timestamp of when the item was created.",
+																"example": "2020-01-01T08:00:00Z",
+																"readOnly": true,
+																"type": "string"
+															},
+															"hostname": {
+																"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+																"properties": {
+																	"url_hostname": {
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"url_hostname"
+																]
+															},
+															"id": {
+																"description": "The unique ID of the list.",
+																"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+																"maxLength": 32,
+																"minLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"ip": {
+																"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+																"example": "10.0.0.1",
+																"type": "string"
+															},
+															"modified_on": {
+																"description": "The RFC 3339 timestamp of when the item was last modified.",
+																"example": "2020-01-10T14:00:00Z",
+																"readOnly": true,
+																"type": "string"
+															},
+															"redirect": {
+																"description": "The definition of the redirect.",
+																"properties": {
+																	"include_subdomains": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"preserve_path_suffix": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"preserve_query_string": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"source_url": {
+																		"example": "example.com/arch",
+																		"type": "string"
+																	},
+																	"status_code": {
+																		"default": 301,
+																		"enum": [
+																			301,
+																			302,
+																			307,
+																			308
+																		],
+																		"type": "integer"
+																	},
+																	"subpath_matching": {
+																		"default": false,
+																		"type": "boolean"
+																	},
+																	"target_url": {
+																		"example": "https://archlinux.org/",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"source_url",
+																	"target_url"
+																]
 															}
 														},
 														"type": "object"
@@ -2582,9 +2406,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get list items",
@@ -2698,9 +2519,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -2727,31 +2545,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -2770,66 +2563,11 @@
 											},
 											"oneOf": [
 												{
-													"required": [
-														"ip"
-													]
-												},
-												{
-													"required": [
-														"redirect"
-													]
-												},
-												{
-													"required": [
-														"hostname"
-													]
-												}
-											],
-											"properties": {
-												"comment": {
-													"description": "An informative summary of the list item.",
-													"example": "Private IP address",
-													"type": "string"
-												},
-												"created_on": {
-													"description": "The RFC 3339 timestamp of when the item was created.",
-													"example": "2020-01-01T08:00:00Z",
-													"readOnly": true,
-													"type": "string"
-												},
-												"hostname": {
-													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-													"properties": {
-														"url_hostname": {
-															"example": "example.com",
-															"type": "string"
-														}
-													},
-													"required": [
-														"url_hostname"
-													],
-													"type": "string"
-												},
-												"id": {
-													"description": "The unique ID of the list.",
-													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-													"maxLength": 32,
-													"minLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"ip": {
 													"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 													"example": "10.0.0.1",
 													"type": "string"
 												},
-												"modified_on": {
-													"description": "The RFC 3339 timestamp of when the item was last modified.",
-													"example": "2020-01-10T14:00:00Z",
-													"readOnly": true,
-													"type": "string"
-												},
-												"redirect": {
+												{
 													"description": "The definition of the redirect.",
 													"properties": {
 														"include_subdomains": {
@@ -2837,7 +2575,7 @@
 															"type": "boolean"
 														},
 														"preserve_path_suffix": {
-															"default": true,
+															"default": false,
 															"type": "boolean"
 														},
 														"preserve_query_string": {
@@ -2870,8 +2608,116 @@
 													"required": [
 														"source_url",
 														"target_url"
-													],
-													"type": "object"
+													]
+												},
+												{
+													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+													"properties": {
+														"url_hostname": {
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"url_hostname"
+													]
+												},
+												{
+													"description": "A non-negative 32 bit integer",
+													"example": 5567,
+													"type": "integer"
+												}
+											],
+											"properties": {
+												"asn": {
+													"description": "A non-negative 32 bit integer",
+													"example": 5567,
+													"type": "integer"
+												},
+												"comment": {
+													"description": "An informative summary of the list item.",
+													"example": "Private IP address",
+													"type": "string"
+												},
+												"created_on": {
+													"description": "The RFC 3339 timestamp of when the item was created.",
+													"example": "2020-01-01T08:00:00Z",
+													"readOnly": true,
+													"type": "string"
+												},
+												"hostname": {
+													"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+													"properties": {
+														"url_hostname": {
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"required": [
+														"url_hostname"
+													]
+												},
+												"id": {
+													"description": "The unique ID of the list.",
+													"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+													"maxLength": 32,
+													"minLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
+												"ip": {
+													"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+													"example": "10.0.0.1",
+													"type": "string"
+												},
+												"modified_on": {
+													"description": "The RFC 3339 timestamp of when the item was last modified.",
+													"example": "2020-01-10T14:00:00Z",
+													"readOnly": true,
+													"type": "string"
+												},
+												"redirect": {
+													"description": "The definition of the redirect.",
+													"properties": {
+														"include_subdomains": {
+															"default": false,
+															"type": "boolean"
+														},
+														"preserve_path_suffix": {
+															"default": false,
+															"type": "boolean"
+														},
+														"preserve_query_string": {
+															"default": false,
+															"type": "boolean"
+														},
+														"source_url": {
+															"example": "example.com/arch",
+															"type": "string"
+														},
+														"status_code": {
+															"default": 301,
+															"enum": [
+																301,
+																302,
+																307,
+																308
+															],
+															"type": "integer"
+														},
+														"subpath_matching": {
+															"default": false,
+															"type": "boolean"
+														},
+														"target_url": {
+															"example": "https://archlinux.org/",
+															"type": "string"
+														}
+													},
+													"required": [
+														"source_url",
+														"target_url"
+													]
 												}
 											},
 											"type": "object"
@@ -2885,7 +2731,7 @@
 				},
 				"description": "Get a list item response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2946,9 +2792,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -2975,31 +2818,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -3018,66 +2836,11 @@
 													},
 													"oneOf": [
 														{
-															"required": [
-																"ip"
-															]
-														},
-														{
-															"required": [
-																"redirect"
-															]
-														},
-														{
-															"required": [
-																"hostname"
-															]
-														}
-													],
-													"properties": {
-														"comment": {
-															"description": "An informative summary of the list item.",
-															"example": "Private IP address",
-															"type": "string"
-														},
-														"created_on": {
-															"description": "The RFC 3339 timestamp of when the item was created.",
-															"example": "2020-01-01T08:00:00Z",
-															"readOnly": true,
-															"type": "string"
-														},
-														"hostname": {
-															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
-															"properties": {
-																"url_hostname": {
-																	"example": "example.com",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"url_hostname"
-															],
-															"type": "string"
-														},
-														"id": {
-															"description": "The unique ID of the list.",
-															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
-															"maxLength": 32,
-															"minLength": 32,
-															"readOnly": true,
-															"type": "string"
-														},
-														"ip": {
 															"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
 															"example": "10.0.0.1",
 															"type": "string"
 														},
-														"modified_on": {
-															"description": "The RFC 3339 timestamp of when the item was last modified.",
-															"example": "2020-01-10T14:00:00Z",
-															"readOnly": true,
-															"type": "string"
-														},
-														"redirect": {
+														{
 															"description": "The definition of the redirect.",
 															"properties": {
 																"include_subdomains": {
@@ -3085,7 +2848,7 @@
 																	"type": "boolean"
 																},
 																"preserve_path_suffix": {
-																	"default": true,
+																	"default": false,
 																	"type": "boolean"
 																},
 																"preserve_query_string": {
@@ -3118,8 +2881,116 @@
 															"required": [
 																"source_url",
 																"target_url"
-															],
-															"type": "object"
+															]
+														},
+														{
+															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+															"properties": {
+																"url_hostname": {
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"url_hostname"
+															]
+														},
+														{
+															"description": "A non-negative 32 bit integer",
+															"example": 5567,
+															"type": "integer"
+														}
+													],
+													"properties": {
+														"asn": {
+															"description": "A non-negative 32 bit integer",
+															"example": 5567,
+															"type": "integer"
+														},
+														"comment": {
+															"description": "An informative summary of the list item.",
+															"example": "Private IP address",
+															"type": "string"
+														},
+														"created_on": {
+															"description": "The RFC 3339 timestamp of when the item was created.",
+															"example": "2020-01-01T08:00:00Z",
+															"readOnly": true,
+															"type": "string"
+														},
+														"hostname": {
+															"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+															"properties": {
+																"url_hostname": {
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"url_hostname"
+															]
+														},
+														"id": {
+															"description": "The unique ID of the list.",
+															"example": "2c0fc9fa937b11eaa1b71c4d701ab86e",
+															"maxLength": 32,
+															"minLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
+														"ip": {
+															"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
+															"example": "10.0.0.1",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "The RFC 3339 timestamp of when the item was last modified.",
+															"example": "2020-01-10T14:00:00Z",
+															"readOnly": true,
+															"type": "string"
+														},
+														"redirect": {
+															"description": "The definition of the redirect.",
+															"properties": {
+																"include_subdomains": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"preserve_path_suffix": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"preserve_query_string": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"source_url": {
+																	"example": "example.com/arch",
+																	"type": "string"
+																},
+																"status_code": {
+																	"default": 301,
+																	"enum": [
+																		301,
+																		302,
+																		307,
+																		308
+																	],
+																	"type": "integer"
+																},
+																"subpath_matching": {
+																	"default": false,
+																	"type": "boolean"
+																},
+																"target_url": {
+																	"example": "https://archlinux.org/",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"source_url",
+																"target_url"
+															]
 														}
 													},
 													"type": "object"
@@ -3224,9 +3095,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get a list item",
@@ -3328,9 +3196,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -3357,31 +3222,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -3438,7 +3278,7 @@
 				},
 				"description": "Get bulk operation status response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3499,9 +3339,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -3528,31 +3365,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -3700,9 +3512,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get bulk operation status",
@@ -3740,19 +3549,19 @@
 						"properties": {
 							"description": {
 								"description": "An informative summary of the list.",
-								"example": "This is a note.",
+								"example": "This is a note",
 								"maxLength": 500,
 								"type": "string"
 							},
 							"kind": {
-								"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+								"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 								"enum": [
 									"ip",
 									"redirect",
-									"hostname"
+									"hostname",
+									"asn"
 								],
-								"example": "ip",
-								"type": "string"
+								"example": "ip"
 							},
 							"name": {
 								"description": "An informative name for the list. Use this name in filter and rule expressions.",
@@ -3832,9 +3641,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -3861,31 +3667,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -3903,7 +3684,7 @@
 												},
 												"description": {
 													"description": "An informative summary of the list.",
-													"example": "This is a note.",
+													"example": "This is a note",
 													"maxLength": 500,
 													"type": "string"
 												},
@@ -3916,14 +3697,14 @@
 													"type": "string"
 												},
 												"kind": {
-													"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 													"enum": [
 														"ip",
 														"redirect",
-														"hostname"
+														"hostname",
+														"asn"
 													],
-													"example": "ip",
-													"type": "string"
+													"example": "ip"
 												},
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -3947,18 +3728,20 @@
 													"example": 2,
 													"type": "number"
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
 				"description": "Create a list response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4019,9 +3802,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -4048,31 +3828,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -4090,7 +3845,7 @@
 														},
 														"description": {
 															"description": "An informative summary of the list.",
-															"example": "This is a note.",
+															"example": "This is a note",
 															"maxLength": 500,
 															"type": "string"
 														},
@@ -4103,14 +3858,14 @@
 															"type": "string"
 														},
 														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 															"enum": [
 																"ip",
 																"redirect",
-																"hostname"
+																"hostname",
+																"asn"
 															],
-															"example": "ip",
-															"type": "string"
+															"example": "ip"
 														},
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -4134,12 +3889,14 @@
 															"example": 2,
 															"type": "number"
 														}
-													}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -4236,9 +3993,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create a list",
@@ -4289,28 +4043,28 @@
 						"items": {
 							"allOf": [
 								{
-									"oneOf": [
-										{
-											"required": [
-												"ip"
-											]
-										},
-										{
-											"required": [
-												"redirect"
-											]
-										},
-										{
-											"required": [
-												"hostname"
-											]
-										}
-									],
 									"properties": {
+										"asn": {
+											"description": "A non-negative 32 bit integer",
+											"example": 5567,
+											"type": "integer"
+										},
 										"comment": {
 											"description": "An informative summary of the list item.",
 											"example": "Private IP address",
 											"type": "string"
+										},
+										"hostname": {
+											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+											"properties": {
+												"url_hostname": {
+													"example": "example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"url_hostname"
+											]
 										},
 										"ip": {
 											"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
@@ -4325,7 +4079,7 @@
 													"type": "boolean"
 												},
 												"preserve_path_suffix": {
-													"default": true,
+													"default": false,
 													"type": "boolean"
 												},
 												"preserve_query_string": {
@@ -4358,8 +4112,7 @@
 											"required": [
 												"source_url",
 												"target_url"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -4432,9 +4185,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -4461,31 +4211,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -4514,7 +4239,7 @@
 				},
 				"description": "Create list items response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4575,9 +4300,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -4604,31 +4326,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -4748,9 +4445,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create list items",
@@ -4801,7 +4495,7 @@
 						"properties": {
 							"description": {
 								"description": "An informative summary of the list.",
-								"example": "This is a note.",
+								"example": "This is a note",
 								"maxLength": 500,
 								"type": "string"
 							}
@@ -4872,9 +4566,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -4901,31 +4592,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -4943,7 +4609,7 @@
 												},
 												"description": {
 													"description": "An informative summary of the list.",
-													"example": "This is a note.",
+													"example": "This is a note",
 													"maxLength": 500,
 													"type": "string"
 												},
@@ -4956,14 +4622,14 @@
 													"type": "string"
 												},
 												"kind": {
-													"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+													"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 													"enum": [
 														"ip",
 														"redirect",
-														"hostname"
+														"hostname",
+														"asn"
 													],
-													"example": "ip",
-													"type": "string"
+													"example": "ip"
 												},
 												"modified_on": {
 													"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -4987,18 +4653,20 @@
 													"example": 2,
 													"type": "number"
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
 								}
-							]
+							],
+							"type": "object"
 						}
 					}
 				},
 				"description": "Update a list response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5059,9 +4727,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -5088,31 +4753,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -5130,7 +4770,7 @@
 														},
 														"description": {
 															"description": "An informative summary of the list.",
-															"example": "This is a note.",
+															"example": "This is a note",
 															"maxLength": 500,
 															"type": "string"
 														},
@@ -5143,14 +4783,14 @@
 															"type": "string"
 														},
 														"kind": {
-															"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
+															"description": "The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).",
 															"enum": [
 																"ip",
 																"redirect",
-																"hostname"
+																"hostname",
+																"asn"
 															],
-															"example": "ip",
-															"type": "string"
+															"example": "ip"
 														},
 														"modified_on": {
 															"description": "The RFC 3339 timestamp of when the list was last modified.",
@@ -5174,12 +4814,14 @@
 															"example": 2,
 															"type": "number"
 														}
-													}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
 										}
-									]
+									],
+									"type": "object"
 								},
 								{
 									"properties": {
@@ -5276,9 +4918,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update a list",
@@ -5329,28 +4968,28 @@
 						"items": {
 							"allOf": [
 								{
-									"oneOf": [
-										{
-											"required": [
-												"ip"
-											]
-										},
-										{
-											"required": [
-												"redirect"
-											]
-										},
-										{
-											"required": [
-												"hostname"
-											]
-										}
-									],
 									"properties": {
+										"asn": {
+											"description": "A non-negative 32 bit integer",
+											"example": 5567,
+											"type": "integer"
+										},
 										"comment": {
 											"description": "An informative summary of the list item.",
 											"example": "Private IP address",
 											"type": "string"
+										},
+										"hostname": {
+											"description": "Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).",
+											"properties": {
+												"url_hostname": {
+													"example": "example.com",
+													"type": "string"
+												}
+											},
+											"required": [
+												"url_hostname"
+											]
 										},
 										"ip": {
 											"description": "An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.",
@@ -5365,7 +5004,7 @@
 													"type": "boolean"
 												},
 												"preserve_path_suffix": {
-													"default": true,
+													"default": false,
 													"type": "boolean"
 												},
 												"preserve_query_string": {
@@ -5398,8 +5037,7 @@
 											"required": [
 												"source_url",
 												"target_url"
-											],
-											"type": "object"
+											]
 										}
 									},
 									"type": "object"
@@ -5472,9 +5110,6 @@
 														{
 															"items": {},
 															"type": "array"
-														},
-														{
-															"type": "string"
 														}
 													]
 												},
@@ -5501,31 +5136,6 @@
 													"items": {},
 													"nullable": true,
 													"type": "array"
-												},
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters",
-															"example": 2000,
-															"type": "number"
-														}
-													},
-													"type": "object"
 												}
 											}
 										}
@@ -5554,7 +5164,7 @@
 				},
 				"description": "Update all list items response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -5615,9 +5225,6 @@
 																{
 																	"items": {},
 																	"type": "array"
-																},
-																{
-																	"type": "string"
 																}
 															]
 														},
@@ -5644,31 +5251,6 @@
 															"items": {},
 															"nullable": true,
 															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
 														}
 													}
 												}
@@ -5788,9 +5370,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update all list items",

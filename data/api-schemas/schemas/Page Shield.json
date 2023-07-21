@@ -627,7 +627,7 @@
 				"in": "query",
 				"name": "exclude_urls",
 				"schema": {
-					"description": "Excludes connections whose URL contains one the URL-encoded URL substrings (separated by commas) from the returned connections.",
+					"description": "Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.\n",
 					"example": "blog.cloudflare.com,www.example",
 					"type": "string"
 				}
@@ -636,7 +636,7 @@
 				"in": "query",
 				"name": "urls",
 				"schema": {
-					"description": "Filters the returned connections by one or more URL-encoded URL substrings separated by commas.",
+					"description": "Includes connections whose URL contain one or more URL-encoded URLs separated by commas.\n",
 					"example": "blog.cloudflare.com,www.example",
 					"type": "string"
 				}
@@ -645,8 +645,8 @@
 				"in": "query",
 				"name": "hosts",
 				"schema": {
-					"description": "Filters the returned connections by one or more URL-encoded hostname substrings separated by commas.",
-					"example": "blog.cloudflare.com,www.example",
+					"description": "Includes connections that match one or more URL-encoded hostnames separated by commas.\n\nWildcards are supported at the start and end of each hostname to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "blog.cloudflare.com,www.example*,*cloudflare.com",
 					"type": "string"
 				}
 			},
@@ -654,10 +654,9 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"description": "The current page number of the paginated results.",
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the connections\nwith the applied filters in a single page. Additionally, when using this value, the API will not return \nthe categorisation data for the URL and domain of the connections. This feature is best-effort and it may \nonly work for zones with a low number of connections\n",
 					"example": 2,
-					"minimum": 1,
-					"type": "number"
+					"type": "string"
 				}
 			},
 			{
@@ -728,8 +727,8 @@
 				"in": "query",
 				"name": "page_url",
 				"schema": {
-					"description": "Filters the returned connections by the page URL where they were last seen.",
-					"example": "example.com/page",
+					"description": "Includes connections that match one or more page URLs (separated by commas) where they were last seen\n\nWildcards are supported at the start and end of each page URL to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "example.com/page,*/checkout,example.com/*,*checkout*",
 					"type": "string"
 				}
 			},
@@ -2195,7 +2194,7 @@
 				"in": "query",
 				"name": "exclude_urls",
 				"schema": {
-					"description": "Excludes scripts whose URL contains one the URL-encoded URL substrings (separated by commas) from the returned scripts.",
+					"description": "Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.\n",
 					"example": "blog.cloudflare.com,www.example",
 					"type": "string"
 				}
@@ -2204,7 +2203,7 @@
 				"in": "query",
 				"name": "urls",
 				"schema": {
-					"description": "Filters the returned scripts by one or more URL-encoded URL substrings separated by commas.",
+					"description": "Includes scripts whose URL contain one or more URL-encoded URLs separated by commas.\n",
 					"example": "blog.cloudflare.com,www.example",
 					"type": "string"
 				}
@@ -2213,8 +2212,8 @@
 				"in": "query",
 				"name": "hosts",
 				"schema": {
-					"description": "Filters the returned scripts by one or more URL-encoded hostname substrings separated by commas.",
-					"example": "blog.cloudflare.com,www.example",
+					"description": "Includes scripts that match one or more URL-encoded hostnames separated by commas.\n\nWildcards are supported at the start and end of each hostname to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "blog.cloudflare.com,www.example*,*cloudflare.com",
 					"type": "string"
 				}
 			},
@@ -2222,10 +2221,9 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"description": "The current page number of the paginated results.",
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the scripts\nwith the applied filters in a single page. Additionally, when using this value, the API will not return \nthe script versions or categorisation data for the URL and domain of the scripts. This feature is \nbest-effort and it may only work for zones with a low number of scripts\n",
 					"example": 2,
-					"minimum": 1,
-					"type": "number"
+					"type": "string"
 				}
 			},
 			{
@@ -2278,7 +2276,18 @@
 				"in": "query",
 				"name": "exclude_cdn_cgi",
 				"schema": {
+					"default": true,
 					"description": "When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true.",
+					"example": true,
+					"type": "boolean"
+				}
+			},
+			{
+				"in": "query",
+				"name": "exclude_duplicates",
+				"schema": {
+					"default": true,
+					"description": "When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript \ncontent matches and they share the same url host and zone hostname. In such case, we return the most \nrecent script for the URL host and zone hostname combination.\n",
 					"example": true,
 					"type": "boolean"
 				}
@@ -2296,8 +2305,8 @@
 				"in": "query",
 				"name": "page_url",
 				"schema": {
-					"description": "Filters the returned scripts by the page URL where they were last seen.",
-					"example": "example.com/page",
+					"description": "Includes scripts that match one or more page URLs (separated by commas) where they were last seen\n\nWildcards are supported at the start and end of each page URL to support starts with, ends with\nand contains. If no wildcards are used, results will be filtered by exact match\n",
+					"example": "example.com/page,*/checkout,example.com/*,*checkout*",
 					"type": "string"
 				}
 			},
