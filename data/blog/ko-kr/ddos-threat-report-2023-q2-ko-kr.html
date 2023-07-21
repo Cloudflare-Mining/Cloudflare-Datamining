@@ -1,0 +1,176 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image16-1.png" class="kg-image" alt="DDoS threat report for 2023 Q2" loading="lazy" width="1999" height="1125"></figure>
+	<p>2023년 두 번째 DDoS 위협 보고서에 오신 것을 환영합니다. DDoS 공격(<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank">분산 서비스 거부 공격</a>)은 마트에 가는 길에 교통 체증에 갇힌 운전자와 같이 웹 사이트(및 기타 유형의 인터넷 자산)에 감당할 수 없는 트래픽을 폭주시켜 정상적인 사용자가 사용할 수 없도록 하는 것을 목표로 하는 사이버 공격의 일종입니다.</p>
+	<p>Cloudflare에서는 모든 유형과 모든 규모의 DDoS 공격을 다수 경험하고 있으며, 당사의 <a href="https://www.cloudflare.com/network" target="_blank">네트워크</a>는 100여 개국 300여 개의 도시에 걸쳐 있는 세계 최대 규모의 네트워크 중 하나입니다. 당사에서는 이 네트워크를 통해 초당 최대 6,300만 건 이상의 HTTP 요청과 매일 2조 건 이상의 DNS 쿼리를 처리합니다. 이와 같은 방대한 양의 데이터 덕분에 당사에서는 커뮤니티에 DDoS 동향에 대한 인사이트를 제공할 수 있는 독보적인 위치를 확보하였습니다. </p>
+	<p>일반 독자의 경우 이 보고서의 레이아웃이 변경된 것을 확인할 수 있습니다. 저희는 정해진 패턴에 따라 DDoS 공격에 대한 통찰력과 동향을 공유하곤 했습니다. 하지만 DDoS 공격이 더욱 강력하고 정교해지며 DDoS 위협의 환경이 변화함에 따라, 조사 결과를 발표하는 방식에도 변화가 필요하다고 생각했습니다. 먼저 글로벌 개요를 간략히 살펴본 다음 DDoS 공격의 세계에서 일어나고 있는 주요 변화에 대해 알아보겠습니다.</p>
+	<p><em>알림: 이 보고서의 대화형 버전은 </em><a href="https://radar.cloudflare.com/reports/ddos-2023-q2" target="_blank"><em>Cloudflare Radar</em></a><em>에서도 확인할 수 있습니다. 또한, 각 국가 또는 지역의 공격 활동을 자세히 살펴볼 수 있는 새로운 </em><a href="https://radar.cloudflare.com/security-and-attacks" target="_blank"><em>대화형 구성 요소</em></a><em> 도 추가했습니다.</em></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0.png" class="kg-image" alt="" loading="lazy" width="1600" height="977">
+		<figcaption>새로운 대화형 레이더 그래프를 통해 로컬 DDoS 활동을 파악할 수 있습니다.</figcaption>
+	</figure>
+	<h2 id="ddos-%ED%99%98%EA%B2%BD-%EA%B8%80%EB%A1%9C%EB%B2%8C-%ED%8C%A8%ED%84%B4-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0">DDoS 환경: 글로벌 패턴 살펴보기</h2>
+	<p>2023년 2분기는 다음과 같은 다양한 전선에서 치밀하고 맞춤형이며 지속적인 DDoS 공격 캠페인이 발생한 것이 특징입니다.</p>
+	<ol>
+		<li>러시아의 프로 핵티비스트 그룹인 REvil, Killnet, Anonymous Sudan이 흥미 있는 서구의 웹사이트를 대상으로 여러 차례 DDoS공격을 감행했습니다.</li>
+		<li>의도적으로 엔지니어링되고 표적화된 DNS 공격의 증가와 함께, Mitel의 취약점을 악용한 DDoS 공격이 532% 급증했습니다(<a href="https://blog.cloudflare.com/cve-2022-26143-amplification-attack">CVE-2022-26143</a>). Cloudflare는 작년 zero-day에 이 취약점을 공개하는 데 기여했습니다.</li>
+		<li>암호화폐 기업을 대상으로 한 공격은 600% 증가했으며, HTTP DDoS 공격은 15% 증가했습니다. 이 중 공격이 놀라울 정도로 정교해지는 것을 발견했으며, 이에 대해서는 더 자세히 다룰 예정입니다.</li>
+	</ol>
+	<p>또한 이번 분기에 발생한 가장 큰 공격 중 하나는 <a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood" target="_blank">ACK 플러드</a> DDoS 공격으로, 약 11,000개의 IP 주소로 구성된 <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank">Mirai 변종 봇넷</a> 에서 발생한 ACK 플러드 공격입니다. 이 공격은 미국의 한 인터넷 서비스 공급자를 표적으로 삼았습니다. 이 공격은 초당 1.4테라비트(Tbps)로 최고조에 달했으며 Cloudflare의 시스템에 의해 자동으로 탐지 및 완화되었습니다.</p>
+	<p>일반적인 수치는 전체적인 공격 지속 시간이 증가했음을 나타내지만, 대부분의 공격은 단기간에 끝났으며 이번 공격도 마찬가지였습니다. 이 공격은 단 2분 동안만 지속되었습니다. 그러나 보다 광범위하게 보면 <strong>3시간을 초과하는 공격이 이전 분기 대비 103% 증가한 것으로 나타났습니다.</strong></p>
+	<p>이제 배경을 설명했으니 DDoS 환경에서 나타나는 이러한 변화에 대해 자세히 알아보겠습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy" width="1600" height="752">
+		<figcaption>Mirai 봇넷이 미국 서비스 공급자를 1.4Tbps로 공격해 최고치 기록</figcaption>
+	</figure>
+	<h2 id="darknet-parliament%EB%A1%9C-%EB%B6%88%EB%A6%AC%EB%8A%94-%ED%95%B5%ED%8B%B0%EB%B9%84%EC%8A%A4%ED%8A%B8-%EC%97%B0%ED%95%A9%EC%9D%80-%EC%84%9C%EB%B0%A9-%EC%9D%80%ED%96%89%EA%B3%BC-swift-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EB%A5%BC-%EB%85%B8%EB%A6%BD%EB%8B%88%EB%8B%A4">"Darknet Parliament"로 불리는 핵티비스트 연합은 서방 은행과 SWIFT 네트워크를 노립니다</h2>
+	<p>6월 14일, 러시아 프로 핵티비스트 그룹인 Killnet과 Revil Anonymous Sudan이 부활하여 <a href="https://www.darkreading.com/risk/killnet-threatens-imminent-swift-world-banking-attacks" target="_blank">힘을 합쳐 유럽 은행과 미국 중앙은행, 미국 연방준비제도를 포함한 서방 금융 시스템에 대한 "대규모" 사이버 공격을</a> 감행했다고 발표했습니다. "Darknet Parliament"라고 불리는 이 단체의 첫 번째 목표는 <a href="https://en.wikipedia.org/wiki/SWIFT" target="_blank">SWIFT</a>(국제은행간 금융 통신 협회)를 마비시키는 것이라고 선언했습니다. SWIFT는 금융 기관이 글로벌 금융 거래를 수행하는 데 사용하는 주요 서비스이기 때문에, DDoS 공격이 성공하면 끔찍한 결과를 초래할 수 있습니다.</p>
+	<p>다음과 같이 널리 알려진 몇 가지 이벤트 외에도 <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-azure-outlook-outages-caused-by-ddos-attacks" target="_blank">Microsoft 서비스 중단</a> 등 언론에 보도된 몇 가지 사건을 제외하고는 고객을 대상으로 한 새로운 DDoS 공격이나 서비스 중단이 관찰되지 않았습니다. 저희 시스템은 이 캠페인과 관련된 공격을 자동으로 탐지하고 완화하고 있습니다. 지난 몇 주 동안 Darknet Parliament가 Cloudflare-보호 웹사이트를 대상으로 실시한 DDoS 공격은 10,000건에 달했습니다(아래 그래프 참조). </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="439">
+		<figcaption>REvil, Killnet 및 Anonymous Sudan 공격</figcaption>
+	</figure>
+	<p>핵티비스트들의 주장에도 불구하고, 은행 및 금융 서비스 웹 사이트는 이번 캠페인의 고객 대상 공격을 기준으로 9번째로 공격을 많이 받은 산업에 불과했습니다. <br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="967">
+		<figcaption>REvil, Killnet 및 Anonymous Sudan 공격 캠페인에 의해 공격 받은 상위 산업</figcaption>
+	</figure>
+	<p>가장 많은 공격을 받은 산업은 컴퓨터 소프트웨어, 도박 및 카지노와 게임이었습니다. 4위와 5위는 통신 및 미디어 매체가 각각 차지했습니다. 이번 캠페인에서 목격된 가장 큰 공격은 초당 170만 요청(rps)으로 최고치를 기록했으며 평균은 65,000rps였습니다. </p>
+	<p>참고로, 올해 초에는 <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">기록상 최대 규모인 7,100만 rps를 기록한 공격을 완화한 바 있습니다.</a> 따라서 이러한 공격은 <em>Cloudflare의 규모</em>와 비교하면 매우 작았지만, 일반 웹 사이트에서는 그렇지 않았습니다. 따라서 보호되지 않거나 최적으로 구성되지 않은 웹 사이트의 피해 가능성을 과소평가해서는 안 됩니다.</p>
+	<h3 id="%EC%A0%95%EA%B5%90%ED%95%9C-http-ddos-%EA%B3%B5%EA%B2%A9">정교한 HTTP DDoS 공격</h3>
+	<p><a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank">HTTP DDos 공격</a>은 <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank">하이퍼텍스트 전송 프로토콜(HTTP)</a>을 통한 DDos 공격입니다. 이 공격은 웹 사이트 및 API 게이트웨이와 같은 HTTP 인터넷 자산을 표적으로 삼습니다. 지난 분기 동안 HTTP DDoS 공격은 전년 대비 35% 감소했지만 전년 분기 대비(QoQ) 15% 증가했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/DDoS-HTTP-Application.png" class="kg-image" alt="" loading="lazy" width="1134" height="600">
+		<figcaption>HTTP DDoS 공격에 대한 그림</figcaption>
+	</figure>
+	<p>또한 지난 몇 달 동안 고도로 무작위화되고 정교화된 HTTP DDoS 공격이 놀라울 정도로 증가하는 것을 목격했습니다. 이러한 공격의 배후에 있는 위협 행위자들은 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent" target="_blank">사용자 에이전트</a> 및 <a href="https://developers.cloudflare.com/bots/concepts/ja3-fingerprint" target="_blank">JA3 지문</a> 등 다양한 속성에 고도의 무작위성을 도입하여 브라우저 동작을 매우 정확하게 모방함으로써, 방어 시스템을 우회하기 위해 의도적으로 공격을 설계한 것으로 보입니다. 이러한 공격의 예가 아래에 나와 있습니다. 각기 다른 색상은 서로 다른 무작위화 기능을 나타냅니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy" width="1356" height="712">
+		<figcaption>고도로 무작위화된 HTTP DDoS 공격의 예시</figcaption>
+	</figure>
+	<p>또한, 이러한 공격의 대부분은 위협 행위자가 감지를 피하고 합법적인 트래픽 사이에 숨기 위해 초당 공격 속도를 상대적으로 낮게 유지하려고 한 것으로 보입니다. </p>
+	<p>이러한 수준의 정교함은 이전에는 국가 수준 및 국가가 후원하는 위협 행위자들과 관련이 있었지만, 이제는 사이버 범죄자들이 이러한 능력을 마음대로 사용할 수 있는 것으로 보입니다. 이들의 공격은 대규모 <a href="https://www.cloudflare.com/learning/video/what-is-voip" target="_blank">VOIP</a> 공급자, 선도적인 반도체 회사, 주요 결제 및 신용 카드 제공업체 등 유명한 기업을 이미 표적으로 삼았습니다. </p>
+	<p>정교한 HTTP DDoS 공격으로부터 웹사이트를 보호하려면 위협 인텔리전스, 트래픽 프로파일링, 머신 러닝/통계 분석을 활용하여 공격 트래픽과 사용자 트래픽을 구분하는 자동화되고 빠른 지능형 보호가 필요합니다. 또한 <a href="https://developers.cloudflare.com/cache" target="_blank">캐싱</a>을 늘리는 것만으로도 원본에 영향을 미치는 공격 트래픽의 위험을 줄일 수 있습니다. DDoS 방어 모범 사례에 대한 자세한 내용은 <a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks" target="_blank">여기</a>에서 확인하세요.</p>
+	<h3 id="dns-%EC%84%B8%ED%83%81-ddos-%EA%B3%B5%EA%B2%A9">DNS 세탁 DDoS 공격</h3>
+	<p>도메인 네임 시스템(<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank">DNS</a>)은 인터넷의 전화번호부 역할을 합니다. DNS는 사람이 알기 쉬운 웹 사이트 주소(예: <a href="https://www.cloudflare.com" target="_blank">www.cloudflare.com</a>)를 기계가 알기 쉬운 IP 주소(예: 104.16.124.96)로 변환하는 데 도움을 줍니다. 공격자는 DNS 서버를 중단시킴으로써 컴퓨터가 웹 사이트에 연결하는 기능에 영향을 미치고 사용자가 웹 사이트를 사용할 수 없게 만듭니다. </p>
+	<p>지난 분기 동안 가장 많이 발생한 공격 벡터는 <a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank">DNS 기반 DDoS 공격</a>으로 전체 DDoS 공격의 32%가 DNS 프로토콜을 통해 발생했습니다. 이 중 가장 우려되는 공격 유형 중 하나는 <em>DNS 세탁 공격</em>으로, <a href="https://www.cloudflare.com/learning/dns/dns-server-types/#:~:text=What%20is%20an%20authoritative%20nameserver%3F" target="_blank">권한 있는 DNS 서버</a>를 자체적으로 운영하는 조직에 심각한 문제를 일으킬 수 있습니다. </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy" width="1600" height="881">
+		<figcaption>2023년 2분기 상위 DDoS 공격 벡터</figcaption>
+	</figure>
+	<p>DNS 세탁 공격에서 "세탁"이라는 용어는 흔히 "더러운 돈"으로 불리는, 불법적으로 얻은 수익금을 합법적인 것처럼 보이게 하는 교묘한 과정인 자금 세탁을 비유한 것입니다. 이와 유사하게 DDoS 세계에서 DNS 세탁 공격은 평판이 좋은 <a href="https://www.cloudflare.com/learning/dns/dns-server-types/#:~:text=What%20is%20a%20DNS%20recursive%20resolver%3F" target="_blank">재귀 DNS 확인자</a>를 통해 악의적인 트래픽을 세탁하여 정상적이고 합법적인 트래픽으로 보이게 하는 프로세스입니다.</p>
+	<p>DNS 세탁 공격에서 위협 행위자는 피해자의 DNS 서버에서 관리하는 도메인의 하위 도메인을 쿼리합니다. 하위 도메인을 정의하는 접두사는 무작위로 지정되며 이러한 공격에서 한두 번 이상 사용되지 않습니다. 무작위화 요소로 인해 재귀 DNS 서버는 캐시 응답을 받지 못하며, 피해자의 권한 있는 DNS 서버로 쿼리를 전달해야 합니다. 그러면 권한 있는 DNS 서버는 정상적인 쿼리를 처리할 수 없을 정도로 많은 쿼리에 시달리거나 심지어는 서버가 모두 다운되기도 합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/DNS-Laundering-attack.png" class="kg-image" alt="" loading="lazy" width="1600" height="889">
+		<figcaption>DNS 세탁 DDoS 공격에 대한 그림</figcaption>
+	</figure>
+	<p>보호 관점에서 보면, 공격 소스에 Google의 8.8.8.8 및 Clouflare의 1.1.1.1과 같은 평판이 좋은 재귀 DNS 서버가 포함되어 있기 때문에 DNS 관리자가 공격 소스를 차단할 수 없습니다. 또한 공격받은 도메인이 합법적인 쿼리에 대한 액세스를 유지하려는 유효한 도메인이기 때문에, 관리자는 공격받은 도메인에 대한 모든 쿼리를 차단할 수 없습니다.</p>
+	<p>위의 요인들로 인해 정상적인 쿼리와 악의적인 쿼리를 구분하기가 매우 어렵습니다. 최근 이러한 공격의 피해자로는 아시아의 대형 금융 기관과 북미 DNS 공급자가 있습니다. 이러한 공격의 예는 아래에 나와 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy" width="1600" height="572">
+		<figcaption>DNS 세탁 DDoS 공격 예시</figcaption>
+	</figure>
+	<p>HTTP 애플리케이션에 대해 설명한 보호 전략과 마찬가지로, DNS 서버를 보호하려면 정확하고 빠르며 자동화된 접근 방식이 필요합니다. Cloudflare의 <a href="https://developers.cloudflare.com/dns" target="_blank">관리형 DNS 서비스</a> 또는 <a href="https://developers.cloudflare.com/dns/dns-firewall" target="_blank">DNS 역방향 프록시</a>를 활용하면 공격 트래픽을 흡수하고 완화하는 데 도움이 될 수 있습니다. 보다 정교한 DNS 공격의 경우, 기록 데이터의 통계 분석을 활용하여 정상적인 쿼리와 공격 쿼리를 구분할 수 있는 보다 지능적인 솔루션이 필요합니다.</p>
+	<h2 id="%EA%B0%80%EC%83%81-%EB%A8%B8%EC%8B%A0-%EB%B4%87%EB%84%B7%EC%9D%98-%EB%B6%80%EC%83%81">가상 머신 봇넷의 부상</h2>
+	<p><a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">이전에 공개했던 바와 같이</a>, 우리는 봇넷<em> DNA</em>의 진화를 목격하고 있습니다. VM 기반 DDoS 봇넷의 시대가 도래했으며, 이에 따라 <em>하이퍼 볼류메트릭</em> DDoS 공격이 증가하고 있습니다. 이러한 봇넷은 사물 인터넷(IoT) 장치가 아닌 가상 머신(VM, 또는 가상 사설 서버, VPS)으로 구성되어 있어 최대 5,000배까지 훨씬 더 강력해졌습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy" width="1501" height="1040">
+		<figcaption>IoT 봇넷과 VM 봇넷을 비교한 그림</figcaption>
+	</figure>
+	<p>이러한 VM 기반 봇넷은 컴퓨터 및 대역폭 리소스를 마음대로 사용할 수 있기 때문에, IoT 기반 봇넷에 비해 훨씬 적은 수의 봇넷으로 하이퍼 볼류메트릭 공격을 생성할 수 있습니다. </p>
+	<p>이 봇넷은 <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">초당 7,100만 건의 DDoS 공격 요청</a>을 포함하여 사상 최대 규모의 DDoS 공격을 실행했습니다. 업계를 선도하는 게임 플랫폼 제공자를 포함한 여러 조직이 이미 이 차세대 봇넷의 표적이 되었습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-67.png" class="kg-image" alt="Introducing Cloudflare’s free Botnet Threat Feed for service providers" loading="lazy" width="1600" height="899"></figure>
+	<p>Cloudflare는 이러한 신종 봇넷에 대응하기 위해 저명한 클라우드 컴퓨팅 공급자와 적극적으로 협력하고 있습니다. 이러한 공급자의 신속하고 헌신적인 조치 덕분에 봇넷의 중요한 구성 요소가 무력화되었습니다. 이 개입 이후, 아직까지는 추가적인 하이퍼 볼류메트릭 공격이 관찰되지 않았으며, 이는 협업의 효과를 입증하는 증거입니다.</p>
+	<p>Cloudflare는 대규모 공격 식별 시 봇넷에 대응하기 위해 사이버 보안 커뮤니티와 이미 긴밀하게 협력하고 있지만, 이 프로세스를 더욱 간소화하고 자동화하는 것이 목표입니다. 저희는 클라우드 컴퓨팅 공급자, 호스팅 공급자 및 기타 일반 서비스 공급자를 <a href="https://www.cloudflare.com/lp/botnet-threat-feed" target="_blank">Cloudflare의 무료 Botnet Threat Feed</a>로 초대합니다. 이를 통해 네트워크 내에서 발생하는 공격에 대한 가시성을 확보하여, 봇넷을 해체하기 위한 공동의 노력에 기여할 수 있습니다.</p>
+	<h2 id="startblast-ddos-%EA%B3%B5%EA%B2%A9%EC%9D%84-%EC%9C%84%ED%95%9C-mitel-%EC%B7%A8%EC%95%BD%EC%A0%90-%EC%95%85%EC%9A%A9">"Startblast": DDoS 공격을 위한 Mitel 취약점 악용</h2>
+	<p>2022년 3월, 당사에서는 TP240PhoneHome이라고 명명된 <a href="https://blog.cloudflare.com/cve-2022-26143-amplification-attack">제로 데이 취약점</a>(<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-26143" target="_blank">CVE-2022-26143</a>)을 공개했습니다. <a href="https://www.mitel.com/en-gb/products/applications/collaboration/micollab" target="_blank">Mitel MiCollab</a> 비즈니스 전화 시스템에서 확인된 이 취약점 때문에 해당 시스템이 UDP 증폭 DDoS 공격에 노출되었습니다. </p>
+	<p>이러한 악용은 취약한 서버의 트래픽을 반영하여 그 과정에서 트래픽을 증폭시키는 방식으로 작동하며, 그 증폭률은 최대 2,200억 퍼센트에 달합니다. 이 취약점은 공용 인터넷에 노출된 미인증 UDP 포트로 인해 발생하며, 악의적인 공격자가 'startblast' 디버깅 명령을 실행하여 시스템 테스트를 위해 많은 호출을 시뮬레이션할 수 있습니다. </p>
+	<p>그 결과, 각 테스트 호출마다 두 개의 UDP 패킷이 발급자에게 전송되며, 공격자가 이 트래픽을 임의의 IP 및 포트 번호로 전송하여 DDoS 공격을 증폭시킬 수 있습니다. 이러한 취약점에도 불구하고 이러한 장치들 중 수천 개만 노출되어 있어 잠재적인 공격 규모가 제한적이며, 공격은 연속적으로 실행되어야 하기 때문에 각 디바이스는 한 번에 하나의 공격만 실행할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0-2.png" class="kg-image" alt="" loading="lazy" width="1586" height="958">
+		<figcaption>Startblast DDoS 공격의 주요 표적 산업</figcaption>
+	</figure>
+	<p>전반적으로 지난 분기에는 TeamSpeak3 프로토콜을 악용하는 DDoS 공격과 같은 새로운 위협이 추가로 발견되었습니다. 이 공격 벡터는 이번 분기에 무려 403% 증가했습니다. </p>
+	<p><a href="https://en.wikipedia.org/wiki/TeamSpeak" target="_blank">TeamSpeak</a>의 독점 <a href="https://en.wikipedia.org/wiki/Voice_over_IP" target="_blank">음성 인터넷 프로토콜(VOIP)</a>은 UDP를 통해 게이머가 다른 게이머와 실시간으로 대화할 수 있도록 지원합니다. 단순한 채팅이 아닌 게임에 대한 대화는 게임 팀의 효율성을 크게 향상시키고 승리에 도움이 될 수 있습니다. 라이벌 그룹은 팀의 성과에 영향을 미치려는 의도로 실시간 멀티플레이어 게임 도중 통신 경로를 방해하여 TeamSpeak 서버를 표적으로 하는 DDoS 공격을 시작할 수 있습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--1--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="840">
+		<figcaption>새롭게 부상하는 위협</figcaption>
+	</figure>
+	<h2 id="ddos-%ED%95%AB%EC%8A%A4%ED%8C%9F-%EA%B3%B5%EA%B2%A9%EC%9D%98-%EB%B0%9C%EC%9B%90%EC%A7%80">DDoS 핫스팟: 공격의 발원지</h2>
+	<p>전체적으로 HTTP DDoS 공격은 전년 동기 대비 35% 감소했지만 전년 대비 15% 증가했습니다. 또한 이번 분기에는 네트워크 계층 DDoS 공격이 약 14% 감소했습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy" width="1600" height="1011">
+		<figcaption>분기별 HTTP DDoS 공격 요청</figcaption>
+	</figure>
+	<p>공격 트래픽의 총량을 기준으로 볼 때, 미국은 HTTP DDoS 공격의 최대 발원지였습니다. 저희가 확인한 1,000건의 요청 중 3건은 미국에서 시작된 HTTP DDoS 공격의 일부였습니다. 2위는 중국, 3위는 독일이 차지했습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy" width="1600" height="881">
+		<figcaption>HTTP DDoS 공격의 상위 출처 국가(전 세계 트래픽 총량에서 공격 트래픽이 차지하는 비율)</figcaption>
+	</figure>
+	<p>일부 국가는 시장 규모 등 다양한 요인으로 인해 자연스럽게 더 많은 트래픽이 발생하여 더 많은 공격이 발생합니다. 따라서 특정 국가에서 발생한 공격 트래픽의 총량을 파악하는 것도 흥미롭지만, 특정 국가에 대한 모든 트래픽을 기준으로 공격 트래픽을 정규화하여 편향성을 제거하는 것도 도움이 됩니다.</p>
+	<p>이렇게 하면 다른 패턴을 볼 수 있습니다. 미국은 상위 10위권에도 들지 못했습니다. 그 대신 모잠비크, 이집트, 핀란드가 전체 트래픽 대비 가장 많은 HTTP DDoS 공격 트래픽을 발생시킨 국가로 선두를 차지했습니다. 모잠비크 IP 주소에서 발생된 전체 HTTP 트래픽의 약 5분의 1이 DDoS 공격의 일부였습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--11-.png" class="kg-image" alt="" loading="lazy" width="1600" height="881">
+		<figcaption>HTTP DDoS 공격의 상위 출처 국가(국가별 트래픽 총량에서 공격 트래픽이 차지하는 비율)</figcaption>
+	</figure>
+	<p>동일한 계산 방법론을 바이트 단위로 계산하면, 베트남은 2분기 연속으로 여전히 네트워크 계층 DDoS 공격(일명 <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks" target="_blank">L3/4 DDoS 공격</a>)의 최대 발원지였으며, 그 양은 이전 분기 대비 58% 증가했습니다. Cloudflare의 베트남 데이터 센터에서 수집된 전체 바이트 중 41% 이상이 L3/4 DDoS 공격의 일부였습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--12-.png" class="kg-image" alt="" loading="lazy" width="1600" height="959">
+		<figcaption>L3/4 DDoS 공격의 상위 출처 국가(국가별 전체 트래픽 중 공격 트래픽 비율)</figcaption>
+	</figure>
+	<h2 id="%EA%B3%B5%EA%B2%A9-%EB%B0%9B%EB%8A%94-%EC%82%B0%EC%97%85-ddos-%EA%B3%B5%EA%B2%A9-%ED%91%9C%EC%A0%81-%EC%A1%B0%EC%82%AC%ED%95%98%EA%B8%B0">공격 받는 산업: DDoS 공격 표적 조사하기</h2>
+	<p>2분기의 HTTP DDoS 공격 활동을 조사한 결과, 암호화폐 웹사이트가 가장 많은 HTTP DDoS 공격 트래픽의 표적이 되었습니다. Cloudflare의 보호를 받는 암호화폐 웹 사이트에 대한 HTTP 요청 10건 중 6건은 이러한 공격의 일부였습니다. 이는 전 분기에 비해 600% 증가한 수치입니다. </p>
+	<p>암호화폐에 이어 게임 및 도박 웹 사이트의 공격 점유율이 이전 분기 대비 19% 증가하며 2위를 차지했습니다. 마케팅 및 광고 웹 사이트는 공격 점유율에 큰 변화 없이 3위를 차지했습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy" width="1600" height="865">
+		<figcaption>HTTP DDoS 공격의 표적이 된 상위 산업(모든 산업의 트래픽 총량에서 공격 트래픽이 차지하는 비율)</figcaption>
+	</figure>
+	<p>그러나 특정 산업의 전체 트래픽 대비 공격 트래픽의 양을 살펴보면 다른 그림이 그려집니다. 지난 분기에는 비영리 단체가 가장 많은 공격을 받았으며, 비영리 단체에 대한 트래픽의 12%가 HTTP DDoS 공격이었습니다. Cloudflare는 <a href="https://blog.cloudflare.com/nine-years-of-project-galileo-and-how-the-last-year-has-changed-it">올해 9주년을 맞이한 프로젝트 Galileo</a>의 일환으로 111개국 2,271개 이상의 비영리 단체를 보호하고 있습니다. 지난 몇 달 동안 비영리 단체를 표적으로 삼은 사이버 공격은 하루 평균 6,770만 건에 달했습니다. </p>
+	<p>전체적으로, 비영리 단체를 대상으로 한 DDoS 공격은 46% 증가하여 공격 트래픽의 비율이 17.6%로 증가했습니다. 그러나 이러한 성장에도 불구하고 경영 컨설팅 산업은 DDoS 공격이 전체 트래픽의 18.4%를 차지하며 1위에 올랐습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy" width="1600" height="876">
+		<figcaption>HTTP DDoS 공격의 표적이 된 상위 산업(산업별 트래픽 총량에서 공격 트래픽이 차지하는 비율)</figcaption>
+	</figure>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank">OSI 모델</a> 계층에서 가장 많이 표적이 된 인터넷 네트워크는 정보 기술 및 서비스 산업에 속해 있었습니다. 이 업계로 라우팅되는 거의 모든 3분의 1바이트가 L3/4 DDoS 공격의 일부였습니다. </p>
+	<p>놀랍게도 음악 산업에 종사하는 기업이 방송 미디어 및 항공과 항공우주에 이어 두 번째로 많은 표적 공격을 받은 산업이었습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--15-.png" class="kg-image" alt="" loading="lazy" width="1600" height="876">
+		<figcaption>L3/4 DDoS 공격의 표적이 된 상위 산업(산업별 트래픽 총량에서 공격 트래픽이 차지하는 비율)</figcaption>
+	</figure>
+	<h2 id="%EA%B0%80%EC%9E%A5-%EB%A7%8E%EC%9D%B4-%EA%B3%B5%EA%B2%A9%EB%B0%9B%EB%8A%94-%EC%82%B0%EC%97%85-%EC%A7%80%EC%97%AD%EB%B3%84-%EA%B4%80%EC%A0%90">가장 많이 공격받는 산업: 지역별 관점</h2>
+	<p>암호화폐 웹 사이트는 전 세계적으로 가장 많은 공격을 받았으며, 경영 컨설팅과 비영리 분야는 총 트래픽을 고려할 때 가장 많은 표적이 되었습니다. 하지만 개별 지역을 살펴보면 상황이 조금 다릅니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/Top-Attacked-Industry-by-Region-Q1-2023.png" class="kg-image" alt="" loading="lazy" width="1600" height="1054">
+		<figcaption>지역별 HTTP DDoS 공격의 표적이 된 상위 산업</figcaption>
+	</figure>
+	<h3 id="%EC%95%84%ED%94%84%EB%A6%AC%EC%B9%B4">아프리카</h3>
+	<p>통신 산업은 2분기 연속으로 아프리카에서 가장 많은 공격을 받았습니다. 은행, 금융 서비스 및 보험(BFSI) 산업이 두 번째로 공격을 많이 받은 산업으로 나타났습니다. 공격 트래픽의 대부분은 아시아(35%)와 유럽(25%)에서 발생했습니다.</p>
+	<h3 id="%EC%95%84%EC%8B%9C%EC%95%84">아시아</h3>
+	<p>지난 2분기 동안 게임 및 도박 산업은 아시아에서 가장 많은 표적 공격을 받은 산업이었습니다. 그러나 2분기에는 게임 및 도박 산업이 2위로 내려왔고, 암호화폐가 가장 많은 공격(약 50%)을 받아 선두를 차지했습니다. 공격 트래픽의 상당 부분은 아시아(30%)와 북미(30%)에서 발생했습니다.</p>
+	<h3 id="%EC%9C%A0%EB%9F%BD">유럽</h3>
+	<p>게임 및 도박 산업은 3분기 연속으로 유럽에서 가장 많은 공격을 받았습니다. 호스피탈리티 및 방송 미디어 산업이 그 뒤를 이어 두 번째와 세 번째로 공격을 많이 받았습니다. 공격 트래픽의 대부분은 유럽 자체(40%)와 아시아(20%)에서 발생했습니다.</p>
+	<h3 id="%EB%82%A8%EB%AF%B8">남미</h3>
+	<p>놀랍게도 라틴 아메리카를 대상으로 한 전체 공격 트래픽의 절반이 스포츠 용품 업계를 겨냥한 것으로 나타났습니다. 지난 분기에 가장 많은 공격을 받은 산업은 BFSI 산업이었습니다. 공격 트래픽의 약 35%는 아시아에서 발생했으며, 나머지 25%는 유럽에서 발생했습니다. </p>
+	<h3 id="%EC%A4%91%EB%8F%99">중동</h3>
+	<p>미디어 및 신문 산업은 중동에서 가장 많은 공격을 받았습니다. 공격 트래픽의 대부분은 유럽(74%)에서 발생했습니다. </p>
+	<h3 id="%EB%B6%81%EB%AF%B8">북미</h3>
+	<p>마케팅 및 광고 회사가 2분기 연속으로 북미에서 가장 많은 공격을 받은 것으로 나타났습니다(약 35%). 제조업과 컴퓨터 소프트웨어 기업이 각각 2위와 3위를 차지했습니다. 공격 트래픽의 주요 발생지는 유럽(42%)과 미국(35%)이었습니다.</p>
+	<h3 id="%EC%98%A4%EC%84%B8%EC%95%84%EB%8B%88%EC%95%84">오세아니아</h3>
+	<p>이번 분기에는 생명공학 산업이 가장 많은 공격을 받았습니다. 이전에는 건강 및 웰니스 산업이었습니다. 공격 트래픽의 대부분은 아시아(38%)와 유럽(25%)에서 발생했습니다.</p>
+	<h2 id="%EA%B3%B5%EA%B2%A9-%EB%8C%80%EC%83%81-%EA%B5%AD%EA%B0%80-%EB%B0%8F-%EC%A7%80%EC%97%AD-ddos-%EA%B3%B5%EA%B2%A9-%ED%91%9C%EC%A0%81-%EC%A1%B0%EC%82%AC%ED%95%98%EA%B8%B0">공격 대상 국가 및 지역: DDoS 공격 표적 조사하기</h2>
+	<p>총 공격 트래픽 양을 살펴보면, 지난 분기에는 이스라엘이 가장 많은 공격을 받은 국가로 떠올랐습니다. 이번 분기에는 이스라엘 웹 사이트를 대상으로 하는 공격이 33% 감소하여 4위를 차지했습니다. 미국이 가장 많은 공격을 받은 국가로 다시 한 번 선두를 차지했으며 캐나다와 싱가포르가 그 뒤를 이었습니다. <br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--16-.png" class="kg-image" alt="" loading="lazy" width="1600" height="876">
+		<figcaption>HTTP DDoS 공격의 표적이 된 상위 국가 및 지역(전체 국가 및 지역의 총 트래픽 중 공격 트래픽의 비율)</figcaption>
+	</figure>
+	<p>국가 및 지역별로 데이터를 정규화하고 공격 트래픽을 전체 트래픽으로 나누면 다른 그림을 볼 수 있습니다. 팔레스타인이 가장 많은 공격을 받은 국가 1위에 올랐습니다. 팔레스타인 웹 사이트로 유입되는 전체 트래픽의 거의 12%가 HTTP DDoS 공격이었습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--17-.png" class="kg-image" alt="" loading="lazy" width="1600" height="872">
+		<figcaption>HTTP DDoS 공격의 표적이 된 상위 국가 및 지역(국가 및 지역별 전체 트래픽 중 공격 트래픽 비율)</figcaption>
+	</figure>
+	<p>지난 분기에는 네트워크 계층에서 눈에 띄는 편차가 관찰되었으며, Cloudflare가 보호하는 핀란드 네트워크가 주요 표적이 되었습니다. 이러한 급증은 <a href="https://en.wikipedia.org/wiki/Finland%E2%80%93NATO_relations" target="_blank">핀란드의 나토 공식 가입</a>을 촉발한 외교 회담과 관련이 있을 가능성이 높습니다. 핀란드로 유입되는 전체 트래픽의 약 83%가 사이버 공격으로 구성되었으며, 중국이 68%의 공격 트래픽의 근소한 차이로 2위를 차지했습니다.</p>
+	<p>하지만 이번 분기에는 매우 다른 그림이 그려집니다. 핀란드가 10위권 밖으로 밀려났고, Cloudflare가 보호하는 중국 인터넷 네트워크가 1위가 되었습니다. Cloudflare에서 보호하는 중국 네트워크로 향하는 바이트 스트림의 약 3분의 2가 악의적인 것이었습니다. 중국에 이어 스위스는 인바운드 트래픽의 절반이 공격을 구성하는 것으로 나타났으며, 유입 트래픽의 4분의 1이 적대적인 것으로 확인된 터키는 3위를 차지했습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--18-.png" class="kg-image" alt="" loading="lazy" width="1600" height="872">
+		<figcaption>L3/4 DDoS 공격의 표적이 된 상위 국가 및 지역(국가 및 지역별 전체 트래픽 중 공격 트래픽 비율)</figcaption>
+	</figure>
+	<h2 id="%EB%9E%9C%EC%84%AC-ddos-%EA%B3%B5%EA%B2%A9">랜섬 DDoS 공격</h2>
+	<p>때때로 랜섬 지불을 갈취하기 위해 DDoS 공격이 감행되기도 합니다. 저희는 지난 3년 동안 Cloudflare 고객을 대상으로 설문조사를 실시해 왔으며, <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank">랜섬 DDoS 공격</a> 이벤트의 발생을 추적해 왔습니다. <br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--19-.png" class="kg-image" alt="" loading="lazy" width="1600" height="876">
+		<figcaption>랜섬웨어와 랜섬 DDoS 공격의 높은 수준 비교</figcaption>
+	</figure>
+	<p>일반적으로 피해자가 악의적인 파일을 다운로드하거나 손상된 이메일 링크를 클릭하면 몸값을 지불할 때까지 파일이 잠기거나 삭제 또는 유출되는 <a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware" target="_blank">랜섬웨어</a> 공격과 달리, <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank">랜섬 DDoS 공격</a>은 위협 행위자가 훨씬 더 간단하게 실행할 수 있습니다. 랜섬 DDoS 공격은 피해자가 의심스러운 이메일을 열거나 사기성 링크를 클릭하도록 유인하는 등의 기만적인 수법이 필요하지 않으며, 네트워크에 침입하거나 기업 리소스에 액세스할 필요가 없습니다.</p>
+	<p>지난 분기 동안 랜섬 DDoS 공격에 대한 보고는 감소했습니다. 응답자 10명 중 1명은 랜섬 DDoS 공격을 받거나 위협을 받았다고 답했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/pasted-image-0--20-.png" class="kg-image" alt="" loading="lazy" width="1600" height="975"></figure>
+	<h2 id="%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%81%8A%EC%9E%84%EC%97%86%EC%9D%B4-%EC%A7%84%ED%99%94%ED%95%98%EB%8A%94-ddos-%EC%9C%84%ED%98%91-%ED%99%98%EA%B2%BD">마무리: 끊임없이 진화하는 DDoS 위협 환경</h2>
+	<p>최근 몇 달 동안 DDoS 공격의 정교함이 놀라울 정도로 증가했습니다. 또한 가장 규모가 크고 정교한 공격도 몇 분 또는 몇 초 동안만 지속될 수 있어 사람이 대응할 시간이 충분하지 않습니다. PagerDuty 경고가 전송되기도 전에 공격이 종료되어 피해가 발생할 수도 있습니다. 권투 선수가 몇 초 동안 얼굴에 펀치를 맞고 회복하는 데 시간이 걸리는 것처럼, DDoS 공격으로부터 복구하는 데는 공격 자체보다 훨씬 더 오래 걸릴 수 있습니다.</p>
+	<p>보안은 하나의 단일 제품이나 버튼 클릭이 아니라, 여러 계층의 방어가 포함된 프로세스를 통해 영향의 위험을 줄여야 합니다. Cloudflare의 자동화된 DDoS 방어 시스템은 DDoS 공격으로부터 클라이언트를 지속적으로 보호하여 고객이 핵심 비즈니스 운영에 집중할 수 있도록 합니다. 이러한 시스템은 <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules" target="_blank">방화벽</a>, <a href="https://developers.cloudflare.com/bots" target="_blank">봇 감지</a>, <a href="https://developers.cloudflare.com/api-shield" target="_blank">API 보호</a> 그리고 심지어 <a href="https://developers.cloudflare.com/cache" target="_blank">캐싱</a>과 같은 광범위한 Cloudflare 기능으로 보완되어 영향의 위험을 줄이는 데 기여할 수 있습니다. </p>
+	<p>DDoS 위협 환경은 진화하고 점점 더 복잡해지면서 빠른 해결책 이상의 것을 요구하고 있습니다. 다행히 Cloudflare의 다계층 방어 및 자동 DDoS 방어 기능을 통해 클라이언트는 이러한 문제를 자신 있게 해결할 수 있습니다. Cloudflare의 사명은 더 나은 인터넷을 구축하는 것이며, 이를 위해 계속해서 경계를 늦추지 않고 모두에게 더 안전하고 신뢰할 수 있는 디지털 영역을 보장하는 것입니다.</p>
+	<h2 id="%EB%B0%A9%EB%B2%95%EB%A1%A0">방법론</h2>
+	<h3 id="%EB%9E%9C%EC%84%AC-ddos-%EA%B3%B5%EA%B2%A9-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EA%B3%84%EC%82%B0-%EB%B0%A9%EB%B2%95">랜섬 DDoS 공격 인사이트 계산 방법</h3>
+	<p>Cloudflare 시스템은 지속적으로 트래픽을 분석하면서 DDoS 공격이 감지되면 자동으로 완화 조치를 적용합니다. 공격의 특성을 더 자세히 파악하고 완화에 성공하는 데 도움이 되도록 공격을 당한 각 고객에게 자동 설문이 표시됩니다. Cloudflare는 2년 여에 걸쳐 공격 받은 고객에게 설문을 진행하고 있습니다. 설문조사에는 응답자가 위협이나 랜섬 노트를 받았는지 묻는 질문이 있습니다. 지난 2년간 분기당 평균 164건의 응답을 모았습니다. 설문조사 응답을 이용해 랜섬 DDoS 공격의 비율을 계산합니다.</p>
+	<h3 id="%EC%A7%80%EB%A6%AC%EC%A0%81-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%B0%8F-%EC%97%85%EA%B3%84-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EA%B3%84%EC%82%B0-%EB%B0%A9%EB%B2%95">지리적 인사이트 및 업계 인사이트 계산 방법</h3>
+	<p><strong>출처 국가</strong><br>애플리케이션 계층에서는 IP 주소를 사용해 공격 출처 국가를 파악했습니다. 이 계층에서는 IP 주소를 <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank">스푸핑</a>(변경)할 수 없기 때문입니다. 그러나 네트워크 계층에서는 소스 IP 주소 스푸핑이 가능합니다. 따라서 IP 주소를 이용해 출처 국가를 파악하는 대신, 공격 패킷이 수집된 Cloudflare 데이터 센터의 위치를 이용합니다. 범위가 전 세계 285개 이상 위치에 광범위하게 걸쳐져 있어 지리적 정확도를 확보할 수 있습니다. </p>
+	<p><strong>대상 국가</strong><br>애플리케이션 계층 및 네트워크 계층 DDoS 공격 모두에 대해 Cloudflare는 고객의 청구 국가별로 공격과 트래픽을 그룹화합니다. 이렇게 하면 어떤 국가가 더 많은 공격을 받는지 파악할 수 있습니다.</p>
+	<p><strong>표적 산업</strong><br>애플리케이션 계층 및 네트워크 계층 DDoS 공격 모두에 대해 Cloudflare는 고객 관계 관리 시스템에 따라 고객의 산업별로 공격과 트래픽을 그룹화합니다. 이렇게 하면 어떤 산업이 더 많은 공격을 받는지 파악할 수 있습니다.</p>
+	<p><strong>총량과 비율 비교</strong><br>출처 및 표적 인사이트 모두에 대해 전체 트래픽 대비 공격 트래픽의 총량을 하나의 데이터 포인트로 살펴봅니다. 또한 특정 국가를 향하거나 특정 국가에서 특정 국가, 또는 특정 산업으로 발생하는 공격 트래픽의 비율도 살펴봅니다. 그러면 특정 국가/산업에 대한 '공격 활동률'을 파악할 수 있으며, 이는 총 트래픽 수준으로 정규화됩니다. 이 방법을 사용하면 일반적으로 수신 트래픽이 많아서 공격 트래픽 발생량도 많은 국가나 산업에서 나타나는 편향도 제거할 수 있습니다.</p>
+	<p><strong>공격 특성 계산 방법</strong><br>공격 규모, 지속 시간, 공격 벡터, 새로운 위협을 계산하기 위해 공격을 버킷에 담아 각 차원에 대한 총량 중 각 버킷의 점유율을 제공합니다. 새로운 레이더 구성 요소에서는 이러한 동향이 바이트 수로 대신 계산됩니다. &nbsp;공격의 바이트 수가 서로 크게 다를 수 있으므로, 보고서와 레이더 구성 요소 간의 동향이 다를 수 있습니다.</p>
+	<h3 id="%EC%9D%BC%EB%B0%98-%EA%B3%A0%EC%A7%80-%EC%82%AC%ED%95%AD-%EB%B0%8F-%EC%84%A4%EB%AA%85">일반 고지 사항 및 설명</h3>
+	<p>공격의 출처나 표적으로 '상위 국가'를 설명할 때 반드시 해당 국가가 공격을 받았다는 의미는 아니며, 해당 국가를 청구서 발행 국가로 사용하는 조직이 공격의 표적이 되었다는 의미입니다. 마찬가지로 한 국가에서 시작된 공격은 해당 국가에서 공격을 시작했다는 뜻이 아니라 해당 국가로 매핑된 IP 주소에서 공격이 시작되었다는 뜻입니다. 위협 행위자는 전 세계에 노드를 두고 글로벌 봇넷을 운영하며, 많은 경우 가상 사설 네트워크와 프록시를 사용해 실제 위치를 난독화합니다. 그러므로 출처 국가는 해당 국가에 출구 노드나 봇넷 노드가 있음을 의미할 수 있습니다.</p>
+</div>

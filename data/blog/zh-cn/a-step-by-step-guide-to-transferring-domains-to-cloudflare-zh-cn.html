@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-35-11.png" class="kg-image" alt="" loading="lazy" width="1200" height="675"></figure>
+	<p>将域名转移到一家新注册商不是一项日常事务，此流程中的任何一个步骤出错，都可能导致停机和服务中断。因此我们为此次 Speed Week 准备了一份域名转移检查清单。希望任何人都有能力快速将域名转移到 Cloudflare Registrar，而不必担心遗漏任何步骤，或遗留任何问题无人解答。</p>
+	<h2 id="%E5%9F%9F%E5%90%8D%E8%BD%AC%E7%A7%BB%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95">域名转移检查清单</h2>
+	<h3 id="%E7%A1%AE%E8%AE%A4%E8%BD%AC%E7%A7%BB%E8%B5%84%E6%A0%BC">确认转移资格</h3>
+	<ul>
+		<li><strong>确认您想使用 Cloudflare 的域名服务器：</strong>我们<a href="https://blog.cloudflare.com/cloudflare-registrar">构建了域名注册商，专门面向</a>正在使用其他 Cloudflare 产品的客户。这意味着，在 Cloudflare 注册的域名只能使用我们的域名服务器。<em>如果您的域名需要使用非 Cloudflare 的域名服务器，那么我们不适合作为您的注册商。</em></li>
+		<li><strong>确认 Cloudflare 支持域名的顶级域名：</strong>您可在此查看<a href="https://www.cloudflare.com/tld-policies" target="_blank">我们目前支持的全部顶级域名列表</a>。<em>备注：我们计划在 2023 年 7 月中旬前支持 .dev 和 .app。</em></li>
+		<li><strong>确认您的域名不是优质域名或国际化域名 (IDN)：</strong>Cloudflare 目前不支持优质域名或国际化域名 (Unicode)。</li>
+		<li><strong>确认域名在过去 60 天内没有被注册或转移：</strong>互联网名称与数字地址分配机构 (ICANN) 规定，过去 60 天内已注册或转移过的域名禁止转移。</li>
+		<li><strong>确认 WHOIS 注册商的联系信息在过去 60 天内没有更新：</strong>根据 ICANN 的规定，如果 WHOIS 注册商的联系信息在过去 60 天内有修改，则域名禁止转移。</li>
+	</ul>
+	<h3 id="%E8%BD%AC%E7%A7%BB%E4%B9%8B%E5%89%8D">转移之前</h3>
+	<ul>
+		<li><strong>收集当前注册商的凭证：</strong>确保拥有当前注册商的凭证。您可能已经多年没有登录了，您可能需要重新设置密码。</li>
+		<li><strong>记录您当前的 DNS 设置：</strong>转移域名时，Cloudflare 会自动扫描您的 DNS 记录，但您自己也需要捕获当前设置，以防出现任何问题。</li>
+		<li><strong>删除 WHOIS 隐私（如有必要）：</strong>在大多数情况下，即使启用了 WHOIS 隐私服务，也可以转移域名。但是，如果启用了 WHOIS 隐私服务，有些注册商可能会禁止转移。</li>
+		<li><strong>禁用 DNSSEC：</strong>您可以禁用 <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank">DNSSEC</a>，方法是删除您当前 DNS 主机上的 DS 记录，并<a href="https://developers.cloudflare.com/registrar/account-options/enable-dnssec" target="_blank">在 Cloudflare 仪表板上禁用 DNSSEC。</a>.</li>
+		<li><strong>如果您的域名将在未来 15 天内到期，请续期：</strong>如果您的域名即将到期，您需要在启动转移之前先行续期。</li>
+		<li><strong>解锁域名：</strong>注册商提供了一套轻量级保护措施（通常称为注册商或域名锁），以防未经授权的用户启动域名转移。域名锁可以防止任何其他注册商试图启动转移。只有注册人可以启用或禁用域名锁（通常通过注册商的管理界面来完成）。</li>
+		<li><strong>注册 Cloudflare：</strong>如果您还没有 Cloudflare 账户，您可以<a href="https://dash.cloudflare.com/sign-up" target="_blank">在此注册</a>。</li>
+		<li><strong>将域名添加到 Cloudflare：</strong>您可以<a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site" target="_blank">按照以下说明</a>，向您的 Cloudflare 账户添加新域名。</li>
+		<li><strong>向您的 Cloudflare 账户添加一张有效信用卡：</strong>如果您还没有在 Cloudflare 仪表板的计费配置文件中添加支付方式，则在您添加域名时，会提醒您添加支付方式。</li>
+		<li><strong>检查 Cloudflare 的 DNS 记录：</strong>添加域名后，请<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#review-dns-records" target="_blank">检查 Cloudflare 根据您在当前注册商的记录信息自动配置的 DNS 记录</a>，确保没有遗漏任何内容。</li>
+		<li><strong>将您的 DNS 域名服务器改为 Cloudflare：</strong>要转移域名，您的<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup" target="_blank">域名服务器必须设置为 Cloudflare</a>。</li>
+		<li><strong>（可选）配置 Cloudflare Email Routing：</strong>如果您正在使用<a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing" target="_blank">电子邮件转发</a>，请确保<a href="https://blog.cloudflare.com/zh-cn/migrating-to-cloudflare-email-routing-zh-cn">按照本指南迁移到 Cloudflare Email Routing</a>。</li>
+		<li><strong>等待 DNS 变更信息的传送</strong>：注册商最长可能需要 24 小时的时间来处理域名服务器更新。当 Cloudflare 确认变更完毕，您将收到一封电子邮件。在此之前，您不能继续域名转移流程。</li>
+	</ul>
+	<h3 id="%E5%90%AF%E5%8A%A8%E5%92%8C%E7%A1%AE%E8%AE%A4%E8%BD%AC%E7%A7%BB%E6%B5%81%E7%A8%8B">启动和确认转移流程</h3>
+	<ul>
+		<li><strong>请求授权码：</strong>Cloudflare 需要与您的旧注册商确认该转移流已获得授权。为此，您的旧注册商将向您提供一个授权码——通常称为授权码、授权代码、授权信息代码或转移代码。您将需要输入该代码才能完成向 Cloudflare 的转移。我们将以此确认转移属实。</li>
+		<li><strong>启动向 Cloudflare 转移：</strong>访问 Cloudflare 仪表板的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fdomains%2Ftransfer" target="_blank">Transfer Domains</a>（转移域名）部分。您可在此看到全部可转移的域名。如果没有看到您的域名，请确保您已完成了所有步骤。如果确实已完成，请<a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#5-initiate-your-transfer-to-cloudflare" target="_blank">检查此页的列表</a>，看是否有适用于您的域名的任何情况。</li>
+		<li><strong>查看转移价格：</strong>转移域名时，ICANN 要求您付费将注册到期时间延长一年。不会在这一步向您收费。Cloudflare 只会在您完成转移请求并输入授权码和确认联系信息时，给您的银行卡记账。</li>
+		<li><strong>输入授权码：</strong>在下一页，输入您要转移的每个域名的授权码。</li>
+		<li><strong>确认或输入您的联系信息：</strong>在转移流程的最后阶段，输入您的注册联系信息。Cloudflare Registrar 会默认编辑此信息，但需要收集此注册的真实联系信息</li>
+		<li><strong>向 Cloudflare 批准转移：</strong>请求转移后，Cloudflare 将开始处理，并向注册人发送授权表 (FOA) 电子邮件（如果该信息在公共 WHOIS 数据库中可用）。FOA 是授权域名转移的凭证。</li>
+		<li><strong>向您以前的注册商批准转移：</strong>在这一步之后，您以前的注册商也会给您发电子邮件，确认您的转移请求。大多数注册商将提供一个确认转移请求的链接。使用该链接可以加速转移操作。如果您未对该电子邮件采取任何操作，注册商可以等待最长五天时间来处理向 Cloudflare 的转移。您也可以在当前注册商的仪表板中批准转移。</li>
+		<li><strong>在 Cloudflare 仪表板中关注转移状态：</strong>您的域名<a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#transfer-statuses" target="_blank">转移状态</a>可以在 Account Home（账户主页）&gt; Overview（概述）&gt; Domain Registration（域名注册）下查看。</li>
+	</ul>
+	<h3 id="%E8%BD%AC%E7%A7%BB%E4%B9%8B%E5%90%8E">转移之后</h3>
+	<ul>
+		<li><strong>测试您的网站和电子邮件：</strong>转移完成之后需要测试您的网站，确保一切正常运转。如果您遇到了任何问题或有任何疑问，您可以随时通过我们的<a href="https://community.cloudflare.com" target="_blank">社区论坛</a>或 <a href="https://discord.cloudflare.com" target="_blank">Discord 服务器</a>与我们联系。</li>
+		<li><strong>构建新内容：</strong>也许您只是购买了该域名，但尚未发布任何内容。既然您已将其转移，现在就是构建和发布新内容的好时机。您可以<a href="https://developers.cloudflare.com/pages/get-started/c3" target="_blank">使用 C3 在您最喜欢的前端框架上启动新项目</a>，<a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity" target="_blank">在 Cloudflare Pages 上使用 Nuxt.js 和 Sanity.io 构建博客</a>，或<a href="https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers">尝试使用 Cloudflare Workers 构建第一个 ChatGPT 插件</a>。</li>
+	</ul>
+</div>
