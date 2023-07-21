@@ -6010,86 +6010,118 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"allow_insecure": {
-								"default": false,
-								"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
-								"example": true,
-								"type": "boolean"
-							},
-							"expected_body": {
-								"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
-								"example": "alive",
-								"type": "string"
-							},
-							"expected_codes": {
-								"default": "200",
-								"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
-								"example": "2xx",
-								"type": "string"
-							},
-							"follow_redirects": {
-								"default": false,
-								"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
-								"example": true,
-								"type": "boolean"
-							},
-							"header": {
-								"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
-								"example": {
-									"Host": [
-										"example.com"
-									],
-									"X-App-ID": [
-										"abc123"
-									]
+						"allOf": [
+							{
+								"properties": {
+									"allow_insecure": {
+										"default": false,
+										"description": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.",
+										"example": true,
+										"type": "boolean"
+									},
+									"consecutive_down": {
+										"default": 0,
+										"description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.",
+										"type": "integer"
+									},
+									"consecutive_up": {
+										"default": 0,
+										"description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times.",
+										"type": "integer"
+									},
+									"description": {
+										"description": "Object description.",
+										"example": "Login page monitor",
+										"type": "string"
+									},
+									"expected_body": {
+										"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
+										"example": "alive",
+										"type": "string"
+									},
+									"expected_codes": {
+										"default": "200",
+										"description": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.",
+										"example": "2xx",
+										"type": "string"
+									},
+									"follow_redirects": {
+										"default": false,
+										"description": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.",
+										"example": true,
+										"type": "boolean"
+									},
+									"header": {
+										"description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.",
+										"example": {
+											"Host": [
+												"example.com"
+											],
+											"X-App-ID": [
+												"abc123"
+											]
+										},
+										"type": "object"
+									},
+									"interval": {
+										"default": 60,
+										"description": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.",
+										"type": "integer"
+									},
+									"method": {
+										"default": "GET",
+										"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
+										"example": "GET",
+										"type": "string"
+									},
+									"path": {
+										"default": "/",
+										"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+										"example": "/health",
+										"type": "string"
+									},
+									"port": {
+										"default": 0,
+										"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+										"type": "integer"
+									},
+									"probe_zone": {
+										"description": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.",
+										"example": "example.com",
+										"type": "string"
+									},
+									"retries": {
+										"default": 2,
+										"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+										"type": "integer"
+									},
+									"timeout": {
+										"default": 5,
+										"description": "The timeout (in seconds) before marking the health check as failed.",
+										"type": "integer"
+									},
+									"type": {
+										"default": "http",
+										"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
+										"enum": [
+											"http",
+											"https",
+											"tcp",
+											"udp_icmp",
+											"icmp_ping",
+											"smtp"
+										],
+										"example": "https",
+										"type": "string"
+									}
 								},
 								"type": "object"
 							},
-							"method": {
-								"default": "GET",
-								"description": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.",
-								"example": "GET",
-								"type": "string"
-							},
-							"path": {
-								"default": "/",
-								"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
-								"example": "/health",
-								"type": "string"
-							},
-							"port": {
-								"default": 0,
-								"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
-								"type": "integer"
-							},
-							"retries": {
-								"default": 2,
-								"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-								"type": "integer"
-							},
-							"timeout": {
-								"default": 5,
-								"description": "The timeout (in seconds) before marking the health check as failed.",
-								"type": "integer"
-							},
-							"type": {
-								"default": "http",
-								"description": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.",
-								"enum": [
-									"http",
-									"https",
-									"tcp",
-									"udp_icmp",
-									"icmp_ping",
-									"smtp"
-								],
-								"example": "https",
-								"type": "string"
+							{
+								"required": [
+									"expected_codes"
+								]
 							}
-						},
-						"required": [
-							"expected_codes"
 						]
 					}
 				}
