@@ -11,32 +11,15 @@
 <h4>What you'll do</h4>
 <p><span style="font-weight: 400;">Cloudflare is looking for an Enterprise Systems Admin to help us enhance/support our core Revenue, ERP system, as well as peripheral financial systems. In this role you will be supporting the revenue management system,&nbsp; new features integrations, new sku creation, configuring Zuora Revenue, integrations to NetSuite. The ideal candidate should have a solid analytical mindset, excellent interpersonal communications, diligent time management skills, be team-oriented and have a strong work ethic. This role will assist other core business systems analyst/architects across IT for strategic and business as usual projects.</span></p>
 <ul>
+	<li><span style="font-weight: 400;">Working with Zuora Revenue to build new requirements, troubleshoot issues during month end close.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand business requirements that span across Order to Cash, Record to Report areas and translate them to technical requirements</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deliver functional and technical specifications that include functional hierarchy, workflow, business rules, interface design and definitions, outstanding issues, data analysis, and data mapping to business users and development staff</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deliver high level estimates to design, develop and deploy functionality</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and unit test the features</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Conduct gap analysis between application and stated customer requirements and collaborate with the team to estimate project impact.</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Facilitate and perform Build vs Buy analysis for new tools or new feature requests on existing applications</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with business and Production Support teams to communicate, verify, and test the desired functionality changes.</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with internal business users to demonstrate the changes to the system and ensure all relevant business needs are addressed.</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage multiple competing priorities through effective organization and communication.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working with Zuora Revenue to build new requirements, troubleshoot issues during month end close.</span></li>
+	<li style="font-weight: 400;">Deliver functional and technical specifications that include functional hierarchy, workflow, business rules, interface design and definitions, outstanding issues, data analysis, and data mapping to business users and development staff</li>
+	<li style="font-weight: 400;">Deliver high level estimates to design, develop and deploy functionality. Develop and unit test the features</li>
+	<li style="font-weight: 400;">Conduct gap analysis between application and stated customer requirements and collaborate with the team to estimate project impact.</li>
+	<li style="font-weight: 400;">Facilitate and perform Build vs Buy analysis for new tools or new feature requests on existing applications</li>
+	<li style="font-weight: 400;">Work with business and Production Support teams to communicate, verify, and test the desired functionality changes.</li>
+	<li style="font-weight: 400;">Work with internal business users to demonstrate the changes to the system and ensure all relevant business needs are addressed.</li>
+	<li style="font-weight: 400;">Manage multiple competing priorities through effective organization and communication.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
