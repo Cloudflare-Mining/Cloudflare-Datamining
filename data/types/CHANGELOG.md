@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [6.21.16](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.21.15...@cloudflare/types@6.21.16) (2023-07-21)
+## [6.21.17](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.21.15...@cloudflare/types@6.21.17) (2023-07-21)
 
-**Note:** Version bump only for package @cloudflare/types
+
+### Bug Fixes
+
+* UI-000 fix publishing for component-payment-form ([b3dfb4e](http://stash.cfops.it:7999/fe/stratus/commits/b3dfb4e))
 
 
 
