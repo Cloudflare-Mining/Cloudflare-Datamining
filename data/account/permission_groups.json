@@ -422,6 +422,20 @@
 				}
 			},
 			{
+				"id": "62a19974a19d4c24a9856431d0fd4bbc",
+				"key": "com.cloudflare.api.account.fbm.config.delete",
+				"attributes": {
+					"legacy_name": "#fbm_acc:edit"
+				}
+			},
+			{
+				"id": "5cad0ca8ceef40db8884e55c8782df4f",
+				"key": "com.cloudflare.api.account.fbm.config.create",
+				"attributes": {
+					"legacy_name": "#fbm_acc:edit"
+				}
+			},
+			{
 				"id": "960ef49666e941b5918df795a82ae36d",
 				"key": "com.cloudflare.api.account.fbm.config.read",
 				"attributes": {
@@ -711,7 +725,7 @@
 				"id": "4d756db7ba524c1d8635526fd8566795",
 				"key": "com.cloudflare.api.account.zone.script-monitor.read",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -958,7 +972,7 @@
 				"id": "ba0939a09cd842a1bd4668b0b38af996",
 				"key": "com.cloudflare.edge.r2.bucket.*",
 				"attributes": {
-					"legacy_name": "#worker:read,#worker:edit"
+					"legacy_name": "#worker:read,#worker:edit,#r2_bucket:read,#r2_bucket:edit"
 				}
 			},
 			{
@@ -1685,21 +1699,21 @@
 				"id": "422dd8389a29453ab2b3109bfe8aead5",
 				"key": "com.cloudflare.api.account.zone.script-monitor.create",
 				"attributes": {
-					"legacy_name": "#zone_settings:edit"
+					"legacy_name": "#zone_settings:edit,#page_shield:edit"
 				}
 			},
 			{
 				"id": "48d8cdaf44ac4253bb0dc671a0f3f75b",
 				"key": "com.cloudflare.api.account.zone.script-monitor.update",
 				"attributes": {
-					"legacy_name": "#zone_settings:edit"
+					"legacy_name": "#zone_settings:edit,#page_shield:edit"
 				}
 			},
 			{
 				"id": "9297f74f0d6740f7969e683d94a1d9de",
 				"key": "com.cloudflare.api.account.zone.script-monitor.list",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -4856,7 +4870,7 @@
 				"id": "4d756db7ba524c1d8635526fd8566795",
 				"key": "com.cloudflare.api.account.zone.script-monitor.read",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -5166,7 +5180,7 @@
 				"id": "8674db90bbb24b5e8d400e5f62dd9d2c",
 				"key": "com.cloudflare.edge.r2.bucket.list",
 				"attributes": {
-					"legacy_name": "#worker:read"
+					"legacy_name": "#worker:read,#r2_bucket:read"
 				}
 			},
 			{
@@ -5834,7 +5848,7 @@
 				"id": "9297f74f0d6740f7969e683d94a1d9de",
 				"key": "com.cloudflare.api.account.zone.script-monitor.list",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -9378,7 +9392,7 @@
 				"id": "ba0939a09cd842a1bd4668b0b38af996",
 				"key": "com.cloudflare.edge.r2.bucket.*",
 				"attributes": {
-					"legacy_name": "#worker:read,#worker:edit"
+					"legacy_name": "#worker:read,#worker:edit,#r2_bucket:read,#r2_bucket:edit"
 				}
 			},
 			{
@@ -11383,7 +11397,7 @@
 				"id": "7d96e605b7df4ef895e5b6d1cb11899d",
 				"key": "com.cloudflare.api.account.zone.script-monitor.*",
 				"attributes": {
-					"legacy_name": "#zone_settings:read,#zone_settings:edit"
+					"legacy_name": "#zone_settings:read,#zone_settings:edit,#page_shield:read,#page_shield:edit"
 				}
 			},
 			{
@@ -11976,7 +11990,7 @@
 				"id": "4d756db7ba524c1d8635526fd8566795",
 				"key": "com.cloudflare.api.account.zone.script-monitor.read",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -12404,7 +12418,7 @@
 				"id": "9297f74f0d6740f7969e683d94a1d9de",
 				"key": "com.cloudflare.api.account.zone.script-monitor.list",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -13160,7 +13174,7 @@
 				"id": "7d96e605b7df4ef895e5b6d1cb11899d",
 				"key": "com.cloudflare.api.account.zone.script-monitor.*",
 				"attributes": {
-					"legacy_name": "#zone_settings:read,#zone_settings:edit"
+					"legacy_name": "#zone_settings:read,#zone_settings:edit,#page_shield:read,#page_shield:edit"
 				}
 			},
 			{
@@ -13196,14 +13210,14 @@
 				"id": "4d756db7ba524c1d8635526fd8566795",
 				"key": "com.cloudflare.api.account.zone.script-monitor.read",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
 				"id": "9297f74f0d6740f7969e683d94a1d9de",
 				"key": "com.cloudflare.api.account.zone.script-monitor.list",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -16277,7 +16291,7 @@
 				"id": "7d96e605b7df4ef895e5b6d1cb11899d",
 				"key": "com.cloudflare.api.account.zone.script-monitor.*",
 				"attributes": {
-					"legacy_name": "#zone_settings:read,#zone_settings:edit"
+					"legacy_name": "#zone_settings:read,#zone_settings:edit,#page_shield:read,#page_shield:edit"
 				}
 			},
 			{
@@ -16335,14 +16349,14 @@
 				"id": "4d756db7ba524c1d8635526fd8566795",
 				"key": "com.cloudflare.api.account.zone.script-monitor.read",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
 				"id": "9297f74f0d6740f7969e683d94a1d9de",
 				"key": "com.cloudflare.api.account.zone.script-monitor.list",
 				"attributes": {
-					"legacy_name": "#zone_settings:read"
+					"legacy_name": "#zone_settings:read,#page_shield:read"
 				}
 			},
 			{
@@ -18392,7 +18406,7 @@
 				"id": "ba0939a09cd842a1bd4668b0b38af996",
 				"key": "com.cloudflare.edge.r2.bucket.*",
 				"attributes": {
-					"legacy_name": "#worker:read,#worker:edit"
+					"legacy_name": "#worker:read,#worker:edit,#r2_bucket:read,#r2_bucket:edit"
 				}
 			},
 			{
@@ -19144,7 +19158,7 @@
 				"id": "7d96e605b7df4ef895e5b6d1cb11899d",
 				"key": "com.cloudflare.api.account.zone.script-monitor.*",
 				"attributes": {
-					"legacy_name": "#zone_settings:read,#zone_settings:edit"
+					"legacy_name": "#zone_settings:read,#zone_settings:edit,#page_shield:read,#page_shield:edit"
 				}
 			},
 			{
