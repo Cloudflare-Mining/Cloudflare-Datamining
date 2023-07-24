@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.166](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.9.165...@cloudflare/intl-react@1.9.166) (2023-07-24)
+
+**Note:** Version bump only for package @cloudflare/intl-react
+
+
+
+
+
 ## [1.9.165](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.9.163...@cloudflare/intl-react@1.9.165) (2023-07-21)
 
 
