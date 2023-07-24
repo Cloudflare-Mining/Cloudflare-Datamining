@@ -1,4 +1,7 @@
 <div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/connection-errors-in-asia-pacific-region-on-july-9-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/connection-errors-in-asia-pacific-region-on-july-9-2023-zh-tw">繁體中文</a> and <a href="https://blog.cloudflare.com/ko-kr/connection-errors-in-asia-pacific-region-on-july-9-2023-ko-kr">한국어</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-5.png" class="kg-image" alt="Connection errors in Asia Pacific region on July 9, 2023" loading="lazy" width="1200" height="675"></figure>
 	<p>On Sunday, July 9, 2023, early morning UTC time, we observed a high number of DNS resolution failures — up to 7% of all DNS queries across the Asia Pacific region — caused by invalid DNSSEC signatures from Verisign .com and .net Top Level Domain (TLD) nameservers. This resulted in connection errors for visitors of Internet properties on Cloudflare in the region.</p>
 	<p>The local instances of Verisign’s nameservers started to respond with expired DNSSEC signatures in the Asia Pacific region. In order to remediate the impact, we have rerouted upstream DNS queries towards Verisign to locations on the US west coast which are returning valid signatures.</p>
