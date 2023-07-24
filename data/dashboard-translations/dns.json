@@ -213,6 +213,8 @@
 	"dns.zone_conversion.to_secondary.confirm_secondary.empty.toast": "DNS records were not transferred.",
 	"dns.zone_conversion.to_secondary.confirm_secondary.empty.body": "Check that you have configured your Secondary DNS master correctly. If your primary DNS provider does not support DNS NOTIFY, click \"initiate zone transfer\".",
 	"dns.zone_conversion.to_secondary.confirm_secondary.cancel": "Complete setup later",
+	"dns.zone_conversion.to_secondary.confirm_secondary.last_modified": "Last modified (UTC):",
+	"dns.zone_conversion.to_secondary.confirm_secondary.last_check": "Last checked (UTC):",
 	"secondary.dns.title": "Secondary DNS",
 	"secondary.dns.description": "Your DNS records are managed by your Primary DNS provider and sent to Cloudflare via Zone Transfer.",
 	"secondary.dns.override_warning.title": "Override warning",

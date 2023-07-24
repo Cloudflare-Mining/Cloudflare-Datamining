@@ -2240,14 +2240,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = yn({}, {
-					branch: "release-Jul.21.2023-1689948535",
+					branch: "release-Jul.24.2023-1690207490",
 					isReleaseCandidate: "true",
-					commit: "062df2d07af0aef36731ad6ef14bd38a0344eac4",
+					commit: "490c0ec72d29ff1c89a4a34bd5d67dea7376c43d",
 					env: "production",
-					builtAt: 1689949007084,
-					dashVersion: "c84cf0715ab762c7462d0c864492bcddd5673bbc",
+					builtAt: 1690207947946,
+					dashVersion: "97dbff3e92448842c6c9e22dc9915ccbeb67c954",
 					versions: {
-						"@cloudflare/app-dash": "25.155.17",
+						"@cloudflare/app-dash": "25.157.6",
 						node: "16.16.0",
 						yarn: "3.2.2",
 						webpack: "5.84.1"
@@ -12658,6 +12658,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						uploadMtlsCertificates: "https://developers.cloudflare.com/workers/wrangler/commands#mtls-certificate",
 						smartPlacement: "https://developers.cloudflare.com/workers/platform/smart-placement/",
 						smartPlacementEnable: "https://developers.cloudflare.com/workers/platform/smart-placement/#enable-smart-placement-beta",
+						smartPlacementStatus: "https://developers.cloudflare.com/workers/configuration/smart-placement/#placement-status",
+						smartPlacementBackendServices: "https://developers.cloudflare.com/workers/configuration/smart-placement/#unsupported-back-end-services",
 						integrations: "https://developers.cloudflare.com/workers/learning/integrations/databases",
 						tailWorkers: "https://developers.cloudflare.com/workers/platform/tail-workers",
 						dispatchNamespaces: "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform/outbound-workers"
