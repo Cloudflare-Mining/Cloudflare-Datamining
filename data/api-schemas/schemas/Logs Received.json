@@ -104,13 +104,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -225,13 +226,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -347,7 +349,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get log retention flag",
@@ -548,7 +551,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get logs RayIDs",
@@ -790,7 +794,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Get logs received",
@@ -951,7 +956,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "List fields",
@@ -1095,13 +1101,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1216,13 +1223,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1338,7 +1346,8 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": []
+				"api_key": [],
+				"api_token": []
 			}
 		],
 		"summary": "Update log retention flag",
