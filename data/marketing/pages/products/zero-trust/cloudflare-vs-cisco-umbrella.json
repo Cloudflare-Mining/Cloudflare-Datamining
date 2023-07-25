@@ -2863,8 +2863,7 @@
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
+								"iconAssetFile": {
 									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
 									"altText": "Security shield zero trust ",
 									"title": "Security shield zero trust ",
@@ -2878,6 +2877,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -2893,8 +2893,7 @@
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
+								"iconAssetFile": {
 									"id": "0b7cd03c-c40f-5158-b2f1-51ebcde92c92",
 									"altText": "Performance cloud speed orange",
 									"title": "Performance cloud speed orange",
@@ -2908,6 +2907,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -2923,8 +2923,7 @@
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
+								"iconAssetFile": {
 									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
 									"altText": "Ease of use blue",
 									"title": "Ease of use blue",
@@ -2938,6 +2937,7 @@
 									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -3492,7 +3492,7 @@
 						"modalButtonText": null,
 						"mobileMode": "Tabbed",
 						"sectionPadding": null,
-						"showMonthlyVsAnnualToggle": true,
+						"showMonthlyVsAnnualToggle": false,
 						"priceToggleDescription": null,
 						"plans": [
 							{
@@ -3819,7 +3819,7 @@
 						"modalButtonText": "Compare all features",
 						"mobileMode": null,
 						"sectionPadding": "tile--no-top-bottom-padding",
-						"showMonthlyVsAnnualToggle": true,
+						"showMonthlyVsAnnualToggle": false,
 						"priceToggleDescription": null,
 						"plans": [
 							{
@@ -5281,6 +5281,7 @@
 						"enterpriseCopy": null
 					}
 				],
+				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": true
 			},
 			"site": {
@@ -5308,6 +5309,7 @@
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
+			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
