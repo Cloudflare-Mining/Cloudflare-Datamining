@@ -1203,7 +1203,7 @@ declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   cacheStatus: string | null;
 }
 declare type QueueContentType = "text" | "bytes" | "json" | "v8";
-declare interface Queue<Body> {
+declare interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
   sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
 }

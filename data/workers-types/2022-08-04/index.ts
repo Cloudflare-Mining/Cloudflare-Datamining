@@ -1205,7 +1205,7 @@ export interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   cacheStatus: string | null;
 }
 export type QueueContentType = "text" | "bytes" | "json" | "v8";
-export interface Queue<Body> {
+export interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
   sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
 }
