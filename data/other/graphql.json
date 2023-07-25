@@ -531,6 +531,7 @@
 		"__description": "Raw Firewall events with adaptive sampling",
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"clientASNDescription": "The ASN of the visitor as string",
@@ -604,6 +605,7 @@
 		"__description": "",
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"clientASNDescription": "The ASN of the visitor as string",
@@ -3600,6 +3602,7 @@
 	},
 	"ZoneApiRequestSequencesGroupsDimensions": {
 		"__description": "",
+		"apiHost": "The host associated with this sequence of endpoint operations",
 		"clientRequestHTTPHost": "The host associated with this sequence of endpoint operations",
 		"datetime": "Sequence generation timeslot, truncated to 10 minutes",
 		"rank": "Sequence rank based on ordering sequences by correlation"
@@ -3917,6 +3920,7 @@
 		"__description": "Raw Firewall events with adaptive sampling",
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"clientASNDescription": "The ASN of the visitor as string",
@@ -3985,6 +3989,7 @@
 	"ZoneFirewallEventsAdaptiveByTimeGroupsDimensions": {
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"date": "The date the event occurred at the edge",
@@ -4029,6 +4034,7 @@
 		"__description": "",
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
 		"clientASNDescription": "The ASN of the visitor as string",
