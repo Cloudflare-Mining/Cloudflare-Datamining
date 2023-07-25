@@ -8,14 +8,13 @@
 <h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-AbouttheDepartment"><strong>About the Department</strong></h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>This is a newly found subset of the R2 Storage team will be focused on building out new indexing and discoverability features for data inserted into R2 and other storage components at the Cloudflare edge. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<p>In this role, you will collaborate with Customers, Designers, and Product Managers to design and build systems that push the boundaries of what is possible at the Cloudflare edge. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem or implement a new feature, modify how R2 Storage processes requests, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including. We primarily use Typescript and Go.</p>
 <h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>5+ years experience working with distributed systems or developing on cloud platforms.</li>
-	<li>Experience managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
+	<li>Experience building and managing a large scale object storage platform.&nbsp;</li>
+	<li>Deep knowledge of at least one modern strongly-typed programming language such as Typescript, Go, Java, or C#.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale Linux-based distributed system</span>.</li>
+	<li>Experience working in low-latency, real-time processing environments such as game streaming, game engine architecture, high frequency trading, or payment systems.</li>
 </ul>
 <h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-BonusPoints"><strong>Bonus Points</strong></h3>
 <ul>

@@ -5,24 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>In this role, you will collaborate with Customers, Designers, and Product Managers to design and build systems that push the boundaries of what is possible at the Cloudflare edge. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem or implement a new feature, modify how R2 Storage processes requests, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including. We primarily use Typescript and Go.</p>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">The Finance and Business Operations Team works closely with many of Cloudflare’s Executive and Business Leaders. Members of the Finance and Bizops Team possess excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and are passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth. Our role extends beyond analyzing and reporting; we take pride in helping to design and implement solutions to the different challenges that can arise in our high growth environment.</span></p>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">This role will have an impact in helping Cloudflare achieve and exceed its growth and profitability goals. This position will be an early addition as we increase our presence in Lisbon as a center of excellence, providing financial visibility, surfacing new insights and improving processes. The ideal candidate is highly analytical, able to communicate financial insights and recommend appropriate actions. This role is based in our Lisbon, Portugal office.</span></p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Experience building and managing a large scale object storage platform.&nbsp;</li>
-	<li>Deep knowledge of at least one modern strongly-typed programming language such as Typescript, Go, Java, or C#.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale Linux-based distributed system</span>.</li>
-	<li>Experience working in low-latency, real-time processing environments such as game streaming, game engine architecture, high frequency trading, or payment systems.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Responsible for FP&amp;A fundamentals such as authorization to spend or hire by reviewing/approving purchase orders and requisitions to ensure all relevant financial information is accurately recorded.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Perform monthly and quarterly spend accruals, and publish budget vs. actuals reporting to assist in spend analysis and expense pacing across different functions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Responsible for loading and reconciling headcount and expense data into our forecasting tool.&nbsp;&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist in ad-hoc analysis under the direction of a senior member of the team.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Introduce improvements, streamline, and eliminate unnecessary processes and workflow that will enhance the overall operation and efficiency of the Finance organization.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with various functional departments and internally within Finance as appropriate.</span></li>
 </ul>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-BonusPoints"><strong>Bonus Points</strong></h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Previous experience working on distributed database internals or search engine internals.&nbsp;</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong oral &amp; written English communication skills, including grammar and composition</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree in Economics, Business or Equivalent</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 2 years of related finance experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work well under pressure with high attention to detail, thrive in a fast-paced environment and stay flexible through growth and change.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">This role is for doers; be able to get into the details and get the job done while at the same time being able to see the forest for the trees</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong customer service orientation and a desire to help others succeed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable completing projects requiring individual initiative with some direct supervision as required.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated analytical and quantitative abilities.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic financial acumen broadly across the organization (e.g., understanding of financial statements, chart of accounts, business intelligence, FP&amp;A processes, etc,)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Software and system skills (e.g. Microsoft Excel) a must. NetSuite, Workday, Greenhouse, and/or Anaplan experience a plus.</span></li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
