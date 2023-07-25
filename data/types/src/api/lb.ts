@@ -101,9 +101,14 @@ export const LoadBalancerRuleOverrides = eg.object({
   session_affinity: eg.union([
     eg.literal('none'),
     eg.literal('cookie'),
-    eg.literal('ip_cookie')
+    eg.literal('ip_cookie'),
+    eg.literal('header')
   ]).optional,
   session_affinity_ttl: eg.number.optional,
+  session_affinity_attributes: eg.object({
+    headers: eg.array(eg.string).optional,
+    require_all_headers: eg.boolean.optional
+  }).optional,
   ttl: eg.number.optional,
   steering_policy: SteeringPolicy,
   fallback_pool: eg.string.optional,
@@ -165,7 +170,8 @@ export const LoadBalancer = eg.object({
   session_affinity: eg.union([
     eg.literal('none'),
     eg.literal('cookie'),
-    eg.literal('ip_cookie')
+    eg.literal('ip_cookie'),
+    eg.literal('header')
   ]).optional,
   session_affinity_attributes: eg.object({
     samesite: eg.string,
@@ -175,7 +181,9 @@ export const LoadBalancer = eg.object({
       eg.literal('none'),
       eg.literal('temporary'),
       eg.literal('sticky')
-    ]).optional
+    ]).optional,
+    headers: eg.array(eg.string).optional,
+    require_all_headers: eg.boolean.optional
   }),
   session_affinity_ttl: eg.number.optional,
   steering_policy: SteeringPolicy,
