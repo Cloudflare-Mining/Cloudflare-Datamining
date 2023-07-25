@@ -5,23 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-Whatyou'lldo"><strong>What you'll do</strong></h3>
-<p>In this role, you will collaborate with Customers, Designers, and Product Managers to design and build systems that push the boundaries of what is possible at the Cloudflare edge. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem or implement a new feature, modify how R2 Storage processes requests, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including. We primarily use Typescript and Go.</p>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Incident Response Engineer</strong></p>
+<p><strong>What you will do</strong></p>
+<p>The Joint Security Operations Centre is responsible for monitoring and responding to threats to all Cloudflare systems. It operates across the globe and collaborates with other teams across the whole company to respond to security incidents. The Incident Response Engineers work in all phases of the Incident Response life cycle to ensure preparedness and proper response to security incidents. They will typically triage incidents, collect data, coordinate the response activities and prepare reports after the incident is resolved.</p>
+<p>As the Centre must operate continuously, the Incident Response Engineer may be required to take on on-call duties or work outside of normal working hours.&nbsp;</p>
+<p><strong>Responsibilities&nbsp;</strong></p>
 <ul>
-	<li>Experience building and managing a large scale object storage platform.&nbsp;</li>
-	<li>Deep knowledge of at least one modern strongly-typed programming language such as Typescript, Go, Java, or C#.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale Linux-based distributed system</span>.</li>
-	<li>Experience working in low-latency, real-time processing environments such as game streaming, game engine architecture, high frequency trading, or payment systems.</li>
+	<li>Monitor and investigate security and privacy incidents, vulnerabilities, and threats, and take appropriate action to mitigate risks and minimize potential impact.</li>
+	<li>Partake in incident response on-call schedule</li>
+	<li>Make critical decisions during incidents, balancing the need for rapid response with thorough analysis and risk assessment.</li>
+	<li>Perform in-depth log analysis to identify indicators of compromise and anomalous behavior across various systems, networks, and applications</li>
+	<li>Analyze and interpret system and network logs, and other relevant data sources to identify and track potential threats.</li>
+	<li>Collaborate with security, engineering and other teams to identify areas of manual effort and toil in incident response processes that can be automated.</li>
+	<li>Conduct code reviews, testing, and debugging of automation solutions to ensure quality and reliability.</li>
+	<li>Assist in establishing key performance indicators (KPIs) and metrics to measure incident response effectiveness, identify areas for improvement, and provide regular reporting to stakeholders.</li>
 </ul>
-<h3 id="SeniorSystemsEngineerR2IndexingRemoteUS-BonusPoints"><strong>Bonus Points</strong></h3>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Previous experience working on distributed database internals or search engine internals.&nbsp;</li>
-	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li>Able to self-scope, define, and manage short and long term technical goals</li>
+	<li>Able to support and coach junior team members</li>
+	<li>Understanding of network protocol analysis, public key infrastructure, SSL, Microsoft Windows, MacOS, Linux, open-source software and software programming</li>
+	<li>Extensive experience in security operations, including incident detection, response, investigation, and mitigation. Proven track record of handling complex security incidents and managing incident response teams.</li>
+	<li>Excellent documentation and reporting skills, with the ability to prepare detailed incident reports, including findings, remediation steps, and recommendations for management and stakeholders..</li>
+	<li>Strong programming and scripting skills, with proficiency in languages such as Python, Bash and SQL</li>
+	<li>Experience in developing automation solutions and integrating them into incident response workflows and platforms</li>
+	<li>Ability to analyze and interpret security data, identify trends, patterns, and anomalies, and provide actionable recommendations.</li>
+	<li>Ability to hunt for anomalous activity within a wide set of data</li>
+	<li>Great verbal/written communication, problem solving, analytical and independent judgment skills to support an environment driven by teamwork; must be able to positively influence, mentor and be a credible source of knowledge to less experienced team members</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
+<ul>
+	<li>Experience with designing incident response and security operations programs</li>
+	<li>Experience with software engineering, and designing custom security response tools</li>
+	<li>Experience in programming with GO</li>
+	<li>Experience with conducting penetration testing and red team exercises</li>
+	<li>Experience with maturity and gap assessments</li>
+	<li>GCFA, GCFR, GNFA Certifications</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
