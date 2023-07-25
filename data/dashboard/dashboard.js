@@ -2240,14 +2240,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = yn({}, {
-					branch: "release-Jul.24.2023-1690207490",
+					branch: "release-Jul.25.2023-1690293917",
 					isReleaseCandidate: "true",
-					commit: "490c0ec72d29ff1c89a4a34bd5d67dea7376c43d",
+					commit: "54cef0e164b6060ccee17bb9f3e344ecfab5aa5c",
 					env: "production",
-					builtAt: 1690207947946,
-					dashVersion: "97dbff3e92448842c6c9e22dc9915ccbeb67c954",
+					builtAt: 1690294399426,
+					dashVersion: "5f13df1ba1dbce6f6e0d06d0e431685da2be5cac",
 					versions: {
-						"@cloudflare/app-dash": "25.157.6",
+						"@cloudflare/app-dash": "25.157.18",
 						node: "16.16.0",
 						yarn: "3.2.2",
 						webpack: "5.84.1"
@@ -12366,7 +12366,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function ye() {
-				var R = L(["/", "/r2/", "/buckets/", "/objects/", ""]);
+				var R = L(["/", "/r2/", "/buckets/", "/objects/", "/details"]);
 				return ye = function() {
 					return R
 				}, R
