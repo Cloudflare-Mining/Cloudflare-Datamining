@@ -733,18 +733,7 @@
 											"locale": "en-US",
 											"name": "Need help choosing?",
 											"description": null,
-											"mainLink": {
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "6qPmW93taY8qaWy5atGXLu",
-												"locale": "en-US",
-												"title": "Need help choosing?",
-												"description": null,
-												"url": "https://www.cloudflare.com/about-your-website/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
-											},
+											"mainLink": null,
 											"navigationLinks": null,
 											"navIcon": null,
 											"showIconOnly": false,
@@ -4546,7 +4535,20 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"callToAction": null
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "4wLwslDqtSnbo9koSomzpl",
+									"elementName": "AddOns-Image Resizing-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							},
 							{
 								"locale": "en-US",
