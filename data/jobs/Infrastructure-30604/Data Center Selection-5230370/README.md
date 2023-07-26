@@ -5,35 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About The Team</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Technical Operations team is responsible for ensuring the reliability, observability, and resilience of the worldwide platform. Data Storage is a critical component of our platform functionality, which encompasses traditional relational databases (primarily PostgreSQL), Key-Value stores like Redis and (our very own) Quicksilver, and distributed filesystem technologies. As we grow and scale, our portfolio of data storage options will need to grow with us. </span></p>
-<p><strong>Responsibilities</strong></p>
-<p><span style="font-weight: 400;">We’re looking to establish a team of engineers who will be dedicated to databases and storage at Cloudflare. This team will encompass the full lifecycle of provisioning, monitoring, tuning, and scaling storage solutions. This team will work closely with both SRE and Engineering to provide a highly-automated, highly available and extremely resilient data platform that scales with us.</span></p>
-<p><strong>Requirements</strong></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>We are seeking a Data Center Selection Manager to improve the quality and unit cost and grow the size and number of our colocation sites/PoPs, and help us understand where on the map Cloudflare’s infrastructure needs to go next.&nbsp; You possess a broad set of contacts across the data center industry in the Asia-Pac region and are able to navigate local and international businesses in various markets to drive the best possible deal parameters.&nbsp; You will unlock efficiency within our vendor partner portfolio by understanding how to structure contracts to follow demand, keeping abreast of unique market dynamics and insights that help us negotiate, and managing vendor partner relationships to know where to invest and partner further with existing or new partners.&nbsp; We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining sourcing best practices in a high growth environment.&nbsp; Getting stuff done is a must!</p>
+<p>&nbsp;</p>
+<p>The Data Center Site Selection team is part of Cloudflare’s global Infrastructure (INF) team. The INF team grows and manages Cloudflare’s global data center/PoP footprint, enabling Cloudflare’s tremendous growth with compute, network, and data center infrastructure, utilizing an extensive range of global partner vendors.&nbsp;&nbsp;</p>
+<p><br><br></p>
+<p><strong>What you get to do in this role:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience as a professional programmer with operational ownership of the software you’ve written.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Direct experience shipping, supporting, and managing distributed systems with demanding consumers.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Expertise in operating/administering a traditional relational database system, preferably PostgreSQL</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing, debugging, and tuning SQL.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You’re motivated to see others succeed by using your work</span></li>
-</ul>
-<p><strong>Desirable Skills</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience designing multi-tenant database solutions, capacity planning, designing for failover, fault-tolerance, and disaster recovery.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing distributed storage systems such as Ceph and HDFS.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing software in Go, Python or C/C++</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Formal computer science background (BS/MS in Computer Science or equivalent)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with alerting and monitoring tools such as Prometheus, Grafana, and Kibana</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with configuration management software, preferably Salt. </span></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Interest in newer database technologies like CockroachDB</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with stream processing technologies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with non-relational data stores such as time-series databases (ex. OpenTSDB), key-value stores (ex. Redis), columnar databases (ex. ClickHouse), and full text search engines (ex. ElasticSearch)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with data warehousing tools and patterns</span></li>
+	<li>Define Asia-Pacific regional vendor strategy for data centers</li>
+	<li>Own deals end to end involving new and existing data center vendors and sites to support Cloudflare’s infrastructure growth including planning, RFP, commercial negotiation and execution</li>
+	<li>Work cross-functionally with data center operations teams, capacity planning, network strategy and security teams to understand requirements and project timelines</li>
+	<li>Establish and conduct scheduled QBR and other vendor management activities with top category partners</li>
+	<li>Represent Cloudflare credibly to external partner C-level senior management and at public conferences/events</li>
+	<li>Expert point of contact for internal business customers &amp; external colocation partner vendors as needed</li>
+	<li>Contribute information to annual data center budget for effective tracking and benchmarking of infrastructure costs</li>
+	<li>Review colocation spend &amp; invoices for management approval&nbsp;</li>
+	<li>Other duties as assigned</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>Skills/Experience:</strong></p>
+<p>&nbsp;</p>
+<ul>
+	<li>10+ years in planning and managing data center footprints within a fast moving enterprise technology organization or cloud services, software or colocation company</li>
+	<li>Ability to multi-task and manage complex projects across multiple teams and geographies within set deadlines</li>
+	<li>Ability to navigate, solve problems and answer questions with minimal supervision</li>
+	<li>Relationship management experience and excellent communication skills</li>
+	<li>Demonstrated experience in commercial negotiation&nbsp;</li>
+	<li>Experience with rack, site power and white space planning (data center sales engineering) a plus</li>
+	<li>Experience with or understanding of network concepts a plus</li>
+	<li>Experience in budget planning, financial analysis, or other analytical role a plus</li>
+	<li>Experience with Jira a plus</li>
+	<li>Multilingual and/or experience living/working/conducting business in another country a plus</li>
+	<li>Bachelors degree or equivalent experience required</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
