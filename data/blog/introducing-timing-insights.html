@@ -21,12 +21,12 @@
 	<p>We are exposing each metric as an average, median, 95th, and 99th percentiles (i.e. P50 / P95 / P99).</p>
 	<p>The <code>httpRequestAdaptiveGroups</code> dataset powers the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fanalytics%2Ftraffic" target="_blank">Traffic</a> analytics page in our dashboard, and represents all of the HTTP requests that flow through our network. The upshot is that this dataset gives you the ability to filter and “group by” any aspect of the HTTP request.</p>
 	<h3 id="an-example-of-how-to-use-timing-insights">An example of how to use Timing Insights</h3>
-	<p>Let’s walk through an example of how you’d actually use this data to pin-point a problem.</p>
+	<p>Let’s walk through an example of how you’d actually use this data to pinpoint a problem.</p>
 	<p>To start with, I want to understand the lay of the land by querying TTFB at various quantiles:</p><!--kg-card-begin: markdown-->
 	<pre><code>query TTFBQuantiles($zoneTag: string) {
   viewer {
     zones(filter: {zoneTag: $zoneTag}) {
-      httpRequestsAdaptiveGroups {
+      httpRequestsAdaptiveGroups(limit: 1) {
         quantiles {
           edgeTimeToFirstByteMsP50
           edgeTimeToFirstByteMsP95
