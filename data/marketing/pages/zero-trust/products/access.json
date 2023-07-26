@@ -746,7 +746,18 @@
 											"locale": "en-US",
 											"name": "Need help choosing?",
 											"description": null,
-											"mainLink": null,
+											"mainLink": {
+												"contentTypeId": "elementNavLink",
+												"contentfulId": "6qPmW93taY8qaWy5atGXLu",
+												"locale": "en-US",
+												"title": "Need help choosing?",
+												"description": null,
+												"url": "https://www.cloudflare.com/about-your-website/",
+												"badges": null,
+												"specialLinkType": null,
+												"openInNewWindow": false,
+												"isExternalUrl": null
+											},
 											"navigationLinks": null,
 											"navIcon": null,
 											"showIconOnly": false,
@@ -1598,18 +1609,6 @@
 													"title": "RPKI Portal",
 													"description": "Explore the Internet's routing security ecosystem",
 													"url": "https://rpki.cloudflare.com/",
-													"badges": null,
-													"specialLinkType": null,
-													"openInNewWindow": true,
-													"isExternalUrl": null
-												},
-												{
-													"contentTypeId": "elementNavLink",
-													"contentfulId": "4HSzVY1qbE0AIyNZ78YBWy",
-													"locale": "en-US",
-													"title": "Certificate Transparency",
-													"description": "Explore the certificate transparency ecosystem",
-													"url": "https://ct.cloudflare.com/",
 													"badges": null,
 													"specialLinkType": null,
 													"openInNewWindow": true,
@@ -6032,6 +6031,49 @@
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
 												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2JnpLkTeqyIDbL96dWvCfB",
+										"contentTypeId": "planElementFeatures",
+										"name": "Cloud Email Security (CES, Area 1)",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5aHwIQZkXUoM0qeyOIPepP",
+												"textValue": "(add-on)",
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
