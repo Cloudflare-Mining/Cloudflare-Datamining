@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2934,
+	"version": "2023.7.243.1",
+	"short_version": "",
+	"size": 111558656,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "ff74b25d37d61ca55c9a3d30bd2c998e",
+	"fingerprint": "282a7b1d258b153dbc7d69fdfbbddf10",
+	"uploaded_at": "2023-07-27T03:25:02.078Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This is a critical hotfix for organizations that have long running deployment cycles. The certificate used to sign and validate our installer will expire on August 9th 2023 and may cause windows SmartScreen warnings on installation.\r\n  \r\nThis update contains no new features.\r\n \r\n## Notable updates\r\n- Fixed issue where DoH requests could take too long to timeout causes DNS reliability issues\r\n \r\n \r\n## Known issues\r\n- Customers may experience a DPC_WATCHDOG_VIOLATION Blue Screen when connecting. This error was introduced with the 2023.3 GA release and happens more frequently with larger split tunnel configurations, especially on more resource constrained machines. We are actively working on a fix. Until then we recommend staying on 2022.12 GA release OR reducing your split tunnel configuration if possible.\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"2904ae118fb89c816e51b7bf0527d8ed02b0c1401817e07d8c8eaaea5af0258f"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
