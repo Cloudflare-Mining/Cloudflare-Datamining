@@ -58,6 +58,27 @@
 			]
 		}
 	],
+	"Cloudflare Status": [
+		{
+			"display_name": "Maintenance Event Notification",
+			"type": "maintenance_event_notification",
+			"description": "",
+			"filter_options": [
+				{
+					"Key": "airport_code",
+					"ComparisonOperator": "==",
+					"Optional": true,
+					"AvailableValues": null
+				},
+				{
+					"Key": "event_type",
+					"ComparisonOperator": "==",
+					"Optional": true,
+					"AvailableValues": null
+				}
+			]
+		}
+	],
 	"DoS Protection": [
 		{
 			"display_name": "HTTP DDoS Attack Alert",
@@ -159,27 +180,6 @@
 			"type": "fbm_volumetric_attack",
 			"description": "Volumetric DDoS attacks to your infrastructure based on flow data you export to Cloudflare",
 			"filter_options": []
-		}
-	],
-	"Maintenance": [
-		{
-			"display_name": "Maintenance Event Notification",
-			"type": "maintenance_event_notification",
-			"description": "",
-			"filter_options": [
-				{
-					"Key": "airport_code",
-					"ComparisonOperator": "==",
-					"Optional": true,
-					"AvailableValues": null
-				},
-				{
-					"Key": "event_type",
-					"ComparisonOperator": "==",
-					"Optional": true,
-					"AvailableValues": null
-				}
-			]
 		}
 	],
 	"Origin Monitoring": [
