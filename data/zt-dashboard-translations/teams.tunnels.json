@@ -180,7 +180,7 @@
 	"tunnel_migration_final_warning_title": "Do you want to migrate %{tunnelName}?",
 	"tunnel_migration_intro_title": "Migrate ",
 	"tunnel_migration_next_button_step": "Confirm",
-	"tunnel_migration_no_config_warning": "We have detected that %{tunnelName} is not configured for migration.  Please ensure that: <br/> <div style=\"margin-left: 10px;\"> • The tunnel is currently running. <br/>  • The tunnel has been configured via a **.yaml** configuration file. <br/> • Your cloudflared version is up to date.</div>",
+	"tunnel_migration_no_config_warning": "We have detected that %{tunnelName} is not configured for migration.  Please ensure that: <br/> <div style=\"margin-left: 10px;\"> • The tunnel status is **healthy**. <br/>  • The tunnel has been configured via a **.yaml** configuration file. <br/> • The instance of cloudflared is running version **2022.03 or later**.</div>",
 	"tunnel_migration_read_more_ingress": "<0>Read more on ingress rules</0>",
 	"tunnel_migration_read_more_migration": "<0>Read more on Tunnel migration</0>",
 	"tunnel_migration_steps_check_tunnel": "Check tunnel name and connectors",
