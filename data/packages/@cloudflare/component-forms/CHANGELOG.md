@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.5
+
+### Patch Changes
+
+- b9c5f4cdf6: Fix option descriptions for Radios and Checkboxes components
+
 ## 5.3.4
 
 ### Patch Changes
