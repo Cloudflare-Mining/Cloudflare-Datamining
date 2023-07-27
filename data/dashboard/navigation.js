@@ -44,7 +44,7 @@ const navigation = {
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(b) {
-			return !(0, j.n3)() && !(0, n.z1)("oauth-access-management")(b)
+			return !(0, x.n3)() && !(0, n.z1)("oauth-access-management")(b)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -198,10 +198,22 @@ const navigation = {
 				return (0, o.iY)(b) && (0, C.BU)(b)
 			}
 		}, {
-			title: "navigation.account.security_center.cfone",
-			url: "/cloudforce-one",
+			title: "navigation.account.security_center.cfone_priorities",
+			url: "/cloudforce-one/priorities",
 			hasPermission: function(b) {
-				return (0, o.iY)(b) && (0, C.sK)(b)
+				return (0, o.iY)(b) && (0, C.fs)(b)
+			}
+		}, {
+			title: "navigation.account.security_center.cfone_reports",
+			url: "/cloudforce-one/reports",
+			hasPermission: function(b) {
+				return (0, o.iY)(b) && (0, C.Bc)(b)
+			}
+		}, {
+			title: "navigation.account.security_center.cfone_requests",
+			url: "/cloudforce-one/requests",
+			hasPermission: function(b) {
+				return (0, o.iY)(b) && (0, C.gA)(b)
 			}
 		}]
 	}, {
@@ -216,7 +228,7 @@ const navigation = {
 		hasPermission: function(b) {
 			return !!(0, o.AB)(b)
 		},
-		tabs: w.DW
+		tabs: O.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -246,7 +258,7 @@ const navigation = {
 		hasPermission: function(b) {
 			return (0, o.iY)(b) && !!(0, r.Le)(b, "magic_transit", "mt_home")
 		},
-		tabs: D.Lx.concat(D.SF, D.Jg)
+		tabs: T.Lx.concat(T.SF, T.Jg)
 	}, {
 		title: "navigation.account.magic_firewall",
 		url: "/network-security/magic_firewall",
@@ -254,7 +266,7 @@ const navigation = {
 		hasPermission: function(b) {
 			return !!(0, o.zJ)(b)
 		},
-		tabs: w.$$
+		tabs: O.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -263,7 +275,7 @@ const navigation = {
 			var R = !!(0, o.Wq)(b) && !!(0, o.fO)(b);
 			return !!(0, o.Tk)(b) || R
 		},
-		tabs: w.Dn
+		tabs: O.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -310,7 +322,7 @@ const navigation = {
 		hasPermission: function(b) {
 			return (0, o.iY)(b) && !!(0, r.Le)(b, "magic_wan", "mw_home")
 		},
-		tabs: D.SF.concat(D.Jg)
+		tabs: T.SF.concat(T.Jg)
 	}, {
 		hasPermission: function(b) {
 			return (0, o.iY)(b)
@@ -362,7 +374,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(b) {
 				var R = (0, f.tJ)(b);
-				return !(0, O.ky)(R, [a.uD.UnboundEnterpriseTrial])
+				return !(0, S.ky)(R, [a.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -461,7 +473,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(b) {
-				return (0, o.IU)(b) && (0, y.b8)(b)
+				return (0, o.IU)(b) && (0, h.b8)(b)
 			},
 			labels: ["new"]
 		}]
@@ -495,7 +507,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(b) {
-				return (0, S.b)(b) ? (0, o.iY)(b) : (0, r.Yj)(b)("auditlogs").read
+				return (0, j.b)(b) ? (0, o.iY)(b) : (0, r.Yj)(b)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
@@ -570,7 +582,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: function(b) {
 				var R = (0, l.nA)(b);
-				return R ? !!(!(0, s.yD)(b) && !!(0, l.ZB)(b, "origin_reachability_dash", "dash_view") && (0, l.tU)(R, "enterprise") && !!(0, T.Ek)(b, "httpRequestsAdaptiveGroups")) : !1
+				return R ? !!(!(0, s.yD)(b) && !!(0, l.ZB)(b, "origin_reachability_dash", "dash_view") && (0, l.tU)(R, "enterprise") && !!(0, D.Ek)(b, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -578,7 +590,7 @@ const navigation = {
 			navigationType: "global-settings",
 			hasPermission: function(b) {
 				var R = (0, l.nA)(b);
-				return R ? !!(!(0, s.yD)(b) && !!(0, l.ZB)(b, "edge_reachability_dash", "dash_view") && (0, l.tU)(R, "enterprise") && !!(0, T.Ek)(b, "nelReportsAdaptiveGroups")) : !1
+				return R ? !!(!(0, s.yD)(b) && !!(0, l.ZB)(b, "edge_reachability_dash", "dash_view") && (0, l.tU)(R, "enterprise") && !!(0, D.Ek)(b, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -732,7 +744,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(b) {
-				return (0, E.B_)(b)
+				return (0, A.B_)(b)
 			}
 		}, {
 			title: "navigation.zone.security.events",
@@ -742,12 +754,12 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: M.gn
+			tabs: y.gn
 		}, {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: M.mt
+			tabs: y.mt
 		}, {
 			title: "navigation.zone.security.bots",
 			url: "/security/bots",
@@ -768,7 +780,7 @@ const navigation = {
 				var R = (0, l.nA)(b);
 				return R ? !!(0, l.ZB)(b, "firewall", "api_shield_tab") && (0, l.tU)(R, "business") : !1
 			},
-			tabs: M.Dw
+			tabs: y.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",
@@ -878,7 +890,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: h
+			tabs: E
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			labels: ["beta"],
@@ -969,7 +981,7 @@ const navigation = {
 			url: "/traffic/health-check-analytics",
 			navigationType: "global-settings",
 			hasPermission: function(b) {
-				return !(0, s.yD)(b) && !!(0, T.Ek)(b, "healthCheckEventsAdaptiveGroups")
+				return !(0, s.yD)(b) && !!(0, D.Ek)(b, "healthCheckEventsAdaptiveGroups")
 			}
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
@@ -1023,7 +1035,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: A.az
+			tabs: M.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
