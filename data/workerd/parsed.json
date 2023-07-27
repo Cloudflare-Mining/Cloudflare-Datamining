@@ -2425,7 +2425,7 @@
 					"annotations": {}
 				},
 				{
-					"name": "internal",
+					"name": "type",
 					"annotations": {}
 				},
 				{
@@ -2804,10 +2804,6 @@
 			"fields": [
 				{
 					"name": "specifier",
-					"annotations": {}
-				},
-				{
-					"name": "internal",
 					"annotations": {}
 				},
 				{
@@ -3794,6 +3790,23 @@
 				},
 				{
 					"name": "exceededMemory",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/jsg/modules.capnp:ModuleType",
+			"enumerants": [
+				{
+					"name": "bundle",
+					"annotations": {}
+				},
+				{
+					"name": "builtin",
+					"annotations": {}
+				},
+				{
+					"name": "internal",
 					"annotations": {}
 				}
 			]
