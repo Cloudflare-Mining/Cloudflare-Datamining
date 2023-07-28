@@ -266,7 +266,7 @@
 		vt = "cf_challenge_response",
 		mt = "cf-turnstile-response",
 		gt = "g-recaptcha-response",
-		xt = 8e3,
+		yt = 8e3,
 		pe = !1,
 		et = !1;
 
@@ -362,7 +362,7 @@
 		e.style.width = "0", e.style.height = "0"
 	}
 
-	function yt(e, i) {
+	function xt(e, i) {
 		var o = i.get("turnstile_iframe_alt");
 		o && (e.title = o)
 	}
@@ -370,7 +370,7 @@
 	function je(e, i, o, l) {
 		var s = "https://challenges.cloudflare.com";
 		if (!1) var v;
-		var _ = "h/".concat("b", "/");
+		var _ = "h/".concat("g", "/");
 		return "".concat(s, "/cdn-cgi/challenge-platform/").concat(_, "turnstile/if/ov2/av0/rcv").concat(l, "/").concat(e, "/").concat(i, "/").concat(o.theme, "/").concat(o.size)
 	}
 
@@ -422,15 +422,15 @@
 						n = !1,
 						d = void 0;
 					try {
-						for (var y = r[Symbol.iterator](), h; !(u = (h = y.next()).done); u = !0) {
-							var x = h.value;
-							t[x] && t[x] !== c.params[x] && a.push(x)
+						for (var x = r[Symbol.iterator](), h; !(u = (h = x.next()).done); u = !0) {
+							var y = h.value;
+							t[y] && t[y] !== c.params[y] && a.push(y)
 						}
 					} catch (b) {
 						n = !0, d = b
 					} finally {
 						try {
-							!u && y.return != null && y.return()
+							!u && x.return != null && x.return()
 						} finally {
 							if (n) throw d
 						}
@@ -516,9 +516,9 @@
 				if (u) {
 					var n = Object.assign(u, t),
 						d = n.action,
-						y = n.cData,
+						x = n.cData,
 						h = n.chlPageData,
-						x = n.sitekey,
+						y = n.sitekey,
 						b;
 					n.theme = (b = n.theme) !== null && b !== void 0 ? b : ue.AUTO;
 					var w;
@@ -528,7 +528,7 @@
 					var F;
 					n.appearance = (F = n.appearance) !== null && F !== void 0 ? F : D.ALWAYS;
 					var H;
-					n["retry-interval"] = (H = n["retry-interval"]) !== null && H !== void 0 ? H : xt;
+					n["retry-interval"] = (H = n["retry-interval"]) !== null && H !== void 0 ? H : yt;
 					var P;
 					n.size = (P = n.size) !== null && P !== void 0 ? P : C.NORMAL;
 					var te = n.callback,
@@ -538,12 +538,12 @@
 						$ = n["before-interactive-callback"],
 						J = n["error-callback"],
 						ae = n["unsupported-callback"];
-					if (typeof x != "string") {
-						f('Invalid or missing type for parameter "sitekey", expected "string", got "'.concat(typeof x == "undefined" ? "undefined" : A(x), '"'), 3588);
+					if (typeof y != "string") {
+						f('Invalid or missing type for parameter "sitekey", expected "string", got "'.concat(typeof y == "undefined" ? "undefined" : A(y), '"'), 3588);
 						return
 					}
-					if (!He(x)) {
-						f('Invalid input for parameter "sitekey", got "'.concat(x, '"'), 3589);
+					if (!He(y)) {
+						f('Invalid input for parameter "sitekey", got "'.concat(y, '"'), 3589);
 						return
 					}
 					if (!ke(n.size)) {
@@ -587,21 +587,21 @@
 						f('Invalid input for optional parameter "action", got "'.concat(d, '"'), 3604);
 						return
 					}
-					if (!Te(y)) {
-						f('Invalid input for optional parameter "cData", got "'.concat(y, '"'), 3605);
+					if (!Te(x)) {
+						f('Invalid input for optional parameter "cData", got "'.concat(x, '"'), 3605);
 						return
 					}
 					var ne = i(),
 						q = ee(ne);
 					if (!(!ne || !q)) {
 						var Ue = [],
-							xe = n.execution === Q.RENDER;
-						xe && Ue.push(z.EXECUTE), T++;
+							ye = n.execution === Q.RENDER;
+						ye && Ue.push(z.EXECUTE), T++;
 						var nt = +new Date;
 						p.set(ne, {
 							idx: T,
 							action: d,
-							cData: y,
+							cData: x,
 							chlPageData: h,
 							cbSuccess: te,
 							cbError: J,
@@ -613,22 +613,22 @@
 							params: n,
 							isStale: !1,
 							isExpired: !1,
-							isExecuting: xe,
+							isExecuting: ye,
 							isResetting: !1,
-							isExecuted: xe,
+							isExecuted: ye,
 							isInitialized: !1,
 							msgQueue: Ue,
 							rcV: V,
 							widgetStartTime: nt
-						}), R.style.display = "none", R.style.border = "none", R.style.overflow = "hidden", R.setAttribute("src", je(ne, x, n, V)), R.setAttribute("allow", "cross-origin-isolated; fullscreen"), R.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), R.id = q;
-						var ye;
-						R.tabIndex = (ye = n.tabindex) !== null && ye !== void 0 ? ye : 0, R.title = "Widget containing a Cloudflare security challenge", r.appendChild(R);
+						}), R.style.display = "none", R.style.border = "none", R.style.overflow = "hidden", R.setAttribute("src", je(ne, y, n, V)), R.setAttribute("allow", "cross-origin-isolated; fullscreen"), R.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), R.id = q;
+						var xe;
+						R.tabIndex = (xe = n.tabindex) !== null && xe !== void 0 ? xe : 0, R.title = "Widget containing a Cloudflare security challenge", r.appendChild(R);
 						var _e, it = (_e = n["response-field"]) !== null && _e !== void 0 ? _e : !0;
 						if (it) {
 							var ie = document.createElement("input");
 							ie.type = "hidden";
 							var he;
-							if (ie.name = (he = n["response-field-name"]) !== null && he !== void 0 ? he : mt, ie.id = "".concat(q, "_response"), r.appendChild(ie), typeof n["response-field-name"] != "string" && ht(x)) {
+							if (ie.name = (he = n["response-field-name"]) !== null && he !== void 0 ? he : mt, ie.id = "".concat(q, "_response"), r.appendChild(ie), typeof n["response-field-name"] != "string" && ht(y)) {
 								var oe = document.createElement("input");
 								oe.type = "hidden", oe.name = vt, oe.id = "".concat(q, "_legacy_response"), r.appendChild(oe)
 							}
@@ -648,10 +648,10 @@
 					u = void 0;
 				try {
 					for (var n = p[Symbol.iterator](), d; !(r = (d = n.next()).done); r = !0) {
-						var y = Fe(d.value, 2),
-							h = y[0],
-							x = y[1];
-						t < x.idx && (c = h, t = x.idx)
+						var x = Fe(d.value, 2),
+							h = x[0],
+							y = x[1];
+						t < y.idx && (c = h, t = y.idx)
 					}
 				} catch (b) {
 					a = !0, u = b
@@ -674,7 +674,7 @@
 				var t = c.data;
 				if (t.source === "cloudflare-challenge") {
 					if (!_t(c)) {
-						g("Ignored message from wrong origin: " + c.origin);
+						f("Ignored message from wrong origin: " + c.origin, 3073);
 						return
 					}
 					if (!(!t.widgetId || !p.has(t.widgetId))) {
@@ -699,12 +699,12 @@
 								var d = new Map;
 								Object.keys(t.translationData).forEach(function(ae) {
 									d.set(ae, t.translationData[ae])
-								}), yt(n, d);
+								}), xt(n, d);
 								break
 							}
 							case "reject": {
-								var y = document.getElementById(r);
-								if (a.isExecuting = !1, !y) {
+								var x = document.getElementById(r);
+								if (a.isExecuting = !1, !x) {
 									f("Cannot initialize Widget, Element not found (#".concat(r, ")."), 3075);
 									return
 								}
@@ -716,8 +716,8 @@
 							}
 							case "complete": {
 								a.rcV = V, a.response = t.token, a.isExecuting = !1, at(r, t.token);
-								var x = a.cbSuccess;
-								x && x(t.token);
+								var y = a.cbSuccess;
+								y && y(t.token);
 								break
 							}
 							case "fail": {
@@ -784,7 +784,7 @@
 									cData: a.cData,
 									chlPageData: a.chlPageData,
 									rcV: a.rcV,
-									ch: "11b725eb",
+									ch: "f0089873",
 									url: bt(),
 									retry: a.params.retry,
 									"retry-interval": a.params["retry-interval"],
@@ -942,10 +942,10 @@
 		n && window[n] && (o["timeout-callback"] = window[n]);
 		var d = e.getAttribute("data-after-interactive-callback");
 		d && window[d] && (o["after-interactive-callback"] = window[d]);
-		var y = e.getAttribute("data-before-interactive-callback");
-		y && window[y] && (o["before-interactive-callback"] = window[y]);
-		var h, x = (h = e.getAttribute("data-response-field")) !== null && h !== void 0 ? h : "true";
-		o["response-field"] = x === "true";
+		var x = e.getAttribute("data-before-interactive-callback");
+		x && window[x] && (o["before-interactive-callback"] = window[x]);
+		var h, y = (h = e.getAttribute("data-response-field")) !== null && h !== void 0 ? h : "true";
+		o["response-field"] = y === "true";
 		var b = e.getAttribute("data-response-field-name");
 		b && (o["response-field-name"] = b);
 		var w = e.getAttribute("data-execution");
