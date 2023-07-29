@@ -1,0 +1,68 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-5.png" class="kg-image" alt="Connection errors in Asia Pacific region on July 9, 2023" loading="lazy" width="1200" height="675"></figure>
+	<p>2023년 7월 9일 일요일 이른 아침(UTC 기준), 아시아 태평양 지역 전체 DNS 쿼리의 최대 7%에 달하는 많은 수의 DNS 확인 실패가 Verisign .com 및 .net 최상위 도메인(TLD) 네임서버의 잘못된 DNSSEC 서명으로 인해 발생하는 것을 확인했습니다. 이로 인해 해당 지역의 Cloudflare에 있는 인터넷 자산의 웹 방문자에게 연결 오류가 발생했습니다.</p>
+	<p>아시아 태평양 지역에서 Verisign의 네임서버 로컬 인스턴스가 만료된 DNSSEC 서명으로 응답하기 시작했습니다. 이 문제를 해결하기 위해, 당사는 유효한 서명을 반환하는 미국 서부 해안의 위치로 Verisign에 대한 업스트림 DNS 쿼리의 경로를 변경했습니다.</p>
+	<p>저희는 근본 원인에 대한 자세한 정보를 얻기 위해 이미 Verisign에 연락했습니다. 해당 문제가 해결될 때까지 DNS 트래픽은 .com 및 .net으로 유지됩니다. TLD 네임서버 라우팅이 변경되어, 지역에서 .com 및 .net의 하위 도메인에 처음 방문하는 웹 방문자의 대기 시간이 약간 늘어날 수 있습니다.</p>
+	<h3 id="%EB%B0%B0%EA%B2%BD">배경</h3>
+	<p>Cloudflare의 네트워크를 통해 도메인의 트래픽을 프록시하기 위한 Cloudflare 데이터 센터의 관점에서 도메인 네임 시스템(DNS)과 관련된 두 가지 구성 요소가 있습니다. 바로 외부 DNS 확인과 업스트림 또는 원본 DNS 확인입니다.</p>
+	<p>이를 이해하기 위해 Cloudflare의 네트워크를 통해 프록시되는 도메인 이름인 <code>blog.cloudflare.com</code>을 살펴보고, 이 도메인 이름이 <code>origin.example</code>을 원본 서버로 사용하도록 구성되어 있다고 가정해 보겠습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="124"></figure>
+	<p>여기서 외부 DNS 확인은 웹 방문자를 대신하여 <code>1.1.1.1</code> 또는 <code>8.8.8.8</code> 같은 공용 확인자가 보낸 <code>blog.cloudflare.com</code>에 대한 DNS 쿼리가 Cloudflare Anycast IP 주소 집합을 반환하는 부분입니다. 이렇게 하면 웹 방문자의 브라우저가 웹 사이트를 불러오기 위해 HTTPS 요청을 보낼 위치를 알 수 있습니다. 브라우저는 내부적으로 다음과 같은 DNS 쿼리를 수행합니다.(다음 내용은<a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank"> DNS 루트 영역</a>을 나타냄)</p><!--kg-card-begin: markdown-->
+	<pre><code>$ dig blog.cloudflare.com. +short
+104.18.28.7
+104.18.29.7
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>(컴퓨터 내부에서는 실제로 dig 명령을 사용하지 않지만 프로세스를 설명하기 위해 사용했습니다.) 그런 다음 가장 가까운 Cloudflare 데이터 센터가 blog.cloudflare.com에 대한 HTTPS 요청을 받으면 원본 서버에서 콘텐츠를 가져와야 합니다(캐시가 아니라고 가정합니다).</p>
+	<p>Cloudflare 원본 서버에 도달하는 방법에는 두 가지가 있습니다. Cloudflare의 DNS 설정에 IP 주소가 포함되어 있으면 원본 서버에 직접 연결할 수 있습니다. 일부 경우, 고객이 CNAME을 사용하여 Cloudflare에서 CNAME과 연결된 IP 주소를 가져오기 위해 다른 DNS 쿼리를 수행해야 합니다. 위의 예시에서 <code>blog.cloudflare.com</code>에는 CNAME 레코드가 있어 <code>origin.example</code>을 살펴보라고 지시합니다. 사고 당시에는 이와 같은 CNAME 레코드가 .com 및 .net 도메인 이름으로 연결되는 고객에게만 영향을 끼쳤을 수 있습니다.</p>
+	<p><code>origin.example</code> 도메인은 업스트림 또는 원본 DNS 확인의 일부로, Cloudflare에서 확인해야 합니다. 이때 Cloudflare 데이터 센터는 다음과 같은 아웃바운드 DNS 쿼리를 수행해야 합니다.</p><!--kg-card-begin: markdown-->
+	<pre><code>$ dig origin.example. +short
+192.0.2.1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>DNS는 계층적 프로토콜이므로, 도메인 이름을 확인하려는 모든 사람을 위해 DNS 확인을 처리하는 재귀적 DNS 확인자는 일반적으로 도메인의 권한 있는 네임서버로부터 최종적으로 응답을 받을 때까지 여러 관련 네임서버와 통신해야 합니다(DNS 응답이 캐시되지 않는다고 가정할 때). 이는 외부 DNS 확인과 원본 DNS 확인 중에 동일한 프로세스입니다. 다음은 원본 DNS 확인의 예시입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image6-1.png" class="kg-image" alt="" loading="lazy" width="1165" height="863"></figure>
+	<p>본질적으로 DNS는 DNS 트래픽의 무결성을 검증할 수 있는 수단 없이 처음에 공개된 공용 시스템입니다. 따라서 누군가가 DNS 응답을 스푸핑하는 것을 방지하기 위해 DNS 응답이 실제 보낸 사람으로부터 온 것인지 인증하기 위한 수단으로<a href="https://blog.cloudflare.com/ko-kr/dnssec-an-introduction"> DNS 보안 확장(DNSSEC)</a>이 도입되었습니다. 이는 A, AAAA, MX, CNAME과 같은 기존 DNS 레코드와 함께 암호화 서명을 생성하여 이루어집니다. DNS 레코드의 관련 서명을 검증하면, 요청된 DNS 레코드가 실제로 권한 있는 네임서버에서 왔으며 도중에 변경되지 않았는지 확인할 수 있습니다. 서명의 유효성을 성공적으로 확인할 수 없는 경우, 재귀 확인자는 일반적으로 잘못된 서명을 나타내는 오류를 반환합니다. 이것이 일요일에 발생한 일입니다.</p>
+	<h3 id="%EC%82%AC%EA%B3%A0-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8-%EB%B0%8F-%EC%98%81%ED%96%A5">사고 타임라인 및 영향</h3>
+	<p>2023년 7월 8일 토요일 21:10 UTC에 아시아 태평양 지역의 여러 Cloudflare 데이터 센터에서 업스트림 DNS 확인 중에 발생한 DNSSEC 유효성 검사 오류의 첫 번째 인스턴스가 로그에 기록되었습니다. .com 및 .net의 TLD 네임서버에서 NSEC3 유형(<a href="https://blog.cloudflare.com/ko-kr/black-lies">존재하지 않는 DNS 레코드를 증명</a>하기 위한 DNSSEC 메커니즘)의 잘못된 서명이 포함되어 있었습니다. 약 1시간 후인 22:16 UTC에 첫 번째 내부 경고가 발생했지만(일정 시간 동안 문제가 지속되어야 했기 때문에) 오류율은 전체 업스트림 DNS 쿼리의 약 0.5% 수준에 머물렀습니다.</p>
+	<p>몇 시간 후, 영향을 받은 위치의 업스트림 DNS 쿼리 중 약 13%가 실패할 정도로 오류율이 증가했습니다. 이 비율은 사고 기간 동안 업스트림 DNS 쿼리의 10~15%, 아시아 태평양 지역의 영향을 받은 Cloudflare 데이터 센터로 향하는 모든 DNS 쿼리(외부 &amp; 업스트림 확인)의 약 5~7% 범위에서 계속 변동되었습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-6.png" class="kg-image" alt="" loading="lazy" width="1636" height="902"></figure>
+	<p>처음에는 단일 업스트림 네임서버에서만 DNS 확인에 문제가 있는 것처럼 보였지만, 추가 조사 결과 이 문제가 더 광범위하게 퍼져 있는 것으로 밝혀졌습니다. 최종적으로 .com 및 .net 아시아 태평양 지역의 일부 DNS 쿼리에서 만료된 DNSSEC 서명을 반환하고 있는 것을 확인할 수 있었습니다. 테스트 결과, 다른 네임서버 위치는 유효한 DNSSEC 서명을 올바르게 반환했습니다.</p>
+	<p>이에 따라 저희는 .com 및 .net TLD 네임서버 IP 주소에 대한 DNS 트래픽을 Verisign의 미국 서부 지역으로 다시 라우팅했습니다. 이 변경 사항이 전파된 후 문제가 매우 빠르게 진정되었고 원본 확인 오류율이 정상 수준으로 돌아갔습니다.</p>
+	<p>모든 시간은 UTC 기준입니다.</p>
+	<p><strong>2023-07-08 21:10</strong> 원본 DNS 확인에 대한 로그에 DNSSEC 유효성 검사 오류의 첫 번째 인스턴스가 나타납니다.</p>
+	<p><strong>2023-07-08 22:16</strong> 아시아 태평양 데이터 센터에 대한 첫 번째 내부 경고가 테스트 도메인에서 원본 DNS 확인 오류를 알렸습니다. 현재 다른 도메인에 대한 오류는 거의 없습니다.</p>
+	<p><strong>2023-07-09 02:58</strong> 첫 번째 사례 이후 오류율이 크게 증가했습니다. 사고가 선언됩니다.</p>
+	<p><strong>2023-07-09 03:28</strong> DNSSEC 유효성 검사 문제가 단일 업스트림 공급자에 국한된 것으로 보입니다. 단일 업스트림에서 문제가 발생하여 당사로 다시 전파되는 것은 비정상적인 일이 아니며, 이 경우 로그에는 주로 이 특정 업스트림으로 해결되는 도메인의 오류가 표시되고 있었습니다.</p>
+	<p><strong>2023-07-09 04:52</strong> DNSSEC 유효성 검사 문제가 더 광범위하게 발생하고, 여러 .com 및 .net 도메인에 영향을 미친다는 것을 알게 되었습니다. 유효성 검사 문제는 아시아 태평양 지역에만 국한되어 있으며 이 문제는 간헐적으로 발생하는 것으로 보입니다.</p>
+	<p><strong>2023-07-09 05:15</strong> 8.8.8.8 및 1.1.1.1과 같이 널리 사용되는 재귀 확인자를 통한 DNS 쿼리는 현재 유효하지 않은 DNSSEC 서명을 반환하지 않습니다. 로컬 스텁 확인자를 사용하는 DNS 쿼리는 계속해서 DNSSEC 오류를 반환합니다.</p>
+	<p><strong>2023-07-09 06:24</strong> 싱가포르에 있는 .com 및 .net Verisign 네임서버에는 만료된 DNSSEC 서명이 포함되어 있지만, 다른 위치의 Verisign TLD 네임서버의 응답은 정상입니다.</p>
+	<p><strong>2023-07-09 06:41</strong> Verisign에 연락하여 만료된 DNSSEC 서명에 대해 알립니다.</p>
+	<p><strong>2023-07-09 06:50</strong> 영향을 해결하기 위해 .com 및 .net Verisign 네임서버 IP에 대해 IPv4를 통해 DNS 트래픽을 미국 서부 IP로 다시 라우팅합니다. 이렇게 하면 오류율이 즉시 크게 감소합니다.</p>
+	<p><strong>2023-07-09 07:06</strong> 또한 .com 및 .net Verisign 네임서버 IP에 대해 IPv6을 통해 DNS 트래픽을 미국 서부 IP로 다시 라우팅합니다. 이렇게 하면 오류율이 0으로 떨어집니다.</p>
+	<p><strong>2023-07-10 09:23</strong> 재라우팅은 여전히 진행 중이지만 아시아 태평양 지역의 서명 만료에 대한 근본적인 문제는 아직 해결되지 않았습니다.</p>
+	<p><strong>2023-07-10 18:23</strong> Verisign에서 현지 사이트에서 "오래된 데이터를 제공하고 있었으며" 문제를 해결했음을 확인했습니다.</p>
+	<h3 id="%EC%98%A4%EB%A5%98%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%EC%88%A0%EC%A0%81-%EC%84%A4%EB%AA%85-%EB%B0%8F-%EB%B0%9C%EC%83%9D%ED%95%9C-%EB%B0%A9%EC%8B%9D">오류에 대한 기술적 설명 및 발생한 방식</h3>
+	<p>앞서 언급했듯이 이 사고의 근본적인 원인은 .net 및 .com 영역에 대한 만료된 DNSSEC 서명이었습니다. 만료된 DNSSEC 서명으로 인해 DNS 응답이 유효하지 않았던 것으로 해석됩니다. 사용자가 이 오류를 관찰한 두 가지 주요 시나리오가 있습니다.</p>
+	<ol>
+		<li><a href="https://developers.cloudflare.com/ko-kr/dns/cname-flattening" target="_blank">CNAME 플래트닝</a>으로 외부 DNS 확인. 이는 권한 있는 네임서버가 CNAME 레코드 자체가 아닌 CNAME 레코드 대상이 확인하는 IP 주소를 반환하려고 시도하는 경우입니다.</li>
+		<li>원본 DNS 확인을 위한 CNAME 대상 조회. 이 방법은 HTTPS 요청이 Cloudflare Anycast IP 주소로 전송될 때 가장 일반적으로 사용되며, 요청을 전달할 IP 주소를 결정해야 합니다. <a href="https://developers.cloudflare.com/ko-kr/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank">Cloudflare 작동 방식</a>을 참조하십시오.</li>
+	</ol>
+	<p>두 경우 모두 DNS 쿼리는 백그라운드에서 호스트 이름의 확인 대상을 조회하기 위해 사내 재귀 DNS 확인자를 거칩니다. 이 확인자의 목적은 쿼리를 캐시하고, 향후 쿼리를 최적화하고, DNSSEC 유효성 검사를 제공하는 것입니다. 이 확인자의 쿼리가 어떤 이유로든 실패하면, 권한 있는 DNS 시스템이 위에 설명한 두 가지 시나리오를 수행할 수 없습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-1.png" class="kg-image" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." loading="lazy" width="1999" height="935"></figure>
+	<p>사고 동안 재귀 확인자는 .com 및 .net으로 끝나는 도메인에 대한 DNS 응답에서 DNSSEC 서명의 유효성을 검사하지 못했습니다. 이러한 서명은 다른 DNS 레코드와 함께 RRSIG 레코드 형태로 전송됩니다. 이들은 리소스 레코드 세트(RRset)를 구성합니다. 각 RRSIG에는 해당 필드가 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image4.png" class="kg-image" alt="As you can see, the main part of the payload is associated with the signature and its corresponding metadata. Each recursive resolver is responsible for not only checking the signature but also the expiration time of the signature. It is important to obey the expiration time in order to avoid returning responses for RRsets that have been signed by old keys, which could have potentially been compromised by that time." loading="lazy" width="1999" height="565"></figure>
+	<p>보시다시피 페이로드의 주요 부분은 서명 및 해당 메타데이터와 연관되어 있습니다. 각 재귀 확인자는 서명뿐만 아니라 서명의 만료 시간도 확인할 책임이 있습니다. 오래된 키로 서명된 RRset에 대한 응답을 반환하지 않으려면 만료 시간을 준수하는 것이 중요하며, 그 시간 전에 손상되었을 가능성이 있습니다.</p>
+	<p>이 사고가 발생하는 동안 .com 및 .net TLD 영역의 권한 있는 운영자인 Verisign은 아시아 태평양 지역의 DNS 응답에서 만료된 서명을 반환하는 경우가 종종 있었습니다. 그 결과 재귀 확인자가 해당 RRset의 유효성을 검사할 수 없었습니다. 결국 이는 일부 DNS 쿼리가 권한 있는 네임서버에 대한 응답 코드로 SERVFAIL을 반환한다는 것을 의미했습니다. 이로 인해 Cloudflare에서 도메인에 연결하려는 사용자에게 연결 문제가 발생했는데, 이는 영향을 받는 도메인 이름의 업스트림 대상을 확인할 수 없어 프록시된 HTTPS 요청을 업스트림 서버로 전송할 위치를 알지 못했기 때문입니다.</p>
+	<h3 id="%EB%B3%B5%EC%9B%90-%EB%B0%8F-%ED%9B%84%EC%86%8D-%EC%A1%B0%EC%B9%98">복원 및 후속 조치</h3>
+	<p>저희는 근본 원인을 파악한 후 문제를 해결할 수 있는 다양한 방법을 모색하기 시작했습니다. 이 지역화된 문제를 해결하는 가장 빠른 방법은 Verisign 네임서버로의 로컬 경로 사용을 중단하는 것이라는 결론에 도달했습니다. 즉, 이 글을 쓰는 시점에서 아시아 태평양 지역에서 Verisign 네임서버로 향하는 발신 DNS 트래픽은 이제 더 가까운 네임서버에서 서비스되는 대신 태평양을 가로질러 미국 서부 해안에서 끝납니다. DNS의 특성과 DNS 캐싱의 중요한 역할로 인해 처음에 예상했던 것보다 영향이 적습니다. 자주 조회되는 이름은 첫 번째 요청 후에 캐시되며, 로컬 DNS 리커서 캐시를 공유하고 풀링하여 효율성을 극대화하기 때문에 데이터 센터당 한 번만 수행하면 됩니다.</p>
+	<p>이상적으로는, 고객뿐만 아니라 해당 지역의 다른 사람들에게도 영향을 미칠 수 있는 문제였기 때문에 즉시 해결할 수 있었을 것입니다. 따라서 당사는 다른 제공자와의 사고 관련 소통 채널을 개선하여 이와 같은 문제에 대해 DNS 생태계가 견고하게 유지될 수 있도록 최선을 다하겠습니다. 이와 같은 긴급한 문제가 발생했을 때, 조치를 취할 수 있는 다른 제공자에 신속하게 연락할 수 있는 것은 매우 중요합니다.</p>
+	<h3 id="%EA%B2%B0%EB%A1%A0">결론</h3>
+	<p>이번 사고는 DNS 장애가 얼마나 큰 영향을 미치는지, 그리고 이 기술이 인터넷에 얼마나 중요한지를 <a href="https://blog.cloudflare.com/ko-kr/october-2021-facebook-outage-ko-kr">다시 한 번</a> 보여줍니다. 향후 이와 같은 문제가 다시 발생할 경우 보다 효율적이고 신속하게 문제를 감지하고 해결할 수 있도록 시스템을 개선할 수 있는 방안을 검토하겠습니다.</p>
+	<p>Cloudflare는 이 문제의 원인이 아니며, Cloudflare만 이 문제의 영향을 받은 것은 아니라고 확신하지만, 이번 사고로 인해 고객과 인터넷 자산에 액세스할 수 없었던 모든 사용자에게 혼란을 드린 점에 대해 죄송하게 생각합니다.</p>
+	<p><strong>업데이트:</strong> 7/11(화) 22:24:21 UTC 2023<em>, </em>Verisign은<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank"> 공지사항</a>으로 자세한 내용을 제공합니다.</p>
+	<blockquote><em>지난주 싱가포르에 있는 DNS 확인 사이트 중 하나를 한 공급자에서 다른 공급자로 마이그레이션하는 과정에서 예기치 않게 관리 액세스 권한 및 사이트에 변경 사항과 DNS 업데이트를 제공할 수 있는 기능이 손실되었습니다. 표준 절차에 따라 해당 사이트로 연결되는 모든 경유 링크를 비활성화했습니다. 안타깝게도 피어링 라우터가 계속 활성화되어 있었는데, 연결이 원활하지 않아 팀에서 바로 알아차리지 못했습니다.</em></blockquote>
+	<blockquote><em>이로 인해 주말 동안 사이트의 DNSSEC 서명이 만료되기 시작하면서 해당 지역의 일부 인터넷 사용자가 몇 가지 .com 및 .net 도메인에 접속하는 데 영향을 미칠 수 있는 문제가 발생했습니다. 이 문제는 사이트의 피어링 라우터 전원을 꺼서 Anycast 경로 알림을 철회하고 트래픽을 다른 사이트로 라우팅하여 해결되었습니다.</em></blockquote>
+	<blockquote><em>당사는 프로세스와 절차를 업데이트하고 있으며 향후 이러한 문제가 재발하지 않도록 노력하겠습니다.</em></blockquote>
+	<blockquote><em>싱가포르 사이트는 전역 네트워크를 구성하는 200개 이상의 사이트 중에서 고도로 이중화된 사이트의 일부입니다. 이 문제는 전 세계적으로 .com 및 .net 의 핵심 해상도에는 영향을 미치지 않았습니다. 영향을 받으셨을 수 있는 분들께 사과드립니다.</em></blockquote>
+</div>

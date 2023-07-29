@@ -1,0 +1,68 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-5.png" class="kg-image" alt="Connection errors in Asia Pacific region on July 9, 2023" loading="lazy" width="1200" height="675"></figure>
+	<p>2023年7月9日（日）早朝（UTC時間）、当社は、Verisign .comおよび.netトップレベルドメイン（TLD）ネームサーバーの無効な DNSSEC署名が原因で、—アジア太平洋地域全体のすべてのDNSクエリーの最大7%—という多数のDNS解決の失敗を観測しました。これにより、この地域のCloudflareのインターネットプロパティのWeb訪問者が接続エラーとなりました。</p>
+	<p>Verisignのネームサーバーのローカルインスタンスは、アジア太平洋地域で、期限切れのDNSSEC署名で応答し始めました。この影響を改善するために、有効な署名を返している米国西海岸の拠点に、Verisignに向けて上流のDNSクエリーを再ルーティングしました。</p>
+	<p>根本的な原因に関する詳細情報を得るため、すでにVerisignに連絡を取りました。この問題が解決されるまで、当社は .comおよび .net TLDネームサーバーへのDNSトラフィックは再ルーティングされたままになります。その地域の.comおよび.netの下のドメインへの最初のWeb訪問者の遅延が若干増加する可能性があります。</p>
+	<h3 id="%E8%83%8C%E6%99%AF">背景</h3>
+	<p>Cloudflareのネットワークを介してドメインのトラフィックをプロキシするために、 Cloudflareデータセンターの観点からDomain Name System（DNS）に関しては、2つのコンポーネントが関係します：外部DNS解決および上流またはオリジンDNS解決。</p>
+	<p>これを理解するために、ドメイン名<code>blog.cloudflare.com</code>を見てみましょう。—そのドメイン名がCloudflare'sのネットワークを介してプロキシされています—オリジンサーバーとして<code>origin.example</code>を使用するように設定されていると仮定しましょう：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="124"></figure>
+	<p>ここで、外部DNS解決は、Web訪問者の代わりに<code>1.1.1.1</code>や<code>8.8.8.8</code>などのパブリックリゾルバーによって送信された<code>blog.cloudflare.com</code>へのDNSクエリーが一連のCloudflare Anycast IPアドレスを返す部分です。これにより、Web訪問者のブラウザは、HTTPSリクエストの送信先を確実に認識して、Webサイトを読み込みます。内部で、ブラウザはこのようなDNSクエリーを実行します。（末尾のドットは<a href="https://ja.wikipedia.org/wiki/DNS_root_zone" target="_blank">DNSルートゾーン</a>を示します）:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ dig blog.cloudflare.com. +short
+104.18.28.7
+104.18.29.7
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>（コンピューターは実際には内部でdigコマンドを使用しません。プロセスを説明するために使用しました。）そして、次に最も近い Cloudflareデータセンターがblog. .comへのHTTPSリクエストを受信すると、オリジンサーバーからコンテンツをフェッチする必要があります。（コンテンツはキャッシュされていないと仮定します）。</p>
+	<p>Cloudflareがオリジンサーバーに到達する方法は2つあります。 CloudflareのDNS設定にIPアドレスが含まれている場合、オリジンに直接、接続することができます。場合によっては、お客様がCNAMEを使用する場合があり、これは、 Cloudflareが、CNAMEに関連付けられたIPアドレスを取得するために別のDNSクエリーを実行する必要があることを意味します。上記の例では <code>blog.cloudflare.com</code>には、IPアドレスの<code>origin.example</code>を確認するように指示するCNAMEレコードがあります。このインシデントの最中に、.comと.netのドメイン名にアクセスするこのようなCNAMEレコードを持つお客様のみ、影響を受けた可能性があります。</p>
+	<p>ドメイン<code>origin.example</code>は、上流またはオリジンDNS解決の一環としてCloudflareが解決する必要があります。今回、 Cloudflare データセンターは、次のようなアウトバウンドDNSクエリーを実行する必要があります：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ dig origin.example. +short
+192.0.2.1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>DNSは、階層的なプロトコルであるため、ドメイン名を解決したい人のために、通常、DNS解決を処理する再帰的DNSリゾルバは、最終的にドメインの権威ネームサーバーから回答を得るまで、複数の関係するネームサーバーと通信する必要があります（ DNS応答がキャッシュされていないと仮定）。これは、外部DNS解決およびオリジンDNS解決の間、同じプロセスです。以下は、オリジンDNS解決の例です：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image6-1.png" class="kg-image" alt="" loading="lazy" width="1165" height="863"></figure>
+	<p>もともと、DNSは公開システムであり、当初はDNSトラフィックの完全性を検証する手段を持たずに公開されました。そこで、DNS応答のなりすましを防ぐために、DNS応答が本当に、発信者であると主張する人からのものであるかどうかを認証する手段として、<a href="https://blog.cloudflare.com/ja-jp/dnssec-an-introduction-ja-jp">DNSセキュリティ拡張（DNSSEC）</a>が導入されました。これは、A、AAAA、MX、CNAMEなどの既存のDNSレコードと一緒に暗号署名を生成することで実現されます。DNSレコードの関連署名を検証することで、要求されたDNSレコードが本当にその権威ネームサーバーから来たもので、途中で変更されたものでないことを検証できます。署名が正常に検証されない場合、再帰リゾルバは通常、無効な署名を示すエラーを返します。これはまさに日曜日に起こったことです。</p>
+	<h3 id="%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%87%E3%83%B3%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%A8%E5%BD%B1%E9%9F%BF">インシデントのタイムラインと影響</h3>
+	<p>2023年7月8日（土）21:10 UTCに、アジア太平洋地域の複数の Cloudflareデータセンターからの上流DNS解決の間に発生した、 DNSSEC検証エラーの最初のインスタンスを、当社のログが示しています。それは、タイプNSEC3（<a href="https://blog.cloudflare.com/ja-jp/black-lies-ja-jp">存在しないDNSレコードを証明する</a>DNSSECメカニズム）の.comおよび.netのTLDネームサーバーからのDNS応答に無効な署名が含まれていたようでした。約1時間後の22:16 UTCに、最初の内部アラートが発生しました（一定期間にわたって一貫した問題である必要があるため）が、エラー率は依然としてすべての上流DNSクエリーの約0.5%のレベルでした。</p>
+	<p>数時間後、エラー率は、影響を受けた場所での上流DNSクエリーの最大13％が失敗するまで上昇しました。この割合は、上流DNSクエリーの10～15%の範囲およびアジア太平洋地域の影響を受けたCloudflareデータセンターへのすべてのDNSクエリー（外部および上流解決）の約5～7%の間で、インシデントの期間にわたり、変動し続けました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-6.png" class="kg-image" alt="" loading="lazy" width="1636" height="902"></figure>
+	<p>当初、単一の上流ネームサーバーのみがDNS解決に問題があったかのように思われましたが、さらに調査したところ、問題はより広範囲に及んでいることが判明しました。最終的に、.comおよび.netのVerisignネームサーバーが、アジア太平洋地域のDNSクエリーの一部で、期限切れのDNSSEC署名が返されていました。当社のテストに基づき、その他のネームサーバーの拠点は、有効な DNSSEC署名を正しく返していました。</p>
+	<p>これを受けて、.comおよび.net TLDネームサーバーIPアドレスへのDNSトラフィックをVerisignの米国西部の拠点に再ルーティングしました。この変更が伝搬された後、この問題はすぐに沈静化し、オリジン解決エラー率は通常のレベルに戻りました。</p>
+	<p>時間はすべてUTC：</p>
+	<p><strong>2023-07-08 21:10</strong> DNSSECの検証エラーの最初のインスタンスが、オリジンDNS解決のログに表示されました。</p>
+	<p><strong>2023-07-08 22:16</strong> アジア太平洋データセンターの最初の内部アラートが発生し、テストドメインでオリジンDNSの解決エラーが表示されます。現時点では、その他のドメインのエラーはほとんどありません。</p>
+	<p><strong>2023-07-09 02:58</strong> 最初のインスタンスからエラー率が大幅に増加しました。インシデントが宣言されます。</p>
+	<p><strong>2023-07-09 03:28</strong> DNSSEC検証の問題は、単一の上流プロバイダーに分離されているようです。単一の上流に問題があり、それが当社に伝播することは異常なことではありません。この場合、当社のログは主に、この特定の上流に解決するドメインからのエラーを表示していました。</p>
+	<p><strong>2023-07-09 04:52</strong> DNSSEC検証の問題がさらに広範囲に及んでおり、複数の.comおよび.netドメインに影響を与えていることを認識しています。検証の問題は、引き続きアジア太平洋地域のみに分離されており、断続的であるように見えます。</p>
+	<p><strong>2023-07-09 05:15</strong> 8.8.8.8や1.1.1.1のような一般的な再帰リゾルバ経由のDNSクエリーは、現時点では無効なDNSSEC署名を返しません。ローカルスタブリゾルバを使用したDNSクエリーは、引き続きDNSSECエラーを返します。</p>
+	<p><strong>2023-07-09 06:24</strong> シンガポールの.comおよび.net Verisignネームサーバーからの応答には期限切れのDNSSEC署名が含まれていますが、その他の拠点のVerisign TLDネームサーバーからの応答は正常です。</p>
+	<p><strong>2023-07-09 06:41</strong> Verisignに連絡し、期限切れのDNSSEC署名について通知します。</p>
+	<p><strong>2023-07-09 06:50</strong> 影響を改善するために、.comおよび.net VerisignネームサーバーIPのIPv4経由で、代わりに、米国西部IPに、DNSトラフィックを再ルーティングします。これは直ちにエラー率の大幅な低下につながります。</p>
+	<p><strong>2023-07-09 07:06</strong> 当社はまた、.comおよび.net VerisignネームサーバーIPのIPv6経由で、米国西部IPに、DNSトラフィックを再ルーティングしますこれにより、エラー率はゼロに下がります。</p>
+	<p><strong>2023-07-10 09:23</strong> 再ルーティングはまだ実施されていますが、アジア太平洋地域における期限切れの署名に関する根本的な問題はまだ解決されていません。</p>
+	<p><strong>2023-07-10 18:23</strong> Verisignから折り返し連絡があり、ローカルサイトで「古いデータを提供していた」ことを確認し、問題を解決しました。</p>
+	<h3 id="%E9%9A%9C%E5%AE%B3%E3%81%AE%E6%8A%80%E8%A1%93%E7%9A%84%E8%AA%AC%E6%98%8E%E3%81%A8%E7%99%BA%E7%94%9F%E5%8E%9F%E5%9B%A0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">障害の技術的説明と発生原因について</h3>
+	<p>冒頭で述べたように、このインシデントの根本的な原因は、.netおよび.comゾーンのDNSSEC署名の期限切れでした。期限切れのDNSSEC署名は、DNS応答が無効として解釈されます。このエラーがユーザーによって観測されたメインシナリオは2つあります：</p>
+	<ol>
+		<li>外部DNSの解決のための<a href="https://developers.cloudflare.com/ja-jp/dns/cname-flattening" target="_blank">CNAMEのフラット化</a>。これは、権威ネームサーバーがCNAMEレコード自体ではなく、CNAMEレコードターゲットが解決するIPアドレスを返そうとする場合です。</li>
+		<li>オリジンDNS解決のCNAMEターゲットを検索。これは、HTTPSリクエストがCloudflareエニーキャストIPアドレスに送信され、リクエストをどのIPアドレスに転送するかを決定する必要がある場合によく使用されます。詳細は、<a href="https://developers.cloudflare.com/ja-jp/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank"> Cloudflareの仕組み</a>を参照してください。</li>
+	</ol>
+	<p>どちらの場合も、水面下で、DNSクエリーは、ホスト名の解決先を調べるために社内の再帰的DNSリゾルバを経由します。このリゾルバの目的は、クエリーをキャッシュし、今後のクエリーを最適化し、 DNSSEC検証を提供することです。このリゾルバからのクエリーが何らかの理由で失敗すると、権威のあるDNSシステムは、上記の概略の2つのシナリオを実行できなくなります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-1.png" class="kg-image" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." loading="lazy" width="1999" height="935"></figure>
+	<p>インシデント発生中、再帰リゾルバは、.comおよび.netで終わるドメインの DNS応答のDNSSEC署名の検証に失敗していました。これらの署名はRRSIGレコードの形式で、対象となる他のDNSレコードと一緒に送信されます。これらは一緒になり、リソースレコードセット（RRset）を形成します。各RRSIGには対応するフィールドがあります：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image4.png" class="kg-image" alt="As you can see, the main part of the payload is associated with the signature and its corresponding metadata. Each recursive resolver is responsible for not only checking the signature but also the expiration time of the signature. It is important to obey the expiration time in order to avoid returning responses for RRsets that have been signed by old keys, which could have potentially been compromised by that time." loading="lazy" width="1999" height="565"></figure>
+	<p>ご覧のように、ペイロードのメイン部分は、署名とそれに対応するメタデータに関連しています。各再帰リゾルバは、署名の確認だけでなく、署名の有効期限も確認する責任があります。古い鍵で署名されたRRsetの応答を返すのを避けるため、有効期限に従うことが重要です。古い鍵は、その時までに安全性が損なわれている可能性があります。</p>
+	<p>このインシデントの間、.comおよび.net TLDゾーンの権威運営者であるVerisignは、アジア太平洋地域のDNS応答で、期限切れの署名を返すことが時折ありました。その結果、再帰リゾルバは対応するRRセットを検証することができませんでした。結局、これは、DNSクエリーの割合が、当社の権威ネームサーバーへの応答コードとしてSERVFAILを返すことを意味しました。これにより、今度はCloudflare上のドメインに接続しようとするユーザーに接続の問題が発生しました。当社は、影響を受けたドメイン名の上流ターゲットを解決できず、プロキシされたHTTPSリクエストを上流サーバーへ送信する場所がわからなかったためです。</p>
+	<h3 id="%E6%94%B9%E5%96%84%E3%81%A8%E3%83%95%E3%82%A9%E3%83%AD%E3%83%BC%E3%82%A2%E3%83%83%E3%83%97%E6%89%8B%E9%A0%86">改善とフォローアップ手順</h3>
+	<p>根本的な原因を特定した後は、問題を改善するためのさまざまな方法を検討し始めました。当社は、この非常に地域的な問題を回避する最速の方法は、Verisignのネームサーバーへのローカルルートの使用を停止することだという結論に達しました。これは、これを書いている時点で、アジア太平洋地域のVerisignのネームサーバーに向かって送信DNSトラフィックが、より近いネームサーバーによって提供されるのではなく、太平洋を横断し、最終的に米国西海岸に行きつくことを意味します。DNSの性質およびDNSキャッシングの重要な役割により、当初の予想よりもこれによる影響は少ないです。頻繁に検索される名前は、最初のリクエストの後にキャッシュされます。効率を最大化するために、ローカルDNSリカーサーキャッシュを共有してプールするので、これは、データセンターごとに一度だけ実施する必要があります。</p>
+	<p>当社のお客様だけでなく、この地域の他の人々にも影響を及ぼす可能性があるため、理想的には、すぐに問題を解決できたでしょう。従って、当社は、 DNSのエコシステムがこのような問題に対して堅牢であり続けるために、他のプロバイダーとのインシデントコミュニケーションチャネルの改善に真摯に取り組んでいきます。このような緊急の問題が発生した場合、対応可能な他のプロバイダーを迅速に把握できることが不可欠です。</p>
+	<h3 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h3>
+	<p>このインシデントは<a href="https://blog.cloudflare.com/ja-jp/october-2021-facebook-outage-ja-jp">再度</a>DNS障害がいかに大きな影響を与えるか、そしてこの技術がインターネットにとっていかに重要であるかを示しています。今後、このような問題が再び発生した場合、より効率的かつ迅速にこのような問題を検出し、解決するために、当社のシステムをどのように改善できるかを調査します。</p>
+	<p>この問題の原因は、Cloudflareにあるわけではなく、この影響を受けたのは当社だけではないことは確かですが、このインシデント中にインターネットプロパティにアクセスできなかったお客様、そしてすべてのユーザーの皆様に混乱を招いたことをお詫び申し上げます。</p>
+	<p><strong>更新：</strong>2023年7月11日（火）22:24:21 UTCに、<em> </em>Verisignは<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank">アナウンス</a>を投稿し、詳細を提供しています：</p>
+	<blockquote><em>先週、シンガポールにあるDNS解決サイトのひとつを、あるプロバイダーから別のプロバイダーに移行中、当社は予期せず管理アクセスが失われ、変更やDNS更新をサイトに配信することができなくなりました。Standard手順に従い、影響を受けたサイトへのすべてのトランジットリンクを無効にしました。残念なことに、ピアリングルーターがアクティブなままでしたが、そこに接続がなかったため、当社のチームにはすぐにはわかりませんでした。</em></blockquote>
+	<blockquote><em>週末にかけて、これにより、問題が発生し、サイト上のDNSSEC署名の有効期限が切れ始めたため、この地域の一部のインターネットユーザーが一部の.comおよび.netドメインにアクセスする能力に影響を与えた可能性があります。この問題は、サイトのピアリングルーターの電源を切ることで解決し、エニーキャストのルートアナウンスが取り消され、トラフィックが他のサイトに移動されました。</em></blockquote>
+	<blockquote><em>当社はプロセスと手順を更新し、今後このような問題が再発しないよう取り組んでいきます。</em></blockquote>
+	<blockquote><em>シンガポールサイトは、当社のグローバルネットワークを構成する200を超えるサイトのうち、非常に冗長なコンステレーションの一部です。この問題は、グローバルな.comおよび.netの解像度のコア解決に影響しませんでした。被害に遭われた方々にお詫び申し上げます。</em></blockquote>
+</div>

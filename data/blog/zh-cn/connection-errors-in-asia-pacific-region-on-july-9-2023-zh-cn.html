@@ -1,0 +1,68 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-5.png" class="kg-image" alt="Connection errors in Asia Pacific region on July 9, 2023" loading="lazy" width="1200" height="675"></figure>
+	<p>2023 年 7 月 9 日（星期日）协调世界时清晨，我们发现大量 DNS 解析失败，高达整个亚太地区所有 DNS 查询的 7%，原因是 Verisign .com和 .net 顶级域名 (TLD) 域名服务器的 DNSSEC 签名无效。这导致该地区 Cloudflare 上互联网资产的访问者出现连接错误。</p>
+	<p>威瑞信的域名服务器的本地实例开始响应亚太地区过期的 DNSSEC 签名。为了补救，我们已将威瑞信的上游 DNS 查询重新路由到美国西海岸的位置，这些位置将返回有效签名。</p>
+	<p>我们已经联系威瑞信，以获得更多有关根本原因的信息。在他们的问题得到解决之前，我们将把 DNS 的流量保留在 .com 和 .net 上。TLD 域名服务器重定向可能会导致该地区 .com和 .net 下域名的首次 Web 访问者会略有增加延迟。</p>
+	<h3 id="%E8%83%8C%E6%99%AF">背景</h3>
+	<p>从 Cloudflare 数据中心的角度来看，为了通过 Cloudflare 网络代理一个域名的流量，域名系统 (DNS) 涉及两个组成部分：外部 DNS 解析和上游或源 DNS 解析。</p>
+	<p>为了弄清楚这一点，让我们看一下域名 <code>blog.cloudflare.com</code> — 这是通过 Cloudflare 的网络进行代理的域名，假设它已配置为将 <code>origin.example</code> 作为源服务器：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="124"></figure>
+	<p>在此，外部 DNS 解析这一部分是指由 <code>1.1.1.1</code> 或 <code>8.8.8.8</code> 等公共解析器代表 Web 访问者发送的对 <code>blog.cloudflare.com</code> 的 DNS 查询返回一组 Cloudflare Anycast IP 地址。这可确保 Web 访问者的浏览器知道向何处发送 HTTPS 请求以加载网站。其中浏览器执行的 DNS 查询如下（尾部的点表示<a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank"> DNS 根区</a>）：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ dig blog.cloudflare.com. +short
+104.18.28.7
+104.18.29.7
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>（您的计算机内部实际上并不使用 dig 命令；我们使用它来说明该过程）然后，当下一个最近的 Cloudflare 数据中心接收到 blog.cloudflare.com 的 HTTPS 请求时，它需要从源服务器获取内容（假设它不是缓存）。</p>
+	<p>Cloudflare 有两种方式可以到达源服务器。如果 Cloudflare 中的 DNS 设置包含 IP 地址，那么我们可以直接连接到源服务器。在某些情况下，我们的客户使用 CNAME，这意味着 Cloudflare 必须执行另一个 DNS 查询，才能获得与 CNAME 相关的 IP 地址。在上面的示例中，<code>blog.cloudflare.com</code> 有一个 CNAME 记录，指示我们查看 <code>origin.example</code> 的 IP 地址。在事件发生期间，只有具备此类指向 .com 和 .net 域名的 CNAME 记录的客户可能会受到影响。</p>
+	<p>域名 <code>origin.example</code> 需要由 Cloudflare 解析为上游或源 DNS 解析的一部分。此时，Cloudflare 数据中心需要执行如下出站 DNS 查询：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ dig origin.example. +short
+192.0.2.1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>DNS 是一个分层协议，因此递归 DNS 解析器通常为想要解析域名的人处理 DNS 解析，它需要与多个相关域名服务器对话，直到最终从该域的权威性域名服务器获得答案（假设没有缓存 DNS 响应）。这与外部 DNS 解析和源 DNS 解析的过程相同。以下是源 DNS 解析的示例：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image6-1.png" class="kg-image" alt="" loading="lazy" width="1165" height="863"></figure>
+	<p>从本质上讲，DNS 是一个公共系统，最初发布时没有任何方法来验证 DNS 流量的完整性。因此，为了防止有人欺骗 DNS 响应，<a href="https://blog.cloudflare.com/zh-cn/dnssec-an-introduction">系统引入了 DNS 安全扩展 (DNSSEC)</a> 作为一种手段来验证 DNS 响应确实来自其声称的来源。这是通过在现有的 DNS 记录（如 A、AAAA、MX、CNAME 等）上生成加密签名来实现。通过验证 DNS 记录的相关签名，可以验证所请求的 DNS 记录确实来自其权威性域名服务器，并且在途中未遭到更改。如果签名无法成功验证，递归解析器通常会返回一个错误，表明签名无效。这正是星期日发生的事件。</p>
+	<h3 id="%E4%BA%8B%E4%BB%B6%E6%97%B6%E9%97%B4%E7%BA%BF%E5%92%8C%E5%BD%B1%E5%93%8D">事件时间线和影响</h3>
+	<p>2023 年 7 月 8 日星期六协调世界时 21:10，我们的日志显示，在亚太地区多个 Cloudflare 数据中心的上游 DNS 解析过程中，首次出现 DNSSEC 验证错误。.com 和 .net 的 TLD 域名服务器出现了 NSEC3 类型的 DNS 响应（一种 DNSSEC 机制，<a href="https://blog.cloudflare.com/black-lies">用于证明不存在 DNS 记录</a>）包含无效签名。大约一小时后，在协调世界时 22:16，第一次内部警报响起（因为它要求问题在一定时间内保持一致），但错误率仍处于所有上游 DNS 查询 0.5% 的水平。</p>
+	<p>几个小时后，错误率上升，此时我们在受影响地点约 13% 的上游 DNS 查询失败。在事件持续期间，在亚太地区受影响的 Cloudflare 数据中心中，这一比例在持续波动，上游 DNS 查询 10-15%，以及所有 DNS 查询（外部和上游解决）约 5-7%。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-6.png" class="kg-image" alt="" loading="lazy" width="1636" height="902"></figure>
+	<p>起初，似乎只有一个上游域名服务器出现了 DNS 解析问题，但经过进一步调查发现，这个问题涉及范围更广。最终，我们确认了在亚太地区 .com和 .net 的威瑞信域名服务器对部分 DNS 查询返回过期的 DNSSEC 签名。根据我们的测试，其他域名服务器位置都能正确返回有效的 DNSSEC 签名。</p>
+	<p>作为应对措施，我们将 .com 和 .net TLD 域名服务器 IP 地址的 DNS 流量重新路由到威瑞信的美国西部网点。发布这一变更后，该问题很快得到解决，源解析错误率恢复到正常水平。</p>
+	<p>所有时间均为协调世界时：</p>
+	<p><strong>2023-07-08 21:10</strong> 我们的源 DNS 解析日志中首次出现 DNSSEC 验证错误。</p>
+	<p><strong>2023-07-08 22:16</strong> 亚太数据中心的第一个内部警报响起，表明我们测试域中有源 DNS 解析错误。目前其他域的错误很少。</p>
+	<p><strong>2023-07-09 02:58</strong> 自首例以来，错误率大幅上升。宣布发生问题事件。</p>
+	<p><strong>2023-07-09 03:28</strong> DNSSEC 验证问题似乎仅限于单个上游提供商。单个上游有问题传播回我们很正常，在这种情况下，我们的日志主要显示解析到该特定上游的域的错误。</p>
+	<p><strong>2023-07-09 04:52</strong> 我们意识到 DNSSEC 验证问题涉及范围更广，会影响多个 .com 和 .net 域。验证问题仍然只限于亚太地区，而且似乎是间歇性的。</p>
+	<p><strong>2023-07-09 05:15</strong> 目前，通过常用的递归解析器（如 8.8.8.8 和 1.1.1.1）进行的 DNS 查询不会返回无效的 DNSSEC 签名。使用本地存根解析器进行的 DNS 查询仍会返回 DNSSEC 错误。</p>
+	<p><strong>2023-07-09 06:24</strong> 来自新加坡的 .com 和 .net 威瑞信域名服务器的响应包含过期的 DNSSEC 签名，但其他地方的威瑞信 TLD 域名服务器的响应正常。</p>
+	<p><strong>2023-07-09 06:41</strong> 我们联系威瑞信，通知他们 DNSSEC 签名已过期。</p>
+	<p><strong>2023-07-09 06:50</strong> 为了消除影响，我们通过 IPv4 将 .com 和 .net 威瑞信域名服务器 IP 的 DNS 流量改为重新路由到美国西部 IP。这立即导致错误率大幅下降。</p>
+	<p><strong>2023-07-09 07:06</strong> 我们还通过 IPv6 将 .com 和 .net 威瑞信域名服务器 IP 的 DNS 流量重新路由到美国西部 IP。这将导致误差率降至零。</p>
+	<p><strong>2023-07-10 09:23</strong> 重新路由仍在进行，但亚太地区签名过期的根本问题仍未解决。</p>
+	<p><strong>2023-07-10 18:23</strong> 威瑞信回复我们，确认他们在本地站点“提供过期数据”，并已解决问题。</p>
+	<h3 id="%E8%BF%99%E4%B8%AA%E9%94%99%E8%AF%AF%E7%9A%84%E6%8A%80%E6%9C%AF%E6%8F%8F%E8%BF%B0%E5%8F%8A%E5%85%B6%E5%A6%82%E4%BD%95%E5%8F%91%E7%94%9F">这个错误的技术描述及其如何发生</h3>
+	<p>如前言所述，该事件的根本原因是 .net 和.com 区域的 DNSSEC 签名过期。过期的 DNSSEC 签名将导致 DNS 响应被解释为无效。用户发现到该错误主要有两种情况：</p>
+	<ol>
+		<li><a href="https://developers.cloudflare.com/zh-cn/dns/cname-flattening" target="_blank">CNAME 拉平</a>用于外部 DNS 解析。这是当我们的权威性域名服务器尝试返回 CNAME 记录目标解析到的 IP 地址，而不是 CNAME 记录本身。</li>
+		<li>CNAME 目标查询用于源 DNS 解析。当 HTTPS 请求被发送到一个 Cloudflare Anycast IP 地址，并且我们需要确定将请求转发到哪个 IP 地址时，这是最常用的方法。参见<a href="https://developers.cloudflare.com/zh-cn/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank"> Cloudflare 如何工作</a>了解更多详情。</li>
+	</ol>
+	<p>在这两种情况下，DNS 查询都要经过内部递归 DNS 解析器，以查询主机名的解析结果。该解析器的目的是缓存查询、优化未来查询并提供 DNSSEC 验证。如果该解析器的查询因任何原因失败，我们的权威 DNS 系统将无法执行上述两种情况。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-1.png" class="kg-image" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." loading="lazy" width="1999" height="935"></figure>
+	<p>在该事件中，递归解析器未能验证以 .com 和 .net 结尾的域名的 DNS 响应中的 DNSSEC 签名。这些签名将以 RRSIG 记录的形式与其他 DNS 记录一起发送。它们共同构成资源记录集（RRset）。每个 RRSIG 都有相应的字段：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image4.png" class="kg-image" alt="As you can see, the main part of the payload is associated with the signature and its corresponding metadata. Each recursive resolver is responsible for not only checking the signature but also the expiration time of the signature. It is important to obey the expiration time in order to avoid returning responses for RRsets that have been signed by old keys, which could have potentially been compromised by that time." loading="lazy" width="1999" height="565"></figure>
+	<p>如您所见，有效载荷的主要部分与签名及其相应的元数据相关联。每个递归解析器不仅负责检查签名，还负责检查签名的过期时间。必须遵守过期时间，以避免返回由旧密钥签名的 RRsets 的响应，因为旧密钥在过期时间之前可能已经泄露。</p>
+	<p>在此次事件中，.com 和 .net TLD 区域的权威运营商威瑞信在亚太地区的 DNS 响应中偶尔会返回过期签名。因此，我们的递归解析器无法验证相应的 RRset。最终，这意味着一定比例的 DNS 查询对我们的权威性域名服务器返回 SERVFAIL 作为响应代码。这反过来又给试图连接到 Cloudflare 上域名的用户造成了连接问题，因为我们无法解析受影响域名的上游目标，因此不知道将代理 HTTPS 请求发送到上游服务器的位置。</p>
+	<h3 id="%E8%A1%A5%E6%95%91%E5%8F%8A%E5%90%8E%E7%BB%AD%E6%AD%A5%E9%AA%A4">补救及后续步骤</h3>
+	<p>一旦我们确定了根本原因，我们就开始寻找不同的方法来解决这个问题。我们得出的结论是，解决这一地区性问题的最快方法是停止使用威瑞信域名服务器的本地路径。这就表示，在撰写本报告时，我们向亚太地区威瑞信域名服务器发送的 DNS 流量现在会穿越太平洋，最终到达美国西海岸，而不是由更近的域名服务器提供服务。由于 DNS 的性质以及 DNS 缓存的重要作用，其影响比您最初预期的要小。经常查询的名称将在第一次请求后进行缓存，每个数据中心只需进行一次缓存，因为我们共享和汇集本地 DNS 递归器缓存，以最大限度地提高效率。</p>
+	<p>理想的情况是，我们能够立即解决这个问题，因为它也可能影响到该地区的其他人，而不仅仅是我们的客户。因此，我们将努力改善与其他提供商的事件通信渠道，以确保 DNS 生态系统在此类问题上保持稳健。当出现类似的紧急问题时，能够迅速联系到能够采取行动的其他供应商至关重要。</p>
+	<h3 id="%E6%80%BB%E7%BB%93">总结</h3>
+	<p>此次事件<a href="https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage-zh-cn">再次表明</a> DNS 故障的影响有多大，以及这项技术对互联网的重要性。我们将研究如何改进我们的系统，以便在今后再次发生类似问题时能更有效、更快速地检测和解决问题。</p>
+	<p>虽然 Cloudflare 并非造成这一问题的原因，而且我们确信受此影响的并非只有我们一家公司，但对在此事件中给我们的客户和所有无法访问互联网资产的用户造成的影响，我们仍然表示歉意。</p>
+	<p><strong>更新：</strong>2023 年 7月 11 日协调世界时 22:24:21<em>，</em>威瑞信发布了<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank">公告</a>，提供了更多详细信息：</p>
+	<blockquote><em>上周，我们在新加坡的一个 DNS 解析站点从一个提供商迁移到另一个提供商的过程中，我们意外地失去了管理访问权限以及向该站点提供变更和 DNS 更新的能力。按照我们的标准程序，我们禁用了受影响网站的所有中转链接。不幸的是，一个对等互连路由器仍然处于活动状态，由于那里缺乏连通性，我们的团队无法立即察觉。</em></blockquote>
+	<blockquote><em>上周末，这个问题可能影响了该地区一些互联网用户无法访问一些.com 和 .net 域，因为该站点上 DNSSEC 的签名开始过期。该问题通过关闭网站的对等互连路由器电源得到解决，导致 Anycast 路由公告撤销，流量被引导至其他网站。</em></blockquote>
+	<blockquote><em>我们正在更新我们的流程和程序，并将努力防止今后再次发生此类问题。</em></blockquote>
+	<blockquote><em>新加坡站点是由 200 多个站点组成的高度冗余网络，是我们全球网络的一部分。这个问题在全局上对 .com和 .net 的核心解析没有影响。我们向可能受到影响的客户表示歉意。</em></blockquote>
+</div>
