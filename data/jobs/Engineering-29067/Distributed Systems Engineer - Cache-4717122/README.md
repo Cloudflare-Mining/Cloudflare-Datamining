@@ -6,26 +6,28 @@
 	</div>
 </div>
 <p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that helps power millions of Internet properties. We also build and run the internal tools that build and run our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in more than 270 cities in over 100 countries.</span></p>
+<p>Cloudflare’s Engineering Team builds and runs the software that helps power millions of Internet properties.&nbsp; Product development covers both new features and functionality as well as scaling our existing software to meet the challenges of a massively growing customer base.&nbsp;</p>
+<p>The Content Delivery group aims to help make the Internet faster, safer and more secure through building and optimizing one of the world’s largest CDNs in addition to driving adoption of new standards.&nbsp; This involves feature implementation, optimization, debugging, working with responsible teams and engineers, documentation and tooling to enable others.</p>
 <p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work as part of a team that builds the Cloudflare cache and related functionality</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create maintainable, performant and tested code</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Interface with products and other engineering teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create functional specifications that capture your system design</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave code better than you found it</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentor team members.</span></li>
+	<li>Work as part of the team responsible for caching and distribution of all assets served on Cloudflare's network&nbsp;</li>
+	<li>Help build <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation/">caching topology enhancements</a>, <a href="https://blog.cloudflare.com/rethinking-cache-purge-architecture/">distributed cache purge</a>, <a href="https://blog.cloudflare.com/introducing-cache-rules/">fine-grain cache controls</a>, and many more supporting systems and features</li>
+	<li>Create maintainable, memory-safe and performant code that is well tested and monitored</li>
+	<li>Interface with product teams dreaming up new standards and ways to improve the Internet</li>
+	<li>Collaborate with other engineering teams building on top of Cloudflare’s CDN cache</li>
+	<li>Design and build large scale distributed systems, driving from inception to production</li>
+	<li>Leave code better than you found it</li>
+	<li>Mentor team members</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 4 years professional experience as a developer/engineer</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid grasp of how TCP and HTTP work</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Linux networking</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go, Rust, C, or similar languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good oral and written communication skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Computer Science or equivalent professional experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing secure and highly-available distributed systems is a plus.</span></li>
+	<li>Minimum 4 years professional experience as a developer/engineer</li>
+	<li>Solid grasp of how TCP and HTTP work</li>
+	<li>Experience designing, implementing and optimizing secure, resilient distributed systems</li>
+	<li>Experience with Linux networking</li>
+	<li>Programming experience in Go, Rust, C, C++, Typescript, or similar languages</li>
+	<li>Strong interpersonal and communication skills</li>
+	<li>BA/BS or higher in Computer Science or equivalent professional experience</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
