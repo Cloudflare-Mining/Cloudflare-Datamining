@@ -828,6 +828,18 @@
 		}
 	},
 	{
+		"id": "ddos.botnet_feed_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1220,
+			"key": "ddos.botnet_feed_allowed",
+			"name": "Botnet Feed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.l4_advanced_alerts_allowed",
 		"feature": {
 			"feature_set": "ddos",
