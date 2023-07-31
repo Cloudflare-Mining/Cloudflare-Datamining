@@ -399,6 +399,7 @@
 	"rule_expansion_egress_ipv4": "Egress IP",
 	"rule_expansion_egress_ipv4_secondary": "Secondary Egress IPv4",
 	"rule_expansion_egress_ipv6": "Egress IPv6",
+	"rule_expansion_egress_no_secondary_warning": "If your primary IP reroutes, your IPv4 traffic will egress the default Cloudflare method. To avoid this, set a secondary IPv4 address.",
 	"rule_expansion_none": "None",
 	"rule_expansion_rule_schedule": "Schedule",
 	"rule_expansion_settings_configured": "%{setting} configured",
