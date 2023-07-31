@@ -2241,12 +2241,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = yn({}, {
-					branch: "release-Jul.31.2023-1690812342",
+					branch: "clowder/BOTS-7198-fix-bot-fight-mode-ui",
 					isReleaseCandidate: "true",
-					commit: "fed31c389d743563c494bb5ff6a54579a2b18bc8",
+					commit: "7a656f4317b4be7de29f6b3a47beb4f08a5618ea",
 					env: "production",
-					builtAt: 1690812862932,
-					dashVersion: "232f56febdbdb0a03fbe501eb2ad1adcfb49feee",
+					builtAt: 1690828766631,
+					dashVersion: "b80552abd75863b75d08ec26034ea703147d5803",
 					versions: {
 						"@cloudflare/app-dash": "25.157.27",
 						node: "16.16.0",
