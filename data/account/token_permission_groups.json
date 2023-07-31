@@ -168,6 +168,22 @@
 		]
 	},
 	{
+		"id": "05a2a65760a546439ed29762b163cece",
+		"name": "Account API Gateway Read",
+		"description": "Grants read access to API-Gateway Management (including API Shield) across the whole account",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5e5d3e8efeec49f3afb67bafecbcd511",
+		"name": "Account API Gateway",
+		"description": "Grants full access to API-Gateway Management (including API Shield) across the whole account",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "eb56a6953c034b9d97dd838155666f06",
 		"name": "Account API Tokens Read",
 		"description": "Grants read access to account API Tokens",
@@ -312,22 +328,6 @@
 		]
 	},
 	{
-		"id": "6ced5d0d69b1422396909a62c38ab41b",
-		"name": "API Gateway Read",
-		"description": "Grants read access to API-Gateway Management",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
-		"id": "f0235726de25444a84f704b7c93afadf",
-		"name": "API Gateway Write",
-		"description": "Grants write access to API-Gateway Management",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
 		"id": "0cc3a61731504c89b99ec1be78b77aa0",
 		"name": "API Tokens Read",
 		"description": "Grants read access to user's API Tokens",
@@ -451,6 +451,22 @@
 		"id": "c6f6338ceae545d0b90daaa1fed855e6",
 		"name": "China Network Steering Write",
 		"description": "Grants write access to China Network Steering",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "65ec50cbde3d4c838bbe7500024d5745",
+		"name": "Cloudchamber Read",
+		"description": "Grants read access to Cloudchamber deployments",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "26ce6c7d18a346528e7b905d5e269866",
+		"name": "Cloudchamber Write",
+		"description": "Grants write access to Cloudchamber deployments",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -635,6 +651,22 @@
 		"id": "4755a26eedb94da69e1066d98aa820be",
 		"name": "DNS Write",
 		"description": "Grants write access to DNS",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "6ced5d0d69b1422396909a62c38ab41b",
+		"name": "Domain API Gateway Read",
+		"description": "Grants read access to API-Gateway Management (including API Shield)",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "f0235726de25444a84f704b7c93afadf",
+		"name": "Domain API Gateway",
+		"description": "Grants full access to API-Gateway Management (including API Shield)",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		]
