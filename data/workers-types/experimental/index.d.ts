@@ -1937,6 +1937,7 @@ declare interface SqlStorage {
 declare abstract class SqlStorageStatement {}
 declare abstract class SqlStorageCursor {
   raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
+  get columnNames(): string[];
   [Symbol.iterator](): IterableIterator<
     Record<string, (ArrayBuffer | string | number) | null>
   >;

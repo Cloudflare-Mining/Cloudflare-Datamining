@@ -1942,6 +1942,7 @@ export interface SqlStorage {
 export declare abstract class SqlStorageStatement {}
 export declare abstract class SqlStorageCursor {
   raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
+  get columnNames(): string[];
   [Symbol.iterator](): IterableIterator<
     Record<string, (ArrayBuffer | string | number) | null>
   >;
