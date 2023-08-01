@@ -169,5 +169,7 @@
 	"workers.discard_unsaved_changes_modal.discard_btn": "Discard changes",
 	"workers.editor_deprecation_warning": "This editor will no longer be supported. <0>Visit the Workers dashboard</0> to use the new editor.",
 	"workers.api.error.duplicate_route": "There is already a Worker assigned to this route.",
-	"workers.api.error.exceeded_allowed_number_of_scripts": "You have reached the maximum number of Workers scripts on your account. Remove an existing script before creating a new one."
+	"workers.api.error.exceeded_allowed_number_of_scripts": "You have reached the maximum number of Workers scripts on your account. Remove an existing script before creating a new one.",
+	"workers.api.error.subdomain_unavailable": "This subdomain is no longer available. Please choose a new subdomain.",
+	"workers.api.error.concurrent_changes": "The subdomain for this account is already in the process of being updated. Please try again later."
 }

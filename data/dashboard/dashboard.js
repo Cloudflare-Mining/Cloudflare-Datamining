@@ -1244,7 +1244,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Xn = t("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				$n = t("../react/app/components/LoadingSuspense.tsx"),
 				qn = H().lazy(function() {
-					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(72019), t.e(57217), t.e(43672), t.e(58583), t.e(6175), t.e(6520), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx"))
+					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(72019), t.e(57217), t.e(25823), t.e(58583), t.e(6175), t.e(6520), t.e(40453)]).then(t.bind(t, "../react/common/components/DevPanel/Main.tsx"))
 				}),
 				er = function() {
 					return H().createElement($n.Z, null, H().createElement(qn, null))
@@ -1306,7 +1306,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, [o.search])
 				},
 				ur = H().lazy(function() {
-					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(72019), t.e(57217), t.e(43672), t.e(29604), t.e(30930), t.e(6175), t.e(6520), t.e(47261), t.e(99820), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.js"))
+					return Promise.all([t.e(2480), t.e(81175), t.e(51167), t.e(4616), t.e(72019), t.e(57217), t.e(25823), t.e(29604), t.e(33283), t.e(6175), t.e(6520), t.e(47261), t.e(99820), t.e(42864)]).then(t.bind(t, "../react/AuthenticatedApp.js"))
 				}),
 				lr = H().lazy(function() {
 					return Promise.all([t.e(81175), t.e(51167), t.e(29604), t.e(69088), t.e(99820), t.e(76472)]).then(t.bind(t, "../react/UnauthenticatedApp.tsx"))
@@ -2241,12 +2241,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = yn({}, {
-					branch: "clowder/BOTS-7198-fix-bot-fight-mode-ui",
+					branch: "release-Aug.01.2023-1690898705",
 					isReleaseCandidate: "true",
-					commit: "7a656f4317b4be7de29f6b3a47beb4f08a5618ea",
+					commit: "ea27b96e025cb085ebb93be2bddb266b4cc82048",
 					env: "production",
-					builtAt: 1690828766631,
-					dashVersion: "b80552abd75863b75d08ec26034ea703147d5803",
+					builtAt: 1690904368674,
+					dashVersion: "d48cf1ba41d67077750d8539bad4552de5762cf2",
 					versions: {
 						"@cloudflare/app-dash": "25.157.27",
 						node: "16.16.0",
@@ -12702,6 +12702,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						smartPlacement: "https://developers.cloudflare.com/workers/platform/smart-placement/",
 						smartPlacementEnable: "https://developers.cloudflare.com/workers/platform/smart-placement/#enable-smart-placement-beta",
 						smartPlacementStatus: "https://developers.cloudflare.com/workers/configuration/smart-placement/#placement-status",
+						smartPlacementHowItWorks: "https://developers.cloudflare.com/workers/configuration/smart-placement/#understand-how-smart-placement-beta-works",
 						smartPlacementBackendServices: "https://developers.cloudflare.com/workers/configuration/smart-placement/#unsupported-back-end-services",
 						integrations: "https://developers.cloudflare.com/workers/learning/integrations/databases",
 						tailWorkers: "https://developers.cloudflare.com/workers/platform/tail-workers",
