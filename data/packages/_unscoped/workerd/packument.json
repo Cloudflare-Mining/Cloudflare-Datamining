@@ -1,8 +1,8 @@
 {
 	"name": "workerd",
 	"dist-tags": {
-		"latest": "1.20230724.0",
-		"beta": "0.20230717.0"
+		"latest": "1.20230801.0",
+		"beta": "0.20230801.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1191,6 +1191,66 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIDub+2bPwe4lVm9ng4mexHE+WkMjMyNeRDHWrzrJB2/MAiEA7WPl7cI0avYSqb6pm68ghX7bOc+GIYomzyHw6dzR+AQ="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"0.20230801.0": {
+			"name": "workerd",
+			"version": "0.20230801.0",
+			"dependencies": {
+				"@cloudflare/workerd-darwin-arm64": "0.20230801.0",
+				"@cloudflare/workerd-darwin-64": "0.20230801.0",
+				"@cloudflare/workerd-linux-arm64": "0.20230801.0",
+				"@cloudflare/workerd-linux-64": "0.20230801.0",
+				"@cloudflare/workerd-windows-64": "0.20230801.0"
+			},
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-IjYfzrKEDf9iBMIH4Zf0jaOjQNspdbjNUY91va2ohhEIezyHDuqb3WjMaGccy44OQs4gyNnzc9hrrSyFz6Hbjw==",
+				"shasum": "320c7da9f40cb6d82d653157b43f7b1ee2092f02",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-0.20230801.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 22245,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD+8EnEZN/dXTdIlou+cUU6fIbqlMQII8nNt6zlvriOkQIgHR67VqoTv7Q2blhn2pGGATNApo5b1stOITDay7ZB/ic="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20230801.0": {
+			"name": "workerd",
+			"version": "1.20230801.0",
+			"dependencies": {
+				"@cloudflare/workerd-darwin-arm64": "1.20230801.0",
+				"@cloudflare/workerd-darwin-64": "1.20230801.0",
+				"@cloudflare/workerd-linux-arm64": "1.20230801.0",
+				"@cloudflare/workerd-linux-64": "1.20230801.0",
+				"@cloudflare/workerd-windows-64": "1.20230801.0"
+			},
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-4PjyPTbDy39JTpvF3VB95DyQeEGJa8qZsxeal/6L3FBULQ+d90N99lTpgONNkZIRRbOz6ZQk5nDC2wr4TmA3wA==",
+				"shasum": "20a2ea4eb5c83eaffc754891429be38a5fc27a2b",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20230801.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 22245,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAaVbcSHOkxTg+6JEMNGy4xRliEegcWBtH/wv1vyKbkxAiBiS9LzSUZHWef30IoCU5Bz0TxSgvnURTuSr4SdExzq9w=="
 					}
 				]
 			},
