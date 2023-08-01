@@ -7,14 +7,18 @@
 </div>
 <p><strong>About the Department</strong></p>
 <p>Cloudflare’s Engineering Team builds and runs the software that helps power millions of Internet properties.&nbsp; Product development covers both new features and functionality as well as scaling our existing software to meet the challenges of a massively growing customer base.&nbsp;</p>
-<p>The Content Delivery group aims to help make the Internet faster, safer and more secure through building and optimizing one of the world’s largest CDNs in addition to driving adoption of new standards.&nbsp; This involves feature implementation, optimization, debugging, working with responsible teams and engineers, documentation and tooling to enable others.</p>
+<p>The Content Delivery group aims to help make the Internet faster, safer and more secure through building and improving one of the world’s largest CDNs in addition to driving adoption of new standards.&nbsp; This involves implementing features, improving, debugging, working with responsible teams and engineers, documentation and tooling to enable others.</p>
 <p><strong>What you'll do</strong></p>
 <ul>
-	<li>Work as part of a team responsible for the caching and distribution of assets on Cloudflare's Network&nbsp;</li>
+	<li>Work as part of a team responsible for caching content for more than 20% of the Internet</li>
 	<li>Help build <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">the proxy service that connects Cloudflare to the Internet</a></li>
 	<li>Create maintainable, memory-safe and performant code that is well tested&nbsp;</li>
 	<li>Interface with product teams dreaming up new ways and standards that improve the Internet&nbsp;</li>
-	<li>Collaborate with other engineering teams using Cloudflare’s CDN cache</li>
+</ul>
+<ul>
+	<li>Collaborate with other engineering teams building on top of Cloudflare’s CDN cache</li>
+</ul>
+<ul>
 	<li>Design and build large scale distributed systems from inception to production</li>
 	<li>Leave code better than you found it</li>
 	<li>Mentor team members.</li>
@@ -22,12 +26,14 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Minimum 4 years professional experience as a developer/engineer</li>
-	<li>Solid grasp of how TCP and HTTP work</li>
-	<li>Experience designing, implementing and optimizing secure, resilient distributed systems</li>
+	<li>Solid grasp of how TCP/QUIC and HTTP work</li>
+	<li>Experience designing, implementing and improving secure, resilient distributed systems</li>
+	<li>Experience building control planes for distributed systems</li>
+	<li>Familiarity building and deploying services in Kubernetes a plus</li>
 	<li>Experience with Linux networking</li>
-	<li>Programming experience in Go, Rust, C, C++ or similar languages</li>
+	<li>Programming experience in Go, Rust or similar languages</li>
 	<li>Strong interpersonal and communication skills</li>
-	<li>BA/BS or higher in Computer Science or equivalent professional experience</li>
+	<li>BA/BS or higher in Computer Science/Engineering or equivalent professional experience</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
