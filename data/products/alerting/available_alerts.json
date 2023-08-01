@@ -16,13 +16,13 @@
 				{
 					"Key": "product",
 					"ComparisonOperator": "==",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "limit",
 					"ComparisonOperator": ">=",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				}
 			]
@@ -37,7 +37,7 @@
 				{
 					"Key": "query_tag",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				}
 			]
@@ -52,7 +52,7 @@
 				{
 					"Key": "query_tag",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				}
 			]
@@ -62,18 +62,18 @@
 		{
 			"display_name": "Maintenance Event Notification",
 			"type": "maintenance_event_notification",
-			"description": "",
+			"description": "A maintenance on a point of presence has been scheduled, changed, or canceled",
 			"filter_options": [
 				{
 					"Key": "airport_code",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "event_type",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				}
 			]
@@ -96,13 +96,13 @@
 				{
 					"Key": "health_check_id",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "status",
 					"ComparisonOperator": "==",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				}
 			]
@@ -117,19 +117,19 @@
 				{
 					"Key": "pool_id",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "event_source",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "new_health",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				}
 			]
@@ -142,13 +142,13 @@
 				{
 					"Key": "pool_id",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "enabled",
 					"ComparisonOperator": "==",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				}
 			]
@@ -199,19 +199,19 @@
 				{
 					"Key": "project_id",
 					"ComparisonOperator": "==",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "environment",
 					"ComparisonOperator": "==",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "event",
 					"ComparisonOperator": "==",
-					"Optional": false,
+					"Range": "1-n",
 					"AvailableValues": null
 				}
 			]
@@ -348,13 +348,13 @@
 				{
 					"Key": "tunnel_id",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				},
 				{
 					"Key": "new_status",
 					"ComparisonOperator": "==",
-					"Optional": true,
+					"Range": "0-n",
 					"AvailableValues": null
 				}
 			]
