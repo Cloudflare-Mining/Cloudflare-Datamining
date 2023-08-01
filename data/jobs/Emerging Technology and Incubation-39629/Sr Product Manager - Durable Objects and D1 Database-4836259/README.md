@@ -24,7 +24,7 @@
 <p><span style="font-weight: 400;">The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/MS in a technology field.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional product management experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional product management experience, minimum 5+ years</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record of shipping products from ideation to launch</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to articulate a vision and strategy in a way that inspires and motivates a team and focuses their energy on achieving business goals</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Customer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</span></li>
