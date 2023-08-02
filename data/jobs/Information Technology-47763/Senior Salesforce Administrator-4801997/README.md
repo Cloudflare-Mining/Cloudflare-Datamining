@@ -10,7 +10,7 @@
 <p>&nbsp;</p>
 <p><strong>About the Role</strong><span style="font-weight: 400;">:</span></p>
 <p><span style="font-weight: 400;">Cloudflare is seeking a highly motivated and experienced Salesforce Administrator to join our growing team. As a Salesforce Administrator, you will play a vital role for Cloudflare’s Sales organization. We are looking for a proactive individual that can help us continually improve and enhance our Salesforce platform, gathering requirements and feedback, designing scalable best practice solutions, and managing the product road map.&nbsp;</span></p>
-<p><span style="font-weight: 400;">The Salesforce Administrator will also be well-versed at following agile application development lifecycle process and providing technical documentation supporting defined solutions.Our Salesforce user experience is of great importance to us, therefore the Salesforce Administrator should enjoy all aspects of user management including support tickets, training, and designing solutions with user satisfaction a priority.&nbsp;</span></p>
+<p><span style="font-weight: 400;">The Salesforce Administrator will also be well-versed at following agile application development lifecycle process and providing technical documentation supporting defined solutions. Our Salesforce user experience is of great importance to us, therefore the Salesforce Administrator should enjoy all aspects of user management including support tickets, training, and designing solutions with user satisfaction a priority.&nbsp;</span></p>
 <p><span style="font-weight: 400;">The ideal candidate will have a strong understanding of Salesforce best practices and a proven track record of successfully implementing and maintaining Salesforce Sales and Service Cloud environments.</span></p>
 <p>&nbsp;</p>
 <p><strong>Responsibilities</strong><span style="font-weight: 400;">:</span></p>
@@ -27,7 +27,7 @@
 </ul>
 <p><strong>Desirable Skills, Knowledge and Experience</strong><span style="font-weight: 400;">:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience as a Salesforce Administrator</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of experience as a Salesforce Administrator</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Certified Salesforce Administrator expert in Sales and Service cloud</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong understanding of Salesforce best practices and familiarity with security audit processes</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient with Salesforce Platform and Declarative configurations. Apex and Visualforce development knowledge is a plus.</span></li>
