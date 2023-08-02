@@ -7,15 +7,15 @@
 				"pageName": "Advanced Certificate Manager",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
-					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,7 +27,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
@@ -3092,6 +3092,116 @@
 							}
 						],
 						"htmlId": "ent-demo-form"
+					},
+					{
+						"contentfulId": "1HiHOLxtdNqUx7LpD5RFen",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Additional Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6nu5ck3OCWiwitRtQQId4M",
+								"title": "Maximize the power of TLS while minimizing your overhead",
+								"titleSize": "small",
+								"description": "Learn how to customize your TLS deployment and streamline your certificate lifecycle management with Cloudflare. ",
+								"learnMoreUrl": "https://www.cloudflare.com/lp/maximize-tls/ ",
+								"learnMoreText": "Read solution overview ",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "2822f3fc-3f04-5078-98f2-245c60c59c21",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7FgmToBQHjtKi8LKhgh4Gz/7529956f1756feafed18dc1d75350815/Advanced_Certificate_Manager.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7e2RwjMrUIa2JQLj9LEwsQ",
+								"title": "Mastering the four key areas where TLS must protect business",
+								"titleSize": "small",
+								"description": "Watch to learn about emerging TLS use cases for enterprises.",
+								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4120282/",
+								"learnMoreText": "Watch webinar on demand",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "64c34158-3c21-5840-80ec-69a7334ac962",
+									"altText": "Mastering the four key areas where TLS must protect business",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/ajN2X8Odi5EiMjQprfNnf/a683bb933277170d9f78604bf8c4e4a4/KEMs-KEMTLS.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1EgBNuwtZFAM6oXCcy2rOn",
+								"title": "How a Cloudflare customer reduced application risk and thwarted a phishing attempt ",
+								"titleSize": "small",
+								"description": "Watch on demand now to learn how ecommerce vendor and Cloudflare customer Otrium manages evolving security threats with Cloudflare Zero Trust and Application Security – including SSL certificate lifecycle management. ",
+								"learnMoreUrl": "https://gateway.on24.com/wcc/eh/2153307/lp/4110700/how-otrium-reduced-application-risk-and-thwarted-a-phishing-attempt-with-cloudflare  ",
+								"learnMoreText": "Watch webinar on demand",
+								"displayBorder": false,
+								"openLinkInNewTab": false,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7f85c66d-bbeb-544a-a18d-1fb91d93409b",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4jQBF8dvccw4vFAdN65kbE/08098986f1cb4b1e2d21f144880b2a0f/Opportunistic-Phishing-and-Banking.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					}
 				],
 				"noindex": false,
@@ -3111,7 +3221,17 @@
 			"pathname": "/advanced-certificate-manager/",
 			"contentfulId": "CtvCmcU7DlCqNVma5SLiw",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"hasAdobeExperiment": false,
