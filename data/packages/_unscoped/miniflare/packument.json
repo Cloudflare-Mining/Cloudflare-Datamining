@@ -1,7 +1,7 @@
 {
 	"name": "miniflare",
 	"dist-tags": {
-		"latest": "3.20230801.0",
+		"latest": "3.20230801.1",
 		"beta": "0.20230628.0"
 	},
 	"versions": {
@@ -3442,6 +3442,58 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQDb7kOZbqLw3+iPfTY8p+n27KiBXERITQCiMdeuxSze6wIhAIIJFKTHcNgqG40pnvBAwbnRlaasT0ulm9GUifrr7FaX"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"3.20230801.1": {
+			"name": "miniflare",
+			"version": "3.20230801.1",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"acorn-walk": "^8.2.0",
+				"better-sqlite3": "^8.1.0",
+				"capnp-ts": "^0.7.0",
+				"exit-hook": "^2.2.1",
+				"glob-to-regexp": "^0.4.1",
+				"http-cache-semantics": "^4.1.0",
+				"kleur": "^4.1.5",
+				"set-cookie-parser": "^2.6.0",
+				"source-map-support": "0.5.21",
+				"stoppable": "^1.1.0",
+				"undici": "^5.13.0",
+				"workerd": "1.20230801.0",
+				"ws": "^8.11.0",
+				"youch": "^3.2.2",
+				"zod": "^3.20.6"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230419.0",
+				"@types/better-sqlite3": "^7.6.2",
+				"@types/debug": "^4.1.7",
+				"@types/estree": "^1.0.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@types/set-cookie-parser": "^2.4.2",
+				"@types/source-map-support": "^0.5.6",
+				"@types/stoppable": "^1.1.1",
+				"@types/ws": "^8.5.3",
+				"devalue": "^4.3.0",
+				"semiver": "^1.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-4vdA2X2Bo2q4hIKN0QJp1dtiGmu4+tlxo14d89aHCWH5N6yl5tQtqJhkLJFxUX8wkNAgSUOHDYeTnhJ51X6tsQ==",
+				"shasum": "f4486798243875fbe5f7a1d60254046014c29765",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20230801.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 802333,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD+22B5Qq7X7uvJFZzKxpteMWG3wC34kYeQJTPnCs4CvwIgC49gvOiNIycPimpgWfukZ7xkBZgjXsMivTxCFOtoyrI="
 					}
 				]
 			},
