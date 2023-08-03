@@ -13,9 +13,8 @@
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Salt</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Go</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Postgres, Temporal</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">For service monitoring we use Prometheus, Grafana and Sentry.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service logging we use Elasticsearch and Kibana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For product analytics we use Clickhouse and BigQuery.&nbsp;</span></li>
 </ul>
 <p><span style="font-weight: 400;">Because you’ll be </span><a href="https://blog.cloudflare.com/gateway-swg/"><span style="font-weight: 400;">solving problems of massive scale and significance</span></a><span style="font-weight: 400;">, and </span><a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"><span style="font-weight: 400;">shaping the future of the Internet</span></a><span style="font-weight: 400;">, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</span></p>
 <h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
@@ -32,8 +31,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">At least 8 years software development experience</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
