@@ -5,36 +5,23 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
-<h4><strong>Description</strong></h4>
-<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</span></p>
-<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</span></p>
-<h4><strong>Responsibilities</strong></h4>
+<h4>What you'll do</h4>
+<p>You will lead a team of passionate, talented engineers that are building the systems that decentralize applications deployed on millions of sites. You will play an active part in shaping the product and team that will build core infrastructure. You will make sure our company hits our ambitious engineering goals. &nbsp;You will change the way people build applications.</p>
+<p>You bring a passion for meeting business needs by building technical, innovative solutions. You excel understand how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering scalable distributed systems. Most importantly, you have a track record of having past teams respect you as both a technical leader and manager.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor and investigate the alerts to identify attacks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Configure / Manager security monitoring rules and contribute to tool improvements</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting.</span></li>
+	<li>Experience leading a team</li>
+	<li>Comfortable leading and hiring a team that builds the backend bits and frontend widgets</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Comfortable building developer-loved APIs that scale</li>
+	<li>Demonstrate a track record of leading a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Comfortable managing teams/projections with tight deadlines and short release cycles</li>
 </ul>
-<p><strong>Key skill sets</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Modern internet protocols like UDP, TCP, etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of iptables</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Analysis of traffic for attack anomaly detection and creation of mitigation rules</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Cloudflare Security Products &amp; Features</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical Support experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communication skills with high-value VIP customers under attack</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Command line / Bash shell</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Security skills and certifications: CISSP, GCIA GCIH, GCFA, GCFE, etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Calm under pressure</span></li>
+	<li>Experience building massive distributed systems</li>
+	<li>Experience leading teams using any of the following: modern JavaScript, Web Assembly. Rust or Go&nbsp;</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
