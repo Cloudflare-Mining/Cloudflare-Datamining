@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.3
+
+### Patch Changes
+
+- f37ecd9813: Add break-word to metric label when printing Analytics Reports
+
 ## 4.0.2
 
 ### Patch Changes
