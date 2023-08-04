@@ -1,5 +1,125 @@
 [
 	{
+		"id": "35956457e745b2af7331713a1ddf4fdb",
+		"name": "API Gateway Read",
+		"description": "Grants read access to API Gateway (including API Shield) for all domains in an account",
+		"permissions": {
+			"api_gateway": {
+				"read": true,
+				"edit": false
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "67ff895d0db461b61dd911232fcbc790",
+		"name": "API Gateway",
+		"description": "Grants full access to API Gateway (including API Shield) for all domains in an account",
+		"permissions": {
+			"api_gateway": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "084b982fe42511d15feb1411e4c9ce9e",
+		"name": "Cloudflare R2 Read",
+		"description": "Can read R2 buckets, objects, and associated configurations.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"r2_bucket": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "6f83464b634142ce4ac573616256096e",
+		"name": "Cloudflare R2 Admin",
+		"description": "Can edit R2 buckets, objects, and associated configurations.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"r2_bucket": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "1b20b8701ab8a22f0229ff1c831a9e27",
 		"name": "Page Shield Read",
 		"description": "Grants read access to Page Shield across the whole account",
