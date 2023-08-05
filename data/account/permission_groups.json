@@ -583,7 +583,10 @@
 			},
 			{
 				"id": "5f99abea17c749318a64262518cd79c4",
-				"key": "com.cloudflare.api.account.zone.api-gateway.*"
+				"key": "com.cloudflare.api.account.zone.api-gateway.*",
+				"attributes": {
+					"legacy_name": "#api_gateway:read,#api_gateway:edit"
+				}
 			},
 			{
 				"id": "9e755f83d45d463a9c04a50f7b1445ac",
@@ -4734,11 +4737,17 @@
 			},
 			{
 				"id": "4bc596392ab34dcf951caed73f4ff708",
-				"key": "com.cloudflare.api.account.zone.api-gateway.read"
+				"key": "com.cloudflare.api.account.zone.api-gateway.read",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
 			},
 			{
 				"id": "ba2a1f6b11cb4f90a98e9fe0caa4e563",
-				"key": "com.cloudflare.api.account.zone.api-gateway.list"
+				"key": "com.cloudflare.api.account.zone.api-gateway.list",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
 			},
 			{
 				"id": "5e44fbc9a05846bda720bf336bc243a8",
@@ -7338,6 +7347,171 @@
 		]
 	},
 	{
+		"id": "6a5047f646c34525910f237abf5f0433",
+		"name": "API Gateway",
+		"status": "V",
+		"meta": {
+			"description": "Grants full access to API Gateway (including API Shield) for all domains in an account",
+			"editable": "false",
+			"label": "api_gateway",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-04T18:47:58.687961Z",
+		"modified_on": "2023-08-04T18:47:58.687961Z",
+		"permissions": [
+			{
+				"id": "5f99abea17c749318a64262518cd79c4",
+				"key": "com.cloudflare.api.account.zone.api-gateway.*",
+				"attributes": {
+					"legacy_name": "#api_gateway:read,#api_gateway:edit"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "7a59aaf1255d4630954500fb892730de",
+				"key": "com.cloudflare.api.account.zone.firewall.rule.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "548df97de595407f84af3f77ae8afd0c",
+				"key": "com.cloudflare.api.account.zone.setting.list",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "f3e4b5fd0627411aaca8b78cbf1f1805",
+				"key": "com.cloudflare.api.account.zone.subscription.read",
+				"attributes": {
+					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "737959b9c1fa445b98db16d99c75cde0",
+				"key": "com.cloudflare.api.account.zone.list",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "0d974db6367c44f58cfc0f50de43a158",
+				"key": "com.cloudflare.api.account.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "f662acb8c11e443d89fdd225336cc994",
+		"name": "API Gateway Read",
+		"status": "V",
+		"meta": {
+			"description": "Grants read access to API Gateway (including API Shield) for all domains in an account",
+			"editable": "false",
+			"label": "api_gateway_read",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-04T18:47:58.687961Z",
+		"modified_on": "2023-08-04T18:47:58.687961Z",
+		"permissions": [
+			{
+				"id": "4bc596392ab34dcf951caed73f4ff708",
+				"key": "com.cloudflare.api.account.zone.api-gateway.read",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
+			},
+			{
+				"id": "ba2a1f6b11cb4f90a98e9fe0caa4e563",
+				"key": "com.cloudflare.api.account.zone.api-gateway.list",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "7a59aaf1255d4630954500fb892730de",
+				"key": "com.cloudflare.api.account.zone.firewall.rule.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "548df97de595407f84af3f77ae8afd0c",
+				"key": "com.cloudflare.api.account.zone.setting.list",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "f3e4b5fd0627411aaca8b78cbf1f1805",
+				"key": "com.cloudflare.api.account.zone.subscription.read",
+				"attributes": {
+					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "737959b9c1fa445b98db16d99c75cde0",
+				"key": "com.cloudflare.api.account.zone.list",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "0d974db6367c44f58cfc0f50de43a158",
+				"key": "com.cloudflare.api.account.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
 		"id": "0a5ddcbf92a5430599aeec18d2a88ce0",
 		"name": "Audit Logs Viewer",
 		"status": "V",
@@ -8957,6 +9131,144 @@
 				"key": "com.cloudflare.api.account.subscription.list",
 				"attributes": {
 					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "0d974db6367c44f58cfc0f50de43a158",
+				"key": "com.cloudflare.api.account.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "e0d1f652c7d84d35a4e356734cad1c2b",
+		"name": "Cloudflare R2 Admin",
+		"status": "V",
+		"meta": {
+			"description": "Can edit R2 buckets, objects, and associated configurations.",
+			"editable": "false",
+			"label": "r2_admin",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-04T18:47:58.687961Z",
+		"modified_on": "2023-08-04T18:47:58.687961Z",
+		"permissions": [
+			{
+				"id": "c93cd2f69a6d45a4a5788b7e0c6b97be",
+				"key": "com.cloudflare.edge.r2.bucket.item.*"
+			},
+			{
+				"id": "67eb51db46c14957b08ba9db1ce56ee6",
+				"key": "com.cloudflare.edge.worker.analytics.read",
+				"attributes": {
+					"legacy_name": "#analytics:read"
+				}
+			},
+			{
+				"id": "ba0939a09cd842a1bd4668b0b38af996",
+				"key": "com.cloudflare.edge.r2.bucket.*",
+				"attributes": {
+					"legacy_name": "#worker:read,#worker:edit,#r2_bucket:read,#r2_bucket:edit"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "2b915ae2d74e416a8b9d7aed4433ddf6",
+				"key": "com.cloudflare.api.account.zone.dns-record.read",
+				"attributes": {
+					"legacy_name": "#dns_records:read"
+				}
+			},
+			{
+				"id": "5014274f5a3b41f4b722e473859ec199",
+				"key": "com.cloudflare.api.account.zone.dns-record.list",
+				"attributes": {
+					"legacy_name": "#dns_records:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			},
+			{
+				"id": "0d974db6367c44f58cfc0f50de43a158",
+				"key": "com.cloudflare.api.account.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "f2bfce71c75a4c1b86e288eb50549efc",
+		"name": "Cloudflare R2 Read",
+		"status": "V",
+		"meta": {
+			"description": "Can read R2 buckets, objects, and associated configurations.",
+			"editable": "false",
+			"label": "r2_read_only",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-04T18:47:58.687961Z",
+		"modified_on": "2023-08-04T18:47:58.687961Z",
+		"permissions": [
+			{
+				"id": "a696c6791e1144db8ab2ed105166b619",
+				"key": "com.cloudflare.edge.r2.bucket.item.read"
+			},
+			{
+				"id": "67eb51db46c14957b08ba9db1ce56ee6",
+				"key": "com.cloudflare.edge.worker.analytics.read",
+				"attributes": {
+					"legacy_name": "#analytics:read"
+				}
+			},
+			{
+				"id": "8674db90bbb24b5e8d400e5f62dd9d2c",
+				"key": "com.cloudflare.edge.r2.bucket.list",
+				"attributes": {
+					"legacy_name": "#worker:read,#r2_bucket:read"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
 				}
 			},
 			{
@@ -11101,7 +11413,10 @@
 			},
 			{
 				"id": "5f99abea17c749318a64262518cd79c4",
-				"key": "com.cloudflare.api.account.zone.api-gateway.*"
+				"key": "com.cloudflare.api.account.zone.api-gateway.*",
+				"attributes": {
+					"legacy_name": "#api_gateway:read,#api_gateway:edit"
+				}
 			},
 			{
 				"id": "9d92ae15474b4f79b44297670c3da988",
@@ -11962,11 +12277,17 @@
 			},
 			{
 				"id": "4bc596392ab34dcf951caed73f4ff708",
-				"key": "com.cloudflare.api.account.zone.api-gateway.read"
+				"key": "com.cloudflare.api.account.zone.api-gateway.read",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
 			},
 			{
 				"id": "ba2a1f6b11cb4f90a98e9fe0caa4e563",
-				"key": "com.cloudflare.api.account.zone.api-gateway.list"
+				"key": "com.cloudflare.api.account.zone.api-gateway.list",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
 			},
 			{
 				"id": "048aacdbd82c486a8452b12feb975c29",
@@ -13035,6 +13356,127 @@
 				"key": "com.cloudflare.api.account.read",
 				"attributes": {
 					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "7276dc8e5e31412297b6075e614a67dd",
+		"name": "Domain API Gateway",
+		"status": "V",
+		"meta": {
+			"description": "Grants full access to API Gateway (including API Shield)",
+			"editable": "false",
+			"label": "domain_api_gateway",
+			"scopes": "com.cloudflare.api.account.zone"
+		},
+		"created_on": "2023-08-04T18:47:58.687961Z",
+		"modified_on": "2023-08-04T18:47:58.687961Z",
+		"permissions": [
+			{
+				"id": "5f99abea17c749318a64262518cd79c4",
+				"key": "com.cloudflare.api.account.zone.api-gateway.*",
+				"attributes": {
+					"legacy_name": "#api_gateway:read,#api_gateway:edit"
+				}
+			},
+			{
+				"id": "7a59aaf1255d4630954500fb892730de",
+				"key": "com.cloudflare.api.account.zone.firewall.rule.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "548df97de595407f84af3f77ae8afd0c",
+				"key": "com.cloudflare.api.account.zone.setting.list",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "f3e4b5fd0627411aaca8b78cbf1f1805",
+				"key": "com.cloudflare.api.account.zone.subscription.read",
+				"attributes": {
+					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "737959b9c1fa445b98db16d99c75cde0",
+				"key": "com.cloudflare.api.account.zone.list",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "4757eb7bd807416ba3164efaae1d516e",
+		"name": "Domain API Gateway Read",
+		"status": "V",
+		"meta": {
+			"description": "Grants read access to API Gateway (including API Shield)",
+			"editable": "false",
+			"label": "domain_api_gateway_read",
+			"scopes": "com.cloudflare.api.account.zone"
+		},
+		"created_on": "2023-08-04T18:47:58.687961Z",
+		"modified_on": "2023-08-04T18:47:58.687961Z",
+		"permissions": [
+			{
+				"id": "4bc596392ab34dcf951caed73f4ff708",
+				"key": "com.cloudflare.api.account.zone.api-gateway.read",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
+			},
+			{
+				"id": "ba2a1f6b11cb4f90a98e9fe0caa4e563",
+				"key": "com.cloudflare.api.account.zone.api-gateway.list",
+				"attributes": {
+					"legacy_name": "#api_gateway:read"
+				}
+			},
+			{
+				"id": "7a59aaf1255d4630954500fb892730de",
+				"key": "com.cloudflare.api.account.zone.firewall.rule.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "548df97de595407f84af3f77ae8afd0c",
+				"key": "com.cloudflare.api.account.zone.setting.list",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "f3e4b5fd0627411aaca8b78cbf1f1805",
+				"key": "com.cloudflare.api.account.zone.subscription.read",
+				"attributes": {
+					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "737959b9c1fa445b98db16d99c75cde0",
+				"key": "com.cloudflare.api.account.zone.list",
+				"attributes": {
+					"legacy_name": "#zone:read"
 				}
 			}
 		]
@@ -18020,7 +18462,10 @@
 			},
 			{
 				"id": "5f99abea17c749318a64262518cd79c4",
-				"key": "com.cloudflare.api.account.zone.api-gateway.*"
+				"key": "com.cloudflare.api.account.zone.api-gateway.*",
+				"attributes": {
+					"legacy_name": "#api_gateway:read,#api_gateway:edit"
+				}
 			},
 			{
 				"id": "9e755f83d45d463a9c04a50f7b1445ac",
