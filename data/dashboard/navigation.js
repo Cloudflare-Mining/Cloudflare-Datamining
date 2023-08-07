@@ -954,13 +954,6 @@ const navigation = {
 				return !(0, u.yD)(b)
 			}
 		}, {
-			title: "navigation.zone.traffic.argo_tunnel",
-			url: "/traffic/argo-tunnel",
-			navigationType: "global-settings",
-			hasPermission: function(b) {
-				return !(0, u.yD)(b)
-			}
-		}, {
 			title: "navigation.zone.traffic.load_balancing",
 			url: "/traffic/load-balancing",
 			navigationType: "global-settings",
