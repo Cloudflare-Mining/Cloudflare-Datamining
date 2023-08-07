@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/wasm-coredump",
 	"dist-tags": {
-		"latest": "1.0.2"
+		"latest": "1.0.3"
 	},
 	"versions": {
 		"1.0.0": {
@@ -60,6 +60,26 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIC18Pu8EzMsGBfgtlpyVrf5KCtgSaNvHF1yK5hsL8FRmAiEAjGfXVJy9UQx4Sts0rXyqZdojH4dBi13XEqjqv0mlQ24="
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "@cloudflare/wasm-coredump",
+			"version": "1.0.3",
+			"devDependencies": {
+				"prettier": "^3.0.0"
+			},
+			"dist": {
+				"shasum": "7830e1be889bda15f8965c6f94b37f91c2387c1c",
+				"integrity": "sha512-i6OvAE2Cw3bRGGIhKizmggxUeW9EQHNxRyYc6rO3LXZKooJKSWaCiys93/l7vqmLVDs6pGK33y+n+O9CNKbtzg==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wasm-coredump/-/wasm-coredump-1.0.3.tgz",
+				"fileCount": 3,
+				"unpackedSize": 3067,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFTKSOR693xW+vDrFbY9b2pyef38bkxikGLHUAEkq3GeAiAaUNc0MpseLUI/L3KvR2tB07fWSD9nTovPCIWEKFpqRw=="
 					}
 				]
 			}
