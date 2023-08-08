@@ -26,7 +26,7 @@ jobs:
 
       - name: Setup capnp
         run: |
-          git clone https://github.com/capnproto/capnproto.git
+          git clone --branch master https://github.com/capnproto/capnproto.git
           cd capnproto/c++
           autoreconf -i
           ./configure

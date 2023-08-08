@@ -6,8 +6,8 @@ import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
 import filenamify from 'filenamify';
 import {rimraf} from 'rimraf';
-
-import OpenAPIParser from '@readme/openapi-parser';
+import $RefParser from '@stoplight/json-schema-ref-parser';
+//import OpenAPIParser from '@readme/openapi-parser';
 import stringify from 'json-stringify-safe';
 
 import {tryAndPush, sortObjectByKeys} from './utils.js';
@@ -31,9 +31,7 @@ async function run() {
 	try{
 		const schemasJson = sortObjectByKeys(await schemasRes.json());
 
-		const dereferenced = await OpenAPIParser.dereference(schemasJson, {
-			circular: 'ignore',
-		});
+		const dereferenced = await $RefParser.dereference(schemasJson);
 		const toWrite = {
 			info: dereferenced.info,
 			openapi: dereferenced.openapi,
