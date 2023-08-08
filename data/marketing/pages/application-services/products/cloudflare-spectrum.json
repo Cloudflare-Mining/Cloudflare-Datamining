@@ -69,9 +69,9 @@
 						"buttonColor2": null,
 						"buttonText1": "Contact Sales",
 						"buttonText1LoggedIn": "View in Dashboard",
-						"buttonUrl1": "#",
+						"buttonUrl1": "#spectrum-contact",
 						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/spectrum",
-						"button1ExtraClass": "cloudflare-spectrum-product-contact-sales",
+						"button1ExtraClass": null,
 						"buttonText2": null,
 						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
 						"buttonUrl2": null,
@@ -1363,17 +1363,17 @@
 							}
 						],
 						"logoUrlList": null
-					}
-				],
-				"noindex": false,
-				"formModal": [
+					},
 					{
-						"contentTypeId": "formModal",
-						"contentfulId": "M29Kq2eZvP7cBydM7vqnn",
-						"modalName": "Cloudflare Spectrum - Product Page: Form Modal",
-						"modalId": "cloudflare-spectrum-product-contact-sales",
-						"modalType": "single-form",
-						"marketoForm": {
+						"contentTypeId": "bladeSignUpForm",
+						"contentfulId": "4OpqrV8zmtJobHxrYZ5heI",
+						"bladeName": "Spectrum - Contact Sales Form",
+						"formType": "formRight",
+						"formTitle": "Talk to an Expert:",
+						"buttonText": "Contact Sales",
+						"buttonColor": "orange",
+						"htmlId": "spectrum-contact",
+						"marketoEmbeddedForm": {
 							"contentTypeId": "marketoEmbeddedForm",
 							"contentfulId": "1liL5UdkSNstue0MwKbZl8",
 							"bladeName": "Cloudflare Spectrum - Product Page: Marketo Form (1341)",
@@ -1399,15 +1399,28 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "Contact Sales",
-						"regularCopy": "Cloudflare Spectrum",
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
+						"title": "Speed, security, and reliability",
+						"subtitle": "Cloudflare Spectrum features:",
+						"copy": "- Proxy any TCP/UDP traffic through Cloudflare\n- Allow or deny IP addresses\n- Integrated performance benefits\n- Flexible and Full TLS\n- Real-time application-specific analytics\n- Allow TLS passthrough traffic\n- Easy setup through dashboard UI or API\n- Load balance layer 4 traffic across multiple servers\n- Supports log share to public cloud storage buckets (Enterprise plans only)",
+						"iconList": null,
+						"iconTitleList": null,
+						"iconCopyList": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamOptions": null,
+						"rightSideCopy": null,
+						"rightSideCopyPosition": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"extraClass": null,
+						"sectionPadding": null,
+						"customPrivacyPolicy": false,
+						"customPrivacyPolicyText": null
 					}
 				],
+				"noindex": false,
+				"formModal": null,
 				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
