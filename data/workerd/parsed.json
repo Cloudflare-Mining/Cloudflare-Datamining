@@ -2572,6 +2572,19 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/jsg/rtti.capnp:JsBuiltinType",
+			"fields": [
+				{
+					"name": "module",
+					"annotations": {}
+				},
+				{
+					"name": "export",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/jsg/rtti.capnp:Type",
 			"fields": [
 				{
@@ -2637,6 +2650,10 @@
 				{
 					"name": "jsgImpl",
 					"annotations": {}
+				},
+				{
+					"name": "jsBuiltin",
+					"annotations": {}
 				}
 			]
 		},
@@ -2682,6 +2699,23 @@
 				},
 				{
 					"name": "static",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Module",
+			"fields": [
+				{
+					"name": "specifier",
+					"annotations": {}
+				},
+				{
+					"name": "structureName",
+					"annotations": {}
+				},
+				{
+					"name": "tsDeclarations",
 					"annotations": {}
 				}
 			]
@@ -2735,6 +2769,10 @@
 				},
 				{
 					"name": "callable",
+					"annotations": {}
+				},
+				{
+					"name": "builtinModules",
 					"annotations": {}
 				}
 			]
@@ -2795,23 +2833,6 @@
 			"fields": [
 				{
 					"name": "args",
-					"annotations": {}
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/jsg/rtti.capnp:Module",
-			"fields": [
-				{
-					"name": "specifier",
-					"annotations": {}
-				},
-				{
-					"name": "structureName",
-					"annotations": {}
-				},
-				{
-					"name": "tsDeclarations",
 					"annotations": {}
 				}
 			]
@@ -3832,6 +3853,10 @@
 				},
 				{
 					"name": "v8Function",
+					"annotations": {}
+				},
+				{
+					"name": "v8ArrayBuffer",
 					"annotations": {}
 				}
 			]
