@@ -15,14 +15,14 @@ This component is created specifically to be used on Dash and Zero Trust dashboa
 
 import {
   fieldsReducer as billingFieldsReducer,
-  hCaptchaReducer as billingHCaptchaReducer
+  captchaReducer as billingCaptchaReducer
 } from '@cloudflare/component-payment-form'
 
 
 const appReducers = combineReducers({
   fields: billingFieldsReducer,
   billing: combineReducers({
-    captcha: billingHCaptchaReducer
+    captcha: billingCaptchaReducer
   }),
 })
 ```

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.2.4...@cloudflare/redux-fields@2.2.5) (2023-08-08)
+
+**Note:** Version bump only for package @cloudflare/redux-fields
+
+
+
+
+
 ## [2.2.4](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.2.1...@cloudflare/redux-fields@2.2.4) (2021-10-28)
 
 
