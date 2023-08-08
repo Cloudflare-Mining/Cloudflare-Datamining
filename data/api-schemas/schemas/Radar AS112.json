@@ -8,6 +8,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -21,6 +23,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -49,6 +52,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -62,6 +66,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -75,6 +80,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -88,6 +95,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -198,6 +207,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of AS112 DNSSEC",
 		"tags": [
 			"Radar AS112"
@@ -223,6 +238,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -236,6 +253,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -264,6 +282,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -277,6 +296,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -290,6 +310,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -303,6 +325,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -413,6 +437,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of AS112 EDNS",
 		"tags": [
 			"Radar AS112"
@@ -438,6 +468,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -451,6 +483,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -479,6 +512,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -492,6 +526,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -505,6 +540,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -518,6 +555,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -628,6 +667,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of AS112 IP Version",
 		"tags": [
 			"Radar AS112"
@@ -653,6 +698,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -666,6 +713,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -694,6 +742,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -707,6 +756,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -720,6 +770,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -733,6 +785,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -843,6 +897,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of AS112 Protocol",
 		"tags": [
 			"Radar AS112"
@@ -868,6 +928,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -881,6 +943,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -909,6 +972,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -922,6 +986,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -935,6 +1000,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -948,6 +1015,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1073,6 +1142,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of AS112 Query Type",
 		"tags": [
 			"Radar AS112"
@@ -1098,6 +1173,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1111,6 +1188,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1139,6 +1217,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1152,6 +1231,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1165,6 +1245,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1178,6 +1260,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1288,6 +1372,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of AS112 Response Codes",
 		"tags": [
 			"Radar AS112"
@@ -1327,6 +1417,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1340,6 +1432,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1368,6 +1461,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1381,6 +1475,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1394,6 +1489,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1407,6 +1504,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1619,6 +1718,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get AS112 time series",
 		"tags": [
 			"Radar AS112"
@@ -1635,7 +1740,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/as112/timeseries/dnssec": {
+	"GET /radar/as112/timeseries_groups/dnssec": {
 		"description": "Percentage distribution of dns AS112 requests classified per DNSSEC over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-dnssec",
 		"parameters": [
@@ -1658,6 +1763,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1671,6 +1778,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1699,6 +1807,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1712,6 +1821,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1725,6 +1835,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1738,6 +1850,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1854,6 +1968,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of AS112 DNSSEC",
 		"tags": [
 			"Radar AS112"
@@ -1870,7 +1990,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/as112/timeseries/edns": {
+	"GET /radar/as112/timeseries_groups/edns": {
 		"description": "Percentage distribution of AS112 dns requests classified per EDNS over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-edns",
 		"parameters": [
@@ -1893,6 +2013,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1906,6 +2028,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1934,6 +2057,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1947,6 +2071,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1960,6 +2085,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1973,6 +2100,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2089,6 +2218,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of AS112 EDNS",
 		"tags": [
 			"Radar AS112"
@@ -2105,7 +2240,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/as112/timeseries/ip_version": {
+	"GET /radar/as112/timeseries_groups/ip_version": {
 		"description": "Percentage distribution of AS112 dns requests classified per IP Version over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-ip-version",
 		"parameters": [
@@ -2128,6 +2263,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2141,6 +2278,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2169,6 +2307,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2182,6 +2321,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2195,6 +2335,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2208,6 +2350,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2324,6 +2468,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of AS112 IP Version",
 		"tags": [
 			"Radar AS112"
@@ -2340,7 +2490,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/as112/timeseries/protocol": {
+	"GET /radar/as112/timeseries_groups/protocol": {
 		"description": "Percentage distribution of AS112 dns requests classified per Protocol over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-protocol",
 		"parameters": [
@@ -2363,6 +2513,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2376,6 +2528,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2404,6 +2557,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2417,6 +2571,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2430,6 +2585,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2443,6 +2600,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2559,6 +2718,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of AS112 Protocol",
 		"tags": [
 			"Radar AS112"
@@ -2575,7 +2740,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/as112/timeseries/query_type": {
+	"GET /radar/as112/timeseries_groups/query_type": {
 		"description": "Percentage distribution of AS112 dns requests classified per Query Type over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-query-type",
 		"parameters": [
@@ -2598,6 +2763,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2611,6 +2778,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2639,6 +2807,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2652,6 +2821,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2665,6 +2835,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2678,6 +2850,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2818,6 +2992,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of AS112 Query Type",
 		"tags": [
 			"Radar AS112"
@@ -2834,7 +3014,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/as112/timeseries/response_codes": {
+	"GET /radar/as112/timeseries_groups/response_codes": {
 		"description": "Percentage distribution of AS112 dns requests classified per Response Codes over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-response-codes",
 		"parameters": [
@@ -2857,6 +3037,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2870,6 +3052,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2898,6 +3081,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2911,6 +3095,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2924,6 +3109,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2937,6 +3124,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3053,6 +3242,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of AS112 Response Codes",
 		"tags": [
 			"Radar AS112"
@@ -3089,6 +3284,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3102,6 +3299,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3130,6 +3328,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3143,6 +3342,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3156,6 +3356,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -3169,6 +3371,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3339,6 +3543,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by AS112 DNS queries",
 		"tags": [
 			"Radar AS112"
@@ -3375,6 +3585,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3388,6 +3600,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3416,6 +3629,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3429,6 +3643,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3442,6 +3657,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -3455,6 +3672,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3638,6 +3857,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by AS112 DNSSEC validations",
 		"tags": [
 			"Radar AS112"
@@ -3674,6 +3899,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3687,6 +3914,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3715,6 +3943,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3728,6 +3957,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3741,6 +3971,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -3754,6 +3986,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3937,6 +4171,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by AS112 EDNS validations",
 		"tags": [
 			"Radar AS112"
@@ -3973,6 +4213,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3986,6 +4228,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4014,6 +4257,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4027,6 +4271,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4040,6 +4285,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -4053,6 +4300,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4236,6 +4485,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by AS112 IP version",
 		"tags": [
 			"Radar AS112"

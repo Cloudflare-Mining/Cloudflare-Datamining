@@ -1123,8 +1123,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "List WAF rules",
@@ -1265,15 +1264,16 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1380,15 +1380,16 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1498,8 +1499,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Get a WAF rule",
@@ -1666,15 +1666,16 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2104,15 +2105,16 @@
 														{
 															"properties": {
 																"result": {
-																	"anyOf": [
+																	"oneOf": [
 																		{
+																			"nullable": true,
 																			"type": "object"
 																		},
 																		{
+																			"nullable": true,
 																			"type": "string"
 																		}
-																	],
-																	"nullable": true
+																	]
 																}
 															}
 														}
@@ -2543,8 +2545,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Update a WAF rule",

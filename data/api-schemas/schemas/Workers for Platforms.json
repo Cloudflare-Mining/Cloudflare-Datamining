@@ -1,0 +1,971 @@
+{
+	"DELETE /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
+		"description": "Delete a worker from a Workers for Platforms namespace. This call has no response body on a successful delete.",
+		"operationId": "namespace-worker-script-delete-worker",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "If set to true, delete will not be stopped by associated service binding, durable object, or other binding. Any of these associated bindings/durable objects will be deleted along with the script.",
+				"in": "query",
+				"name": "force",
+				"schema": {
+					"type": "boolean"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Delete Worker response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {}
+				},
+				"description": "Delete Worker response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Worker (Workers for Platforms)",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.delete"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
+		"description": "Fetch information about a script uploaded to a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-script-worker-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Details about a worker uploaded to a Workers for Platforms namespace.",
+							"properties": {
+								"created_on": {
+									"description": "When the script was created.",
+									"example": "2017-01-01T00:00:00Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								},
+								"dispatch_namespace": {
+									"description": "Name of the Workers for Platforms dispatch namespace.",
+									"example": "my-dispatch-namespace",
+									"pattern": "^.+$",
+									"type": "string"
+								},
+								"modified_on": {
+									"description": "When the script was last modified.",
+									"example": "2017-01-01T00:00:00Z",
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								},
+								"script": {
+									"properties": {
+										"created_on": {
+											"description": "When the script was created.",
+											"example": "2017-01-01T00:00:00Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"etag": {
+											"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+											"example": "ea95132c15732412d22c1476fa83f27a",
+											"readOnly": true,
+											"type": "string"
+										},
+										"id": {
+											"description": "The id of the script in the Workers system. Usually the script name.",
+											"example": "my-workers-script",
+											"readOnly": true,
+											"type": "string"
+										},
+										"logpush": {
+											"description": "Whether Logpush is turned on for the Worker.",
+											"example": false,
+											"type": "boolean"
+										},
+										"modified_on": {
+											"description": "When the script was last modified.",
+											"example": "2017-01-01T00:00:00Z",
+											"format": "date-time",
+											"readOnly": true,
+											"type": "string"
+										},
+										"pipeline_hash": {
+											"description": "Deprecated. Deployment metadata for internal usage.",
+											"example": "ea95132c15732412d22c1476fa83f27a",
+											"readOnly": true,
+											"type": "string"
+										},
+										"placement_mode": {
+											"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
+											"example": "smart",
+											"type": "string"
+										},
+										"tail_consumers": {
+											"description": "List of Workers that will consume logs from the attached Worker.",
+											"items": {
+												"description": "A reference to a script that will consume logs from the attached Worker.",
+												"properties": {
+													"environment": {
+														"description": "Optional environment if the Worker utilizes one.",
+														"example": "production",
+														"type": "string"
+													},
+													"service": {
+														"description": "Name of Worker that is to be the consumer.",
+														"example": "my-log-consumer",
+														"type": "string"
+													}
+												},
+												"required": [
+													"service"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"usage_model": {
+											"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+											"example": "unbound",
+											"pattern": "^(bundled|unbound)$",
+											"type": "string"
+										}
+									}
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Worker Details Response (Workers for Platforms)"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Worker Details (Workers for Platforms)",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.read"
+			]
+		}
+	},
+	"PUT /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
+		"description": "Upload a worker module to a Workers for Platforms namespace.",
+		"operationId": "namespace-worker-script-upload-worker-module",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "dispatch_namespace",
+				"required": true,
+				"schema": {
+					"description": "Name of the Workers for Platforms dispatch namespace.",
+					"example": "my-dispatch-namespace",
+					"pattern": "^.+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "script_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the script, used in URLs and route configuration.",
+					"example": "this-is_my_script-01",
+					"pattern": "^[a-z0-9_][a-z0-9-_]*$",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/javascript": {
+					"schema": {
+						"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+						"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))",
+						"type": "string"
+					}
+				},
+				"multipart/form-data": {
+					"encoding": {
+						"<any part name>": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream"
+						}
+					},
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"<any part name>": {
+										"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module` or `body_part` by part name.",
+										"items": {
+											"format": "binary",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"metadata": {
+										"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
+										"properties": {
+											"bindings": {
+												"description": "List of bindings available to the worker.",
+												"example": "[{\"name\":\"MY_ENV_VAR\", \"type\":\"plain_text\", \"text\":\"my_data\"}]",
+												"items": {
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"body_part": {
+												"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											},
+											"compatibility_date": {
+												"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+												"example": "2023-07-25",
+												"type": "string"
+											},
+											"compatibility_flags": {
+												"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"keep_bindings": {
+												"description": "List of binding types to keep from previous_upload.",
+												"type": "boolean"
+											},
+											"logpush": {
+												"description": "Whether Logpush is turned on for the Worker.",
+												"example": false,
+												"type": "boolean"
+											},
+											"main_module": {
+												"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											},
+											"migrations": {
+												"description": "Migrations to apply for Durable Objects associated with this Worker.",
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"new_tag": {
+																		"description": "Tag to set as the latest migration tag.",
+																		"example": "v2",
+																		"type": "string"
+																	},
+																	"old_tag": {
+																		"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																		"example": "v1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"deleted_classes": {
+																		"description": "A list of classes to delete Durable Object namespaces from.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"new_classes": {
+																		"description": "A list of classes to create Durable Object namespaces from.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"renamed_classes": {
+																		"description": "A list of classes with Durable Object namespaces that were renamed.",
+																		"items": {
+																			"properties": {
+																				"from": {
+																					"type": "string"
+																				},
+																				"to": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"transferred_classes": {
+																		"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																		"items": {
+																			"properties": {
+																				"from": {
+																					"type": "string"
+																				},
+																				"from_script": {
+																					"type": "string"
+																				},
+																				"to": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "A single set of migrations to apply."
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"new_tag": {
+																		"description": "Tag to set as the latest migration tag.",
+																		"example": "v2",
+																		"type": "string"
+																	},
+																	"old_tag": {
+																		"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																		"example": "v1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"steps": {
+																		"description": "Migrations to apply in order.",
+																		"items": {
+																			"properties": {
+																				"deleted_classes": {
+																					"description": "A list of classes to delete Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"new_classes": {
+																					"description": "A list of classes to create Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"renamed_classes": {
+																					"description": "A list of classes with Durable Object namespaces that were renamed.",
+																					"items": {
+																						"properties": {
+																							"from": {
+																								"type": "string"
+																							},
+																							"to": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"transferred_classes": {
+																					"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																					"items": {
+																						"properties": {
+																							"from": {
+																								"type": "string"
+																							},
+																							"from_script": {
+																								"type": "string"
+																							},
+																							"to": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															}
+														]
+													}
+												]
+											},
+											"placement": {
+												"properties": {
+													"mode": {
+														"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+														"enum": [
+															"smart"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"tags": {
+												"description": "List of strings to use as tags for this Worker",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"tail_consumers": {
+												"description": "List of Workers that will consume logs from the attached Worker.",
+												"items": {
+													"description": "A reference to a script that will consume logs from the attached Worker.",
+													"properties": {
+														"environment": {
+															"description": "Optional environment if the Worker utilizes one.",
+															"example": "production",
+															"type": "string"
+														},
+														"service": {
+															"description": "Name of Worker that is to be the consumer.",
+															"example": "my-log-consumer",
+															"type": "string"
+														}
+													},
+													"required": [
+														"service"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"usage_model": {
+												"description": "Usage model to apply to invocations.",
+												"enum": [
+													"bundled",
+													"unbound"
+												],
+												"type": "string"
+											},
+											"version_tags": {
+												"description": "Key-value pairs to use as tags for this version of this Worker",
+												"type": "object"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							{
+								"properties": {
+									"message": {
+										"description": "Rollback message to be associated with this deployment. Only parsed when query param `\"rollback_to\"` is present.",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						]
+					}
+				},
+				"text/javascript": {
+					"schema": {
+						"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+						"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))",
+						"type": "string"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"created_on": {
+															"description": "When the script was created.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"etag": {
+															"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"description": "The id of the script in the Workers system. Usually the script name.",
+															"example": "my-workers-script",
+															"readOnly": true,
+															"type": "string"
+														},
+														"logpush": {
+															"description": "Whether Logpush is turned on for the Worker.",
+															"example": false,
+															"type": "boolean"
+														},
+														"modified_on": {
+															"description": "When the script was last modified.",
+															"example": "2017-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"pipeline_hash": {
+															"description": "Deprecated. Deployment metadata for internal usage.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
+															"readOnly": true,
+															"type": "string"
+														},
+														"placement_mode": {
+															"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
+															"example": "smart",
+															"type": "string"
+														},
+														"tail_consumers": {
+															"description": "List of Workers that will consume logs from the attached Worker.",
+															"items": {
+																"description": "A reference to a script that will consume logs from the attached Worker.",
+																"properties": {
+																	"environment": {
+																		"description": "Optional environment if the Worker utilizes one.",
+																		"example": "production",
+																		"type": "string"
+																	},
+																	"service": {
+																		"description": "Name of Worker that is to be the consumer.",
+																		"example": "my-log-consumer",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"service"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"usage_model": {
+															"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+															"example": "unbound",
+															"pattern": "^(bundled|unbound)$",
+															"type": "string"
+														}
+													}
+												}
+											},
+											"x-cfLinkErrors": {
+												"10001": "Unsupported or unexpected Content Type",
+												"10002": "Unexpected internal server error",
+												"10003": "Missing required URL parameter",
+												"10004": "Malformed URL parameter",
+												"10006": "Unparseable script body",
+												"10007": "Resource not found (similar to HTTP 404)",
+												"10014": "Internal error while attempting authorization checks",
+												"10015": "The current account is not authorized to use workers",
+												"10018": "Attempted to update a script where the e-tag does not match",
+												"10021": "Script content failed validation checks, but was otherwise parseable",
+												"10023": "Unauthorized access attempt",
+												"10027": "Script body was too large",
+												"10075": "Requires a Workers Paid plan"
+											}
+										}
+									]
+								},
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": {
+											"created_on": "2022-05-05T05:15:11.602148Z",
+											"etag": "777f24a43bef5f69174aa69ceaf1dea67968d510a31d1vw3e49d34a0187c06d1",
+											"handlers": [
+												"fetch"
+											],
+											"id": "this-is_my_script-01",
+											"logpush": false,
+											"modified_on": "2022-05-20T19:02:56.446492Z",
+											"placement_mode": "smart",
+											"tail_consumers": [
+												{
+													"environment": "production",
+													"service": "my-log-consumer"
+												}
+											],
+											"usage_model": "bundled"
+										},
+										"success": true
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Worker Module response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"example": {
+										"errors": [],
+										"messages": [],
+										"result": {
+											"created_on": "2022-05-05T05:15:11.602148Z",
+											"etag": "777f24a43bef5f69174aa69ceaf1dea67968d510a31d1vw3e49d34a0187c06d1",
+											"handlers": [
+												"fetch"
+											],
+											"id": "this-is_my_script-01",
+											"logpush": false,
+											"modified_on": "2022-05-20T19:02:56.446492Z",
+											"tail_consumers": [
+												{
+													"environment": "production",
+													"service": "my-log-consumer"
+												}
+											],
+											"usage_model": "bundled"
+										},
+										"success": true
+									}
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Upload Worker Module response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Upload Worker Module (Workers for Platforms)",
+		"tags": [
+			"Workers for Platforms"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.script.create"
+			]
+		}
+	}
+}

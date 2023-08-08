@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_identifier}/audit_logs": {
-		"description": "Gets a list of audit logs for an account. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
+		"description": "Gets a list of audit logs for an account. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
 		"operationId": "audit-logs-get-account-audit-logs",
 		"parameters": [
 			{
@@ -146,7 +146,8 @@
 								{
 									"properties": {
 										"errors": {
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"messages": {
 											"example": [],
@@ -367,7 +368,8 @@
 										{
 											"properties": {
 												"errors": {
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												},
 												"messages": {
 													"example": [],
@@ -669,9 +671,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get account audit logs",
@@ -687,7 +686,7 @@
 	},
 	"GET /organizations/{organization_identifier}/audit_logs": {
 		"deprecated": true,
-		"description": "Gets a list of audit logs for an organization. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
+		"description": "Gets a list of audit logs for an organization. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
 		"operationId": "audit-logs-get-organization-audit-logs",
 		"parameters": [
 			{
@@ -833,7 +832,8 @@
 								{
 									"properties": {
 										"errors": {
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"messages": {
 											"example": [],
@@ -1054,7 +1054,8 @@
 										{
 											"properties": {
 												"errors": {
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												},
 												"messages": {
 													"example": [],
@@ -1356,9 +1357,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get organization audit logs",
@@ -1379,7 +1377,7 @@
 		}
 	},
 	"GET /user/audit_logs": {
-		"description": "Gets a list of audit logs for a user account. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
+		"description": "Gets a list of audit logs for a user account. Can be filtered by who made the change, on which zone, and the timeframe of the change.",
 		"operationId": "audit-logs-get-user-audit-logs",
 		"parameters": [
 			{
@@ -1513,7 +1511,8 @@
 								{
 									"properties": {
 										"errors": {
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"messages": {
 											"example": [],
@@ -1734,7 +1733,8 @@
 										{
 											"properties": {
 												"errors": {
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												},
 												"messages": {
 													"example": [],
@@ -2036,9 +2036,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get user audit logs",

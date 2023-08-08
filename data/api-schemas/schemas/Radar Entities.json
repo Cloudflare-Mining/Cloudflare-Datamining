@@ -163,6 +163,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get autonomous systems",
 		"tags": [
 			"Radar Entities"
@@ -375,6 +381,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get autonomous system information by AS number",
 		"tags": [
 			"Radar Entities"
@@ -554,6 +566,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get AS-level relationships by AS number",
 		"tags": [
 			"Radar Entities"
@@ -758,6 +776,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get autonomous system information by IP address",
 		"tags": [
 			"Radar Entities"
@@ -898,6 +922,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get IP address",
 		"tags": [
 			"Radar Entities"
@@ -1061,6 +1091,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get locations",
 		"tags": [
 			"Radar Entities"
@@ -1196,6 +1232,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get location",
 		"tags": [
 			"Radar Entities"

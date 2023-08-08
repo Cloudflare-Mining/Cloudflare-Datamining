@@ -160,6 +160,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Datasets",
 		"tags": [
 			"Radar Datasets"
@@ -253,6 +259,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Dataset csv Stream",
 		"tags": [
 			"Radar Datasets"
@@ -371,6 +383,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Dataset download url",
 		"tags": [
 			"Radar Datasets"

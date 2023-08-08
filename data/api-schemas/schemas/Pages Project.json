@@ -1329,6 +1329,27 @@
 																			"items": {},
 																			"type": "array"
 																		},
+																		"constellation_projects": {
+																			"description": "Constellation bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"CONSTELLATION_BINDING": {
+																					"description": "Constellation binding.",
+																					"example": {
+																						"project_id": "55db4432-010d-440d-ae3c-f9ff6b94f993"
+																					},
+																					"properties": {
+																						"project_id": {
+																							"description": "UUID of the project.",
+																							"example": "55db4432-010d-440d-ae3c-f9ff6b94f993",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
+																		},
 																		"d1_databases": {
 																			"description": "D1 databases used for Pages Functions.",
 																			"nullable": true,
@@ -1546,6 +1567,27 @@
 																			],
 																			"items": {},
 																			"type": "array"
+																		},
+																		"constellation_projects": {
+																			"description": "Constellation bindings used for Pages Functions.",
+																			"nullable": true,
+																			"properties": {
+																				"CONSTELLATION_BINDING": {
+																					"description": "Constellation binding.",
+																					"example": {
+																						"project_id": "55db4432-010d-440d-ae3c-f9ff6b94f993"
+																					},
+																					"properties": {
+																						"project_id": {
+																							"description": "UUID of the project.",
+																							"example": "55db4432-010d-440d-ae3c-f9ff6b94f993",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				}
+																			},
+																			"type": "object"
 																		},
 																		"d1_databases": {
 																			"description": "D1 databases used for Pages Functions.",
@@ -2374,6 +2416,27 @@
 																					"items": {},
 																					"type": "array"
 																				},
+																				"constellation_projects": {
+																					"description": "Constellation bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"CONSTELLATION_BINDING": {
+																							"description": "Constellation binding.",
+																							"example": {
+																								"project_id": "55db4432-010d-440d-ae3c-f9ff6b94f993"
+																							},
+																							"properties": {
+																								"project_id": {
+																									"description": "UUID of the project.",
+																									"example": "55db4432-010d-440d-ae3c-f9ff6b94f993",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
+																				},
 																				"d1_databases": {
 																					"description": "D1 databases used for Pages Functions.",
 																					"nullable": true,
@@ -2591,6 +2654,27 @@
 																					],
 																					"items": {},
 																					"type": "array"
+																				},
+																				"constellation_projects": {
+																					"description": "Constellation bindings used for Pages Functions.",
+																					"nullable": true,
+																					"properties": {
+																						"CONSTELLATION_BINDING": {
+																							"description": "Constellation binding.",
+																							"example": {
+																								"project_id": "55db4432-010d-440d-ae3c-f9ff6b94f993"
+																							},
+																							"properties": {
+																								"project_id": {
+																									"description": "UUID of the project.",
+																									"example": "55db4432-010d-440d-ae3c-f9ff6b94f993",
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						}
+																					},
+																					"type": "object"
 																				},
 																				"d1_databases": {
 																					"description": "D1 databases used for Pages Functions.",
@@ -3795,6 +3879,27 @@
 														"items": {},
 														"type": "array"
 													},
+													"constellation_projects": {
+														"description": "Constellation bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"CONSTELLATION_BINDING": {
+																"description": "Constellation binding.",
+																"example": {
+																	"project_id": "55db4432-010d-440d-ae3c-f9ff6b94f993"
+																},
+																"properties": {
+																	"project_id": {
+																		"description": "UUID of the project.",
+																		"example": "55db4432-010d-440d-ae3c-f9ff6b94f993",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
 													"d1_databases": {
 														"description": "D1 databases used for Pages Functions.",
 														"nullable": true,
@@ -4012,6 +4117,27 @@
 														],
 														"items": {},
 														"type": "array"
+													},
+													"constellation_projects": {
+														"description": "Constellation bindings used for Pages Functions.",
+														"nullable": true,
+														"properties": {
+															"CONSTELLATION_BINDING": {
+																"description": "Constellation binding.",
+																"example": {
+																	"project_id": "55db4432-010d-440d-ae3c-f9ff6b94f993"
+																},
+																"properties": {
+																	"project_id": {
+																		"description": "UUID of the project.",
+																		"example": "55db4432-010d-440d-ae3c-f9ff6b94f993",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
 													},
 													"d1_databases": {
 														"description": "D1 databases used for Pages Functions.",

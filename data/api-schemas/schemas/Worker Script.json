@@ -208,6 +208,12 @@
 														"readOnly": true,
 														"type": "string"
 													},
+													"pipeline_hash": {
+														"description": "Deprecated. Deployment metadata for internal usage.",
+														"example": "ea95132c15732412d22c1476fa83f27a",
+														"readOnly": true,
+														"type": "string"
+													},
 													"placement_mode": {
 														"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
 														"example": "smart",
@@ -369,6 +375,12 @@
 																"description": "When the script was last modified.",
 																"example": "2017-01-01T00:00:00Z",
 																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"pipeline_hash": {
+																"description": "Deprecated. Deployment metadata for internal usage.",
+																"example": "ea95132c15732412d22c1476fa83f27a",
 																"readOnly": true,
 																"type": "string"
 															},
@@ -954,7 +966,7 @@
 				}
 			},
 			{
-				"description": "Rollback to provided deployment based on deployment ID. Request body will be ignored. You can learn more about deployments [here](https://developers.cloudflare.com/workers/platform/deployments/).",
+				"description": "Rollback to provided deployment based on deployment ID. Request body will only parse a \"message\" part. You can learn more about deployments [here](https://developers.cloudflare.com/workers/platform/deployments/).",
 				"in": "query",
 				"name": "rollback_to",
 				"schema": {
@@ -967,29 +979,307 @@
 		],
 		"requestBody": {
 			"content": {
-				"multipart/form-data": {
+				"application/javascript": {
 					"schema": {
-						"properties": {
-							"\"message\"": {
-								"description": "Rollback message to be associated with deployment. Only parsed with `rollback_to` query parameter"
+						"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+						"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))",
+						"type": "string"
+					}
+				},
+				"multipart/form-data": {
+					"encoding": {
+						"<any part name>": {
+							"contentType": "application/javascript+module, text/javascript+module, application/javascript, text/javascript, application/wasm, text/plain, application/octet-stream"
+						}
+					},
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"<any part name>": {
+										"description": "A module comprising a Worker script, often a javascript file. Multiple modules may be provided as separate named parts, but at least one module must be present and referenced in the metadata as `main_module` or `body_part` by part name.",
+										"items": {
+											"format": "binary",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"metadata": {
+										"description": "JSON encoded metadata about the uploaded parts and Worker configuration.",
+										"properties": {
+											"bindings": {
+												"description": "List of bindings available to the worker.",
+												"example": "[{\"name\":\"MY_ENV_VAR\", \"type\":\"plain_text\", \"text\":\"my_data\"}]",
+												"items": {
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"body_part": {
+												"description": "Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											},
+											"compatibility_date": {
+												"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
+												"example": "2023-07-25",
+												"type": "string"
+											},
+											"compatibility_flags": {
+												"description": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"keep_bindings": {
+												"description": "List of binding types to keep from previous_upload.",
+												"type": "boolean"
+											},
+											"logpush": {
+												"description": "Whether Logpush is turned on for the Worker.",
+												"example": false,
+												"type": "boolean"
+											},
+											"main_module": {
+												"description": "Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.",
+												"example": "worker.js",
+												"type": "string"
+											},
+											"migrations": {
+												"description": "Migrations to apply for Durable Objects associated with this Worker.",
+												"oneOf": [
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"new_tag": {
+																		"description": "Tag to set as the latest migration tag.",
+																		"example": "v2",
+																		"type": "string"
+																	},
+																	"old_tag": {
+																		"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																		"example": "v1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"deleted_classes": {
+																		"description": "A list of classes to delete Durable Object namespaces from.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"new_classes": {
+																		"description": "A list of classes to create Durable Object namespaces from.",
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"renamed_classes": {
+																		"description": "A list of classes with Durable Object namespaces that were renamed.",
+																		"items": {
+																			"properties": {
+																				"from": {
+																					"type": "string"
+																				},
+																				"to": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"transferred_classes": {
+																		"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																		"items": {
+																			"properties": {
+																				"from": {
+																					"type": "string"
+																				},
+																				"from_script": {
+																					"type": "string"
+																				},
+																				"to": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															}
+														],
+														"description": "A single set of migrations to apply."
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"new_tag": {
+																		"description": "Tag to set as the latest migration tag.",
+																		"example": "v2",
+																		"type": "string"
+																	},
+																	"old_tag": {
+																		"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																		"example": "v1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"steps": {
+																		"description": "Migrations to apply in order.",
+																		"items": {
+																			"properties": {
+																				"deleted_classes": {
+																					"description": "A list of classes to delete Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"new_classes": {
+																					"description": "A list of classes to create Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"renamed_classes": {
+																					"description": "A list of classes with Durable Object namespaces that were renamed.",
+																					"items": {
+																						"properties": {
+																							"from": {
+																								"type": "string"
+																							},
+																							"to": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"transferred_classes": {
+																					"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																					"items": {
+																						"properties": {
+																							"from": {
+																								"type": "string"
+																							},
+																							"from_script": {
+																								"type": "string"
+																							},
+																							"to": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															}
+														]
+													}
+												]
+											},
+											"placement": {
+												"properties": {
+													"mode": {
+														"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+														"enum": [
+															"smart"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"tags": {
+												"description": "List of strings to use as tags for this Worker",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"tail_consumers": {
+												"description": "List of Workers that will consume logs from the attached Worker.",
+												"items": {
+													"description": "A reference to a script that will consume logs from the attached Worker.",
+													"properties": {
+														"environment": {
+															"description": "Optional environment if the Worker utilizes one.",
+															"example": "production",
+															"type": "string"
+														},
+														"service": {
+															"description": "Name of Worker that is to be the consumer.",
+															"example": "my-log-consumer",
+															"type": "string"
+														}
+													},
+													"required": [
+														"service"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"usage_model": {
+												"description": "Usage model to apply to invocations.",
+												"enum": [
+													"bundled",
+													"unbound"
+												],
+												"type": "string"
+											},
+											"version_tags": {
+												"description": "Key-value pairs to use as tags for this version of this Worker",
+												"type": "object"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
 							},
-							"\"second-file.js\"": {
-								"description": "Worker script.",
-								"example": "@second-file.js;type=application/javascript+module",
-								"type": "string"
-							},
-							"\"worker.js\"": {
-								"description": "Worker script.",
-								"example": "@worker.js;type=application/javascript+module",
-								"type": "string"
-							},
-							"metadata": {
-								"description": "Metadata for script such as bindings in JSON format. Main module needs to be specified with `main_module`.",
-								"example": "{\"main_module\": \"worker.js\", \"some_binding\": \"stuff\"}",
-								"type": "string"
+							{
+								"properties": {
+									"message": {
+										"description": "Rollback message to be associated with this deployment. Only parsed when query param `\"rollback_to\"` is present.",
+										"type": "string"
+									}
+								},
+								"type": "object"
 							}
-						},
-						"type": "object"
+						]
+					}
+				},
+				"text/javascript": {
+					"schema": {
+						"description": "Raw javascript content comprising a Worker. Must be in service worker syntax.",
+						"example": "addEventListener('fetch', (event) => event.respondWith(new Response('OK')))",
+						"type": "string"
 					}
 				}
 			},
@@ -1129,6 +1419,12 @@
 															"description": "When the script was last modified.",
 															"example": "2017-01-01T00:00:00Z",
 															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"pipeline_hash": {
+															"description": "Deprecated. Deployment metadata for internal usage.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
 															"readOnly": true,
 															"type": "string"
 														},

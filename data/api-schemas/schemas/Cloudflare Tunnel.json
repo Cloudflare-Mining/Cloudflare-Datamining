@@ -571,7 +571,7 @@
 		]
 	},
 	"DELETE /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connections": {
-		"description": "Removes connections that are in a disconnected or pending reconnect state. We recommend running this command after shutting down a tunnel.",
+		"description": "Removes a connection (aka Cloudflare Tunnel Connector) from a Cloudflare Tunnel independently of its current state. If no connector id (client_id) is provided all connectors will be removed. We recommend running this command after rotating tokens.",
 		"operationId": "cloudflare-tunnel-clean-up-cloudflare-tunnel-connections",
 		"parameters": [
 			{
@@ -594,6 +594,14 @@
 					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "client_id",
+				"schema": {
+					"description": "UUID of the Cloudflare Tunnel Connector to disconnect.",
 					"type": "string"
 				}
 			}

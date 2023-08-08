@@ -368,7 +368,7 @@
 		]
 	},
 	"GET /accounts/{identifier}/gateway": {
-		"description": "Get Zero Trust account information.",
+		"description": "Gets information about the current Zero Trust account.",
 		"operationId": "zero-trust-accounts-get-zero-trust-account-information",
 		"parameters": [
 			{
@@ -485,19 +485,19 @@
 										"result": {
 											"properties": {
 												"gateway_tag": {
-													"description": "Gateway internal id.",
+													"description": "Gateway internal ID.",
 													"example": "f174e90afafe4643bbbc4a0ed4fc8415",
 													"maxLength": 32,
 													"type": "string"
 												},
 												"id": {
-													"description": "Cloudflare account ID",
+													"description": "Cloudflare account ID.",
 													"example": "699d98642c564d2e855e9661899b7252",
 													"maxLength": 32,
 													"type": "string"
 												},
 												"provider_name": {
-													"description": "The name of provider. Usually cloudflare.",
+													"description": "The name of the provider. Usually Cloudflare.",
 													"example": "Cloudflare",
 													"type": "string"
 												}
@@ -619,19 +619,19 @@
 												"result": {
 													"properties": {
 														"gateway_tag": {
-															"description": "Gateway internal id.",
+															"description": "Gateway internal ID.",
 															"example": "f174e90afafe4643bbbc4a0ed4fc8415",
 															"maxLength": 32,
 															"type": "string"
 														},
 														"id": {
-															"description": "Cloudflare account ID",
+															"description": "Cloudflare account ID.",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
 															"type": "string"
 														},
 														"provider_name": {
-															"description": "The name of provider. Usually cloudflare.",
+															"description": "The name of the provider. Usually Cloudflare.",
 															"example": "Cloudflare",
 															"type": "string"
 														}
@@ -746,7 +746,7 @@
 		]
 	},
 	"GET /accounts/{identifier}/gateway/configuration": {
-		"description": "Describes current Zero Trust account configuration.",
+		"description": "Fetches the current Zero Trust account configuration.",
 		"operationId": "zero-trust-accounts-get-zero-trust-account-configuration",
 		"parameters": [
 			{
@@ -880,15 +880,15 @@
 																	"type": "object"
 																},
 																"antivirus": {
-																	"description": "Anti virus settings.",
+																	"description": "Anti-virus settings.",
 																	"properties": {
 																		"enabled_download_phase": {
-																			"description": "Set to enable antivirus scan on downloads.",
+																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"enabled_upload_phase": {
-																			"description": "Set to enable antivirus scan on uploads.",
+																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
@@ -951,10 +951,10 @@
 																	"type": "object"
 																},
 																"body_scanning": {
-																	"description": "DLP body scanning setting",
+																	"description": "DLP body scanning settings.",
 																	"properties": {
 																		"inspection_mode": {
-																			"description": "Inspection mode. One of deep or shallow",
+																			"description": "Set the inspection mode to either `deep` or `shallow`.",
 																			"example": "deep",
 																			"type": "string"
 																		}
@@ -976,18 +976,18 @@
 																	"description": "Custom certificate settings for BYO-PKI.",
 																	"properties": {
 																		"binding_status": {
-																			"description": "Certificate status (internal)",
+																			"description": "Certificate status (internal).",
 																			"example": "pending_deployment",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"enabled": {
-																			"description": "Enable use of custom certificate authority for signing Gateway traffic",
+																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"id": {
-																			"description": "UUID of certificate (ID from MTLS certificate store)",
+																			"description": "UUID of certificate (ID from MTLS certificate store).",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																			"type": "string"
 																		},
@@ -1192,15 +1192,15 @@
 																			"type": "object"
 																		},
 																		"antivirus": {
-																			"description": "Anti virus settings.",
+																			"description": "Anti-virus settings.",
 																			"properties": {
 																				"enabled_download_phase": {
-																					"description": "Set to enable antivirus scan on downloads.",
+																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"enabled_upload_phase": {
-																					"description": "Set to enable antivirus scan on uploads.",
+																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
@@ -1263,10 +1263,10 @@
 																			"type": "object"
 																		},
 																		"body_scanning": {
-																			"description": "DLP body scanning setting",
+																			"description": "DLP body scanning settings.",
 																			"properties": {
 																				"inspection_mode": {
-																					"description": "Inspection mode. One of deep or shallow",
+																					"description": "Set the inspection mode to either `deep` or `shallow`.",
 																					"example": "deep",
 																					"type": "string"
 																				}
@@ -1288,18 +1288,18 @@
 																			"description": "Custom certificate settings for BYO-PKI.",
 																			"properties": {
 																				"binding_status": {
-																					"description": "Certificate status (internal)",
+																					"description": "Certificate status (internal).",
 																					"example": "pending_deployment",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"enabled": {
-																					"description": "Enable use of custom certificate authority for signing Gateway traffic",
+																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"id": {
-																					"description": "UUID of certificate (ID from MTLS certificate store)",
+																					"description": "UUID of certificate (ID from MTLS certificate store).",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																					"type": "string"
 																				},
@@ -1480,7 +1480,7 @@
 		]
 	},
 	"GET /accounts/{identifier}/gateway/logging": {
-		"description": "Describes the current logging settings for Zero Trust account.",
+		"description": "Fetches the current logging settings for Zero Trust account.",
 		"operationId": "zero-trust-accounts-get-logging-settings-for-the-zero-trust-account",
 		"parameters": [
 			{
@@ -1870,7 +1870,7 @@
 		]
 	},
 	"PATCH /accounts/{identifier}/gateway/configuration": {
-		"description": "Patches the current Zero Trust account configuration. This end point helps you to update single sub collection of settings like antivirus, tls_decrypt, activity_log, block_page, browser_isolation, fips, body_scanning or custom_certificate, without updating the whole configuration object. Returns error if a single collection of setting is not properly configured.",
+		"description": "Patches the current Zero Trust account configuration. This endpoint can update a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `custom_certificate`, without updating the entire configuration object. Returns an error if any collection of settings is not properly configured.",
 		"operationId": "zero-trust-accounts-patch-zero-trust-account-configuration",
 		"parameters": [
 			{
@@ -1903,15 +1903,15 @@
 										"type": "object"
 									},
 									"antivirus": {
-										"description": "Anti virus settings.",
+										"description": "Anti-virus settings.",
 										"properties": {
 											"enabled_download_phase": {
-												"description": "Set to enable antivirus scan on downloads.",
+												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
 												"type": "boolean"
 											},
 											"enabled_upload_phase": {
-												"description": "Set to enable antivirus scan on uploads.",
+												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
 												"type": "boolean"
 											},
@@ -1974,10 +1974,10 @@
 										"type": "object"
 									},
 									"body_scanning": {
-										"description": "DLP body scanning setting",
+										"description": "DLP body scanning settings.",
 										"properties": {
 											"inspection_mode": {
-												"description": "Inspection mode. One of deep or shallow",
+												"description": "Set the inspection mode to either `deep` or `shallow`.",
 												"example": "deep",
 												"type": "string"
 											}
@@ -1999,18 +1999,18 @@
 										"description": "Custom certificate settings for BYO-PKI.",
 										"properties": {
 											"binding_status": {
-												"description": "Certificate status (internal)",
+												"description": "Certificate status (internal).",
 												"example": "pending_deployment",
 												"readOnly": true,
 												"type": "string"
 											},
 											"enabled": {
-												"description": "Enable use of custom certificate authority for signing Gateway traffic",
+												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
 												"type": "boolean"
 											},
 											"id": {
-												"description": "UUID of certificate (ID from MTLS certificate store)",
+												"description": "UUID of certificate (ID from MTLS certificate store).",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 												"type": "string"
 											},
@@ -2190,15 +2190,15 @@
 																	"type": "object"
 																},
 																"antivirus": {
-																	"description": "Anti virus settings.",
+																	"description": "Anti-virus settings.",
 																	"properties": {
 																		"enabled_download_phase": {
-																			"description": "Set to enable antivirus scan on downloads.",
+																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"enabled_upload_phase": {
-																			"description": "Set to enable antivirus scan on uploads.",
+																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
@@ -2261,10 +2261,10 @@
 																	"type": "object"
 																},
 																"body_scanning": {
-																	"description": "DLP body scanning setting",
+																	"description": "DLP body scanning settings.",
 																	"properties": {
 																		"inspection_mode": {
-																			"description": "Inspection mode. One of deep or shallow",
+																			"description": "Set the inspection mode to either `deep` or `shallow`.",
 																			"example": "deep",
 																			"type": "string"
 																		}
@@ -2286,18 +2286,18 @@
 																	"description": "Custom certificate settings for BYO-PKI.",
 																	"properties": {
 																		"binding_status": {
-																			"description": "Certificate status (internal)",
+																			"description": "Certificate status (internal).",
 																			"example": "pending_deployment",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"enabled": {
-																			"description": "Enable use of custom certificate authority for signing Gateway traffic",
+																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"id": {
-																			"description": "UUID of certificate (ID from MTLS certificate store)",
+																			"description": "UUID of certificate (ID from MTLS certificate store).",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																			"type": "string"
 																		},
@@ -2502,15 +2502,15 @@
 																			"type": "object"
 																		},
 																		"antivirus": {
-																			"description": "Anti virus settings.",
+																			"description": "Anti-virus settings.",
 																			"properties": {
 																				"enabled_download_phase": {
-																					"description": "Set to enable antivirus scan on downloads.",
+																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"enabled_upload_phase": {
-																					"description": "Set to enable antivirus scan on uploads.",
+																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
@@ -2573,10 +2573,10 @@
 																			"type": "object"
 																		},
 																		"body_scanning": {
-																			"description": "DLP body scanning setting",
+																			"description": "DLP body scanning settings.",
 																			"properties": {
 																				"inspection_mode": {
-																					"description": "Inspection mode. One of deep or shallow",
+																					"description": "Set the inspection mode to either `deep` or `shallow`.",
 																					"example": "deep",
 																					"type": "string"
 																				}
@@ -2598,18 +2598,18 @@
 																			"description": "Custom certificate settings for BYO-PKI.",
 																			"properties": {
 																				"binding_status": {
-																					"description": "Certificate status (internal)",
+																					"description": "Certificate status (internal).",
 																					"example": "pending_deployment",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"enabled": {
-																					"description": "Enable use of custom certificate authority for signing Gateway traffic",
+																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"id": {
-																					"description": "UUID of certificate (ID from MTLS certificate store)",
+																					"description": "UUID of certificate (ID from MTLS certificate store).",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																					"type": "string"
 																				},
@@ -2790,7 +2790,7 @@
 		]
 	},
 	"POST /accounts/{identifier}/gateway": {
-		"description": "Create Zero Trust account with existing cloudflare account.",
+		"description": "Creates a Zero Trust account with an existing Cloudflare account.",
 		"operationId": "zero-trust-accounts-create-zero-trust-account",
 		"parameters": [
 			{
@@ -2808,7 +2808,7 @@
 					"schema": {
 						"properties": {
 							"account_id": {
-								"description": "Cloudflare account ID",
+								"description": "Cloudflare account ID.",
 								"example": "699d98642c564d2e855e9661899b7252",
 								"maxLength": 32,
 								"type": "string"
@@ -2927,19 +2927,19 @@
 										"result": {
 											"properties": {
 												"gateway_tag": {
-													"description": "Gateway internal id.",
+													"description": "Gateway internal ID.",
 													"example": "f174e90afafe4643bbbc4a0ed4fc8415",
 													"maxLength": 32,
 													"type": "string"
 												},
 												"id": {
-													"description": "Cloudflare account ID",
+													"description": "Cloudflare account ID.",
 													"example": "699d98642c564d2e855e9661899b7252",
 													"maxLength": 32,
 													"type": "string"
 												},
 												"provider_name": {
-													"description": "The name of provider. Usually cloudflare.",
+													"description": "The name of the provider. Usually Cloudflare.",
 													"example": "Cloudflare",
 													"type": "string"
 												}
@@ -3061,19 +3061,19 @@
 												"result": {
 													"properties": {
 														"gateway_tag": {
-															"description": "Gateway internal id.",
+															"description": "Gateway internal ID.",
 															"example": "f174e90afafe4643bbbc4a0ed4fc8415",
 															"maxLength": 32,
 															"type": "string"
 														},
 														"id": {
-															"description": "Cloudflare account ID",
+															"description": "Cloudflare account ID.",
 															"example": "699d98642c564d2e855e9661899b7252",
 															"maxLength": 32,
 															"type": "string"
 														},
 														"provider_name": {
-															"description": "The name of provider. Usually cloudflare.",
+															"description": "The name of the provider. Usually Cloudflare.",
 															"example": "Cloudflare",
 															"type": "string"
 														}
@@ -3611,15 +3611,15 @@
 										"type": "object"
 									},
 									"antivirus": {
-										"description": "Anti virus settings.",
+										"description": "Anti-virus settings.",
 										"properties": {
 											"enabled_download_phase": {
-												"description": "Set to enable antivirus scan on downloads.",
+												"description": "Enable anti-virus scanning on downloads.",
 												"example": false,
 												"type": "boolean"
 											},
 											"enabled_upload_phase": {
-												"description": "Set to enable antivirus scan on uploads.",
+												"description": "Enable anti-virus scanning on uploads.",
 												"example": false,
 												"type": "boolean"
 											},
@@ -3682,10 +3682,10 @@
 										"type": "object"
 									},
 									"body_scanning": {
-										"description": "DLP body scanning setting",
+										"description": "DLP body scanning settings.",
 										"properties": {
 											"inspection_mode": {
-												"description": "Inspection mode. One of deep or shallow",
+												"description": "Set the inspection mode to either `deep` or `shallow`.",
 												"example": "deep",
 												"type": "string"
 											}
@@ -3707,18 +3707,18 @@
 										"description": "Custom certificate settings for BYO-PKI.",
 										"properties": {
 											"binding_status": {
-												"description": "Certificate status (internal)",
+												"description": "Certificate status (internal).",
 												"example": "pending_deployment",
 												"readOnly": true,
 												"type": "string"
 											},
 											"enabled": {
-												"description": "Enable use of custom certificate authority for signing Gateway traffic",
+												"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 												"example": true,
 												"type": "boolean"
 											},
 											"id": {
-												"description": "UUID of certificate (ID from MTLS certificate store)",
+												"description": "UUID of certificate (ID from MTLS certificate store).",
 												"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 												"type": "string"
 											},
@@ -3898,15 +3898,15 @@
 																	"type": "object"
 																},
 																"antivirus": {
-																	"description": "Anti virus settings.",
+																	"description": "Anti-virus settings.",
 																	"properties": {
 																		"enabled_download_phase": {
-																			"description": "Set to enable antivirus scan on downloads.",
+																			"description": "Enable anti-virus scanning on downloads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
 																		"enabled_upload_phase": {
-																			"description": "Set to enable antivirus scan on uploads.",
+																			"description": "Enable anti-virus scanning on uploads.",
 																			"example": false,
 																			"type": "boolean"
 																		},
@@ -3969,10 +3969,10 @@
 																	"type": "object"
 																},
 																"body_scanning": {
-																	"description": "DLP body scanning setting",
+																	"description": "DLP body scanning settings.",
 																	"properties": {
 																		"inspection_mode": {
-																			"description": "Inspection mode. One of deep or shallow",
+																			"description": "Set the inspection mode to either `deep` or `shallow`.",
 																			"example": "deep",
 																			"type": "string"
 																		}
@@ -3994,18 +3994,18 @@
 																	"description": "Custom certificate settings for BYO-PKI.",
 																	"properties": {
 																		"binding_status": {
-																			"description": "Certificate status (internal)",
+																			"description": "Certificate status (internal).",
 																			"example": "pending_deployment",
 																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"enabled": {
-																			"description": "Enable use of custom certificate authority for signing Gateway traffic",
+																			"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																			"example": true,
 																			"type": "boolean"
 																		},
 																		"id": {
-																			"description": "UUID of certificate (ID from MTLS certificate store)",
+																			"description": "UUID of certificate (ID from MTLS certificate store).",
 																			"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																			"type": "string"
 																		},
@@ -4210,15 +4210,15 @@
 																			"type": "object"
 																		},
 																		"antivirus": {
-																			"description": "Anti virus settings.",
+																			"description": "Anti-virus settings.",
 																			"properties": {
 																				"enabled_download_phase": {
-																					"description": "Set to enable antivirus scan on downloads.",
+																					"description": "Enable anti-virus scanning on downloads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
 																				"enabled_upload_phase": {
-																					"description": "Set to enable antivirus scan on uploads.",
+																					"description": "Enable anti-virus scanning on uploads.",
 																					"example": false,
 																					"type": "boolean"
 																				},
@@ -4281,10 +4281,10 @@
 																			"type": "object"
 																		},
 																		"body_scanning": {
-																			"description": "DLP body scanning setting",
+																			"description": "DLP body scanning settings.",
 																			"properties": {
 																				"inspection_mode": {
-																					"description": "Inspection mode. One of deep or shallow",
+																					"description": "Set the inspection mode to either `deep` or `shallow`.",
 																					"example": "deep",
 																					"type": "string"
 																				}
@@ -4306,18 +4306,18 @@
 																			"description": "Custom certificate settings for BYO-PKI.",
 																			"properties": {
 																				"binding_status": {
-																					"description": "Certificate status (internal)",
+																					"description": "Certificate status (internal).",
 																					"example": "pending_deployment",
 																					"readOnly": true,
 																					"type": "string"
 																				},
 																				"enabled": {
-																					"description": "Enable use of custom certificate authority for signing Gateway traffic",
+																					"description": "Enable use of custom certificate authority for signing Gateway traffic.",
 																					"example": true,
 																					"type": "boolean"
 																				},
 																				"id": {
-																					"description": "UUID of certificate (ID from MTLS certificate store)",
+																					"description": "UUID of certificate (ID from MTLS certificate store).",
 																					"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
 																					"type": "string"
 																				},
@@ -4498,7 +4498,7 @@
 		]
 	},
 	"PUT /accounts/{identifier}/gateway/logging": {
-		"description": "Updates the current logging settings for the Zero Trust accounty.",
+		"description": "Updates logging settings for the current Zero Trust account.",
 		"operationId": "zero-trust-accounts-update-logging-settings-for-the-zero-trust-account",
 		"parameters": [
 			{
@@ -4917,7 +4917,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update logging settings for the Zero Trust account",
+		"summary": "Update Zero Trust account logging settings",
 		"tags": [
 			"Zero Trust accounts"
 		]

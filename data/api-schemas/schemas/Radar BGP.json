@@ -386,6 +386,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get BGP hijack events",
 		"tags": [
 			"Radar BGP"
@@ -715,6 +721,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get BGP route leak events",
 		"tags": [
 			"Radar BGP"
@@ -900,6 +912,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get MOASes",
 		"tags": [
 			"Radar BGP"
@@ -1079,6 +1097,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get prefix-to-origin mapping",
 		"tags": [
 			"Radar BGP"
@@ -1299,6 +1323,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get BGP routing table stats ",
 		"tags": [
 			"Radar BGP"
@@ -1338,6 +1368,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1351,6 +1383,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1379,6 +1412,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1392,6 +1426,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1405,6 +1440,8 @@
 				"in": "query",
 				"name": "prefix",
 				"schema": {
+					"description": "Array of BGP network prefixes.",
+					"example": "1.1.1.0/24",
 					"items": {
 						"description": "Array of BGP network prefixes.",
 						"example": "1.1.1.0/24",
@@ -1418,6 +1455,8 @@
 				"in": "query",
 				"name": "updateType",
 				"schema": {
+					"description": "Array of BGP update types.",
+					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
 							"ANNOUNCEMENT",
@@ -1433,6 +1472,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1645,6 +1686,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get BGP time series",
 		"tags": [
 			"Radar BGP"
@@ -1681,6 +1728,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1694,6 +1743,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1722,6 +1772,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1735,6 +1786,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1748,6 +1800,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1761,6 +1815,8 @@
 				"in": "query",
 				"name": "prefix",
 				"schema": {
+					"description": "Array of BGP network prefixes.",
+					"example": "1.1.1.0/24",
 					"items": {
 						"description": "Array of BGP network prefixes.",
 						"example": "1.1.1.0/24",
@@ -1774,6 +1830,8 @@
 				"in": "query",
 				"name": "updateType",
 				"schema": {
+					"description": "Array of BGP update types.",
+					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
 							"ANNOUNCEMENT",
@@ -1921,6 +1979,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems",
 		"tags": [
 			"Radar BGP"
@@ -2069,6 +2133,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get list of ASNs ordered by prefix count",
 		"tags": [
 			"Radar BGP"
@@ -2105,6 +2175,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2118,6 +2190,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2146,6 +2219,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2159,6 +2233,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2172,6 +2247,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2185,6 +2262,8 @@
 				"in": "query",
 				"name": "updateType",
 				"schema": {
+					"description": "Array of BGP update types.",
+					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
 							"ANNOUNCEMENT",
@@ -2326,6 +2405,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top prefixes",
 		"tags": [
 			"Radar BGP"

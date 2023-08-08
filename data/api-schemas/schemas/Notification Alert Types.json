@@ -156,14 +156,25 @@
 															"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
 															"example": [
 																{
+																	"AvailableValues": null,
 																	"ComparisonOperator": "==",
 																	"Key": "zones",
-																	"Optional": false
+																	"Range": "1-n"
 																},
 																{
+																	"AvailableValues": [
+																		{
+																			"Description": "Service-Level Objective of 99.7",
+																			"ID": "99.7"
+																		},
+																		{
+																			"Description": "Service-Level Objective of 99.8",
+																			"ID": "99.8"
+																		}
+																	],
 																	"ComparisonOperator": ">=",
 																	"Key": "slo",
-																	"Optional": true
+																	"Range": "0-1"
 																}
 															],
 															"items": {},
@@ -186,14 +197,25 @@
 														"display_name": "Origin Error Rate Alert",
 														"filter_options": [
 															{
+																"AvailableValues": null,
 																"ComparisonOperator": "==",
 																"Key": "zones",
-																"Optional": false
+																"Range": "1-n"
 															},
 															{
+																"AvailableValues": [
+																	{
+																		"Description": "Service-Level Objective of 99.7",
+																		"ID": "99.7"
+																	},
+																	{
+																		"Description": "Service-Level Objective of 99.8",
+																		"ID": "99.8"
+																	}
+																],
 																"ComparisonOperator": ">=",
 																"Key": "slo",
-																"Optional": true
+																"Range": "0-1"
 															}
 														],
 														"type": "http_alert_origin_error"
@@ -351,14 +373,25 @@
 																	"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings.",
 																	"example": [
 																		{
+																			"AvailableValues": null,
 																			"ComparisonOperator": "==",
 																			"Key": "zones",
-																			"Optional": false
+																			"Range": "1-n"
 																		},
 																		{
+																			"AvailableValues": [
+																				{
+																					"Description": "Service-Level Objective of 99.7",
+																					"ID": "99.7"
+																				},
+																				{
+																					"Description": "Service-Level Objective of 99.8",
+																					"ID": "99.8"
+																				}
+																			],
 																			"ComparisonOperator": ">=",
 																			"Key": "slo",
-																			"Optional": true
+																			"Range": "0-1"
 																		}
 																	],
 																	"items": {},
@@ -381,14 +414,25 @@
 																"display_name": "Origin Error Rate Alert",
 																"filter_options": [
 																	{
+																		"AvailableValues": null,
 																		"ComparisonOperator": "==",
 																		"Key": "zones",
-																		"Optional": false
+																		"Range": "1-n"
 																	},
 																	{
+																		"AvailableValues": [
+																			{
+																				"Description": "Service-Level Objective of 99.7",
+																				"ID": "99.7"
+																			},
+																			{
+																				"Description": "Service-Level Objective of 99.8",
+																				"ID": "99.8"
+																			}
+																		],
 																		"ComparisonOperator": ">=",
 																		"Key": "slo",
-																		"Optional": true
+																		"Range": "0-1"
 																	}
 																],
 																"type": "http_alert_origin_error"
@@ -496,9 +540,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Alert Types",

@@ -1,0 +1,1794 @@
+{
+	"GET /zones/{zone_identifier}/bot_management": {
+		"description": "Retrieve a zone's Bot Management Config",
+		"operationId": "bot-management-for-a-zone-get-config",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "Cloudflare-Version",
+				"required": true,
+				"schema": {
+					"description": "Header used to control which version of the API to use.\nOnly the 2.0.0 version is documented. The older 1.0.0 will eventually by deprecated.\nNote: Not including this header will default the API to use the older 1.0.0 version, which is not documented here.\n",
+					"enum": [
+						"2.0.0",
+						"2.0.0+beta",
+						"1.0.0"
+					],
+					"example": "2.0.0",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"enable_js": {
+																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"using_latest_model": {
+																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																			"example": true,
+																			"readOnly": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Shared Config"
+														},
+														{
+															"properties": {
+																"fight_mode": {
+																	"description": "Whether to enable Bot Fight Mode.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															}
+														}
+													],
+													"title": "Bot Fight Mode"
+												},
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"enable_js": {
+																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"using_latest_model": {
+																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																			"example": true,
+																			"readOnly": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Shared Config"
+														},
+														{
+															"properties": {
+																"optimize_wordpress": {
+																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"sbfm_definitely_automated": {
+																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																	"enum": [
+																		"allow",
+																		"block",
+																		"managed_challenge"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																},
+																"sbfm_static_resource_protection": {
+																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"sbfm_verified_bots": {
+																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																	"enum": [
+																		"allow",
+																		"block"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "SBFM Pro Plan"
+												},
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"optimize_wordpress": {
+																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_definitely_automated": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																			"enum": [
+																				"allow",
+																				"block",
+																				"managed_challenge"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		},
+																		"sbfm_static_resource_protection": {
+																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_verified_bots": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		}
+																	}
+																}
+															],
+															"title": "SBFM Pro Plan"
+														},
+														{
+															"properties": {
+																"sbfm_likely_automated": {
+																	"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
+																	"enum": [
+																		"allow",
+																		"block",
+																		"managed_challenge"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "SBFM Biz Plan"
+												},
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"enable_js": {
+																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"using_latest_model": {
+																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																			"example": true,
+																			"readOnly": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Shared Config"
+														},
+														{
+															"properties": {
+																"auto_update_model": {
+																	"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"suppress_session_score": {
+																	"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															}
+														}
+													],
+													"title": "BM Enterprise Subscription"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Bot Management config response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"fight_mode": {
+																			"description": "Whether to enable Bot Fight Mode.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Bot Fight Mode"
+														},
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"optimize_wordpress": {
+																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_definitely_automated": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																			"enum": [
+																				"allow",
+																				"block",
+																				"managed_challenge"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		},
+																		"sbfm_static_resource_protection": {
+																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_verified_bots": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		}
+																	}
+																}
+															],
+															"title": "SBFM Pro Plan"
+														},
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"enable_js": {
+																							"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"using_latest_model": {
+																							"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																							"example": true,
+																							"readOnly": true,
+																							"type": "boolean"
+																						}
+																					}
+																				}
+																			],
+																			"title": "Shared Config"
+																		},
+																		{
+																			"properties": {
+																				"optimize_wordpress": {
+																					"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"sbfm_definitely_automated": {
+																					"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																					"enum": [
+																						"allow",
+																						"block",
+																						"managed_challenge"
+																					],
+																					"example": "allow",
+																					"type": "string"
+																				},
+																				"sbfm_static_resource_protection": {
+																					"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"sbfm_verified_bots": {
+																					"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																					"enum": [
+																						"allow",
+																						"block"
+																					],
+																					"example": "allow",
+																					"type": "string"
+																				}
+																			}
+																		}
+																	],
+																	"title": "SBFM Pro Plan"
+																},
+																{
+																	"properties": {
+																		"sbfm_likely_automated": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
+																			"enum": [
+																				"allow",
+																				"block",
+																				"managed_challenge"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		}
+																	}
+																}
+															],
+															"title": "SBFM Biz Plan"
+														},
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"auto_update_model": {
+																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"suppress_session_score": {
+																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "BM Enterprise Subscription"
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Bot Management config response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Zone Bot Management Config",
+		"tags": [
+			"Bot Settings"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /zones/{zone_identifier}/bot_management": {
+		"description": "Updates the Bot Management configuration for a zone.\n\nThis API is used to update:\n- **Bot Fight Mode**\n- **Super Bot Fight Mode**\n- **Bot Management for Enterprise**\n\nSee [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans\n",
+		"operationId": "bot-management-for-a-zone-update-config",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "Cloudflare-Version",
+				"required": true,
+				"schema": {
+					"description": "Header used to control which version of the API to use.\nOnly the 2.0.0 version is documented. The older 1.0.0 will eventually by deprecated.\nNote: Not including this header will default the API to use the older 1.0.0 version, which is not documented here.\n",
+					"enum": [
+						"2.0.0",
+						"2.0.0+beta",
+						"1.0.0"
+					],
+					"example": "2.0.0",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"enable_js": {
+														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+														"example": true,
+														"type": "boolean"
+													},
+													"using_latest_model": {
+														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+														"example": true,
+														"readOnly": true,
+														"type": "boolean"
+													}
+												}
+											}
+										],
+										"title": "Shared Config"
+									},
+									{
+										"properties": {
+											"fight_mode": {
+												"description": "Whether to enable Bot Fight Mode.",
+												"example": true,
+												"type": "boolean"
+											}
+										}
+									}
+								],
+								"title": "Bot Fight Mode"
+							},
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"enable_js": {
+														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+														"example": true,
+														"type": "boolean"
+													},
+													"using_latest_model": {
+														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+														"example": true,
+														"readOnly": true,
+														"type": "boolean"
+													}
+												}
+											}
+										],
+										"title": "Shared Config"
+									},
+									{
+										"properties": {
+											"optimize_wordpress": {
+												"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+												"example": true,
+												"type": "boolean"
+											},
+											"sbfm_definitely_automated": {
+												"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+												"enum": [
+													"allow",
+													"block",
+													"managed_challenge"
+												],
+												"example": "allow",
+												"type": "string"
+											},
+											"sbfm_static_resource_protection": {
+												"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+												"example": true,
+												"type": "boolean"
+											},
+											"sbfm_verified_bots": {
+												"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+												"enum": [
+													"allow",
+													"block"
+												],
+												"example": "allow",
+												"type": "string"
+											}
+										}
+									}
+								],
+								"title": "SBFM Pro Plan"
+							},
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"allOf": [
+													{
+														"properties": {
+															"enable_js": {
+																"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																"example": true,
+																"type": "boolean"
+															},
+															"using_latest_model": {
+																"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																"example": true,
+																"readOnly": true,
+																"type": "boolean"
+															}
+														}
+													}
+												],
+												"title": "Shared Config"
+											},
+											{
+												"properties": {
+													"optimize_wordpress": {
+														"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+														"example": true,
+														"type": "boolean"
+													},
+													"sbfm_definitely_automated": {
+														"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+														"enum": [
+															"allow",
+															"block",
+															"managed_challenge"
+														],
+														"example": "allow",
+														"type": "string"
+													},
+													"sbfm_static_resource_protection": {
+														"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+														"example": true,
+														"type": "boolean"
+													},
+													"sbfm_verified_bots": {
+														"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+														"enum": [
+															"allow",
+															"block"
+														],
+														"example": "allow",
+														"type": "string"
+													}
+												}
+											}
+										],
+										"title": "SBFM Pro Plan"
+									},
+									{
+										"properties": {
+											"sbfm_likely_automated": {
+												"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
+												"enum": [
+													"allow",
+													"block",
+													"managed_challenge"
+												],
+												"example": "allow",
+												"type": "string"
+											}
+										}
+									}
+								],
+								"title": "SBFM Biz Plan"
+							},
+							{
+								"allOf": [
+									{
+										"allOf": [
+											{
+												"properties": {
+													"enable_js": {
+														"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+														"example": true,
+														"type": "boolean"
+													},
+													"using_latest_model": {
+														"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+														"example": true,
+														"readOnly": true,
+														"type": "boolean"
+													}
+												}
+											}
+										],
+										"title": "Shared Config"
+									},
+									{
+										"properties": {
+											"auto_update_model": {
+												"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
+												"example": true,
+												"type": "boolean"
+											},
+											"suppress_session_score": {
+												"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
+												"example": false,
+												"type": "boolean"
+											}
+										}
+									}
+								],
+								"title": "BM Enterprise Subscription"
+							}
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"enable_js": {
+																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"using_latest_model": {
+																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																			"example": true,
+																			"readOnly": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Shared Config"
+														},
+														{
+															"properties": {
+																"fight_mode": {
+																	"description": "Whether to enable Bot Fight Mode.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															}
+														}
+													],
+													"title": "Bot Fight Mode"
+												},
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"enable_js": {
+																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"using_latest_model": {
+																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																			"example": true,
+																			"readOnly": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Shared Config"
+														},
+														{
+															"properties": {
+																"optimize_wordpress": {
+																	"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"sbfm_definitely_automated": {
+																	"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																	"enum": [
+																		"allow",
+																		"block",
+																		"managed_challenge"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																},
+																"sbfm_static_resource_protection": {
+																	"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"sbfm_verified_bots": {
+																	"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																	"enum": [
+																		"allow",
+																		"block"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "SBFM Pro Plan"
+												},
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"optimize_wordpress": {
+																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_definitely_automated": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																			"enum": [
+																				"allow",
+																				"block",
+																				"managed_challenge"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		},
+																		"sbfm_static_resource_protection": {
+																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_verified_bots": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		}
+																	}
+																}
+															],
+															"title": "SBFM Pro Plan"
+														},
+														{
+															"properties": {
+																"sbfm_likely_automated": {
+																	"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
+																	"enum": [
+																		"allow",
+																		"block",
+																		"managed_challenge"
+																	],
+																	"example": "allow",
+																	"type": "string"
+																}
+															}
+														}
+													],
+													"title": "SBFM Biz Plan"
+												},
+												{
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"enable_js": {
+																			"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"using_latest_model": {
+																			"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																			"example": true,
+																			"readOnly": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Shared Config"
+														},
+														{
+															"properties": {
+																"auto_update_model": {
+																	"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"suppress_session_score": {
+																	"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															}
+														}
+													],
+													"title": "BM Enterprise Subscription"
+												}
+											]
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Bot Management response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"fight_mode": {
+																			"description": "Whether to enable Bot Fight Mode.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "Bot Fight Mode"
+														},
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"optimize_wordpress": {
+																			"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_definitely_automated": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																			"enum": [
+																				"allow",
+																				"block",
+																				"managed_challenge"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		},
+																		"sbfm_static_resource_protection": {
+																			"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"sbfm_verified_bots": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																			"enum": [
+																				"allow",
+																				"block"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		}
+																	}
+																}
+															],
+															"title": "SBFM Pro Plan"
+														},
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"allOf": [
+																				{
+																					"properties": {
+																						"enable_js": {
+																							"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"using_latest_model": {
+																							"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																							"example": true,
+																							"readOnly": true,
+																							"type": "boolean"
+																						}
+																					}
+																				}
+																			],
+																			"title": "Shared Config"
+																		},
+																		{
+																			"properties": {
+																				"optimize_wordpress": {
+																					"description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"sbfm_definitely_automated": {
+																					"description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.",
+																					"enum": [
+																						"allow",
+																						"block",
+																						"managed_challenge"
+																					],
+																					"example": "allow",
+																					"type": "string"
+																				},
+																				"sbfm_static_resource_protection": {
+																					"description": "Super Bot Fight Mode (SBFM) to enable static resource protection.\nEnable if static resources on your application need bot protection.\nNote: Static resource protection can also result in legitimate traffic being blocked.\n",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"sbfm_verified_bots": {
+																					"description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.",
+																					"enum": [
+																						"allow",
+																						"block"
+																					],
+																					"example": "allow",
+																					"type": "string"
+																				}
+																			}
+																		}
+																	],
+																	"title": "SBFM Pro Plan"
+																},
+																{
+																	"properties": {
+																		"sbfm_likely_automated": {
+																			"description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.",
+																			"enum": [
+																				"allow",
+																				"block",
+																				"managed_challenge"
+																			],
+																			"example": "allow",
+																			"type": "string"
+																		}
+																	}
+																}
+															],
+															"title": "SBFM Biz Plan"
+														},
+														{
+															"allOf": [
+																{
+																	"allOf": [
+																		{
+																			"properties": {
+																				"enable_js": {
+																					"description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"using_latest_model": {
+																					"description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n",
+																					"example": true,
+																					"readOnly": true,
+																					"type": "boolean"
+																				}
+																			}
+																		}
+																	],
+																	"title": "Shared Config"
+																},
+																{
+																	"properties": {
+																		"auto_update_model": {
+																			"description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"suppress_session_score": {
+																			"description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	}
+																}
+															],
+															"title": "BM Enterprise Subscription"
+														}
+													]
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update Bot Management response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Zone Bot Management Config",
+		"tags": [
+			"Bot Settings"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

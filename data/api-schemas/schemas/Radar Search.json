@@ -39,6 +39,7 @@
 				"in": "query",
 				"name": "include",
 				"schema": {
+					"description": "Search types to be included in results.",
 					"items": {
 						"enum": [
 							"SPECIAL_EVENTS",
@@ -56,6 +57,7 @@
 				"in": "query",
 				"name": "exclude",
 				"schema": {
+					"description": "Search types to be excluded from results.",
 					"items": {
 						"enum": [
 							"SPECIAL_EVENTS",
@@ -174,6 +176,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Search for locations, autonomous systems (AS) and reports.",
 		"tags": [
 			"Radar Search"

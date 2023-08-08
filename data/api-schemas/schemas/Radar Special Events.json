@@ -156,6 +156,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "List Special Events",
 		"tags": [
 			"Radar Special Events"
@@ -315,6 +321,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a Single Special Events",
 		"tags": [
 			"Radar Special Events"
@@ -515,6 +527,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Special Events time series",
 		"tags": [
 			"Radar Special Events"

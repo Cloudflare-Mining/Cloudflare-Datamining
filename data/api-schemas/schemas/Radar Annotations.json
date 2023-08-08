@@ -284,6 +284,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get latest internet outages and anomalies.",
 		"tags": [
 			"Radar Annotations"
@@ -465,6 +471,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get the number of outages for locations.",
 		"tags": [
 			"Radar Annotations"

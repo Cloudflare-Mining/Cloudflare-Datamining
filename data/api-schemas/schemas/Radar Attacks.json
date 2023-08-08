@@ -9,6 +9,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -22,6 +24,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -50,6 +53,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -63,6 +67,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -76,6 +81,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -89,6 +96,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -293,6 +302,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of layer 3 attacks",
 		"tags": [
 			"Radar Attacks"
@@ -318,6 +333,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -331,6 +348,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -359,6 +377,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -372,6 +391,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -385,6 +405,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -398,6 +420,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -413,6 +437,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -542,6 +567,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of attack bitrate",
 		"tags": [
 			"Radar Attacks"
@@ -567,6 +598,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -580,6 +613,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -608,6 +642,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -621,6 +656,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -634,6 +670,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -647,6 +685,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -662,6 +702,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -796,6 +837,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of attack durations",
 		"tags": [
 			"Radar Attacks"
@@ -821,6 +868,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -834,6 +883,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -862,6 +912,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -875,6 +926,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -888,6 +940,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -901,6 +955,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -1015,6 +1070,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of ip versions",
 		"tags": [
 			"Radar Attacks"
@@ -1040,6 +1101,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1053,6 +1116,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1081,6 +1145,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1094,6 +1159,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1107,6 +1173,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1120,6 +1188,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -1242,6 +1312,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of protocols",
 		"tags": [
 			"Radar Attacks"
@@ -1267,6 +1343,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1280,6 +1358,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1308,6 +1387,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1321,6 +1401,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1334,6 +1415,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1347,6 +1430,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -1362,6 +1447,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -1481,6 +1567,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of attack vector",
 		"tags": [
 			"Radar Attacks"
@@ -1520,6 +1612,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1533,6 +1627,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1561,6 +1656,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1574,6 +1670,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1587,6 +1684,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1600,6 +1699,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1613,6 +1714,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -1628,6 +1731,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -1769,6 +1873,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of attacks by bytes",
 		"tags": [
 			"Radar Attacks"
@@ -1809,6 +1919,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1822,6 +1934,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1850,6 +1963,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1863,6 +1977,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1876,6 +1991,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1889,6 +2006,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2123,6 +2242,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get layer 3 attacks by network protocol, over time",
 		"tags": [
 			"Radar Attacks"
@@ -2162,6 +2287,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2175,6 +2302,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2203,6 +2331,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2216,6 +2345,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2229,6 +2359,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2242,6 +2374,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -2257,6 +2391,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -2415,6 +2550,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of attack bitrate",
 		"tags": [
 			"Radar Attacks"
@@ -2454,6 +2595,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2467,6 +2610,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2495,6 +2639,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2508,6 +2653,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2521,6 +2667,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2534,6 +2682,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -2549,6 +2699,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -2714,6 +2865,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of attack durations",
 		"tags": [
 			"Radar Attacks"
@@ -2753,6 +2910,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2766,6 +2925,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2794,6 +2954,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2807,6 +2968,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2820,6 +2982,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2833,6 +2997,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -2985,6 +3151,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of industries",
 		"tags": [
 			"Radar Attacks"
@@ -3024,6 +3196,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3037,6 +3211,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3065,6 +3240,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3078,6 +3254,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3091,6 +3268,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3104,6 +3283,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -3241,6 +3421,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of ip versions",
 		"tags": [
 			"Radar Attacks"
@@ -3280,6 +3466,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3293,6 +3481,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3321,6 +3510,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3334,6 +3524,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3347,6 +3538,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3360,6 +3553,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -3509,6 +3704,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of protocols",
 		"tags": [
 			"Radar Attacks"
@@ -3548,6 +3749,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3561,6 +3764,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3589,6 +3793,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3602,6 +3807,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3615,6 +3821,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3628,6 +3836,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -3643,6 +3853,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -3797,6 +4008,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of attack vector",
 		"tags": [
 			"Radar Attacks"
@@ -3836,6 +4053,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3849,6 +4068,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3877,6 +4097,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3890,6 +4111,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3903,6 +4125,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3916,6 +4140,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -4068,6 +4294,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a time series of verticals",
 		"tags": [
 			"Radar Attacks"
@@ -4104,6 +4336,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -4117,6 +4351,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4145,6 +4380,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4158,6 +4394,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4171,6 +4408,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4184,6 +4423,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -4199,6 +4440,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -4368,6 +4610,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top Industry of attack",
 		"tags": [
 			"Radar Attacks"
@@ -4404,6 +4652,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -4417,6 +4667,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4445,6 +4696,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4458,6 +4710,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4471,6 +4724,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4484,6 +4739,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -4499,6 +4756,7 @@
 				"in": "query",
 				"name": "protocol",
 				"schema": {
+					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
 							"UDP",
@@ -4668,6 +4926,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top Verticals of attack",
 		"tags": [
 			"Radar Attacks"
@@ -4693,6 +4957,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -4706,6 +4972,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4734,6 +5001,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4747,6 +5015,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4760,6 +5029,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -4773,6 +5044,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4992,6 +5265,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of layer 7 attacks",
 		"tags": [
 			"Radar Attacks"
@@ -5031,6 +5310,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -5044,6 +5325,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -5072,6 +5354,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5085,6 +5368,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5098,6 +5382,7 @@
 				"in": "query",
 				"name": "attack",
 				"schema": {
+					"description": "Array of L7 attack types.",
 					"items": {
 						"enum": [
 							"DDOS",
@@ -5118,6 +5403,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -5131,6 +5418,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -5355,6 +5644,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get attacks layer 7 time series",
 		"tags": [
 			"Radar Attacks"
@@ -5394,6 +5689,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -5407,6 +5704,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -5435,6 +5733,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5448,6 +5747,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5461,6 +5761,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -5474,6 +5776,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -5734,6 +6038,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get layer 7 attacks by mitigation technique, over time",
 		"tags": [
 			"Radar Attacks"
@@ -5770,6 +6080,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -5783,6 +6095,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -5811,6 +6124,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5824,6 +6138,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5837,6 +6152,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of locations (alpha-2 country codes).",
+					"example": "US",
 					"items": {
 						"description": "Array of locations (alpha-2 country codes).",
 						"example": "US",
@@ -5956,6 +6273,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get layer 7 top origin ASes",
 		"tags": [
 			"Radar Attacks"
@@ -5992,6 +6315,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -6005,6 +6330,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -6033,6 +6359,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6046,6 +6373,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6059,6 +6387,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -6223,6 +6553,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get layer 7 top attack pairs (origin and target locations)",
 		"tags": [
 			"Radar Attacks"
@@ -6259,6 +6595,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -6272,6 +6610,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -6300,6 +6639,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6313,6 +6653,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6326,6 +6667,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -6445,6 +6788,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get layer 7 top origin locations",
 		"tags": [
 			"Radar Attacks"
@@ -6481,6 +6830,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -6494,6 +6845,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -6522,6 +6874,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6535,6 +6888,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6654,6 +7008,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get layer 7 top target locations",
 		"tags": [
 			"Radar Attacks"

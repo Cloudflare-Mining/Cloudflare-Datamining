@@ -8,6 +8,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -21,6 +23,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -49,6 +52,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -62,6 +66,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -75,6 +80,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -88,6 +95,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -101,6 +110,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -117,6 +128,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -132,6 +145,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -148,6 +163,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -163,6 +180,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -183,6 +202,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -298,6 +319,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Internet traffic distribution by Bots vs Humans",
 		"tags": [
 			"Radar Http"
@@ -323,6 +350,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -336,6 +365,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -364,6 +394,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -377,6 +408,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -390,6 +422,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -403,6 +437,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -416,6 +452,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -431,6 +469,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -446,6 +486,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -462,6 +504,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -477,6 +521,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -497,6 +543,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -617,6 +665,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Internet traffic distribution by device type",
 		"tags": [
 			"Radar Http"
@@ -642,6 +696,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -655,6 +711,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -683,6 +740,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -696,6 +754,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -709,6 +768,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -722,6 +783,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -735,6 +798,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -750,6 +815,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -766,6 +833,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -782,6 +851,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -797,6 +868,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -817,6 +890,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -932,6 +1007,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of HTTP protocols",
 		"tags": [
 			"Radar Http"
@@ -957,6 +1038,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -970,6 +1053,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -998,6 +1082,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1011,6 +1096,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1024,6 +1110,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1037,6 +1125,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1050,6 +1140,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -1065,6 +1157,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -1081,6 +1175,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -1096,6 +1192,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -1111,6 +1209,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -1131,6 +1231,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -1251,6 +1353,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of HTTP versions",
 		"tags": [
 			"Radar Http"
@@ -1276,6 +1384,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1289,6 +1399,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1317,6 +1428,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1330,6 +1442,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1343,6 +1456,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1356,6 +1471,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1369,6 +1486,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -1384,6 +1503,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -1400,6 +1521,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -1415,6 +1538,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -1431,6 +1556,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -1451,6 +1578,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -1566,6 +1695,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Internet Traffic Distribution by IP Version",
 		"tags": [
 			"Radar Http"
@@ -1591,6 +1726,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1604,6 +1741,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1632,6 +1770,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1645,6 +1784,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1658,6 +1798,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1671,6 +1813,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1684,6 +1828,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -1699,6 +1845,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -1715,6 +1863,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -1730,6 +1880,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -1746,6 +1898,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -1761,6 +1915,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -1876,6 +2032,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get Internet traffic distribution by operating system",
 		"tags": [
 			"Radar Http"
@@ -1901,6 +2063,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -1914,6 +2078,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -1942,6 +2107,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1955,6 +2121,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -1968,6 +2135,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -1981,6 +2150,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -1994,6 +2165,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -2009,6 +2182,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -2025,6 +2200,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -2040,6 +2217,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -2056,6 +2235,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -2071,6 +2252,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -2203,6 +2386,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get a summary of TLS versions",
 		"tags": [
 			"Radar Http"
@@ -2219,7 +2408,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/bot_class": {
+	"GET /radar/http/timeseries_groups/bot_class": {
 		"description": "Percentage distribution of traffic classified as automated or human over time.",
 		"operationId": "radar-get-http-timeseries-group-by-bot-class",
 		"parameters": [
@@ -2242,6 +2431,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2255,6 +2446,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2283,6 +2475,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2296,6 +2489,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2309,6 +2503,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2322,6 +2518,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2335,6 +2533,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -2351,6 +2551,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -2366,6 +2568,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -2382,6 +2586,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -2397,6 +2603,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -2417,6 +2625,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -2543,6 +2753,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of bot classes",
 		"tags": [
 			"Radar Http"
@@ -2559,7 +2775,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/browser": {
+	"GET /radar/http/timeseries_groups/browser": {
 		"description": "Percentage distribution of traffic of the top user agents in the selected time range, over time.",
 		"operationId": "radar-get-http-timeseries-group-by-browsers",
 		"parameters": [
@@ -2582,6 +2798,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2595,6 +2813,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2623,6 +2842,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2636,6 +2856,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2649,6 +2870,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -2662,6 +2885,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -2675,6 +2900,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -2690,6 +2917,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -2706,6 +2935,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -2721,6 +2952,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -2737,6 +2970,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -2752,6 +2987,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -2772,6 +3009,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -2901,6 +3140,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of user agents",
 		"tags": [
 			"Radar Http"
@@ -2917,7 +3162,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/browser_family": {
+	"GET /radar/http/timeseries_groups/browser_family": {
 		"description": "Percentage distribution of traffic of the top user agents aggregated in families in the selected time range, over time.",
 		"operationId": "radar-get-http-timeseries-group-by-browser-families",
 		"parameters": [
@@ -2940,6 +3185,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -2953,6 +3200,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -2981,6 +3229,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -2994,6 +3243,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3007,6 +3257,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -3020,6 +3272,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3033,6 +3287,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -3048,6 +3304,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -3064,6 +3322,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -3079,6 +3339,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -3095,6 +3357,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -3110,6 +3374,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -3130,6 +3396,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -3249,6 +3517,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of user agents aggregated in families",
 		"tags": [
 			"Radar Http"
@@ -3265,7 +3539,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/device_type": {
+	"GET /radar/http/timeseries_groups/device_type": {
 		"description": "Percentage distribution of traffic per device type over time.",
 		"operationId": "radar-get-http-timeseries-group-by-device-type",
 		"parameters": [
@@ -3288,6 +3562,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3301,6 +3577,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3329,6 +3606,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3342,6 +3620,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3355,6 +3634,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -3368,6 +3649,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3381,6 +3664,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -3396,6 +3681,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -3411,6 +3698,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -3427,6 +3716,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -3442,6 +3733,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -3462,6 +3755,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -3595,6 +3890,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of device types",
 		"tags": [
 			"Radar Http"
@@ -3611,7 +3912,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/http_protocol": {
+	"GET /radar/http/timeseries_groups/http_protocol": {
 		"description": "Percentage distribution of traffic per HTTP protocol over time.",
 		"operationId": "radar-get-http-timeseries-group-by-http-protocol",
 		"parameters": [
@@ -3634,6 +3935,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3647,6 +3950,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -3675,6 +3979,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3688,6 +3993,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -3701,6 +4007,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -3714,6 +4022,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -3727,6 +4037,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -3742,6 +4054,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -3758,6 +4072,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -3774,6 +4090,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -3789,6 +4107,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -3809,6 +4129,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -3935,6 +4257,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of HTTP protocols",
 		"tags": [
 			"Radar Http"
@@ -3951,7 +4279,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/http_version": {
+	"GET /radar/http/timeseries_groups/http_version": {
 		"description": "Percentage distribution of traffic per HTTP protocol version over time.",
 		"operationId": "radar-get-http-timeseries-group-by-http-version",
 		"parameters": [
@@ -3974,6 +4302,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -3987,6 +4317,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4015,6 +4346,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4028,6 +4360,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4041,6 +4374,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -4054,6 +4389,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4067,6 +4404,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -4082,6 +4421,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -4098,6 +4439,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -4113,6 +4456,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -4128,6 +4473,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -4148,6 +4495,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -4281,6 +4630,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of HTTP versions",
 		"tags": [
 			"Radar Http"
@@ -4297,7 +4652,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/ip_version": {
+	"GET /radar/http/timeseries_groups/ip_version": {
 		"description": "Percentage distribution of traffic per IP protocol version over time.",
 		"operationId": "radar-get-http-timeseries-group-by-ip-version",
 		"parameters": [
@@ -4320,6 +4675,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -4333,6 +4690,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4361,6 +4719,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4374,6 +4733,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4387,6 +4747,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -4400,6 +4762,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4413,6 +4777,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -4428,6 +4794,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -4444,6 +4812,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -4459,6 +4829,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -4475,6 +4847,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -4495,6 +4869,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -4621,6 +4997,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of IP versions",
 		"tags": [
 			"Radar Http"
@@ -4637,7 +5019,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/os": {
+	"GET /radar/http/timeseries_groups/os": {
 		"description": "Percentage distribution of traffic of the top operating systems in the selected time range, over time.",
 		"operationId": "radar-get-http-timeseries-group-by-operating-system",
 		"parameters": [
@@ -4660,6 +5042,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -4673,6 +5057,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -4701,6 +5086,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4714,6 +5100,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -4727,6 +5114,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -4740,6 +5129,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -4753,6 +5144,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -4768,6 +5161,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -4784,6 +5179,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -4799,6 +5196,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -4815,6 +5214,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -4830,6 +5231,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -4949,6 +5352,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of operating systems",
 		"tags": [
 			"Radar Http"
@@ -4965,7 +5374,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/http/timeseries/tls_version": {
+	"GET /radar/http/timeseries_groups/tls_version": {
 		"description": "Percentage distribution of traffic per TLS protocol version over time.",
 		"operationId": "radar-get-http-timeseries-group-by-tls-version",
 		"parameters": [
@@ -4988,6 +5397,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -5001,6 +5412,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -5029,6 +5441,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5042,6 +5455,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5055,6 +5469,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -5068,6 +5484,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -5081,6 +5499,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -5096,6 +5516,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -5112,6 +5534,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -5127,6 +5551,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -5143,6 +5569,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -5158,6 +5586,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -5307,6 +5737,12 @@
 				"description": "Bad Request"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get time series of TLS versions",
 		"tags": [
 			"Radar Http"
@@ -5343,6 +5779,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -5356,6 +5794,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -5384,6 +5823,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5397,6 +5837,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5410,6 +5851,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -5423,6 +5866,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -5436,6 +5881,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -5451,6 +5898,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -5467,6 +5916,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -5482,6 +5933,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -5498,6 +5951,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -5513,6 +5968,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -5533,6 +5990,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -5708,6 +6167,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by HTTP requests",
 		"tags": [
 			"Radar Http"
@@ -5744,6 +6209,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -5757,6 +6224,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -5785,6 +6253,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5798,6 +6267,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -5811,6 +6281,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -5824,6 +6296,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -5837,6 +6311,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -5853,6 +6329,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -5868,6 +6346,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -5884,6 +6364,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -5899,6 +6381,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -5919,6 +6403,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -6107,6 +6593,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by bot class",
 		"tags": [
 			"Radar Http"
@@ -6143,6 +6635,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -6156,6 +6650,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -6184,6 +6679,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6197,6 +6693,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6210,6 +6707,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -6223,6 +6722,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -6236,6 +6737,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -6251,6 +6754,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -6266,6 +6771,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -6282,6 +6789,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -6297,6 +6806,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -6317,6 +6828,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -6506,6 +7019,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by device type",
 		"tags": [
 			"Radar Http"
@@ -6542,6 +7061,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -6555,6 +7076,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -6583,6 +7105,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6596,6 +7119,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6609,6 +7133,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -6622,6 +7148,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -6635,6 +7163,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -6650,6 +7180,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -6666,6 +7198,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -6681,6 +7215,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -6696,6 +7232,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -6716,6 +7254,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -6904,6 +7444,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by HTTP protocol",
 		"tags": [
 			"Radar Http"
@@ -6940,6 +7486,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -6953,6 +7501,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -6981,6 +7530,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -6994,6 +7544,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -7007,6 +7558,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -7020,6 +7573,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -7033,6 +7588,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -7048,6 +7605,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -7064,6 +7623,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -7079,6 +7640,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -7094,6 +7657,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -7114,6 +7679,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -7303,6 +7870,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by HTTP version",
 		"tags": [
 			"Radar Http"
@@ -7339,6 +7912,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -7352,6 +7927,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -7380,6 +7956,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -7393,6 +7970,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -7406,6 +7984,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -7419,6 +7999,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -7432,6 +8014,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -7447,6 +8031,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -7463,6 +8049,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -7478,6 +8066,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -7494,6 +8084,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -7514,6 +8106,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -7702,6 +8296,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by IP version",
 		"tags": [
 			"Radar Http"
@@ -7738,6 +8338,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -7751,6 +8353,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -7779,6 +8382,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -7792,6 +8396,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -7805,6 +8410,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -7818,6 +8425,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -7831,6 +8440,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -7846,6 +8457,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -7862,6 +8475,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -7877,6 +8492,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -7893,6 +8510,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -7908,6 +8527,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -8101,6 +8722,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by operating system",
 		"tags": [
 			"Radar Http"
@@ -8137,6 +8764,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -8150,6 +8779,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -8178,6 +8808,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -8191,6 +8822,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -8204,6 +8836,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -8217,6 +8851,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -8230,6 +8866,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -8245,6 +8883,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -8261,6 +8901,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -8276,6 +8918,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -8292,6 +8936,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -8307,6 +8953,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -8500,6 +9148,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by TLS version",
 		"tags": [
 			"Radar Http"
@@ -8536,6 +9190,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -8549,6 +9205,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -8577,6 +9234,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -8590,6 +9248,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -8603,6 +9262,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -8616,6 +9277,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -8629,6 +9292,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -8644,6 +9309,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -8660,6 +9327,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -8675,6 +9344,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -8691,6 +9362,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -8706,6 +9379,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -8726,6 +9401,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -8894,6 +9571,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top user agents aggregated in families by HTTP requests",
 		"tags": [
 			"Radar Http"
@@ -8930,6 +9613,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -8943,6 +9628,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -8971,6 +9657,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -8984,6 +9671,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -8997,6 +9685,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -9010,6 +9700,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -9023,6 +9715,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -9038,6 +9732,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -9054,6 +9750,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -9069,6 +9767,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -9085,6 +9785,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -9100,6 +9802,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -9120,6 +9824,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -9288,6 +9994,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top user agents by HTTP requests",
 		"tags": [
 			"Radar Http"
@@ -9324,6 +10036,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -9337,6 +10051,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -9365,6 +10080,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -9378,6 +10094,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -9391,6 +10108,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -9404,6 +10123,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -9417,6 +10138,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -9432,6 +10155,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -9448,6 +10173,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -9463,6 +10190,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -9479,6 +10208,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -9494,6 +10225,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -9514,6 +10247,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -9689,6 +10424,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top autonomous systems by HTTP requests",
 		"tags": [
 			"Radar Http"
@@ -9725,6 +10466,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -9738,6 +10481,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -9766,6 +10510,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -9779,6 +10524,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -9792,6 +10538,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -9805,6 +10553,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -9818,6 +10568,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -9834,6 +10586,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -9849,6 +10603,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -9865,6 +10621,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -9880,6 +10638,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -9900,6 +10660,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -10088,6 +10850,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by bot class",
 		"tags": [
 			"Radar Http"
@@ -10124,6 +10892,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -10137,6 +10907,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -10165,6 +10936,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -10178,6 +10950,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -10191,6 +10964,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -10204,6 +10979,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -10217,6 +10994,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -10232,6 +11011,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -10247,6 +11028,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -10263,6 +11046,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -10278,6 +11063,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -10298,6 +11085,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -10487,6 +11276,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by device type",
 		"tags": [
 			"Radar Http"
@@ -10523,6 +11318,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -10536,6 +11333,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -10564,6 +11362,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -10577,6 +11376,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -10590,6 +11390,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -10603,6 +11405,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -10616,6 +11420,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -10631,6 +11437,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -10647,6 +11455,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -10662,6 +11472,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -10677,6 +11489,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -10697,6 +11511,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -10885,6 +11701,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by HTTP protocol",
 		"tags": [
 			"Radar Http"
@@ -10921,6 +11743,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -10934,6 +11758,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -10962,6 +11787,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -10975,6 +11801,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -10988,6 +11815,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -11001,6 +11830,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -11014,6 +11845,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -11029,6 +11862,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -11045,6 +11880,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -11060,6 +11897,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -11075,6 +11914,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -11095,6 +11936,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -11284,6 +12127,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by HTTP version",
 		"tags": [
 			"Radar Http"
@@ -11320,6 +12169,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -11333,6 +12184,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -11361,6 +12213,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -11374,6 +12227,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -11387,6 +12241,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -11400,6 +12256,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -11413,6 +12271,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -11428,6 +12288,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -11444,6 +12306,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -11459,6 +12323,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -11475,6 +12341,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -11495,6 +12363,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -11683,6 +12553,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by IP version",
 		"tags": [
 			"Radar Http"
@@ -11719,6 +12595,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -11732,6 +12610,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -11760,6 +12639,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -11773,6 +12653,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -11786,6 +12667,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -11799,6 +12682,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -11812,6 +12697,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -11827,6 +12714,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -11843,6 +12732,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -11858,6 +12749,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -11874,6 +12767,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -11889,6 +12784,8 @@
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
 					"items": {
 						"enum": [
 							"TLSv1_0",
@@ -12082,6 +12979,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by operating system",
 		"tags": [
 			"Radar Http"
@@ -12118,6 +13021,8 @@
 				"in": "query",
 				"name": "name",
 				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"description": "Array of names that will be used to name the series in responses.",
 						"example": "main_series",
@@ -12131,6 +13036,7 @@
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
 						"enum": [
 							"1d",
@@ -12159,6 +13065,7 @@
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -12172,6 +13079,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
+					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
 						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
@@ -12185,6 +13093,8 @@
 				"in": "query",
 				"name": "asn",
 				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
 					"items": {
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 						"example": "15169",
@@ -12198,6 +13108,8 @@
 				"in": "query",
 				"name": "location",
 				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
 					"items": {
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 						"example": "US,CA",
@@ -12211,6 +13123,8 @@
 				"in": "query",
 				"name": "botClass",
 				"schema": {
+					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
+					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
 							"LIKELY_AUTOMATED",
@@ -12226,6 +13140,8 @@
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
+					"description": "Filter for device type.",
+					"example": "DESKTOP",
 					"items": {
 						"enum": [
 							"DESKTOP",
@@ -12242,6 +13158,8 @@
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
+					"description": "Filter for http protocol.",
+					"example": "HTTPS",
 					"items": {
 						"enum": [
 							"HTTP",
@@ -12257,6 +13175,8 @@
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
+					"description": "Filter for http version.",
+					"example": "HTTPv1",
 					"items": {
 						"enum": [
 							"HTTPv1",
@@ -12273,6 +13193,8 @@
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
 					"items": {
 						"enum": [
 							"IPv4",
@@ -12288,6 +13210,8 @@
 				"in": "query",
 				"name": "os",
 				"schema": {
+					"description": "Filter for os name.",
+					"example": "WINDOWS",
 					"items": {
 						"enum": [
 							"WINDOWS",
@@ -12481,6 +13405,12 @@
 				"description": "Not found"
 			}
 		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
 		"summary": "Get top locations by TLS version",
 		"tags": [
 			"Radar Http"

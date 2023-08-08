@@ -1307,6 +1307,17 @@
 														"example": "fifo",
 														"type": "string"
 													},
+													"queueing_status_code": {
+														"default": 200,
+														"description": "HTTP status code returned to a user while in the queue.",
+														"enum": [
+															200,
+															202,
+															429
+														],
+														"example": 202,
+														"type": "integer"
+													},
 													"session_duration": {
 														"default": 5,
 														"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -1633,6 +1644,17 @@
 																],
 																"example": "fifo",
 																"type": "string"
+															},
+															"queueing_status_code": {
+																"default": 200,
+																"description": "HTTP status code returned to a user while in the queue.",
+																"enum": [
+																	200,
+																	202,
+																	429
+																],
+																"example": 202,
+																"type": "integer"
 															},
 															"session_duration": {
 																"default": 5,
@@ -2003,6 +2025,17 @@
 													"example": "fifo",
 													"type": "string"
 												},
+												"queueing_status_code": {
+													"default": 200,
+													"description": "HTTP status code returned to a user while in the queue.",
+													"enum": [
+														200,
+														202,
+														429
+													],
+													"example": 202,
+													"type": "integer"
+												},
 												"session_duration": {
 													"default": 5,
 													"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -2241,6 +2274,17 @@
 															],
 															"example": "fifo",
 															"type": "string"
+														},
+														"queueing_status_code": {
+															"default": 200,
+															"description": "HTTP status code returned to a user while in the queue.",
+															"enum": [
+																200,
+																202,
+																429
+															],
+															"example": 202,
+															"type": "integer"
 														},
 														"session_duration": {
 															"default": 5,
@@ -4943,6 +4987,17 @@
 								"example": "fifo",
 								"type": "string"
 							},
+							"queueing_status_code": {
+								"default": 200,
+								"description": "HTTP status code returned to a user while in the queue.",
+								"enum": [
+									200,
+									202,
+									429
+								],
+								"example": 202,
+								"type": "integer"
+							},
 							"session_duration": {
 								"default": 5,
 								"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -5183,6 +5238,17 @@
 													"example": "fifo",
 													"type": "string"
 												},
+												"queueing_status_code": {
+													"default": 200,
+													"description": "HTTP status code returned to a user while in the queue.",
+													"enum": [
+														200,
+														202,
+														429
+													],
+													"example": 202,
+													"type": "integer"
+												},
 												"session_duration": {
 													"default": 5,
 													"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -5421,6 +5487,17 @@
 															],
 															"example": "fifo",
 															"type": "string"
+														},
+														"queueing_status_code": {
+															"default": 200,
+															"description": "HTTP status code returned to a user while in the queue.",
+															"enum": [
+																200,
+																202,
+																429
+															],
+															"example": 202,
+															"type": "integer"
 														},
 														"session_duration": {
 															"default": 5,
@@ -7066,6 +7143,17 @@
 								"example": "fifo",
 								"type": "string"
 							},
+							"queueing_status_code": {
+								"default": 200,
+								"description": "HTTP status code returned to a user while in the queue.",
+								"enum": [
+									200,
+									202,
+									429
+								],
+								"example": 202,
+								"type": "integer"
+							},
 							"session_duration": {
 								"default": 5,
 								"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -7306,6 +7394,17 @@
 													"example": "fifo",
 													"type": "string"
 												},
+												"queueing_status_code": {
+													"default": 200,
+													"description": "HTTP status code returned to a user while in the queue.",
+													"enum": [
+														200,
+														202,
+														429
+													],
+													"example": 202,
+													"type": "integer"
+												},
 												"session_duration": {
 													"default": 5,
 													"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -7544,6 +7643,17 @@
 															],
 															"example": "fifo",
 															"type": "string"
+														},
+														"queueing_status_code": {
+															"default": 200,
+															"description": "HTTP status code returned to a user while in the queue.",
+															"enum": [
+																200,
+																202,
+																429
+															],
+															"example": 202,
+															"type": "integer"
 														},
 														"session_duration": {
 															"default": 5,
@@ -9134,6 +9244,17 @@
 								"example": "fifo",
 								"type": "string"
 							},
+							"queueing_status_code": {
+								"default": 200,
+								"description": "HTTP status code returned to a user while in the queue.",
+								"enum": [
+									200,
+									202,
+									429
+								],
+								"example": 202,
+								"type": "integer"
+							},
 							"session_duration": {
 								"default": 5,
 								"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -9374,6 +9495,17 @@
 													"example": "fifo",
 													"type": "string"
 												},
+												"queueing_status_code": {
+													"default": 200,
+													"description": "HTTP status code returned to a user while in the queue.",
+													"enum": [
+														200,
+														202,
+														429
+													],
+													"example": 202,
+													"type": "integer"
+												},
 												"session_duration": {
 													"default": 5,
 													"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
@@ -9612,6 +9744,17 @@
 															],
 															"example": "fifo",
 															"type": "string"
+														},
+														"queueing_status_code": {
+															"default": 200,
+															"description": "HTTP status code returned to a user while in the queue.",
+															"enum": [
+																200,
+																202,
+																429
+															],
+															"example": 202,
+															"type": "integer"
 														},
 														"session_duration": {
 															"default": 5,

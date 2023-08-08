@@ -654,8 +654,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "List WAF rule groups",
@@ -796,15 +795,16 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -911,15 +911,16 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1029,8 +1030,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Get a WAF rule group",
@@ -1191,15 +1191,16 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
+													"oneOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1306,15 +1307,16 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
+															"oneOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1424,8 +1426,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Update a WAF rule group",

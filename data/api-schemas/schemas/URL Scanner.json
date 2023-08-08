@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{accountId}/urlscanner/scan": {
-		"description": "Search scans by date and webpages' requests (including full URL, hostname, and path).",
+		"description": "Search scans by date and webpages' requests, including full URL (after redirects), hostname, and path. <br/> A successful scan will appear in search results a few minutes after finishing but may take much longer if the system in under load. By default, only successfully completed scans will appear in search results, unless searching by `scanId`. Please take into account that older scans may be removed from the search index at an unspecified time.",
 		"operationId": "urlscanner-search-scans",
 		"parameters": [
 			{
@@ -10,6 +10,17 @@
 				"required": true,
 				"schema": {
 					"description": "Account Id",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Scan uuid",
+				"in": "query",
+				"name": "scanId",
+				"schema": {
+					"description": "Scan uuid",
+					"format": "uuid",
+					"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 					"type": "string"
 				}
 			},
@@ -55,12 +66,12 @@
 				}
 			},
 			{
-				"description": "Filter scans by full URL (effective) of _any_ request made by the webpage",
+				"description": "Filter scans by exact match URL of _any_ request made by the webpage",
 				"in": "query",
 				"name": "url",
 				"schema": {
 					"default": "",
-					"description": "Filter scans by full URL (effective) of _any_ request made by the webpage",
+					"description": "Filter scans by exact match URL of _any_ request made by the webpage",
 					"example": "https://example.com/?hello",
 					"type": "string"
 				}
@@ -88,12 +99,12 @@
 				}
 			},
 			{
-				"description": "Filter scans by main page full (effective) URL",
+				"description": "Filter scans by exact match to scanned URL (_after redirects_)",
 				"in": "query",
 				"name": "page_url",
 				"schema": {
 					"default": "",
-					"description": "Filter scans by main page full (effective) URL",
+					"description": "Filter scans by exact match to scanned URL (_after redirects_)",
 					"type": "string"
 				}
 			},
@@ -108,12 +119,12 @@
 				}
 			},
 			{
-				"description": "Filter scans by main page url path (also supports suffix search).",
+				"description": "Filter scans by exact match URL path (also supports suffix search).",
 				"in": "query",
 				"name": "page_path",
 				"schema": {
 					"default": "",
-					"description": "Filter scans by main page url path (also supports suffix search).",
+					"description": "Filter scans by exact match URL path (also supports suffix search).",
 					"type": "string"
 				}
 			}
@@ -170,8 +181,8 @@
 														"type": "string"
 													},
 													"url": {
-														"description": "Scan url",
-														"example": "https://www.example.com",
+														"description": "Scan url (after redirects)",
+														"example": "https://www.example.com/",
 														"type": "string"
 													},
 													"uuid": {
@@ -270,8 +281,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Search URL scans",
@@ -429,26 +439,109 @@
 														"example.com": {
 															"properties": {
 																"categories": {
-																	"items": {
-																		"properties": {
-																			"id": {
-																				"type": "integer"
+																	"properties": {
+																		"content": {
+																			"items": {
+																				"properties": {
+																					"id": {
+																						"type": "integer"
+																					},
+																					"name": {
+																						"example": "Technology",
+																						"type": "string"
+																					},
+																					"super_category_id": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"name"
+																				],
+																				"type": "object"
 																			},
-																			"name": {
-																				"example": "Technology",
-																				"type": "string"
-																			},
-																			"super_category_id": {
-																				"type": "integer"
-																			}
+																			"type": "array"
 																		},
-																		"required": [
-																			"id",
-																			"name"
-																		],
-																		"type": "object"
+																		"inherited": {
+																			"properties": {
+																				"content": {
+																					"items": {
+																						"properties": {
+																							"id": {
+																								"type": "integer"
+																							},
+																							"name": {
+																								"example": "Technology",
+																								"type": "string"
+																							},
+																							"super_category_id": {
+																								"type": "integer"
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"name"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"from": {
+																					"example": "example.com",
+																					"type": "string"
+																				},
+																				"risks": {
+																					"items": {
+																						"properties": {
+																							"id": {
+																								"type": "integer"
+																							},
+																							"name": {
+																								"example": "Technology",
+																								"type": "string"
+																							},
+																							"super_category_id": {
+																								"type": "integer"
+																							}
+																						},
+																						"required": [
+																							"id",
+																							"name"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"risks": {
+																			"items": {
+																				"properties": {
+																					"id": {
+																						"type": "integer"
+																					},
+																					"name": {
+																						"example": "Technology",
+																						"type": "string"
+																					},
+																					"super_category_id": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"name"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
 																	},
-																	"type": "array"
+																	"required": [
+																		"inherited"
+																	],
+																	"type": "object"
 																},
 																"dns": {
 																	"items": {
@@ -504,9 +597,6 @@
 																	],
 																	"type": "object"
 																},
-																"risks": {
-																	"type": "object"
-																},
 																"type": {
 																	"example": "Apex domain",
 																	"type": "string"
@@ -516,7 +606,6 @@
 																"name",
 																"type",
 																"categories",
-																"risks",
 																"dns",
 																"rank"
 															],
@@ -665,27 +754,61 @@
 														"processors": {
 															"properties": {
 																"categories": {
-																	"items": {
-																		"properties": {
-																			"id": {
-																				"example": 155,
-																				"type": "number"
+																	"properties": {
+																		"content": {
+																			"items": {
+																				"properties": {
+																					"id": {
+																						"example": 155,
+																						"type": "integer"
+																					},
+																					"name": {
+																						"example": "Technology",
+																						"type": "string"
+																					},
+																					"super_category_id": {
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"name"
+																				],
+																				"type": "object"
 																			},
-																			"name": {
-																				"example": "Technology",
-																				"type": "string"
-																			},
-																			"super_category_id": {
-																				"type": "integer"
-																			}
+																			"type": "array"
 																		},
-																		"required": [
-																			"id",
-																			"name"
-																		],
-																		"type": "object"
+																		"risks": {
+																			"items": {
+																				"properties": {
+																					"id": {
+																						"example": 17,
+																						"type": "integer"
+																					},
+																					"name": {
+																						"example": "Newly Seen Domains",
+																						"type": "string"
+																					},
+																					"super_category_id": {
+																						"example": 32,
+																						"type": "integer"
+																					}
+																				},
+																				"required": [
+																					"id",
+																					"super_category_id",
+																					"name"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
 																	},
-																	"type": "array"
+																	"required": [
+																		"content",
+																		"risks"
+																	],
+																	"type": "object"
 																},
 																"google_safe_browsing": {
 																	"items": {
@@ -721,31 +844,6 @@
 																		"bucket"
 																	],
 																	"type": "object"
-																},
-																"securityRiskCategories": {
-																	"items": {
-																		"properties": {
-																			"id": {
-																				"example": 177,
-																				"type": "number"
-																			},
-																			"name": {
-																				"example": "Newly Seen Domains",
-																				"type": "string"
-																			},
-																			"super_category_id": {
-																				"example": 32,
-																				"type": "number"
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"super_category_id",
-																			"name"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
 																},
 																"tech": {
 																	"items": {
@@ -831,8 +929,7 @@
 																"categories",
 																"rank",
 																"phishing",
-																"google_safe_browsing",
-																"securityRiskCategories"
+																"google_safe_browsing"
 															],
 															"type": "object"
 														}
@@ -1696,314 +1793,10 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan",
-		"tags": [
-			"URL Scanner"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.account.url-scanner.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /accounts/{accountId}/urlscanner/scan/{scanId}/dom": {
-		"description": "Returns a plain text response, with the scan's DOM content as rendered by Chrome.",
-		"operationId": "urlscanner-get-scan-dom",
-		"parameters": [
-			{
-				"description": "Scan uuid",
-				"in": "path",
-				"name": "scanId",
-				"required": true,
-				"schema": {
-					"description": "Scan uuid",
-					"format": "uuid",
-					"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Account Id",
-				"in": "path",
-				"name": "accountId",
-				"required": true,
-				"schema": {
-					"description": "Account Id",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"text/plain": {
-						"schema": {
-							"description": "HTML of webpage",
-							"type": "string"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"202": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "In Progress",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"properties": {
-										"scan": {
-											"properties": {
-												"task": {
-													"properties": {
-														"effectiveUrl": {
-															"example": "http://example.com/",
-															"type": "string"
-														},
-														"errors": {
-															"items": {
-																"properties": {
-																	"message": {
-																		"example": "",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"message"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"location": {
-															"example": "PT",
-															"type": "string"
-														},
-														"region": {
-															"example": "enam",
-															"type": "string"
-														},
-														"status": {
-															"example": "InProgress",
-															"type": "string"
-														},
-														"success": {
-															"example": true,
-															"type": "boolean"
-														},
-														"time": {
-															"example": "2023-05-03T17:05:04.843Z",
-															"type": "string"
-														},
-														"url": {
-															"example": "http://example.com",
-															"type": "string"
-														},
-														"uuid": {
-															"example": "2ee568d0-bf70-4827-b922-b7088c0f056f",
-															"type": "string"
-														},
-														"visibility": {
-															"example": "Public",
-															"type": "string"
-														}
-													},
-													"required": [
-														"uuid",
-														"url",
-														"status",
-														"success",
-														"errors",
-														"time",
-														"visibility",
-														"location",
-														"region",
-														"effectiveUrl"
-													],
-													"type": "object"
-												}
-											},
-											"required": [
-												"task"
-											],
-											"type": "object"
-										}
-									},
-									"required": [
-										"scan"
-									],
-									"type": "object"
-								},
-								"success": {
-									"description": "Whether request was successful or not",
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"messages",
-								"errors",
-								"success",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Scan is in progress. Check current status in `result.scan.task.status`. Possible statuses: `Queued`,`InProgress`,`InPostProcessing`,`Finished`."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "Scan ID is not a valid uuid.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"description": "Whether request was successful or not",
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"messages",
-								"errors",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Invalid params."
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "Scan not found.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"messages": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"success": {
-									"description": "Whether request was successful or not",
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"messages",
-								"errors",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Scan not found."
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": [],
-				"api_token": []
-			}
-		],
-		"summary": "Get URL scan's DOM",
 		"tags": [
 			"URL Scanner"
 		],
@@ -2648,8 +2441,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Get URL scan's HAR",
@@ -2966,8 +2758,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Get screenshot",
@@ -3083,19 +2874,23 @@
 								"result": {
 									"properties": {
 										"time": {
+											"description": "Time when url was submitted for scanning.",
 											"example": "2022-09-15T00:00:00Z",
 											"format": "date-time",
 											"type": "string"
 										},
 										"url": {
+											"description": "Canonical form of submitted URL. Use this if you want to later search by URL.",
 											"type": "string"
 										},
 										"uuid": {
+											"description": "Scan ID.",
 											"format": "uuid",
 											"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 											"type": "string"
 										},
 										"visibility": {
+											"description": "Submitted visibility status.",
 											"example": "Public",
 											"type": "string"
 										}
@@ -3395,8 +3190,7 @@
 		"security": [
 			{
 				"api_email": [],
-				"api_key": [],
-				"api_token": []
+				"api_key": []
 			}
 		],
 		"summary": "Create URL Scan",
