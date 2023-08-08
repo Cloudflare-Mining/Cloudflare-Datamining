@@ -69,7 +69,8 @@ export const PaymentMethod = eg.object({
   h_captcha_response: eg.string.optional,
   validation_code: eg.string.optional,
   captcha_challenge_jwt: eg.string.optional,
-  tax_id_type: eg.string.optional
+  tax_id_type: eg.string.optional,
+  cf_turnstile_response: eg.string.optional
 });
 
 export type PaymentMethod = TypeFromCodec<typeof PaymentMethod>;
@@ -124,7 +125,8 @@ export const BillingProfile = eg.object({
   captcha_challenge_jwt: eg.string.optional,
   default: eg.boolean.optional,
   type: PaymentMethodType.optional,
-  tax_id_type: eg.string.optional
+  tax_id_type: eg.string.optional,
+  cf_turnstile_response: eg.string.optional
 });
 
 export type BillingProfile = TypeFromCodec<typeof BillingProfile>;
