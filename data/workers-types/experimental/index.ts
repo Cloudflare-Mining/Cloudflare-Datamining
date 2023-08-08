@@ -1106,11 +1106,27 @@ export declare abstract class Fetcher {
   queue(
     queueName: string,
     messages: ServiceBindingQueueMessage[]
-  ): Promise<QueueResponse>;
+  ): Promise<FetcherQueueResult>;
+  scheduled(options?: FetcherScheduledOptions): Promise<FetcherScheduledResult>;
 }
 export interface FetcherPutOptions {
   expiration?: number;
   expirationTtl?: number;
+}
+export interface FetcherScheduledOptions {
+  scheduledTime?: Date;
+  cron?: string;
+}
+export interface FetcherScheduledResult {
+  outcome: string;
+  noRetry: boolean;
+}
+export interface FetcherQueueResult {
+  outcome: string;
+  retryAll: boolean;
+  ackAll: boolean;
+  explicitRetries: string[];
+  explicitAcks: string[];
 }
 export interface ServiceBindingQueueMessage<Body = unknown> {
   id: string;
@@ -1238,13 +1254,6 @@ export interface QueueSendOptions {
 export interface MessageSendRequest<Body = unknown> {
   body: Body;
   contentType?: QueueContentType;
-}
-export interface QueueResponse {
-  outcome: number;
-  retryAll: boolean;
-  ackAll: boolean;
-  explicitRetries: string[];
-  explicitAcks: string[];
 }
 export interface Message<Body = unknown> {
   readonly id: string;
