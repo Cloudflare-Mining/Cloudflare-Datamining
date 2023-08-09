@@ -77,7 +77,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
 	global_banner: {
-		notification: ".com prices will be changing soon. <0>Click here</0> for more information about this and other upcoming changes."
+		notification: "Domain fees will be changing soon. <0>Click here</0> for more info."
 	},
 	domain_page: {
 		title: (0, a.d)(C(), "domainName"),
@@ -269,17 +269,12 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	search_domain_results_table_domain: "Domain",
 	search_domain_results_table_price: "Price",
 	search_domain_results_table_purchase: "Purchase",
-	search_domain_unavailable: "<0>%{domainName}</0> is not available.",
-	search_domain_already_registered: "<0>%{domainName}</0> is unavailable because it is registered already. If you already own this domain and wish to transfer in to Cloudflare, please go to <1>Transfer Domains</1> section in the dashboard.",
-	search_premium_tld: "<0>%{domainName}</0> is a premium domain, which Cloudflare Registrar does not currently support. Please try searching for a different domain.",
-	search_unsupported_tld: '<0>%{domainName}</0> cannot be registered as Cloudflare does not yet support the "%{tld}" extension.',
+	search_domain_unavailable: "is not available.",
+	search_domain_already_registered: "is unavailable because it is registered already. If you already own this domain and wish to transfer in to Cloudflare, please go to <0>Transfer Domains</0> section in the dashboard.",
+	search_premium_tld: "is a premium domain, which Cloudflare Registrar does not currently support. Please try searching for a different domain",
+	search_unsupported_tld: 'cannot be registered as Cloudflare does not yet support the "%{tld}" extension.',
 	search_similar_domains: "Here are some similar domains that might be available.",
 	search_try_again: "Please try searching a different domain name.",
-	search_domain_available: "<0>%{domainName}</0> is available",
-	search_domain_not_available: "<0>%{domainName}</0> is not available",
-	search_domain_price: "<0>%{domainPrice}</0>/year",
-	search_domain_purchase: "Purchase",
-	search_domain_suggestions: "Suggested domain names",
 	transfer_out_panel_title: "Transfer to another registrar",
 	transfer_out_panel_text: "Unlocking this domain generates a unique transfer authorization code.",
 	transfer_out_panel_cta: "Unlock",
@@ -352,7 +347,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	instructions_one_and_one: U,
 	instructions_unknown: E,
 	instructions_uk: M,
-	instructions_restrictions: q,
+	instructions_restrictions: N,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
 	instructions_unknown_title: "Follow these instructions to transfer your domain",
@@ -405,8 +400,6 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_management_default_contact_card_personal_information: "Personal Information",
 	domain_management_default_contact_card_address_information: "Address Information",
 	domain_management_default_contact_card_phone_format_error: "Invalid phone number",
-	domain_management_default_contact_card_toggle_expand: "Expand contact",
-	domain_management_default_contact_card_toggle_collapse: "Collapse contact",
 	domain_management_table_domain_name: "Search for a domain registered with Cloudflare...",
 	domain_management_table_domain: "Domain",
 	domain_management_table_status: "Status",
