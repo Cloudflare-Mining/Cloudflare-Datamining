@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2955,
+	"version": "2023.7.344.1",
+	"short_version": "",
+	"size": 111190016,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "618ac62fa3d3f87749027eac041056a2",
+	"fingerprint": "25f263e23766bebc5476c295a63dd54f",
+	"uploaded_at": "2023-08-08T23:25:54.720Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "In addition to general bug fixes this release contains two new exciting features.\n\nThe first we hope will improve diagnosing connectivity issues by bubbling up common errors to the GUI so admins no longer have to dig through logs to find a conflicting app or configuration issue.\n\nThe second is a new Zero Trust posture support: checking for the presence of a certificate. You can get started today from your dashboard.\n\n## Notable updates\n- Added connectivity error reasons to the UI\n- Added new posture type: Check for presence of a certificate\n- Fixed an issue with DEX traceroutes tests where not all hops were correctly reported\n- Fixed an issue where the WARP background process could crash under extreme load\n- Fixed an issue where the Windows GUI could spam the Windows System Eventlog with unhelpful error messages\n- Fixed an issue where managed network detection could fail when firewall rules were not correctly removed under certain disconnect scenarios\n- Fixed a timing issue exposed during previous beta where the client could get stuck on Connecting state. This mostly happens coming out of sleep or switching teams \n \n## Known issues\n- Customers may experience a DPC_WATCHDOG_VIOLATION Blue Screen when connecting. This error was introduced with the 2023.3 GA release and happens more frequently with larger split tunnel configurations, especially on more resource constrained machines. We are actively working on a fix. Until then we recommend staying on 2022.12 GA release OR reducing your split tunnel configuration if possible.\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"51960ba315ee31099b32aafc2da0b701d91c6c3f3b2e3f62bfeef98810be1014"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

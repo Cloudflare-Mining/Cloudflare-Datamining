@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2775,
+	"version": "20230808.14",
+	"short_version": "2023.7.343.1",
+	"size": 65324213,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "02ad3099ad449fb9559bce0b98772469",
+	"fingerprint": "e0659065d81fae52cdd1ae4413bb1afd",
+	"uploaded_at": "2023-08-08T23:12:37.922Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "In addition to general bug fixes this release contains two new exciting features.\n\nThe first we hope will improve diagnosing connectivity issues by bubbling up common errors to the GUI so admins no longer have to dig through logs to find a conflicting app or configuration issue.\n\nThe second is a new Zero Trust posture support: checking for the presence of a certificate. You can get started today from your dashboard. \n \n## Notable updates\n- Added connectivity error reasons to the UI\n- Added new posture type: Check for presence of a certificate\n- Modify IPv6 DNS behavior to no longer bind to discrete stub resolvers and instead point interfaces at a V6->V4 mapping `::ffff:127.0.2.2`. This change makes DNS mapping consistent on all platforms\n- Fixed an issue with DEX traceroutes tests where not all hops were correctly reported\n- Fixed am issue where the WARP background process could crash under extreme load\n- Fixed an issue where managed network detection could fail when firewall rules were not correctly removed under certain disconnect scenarios\n- Fixed a timing issue exposed during previous beta where the client could get stuck on Connecting state. This mostly happens coming out of sleep or switching teams\n- Fixed an issue where an invalid override code could cause warp to disconnect when the lock switch was not set to true\n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
