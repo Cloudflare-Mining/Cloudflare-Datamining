@@ -998,6 +998,34 @@
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																		"type": "string"
 																	},
+																	"eid_last_seen": {
+																		"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																		"example": "2023-07-20T23:16:32Z",
+																		"type": "string"
+																	},
+																	"operator": {
+																		"description": "Operator to evaluate risk_level or eid_last_seen.",
+																		"enum": [
+																			"<",
+																			"<=",
+																			">",
+																			">=",
+																			"=="
+																		],
+																		"example": ">",
+																		"type": "string"
+																	},
+																	"risk_level": {
+																		"description": "For more details on risk level, refer to the Tanium documentation.",
+																		"enum": [
+																			"low",
+																			"medium",
+																			"high",
+																			"critical"
+																		],
+																		"example": "low",
+																		"type": "string"
+																	},
 																	"scoreOperator": {
 																		"description": "Score Operator",
 																		"enum": [
@@ -1011,15 +1039,13 @@
 																		"type": "string"
 																	},
 																	"total_score": {
-																		"description": "Total Score.",
+																		"description": "For more details on total score, refer to the Tanium documentation.",
 																		"example": 1,
-																		"type": "string"
+																		"type": "number"
 																	}
 																},
 																"required": [
-																	"connection_id",
-																	"scoreOperator",
-																	"total_score"
+																	"connection_id"
 																],
 																"title": "Tanium S2S Input",
 																"type": "object"
@@ -1760,6 +1786,34 @@
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																				"type": "string"
 																			},
+																			"eid_last_seen": {
+																				"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																				"example": "2023-07-20T23:16:32Z",
+																				"type": "string"
+																			},
+																			"operator": {
+																				"description": "Operator to evaluate risk_level or eid_last_seen.",
+																				"enum": [
+																					"<",
+																					"<=",
+																					">",
+																					">=",
+																					"=="
+																				],
+																				"example": ">",
+																				"type": "string"
+																			},
+																			"risk_level": {
+																				"description": "For more details on risk level, refer to the Tanium documentation.",
+																				"enum": [
+																					"low",
+																					"medium",
+																					"high",
+																					"critical"
+																				],
+																				"example": "low",
+																				"type": "string"
+																			},
 																			"scoreOperator": {
 																				"description": "Score Operator",
 																				"enum": [
@@ -1773,15 +1827,13 @@
 																				"type": "string"
 																			},
 																			"total_score": {
-																				"description": "Total Score.",
+																				"description": "For more details on total score, refer to the Tanium documentation.",
 																				"example": 1,
-																				"type": "string"
+																				"type": "number"
 																			}
 																		},
 																		"required": [
-																			"connection_id",
-																			"scoreOperator",
-																			"total_score"
+																			"connection_id"
 																		],
 																		"title": "Tanium S2S Input",
 																		"type": "object"
@@ -2624,6 +2676,34 @@
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																	"type": "string"
 																},
+																"eid_last_seen": {
+																	"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																	"example": "2023-07-20T23:16:32Z",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "Operator to evaluate risk_level or eid_last_seen.",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																},
+																"risk_level": {
+																	"description": "For more details on risk level, refer to the Tanium documentation.",
+																	"enum": [
+																		"low",
+																		"medium",
+																		"high",
+																		"critical"
+																	],
+																	"example": "low",
+																	"type": "string"
+																},
 																"scoreOperator": {
 																	"description": "Score Operator",
 																	"enum": [
@@ -2637,15 +2717,13 @@
 																	"type": "string"
 																},
 																"total_score": {
-																	"description": "Total Score.",
+																	"description": "For more details on total score, refer to the Tanium documentation.",
 																	"example": 1,
-																	"type": "string"
+																	"type": "number"
 																}
 															},
 															"required": [
-																"connection_id",
-																"scoreOperator",
-																"total_score"
+																"connection_id"
 															],
 															"title": "Tanium S2S Input",
 															"type": "object"
@@ -3365,6 +3443,34 @@
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																			"type": "string"
 																		},
+																		"eid_last_seen": {
+																			"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																			"example": "2023-07-20T23:16:32Z",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "Operator to evaluate risk_level or eid_last_seen.",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		},
+																		"risk_level": {
+																			"description": "For more details on risk level, refer to the Tanium documentation.",
+																			"enum": [
+																				"low",
+																				"medium",
+																				"high",
+																				"critical"
+																			],
+																			"example": "low",
+																			"type": "string"
+																		},
 																		"scoreOperator": {
 																			"description": "Score Operator",
 																			"enum": [
@@ -3378,15 +3484,13 @@
 																			"type": "string"
 																		},
 																		"total_score": {
-																			"description": "Total Score.",
+																			"description": "For more details on total score, refer to the Tanium documentation.",
 																			"example": 1,
-																			"type": "string"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
-																		"connection_id",
-																		"scoreOperator",
-																		"total_score"
+																		"connection_id"
 																	],
 																	"title": "Tanium S2S Input",
 																	"type": "object"
@@ -4109,6 +4213,34 @@
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 												"type": "string"
 											},
+											"eid_last_seen": {
+												"description": "For more details on eid last seen, refer to the Tanium documentation.",
+												"example": "2023-07-20T23:16:32Z",
+												"type": "string"
+											},
+											"operator": {
+												"description": "Operator to evaluate risk_level or eid_last_seen.",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"risk_level": {
+												"description": "For more details on risk level, refer to the Tanium documentation.",
+												"enum": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												],
+												"example": "low",
+												"type": "string"
+											},
 											"scoreOperator": {
 												"description": "Score Operator",
 												"enum": [
@@ -4122,15 +4254,13 @@
 												"type": "string"
 											},
 											"total_score": {
-												"description": "Total Score.",
+												"description": "For more details on total score, refer to the Tanium documentation.",
 												"example": 1,
-												"type": "string"
+												"type": "number"
 											}
 										},
 										"required": [
-											"connection_id",
-											"scoreOperator",
-											"total_score"
+											"connection_id"
 										],
 										"title": "Tanium S2S Input",
 										"type": "object"
@@ -4848,6 +4978,34 @@
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																	"type": "string"
 																},
+																"eid_last_seen": {
+																	"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																	"example": "2023-07-20T23:16:32Z",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "Operator to evaluate risk_level or eid_last_seen.",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																},
+																"risk_level": {
+																	"description": "For more details on risk level, refer to the Tanium documentation.",
+																	"enum": [
+																		"low",
+																		"medium",
+																		"high",
+																		"critical"
+																	],
+																	"example": "low",
+																	"type": "string"
+																},
 																"scoreOperator": {
 																	"description": "Score Operator",
 																	"enum": [
@@ -4861,15 +5019,13 @@
 																	"type": "string"
 																},
 																"total_score": {
-																	"description": "Total Score.",
+																	"description": "For more details on total score, refer to the Tanium documentation.",
 																	"example": 1,
-																	"type": "string"
+																	"type": "number"
 																}
 															},
 															"required": [
-																"connection_id",
-																"scoreOperator",
-																"total_score"
+																"connection_id"
 															],
 															"title": "Tanium S2S Input",
 															"type": "object"
@@ -5589,6 +5745,34 @@
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																			"type": "string"
 																		},
+																		"eid_last_seen": {
+																			"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																			"example": "2023-07-20T23:16:32Z",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "Operator to evaluate risk_level or eid_last_seen.",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		},
+																		"risk_level": {
+																			"description": "For more details on risk level, refer to the Tanium documentation.",
+																			"enum": [
+																				"low",
+																				"medium",
+																				"high",
+																				"critical"
+																			],
+																			"example": "low",
+																			"type": "string"
+																		},
 																		"scoreOperator": {
 																			"description": "Score Operator",
 																			"enum": [
@@ -5602,15 +5786,13 @@
 																			"type": "string"
 																		},
 																		"total_score": {
-																			"description": "Total Score.",
+																			"description": "For more details on total score, refer to the Tanium documentation.",
 																			"example": 1,
-																			"type": "string"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
-																		"connection_id",
-																		"scoreOperator",
-																		"total_score"
+																		"connection_id"
 																	],
 																	"title": "Tanium S2S Input",
 																	"type": "object"
@@ -6344,6 +6526,34 @@
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 												"type": "string"
 											},
+											"eid_last_seen": {
+												"description": "For more details on eid last seen, refer to the Tanium documentation.",
+												"example": "2023-07-20T23:16:32Z",
+												"type": "string"
+											},
+											"operator": {
+												"description": "Operator to evaluate risk_level or eid_last_seen.",
+												"enum": [
+													"<",
+													"<=",
+													">",
+													">=",
+													"=="
+												],
+												"example": ">",
+												"type": "string"
+											},
+											"risk_level": {
+												"description": "For more details on risk level, refer to the Tanium documentation.",
+												"enum": [
+													"low",
+													"medium",
+													"high",
+													"critical"
+												],
+												"example": "low",
+												"type": "string"
+											},
 											"scoreOperator": {
 												"description": "Score Operator",
 												"enum": [
@@ -6357,15 +6567,13 @@
 												"type": "string"
 											},
 											"total_score": {
-												"description": "Total Score.",
+												"description": "For more details on total score, refer to the Tanium documentation.",
 												"example": 1,
-												"type": "string"
+												"type": "number"
 											}
 										},
 										"required": [
-											"connection_id",
-											"scoreOperator",
-											"total_score"
+											"connection_id"
 										],
 										"title": "Tanium S2S Input",
 										"type": "object"
@@ -7083,6 +7291,34 @@
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																	"type": "string"
 																},
+																"eid_last_seen": {
+																	"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																	"example": "2023-07-20T23:16:32Z",
+																	"type": "string"
+																},
+																"operator": {
+																	"description": "Operator to evaluate risk_level or eid_last_seen.",
+																	"enum": [
+																		"<",
+																		"<=",
+																		">",
+																		">=",
+																		"=="
+																	],
+																	"example": ">",
+																	"type": "string"
+																},
+																"risk_level": {
+																	"description": "For more details on risk level, refer to the Tanium documentation.",
+																	"enum": [
+																		"low",
+																		"medium",
+																		"high",
+																		"critical"
+																	],
+																	"example": "low",
+																	"type": "string"
+																},
 																"scoreOperator": {
 																	"description": "Score Operator",
 																	"enum": [
@@ -7096,15 +7332,13 @@
 																	"type": "string"
 																},
 																"total_score": {
-																	"description": "Total Score.",
+																	"description": "For more details on total score, refer to the Tanium documentation.",
 																	"example": 1,
-																	"type": "string"
+																	"type": "number"
 																}
 															},
 															"required": [
-																"connection_id",
-																"scoreOperator",
-																"total_score"
+																"connection_id"
 															],
 															"title": "Tanium S2S Input",
 															"type": "object"
@@ -7824,6 +8058,34 @@
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																			"type": "string"
 																		},
+																		"eid_last_seen": {
+																			"description": "For more details on eid last seen, refer to the Tanium documentation.",
+																			"example": "2023-07-20T23:16:32Z",
+																			"type": "string"
+																		},
+																		"operator": {
+																			"description": "Operator to evaluate risk_level or eid_last_seen.",
+																			"enum": [
+																				"<",
+																				"<=",
+																				">",
+																				">=",
+																				"=="
+																			],
+																			"example": ">",
+																			"type": "string"
+																		},
+																		"risk_level": {
+																			"description": "For more details on risk level, refer to the Tanium documentation.",
+																			"enum": [
+																				"low",
+																				"medium",
+																				"high",
+																				"critical"
+																			],
+																			"example": "low",
+																			"type": "string"
+																		},
 																		"scoreOperator": {
 																			"description": "Score Operator",
 																			"enum": [
@@ -7837,15 +8099,13 @@
 																			"type": "string"
 																		},
 																		"total_score": {
-																			"description": "Total Score.",
+																			"description": "For more details on total score, refer to the Tanium documentation.",
 																			"example": 1,
-																			"type": "string"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
-																		"connection_id",
-																		"scoreOperator",
-																		"total_score"
+																		"connection_id"
 																	],
 																	"title": "Tanium S2S Input",
 																	"type": "object"
