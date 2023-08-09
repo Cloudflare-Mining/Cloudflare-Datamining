@@ -28,7 +28,9 @@ const nameMap = {
 console.log('Getting finanical reports...');
 const finanicalReportsRes = await fetch(`https://cloudflare.net/feed/FinancialReport.svc/GetFinancialReportList?apiKey=${apiKey}&IncludeTags=true&year=-1&reportSubTypeList%5B%5D=First%20Quarter&reportSubTypeList%5B%5D=Second%20Quarter&reportSubTypeList%5B%5D=Third%20Quarter&reportSubTypeList%5B%5D=Fourth%20Quarter`, {agent});
 if(!finanicalReportsRes.ok) {
-	throw new Error('Failed to get finanical reports');
+	console.log('Failed to get finanical reports');
+	// eslint-disable-next-line no-process-exit
+	process.exit(0);
 }
 const finanicalReportsResults = await finanicalReportsRes.json();
 for(const quarter of finanicalReportsResults?.GetFinancialReportListResult ?? []) {
@@ -46,7 +48,9 @@ await fs.ensureDir(secFilingsDir);
 console.log('Getting SEC filings...');
 const secFilingsRes = await fetch(`https://cloudflare.net/feed/SECFiling.svc/GetEdgarFilingList?apiKey=${apiKey}&LanguageId=1&exchange=CIK&symbol=0001477333&formGroupIdList=&excludeNoDocuments=false&includeHtmlDocument=false&pageSize=-1&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`, {agent});
 if(!finanicalReportsRes.ok) {
-	throw new Error('Failed to get SEC filings');
+	console.log('Failed to get SEC filings');
+	// eslint-disable-next-line no-process-exit
+	process.exit(0);
 }
 const secFilingsResults = await secFilingsRes.json();
 await fs.writeFile(path.resolve(secFilingsDir, '_index.json'), JSON.stringify(secFilingsResults, null, '\t'));
@@ -58,7 +62,9 @@ await fs.ensureDir(pressReleasesDir);
 console.log('Getting press releases...');
 const pressReleasesRes = await fetch(`https://cloudflare.net/feed/PressRelease.svc/GetPressReleaseList?apiKey=${apiKey}&LanguageId=1&bodyType=2&pressReleaseDateFilter=3&categoryId=1cb807d2-208f-4bc3-9133-6a9ad45ac3b0&pageSize=-1&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`);
 if(!pressReleasesRes.ok) {
-	throw new Error('Failed to get press releases');
+	console.error('Failed to get press releases');
+	// eslint-disable-next-line no-process-exit
+	process.exit(0);
 }
 const pressReleasesResults = await pressReleasesRes.json();
 for(const release of pressReleasesResults?.GetPressReleaseListResult ?? []) {
