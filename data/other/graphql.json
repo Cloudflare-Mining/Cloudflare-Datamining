@@ -205,6 +205,8 @@
 		"commonTcpFlagsNames": "Names of common TCP flags used by attack traffic, if any",
 		"destinationIp": "Fixed destination IP used by attack traffic, if any",
 		"destinationPort": "Fixed destination port used by attack traffic, if any",
+		"droppedBits": "Sum of bits dropped during the attack",
+		"droppedPackets": "Sum of packets dropped during the attack",
 		"endDatetime": "Date and time that the attack ended; not available for ongoing attacks",
 		"ipProtocol": "Fixed protocol used by attack traffic, if any",
 		"ipProtocolName": "Fixed protocol used by attack traffic, if any",
@@ -505,6 +507,8 @@
 		"commonTcpFlagsNames": "Names of common TCP flags used by attack traffic, if any",
 		"destinationIp": "Fixed destination IP used by attack traffic, if any",
 		"destinationPort": "Fixed destination port used by attack traffic, if any",
+		"droppedBits": "Sum of bits dropped during the attack",
+		"droppedPackets": "Sum of packets dropped during the attack",
 		"endDatetime": "Date and time that the attack ended; not available for ongoing attacks",
 		"ipProtocol": "Fixed protocol used by attack traffic, if any",
 		"ipProtocolName": "Fixed protocol used by attack traffic, if any",
@@ -1297,6 +1301,7 @@
 	"AccountHttpRequestsAdaptive": {
 		"__description": "Raw HTTP requests with adaptive sampling",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -1385,6 +1390,7 @@
 	"AccountHttpRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -4536,6 +4542,7 @@
 	"ZoneHttpRequestsAdaptive": {
 		"__description": "Raw HTTP requests with adaptive sampling",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -4623,6 +4630,7 @@
 	"ZoneHttpRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
+		"apiGatewayMatchedHost": "API Gateway host matched at the edge",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
