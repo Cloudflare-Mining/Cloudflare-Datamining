@@ -477,7 +477,7 @@
 	function at(e, a, i, s) {
 		var u = "https://challenges.cloudflare.com";
 		if (!1) var y;
-		var v = "h/".concat("g", "/");
+		var v = "h/".concat("b", "/");
 		return "".concat(u, "/cdn-cgi/challenge-platform/").concat(v, "turnstile/if/ov2/av0/rcv").concat(s, "/").concat(e, "/").concat(a, "/").concat(i.theme, "/").concat(i.size)
 	}
 
@@ -801,7 +801,7 @@
 					switch (A.label) {
 						case 0:
 							if (n = _.params.sitekey, l = it(), !l) return g("Cannot determine Turnstile's embedded location, aborting clearance redemption."), a(_, c, !1), [2];
-							o = "h/".concat("g", "/"), m = new URL(l), w = "https", E = "".concat(w, "://").concat(m.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(r), A.label = 1;
+							o = "h/".concat("b", "/"), m = new URL(l), w = "https", E = "".concat(w, "://").concat(m.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(r), A.label = 1;
 						case 1:
 							return A.trys.push([1, 6, , 7]), [4, fetch(E, {
 								method: "POST",
@@ -945,7 +945,7 @@
 									cData: n.cData,
 									chlPageData: n.chlPageData,
 									rcV: n.rcV,
-									ch: "74ac0d47",
+									ch: "7186c00a",
 									url: it(),
 									retry: n.params.retry,
 									"retry-interval": n.params["retry-interval"],
