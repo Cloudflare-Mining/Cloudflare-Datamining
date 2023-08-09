@@ -99,13 +99,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -126,7 +127,7 @@
 				},
 				"description": "Billing Profile Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -215,13 +216,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}

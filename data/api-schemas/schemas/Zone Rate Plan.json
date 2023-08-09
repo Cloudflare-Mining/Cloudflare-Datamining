@@ -221,7 +221,7 @@
 				},
 				"description": "List Available Plans response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -653,13 +653,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -748,7 +749,7 @@
 				},
 				"description": "Available Plan Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -837,13 +838,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1268,7 +1270,7 @@
 				},
 				"description": "List Available Rate Plans response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

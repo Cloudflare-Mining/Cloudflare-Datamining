@@ -122,13 +122,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -246,13 +247,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -705,7 +707,7 @@
 				},
 				"description": "List Subscriptions response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1396,13 +1398,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1423,7 +1426,7 @@
 				},
 				"description": "Create Subscription response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1512,13 +1515,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1938,13 +1942,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1965,7 +1970,7 @@
 				},
 				"description": "Update Subscription response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2054,13 +2059,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
