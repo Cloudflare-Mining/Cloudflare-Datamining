@@ -4,27 +4,22 @@
 		"operationId": "radar-get-bgp-hijacks-events",
 		"parameters": [
 			{
-				"description": "Current page number, starting from 1",
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Current page number, starting from 1",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of entries per page",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"default": 50,
 					"description": "Number of entries per page",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The unique identifier of a event",
 				"in": "query",
 				"name": "eventId",
 				"schema": {
@@ -33,7 +28,6 @@
 				}
 			},
 			{
-				"description": "The potential hijacker AS of a BGP hijack event",
 				"in": "query",
 				"name": "hijackerAsn",
 				"schema": {
@@ -42,7 +36,6 @@
 				}
 			},
 			{
-				"description": "The potential victim AS of a BGP hijack event",
 				"in": "query",
 				"name": "victimAsn",
 				"schema": {
@@ -51,7 +44,6 @@
 				}
 			},
 			{
-				"description": "The potential hijacker or victim AS of a BGP hijack event",
 				"in": "query",
 				"name": "involvedAsn",
 				"schema": {
@@ -60,7 +52,6 @@
 				}
 			},
 			{
-				"description": "The prefix hijacked during a BGP hijack event",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
@@ -69,7 +60,6 @@
 				}
 			},
 			{
-				"description": "The minimum confidence score to filter events (1-4 low, 5-7 mid, 8+ high)",
 				"in": "query",
 				"name": "minConfidence",
 				"schema": {
@@ -78,7 +68,6 @@
 				}
 			},
 			{
-				"description": "The maximum confidence score to filter events (1-4 low, 5-7 mid, 8+ high)",
 				"in": "query",
 				"name": "maxConfidence",
 				"schema": {
@@ -87,10 +76,10 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 					"enum": [
 						"1d",
 						"2d",
@@ -100,71 +89,73 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dControl",
-						"2dControl",
-						"7dControl",
-						"14dControl",
-						"28dControl",
-						"12wControl",
-						"24wControl"
+						"1dcontrol",
+						"2dcontrol",
+						"7dcontrol",
+						"14dcontrol",
+						"28dcontrol",
+						"12wcontrol",
+						"24wcontrol"
 					],
+					"example": "7d",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive).",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "Start of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "End of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Sort events by field",
 				"in": "query",
 				"name": "sortBy",
 				"schema": {
+					"description": "Sort events by field",
 					"enum": [
-						"ID",
-						"TIME",
-						"CONFIDENCE"
+						"id",
+						"time",
+						"confidence"
 					],
+					"example": "TIME",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Sort order",
 				"in": "query",
 				"name": "sortOrder",
 				"schema": {
+					"description": "Sort order",
 					"enum": [
-						"ASC",
-						"DESC"
+						"asc",
+						"desc"
 					],
+					"example": "DESC",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -413,27 +404,22 @@
 		"operationId": "radar-get-bgp-route-leak-events",
 		"parameters": [
 			{
-				"description": "Current page number, starting from 1",
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"default": 1,
 					"description": "Current page number, starting from 1",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of entries per page",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
-					"default": 50,
 					"description": "Number of entries per page",
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The unique identifier of a event",
 				"in": "query",
 				"name": "eventId",
 				"schema": {
@@ -442,7 +428,6 @@
 				}
 			},
 			{
-				"description": "The leaking AS of a route leak event",
 				"in": "query",
 				"name": "leakAsn",
 				"schema": {
@@ -451,7 +436,6 @@
 				}
 			},
 			{
-				"description": "ASN that is causing or affected by a route leak event",
 				"in": "query",
 				"name": "involvedAsn",
 				"schema": {
@@ -460,10 +444,10 @@
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 					"enum": [
 						"1d",
 						"2d",
@@ -473,74 +457,76 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dControl",
-						"2dControl",
-						"7dControl",
-						"14dControl",
-						"28dControl",
-						"12wControl",
-						"24wControl"
+						"1dcontrol",
+						"2dcontrol",
+						"7dcontrol",
+						"14dcontrol",
+						"28dcontrol",
+						"12wcontrol",
+						"24wcontrol"
 					],
+					"example": "7d",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive).",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "Start of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "End of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Sort events by field",
 				"in": "query",
 				"name": "sortBy",
 				"schema": {
+					"description": "Sort events by field",
 					"enum": [
-						"ID",
-						"LEAKS",
-						"PEERS",
-						"PREFIXES",
-						"ORIGINS",
-						"TIME"
+						"id",
+						"leaks",
+						"peers",
+						"prefixes",
+						"origins",
+						"time"
 					],
+					"example": "TIME",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Sort order",
 				"in": "query",
 				"name": "sortOrder",
 				"schema": {
+					"description": "Sort order",
 					"enum": [
-						"ASC",
-						"DESC"
+						"asc",
+						"desc"
 					],
+					"example": "DESC",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -748,7 +734,6 @@
 		"operationId": "radar-get-bgp-pfx2as-moas",
 		"parameters": [
 			{
-				"description": "Lookup MOASes originated by the given ASN",
 				"in": "query",
 				"name": "origin",
 				"schema": {
@@ -757,7 +742,6 @@
 				}
 			},
 			{
-				"description": "Lookup MOASes by prefix",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
@@ -766,7 +750,6 @@
 				}
 			},
 			{
-				"description": "Lookup only RPKI invalid MOASes",
 				"in": "query",
 				"name": "invalid_only",
 				"schema": {
@@ -775,14 +758,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -939,7 +923,6 @@
 		"operationId": "radar-get-bgp-pfx2as",
 		"parameters": [
 			{
-				"description": "Lookup prefixes originated by the given ASN",
 				"in": "query",
 				"name": "origin",
 				"schema": {
@@ -948,7 +931,6 @@
 				}
 			},
 			{
-				"description": "Lookup origins of the given prefix",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
@@ -958,27 +940,29 @@
 				}
 			},
 			{
-				"description": "Return only results with matching rpki status: valid, invalid or unknown",
 				"in": "query",
 				"name": "rpkiStatus",
 				"schema": {
+					"description": "Return only results with matching rpki status: valid, invalid or unknown",
 					"enum": [
-						"VALID",
-						"INVALID",
-						"UNKNOWN"
+						"valid",
+						"invalid",
+						"unknown"
 					],
+					"example": "INVALID",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1124,7 +1108,6 @@
 		"operationId": "radar-get-bgp-routes-stats",
 		"parameters": [
 			{
-				"description": "Single ASN as integer.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -1134,7 +1117,6 @@
 				}
 			},
 			{
-				"description": "Location Alpha2 code.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -1144,14 +1126,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1350,36 +1333,33 @@
 		"operationId": "radar-get-bgp-timeseries",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1394,13 +1374,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -1408,13 +1388,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1422,13 +1400,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1436,22 +1412,18 @@
 				}
 			},
 			{
-				"description": "Array of BGP network prefixes.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
 					"description": "Array of BGP network prefixes.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"description": "Array of BGP network prefixes.",
-						"example": "1.1.1.0/24",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of BGP update types.",
 				"in": "query",
 				"name": "updateType",
 				"schema": {
@@ -1459,8 +1431,8 @@
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
-							"ANNOUNCEMENT",
-							"WITHDRAWAL"
+							"announcement",
+							"withdrawal"
 						],
 						"type": "string"
 					},
@@ -1468,29 +1440,27 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1523,7 +1493,6 @@
 																		"type": "string"
 																	},
 																	"endTime": {
-																		"example": "2022-09-15T00:00:00Z",
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -1538,7 +1507,6 @@
 																		"type": "string"
 																	},
 																	"startTime": {
-																		"example": "2022-09-15T00:00:00Z",
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -1588,7 +1556,6 @@
 													"type": "object"
 												},
 												"lastUpdated": {
-													"example": "2022-09-15T00:00:00Z",
 													"format": "date-time",
 													"type": "string"
 												}
@@ -1605,7 +1572,6 @@
 											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2022-09-15T00:00:00Z",
 														"format": "date-time",
 														"type": "string"
 													},
@@ -1713,33 +1679,27 @@
 		"operationId": "radar-get-bgp-top-ases",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1754,13 +1714,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -1768,13 +1728,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1782,13 +1740,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1796,37 +1752,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of BGP network prefixes.",
 				"in": "query",
 				"name": "prefix",
 				"schema": {
 					"description": "Array of BGP network prefixes.",
 					"example": "1.1.1.0/24",
 					"items": {
-						"description": "Array of BGP network prefixes.",
-						"example": "1.1.1.0/24",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of BGP update types.",
 				"in": "query",
 				"name": "updateType",
 				"schema": {
@@ -1834,8 +1783,8 @@
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
-							"ANNOUNCEMENT",
-							"WITHDRAWAL"
+							"announcement",
+							"withdrawal"
 						],
 						"type": "string"
 					},
@@ -1843,14 +1792,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -2006,7 +1956,6 @@
 		"operationId": "radar-get-bgp-top-asns-by-prefixes",
 		"parameters": [
 			{
-				"description": "Alpha-2 country code.",
 				"in": "query",
 				"name": "country",
 				"schema": {
@@ -2016,7 +1965,6 @@
 				}
 			},
 			{
-				"description": "Maximum number of ASes to return",
 				"in": "query",
 				"name": "limit",
 				"schema": {
@@ -2026,14 +1974,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -2160,33 +2109,27 @@
 		"operationId": "radar-get-bgp-top-prefixes",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2201,13 +2144,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -2215,13 +2158,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2229,13 +2170,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2243,22 +2182,18 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of BGP update types.",
 				"in": "query",
 				"name": "updateType",
 				"schema": {
@@ -2266,8 +2201,8 @@
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
-							"ANNOUNCEMENT",
-							"WITHDRAWAL"
+							"announcement",
+							"withdrawal"
 						],
 						"type": "string"
 					},
@@ -2275,14 +2210,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}

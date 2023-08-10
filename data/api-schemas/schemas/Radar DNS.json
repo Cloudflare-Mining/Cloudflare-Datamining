@@ -4,33 +4,27 @@
 		"operationId": "radar-get-dns-top-ases",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of domain names.",
 				"in": "query",
 				"name": "domain",
 				"required": true,
@@ -38,15 +32,12 @@
 					"description": "Array of domain names.",
 					"example": "google.com",
 					"items": {
-						"description": "Array of domain names.",
-						"example": "google.com",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -61,13 +52,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -75,13 +66,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -89,13 +78,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -103,44 +90,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -169,7 +151,6 @@
 																		"type": "string"
 																	},
 																	"endTime": {
-																		"example": "2022-09-15T00:00:00Z",
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -184,7 +165,6 @@
 																		"type": "string"
 																	},
 																	"startTime": {
-																		"example": "2022-09-15T00:00:00Z",
 																		"format": "date-time",
 																		"type": "string"
 																	}
@@ -334,33 +314,27 @@
 		"operationId": "radar-get-dns-top-locations",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of domain names.",
 				"in": "query",
 				"name": "domain",
 				"required": true,
@@ -368,15 +342,12 @@
 					"description": "Array of domain names.",
 					"example": "google.com",
 					"items": {
-						"description": "Array of domain names.",
-						"example": "google.com",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -391,13 +362,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -405,13 +376,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -419,13 +388,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -433,44 +400,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -499,7 +461,6 @@
 																		"type": "string"
 																	},
 																	"endTime": {
-																		"example": "2022-09-15T00:00:00Z",
 																		"format": "date-time",
 																		"type": "string"
 																	},
@@ -514,7 +475,6 @@
 																		"type": "string"
 																	},
 																	"startTime": {
-																		"example": "2022-09-15T00:00:00Z",
 																		"format": "date-time",
 																		"type": "string"
 																	}

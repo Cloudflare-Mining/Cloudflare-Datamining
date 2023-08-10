@@ -4,36 +4,32 @@
 		"operationId": "radar-get-special-events",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"default": 0,
 					"description": "Number of objects to skip before grabbing results.",
-					"example": 0,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -183,7 +179,6 @@
 		"operationId": "radar-get-special-event-by-alias",
 		"parameters": [
 			{
-				"description": "Special Event alias",
 				"in": "path",
 				"name": "eventAlias",
 				"required": true,
@@ -194,14 +189,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -347,61 +343,6 @@
 		"operationId": "radar-get-special-event-timeseries-by-alias",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
-				"in": "query",
-				"name": "aggInterval",
-				"schema": {
-					"enum": [
-						"15m",
-						"1h",
-						"1d",
-						"1w"
-					],
-					"type": "string"
-				}
-			},
-			{
-				"description": "Name that will be used to name the series in response.",
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Name that will be used to name the series in response.",
-					"example": "main_series",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Start of the date range (inclusive).",
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"example": "2022-09-15T00:00:00Z",
-					"format": "date-time",
-					"type": "string"
-				}
-			},
-			{
-				"description": "End of the date range (inclusive).",
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"example": "2022-09-15T00:00:00Z",
-					"format": "date-time",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Location Alpha2 code.",
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Location Alpha2 code.",
-					"example": "US",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Special Event alias",
 				"in": "path",
 				"name": "eventAlias",
 				"required": true,
@@ -412,7 +353,6 @@
 				}
 			},
 			{
-				"description": "Special Event Category alias",
 				"in": "path",
 				"name": "categoryAlias",
 				"required": true,
@@ -423,14 +363,66 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Name that will be used to name the series in response.",
+					"example": "main_series",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range (inclusive).",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Location Alpha2 code.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -447,7 +439,6 @@
 											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2022-09-15T00:00:00Z",
 														"format": "date-time",
 														"type": "string"
 													},

@@ -9,76 +9,69 @@
 				"required": true,
 				"schema": {
 					"example": "google.com",
-					"format": "hostname",
-					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$",
+					"pattern": "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9])$",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
+					"description": "The ranking type.",
 					"enum": [
-						"POPULAR",
-						"TRENDING_RISE",
-						"TRENDING_STEADY"
+						"popular",
+						"trending_rise",
+						"trending_steady"
 					],
+					"example": "POPULAR",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of dates to filter the ranking.",
 				"in": "query",
 				"name": "date",
 				"schema": {
 					"description": "Array of dates to filter the ranking.",
 					"example": "2022-09-19",
 					"items": {
-						"description": "Array of dates to filter the ranking.",
-						"example": "2022-09-19",
-						"format": "date",
+						"nullable": true,
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -246,77 +239,66 @@
 		"operationId": "radar-get-ranking-domain-timeseries",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
+					"description": "The ranking type.",
 					"enum": [
-						"POPULAR",
-						"TRENDING_RISE",
-						"TRENDING_STEADY"
+						"popular",
+						"trending_rise",
+						"trending_steady"
 					],
+					"example": "POPULAR",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of locations (alpha-2 country codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of locations (alpha-2 country codes).",
 					"example": "US",
 					"items": {
-						"description": "Array of locations (alpha-2 country codes).",
-						"example": "US",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of domains names.",
 				"in": "query",
 				"name": "domains",
 				"schema": {
 					"description": "Array of comma separated list of domains names.",
 					"example": "google.com,facebook.com",
 					"items": {
-						"description": "Array of comma separated list of domains names.",
-						"example": "google.com,facebook.com",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -331,13 +313,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -345,13 +327,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -359,13 +339,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -373,14 +351,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -423,25 +402,37 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"<domain name>": {
-													"items": {
-														"example": 2,
-														"type": "integer"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														}
+													]
 												},
+												"type": "array"
+											},
+											"example": {
+												"google.com": [
+													2
+												],
+												"timestamps": [
+													"2022-09-02"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2022-09-02",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"timestamps",
-												"<domain name>"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -533,85 +524,76 @@
 		"operationId": "radar-get-ranking-top-domains",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of locations (alpha-2 country codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of locations (alpha-2 country codes).",
 					"example": "US",
 					"items": {
-						"description": "Array of locations (alpha-2 country codes).",
-						"example": "US",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of dates to filter the ranking.",
 				"in": "query",
 				"name": "date",
 				"schema": {
 					"description": "Array of dates to filter the ranking.",
 					"example": "2022-09-19",
 					"items": {
-						"description": "Array of dates to filter the ranking.",
-						"example": "2022-09-19",
-						"format": "date",
+						"nullable": true,
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
+					"description": "The ranking type.",
 					"enum": [
-						"POPULAR",
-						"TRENDING_RISE",
-						"TRENDING_STEADY"
+						"popular",
+						"trending_rise",
+						"trending_steady"
 					],
+					"example": "POPULAR",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}

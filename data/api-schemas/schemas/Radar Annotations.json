@@ -3,32 +3,27 @@
 		"operationId": "radar-get-annotations-outages",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"default": 0,
 					"description": "Number of objects to skip before grabbing results.",
-					"example": 0,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 					"enum": [
 						"1d",
 						"2d",
@@ -38,46 +33,46 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dControl",
-						"2dControl",
-						"7dControl",
-						"14dControl",
-						"28dControl",
-						"12wControl",
-						"24wControl"
+						"1dcontrol",
+						"2dcontrol",
+						"7dcontrol",
+						"14dcontrol",
+						"28dcontrol",
+						"12wcontrol",
+						"24wcontrol"
 					],
+					"example": "7d",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive).",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "Start of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "End of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -109,7 +104,7 @@
 																},
 																"locations": {
 																	"properties": {
-																		"asn": {
+																		"code": {
 																			"example": "US",
 																			"type": "string"
 																		},
@@ -119,7 +114,7 @@
 																		}
 																	},
 																	"required": [
-																		"asn",
+																		"code",
 																		"name"
 																	],
 																	"type": "object"
@@ -290,7 +285,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get latest internet outages and anomalies.",
+		"summary": "Get latest Internet outages and anomalies.",
 		"tags": [
 			"Radar Annotations"
 		],
@@ -310,21 +305,19 @@
 		"operationId": "radar-get-annotations-outages-top",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
+					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 					"enum": [
 						"1d",
 						"2d",
@@ -334,46 +327,46 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dControl",
-						"2dControl",
-						"7dControl",
-						"14dControl",
-						"28dControl",
-						"12wControl",
-						"24wControl"
+						"1dcontrol",
+						"2dcontrol",
+						"7dcontrol",
+						"14dcontrol",
+						"28dcontrol",
+						"12wcontrol",
+						"24wcontrol"
 					],
+					"example": "7d",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Start of the date range (inclusive).",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "Start of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "End of the date range (inclusive).",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "End of the date range (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}

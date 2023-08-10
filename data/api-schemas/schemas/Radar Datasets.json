@@ -4,48 +4,46 @@
 		"operationId": "radar-get-reports-datasets",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"default": 0,
 					"description": "Number of objects to skip before grabbing results.",
-					"example": 0,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Dataset type.",
 				"in": "query",
 				"name": "datasetType",
 				"schema": {
+					"default": "RANKING_BUCKET",
+					"description": "Dataset type.",
 					"enum": [
-						"RANKING_BUCKET",
-						"REPORT"
+						"ranking_bucket",
+						"report"
 					],
+					"example": "RANKING_BUCKET",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -187,7 +185,6 @@
 		"operationId": "radar-get-reports-dataset-download",
 		"parameters": [
 			{
-				"description": "Dataset alias or id",
 				"in": "path",
 				"name": "alias",
 				"required": true,
@@ -198,13 +195,11 @@
 				}
 			},
 			{
-				"description": "Filter dataset alias by date",
 				"in": "query",
 				"name": "date",
 				"schema": {
 					"description": "Filter dataset alias by date",
-					"example": "2022-09-15",
-					"format": "date",
+					"nullable": true,
 					"type": "string"
 				}
 			}
@@ -286,14 +281,15 @@
 		"operationId": "radar-post-reports-dataset-download-url",
 		"parameters": [
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}

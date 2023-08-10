@@ -4,18 +4,15 @@
 		"operationId": "radar-get-search-global",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Limit the number of objects per search category.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
@@ -24,7 +21,6 @@
 				}
 			},
 			{
-				"description": "Search for locations, AS and reports.",
 				"in": "query",
 				"name": "query",
 				"required": true,
@@ -35,17 +31,16 @@
 				}
 			},
 			{
-				"description": "Search types to be included in results.",
 				"in": "query",
 				"name": "include",
 				"schema": {
 					"description": "Search types to be included in results.",
 					"items": {
 						"enum": [
-							"SPECIAL_EVENTS",
-							"NOTEBOOKS",
-							"LOCATIONS",
-							"ASNS"
+							"special_events",
+							"notebooks",
+							"locations",
+							"asns"
 						],
 						"type": "string"
 					},
@@ -53,17 +48,16 @@
 				}
 			},
 			{
-				"description": "Search types to be excluded from results.",
 				"in": "query",
 				"name": "exclude",
 				"schema": {
 					"description": "Search types to be excluded from results.",
 					"items": {
 						"enum": [
-							"SPECIAL_EVENTS",
-							"NOTEBOOKS",
-							"LOCATIONS",
-							"ASNS"
+							"special_events",
+							"notebooks",
+							"locations",
+							"asns"
 						],
 						"type": "string"
 					},
@@ -71,14 +65,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}

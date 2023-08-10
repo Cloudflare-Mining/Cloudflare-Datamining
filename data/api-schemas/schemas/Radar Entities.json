@@ -4,29 +4,23 @@
 		"operationId": "radar-get-entities-asn-list",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"default": 0,
 					"description": "Number of objects to skip before grabbing results.",
-					"example": 0,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Comma separated list of ASNs.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
@@ -36,14 +30,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -190,7 +185,6 @@
 		"operationId": "radar-get-entities-asn-by-id",
 		"parameters": [
 			{
-				"description": "Autonomous System Number (ASN).",
 				"in": "path",
 				"name": "asn",
 				"required": true,
@@ -201,14 +195,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -294,7 +289,6 @@
 													"items": {
 														"properties": {
 															"aka": {
-																"example": "",
 																"type": "string"
 															},
 															"asn": {
@@ -408,7 +402,6 @@
 		"operationId": "radar-get-asns-rel",
 		"parameters": [
 			{
-				"description": "Get all ASNs with provider-customer or peering relationships with the given ASN",
 				"in": "path",
 				"name": "asn",
 				"required": true,
@@ -419,7 +412,6 @@
 				}
 			},
 			{
-				"description": "Get the AS relationship of ASN2 with respect to the given ASN",
 				"in": "query",
 				"name": "asn2",
 				"schema": {
@@ -428,14 +420,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -593,7 +586,6 @@
 		"operationId": "radar-get-entities-asn-by-ip",
 		"parameters": [
 			{
-				"description": "IP address.",
 				"in": "query",
 				"name": "ip",
 				"required": true,
@@ -604,14 +596,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -803,7 +796,6 @@
 		"operationId": "radar-get-entities-ip",
 		"parameters": [
 			{
-				"description": "IP address.",
 				"in": "query",
 				"name": "ip",
 				"required": true,
@@ -814,14 +806,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -949,29 +942,23 @@
 		"operationId": "radar-get-entities-locations",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to skip before grabbing results.",
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"default": 0,
 					"description": "Number of objects to skip before grabbing results.",
-					"example": 0,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Comma separated list of locations.",
 				"in": "query",
 				"name": "location",
 				"schema": {
@@ -981,14 +968,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1118,7 +1106,6 @@
 		"operationId": "radar-get-entities-location-by-alpha2",
 		"parameters": [
 			{
-				"description": "Alpha-2 country code.",
 				"in": "path",
 				"name": "location",
 				"required": true,
@@ -1129,14 +1116,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}

@@ -5,36 +5,33 @@
 		"operationId": "radar-get-dns-as112-timeseries-group-by-dnssec-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -49,13 +46,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -63,13 +60,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -77,13 +72,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -91,44 +84,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -256,36 +244,33 @@
 		"operationId": "radar-get-dns-as112-timeseries-group-by-edns-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -300,13 +285,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -314,13 +299,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -328,13 +311,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -342,44 +323,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -507,36 +483,33 @@
 		"operationId": "radar-get-dns-as112-timeseries-group-by-ip-version-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -551,13 +524,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -565,13 +538,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -579,13 +550,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -593,44 +562,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -758,36 +722,33 @@
 		"operationId": "radar-get-dns-as112-timeseries-group-by-protocol-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -802,13 +763,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -816,13 +777,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -830,13 +789,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -844,44 +801,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1009,36 +961,33 @@
 		"operationId": "radar-get-dns-as112-timeseries-group-by-query-type-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1053,13 +1002,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -1067,13 +1016,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1081,13 +1028,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1095,44 +1040,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1284,36 +1224,33 @@
 		"operationId": "radar-get-dns-as112-timeseries-group-by-response-codes-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1328,13 +1265,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -1342,13 +1279,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1356,13 +1291,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1370,44 +1303,39 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1535,36 +1463,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-arc-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1579,13 +1504,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -1593,13 +1518,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1607,13 +1530,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1621,37 +1542,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -1659,9 +1573,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -1669,7 +1583,6 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -1677,9 +1590,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -1687,7 +1600,6 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -1695,9 +1607,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -1705,14 +1617,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -1848,36 +1761,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-dkim-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -1892,13 +1802,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -1906,13 +1816,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1920,13 +1828,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -1934,37 +1840,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -1972,9 +1871,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -1982,7 +1881,6 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -1990,9 +1888,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2000,7 +1898,6 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2008,9 +1905,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2018,14 +1915,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -2161,36 +2059,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-dmarc-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2205,13 +2100,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -2219,13 +2114,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2233,13 +2126,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2247,37 +2138,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -2285,9 +2169,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2295,7 +2179,6 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -2303,9 +2186,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2313,7 +2196,6 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2321,9 +2203,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2331,14 +2213,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -2474,36 +2357,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-malicious-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2518,13 +2398,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -2532,13 +2412,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2546,13 +2424,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2560,37 +2436,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -2598,9 +2467,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2608,7 +2477,6 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -2616,9 +2484,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2626,7 +2494,6 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -2634,9 +2501,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2644,7 +2511,6 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2652,9 +2518,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2662,14 +2528,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -2797,36 +2664,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-spam-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -2841,13 +2705,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -2855,13 +2719,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2869,13 +2731,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -2883,37 +2743,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -2921,9 +2774,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2931,7 +2784,6 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -2939,9 +2791,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2949,7 +2801,6 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -2957,9 +2808,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2967,7 +2818,6 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -2975,9 +2825,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -2985,14 +2835,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -3120,36 +2971,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-spf-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3164,13 +3012,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -3178,13 +3026,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -3192,13 +3038,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -3206,37 +3050,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -3244,9 +3081,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3254,7 +3091,6 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -3262,9 +3098,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3272,7 +3108,6 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -3280,9 +3115,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3290,14 +3125,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -3433,36 +3269,33 @@
 		"operationId": "radar-get-email-security-timeseries-group-by-threat-category-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3477,13 +3310,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -3491,13 +3324,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -3505,13 +3336,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -3519,37 +3348,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for arc (Authenticated Received Chain).",
 				"in": "query",
 				"name": "arc",
 				"schema": {
@@ -3557,9 +3379,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3567,7 +3389,6 @@
 				}
 			},
 			{
-				"description": "Filter for dkim.",
 				"in": "query",
 				"name": "dkim",
 				"schema": {
@@ -3575,9 +3396,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3585,7 +3406,6 @@
 				}
 			},
 			{
-				"description": "Filter for dmarc.",
 				"in": "query",
 				"name": "dmarc",
 				"schema": {
@@ -3593,9 +3413,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3603,7 +3423,6 @@
 				}
 			},
 			{
-				"description": "Filter for spf.",
 				"in": "query",
 				"name": "spf",
 				"schema": {
@@ -3611,9 +3430,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
+							"pass",
+							"none",
+							"fail"
 						],
 						"type": "string"
 					},
@@ -3621,14 +3440,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -3772,36 +3592,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-bot-class-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -3816,13 +3633,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -3830,13 +3647,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -3844,13 +3659,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -3858,37 +3671,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -3896,9 +3702,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -3906,7 +3712,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -3914,8 +3719,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -3923,7 +3728,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -3931,9 +3735,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -3941,7 +3745,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -3949,8 +3752,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -3958,7 +3761,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -3966,13 +3768,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -3980,7 +3782,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -3988,11 +3789,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -4000,14 +3801,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -4140,36 +3942,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-browsers-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -4184,13 +3983,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -4198,13 +3997,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -4212,13 +4009,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -4226,37 +4021,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -4264,8 +4052,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -4273,7 +4061,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -4281,9 +4068,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -4291,7 +4078,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -4299,8 +4085,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -4308,7 +4094,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -4316,9 +4101,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -4326,7 +4111,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -4334,8 +4118,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -4343,7 +4127,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -4351,13 +4134,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -4365,7 +4148,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -4373,11 +4155,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -4385,7 +4167,6 @@
 				}
 			},
 			{
-				"description": "Limit the number of objects (eg browsers, verticals, etc) to the top items over the time range.",
 				"in": "query",
 				"name": "limitPerGroup",
 				"schema": {
@@ -4395,14 +4176,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -4419,13 +4201,21 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"<browser name>": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"type": "string"
 												},
+												"type": "array"
+											},
+											"example": {
+												"Chrome": [
+													"50.168733"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
 														"type": "string"
@@ -4434,8 +4224,7 @@
 												}
 											},
 											"required": [
-												"timestamps",
-												"<browser name>"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -4528,36 +4317,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-browser-families-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -4572,13 +4358,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -4586,13 +4372,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -4600,13 +4384,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -4614,37 +4396,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -4652,8 +4427,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -4661,7 +4436,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -4669,9 +4443,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -4679,7 +4453,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -4687,8 +4460,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -4696,7 +4469,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -4704,9 +4476,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -4714,7 +4486,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -4722,8 +4493,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -4731,7 +4502,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -4739,13 +4509,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -4753,7 +4523,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -4761,11 +4530,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -4773,14 +4542,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -4797,13 +4567,21 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"<browser name>": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"type": "string"
 												},
+												"type": "array"
+											},
+											"example": {
+												"Chrome": [
+													"50.168733"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
 														"type": "string"
@@ -4812,8 +4590,7 @@
 												}
 											},
 											"required": [
-												"timestamps",
-												"<browser name>"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -4906,36 +4683,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-device-type-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -4950,13 +4724,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -4964,13 +4738,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -4978,13 +4750,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -4992,37 +4762,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -5030,8 +4793,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -5039,7 +4802,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -5047,8 +4809,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -5056,7 +4818,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -5064,9 +4825,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -5074,7 +4835,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -5082,8 +4842,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -5091,7 +4851,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -5099,13 +4858,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -5113,7 +4872,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -5121,11 +4879,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -5133,14 +4891,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -5280,36 +5039,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-http-protocol-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -5324,13 +5080,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -5338,13 +5094,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -5352,13 +5106,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -5366,37 +5118,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -5404,8 +5149,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -5413,7 +5158,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -5421,9 +5165,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -5431,7 +5175,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -5439,9 +5182,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -5449,7 +5192,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -5457,8 +5199,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -5466,7 +5208,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -5474,13 +5215,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -5488,7 +5229,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -5496,11 +5236,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -5508,14 +5248,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -5648,36 +5389,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-http-version-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -5692,13 +5430,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -5706,13 +5444,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -5720,13 +5456,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -5734,37 +5468,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -5772,8 +5499,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -5781,7 +5508,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -5789,9 +5515,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -5799,7 +5525,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -5807,8 +5532,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -5816,7 +5541,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -5824,8 +5548,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -5833,7 +5557,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -5841,13 +5564,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -5855,7 +5578,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -5863,11 +5585,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -5875,14 +5597,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -6022,36 +5745,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-ip-version-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -6066,13 +5786,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -6080,13 +5800,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -6094,13 +5812,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -6108,37 +5824,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -6146,8 +5855,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -6155,7 +5864,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -6163,9 +5871,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -6173,7 +5881,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -6181,8 +5888,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -6190,7 +5897,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -6198,9 +5904,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -6208,7 +5914,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -6216,13 +5921,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -6230,7 +5935,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -6238,11 +5942,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -6250,14 +5954,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -6390,36 +6095,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-operating-system-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -6434,13 +6136,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -6448,13 +6150,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -6462,13 +6162,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -6476,37 +6174,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -6514,8 +6205,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -6523,7 +6214,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -6531,9 +6221,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -6541,7 +6231,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -6549,8 +6238,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -6558,7 +6247,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -6566,9 +6254,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -6576,7 +6264,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -6584,8 +6271,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -6593,7 +6280,6 @@
 				}
 			},
 			{
-				"description": "Filter for tls version.",
 				"in": "query",
 				"name": "tlsVersion",
 				"schema": {
@@ -6601,11 +6287,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"TLSv1_0",
-							"TLSv1_1",
-							"TLSv1_2",
-							"TLSv1_3",
-							"TLSvQUIC"
+							"tlsv1_0",
+							"tlsv1_1",
+							"tlsv1_2",
+							"tlsv1_3",
+							"tlsvquic"
 						],
 						"type": "string"
 					},
@@ -6613,14 +6299,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -6637,13 +6324,21 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"<OS name>": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"type": "string"
 												},
+												"type": "array"
+											},
+											"example": {
+												"ANDROID": [
+													"97.28898"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
 														"type": "string"
@@ -6652,8 +6347,7 @@
 												}
 											},
 											"required": [
-												"timestamps",
-												"<OS name>"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -6746,36 +6440,33 @@
 		"operationId": "radar-get-http-timeseries-group-by-tls-version-deprecated",
 		"parameters": [
 			{
-				"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 				"in": "query",
 				"name": "aggInterval",
 				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
 					"enum": [
 						"15m",
 						"1h",
 						"1d",
 						"1w"
 					],
+					"example": "1h",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -6790,13 +6481,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -6804,13 +6495,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -6818,13 +6507,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -6832,37 +6519,30 @@
 				}
 			},
 			{
-				"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 				"in": "query",
 				"name": "asn",
 				"schema": {
 					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
 					"example": "15169",
 					"items": {
-						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-						"example": "15169",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
 					"items": {
-						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-						"example": "US,CA",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
 				"in": "query",
 				"name": "botClass",
 				"schema": {
@@ -6870,8 +6550,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"LIKELY_AUTOMATED",
-							"LIKELY_HUMAN"
+							"likely_automated",
+							"likely_human"
 						],
 						"type": "string"
 					},
@@ -6879,7 +6559,6 @@
 				}
 			},
 			{
-				"description": "Filter for device type.",
 				"in": "query",
 				"name": "deviceType",
 				"schema": {
@@ -6887,9 +6566,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"DESKTOP",
-							"MOBILE",
-							"OTHER"
+							"desktop",
+							"mobile",
+							"other"
 						],
 						"type": "string"
 					},
@@ -6897,7 +6576,6 @@
 				}
 			},
 			{
-				"description": "Filter for http protocol.",
 				"in": "query",
 				"name": "httpProtocol",
 				"schema": {
@@ -6905,8 +6583,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"HTTP",
-							"HTTPS"
+							"http",
+							"https"
 						],
 						"type": "string"
 					},
@@ -6914,7 +6592,6 @@
 				}
 			},
 			{
-				"description": "Filter for http version.",
 				"in": "query",
 				"name": "httpVersion",
 				"schema": {
@@ -6922,9 +6599,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"HTTPv1",
-							"HTTPv2",
-							"HTTPv3"
+							"httpv1",
+							"httpv2",
+							"httpv3"
 						],
 						"type": "string"
 					},
@@ -6932,7 +6609,6 @@
 				}
 			},
 			{
-				"description": "Filter for ip version.",
 				"in": "query",
 				"name": "ipVersion",
 				"schema": {
@@ -6940,8 +6616,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"IPv4",
-							"IPv6"
+							"ipv4",
+							"ipv6"
 						],
 						"type": "string"
 					},
@@ -6949,7 +6625,6 @@
 				}
 			},
 			{
-				"description": "Filter for os name.",
 				"in": "query",
 				"name": "os",
 				"schema": {
@@ -6957,13 +6632,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"WINDOWS",
-							"MACOSX",
-							"IOS",
-							"ANDROID",
-							"CHROMEOS",
-							"LINUX",
-							"SMART_TV"
+							"windows",
+							"macosx",
+							"ios",
+							"android",
+							"chromeos",
+							"linux",
+							"smart_tv"
 						],
 						"type": "string"
 					},
@@ -6971,14 +6646,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -7132,77 +6808,66 @@
 		"operationId": "radar-get-ranking-domain-timeseries-deprecated",
 		"parameters": [
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 5,
 					"description": "Limit the number of objects in the response.",
 					"example": 5,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "The ranking type.",
 				"in": "query",
 				"name": "rankingType",
 				"schema": {
 					"default": "POPULAR",
+					"description": "The ranking type.",
 					"enum": [
-						"POPULAR",
-						"TRENDING_RISE",
-						"TRENDING_STEADY"
+						"popular",
+						"trending_rise",
+						"trending_steady"
 					],
+					"example": "POPULAR",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Array of names that will be used to name the series in responses.",
 				"in": "query",
 				"name": "name",
 				"schema": {
 					"description": "Array of names that will be used to name the series in responses.",
 					"example": "main_series",
 					"items": {
-						"description": "Array of names that will be used to name the series in responses.",
-						"example": "main_series",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of locations (alpha-2 country codes).",
 				"in": "query",
 				"name": "location",
 				"schema": {
 					"description": "Array of locations (alpha-2 country codes).",
 					"example": "US",
 					"items": {
-						"description": "Array of locations (alpha-2 country codes).",
-						"example": "US",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "Array of comma separated list of domains names.",
 				"in": "query",
 				"name": "domains",
 				"schema": {
 					"description": "Array of comma separated list of domains names.",
 					"example": "google.com,facebook.com",
 					"items": {
-						"description": "Array of comma separated list of domains names.",
-						"example": "google.com,facebook.com",
 						"type": "string"
 					},
 					"type": "array"
 				}
 			},
 			{
-				"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 				"in": "query",
 				"name": "dateRange",
 				"schema": {
@@ -7217,13 +6882,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
+							"1dcontrol",
+							"2dcontrol",
+							"7dcontrol",
+							"14dcontrol",
+							"28dcontrol",
+							"12wcontrol",
+							"24wcontrol"
 						],
 						"type": "string"
 					},
@@ -7231,13 +6896,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the start of a series.",
 				"in": "query",
 				"name": "dateStart",
 				"schema": {
 					"description": "Array of datetimes to filter the start of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -7245,13 +6908,11 @@
 				}
 			},
 			{
-				"description": "Array of datetimes to filter the end of a series.",
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
 					"description": "Array of datetimes to filter the end of a series.",
 					"items": {
-						"example": "2022-09-15T00:00:00Z",
 						"format": "date-time",
 						"type": "string"
 					},
@@ -7259,14 +6920,15 @@
 				}
 			},
 			{
-				"description": "Format results are returned in.",
 				"in": "query",
 				"name": "format",
 				"schema": {
+					"description": "Format results are returned in.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"json",
+						"csv"
 					],
+					"example": "json",
 					"type": "string"
 				}
 			}
@@ -7309,25 +6971,37 @@
 											"type": "object"
 										},
 										"serie_0": {
-											"properties": {
-												"<domain name>": {
-													"items": {
-														"example": 2,
-														"type": "integer"
-													},
-													"type": "array"
+											"additionalProperties": {
+												"items": {
+													"anyOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														}
+													]
 												},
+												"type": "array"
+											},
+											"example": {
+												"google.com": [
+													2
+												],
+												"timestamps": [
+													"2022-09-02"
+												]
+											},
+											"properties": {
 												"timestamps": {
 													"items": {
-														"example": "2022-09-02",
 														"type": "string"
 													},
 													"type": "array"
 												}
 											},
 											"required": [
-												"timestamps",
-												"<domain name>"
+												"timestamps"
 											],
 											"type": "object"
 										}
