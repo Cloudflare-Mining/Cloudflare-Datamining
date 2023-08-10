@@ -162,6 +162,24 @@
 		"label": "access_acct_write"
 	},
 	{
+		"id": "de99c87e48d642ce8c985d027905b475",
+		"name": "Access: Population Read",
+		"description": "Grants read access to Cloudflare Access Populations",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "access_population_read"
+	},
+	{
+		"id": "bc783549a3a741aaa10556faf8b485bb",
+		"name": "Access: Population Write",
+		"description": "Grants write access to Cloudflare Access Populations",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "access_population_write"
+	},
+	{
 		"id": "99ff99e4e30247a99d3777a8c4c18541",
 		"name": "Access: SSH Auditing CA Read",
 		"description": "Grants read access to Cloudflare Access SSH Auditing Certificate Authorities",
