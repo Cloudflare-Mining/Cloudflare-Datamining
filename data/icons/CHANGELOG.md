@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.5.3
+
+### Patch Changes
+
+- 2018bb05f9: Add new `home` svg icon
+
 ## 11.5.2
 
 ### Patch Changes

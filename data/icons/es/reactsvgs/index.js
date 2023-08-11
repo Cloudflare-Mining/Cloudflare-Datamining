@@ -51,6 +51,7 @@ import Github from './Github';
 import Globe from './Globe';
 import Hamburger from './Hamburger';
 import Help from './Help';
+import Home from './Home';
 import Image from './Image';
 import InfoSign from './InfoSign';
 import InternetBrowser from './InternetBrowser';
@@ -184,6 +185,7 @@ export default {
   globe: Globe,
   hamburger: Hamburger,
   help: Help,
+  home: Home,
   image: Image,
   'info-sign': InfoSign,
   'internet-browser': InternetBrowser,
