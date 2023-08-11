@@ -867,6 +867,11 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		info_msg: "Cloudflare will validate the certificate on your behalf only for zones that are proxying traffic.",
 		info_msg_auto: "Cloudflare will validate the certificate on your behalf. No action is required."
 	},
+	digicert_offboard: {
+		toast_info: "Cloudflare will deprecate DigiCert as a certificate authority. Certificates issued now will be served until they are up for expiration. Refer to the <0>DigiCert update documentation</0> for more details.",
+		deprecating: "deprecating soon",
+		edge_certficiates_card_toast_info: "Attention: Cloudflare will deprecate DigiCert as a certificate authority. This update affects Universal SSL, Advanced Certificate Manager, and SSL for SaaS. Refer to the <0>DigiCert update documentation</0> to ensure that you are prepared for this change."
+	},
 	acm: {
 		ca: "Certificate Authority",
 		title: "Advanced Certificate Manager",
@@ -889,7 +894,8 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		order_success_autodcv: "Your Advanced certificate has been created will be automatically validated and deployed to our edge and served to your visitors.",
 		blocked_ent: "Please contact your Customer Success Manager to purchase ACM.",
 		current_plan_paranthetical: " (current plan)",
-		banner: "Advanced Certificate Manager: Unlock more control and flexibility for your Certificates and SSL/TLS settings. <0>Activate></0>"
+		banner_title: "Advanced Certificate Manager",
+		banner_description: "Unlock more control and flexibility for your Certificates and SSL/TLS settings"
 	},
 	api: {
 		get_certificate_packs: "List Certificate Packs"
