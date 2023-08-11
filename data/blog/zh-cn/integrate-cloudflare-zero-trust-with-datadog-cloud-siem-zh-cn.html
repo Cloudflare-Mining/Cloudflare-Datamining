@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image5--1--3.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Cloudflare 的 Zero Trust 平台可帮助企业规划并保持强大的安全态势。这些措施包括 Zero Trust 网络访问（有助于过滤流量的安全 Web 网关）、云访问安全代理和数据丢失防护（保护传输中和云中的数据）。客户使用 Cloudflare 来验证、隔离和检查由 IT 管理的所有设备。我们可组合的内嵌解决方案提供了一种简化的安全性方法和全面的日志集。</p>
+	<p>我们从许多客户那里了解到，他们将这些日志汇总到了 Datadog 的 Cloud SIEM 产品中。Datadog Cloud SIEM 为云扩展的动态环境提供威胁检测、调查和自动响应。Cloud SIEM 可实时分析运营和安全日志（不受日志大小影响），同时利用开箱即用的集成和规则来检测并调查威胁。它还能通过开箱即用的工作流程蓝图自动进行响应和补救。开发人员、安全和运营团队还可以利用可观察性数据详情并在单个统一平台上高效协作以加快安全性调查。我们之前在 Datadog 上提供了开箱即用的 Cloudflare CDN 仪表板。这有助于我们的客户深入了解产品的使用情况以及响应时间、HTTP 状态代码、缓存命中率等性能指标。客户可以对 Cloudflare 的关键指标进行收集、可视化并发出警报。</p>
+	<p>今天，我们隆重宣布 Cloudflare Zero Trust 与 Datadog 的集成普遍可用。这种更深层次的集成在 Cloud SIEM 中提供了 Cloudflare 内容包，其中包括开箱即用的仪表板和检测规则，这将有助于我们的客户把 Zero Trust 日志提取到 Datadog，从而大大提高对其 Zero Trust 形势的安全性洞察。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image4.png" class="kg-image" alt="" loading="lazy" width="1999" height="1343"></figure>
+	<blockquote>“Datadog SIEM 与 Cloudflare 的集成提供了关于 Cloudflare Zero Trust 集成活动的整体视图，有助于安全和开发团队快速识别和响应 Cloudflare Zero Trust 生态系统中应用程序、设备和用户的异常活动。这种集成提供了基于 CASB（云访问安全代理）发现而自动生成信号的检测规则以及不可能的旅行场景，还改进了仪表板以方便发现异常，并通过开箱即用的工作流自动化蓝图加速响应和补救，从而快速遏制攻击者的活动。”<br>- <strong>Yash Kumar，</strong> Datadog 产品高级总监。</blockquote>
+	<h2 id="%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8B">如何开始</h2>
+	<h3 id="%E8%AE%BE%E7%BD%AE%E5%89%8D%E5%BE%80-datadog-%E7%9B%AE%E7%9A%84%E5%9C%B0%E7%9A%84-logpush-%E4%BD%9C%E4%B8%9A">设置前往 Datadog 目的地的 Logpush 作业</h3>
+	<p>使用 Cloudflare 仪表板或 API <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/datadog" target="_blank">创建 Logpush 作业</a>，为您要在 Datadog 上提取的每个数据集启用所有字段。目前，我们有八个帐号范围的数据集（访问请求、审计日志、CASB 发现、网关日志（包括 DNS、网络、HTTP）、Zero Trust 会话日志）可提取到 Datadog 中。</p>
+	<h3 id="%E5%9C%A8-datadog-%E4%B8%AD%E5%AE%89%E8%A3%85cloudflare-tile">在 Datadog 中安装Cloudflare Tile</h3>
+	<p>在 Datadog 仪表板中，找到并安装 Datadog 集成目录中的 Cloudflare Tile。在此阶段，Datadog 的开箱即用日志处理<a href="https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source" target="_blank">管道</a>将自动解析和规范 Cloudflare Zero Trust 日志。</p>
+	<h3 id="%E5%88%86%E6%9E%90%E6%82%A8%E7%9A%84-zero-trust-%E6%97%A5%E5%BF%97%E5%B9%B6%E5%B0%86%E5%85%B6%E4%B8%8E-datadog-cloud-siem-%E7%9A%84%E7%8E%B0%E6%88%90%E5%86%85%E5%AE%B9%E7%9B%B8%E5%85%B3%E8%81%94">分析您的 Zero Trust 日志并将其与 Datadog Cloud SIEM 的现成内容相关联</h3>
+	<p>我们最新改进的与 Datadog 的集成使安全团队能够利用 Cloudflare 内容包快速轻松地监控其 Zero Trust 组件。这其中包括开箱即用的仪表板，该仪表板现在具有 Zero Trust 部分，突出显示与 Cloudflare Zero Trust 生态系统中的应用程序、设备和用户活动有关的各种小组件。该部分可提供整体视图，有助于您快速发现并应对异常情况。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-2.png" class="kg-image" alt="" loading="lazy" width="1728" height="1117"></figure>
+	<h3 id="%E4%B8%BA-casb-%E5%BB%BA%E7%AB%8B%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%B5%8B">为 CASB 建立的安全性检测</h3>
+	<p>随着企业使用越来越多的 SaaS 应用程序，对静态数据的洞察和控制变得愈发重要。Cloudflare CASB 发现通过为所有集成 SaaS 应用程序提供安全性风险洞察来实现这一点。</p>
+	<p>得益于这种全新的集成，Datadog 现可提供一种开箱即用的检测规则，可用于检测任何 CASB 发现。对于任何可能表明集成 SaaS 应用程序（如 Microsoft 365 和 Google Workspace）内出现可疑活动的 CASB 安全性发现，都会触发不同严重性级别的警报。在下列示例中，CASB 发现指出了缺少 Google Workspace 域记录的资产。</p>
+	<p>这种检测有助于识别和纠正错误配置或任何安全性问题，可节省时间并降低出现安全漏洞的机率。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image2.png" class="kg-image" alt="" loading="lazy" width="1776" height="1024"></figure>
+	<h3 id="%E9%92%88%E5%AF%B9%E4%B8%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E6%97%85%E8%A1%8C%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E6%A3%80%E6%B5%8B">针对不可能的旅行的安全性检测</h3>
+	<p>其中一个最常见安全问题的检测方法可能简单得令人难以置信。例如，用户看似从一个地点登录，但不久后又从一个实际距离相隔很远的地点登录。Datadog 的新检测规则正是通过<a href="https://docs.datadoghq.com/security/default_rules/cloudflare-impossible-travel" target="_blank">不可能的旅行检测规则</a>来避免这种情况的出现。如果 Datadog Cloud SIEM 发现某用户的连续两条日志的地址表明其以令人难以置信的超过 1000 km/h 的速度旅行超过 500 km，则会触发安全警报。然后，管理员可确定是否存在安全漏洞并采取相应措施。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image3.png" class="kg-image" alt="" loading="lazy" width="1274" height="645"></figure>
+	<h2 id="%E4%B8%8B%E4%B8%80%E6%AD%A5">下一步</h2>
+	<p>Cloudflare 和 Datadog 的客户现在可以通过增强型仪表板和全新的检测规则更全面地了解其产品和安全态势。我们很荣幸能开发出独家检测规则来为客户创造更多价值。</p>
+	<p>如果您是使用 Datadog 的 Cloudflare 客户，从<a href="https://docs.datadoghq.com/integrations/cloudflare" target="_blank">今天</a>开始探索全新集成吧。</p>
+</div>

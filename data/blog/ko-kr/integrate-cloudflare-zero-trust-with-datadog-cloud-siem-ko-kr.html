@@ -1,0 +1,28 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image5--1--1.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Cloudflare의 Zero Trust 플랫폼은 조직이 강력한 보안 상태를 매핑하고 채택할 수 있도록 지원합니다. 여기에는 Zero Trust 네트워크 액세스, 트래픽 필터링을 지원하는 보안 웹 게이트웨이, 전송 중인 데이터와 클라우드에 있는 데이터를 보호하는 클라우드 액세스 보안 브로커 및 데이터 손실 방지 등이 포함됩니다. 고객은 Cloudflare를 사용하여 IT에서 관리하는 모든 장치를 확인하고 격리하며 검사합니다. Cloudflare의 구성 가능한 인라인 솔루션은 보안에 대한 간소화된 접근 방식 및 포괄적인 로그 세트를 제공합니다.</p>
+	<p>Cloudflare는 이러한 로그를 Datadog의 클라우드 SIEM 제품으로 통합한다는 이야기를 많은 고객으로부터 들어왔습니다. Datadog 클라우드 SIEM은 동적인 클라우드 규모의 환경에 대한 위협을 감지하며 조사하고 자동화된 대응을 제공합니다. 클라우드 SIEM은 볼륨에 관계없이 실시간으로 운영 및 보안 로그를 분석하며, 즉시 사용 가능한 통합 및 규칙을 활용하여 위협을 감지하고 조사합니다. 또한 즉시 사용 가능한 워크플로 청사진을 통해 대응 및 수정 작업을 자동화합니다. 개발자, 보안 및 운영팀도 통합된 단일 플랫폼에서 관찰 가능성이 있는 상세한 데이터를 활용하고 효율적으로 협업하여 더 빠른 보안 조사가 가능합니다. 이전에는 Datadog에서 바로 사용할 수 있는 Cloudflare CDN용 대시보드가 있었습니다. 이를 통해 고객은 응답 시간, HTTP 상태 코드, 캐시 적중률 등 제품 사용 및 성능 지표에 대한 귀중한 인사이트를 얻을 수 있습니다. 고객은 핵심 Cloudflare 지표를 수집하고 시각화하며 경고 알림을 받을 수 있습니다.</p>
+	<p>오늘 Cloudflare Zero Trust와Datadog의 통합을 정식 출시하게 되어 매우 기쁘게 생각합니다. 이 심층 통합은 클라우드 SIEM 내에서 Cloudflare 콘텐츠 팩을 제공하며, 콘텐츠 팩에는 즉시 사용 가능한 대시보드와 감지 규칙이 포함되어 있어 Zero Trust 로그를 Datadog으로 수집하는 고객이 Zero Trust 환경에 대해 더욱 향상된 보안 인사이트를 얻을 수 있도록 지원합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image4.png" class="kg-image" alt="" loading="lazy" width="1999" height="1343"></figure>
+	<blockquote>"Cloudflare와의 Datadog SIEM 통합은 Cloudflare의 전반적인 활동에 대한 전체적인 관점을 제공합니다. Zero Trust 통합을 통해 보안 및 개발팀은 Cloudflare Zero Trust 생태계 내의 앱, 장치, 사용자 전반의 비정상적인 활동을 신속하게 식별하고 대응할 수 있습니다. 이 통합은 CASB(클라우드 액세스 보안 브로커) 결과와 불가능한 이동 시나리오를 기반으로, 신호를 자동으로 생성하는 감지 규칙 및 이상 징후를 쉽게 발견할 수 있도록 개선된 대시보드를 제공하며, 즉시 사용 가능한 워크플로 자동화 청사진을 통해 공격자의 활동을 신속하게 억제하기 위한 대응 및 해결을 가속화합니다."<br>- <strong>Yash Kumar,</strong> 제품 담당 선임 이사, Datadog</blockquote>
+	<hr>
+	<h2 id="%EC%8B%9C%EC%9E%91-%EB%B0%A9%EB%B2%95">시작 방법</h2>
+	<h3 id="datadog-%EB%8C%80%EC%83%81%EC%97%90-logpush-%EC%9E%91%EC%97%85-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0">Datadog 대상에 Logpush 작업 설정하기</h3>
+	<p>Cloudflare 대시보드 또는 API를 사용하여 <a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/datadog" target="_blank">Logpush 작업을 생성하고</a> Datadog에서 수집하려는 각 데이터 세트에 대해 모든 필드를 활성화하세요. 현재 사용할 수 있는 8개의 계정 범위 데이터 세트(액세스 요청, 감사 로그, CASB 결과, DNS, 네트워크, HTTP를 포함한 게이트웨이 로그, Zero Trust 세션 로그)가 있으며, 이 데이터 세트는 Datadog에 수집할 수 있습니다.</p>
+	<h3 id="datadog%EC%97%90-cloudflare-%ED%83%80%EC%9D%BC-%EC%84%A4%EC%B9%98">Datadog에 Cloudflare 타일 설치</h3>
+	<p>Datadog 대시보드의 Datadog 통합 카탈로그에서 Cloudflare 타일을 찾아 설치합니다. 이 단계에서는 Datadog의 즉시 사용 가능한 로그 처리 <a href="https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source" target="_blank">파이프라인</a>이 Cloudflare Zero Trust 로그를 자동으로 분석하고 정규화합니다.</p>
+	<h3 id="zero-trust-%EB%A1%9C%EA%B7%B8%EB%A5%BC-%EB%B6%84%EC%84%9D%ED%95%98%EA%B3%A0-datadog-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-siem%EC%9D%98-%EC%A6%89%EC%8B%9C-%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%BD%98%ED%85%90%EC%B8%A0%EC%99%80-%EC%84%9C%EB%A1%9C-%EC%97%B0%EA%B4%80%EC%8B%9C%ED%82%A4%EA%B8%B0">Zero Trust 로그를 분석하고 Datadog 클라우드 SIEM의 즉시 사용 가능한 콘텐츠와 서로 연관시키기</h3>
+	<p>새롭게 개선된 Datadog과의 통합을 통해 보안팀은 Cloudflare 콘텐츠 팩으로 Zero Trust 구성 요소를 빠르고 쉽게 모니터링할 수 있습니다. 여기에는 즉시 사용 가능한 대시보드가 포함됩니다. 이제 이 대시보드에는 이제 Cloudflare Zero Trust 생태계의 응용 프로그램, 장치, 사용자 전반의 활동에 대한 다양한 위젯을 강조하는 Zero Trust 섹션 기능이 포함됩니다. 이 섹션에서는 전체적인 관점을 제공하여 이상 징후를 신속하게 발견하고 대응할 수 있도록 도와줍니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-2.png" class="kg-image" alt="" loading="lazy" width="1728" height="1117"></figure>
+	<h3 id="casb%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%B3%B4%EC%95%88-%EA%B0%90%EC%A7%80-%EA%B5%AC%EC%B6%95">CASB를 위한 보안 감지 구축</h3>
+	<p>기업의 SaaS 애플리케이션 사용량이 증가하며, 미사용 데이터에 대한 인사이트와 제어 기능이 더욱 중요해지고 있습니다. Cloudflare CASB 결과는 통합된 모든 Saas 애플리케이션에 대한 보안 위험 인사이트를 제공하여 이를 수행합니다.</p>
+	<p>이제 Datadog은 이 새로운 통합을 통해 모든 CASB 결과를 감지하고 즉시 사용 가능한 감지 규칙을 제공합니다. 이 경고는 Microsoft 365 및 Google Workspace 등 통합된 Saas 앱 내에서 의심스러운 활동을 나타낼 수 있는 모든 CASB 보안 결과에 대해 다양한 심각도 수준으로 작동합니다. 아래 예시에서 CASB 결과는 Google Workspace 도메인 레코드가 누락된 자산을 가리킵니다.</p>
+	<p>이 감지 기능은 잘못된 구성이나 보안 문제를 식별하고 해결하는 데 도움이 되기 때문에 시간을 절약하고 보안 침해 가능성을 줄일 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image2.png" class="kg-image" alt="" loading="lazy" width="1776" height="1024"></figure>
+	<h3 id="%EB%B6%88%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%97%AC%ED%96%89%EC%97%90-%EB%8C%80%ED%95%9C-%EB%B3%B4%EC%95%88-%EA%B0%90%EC%A7%80">불가능한 여행에 대한 보안 감지</h3>
+	<p>가장 일반적인 보안 문제 중 하나는 의외로 간단한 방식으로 나타날 수 있습니다. 예를 들어, 한 위치에서 로그인한 것처럼 보이지만, 잠시 후 물리적으로 너무 멀리 떨어진 위치에서 로그인하는 사용자가 있을 수 있습니다. Datadog의 새로운 감지 규칙은 <a href="https://docs.datadoghq.com/security/default_rules/cloudflare-impossible-travel" target="_blank">불가능한 여행 감지 규칙</a>을 통해 이러한 시나리오를 정확히 해결합니다. Datadog 클라우드 SIEM이 사용자에 대한 두 개의 연속적인 로그 라인에 대해 1,000km/h 이상의 속도로 500km 이상의 불가능한 이동을 나타낸다고 판단하는 경우 보안 경보가 작동합니다. 그러면 관리자는 보안 침해 여부를 판단하고 그에 따른 조치를 취할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/08/image3.png" class="kg-image" alt="" loading="lazy" width="1274" height="645"></figure>
+	<h2 id="%EB%8B%A4%EC%9D%8C-%EB%8B%A8%EA%B3%84">다음 단계</h2>
+	<p>이제 Cloudflare 및 Datadog 고객은 향상된 대시보드와 새로운 감지 규칙을 통해 제품 및 보안 상태를 더욱 포괄적으로 파악할 수 있습니다. Cloudflare는 고객에게 더 많은 가치를 제공하고 고유한 감지 규칙을 개발하기 위해 노력하게 되어 기쁩니다.</p>
+	<p>Datadog을 사용하는 Cloudflare 고객이라면 <a href="https://docs.datadoghq.com/integrations/cloudflare" target="_blank">오늘</a>부터 새로운 통합을 살펴보시기 바랍니다.</p>
+</div>

@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image4-2.png" class="kg-image" alt="DLP Exact Data Match beta now available" loading="lazy" width="1999" height="1125"></figure>
+	<p>让安全从业人员彻夜难眠的一些最著名的数据泄露事件涉及数百万用户记录的泄露。很多公司都丢失了姓名、地址、电子邮件地址、社会安全号码、密码和大量其他敏感信息。保护这些数据是大多数安全团队最重要的工作，但很多团队仍然难以真正检测到这些泄露。</p>
+	<p>Cloudflare 的 Data Loss Prevention 套件已经具备识别信用卡号等敏感数据的能力；但由于每天传输的数据量巨大，要了解哪些涉及到敏感数据的交易实际上存在问题，可能会很有挑战性。我们经常听到客户说：“我不在乎员工用个人信用卡在网上买东西。我在乎的是客户的信用卡信息遭泄露。” </p>
+	<p>为此，我们努力寻找一种方法来区分任何信用卡和属于特定客户的信用卡。现在，我们很高兴地宣布推出 Data Loss Prevention 的最新功能——Exact Data Match。通过 Exact Data Match（EDM，即精确数据匹配），客户可以安全地告诉我们他们想要保护哪些数据，然后我们会识别、记录并阻止这些数据的存在或移动。例如，如果您向我们提供一组信用卡号码，我们的 DLP 将只在您的流量或存储库中扫描这些信用卡。这样，您就可以为您的组织创建有针对性的 DLP 检测计划。</p>
+	<h3 id="%E4%BB%80%E4%B9%88%E6%98%AF-exact-data-match%EF%BC%88%E7%B2%BE%E7%A1%AE%E6%95%B0%E6%8D%AE%E5%8C%B9%E9%85%8D%EF%BC%89%EF%BC%9F">什么是 Exact Data Match（精确数据匹配）？</h3>
+	<p>许多 Data Loss Prevention (DLP，即数据丢失防护) 检测都从一般的模式识别开始，通常使用正则表达式，然后通过其他标准进行验证。验证可以利用校验和、机器学习模型等多种技术。但是，这验证的是该模式是信用卡，而不是<em>您的</em>信用卡。</p>
+	<p>通过 Exact Data Match，您可以准确地告诉我们您想要保护的数据，但我们永远不会看到数据的明文。您提供自己选择的数据列表，如姓名、地址或信用卡号列表，这些数据在到达 Cloudflare 之前就会被哈希。我们会存储哈希信息，并扫描您的流量或内容，查找与哈希匹配的内容。当我们发现匹配数据时，我们会根据您的策略加以记录或阻止。 </p>
+	<p>与一般模式匹配相比，通过使用有限的数据列表，我们大大减少了误报。同时，对数据进行散列处理页可以保护您的数据隐私。我们的目标是满足您的数据保护和隐私需求。</p>
+	<h3 id="%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F">如何使用？</h3>
+	<p>现在，我们为您提供了上传 DLP 数据集的功能。这些数据集允许您提供用于 DLP 检测的多批数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/Screenshot-2023-07-12-at-18.38.25.png" class="kg-image" alt="" loading="lazy" width="1612" height="318"></figure>
+	<p>创建数据集时，请提供名称、描述和包含待匹配数据的文件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="826"></figure>
+	<p>上传该文件时，Cloudflare 会在您的浏览器中单向哈希数据。然后，哈希后的数据会通过 API 传输到 Cloudflare，而明文数据永远不会离开浏览器。</p>
+	<p>您可以在数据集表格中查看上传文件的状态。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-7.png" class="kg-image" alt="" loading="lazy" width="1999" height="408"></figure>
+	<p>您现在可以将数据集添加到 DLP 配置文件中进行检测。您还可以在同一 DLP 配置文件中添加其他预定义和自定义的条目。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-6.png" class="kg-image" alt="" loading="lazy" width="882" height="354"></figure>
+	<p>DLP 配置文件可用于<a href="https://blog.cloudflare.com/zh-cn/inline-dlp-ga-zh-cn">通过 Cloudflare Gateway</a> 进行内联扫描和防护，或通过 Cloudflare CASB 扫描静态数据。</p>
+	<h3 id="%E6%88%91%E8%83%BD%E5%8F%82%E5%8A%A0%E6%B5%8B%E8%AF%95%E5%90%97%EF%BC%9F">我能参加测试吗？</h3>
+	<p>现在，所有 DLP 客户都可以使用精确数据匹配功能。如果您不是 DLP 客户，但想了解更多有关 Cloudflare One 和 DLP 的信息，请<a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank">联系我们进行咨询</a>。</p>
+	<h3 id="%E6%8E%A5%E4%B8%8B%E6%9D%A5%EF%BC%9F">接下来？</h3>
+	<p>客户可以使用多种不同的格式存储数据，也可以通过多种不同的方式监控数据。我们的目标是根据贵组织的需要提供尽可能高的灵活性，以实现数据保护目标。</p>
+</div>
