@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.4.12
+
 ## 1.4.11
 
 ### Patch Changes
