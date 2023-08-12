@@ -131,11 +131,15 @@ async function run() {
 			for(const file of getFiles) {
 				const filePath = path.resolve(`${extractDir}/${file}`);
 				if(await fs.pathExists(filePath)) {
-					const fileContents = await fs.readFile(filePath, 'utf8');
-					fs.writeFile(
-						path.resolve(`${dir}/${file}`),
-						fileContents,
-					);
+					try{
+						const fileContents = await fs.readFile(filePath, 'utf8');
+						fs.writeFile(
+							path.resolve(`${dir}/${file}`),
+							fileContents,
+						);
+					}catch{
+						// we tried
+					}
 				}
 			}
 		});
