@@ -1,5 +1,35 @@
 [
 	{
+		"id": "2964cc9c4ebefdc6bf2bdbc4e106b906",
+		"name": "Turnstile Read",
+		"description": "Grants read access to Turnstile",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "d4c68d56bf2ef665eb82994199a393fd",
+		"name": "Turnstile",
+		"description": "Grants full access to Turnstile",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "35956457e745b2af7331713a1ddf4fdb",
 		"name": "API Gateway Read",
 		"description": "Grants read access to API Gateway (including API Shield) for all domains in an account",
