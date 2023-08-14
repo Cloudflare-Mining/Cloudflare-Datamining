@@ -1301,7 +1301,7 @@
 				"in": "header",
 				"name": "Upload-Metadata",
 				"schema": {
-					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: name, requiresignedurls, allowedorigins, thumbnailtimestamppct, watermark, scheduleddeletion.",
+					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`.",
 					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=",
 					"type": "string"
 				}
@@ -2282,6 +2282,15 @@
 					"description": "A user-defined identifier for the media creator.",
 					"example": "creator-id_abcde12345",
 					"maxLength": 64,
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "Upload-Metadata",
+				"schema": {
+					"description": "Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded.\nSupported keys: `name`, `requiresignedurls`, `allowedorigins`, `thumbnailtimestamppct`, `watermark`, `scheduleddeletion`.",
+					"example": "name aGVsbG8gd29ybGQ=, requiresignedurls, allowedorigins ZXhhbXBsZS5jb20sdGVzdC5jb20=",
 					"type": "string"
 				}
 			}
