@@ -113,6 +113,7 @@
 	"security_center.security_insights.issue_class.rdp_server_exposed": "Exposed RDP Servers",
 	"security_center.security_insights.issue_class.aaaa_record_not_proxied": "Unproxied AAAA Records",
 	"security_center.security_insights.detection_method": "Detection Method",
+	"security_center.security_insights.tunnel_ids": "Tunnel IDs",
 	"_comment:": "These are used for default expanded info in the IssuesLog",
 	"security_center.checks.a_records_proxied.generic.title": "Unproxied 'A' Records",
 	"security_center.checks.a_records_proxied.generic.detail": "A DNS 'A' Record is not proxied by Cloudflare. This origin server is directly exposed and has a higher risk of a DDoS attack. |||| %{smart_count} DNS 'A' Records are not proxied by Cloudflare. These origin servers are directly exposed and have a higher risk of a DDoS attack.",
