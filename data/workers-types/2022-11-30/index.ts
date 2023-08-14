@@ -1272,8 +1272,10 @@ export declare abstract class R2Bucket {
       | string
       | null
       | Blob,
-    options?: R2PutOptions
-  ): Promise<R2Object>;
+    options?: R2PutOptions & {
+      onlyIf: R2Conditional | Headers;
+    }
+  ): Promise<R2Object | null>;
   put(
     key: string,
     value:
@@ -1283,10 +1285,8 @@ export declare abstract class R2Bucket {
       | string
       | null
       | Blob,
-    options?: R2PutOptions & {
-      onlyIf: R2Conditional | Headers;
-    }
-  ): Promise<R2Object | null>;
+    options?: R2PutOptions
+  ): Promise<R2Object>;
   createMultipartUpload(
     key: string,
     options?: R2MultipartOptions

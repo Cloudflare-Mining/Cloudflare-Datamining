@@ -1126,11 +1126,17 @@ declare interface FetcherQueueResult {
   explicitRetries: string[];
   explicitAcks: string[];
 }
-declare interface ServiceBindingQueueMessage<Body = unknown> {
+declare type ServiceBindingQueueMessage<Body = unknown> = {
   id: string;
   timestamp: Date;
-  body: Body;
-}
+} & (
+  | {
+      body: Body;
+    }
+  | {
+      serializedBody: ArrayBuffer | ArrayBufferView;
+    }
+);
 declare interface KVNamespaceListKey<Metadata, Key extends string = string> {
   name: Key;
   expiration?: number;
@@ -1305,8 +1311,10 @@ declare abstract class R2Bucket {
       | string
       | null
       | Blob,
-    options?: R2PutOptions
-  ): Promise<R2Object>;
+    options?: R2PutOptions & {
+      onlyIf: R2Conditional | Headers;
+    }
+  ): Promise<R2Object | null>;
   put(
     key: string,
     value:
@@ -1316,10 +1324,8 @@ declare abstract class R2Bucket {
       | string
       | null
       | Blob,
-    options?: R2PutOptions & {
-      onlyIf: R2Conditional | Headers;
-    }
-  ): Promise<R2Object | null>;
+    options?: R2PutOptions
+  ): Promise<R2Object>;
   createMultipartUpload(
     key: string,
     options?: R2MultipartOptions
@@ -1947,6 +1953,8 @@ declare abstract class SqlStorageStatement {}
 declare abstract class SqlStorageCursor {
   raw(): IterableIterator<((ArrayBuffer | string | number) | null)[]>;
   get columnNames(): string[];
+  get rowsRead(): number;
+  get rowsWritten(): number;
   [Symbol.iterator](): IterableIterator<
     Record<string, (ArrayBuffer | string | number) | null>
   >;
