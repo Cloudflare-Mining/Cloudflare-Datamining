@@ -1,0 +1,5143 @@
+{
+	"DELETE /accounts/{identifier}/gateway/rules/{uuid}": {
+		"description": "Deletes a Zero Trust Gateway rule.",
+		"operationId": "zero-trust-gateway-rules-delete-zero-trust-gateway-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "The API resource UUID.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a Zero Trust Gateway rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete a Zero Trust Gateway rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a Zero Trust Gateway rule",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
+	"GET /accounts/{identifier}/gateway/rules": {
+		"description": "Fetches the Zero Trust Gateway rules for an account.",
+		"operationId": "zero-trust-gateway-rules-list-zero-trust-gateway-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"action": {
+														"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+														"enum": [
+															"on",
+															"off",
+															"allow",
+															"block",
+															"scan",
+															"noscan",
+															"safesearch",
+															"ytrestricted",
+															"isolate",
+															"noisolate",
+															"override",
+															"l4_override",
+															"egress",
+															"audit_ssh"
+														],
+														"example": "allow",
+														"type": "string"
+													},
+													"created_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"deleted_at": {
+														"description": "Date of deletion, if any.",
+														"format": "date-time",
+														"nullable": true,
+														"readOnly": true,
+														"type": "string"
+													},
+													"description": {
+														"description": "The description of the rule.",
+														"example": "Block bad websites based on their host name.",
+														"type": "string"
+													},
+													"device_posture": {
+														"description": "The wirefilter expression used for device posture check matching.",
+														"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+														"type": "string"
+													},
+													"enabled": {
+														"description": "True if the rule is enabled.",
+														"example": true,
+														"type": "boolean"
+													},
+													"filters": {
+														"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+														"example": [
+															"http"
+														],
+														"items": {
+															"description": "The protocol or layer to use.",
+															"enum": [
+																"http",
+																"dns",
+																"l4",
+																"egress"
+															],
+															"example": "http",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"id": {
+														"description": "The API resource UUID.",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"type": "string"
+													},
+													"identity": {
+														"description": "The wirefilter expression used for identity matching.",
+														"example": "any(identity.groups.name[*] in {\"finance\"})",
+														"type": "string"
+													},
+													"name": {
+														"description": "The name of the rule.",
+														"example": "block bad websites",
+														"type": "string"
+													},
+													"precedence": {
+														"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+														"type": "integer"
+													},
+													"rule_settings": {
+														"description": "Additional settings that modify the rule's action.",
+														"properties": {
+															"add_headers": {
+																"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+																"example": {
+																	"My-Next-Header": [
+																		"foo",
+																		"bar"
+																	],
+																	"X-Custom-Header-Name": [
+																		"somecustomvalue"
+																	]
+																},
+																"type": "object"
+															},
+															"allow_child_bypass": {
+																"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+																"example": false,
+																"type": "boolean"
+															},
+															"audit_ssh": {
+																"description": "Settings for the Audit SSH action.",
+																"properties": {
+																	"command_logging": {
+																		"description": "Enable to turn on SSH command logging.",
+																		"example": false,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"biso_admin_controls": {
+																"description": "Configure how browser isolation behaves.",
+																"properties": {
+																	"dcp": {
+																		"description": "Set to true to enable copy-pasting.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"dd": {
+																		"description": "Set to true to enable downloading.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"dk": {
+																		"description": "Set to true to enable keyboard usage.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"dp": {
+																		"description": "Set to true to enable printing.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"du": {
+																		"description": "Set to true to enable uploading.",
+																		"example": false,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"block_page_enabled": {
+																"description": "Enable the custom block page.",
+																"example": true,
+																"type": "boolean"
+															},
+															"block_reason": {
+																"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+																"example": "This website is a security risk",
+																"type": "string"
+															},
+															"bypass_parent_rule": {
+																"description": "Set by children MSP accounts to bypass their parent's rules.",
+																"example": false,
+																"type": "boolean"
+															},
+															"check_session": {
+																"description": "Configure how session check behaves.",
+																"properties": {
+																	"duration": {
+																		"description": "Configure how fresh the session needs to be to be considered valid.",
+																		"example": "300s",
+																		"type": "string"
+																	},
+																	"enforce": {
+																		"description": "Set to true to enable session enforcement.",
+																		"example": true,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"egress": {
+																"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																"properties": {
+																	"ipv4": {
+																		"description": "The IPv4 address to be used for egress.",
+																		"example": "192.0.2.2",
+																		"type": "string"
+																	},
+																	"ipv4_fallback": {
+																		"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																		"example": "192.0.2.3",
+																		"type": "string"
+																	},
+																	"ipv6": {
+																		"description": "The IPv6 range to be used for egress.",
+																		"example": "2001:DB8::/64",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"insecure_disable_dnssec_validation": {
+																"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+																"example": false,
+																"type": "boolean"
+															},
+															"ip_categories": {
+																"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+																"example": true,
+																"type": "boolean"
+															},
+															"ip_indicator_feeds": {
+																"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+																"example": true,
+																"type": "boolean"
+															},
+															"l4override": {
+																"description": "Send matching traffic to the supplied destination IP address and port.",
+																"properties": {
+																	"ip": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "A port number to use for TCP/UDP overrides.",
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"override_host": {
+																"description": "Override matching DNS queries with a hostname.",
+																"example": "example.com",
+																"type": "string"
+															},
+															"override_ips": {
+																"description": "Override matching DNS queries with an IP or set of IPs.",
+																"example": [
+																	"1.1.1.1",
+																	"2.2.2.2"
+																],
+																"items": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"payload_log": {
+																"description": "Configure DLP payload logging.",
+																"properties": {
+																	"enabled": {
+																		"description": "Set to true to enable DLP payload logging for this rule.",
+																		"example": true,
+																		"type": "boolean"
+																	}
+																},
+																"type": "object"
+															},
+															"untrusted_cert": {
+																"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																"properties": {
+																	"action": {
+																		"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																		"enum": [
+																			"pass_through",
+																			"block",
+																			"error"
+																		],
+																		"example": "error",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"schedule": {
+														"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+														"properties": {
+															"fri": {
+																"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															},
+															"mon": {
+																"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															},
+															"sat": {
+																"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															},
+															"sun": {
+																"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															},
+															"thu": {
+																"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															},
+															"time_zone": {
+																"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+																"example": "America/New York",
+																"type": "string"
+															},
+															"tue": {
+																"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															},
+															"wed": {
+																"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+																"example": "08:00-12:30,13:30-17:00",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"traffic": {
+														"description": "The wirefilter expression used for traffic matching.",
+														"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+														"type": "string"
+													},
+													"updated_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Zero Trust Gateway rules response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"action": {
+																"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+																"enum": [
+																	"on",
+																	"off",
+																	"allow",
+																	"block",
+																	"scan",
+																	"noscan",
+																	"safesearch",
+																	"ytrestricted",
+																	"isolate",
+																	"noisolate",
+																	"override",
+																	"l4_override",
+																	"egress",
+																	"audit_ssh"
+																],
+																"example": "allow",
+																"type": "string"
+															},
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"deleted_at": {
+																"description": "Date of deletion, if any.",
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "The description of the rule.",
+																"example": "Block bad websites based on their host name.",
+																"type": "string"
+															},
+															"device_posture": {
+																"description": "The wirefilter expression used for device posture check matching.",
+																"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+																"type": "string"
+															},
+															"enabled": {
+																"description": "True if the rule is enabled.",
+																"example": true,
+																"type": "boolean"
+															},
+															"filters": {
+																"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+																"example": [
+																	"http"
+																],
+																"items": {
+																	"description": "The protocol or layer to use.",
+																	"enum": [
+																		"http",
+																		"dns",
+																		"l4",
+																		"egress"
+																	],
+																	"example": "http",
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "The API resource UUID.",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"maxLength": 36,
+																"type": "string"
+															},
+															"identity": {
+																"description": "The wirefilter expression used for identity matching.",
+																"example": "any(identity.groups.name[*] in {\"finance\"})",
+																"type": "string"
+															},
+															"name": {
+																"description": "The name of the rule.",
+																"example": "block bad websites",
+																"type": "string"
+															},
+															"precedence": {
+																"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+																"type": "integer"
+															},
+															"rule_settings": {
+																"description": "Additional settings that modify the rule's action.",
+																"properties": {
+																	"add_headers": {
+																		"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+																		"example": {
+																			"My-Next-Header": [
+																				"foo",
+																				"bar"
+																			],
+																			"X-Custom-Header-Name": [
+																				"somecustomvalue"
+																			]
+																		},
+																		"type": "object"
+																	},
+																	"allow_child_bypass": {
+																		"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"audit_ssh": {
+																		"description": "Settings for the Audit SSH action.",
+																		"properties": {
+																			"command_logging": {
+																				"description": "Enable to turn on SSH command logging.",
+																				"example": false,
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"biso_admin_controls": {
+																		"description": "Configure how browser isolation behaves.",
+																		"properties": {
+																			"dcp": {
+																				"description": "Set to true to enable copy-pasting.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"dd": {
+																				"description": "Set to true to enable downloading.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"dk": {
+																				"description": "Set to true to enable keyboard usage.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"dp": {
+																				"description": "Set to true to enable printing.",
+																				"example": false,
+																				"type": "boolean"
+																			},
+																			"du": {
+																				"description": "Set to true to enable uploading.",
+																				"example": false,
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"block_page_enabled": {
+																		"description": "Enable the custom block page.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"block_reason": {
+																		"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+																		"example": "This website is a security risk",
+																		"type": "string"
+																	},
+																	"bypass_parent_rule": {
+																		"description": "Set by children MSP accounts to bypass their parent's rules.",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"check_session": {
+																		"description": "Configure how session check behaves.",
+																		"properties": {
+																			"duration": {
+																				"description": "Configure how fresh the session needs to be to be considered valid.",
+																				"example": "300s",
+																				"type": "string"
+																			},
+																			"enforce": {
+																				"description": "Set to true to enable session enforcement.",
+																				"example": true,
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"egress": {
+																		"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																		"properties": {
+																			"ipv4": {
+																				"description": "The IPv4 address to be used for egress.",
+																				"example": "192.0.2.2",
+																				"type": "string"
+																			},
+																			"ipv4_fallback": {
+																				"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																				"example": "192.0.2.3",
+																				"type": "string"
+																			},
+																			"ipv6": {
+																				"description": "The IPv6 range to be used for egress.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"insecure_disable_dnssec_validation": {
+																		"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+																		"example": false,
+																		"type": "boolean"
+																	},
+																	"ip_categories": {
+																		"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"ip_indicator_feeds": {
+																		"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"l4override": {
+																		"description": "Send matching traffic to the supplied destination IP address and port.",
+																		"properties": {
+																			"ip": {
+																				"description": "IPv4 or IPv6 address.",
+																				"example": "1.1.1.1",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for TCP/UDP overrides.",
+																				"type": "integer"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"override_host": {
+																		"description": "Override matching DNS queries with a hostname.",
+																		"example": "example.com",
+																		"type": "string"
+																	},
+																	"override_ips": {
+																		"description": "Override matching DNS queries with an IP or set of IPs.",
+																		"example": [
+																			"1.1.1.1",
+																			"2.2.2.2"
+																		],
+																		"items": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"payload_log": {
+																		"description": "Configure DLP payload logging.",
+																		"properties": {
+																			"enabled": {
+																				"description": "Set to true to enable DLP payload logging for this rule.",
+																				"example": true,
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"untrusted_cert": {
+																		"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																		"properties": {
+																			"action": {
+																				"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																				"enum": [
+																					"pass_through",
+																					"block",
+																					"error"
+																				],
+																				"example": "error",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																},
+																"type": "object"
+															},
+															"schedule": {
+																"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+																"properties": {
+																	"fri": {
+																		"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	},
+																	"mon": {
+																		"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	},
+																	"sat": {
+																		"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	},
+																	"sun": {
+																		"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	},
+																	"thu": {
+																		"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	},
+																	"time_zone": {
+																		"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+																		"example": "America/New York",
+																		"type": "string"
+																	},
+																	"tue": {
+																		"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	},
+																	"wed": {
+																		"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+																		"example": "08:00-12:30,13:30-17:00",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"traffic": {
+																"description": "The wirefilter expression used for traffic matching.",
+																"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+																"type": "string"
+															},
+															"updated_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Zero Trust Gateway rules response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Zero Trust Gateway rules",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
+	"GET /accounts/{identifier}/gateway/rules/{uuid}": {
+		"description": "Fetches a single Zero Trust Gateway rule.",
+		"operationId": "zero-trust-gateway-rules-zero-trust-gateway-rule-details",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "The API resource UUID.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"enum": [
+														"on",
+														"off",
+														"allow",
+														"block",
+														"scan",
+														"noscan",
+														"safesearch",
+														"ytrestricted",
+														"isolate",
+														"noisolate",
+														"override",
+														"l4_override",
+														"egress",
+														"audit_ssh"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Date of deletion, if any.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the rule.",
+													"example": "Block bad websites based on their host name.",
+													"type": "string"
+												},
+												"device_posture": {
+													"description": "The wirefilter expression used for device posture check matching.",
+													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "True if the rule is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"filters": {
+													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"example": [
+														"http"
+													],
+													"items": {
+														"description": "The protocol or layer to use.",
+														"enum": [
+															"http",
+															"dns",
+															"l4",
+															"egress"
+														],
+														"example": "http",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "The API resource UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"identity": {
+													"description": "The wirefilter expression used for identity matching.",
+													"example": "any(identity.groups.name[*] in {\"finance\"})",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the rule.",
+													"example": "block bad websites",
+													"type": "string"
+												},
+												"precedence": {
+													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+													"type": "integer"
+												},
+												"rule_settings": {
+													"description": "Additional settings that modify the rule's action.",
+													"properties": {
+														"add_headers": {
+															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+															"example": {
+																"My-Next-Header": [
+																	"foo",
+																	"bar"
+																],
+																"X-Custom-Header-Name": [
+																	"somecustomvalue"
+																]
+															},
+															"type": "object"
+														},
+														"allow_child_bypass": {
+															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+															"example": false,
+															"type": "boolean"
+														},
+														"audit_ssh": {
+															"description": "Settings for the Audit SSH action.",
+															"properties": {
+																"command_logging": {
+																	"description": "Enable to turn on SSH command logging.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"biso_admin_controls": {
+															"description": "Configure how browser isolation behaves.",
+															"properties": {
+																"dcp": {
+																	"description": "Set to true to enable copy-pasting.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dd": {
+																	"description": "Set to true to enable downloading.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dk": {
+																	"description": "Set to true to enable keyboard usage.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dp": {
+																	"description": "Set to true to enable printing.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"du": {
+																	"description": "Set to true to enable uploading.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"block_page_enabled": {
+															"description": "Enable the custom block page.",
+															"example": true,
+															"type": "boolean"
+														},
+														"block_reason": {
+															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+															"example": "This website is a security risk",
+															"type": "string"
+														},
+														"bypass_parent_rule": {
+															"description": "Set by children MSP accounts to bypass their parent's rules.",
+															"example": false,
+															"type": "boolean"
+														},
+														"check_session": {
+															"description": "Configure how session check behaves.",
+															"properties": {
+																"duration": {
+																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"example": "300s",
+																	"type": "string"
+																},
+																"enforce": {
+																	"description": "Set to true to enable session enforcement.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"egress": {
+															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"properties": {
+																"ipv4": {
+																	"description": "The IPv4 address to be used for egress.",
+																	"example": "192.0.2.2",
+																	"type": "string"
+																},
+																"ipv4_fallback": {
+																	"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																	"example": "192.0.2.3",
+																	"type": "string"
+																},
+																"ipv6": {
+																	"description": "The IPv6 range to be used for egress.",
+																	"example": "2001:DB8::/64",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"insecure_disable_dnssec_validation": {
+															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+															"example": false,
+															"type": "boolean"
+														},
+														"ip_categories": {
+															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"ip_indicator_feeds": {
+															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"l4override": {
+															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"properties": {
+																"ip": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "A port number to use for TCP/UDP overrides.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"override_host": {
+															"description": "Override matching DNS queries with a hostname.",
+															"example": "example.com",
+															"type": "string"
+														},
+														"override_ips": {
+															"description": "Override matching DNS queries with an IP or set of IPs.",
+															"example": [
+																"1.1.1.1",
+																"2.2.2.2"
+															],
+															"items": {
+																"description": "IPv4 or IPv6 address.",
+																"example": "1.1.1.1",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"payload_log": {
+															"description": "Configure DLP payload logging.",
+															"properties": {
+																"enabled": {
+																	"description": "Set to true to enable DLP payload logging for this rule.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"untrusted_cert": {
+															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"properties": {
+																"action": {
+																	"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																	"enum": [
+																		"pass_through",
+																		"block",
+																		"error"
+																	],
+																	"example": "error",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"schedule": {
+													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"properties": {
+														"fri": {
+															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"mon": {
+															"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sat": {
+															"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sun": {
+															"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"thu": {
+															"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"time_zone": {
+															"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+															"example": "America/New York",
+															"type": "string"
+														},
+														"tue": {
+															"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"wed": {
+															"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"traffic": {
+													"description": "The wirefilter expression used for traffic matching.",
+													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Zero Trust Gateway rule details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"enum": [
+																"on",
+																"off",
+																"allow",
+																"block",
+																"scan",
+																"noscan",
+																"safesearch",
+																"ytrestricted",
+																"isolate",
+																"noisolate",
+																"override",
+																"l4_override",
+																"egress",
+																"audit_ssh"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Date of deletion, if any.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "The description of the rule.",
+															"example": "Block bad websites based on their host name.",
+															"type": "string"
+														},
+														"device_posture": {
+															"description": "The wirefilter expression used for device posture check matching.",
+															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "True if the rule is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"filters": {
+															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"example": [
+																"http"
+															],
+															"items": {
+																"description": "The protocol or layer to use.",
+																"enum": [
+																	"http",
+																	"dns",
+																	"l4",
+																	"egress"
+																],
+																"example": "http",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "The API resource UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"identity": {
+															"description": "The wirefilter expression used for identity matching.",
+															"example": "any(identity.groups.name[*] in {\"finance\"})",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the rule.",
+															"example": "block bad websites",
+															"type": "string"
+														},
+														"precedence": {
+															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+															"type": "integer"
+														},
+														"rule_settings": {
+															"description": "Additional settings that modify the rule's action.",
+															"properties": {
+																"add_headers": {
+																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+																	"example": {
+																		"My-Next-Header": [
+																			"foo",
+																			"bar"
+																		],
+																		"X-Custom-Header-Name": [
+																			"somecustomvalue"
+																		]
+																	},
+																	"type": "object"
+																},
+																"allow_child_bypass": {
+																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"audit_ssh": {
+																	"description": "Settings for the Audit SSH action.",
+																	"properties": {
+																		"command_logging": {
+																			"description": "Enable to turn on SSH command logging.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"biso_admin_controls": {
+																	"description": "Configure how browser isolation behaves.",
+																	"properties": {
+																		"dcp": {
+																			"description": "Set to true to enable copy-pasting.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dd": {
+																			"description": "Set to true to enable downloading.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dk": {
+																			"description": "Set to true to enable keyboard usage.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dp": {
+																			"description": "Set to true to enable printing.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"du": {
+																			"description": "Set to true to enable uploading.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"block_page_enabled": {
+																	"description": "Enable the custom block page.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"block_reason": {
+																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+																	"example": "This website is a security risk",
+																	"type": "string"
+																},
+																"bypass_parent_rule": {
+																	"description": "Set by children MSP accounts to bypass their parent's rules.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"check_session": {
+																	"description": "Configure how session check behaves.",
+																	"properties": {
+																		"duration": {
+																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"example": "300s",
+																			"type": "string"
+																		},
+																		"enforce": {
+																			"description": "Set to true to enable session enforcement.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"egress": {
+																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"properties": {
+																		"ipv4": {
+																			"description": "The IPv4 address to be used for egress.",
+																			"example": "192.0.2.2",
+																			"type": "string"
+																		},
+																		"ipv4_fallback": {
+																			"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																			"example": "192.0.2.3",
+																			"type": "string"
+																		},
+																		"ipv6": {
+																			"description": "The IPv6 range to be used for egress.",
+																			"example": "2001:DB8::/64",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"insecure_disable_dnssec_validation": {
+																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"ip_categories": {
+																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"l4override": {
+																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"properties": {
+																		"ip": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
+																		"port": {
+																			"description": "A port number to use for TCP/UDP overrides.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"override_host": {
+																	"description": "Override matching DNS queries with a hostname.",
+																	"example": "example.com",
+																	"type": "string"
+																},
+																"override_ips": {
+																	"description": "Override matching DNS queries with an IP or set of IPs.",
+																	"example": [
+																		"1.1.1.1",
+																		"2.2.2.2"
+																	],
+																	"items": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"payload_log": {
+																	"description": "Configure DLP payload logging.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Set to true to enable DLP payload logging for this rule.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"untrusted_cert": {
+																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"properties": {
+																		"action": {
+																			"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																			"enum": [
+																				"pass_through",
+																				"block",
+																				"error"
+																			],
+																			"example": "error",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"schedule": {
+															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"properties": {
+																"fri": {
+																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"mon": {
+																	"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sat": {
+																	"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sun": {
+																	"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"thu": {
+																	"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"time_zone": {
+																	"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+																	"example": "America/New York",
+																	"type": "string"
+																},
+																"tue": {
+																	"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"wed": {
+																	"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"traffic": {
+															"description": "The wirefilter expression used for traffic matching.",
+															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+															"type": "string"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Zero Trust Gateway rule details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Zero Trust Gateway rule details",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
+	"POST /accounts/{identifier}/gateway/rules": {
+		"description": "Creates a new Zero Trust Gateway rule.",
+		"operationId": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+								"enum": [
+									"on",
+									"off",
+									"allow",
+									"block",
+									"scan",
+									"noscan",
+									"safesearch",
+									"ytrestricted",
+									"isolate",
+									"noisolate",
+									"override",
+									"l4_override",
+									"egress",
+									"audit_ssh"
+								],
+								"example": "allow",
+								"type": "string"
+							},
+							"description": {
+								"description": "The description of the rule.",
+								"example": "Block bad websites based on their host name.",
+								"type": "string"
+							},
+							"device_posture": {
+								"description": "The wirefilter expression used for device posture check matching.",
+								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+								"type": "string"
+							},
+							"enabled": {
+								"description": "True if the rule is enabled.",
+								"example": true,
+								"type": "boolean"
+							},
+							"filters": {
+								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+								"example": [
+									"http"
+								],
+								"items": {
+									"description": "The protocol or layer to use.",
+									"enum": [
+										"http",
+										"dns",
+										"l4",
+										"egress"
+									],
+									"example": "http",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"identity": {
+								"description": "The wirefilter expression used for identity matching.",
+								"example": "any(identity.groups.name[*] in {\"finance\"})",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the rule.",
+								"example": "block bad websites",
+								"type": "string"
+							},
+							"precedence": {
+								"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+								"type": "integer"
+							},
+							"rule_settings": {
+								"description": "Additional settings that modify the rule's action.",
+								"properties": {
+									"add_headers": {
+										"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+										"example": {
+											"My-Next-Header": [
+												"foo",
+												"bar"
+											],
+											"X-Custom-Header-Name": [
+												"somecustomvalue"
+											]
+										},
+										"type": "object"
+									},
+									"allow_child_bypass": {
+										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+										"example": false,
+										"type": "boolean"
+									},
+									"audit_ssh": {
+										"description": "Settings for the Audit SSH action.",
+										"properties": {
+											"command_logging": {
+												"description": "Enable to turn on SSH command logging.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"biso_admin_controls": {
+										"description": "Configure how browser isolation behaves.",
+										"properties": {
+											"dcp": {
+												"description": "Set to true to enable copy-pasting.",
+												"example": false,
+												"type": "boolean"
+											},
+											"dd": {
+												"description": "Set to true to enable downloading.",
+												"example": false,
+												"type": "boolean"
+											},
+											"dk": {
+												"description": "Set to true to enable keyboard usage.",
+												"example": false,
+												"type": "boolean"
+											},
+											"dp": {
+												"description": "Set to true to enable printing.",
+												"example": false,
+												"type": "boolean"
+											},
+											"du": {
+												"description": "Set to true to enable uploading.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"block_page_enabled": {
+										"description": "Enable the custom block page.",
+										"example": true,
+										"type": "boolean"
+									},
+									"block_reason": {
+										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+										"example": "This website is a security risk",
+										"type": "string"
+									},
+									"bypass_parent_rule": {
+										"description": "Set by children MSP accounts to bypass their parent's rules.",
+										"example": false,
+										"type": "boolean"
+									},
+									"check_session": {
+										"description": "Configure how session check behaves.",
+										"properties": {
+											"duration": {
+												"description": "Configure how fresh the session needs to be to be considered valid.",
+												"example": "300s",
+												"type": "string"
+											},
+											"enforce": {
+												"description": "Set to true to enable session enforcement.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"egress": {
+										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+										"properties": {
+											"ipv4": {
+												"description": "The IPv4 address to be used for egress.",
+												"example": "192.0.2.2",
+												"type": "string"
+											},
+											"ipv4_fallback": {
+												"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+												"example": "192.0.2.3",
+												"type": "string"
+											},
+											"ipv6": {
+												"description": "The IPv6 range to be used for egress.",
+												"example": "2001:DB8::/64",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"insecure_disable_dnssec_validation": {
+										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+										"example": false,
+										"type": "boolean"
+									},
+									"ip_categories": {
+										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+										"example": true,
+										"type": "boolean"
+									},
+									"ip_indicator_feeds": {
+										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+										"example": true,
+										"type": "boolean"
+									},
+									"l4override": {
+										"description": "Send matching traffic to the supplied destination IP address and port.",
+										"properties": {
+											"ip": {
+												"description": "IPv4 or IPv6 address.",
+												"example": "1.1.1.1",
+												"type": "string"
+											},
+											"port": {
+												"description": "A port number to use for TCP/UDP overrides.",
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"override_host": {
+										"description": "Override matching DNS queries with a hostname.",
+										"example": "example.com",
+										"type": "string"
+									},
+									"override_ips": {
+										"description": "Override matching DNS queries with an IP or set of IPs.",
+										"example": [
+											"1.1.1.1",
+											"2.2.2.2"
+										],
+										"items": {
+											"description": "IPv4 or IPv6 address.",
+											"example": "1.1.1.1",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"payload_log": {
+										"description": "Configure DLP payload logging.",
+										"properties": {
+											"enabled": {
+												"description": "Set to true to enable DLP payload logging for this rule.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"untrusted_cert": {
+										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+										"properties": {
+											"action": {
+												"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+												"enum": [
+													"pass_through",
+													"block",
+													"error"
+												],
+												"example": "error",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"schedule": {
+								"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+								"properties": {
+									"fri": {
+										"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"mon": {
+										"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"sat": {
+										"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"sun": {
+										"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"thu": {
+										"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"time_zone": {
+										"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+										"example": "America/New York",
+										"type": "string"
+									},
+									"tue": {
+										"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"wed": {
+										"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"traffic": {
+								"description": "The wirefilter expression used for traffic matching.",
+								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"action"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"enum": [
+														"on",
+														"off",
+														"allow",
+														"block",
+														"scan",
+														"noscan",
+														"safesearch",
+														"ytrestricted",
+														"isolate",
+														"noisolate",
+														"override",
+														"l4_override",
+														"egress",
+														"audit_ssh"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Date of deletion, if any.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the rule.",
+													"example": "Block bad websites based on their host name.",
+													"type": "string"
+												},
+												"device_posture": {
+													"description": "The wirefilter expression used for device posture check matching.",
+													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "True if the rule is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"filters": {
+													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"example": [
+														"http"
+													],
+													"items": {
+														"description": "The protocol or layer to use.",
+														"enum": [
+															"http",
+															"dns",
+															"l4",
+															"egress"
+														],
+														"example": "http",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "The API resource UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"identity": {
+													"description": "The wirefilter expression used for identity matching.",
+													"example": "any(identity.groups.name[*] in {\"finance\"})",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the rule.",
+													"example": "block bad websites",
+													"type": "string"
+												},
+												"precedence": {
+													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+													"type": "integer"
+												},
+												"rule_settings": {
+													"description": "Additional settings that modify the rule's action.",
+													"properties": {
+														"add_headers": {
+															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+															"example": {
+																"My-Next-Header": [
+																	"foo",
+																	"bar"
+																],
+																"X-Custom-Header-Name": [
+																	"somecustomvalue"
+																]
+															},
+															"type": "object"
+														},
+														"allow_child_bypass": {
+															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+															"example": false,
+															"type": "boolean"
+														},
+														"audit_ssh": {
+															"description": "Settings for the Audit SSH action.",
+															"properties": {
+																"command_logging": {
+																	"description": "Enable to turn on SSH command logging.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"biso_admin_controls": {
+															"description": "Configure how browser isolation behaves.",
+															"properties": {
+																"dcp": {
+																	"description": "Set to true to enable copy-pasting.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dd": {
+																	"description": "Set to true to enable downloading.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dk": {
+																	"description": "Set to true to enable keyboard usage.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dp": {
+																	"description": "Set to true to enable printing.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"du": {
+																	"description": "Set to true to enable uploading.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"block_page_enabled": {
+															"description": "Enable the custom block page.",
+															"example": true,
+															"type": "boolean"
+														},
+														"block_reason": {
+															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+															"example": "This website is a security risk",
+															"type": "string"
+														},
+														"bypass_parent_rule": {
+															"description": "Set by children MSP accounts to bypass their parent's rules.",
+															"example": false,
+															"type": "boolean"
+														},
+														"check_session": {
+															"description": "Configure how session check behaves.",
+															"properties": {
+																"duration": {
+																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"example": "300s",
+																	"type": "string"
+																},
+																"enforce": {
+																	"description": "Set to true to enable session enforcement.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"egress": {
+															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"properties": {
+																"ipv4": {
+																	"description": "The IPv4 address to be used for egress.",
+																	"example": "192.0.2.2",
+																	"type": "string"
+																},
+																"ipv4_fallback": {
+																	"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																	"example": "192.0.2.3",
+																	"type": "string"
+																},
+																"ipv6": {
+																	"description": "The IPv6 range to be used for egress.",
+																	"example": "2001:DB8::/64",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"insecure_disable_dnssec_validation": {
+															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+															"example": false,
+															"type": "boolean"
+														},
+														"ip_categories": {
+															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"ip_indicator_feeds": {
+															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"l4override": {
+															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"properties": {
+																"ip": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "A port number to use for TCP/UDP overrides.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"override_host": {
+															"description": "Override matching DNS queries with a hostname.",
+															"example": "example.com",
+															"type": "string"
+														},
+														"override_ips": {
+															"description": "Override matching DNS queries with an IP or set of IPs.",
+															"example": [
+																"1.1.1.1",
+																"2.2.2.2"
+															],
+															"items": {
+																"description": "IPv4 or IPv6 address.",
+																"example": "1.1.1.1",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"payload_log": {
+															"description": "Configure DLP payload logging.",
+															"properties": {
+																"enabled": {
+																	"description": "Set to true to enable DLP payload logging for this rule.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"untrusted_cert": {
+															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"properties": {
+																"action": {
+																	"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																	"enum": [
+																		"pass_through",
+																		"block",
+																		"error"
+																	],
+																	"example": "error",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"schedule": {
+													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"properties": {
+														"fri": {
+															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"mon": {
+															"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sat": {
+															"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sun": {
+															"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"thu": {
+															"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"time_zone": {
+															"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+															"example": "America/New York",
+															"type": "string"
+														},
+														"tue": {
+															"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"wed": {
+															"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"traffic": {
+													"description": "The wirefilter expression used for traffic matching.",
+													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Zero Trust Gateway rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"enum": [
+																"on",
+																"off",
+																"allow",
+																"block",
+																"scan",
+																"noscan",
+																"safesearch",
+																"ytrestricted",
+																"isolate",
+																"noisolate",
+																"override",
+																"l4_override",
+																"egress",
+																"audit_ssh"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Date of deletion, if any.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "The description of the rule.",
+															"example": "Block bad websites based on their host name.",
+															"type": "string"
+														},
+														"device_posture": {
+															"description": "The wirefilter expression used for device posture check matching.",
+															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "True if the rule is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"filters": {
+															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"example": [
+																"http"
+															],
+															"items": {
+																"description": "The protocol or layer to use.",
+																"enum": [
+																	"http",
+																	"dns",
+																	"l4",
+																	"egress"
+																],
+																"example": "http",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "The API resource UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"identity": {
+															"description": "The wirefilter expression used for identity matching.",
+															"example": "any(identity.groups.name[*] in {\"finance\"})",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the rule.",
+															"example": "block bad websites",
+															"type": "string"
+														},
+														"precedence": {
+															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+															"type": "integer"
+														},
+														"rule_settings": {
+															"description": "Additional settings that modify the rule's action.",
+															"properties": {
+																"add_headers": {
+																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+																	"example": {
+																		"My-Next-Header": [
+																			"foo",
+																			"bar"
+																		],
+																		"X-Custom-Header-Name": [
+																			"somecustomvalue"
+																		]
+																	},
+																	"type": "object"
+																},
+																"allow_child_bypass": {
+																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"audit_ssh": {
+																	"description": "Settings for the Audit SSH action.",
+																	"properties": {
+																		"command_logging": {
+																			"description": "Enable to turn on SSH command logging.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"biso_admin_controls": {
+																	"description": "Configure how browser isolation behaves.",
+																	"properties": {
+																		"dcp": {
+																			"description": "Set to true to enable copy-pasting.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dd": {
+																			"description": "Set to true to enable downloading.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dk": {
+																			"description": "Set to true to enable keyboard usage.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dp": {
+																			"description": "Set to true to enable printing.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"du": {
+																			"description": "Set to true to enable uploading.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"block_page_enabled": {
+																	"description": "Enable the custom block page.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"block_reason": {
+																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+																	"example": "This website is a security risk",
+																	"type": "string"
+																},
+																"bypass_parent_rule": {
+																	"description": "Set by children MSP accounts to bypass their parent's rules.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"check_session": {
+																	"description": "Configure how session check behaves.",
+																	"properties": {
+																		"duration": {
+																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"example": "300s",
+																			"type": "string"
+																		},
+																		"enforce": {
+																			"description": "Set to true to enable session enforcement.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"egress": {
+																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"properties": {
+																		"ipv4": {
+																			"description": "The IPv4 address to be used for egress.",
+																			"example": "192.0.2.2",
+																			"type": "string"
+																		},
+																		"ipv4_fallback": {
+																			"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																			"example": "192.0.2.3",
+																			"type": "string"
+																		},
+																		"ipv6": {
+																			"description": "The IPv6 range to be used for egress.",
+																			"example": "2001:DB8::/64",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"insecure_disable_dnssec_validation": {
+																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"ip_categories": {
+																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"l4override": {
+																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"properties": {
+																		"ip": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
+																		"port": {
+																			"description": "A port number to use for TCP/UDP overrides.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"override_host": {
+																	"description": "Override matching DNS queries with a hostname.",
+																	"example": "example.com",
+																	"type": "string"
+																},
+																"override_ips": {
+																	"description": "Override matching DNS queries with an IP or set of IPs.",
+																	"example": [
+																		"1.1.1.1",
+																		"2.2.2.2"
+																	],
+																	"items": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"payload_log": {
+																	"description": "Configure DLP payload logging.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Set to true to enable DLP payload logging for this rule.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"untrusted_cert": {
+																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"properties": {
+																		"action": {
+																			"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																			"enum": [
+																				"pass_through",
+																				"block",
+																				"error"
+																			],
+																			"example": "error",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"schedule": {
+															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"properties": {
+																"fri": {
+																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"mon": {
+																	"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sat": {
+																	"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sun": {
+																	"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"thu": {
+																	"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"time_zone": {
+																	"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+																	"example": "America/New York",
+																	"type": "string"
+																},
+																"tue": {
+																	"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"wed": {
+																	"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"traffic": {
+															"description": "The wirefilter expression used for traffic matching.",
+															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+															"type": "string"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create a Zero Trust Gateway rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a Zero Trust Gateway rule",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	},
+	"PUT /accounts/{identifier}/gateway/rules/{uuid}": {
+		"description": "Updates a configured Zero Trust Gateway rule.",
+		"operationId": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "uuid",
+				"required": true,
+				"schema": {
+					"description": "The API resource UUID.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "identifier",
+				"required": true,
+				"schema": {
+					"example": "699d98642c564d2e855e9661899b7252"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+								"enum": [
+									"on",
+									"off",
+									"allow",
+									"block",
+									"scan",
+									"noscan",
+									"safesearch",
+									"ytrestricted",
+									"isolate",
+									"noisolate",
+									"override",
+									"l4_override",
+									"egress",
+									"audit_ssh"
+								],
+								"example": "allow",
+								"type": "string"
+							},
+							"description": {
+								"description": "The description of the rule.",
+								"example": "Block bad websites based on their host name.",
+								"type": "string"
+							},
+							"device_posture": {
+								"description": "The wirefilter expression used for device posture check matching.",
+								"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+								"type": "string"
+							},
+							"enabled": {
+								"description": "True if the rule is enabled.",
+								"example": true,
+								"type": "boolean"
+							},
+							"filters": {
+								"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+								"example": [
+									"http"
+								],
+								"items": {
+									"description": "The protocol or layer to use.",
+									"enum": [
+										"http",
+										"dns",
+										"l4",
+										"egress"
+									],
+									"example": "http",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"identity": {
+								"description": "The wirefilter expression used for identity matching.",
+								"example": "any(identity.groups.name[*] in {\"finance\"})",
+								"type": "string"
+							},
+							"name": {
+								"description": "The name of the rule.",
+								"example": "block bad websites",
+								"type": "string"
+							},
+							"precedence": {
+								"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+								"type": "integer"
+							},
+							"rule_settings": {
+								"description": "Additional settings that modify the rule's action.",
+								"properties": {
+									"add_headers": {
+										"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+										"example": {
+											"My-Next-Header": [
+												"foo",
+												"bar"
+											],
+											"X-Custom-Header-Name": [
+												"somecustomvalue"
+											]
+										},
+										"type": "object"
+									},
+									"allow_child_bypass": {
+										"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+										"example": false,
+										"type": "boolean"
+									},
+									"audit_ssh": {
+										"description": "Settings for the Audit SSH action.",
+										"properties": {
+											"command_logging": {
+												"description": "Enable to turn on SSH command logging.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"biso_admin_controls": {
+										"description": "Configure how browser isolation behaves.",
+										"properties": {
+											"dcp": {
+												"description": "Set to true to enable copy-pasting.",
+												"example": false,
+												"type": "boolean"
+											},
+											"dd": {
+												"description": "Set to true to enable downloading.",
+												"example": false,
+												"type": "boolean"
+											},
+											"dk": {
+												"description": "Set to true to enable keyboard usage.",
+												"example": false,
+												"type": "boolean"
+											},
+											"dp": {
+												"description": "Set to true to enable printing.",
+												"example": false,
+												"type": "boolean"
+											},
+											"du": {
+												"description": "Set to true to enable uploading.",
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"block_page_enabled": {
+										"description": "Enable the custom block page.",
+										"example": true,
+										"type": "boolean"
+									},
+									"block_reason": {
+										"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+										"example": "This website is a security risk",
+										"type": "string"
+									},
+									"bypass_parent_rule": {
+										"description": "Set by children MSP accounts to bypass their parent's rules.",
+										"example": false,
+										"type": "boolean"
+									},
+									"check_session": {
+										"description": "Configure how session check behaves.",
+										"properties": {
+											"duration": {
+												"description": "Configure how fresh the session needs to be to be considered valid.",
+												"example": "300s",
+												"type": "string"
+											},
+											"enforce": {
+												"description": "Set to true to enable session enforcement.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"egress": {
+										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+										"properties": {
+											"ipv4": {
+												"description": "The IPv4 address to be used for egress.",
+												"example": "192.0.2.2",
+												"type": "string"
+											},
+											"ipv4_fallback": {
+												"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+												"example": "192.0.2.3",
+												"type": "string"
+											},
+											"ipv6": {
+												"description": "The IPv6 range to be used for egress.",
+												"example": "2001:DB8::/64",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"insecure_disable_dnssec_validation": {
+										"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+										"example": false,
+										"type": "boolean"
+									},
+									"ip_categories": {
+										"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+										"example": true,
+										"type": "boolean"
+									},
+									"ip_indicator_feeds": {
+										"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+										"example": true,
+										"type": "boolean"
+									},
+									"l4override": {
+										"description": "Send matching traffic to the supplied destination IP address and port.",
+										"properties": {
+											"ip": {
+												"description": "IPv4 or IPv6 address.",
+												"example": "1.1.1.1",
+												"type": "string"
+											},
+											"port": {
+												"description": "A port number to use for TCP/UDP overrides.",
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"override_host": {
+										"description": "Override matching DNS queries with a hostname.",
+										"example": "example.com",
+										"type": "string"
+									},
+									"override_ips": {
+										"description": "Override matching DNS queries with an IP or set of IPs.",
+										"example": [
+											"1.1.1.1",
+											"2.2.2.2"
+										],
+										"items": {
+											"description": "IPv4 or IPv6 address.",
+											"example": "1.1.1.1",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"payload_log": {
+										"description": "Configure DLP payload logging.",
+										"properties": {
+											"enabled": {
+												"description": "Set to true to enable DLP payload logging for this rule.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"untrusted_cert": {
+										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+										"properties": {
+											"action": {
+												"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+												"enum": [
+													"pass_through",
+													"block",
+													"error"
+												],
+												"example": "error",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"schedule": {
+								"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+								"properties": {
+									"fri": {
+										"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"mon": {
+										"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"sat": {
+										"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"sun": {
+										"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"thu": {
+										"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"time_zone": {
+										"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+										"example": "America/New York",
+										"type": "string"
+									},
+									"tue": {
+										"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									},
+									"wed": {
+										"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+										"example": "08:00-12:30,13:30-17:00",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"traffic": {
+								"description": "The wirefilter expression used for traffic matching.",
+								"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"action"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action": {
+													"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+													"enum": [
+														"on",
+														"off",
+														"allow",
+														"block",
+														"scan",
+														"noscan",
+														"safesearch",
+														"ytrestricted",
+														"isolate",
+														"noisolate",
+														"override",
+														"l4_override",
+														"egress",
+														"audit_ssh"
+													],
+													"example": "allow",
+													"type": "string"
+												},
+												"created_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"deleted_at": {
+													"description": "Date of deletion, if any.",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "The description of the rule.",
+													"example": "Block bad websites based on their host name.",
+													"type": "string"
+												},
+												"device_posture": {
+													"description": "The wirefilter expression used for device posture check matching.",
+													"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+													"type": "string"
+												},
+												"enabled": {
+													"description": "True if the rule is enabled.",
+													"example": true,
+													"type": "boolean"
+												},
+												"filters": {
+													"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+													"example": [
+														"http"
+													],
+													"items": {
+														"description": "The protocol or layer to use.",
+														"enum": [
+															"http",
+															"dns",
+															"l4",
+															"egress"
+														],
+														"example": "http",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"id": {
+													"description": "The API resource UUID.",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"type": "string"
+												},
+												"identity": {
+													"description": "The wirefilter expression used for identity matching.",
+													"example": "any(identity.groups.name[*] in {\"finance\"})",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the rule.",
+													"example": "block bad websites",
+													"type": "string"
+												},
+												"precedence": {
+													"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+													"type": "integer"
+												},
+												"rule_settings": {
+													"description": "Additional settings that modify the rule's action.",
+													"properties": {
+														"add_headers": {
+															"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+															"example": {
+																"My-Next-Header": [
+																	"foo",
+																	"bar"
+																],
+																"X-Custom-Header-Name": [
+																	"somecustomvalue"
+																]
+															},
+															"type": "object"
+														},
+														"allow_child_bypass": {
+															"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+															"example": false,
+															"type": "boolean"
+														},
+														"audit_ssh": {
+															"description": "Settings for the Audit SSH action.",
+															"properties": {
+																"command_logging": {
+																	"description": "Enable to turn on SSH command logging.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"biso_admin_controls": {
+															"description": "Configure how browser isolation behaves.",
+															"properties": {
+																"dcp": {
+																	"description": "Set to true to enable copy-pasting.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dd": {
+																	"description": "Set to true to enable downloading.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dk": {
+																	"description": "Set to true to enable keyboard usage.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"dp": {
+																	"description": "Set to true to enable printing.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"du": {
+																	"description": "Set to true to enable uploading.",
+																	"example": false,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"block_page_enabled": {
+															"description": "Enable the custom block page.",
+															"example": true,
+															"type": "boolean"
+														},
+														"block_reason": {
+															"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+															"example": "This website is a security risk",
+															"type": "string"
+														},
+														"bypass_parent_rule": {
+															"description": "Set by children MSP accounts to bypass their parent's rules.",
+															"example": false,
+															"type": "boolean"
+														},
+														"check_session": {
+															"description": "Configure how session check behaves.",
+															"properties": {
+																"duration": {
+																	"description": "Configure how fresh the session needs to be to be considered valid.",
+																	"example": "300s",
+																	"type": "string"
+																},
+																"enforce": {
+																	"description": "Set to true to enable session enforcement.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"egress": {
+															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+															"properties": {
+																"ipv4": {
+																	"description": "The IPv4 address to be used for egress.",
+																	"example": "192.0.2.2",
+																	"type": "string"
+																},
+																"ipv4_fallback": {
+																	"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																	"example": "192.0.2.3",
+																	"type": "string"
+																},
+																"ipv6": {
+																	"description": "The IPv6 range to be used for egress.",
+																	"example": "2001:DB8::/64",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"insecure_disable_dnssec_validation": {
+															"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+															"example": false,
+															"type": "boolean"
+														},
+														"ip_categories": {
+															"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"ip_indicator_feeds": {
+															"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+															"example": true,
+															"type": "boolean"
+														},
+														"l4override": {
+															"description": "Send matching traffic to the supplied destination IP address and port.",
+															"properties": {
+																"ip": {
+																	"description": "IPv4 or IPv6 address.",
+																	"example": "1.1.1.1",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "A port number to use for TCP/UDP overrides.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"override_host": {
+															"description": "Override matching DNS queries with a hostname.",
+															"example": "example.com",
+															"type": "string"
+														},
+														"override_ips": {
+															"description": "Override matching DNS queries with an IP or set of IPs.",
+															"example": [
+																"1.1.1.1",
+																"2.2.2.2"
+															],
+															"items": {
+																"description": "IPv4 or IPv6 address.",
+																"example": "1.1.1.1",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"payload_log": {
+															"description": "Configure DLP payload logging.",
+															"properties": {
+																"enabled": {
+																	"description": "Set to true to enable DLP payload logging for this rule.",
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"type": "object"
+														},
+														"untrusted_cert": {
+															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+															"properties": {
+																"action": {
+																	"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																	"enum": [
+																		"pass_through",
+																		"block",
+																		"error"
+																	],
+																	"example": "error",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"schedule": {
+													"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+													"properties": {
+														"fri": {
+															"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"mon": {
+															"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sat": {
+															"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"sun": {
+															"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"thu": {
+															"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"time_zone": {
+															"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+															"example": "America/New York",
+															"type": "string"
+														},
+														"tue": {
+															"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														},
+														"wed": {
+															"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+															"example": "08:00-12:30,13:30-17:00",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"traffic": {
+													"description": "The wirefilter expression used for traffic matching.",
+													"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+													"type": "string"
+												},
+												"updated_at": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Zero Trust Gateway rule response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"action": {
+															"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.",
+															"enum": [
+																"on",
+																"off",
+																"allow",
+																"block",
+																"scan",
+																"noscan",
+																"safesearch",
+																"ytrestricted",
+																"isolate",
+																"noisolate",
+																"override",
+																"l4_override",
+																"egress",
+																"audit_ssh"
+															],
+															"example": "allow",
+															"type": "string"
+														},
+														"created_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"deleted_at": {
+															"description": "Date of deletion, if any.",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "The description of the rule.",
+															"example": "Block bad websites based on their host name.",
+															"type": "string"
+														},
+														"device_posture": {
+															"description": "The wirefilter expression used for device posture check matching.",
+															"example": "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+															"type": "string"
+														},
+														"enabled": {
+															"description": "True if the rule is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"filters": {
+															"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions.",
+															"example": [
+																"http"
+															],
+															"items": {
+																"description": "The protocol or layer to use.",
+																"enum": [
+																	"http",
+																	"dns",
+																	"l4",
+																	"egress"
+																],
+																"example": "http",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"id": {
+															"description": "The API resource UUID.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														},
+														"identity": {
+															"description": "The wirefilter expression used for identity matching.",
+															"example": "any(identity.groups.name[*] in {\"finance\"})",
+															"type": "string"
+														},
+														"name": {
+															"description": "The name of the rule.",
+															"example": "block bad websites",
+															"type": "string"
+														},
+														"precedence": {
+															"description": "Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.",
+															"type": "integer"
+														},
+														"rule_settings": {
+															"description": "Additional settings that modify the rule's action.",
+															"properties": {
+																"add_headers": {
+																	"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).",
+																	"example": {
+																		"My-Next-Header": [
+																			"foo",
+																			"bar"
+																		],
+																		"X-Custom-Header-Name": [
+																			"somecustomvalue"
+																		]
+																	},
+																	"type": "object"
+																},
+																"allow_child_bypass": {
+																	"description": "Set by parent MSP accounts to enable their children to bypass this rule.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"audit_ssh": {
+																	"description": "Settings for the Audit SSH action.",
+																	"properties": {
+																		"command_logging": {
+																			"description": "Enable to turn on SSH command logging.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"biso_admin_controls": {
+																	"description": "Configure how browser isolation behaves.",
+																	"properties": {
+																		"dcp": {
+																			"description": "Set to true to enable copy-pasting.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dd": {
+																			"description": "Set to true to enable downloading.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dk": {
+																			"description": "Set to true to enable keyboard usage.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"dp": {
+																			"description": "Set to true to enable printing.",
+																			"example": false,
+																			"type": "boolean"
+																		},
+																		"du": {
+																			"description": "Set to true to enable uploading.",
+																			"example": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"block_page_enabled": {
+																	"description": "Enable the custom block page.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"block_reason": {
+																	"description": "The text describing why this block occurred, displayed on the custom block page (if enabled).",
+																	"example": "This website is a security risk",
+																	"type": "string"
+																},
+																"bypass_parent_rule": {
+																	"description": "Set by children MSP accounts to bypass their parent's rules.",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"check_session": {
+																	"description": "Configure how session check behaves.",
+																	"properties": {
+																		"duration": {
+																			"description": "Configure how fresh the session needs to be to be considered valid.",
+																			"example": "300s",
+																			"type": "string"
+																		},
+																		"enforce": {
+																			"description": "Set to true to enable session enforcement.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"egress": {
+																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
+																	"properties": {
+																		"ipv4": {
+																			"description": "The IPv4 address to be used for egress.",
+																			"example": "192.0.2.2",
+																			"type": "string"
+																		},
+																		"ipv4_fallback": {
+																			"description": "The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.",
+																			"example": "192.0.2.3",
+																			"type": "string"
+																		},
+																		"ipv6": {
+																			"description": "The IPv6 range to be used for egress.",
+																			"example": "2001:DB8::/64",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"insecure_disable_dnssec_validation": {
+																	"description": "INSECURE - disable DNSSEC validation (for Allow actions).",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"ip_categories": {
+																	"description": "Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"ip_indicator_feeds": {
+																	"description": "Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.",
+																	"example": true,
+																	"type": "boolean"
+																},
+																"l4override": {
+																	"description": "Send matching traffic to the supplied destination IP address and port.",
+																	"properties": {
+																		"ip": {
+																			"description": "IPv4 or IPv6 address.",
+																			"example": "1.1.1.1",
+																			"type": "string"
+																		},
+																		"port": {
+																			"description": "A port number to use for TCP/UDP overrides.",
+																			"type": "integer"
+																		}
+																	},
+																	"type": "object"
+																},
+																"override_host": {
+																	"description": "Override matching DNS queries with a hostname.",
+																	"example": "example.com",
+																	"type": "string"
+																},
+																"override_ips": {
+																	"description": "Override matching DNS queries with an IP or set of IPs.",
+																	"example": [
+																		"1.1.1.1",
+																		"2.2.2.2"
+																	],
+																	"items": {
+																		"description": "IPv4 or IPv6 address.",
+																		"example": "1.1.1.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"payload_log": {
+																	"description": "Configure DLP payload logging.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Set to true to enable DLP payload logging for this rule.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"untrusted_cert": {
+																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
+																	"properties": {
+																		"action": {
+																			"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																			"enum": [
+																				"pass_through",
+																				"block",
+																				"error"
+																			],
+																			"example": "error",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"schedule": {
+															"description": "The schedule for activating DNS policies. This does not apply to HTTP or network policies.",
+															"properties": {
+																"fri": {
+																	"description": "The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"mon": {
+																	"description": "The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sat": {
+																	"description": "The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"sun": {
+																	"description": "The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"thu": {
+																	"description": "The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"time_zone": {
+																	"description": "The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.",
+																	"example": "America/New York",
+																	"type": "string"
+																},
+																"tue": {
+																	"description": "The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																},
+																"wed": {
+																	"description": "The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.",
+																	"example": "08:00-12:30,13:30-17:00",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"traffic": {
+															"description": "The wirefilter expression used for traffic matching.",
+															"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+															"type": "string"
+														},
+														"updated_at": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update a Zero Trust Gateway rule response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a Zero Trust Gateway rule",
+		"tags": [
+			"Zero Trust Gateway rules"
+		]
+	}
+}
