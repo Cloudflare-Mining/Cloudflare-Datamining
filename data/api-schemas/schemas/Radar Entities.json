@@ -74,6 +74,7 @@
 														"type": "string"
 													},
 													"nameLong": {
+														"description": "Deprecated field. Please use 'aka'.",
 														"type": "string"
 													},
 													"orgName": {
@@ -280,6 +281,7 @@
 													"type": "string"
 												},
 												"nameLong": {
+													"description": "Deprecated field. Please use 'aka'.",
 													"type": "string"
 												},
 												"orgName": {
@@ -677,6 +679,7 @@
 													"type": "string"
 												},
 												"nameLong": {
+													"description": "Deprecated field. Please use 'aka'.",
 													"type": "string"
 												},
 												"orgName": {
@@ -709,6 +712,11 @@
 													},
 													"type": "array"
 												},
+												"source": {
+													"description": "Regional Internet Registry",
+													"example": "RIPE",
+													"type": "string"
+												},
 												"website": {
 													"example": "https://www.apple.com/support/systemstatus/",
 													"type": "string"
@@ -724,6 +732,7 @@
 												"asn",
 												"website",
 												"orgName",
+												"source",
 												"estimatedUsers"
 											],
 											"type": "object"

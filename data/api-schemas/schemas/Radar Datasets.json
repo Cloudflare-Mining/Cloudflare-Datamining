@@ -318,21 +318,34 @@
 					"application/json": {
 						"schema": {
 							"properties": {
-								"dataset": {
+								"result": {
 									"properties": {
-										"url": {
-											"example": "https://example.com/download",
-											"type": "string"
+										"dataset": {
+											"properties": {
+												"url": {
+													"example": "https://example.com/download",
+													"type": "string"
+												}
+											},
+											"required": [
+												"url"
+											],
+											"type": "object"
 										}
 									},
 									"required": [
-										"url"
+										"dataset"
 									],
 									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"dataset"
+								"result",
+								"success"
 							],
 							"type": "object"
 						}

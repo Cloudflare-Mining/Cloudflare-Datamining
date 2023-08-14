@@ -4277,9 +4277,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -4287,6 +4289,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4298,8 +4307,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -4309,19 +4317,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -4334,7 +4342,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -4625,9 +4632,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -4635,6 +4644,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4646,8 +4662,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -4657,19 +4672,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -4682,7 +4697,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -4973,9 +4987,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -4983,6 +4999,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4994,8 +5017,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -5005,19 +5027,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -5030,7 +5052,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -5321,9 +5342,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -5331,6 +5354,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -5342,8 +5372,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -5353,19 +5382,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -5378,7 +5407,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -5685,9 +5713,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -5695,6 +5725,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -5706,8 +5743,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -5717,19 +5753,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -5742,7 +5778,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -6049,9 +6084,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -6059,6 +6096,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -6070,8 +6114,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -6081,19 +6124,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -6106,7 +6149,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -6397,9 +6439,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -6407,6 +6451,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -6418,8 +6469,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -6429,19 +6479,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -6454,7 +6504,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -6747,9 +6796,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -6757,6 +6808,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -6768,8 +6826,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -6779,19 +6836,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -6804,7 +6861,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -7095,9 +7151,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -7105,6 +7163,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -7116,8 +7181,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -7127,19 +7191,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -7152,7 +7216,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -7443,9 +7506,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -7453,6 +7518,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -7464,8 +7536,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -7475,19 +7546,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -7500,7 +7571,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -7791,9 +7861,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -7801,6 +7873,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -7812,8 +7891,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -7823,19 +7901,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -7848,7 +7926,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -8155,9 +8232,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -8165,6 +8244,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -8176,8 +8262,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -8187,19 +8272,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -8212,7 +8297,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -8519,9 +8603,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -8529,6 +8615,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -8540,8 +8633,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -8551,19 +8643,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -8576,7 +8668,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -8867,9 +8958,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -8877,6 +8970,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -8888,8 +8988,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -8899,19 +8998,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -8924,7 +9023,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"

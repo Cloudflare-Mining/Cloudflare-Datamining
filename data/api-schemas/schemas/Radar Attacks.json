@@ -152,9 +152,6 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
-																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -165,10 +162,6 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -194,7 +187,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -1412,25 +1404,20 @@
 											"type": "object"
 										},
 										"summary_0": {
-											"properties": {
-												"ACK Flood": {
-													"example": "65.662148",
+											"additionalProperties": {
+												"items": {
 													"type": "string"
 												},
-												"SSDP Flood": {
-													"example": "7.453879",
-													"type": "string"
-												},
-												"SYN Flood": {
-													"example": "16.86401",
-													"type": "string"
-												}
+												"type": "array"
 											},
-											"required": [
-												"ACK Flood",
-												"SYN Flood",
-												"SSDP Flood"
-											],
+											"example": {
+												"ACK Flood": [
+													"65.662148"
+												],
+												"SYN Flood": [
+													"16.86401"
+												]
+											},
 											"type": "object"
 										}
 									},
@@ -1982,9 +1969,6 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
-																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -1995,10 +1979,6 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -2028,7 +2008,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange",
 												"aggInterval",
 												"lastUpdated"
@@ -3753,25 +3732,21 @@
 											"type": "object"
 										},
 										"serie_0": {
+											"additionalProperties": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"example": {
+												"ACK Flood": [
+													"97.28898"
+												],
+												"timestamps": [
+													"2023-08-08T10:15:00Z"
+												]
+											},
 											"properties": {
-												"ACK Flood": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"SSDP Flood": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
-												"SYN Flood": {
-													"items": {
-														"type": "string"
-													},
-													"type": "array"
-												},
 												"timestamps": {
 													"items": {
 														"type": "string"
@@ -3780,10 +3755,7 @@
 												}
 											},
 											"required": [
-												"timestamps",
-												"ACK Flood",
-												"SYN Flood",
-												"SSDP Flood"
+												"timestamps"
 											],
 											"type": "object"
 										}
@@ -4292,9 +4264,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -4302,6 +4276,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4313,8 +4294,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -4324,19 +4304,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -4349,7 +4329,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -4590,9 +4569,11 @@
 															"items": {
 																"properties": {
 																	"dataSource": {
+																		"example": "ALL",
 																		"type": "string"
 																	},
 																	"description": {
+																		"example": "Cable cut in Tonga",
 																		"type": "string"
 																	},
 																	"endTime": {
@@ -4600,6 +4581,13 @@
 																		"type": "string"
 																	},
 																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
 																		"type": "string"
 																	},
 																	"startTime": {
@@ -4611,8 +4599,7 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime"
+																	"isInstantaneous"
 																],
 																"type": "object"
 															},
@@ -4622,19 +4609,19 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
 													"properties": {
 														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														},
 														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
 															"format": "date-time",
 															"type": "string"
 														}
@@ -4647,7 +4634,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -4888,9 +4874,6 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
-																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -4901,10 +4884,6 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -4930,7 +4909,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange"
 											],
 											"type": "object"
@@ -5264,9 +5242,6 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
-																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -5277,10 +5252,6 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -5310,7 +5281,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange",
 												"aggInterval",
 												"lastUpdated"
@@ -5594,9 +5564,6 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
-																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -5607,10 +5574,6 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -5640,7 +5603,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange",
 												"aggInterval",
 												"lastUpdated"

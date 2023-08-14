@@ -1515,9 +1515,6 @@
 																	"dataSource",
 																	"eventType",
 																	"description",
-																	"startTime",
-																	"endTime",
-																	"linkedUrl",
 																	"isInstantaneous"
 																],
 																"type": "object"
@@ -1528,10 +1525,6 @@
 															"type": "integer"
 														}
 													},
-													"required": [
-														"level",
-														"annotations"
-													],
 													"type": "object"
 												},
 												"dateRange": {
@@ -1561,7 +1554,6 @@
 												}
 											},
 											"required": [
-												"confidenceInfo",
 												"dateRange",
 												"aggInterval",
 												"lastUpdated"
