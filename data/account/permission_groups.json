@@ -22291,6 +22291,92 @@
 		]
 	},
 	{
+		"id": "c258d1a22bb243b09e4d4bc6b29f0197",
+		"name": "Turnstile",
+		"status": "V",
+		"meta": {
+			"description": "Grants full access to Turnstile",
+			"editable": "false",
+			"label": "turnstile_admin",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-14T17:14:30.961657Z",
+		"modified_on": "2023-08-14T17:14:30.961657Z",
+		"permissions": [
+			{
+				"id": "d46d269eeb7e4acd88282a4dacd17010",
+				"key": "com.cloudflare.api.account.challenges.widget.*"
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "036e5767654c48149b30a91c03f2e5c2",
+		"name": "Turnstile Read",
+		"status": "V",
+		"meta": {
+			"description": "Grants read access to Turnstile",
+			"editable": "false",
+			"label": "turnstile_read",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-14T17:14:30.961657Z",
+		"modified_on": "2023-08-14T17:14:30.961657Z",
+		"permissions": [
+			{
+				"id": "2bd6419acb5d4e15bba8a2f7e1f50ab9",
+				"key": "com.cloudflare.api.account.challenges.widget.read"
+			},
+			{
+				"id": "d1a704d3b6b541adaf5d9ea2c22c1a97",
+				"key": "com.cloudflare.api.account.challenges.widget.list"
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
 		"id": "b3dae31ebc9a4573943c475576fe03a5",
 		"name": "Waiting Room Admin",
 		"status": "V",
