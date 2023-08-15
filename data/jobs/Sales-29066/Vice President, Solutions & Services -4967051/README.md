@@ -7,7 +7,16 @@
 </div>
 <p><span style="font-weight: 400;">Cloudflare is looking for a strategic and data driven Vice President of Solutions and Services, to lead our customer product and technical experience from pre-sales to full scale long term adoption. This includes and is not limited to, pre-sales solution engineering, implementations and migrations, product success and support. You understand and have experience leading and managing the full end-to-end journey of our customers as well as defining the strategy and success models for a global team that aligns locally to customers of all types. You are a leader who has experienced hyper-growth and the challenges that come along with it and have worked closely with the executive teams in driving overall company success.</span></p>
 <p><strong>&nbsp;About the role</strong></p>
-<p><span style="font-weight: 400;">As the VP of Solutions &amp; Service, you will be responsible for driving customer success with our products and services through sales engineering, professional services, customer success, and customer support teams. You will work closely with the executive team to develop and execute strategies that enable our customers to achieve their goals and ensure their satisfaction. We're looking for an experienced leader to scale Cloudflare’s next phase of growth beyond $1B in revenue. This leader will augment our existing pre and post sales motions by challenging assumptions and influencing cross-functional stakeholders to develop and execute winning customer strategies that scale as we embark on this next phase in our journey.&nbsp;&nbsp;</span></p>
+<p><span style="font-weight: 400;">As the VP of Solutions &amp; Service, you will be responsible for driving customer success with our products and services through sales engineering, professional services, customer success and customer support teams. You will work closely with the executive team to develop and execute strategies that enable our customers to achieve their goals and ensure their satisfaction. We're looking for an experienced leader to scale Cloudflare’s next phase of growth beyond $1B in revenue. This leader will augment our existing pre and post sales motions by challenging assumptions and influencing cross-functional stakeholders to develop and execute winning customer strategies that scale as we embark on this next phase in our journey.&nbsp;&nbsp;</span></p>
+<p><strong>Qualifications:</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at scale - multi $Billion scale is required&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">20+ years of experience leading sales engineering, professional services and/or customer success, with 5 years in an executive leadership role&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Global leadership with the ability to build and manage high-performing teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication and interpersonal skills with the ability to influence and build strong relationships with customers and internal stakeholders</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record of driving customer satisfaction, retention, and growth</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree in Computer Science, Engineering, or related field or equivalent work experience</span></li>
+</ul>
 <p><strong>Key Responsibilities:</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead and manage the sales engineering, professional services, customer success, and customer support teams to ensure customer satisfaction, retention, and growth.</span></li>
@@ -21,15 +30,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify opportunities for upsell and cross-sell, and work with the sales team to drive revenue growth.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Analyze customer data and trends to develop and implement programs to improve customer retention and satisfaction.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Build a team culture based on shared commitment to customer success that promotes our values and supports diversity and inclusion that matches our communities&nbsp;</span></li>
-</ul>
-<p><strong>Qualifications:</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at scale - multi $billion scale&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 20 years of experience in product development, sales engineering, professional services or customer success, with at least 5 years in an executive leadership role</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global leadership with the ability to build and manage high-performing teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication and interpersonal skills with the ability to influence and build strong relationships with customers and internal stakeholders</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record of driving customer satisfaction, retention, and growth</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree in Computer Science, Engineering, or related field or equivalent work experience</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
