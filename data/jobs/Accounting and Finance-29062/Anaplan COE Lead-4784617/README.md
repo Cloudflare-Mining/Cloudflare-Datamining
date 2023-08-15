@@ -29,7 +29,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert communication and presentation skills with the ability and confidence to articulate, present and debate your recommendations</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to balance and prioritize multiple work streams for different stakeholders</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to translate functional requirements into technical requirements and leverage best practice to drive towards the best result</span></li>
-	<li>&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
