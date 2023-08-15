@@ -1,5 +1,6 @@
 [
 	"/[id]/[id]/dns",
+	"/[id]/billing/subscriptions",
 	"/[id]/r2",
 	"/[id]/r2/[id]/buckets/[id]/*",
 	"/[id]/r2/[id]/buckets/[id]/cors/[id]/*",
@@ -27,6 +28,7 @@
 	"/accounts/[id]/r2/buckets/[id]/policy",
 	"/accounts/[id]/r2/buckets/[id]/uploads",
 	"/accounts/[id]/r2/buckets/[id]/usage",
+	"/accounts/[id]/r2/canUnsubscribe",
 	"/profile/api-tokens",
 	"/sign-up/r2",
 	"/user/tokens",
