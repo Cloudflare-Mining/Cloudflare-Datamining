@@ -2339,6 +2339,7 @@
 		"protocol": "Layer 4 protocol",
 		"protocolString": "Human-readable string representation of the protocol",
 		"routerAddress": "IP of the router that sampled the flows",
+		"ruleIDs": "List of flow matching rules",
 		"sourceAddress": "IP from which the data was sent",
 		"sourcePort": "Value of the Source Port header field in the packet",
 		"tcpFlags": "Value of the Flags header field in the TCP packet",
@@ -4106,6 +4107,7 @@
 	},
 	"ZoneHealthCheckEventsAdaptive": {
 		"__description": "Raw Health Check events with adaptive sampling",
+		"date": "The date the event was written to the database",
 		"datetime": "The date and time the event was written to the database",
 		"eventId": "The event id that created this healthcheck event",
 		"expectedResponseCodes": "The expected response codes for the health check",
@@ -4145,6 +4147,7 @@
 	},
 	"ZoneHealthCheckEventsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"date": "The date the event was written to the database",
 		"datetime": "Datetime the event was written to the database",
 		"datetimeFifteenMinutes": "Datetime the event was written to the database truncated to a multiple of 15 minutes",
 		"datetimeFiveMinutes": "Datetime the event was written to the database truncated to a multiple of 5 minutes",
