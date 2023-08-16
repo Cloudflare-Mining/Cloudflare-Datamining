@@ -94,7 +94,7 @@
 						},
 						"title": "Cloudflare Foundation DNS ",
 						"subtitle": "The most reliable and best performing DNS on the market. Easy to use, simple pricing, with advanced features.",
-						"copy": "Trust your DNS to Cloudflare's global Anycast network that spans %{DataCenterCount} data centers and %{CountryCount} countries, reaching 95% of the world's population within 50 ms — providing inherent DDoS protection, reducing latency, and improving uptime.",
+						"copy": "Trust your DNS to Cloudflare's global Anycast network that spans %{DataCenterCount} data centers and %{CountryCount} countries, reaching about 95% of the world's population within approximately %{OperationMilliseconds}ms — providing inherent DDoS protection, reducing latency, and improving uptime.",
 						"iconList": [
 							{
 								"file": {
@@ -127,7 +127,7 @@
 						"streamOptions": null,
 						"rightSideCopy": null,
 						"rightSideCopyPosition": null,
-						"backgroundColor": "performance-background",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"textColor": "white",
 						"extraClass": null,
@@ -346,7 +346,7 @@
 							},
 							{
 								"title": "~50 ms",
-								"description": "from %{GlobalInternetConnectedPercent}% of the world's Internet-connected population"
+								"description": "from about %{GlobalInternetConnectedPercent}% of the world's Internet-connected population"
 							}
 						],
 						"dataSource": {
