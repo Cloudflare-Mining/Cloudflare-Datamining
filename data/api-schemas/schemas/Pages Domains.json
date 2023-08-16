@@ -134,10 +134,8 @@
 											"example": []
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
@@ -496,10 +494,8 @@
 											"example": []
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
@@ -661,15 +657,8 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -776,15 +765,8 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -861,10 +843,8 @@
 											"example": []
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
@@ -1032,15 +1012,8 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -1147,15 +1120,8 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -1232,10 +1198,8 @@
 											"example": []
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
@@ -1398,15 +1362,8 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
-														},
-														{
-															"type": "string"
-														}
-													],
-													"nullable": true
+													"nullable": true,
+													"type": "object"
 												}
 											}
 										}
@@ -1513,15 +1470,8 @@
 												{
 													"properties": {
 														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true
+															"nullable": true,
+															"type": "object"
 														}
 													}
 												}
@@ -1598,10 +1548,8 @@
 											"example": []
 										},
 										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true
+											"nullable": true,
+											"type": "object"
 										},
 										"success": {
 											"description": "Whether the API call was successful.",
