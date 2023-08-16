@@ -2255,12 +2255,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				t.g.build = En({}, {
-					branch: "release-Aug.15.2023-1692108426",
+					branch: "release-Aug.16.2023-1692194913",
 					isReleaseCandidate: "true",
-					commit: "6354f90530f30d6135ef3cb8d57b2217700d9c6f",
+					commit: "e8999cb585a060f2ada2bb3520b9753e41cf4755",
 					env: "production",
-					builtAt: 1692110885380,
-					dashVersion: "29cb537c5a250b5bf0cbfe49a59feefbe3df431c",
+					builtAt: 1692195363768,
+					dashVersion: "59f73e9f8086e3b50337c932d8a828f8d4bf66d4",
 					versions: {
 						"@cloudflare/app-dash": "25.157.27",
 						node: "16.16.0",

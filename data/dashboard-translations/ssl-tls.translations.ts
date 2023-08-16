@@ -322,6 +322,16 @@ If you want to be issued a certificate for \`example.com\` and \`*.example.com\`
 
 `
 	},
+	enable_acm: {
+		card_title: "Advanced Certificate Manager",
+		card_description: `Advanced Certificate Manager gives you more control and flexibility for your certificates and TLS settings. Benefits include:
+* Customize the hostnames on the certificate
+* Full TLS certificate coverage through Total TLS
+* Cipher suite selection
+* Per hostname TLS settings
+* and more!`,
+		card_button: "Purchase ACM"
+	},
 	ussl_ca_card_changed_notification: "Universal SSL Certificate Authority successfully changed.",
 	ussl_ca_card_title: "Universal SSL Certificate Authority",
 	ussl_ca_card_description: "Select the certificate authority (CA) that will be used for issuing your Universal SSL certificate.",
