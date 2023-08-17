@@ -37,7 +37,17 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "GA Week",
+					"metaDescription": "Join us here to learn about Cloudflare products that are out of beta and generally available during GA week.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HkoQpN9DnJgu3jbkTKIVW/bc269e0be84a724f3899363482492318/GA_Week_Theme.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "1WEWkWK9W3E2mhRwc6IxC0",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -47,6 +57,44 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "6fPcNwkcUA2ZtBgD1BJxUj",
+						"menuTitle": "GA Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "6M4r3w6Gq34AioJQpNZ5Qm",
+								"linkText": "Updates and announcements",
+								"page": null,
+								"url": "ga-week",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "A58UIP6MmlDDqXNQba7We",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "ga-week/cloudflare-tv",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "AsYq7hqvE25Bvkv0490pP",
+								"linkText": "Customer Stories",
+								"page": null,
+								"url": "ga-week/customer-stories",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2P6p8G7KTh2ibh1p1eAJCz",
+								"linkText": "Press Releases",
+								"page": null,
+								"url": "ga-week/press-releases",
+								"subMenuItems": null
+							}
+						]
+					},
 					{
 						"contentfulId": "1TKm2bmY0O7OGfQipW46zz",
 						"contentTypeId": "bladeHeroAnimation",
@@ -268,6 +316,37 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "7E4XIPblZTnVKyoNorzwz9",
+								"title": "Cloudflare Zaraz supports Managed Components and DLP to make third-party tools private",
+								"titleSize": null,
+								"description": "Third party tools are the only thing you can't control on your website, unless you use Managed Components with Cloudflare Zaraz.",
+								"learnMoreUrl": "https://blog.cloudflare.com/zaraz-uses-managed-components-and-dlp-to-make-tools-private",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "0835d6df-f04b-53e3-92fe-5d52bf667e5f",
+									"altText": "Zaraz: Open Source Managed Components",
+									"title": "Zaraz: Open Source Managed Components",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ug8TmZrRT1jwo2awXC6yl/0de393570223dbe79e72a67c09affe76/Zaraz__Open_Source_Managed_Components.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "331slWtfAFqaBNVmDt8jtS",
 								"title": "Logpush: now lower cost and with more visibility",
 								"titleSize": null,
@@ -288,6 +367,37 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4rB88kI8F886RyrzuE0rSr/4ac6dd66bb985dab1648fd59e1c4ff01/Logpush__lower_cost_and_more_reliable.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3Ih6SVgox0kzrHjYyGHGZt",
+								"title": "R2 is now Generally Available",
+								"titleSize": null,
+								"description": "R2 is now generally available!! R2 gives developers object storage minus the egress fees",
+								"learnMoreUrl": "https://blog.cloudflare.com/r2-ga",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "0f01f55a-2caf-562d-8967-119d28252f0e",
+									"altText": "R2",
+									"title": "R2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/NszEaFrdguxpYkqjephgV/fda4dde8d59356ae39a91e41c5d276aa/R2_Open_Beta_dark_.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -361,6 +471,37 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "uEIKE8ZFSR2qgMVFoGhi4",
+								"title": "Going originless with Cloudflare Workers – Building a Todo app – Part 1: The API",
+								"titleSize": null,
+								"description": "Custom Domains are now in General Availability! Today we go through Part 1 in a series on building completely serverless applications on Cloudflare's Developer Platform.",
+								"learnMoreUrl": "https://blog.cloudflare.com/workers-todo-part-1",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "b31668cd-1565-52ad-95ca-e19b8bcabc4e",
+									"altText": "Custom Domains for Workers",
+									"title": "Custom Domains for Workers",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rMaju0wfxBqxTkcIstQIl/608443f84b11f67ecbd12fbbfb11500b/Custom_Domains_for_Workers_b.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "3rgbFTlzpJvwn9EFQIbanH",
 								"title": "SVG support in Cloudflare Images",
 								"titleSize": null,
@@ -423,6 +564,37 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "7cicl2nB8UYqJprtm9uGgZ",
+								"title": "Regional Services comes to India, Japan and Australia",
+								"titleSize": null,
+								"description": "With Regional Services, we are thrilled to expand our coverage to these countries in Asia Pacific, allowing more customers to use Cloudflare by giving them precise control over which parts of the Cloudflare network are able to perform advanced functions",
+								"learnMoreUrl": "https://blog.cloudflare.com/regional-services-comes-to-apac",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "563c7937-ed0c-5166-9d8a-5c30a877ff72",
+									"altText": "Regional Services Expansion",
+									"title": "Regional Services Expansion",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/66AcehBDe1EDmjj8gZwSTz/23e561427c20a01ac1bf43011988375a/Regional_Services_Expansion.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "2jFmlgHV6INs0mOwonSDwd",
 								"title": "Detect security issues in your SaaS apps with Cloudflare CASB",
 								"titleSize": null,
@@ -443,6 +615,68 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Era2pLp4u6BuvC0FX2uMj/55b918606933048b5d7ce04e4d2a3eb0/CASB_available_in_ZT_Bundles.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2THqrZJiPHCDKJjLOLbQ4s",
+								"title": "Cloudflare Data Loss Prevention now Generally Available",
+								"titleSize": null,
+								"description": "Data Loss Prevention is now available for Cloudflare contract customers, giving customers more options to protect their sensitive data.",
+								"learnMoreUrl": "https://blog.cloudflare.com/inline-dlp-ga",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "c216fdba-efac-5993-9c89-3e73c875531a",
+									"altText": "DLP available in ZT Bundles",
+									"title": "DLP available in ZT Bundles",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2NhslteUmaHA5luOzIJwMv/66f2c69c1f6551f1cae67a0e8a2188f3/DLP.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2w73kmqVrGaoBj6I6xJyW5",
+								"title": "Cloudflare One Partner Program Acceleration",
+								"titleSize": null,
+								"description": "Cloudflare One Partner Program gains traction with existing and prospective partners.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-one-partner-program-acceleration",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "dc22c685-27ca-59d9-ab5e-a046bd1774b3",
+									"altText": "Cloudflare Channel Partner Program",
+									"title": "Cloudflare Channel Partner Program",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1zMR1IJlmUgaF6abRmabzj/32cedd872b2d832c10cccdd97febee76/Cloudflare_Channel_Partner_Program.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -598,6 +832,37 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6tYyx4de81iPsZAOanAoPA/a119b7a7d2305990b8b6bd9bfc68d86f/Account_level_WAF.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7zDFfYzwOZj0lTBQsFonPk",
+								"title": "Introducing Cloudflare Adaptive DDoS Protection - our new traffic profiling system for mitigating DDoS attacks",
+								"titleSize": null,
+								"description": "Cloudflare's new Adaptive DDoS Protection system learns your unique traffic patterns and constantly adapts to protect you against sophisticated DDoS attacks",
+								"learnMoreUrl": "https://blog.cloudflare.com/adaptive-ddos-protection/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "cd3234da-fcda-56db-b033-f4f05413ceae",
+									"altText": "Cloudflare Aware",
+									"title": "Cloudflare Aware",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/nhjRbhM9tgCaXEKPngIHz/4d9ffa9d6aad80fc277f9800a4c01813/_Cloudflare_Aware__Behavioral_DDoS_Protection.png"
 										}
 									},
 									"brandfolderAsset": null,
