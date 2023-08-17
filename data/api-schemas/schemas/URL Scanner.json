@@ -127,6 +127,16 @@
 					"description": "Filter scans by exact match URL path (also supports suffix search).",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Return only scans created by account.",
+				"in": "query",
+				"name": "account_scans",
+				"schema": {
+					"default": false,
+					"description": "Return only scans created by account.",
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -853,25 +863,24 @@
 																					"properties": {
 																						"groups": {
 																							"items": {
-																								"example": 7,
-																								"type": "number"
+																								"type": "integer"
 																							},
 																							"type": "array"
 																						},
 																						"id": {
-																							"example": 28,
-																							"type": "number"
+																							"example": 63,
+																							"type": "integer"
 																						},
 																						"name": {
-																							"example": "Operating systems",
+																							"example": "IAAS",
 																							"type": "string"
 																						},
 																						"priority": {
-																							"example": 6,
-																							"type": "number"
+																							"example": 8,
+																							"type": "integer"
 																						},
 																						"slug": {
-																							"example": "operating-systems",
+																							"example": "iaas",
 																							"type": "string"
 																						}
 																					},
@@ -888,26 +897,100 @@
 																			},
 																			"confidence": {
 																				"example": 100,
-																				"type": "number"
+																				"type": "integer"
 																			},
 																			"description": {
-																				"example": "Windows Server is a brand name.",
+																				"example": "",
 																				"type": "string"
 																			},
+																			"evidence": {
+																				"properties": {
+																					"impliedBy": {
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"patterns": {
+																						"items": {
+																							"properties": {
+																								"confidence": {
+																									"example": 100,
+																									"type": "integer"
+																								},
+																								"excludes": {
+																									"items": {
+																										"type": "string"
+																									},
+																									"type": "array"
+																								},
+																								"implies": {
+																									"items": {
+																										"type": "string"
+																									},
+																									"type": "array"
+																								},
+																								"match": {
+																									"example": "ECS",
+																									"type": "string"
+																								},
+																								"name": {
+																									"description": "Header or Cookie name when set",
+																									"example": "server",
+																									"type": "string"
+																								},
+																								"regex": {
+																									"example": "^ECS",
+																									"type": "string"
+																								},
+																								"type": {
+																									"example": "headers",
+																									"type": "string"
+																								},
+																								"value": {
+																									"example": "ECS (dcb/7EEE)",
+																									"type": "string"
+																								},
+																								"version": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"type",
+																								"regex",
+																								"value",
+																								"match",
+																								"name",
+																								"confidence",
+																								"version",
+																								"implies",
+																								"excludes"
+																							],
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"patterns",
+																					"impliedBy"
+																				],
+																				"type": "object"
+																			},
 																			"icon": {
-																				"example": "WindowsServer.png",
+																				"example": "Amazon ECS.svg",
 																				"type": "string"
 																			},
 																			"name": {
-																				"example": "Windows Server",
+																				"example": "Amazon ECS",
 																				"type": "string"
 																			},
 																			"slug": {
-																				"example": "windows-server",
+																				"example": "amazon-ecs",
 																				"type": "string"
 																			},
 																			"website": {
-																				"example": "http://microsoft.com/windowsserver",
+																				"example": "https://aws.amazon.com/ecs/",
 																				"type": "string"
 																			}
 																		},
@@ -917,7 +1000,8 @@
 																			"categories",
 																			"confidence",
 																			"icon",
-																			"website"
+																			"website",
+																			"evidence"
 																		],
 																		"type": "object"
 																	},
@@ -2778,7 +2862,7 @@
 		}
 	},
 	"POST /accounts/{accountId}/urlscanner/scan": {
-		"description": "Submit a URL to scan. You can also set some options, like the visibility level and custom headers. Accounts are limited to 1 new scan every 10 seconds. If you need more, please reach out.",
+		"description": "Submit a URL to scan. You can also set some options, like the visibility level and custom headers. Accounts are limited to 1 new scan every 10 seconds and 8000 per month. If you need more, please reach out.",
 		"operationId": "urlscanner-create-scan",
 		"parameters": [
 			{
