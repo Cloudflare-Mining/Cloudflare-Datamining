@@ -5,69 +5,61 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<div>
-	<div>
-		<div>
-			<div>
-				<div>
-					<p><strong>About Us</strong></p>
-					<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet prop- erties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see sig- nificant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.</p>
-					<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloud- flare. Come join us!</p>
-					<p><strong>About the department</strong></p>
-					<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a glob- al Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-					<p><strong>What you'll do</strong></p>
-					<p><br>As a&nbsp;Technical Support Manager&nbsp;at Cloudflare you will be expected to:</p>
-					<p>Provide Best in Class Support to our Customers &amp; Partners -&nbsp;You enjoy taking customer escala- tions from team members, triaging and answering high priority tickets from both partners and custom- ers, understand their needs and be able to own, summarise and communicate actions taken to re- solve. Each Technical Support Manager as the ability and authority to directly influence the customers experience in a positive way raising our reputation and customers confidence levels.</p>
-					<p>Manage &amp; Build the EMEA Support Team&nbsp;- Coach and develop a small team (of 8-10 support en- gineers) to excel at their jobs, manage individual and team projects &amp; achieve KPI performance tar- gets. Support Managers will be expected to have regular one-on-ones with everyone on your team, plan &amp; encourage professional development, help with training and QA of tickets as well as driving the hiring process for the team, and sustaining team morale levels.</p>
-					<p>Improve Tools and Processes&nbsp;- Support Managers will help drive continuous improvements to pro- cesses for helping customers, optimising our resources and working closely with the rest of the com- pany. They will also be directly involved in the support tools, systems and processes we use.</p>
-					<p>Work Cross-Functionally With Other Teams&nbsp;- Support Managers will work with other teams to guide projects that help the support team, customers and the company. They will act as the Voice of the Customer to communicate clearly any challenges our customers are reporting to the rest of the company through to resolution. Close working relationships with other regional &amp; global support man- agers in Support</p>
-					<p><strong>Requirements</strong></p>
-					<ul>
-						<li>
-							<p>Interest &amp; aptitude for leading a small team of specialist technical support engineers</p>
-						</li>
-						<li>
-							<p>Experience working in a high-performing team of support engineers who meet and exceed</p>
-							<p>their individual, team, and company goals.</p>
-						</li>
-						<li>
-							<p>Minimum 5 years technical support experience</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div>
-		<div>
-			<div>
-				<div>
-					<ul>
-						<li>
-							<p>Experience troubleshooting and supporting at least one of our main areas of support: Cyber- Security, DNS, Web Performance, and/or Networking</p>
-						</li>
-						<li>
-							<p>Experience providing global support that follows the sun 24x7x365</p>
-						</li>
-						<li>
-							<p>Good exposure to hiring and training people</p>
-						</li>
-						<li>
-							<p>Excellent communication skills that allow you to be a bridge between customers, sales and</p>
-							<p>the product and engineering teams</p>
-						</li>
-						<li>
-							<p>Past experience or interest in working at a high-growth company</p>
-						</li>
-						<li>
-							<p>Desire to build the best customer support team in the industry!&nbsp;</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies. You will focus on providing support on our CDN and Developer products: Cache, Workers, Rules, R2, Pages, etc..</p>
+<h3>Examples of desirable skills, knowledge and experience</h3>
+<ul>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
+</ul>
+<ul>
+	<li>You have experience solving HTTP, DNS and other networking-related problems</li>
+</ul>
+<ul>
+	<li>You understand how the Internet works</li>
+</ul>
+<ul>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+</ul>
+<ul>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+</ul>
+<ul>
+	<li>You have experience building applications or websites, or experience reviewing code</li>
+</ul>
+<ul>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+</ul>
+<h3>Bonus Points</h3>
+<ul>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)</li>
+</ul>
+<ul>
+	<li>You are familiar with Nginx, Apache, IIS or any other web servers</li>
+</ul>
+<ul>
+	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<ul>
+	<li>You have experience with Cloudflare Workers or JavaScript&nbsp;</li>
+</ul>
+<ul>
+	<li>You have experience with version control and CI/CD (Git, SVN, GitHub, Bitbucket, TeamCity, etc..)&nbsp;</li>
+</ul>
+<ul>
+	<li>You have experience with Video encoding and streaming solutions</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
