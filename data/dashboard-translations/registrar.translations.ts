@@ -16,9 +16,9 @@
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
 	},
 	form: {
-		field_validation_error: (0, a.d)(R(), "field"),
+		field_validation_error: (0, a.d)(A(), "field"),
 		field_required_error: "This field is required",
-		field_name_required_error: (0, a.d)(A(), "field"),
+		field_name_required_error: (0, a.d)(R(), "field"),
 		field_mismatch_error: (0, a.d)(T(), "fieldPlural"),
 		field_min_length_error: (0, a.d)(D(), "length", "characters"),
 		field_length_error: (0, a.d)(P(), "length", "characters"),
@@ -561,8 +561,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	wizard_table_header_cur_exp_with_separator: "Current expiration: ",
 	wizard_table_header_new_exp_with_separator: "New expiration: ",
 	wizard_table_header_cost: "Wholesale cost",
-	wizard_table_and: "And",
-	wizard_table_more: "more",
+	wizard_table_and_more: "and %{numRemaining} more",
 	wizard_table_collapse: "Collapse",
 	wizard_table_total_fee: "ICANN Fee:",
 	wizard_table_total: "Total:",
