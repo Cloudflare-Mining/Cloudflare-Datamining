@@ -45,13 +45,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -90,8 +90,8 @@
 					"example": "all",
 					"items": {
 						"enum": [
-							"http",
-							"all"
+							"HTTP",
+							"ALL"
 						],
 						"type": "string"
 					},
@@ -128,8 +128,8 @@
 				"schema": {
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage_change",
-						"min0_max"
+						"PERCENTAGE_CHANGE",
+						"MIN0_MAX"
 					],
 					"example": "MIN0_MAX",
 					"type": "string"
@@ -141,8 +141,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -390,13 +390,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -457,8 +457,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -620,13 +620,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -687,8 +687,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

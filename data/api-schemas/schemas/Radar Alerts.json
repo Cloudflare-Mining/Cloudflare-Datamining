@@ -34,13 +34,13 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dcontrol",
-						"2dcontrol",
-						"7dcontrol",
-						"14dcontrol",
-						"28dcontrol",
-						"12wcontrol",
-						"24wcontrol"
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
 					],
 					"example": "7d",
 					"type": "string"
@@ -69,8 +69,8 @@
 				"name": "status",
 				"schema": {
 					"enum": [
-						"verified",
-						"unverified"
+						"VERIFIED",
+						"UNVERIFIED"
 					],
 					"type": "string"
 				}
@@ -81,8 +81,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -293,13 +293,13 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dcontrol",
-						"2dcontrol",
-						"7dcontrol",
-						"14dcontrol",
-						"28dcontrol",
-						"12wcontrol",
-						"24wcontrol"
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
 					],
 					"example": "7d",
 					"type": "string"
@@ -328,8 +328,8 @@
 				"name": "status",
 				"schema": {
 					"enum": [
-						"verified",
-						"unverified"
+						"VERIFIED",
+						"UNVERIFIED"
 					],
 					"type": "string"
 				}
@@ -340,8 +340,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

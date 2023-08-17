@@ -29,9 +29,9 @@
 					"default": "POPULAR",
 					"description": "The ranking type.",
 					"enum": [
-						"popular",
-						"trending_rise",
-						"trending_steady"
+						"POPULAR",
+						"TRENDING_RISE",
+						"TRENDING_STEADY"
 					],
 					"example": "POPULAR",
 					"type": "string"
@@ -68,8 +68,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -254,9 +254,9 @@
 					"default": "POPULAR",
 					"description": "The ranking type.",
 					"enum": [
-						"popular",
-						"trending_rise",
-						"trending_steady"
+						"POPULAR",
+						"TRENDING_RISE",
+						"TRENDING_STEADY"
 					],
 					"example": "POPULAR",
 					"type": "string"
@@ -313,13 +313,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -356,8 +356,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -576,9 +576,9 @@
 					"default": "POPULAR",
 					"description": "The ranking type.",
 					"enum": [
-						"popular",
-						"trending_rise",
-						"trending_steady"
+						"POPULAR",
+						"TRENDING_RISE",
+						"TRENDING_STEADY"
 					],
 					"example": "POPULAR",
 					"type": "string"
@@ -590,8 +590,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

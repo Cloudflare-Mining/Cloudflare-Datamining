@@ -37,10 +37,10 @@
 					"description": "Search types to be included in results.",
 					"items": {
 						"enum": [
-							"special_events",
-							"notebooks",
-							"locations",
-							"asns"
+							"SPECIAL_EVENTS",
+							"NOTEBOOKS",
+							"LOCATIONS",
+							"ASNS"
 						],
 						"type": "string"
 					},
@@ -54,10 +54,10 @@
 					"description": "Search types to be excluded from results.",
 					"items": {
 						"enum": [
-							"special_events",
-							"notebooks",
-							"locations",
-							"asns"
+							"SPECIAL_EVENTS",
+							"NOTEBOOKS",
+							"LOCATIONS",
+							"ASNS"
 						],
 						"type": "string"
 					},
@@ -70,8 +70,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

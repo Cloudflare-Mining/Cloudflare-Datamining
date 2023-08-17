@@ -31,13 +31,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -98,8 +98,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -332,13 +332,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -389,8 +389,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -404,10 +404,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -420,8 +420,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -585,13 +585,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -642,8 +642,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -657,10 +657,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -673,8 +673,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -843,13 +843,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -899,10 +899,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -915,8 +915,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1065,13 +1065,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1122,8 +1122,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -1136,8 +1136,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1296,13 +1296,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1353,8 +1353,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -1368,10 +1368,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -1384,8 +1384,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1549,13 +1549,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1618,8 +1618,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -1633,10 +1633,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -1649,8 +1649,8 @@
 				"schema": {
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage_change",
-						"min0_max"
+						"PERCENTAGE_CHANGE",
+						"MIN0_MAX"
 					],
 					"example": "MIN0_MAX",
 					"type": "string"
@@ -1660,11 +1660,12 @@
 				"in": "query",
 				"name": "metric",
 				"schema": {
+					"default": "bytes",
 					"description": "Measurement units, eg. bytes.",
 					"enum": [
-						"bytes"
+						"BYTES",
+						"BYTES_OLD"
 					],
-					"example": "bytes",
 					"type": "string"
 				}
 			},
@@ -1674,8 +1675,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1844,13 +1845,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1911,8 +1912,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2189,13 +2190,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2246,8 +2247,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -2261,10 +2262,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -2278,8 +2279,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -2291,8 +2292,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2488,13 +2489,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2545,8 +2546,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -2560,10 +2561,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -2577,8 +2578,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -2590,8 +2591,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2794,13 +2795,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2851,8 +2852,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -2866,8 +2867,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -2888,8 +2889,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3064,13 +3065,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3120,10 +3121,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -3137,8 +3138,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -3150,8 +3151,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3326,13 +3327,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3383,8 +3384,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -3398,8 +3399,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -3411,8 +3412,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3601,13 +3602,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3658,8 +3659,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -3673,10 +3674,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -3690,8 +3691,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -3712,8 +3713,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3888,13 +3889,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3945,8 +3946,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -3960,8 +3961,8 @@
 					"default": "PERCENTAGE",
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage",
-						"min0_max"
+						"PERCENTAGE",
+						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"
@@ -3982,8 +3983,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4152,13 +4153,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4209,8 +4210,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -4224,10 +4225,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -4240,8 +4241,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4457,13 +4458,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4514,8 +4515,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -4529,10 +4530,10 @@
 					"description": "Array of L3/4 attack types.",
 					"items": {
 						"enum": [
-							"udp",
-							"tcp",
-							"icmp",
-							"gre"
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
 						],
 						"type": "string"
 					},
@@ -4545,8 +4546,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4753,13 +4754,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4820,8 +4821,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5084,13 +5085,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5128,13 +5129,13 @@
 					"description": "Array of L7 attack types.",
 					"items": {
 						"enum": [
-							"ddos",
-							"waf",
-							"bot_management",
-							"access_rules",
-							"ip_reputation",
-							"api_shield",
-							"data_loss_prevention"
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
 						],
 						"type": "string"
 					},
@@ -5171,8 +5172,8 @@
 				"schema": {
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
-						"percentage_change",
-						"min0_max"
+						"PERCENTAGE_CHANGE",
+						"MIN0_MAX"
 					],
 					"example": "MIN0_MAX",
 					"type": "string"
@@ -5184,8 +5185,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5439,13 +5440,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5506,8 +5507,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5803,13 +5804,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5858,8 +5859,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6026,13 +6027,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6081,8 +6082,8 @@
 				"schema": {
 					"description": "Attack magnitude can be defined by total requests mitigated or by total zones attacked.",
 					"enum": [
-						"affected_zones",
-						"mitigated_requests"
+						"AFFECTED_ZONES",
+						"MITIGATED_REQUESTS"
 					],
 					"example": "MITIGATED_REQUESTS",
 					"type": "string"
@@ -6094,8 +6095,8 @@
 				"schema": {
 					"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
 					"enum": [
-						"origin",
-						"target"
+						"ORIGIN",
+						"TARGET"
 					],
 					"example": "ORIGIN",
 					"type": "string"
@@ -6116,8 +6117,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6294,13 +6295,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6349,8 +6350,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6517,13 +6518,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6560,8 +6561,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

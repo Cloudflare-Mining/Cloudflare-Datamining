@@ -30,13 +30,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -99,9 +99,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -116,9 +116,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -133,9 +133,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -148,8 +148,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -303,13 +303,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -372,9 +372,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -389,9 +389,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -406,9 +406,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -421,8 +421,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -576,13 +576,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -645,9 +645,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -662,9 +662,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -679,9 +679,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -694,8 +694,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -849,13 +849,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -918,9 +918,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -935,9 +935,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -952,9 +952,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -969,9 +969,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -984,8 +984,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1134,13 +1134,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1203,9 +1203,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1220,9 +1220,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1237,9 +1237,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1254,9 +1254,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1269,8 +1269,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1419,13 +1419,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1488,9 +1488,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1505,9 +1505,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1522,9 +1522,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1537,8 +1537,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1692,13 +1692,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1761,9 +1761,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1778,9 +1778,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1795,9 +1795,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1812,9 +1812,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -1827,8 +1827,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2002,13 +2002,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2071,9 +2071,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2088,9 +2088,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2105,9 +2105,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2120,8 +2120,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2299,13 +2299,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2368,9 +2368,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2385,9 +2385,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2402,9 +2402,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2417,8 +2417,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2596,13 +2596,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2665,9 +2665,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2682,9 +2682,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2699,9 +2699,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2714,8 +2714,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2893,13 +2893,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2962,9 +2962,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2979,9 +2979,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -2996,9 +2996,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3013,9 +3013,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3028,8 +3028,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3199,13 +3199,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3268,9 +3268,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3285,9 +3285,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3302,9 +3302,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3319,9 +3319,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3334,8 +3334,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3505,13 +3505,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3574,9 +3574,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3591,9 +3591,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3608,9 +3608,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3623,8 +3623,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3802,13 +3802,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3871,9 +3871,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3888,9 +3888,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3905,9 +3905,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3922,9 +3922,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -3937,8 +3937,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4118,13 +4118,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4187,9 +4187,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4204,9 +4204,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4221,9 +4221,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4238,9 +4238,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4253,8 +4253,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4446,9 +4446,9 @@
 				"schema": {
 					"description": "ARC.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -4490,13 +4490,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4559,9 +4559,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4576,9 +4576,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4593,9 +4593,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4608,8 +4608,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4801,9 +4801,9 @@
 				"schema": {
 					"description": "DKIM.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -4845,13 +4845,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4914,9 +4914,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4931,9 +4931,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4948,9 +4948,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -4963,8 +4963,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5156,9 +5156,9 @@
 				"schema": {
 					"description": "DMARC.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -5200,13 +5200,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5269,9 +5269,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5286,9 +5286,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5303,9 +5303,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5318,8 +5318,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5511,8 +5511,8 @@
 				"schema": {
 					"description": "Malicious.",
 					"enum": [
-						"malicious",
-						"not_malicious"
+						"MALICIOUS",
+						"NOT_MALICIOUS"
 					],
 					"example": "MALICIOUS",
 					"type": "string"
@@ -5554,13 +5554,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5623,9 +5623,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5640,9 +5640,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5657,9 +5657,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5674,9 +5674,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -5689,8 +5689,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5882,8 +5882,8 @@
 				"schema": {
 					"description": "Spam.",
 					"enum": [
-						"spam",
-						"not_spam"
+						"SPAM",
+						"NOT_SPAM"
 					],
 					"example": "SPAM",
 					"type": "string"
@@ -5925,13 +5925,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5994,9 +5994,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6011,9 +6011,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6028,9 +6028,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6045,9 +6045,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6060,8 +6060,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6253,9 +6253,9 @@
 				"schema": {
 					"description": "SPF.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -6297,13 +6297,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6366,9 +6366,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6383,9 +6383,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6400,9 +6400,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6415,8 +6415,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6637,13 +6637,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6706,9 +6706,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6723,9 +6723,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6740,9 +6740,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6757,9 +6757,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -6772,8 +6772,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6965,9 +6965,9 @@
 				"schema": {
 					"description": "ARC.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -7009,13 +7009,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -7078,9 +7078,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7095,9 +7095,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7112,9 +7112,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7127,8 +7127,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -7320,9 +7320,9 @@
 				"schema": {
 					"description": "DKIM.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -7364,13 +7364,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -7433,9 +7433,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7450,9 +7450,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7467,9 +7467,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7482,8 +7482,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -7675,9 +7675,9 @@
 				"schema": {
 					"description": "DMARC.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -7719,13 +7719,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -7788,9 +7788,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7805,9 +7805,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7822,9 +7822,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -7837,8 +7837,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -8030,8 +8030,8 @@
 				"schema": {
 					"description": "Malicious.",
 					"enum": [
-						"malicious",
-						"not_malicious"
+						"MALICIOUS",
+						"NOT_MALICIOUS"
 					],
 					"example": "MALICIOUS",
 					"type": "string"
@@ -8073,13 +8073,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -8142,9 +8142,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8159,9 +8159,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8176,9 +8176,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8193,9 +8193,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8208,8 +8208,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -8401,8 +8401,8 @@
 				"schema": {
 					"description": "Spam.",
 					"enum": [
-						"spam",
-						"not_spam"
+						"SPAM",
+						"NOT_SPAM"
 					],
 					"example": "SPAM",
 					"type": "string"
@@ -8444,13 +8444,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -8513,9 +8513,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8530,9 +8530,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8547,9 +8547,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8564,9 +8564,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8579,8 +8579,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -8772,9 +8772,9 @@
 				"schema": {
 					"description": "SPF.",
 					"enum": [
-						"pass",
-						"none",
-						"fail"
+						"PASS",
+						"NONE",
+						"FAIL"
 					],
 					"example": "PASS",
 					"type": "string"
@@ -8816,13 +8816,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -8885,9 +8885,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8902,9 +8902,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8919,9 +8919,9 @@
 					"example": "PASS",
 					"items": {
 						"enum": [
-							"pass",
-							"none",
-							"fail"
+							"PASS",
+							"NONE",
+							"FAIL"
 						],
 						"type": "string"
 					},
@@ -8934,8 +8934,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

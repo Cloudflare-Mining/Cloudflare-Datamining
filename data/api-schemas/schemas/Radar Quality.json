@@ -30,13 +30,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -110,9 +110,9 @@
 				"schema": {
 					"description": "Which metric to return: bandwidth, latency or DNS response time.",
 					"enum": [
-						"bandwidth",
-						"dns",
-						"latency"
+						"BANDWIDTH",
+						"DNS",
+						"LATENCY"
 					],
 					"example": "latency",
 					"type": "string"
@@ -124,8 +124,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -294,13 +294,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -382,9 +382,9 @@
 				"schema": {
 					"description": "Which metric to return: bandwidth, latency or DNS response time.",
 					"enum": [
-						"bandwidth",
-						"dns",
-						"latency"
+						"BANDWIDTH",
+						"DNS",
+						"LATENCY"
 					],
 					"example": "latency",
 					"type": "string"
@@ -396,8 +396,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -604,9 +604,9 @@
 					"default": "bandwidth",
 					"description": "Metrics to be returned.",
 					"enum": [
-						"bandwidth",
-						"latency",
-						"jitter"
+						"BANDWIDTH",
+						"LATENCY",
+						"JITTER"
 					],
 					"example": "bandwidth",
 					"type": "string"
@@ -618,8 +618,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -809,8 +809,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1021,12 +1021,12 @@
 					"default": "BANDWIDTH_DOWNLOAD",
 					"description": "Metric to order the results by.",
 					"enum": [
-						"bandwidth_download",
-						"bandwidth_upload",
-						"latency_idle",
-						"latency_loaded",
-						"jitter_idle",
-						"jitter_loaded"
+						"BANDWIDTH_DOWNLOAD",
+						"BANDWIDTH_UPLOAD",
+						"LATENCY_IDLE",
+						"LATENCY_LOADED",
+						"JITTER_IDLE",
+						"JITTER_LOADED"
 					],
 					"type": "string"
 				}
@@ -1045,8 +1045,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1330,12 +1330,12 @@
 					"default": "BANDWIDTH_DOWNLOAD",
 					"description": "Metric to order the results by.",
 					"enum": [
-						"bandwidth_download",
-						"bandwidth_upload",
-						"latency_idle",
-						"latency_loaded",
-						"jitter_idle",
-						"jitter_loaded"
+						"BANDWIDTH_DOWNLOAD",
+						"BANDWIDTH_UPLOAD",
+						"LATENCY_IDLE",
+						"LATENCY_LOADED",
+						"JITTER_IDLE",
+						"JITTER_LOADED"
 					],
 					"type": "string"
 				}
@@ -1354,8 +1354,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

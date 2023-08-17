@@ -27,8 +27,8 @@
 					"default": "RANKING_BUCKET",
 					"description": "Dataset type.",
 					"enum": [
-						"ranking_bucket",
-						"report"
+						"RANKING_BUCKET",
+						"REPORT"
 					],
 					"example": "RANKING_BUCKET",
 					"type": "string"
@@ -40,8 +40,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -207,9 +207,9 @@
 		"responses": {
 			"200": {
 				"content": {
-					"application/json": {
+					"text/csv": {
 						"schema": {
-							"type": "object"
+							"type": "string"
 						}
 					}
 				},
@@ -286,8 +286,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

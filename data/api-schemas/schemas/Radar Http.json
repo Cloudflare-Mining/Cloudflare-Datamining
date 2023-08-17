@@ -30,13 +30,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -99,9 +99,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -116,8 +116,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -132,9 +132,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -149,8 +149,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -165,13 +165,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -186,11 +186,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -203,8 +203,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -353,13 +353,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -422,8 +422,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -438,8 +438,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -454,9 +454,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -471,8 +471,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -487,13 +487,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -508,11 +508,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -525,8 +525,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -680,13 +680,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -749,8 +749,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -765,9 +765,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -782,9 +782,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -799,8 +799,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -815,13 +815,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -836,11 +836,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -853,8 +853,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1003,13 +1003,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1072,8 +1072,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -1088,9 +1088,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -1105,8 +1105,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -1121,8 +1121,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -1137,13 +1137,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -1158,11 +1158,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -1175,8 +1175,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1330,13 +1330,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1399,8 +1399,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -1415,9 +1415,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -1432,8 +1432,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -1448,9 +1448,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -1465,13 +1465,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -1486,11 +1486,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -1503,8 +1503,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1653,13 +1653,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1722,8 +1722,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -1738,9 +1738,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -1755,8 +1755,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -1771,9 +1771,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -1788,8 +1788,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -1804,11 +1804,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -1821,8 +1821,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1971,13 +1971,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2040,8 +2040,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -2056,9 +2056,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -2073,8 +2073,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -2089,9 +2089,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -2106,8 +2106,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -2122,13 +2122,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -2141,8 +2141,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2321,13 +2321,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2390,9 +2390,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -2407,8 +2407,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -2423,9 +2423,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -2440,8 +2440,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -2456,13 +2456,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -2477,11 +2477,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -2494,8 +2494,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2670,13 +2670,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2739,8 +2739,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -2755,9 +2755,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -2772,8 +2772,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -2788,9 +2788,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -2805,8 +2805,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -2821,13 +2821,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -2842,11 +2842,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -2868,8 +2868,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3044,13 +3044,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3113,8 +3113,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -3129,9 +3129,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -3146,8 +3146,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -3162,9 +3162,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -3179,8 +3179,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -3195,13 +3195,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -3216,11 +3216,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -3233,8 +3233,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3409,13 +3409,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3478,8 +3478,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -3494,8 +3494,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -3510,9 +3510,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -3527,8 +3527,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -3543,13 +3543,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -3564,11 +3564,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -3581,8 +3581,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -3764,13 +3764,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -3833,8 +3833,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -3849,9 +3849,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -3866,9 +3866,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -3883,8 +3883,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -3899,13 +3899,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -3920,11 +3920,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -3937,8 +3937,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4113,13 +4113,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4182,8 +4182,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -4198,9 +4198,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -4215,8 +4215,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -4231,8 +4231,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -4247,13 +4247,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -4268,11 +4268,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -4285,8 +4285,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4468,13 +4468,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4537,8 +4537,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -4553,9 +4553,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -4570,8 +4570,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -4586,9 +4586,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -4603,13 +4603,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -4624,11 +4624,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -4641,8 +4641,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -4817,13 +4817,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -4886,8 +4886,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -4902,9 +4902,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -4919,8 +4919,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -4935,9 +4935,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -4952,8 +4952,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -4968,11 +4968,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -4985,8 +4985,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5161,13 +5161,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5230,8 +5230,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -5246,9 +5246,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -5263,8 +5263,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -5279,9 +5279,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -5296,8 +5296,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -5312,13 +5312,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -5331,8 +5331,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5522,13 +5522,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -5591,8 +5591,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -5607,9 +5607,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -5624,8 +5624,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -5640,9 +5640,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -5657,8 +5657,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -5673,13 +5673,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -5694,11 +5694,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -5711,8 +5711,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -5904,8 +5904,8 @@
 				"schema": {
 					"description": "Bot class.",
 					"enum": [
-						"likely_automated",
-						"likely_human"
+						"LIKELY_AUTOMATED",
+						"LIKELY_HUMAN"
 					],
 					"type": "string"
 				}
@@ -5946,13 +5946,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6015,9 +6015,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -6032,8 +6032,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -6048,9 +6048,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -6065,8 +6065,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -6081,13 +6081,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -6102,11 +6102,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -6119,8 +6119,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6312,9 +6312,9 @@
 				"schema": {
 					"description": "Device type.",
 					"enum": [
-						"desktop",
-						"mobile",
-						"other"
+						"DESKTOP",
+						"MOBILE",
+						"OTHER"
 					],
 					"type": "string"
 				}
@@ -6355,13 +6355,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6424,8 +6424,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -6440,8 +6440,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -6456,9 +6456,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -6473,8 +6473,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -6489,13 +6489,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -6510,11 +6510,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -6527,8 +6527,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -6720,8 +6720,8 @@
 				"schema": {
 					"description": "HTTP Protocol.",
 					"enum": [
-						"http",
-						"https"
+						"HTTP",
+						"HTTPS"
 					],
 					"type": "string"
 				}
@@ -6762,13 +6762,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -6831,8 +6831,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -6847,9 +6847,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -6864,8 +6864,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -6880,8 +6880,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -6896,13 +6896,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -6917,11 +6917,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -6934,8 +6934,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -7127,9 +7127,9 @@
 				"schema": {
 					"description": "HTTP version.",
 					"enum": [
-						"httpv1",
-						"httpv2",
-						"httpv3"
+						"HTTPv1",
+						"HTTPv2",
+						"HTTPv3"
 					],
 					"type": "string"
 				}
@@ -7170,13 +7170,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -7239,8 +7239,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -7255,9 +7255,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -7272,8 +7272,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -7288,8 +7288,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -7304,13 +7304,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -7325,11 +7325,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -7342,8 +7342,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -7535,8 +7535,8 @@
 				"schema": {
 					"description": "IP version.",
 					"enum": [
-						"ipv4",
-						"ipv6"
+						"IPv4",
+						"IPv6"
 					],
 					"type": "string"
 				}
@@ -7577,13 +7577,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -7646,8 +7646,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -7662,9 +7662,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -7679,8 +7679,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -7695,9 +7695,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -7712,13 +7712,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -7733,11 +7733,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -7750,8 +7750,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -7943,13 +7943,13 @@
 				"schema": {
 					"description": "IP version.",
 					"enum": [
-						"windows",
-						"macosx",
-						"ios",
-						"android",
-						"chromeos",
-						"linux",
-						"smart_tv"
+						"WINDOWS",
+						"MACOSX",
+						"IOS",
+						"ANDROID",
+						"CHROMEOS",
+						"LINUX",
+						"SMART_TV"
 					],
 					"type": "string"
 				}
@@ -7990,13 +7990,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -8059,8 +8059,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -8075,9 +8075,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -8092,8 +8092,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -8108,9 +8108,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -8125,8 +8125,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -8141,11 +8141,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -8158,8 +8158,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -8351,11 +8351,11 @@
 				"schema": {
 					"description": "TLS version.",
 					"enum": [
-						"tlsv1_0",
-						"tlsv1_1",
-						"tlsv1_2",
-						"tlsv1_3",
-						"tlsvquic"
+						"TLSv1_0",
+						"TLSv1_1",
+						"TLSv1_2",
+						"TLSv1_3",
+						"TLSvQUIC"
 					],
 					"type": "string"
 				}
@@ -8396,13 +8396,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -8465,8 +8465,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -8481,9 +8481,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -8498,8 +8498,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -8514,9 +8514,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -8531,8 +8531,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -8547,13 +8547,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -8566,8 +8566,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -8788,13 +8788,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -8857,8 +8857,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -8873,9 +8873,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -8890,8 +8890,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -8906,9 +8906,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -8923,8 +8923,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -8939,13 +8939,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -8960,11 +8960,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -8977,8 +8977,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -9193,13 +9193,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -9262,8 +9262,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -9278,9 +9278,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -9295,8 +9295,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -9311,9 +9311,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -9328,8 +9328,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -9344,13 +9344,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -9365,11 +9365,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -9382,8 +9382,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -9598,13 +9598,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -9667,8 +9667,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -9683,9 +9683,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -9700,8 +9700,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -9716,9 +9716,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -9733,8 +9733,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -9749,13 +9749,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -9770,11 +9770,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -9787,8 +9787,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -9980,8 +9980,8 @@
 				"schema": {
 					"description": "Bot class.",
 					"enum": [
-						"likely_automated",
-						"likely_human"
+						"LIKELY_AUTOMATED",
+						"LIKELY_HUMAN"
 					],
 					"type": "string"
 				}
@@ -10022,13 +10022,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -10091,9 +10091,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -10108,8 +10108,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -10124,9 +10124,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -10141,8 +10141,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -10157,13 +10157,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -10178,11 +10178,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -10195,8 +10195,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -10388,9 +10388,9 @@
 				"schema": {
 					"description": "Device type.",
 					"enum": [
-						"desktop",
-						"mobile",
-						"other"
+						"DESKTOP",
+						"MOBILE",
+						"OTHER"
 					],
 					"type": "string"
 				}
@@ -10431,13 +10431,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -10500,8 +10500,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -10516,8 +10516,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -10532,9 +10532,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -10549,8 +10549,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -10565,13 +10565,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -10586,11 +10586,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -10603,8 +10603,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -10796,8 +10796,8 @@
 				"schema": {
 					"description": "HTTP Protocol.",
 					"enum": [
-						"http",
-						"https"
+						"HTTP",
+						"HTTPS"
 					],
 					"type": "string"
 				}
@@ -10838,13 +10838,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -10907,8 +10907,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -10923,9 +10923,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -10940,8 +10940,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -10956,8 +10956,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -10972,13 +10972,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -10993,11 +10993,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -11010,8 +11010,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -11203,9 +11203,9 @@
 				"schema": {
 					"description": "HTTP version.",
 					"enum": [
-						"httpv1",
-						"httpv2",
-						"httpv3"
+						"HTTPv1",
+						"HTTPv2",
+						"HTTPv3"
 					],
 					"type": "string"
 				}
@@ -11246,13 +11246,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -11315,8 +11315,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -11331,9 +11331,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -11348,8 +11348,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -11364,8 +11364,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -11380,13 +11380,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -11401,11 +11401,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -11418,8 +11418,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -11611,8 +11611,8 @@
 				"schema": {
 					"description": "IP version.",
 					"enum": [
-						"ipv4",
-						"ipv6"
+						"IPv4",
+						"IPv6"
 					],
 					"type": "string"
 				}
@@ -11653,13 +11653,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -11722,8 +11722,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -11738,9 +11738,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -11755,8 +11755,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -11771,9 +11771,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -11788,13 +11788,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -11809,11 +11809,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -11826,8 +11826,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -12019,13 +12019,13 @@
 				"schema": {
 					"description": "IP version.",
 					"enum": [
-						"windows",
-						"macosx",
-						"ios",
-						"android",
-						"chromeos",
-						"linux",
-						"smart_tv"
+						"WINDOWS",
+						"MACOSX",
+						"IOS",
+						"ANDROID",
+						"CHROMEOS",
+						"LINUX",
+						"SMART_TV"
 					],
 					"type": "string"
 				}
@@ -12066,13 +12066,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -12135,8 +12135,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -12151,9 +12151,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -12168,8 +12168,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -12184,9 +12184,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -12201,8 +12201,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -12217,11 +12217,11 @@
 					"example": "TLSv1_2",
 					"items": {
 						"enum": [
-							"tlsv1_0",
-							"tlsv1_1",
-							"tlsv1_2",
-							"tlsv1_3",
-							"tlsvquic"
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3",
+							"TLSvQUIC"
 						],
 						"type": "string"
 					},
@@ -12234,8 +12234,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -12427,11 +12427,11 @@
 				"schema": {
 					"description": "TLS version.",
 					"enum": [
-						"tlsv1_0",
-						"tlsv1_1",
-						"tlsv1_2",
-						"tlsv1_3",
-						"tlsvquic"
+						"TLSv1_0",
+						"TLSv1_1",
+						"TLSv1_2",
+						"TLSv1_3",
+						"TLSvQUIC"
 					],
 					"type": "string"
 				}
@@ -12472,13 +12472,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -12541,8 +12541,8 @@
 					"example": "LIKELY_AUTOMATED",
 					"items": {
 						"enum": [
-							"likely_automated",
-							"likely_human"
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
 						],
 						"type": "string"
 					},
@@ -12557,9 +12557,9 @@
 					"example": "DESKTOP",
 					"items": {
 						"enum": [
-							"desktop",
-							"mobile",
-							"other"
+							"DESKTOP",
+							"MOBILE",
+							"OTHER"
 						],
 						"type": "string"
 					},
@@ -12574,8 +12574,8 @@
 					"example": "HTTPS",
 					"items": {
 						"enum": [
-							"http",
-							"https"
+							"HTTP",
+							"HTTPS"
 						],
 						"type": "string"
 					},
@@ -12590,9 +12590,9 @@
 					"example": "HTTPv1",
 					"items": {
 						"enum": [
-							"httpv1",
-							"httpv2",
-							"httpv3"
+							"HTTPv1",
+							"HTTPv2",
+							"HTTPv3"
 						],
 						"type": "string"
 					},
@@ -12607,8 +12607,8 @@
 					"example": "IPv4",
 					"items": {
 						"enum": [
-							"ipv4",
-							"ipv6"
+							"IPv4",
+							"IPv6"
 						],
 						"type": "string"
 					},
@@ -12623,13 +12623,13 @@
 					"example": "WINDOWS",
 					"items": {
 						"enum": [
-							"windows",
-							"macosx",
-							"ios",
-							"android",
-							"chromeos",
-							"linux",
-							"smart_tv"
+							"WINDOWS",
+							"MACOSX",
+							"IOS",
+							"ANDROID",
+							"CHROMEOS",
+							"LINUX",
+							"SMART_TV"
 						],
 						"type": "string"
 					},
@@ -12642,8 +12642,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"

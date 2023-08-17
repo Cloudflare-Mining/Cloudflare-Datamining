@@ -89,13 +89,13 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dcontrol",
-						"2dcontrol",
-						"7dcontrol",
-						"14dcontrol",
-						"28dcontrol",
-						"12wcontrol",
-						"24wcontrol"
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
 					],
 					"example": "7d",
 					"type": "string"
@@ -125,9 +125,9 @@
 				"schema": {
 					"description": "Sort events by field",
 					"enum": [
-						"id",
-						"time",
-						"confidence"
+						"ID",
+						"TIME",
+						"CONFIDENCE"
 					],
 					"example": "TIME",
 					"type": "string"
@@ -139,8 +139,8 @@
 				"schema": {
 					"description": "Sort order",
 					"enum": [
-						"asc",
-						"desc"
+						"ASC",
+						"DESC"
 					],
 					"example": "DESC",
 					"type": "string"
@@ -152,8 +152,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -457,13 +457,13 @@
 						"12w",
 						"24w",
 						"52w",
-						"1dcontrol",
-						"2dcontrol",
-						"7dcontrol",
-						"14dcontrol",
-						"28dcontrol",
-						"12wcontrol",
-						"24wcontrol"
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
 					],
 					"example": "7d",
 					"type": "string"
@@ -493,12 +493,12 @@
 				"schema": {
 					"description": "Sort events by field",
 					"enum": [
-						"id",
-						"leaks",
-						"peers",
-						"prefixes",
-						"origins",
-						"time"
+						"ID",
+						"LEAKS",
+						"PEERS",
+						"PREFIXES",
+						"ORIGINS",
+						"TIME"
 					],
 					"example": "TIME",
 					"type": "string"
@@ -510,8 +510,8 @@
 				"schema": {
 					"description": "Sort order",
 					"enum": [
-						"asc",
-						"desc"
+						"ASC",
+						"DESC"
 					],
 					"example": "DESC",
 					"type": "string"
@@ -523,8 +523,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -763,8 +763,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -945,9 +945,9 @@
 				"schema": {
 					"description": "Return only results with matching rpki status: valid, invalid or unknown",
 					"enum": [
-						"valid",
-						"invalid",
-						"unknown"
+						"VALID",
+						"INVALID",
+						"UNKNOWN"
 					],
 					"example": "INVALID",
 					"type": "string"
@@ -959,8 +959,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1131,8 +1131,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1374,13 +1374,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1431,8 +1431,8 @@
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
-							"announcement",
-							"withdrawal"
+							"ANNOUNCEMENT",
+							"WITHDRAWAL"
 						],
 						"type": "string"
 					},
@@ -1457,8 +1457,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1706,13 +1706,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -1775,8 +1775,8 @@
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
-							"announcement",
-							"withdrawal"
+							"ANNOUNCEMENT",
+							"WITHDRAWAL"
 						],
 						"type": "string"
 					},
@@ -1789,8 +1789,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -1971,8 +1971,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
@@ -2136,13 +2136,13 @@
 							"12w",
 							"24w",
 							"52w",
-							"1dcontrol",
-							"2dcontrol",
-							"7dcontrol",
-							"14dcontrol",
-							"28dcontrol",
-							"12wcontrol",
-							"24wcontrol"
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
 						],
 						"type": "string"
 					},
@@ -2193,8 +2193,8 @@
 					"example": "ANNOUNCEMENT",
 					"items": {
 						"enum": [
-							"announcement",
-							"withdrawal"
+							"ANNOUNCEMENT",
+							"WITHDRAWAL"
 						],
 						"type": "string"
 					},
@@ -2207,8 +2207,8 @@
 				"schema": {
 					"description": "Format results are returned in.",
 					"enum": [
-						"json",
-						"csv"
+						"JSON",
+						"CSV"
 					],
 					"example": "json",
 					"type": "string"
