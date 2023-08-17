@@ -37,7 +37,17 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Security Week 2023",
+					"metaDescription": "Join us for exciting updates during Security Week on how we'll make Zero Trust even more accessible and enterprise-ready, better protect brands from phishing and fraud, streamline security management, deliver dynamic machine learning protections and more.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xZVp7UphbCHN7NcsgbZMW/3912cfcbdfaf57c0ef0f15d3a75048fd/Security_Week_2023_Hero_Dark.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "3ogqUkwLAf9z6qWhZFRUyl",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -118,6 +128,13 @@
 						"stickyNav": true,
 						"htmlId": null,
 						"menuItems": [
+							{
+								"contentfulId": "5LWXzWSQQs2ZEZqx2LrQSW",
+								"linkText": "Today",
+								"page": null,
+								"url": "security-week",
+								"subMenuItems": null
+							},
 							{
 								"contentfulId": "2YbpoPnt4Gy4oVtrwKK6Fh",
 								"linkText": "Updates and Announcements",
