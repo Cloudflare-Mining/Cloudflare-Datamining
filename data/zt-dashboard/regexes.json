@@ -910,6 +910,7 @@
 	"/fxios\\/([\\w\\.-]+)/i",
 	"/grid-\\w+-end/",
 	"/grid-\\w+-start/",
+	"/groups=([^&;]+)/",
 	"/hasOwnProperty|(function).*?(?=\\\\\\()| for .+?(?=\\\\\\])/g",
 	"/hbbtv.+maple;(\\d+)/i",
 	"/hbbtv\\/\\d+\\.\\d+\\.\\d+\\s+\\([\\w\\s]*;\\s*(\\w[^;]*);([^;]*)/i",
