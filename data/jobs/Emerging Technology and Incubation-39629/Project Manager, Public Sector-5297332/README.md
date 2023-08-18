@@ -5,42 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.&nbsp;</span></p>
-<p><strong>About the Team&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Our team is responsible for building security products and solutions that help our customers filter out unwanted internet traffic. We do so by leveraging the enormous amount of internet traffic we have in deriving deep and meaningful data insights, and by designing and leveraging machine learning models and other techniques that can operate on high volume and velocity of data with high precision, performance and scalability.&nbsp;</span></p>
-<p><span style="font-weight: 400;">We are looking for a strong data scientist to come join Cloudflare and help us drive predictive analytic insights and best practices at scale from the ground up. This is a high visibility role and success in this role comes from marrying a strong data &amp; modeling background with security acumen especially in fraud and malicious activity detection.</span></p>
-<p><span style="font-weight: 400;">What we look for: Predictive Modeling techniques, Machine Learning, Model creation and deployment, Storytelling and Visualization, Cross-functional Collaboration, Creative Problem solving, Agile&nbsp;</span></p>
-<p><strong>About your Role&nbsp;</strong></p>
+<p><strong>Overview:</strong></p>
+<p>We are seeking a highly motivated and experienced Project Manager to support our Government Projects team. The Government Projects team works closely with Product and Engineering to bring new and innovative ideas to life. This role requires a strong focus on project management, customer satisfaction, on time completion of projects, supporting the team that provide technical consulting, implementation, and support services to government customers. The ideal candidate should have a strong background in professional services, project management, and customer relationship management.</p>
+<p>We believe that putting our people first, and fostering a creative, exciting, and stimulating environment is a prerequisite to achieving and surpassing our commercial goals.&nbsp;</p>
+<h3><strong>What you'll do</strong></h3>
+<p>As a Project Manager supporting the Government Projects team, you’ll be responsible for executing programs/initiatives that drive efficiency in successfully managing projects. U.S. citizenship is necessary due to the requirement that the employee hired for the role be able to obtain U.S. government security clearance, which requires a U.S. citizenship.</p>
+<p><strong>Responsibilities will include:</strong></p>
 <ul>
-	<li><span style="font-weight: 400;"> Partner with product managers, data engineers, machine learning engineers and other key stakeholders in understanding the need for data insights and predictive analytics in the area of security and fraud detection in a globally distributed environment.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineers and machine learning engineers to improve the data collection and quality. </span></li>
-	<li><span style="font-weight: 400;">Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Strong audience focused presentation and storytelling skills focused on key takeaways in a crisp and concise manner.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Define, implement, and train statistical, machine learning, and deep learning models. </span></li>
-	<li><span style="font-weight: 400;">Use software engineering best practices to publish model scores/insights/learnings at scale within the company.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.&nbsp;</span></li>
+	<li>Project manage implementation and delivery of solutions to customers.</li>
+	<li>Establish and maintain relationships with key customers, partners, and vendors to drive revenue growth and customer satisfaction.</li>
+	<li>Drive customer satisfaction by ensuring that solutions are delivered on-time, within budget, and meet customer expectations.</li>
+	<li>Develop and implement processes and methodologies that improve the efficiency and effectiveness of solution delivery.</li>
+	<li>Provide thought leadership and expertise to customers and the broader industry on best practices for implementing and using the company's products and services.</li>
+	<li>Develop proposals and value propositions for customer engagements from inception through delivery for new and upgraded services</li>
+	<li>Engage with relevant teams to create proposals, project plans, and timelines for service opportunities.</li>
+	<li>Collaborate with internal and external stakeholders to ensure a seamless transition from opportunity identification to project delivery.</li>
+	<li>Monitor and manage the progress of services engagements, ensuring timely delivery and adherence to project plans.</li>
+	<li>Collect feedback and document lessons learned from completed engagements for continuous improvement.</li>
+	<li>Creating internal guides and external customer-facing assets that support successful Project execution.</li>
+	<li>Making strategic recommendations on how the Project should evolve.</li>
+	<li>Working alongside and educating key field stakeholders, scaling and continuously improving to drive recommendations to ensure efficiency.</li>
+	<li>Building, tracking, and executing net new Projects that are top of mind and strategic to business Scale in a particular period.</li>
+	<li>Demonstrating a strong ability to communicate in order to drive consensus and buy-in across Projects.</li>
+	<li>Coordinating and collaborating with multiple cross-functional teams and stakeholders to drive Projects towards agreed deliverables, and ensure program roadmap items are being built and prioritized over time.</li>
 </ul>
-<p><strong>Qualifications&nbsp;</strong></p>
+<h5><strong>Desired Skills</strong></h5>
 <ul>
-	<li><span style="font-weight: 400;"><strong>Minimum M.S or Ph.D degree</strong> in Computer Science, Statistics, Mathematics, or other quantitative field.</span></li>
-	<li><span style="font-weight: 400;"><strong>At least 2 years</strong> of industry experience</span></li>
-	<li><span style="font-weight: 400;">Strong experience in scientific computing using Python or Scala.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Experience with SQL.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Experience working with and processing structured, unstructured, and semi-structured data. </span></li>
-	<li><span style="font-weight: 400;">Work closely with data engineering team to ensure robust data pipelines and model deployment. </span></li>
-	<li><span style="font-weight: 400;">Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> 5+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale, globally distributed teams).&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Strong communication and presentation skills catered to different audience within the company. </span></li>
-	<li><span style="font-weight: 400;">Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Strong data analytical skills, taking initiative in deriving data insights and thread intelligence, and proposing models and solutions that can lead to quick and effective proof-of-concept (POC).&nbsp;</span></li>
+	<li>Strong communication, interpersonal, teamwork, and organizational skills with superior verbal and written communication skills</li>
+	<li>Proven ability to consistently and positively contribute in a high-paced, changing work environment with the ability to prioritize multiple functions and tasks and manage work time efficiently</li>
+	<li>Self-directed, detail-oriented problem-solver with a burning desire to contribute to the organization's reputation and success</li>
+	<li>Strong project management skills that can help identify and solve problems quickly with minimal management guidance.</li>
+	<li>Ability to manage several competing priorities and stakeholders while building excellent cross-functional relationships.</li>
+	<li>Ability to engage up and down the organization (including SVP+) with confidence, poise, and gravitas.</li>
 </ul>
-<p><strong>Preferred&nbsp;</strong></p>
+<p><strong>Required Education And Experience</strong></p>
 <ul>
-	<li><span style="font-weight: 400;"> Experience in cyber security, fraud detection, internet &amp; networking protocols </span></li>
-	<li><span style="font-weight: 400;">Experience in productionizing machine learning models&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Familiarity writing and optimizing advanced SQL queries in Clickhouse&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> Good Linux/UNIX systems knowledge </span></li>
+	<li>Minimum of 5 years of experience in professional services, project management, or a customer-facing role.</li>
+	<li>U.S Citizenship&nbsp;</li>
+	<li>Proven track record of working across global stakeholders and making strategic recommendations to evolve high-profile, high-impact Projects.</li>
+	<li>Excellent spoken and written communication as well as receptive listening skills with the ability to present to different audiences.</li>
+	<li>Must be highly organized and possess exceptional time management skills, with the ability to effectively juggle multiple projects and deadlines</li>
+	<li>Sound business judgment, a proven ability to influence others, analytical skills, and a proven track record of taking ownership, leading data-driven analyses, and influencing results.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
