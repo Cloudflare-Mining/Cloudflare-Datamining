@@ -1,0 +1,285 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/Introducing-Cloudflare-2023-phishing-threats-report-1.png" class="kg-image" alt="Introducing Cloudflare's 2023 phishing threats report." loading="lazy" width="1348" height="766"></figure>
+	<p>43か国にわたり数千人もの被害者を生んだ「Phishing as a Service」の活動を停止させた後、国際刑事\警察機構（インターポール）は最近、「フィッシングのようなサイバー攻撃に国境はなく仮想的なものかもしれないが、被害者に与える影響は現実的であり、壊滅的である」と<a href="https://www.interpol.int/en/News-and-Events/News/2023/Notorious-phishing-platform-shut-down-arrests-in-international-police-operation" target="_blank">指摘</a>しています。例えば、FBIは、マルウェアを使用しない攻撃の一種である受信者を騙して送金させるビジネスメール詐欺（<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank">BEC</a>）によって、世界中の被害者が500億ドル以上の<a href="https://www.ic3.gov/Media/Y2023/PSA230609" target="_blank">損害</a>を被っていると報告しています。</p>
+	<p>成功したサイバー攻撃の90%がメール<a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank">フィッシング</a>を<a href="https://www.cisa.gov/shields-guidance-families" target="_blank">起点</a>としていると推定されており、攻撃者にとって非常に有利な状況が続いています。現在、フィッシングの<em>試み</em>自体を阻止するためにできることはあまりありません。しかし、攻撃の<em>成功</em>を防ぐために、攻撃者が意図的に被害者が「既知の」メール送信者に持つ信頼を巧みに悪用する方法など、進化するフィッシングの傾向を理解する（そして積極的に対処する）ことが重要です。そのため、今週、Cloudflareは第一回目となる<a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank">フィッシング脅威レポート</a>を公開しました。</p>
+	<p>このレポートでは、2022年5月から2023年5月までの<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank">メールセキュリティ</a>データを基に、主要なフィッシングの傾向と関連する推奨事項について説明しています。この期間でCloudflareは<strong>約130億通のメールを処理</strong>しており、その中の約<strong>2億5,000万件の悪意のあるメッセージ</strong>が顧客の受信トレイに届くのをブロックしています。このレポートは、Cloudflareが北米、EMEA、APACの<strong>セキュリティに関する意思決定者316名を対象に</strong>実施した調査にも基づいています（この調査は<a href="https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing" target="_blank">こちら</a>からダウンロードできます）。</p>
+	<p>報告書全文をご覧いただくと、以下の3つの重要なポイントを確認することができます：</p>
+	<ul>
+		<li><strong>フィッシングに第1位の手口である欺瞞的リンクを使用する攻撃者</strong>について、また、クリックさせるための方法、リンク先を武器化するタイミング、その進化について</li>
+		<li><strong>身元詐称</strong>には複数の形態（ビジネスメール詐欺（BEC）や企業・ブランド偽装など ）があること、<strong>標準的なメール認証は簡単に回避できること</strong></li>
+		<li>攻撃者は数百もの異なる組織になりすまし、仕事を成し遂げるために必要な、<strong>主に私たちが信頼を置く事業体に成りすましています</strong>。</li>
+	</ul>
+	<p>その他、2023年フィッシング脅威レポートを読む上で留意すべき点がいくつかあります。</p>
+	<h3 id="%E3%83%A1%E3%83%BC%E3%83%AB%E8%84%85%E5%A8%81%E3%81%AE%E5%88%86%E9%A1%9E">メール脅威の分類</h3>
+	<p>攻撃者は通常、<a href="https://www.cloudflare.com/learning/security/threats/social-engineering-attack" target="_blank">ソーシャルエンジニアリング</a>と技術的な難読化技術を組み合わせて、メッセージを正当なものであるかのように見せかけます。そのため、Cloudflareでは、迷惑メールを特定するために多くの高度な検出技術を使用して（肉眼で見えるコンテンツだけではなく）「ファジー」なシグナルを分析しています。これらのシグナルには以下が含まれます：</p>
+	<ul>
+		<li><strong>構造的分析：</strong>ヘッダー、本文、画像、リンク、添付ファイル、ペイロードなど、フィッシングのシグナル検出に特化して設計したヒューリスティックおよび機械学習モデルを活用して分析</li>
+		<li><strong>センチメント分析：</strong>パターンと行動傾向（文章のパターンや表現など）の変化の検出</li>
+		<li><strong>トラストグラフ：</strong>パートナーのソーシャルグラフ、メール送信履歴、パートナーなりすましの可能性を評価</li>
+	</ul>
+	<p>また、当社の<a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank">メールセキュリティ</a>サービスには、Cloudflareのグローバルネットワークからの<a href="https://www.cloudflare.com/learning/security/glossary/threat-intelligence-feed" target="_blank">脅威インテリジェンス</a>も組み込まれており、1日平均1,400億件のサイバー脅威をブロックしています。</p>
+	<p>このようなシグナルやその他多くのシグナルを活用して、悪質のある、BEC、なりすまし、スパムとしてメールを処理します。当社のダッシュボードは、それぞれのメールに対する処理された具体的な理由（つまり、脅威インジケータの「カテゴリー」）をお客様に通知します。 </p>
+	<p>以下は、2022年5月2日から2023年5月2日の間に当社が観測した上位のメール脅威指標のスナップショットです。脅威の指標を30以上のカテゴリーに分類しています。この期間中、上位の脅威の指標には、<strong>偽装リンク</strong>、<strong>ドメイン年齢</strong>（登録から日の浅いドメイン）、<strong>身元詐称</strong>、<strong>クレデンシャルハーベスティング</strong>、<strong>企業・ブランド偽装企業・ブランド偽装</strong>などがありました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image4-6.png" class="kg-image" alt="" loading="lazy" width="1999" height="1913"></figure>
+	<p>以下は、各上位カテゴリーについての簡単な説明です（詳細についてはレポートの付録を参照）。</p>
+	<p><strong>欺瞞的リンク</strong>：クリックするとユーザーのデフォルトのWebブラウザが開いてリンクの参照先のデータが表示されたり、アプリケーション（PDFなど）が直接開きます。HTML内のリンク（ハイパーテキスト）の表示テキストは任意に設定できるため、攻撃者は、実際には悪意のあるURLであるにもかかわらず、あたかも正規のサイトにリンクしているかのように見せかけることができます。</p>
+	<p><strong>ドメイン年齢</strong>：ドメインに割り当てられた総合スコアであるドメインレピュテーション（評判）に関連します。例えば、ドメイン登録直後に大量の新規メールを送信しているドメインは、レピュテーション（評判）が低くなり、スコアも低くなる傾向があります。</p>
+	<p><strong>身元詐称：</strong>攻撃者や悪意のある人物が、他人を装ってメールを送信すること。その仕組みや手口は多岐にわたります。いくつかの手口には、酷似したドメインを登録（ドメイン偽装）したり、なりすましたり、表示名のトリックを利用して信頼できるドメインから発信されているように見せかけたりする手口もあります。その他の手口としては、ドメインフロンティングや高評価のWebサービスプラットフォームを利用したメール送信などがあります。</p>
+	<p><strong>クレデンシャルハーベスター</strong>：攻撃者が仕掛ける、ユーザーを欺いてログイン認証情報を提供させるためのものです。ユーザーが気付かずに資格情報を入力してしまうと、攻撃者に自身のアカウントへのアクセスを提供してしまうことになります。</p>
+	<p><strong>企業・ブランド偽装</strong>：攻撃者が認識可能な企業またはブランドになりすましてフィッシングメッセージを送信する元詐称の一形態であり、さまざまな手法を駆使して行われます。</p>
+	<p>メールの<strong>添付ファイル</strong>：行動喚起（標的を誘い込んでリンクをクリックさせるなど）が仕込まれており、それに釣られて（攻撃の文脈で）開いたり実行してしまうと、攻撃者が仕掛けた一連のアクションが実行されます。</p>
+	<p>Cloudflareは、1通の電子メールに対して複数のフィッシング指標を定期的に観測しています。例えば、シリコンバレー銀行を模したあるフィッシングキャンペーン（<a href="https://blog.cloudflare.com/ja-jp/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-ja-jp">こちら</a>の2023年3月のブログで詳述）は、<em>企業・ブランド偽装</em>、<em>欺瞞的リンク</em>、<em>悪意のある添付ファイル</em>が組み合わされたものでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image3-5.png" class="kg-image" alt="" loading="lazy" width="637" height="697"></figure>
+	<p>攻撃者はDocuSignを模したテンプレートでSVBのブランドを扱っていました。このメールには、最初のリンクと4つの複雑なリダイレクトチェーンを含むHTMLコードが含まれていました。この攻撃の一部であるHTMLファイルは、受信者を再帰的リダイレクト機能を持つWordPressインスタンスに送ることになります。 </p>
+	<p>（リンクについて言えば、欺瞞的リンクは<strong>脅威カテゴリーの第1位</strong>であり、<strong>当社が検出した中の35.6%</strong>に見ることができました。また、メールのリンクだけでなく、SMS/テキスト、チャット、ソーシャルメディアなど、他のアプリを悪用する複数経路を利用した攻撃者によるフィッシング脅威の増加しており、これについてもレポートで取り上げています）。</p>
+	<h3 id="%E4%BF%A1%E9%A0%BC%E3%81%95%E3%82%8C%E3%82%8B%EF%BC%88%E3%81%9D%E3%81%97%E3%81%A6%E6%9C%80%E3%82%82%E5%81%BD%E8%A3%85%E3%81%95%E3%82%8C%E3%81%9F%EF%BC%89%E4%BC%81%E6%A5%AD%E3%83%BB%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89">信頼される（そして最も偽装された）企業・ブランド</h3>
+	<p>シリコンバレー銀行は、2022年5月から2023年5月にかけてCloudflareのお客様を標的としたメールで偽装された<strong>約1,000の企業・ブランド</strong>のうちの1つに過ぎません。（2022年7月に<a href="https://www.cloudflare.com/cloudflare-one" target="_blank">Cloudflare One</a>製品群が<a href="https://blog.cloudflare.com/ja-jp/2022-07-sms-phishing-attacks-ja-jp">阻止した</a>フィッシング攻撃「Oktapus」で、Cloudflareの従業員が企業・ブランド偽装直接の標的にされました ）。</p>
+	<p>一方、フィッシング脅威レポートに詳述されているように、メール攻撃者は20の有名グローバルブランドのいずれかになりすますことが最も多く（51.7％）、<strong>Microsoft</strong>がそのリストの1位でした。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ランク</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">なりすまされたブランド</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">世界保健機関（WHO）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">スペースX社</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">T-モバイル社</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">YouTube</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">マスターカード社</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Notion.so</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">コムキャスト社</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Line Pay</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterClass</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Box</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">トゥルイスト・ファイナンシャル</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ルイ・ヴィトン</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="microsoft%E3%81%AE%E3%82%AF%E3%83%AC%E3%83%87%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%8F%E3%83%BC%E3%83%99%E3%82%B9%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E8%A9%A6%E8%A1%8C%E3%81%AE%E4%BE%8B">Microsoftのクレデンシャルハーベスティング試行の例 </h3>
+	<p>今年初め、Cloudflareは正規の（しかし侵害された）サイトを通じて認証情報を採取しようとする、Microsoftブランドを活用したフィッシングキャンペーンを検知し、ブロックしました。 </p>
+	<p>下のEメールの例では、見た目とは裏腹にメール本文にテキストはありません。本文全体がハイパーリンクの対象となるJPEG画像です。そのため、受信者が（リンクをクリックするつもりがなくても）本文中のどこかをクリックすれば、事実上リンクをクリックしたことになります。 &nbsp;</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-16.png" class="kg-image" alt="" loading="lazy" width="671" height="497"></figure>
+	<p>1一見すると、この画像のハイパーリンクは良性のBaidu URLのように見えます - hxxp://www.baidu[.]com/link?url=-yee3T9X9U41UHUa3VV6lx1j5eX2EoI6XpZqfDgDcf-2NYQ8RVpOn5OYkDTuk8Wg#&lt;base64でエンコードされた受信者のメールアドレス&gt;。しかし、このリンクがクリックされると標的のブラウザは、侵害されたクレデンシャルハーベスターをホストするサイトにリダイレクトされます。</p>
+	<p>攻撃者はMicrosoft Office 365のブランディングを使用しましたが、（企業・ブランドを特定するために検査できるプレーンテキストやHTMLテキストは存在させず）画像内にブランド情報を含めることでブランド検出技術を回避しようとしました。 </p>
+	<p>しかし、Cloudflareは光学文字認識（OCR）を使用することで、画像内の「Office 365」と「Microsoft」の識別に成功しました。また、OCRを使用することで、私たちはパスワードに関連する不審なアカウントを釣ろうとする内容も確認することができました。</p>
+	<p>この例では、攻撃者の手口には次の内容が含まれていました：</p>
+	<ul>
+		<li>JPEG画像のみを掲載（OCRを使用しなければ単語検出は不可能）</li>
+		<li>その画像にハイパーリンクを埋め込む（本文中のどこをクリックしてもリンクがクリックされる）</li>
+		<li>Baidu URLへのハイパーリンク（レピュテーションベースのURL検出技術を回避するために使用）</li>
+		<li>Baidu URLが受信者のブラウザをクレデンシャルハーベスティングサイトにリダイレクトさせる（これによりディープリンク検査ができない他の電子メールセキュリティ防御を回避）</li>
+		<li>攻撃者によって侵害された正規サイト上でクレデンシャルハーベスターをホスティングする（ディープリンク検査を使用しても、レピュテーションに基づくUR 検出技術を再びバイパスする） &nbsp;</li>
+	</ul>
+	<p>この攻撃ベクトルは、Baiduの高い評価と信頼性を利用し、クレデンシャルハーベスターがホストされている真のホスト/IPのレピュテーションをバイパスします。 &nbsp;</p>
+	<p>この特定のキャンペーンはMicrosoftの認証情報を採取することに重点を置いていましたが、私たちはこのように攻撃者がブランド検出技術を回避し、被害者を騙して<a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank">マルウェア</a>やその他の<a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank">悪意のあるペイロード</a>をダウンロードさせるために同様の手法を使用する攻撃者をよく目にします。</p>
+	<p>URLリダイレクトの手法はフィッシングキャンペーンでよく見られますが、脅威アクターは、<a href="http://baidu.com" target="_blank">baidu.com</a>、<a href="https://bing.com" target="_blank">bing.com</a>、<a href="https://goo.gl" target="_blank">goo.gl</a>のようなより多くの正規ドメインを悪用するなど、その手口に絶えず磨きをかけています。当社が持つ多くの検出機能を使用することで、正規ドメインを悪用するものも含め、あらゆる種類のリダイレクト技術を使用したURLのディープリンク検査を実施することができます。</p>
+	<h3 id="spf%E3%80%81dkim%E3%80%81dmarc%E3%81%A8%E3%81%AF%EF%BC%9F">SPF、DKIM、DMARCとは？</h3>
+	<p>メール認証（具体的には<a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank">SPF、DKIM、DMARC</a>標準）は、企業・ブランド偽装に有効であるとして度々言及されます。これらの標準は、サーバーやテナントのオリジンの検証、メッセージの完全性の保護、ポリシーの実施などに役立ちます。</p>
+	<p>しかし、それでも攻撃者は認証をバイパスしてメールスイートを騙す方法を見つけることができます。実際にSPF、DKIM、DMARCのチェックを<strong>89％の迷惑メッセージが「通過」</strong>していることが確認されています。</p>
+	<p>メール認証の制限には、以下のようなものがあります：</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-6v43 {
+			background-color: #ffffff;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">SPF </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">（送信者ポリシーフレームワーク）</span></th>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">主なメリット：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバーオリジンの検証（メッセージの発信元を検証する）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ドメイン所有者に代わってメッセージの送信が許可されるメールサーバーやサービスを定義できる</span></th>
+			</tr>
+			<tr>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">制限：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">酷似したメールアドレスやドメイン、または表示名の</span><a href="https://www.cloudflare.com/learning/ssl/what-is-domain-spoofing" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">なりすましを</span></a>防ぐことができない<br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ヘッダーの「From」で検証を行わず、エンベロープの「From」を使用して送信ドメインを判断する</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メールが転送された場合、メーリングリストに送信されたメッセージが各受信者に送信される場合、検証が有効にならない</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SPF評価プロセスの</span><a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">DNS</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ルックアップ回数が制限される場合がある</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">「検証済み」となったメールの、URLが埋め込まれたもの、</span><a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">悪意のあるペイロード</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">、添付ファイルを使用した攻撃からは保護されません</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">DKIM </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">（ドメインキー識別メール）</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">主なメリット：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">送信元テナントの検証機能を提供（電子署名を介して、メールがドメインの所有者によって送信／承認されたものであることを確認する機能など）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー間の転送中にメールが改ざんされないようにし、メッセージの完全性を保護する</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">制限：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">酷似したメールアドレスやドメイン、または表示名のなりすましを防ぐことができない</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"></span><a href="https://developers.cloudflare.com/magic-wan/reference/anti-replay-protection" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">反射攻撃</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">からは保護されない（DKIMはメッセージの特定の部分にのみ署名します。攻撃者はDKIMを通過したメールに他のヘッダーフィールドを追加して転送することができます）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">「検証済み」となったメールの、URLが埋め込まれたもの、悪意のあるペイロード、添付ファイルを使用した攻撃からは保護されません</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（ドメインベースのメッセージ認証、レポートおよび適合性）</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">主なメリット：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SPFとDKIMのポリシー実施とレポートの提供</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">メールがSPFまたはDKIM認証を通過しなかった場合に、従うポリシーを規定できる（例：拒否/削除、隔離、ポリシーなし/送信）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">レポーティング機能により、ドメイン所有者は誰が代理でメールを送信しているかを確認できる（独自ドメインのなりすましやブランドの悪用からの保護など）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">制限：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">他ブランドのドメインへのなりすましは防げない</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">酷似したメールアドレスやドメイン、または表示名のなりすましを防ぐことができない</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ドメイン所有者は、DMARCポリシーが適用されるメールの割合を指定することができるが、適用率が100%未満の場合、効果は低下する</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">「検証済み」となったメールの、URLが埋め込まれたもの、悪意のあるペイロード、添付ファイルを使用した攻撃からは保護されません</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h3>
+	<p>攻撃者は常に戦術を進化させています。メッセージが受信トレイに届く前、届いている最中、そして届いた後にも、複数の保護レイヤーを設置する必要があります。Cloudflareは、いかなる種類のメール通信（送信者が内部、外部、または「既知の」ビジネスパートナーであるかにかかわらず）も本質的に「信頼」することはありません。 </p>
+	<p>同様に、私たちは、何よりもまず、すべての組織が「決して信用せず、常に検証する」という<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust のセキュリティモデル</a>を、ネットワークやアプリだけでなく、メールの受信トレイにまで拡大することを推奨します。</p>
+	<p>当社では、Zero Trustアプローチによる<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank">メールの保護</a>に加えて次のこともお勧めしています：</p>
+	<ul>
+		<li><strong>クラウドメールを複数のフィッシング対策制御で強化する。</strong>6月の<a href="https://www.forrester.com/blogs/announcing-the-forrester-wave-enterprise-email-security-q2-2023" target="_blank">この</a>Forrester社のブログで言及されているように、<em>「複数のデバイスでメッセージ機能、コラボレーション、ファイル共有、企業向けSoftware as a Serviceアプリを使用することは、すべて従業員の生産性とエクスペリエンスに貢献します。これらの環境の多くは『クローズド』と考えられていますが、サプライチェーンパートナーの一社で資格情報のフィッシングが成功してしまうと、組織はデータ損失、資格情報の盗難、詐欺、ランサムウェア攻撃にさらされることになります。メールの受信トレイ向けに開発された保護は、このような環境や従業員の日々のワークフロー全体に普及させる必要があります。」</em><br></li>
+		<li><strong><strong><strong>フィッシングに強い多要素認証（</strong><a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank"><strong>MFA</strong></a><strong>）を採用する。</strong></strong></strong>すべてのMFAが同じセキュリティレイヤーを提供するわけではありませんが、ハードウェア・セキュリティ・キーは<a href="https://blog.cloudflare.com/ja-jp/how-cloudflare-implemented-fido2-and-zero-trust-ja-jp">フィッシング攻撃を防ぐ</a>ための最も安全な認証方法の一つです。これにより、たとえ攻撃者がユーザー名とパスワードを入手した場合も、ネットワークを保護することができます。<br></li>
+		<li><strong>人間がミスを犯しにくくする。</strong>従業員やチームが既に使用しているツールをより安全なものにし、従業員やチームのミスを防ぎます。例えば、リモートブラウザ分離（<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank">RBI</a>）技術は、クラウドメールセキュリティと統合することで、疑わしいメールリンクを自動的に分離し、ユーザーが悪意のあるWebコンテンツにさらされることを防ぎます。また、信頼できないWebサイトではキーボード入力を無効にすることができ、ユーザーが誤ってフォームに機密情報を入力して資格情報が採取されることを防ぐことができます。これにより、効果的なマルチチャネルのフィッシング攻撃に対する防御レイヤーが提供され、ユーザーは業務を中断することなく安全にリンクを開くことができます。</li>
+	</ul>
+	<p>調査結果の全文に興味のある方は、<a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank">こちら</a>から「2023年フィッシング脅威レポート」と、フィッシング攻撃の成功を防ぐための推奨事項をダウンロードすることができます。また、Cloudflareのメールセキュリティの動作を実際に確認したい方は、<a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank">こちら</a>からフィッシングリスク評価（無料）をご依頼ください。</p>
+</div>

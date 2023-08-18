@@ -1,0 +1,287 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/Introducing-Cloudflare-2023-phishing-threats-report-1.png" class="kg-image" alt="Introducing Cloudflare's 2023 phishing threats report." loading="lazy" width="1348" height="766"></figure>
+	<p>国际刑警组织最近在关停一个影响 43 个国家数千名受害者的“网络钓鱼即服务”操作服务后<a href="https://www.interpol.int/en/News-and-Events/News/2023/Notorious-phishing-platform-shut-down-arrests-in-international-police-operation" target="_blank">指出</a>：“网络钓鱼等网络攻击可能是无国界和虚拟的，但其对受害者的影响却是真实和毁灭性的。企业电子邮件破坏（Business Email Compromise，<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank">BEC</a>）是一种无恶意软件的攻击，它诱骗收件人转移资金等，据联邦调查局称，这种攻击在世界范围内已造成受害者<a href="https://www.ic3.gov/Media/Y2023/PSA230609" target="_blank">损失</a>超过 500 亿美元。</p>
+	<p>据估计，成功的网络攻击有 90% 都是<a href="https://www.cisa.gov/shields-guidance-families" target="_blank">源于</a>电子邮件<a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank">网络钓鱼</a>。如今能阻止网络钓鱼的办法并不多。然而，要防止攻击<em>成功</em>，就一定要了解（并积极应对）不断变化的网络钓鱼趋势，这一点非常重要，其中包括攻击者如何巧妙地利用目标受害者对“已知”电子邮件发件人的信任。为此，Cloudflare 于本周发布了首份<a href="https://www.cloudflare.com/zh-cn/lp/2023-phishing-report" target="_blank">《网络钓鱼威胁报告》</a>。</p>
+	<p>本报告基于 2022 年 5 月至 2023 年 5 月的<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank">电子邮件安全</a>数据，探讨了重要的网络钓鱼趋势及相关建议。在此期间，Cloudflare <strong>处理了约 130 亿封电子邮件</strong>，其中包括阻止了约 <strong>2.5 亿封恶意邮件</strong>进入客户收件箱。该报告还参考了由 Cloudflare 委托开展的对北美、欧洲、中东和非洲地区以及亚太地区 <strong>316 位安全决策者</strong>进行的调查（您可<a href="https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing" target="_blank">在此处</a>下载该单独的研究调查报告）。</p>
+	<p>查看完整的报告以了解我们的三大要点：</p>
+	<ul>
+		<li><strong>攻击者使用欺骗性链接作为网络钓鱼的头号手段</strong>以及他们如何不断改进引导您去点击和何时利用链接作为武器进行攻击；</li>
+		<li><strong>身份欺骗</strong>有多种形式（包括企业电子邮件破坏 (BEC) 和品牌假冒），<strong>可轻易绕过电子邮件身份验证标准；</strong></li>
+		<li>攻击者假冒数以百计的组织，但他们<strong>主要冒充我们信任</strong>（并需要与之合作）的实体。</li>
+	</ul>
+	<p>在阅读《2023 网络钓鱼威胁报告》时，还需注意以下几点。</p>
+	<h3 id="%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%A8%81%E8%83%81%E5%88%86%E7%B1%BB">电子邮件威胁分类</h3>
+	<p>攻击者通常会联合使用<a href="https://www.cloudflare.com/learning/security/threats/social-engineering-attack" target="_blank">社会工程学</a>和技术混淆技巧来使其邮件看起来合法。因此，Cloudflare 使用许多先进的检测技术来分析“模糊”"信号（不仅仅是由肉眼可以看到的内容），以识别不受欢迎的电子邮件。这些信号包括：</p>
+	<ul>
+		<li><strong>结构分析</strong>，包括头部、正文内容、图片、链接、附件、负载，利用启发式算法和专门针对网络钓鱼信号而设计的机器学习模型；</li>
+		<li><strong>情绪分析</strong>，检测模式和行为的变化（例如，写作模式和表达）；</li>
+		<li><strong>信任图谱</strong>，评估社交图谱、电子邮件发送历史和潜在的合作伙伴假冒</li>
+	</ul>
+	<p>我们的<a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank">电子邮件安全</a>服务还包含了来自 Cloudflare 全球网络的<a href="https://www.cloudflare.com/learning/security/glossary/threat-intelligence-feed" target="_blank">威胁情报</a>，该网络平均每天拦截 1400 亿个网络威胁。</p>
+	<p>这些与许多其他信号会将电子邮件处置为恶意、BEC、欺骗或垃圾邮件；我们的仪表板会告诉客户特定电子邮件处置的具体原因（即威胁指标“类别”）。 </p>
+	<p>以下是我们在 2022 年 5 月 2 日至 2023 年 5 月 2 日期间观察到的热门电子邮件威胁指标的快照。我们将威胁指标分为 30 多个不同的类别；在此期间，最主要的威胁指标有<strong>欺骗性链接</strong>、<strong>域期限</strong>（新注册的域名）、<strong>身份欺骗</strong>、<strong>凭据收割</strong>和<strong>品牌假冒</strong>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image4-6.png" class="kg-image" alt="" loading="lazy" width="1999" height="1913"></figure>
+	<p>以下是各热门类别的简要说明（更多详情可见报告附录）。</p>
+	<p>点击后，<strong>欺骗性链接</strong>将打开用户默认的 Web 浏览器并显示链接中引用的数据，或者直接打开一个应用程序（如 PDF）。由于 HTML 中链接（即超文本）的显示文本可以任意设置，攻击者可以使 URL 看起来链接的是一个良性网站，而实际上却是恶意网站。</p>
+	<p><strong>域期限</strong>与域名信誉有关，域名信誉是分配给域名的总体分数。例如，域名注册后立即发送大量新邮件的域名信誉往往较差，因此得分也较低。</p>
+	<p><strong>身份欺骗</strong>发生于攻击者或具有恶意的人发送一封声称自己是其他人的电子邮件。这种欺骗在机制和策略上各不相同。一些策略包括：注册看起来相似的域名（又称域名假冒）、伪造或利用显示名称技巧，使电子邮件看起来像来自可信的域名。其他变种包括使用域前置 (domain fronting) 和高信誉的 Web 服务平台发送电子邮件。</p>
+	<p>攻击者设置<strong>凭据收割机</strong>，欺骗用户提供登录凭据。不知情的用户可能会输入他们的凭据，最终为攻击者提供自己账户的访问权。</p>
+	<p><strong>品牌假冒</strong>是一种身份欺骗形式，攻击者发送网络钓鱼信息，冒充知名公司或品牌。品牌假冒中会利用各种各样的手段。</p>
+	<p>电子邮件的<strong>附件</strong>，在攻击环境下打开或执行时，包含一个行动号召（如引诱目标去点击链接）或执行攻击者设置的一系列行动。</p>
+	<p>Cloudflare 经常在一封网络钓鱼邮件中发现多个威胁指标。例如，以硅谷银行为主题的网络钓鱼活动（详见 2023 年 3 月<a href="https://blog.cloudflare.com/zh-cn/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank-zh-cn">的博客</a>）结合了<em>品牌假冒</em>、<em>欺骗性链接</em>和<em>恶意附件</em>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image3-5.png" class="kg-image" alt="" loading="lazy" width="637" height="697"></figure>
+	<p>攻击者在以 DocuSign 为主题的模板中使用了 SVB 品牌。这封邮件包含了 HTML 代码，该代码包含一个初始链接和一个复杂的重定向链，重定向链有四个深度。攻击中包含的 HTML 文件会将收件人发送到具有递归重定向功能的 WordPress 实例。 </p>
+	<p>（说到链接，欺骗性链接是<strong>威胁类别中的第一位，</strong>在我们 <strong>35.6%</strong> 的检测结果中都有出现。攻击者不仅仅在电子邮件渠道中使用链接；报告中还涵盖了兴起的多渠道网络钓鱼威胁，这些威胁利用其他应用程序，如短讯/短信、聊天和社交媒体）。</p>
+	<h3 id="%E5%80%BC%E5%BE%97%E4%BF%A1%E8%B5%96%EF%BC%88%E5%92%8C%E6%9C%80%E6%98%93%E9%81%AD%E5%88%B0%E5%81%87%E5%86%92%EF%BC%89%E7%9A%84%E5%93%81%E7%89%8C">值得信赖（和最易遭到假冒）的品牌</h3>
+	<p>在 2022 年 5 月至 2023 年 5 月期间，我们观察到在针对 Cloudflare 客户的电子邮件中约有<strong> 1,000 个不同的品牌遭到冒充，硅谷银行只是其中之一</strong>。（在 2022 年 7 月 <a href="https://www.cloudflare.com/cloudflare-one" target="_blank">Cloudflare One </a> 产品套件<a href="https://blog.cloudflare.com/zh-cn/2022-07-sms-phishing-attacks-zh-cn">击溃</a>的“Oktapus”网络钓鱼攻击中，Cloudflare 的员工直接成为品牌假冒的攻击目标）。</p>
+	<p>然而，正如《网络钓鱼威胁报告》中所述，我们发现攻击者的电子邮件常常（51.7% 的时间）假冒全球 20 大知名品牌之一，其中<strong>微软</strong>首当其冲。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">排名</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">被假冒的品牌</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">微软</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">世界卫生组织</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SpaceX</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">T-Mobile</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">YouTube</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">万事达卡</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Notion.so</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Comcast</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Line Pay</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterClass</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Box</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Truist Financial Corp</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">路易威登</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E5%B0%9D%E8%AF%95%E8%8E%B7%E5%8F%96%E5%BE%AE%E8%BD%AF%E5%87%AD%E6%8D%AE%E7%9A%84%E7%A4%BA%E4%BE%8B">尝试获取微软凭据的示例 </h3>
+	<p>今年初，Cloudflare 发现并阻止了一个利用微软品牌的网络钓鱼活动，该活动试图通过一个合法但被入侵的网站获取凭据。 </p>
+	<p>在下面的电子邮件示例中，尽管电子邮件呈现了文字，但正文中却没有任何文本。整个正文是一个超链接的 JPEG 图像。因此，如果收件人点击了正文中的任何地方（即使他们并不打算点击链接），他们实际上就是在点击链接。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-16.png" class="kg-image" alt="" loading="lazy" width="671" height="497"></figure>
+	<p>最初，该图片的超链接似乎是一个良性的百度 URL - hxxp://www.baidu[.]com/link?url=-yee3T9X9U41UHUa3VV6lx1j5eX2EoI6XpZqfDgDcf-2NYQ8RVpOn5OYkDTuk8Wg#。但是，如果点击此链接，目标的浏览器就会被重定向到一个已被入侵并用于托管凭据收割机的网站。</p>
+	<p>攻击者使用了 Microsoft Office 365 品牌，但试图通过在图片中包含品牌信息来规避任何品牌检测技术（即没有可供检查以识别该品牌的明文或 HTML 文本）。 </p>
+	<p>不过，Cloudflare 使用光学字符识别 (OCR) 成功识别出了图片中的“Office 365”和“Microsoft”。我们还利用 OCR 识别了与密码有关的可疑账户诱饵。</p>
+	<p>在本例中，攻击者的技巧包括</p>
+	<ul>
+		<li>只包含 JPEG 图像（没有 OCR 就无法检测到文字）</li>
+		<li>在该图片中嵌入一个超链接（点击正文中的任何位置都将导致点击该链接）</li>
+		<li>超链接到百度 URL（用于绕过基于信誉的 URL 检测技术）</li>
+		<li>百度 URL 将收件人的浏览器重定向到一个凭据收割网站（即可以规避其他无法进行深度链接检查的电子邮件安全防御系统）</li>
+		<li>在已遭到攻击者入侵的合法网站上托管凭据收割机（即使使用深度链接检测，也会再次尝试绕过基于信誉的 URL 检测技术） &nbsp;</li>
+	</ul>
+	<p>这种攻击手段利用了百度的高信誉和真实性，绕过了托管凭据收割机的真实主机/IP 的信誉。 &nbsp;</p>
+	<p>虽然此次特定活动的重点是获取微软凭据，但我们经常看到攻击者使用类似方法绕过品牌检测技术，诱骗受害者下载<a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank">恶意软件</a>和其他<a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank">恶意有效负载</a>。</p>
+	<p>网络钓鱼活动中经常会出现 URL 重定向技术，但威胁行为者会滥用越来越多的合法域名（如 <a href="http://baidu.com" target="_blank">baidu.com</a>、<a href="https://bing.com" target="_blank">bing.com</a>、<a href="https://goo.gl" target="_blank">goo.gl</a> 等），从而不断改进其方法。我们的多种检测功能允许我们对使用各种重定向技术的 URL（包括滥用合法域名的 URL）进行深度链接检测。</p>
+	<h3 id="spf%E3%80%81dkim-%E5%92%8C-dmarc-%E5%A6%82%E4%BD%95%EF%BC%9F">SPF、DKIM 和 DMARC 如何？</h3>
+	<p>电子邮件身份验证（特别是 <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank">SPF、DKIM 和 DMARC</a> 标准）是经常提到的可以有效防止品牌假冒的手段：这些标准有助于验证服务器和租户的来源、保护信息完整性、提供策略执行等。</p>
+	<p>然而，攻击者仍然可以找到绕过身份验证的方法来欺骗电子邮件套件；实际上，我们发现 <strong>89% 不受欢迎的邮件“通过了”</strong>SPF、DKIM 和/或 DMARC 检查。</p>
+	<p>电子邮件身份验证的一些局限性包括：</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-6v43 {
+			background-color: #ffffff;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">SPF </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">（发送方策略框架）</span></th>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">重点优势：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">验证服务器来源（即验证邮件消息的来源）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">定义允许哪些电子邮件服务器和服务可以代表域名所有者发送信息</span></th>
+			</tr>
+			<tr>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">局限性：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法防止</span><a href="https://www.cloudflare.com/learning/ssl/what-is-domain-spoofing" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">仿冒</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">电子邮件、域名或显示名称的欺骗行为</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不会验证“发件人”标头；使用信封“发件人”确定发送域</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">邮件转发或发送至邮件列表的信息发送至每个订阅者时，验证无效 </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SPF 评估过程可限于一定数量的 </span><a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">DNS</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 查询</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法防范使用内嵌 URL、</span><a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">恶意有效负载</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">或附件的“验证”电子邮件的攻击</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">DKIM </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">（域名密钥识别邮件）</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">重点优势：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">提供租户来源验证（即通过数字签名检查电子邮件是否由域名所有者发送/授权）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">确保电子邮件在服务器之间传输时不会遭到篡改；保护信息的完整性</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">局限性：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法防止仿冒电子邮件、域名或显示名称的欺骗行为</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法防范</span><a href="https://developers.cloudflare.com/magic-wan/reference/anti-replay-protection" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">重放攻击</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（DKIM 只对邮件的特定部分进行签名。攻击者可以在通过 DKIM 的邮件中添加其他标头字段，然后将这些邮件转发）。
+					</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法抵御使用内嵌 URL、恶意有效负载或附件的“验证”电子邮件进行的攻击</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DMARC（基于域的邮件身份验证、报告和一致性）
+					</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">重点优势：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">为 SPF 和 DKIM 提供策略执行和报告功能</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">规定电子邮件未通过 SPF 或 DKIM 身份验证时应遵循的策略（例如拒绝/删除、隔离、无策略/发送）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">报告功能允许域名所有者查看谁在代表自己发送电子邮件（即防止假冒自己的域名和品牌滥用）。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">局限性： </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法防止对其他品牌域名的假冒</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法防止仿冒电子邮件、域名或显示名称的欺骗行为</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">域名所有者指定 DMARC 政策适用于多大比例的邮件；应用比例低于 100%，则效果较差</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无法抵御使用内嵌 URL、恶意有效负载或附件的“验证”电子邮件进行的攻击</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E7%BB%93%E8%AE%BA">结论</h3>
+	<p>攻击者的战术不断更新变化。在邮件到达收件箱之前、期间和之后，必须实施多重保护。Cloudflare 绝不会一成不变地“信任”任何类型的电子邮件通信（无论它看起来是内部的、外部的还是来自“已知”业务合作伙伴的）。 </p>
+	<p>同样，我们建议，最重要的是所有组织都将 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust </a>的“绝不信任，始终验证”安全模式不仅推广到网络和应用程序，还要扩展到电子邮件收件箱。</p>
+	<p>除了使用 Zero Trust 方法<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank">确保电子邮件安全外，我们还建议：</a></p>
+	<ul>
+		<li><strong>通过多种反钓鱼措施来增强云电子邮件。</strong>正如<a href="https://www.forrester.com/blogs/announcing-the-forrester-wave-enterprise-email-security-q2-2023" target="_blank">在</a> 6 月的 Forrester 博客中所述，<em>“跨多个设备使用消息传递、协作、文件共享和企业软件即服务应用程序都有助于提高员工的工作效率和体验。许多这样的环境都认定成‘封闭的‘，但如果一个仿冒供应链合作伙伴凭据的网络钓鱼攻击成功，就会使贵组织面临数据丢失、凭据被盗、欺诈和勒索软件攻击。为电子邮件收件箱开发的保护措施必须覆盖到这些环境，并贯穿员工的日常工作流程。”</em></li>
+		<li><strong><strong><strong>采用防网络钓鱼的多因素身份验证 (</strong><a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank"><strong>MFA</strong></a><strong>)。</strong></strong></strong>虽然并非所有多因素身份验证都能提供相同的安全层，但硬件安全密钥是<a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-implemented-fido2-and-zero-trust-zh-cn">防止网络钓鱼攻击成功的</a>最安全身份验证方法之一。即使攻击者获得了用户名和密码，这些密钥也能保护网络安全。</li>
+		<li><strong><strong><strong>更加不容易让人出错。</strong></strong></strong>让员工和团队使用的工具更加安全，防止他们出错，从而满足他们的需求。例如，远程浏览器隔离 (<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank">RBI</a>) 技术与云电子邮件安全集成后，可以自动隔离可疑的电子邮件链接，防止用户接触到潜在的恶意 Web 内容。在不受信任的网站上，键盘输入也可以进行禁用，以保护用户避免在填写表格时意外输入敏感信息或凭据而遭到窃取。这可以有效地允许用户不用中断他们的工作流程即可安全地打开链接，为抵御多渠道网络钓鱼攻击提供了一层防御。</li>
+	</ul>
+	<p>如果您有兴趣了解完整的调查结果，可以在<a href="https://www.cloudflare.com/zh-cn/lp/2023-phishing-report" target="_blank">此处</a>下载《2023 年网络钓鱼威胁报告》，以及我们防止网络钓鱼攻击成功的建议。如果您想要查看 Cloudflare 当前电子邮件安全性，可以在<a href="https://www.cloudflare.com/zh-cn/lp/emailsecurity" target="_blank">此处</a>申请一个免费的网络钓鱼风险评估。</p>
+</div>

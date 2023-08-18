@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image4-2.png" class="kg-image" alt="DLP Exact Data Match beta now available" loading="lazy" width="1999" height="1125"></figure>
+	<p>最も有名なデータ漏洩–セキュリティ専門家を夜も寝かさないもの–には、数百万人分のユーザー記録の漏洩がありました。企業は、名前、住所、電子メールアドレス、社会保障番号、パスワード、その他大量の機密情報を失いました。このようなデータを保護することは、ほとんどのセキュリティチームにとって最優先事項ですが、多くのチームは、いまだに、こうした漏洩を実際に検出しようと四苦八苦しています。</p>
+	<p>CloudflareのData Loss Preventionスイートには、クレジットカード番号のような機密データを識別する機能がすでに含まれていますが、毎日大量のデータが転送されている状態で、機密データを含むトランザクションのうちどれが、実際に問題があるのか把握するのは困難な場合があります。「従業員がオンラインで何かを購入するのに、個人のクレジットカードを使用しても気にしません。お客様のクレジットカードが漏洩したら教えてください。」とお客様がおっしゃっているのを耳にします。 </p>
+	<p>それに応えて、あらゆるクレジットカードと特定のお客様のクレジットカードを区別する方法を模索しました。この度、当社の最新のData Loss Prevention機能であるExact Data Matchの発売を発表できることを嬉しく思います。Exact Data Match（EDM）では、お客様がどのデータを保護したいのか、安全に当社に伝え、その後、当社はそのデータの存在や移動を特定し、ログを取り、ブロックします。例えば、お客様が一連のクレジットカード番号を当社に提供された場合、当社は、これらのカードに対してのみ、お客様のトラフィックまたはリポジトリをDLPスキャンします。これにより、お客様の組織にターゲットを絞ったDLP検出を作成できます。</p>
+	<h3 id="exact-data-match%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F">Exact Data Matchとは何ですか？</h3>
+	<p>多くのData Loss Prevention（DLP）検出は、通常、正規表現を使用したパターンの一般的な識別から始まり、その後、追加の基準によって検証されます。検証は、チェックサムから機械学習モデルまで幅広い技術を活用することができます。しかし、これはパターンが<em>クレジットカード</em>であることを検証するものであり、それが、<em>お客様の</em>クレジットカードであることを検証するものではありません。</p>
+	<p>Exact Data Matchでは、お客様が保護したいデータを正確に伝えますが、それが平分では決して表示されません。名前、住所、クレジットカード番号のリストなど、お客様が選択したデータのリストを提供し、そのデータは Cloudflare に到達する前にハッシュされます。ハッシュを保存し、ハッシュの一致がないか、トラフィックやコンテンツをスキャンします。一致が見つかると、お客様のポリシーに従ってログを取る、またはブロックします。 </p>
+	<p>データの有限リストを使用することで、一般的なパターンマッチングに比べて誤検知を大幅に減らします。一方、データのハッシュ化で、データのプライバシーを維持します。当社の目標は、お客様のデータ保護とプライバシーのニーズを満たすことです。</p>
+	<h3 id="%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E3%81%AF%EF%BC%9F">使用方法は？</h3>
+	<p>現在、DLPデータセットのアップロードが可能です。これにより、DLP検出に使用するデータのバッチを提供できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/Screenshot-2023-07-12-at-18.38.25.png" class="kg-image" alt="" loading="lazy" width="1612" height="318"></figure>
+	<p>データセットを作成する場合、名前、説明、一致するデータを含むファイルを指定します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="826"></figure>
+	<p>ファイルをアップロードすると、Cloudflareの一方向ハッシュがブラウザ内で直接データをハッシュします。ハッシュ化されたデータはその後、 API を経由して Cloudflare に転送されますが、平文データはブラウザから離れることはありません。</p>
+	<p>アップロードのステータスは、データセットテーブルで確認できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-7.png" class="kg-image" alt="" loading="lazy" width="1999" height="408"></figure>
+	<p>現在、検出用に、このデータセットをDLP のプロファイルに追加できます。また、同じDLPプロフィールに、他の定義済みエントリーやカスタムエントリーを追加することもできます。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image2-6.png" class="kg-image" alt="" loading="lazy" width="882" height="354"></figure>
+	<p>DLPプロファイルは、<a href="https://blog.cloudflare.com/ja-jp/inline-dlp-ga-ja-jp">Cloudflare Gatewayによるインラインスキャンと保護</a>、またはCloudflare CASBによる保存データのスキャンに使用できます。</p>
+	<h3 id="%E3%83%99%E3%83%BC%E3%82%BF%E7%89%88%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%81%8B%EF%BC%9F">ベータ版に参加できますか？</h3>
+	<p>すべてのDLPのお客様は、現在、正確なデータ照合が利用可能です。DLPのお客様ではないが、Cloudflare OneやDLPの詳細をお知りになりたい場合は、<a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank">ご相談ください</a> 。</p>
+	<h3 id="%E4%BB%8A%E5%BE%8C%E3%81%AE%E5%B1%95%E9%96%8B%E3%81%AF%EF%BC%9F">今後の展開は？</h3>
+	<p>お客様には、データを保存するためのさまざまな形式があり、それを監視するためのさまざまな方法があります。当社の目標は、お客様の組織が必要とする柔軟性を最大限に提供し、データ保護の目標を達成することです。</p>
+</div>
