@@ -720,6 +720,18 @@
 		}
 	},
 	{
+		"id": "ctm.rules_condition_length",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 768,
+			"key": "ctm.rules_condition_length",
+			"name": "CTM Rules Condition Length"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "ctm.rules_enabled",
 		"feature": {
 			"feature_set": "ctm",
@@ -1632,6 +1644,30 @@
 		}
 	},
 	{
+		"id": "pages.build_cache_retention_limit_days",
+		"feature": {
+			"feature_set": "pages",
+			"id": 1228,
+			"key": "pages.build_cache_retention_limit_days",
+			"name": "Cloudflare Pages - Build Cache Retention Limit Days"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "pages.build_cache_storage_limit_mb",
+		"feature": {
+			"feature_set": "pages",
+			"id": 1227,
+			"key": "pages.build_cache_storage_limit_mb",
+			"name": "Cloudflare Pages - Build Cache Storage Limit MB"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "pages.concurrent_builds",
 		"feature": {
 			"feature_set": "pages",
@@ -1662,6 +1698,18 @@
 			"id": 362,
 			"key": "proxy_anything.enabled",
 			"name": "Proxy Anything"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "query_cache.enabled",
+		"feature": {
+			"feature_set": "query_cache",
+			"id": 1226,
+			"key": "query_cache.enabled",
+			"name": "Query Cache - Enabled"
 		},
 		"allocation": {
 			"type": "bool"

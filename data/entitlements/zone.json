@@ -336,6 +336,18 @@
 		}
 	},
 	{
+		"id": "endpoint_abuse_detection.sequential_max_rules",
+		"feature": {
+			"feature_set": "endpoint_abuse_detection",
+			"id": 1221,
+			"key": "endpoint_abuse_detection.sequential_max_rules",
+			"name": "Endpoint Abuse Detection - Sequential Mitigation Rules Max"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "endpoint_abuse_detection.volumetric_allowed",
 		"feature": {
 			"feature_set": "endpoint_abuse_detection",
@@ -717,6 +729,54 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "intel.api_domain_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 867,
+			"key": "intel.api_domain_limit",
+			"name": "Intel - Domain Details API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_phishing_url_scanner_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 896,
+			"key": "intel.api_phishing_url_scanner_limit",
+			"name": "Intel - Phishing URL Scanner API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.brand_protection.brand_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 1053,
+			"key": "intel.brand_protection.brand_limit",
+			"name": "Brand Protection - Account Brands Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.brand_protection.pattern_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 1054,
+			"key": "intel.brand_protection.pattern_limit",
+			"name": "Brand Protection - Account Subscribed Brand Patterns Limit"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
