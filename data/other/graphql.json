@@ -193,7 +193,9 @@
 	"AccountD1AnalyticsAdaptiveGroupsSum": {
 		"__description": "",
 		"queryBatchResponseBytes": "The total number of bytes in the response, including all returned rows and metadata.",
-		"readQueries": "The number of read queries",
+		"readQueries": "The number of read queries.",
+		"rowsRead": "The number of rows your queries read.",
+		"rowsWritten": "The number of rows your queries wrote.",
 		"writeQueries": "The number of write queries."
 	},
 	"AccountDosdAttackAnalyticsGroups": {
@@ -567,7 +569,6 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"kind": "The kind of event, currently only possible values are: firewall",
@@ -590,7 +591,8 @@
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
-		"zoneTag": "Associated zone"
+		"zoneTag": "Associated zone",
+		"zoneVersion": "The version of a zone"
 	},
 	"AccountFirewallEventsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -636,7 +638,6 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"kind": "The kind of event, currently only possible values are: firewall",
@@ -658,7 +659,8 @@
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
-		"zoneTag": "Associated zone"
+		"zoneTag": "Associated zone",
+		"zoneVersion": "The version of a zone"
 	},
 	"AccountFirewallEventsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -1336,7 +1338,6 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -1358,7 +1359,8 @@
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"xRequestedWith": "The X-Requested-With header of the client request",
-		"zoneTag": "Associated zone"
+		"zoneTag": "Associated zone",
+		"zoneVersion": "The version of a zone"
 	},
 	"AccountHttpRequestsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -1425,7 +1427,6 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -1448,7 +1449,8 @@
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"xRequestedWith": "The X-Requested-With header of the client request",
-		"zoneTag": "Associated zone"
+		"zoneTag": "Associated zone",
+		"zoneVersion": "The version of a zone"
 	},
 	"AccountHttpRequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -1514,9 +1516,9 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"edgeResponseStatus": "HTTP response status code returned to client",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
-		"userAgentBrowser": "Browser parsed from the user agent"
+		"userAgentBrowser": "Browser parsed from the user agent",
+		"zoneVersion": "The version of a zone"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -3959,7 +3961,6 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"kind": "The kind of event, currently only possible values are: firewall",
@@ -3981,7 +3982,8 @@
 		"wafMlXssAttackScore": "Beta. WAF ML score for an XSS attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
-		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
+		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
+		"zoneVersion": "The version of a zone"
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroups": {
 		"__description": "Aggregated Firewall events with adaptive sampling grouped by time",
@@ -4006,7 +4008,6 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"description": "The description of the rule triggered by this request",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"wafAttackScore": "Beta. Overall request score generated by the WAF detection module",
@@ -4016,7 +4017,8 @@
 		"wafMlXssAttackScore": "Beta. WAF ML score for an XSS attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
-		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
+		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
+		"zoneVersion": "The version of a zone"
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroupsFilter_InputObject": {
 		"__description": ""
@@ -4068,7 +4070,6 @@
 		"description": "The description of the rule triggered by this request",
 		"edgeColoName": "The airport code of the Cloudflare datacenter that served this request",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"kind": "The kind of event, currently only possible values are: firewall",
@@ -4089,7 +4090,8 @@
 		"wafMlXssAttackScore": "Beta. WAF ML score for an XSS attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
-		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
+		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
+		"zoneVersion": "The version of a zone"
 	},
 	"ZoneFirewallEventsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -4580,7 +4582,6 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "HTTP response status code returned to browser",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -4601,7 +4602,8 @@
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
-		"xRequestedWith": "The X-Requested-With header of the client request"
+		"xRequestedWith": "The X-Requested-With header of the client request",
+		"zoneVersion": "The version of a zone"
 	},
 	"ZoneHttpRequestsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -4668,7 +4670,6 @@
 		"edgeResponseContentTypeName": "",
 		"edgeResponseStatus": "",
 		"edgeTimeToFirstByteMs": "The time elapsed between processing the first byte of the request until when we started sending a response",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
@@ -4690,7 +4691,8 @@
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
-		"xRequestedWith": "The X-Requested-With header of the client request"
+		"xRequestedWith": "The X-Requested-With header of the client request",
+		"zoneVersion": "The version of a zone"
 	},
 	"ZoneHttpRequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -4756,9 +4758,9 @@
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"edgeResponseStatus": "HTTP response status code returned to client",
-		"httpApplication": "Unique identifier for HTTP Application",
 		"httpApplicationVersion": "Version associated with HTTP Application",
-		"userAgentBrowser": "Browser parsed from the user agent"
+		"userAgentBrowser": "Browser parsed from the user agent",
+		"zoneVersion": "The version of a zone"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
