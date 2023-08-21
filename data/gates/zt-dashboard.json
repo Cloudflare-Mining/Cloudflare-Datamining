@@ -11,6 +11,12 @@
 	"billing-zt-turnstile-captcha-gate": {
 		"enabled": false
 	},
+	"dex-agg-by-device-test": {
+		"enabled": false
+	},
+	"dex-agg-by-test-old": {
+		"enabled": false
+	},
 	"dex-filter-by-geo": {
 		"enabled": true
 	},
@@ -22,13 +28,6 @@
 	},
 	"zt-access-custom-pages": {
 		"enabled": true
-	},
-	"zt-access-empty-states-experiment": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
 	},
 	"zt-access-multi-domain": {
 		"enabled": true
