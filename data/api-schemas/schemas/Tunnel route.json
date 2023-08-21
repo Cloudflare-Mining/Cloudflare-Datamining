@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
-		"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
+		"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format. If no virtual_network_id is provided it will delete the route from the default vnet. If no tun_type is provided it will fetch the type from the tunnel_id or if that is missing it will assume Cloudflare Tunnel as default. If tunnel_id is provided it will delete the route from that tunnel, otherwise it will delete the route based on the vnet and tun_type.\n",
 		"operationId": "tunnel-route-delete-a-tunnel-route",
 		"parameters": [
 			{
@@ -21,6 +21,40 @@
 					"description": "Cloudflare account ID",
 					"example": "699d98642c564d2e855e9661899b7252",
 					"maxLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "virtual_network_id",
+				"schema": {
+					"description": "UUID of the virtual network.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tun_type",
+				"schema": {
+					"description": "The type of tunnel.",
+					"enum": [
+						"cfd_tunnel"
+					],
+					"example": "cfd_tunnel",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tunnel_id",
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
 					"type": "string"
 				}
 			}
