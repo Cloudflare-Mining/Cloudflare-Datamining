@@ -1,5 +1,12 @@
 # @cloudflare/component-code-block
 
+## 4.1.3
+
+### Patch Changes
+
+- Updated dependencies [61a5dfdb30]
+  - @cloudflare/component-button@7.0.11
+
 ## 4.1.2
 
 ### Patch Changes

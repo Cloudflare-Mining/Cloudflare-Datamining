@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.11
+
+### Patch Changes
+
+- 61a5dfdb30: Update type definitions to allow children
+
 ## 7.0.10
 
 ## 7.0.9

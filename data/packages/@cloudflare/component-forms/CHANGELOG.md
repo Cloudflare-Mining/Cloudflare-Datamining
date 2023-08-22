@@ -1,5 +1,18 @@
 # Change Log
 
+## 5.3.8
+
+### Patch Changes
+
+- Updated dependencies [61a5dfdb30]
+  - @cloudflare/component-button@7.0.11
+
+## 5.3.7
+
+### Patch Changes
+
+- @cloudflare/component-time-period-picker@5.0.13
+
 ## 5.3.6
 
 ### Patch Changes

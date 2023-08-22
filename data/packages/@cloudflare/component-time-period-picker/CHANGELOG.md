@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.13
+
+### Patch Changes
+
+- Updated dependencies [eeddc750bb]
+  - @cloudflare/component-form@5.0.2
+
 ## 5.0.12
 
 ### Patch Changes

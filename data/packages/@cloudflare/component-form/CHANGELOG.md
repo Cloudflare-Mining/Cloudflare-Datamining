@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.2
+
+### Patch Changes
+
+- eeddc750bb: Update type definitions to allow children
+
 ## 5.0.1
 
 ### Patch Changes

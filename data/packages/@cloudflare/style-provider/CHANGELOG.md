@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.2
+
+### Patch Changes
+
+- 983d8459ae: Update type definitions to allow children
+
 ## 3.0.1
 
 ## 3.0.0
