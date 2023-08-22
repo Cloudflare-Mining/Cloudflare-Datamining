@@ -234,8 +234,9 @@ parameter in module format Workers.
 
 - `modulesRoot?: string`
 
-  If `modules` is set to an array, modules' "name"s will be their `path`s
-  relative to this value. This ensures file paths in stack traces are correct.
+  If `modules` is set to `true` or an array, modules' "name"s will be their
+  `path`s relative to this value. This ensures file paths in stack traces are
+  correct.
 
 <!-- prettier-ignore-start -->
 <!-- (for disabling `;` insertion in `js` code block) -->
@@ -577,7 +578,9 @@ defined at the top-level.
 
   Updates the configuration for this Miniflare instance and restarts the
   `workerd` server. Note unlike Miniflare 2, this does _not_ merge the new
-  configuration with the old configuration.
+  configuration with the old configuration. Note that calling this function will
+  invalidate any existing values returned by the `Miniflare#get*()` methods,
+  preventing them from being used.
 
 - `ready: Promise<URL>`
 
@@ -592,7 +595,61 @@ defined at the top-level.
   no need to do that yourself first. Additionally, the host of the request's URL
   is always ignored and replaced with the `workerd` server's.
 
+- `getBindings<Env extends Record<string, unknown> = Record<string, unknown>>(workerName?: string): Promise<Env>`
+
+  Returns a `Promise` that resolves with a record mapping binding names to
+  bindings, for all bindings in the Worker with the specified `workerName`. If
+  `workerName` is not specified, defaults to the entrypoint Worker.
+
+- `getCaches(): Promise<CacheStorage>`
+
+  Returns a `Promise` that resolves with the
+  [`CacheStorage`](https://developers.cloudflare.com/workers/runtime-apis/cache/)
+  instance of the entrypoint Worker. This means if `cache: false` is set on the
+  entrypoint, calling methods on the resolved value won't do anything.
+
+- `getD1Database(bindingName: string, workerName?: string): Promise<D1Database>`
+
+  Returns a `Promise` that resolves with the
+  [`D1Database`](https://developers.cloudflare.com/d1/platform/client-api/)
+  instance corresponding to the specified `bindingName` of `workerName`. Note
+  `bindingName` must not begin with `__D1_BETA__`. If `workerName` is not
+  specified, defaults to the entrypoint Worker.
+
+- `getDurableObjectNamespace(bindingName: string, workerName?: string): Promise<DurableObjectNamespace>`
+
+  Returns a `Promise` that resolves with the
+  [`DurableObjectNamespace`](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/#access-a-durable-object-from-a-worker)
+  instance corresponding to the specified `bindingName` of `workerName`. If
+  `workerName` is not specified, defaults to the entrypoint Worker.
+
+- `getKVNamespace(bindingName: string, workerName?: string): Promise<KVNamespace>`
+
+  Returns a `Promise` that resolves with the
+  [`KVNamespace`](https://developers.cloudflare.com/workers/runtime-apis/kv/)
+  instance corresponding to the specified `bindingName` of `workerName`. If
+  `workerName` is not specified, defaults to the entrypoint Worker.
+
+- `getQueueProducer<Body>(bindingName: string, workerName?: string): Promise<Queue<Body>>`
+
+  Returns a `Promise` that resolves with the
+  [`Queue`](https://developers.cloudflare.com/queues/platform/javascript-apis/)
+  producer instance corresponding to the specified `bindingName` of
+  `workerName`. If `workerName` is not specified, defaults to the entrypoint
+  Worker.
+
+- `getR2Bucket(bindingName: string, workerName?: string): Promise<R2Bucket>`
+
+  Returns a `Promise` that resolves with the
+  [`R2Bucket`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
+  producer instance corresponding to the specified `bindingName` of
+  `workerName`. If `workerName` is not specified, defaults to the entrypoint
+  Worker.
+
 - `dispose(): Promise<void>`
 
   Cleans up the Miniflare instance, and shuts down the `workerd` server. Note
-  that after this is called, `setOptions` and `dispatchFetch` cannot be called.
+  that after this is called, `Miniflare#setOptions()` and
+  `Miniflare#dispatchFetch()` cannot be called. Additionally, calling this
+  function will invalidate any values returned by the `Miniflare#get*()`
+  methods, preventing them from being used.

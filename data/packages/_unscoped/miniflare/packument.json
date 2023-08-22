@@ -1,7 +1,7 @@
 {
 	"name": "miniflare",
 	"dist-tags": {
-		"latest": "3.20230814.1",
+		"latest": "3.20230821.0",
 		"beta": "0.20230628.0"
 	},
 	"versions": {
@@ -3598,6 +3598,59 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQC6veQvGUgJ7UKT0ULwcGrI8BHpUjMUZz/8C+a5BGl/xgIhAK/VGj51BZ0eSzqmaVyHOyg8r9zBRgetrKvzprtMo3FQ"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"3.20230821.0": {
+			"name": "miniflare",
+			"version": "3.20230821.0",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"acorn-walk": "^8.2.0",
+				"better-sqlite3": "^8.1.0",
+				"capnp-ts": "^0.7.0",
+				"exit-hook": "^2.2.1",
+				"glob-to-regexp": "^0.4.1",
+				"http-cache-semantics": "^4.1.0",
+				"kleur": "^4.1.5",
+				"source-map-support": "0.5.21",
+				"stoppable": "^1.1.0",
+				"undici": "^5.22.1",
+				"workerd": "1.20230821.0",
+				"ws": "^8.11.0",
+				"youch": "^3.2.2",
+				"zod": "^3.20.6"
+			},
+			"devDependencies": {
+				"@cloudflare/kv-asset-handler": "^0.3.0",
+				"@cloudflare/workers-types": "^4.20230807.0",
+				"@types/better-sqlite3": "^7.6.2",
+				"@types/debug": "^4.1.7",
+				"@types/estree": "^1.0.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@types/set-cookie-parser": "^2.4.2",
+				"@types/source-map-support": "^0.5.6",
+				"@types/stoppable": "^1.1.1",
+				"@types/ws": "^8.5.3",
+				"devalue": "^4.3.0",
+				"devtools-protocol": "^0.0.1182435",
+				"semiver": "^1.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-V+p/f2T6Yj5n/3t1Szl+0MZFeuqRTQ7r1KcLU6bPj2cCX6woE2CoHbiMHHWkg/dIyv/yX0QuZgayr7ci+y3KwQ==",
+				"shasum": "2443e54386123e36e37c951a4324996a8af4dd2d",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20230821.0.tgz",
+				"fileCount": 6,
+				"unpackedSize": 904873,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDpAvBNaaR2rfdth/3HTFn8rKAZpjUEG9UoAF/ysUMe2AiB2FMIXK0EWryJK9dLjFtQTd68b4tY3bqgd6kS6xf6Ezg=="
 					}
 				]
 			},
