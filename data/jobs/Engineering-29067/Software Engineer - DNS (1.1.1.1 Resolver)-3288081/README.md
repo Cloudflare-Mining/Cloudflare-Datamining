@@ -5,35 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About The Role</strong></p>
-<p><span style="font-weight: 400;">We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support. Workers has allowed Cloudflare to add programmability to the edge such that developers could have access to writing logic on the edge in their preferred way — through code.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Over the past few years, Workers has grown from a simple functions-as-a-service option into a fully blown full-stack platform. With any application, however, in addition to serverless compute, you need to be able to manage state. =</span></p>
-<p><span style="font-weight: 400;">In 2022, Cloudflare released D1 — built on Durable Objects, D1 is Cloudflare’s first foray into providing a managed database solution.&nbsp;</span></p>
-<p><span style="font-weight: 400;">In this role, you’ll be helping define and build the future of D1, making sure we’re focused on the highest priority projects to enable developers to build full stack applications.&nbsp;</span></p>
-<p><strong>What You’ll Do</strong></p>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">Cloudflare runs one of the largest DNS infrastructures in the world. We run DNS for over 25 million Internet properties globally.&nbsp; We also operate the privacy and performance focused public DNS resolver 1.1.1.1 service. Many of our DNS systems are custom built internally, so we’ve developed a lot of proprietary technology that operates at scale, and we are iterating constantly to meet new scaling and reliability requirements.</span></p>
+<p><span style="font-weight: 400;">In this role, you will be part of a small elite team that builds and maintains one of the core Cloudflare systems. You will maintain and expand our DNS infrastructure and implement features for our customers. We like to think outside the box and come up with novel approaches.</span></p>
+<p><strong>Job description<br></strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help drive prioritization of D1, balancing shipping useful features to customers and engineering priorities</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead projects from ideation through launch, and continuing through ongoing maintenance and support</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and nurture relationships with product and coordinate closely to ensure successful delivery</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent the company externally as needed, including meetings with customers and prospects and analysis</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be required to research and implement various DNS RFCs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">As part of the job you will be researching new tools and&nbsp; technologies to&nbsp; elegantly and efficiently solve problems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be responsible for creating and maintaining documentation on software installations, tools, and procedures</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be working mainly with systems programming languages like Rust, Golang, C, C++ etc</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are expected to be versed in TCP/IP and Internet routing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will be involved in designing and operating highly scalable distributed systems that power Cloudflare products</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will participate in open source projects that benefit the internet community</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience as a manager running technical teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of C++, Rust and/or JavaScript, including asynchronous programming</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with (and love) for distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Unix knowledge</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience designing and building APIs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Open source contributions is a big bonus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of DNSSEC and various security extensions to DNS</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of HTTP, TLS and CDN Networks</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of building Data Analytics pipeline</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building Distributed Systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with large scale Monitoring Systems including metric collection, metric pipeline, visualization, trend/statistical analysis etc</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communicator, we work with many other groups and like to tell others about what we do in blogs, talks, and meetups</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
