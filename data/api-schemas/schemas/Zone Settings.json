@@ -1731,6 +1731,11 @@
 																		"example": "minify"
 																	},
 																	"value": {
+																		"default": {
+																			"css": "off",
+																			"html": "off",
+																			"js": "off"
+																		},
 																		"description": "Value of the zone setting.",
 																		"properties": {
 																			"css": {
@@ -1874,6 +1879,11 @@
 																		"example": "mobile_redirect"
 																	},
 																	"value": {
+																		"default": {
+																			"mobile_subdomain": null,
+																			"status": "off",
+																			"strip_uri": false
+																		},
 																		"description": "Value of the zone setting.",
 																		"properties": {
 																			"mobile_subdomain": {
@@ -1953,6 +1963,9 @@
 																		"example": "nel"
 																	},
 																	"value": {
+																		"default": {
+																			"enabled": false
+																		},
 																		"description": "Value of the zone setting.",
 																		"properties": {
 																			"enabled": {
@@ -2824,6 +2837,14 @@
 																		"example": "security_header"
 																	},
 																	"value": {
+																		"default": {
+																			"strict_transport_security": {
+																				"enabled": true,
+																				"include_subdomains": true,
+																				"max_age": 86400,
+																				"nosniff": true
+																			}
+																		},
 																		"properties": {
 																			"strict_transport_security": {
 																				"description": "Strict Transport Security.",
@@ -10121,6 +10142,11 @@
 															"example": "minify"
 														},
 														"value": {
+															"default": {
+																"css": "off",
+																"html": "off",
+																"js": "off"
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"css": {
@@ -10680,6 +10706,11 @@
 															"example": "mobile_redirect"
 														},
 														"value": {
+															"default": {
+																"mobile_subdomain": null,
+																"status": "off",
+																"strip_uri": false
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"mobile_subdomain": {
@@ -10967,6 +10998,9 @@
 															"example": "nel"
 														},
 														"value": {
+															"default": {
+																"enabled": false
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"enabled": {
@@ -14435,6 +14469,14 @@
 															"example": "security_header"
 														},
 														"value": {
+															"default": {
+																"strict_transport_security": {
+																	"enabled": true,
+																	"include_subdomains": true,
+																	"max_age": 86400,
+																	"nosniff": true
+																}
+															},
 															"properties": {
 																"strict_transport_security": {
 																	"description": "Strict Transport Security.",
@@ -19204,6 +19246,11 @@
 															"example": "minify"
 														},
 														"value": {
+															"default": {
+																"css": "off",
+																"html": "off",
+																"js": "off"
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"css": {
@@ -19347,6 +19394,11 @@
 															"example": "mobile_redirect"
 														},
 														"value": {
+															"default": {
+																"mobile_subdomain": null,
+																"status": "off",
+																"strip_uri": false
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"mobile_subdomain": {
@@ -19426,6 +19478,9 @@
 															"example": "nel"
 														},
 														"value": {
+															"default": {
+																"enabled": false
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"enabled": {
@@ -20297,6 +20352,14 @@
 															"example": "security_header"
 														},
 														"value": {
+															"default": {
+																"strict_transport_security": {
+																	"enabled": true,
+																	"include_subdomains": true,
+																	"max_age": 86400,
+																	"nosniff": true
+																}
+															},
 															"properties": {
 																"strict_transport_security": {
 																	"description": "Strict Transport Security.",
@@ -22828,6 +22891,11 @@
 																		"example": "minify"
 																	},
 																	"value": {
+																		"default": {
+																			"css": "off",
+																			"html": "off",
+																			"js": "off"
+																		},
 																		"description": "Value of the zone setting.",
 																		"properties": {
 																			"css": {
@@ -22971,6 +23039,11 @@
 																		"example": "mobile_redirect"
 																	},
 																	"value": {
+																		"default": {
+																			"mobile_subdomain": null,
+																			"status": "off",
+																			"strip_uri": false
+																		},
 																		"description": "Value of the zone setting.",
 																		"properties": {
 																			"mobile_subdomain": {
@@ -23050,6 +23123,9 @@
 																		"example": "nel"
 																	},
 																	"value": {
+																		"default": {
+																			"enabled": false
+																		},
 																		"description": "Value of the zone setting.",
 																		"properties": {
 																			"enabled": {
@@ -23921,6 +23997,14 @@
 																		"example": "security_header"
 																	},
 																	"value": {
+																		"default": {
+																			"strict_transport_security": {
+																				"enabled": true,
+																				"include_subdomains": true,
+																				"max_age": 86400,
+																				"nosniff": true
+																			}
+																		},
 																		"properties": {
 																			"strict_transport_security": {
 																				"description": "Strict Transport Security.",
@@ -31535,6 +31619,11 @@
 					"schema": {
 						"properties": {
 							"value": {
+								"default": {
+									"css": "off",
+									"html": "off",
+									"js": "off"
+								},
 								"description": "Value of the zone setting.",
 								"properties": {
 									"css": {
@@ -31696,6 +31785,11 @@
 															"example": "minify"
 														},
 														"value": {
+															"default": {
+																"css": "off",
+																"html": "off",
+																"js": "off"
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"css": {
@@ -32161,6 +32255,11 @@
 					"schema": {
 						"properties": {
 							"value": {
+								"default": {
+									"mobile_subdomain": null,
+									"status": "off",
+									"strip_uri": false
+								},
 								"description": "Value of the zone setting.",
 								"properties": {
 									"mobile_subdomain": {
@@ -32319,6 +32418,11 @@
 															"example": "mobile_redirect"
 														},
 														"value": {
+															"default": {
+																"mobile_subdomain": null,
+																"status": "off",
+																"strip_uri": false
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"mobile_subdomain": {
@@ -32535,6 +32639,9 @@
 												"example": "nel"
 											},
 											"value": {
+												"default": {
+													"enabled": false
+												},
 												"description": "Value of the zone setting.",
 												"properties": {
 													"enabled": {
@@ -32683,6 +32790,9 @@
 															"example": "nel"
 														},
 														"value": {
+															"default": {
+																"enabled": false
+															},
 															"description": "Value of the zone setting.",
 															"properties": {
 																"enabled": {
@@ -36535,6 +36645,14 @@
 					"schema": {
 						"properties": {
 							"value": {
+								"default": {
+									"strict_transport_security": {
+										"enabled": true,
+										"include_subdomains": true,
+										"max_age": 86400,
+										"nosniff": true
+									}
+								},
 								"properties": {
 									"strict_transport_security": {
 										"description": "Strict Transport Security.",
@@ -36697,6 +36815,14 @@
 															"example": "security_header"
 														},
 														"value": {
+															"default": {
+																"strict_transport_security": {
+																	"enabled": true,
+																	"include_subdomains": true,
+																	"max_age": 86400,
+																	"nosniff": true
+																}
+															},
 															"properties": {
 																"strict_transport_security": {
 																	"description": "Strict Transport Security.",
