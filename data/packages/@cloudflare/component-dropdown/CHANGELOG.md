@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.16
+
+### Patch Changes
+
+- b291b8d33f: Add children prop to type definitions
+
 ## 6.0.15
 
 ### Patch Changes

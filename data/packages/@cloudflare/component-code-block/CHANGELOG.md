@@ -1,5 +1,11 @@
 # @cloudflare/component-code-block
 
+## 4.2.0
+
+### Minor Changes
+
+- ed343e4320: Add packages used as dependencies
+
 ## 4.1.3
 
 ### Patch Changes
