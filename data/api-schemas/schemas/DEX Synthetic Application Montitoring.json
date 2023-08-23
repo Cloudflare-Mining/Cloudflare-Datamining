@@ -28,7 +28,7 @@
 				}
 			},
 			{
-				"description": "Optionally filter result stats to a specific device(s)",
+				"description": "Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.",
 				"in": "query",
 				"name": "deviceId",
 				"schema": {
@@ -68,6 +68,14 @@
 						"minute",
 						"hour"
 					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param.",
+				"in": "query",
+				"name": "colo",
+				"schema": {
 					"type": "string"
 				}
 			}
@@ -415,6 +423,248 @@
 														"httpStatusCode"
 													],
 													"type": "object"
+												},
+												"httpStatsByColo": {
+													"items": {
+														"properties": {
+															"colo": {
+																"example": "DFW",
+																"type": "string"
+															},
+															"dnsResponseTimeMs": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"min": {
+																		"description": "lowest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"httpStatusCode": {
+																"items": {
+																	"properties": {
+																		"status200": {
+																			"type": "integer"
+																		},
+																		"status300": {
+																			"type": "integer"
+																		},
+																		"status400": {
+																			"type": "integer"
+																		},
+																		"status500": {
+																			"type": "integer"
+																		},
+																		"timestamp": {
+																			"example": "2023-07-16 15:00:00+00",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"timestamp",
+																		"status200",
+																		"status300",
+																		"status400",
+																		"status500"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"resourceFetchTimeMs": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"min": {
+																		"description": "lowest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"serverResponseTimeMs": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"min": {
+																		"description": "lowest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"uniqueDevicesTotal": {
+																"description": "Count of unique devices that have run this test in the given time period",
+																"example": 57,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"colo",
+															"uniqueDevicesTotal",
+															"resourceFetchTimeMs",
+															"serverResponseTimeMs",
+															"dnsResponseTimeMs",
+															"httpStatusCode"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"interval": {
 													"description": "The interval at which the HTTP synthetic application test is set to run.",
@@ -799,6 +1049,248 @@
 															],
 															"type": "object"
 														},
+														"httpStatsByColo": {
+															"items": {
+																"properties": {
+																	"colo": {
+																		"example": "DFW",
+																		"type": "string"
+																	},
+																	"dnsResponseTimeMs": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"min": {
+																				"description": "lowest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "integer"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"httpStatusCode": {
+																		"items": {
+																			"properties": {
+																				"status200": {
+																					"type": "integer"
+																				},
+																				"status300": {
+																					"type": "integer"
+																				},
+																				"status400": {
+																					"type": "integer"
+																				},
+																				"status500": {
+																					"type": "integer"
+																				},
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"status200",
+																				"status300",
+																				"status400",
+																				"status500"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"resourceFetchTimeMs": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"min": {
+																				"description": "lowest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "integer"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"serverResponseTimeMs": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"min": {
+																				"description": "lowest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "integer"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"uniqueDevicesTotal": {
+																		"description": "Count of unique devices that have run this test in the given time period",
+																		"example": 57,
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"colo",
+																	"uniqueDevicesTotal",
+																	"resourceFetchTimeMs",
+																	"serverResponseTimeMs",
+																	"dnsResponseTimeMs",
+																	"httpStatusCode"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
 														"interval": {
 															"description": "The interval at which the HTTP synthetic application test is set to run.",
 															"example": "0h5m0s",
@@ -962,6 +1454,14 @@
 				}
 			},
 			{
+				"description": "Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param.",
+				"in": "query",
+				"name": "colo",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
 				"description": "Optionally filter results by test name",
 				"in": "query",
 				"name": "testName",
@@ -970,7 +1470,7 @@
 				}
 			},
 			{
-				"description": "Optionally filter result stats to a specific device(s)",
+				"description": "Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.",
 				"in": "query",
 				"name": "deviceId",
 				"schema": {
@@ -1252,6 +1752,123 @@
 																],
 																"type": "object"
 															},
+															"httpResultsByColo": {
+																"items": {
+																	"properties": {
+																		"colo": {
+																			"description": "Cloudflare colo",
+																			"example": "SJC",
+																			"type": "string"
+																		},
+																		"resourceFetchTime": {
+																			"properties": {
+																				"avgMs": {
+																					"nullable": true,
+																					"type": "integer"
+																				},
+																				"history": {
+																					"items": {
+																						"properties": {
+																							"avgMs": {
+																								"nullable": true,
+																								"type": "integer"
+																							},
+																							"deltaPct": {
+																								"format": "float",
+																								"nullable": true,
+																								"type": "number"
+																							},
+																							"timePeriod": {
+																								"properties": {
+																									"units": {
+																										"enum": [
+																											"hours",
+																											"days",
+																											"testRuns"
+																										],
+																										"type": "string"
+																									},
+																									"value": {
+																										"type": "integer"
+																									}
+																								},
+																								"required": [
+																									"value",
+																									"units"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"timePeriod"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"overTime": {
+																					"nullable": true,
+																					"properties": {
+																						"timePeriod": {
+																							"properties": {
+																								"units": {
+																									"enum": [
+																										"hours",
+																										"days",
+																										"testRuns"
+																									],
+																									"type": "string"
+																								},
+																								"value": {
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"value",
+																								"units"
+																							],
+																							"type": "object"
+																						},
+																						"values": {
+																							"items": {
+																								"properties": {
+																									"avgMs": {
+																										"type": "integer"
+																									},
+																									"timestamp": {
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"timestamp",
+																									"avgMs"
+																								],
+																								"type": "object"
+																							},
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"values",
+																						"timePeriod"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"history"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"colo",
+																		"resourceFetchTime"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
 															"id": {
 																"description": "API Resource UUID tag.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -1386,6 +2003,123 @@
 																	"roundTripTime"
 																],
 																"type": "object"
+															},
+															"tracerouteResultsByColo": {
+																"items": {
+																	"properties": {
+																		"colo": {
+																			"description": "Cloudflare colo",
+																			"example": "SJC",
+																			"type": "string"
+																		},
+																		"roundTripTime": {
+																			"properties": {
+																				"avgMs": {
+																					"nullable": true,
+																					"type": "integer"
+																				},
+																				"history": {
+																					"items": {
+																						"properties": {
+																							"avgMs": {
+																								"nullable": true,
+																								"type": "integer"
+																							},
+																							"deltaPct": {
+																								"format": "float",
+																								"nullable": true,
+																								"type": "number"
+																							},
+																							"timePeriod": {
+																								"properties": {
+																									"units": {
+																										"enum": [
+																											"hours",
+																											"days",
+																											"testRuns"
+																										],
+																										"type": "string"
+																									},
+																									"value": {
+																										"type": "integer"
+																									}
+																								},
+																								"required": [
+																									"value",
+																									"units"
+																								],
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"timePeriod"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"overTime": {
+																					"nullable": true,
+																					"properties": {
+																						"timePeriod": {
+																							"properties": {
+																								"units": {
+																									"enum": [
+																										"hours",
+																										"days",
+																										"testRuns"
+																									],
+																									"type": "string"
+																								},
+																								"value": {
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"value",
+																								"units"
+																							],
+																							"type": "object"
+																						},
+																						"values": {
+																							"items": {
+																								"properties": {
+																									"avgMs": {
+																										"type": "integer"
+																									},
+																									"timestamp": {
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"timestamp",
+																									"avgMs"
+																								],
+																								"type": "object"
+																							},
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"values",
+																						"timePeriod"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"history"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"colo",
+																		"roundTripTime"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
 															},
 															"updated": {
 																"type": "string"
@@ -1697,6 +2431,123 @@
 																		],
 																		"type": "object"
 																	},
+																	"httpResultsByColo": {
+																		"items": {
+																			"properties": {
+																				"colo": {
+																					"description": "Cloudflare colo",
+																					"example": "SJC",
+																					"type": "string"
+																				},
+																				"resourceFetchTime": {
+																					"properties": {
+																						"avgMs": {
+																							"nullable": true,
+																							"type": "integer"
+																						},
+																						"history": {
+																							"items": {
+																								"properties": {
+																									"avgMs": {
+																										"nullable": true,
+																										"type": "integer"
+																									},
+																									"deltaPct": {
+																										"format": "float",
+																										"nullable": true,
+																										"type": "number"
+																									},
+																									"timePeriod": {
+																										"properties": {
+																											"units": {
+																												"enum": [
+																													"hours",
+																													"days",
+																													"testRuns"
+																												],
+																												"type": "string"
+																											},
+																											"value": {
+																												"type": "integer"
+																											}
+																										},
+																										"required": [
+																											"value",
+																											"units"
+																										],
+																										"type": "object"
+																									}
+																								},
+																								"required": [
+																									"timePeriod"
+																								],
+																								"type": "object"
+																							},
+																							"type": "array"
+																						},
+																						"overTime": {
+																							"nullable": true,
+																							"properties": {
+																								"timePeriod": {
+																									"properties": {
+																										"units": {
+																											"enum": [
+																												"hours",
+																												"days",
+																												"testRuns"
+																											],
+																											"type": "string"
+																										},
+																										"value": {
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"value",
+																										"units"
+																									],
+																									"type": "object"
+																								},
+																								"values": {
+																									"items": {
+																										"properties": {
+																											"avgMs": {
+																												"type": "integer"
+																											},
+																											"timestamp": {
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"timestamp",
+																											"avgMs"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								}
+																							},
+																							"required": [
+																								"values",
+																								"timePeriod"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"history"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"colo",
+																				"resourceFetchTime"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
 																	"id": {
 																		"description": "API Resource UUID tag.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -1831,6 +2682,123 @@
 																			"roundTripTime"
 																		],
 																		"type": "object"
+																	},
+																	"tracerouteResultsByColo": {
+																		"items": {
+																			"properties": {
+																				"colo": {
+																					"description": "Cloudflare colo",
+																					"example": "SJC",
+																					"type": "string"
+																				},
+																				"roundTripTime": {
+																					"properties": {
+																						"avgMs": {
+																							"nullable": true,
+																							"type": "integer"
+																						},
+																						"history": {
+																							"items": {
+																								"properties": {
+																									"avgMs": {
+																										"nullable": true,
+																										"type": "integer"
+																									},
+																									"deltaPct": {
+																										"format": "float",
+																										"nullable": true,
+																										"type": "number"
+																									},
+																									"timePeriod": {
+																										"properties": {
+																											"units": {
+																												"enum": [
+																													"hours",
+																													"days",
+																													"testRuns"
+																												],
+																												"type": "string"
+																											},
+																											"value": {
+																												"type": "integer"
+																											}
+																										},
+																										"required": [
+																											"value",
+																											"units"
+																										],
+																										"type": "object"
+																									}
+																								},
+																								"required": [
+																									"timePeriod"
+																								],
+																								"type": "object"
+																							},
+																							"type": "array"
+																						},
+																						"overTime": {
+																							"nullable": true,
+																							"properties": {
+																								"timePeriod": {
+																									"properties": {
+																										"units": {
+																											"enum": [
+																												"hours",
+																												"days",
+																												"testRuns"
+																											],
+																											"type": "string"
+																										},
+																										"value": {
+																											"type": "integer"
+																										}
+																									},
+																									"required": [
+																										"value",
+																										"units"
+																									],
+																									"type": "object"
+																								},
+																								"values": {
+																									"items": {
+																										"properties": {
+																											"avgMs": {
+																												"type": "integer"
+																											},
+																											"timestamp": {
+																												"type": "string"
+																											}
+																										},
+																										"required": [
+																											"timestamp",
+																											"avgMs"
+																										],
+																										"type": "object"
+																									},
+																									"type": "array"
+																								}
+																							},
+																							"required": [
+																								"values",
+																								"timePeriod"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"history"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"colo",
+																				"roundTripTime"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
 																	},
 																	"updated": {
 																		"type": "string"
@@ -1999,7 +2967,7 @@
 				}
 			},
 			{
-				"description": "Optionally filter result stats to a specific device(s)",
+				"description": "Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.",
 				"in": "query",
 				"name": "deviceId",
 				"schema": {
@@ -2964,7 +3932,7 @@
 				}
 			},
 			{
-				"description": "Optionally filter result stats to a specific device(s)",
+				"description": "Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.",
 				"in": "query",
 				"name": "deviceId",
 				"schema": {
@@ -3004,6 +3972,14 @@
 						"minute",
 						"hour"
 					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param.",
+				"in": "query",
+				"name": "colo",
+				"schema": {
 					"type": "string"
 				}
 			}
@@ -3413,6 +4389,295 @@
 														"availabilityPct"
 													],
 													"type": "object"
+												},
+												"tracerouteStatsByColo": {
+													"items": {
+														"properties": {
+															"availabilityPct": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"min": {
+																		"description": "lowest  observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"format": "float",
+																					"type": "number"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"colo": {
+																"example": "DFW",
+																"type": "string"
+															},
+															"hopsCount": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"min": {
+																		"description": "lowest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"packetLossPct": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"min": {
+																		"description": "lowest  observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"format": "float",
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"format": "float",
+																					"type": "number"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"roundTripTimeMs": {
+																"properties": {
+																	"avg": {
+																		"description": "average observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"max": {
+																		"description": "highest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"min": {
+																		"description": "lowest observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p50": {
+																		"description": "p50 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p90": {
+																		"description": "p90 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p95": {
+																		"description": "p95 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"p99": {
+																		"description": "p99 observed in the time period",
+																		"nullable": true,
+																		"type": "integer"
+																	},
+																	"slots": {
+																		"items": {
+																			"properties": {
+																				"timestamp": {
+																					"example": "2023-07-16 15:00:00+00",
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"timestamp",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"slots"
+																],
+																"type": "object"
+															},
+															"uniqueDevicesTotal": {
+																"description": "Count of unique devices that have run this test in the given time period",
+																"example": 57,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"colo",
+															"uniqueDevicesTotal",
+															"roundTripTimeMs",
+															"hopsCount",
+															"packetLossPct",
+															"availabilityPct"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
@@ -3837,6 +5102,295 @@
 																"availabilityPct"
 															],
 															"type": "object"
+														},
+														"tracerouteStatsByColo": {
+															"items": {
+																"properties": {
+																	"availabilityPct": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"min": {
+																				"description": "lowest  observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"format": "float",
+																							"type": "number"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"colo": {
+																		"example": "DFW",
+																		"type": "string"
+																	},
+																	"hopsCount": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"min": {
+																				"description": "lowest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "integer"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"packetLossPct": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"min": {
+																				"description": "lowest  observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"format": "float",
+																				"nullable": true,
+																				"type": "number"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"format": "float",
+																							"type": "number"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"roundTripTimeMs": {
+																		"properties": {
+																			"avg": {
+																				"description": "average observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"max": {
+																				"description": "highest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"min": {
+																				"description": "lowest observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p50": {
+																				"description": "p50 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p90": {
+																				"description": "p90 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p95": {
+																				"description": "p95 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"p99": {
+																				"description": "p99 observed in the time period",
+																				"nullable": true,
+																				"type": "integer"
+																			},
+																			"slots": {
+																				"items": {
+																					"properties": {
+																						"timestamp": {
+																							"example": "2023-07-16 15:00:00+00",
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "integer"
+																						}
+																					},
+																					"required": [
+																						"timestamp",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"required": [
+																			"slots"
+																		],
+																		"type": "object"
+																	},
+																	"uniqueDevicesTotal": {
+																		"description": "Count of unique devices that have run this test in the given time period",
+																		"example": 57,
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"colo",
+																	"uniqueDevicesTotal",
+																	"roundTripTimeMs",
+																	"hopsCount",
+																	"packetLossPct",
+																	"availabilityPct"
+																],
+																"type": "object"
+															},
+															"type": "array"
 														}
 													},
 													"required": [
