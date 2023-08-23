@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p>&nbsp;</p>
 <h2>Engineering Manager - Zero Trust Client Apps</h2>
 <h2>What you'll do</h2>
 <p>We are looking for an&nbsp;<strong>Engineering Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team working on the <strong>GUI of the </strong><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"><strong>Zero Trust desktop &amp; mobile clients</strong></a> (Windows, macOS, Linux, iOS, Android), which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which in turn can apply advanced web filtering and Zero Trust policies.</p>
@@ -51,6 +52,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
