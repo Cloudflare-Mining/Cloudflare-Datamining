@@ -5,26 +5,21 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2>Engineering Manager - Zero Trust Client Apps</h2>
-<h2>What you'll do</h2>
-<p>We are looking for an&nbsp;<strong>Engineering Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team working on the <strong>GUI of the </strong><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"><strong>Zero Trust desktop &amp; mobile clients</strong></a> (Windows, macOS, Linux, iOS, Android), which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which in turn can apply advanced web filtering and Zero Trust policies.</p>
-<p>You will play a key role in shaping the product’s engineering strategy, working with other engineering teams, product management, and external stakeholders to implement <strong>customer-impacting features</strong> and meet the team’s ambitious goals of <strong>quality and velocity</strong> on all five platforms. You will work closely with your team to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations.</p>
-<p>As a manager in our team, you will be expected to <strong>lead</strong>, <strong>inspire</strong>, and <strong>foster a culture of diversity</strong>. You will communicate <strong>clearly</strong> and with <strong>empathy</strong>, and work towards building a <strong>cohesive and collaborative</strong> team. You will be expected to interact with our customers and internal stakeholders, to identify gaps and areas of improvements in our product and processes alike, and to work with your own stakeholders to transform those into <strong>innovative</strong>, <strong>actionable</strong>, and <strong>achievable</strong> <strong>solutions</strong>.</p>
-<h2>Examples of desirable skills, knowledge, and experience</h2>
+<h4>What you'll do</h4>
+<p>We’re looking for a Senior Software Engineer to join our <a href="https://www.cloudflare.com/zero-trust/">Zero Trust</a> team. You will be working on the cross-platform GUI of our <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/">Zero Trust clients</a>, which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Zero Trust policies.</p>
+<p>In your role, you will predominantly use <strong>cross-platform frameworks </strong>along platform-native languages &amp; APIs to implement responsive and user-friendly GUIs that run on desktop and mobile platforms. You’ll be expected to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations. You will be most successful in this role if you have a good understanding of the <strong>intricacies of different platforms</strong> (mobile and desktop alike), experience working on <strong>multi-platform code</strong>, a passion for building <strong>user-centric, coherent GUIs</strong>, and a decent understanding of <strong>operating system concepts</strong> (virtual memory, multi-threading, process lifecycle, etc.). You will also have to interact with other languages, such as Swift, C#, C, and python.</p>
+<p>As a Senior Software Engineer, you will be expected to make significant contributions to the design and implementation of major development projects, working closely with our product managers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</p>
+<h4>Examples of desirable skills, knowledge, and experience</h4>
 <ul>
-	<li>Experience leading a team of geographically distributed engineers, including hiring, coaching, and professional development</li>
-	<li>Solid track record of building <strong>cohesive</strong> and <strong>collaborative</strong> teams</li>
+	<li>Excellent programming skills, with experience writing very <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation.</li>
+	<li>Strong experience writing <strong>easily-testable </strong>and<strong> thoroughly-tested code</strong> (e.g. using dependency injection with the right abstractions)</li>
+	<li>Experience with <strong>cross-platform programming</strong> and good familiarity and understanding of <strong>user-interface and core OS concepts</strong> of one or more platform (macOS, Windows, Linux, iOS, Android)</li>
+	<li>Great experience successfully using <strong>different typed programming languages</strong>, such as Swift, Java, kotlin, C#, Rust, etc.</li>
+	<li>Very comfortable writing <strong>multithreaded, asynchronous</strong> code</li>
+	<li>Strong experience with <strong>debugging </strong>and<strong> automated testing</strong> of user interfaces</li>
+	<li>An understanding of <strong>security concepts</strong>, such as VPNs, PKI, etc.</li>
 	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
-	<li>Experience shipping <strong>multi-platform client applications</strong>, desktop and mobile alike</li>
-	<li>Excellent technical leadership skills, driving for very <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation</li>
-	<li>Experience driving for <strong>easily-testable</strong> and <strong>thoroughly-tested code</strong> (e.g. using dependency injection with the right abstractions)</li>
-	<li>A passion for fostering <strong>diversity</strong>, <strong>equity</strong>, and<strong> inclusion</strong></li>
-	<li>A strong and tangible <strong>customer empathy</strong></li>
-	<li>A good understanding of how the big-picture goals inform technical details</li>
-	<li>A drive for implementing tools, documentations, processes, instrumentation, and metrics to enhance the team’s velocity and performance</li>
-	<li>A knack for finding <strong>inspiring</strong> and <strong>innovative solutions</strong> to problems and blockages</li>
 </ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
