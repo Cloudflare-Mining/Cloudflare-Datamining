@@ -605,7 +605,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/content": {
+	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/content/v2": {
 		"description": "Fetch script content only",
 		"operationId": "worker-script-get-content",
 		"parameters": [
