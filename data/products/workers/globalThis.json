@@ -2159,7 +2159,7 @@
 			}
 		},
 		"D1_BINDING": {
-			"binding": {
+			"fetcher": {
 				"connect": {
 					"__proto": "function",
 					"__type": "function",
@@ -2193,7 +2193,7 @@
 			}
 		},
 		"D1_BINDING_EXPERIMENTAL": {
-			"binding": {
+			"fetcher": {
 				"connect": {
 					"__proto": "function",
 					"__type": "function",
@@ -3645,6 +3645,2012 @@
 				"length": "number",
 				"name": "string",
 				"_prototype": {}
+			}
+		},
+		"crypto": {
+			"DiffieHellman": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"generateKeys": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"computeSecret": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getPrime": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getGenerator": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getPublicKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getPrivateKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setPublicKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setPrivateKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					}
+				}
+			},
+			"DiffieHellmanGroup": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"generateKeys": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"computeSecret": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getPrime": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getGenerator": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getPublicKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getPrivateKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					}
+				}
+			},
+			"createDiffieHellman": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createDiffieHellmanGroup": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getDiffieHellman": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"KeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {},
+				"from": "function"
+			},
+			"PublicKeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"PrivateKeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"SecretKeyObject": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKeyPair": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKeyPairSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generateKeySync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createPrivateKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createPublicKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createSecretKey": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getRandomValues": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			},
+			"randomBytes": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomFillSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomFill": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomInt": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"randomUUID": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"generatePrime": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"generatePrimeSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"checkPrime": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"checkPrimeSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"Hash": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"copy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_transform": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_flush": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"update": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"digest": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_final": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_read": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"cork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"uncork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setDefaultEncoding": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_writev": {},
+					"end": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_undestroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"_destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"push": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"unshift": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"isPaused": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setEncoding": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"read": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"pipe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"unpipe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"on": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"addListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"off": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeAllListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"resume": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"pause": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"wrap": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"iterator": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"map": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"asIndexedPairs": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"fromWeb": "undefined",
+							"toWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"drop": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"fromWeb": "undefined",
+							"toWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"filter": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"flatMap": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"take": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"fromWeb": "undefined",
+							"toWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"every": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"forEach": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"reduce": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"toArray": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"some": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"find": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"compose": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_events": "undefined",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"setMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"emit": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"prependListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"once": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependOnceListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"listeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"of": "undefined"
+						}
+					},
+					"rawListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"of": "undefined"
+						}
+					},
+					"listenerCount": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"eventNames": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"of": "undefined"
+						}
+					}
+				},
+				"fromWeb": "function",
+				"toWeb": "function",
+				"from": "function",
+				"ReadableState": "function",
+				"_fromList": "function",
+				"wrap": "function",
+				"Stream": "function",
+				"_isUint8Array": "function",
+				"_uint8ArrayToBuffer": "function",
+				"addAbortSignal": "function",
+				"compose": "function",
+				"destroy": "function",
+				"finished": "function",
+				"isReadable": "function",
+				"isErrored": "function",
+				"pipeline": "function",
+				"Writable": "function",
+				"Readable": "function",
+				"Duplex": "function",
+				"Transform": "function",
+				"PassThrough": "function",
+				"promises": {
+					"pipeline": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined"
+						}
+					},
+					"finished": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined"
+						}
+					}
+				},
+				"on": "function",
+				"once": "function",
+				"getEventListeners": "function",
+				"setMaxListeners": "function",
+				"listenerCount": "function",
+				"EventEmitter": "function",
+				"usingDomains": "boolean",
+				"captureRejectionSymbol": "symbol",
+				"errorMonitor": "symbol",
+				"EventEmitterAsyncResource": "function",
+				"captureRejections": "boolean",
+				"defaultMaxListeners": "number",
+				"init": "function"
+			},
+			"Hmac": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"update": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"digest": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_flush": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_transform": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_final": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_read": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"write": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"cork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"uncork": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setDefaultEncoding": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_writev": {},
+					"end": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_undestroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"_destroy": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"push": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"unshift": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"isPaused": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"setEncoding": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"read": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"pipe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"unpipe": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"on": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"addListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"off": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"removeAllListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"resume": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"pause": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"wrap": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"iterator": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"map": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"asIndexedPairs": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"fromWeb": "undefined",
+							"toWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"drop": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"fromWeb": "undefined",
+							"toWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"filter": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"flatMap": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"take": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"_readableState": "object",
+							"_events": "object",
+							"_eventsCount": "number",
+							"_maxListeners": "undefined",
+							"_read": "function",
+							"_destroy": "function",
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"ReadableState": "undefined",
+							"_fromList": "undefined",
+							"fromWeb": "undefined",
+							"toWeb": "undefined",
+							"wrap": "function",
+							"from": "undefined",
+							"destroy": "function",
+							"_undestroy": "function",
+							"push": "function",
+							"unshift": "function",
+							"isPaused": "function",
+							"setEncoding": "function",
+							"read": "function",
+							"pipe": "function",
+							"unpipe": "function",
+							"on": "function",
+							"addListener": "function",
+							"removeListener": "function",
+							"off": "function",
+							"removeAllListeners": "function",
+							"resume": "function",
+							"pause": "function",
+							"iterator": "function",
+							"map": "function",
+							"asIndexedPairs": "function",
+							"drop": "function",
+							"filter": "function",
+							"flatMap": "function",
+							"take": "function",
+							"every": "function",
+							"forEach": "function",
+							"reduce": "function",
+							"toArray": "function",
+							"some": "function",
+							"find": "function",
+							"compose": "function",
+							"setMaxListeners": "function",
+							"getMaxListeners": "function",
+							"emit": "function",
+							"prependListener": "function",
+							"once": "function",
+							"prependOnceListener": "function",
+							"listeners": "function",
+							"rawListeners": "function",
+							"listenerCount": "function",
+							"eventNames": "function"
+						}
+					},
+					"every": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"forEach": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"reduce": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"toArray": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"some": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"find": {
+						"__proto": "object",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"compose": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"_events": "undefined",
+					"_eventsCount": "number",
+					"_maxListeners": "undefined",
+					"setMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"getMaxListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"emit": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"prependListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"once": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"prependOnceListener": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {}
+					},
+					"listeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"of": "undefined"
+						}
+					},
+					"rawListeners": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"of": "undefined"
+						}
+					},
+					"listenerCount": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
+					},
+					"eventNames": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "number",
+							"name": "undefined",
+							"prototype": "undefined",
+							"isArray": "undefined",
+							"from": "undefined",
+							"of": "undefined"
+						}
+					}
+				},
+				"fromWeb": "function",
+				"toWeb": "function",
+				"from": "function",
+				"ReadableState": "function",
+				"_fromList": "function",
+				"wrap": "function",
+				"Stream": "function",
+				"_isUint8Array": "function",
+				"_uint8ArrayToBuffer": "function",
+				"addAbortSignal": "function",
+				"compose": "function",
+				"destroy": "function",
+				"finished": "function",
+				"isReadable": "function",
+				"isErrored": "function",
+				"pipeline": "function",
+				"Writable": "function",
+				"Readable": "function",
+				"Duplex": "function",
+				"Transform": "function",
+				"PassThrough": "function",
+				"promises": {
+					"pipeline": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined"
+						}
+					},
+					"finished": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined",
+							"all": "undefined",
+							"allSettled": "undefined",
+							"any": "undefined",
+							"race": "undefined",
+							"resolve": "undefined",
+							"reject": "undefined"
+						}
+					}
+				},
+				"on": "function",
+				"once": "function",
+				"getEventListeners": "function",
+				"setMaxListeners": "function",
+				"listenerCount": "function",
+				"EventEmitter": "function",
+				"usingDomains": "boolean",
+				"captureRejectionSymbol": "symbol",
+				"errorMonitor": "symbol",
+				"EventEmitterAsyncResource": "function",
+				"captureRejections": "boolean",
+				"defaultMaxListeners": "number",
+				"init": "function"
+			},
+			"createHash": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"createHmac": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getHashes": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"0": "string",
+					"1": "string",
+					"2": "string",
+					"3": "string",
+					"4": "string",
+					"5": "string",
+					"6": "string",
+					"7": "string",
+					"8": "string",
+					"9": "string",
+					"10": "string",
+					"11": "string",
+					"12": "string",
+					"13": "string",
+					"14": "string",
+					"15": "string",
+					"16": "string",
+					"length": "number",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isArray": "undefined",
+					"from": "undefined",
+					"of": "undefined"
+				}
+			},
+			"hkdf": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"hkdfSync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"pbkdf2": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"pbkdf2Sync": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"getCiphers": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"0": "string",
+					"1": "string",
+					"2": "string",
+					"3": "string",
+					"4": "string",
+					"5": "string",
+					"6": "string",
+					"7": "string",
+					"8": "string",
+					"9": "string",
+					"10": "string",
+					"11": "string",
+					"12": "string",
+					"13": "string",
+					"14": "string",
+					"15": "string",
+					"16": "string",
+					"17": "string",
+					"18": "string",
+					"length": "number",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isArray": "undefined",
+					"from": "undefined",
+					"of": "undefined"
+				}
+			},
+			"getCurves": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"0": "string",
+					"1": "string",
+					"2": "string",
+					"3": "string",
+					"length": "number",
+					"name": "undefined",
+					"prototype": "undefined",
+					"isArray": "undefined",
+					"from": "undefined",
+					"of": "undefined"
+				}
+			},
+			"secureHeapUsed": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"total": "number",
+					"used": "number",
+					"utilization": "number",
+					"min": "number",
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"assign": "undefined",
+					"getOwnPropertyDescriptor": "undefined",
+					"getOwnPropertyDescriptors": "undefined",
+					"getOwnPropertyNames": "undefined",
+					"getOwnPropertySymbols": "undefined",
+					"hasOwn": "undefined",
+					"is": "undefined",
+					"preventExtensions": "undefined",
+					"seal": "undefined",
+					"create": "undefined",
+					"defineProperties": "undefined",
+					"defineProperty": "undefined",
+					"freeze": "undefined",
+					"getPrototypeOf": "undefined",
+					"setPrototypeOf": "undefined",
+					"isExtensible": "undefined",
+					"isFrozen": "undefined",
+					"isSealed": "undefined",
+					"keys": "undefined",
+					"entries": "undefined",
+					"fromEntries": "undefined",
+					"values": "undefined"
+				}
+			},
+			"setEngine": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"timingSafeEqual": "undefined",
+			"getFips": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined"
+				}
+			},
+			"setFips": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"fips": "boolean",
+			"subtle": {
+				"encrypt": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"decrypt": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"sign": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"verify": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"digest": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"generateKey": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"deriveKey": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"deriveBits": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"importKey": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"exportKey": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"wrapKey": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"unwrapKey": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"timingSafeEqual": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				}
+			},
+			"webcrypto": {
+				"subtle": {
+					"encrypt": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"decrypt": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"sign": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"verify": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"digest": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"generateKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"deriveKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"deriveBits": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"importKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"exportKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"wrapKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"unwrapKey": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					},
+					"timingSafeEqual": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string"
+					}
+				},
+				"getRandomValues": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"randomUUID": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"DigestStream": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string",
+					"_prototype": "object"
+				}
 			}
 		},
 		"diagnostics_channel": {
