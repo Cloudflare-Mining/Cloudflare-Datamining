@@ -23,15 +23,21 @@ for(const integration of integrationsJson?.result ?? []) {
 		console.log('Failed to get manifest', integration.id, integration.name, integration.alias, manifestInfo.status, manifestInfo.statusText);
 		continue;
 	}
-	const mainfestJson = await manifestInfo.json();
+	const manifestJson = await manifestInfo.json();
 	const versionsDir = path.resolve(integrationDir, 'versions');
 	await fs.ensureDir(versionsDir);
 	const file = path.resolve(versionsDir, `${integration.latest_version}.json`);
-	await fs.writeJson(file, mainfestJson?.result, {spaces: '\t'});
+	if(manifestJson?.result) {
+		manifestJson.result.assets ??= [];
+		await fs.writeJson(file, manifestJson.result, {spaces: '\t'});
+	}
 
 	// write latest manifest to manifest.json
 	const latestManifestFile = path.resolve(integrationDir, 'latest_manifest.json');
-	await fs.writeJson(latestManifestFile, mainfestJson?.result, {spaces: '\t'});
+	if(latestManifestFile?.result) {
+		manifestJson.result.assets ??= [];
+		await fs.writeJson(latestManifestFile, manifestJson.result, {spaces: '\t'});
+	}
 
 	// TODO: maybe get previous versions?
 }
