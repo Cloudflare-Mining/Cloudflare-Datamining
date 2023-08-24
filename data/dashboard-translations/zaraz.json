@@ -258,7 +258,7 @@
 	"zaraz.consent.enabled.label": "Enable Consent Management",
 	"zaraz.consent.enabled.description": "Enforces consent settings. Tools that are assigned to a purpose will require consent to load.",
 	"zaraz.consent.autoShowModal.label": "Show consent modal",
-	"zaraz.consent.autoShowModal.description": "Present the consent modal for new users. Disable this if you rather you the Consent API with your own UI.",
+	"zaraz.consent.autoShowModal.description": "Display the consent modal on pageload for new users. Disable this to toggle the modal with custom logic via the Consent API.",
 	"zaraz.purposes.cannot_delete": "You can't delete this purpose as it is assigned to one or more tools below",
 	"zaraz.consent.settings.administratorIdentity.label": "Administrator identity",
 	"zaraz.consent.settings.administratorIdentity.description": "Name of the legal entity representing the administrator of your website. It will be displayed within the modal.",

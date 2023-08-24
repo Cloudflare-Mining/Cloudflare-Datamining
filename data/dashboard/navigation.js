@@ -14,7 +14,7 @@ const navigation = {
 	}, {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
-		iconType: "user-multi",
+		iconType: "carbon",
 		hasPermission: function(c) {
 			return (0, n.z1)(A.Mr)(c) === !0
 		}
@@ -22,11 +22,11 @@ const navigation = {
 	partners: [{
 		title: "navigation.partners.tenant",
 		url: "/partners/tenant",
-		iconType: "lock"
+		iconType: "cloudflare-magic-wan"
 	}, {
 		title: "navigation.partners.accounts",
 		url: "/partners/account",
-		iconType: "lock"
+		iconType: "user-multi"
 	}],
 	profile: [{
 		title: "navigation.profile.preferences",
@@ -686,10 +686,10 @@ const navigation = {
 		hasPermission: function(c) {
 			var F = (0, i.nA)(c);
 			if ((0, u.yD)(c) || !(0, o.wB)(c, "zone_settings", "spectrum.app") || !F) return !1;
-			var Y = !!((0, P.l8)(c) || (0, i.DQ)(c)),
+			var G = !!((0, P.l8)(c) || (0, i.DQ)(c)),
 				X = !!(0, i.ZB)(c, "spectrum", "enabled"),
-				ne = !!(0, i.Ns)(F);
-			return X || Y || !ne
+				ee = !!(0, i.Ns)(F);
+			return X || G || !ee
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -851,7 +851,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: R
+			tabs: U
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -904,7 +904,7 @@ const navigation = {
 			labels: ["alpha"],
 			navigationType: "version",
 			hasPermission: function(c) {
-				return !!(0, G.GM)(c) && (0, o.$n)(c, "waf", "page-rule", "read")
+				return !!(0, K.GM)(c) && (0, o.$n)(c, "waf", "page-rule", "read")
 			}
 		}, {
 			title: "navigation.zone.rules.configuration_rules",
@@ -1086,8 +1086,8 @@ const navigation = {
 		labels: ["new"],
 		hasPermission: function(c) {
 			var F = (0, r.uF)(c),
-				Y = (F == null ? void 0 : F.roles) || [];
-			return Y.includes("Trust and Safety") ? !1 : !(0, u.yD)(c)
+				G = (F == null ? void 0 : F.roles) || [];
+			return G.includes("Trust and Safety") ? !1 : !(0, u.yD)(c)
 		}
 	}],
 	zeroTrust: [{
@@ -1133,7 +1133,7 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: U.G,
+	support: k.G,
 	application: [{
 		title: "navigation.zone.ssl-tls",
 		url: "/ssl-tls",
@@ -1218,7 +1218,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			hasPermission: function(c) {
-				return !!(0, G.GM)(c) && (0, o.$n)(c, "waf", "page-rule", "read")
+				return !!(0, K.GM)(c) && (0, o.$n)(c, "waf", "page-rule", "read")
 			}
 		}, {
 			title: "navigation.zone.rules.transform_rules",
