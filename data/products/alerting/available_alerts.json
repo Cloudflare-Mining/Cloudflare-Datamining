@@ -154,6 +154,21 @@
 			]
 		}
 	],
+	"Logo Match Alert": [
+		{
+			"display_name": "Logo Match Alert",
+			"type": "logo_match_alert",
+			"description": "Get alerts when saved logos match images from URLs scanned by Security Center",
+			"filter_options": [
+				{
+					"Key": "logo_tag",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
+		}
+	],
 	"Logpush": [
 		{
 			"display_name": "Failing Logpush Job Disabled",
