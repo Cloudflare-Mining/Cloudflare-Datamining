@@ -24,7 +24,7 @@ sys     0m0.225s
 	<h3 id="whatisneon">What is NEON</h3>
 	<p>NEON is the ARMv8 version of SIMD, Single Instruction Multiple Data instruction set, where a single operation performs (generally) the same operation on several operands.</p>
 	<p>NEON operates on 32 dedicated 128-bit registers, similarly to Intel SSE. It can perform operations on 32-bit and 64-bit floating point numbers, or 8-bit, 16-bit, 32-bit and 64-bit signed or unsigned integers.</p>
-	<p>As with SSE you can program either in the assembly language, or in C using intrinsics. The intrinsics are usually easier to use, and depending on the application and the compiler can provide better performance, however intrinsics based code tends to be quite verbose.</p>
+	<p>As with <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse" target="_blank">SSE</a> you can program either in the assembly language, or in C using intrinsics. The intrinsics are usually easier to use, and depending on the application and the compiler can provide better performance, however intrinsics based code tends to be quite verbose.</p>
 	<p>If you opt to use the NEON intrinsics you have to include <code>&lt;arm_neon.h&gt;</code>. While SSE intrinsic use __m128i for all SIMD integer operations, the intrinsics for NEON have distinct type for each integer and float width. For example operations on signed 16-bit integers use the int16x8_t type, which we are going to use. Similarly there is a uint16x8_t type for unsigned integer, as well as int8x16_t, int32x4_t and int64x2_t and their uint derivatives, that are self explanatory.</p>
 	<h3 id="gettingstarted">Getting started</h3>
 	<p>Running perf tells me that the same two culprits are responsible for most of the CPU time spent:</p>

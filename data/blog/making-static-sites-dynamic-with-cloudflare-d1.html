@@ -13,7 +13,7 @@
 	<p>In this blog post, I'll show you how to use D1 to add comments to a static blog site. To do this, we'll construct a new D1 database and build a simple JSON API that allows the creation and retrieval of comments.</p>
 	<p>As I mentioned, separating D1 from the app itself - an API and database that remains separate from the static site - allows us to abstract the static and dynamic pieces of our website from each other. It also makes it easier to deploy our application: we will deploy the frontend to Cloudflare Pages, and the D1-powered API to Cloudflare Workers.</p>
 	<h3 id="building-a-new-application">Building a new application</h3>
-	<p>First, we'll add a basic API in Workers. Create a new directory and in it a new wrangler project inside it:</p><!--kg-card-begin: markdown-->
+	<p>First, we'll add a basic <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank">API</a> in Workers. Create a new directory and in it a new wrangler project inside it:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ mkdir d1-example &amp;&amp; d1-example
 $ wrangler init
 </code></pre>

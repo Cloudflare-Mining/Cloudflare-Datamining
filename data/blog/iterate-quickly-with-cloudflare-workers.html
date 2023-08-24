@@ -9,7 +9,7 @@
 	<p>Below are some ideas and recipes I’ve seen implemented inside of <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank">Cloudflare Workers</a> to ensure the appropriate customers have access to the correct features.</p>
 	<h3 id="howworkerswork">How Workers Work</h3>
 	<p>First, a brief primer on how Workers work.</p>
-	<p>As soon as a Worker is deployed, it is available and ready to run at every one of Cloudflare’s 155+ data centers in response to a request made to your website, application or API. Workers are able to modify anything about both the request to and response from your origin server. They also have the ability to make subrequests to other endpoints in response to the initial request.</p>
+	<p>As soon as a Worker is deployed, it is available and ready to run at every one of Cloudflare’s 155+ data centers in response to a request made to your website, application or <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank">API</a>. Workers are able to modify anything about both the request to and response from your origin server. They also have the ability to make subrequests to other endpoints in response to the initial request.</p>
 	<p>Workers are able to make their own subrequests using the available fetch method. We’ll be relying on this as well as the fact that requests made via fetch are also cacheable by Cloudflare to make sure that gating of features is not just secure but also quick.</p>
 	<h3 id="howtosecurelycacheuserpermissions">How to Securely Cache User Permissions</h3>
 	<p>Let’s say you have an endpoint on your origin that allows us to securely pull the permissions for a particular user.</p>

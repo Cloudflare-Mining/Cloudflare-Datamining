@@ -25,7 +25,7 @@
 		<code>2606:4700:4700::1001</code> as the upsteam DNS servers (with the IPv6 addresses updated if the network doesn't support them):
 	</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-09-at-13.15.07.png" alt="DNS Resolver configuration" loading="lazy"></p>
-	<p>By connecting the router's WAN port to my computer, I am able to sniff traffic as it leaves the router by using Wireshark before it goes out to the actual WAN. When a DNS query isn't in my routers cache it is forwarded to <code>1.1.1.1</code>. As my router is sending these queries unecrypted instead of using DNS-over-TLS, I am able to see these DNS queries being sent around the internet in unencrypted form:</p>
+	<p>By connecting the router's <a href="https://www.cloudflare.com/learning/network-layer/what-is-a-wan" target="_blank">WAN</a> port to my computer, I am able to sniff traffic as it leaves the router by using Wireshark before it goes out to the actual WAN. When a DNS query isn't in my routers cache it is forwarded to <code>1.1.1.1</code>. As my router is sending these queries unecrypted instead of using DNS-over-TLS, I am able to see these DNS queries being sent around the internet in unencrypted form:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/dns_unencrypted.png" alt="dns_unencrypted" loading="lazy"></p>
 	<p>Although Cloudflare Resolver supports DNS-over-TLS, unfortuantely my router doesn't and will simply send all queries unencrypted.</p>
 	<h3 id="settingupdnsovertls">Setting Up DNS-Over-TLS</h3>

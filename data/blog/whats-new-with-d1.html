@@ -55,7 +55,7 @@
 	</ul>
 	<p>With D1, we can do better.</p>
 	<p>The <em>point</em> of a stored procedure was to execute directly next to the data—uploading the code and executing it inside the database was simply a means to that end. But we're using Workers, a global JavaScript execution platform, can we use them to solve this problem?</p>
-	<p>It turns out, absolutely! But here we have a few options of exactly how to make it work, and we're working with our private beta users to find the right API. In this section, I'd like to share with you our current leading proposal, and invite you all to give us your feedback.</p>
+	<p>It turns out, absolutely! But here we have a few options of exactly how to make it work, and we're working with our private beta users to find the right <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank">API</a>. In this section, I'd like to share with you our current leading proposal, and invite you all to give us your feedback.</p>
 	<p>When you connect a Worker project to a D1 database, you add the section like the following to your <code>wrangler.toml</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-yaml">[[ d1_databases ]]
 # What binding name to use (e.g. env.DB):
