@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"latest": "2.1.1",
 		"next": "2.0.0",
-		"beta": "0.0.0-a8d8d9a5"
+		"beta": "0.0.0-6b6788d4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -7582,6 +7582,66 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIB6dV0kH234XNlTAeAh9DnvmLKG9Y+GDpkJTWHM/uAzPAiB+VKPO+e+4ZkY5w12VHZWZvpJebAV5wUfs2e8vwHiiag=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13.0"
+			}
+		},
+		"0.0.0-6b6788d4": {
+			"name": "create-cloudflare",
+			"version": "0.0.0-6b6788d4",
+			"devDependencies": {
+				"@babel/parser": "^7.21.3",
+				"@babel/types": "^7.21.4",
+				"@clack/prompts": "^0.6.3",
+				"@cloudflare/eslint-config-worker": "*",
+				"@cloudflare/workers-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230419.0",
+				"@types/command-exists": "^1.2.0",
+				"@types/cross-spawn": "^6.0.2",
+				"@types/dns2": "^2.0.3",
+				"@types/esprima": "^4.0.3",
+				"@types/node": "^18.15.3",
+				"@types/which-pm-runs": "^1.0.0",
+				"@types/yargs": "^17.0.22",
+				"@typescript-eslint/eslint-plugin": "^5.55.0",
+				"@typescript-eslint/parser": "^5.55.0",
+				"chalk": "^5.2.0",
+				"command-exists": "^1.2.9",
+				"cross-spawn": "^7.0.3",
+				"dns2": "^2.1.0",
+				"esbuild": "^0.17.12",
+				"execa": "^7.1.1",
+				"haikunator": "^2.1.2",
+				"log-update": "^5.0.1",
+				"open": "^8.4.0",
+				"pnpm": "^8.6.11",
+				"recast": "^0.22.0",
+				"semver": "^7.5.1",
+				"typescript": "^5.0.2",
+				"undici": "5.20.0",
+				"vite-tsconfig-paths": "^4.0.8",
+				"vitest": "^0.30.0",
+				"which-pm-runs": "^1.1.0",
+				"wrangler": "*",
+				"yargs": "^17.7.1",
+				"yarn": "^1.22.19"
+			},
+			"bin": {
+				"create-cloudflare": "dist/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-fn9AP/vlKRkJKLdZacosm0C213p/pSgZmlJ4HxlXNt2WwuIjq97xxqqz6CIHZNBPRzRXj392w0bnyIpaTNSOPw==",
+				"shasum": "a072a6167d57a211aa4c98d88f0f9850baeb2f01",
+				"tarball": "https://registry.npmjs.org/create-cloudflare/-/create-cloudflare-0.0.0-6b6788d4.tgz",
+				"fileCount": 69,
+				"unpackedSize": 2707581,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIG3edmE+AAntoF7WrABXpMotB3R+epY1z4NlGsqS3IfhAiEAhoI6FWpxK4xwJsXWwMO+h0ZaQmw8BUQYHWjAMoc7Hd4="
 					}
 				]
 			},
