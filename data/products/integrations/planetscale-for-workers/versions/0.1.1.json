@@ -1,13 +1,13 @@
 {
 	"alias": "planetscale-for-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "MySQL-compatible platform that makes databases infinitely scalable, easier and safer to manage.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/#planetscale",
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/0f4d6584-64e8-421d-c231-180962fbad00/public",
 	"install_target": "worker",
 	"name": "PlanetScale",
-	"description": "MySQL-compatible platform that makes databases infinitely scalable, easier and safer to manage.",
-	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/0f4d6584-64e8-421d-c231-180962fbad00/public",
-	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/#planetscale",
-	"category": "workers-databases",
-	"version": "0.1.1",
-	"assets": [],
 	"permissions": {
 		"scopes": {
 			"account": [
@@ -179,6 +179,6 @@
 			"submit_action": "submit-secrets-map"
 		}
 	],
-	"get_data_action": "get-data",
-	"uninstall_action": "uninstall"
+	"uninstall_action": "uninstall",
+	"version": "0.1.1"
 }

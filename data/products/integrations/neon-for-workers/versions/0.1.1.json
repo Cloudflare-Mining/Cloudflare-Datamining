@@ -1,12 +1,13 @@
 {
 	"alias": "neon-for-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "Fully managed serverless PostgreSQL with modern developer features.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/#neon",
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/4b65be6d-0556-4c15-b399-8c985eab9e00/public",
 	"install_target": "worker",
 	"name": "Neon",
-	"description": "Fully managed serverless PostgreSQL with modern developer features.",
-	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/4b65be6d-0556-4c15-b399-8c985eab9e00/public",
-	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/#neon",
-	"category": "workers-databases",
-	"version": "0.1.1",
 	"permissions": {
 		"scopes": {
 			"account": [
@@ -143,7 +144,6 @@
 			"submit_action": "submit-secrets-map"
 		}
 	],
-	"get_data_action": "get-data",
 	"uninstall_action": "uninstall",
-	"assets": []
+	"version": "0.1.1"
 }

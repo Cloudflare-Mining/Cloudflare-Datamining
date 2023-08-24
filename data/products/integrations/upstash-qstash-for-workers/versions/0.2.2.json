@@ -1,13 +1,13 @@
 {
 	"alias": "upstash-qstash-for-workers",
+	"assets": [],
+	"category": "workers-messaging",
+	"description": "A task queue/scheduler designed for the serverless.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/upstash/#upstash-qstash",
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/1e94c44c-312a-41ef-3d36-3f93f6a9fe00/public",
 	"install_target": "worker",
 	"name": "Upstash QStash",
-	"description": "A task queue/scheduler designed for the serverless.",
-	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/1e94c44c-312a-41ef-3d36-3f93f6a9fe00/public",
-	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/upstash/#upstash-qstash",
-	"category": "workers-messaging",
-	"version": "0.2.2",
-	"assets": [],
 	"permissions": {
 		"scopes": {
 			"account": [
@@ -113,6 +113,6 @@
 			"submit_action": "submit-secrets-map"
 		}
 	],
-	"get_data_action": "get-data",
-	"uninstall_action": "uninstall"
+	"uninstall_action": "uninstall",
+	"version": "0.2.2"
 }

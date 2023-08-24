@@ -1,12 +1,13 @@
 {
 	"alias": "supabase-for-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "The open source Firebase alternative. Full Postgres database, Authentication, Storage, Realtime, and more.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/#supabase",
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/09628d1a-34aa-4015-9b48-c5dae13e6900/public",
 	"install_target": "worker",
 	"name": "Supabase",
-	"description": "The open source Firebase alternative. Full Postgres database, Authentication, Storage, Realtime, and more.",
-	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/09628d1a-34aa-4015-9b48-c5dae13e6900/public",
-	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/#supabase",
-	"category": "workers-databases",
-	"version": "0.1.1",
 	"permissions": {
 		"scopes": {
 			"account": [
@@ -120,7 +121,6 @@
 			"submit_action": "submit-secrets-map"
 		}
 	],
-	"get_data_action": "get-data",
 	"uninstall_action": "uninstall",
-	"assets": []
+	"version": "0.1.1"
 }

@@ -3,7 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 
-import {tryAndPush, cfRequest} from '../utils.js';
+import {tryAndPush, cfRequest, sortObjectByKeys} from '../utils.js';
 
 const dir = path.resolve('../data/products/integrations');
 await fs.ensureDir(dir);
@@ -29,14 +29,14 @@ for(const integration of integrationsJson?.result ?? []) {
 	const file = path.resolve(versionsDir, `${integration.latest_version}.json`);
 	if(manifestJson?.result) {
 		manifestJson.result.assets ??= [];
-		await fs.writeJson(file, manifestJson.result, {spaces: '\t'});
+		await fs.writeJson(file, sortObjectByKeys(manifestJson.result), {spaces: '\t'});
 	}
 
 	// write latest manifest to manifest.json
 	const latestManifestFile = path.resolve(integrationDir, 'latest_manifest.json');
 	if(latestManifestFile?.result) {
 		manifestJson.result.assets ??= [];
-		await fs.writeJson(latestManifestFile, manifestJson.result, {spaces: '\t'});
+		await fs.writeJson(latestManifestFile, sortObjectByKeys(manifestJson.result), {spaces: '\t'});
 	}
 
 	// TODO: maybe get previous versions?
