@@ -53,6 +53,14 @@
 			},
 			{
 				"in": "query",
+				"name": "involvedCountry",
+				"schema": {
+					"description": "The country code of the potential hijacker or victim AS of a BGP hijack event",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "prefix",
 				"schema": {
 					"description": "The prefix hijacked during a BGP hijack event",
@@ -208,6 +216,9 @@
 													"hijacker_asn": {
 														"type": "integer"
 													},
+													"hijacker_country": {
+														"type": "string"
+													},
 													"id": {
 														"type": "integer"
 													},
@@ -264,6 +275,12 @@
 															"type": "integer"
 														},
 														"type": "array"
+													},
+													"victim_countries": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
 													}
 												},
 												"required": [
@@ -271,7 +288,9 @@
 													"event_type",
 													"hijack_msgs_count",
 													"hijacker_asn",
+													"hijacker_country",
 													"victim_asns",
+													"victim_countries",
 													"id",
 													"is_stale",
 													"max_hijack_ts",
@@ -445,6 +464,14 @@
 			},
 			{
 				"in": "query",
+				"name": "involvedCountry",
+				"schema": {
+					"description": "Country code of a involved ASN in a route leak event",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "dateRange",
 				"schema": {
 					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
@@ -564,6 +591,12 @@
 										"events": {
 											"items": {
 												"properties": {
+													"countries": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
 													"detected_ts": {
 														"type": "string"
 													},
@@ -616,7 +649,8 @@
 													"min_ts",
 													"origin_count",
 													"peer_count",
-													"prefix_count"
+													"prefix_count",
+													"countries"
 												],
 												"type": "object"
 											},

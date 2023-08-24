@@ -346,10 +346,7 @@
 				"name": "tag",
 				"schema": {
 					"description": "Condition on the DNS record tag.\n\nParameter values can be of the form `<tag-name>:<tag-value>` to search for an exact `name:value` pair, or just `<tag-name>` to search for records with a specific tag name regardless of its value.\n\nThis is a convenience shorthand for the more powerful `tag.<predicate>` parameters.\nExamples:\n- `tag=important` is equivalent to `tag.present=important`\n- `tag=team:DNS` is equivalent to `tag.exact=team:DNS`\n",
-					"examples": [
-						"important",
-						"team:DNS"
-					],
+					"example": "team:DNS",
 					"type": "string"
 				}
 			},
