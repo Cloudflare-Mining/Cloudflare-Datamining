@@ -302,6 +302,7 @@
 	"speed.test.detail.failed.code.DNS_FAILURE": "We are not able to read the domain settings for %{url}.<0></0>Before testing again, check the DNS records for this domain.",
 	"speed.test.detail.failed.code.NOT_HTML": "%{url} does not point to an HTML page.<0></0>Check your URL is correct before you run another test.",
 	"speed.test.detail.failed.code.LIGHTHOUSE_TIMEOUT": "The page has loaded too slowly.<0></0>It has exceeded the maximum time limit.",
+	"speed.test.detail.failed.code.RUNNING_FOR_TOO_LONG": "The test was running for too long. Our platform may be experiencing issues.<0></0>Try again or contact Cloudflare customer support if the issue persists.",
 	"speed.test.detail.failed.code.UNKNOWN": "We could not run your speed test at this time.<0></0>Try again or contact Cloudflare customer support if the issue persists.",
 	"speed.test.detail.failed.redirect.p1": "It might have failed because your test URL <0>%{url}</0> was redirected to a different domain.",
 	"speed.test.detail.failed.redirect.p2": "Try testing <0>%{url}</0>",
