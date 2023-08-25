@@ -7928,6 +7928,64 @@
 		]
 	},
 	{
+		"id": "44befc657c1d4ec3a257d67567b432df",
+		"name": "Bot Management",
+		"status": "V",
+		"meta": {
+			"description": "Can edit Bot Management (including Super Bot Fight Mode) configurations",
+			"editable": "false",
+			"label": "bot_management",
+			"scopes": "com.cloudflare.api.account.zone"
+		},
+		"created_on": "2023-08-24T22:46:09.720782Z",
+		"modified_on": "2023-08-24T22:46:09.720782Z",
+		"permissions": [
+			{
+				"id": "abdae82f7da64cb785915e4de62f4891",
+				"key": "com.cloudflare.api.account.zone.bot-management.feedback.*"
+			},
+			{
+				"id": "f8fea3af521c4aff9bd21935df6b209d",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-sbfm.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
+				"id": "949d4220f0c141099f05ce3769a17ab6",
+				"key": "com.cloudflare.api.account.zone.ruleset.update",
+				"attributes": {
+					"legacy_name": "#waf:edit"
+				}
+			},
+			{
+				"id": "9c6009ecd9c34a2baa20d1e9d9557a34",
+				"key": "com.cloudflare.api.account.zone.ruleset.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "fb720940096d41de8ca31a5a5a6e6013",
+				"key": "com.cloudflare.api.account.zone.ruleset.delete",
+				"attributes": {
+					"legacy_name": "#waf:edit"
+				}
+			},
+			{
+				"id": "aee84c4aec6a4f9499457637d87cef42",
+				"key": "com.cloudflare.api.account.zone.ruleset.create",
+				"attributes": {
+					"legacy_name": "#waf:edit"
+				}
+			},
+			{
+				"id": "dd423fba220f4ff1a29844dcde3c0348",
+				"key": "com.cloudflare.api.account.zone.bot-management.*"
+			}
+		]
+	},
+	{
 		"id": "7be68eafa6db411891a3717d2dc5d56c",
 		"name": "Cache Purge",
 		"status": "V",
@@ -16928,6 +16986,101 @@
 			{
 				"id": "0d974db6367c44f58cfc0f50de43a158",
 				"key": "com.cloudflare.api.account.list",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "4c01441b87174734ae833d067db2b348",
+		"name": "Query Cache Admin",
+		"status": "V",
+		"meta": {
+			"description": "Can edit Query Cache database configurations.",
+			"editable": "false",
+			"label": "query_cache_admin",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-24T22:46:09.720782Z",
+		"modified_on": "2023-08-24T22:46:09.720782Z",
+		"permissions": [
+			{
+				"id": "369fb3f62ab7499081cbf53737a42bbc",
+				"key": "com.cloudflare.edge.query-cache.database.*",
+				"attributes": {
+					"legacy_name": "#query_cache:read,#query_cache:edit"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "cc8fa7eeb40045e4b58b3468266ded55",
+		"name": "Query Cache Readonly",
+		"status": "V",
+		"meta": {
+			"description": "Can read Query Cache database configurations.",
+			"editable": "false",
+			"label": "query_cache_readonly",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-08-24T22:46:09.720782Z",
+		"modified_on": "2023-08-24T22:46:09.720782Z",
+		"permissions": [
+			{
+				"id": "466445f578784038aba2a5562074ec9f",
+				"key": "com.cloudflare.edge.query-cache.database.list",
+				"attributes": {
+					"legacy_name": "#query_cache:read"
+				}
+			},
+			{
+				"id": "b5b1505d3a634cbdb03e49aff2b54596",
+				"key": "com.cloudflare.edge.query-cache.database.read",
+				"attributes": {
+					"legacy_name": "#query_cache:read"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
 				"attributes": {
 					"legacy_name": "#organization:read"
 				}
