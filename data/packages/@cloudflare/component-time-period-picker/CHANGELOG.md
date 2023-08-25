@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.14
+
+### Patch Changes
+
+- Updated dependencies [c7299ac5ac]
+  - @cloudflare/component-listbox@1.10.0
+  - @cloudflare/component-form@5.0.3
+
 ## 5.0.13
 
 ### Patch Changes

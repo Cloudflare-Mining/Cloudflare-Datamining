@@ -3,7 +3,8 @@
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.0.0-next.1": {
@@ -1038,6 +1039,34 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM3SACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmo1rxAAkyPLOy3QHbOI4g8P4wg2mH9g9rdCFSOQOGhxyMVNryFlEmne\r\ncwgABPjLvo0B1nG4KJ53TwViUstjTHp6aZ7tV5KBvPv7N5vqGDuqF6abuN8e\r\nTLzeZ+b/tQtZAna32AF1GGDkSTpm81xUTCt0vZqG9XTFsDWmCYdCE2n585MP\r\nkrBD3ge5KrGWrKsNrhCvw1SZqUEjGT651AoPDXImX95Hm3cA2779wv8TW1NC\r\n1AkboJemFGYsmrh0SSIPdZUnM8pAUEw64ovecMC9AkYKeayTJe0NhcW0clCK\r\nx0yhLgssz5ZBEfX9Ng6IFuCnWS/TeQRF7m4m8Rgae+ad8sqhJoMeuUSlpJhN\r\nZoivZaMEdU2geF7kNH6ftslT65JLPkgkTQvhmuDVWmlJQEIuqkwwXXubLt/F\r\neZCJ76H2ib4hX9iaIAqnc+piMLooxsTft/ruWlNGZ2BGu5piJSR6PuWYS3CV\r\nWiNntve4MgHLEju9mQns2TSMw4UmgU246+R7lx1qxu1YarIvl/rgxY+evceE\r\n8ftu6wtF9AbmJOAbUBJod+cyYgxrTGo0mxiJUzsle+jSg9XeoRFxNy0nR5J8\r\njNxzfIZg+Fu+9LrL0HKYEGuIKLicAMaGR6RHoxgKDrTrnsPQuKKx6puOz3sY\r\nfiIEtbt0+4WM1nhkn9H13m4Jai+XHk3LA8g=\r\n=iDjF\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/scheduler",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/core": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"cron-schedule": "^3.0.4"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1"
+			},
+			"dist": {
+				"integrity": "sha512-mCFUkGpPcV74tbDAuDLSrLPDiRei7hIIPQL53C4rtCDyLfxYgwLQFDecllQs5IvDzAx4qFpu835Ppc6tbHR5Mw==",
+				"shasum": "13b992eaa0c8141ffe073eb0b39d610e58ca50d0",
+				"tarball": "https://registry.npmjs.org/@miniflare/scheduler/-/scheduler-2.14.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 11372,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDH2DNcE7LjnC91xH870Tzaa0l7y6M0EZpM86GlP+JZDgIgCKjHfmmNzvmFgd7zUXJVsSBvcelTdQnYcdXOepEiSeg="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

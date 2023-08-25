@@ -3,7 +3,8 @@
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.0.0-next.1": {
@@ -1253,6 +1254,40 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM29ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr9Fg//Tne9thcDgexg9bN00yTZ3oC50Xv8wC2X9QLA689GlY5r7G63\r\nhc/4WpHFn57Jf3muz6W77qoRGBXtp27NjpcBCjCYrqKsOrBxvgMfjlMSLzYQ\r\nXwCgBBLNavnhXztlsAQK2ENfVefsKZtLdJOYS3OOPbVx6blAIiAj+327hLuc\r\nHOQ0jEOe+LjiABaOlFptJ8W8v7BJir4c9/kB8crqjQlZlqUN8PC05CIWWxdR\r\n62Toe2kb7UukRM2JHZcPFkROmPCJ0NvtlZqnwjqVUjnaldtcxXWH9zD3jwZn\r\ndsKfy4vSyj6dPpo2wZDr3AH+bnVZNRD/W3jZGicKgTKBTi5mSkcOgFoK2jE5\r\n2aiAi2ItYXWoq7ewSzeLuC5OEgAwarMXvSXH3j9bz+H006Sx+RPDKiAfEE2i\r\ndX2f5on/IkXTaE6xlSkOTrWc4o1xxaiYyGWDIMcjUI5gOnV9TwaJqsWi3NDI\r\ncHFaIUBXICdpw6+UOKQV2lr2+bRK8KFG2JbW8Ved8L16ZCR1qooYerPE6WK0\r\nmJRodS+U1ukeGMZMySomUP6PiGcd8CrBbHUWDChl2a5Ohehkq41+kiPTdBUU\r\n7EiQmxfMCuteiSOt9xySJmFkEDZBwXVmj19lc7AwMnxbwut7agkwuOl+c11p\r\nty4f2KRDZJr3nIHdDBSAGg+JxGgeBUlNboo=\r\n=d9uY\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/http-server",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/core": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/web-sockets": "2.14.1",
+				"kleur": "^4.1.4",
+				"selfsigned": "^2.0.0",
+				"undici": "5.20.0",
+				"ws": "^8.2.2",
+				"youch": "^2.2.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1",
+				"@types/node-forge": "^0.10.4"
+			},
+			"dist": {
+				"integrity": "sha512-ICT9KuecAF5+AHs9dTnk7DRxCPYLfI3QCtfHOcGQWFuOoe4MCtQk4joo0pxMaSgAJ4TiOOxz3KRWO0G2FwgiPQ==",
+				"shasum": "7b21f76b0fd08621451d0649bd78adb83b0cd8de",
+				"tarball": "https://registry.npmjs.org/@miniflare/http-server/-/http-server-2.14.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 43882,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDnVXIqTsUxYv0b1ENlF8NjFHHJb/QQfiquYsopgL3t1QIhAKBytOeELSu2mHWKmTWbgxHY1N+AcakSXH62+1L13nwo"
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

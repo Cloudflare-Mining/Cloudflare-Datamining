@@ -3,7 +3,8 @@
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.0.0-next.1": {
@@ -963,6 +964,32 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM3dACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpENhAAnXsSpkYVNCySn4GZibOzOXubqUZUo0xdtn3WOxMt+weaHvNB\r\n5BG2JXwMc7v3r+ooIf9tBW5WL12O2N5SZlKbBx7khNJjcaTe6NvkYt58Pov5\r\nbysOOrIA+GRfrfsIlp4w1y4MKQ9+u6tLaTy3nJvU9jbuu833Wz+EA4qWI/Pt\r\n9LmS77PAModOTbZm5+fp1wabRLHhgz/k3p6ODStAHkJC2v+a0Ey+qlmP8M1M\r\n7PNZre5gWr5ty9zs6h4N01acOkeVmzfIY/QH2JKpCav14WUk3bJ/ni7ySqqo\r\nRogL4lSphJIdapzgC5dEvtH2Yv8m46uu98fwhUKTz9UamMh4oZep8Vl05pdR\r\nHgt5IbEsqkGYNm6bGbS4ZFLwY4itkvB1AyFDwbon4z3+yiVVhv0qBwWIn/ll\r\nVIb6GSnjcj5kcrrgWu3nXoI4OgvPb58w0/CAp9H9AZjW2E4xG0QoIGSXXfxK\r\n583PncYuFmPCpEExnNQjsDeuNk4HI+LCkE8Im7lVBxFjSHFd4kqxzNl3E0Fw\r\nUniDbKVtPGlQv8cko42tEqndFt6p5PJdk7yaM16VKG6K9u436MzLXk87hf06\r\nnsim97hSNlzW+gc3ETUlTxXo4BBBry+9huVVWTzjfFlcld2Qok8oyF3+fTEk\r\noi+LC7MX54DuWOb83qSqaOjTzM1dLX+v5eI=\r\n=iD+/\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/watcher",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/shared": "2.14.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1"
+			},
+			"dist": {
+				"integrity": "sha512-dkFvetm5wk6pwunlYb/UkI0yFNb3otLpRm5RDywMUzqObEf+rCiNNAbJe3HUspr2ncZVAaRWcEaDh82vYK5cmw==",
+				"shasum": "2fe44470df44a1eff1313597ea2389c06a8f9b05",
+				"tarball": "https://registry.npmjs.org/@miniflare/watcher/-/watcher-2.14.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15417,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBQyPhCeVvpaBfu2uFHHjCOsbE/FUI4kESVuvPvq4hwoAiA/+psnm6olvfOcTc98eRLgUCAsSplPi9ZP5J+kRNyKPA=="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

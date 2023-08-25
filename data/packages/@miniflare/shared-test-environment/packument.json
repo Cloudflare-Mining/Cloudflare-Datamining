@@ -2,7 +2,8 @@
 	"name": "@miniflare/shared-test-environment",
 	"dist-tags": {
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.8.0": {
@@ -448,6 +449,41 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM3UACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrqvhAAlyxGJWrQCWYwNB5RpQ/ABzzQaUQCsXdk+aiLnWLPDIjfyNET\r\nvCN5GHaiERdjd96XDuEQFXTKq7OOjen3nBRT+ojkAy1lcG7cMhZZVi9PFz54\r\ntcXUnTjbUAJaNJc55dcVkfmK8cAtSzOINPR3DE8Z/kYrYbsky7SwyKn3eyft\r\n/RUET+znUoYKsv5/b8JMnCIicbKFZYdvdVua7iQa4jOABeR7Xlu5jSjqBKTI\r\nZzsnXVwhVidCNellT7/0JFg95XBr+/a3F/BpO+ptMt9IWB/kaSe/A7fW2/IQ\r\nJD2u5zoGI9oGW2WCM8Z2BYIe4zUa+Pa8gr7QQcUXEjZ77OnsXgn5RoOK5pxK\r\np59h9kD8g07BdU+Ot5PYuE6F+VsUY8A/SrYYFQScdEkilYUkPZV5A+JO/Pt0\r\nHGN7zJvTVAR/PZz9SI5i11muGUegWTgqVCvggVwliNlIDf+O2JPoPVMJ1gqC\r\nAk+maFx2TaWNhRbT9CbujYiylOVoFZ5J7SQs5LWrB6xUMfuK7EHFJmxpgtwS\r\nB7feH2gQUX6XGR4R+OdRf9B3cAvsTfg7XPX307pmxlA9dnreERomlQe7roKp\r\n3CqFb4JpoCn/XQUlnFai/ARSnKLL9R7ZJRXLXcRH9X5NYTl75VgnuOBLsCIr\r\nMignEOAPSn+oqkLd196esjLpNt0ZEu+cBb0=\r\n=LuKT\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/shared-test-environment",
+			"version": "2.14.1",
+			"dependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@miniflare/cache": "2.14.1",
+				"@miniflare/core": "2.14.1",
+				"@miniflare/d1": "2.14.1",
+				"@miniflare/durable-objects": "2.14.1",
+				"@miniflare/html-rewriter": "2.14.1",
+				"@miniflare/kv": "2.14.1",
+				"@miniflare/queues": "2.14.1",
+				"@miniflare/r2": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/sites": "2.14.1",
+				"@miniflare/storage-memory": "2.14.1",
+				"@miniflare/web-sockets": "2.14.1"
+			},
+			"dist": {
+				"integrity": "sha512-hfactEWiHuHOmE29XFG8oLNCF6+HqjD6Mb80CzidcVmLlBTEtSC3PEF+DXPyvNdLXpBolZMKOuC/yzzloWvACA==",
+				"shasum": "128ac33feba0ebe932f38a550e1b3f1207d396f1",
+				"tarball": "https://registry.npmjs.org/@miniflare/shared-test-environment/-/shared-test-environment-2.14.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 25281,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDsFCRAhxsYwnXtYxFiKZocZhZbm7mfSQljtLJKxp6JpQIgRcV6muF2YuAKDmJK050HAtxBSVD76IrEBv4jIzuHyzE="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

@@ -2,7 +2,8 @@
 	"name": "vitest-environment-miniflare",
 	"dist-tags": {
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -492,6 +493,42 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM3bACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqCbhAAjEsAf6TT0huFR73cnZF0UBGqf8TwZC8JWqoD+9ohf1THhZyZ\r\naz7PWrpu6EUyDsoCxdwCkdtfYW8o7IEh7oO75P60W+TIty+96H/aQ/HqDAMz\r\nukuHktyAbEFz/H2uleUzJgVyv/WTNYh6pvkiKlVxehurrYL6fKN0uiLQ1uX/\r\n8uKTy95/RdM0fM7QuKNB5n0+PyEkorVzR1G5n5JO9MQZ7+chLkw55/QBYDN5\r\nkwaI3ZNHZizWAVBQZqjRl42tsEdQFhLbFZ5cvZosIQtFU/t4KeMdFhOsAppl\r\nyG+D/bc46pjUQIfj4QD5phFA67ACCc7hBgQJMWvO6vx7iQcjv6D3rF+sFdna\r\njDWyC+ongpxscfR+9FOimUKNCIMGFHzilzegCiIvdpbpTouXmJQYgNBJeCcv\r\n9k+Mesluj9lbcrY7o2sQm7jq51WYzOO0zimmFBjH7kOdGxHLnnKwA0gPieu8\r\nh4Fz3R4AYuIbvJ4HSLIxwwPQrenjH12DjJfi21pUnxpthH1/3GqudDEli5m7\r\nFo9nTGWMrTfN8Af+E4+e8X247Yj0bZDZZQ1goBKtIfAsZbJwSgw/tp/yX4Cm\r\nZgip0fZL1mj+kkWQY/vtRuHK5fw+fs5WuW7LdUpk2rauHGpNw64Vtv9YQ5Ev\r\n4m7sXAO/KKj+Kzfp/BBBNEwOi3veMFcPtpI=\r\n=xo4g\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "vitest-environment-miniflare",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/runner-vm": "2.14.1",
+				"@miniflare/queues": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/shared-test-environment": "2.14.1",
+				"undici": "5.20.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1",
+				"miniflare": "2.14.1",
+				"react-dom": "^18.1.0",
+				"vitest": "^0.34.3"
+			},
+			"peerDependencies": {
+				"vitest": ">=0.23.0"
+			},
+			"dist": {
+				"integrity": "sha512-efMpx9XnpjHeIN1lnEMO+4Ky9xSFM0VeG8Ilf+5Uyh8U8lNuJ+qTTfr76LQ6MQcNzkLMo4byh0YxaZo8QfIYrw==",
+				"shasum": "3cdcaa7a0c25676ed84804489e6a30f8daa4040d",
+				"tarball": "https://registry.npmjs.org/vitest-environment-miniflare/-/vitest-environment-miniflare-2.14.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 7693,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDcHTelBAjSAZFI+2dIpE8rSW7/skf2ayQ1o5+crn6DUgIgYPAchWAjpgZtZgPgG3D4IjxXimDDAndlUE8zBDcbuX0="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

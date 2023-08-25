@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.0
+
+### Minor Changes
+
+- c7299ac5ac: upgrades components to support react 17 event bubbling
+
 ## 7.0.11
 
 ### Patch Changes

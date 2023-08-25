@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.3.0
+
+### Minor Changes
+
+- c7299ac5ac: upgrades components to support react 17 event bubbling
+
 ## 4.2.1
 
 ### Patch Changes

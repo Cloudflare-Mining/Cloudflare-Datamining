@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.2.0
+
+### Minor Changes
+
+- c7299ac5ac: upgrades components to support react 17 event bubbling
+
+### Patch Changes
+
+- @cloudflare/component-forms@5.3.9
+- @cloudflare/component-time-period-picker@5.0.14
+
 ## 6.1.11
 
 ### Patch Changes

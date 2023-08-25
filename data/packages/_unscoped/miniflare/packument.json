@@ -2,7 +2,8 @@
 	"name": "miniflare",
 	"dist-tags": {
 		"latest": "3.20230821.0",
-		"beta": "0.20230628.0"
+		"beta": "0.20230628.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"0.1.0": {
@@ -3651,6 +3652,62 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIDpAvBNaaR2rfdth/3HTFn8rKAZpjUEG9UoAF/ysUMe2AiB2FMIXK0EWryJK9dLjFtQTd68b4tY3bqgd6kS6xf6Ezg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "miniflare",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/cache": "2.14.1",
+				"@miniflare/cli-parser": "2.14.1",
+				"@miniflare/core": "2.14.1",
+				"@miniflare/durable-objects": "2.14.1",
+				"@miniflare/html-rewriter": "2.14.1",
+				"@miniflare/http-server": "2.14.1",
+				"@miniflare/kv": "2.14.1",
+				"@miniflare/d1": "2.14.1",
+				"@miniflare/queues": "2.14.1",
+				"@miniflare/r2": "2.14.1",
+				"@miniflare/runner-vm": "2.14.1",
+				"@miniflare/scheduler": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/sites": "2.14.1",
+				"@miniflare/storage-file": "2.14.1",
+				"@miniflare/storage-memory": "2.14.1",
+				"@miniflare/web-sockets": "2.14.1",
+				"kleur": "^4.1.4",
+				"semiver": "^1.1.0",
+				"source-map-support": "^0.5.20",
+				"undici": "5.20.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1",
+				"@types/source-map-support": "^0.5.4",
+				"open": "^8.4.0"
+			},
+			"peerDependencies": {
+				"@miniflare/storage-redis": "2.14.1",
+				"cron-schedule": "^3.0.4",
+				"ioredis": "^4.27.9"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"integrity": "sha512-8Yqms4OZp1J1k0SGhOQ6MKWptWSXCm8Yh4kfFh11zZIlT1PoE0qXWQmAzwZnT5hFNmS3tsghu3GOgToxM+jCnA==",
+				"shasum": "ac438111b549e98bcee22fe1d9ff3583cb7df302",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-2.14.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 55852,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDZbkCPWp68CgodHbpXi17eGE8kA3I2WHCKkM9kDBCz1AiAFL1hBW+yrR5rXbXo3z5BP7oXHwggu7oQSjQvKcTaLBA=="
 					}
 				]
 			},

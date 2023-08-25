@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.22
+
+### Patch Changes
+
+- Updated dependencies [c7299ac5ac]
+  - @cloudflare/util-responsive@1.5.0
+  - @cloudflare/component-forms@5.3.9
+
 ## 5.0.21
 
 ### Patch Changes

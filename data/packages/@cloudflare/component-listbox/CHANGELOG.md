@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.10.0
+
+### Minor Changes
+
+- c7299ac5ac: upgrades components to support react 17 event bubbling
+
+### Patch Changes
+
+- Updated dependencies [c7299ac5ac]
+  - @cloudflare/util-hooks@1.3.0
+
 ## 1.9.3
 
 ### Patch Changes

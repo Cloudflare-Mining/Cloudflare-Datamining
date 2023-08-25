@@ -2,7 +2,8 @@
 	"name": "@miniflare/queues",
 	"dist-tags": {
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.8.0": {
@@ -351,6 +352,32 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM3KACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmocZw//a3x2351TiXt5D4HiLlSE1clOjZt7x4LtRUdVUwnC/fE5fU3N\r\ncA5uxoXW9ZAiLJplk2pHBaJSc7Nr8ps38Ld0WnaJPzb3cSCdXphet9MSU5Ds\r\n7+fOhU8pLHabIMOV8HtgPDLCoafwecE8aBqLGgG5qgYrbLMhp85WtjiRZliM\r\nm9Pcb17YgVttuE/qmXTyACcLR4tk7/qE+/bdtvGzny7jG1iI8xAwyoW+eV0u\r\nkxI2w9EDiiRCrZVBboC3DfSdQk32jcHpUsS8zDfj7Me2CA5tDm0JkResLnmO\r\nDsrsU5+yQqbCz1t4UNPA7ce08wCFMO82KLSBkUmmXF5OTVI/N5H+PLvPNX+G\r\nmqjns+Hmam2JdpEcLruPc5r463FeYeYbya/jrwxbVi/PYU9Tb9Xft2OPHZ8K\r\n2pLy9ag0caga4Hv2noaDUsFX2r8RAZoqclHoK/BCtp2hHbUPclCslRyIOV6m\r\n9WEsozSwXcAVNgoL1BG3FkW9fLN4/Nt3Y8+Nun5H1MkBPiVXGT2SNY2rAVOo\r\nlJhQXvoXk3GGv0Xc1LKu/SLj4SpT2GgPYgKPEHfWzhZMwENOWyZqczcBnw87\r\nalfaL6OrMzhd3OCvdGVZuXD8naWyk6A6O3WaGoNU+Q6uWxds9hjsrB7AAKJX\r\nahcKfjQFQ3YazFenPr/HRlPYZNlkOBoJZTw=\r\n=y9Z4\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/queues",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/shared": "2.14.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1"
+			},
+			"dist": {
+				"integrity": "sha512-uBzrbBkIgtNoztDpmMMISg/brYtxLHRE7oTaN8OVnq3bG+3nF9kQC42HUz+Vg+sf65UlvhSaqkjllgx+fNtOxQ==",
+				"shasum": "ce586e08b5b4dbdae6c5ed0d76317336269554c0",
+				"tarball": "https://registry.npmjs.org/@miniflare/queues/-/queues-2.14.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 20358,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCUFxDqb1VrShPOOKxat6zTEFwdJF25E7hcL0XB+aqqQQIgPPlPfxxU1JwF2Azcs3b9u/r4k++fClerba9ccXkY3XA="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.7"

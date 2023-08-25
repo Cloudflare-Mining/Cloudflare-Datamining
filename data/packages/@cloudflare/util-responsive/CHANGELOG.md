@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.5.0
+
+### Minor Changes
+
+- c7299ac5ac: upgrades components to support react 17 event bubbling
+
+### Patch Changes
+
+- Updated dependencies [c7299ac5ac]
+  - @cloudflare/component-listener@3.2.0
+
 ## 1.4.12
 
 ## 1.4.11

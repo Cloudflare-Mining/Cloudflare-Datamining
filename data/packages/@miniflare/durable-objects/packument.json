@@ -3,7 +3,8 @@
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.0.0-next.1": {
@@ -1125,6 +1126,37 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM25ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp8CA/+JhQzmYeGhtW8bCpYOlhW697+JcA4KG6oDK3yld2gKaPo/aQp\r\nVaHUFHFkdW3F23Ey4r7Vyy9EAx2IdATieePOMTSBgZlvuzTNr2a+uIj4DWL+\r\nEBBo9RAMyGaxWMqrhOr5ZwsvtNn9DtKAF+F96dfr1mqyqQGLjrT0sgKxgud6\r\nu3S48yAdd1G6N3h4xJP0wEIbdx/BfL53PI9Z+QZ/7lsqVPVj0G83moBhBdlo\r\n0qqabimUsMzxqDWrU0e50l4PFnH6jv2/zF3JFTwy3IQC61qlxV3x/cJxtgK5\r\n03Ei0UMiYQ4HfT77fRLZvg44mM9lNIVHhmFdWOB6F0jJ1aDIu8xbP0WZp4hM\r\ncWMNZIvGYaANH3jDIyo+QCtrUz/xk5ziR2x34clcIwhKWy8UOxNGqFQpnT3B\r\nfV/VF7xKnxHpa1CWgCRfvw+vr+X3iRuyPgsVW23hAc16ySIG/Gw+u4+AahA1\r\nF1LEGxkr2hl54ay7I3XDrN7RUTh1aYLZr/60YL+PvzFGJS9/XsJYCpggfBRx\r\nTt/Q08Y/PZLutXRngsbwIbUETGMZFPOIjQiwF28hkDPCYVW/Ij+YZrIRvvyI\r\nNQfp9Lbu8Av62Nm4Mc9K3qp2s0/ciow3Jy776QOVcuaWQ6Vwqnn1xgUaNaXn\r\nZdsVEiQDD7uAggBwjG4opi3nvf+uGwkVGXQ=\r\n=W15s\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/durable-objects",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/core": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/storage-memory": "2.14.1",
+				"undici": "5.20.0"
+			},
+			"devDependencies": {
+				"@miniflare/cache": "2.14.1",
+				"@miniflare/runner-vm": "2.14.1",
+				"@miniflare/shared-test": "2.14.1"
+			},
+			"dist": {
+				"integrity": "sha512-T+oHGw5GcEIilkzrf0xDES7jzLVqcXJzSGsEIWqnBFLtdlKmrZF679ulRLBbyMVgvpQz6FRONh9jTH1XIiuObQ==",
+				"shasum": "48f29847afd7699e369fb0caa1a4fa23c1d39315",
+				"tarball": "https://registry.npmjs.org/@miniflare/durable-objects/-/durable-objects-2.14.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 79022,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD4y5CrateSzL0St8vKyKpj7/wbuDLCXRLFVZdYjaWLDgIgUp2KAh9biVCeOe7U4uzYGA0E56zTdNo+cxRyQDh+mJ4="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

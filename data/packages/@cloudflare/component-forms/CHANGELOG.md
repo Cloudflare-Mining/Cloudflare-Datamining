@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.3.9
+
+### Patch Changes
+
+- Updated dependencies [c7299ac5ac]
+  - @cloudflare/component-listbox@1.10.0
+  - @cloudflare/util-hooks@1.3.0
+  - @cloudflare/util-responsive@1.5.0
+  - @cloudflare/component-time-period-picker@5.0.14
+
 ## 5.3.8
 
 ### Patch Changes

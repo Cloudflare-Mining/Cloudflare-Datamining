@@ -3,7 +3,8 @@
 	"dist-tags": {
 		"latest": "2.14.0",
 		"next": "2.0.0-rc.5",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1544,6 +1545,51 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM2+ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoAkA//emG8Em8b4mNZVb/9bBubScVpVpLaVqyfN2XiSlvPcCr91Krg\r\nDIb21RLa7B6ik33Ajq+eP9hIuzIXRivDeMFqyLGQG3TZDka3OTXrZi44t5Si\r\nL6GLKE0njApxKWQn1+xdZD7JpKZkzBQu4wHnzx4t5U4aBoPsuSvyvtFCH0iy\r\nZ8Q1jnfEAcJzG8Cisc0lHng4uLLLM2kRGFx5oRZio+I37g5uVrHBEW37hntT\r\nCohNjznjjzBo3cCbbGiPwVmTM8p5gckAmmmZAsdYm/NEvCLMxUBvOdFfsOJY\r\n/wfQpsA6Z5E64EIJBDpvDL/XoRD4uEsaFBwcLm03K7Q6HouNONw61FwPR3AD\r\n97lhV86G7Kx/vg4KTtkU9jy09e2GpTD+y08UWJAmZOHnj99oPVYFY7yj2euV\r\nKVqeAII76V3oPRXxpXIAncWYlHy2BQzncNmSart3fkDdXDBkukkOVsRtAdAx\r\naU0tfSKSsKtovkunc69+si+duaC3W8nKvsiL/NUQFKwr+7Ig2EQfpJ2fNqZh\r\n42SQQieSZMBbIEqDm63k6oJWtWE7rdEBpPCbPhAnb/Eqdd5eprWV84en6Mjd\r\nXw2tJc9u+P4V3QG1AD7A9wxwrA68Oht+l/emXRzmMpCbUY+Nfb2TwvBvBd9Z\r\nCpinPz75BXsvht5aL9aNIwb5JdqpOC05G2M=\r\n=315j\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "jest-environment-miniflare",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/queues": "2.14.1",
+				"@miniflare/runner-vm": "2.14.1",
+				"@miniflare/shared": "2.14.1",
+				"@miniflare/shared-test-environment": "2.14.1",
+				"@jest/environment": ">=27",
+				"@jest/fake-timers": ">=27",
+				"@jest/types": ">=27",
+				"jest-mock": ">=27",
+				"jest-util": ">=27"
+			},
+			"devDependencies": {
+				"@jest/environment": "^29.0.3",
+				"@jest/fake-timers": "^29.0.3",
+				"@jest/types": "^29.0.3",
+				"@miniflare/shared-test": "2.14.1",
+				"jest": "^29.0.3",
+				"jest-mock": "^29.0.3",
+				"jest-util": "^29.0.3",
+				"miniflare": "2.14.1",
+				"react-dom": "^18.1.0"
+			},
+			"peerDependencies": {
+				"jest": ">=27"
+			},
+			"dist": {
+				"integrity": "sha512-IkyCJ7LJCIXE1xJaExPRVHTK+6RxFJYEQjaVnpMCn9gEXSnjZhFwxdD3uFJq3J9QtcuZKRFBKJurnmGFCV4otQ==",
+				"shasum": "45b63dfa00db73695c9760dd33b63545314384bc",
+				"tarball": "https://registry.npmjs.org/jest-environment-miniflare/-/jest-environment-miniflare-2.14.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 10792,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFF0bYNdK8POKWlHvTec0/TNz1QJh22v9ESZk6d8xjODAiEAptsOc9kieahWoEYN4pyxOmrFQB+EgYVeH1XPgmHYTDQ="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"

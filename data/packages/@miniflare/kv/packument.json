@@ -3,7 +3,8 @@
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
 		"latest": "2.14.0",
-		"d1": "2.8.2-d1.0"
+		"d1": "2.8.2-d1.0",
+		"latest-2": "2.14.1"
 	},
 	"versions": {
 		"2.0.0-next.1": {
@@ -963,6 +964,32 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkVM3DACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrCIw/+JrCvUUoDoQdQ1xJ61yw54t8bMcm2IM+KMJy385VnAnkxBdBv\r\nfKep3YctrjgnAGOBZEjkBwQYNMGqNdv9e/JZncAehX5TPfJ6+UQxXSNTTbmq\r\n9fIaTa/eu1Rn9bNItpsaFj8WYs0LX0nodjAG22p/+5lr2ihfMNmwrSKOz621\r\nOynH0uMtZwPA0ckXkon882TAvVkP5Y6VgnVjSgvkvUhz6NR1foAG27DMilEc\r\nyKxC+ClfXY3a6XdoKXfsbO4xHD5BEa7Uc34VLGvMIQMsChU9tasB7titUcUf\r\neh1EMjR0mMTmr+Gw4ofBFDylvDgru61Dz3DgIwvvV7f49u4JXtuLosUrwTtF\r\nHnMEKcLhQYjl505eRmCtOK34Y+XqtlQxmaDX+RBv28ltMY2PM2KADX27byPY\r\nomYudbAQhcXXvE6kNGpJrQgTewoEOXLN2NsZCHcPFdAHtl3C+ldjvXF7K43j\r\nyqUC0VFg/zcOu9Lsr+ZmRf90iZaNLi3Ab6OCgdib1FLUJURrVqsMyHTy0A2T\r\nsXj2MoG92Z7b05QQnxcls2aAHqKkjTeMwLQJY/6cC3Z1Od2SNQkWuc/OEqS5\r\nqwG06xeOjqMsk5wp+rZLzsGxW+LRsqW4teh11c+BCM/i0wIbp2MH0YVg9mV2\r\ng+Ib4AZkRyHL/TqphfYfu08crL6W5ejOfHc=\r\n=7S5+\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.1": {
+			"name": "@miniflare/kv",
+			"version": "2.14.1",
+			"dependencies": {
+				"@miniflare/shared": "2.14.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.1"
+			},
+			"dist": {
+				"integrity": "sha512-Gp07Wcszle7ptsoO8mCtKQRs0AbQnYo1rgnxUcsTL3xJJaHXEA/B9EKSADS2XzJMeY4PgUOHU6Rf08OOF2yWag==",
+				"shasum": "6d04b7f11969baa1efc5c84d6c0ca0003afafa0a",
+				"tarball": "https://registry.npmjs.org/@miniflare/kv/-/kv-2.14.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 21723,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCgSb710r0XjVT+lmDlRm9qdztrreIGi37XSDrwZIPIlQIhANQ0dvp8lfPcOE0RsJAnFRX392Gd+4iauMzQctTAlpli"
+					}
+				]
 			},
 			"engines": {
 				"node": ">=16.13"
