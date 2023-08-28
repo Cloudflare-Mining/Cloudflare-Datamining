@@ -1440,12 +1440,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = rr({}, {
-					branch: "release-Aug.25.2023-1692972409",
+					branch: "release-Aug.28.2023-1693231588",
 					isReleaseCandidate: "true",
-					commit: "588503367c1ee4838bc99b52b5e998b450ce631c",
+					commit: "dd759cd7d74bdf99c5fed7cb1e2265c6f6c8dcf2",
 					env: "production",
-					builtAt: 1692995270016,
-					dashVersion: "8a4b57a8287070504654b150528307215be2bcec",
+					builtAt: 1693236868028,
+					dashVersion: "f42d2d2d2d09a4124d054e96f7670c5f9c2ed637",
 					versions: {
 						"@cloudflare/app-dash": "25.157.27",
 						node: "16.16.0",
@@ -5151,6 +5151,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, {
 					entityType: "healthChecks",
 					to: "healthCheck"
+				}, {
+					entityType: "magicConnector"
+				}, {
+					entityType: "magicConnectors",
+					to: "magicConnector"
 				}, {
 					entityType: "hostnameRegions"
 				}, {

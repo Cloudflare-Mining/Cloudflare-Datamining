@@ -253,7 +253,14 @@ const navigation = {
 		hasPermission: function(c) {
 			return (0, o.iY)(c) && !!(0, r.Le)(c, "magic_transit", "mt_home")
 		},
-		tabs: T.Lx.concat(T.SF, T.Jg)
+		pages: [{
+			title: "navigation.account.magic_connectors.configuration",
+			url: "/magic-transit/configuration",
+			tabs: T.Lx.concat(T.SF, T.Jg)
+		}, {
+			title: "navigation.account.magic.tunnel_healthcheck",
+			url: "/magic-transit/tunnel-healthchecks"
+		}]
 	}, {
 		title: "navigation.account.magic_firewall",
 		url: "/network-security/magic_firewall",
@@ -315,9 +322,23 @@ const navigation = {
 		url: "/magic-wan",
 		iconType: "cloudflare-magic-wan",
 		hasPermission: function(c) {
-			return (0, o.iY)(c) && !!(0, r.Le)(c, "magic_wan", "mw_home")
+			return (0, o.iY)(c) && !!(0, r.Le)(c, "magic_wan", "mw_home") || !!(0, r.Le)(c, "magic_wan", "mc_home")
 		},
-		tabs: T.SF.concat(T.Jg)
+		pages: [{
+			title: "navigation.account.magic_connectors.sites",
+			url: "/magic-wan/sites",
+			labels: ["beta"],
+			hasPermission: function(c) {
+				return (0, o.iY)(c) && !!(0, r.Le)(c, "magic_wan", "mc_home")
+			}
+		}, {
+			title: "navigation.account.magic_connectors.configuration",
+			url: "/magic-wan/configuration",
+			tabs: T.SF.concat(T.Jg)
+		}, {
+			title: "navigation.account.magic.tunnel_healthcheck",
+			url: "/magic-wan/tunnel-healthchecks"
+		}]
 	}, {
 		hasPermission: function(c) {
 			return (0, o.iY)(c)
@@ -688,8 +709,8 @@ const navigation = {
 			if ((0, u.yD)(c) || !(0, o.wB)(c, "zone_settings", "spectrum.app") || !F) return !1;
 			var G = !!((0, P.l8)(c) || (0, i.DQ)(c)),
 				X = !!(0, i.ZB)(c, "spectrum", "enabled"),
-				ee = !!(0, i.Ns)(F);
-			return X || G || !ee
+				q = !!(0, i.Ns)(F);
+			return X || G || !q
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -746,7 +767,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(c) {
-				return (0, E.B_)(c) && (0, o.$n)(c, "waf", "firewall.rule")
+				return (0, b.B_)(c) && (0, o.$n)(c, "waf", "firewall.rule")
 			}
 		}, {
 			title: "navigation.zone.security.events",
@@ -1056,7 +1077,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: b.az
+			tabs: E.az
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			navigationType: "global-settings",
