@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/megaphone@0.1.0...@cloudflare/megaphone@0.2.0) (2023-08-28)
+
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
+
+
+
+
+
 # [0.1.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/megaphone@0.0.30...@cloudflare/megaphone@0.1.0) (2022-09-02)
 
 

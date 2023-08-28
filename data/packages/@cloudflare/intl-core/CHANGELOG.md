@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.12.6...@cloudflare/intl-core@1.13.0) (2023-08-28)
+
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
+
+
+
+
+
 ## [1.12.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.12.5...@cloudflare/intl-core@1.12.6) (2023-06-28)
 
 **Note:** Version bump only for package @cloudflare/intl-core

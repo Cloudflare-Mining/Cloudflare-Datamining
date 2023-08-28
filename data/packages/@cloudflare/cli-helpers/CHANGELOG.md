@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.1.16](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/cli-helpers@2.1.15...@cloudflare/cli-helpers@2.1.16) (2023-08-17)
+# [2.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/cli-helpers@2.1.15...@cloudflare/cli-helpers@2.2.0) (2023-08-28)
 
-**Note:** Version bump only for package @cloudflare/cli-helpers
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
 
 
 

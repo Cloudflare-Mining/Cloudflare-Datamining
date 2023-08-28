@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.0.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.10...@cloudflare/component-payment-form@4.0.11) (2023-08-08)
+# [4.1.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.0.10...@cloudflare/component-payment-form@4.1.0) (2023-08-28)
 
-**Note:** Version bump only for package @cloudflare/component-payment-form
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
 
 
 

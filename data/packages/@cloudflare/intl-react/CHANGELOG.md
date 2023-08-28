@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.9.168](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.9.167...@cloudflare/intl-react@1.9.168) (2023-08-08)
+# [1.10.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.9.167...@cloudflare/intl-react@1.10.0) (2023-08-28)
 
-**Note:** Version bump only for package @cloudflare/intl-react
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
 
 
 

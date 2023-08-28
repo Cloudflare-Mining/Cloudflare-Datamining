@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.2.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.2.4...@cloudflare/redux-fields@2.2.5) (2023-08-08)
+# [2.3.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.2.4...@cloudflare/redux-fields@2.3.0) (2023-08-28)
 
-**Note:** Version bump only for package @cloudflare/redux-fields
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
 
 
 

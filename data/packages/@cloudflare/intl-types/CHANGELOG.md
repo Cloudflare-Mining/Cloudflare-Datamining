@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-types@1.3.0...@cloudflare/intl-types@1.4.0) (2023-08-28)
+
+
+### Features
+
+* UI-5945 add stratus packages and NX packages ([6b6ad11](http://stash.cfops.it:7999/fe/stratus/commits/6b6ad11))
+
+
+
+
+
 # [1.3.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-types@1.2.0...@cloudflare/intl-types@1.3.0) (2023-06-28)
 
 
