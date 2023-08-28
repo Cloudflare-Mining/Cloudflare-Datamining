@@ -214,7 +214,8 @@ export const Subscription = eg.object({
     current_period_start: eg.string.optional
   }).optional,
   payment_method_id: eg.union([eg.number, eg.string]).optional, // BILL-17536
-  created_date: eg.string.optional
+  created_date: eg.string.optional,
+  deleted_date: eg.string.optional
 });
 
 export type Subscription = TypeFromCodec<typeof Subscription>;

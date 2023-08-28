@@ -1,23 +1,47 @@
 import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
 
 export const RegistrationStatus = eg.union([
+  eg.literal('registrationPending'),
   eg.literal('registrationPendingAuthorization'),
   eg.literal('registrationPendingZoneCreate'),
   eg.literal('registrationPendingRegister'),
   eg.literal('registrationPendingZoneActivate'),
   eg.literal('registrationPendingSettlement'),
+
+  eg.literal('registrationFailed'),
   eg.literal('registrationFailedAuthorization'),
   eg.literal('registrationFailedQuote'),
   eg.literal('registrationFailedRegister'),
   eg.literal('registrationFailedZoneCreate'),
   eg.literal('registrationFailedZoneActivate'),
   eg.literal('registrationFailedSettlement'),
+  eg.literal('registrationFailedDNSFatal'),
+  eg.literal('registrationFailedDNSError'),
+  eg.literal('registrationFailedDNSLandingCNameFatal'),
+  eg.literal('registrationFailedDNSLandingCNameError'),
+
+  eg.literal('restorationPending'),
+  eg.literal('restorationPendingZoneCreate'),
+  eg.literal('restorationPendingZoneActivate'),
+  eg.literal('restorationFailedZoneCreate'),
+  eg.literal('restorationFailedZoneActivate'),
+  eg.literal('restorationSuccess'),
+  eg.literal('restorationZoneCreateSuccess'),
+  eg.literal('restorationZoneActivateSuccess'),
+  eg.literal('restorationSuccessWithoutReport'),
+
+  eg.literal('transferFOAPending'),
+  eg.literal('transferPending'),
+  eg.literal('transferRejected'),
+  eg.literal('transferCancelled'),
+  eg.literal('transferOutPending'),
+
   eg.literal('registrationActive'),
   eg.literal('expiredParked'),
   eg.literal('deletionInitiated'),
   eg.literal('deletionIrredeemable'),
   eg.literal('domainTerminated'),
-  eg.literal('domainLocked')
+  eg.literal('domainFrozen')
 ]);
 
 export const LandingSettings = eg.object({
@@ -97,14 +121,23 @@ export enum DomainProtectionStatus {
 }
 
 export const Domain = eg.object({
-  administrator_contact: eg.unknown.optional,
+  administrator_contact_id: eg.number,
   auto_renew: eg.boolean.optional,
   available: eg.boolean,
-  billing_contact: eg.unknown.optional,
+  billing_contact_id: eg.number,
   can_register: eg.boolean,
   cloudflare_dns: eg.boolean.optional,
   cloudflare_registration: eg.boolean.optional,
   contacts_updated_at: eg.string.optional,
+  contacts: eg.object({
+    registrant_id: eg.number,
+    technical_id: eg.number,
+    administrator_id: eg.number,
+    billing_id: eg.number
+  }),
+  cor_locked: eg.boolean,
+  cor_locked_until: eg.union([eg.string, eg.null]),
+  cor_responses_pending: eg.number,
   created_at: eg.string.optional,
   created_registrar: eg.string.optional,
   current_registrar: eg.string.optional,
@@ -113,9 +146,10 @@ export const Domain = eg.object({
   }).optional,
   dns: eg.array(eg.any).optional,
   ds_records: eg.array(eg.any).optional,
+  email_verified: eg.boolean,
   expires_at: eg.string.optional,
   fees: DomainFees,
-  last_known_status: eg.union([RegistrationStatus, eg.null]).optional,
+  last_known_status: eg.union([eg.string, eg.null]).optional,
   locked: eg.boolean.optional,
   name: eg.string,
   name_servers: eg.array(eg.string).optional,
@@ -126,11 +160,12 @@ export const Domain = eg.object({
   permissions: eg.array(eg.string),
   previous_registrar: eg.unknown.optional,
   privacy: eg.boolean.optional,
-  registrant_contact: eg.union([RegistrantContact, eg.null]).optional,
+  registered_at: eg.union([eg.string, eg.null]),
+  registrant_contact_id: eg.number,
   registry_object_id: eg.union([eg.string, eg.null]).optional,
   registry_statuses: eg.string.optional,
   supported_tld: eg.boolean.optional,
-  technical_contact: eg.unknown.optional,
+  technical_contact_id: eg.number,
   transfer_conditions: TransferConditions.optional,
   updated_at: eg.union([eg.string, eg.null]).optional,
   updated_registrar: eg.string.optional,
@@ -267,4 +302,8 @@ export enum ResendDomainProtectionEmailRequest {
 
 export const SupportedTLDs = eg.object({
   tlds: eg.array(eg.string)
+});
+
+export const DomainUpdateResult = eg.object({
+  message: eg.string
 });

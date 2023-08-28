@@ -21,6 +21,8 @@ export const Permissions = eg.object({
   logs: PermValue,
   member: PermValue,
   organization: PermValue,
+  r2_bucket: PermValue,
+  page_shield: PermValue,
   ssl: PermValue,
   stream: PermValue,
   subscription: PermValue,

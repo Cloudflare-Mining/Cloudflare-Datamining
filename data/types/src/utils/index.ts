@@ -53,13 +53,8 @@ export type Arguments<F extends Function> = F extends (...args: infer A) => any
  * // Name === "Robert" | "Ollie" | "John" | "Cina" | "Millie"
  * type Name = ValueOfReadonlyArray<typeof nameTuple>
  */
-export type ValueOfArray<
-  T extends Array<any> | ReadonlyArray<any>
-> = T extends Array<infer U>
-  ? U
-  : T extends ReadonlyArray<infer RO>
-  ? RO
-  : never;
+export type ValueOfArray<T extends Array<any> | ReadonlyArray<any>> =
+  T extends Array<infer U> ? U : T extends ReadonlyArray<infer RO> ? RO : never;
 
 /**
  * Overwrite certain keys with new types.
@@ -69,8 +64,9 @@ export type ValueOfArray<
  * type result = Overwrite<A, {b: string}> = {a: string, b: string}
  * (Note that b is no longer optional)
  */
-export type Overwrite<T1, T2> = { [P in Exclude<keyof T1, keyof T2>]: T1[P] } &
-  T2;
+export type Overwrite<T1, T2> = {
+  [P in Exclude<keyof T1, keyof T2>]: T1[P];
+} & T2;
 
 /**
  * Converts union to intersection.
@@ -201,10 +197,9 @@ export type PartialDeep<T> = T extends object
  *
  * type OptionalBar = PartialKeys<T, "bar"> // { foo: string; bar?: string | undefined; baz?: string | undefined; }
  */
-export type PartialKeys<T, K extends keyof T = keyof T> = Omit<T, K> &
-  {
-    [P in K]?: T[P];
-  };
+export type PartialKeys<T, K extends keyof T = keyof T> = Omit<T, K> & {
+  [P in K]?: T[P];
+};
 
 /**
  * Selectively apply Required to certain properties.
@@ -218,10 +213,9 @@ export type PartialKeys<T, K extends keyof T = keyof T> = Omit<T, K> &
  *
  * type RequiredBar = RequiredKeys<T, "bar"> // { foo: string; bar: string; baz?: string | undefined; }
  */
-export type RequiredKeys<T, K extends keyof T = keyof T> = Omit<T, K> &
-  {
-    [P in K]-?: T[P];
-  };
+export type RequiredKeys<T, K extends keyof T = keyof T> = Omit<T, K> & {
+  [P in K]-?: T[P];
+};
 
 /**
  * Selectively apply Readonly to certain properties.
@@ -235,10 +229,9 @@ export type RequiredKeys<T, K extends keyof T = keyof T> = Omit<T, K> &
  *
  * type ReadonlyBar = ReadonlyKeys<T, "bar"> // { foo: string; readonly bar: string; readonly baz: string; }
  */
-export type ReadonlyKeys<T, K extends keyof T = keyof T> = Omit<T, K> &
-  {
-    readonly [P in K]: T[P];
-  };
+export type ReadonlyKeys<T, K extends keyof T = keyof T> = Omit<T, K> & {
+  readonly [P in K]: T[P];
+};
 
 /**
  * Generates the typings for usage with Object.keys

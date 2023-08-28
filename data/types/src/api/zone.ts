@@ -179,6 +179,13 @@ export const ZoneBlock = eg.object({
     eg.literal('malware_interstitial')
   ]),
   updated: eg.string,
+  url_query: eg.array(
+    eg.object({
+      key: eg.string,
+      value: eg.string
+    })
+  ).optional,
+  url_query_string: eg.string.optional,
   zone_id: eg.number,
   zone_plan: eg.string
 });

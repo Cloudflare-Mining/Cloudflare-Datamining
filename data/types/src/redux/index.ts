@@ -21,11 +21,10 @@ import { Reducer } from 'redux';
  * }
  * class Component extends React.Component<ComponentProps> {...}
  */
-export type ConnectedProps<
-  Connect
-> = Connect extends InferableComponentEnhancerWithProps<infer P, infer C>
-  ? P
-  : never;
+export type ConnectedProps<Connect> =
+  Connect extends InferableComponentEnhancerWithProps<infer P, infer C>
+    ? P
+    : never;
 
 /**
  * Get Redux state type from a reducer.
