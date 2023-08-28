@@ -880,6 +880,35 @@
 						]
 					},
 					{
+						"id": "3d623300-f587-5555-91a1-93bb21006665",
+						"contentfulId": "6mwfNfechsp4IxJtQJ16lt",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3okxvbgnM8AaK867rChXuK/d089418b344d5e4d9bba5ac10cc00274/NinetailedLogoPositive_2x.png"
+							}
+						},
+						"nameUrlSlug": "ninetailed",
+						"shortDescription": "Ninetailed uses Cloudflare Workers and Durable Objects to enable webpage personalization and experimentation at the network edge",
+						"longDescription": "## __Ninetailed builds low-latency [personalization](https://ninetailed.io/blog/personalization-guide/?utm_source=partner&utm_medium=cloudflare&utm_campaign=case+study) solution on Cloudflare and gains 2-3x cost savings__\n\nNinetailed enables companies to build personalized web experiences for their customers. When a user requests a webpage, a company can access stored profile data via the Ninetailed API and use this information to customize even static, pre-cached web content.\n\nNinetailed's solution enables companies to run A/B testing and serve tailored content at the network edge. Their services are used by numerous major organizations, including Ruggable and Ace & Tate.\n\n### __Challenge: Low-latency access to customer personalization data__\n\nTo personalize websites and simplify A/B testing, Ninetailed stores profile information for each customer. One of the main challenges with implementing web personalization is minimizing latency or the time it takes for a page to reach the user after they make a request. If fetching profile data and building pages based on it introduces delays, then websites may have decreased customer conversions, resulting in lost revenue for the firm.\n\n### __Workers moves customization to the network edge__\n\nEdge computing is the logical fit for Ninetailed's mission to provide personalization with minimal latency or performance impacts.\nNinetailed has been using Cloudflare since the company was founded in 2021. According to Alexander Braunreuther, Ninetailed's Co-Founder and CTO, \"We created our very first product on Workers. Workers took in events and evaluated the property data directly on the edge, which made it possible to serve customers globally, with a very low latency personalization engine.\"\nIn addition to offering low latency and global reach, Workers also provided a cost-effective platform for building Ninetailed's services. Compared to traditional serverless platforms, Workers is more cost-efficient, leading to 2-3x cost savings.\n\nIn addition to using Workers for their own infrastructure, Ninetailed also recommends it to clients to implement edge site re-rendering. Ninetailed provides a blueprint for clients to personalize web pages on the fly using HTML Rewriter on Cloudflare Workers.\n\nBy implementing edge site re-rendering, Ninetailed clients are able to serve personalized webpages with minimal latency. First, static, cached content can be fetched from a CDN node with minimal latency. Then, the page's HTML can be personalized using the customer's profile data on Workers before being sent on to the end user.\n\n### __Durable Objects eliminates data consistency challenges__\n\nCloudflare Workers enabled Ninetailed to apply profile-based customizations with minimal latency. However, customer profile data needed to be stored somewhere where it could be quickly accessed by Workers.\n\nInitially, Ninetailed implemented data storage via a network of multiple Redis clusters distributed around the world. Data would be fetched from the nearest Redis cluster by Workers and used to customize a requested page.\n\nWhile this was a very low-latency solution, it struggled with data consistency. When new data was added to a Redis cluster, it required about 300 ms to sync to other clusters. This could present an issue if a customer had a render server and client system that connected to different Redis servers. If the render server updated the state on its local server and the client made a request too quickly, then the client would receive outdated data.\n\nSince updates arrived milliseconds later, these types of issues were difficult and time-consuming to trouble. Also, operating their own network of Redis clusters meant that Ninetailed spent significant time and effort ensuring that Redis servers were scaled appropriately and data was syncing properly between them.\n\nWith the introduction of Cloudflare's Durable Objects, which enable applications to store state data on the Cloudflare Network, Ninetailed had an alternative to their homegrown Redis cluster network. Instead of storing data at multiple, distributed locations, Durable Objects moved data stored to the network edge.\n\nBraunreuther says, \"Durable Objects is an ideal fit for Ninetailed. We can scale horizontally across Durable Objects without sending large volumes of traffic to any single one.\n\nUnder normal circumstances, a user's requests come from the same location as when they first accessed Ninetailed's API. In the rare situation when a user relocates — such as going on a vacation — they remain at their new location for some time. According to Braunreuther, \"Durable Objects works very well for us because you have your data where you are, and it's transactional, so data consistency issues are eliminated.\" \n\nAfter successfully testing the solution, Ninetailed replaced their entire network of 10 Redis clusters with Durable Objects. Gabriel Dillon, Head of Partnerships at Ninetailed, says, \"Durable Objects is fundamental to the way that Ninetailed is built. But it's also kind of cool that our clients never see that at all. It just works.\"\n\n### __Workers and Durable Objects enable low-latency, edge-based personalization__\n\nNinetailed chose Cloudflare over other serverless and data storage offerings because of the unique capabilities that Cloudflare offers. According to Braunreuther, \"I couldn't find another system in the market that can offer this low of latency. Where Durable Objects really shines is linking data near the edge. I personally don't know another service that can provide that.\" Ninetailed remains on the cutting edge of the Cloudflare Network, testing new features as they come out to determine if they offer opportunities to improve the experience for Ninetailed's users and their customers.",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2023-06-21",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"High Technology"
+						],
+						"regionNew52520": [
+							"Europe, Middle East & Africa"
+						],
+						"primaryUseCases": [
+							"Accelerate digital properties",
+							"Deploy custom code at the Edge"
+						],
+						"product": [
+							"Workers"
+						]
+					},
+					{
 						"id": "a14d9252-59af-5a7a-9046-fe6e8dd82a64",
 						"contentfulId": "apIViN6bczYLSc21b7eLW",
 						"logo": {
@@ -934,6 +963,43 @@
 						],
 						"product": [
 							"Workers"
+						]
+					},
+					{
+						"id": "2d2cf924-5042-5a11-a224-233dc5bf53b5",
+						"contentfulId": "13WiauhE9Qle9FuzRlHvmB",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5Dgrd8eTHGArtYPr5YYso7/1495b213f25846465f50bc09470d89a4/az_seal.png"
+							}
+						},
+						"nameUrlSlug": "state-of-arizona",
+						"shortDescription": "The State of Arizona is providing no-cost access to security tools to cities, counties, school districts and tribal governments through the Arizona Statewide Cyber Readiness Program",
+						"longDescription": "## __Whole-of-state security — Cloudflare partners with the Arizona Department of Homeland Security to empower Cyber Readiness Program for local and community organizations statewide__\n\nThe State of Arizona has embraced the cloud as the most flexible, efficient, and cost-effective way to create an infrastructure that satisfies its population of 7.5 million citizens' demands for online services and information.  \n\nIn its quest to provide its residents with safe universal access to information, the State of Arizona also emphasizes the importance of protecting its citizens and services from online threats. In 2019, to address increasing security concerns in a climate where cyber attacks against state and local governments are becoming commonplace, the state developed the initial version of what has grown into the Arizona Statewide Cyber Readiness Program (CRP).  What began as a federally-funded cybersecurity grant program has been designed to be the  backbone for a whole-of-state approach to cyber defenses, where an attack against one entity is viewed as an attack against all entities.\n\n## __Challenge: Providing simple but effective online security for public entities with limited resources__ \n\n\"Our IT priority is modernizing legacy technologies and securely delivering better digital services to our citizens\" explains J.R. Sloan, State Chief Information Officer, Arizona Department of Administration. \"By leveraging the cloud, we can move more quickly to deliver incremental services that already have security built in.\"\n\nThe Cyber Readiness Program is now in its fourth year and has grown to become a critical statewide initiative, providing five cybersecurity tools that are protecting more than 210 entities, including 124 K-12 school districts, 59 cities, all 15 counties and 13 entities that represent other local services like libraries, fire districts, county associations, and tribal partners. \n\n\"Cyber attacks against school systems have historically shut down school operations, especially now that schools have become increasingly dependent on the use of technology following the COVID-19 pandemic,\" said Ryan Murray, Deputy Director of the Arizona Department of Homeland Security, and Interim State Chief Information Security Officer (CISO). \"As more technological tools and programs are introduced to classroom environments, more cybersecurity efforts are required in order to mitigate these new threats and vulnerabilities.\"\n\nMany state organizations benefiting from the Cyber Readiness Program don't have dedicated full-time cyber-security professionals or even IT staff, which makes it even more important to help secure these entities with protections they wouldn't otherwise have.\n\n### __Solution: Joining forces to supply Cloudflare security solutions for government agencies__\n\nCloudflare security solutions, is one of five tools available through the CRP and currently secures more than 80 domains statewide. In addition to security, the CRP provides on-demand administrative support and IT management services for departments in need.   \n\n\"Arizona has been a Cloudflare customer since we started using it in 2017 to protect what is now our Drupal website infrastructure,\" says Murray. \"We really needed something that was not an on-premise application firewall and we've had remarkable success with advanced Cloudflare features, especially the bot management and advanced firewall rules our on-premise security solutions didn't support.\" \n\n### __Complete layer-seven protection with the Cloudflare WAF, Bot Management, Rate Limiting, and content delivery__\n\nMaricopa County, the state's largest county is home to 3.75 million citizens, is another advocate of Cloudflare cybersecurity solutions. The county began its Cloudflare journey in 2020 with Project Athenian, the free Cloudflare service to secure its election websites and protect voters' confidential data. \n\nToday, the county is the state's largest user of Cloudflare application security services under the CRP. Cloudflare protects everything from Maricopa County's top-level sites to its school districts and tribal communities.\n\n\"We've had only positive experiences with the Cloudflare services built into the grant program,\" says Michael Moore, Information Security Officer for the Maricopa County Recorder's Office. \"Before Cloudflare, we had firewalls in place, but we didn't have layer seven denial of service protection or anything to protect against sophisticated attacks that emulate end users. Now, we have everything — the Cloudflare WAF, bot management, rate limiting, and caching.\"\n\nMaricopa County uses Cloudflare to ensure its websites are always available and its users can easily locate important information. Using the website beballotready.vote as an example, Moore explains how, using Cloudflare custom page rules, Maricopa County redirects the memorable vanity URL to a page in the county recorder's website that most users would struggle to locate. \n\nSimilarly, using intelligent, integrated, and scalable Cloudflare services, every organization in the county can identify and thwart attacks by blocking problematic IP addresses. Cloudflare also protects the county's online forms from credential stuffing or brute force attacks without exposing users to excessive CAPTCHAs. \n\nBy caching static content on the Cloudflare global network, local and state entities can provide their constituents and communities with instantaneous information from the network edge, mitigating network bottlenecks, and traditional bandwidth limitations. Cloudflare-supported Anti-Phishing and Security Awareness Training empowers employees to recognize and avoid socially engineered online threats.\n\n### __Making security simple with easily deployed cloud-native solutions and Cloudflare support__ \n\n\"The biggest impact of the Cyber Readiness Program is providing high-quality solutions at no charge to our organization and others like Maricopa County,\" says Moore. \"But, even if we didn't have the program, we would still use Cloudflare.\"\n\nIn addition to the cost savings for security grant recipients, the ease of implementing Cloudflare tools has been central to the initiative's wide acceptance. \n\n\"With the Cloudflare platform, we're getting very high-powered, very technical cybersecurity detection and protections that take little to no effort to deploy,\" says Murray. \"That's especially poignant when we're talking about vulnerable organizations that already struggle with resources, let alone managing another complicated tool.\"\n\nCloudflare support has also been crucial to the program. Since day one, Cloudflare support and training have led to a transfer of skills that have empowered smaller entities to independently manage their own security infrastructure. \n\n\"Cloudflare has been a great partner, training us and improving our skills to enable us to solve problems autonomously as we go,\" says Sloan.\n\n\"Cloudflare's customer and technical support representatives have been very helpful and quick to respond.  We have established an excellent relationship with talented people who have stood by the state since the beginning,\" adds Murray.\n\nThe final factor in the collaboration's success is the way the partnership has evolved beyond the protections Cloudflare provides; which is based on the company's conviction that cybersecurity should be universally accessible. \n\n\"Because Cloudflare shares our belief that we're all in this together — government or business, large or small — they are a critical partner in everything we want to achieve,\" says Murray. \n",
+						"cloudflareStreamVideoId": "8c8d7f334619db2df5c67f4608430aec",
+						"orderDate": "2023-04-28",
+						"ref_streamVideoThumbnail": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TPIBbWEZkNKcgFb0YHjKh/0d6f5c551eea5db66a39ec2ba11bfc7c/AZDOHS_meta.png"
+							}
+						},
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"Public Sector"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Accelerate digital properties",
+							"Deliver rich media experiences",
+							"Secure websites & applications"
+						],
+						"product": [
+							"CDN",
+							"Bot Management",
+							"Rate Limiting",
+							"WAF"
 						]
 					},
 					{
@@ -1136,6 +1202,35 @@
 							"Bot Management",
 							"DDoS Protection",
 							"WAF"
+						]
+					},
+					{
+						"id": "78cb5109-d357-5244-a2dc-294ba5001243",
+						"contentfulId": "2AXTo3rhVmJJqmcicUPwBU",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6F7gwlMkFfDaHxt85BA7PS/838bf8efe264a9a7c71bffc07d754624/luana_logo.png"
+							}
+						},
+						"nameUrlSlug": "luana-savings-bank",
+						"shortDescription": "Cloudflare Browser Isolation reduces risk and unlocks operational efficiency for bank's lean IT and security team",
+						"longDescription": "## __Luana Savings Bank experiences zero malware infections with 100% uptime with Cloudflare__\n\nSince its founding 1908, Luana Savings Bank has evolved from its origins as an agricultural lender into one of Iowa's ten largest banks. With around $2 billion assets under management, the family-owned Luana employs over 100 employees across six branches in Iowa and has been recognized as one of the most efficient banks nationally.\n\n\"Efficiency is everything at Luana. Most banks our size employ two to three hundred people — that is around 2-3 times our size,\" explains Grant Langhus, Luana's Manager of Information Technology.\n\n### __Challenge: Persistent malware infections__\n\nWith only a team of two (himself included), Grant Langhus, Manager of Information Technology, must emphasize efficiency to secure Luana and navigate the strict regulations of the financial services industry. Luana has maintained a traditional on-premise approach to IT and security focused on virtualization and network segmentation.\n\n\"As a bank, we are obviously very security-conscious and attempt to keep as much data on-premise as we can\" says Langhus. \"We host our core business applications and software locally using secure virtualization software.\"\n\nStill, when Langhus first joined in 2011, Luana was consistently vulnerable to Internet-borne malware, and Langhus recalls the intrusion detection system \"lighting up like a Christmas tree across the board.\" Every month, his team was rebuilding and conducting forensics investigations on at least one infected desktop machine or server. These malware infections not only posed critical security risks, but also money and significant repair effort hindered business efficiency.\n\n\"We couldn't just disconnect our machines from the Internet, and when our malware identification and prevention systems lit up, it was already too late.\" says Langhus. \"We needed a proactive rather than a reactive solution if we didn't want to make the news.\" \n\n### __Temporary fix: Adopting on-premise Remote Browser Isolation__\n\nTo mitigate these malware infections, Luana began using an on-premise remote browser isolation (RBI) service. This meant that when employees browsed the Internet, all website code ran on remote servers, not local devices, thereby keeping threats far away from end users.\n\nIsolation has proven to be effective in preventing threats. In the seven years since Luana first adopted RBI, the company has not had a device infected by malware from Internet browsing. Luana has saved at least $23K per year by not needing to buy a new device or rebuild an infected one each month and saves at least 12 labor hours per month by not wasting time investigating infections. \n\nHowever, relying on an on-premise RBI service became inefficient over time. The service was prone to outages that only the vendor could address – sometimes, taking as long as a few hours – and support was unsatisfactory. In addition, the configuration and scaling to new users and use cases were complex and cumbersome.\n\n\"The prior service worked, but there was a learning curve. It was not intuitive, and it took serious effort to create new instances as we needed them,\" says Langhus. \"Even then, uptime was only around 96%, which was not ideal. As our provider grew, it took them longer and longer to respond — nobody could work while we waited for the issue to be resolved.\"\n\n### __Long-term solution: Adopting RBI in the cloud with Cloudflare__\n\nPutting aside a preference for traditional on-premise technology, Luana selected Cloudflare Browser Isolation as a cloud-delivered RBI alternative. This switch would mean that all website code would now run on Cloudflare's network – not local servers – when users browsed the Internet.\n\nLanghus had built a positive impression of Cloudflare from its contributions to Internet security at large, and during the evaluation process, was impressed by both the speed of the Cloudflare network and the collaboration across product, engineering, and sales teams. \n\nTransitioning was \"absolutely seamless,\" according to Langhus, and so far, has continued to keep the organization safe and productive without any downtime.\n\n### __Rigorous security with simplified policy management__\n\nFirst, Luana continues to save precious time and thousands of dollars in machine repairs annually by avoiding malware infections.\n\n\"With Cloudflare Browser Isolation, we're blocking threats so much earlier than any other security device that catches or mitigates cyber security issues,\" says Langhus. \"Malicious code doesn't hit our computers. Browser Isolation is the quickest and easiest way that we can deal with malware issues.\" \n\nPlus, Cloudflare's simplified policy management experience makes it easier for Langhus's team to set granular rules for specific user groups. Configurations that used to take Langhus \"three hours per month\" with the on-premise RBI now take \"minutes\" and \"as few as 90 seconds\" with Cloudflare – as much as a 99% improvement in administrative efficiency.\n\n### __Delivering fast, consistent end user experiences__\n\nEnd users also benefit from fast and unintrusive isolated sessions that feel closer to native browsing. Luana's prior RBI service struggled with latency, particularly with scrolling on bandwidth-intensive pages with video, audio, or interactive components. Those complaints have gone away since the switch to Cloudflare.\n\n\"The move to Cloudflare brought exceptional isolated browsing performance that consistently meets or beats our prior on-prem RBI,\" Langus said. \n\nWith the previous on-premise RBI, traffic remained within a traditional network perimeter – from on-site devices to on-site RBI controls. Now with Cloudflare, Luana routes traffic outside that perimeter – from on-site devices to Cloudflare's network. Despite this fundamental architectural shift, speed and reliability have remained comparable. \n\nMoreover, Luana has relied on RBI to control how users interact with Internet pages, including blocking upload and downloads of data and restricting printing. But, according to Langhus, with the prior on-premise RBI, \"it was really hit or miss whether those data protection controls actually worked.\" \n\n\"Since transitioning to Cloudflare,\" he continued, \"usability for everyone has been much better, and controls are applied more consistently.\"\n\n### __Improving technology efficiency__\n\nUltimately, implementing Cloudflare Browser Isolation has helped Luana maintain its reputation for operational and technology efficiency.\n\n\"Cloudflare and its RBI service have allowed us to stay lean and keep our budget down,\" Langhus says. \"We don't need to hire experts to deal with security issues or spend time deploying or fixing computers.\"\n\nLuana will continue to maintain a majority of its infrastructure on-premise, but is exploring the broader potential of applying Zero Trust security best practices for applications and data, particularly for employees who work outside the bank's branches in the field. In the meantime, however, Langhus will continue to evangelize the benefits for RBI.\n\n\"RBI is an effective technology that just needs to get in the right hands,\" Langhus said. \"Cloudflare has lowered the bar to entry, and I hope more people will recognize the benefits and not be afraid to just get in there and use it.\"\n",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2023-03-07",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"Financial Services"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Enable zero trust security for workforce"
+						],
+						"product": [
+							"Browser Isolation",
+							"Zero Trust"
 						]
 					},
 					{
@@ -2601,6 +2696,41 @@
 						]
 					},
 					{
+						"id": "2a5e790c-2d6d-593c-b891-4679a6780826",
+						"contentfulId": "3Ml0vKkXdVPTyvkWuoQQme",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/601bzUxril9LI8uxMOOeiH/36ad832daf1080d8140a245d3831560d/Copy_of_Otrium_logo.png"
+							}
+						},
+						"nameUrlSlug": "otrium",
+						"shortDescription": "Purpose-led end-of-season fashion platform Otrium shields its internal infrastructure and optimizes its customer experience with Cloudflare Workers, Zero Trust, and performance enhancements",
+						"longDescription": "## __Otrium moves fashion forward with Cloudflare Zero Trust, application performance, and serverless solutions__\n\nFounded in 2015, Amsterdam-based [Otrium](https://www.otrium.com/) believes all clothing should be worn. Their purpose is to target excess inventory, a major sustainability issue in the fashion industry. \"One in 10 pieces of clothing manufactured goes unsold, gets sent to warehouses, and eventually ends up in landfills,\" explains Leander Sikma, Otrium CTO. \"Otrium works to address this by giving designer and contemporary fashion brands such as Karl Lagerfeld, Calvin Klein, REISS, Filippa K, Adidas, and Puma an online managed marketplace that connects millions of registered members with their end-of-season collections.\"\n\nTo increase marketability, Otrium provides their partners' collections with refreshed descriptions and improved photography. They also harness AI to match inventory on the platform with buyer preferences. In line with their sustainable ethos, the company even repairs returned items to perfect condition in order to give them a second chance on their platform. \n\nAdding further value with their unique [Data-Made Fashion concept](https://us.otrium.com/blog/otrium-pioneers-data-made-fashion-to-eliminate-unsold-inventory-in-fashion), Otrium uses their partners' data to take the guesswork out of creating new collections, reduce overstocked fabric, and reproduce popular items. With over 3.7 million members and 400 brand partnerships, Otrium is a win-win proposition for smart consumers and fashion brands alike.    \n\n### __Challenge: Providing strict internal controls while enabling a frictionless shopping experience around the world__\n\nOtrium is a 100% cloud-based enterprise with a global presence that serves over 20 markets worldwide. It has an equally diversified [remote-first ](https://www.otrium.com/blog/otrium-hq-cloud)workforce that ranges across Western and Eastern Europe, the US and UK, Asia and South Africa. As a result, the company needed to provide employees with safe, uninterrupted, location-independent access to internal systems while continuing to provide a friction-free user experience. \n\n\"It is vital we maintain a reliable IT and security infrastructure,\" says Sikma. \"Our employees, partners, and customers rely on our technology.\"\n\nOtrium initially depended on third-party platforms for hosting and security, but that proved both problematic and inflexible, especially as they extended their global reach. \"As we expanded, we quickly outgrew those services,\" Sikma explains. Otrium needed more control over their technical infrastructure and the ability to optimize further to meet their technical, security, and business goals. Cloudflare provided a flexible solution that fulfilled Otrium's requirements as the business continued to evolve.\n\n### __Immediate success with minimal effort using Cloudflare security and performance solutions__\n\nIn 2018, Otrium moved their servers to the cloud and selected Cloudflare to enable enhanced  content delivery. \"It was a logical choice — in some cases, we were already indirectly using Cloudflare through our legacy vendors, and it was a performance and security solution familiar to most of the team,\" says Sikma regarding the rationale behind the switch.  \n\nThe company began with standard security and performance features like Cloudflare DNS, cache, SSL/TLS, and managed rules. \"We had immediate success with minimal effort. Cloudflare tools like Rocket Loader immediately reduced our front-end load times to 50% of what our existing tech stack was taking,\" Sikma says. \"Today, with our more complex single-page architecture and the performance enhancement features Cloudflare offers, we continue to see clear benefits.\"\n\n### __Blocking DDoS and bot traffic with Cloudflare Security Center__\n\nAs Otrium became more established and their architecture evolved, their security requirements also shifted focus. \"DDoS, bots, and individual or automated security penetration are currently our biggest external security concerns,\" says Sikma. Cloudflare application security solutions like WAF, DDoS protection, Rate Limiting, and Bot Management keep the Otrium site running smoothly and securely.\n\n\"With the launch of the [Cloudflare Security Center](https://blog.cloudflare.com/security-center/), our security architects can easily monitor attack surfaces, pinpoint shortcomings, and reduce vulnerabilities,\" says Sikma. \"It allows us to make continuous improvements on a daily basis.\" \n\nCloudflare currently blocks thousands of significant automated threats to the Otrium platform monthly. \"Since we implemented Cloudflare across all of our 30+ domains and subdomains, our cybersecurity has massively improved,\" says Sikma. \"Cloudflare default features make running a safer infrastructure easy, but you see its true power when you start optimizing rules and functionality to suit your business needs.\"\n\n### __Flexible Cloudflare solutions meets specific business needs__\n\nOnline fashion retailing is a highly visual endeavor. As a result, Otrium has a vast, ever-changing library of product images that needs to be 100% optimized on a range of devices. In addition, with their multi-country expansion, Otrium needs to automatically direct community members to location- and language-specific sites and payment gateways from their root domain. Both requirements are supported by Cloudflare functionality. \n\n\"Because everything we do happens in the cloud, Otrium relies heavily on edge computing features like IP geolocation and image optimizations,\" says Sikma, \"Cloudflare's serverless solution makes many of our security challenges easy to resolve, saving us both time and money.\" \n\n### __Cloudflare Zero Trust secures SaaS and internal application access for Otrium's global workforce__\n\nOtrium also deploys Cloudflare to protect their globally distributed workforce. Specifically, Cloudflare Zero Trust secures employees, partners, and vendors accessing corporate applications with identity-aware, granular policies.\n\nOtrium currently has employees, vendors, and partners across 4 continents using Cloudflare to authenticate internally-hosted apps and SaaS apps like Google Workspace.\n\n\"Cloudflare Zero Trust provides an extra layer of security to every one of our internal applications that would be exposed on the web,\" says Sikma. \"The initial configuration only takes a couple of minutes, and you can quickly establish custom rules for each of your applications.\"\n\nAs next steps to build out their Zero Trust approach, Otrium intends to leverage Cloudflare's forward proxy capabilities to secure a wider range of SaaS and internal apps, including those hosted in private IP spaces.\n\n\"Due to its ease of implementation and high level of configurability, Cloudflare offers many use cases that suit Otrium from both the end user and technical practitioner perspective,\" says Sikma.\n\nFor Otrium, the support Cloudflare offers is as important as the performance it brings. \"The Cloudflare Account team has been really helpful to us,\" says Sikma. \"They go above and beyond our expectations — they have even helped us conduct a custom proof of concept and collaborate on the product roadmap to solve application access use cases.\"\n\nFor the future, Otrium plans to continue their security modernization, increase their international reach footprint, and expand their internal security awareness training, underpinned by solutions such as Zero Trust, Cloudflare Tunnel and Workers.\n\n\"As we continue to grow, Otrium will leverage Cloudflare further to keep our cloud infrastructure safe and secure,\" Sikma concludes. \n",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2022-05-18",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"eCommerce"
+						],
+						"regionNew52520": [
+							"Europe, Middle East & Africa"
+						],
+						"primaryUseCases": [
+							"Secure workforce applications, devices and networks",
+							"Enable zero trust security for workforce",
+							"Accelerate digital properties",
+							"Deploy custom code at the Edge"
+						],
+						"product": [
+							"Access",
+							"Bot Management",
+							"DDoS Protection",
+							"Zero Trust",
+							"Workers"
+						]
+					},
+					{
 						"id": "b1151cfa-3eef-5af9-bb43-070340c98f72",
 						"contentfulId": "6qwHz2jlo3S2KTEdj6RxE3",
 						"logo": {
@@ -3016,6 +3146,37 @@
 						]
 					},
 					{
+						"id": "a3bc2f58-b2a9-5a55-abc8-d42352c8c6e7",
+						"contentfulId": "2ifk7fOhtZKWXXsWR5dmil",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/547fm6pDZMf8jN4U28yfYt/e9b81591f6f763bb4098f0304e58b820/Legato-security-logo.png"
+							}
+						},
+						"nameUrlSlug": "legato-security",
+						"shortDescription": "An innovator in Managed Security Services dramatically reduces the risk of cyber breaches from Microsoft Office 365 and Gmail vulnerabilities, by implementing powerful anti-phishing technology.",
+						"longDescription": "## __Managed security service provider strengthens its protection against cyberthreats by adding Cloudflare Area 1 to its defense infrastructure__\n\nLegato Security is a full-service Managed Security Service Provider (MSSP) with a team of highly trained employees providing advanced 24/7 threat detection and comprehensive incident response services. Organizations served range from small and mid-sized firms to the Fortune 100, spanning legal, political entities and campaigns, healthcare, technology, government, and finance. \n\nLegato's managed, customizable security services include continuous security monitoring, incident response, penetration testing, malware removal, security staff augmentation, and dark web monitoring.\n\nThe company's tailored, technology-agnostic cybersecurity approach helps firms plan, build, and implement programs that address security challenges from every possible angle, and keep pace with evolving cyber threats.\n\n### __Challenge: Close cloud email security gaps that raise the risk of business email compromise, credential harvesting, and other threats__\n\nAs a provider of cybersecurity services, Legato takes the trust of its customers and their security infrastructure very seriously. As Jennifer Greulich, the company's SVP of Security Operations, notes, \"A majority of the technology solutions we sell to our clients are the same ones we use and rely on to protect our business. We wouldn't promote or endorse anything we hadn't used or weren't completely confident in.\" \n\nLike many of its customers, Legato uses Office 365 for email, relying on its native email security features to protect it from cyber threats. But the company quickly recognized that numerous [phishing emails](https://www.cloudflare.com/learning/email-security/how-to-identify-a-phishing-email/) were bypassing Office 365's security. This \"phishing gap\" resulted in incidents that required investigation and remediation. The company realized it needed specific anti-phishing technology that goes above and beyond Office 365's native capabilities.\n\n### __Legato selects Area 1 for its proactive approach to phishing threat detection__\n\nLegato made the decision to integrate the Area 1 email security solution (now Cloudflare Area 1) in-house first. \"Deployment was complete in a couple of hours,\" said Greulich.\n\nThe Area 1 technology made an immediate difference, drastically reducing phishing incidents \"from 10-15 per week to one or two.\" Over time, the results became even more striking. \"Area 1 has performed outstandingly for us,\" said Greulich. \"We have seen a significant and prolonged drop in phishing emails. Not only that, the Area 1 service has had little to no impact on email productivity, which means there are minimal false positives.\"\n\nLegato is pleased that employees who previously had to interrupt their work to report, investigate and deal with phishing incidents are now freed up to remain focused on their jobs. And of course, Area 1 reduced the concern, endured by all organizations, that even a \"security awareness trained\" employee can be manipulated into clicking on a phish or complying with a [business email compromise](https://www.cloudflare.com/learning/email-security/business-email-compromise-bec/) (BEC) scheme.\n\n### __Legato customers using cloud email suites see fewer phishing attacks after implementing Area 1__\n\nLegato's own clients often rely on Office 365, or G Suite defenses, along with their respective native email security tools to protect their organizations from cyber threats. But typically, these clients did not have specific anti-phishing resources or tools before working with Legato.\n\n\"Since it's our business to select and manage technology for our customers, it's important for us to understand those unique customers' environments and challenges,\" said Greulich. \"In many cases customers come with a specific issue to be addressed. So in working with what the customer has, we then see additional needs calling for the addition of an anti-phishing layer to deal with or prevent breaches. When our customers ask us for suggestions on phishing protection, we always recommend Area 1,\" said Greulich.\n\nIn fact, for their Managed Services customers, Legato actually builds in Area 1's anti-phishing service when it develops quotes for securing the customer's email. In those situations, Legato manages administrative control of the Office 365 or G Suite environment, [configuring](https://developers.cloudflare.com/email-security/deployment/) it for maximum security and adding Area 1 service as the phishing protection layer.\n\n\"Area 1 deployment goes really well: We rely on a simple guide for the steps to follow when installing Office 365 and G Suite protection.\"\n\nLegato checks in regularly with their customers and shares Area 1 reports that document the messages that were blocked. In some cases, customers with the skills and technological resources can access the Area 1 portal directly.\n\n\"Area 1's message-tracing features have been extremely helpful when it comes to tracking email that should have been delivered but wasn't — or that was delivered but shouldn't have been. It's really helpful to be able to see that message trace; you can observe for yourself and see the actual email flow and detection details on the Area 1 portal.\"\n\nLegato's customers who had been using Office 365 native defenses and still suffer from phishing attacks also saw those attacks drop precipitously after adding Area 1's anti-phishing service. Their Gmail-using customers who adopt Area 1 have also seen nearly 100 percent of their attacks shut down preemptively — before they could even enter the inbox.\n\n### __Legato reaffirms clients' trust with forward-thinking, multi-layered defenses__\n\n\"Every day, we do our best to reaffirm our clients' trust with forward-thinking, multi- layered defenses,\" said Greulich. \"Because we aren't tied to any one technology or provider, we can advise without bias. Our only obligation is to defend our clients in the most strategic way possible. This technology-agnostic approach sets us apart from most MSS vendors.\"\n\nLegato checks in regularly with their customers and shares Area 1 reports that document the messages that were blocked. In some cases, customers with the skills and technological resources can access the Area 1 portal directly. \n\n\"Area 1's message-tracing features have been extremely helpful when it comes to tracking email that should have been delivered but wasn't — or that was delivered but shouldn't have been. It's really helpful to be able to see that message trace; you can observe for yourself and see the actual email flow and detection details on the Area 1 portal.\"\n\n\"Since working with Area 1,\" says Greulich, \"Legato has seen a significant drop in phishing email incidents, with little to no impact on email productivity and minimal false positives. This service is just extremely effective at stopping phishing. We don't use or recommend products we don't believe in — so our recommendation of Area 1 for our own customers underscores our belief in this service, based on its performance in our company.\"\n",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2022-02-03",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"High Technology"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Enable zero trust security for workforce",
+							"Enhance Cloud Email Security",
+							"Stop Phishing & BEC Attacks"
+						],
+						"product": [
+							"Area 1 Email Security",
+							"Zero Trust"
+						]
+					},
+					{
 						"id": "10e7aad0-76e1-50ba-a3bd-b64596bdc1e9",
 						"contentfulId": "PvL5TT6Dc2SjDKZ4qFbvP",
 						"logo": {
@@ -3104,6 +3265,41 @@
 						"product": [
 							"CDN",
 							"DDoS Protection"
+						]
+					},
+					{
+						"id": "65d927a8-65e7-5651-8774-98ea316a643e",
+						"contentfulId": "4oMGiYgilOdhYJLx9TVt0D",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6hfDePu9avTnTtFO7LsGrE/b1eaa992b1d53f97e776d5001b19b8bd/solcyber-logo-full-color-rgb-2048x424.png"
+							}
+						},
+						"nameUrlSlug": "solcyber",
+						"shortDescription": "Cloudflare Area 1 is the primary cloud email security provider for all customers of SolCyber, the modern MSSP for the mid-market.",
+						"longDescription": "## __SolCyber partners with Cloudflare Area 1 to deliver managed preemptive cloud email security to the mid-market.__<br><br>\n\n### __Challenge:__<br>\n- Mid-market customers face challenges with stopping account takeover attacks and business email compromise (BEC)\n- Existing email solutions are often unsuccessful in detecting and stopping advanced attacks\n- Inaccurate detections create downstream problems for MSSPs and their customers\n\n__This video features Scott McCrady, CEO of SolCyber__\n\n### __Tell us about yourself and your company.__\n\nScott McCrady: I'm Scott McCrady, CEO for SolCyber. SolCyber is a modern MSSP, insomuch that we take what we've learned over the years from working with Fortune 100 and Fortune 500 companies, and we take that technology and package it into very easy-to-consume modules for the mid-market and small enterprises.\n\n### __Why did you choose to build Area 1 into your managed security offering?__\n\nScott McCrady: We chose to use Area 1 for our email security solution for the simple fact that email often is the entry point for bad people to get footholds into the organization. Account takeovers and business email compromise are critical problems that especially mid-market customers face. The way Area 1 goes about their solution with their web crawlers and their understanding of the attack surface when it comes to email, they are truly second to none when it comes to understanding advanced attacks and protecting our customers.\n\n### __How does the Area 1 Solution improve the management and operation of your SOC?__\n\nScott McCrady: Area 1 helps our SOC in the fact that it's very, very high fidelity. What really matters for our customers is accuracy and catching the bad guys. And so if your email solution isn't high fidelity and also able to address and see advanced attacks, then you're left blind. And so from our standpoint, we have to know what the bad guys are doing. Area 1 is exceptional at finding them and then putting that information in front of our analysts so that we can review it, double check it, correlate it with any other incidents or information we see from other devices and technologies, and let our customers know how to remediate or resolve any problems.\n\n### __How do you use Area 1 to provide additional value to customers?__\n\nScott McCrady: Area 1 provides exceptional value to our customers in two different ways. The first is accuracy on quarantining of emails. It's important that the bad stuff gets quarantined, and the good stuff gets through. They're very accurate on quarantines. From a SOC standpoint, from a customer standpoint, we're not consistently having to go in and quarantine items. The secondary value is around business email compromise and account takeovers. This is a real big challenge for most email solutions to get ahead of that problem and be able to detect it. Area 1, again, is exceptional at finding those types of activities and helping our customers know when that's happening, and helping us know when it's happening so that we can let the customers know.\n\n### __What would you tell a customer about Area 1? What about a prospective partner?__\n\nScott McCrady: What I think is important for customers to understand is that in the sea of 3,500 vendors out there, Area 1 just works. It works great. It's somebody that they can have faith in, you can trust in them that their product's going to do what they say it does. It's easy to install, has great details in the dashboards, and is a great solution. From a prospective partner standpoint, it really matters that one, the technology works, but two, that the vendors themselves understand channels and partnering and Area 1 understands this in great, great detail. So it doesn't matter whether or not you're a VAR or an MSSP,  they understand your business model, and they designed Area 1 in the commercial models to really support you.\n",
+						"cloudflareStreamVideoId": "eab08efa83354b747abd61b30bc4d71a",
+						"orderDate": "2022-01-04",
+						"ref_streamVideoThumbnail": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5hVTz68knNHps9sMY752dO/2260b7b45ede485e1cba8db54e13dd2b/Scott_McCrady_-_SolCyber-_Thumbnail.jpg"
+							}
+						},
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"High Technology"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Enhance Cloud Email Security",
+							"Stop Phishing & BEC Attacks",
+							"Enable zero trust security for workforce"
+						],
+						"product": [
+							"Area 1 Email Security",
+							"Zero Trust"
 						]
 					},
 					{
@@ -5356,6 +5552,36 @@
 							"Enable zero trust security for workforce"
 						],
 						"product": null
+					},
+					{
+						"id": "3eebfea5-8961-5800-b76e-212ad2522be6",
+						"contentfulId": "5iSiQk7NHm9wLn6XiISz3B",
+						"logo": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/jBQLJdXQYPIx1xowlqs62/92a12b891eeb1c5c4ef360ed35a11258/hm_logo.jpg"
+							}
+						},
+						"nameUrlSlug": "how-holtmeyer-monson-keeps-its-remote-team-secure-with-cloudflare-gateway",
+						"shortDescription": "Learn how the lending services provider uses Cloudflare Gateway to keep its remote team secure.",
+						"longDescription": "Cyber attacks are a threat to any business — but when you're working with the vast sums of money involved in the financial services industry, the risks become much higher.\n\n[Holtmeyer & Monson](https://www.holtandmon.com/ \"Holtmeyer & Monson\") (H&M) is a lending services provider that assists community banks in providing and managing Small Business Association (SBA) and U.S. Department of Agriculture (USDA) loans. With over 400 institutions across the United States as clients — which themselves deliver banking services to millions of customers — Holtmeyer & Monson is responsible for a high volume of assets that makes them a tempting target for malicious actors.\n\nWhat makes Holtmeyer & Monson's situation highly relevant to many businesses today is that its team has always been distributed. Stephen Webb, H&M's director of IT, explains how he thinks about his team's security posture in a world where legacy approaches don't fit, while meeting the strict regulatory requirements of the financial industry.\n\n\"Our whole team is remote, working from home offices. We don't have a server room with hardware firewall appliances, and it wouldn't really make sense to have one. So I'm always looking for ways to keep our team more secure and harden their connections, wherever they are.\"\n\n### The Cloudflare Solution\n\nPreviously H&M had considered legacy firewall appliances to meet these needs, but any implementation would have been cumbersome (or impossible) given their geographically-distributed team, and threat detection would have been based on static models unfamiliar with the latest attacks. The team subsequently adopted a cloud-based firewall that provided some benefit — but when they saw [Cloudflare Gateway](https://teams.cloudflare.com/gateway/ \"Cloudflare Gateway\"), they immediately understood the advantage of leveraging Cloudflare's network to enhance the company's security.\n\nCloudflare Gateway provides network filtering at the DNS level, allowing you to monitor Internet-bound DNS queries passing through your network, proactively blocking malicious attacks and phishing attempts. That means that a system administrator can rest easier, knowing that even if a member of the team inadvertently clicks on the wrong link — Cloudflare Gateway will ensure that the linked domain is deactivated.\n\n</br>\n<center><b>\n\"Our team is super vigilant, but I can't leave it all up to them. We need to have tools to supplement and ensure the safety and security of our network. Our previous security solution allowed us to set up blocklists to block malicious attacks — but hearing about a malicious domain is like getting stock tips from The New York Times. It's too late to be useful.</b></center>\n<p></p>\n<center><b>With Cloudflare, I know that we're getting protection from the latest emerging attacks, because of the scale of its network and the number of attacks it can derive insights from — it has that intelligence first.\"</b></center>\n</b></center>\n<center><i>- Stephen Webb </center>\n  <center>Director of IT, Holtmeyer & Monson</I></center>\n</br>\n",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2020-04-01",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"Financial Services"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Secure workforce applications, devices and networks",
+							"Enable zero trust security for workforce"
+						],
+						"product": [
+							"Gateway",
+							"Zero Trust"
+						]
 					},
 					{
 						"id": "8116aee8-8e4b-59db-a557-0f34a901c7f7",
