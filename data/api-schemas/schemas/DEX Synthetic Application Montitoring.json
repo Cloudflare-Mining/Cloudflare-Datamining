@@ -1,4 +1,309 @@
 {
+	"GET /accounts/{account_identifier}/dex/colos": {
+		"description": "List Cloudflare colos that account's devices were connected to during a time period, sorted by usage starting from the most used colo. Colos without traffic are also returned and sorted alphabetically.",
+		"operationId": "dex-endpoints-list-colos",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path.",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start time for connection period in RFC3339 (ISO 8601) format.",
+				"in": "query",
+				"name": "timeStart",
+				"required": true,
+				"schema": {
+					"example": "2023-08-20T20:45:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for connection period in RFC3339 (ISO 8601) format.",
+				"in": "query",
+				"name": "timeEnd",
+				"required": true,
+				"schema": {
+					"example": "2023-08-24T20:45:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Type of usage that colos should be sorted by. If unspecified, returns all Cloudflare colos sorted alphabetically.",
+				"in": "query",
+				"name": "sortBy",
+				"schema": {
+					"enum": [
+						"fleet-status-usage",
+						"application-tests-usage"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "array of colos.",
+											"items": {
+												"properties": {
+													"airportCode": {
+														"description": "Airport code",
+														"example": "SFO",
+														"type": "string"
+													},
+													"city": {
+														"description": "City",
+														"example": "San Francisco",
+														"type": "string"
+													},
+													"countryCode": {
+														"description": "Country code",
+														"example": "US",
+														"type": "string"
+													}
+												},
+												"required": [
+													"airportCode",
+													"countryCode",
+													"city"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List colos response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List colos failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Cloudflare colos",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
 	"GET /accounts/{account_identifier}/dex/http-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for an http test for a given time period between 1 hour and 7 days.",
 		"operationId": "dex-endpoints-http-test-details",
