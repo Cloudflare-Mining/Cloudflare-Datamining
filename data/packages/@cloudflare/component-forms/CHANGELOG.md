@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.10
+
+### Patch Changes
+
+- 0dbb489992: Add missing dependency
+
 ## 5.3.9
 
 ### Patch Changes

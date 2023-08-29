@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.23
+
+### Patch Changes
+
+- Updated dependencies [0dbb489992]
+  - @cloudflare/component-forms@5.3.10
+
 ## 5.0.22
 
 ### Patch Changes

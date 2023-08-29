@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.4.13
+
+### Patch Changes
+
+- 80c0559c99: Revert multi Select onChange change, add unit tests
+- Updated dependencies [0dbb489992]
+  - @cloudflare/component-forms@5.3.10
+
 ## 6.4.12
 
 ### Patch Changes
