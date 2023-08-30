@@ -3,11 +3,11 @@
 	"name": "wrangler-action",
 	"full_name": "cloudflare/wrangler-action",
 	"html_url": "https://github.com/cloudflare/wrangler-action",
-	"description": "🧙‍♀️ zero-config cloudflare workers application deployment using wrangler and github actions",
+	"description": "🧙‍♀️ easily deploy cloudflare workers applications using wrangler and github actions",
 	"fork": false,
 	"url": "https://api.github.com/repos/cloudflare/wrangler-action",
 	"created_at": "2019-10-07T19:42:01Z",
-	"homepage": null,
+	"homepage": "",
 	"archived": false,
 	"disabled": false,
 	"license": {
@@ -22,6 +22,7 @@
 	"default_branch": "main",
 	"branches": [
 		"changeset-release/main",
+		"cina/fix-release-workflow",
 		"jacobmgevans/release-trigger",
 		"lrapoport/add-issues-to-gh-project",
 		"lrapoport/publish-to-deploy",
