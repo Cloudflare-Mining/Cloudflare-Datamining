@@ -3,7 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.10.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.9.167...@cloudflare/intl-react@1.10.0) (2023-08-28)
+# [1.12.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.11.0...@cloudflare/intl-react@1.12.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 resolve merge conflict stratus-jest-preset ([bae9874](http://stash.cfops.it:7999/fe/stratus/commits/bae9874))
+
+
+### Features
+
+* UI-5949 implemenet test-affected cfsetup target ([a3befbf](http://stash.cfops.it:7999/fe/stratus/commits/a3befbf))
+* UI-5949 refactor common components to using [@testing-library](http://stash.cfops.it:7999/testing-library)/react ([e1af99e](http://stash.cfops.it:7999/fe/stratus/commits/e1af99e))
+
+
+
+
+
+# [1.11.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-react@1.9.167...@cloudflare/intl-react@1.11.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 update packages to latest versions ([e63ce2f](http://stash.cfops.it:7999/fe/stratus/commits/e63ce2f))
 
 
 ### Features

@@ -3,7 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.13.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.12.6...@cloudflare/intl-core@1.13.0) (2023-08-28)
+## [1.14.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.14.0...@cloudflare/intl-core@1.14.1) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 resolve merge conflict stratus-jest-preset ([bae9874](http://stash.cfops.it:7999/fe/stratus/commits/bae9874))
+
+
+
+
+
+# [1.14.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.12.6...@cloudflare/intl-core@1.14.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 update packages to latest versions ([e63ce2f](http://stash.cfops.it:7999/fe/stratus/commits/e63ce2f))
 
 
 ### Features

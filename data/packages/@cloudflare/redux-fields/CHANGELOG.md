@@ -3,7 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.3.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.2.4...@cloudflare/redux-fields@2.3.0) (2023-08-28)
+# [2.5.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.4.0...@cloudflare/redux-fields@2.5.0) (2023-08-30)
+
+
+### Features
+
+* UI-5949 implemenet test-affected cfsetup target ([a3befbf](http://stash.cfops.it:7999/fe/stratus/commits/a3befbf))
+
+
+
+
+
+# [2.4.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.2.4...@cloudflare/redux-fields@2.4.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 update packages to latest versions ([e63ce2f](http://stash.cfops.it:7999/fe/stratus/commits/e63ce2f))
 
 
 ### Features

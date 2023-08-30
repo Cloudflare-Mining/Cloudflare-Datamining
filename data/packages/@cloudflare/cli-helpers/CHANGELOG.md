@@ -3,7 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.2.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/cli-helpers@2.1.15...@cloudflare/cli-helpers@2.2.0) (2023-08-28)
+## [2.3.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/cli-helpers@2.3.0...@cloudflare/cli-helpers@2.3.1) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 resolve merge conflict stratus-jest-preset ([bae9874](http://stash.cfops.it:7999/fe/stratus/commits/bae9874))
+
+
+
+
+
+# [2.3.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/cli-helpers@2.1.15...@cloudflare/cli-helpers@2.3.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* UI-000 update packages to latest versions ([e63ce2f](http://stash.cfops.it:7999/fe/stratus/commits/e63ce2f))
 
 
 ### Features
