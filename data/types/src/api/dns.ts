@@ -9,7 +9,7 @@ export const DNSRecordMeta = eg.object({
   managed_by_apps: eg.boolean,
   managed_by_argo_tunnel: eg.boolean,
   managed_by_registrar: eg.boolean.optional,
-  managed_by_web3: eg.boolean,
+  managed_by_web3: eg.boolean.optional,
   managed_cname: eg.boolean.optional,
   read_only: eg.boolean.optional,
   shopify: eg.boolean.optional,
