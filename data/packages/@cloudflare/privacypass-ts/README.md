@@ -4,7 +4,11 @@
 
 # privacypass-ts: A TypeScript Library for the Privacy Pass Issuance Protocol
 
-**Specification:** Compliant with IETF [draft-ietf-privacypass-protocol](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/) and tests vectors match with [v11]https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/11/).
+**Specification:** Compliant with IETF [draft-ietf-privacypass-protocol](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/) and tests vectors match with draft [v11](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/11/).
+
+**Support:**
+ - ✅ Public-Verifiable tokens (Blind-RSA)
+ - 🚧 Private-Verifiable tokens (VOPRF)
 
 
 ### Development
@@ -21,4 +25,4 @@
 
 ### License
 
-The project is licensed under the [Apache-2.0 License](LICENSE.txt).
+The project is licensed under the [Apache-2.0](LICENSE.txt) License.
