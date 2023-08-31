@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2833,
+	"version": "20230831.17",
+	"short_version": "2023.8.298.1",
+	"size": 68595439,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "1be2d4d248730f78a9c4bad1e3505493",
+	"fingerprint": "ad370f8aaf58ed613c33e764bd107ed5",
+	"uploaded_at": "2023-08-31T22:22:11.119Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains reliability improvements and general bug fixes.\n \n## Notable updates\n- Fixed an issue where DNS could temporarily fail when DHCP updates were processed\n- Fixed an issue where Learn More links on unable to connect errors in the UI were pointing to the wrong place\n- Fixed an issue on initial device registration that could sometimes cause it to fail and try again\n \n## Known issues\n- No known issues\n  \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
