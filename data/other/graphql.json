@@ -1573,218 +1573,6 @@
 		"__description": "",
 		"requests": ""
 	},
-	"AccountIpFlows1dGroups": {
-		"__description": "Beta. Daily rollups of IP flows",
-		"avg": "The average value for a metric",
-		"dimensions": "List of dimensions to group by",
-		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountIpFlows1dGroupsAvg": {
-		"__description": "",
-		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
-	},
-	"AccountIpFlows1dGroupsDimensions": {
-		"__description": "",
-		"attackDestinationIP": "Destination IP used by packets during an attack",
-		"attackDestinationPort": "Destination port used by packets during an attack",
-		"attackId": "The Cloudflare unique attack identifier this packet was part of",
-		"attackMitigationType": "Type of action (Block, Rate-limit, Connection-Tracking) used to mitigate the attack",
-		"attackProtocol": "IP protocol used by packets during an attack",
-		"attackSourcePort": "Source port used by packets during an attack",
-		"attackTcpFlags": "TCP flags used by packets during an attack",
-		"attackType": "Classification of the attack",
-		"coloCity": "City of data center that received the packet",
-		"coloCode": "IATA airport code of data center that received the packet",
-		"coloCountry": "Country of data center that received the packet",
-		"coloRegion": "Region of data center that received the packet",
-		"date": "Date the packet was received",
-		"destinationIP": "Destination IP of the packet",
-		"destinationIPv4Range23": "Destination IP/23 range of the packet",
-		"destinationIPv4Range24": "Destination IP/24 range of the packet",
-		"destinationPort": "Destination port of the TCP/UDP packet",
-		"ipProtocol": "IP protocol",
-		"ipVersion": "IP version"
-	},
-	"AccountIpFlows1dGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountIpFlows1dGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountIpFlows1dGroupsSum": {
-		"__description": "",
-		"bits": "Total number of bits received",
-		"packets": "Total number of packets received"
-	},
-	"AccountIpFlows1hGroups": {
-		"__description": "Beta. Hourly rollups of IP flows",
-		"avg": "The average value for a metric",
-		"dimensions": "List of dimensions to group by",
-		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountIpFlows1hGroupsAvg": {
-		"__description": "",
-		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
-	},
-	"AccountIpFlows1hGroupsDimensions": {
-		"__description": "",
-		"attackDestinationIP": "Destination IP used by packets during an attack",
-		"attackDestinationPort": "Destination port used by packets during an attack",
-		"attackId": "The Cloudflare unique attack identifier this packet was part of",
-		"attackMitigationType": "Type of action (Block, Rate-limit, Connection-Tracking) used to mitigate the attack",
-		"attackProtocol": "IP protocol used by packets during an attack",
-		"attackSourcePort": "Source port used by packets during an attack",
-		"attackTcpFlags": "TCP flags used by packets during an attack",
-		"attackType": "Classification of the attack",
-		"coloCity": "City of data center that received the packet",
-		"coloCode": "IATA airport code of data center that received the packet",
-		"coloCountry": "Country of data center that received the packet",
-		"coloRegion": "Region of data center that received the packet",
-		"date": "Date the packet was received",
-		"datetimeHour": "Datetime the packet was received truncated to multiple of one hour",
-		"destinationIP": "Destination IP of the packet",
-		"destinationIPv4Range23": "Destination IP/23 range of the packet",
-		"destinationIPv4Range24": "Destination IP/24 range of the packet",
-		"destinationPort": "Destination port of the TCP/UDP packet",
-		"ipProtocol": "IP protocol",
-		"ipVersion": "IP version",
-		"sourceIPASNDescription": "The ASN description associated with the source IP",
-		"sourceIPAsn": "The ASN associated with the source IP",
-		"sourceIPCountry": "The country associated with the source IP",
-		"sourcePort": "Source port of the TCP/UDP packet",
-		"tcpFlags": "List of TCP flags"
-	},
-	"AccountIpFlows1hGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountIpFlows1hGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountIpFlows1hGroupsSum": {
-		"__description": "",
-		"bits": "Total number of bits received",
-		"packets": "Total number of packets received"
-	},
-	"AccountIpFlows1mAttacksGroups": {
-		"__description": "Beta. Minutely rollups of IP flows including only attack traffic",
-		"avg": "The average value for a metric",
-		"dimensions": "List of dimensions to group by",
-		"max": "The max value for a metric",
-		"min": "The min value for a metric",
-		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountIpFlows1mAttacksGroupsAvg": {
-		"__description": "",
-		"bitsPerSecond": "Average rate of bits received",
-		"packetsPerSecond": "Average rate of packets received",
-		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
-	},
-	"AccountIpFlows1mAttacksGroupsDimensions": {
-		"__description": "",
-		"attackDestinationIP": "Destination IP used by packets during an attack",
-		"attackDestinationPort": "Destination port used by packets during an attack",
-		"attackId": "The Cloudflare unique attack identifier this packet was part of",
-		"attackMitigationType": "Type of action (Block, Rate-limit, Connection-Tracking) used to mitigate the attack",
-		"attackProtocol": "IP protocol used by packets during an attack",
-		"attackSourcePort": "Source port used by packets during an attack",
-		"attackTcpFlags": "TCP flags used by packets during an attack",
-		"attackType": "Classification of the attack",
-		"date": "Date the packet was received",
-		"destinationIP": "Destination IP of the packet",
-		"destinationPort": "Destination port of the TCP/UDP packet"
-	},
-	"AccountIpFlows1mAttacksGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountIpFlows1mAttacksGroupsMax": {
-		"__description": "",
-		"bitsPerSecond": "Max rate of bits received",
-		"datetimeMinute": "Max datetime truncated to minute a packet was received",
-		"packetsPerSecond": "Max rate of packets received"
-	},
-	"AccountIpFlows1mAttacksGroupsMin": {
-		"__description": "",
-		"bitsPerSecond": "Min rate of bits received",
-		"datetimeMinute": "Min datetime truncated to minute a packet was received",
-		"packetsPerSecond": "Min rate of packets received"
-	},
-	"AccountIpFlows1mAttacksGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountIpFlows1mAttacksGroupsSum": {
-		"__description": "",
-		"bits": "Total number of bits received",
-		"packets": "Total number of packets received"
-	},
-	"AccountIpFlows1mGroups": {
-		"__description": "Beta. Minutely rollups of IP flows",
-		"avg": "The average value for a metric",
-		"dimensions": "List of dimensions to group by",
-		"max": "The max value for a metric",
-		"min": "The min value for a metric",
-		"sum": "The sum of values for a metric per dimension"
-	},
-	"AccountIpFlows1mGroupsAvg": {
-		"__description": "",
-		"bitsPerSecond": "Average rate of bits received",
-		"packetsPerSecond": "Average rate of packets received",
-		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
-	},
-	"AccountIpFlows1mGroupsDimensions": {
-		"__description": "",
-		"attackDestinationIP": "Destination IP used by packets during an attack",
-		"attackDestinationPort": "Destination port used by packets during an attack",
-		"attackId": "The Cloudflare unique attack identifier this packet was part of",
-		"attackMitigationType": "Type of action (Block, Rate-limit, Connection-Tracking) used to mitigate the attack",
-		"attackProtocol": "IP protocol used by packets during an attack",
-		"attackSourcePort": "Source port used by packets during an attack",
-		"attackTcpFlags": "TCP flags used by packets during an attack",
-		"attackType": "Classification of the attack",
-		"coloCity": "City of data center that received the packet",
-		"coloCode": "IATA airport code of data center that received the packet",
-		"coloCountry": "Country of data center that received the packet",
-		"coloRegion": "Region of data center that received the packet",
-		"date": "Date the packet was received",
-		"datetimeFifteenMinutes": "Datetime the packet was received truncated to multiple of 15 minutes",
-		"datetimeFiveMinutes": "Datetime the packet was received truncated to multiple of 5 minutes",
-		"datetimeHour": "Datetime the packet was received truncated to multiple of one hour",
-		"datetimeMinute": "Datetime the packet was received truncated to the minute",
-		"destinationIP": "Destination IP of the packet",
-		"destinationIPv4Range23": "Destination IP/23 range of the packet",
-		"destinationIPv4Range24": "Destination IP/24 range of the packet",
-		"destinationPort": "Destination port of the TCP/UDP packet",
-		"ipProtocol": "IP protocol",
-		"ipVersion": "IP version",
-		"sourceIP": "Source IP of the packet",
-		"sourceIPASNDescription": "The ASN description associated with the source IP",
-		"sourceIPAsn": "The ASN associated with the source IP",
-		"sourceIPCountry": "The country associated with the source IP",
-		"sourcePort": "Source port of the TCP/UDP packet",
-		"tcpFlags": "List of TCP flags"
-	},
-	"AccountIpFlows1mGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"AccountIpFlows1mGroupsMax": {
-		"__description": "",
-		"bitsPerSecond": "Max rate of bits received",
-		"datetimeMinute": "Max datetime truncated to minute a packet was received",
-		"packetsPerSecond": "Max rate of packets received"
-	},
-	"AccountIpFlows1mGroupsMin": {
-		"__description": "",
-		"bitsPerSecond": "Min rate of bits received",
-		"datetimeMinute": "Min datetime truncated to minute a packet was received",
-		"packetsPerSecond": "Min rate of packets received"
-	},
-	"AccountIpFlows1mGroupsOrderBy": {
-		"__description": ""
-	},
-	"AccountIpFlows1mGroupsSum": {
-		"__description": "",
-		"bits": "Total number of bits received",
-		"packets": "Total number of packets received"
-	},
 	"AccountLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
@@ -2911,10 +2699,6 @@
 		"httpRequestsAdaptiveGroups": "",
 		"httpRequestsOverviewAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
-		"ipFlows1dGroups": "",
-		"ipFlows1hGroups": "",
-		"ipFlows1mAttacksGroups": "",
-		"ipFlows1mGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallSamplesAdaptiveGroups": "",
@@ -2934,6 +2718,8 @@
 		"rumPerformanceEventsAdaptiveGroups": "",
 		"rumWebVitalsEventsAdaptive": "",
 		"rumWebVitalsEventsAdaptiveGroups": "",
+		"sinkholeRequestLogsAdaptive": "",
+		"sinkholeRequestLogsAdaptiveGroups": "",
 		"spectrumNetworkAnalyticsAdaptiveGroups": "",
 		"storageTraces": "",
 		"streamMinutesViewedAdaptiveGroups": "",
@@ -2949,6 +2735,56 @@
 		"workersSubrequestsAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
+	},
+	"AccountSinkholeRequestLogsAdaptive": {
+		"__description": "Sinkhole Request Logs",
+		"body": "The request body",
+		"datetime": "The date and time the event was recorded",
+		"destinationAddress": "The destination IP address of the request",
+		"headers": "The request headers. If a header has multiple values, the values are comma separated. Each header is newline separated.",
+		"host": "The host the request was sent to",
+		"method": "The request method",
+		"r2Path": "The path to the object within the R2 bucket linked to this sinkhole that stores overflow body and header data. Blank if neither headers nor body was larger than 256 bytes.",
+		"referrer": "The referrer of the request",
+		"sampleInterval": "ABR sample interval",
+		"sinkholeId": "The ID of the sinkhole that logged the request",
+		"sourceAddress": "The sender's IP address",
+		"uri": "The request uri",
+		"url": "The request url",
+		"userAgent": "The request user agent"
+	},
+	"AccountSinkholeRequestLogsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountSinkholeRequestLogsAdaptiveGroups": {
+		"__description": "Sinkhole Request Logs",
+		"count": "Number of requests logged (approximation when sampleInterval > 1)",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountSinkholeRequestLogsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"body": "The request body",
+		"datetime": "The date and time the event was recorded",
+		"destinationAddress": "The destination IP address of the request",
+		"headers": "The request headers. If a header has multiple values, the values are comma separated. Each header is newline separated.",
+		"host": "The host the request was sent to",
+		"method": "The request method",
+		"r2Path": "The path to the object within the R2 bucket linked to this sinkhole that stores overflow body and header data. Blank if neither headers nor body was larger than 256 bytes.",
+		"referrer": "The referrer of the request",
+		"sinkholeId": "The ID of the sinkhole that logged the request",
+		"sourceAddress": "The sender's IP address",
+		"uri": "The request uri",
+		"url": "The request url",
+		"userAgent": "The request user agent"
+	},
+	"AccountSinkholeRequestLogsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountSinkholeRequestLogsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountSinkholeRequestLogsAdaptiveOrderBy": {
+		"__description": ""
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Spectrum traffic",
@@ -5048,7 +4884,6 @@
 		"logpushHealthAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
-		"synAvgPps1mGroups": "",
 		"waitingRoomAnalyticsAdaptive": "",
 		"waitingRoomAnalyticsAdaptiveGroups": "",
 		"workersZoneInvocationsAdaptiveGroups": "",
@@ -5056,31 +4891,6 @@
 		"zarazActionsAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": ""
-	},
-	"ZoneSynAvgPps1mGroups": {
-		"__description": "Minutely rollups of average packets per second sent in a SYN attack",
-		"count": "Counts a number of rows per specific dimensions",
-		"dimensions": "List of dimensions to group by",
-		"sum": "Calculates a sum of each field per speicific dimensions"
-	},
-	"ZoneSynAvgPps1mGroupsDimensions": {
-		"__description": "",
-		"date": "Date of this record.",
-		"datetimeDay": "Specific minute for which we gathered samples truncated to a multiple of a day.",
-		"datetimeFifteenMinutes": "Specific minute for which we gathered samples truncated to a multiple of 15 minutes.",
-		"datetimeFiveMinutes": "Specific minute for which we gathered samples truncated to a multiple of 5 minutes.",
-		"datetimeHour": "Specific minute for which we gathered samples truncated to a multiple of an hour.",
-		"datetimeMinute": "Specific minute for which we gathered samples."
-	},
-	"ZoneSynAvgPps1mGroupsFilter_InputObject": {
-		"__description": ""
-	},
-	"ZoneSynAvgPps1mGroupsOrderBy": {
-		"__description": ""
-	},
-	"ZoneSynAvgPps1mGroupsSum": {
-		"__description": "",
-		"avgPpsPerMinute": "Avg packets per second for this minute."
 	},
 	"ZoneWaitingRoomAnalyticsAdaptive": {
 		"__description": "Raw Waiting Room analytics logs",
@@ -5349,10 +5159,6 @@
 		"httpRequestsAdaptiveGroups": "Aggregated HTTP requests data with adaptive sampling",
 		"httpRequestsOverviewAdaptiveGroups": "A high-level summary of HTTP requests made by end users.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
-		"ipFlows1dGroups": "Beta. Daily rollups of IP flows",
-		"ipFlows1hGroups": "Beta. Hourly rollups of IP flows",
-		"ipFlows1mAttacksGroups": "Beta. Minutely rollups of IP flows including only attack traffic",
-		"ipFlows1mGroups": "Beta. Minutely rollups of IP flows",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
 		"magicFirewallSamplesAdaptiveGroups": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
@@ -5373,6 +5179,8 @@
 		"rumWebVitalsEventsAdaptive": "Beta. RUM Web Vitals event metrics with adaptive sampling",
 		"rumWebVitalsEventsAdaptiveGroups": "Beta. Aggregated RUM Web Vitals event metrics with adaptive sampling",
 		"settings": "",
+		"sinkholeRequestLogsAdaptive": "Sinkhole Request Logs",
+		"sinkholeRequestLogsAdaptiveGroups": "Sinkhole Request Logs",
 		"spectrumNetworkAnalyticsAdaptiveGroups": "Network analytics data for Spectrum traffic",
 		"storageTraces": "Storage Tracing Information",
 		"streamMinutesViewedAdaptiveGroups": "A high-level summary of Cloudflare Stream minutes viewed.",
@@ -5466,7 +5274,6 @@
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
-		"synAvgPps1mGroups": "Minutely rollups of average packets per second sent in a SYN attack",
 		"waitingRoomAnalyticsAdaptive": "Raw Waiting Room analytics logs",
 		"waitingRoomAnalyticsAdaptiveGroups": "Aggregated Waiting Room analytics logs with adaptive sampling",
 		"workersZoneInvocationsAdaptiveGroups": "Workers invocations with adaptive sampling",
