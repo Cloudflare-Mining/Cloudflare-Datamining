@@ -32,7 +32,7 @@
 			"204": {
 				"description": "Delete buckets for full packet captures response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {}
 				},
@@ -406,11 +406,11 @@
 				},
 				"description": "List packet capture requests response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
@@ -1183,11 +1183,11 @@
 				},
 				"description": "Get PCAP request response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
@@ -1634,7 +1634,7 @@
 				},
 				"description": "Download Simple PCAP response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {}
 				},
@@ -1858,11 +1858,11 @@
 				},
 				"description": "List PCAPs Bucket Ownership response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
@@ -2648,11 +2648,11 @@
 				},
 				"description": "Create PCAP request response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
@@ -3240,11 +3240,11 @@
 				},
 				"description": "Add buckets for full packet captures response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
@@ -3668,11 +3668,11 @@
 				},
 				"description": "Validate buckets for full packet captures response"
 			},
-			"4XX": {
+			"default": {
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
+							"oneOf": [
 								{
 									"allOf": [
 										{
