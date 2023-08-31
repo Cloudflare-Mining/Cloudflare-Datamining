@@ -5,6 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Product Delivery / Customer Zero Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers through the use of Cloudflare’s own products. The team is responsible for implementing and operationalizing Cloudflare tools across our global footprint.</p>
 <h4><strong>About the Role</strong></h4>
 <p>The Cloudflare Product Delivery / Customer Zero Security team collaborates with Security, Product, Engineering, Information Technology and many other teams to achieve our goal of securing Cloudflare with our products.</p>
 <p>A Security engineers work may include reviewing reports from various sources (automated scanners, employee reports, logs, etc.), managing and configuring automated tooling (Terraform, Open Policy Agent, Workers, etc.), building controls to enforce policy (two factor authentication requirements, role based access, etc), creating tools, reports or platforms to support the team's goals.&nbsp;</p>

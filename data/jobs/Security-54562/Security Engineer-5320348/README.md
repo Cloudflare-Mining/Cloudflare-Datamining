@@ -5,43 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What you'll do</strong><br>We are seeking a highly skilled and motivated GL Accountant to help support the General ledger team. This position is integral to building a world-class organization to support our growing and complex global business. This role requires a highly skilled and ambitious professional who can support various areas within the Accounting team. Examples of desirable skills, knowledge and experience:</p>
-<p><span style="text-decoration: underline;"><strong>Close</strong></span></p>
+<h4><strong>About the Department</strong></h4>
+<p>The Cloudflare Product Delivery / Customer Zero Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers through the use of Cloudflare’s own products. The team is responsible for implementing and operationalizing Cloudflare tools across our global footprint.</p>
+<h4><strong>About the Role</strong></h4>
+<p>The Cloudflare Product Delivery / Customer Zero Security team collaborates with Security, Product, Engineering, Information Technology and many other teams to achieve our goal of securing Cloudflare with our products.</p>
+<p>A Security engineers work may include reviewing reports from various sources (automated scanners, employee reports, logs, etc.), managing and configuring automated tooling (Terraform, Open Policy Agent, Workers, etc.), building controls to enforce policy (two factor authentication requirements, role based access, etc), creating tools, reports or platforms to support the team's goals.&nbsp;</p>
+<p><strong>Desirable skills, knowledge and experience</strong></p>
+<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
 <ul>
-	<li>Assists in posting monthly accrual journal entries</li>
-	<li>Assists in recording internally developed software entries</li>
-	<li>Assists in recording and reconciling credit card and accrual activity</li>
-	<li>Prepares various account reconciliations, schedules, exhibits and summaries to support the general ledger balances and investigate variances</li>
-</ul>
-<p><span style="text-decoration: underline;"><strong>Audit</strong></span></p>
-<ul>
-	<li>Participate in the interim and annual audits for the Company</li>
-	<li>Support audits and external reporting requirements (year-end audit, interim audit, quarterly reviews, SOX, Internal Audit, SEC Reporting, etc.)&nbsp;</li>
-</ul>
-<p><span style="text-decoration: underline;"><strong>Process Improvement</strong></span></p>
-<ol>
-	<li>Participant in various cross-functional projects and initiatives ranging in size and scope (i.e. system implementations, process changes, etc.)</li>
-	<li>Drive continuous process improvement activities (enhanced process documentation, process enhancements, automation, cross-training, etc.)</li>
-</ol>
-<p><span style="text-decoration: underline;"><strong>Various Responsibilities</strong></span></p>
-<ul>
-	<li>Provides support to all areas of the Accounting Department as needed</li>
-	<li>Performs other analysis and special projects as assigned&nbsp;</li>
-</ul>
-<p>Examples of desirable skills, knowledge and experience</p>
-<ul>
-	<li>Bachelor's degree in Accounting or Finance.</li>
-	<li>Sound knowledge of generally accepted accounting principles</li>
-	<li>Experience in SAAS industry</li>
-	<li>Systems savvy candidate required: should possess a solid understanding and application of finance and accounting systems (NetSuite or other accounting system etc).</li>
-	<li>Advanced analytical and information gathering skills; ability to evaluate and prioritize extensive detailed data.</li>
-	<li>Excellent interpersonal and communication skills (written and verbal) with the ability to interface effectively with all levels of the Company.</li>
-	<li>Minimum 3 years of relevant experience</li>
-	<li>Ability to manage multiple priorities to meet established timelines</li>
-	<li>Excel skills including working knowledge of pivot tables, Vlookups, formulas, etc.</li>
-	<li>Must possess excellent written and verbal communication skills and have the ability to interact with peers and senior management.</li>
-	<li>Strong problem-solving and analytical skills</li>
-	<li>Ability to work independently</li>
+	<li>Experience working in DevOps / DevSecOps&nbsp;</li>
+	<li>Experience working with configuration management tools like Terraform, Ansible, etc.</li>
+	<li>Experience working with Open Policy Agent</li>
+	<li>Experience working with Information Technology platforms and systems</li>
+	<li>Experience with Identity and Access Management policy application and enforcement</li>
+	<li>Experience with SaaS security (Google Workspace, Salesforce, Workday, Atlassian, etc.)</li>
+	<li>Experience in configuration, troubleshooting and maintenance of network security infrastructure (Web content filtering, Firewall, IDS and DLP controls)</li>
+	<li>Experience with API gateways and API security</li>
+	<li>Experience with Zero Trust security</li>
+	<li>Experience in secure configuration of cloud-based storage and data management systems</li>
+	<li>Advanced security knowledge of Linux, MacOS, Windows operating systems</li>
+	<li>Advanced programming experience (Python, TypeScript, Bash, etc.)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
