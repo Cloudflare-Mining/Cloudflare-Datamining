@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.10.1
+
+### Patch Changes
+
+- Updated dependencies [52f9f28c13]
+  - @cloudflare/util-hooks@1.3.1
+
 ## 1.10.0
 
 ### Minor Changes

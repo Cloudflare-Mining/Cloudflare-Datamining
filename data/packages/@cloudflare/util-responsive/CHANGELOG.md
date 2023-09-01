@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.1
+
+### Patch Changes
+
+- 52f9f28c13: fixes a bug with removing captured event listeners
+
 ## 1.5.0
 
 ### Minor Changes

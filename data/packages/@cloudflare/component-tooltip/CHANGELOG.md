@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.3.1
+
+### Patch Changes
+
+- 52f9f28c13: fixes a bug with removing captured event listeners
+
 ## 4.3.0
 
 ### Minor Changes

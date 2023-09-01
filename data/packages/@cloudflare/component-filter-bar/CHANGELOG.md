@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.2.2
+
+### Patch Changes
+
+- 52f9f28c13: fixes a bug with removing captured event listeners
+  - @cloudflare/component-forms@5.3.11
+  - @cloudflare/component-time-period-picker@5.0.15
+
 ## 6.2.1
 
 ### Patch Changes
