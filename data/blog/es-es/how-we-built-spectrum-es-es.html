@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<p>Hoy <a href="http://blog.cloudflare.com/spectrum">presentamos Spectrum:</a>una nueva función de Cloudflare que brinda protección contra ataques DDoS, equilibrio de carga y aceleración de contenido a cualquier protocolo de control de transmisión (TCP).</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="http://blog.cloudflare.com/content/images/2019/10/image2--1--2.jpg" class="kg-image" alt="" loading="lazy">
+	<p>Hoy <a href="https://blog.cloudflare.com/spectrum">presentamos Spectrum:</a>una nueva función de Cloudflare que brinda protección contra ataques DDoS, equilibrio de carga y aceleración de contenido a cualquier protocolo de control de transmisión (TCP).</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image2--1--2.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></figcaption>
 	</figure>
 	<p>Apenas empezamos a desarrollar Spectrum, nos topamos con un serio obstáculo técnico: Spectrum exige que aceptemos conexiones en cualquier puerto TCP válido, de 1 a 65535. En nuestros servidores perimetrales Linux es imposible “aceptar conexiones entrantes en <em>ningún </em>número de puerto”. Esta no es una limitación específica de Linux: es una característica de la interfaz de programación de aplicaciones (API) de los <em>socket </em>de BSD, lo esencial para las aplicaciones de red en la mayoría de los sistemas operativos. Debíamos resolver dos problemas subyacentes que se superponen para ofrecer Spectrum:</p>
@@ -9,7 +9,7 @@
 		<li>Cómo configurar un único servidor Linux para aceptar conexiones en una gran cantidad de direcciones IP (tenemos varios miles de direcciones IP en nuestros rangos de difusión por proximidad<em> (anycast))</em></li>
 	</ul>
 	<h3 id="asignaci-n-de-millones-de-ip-a-un-servidor"><strong>Asignación de millones de IP a un servidor</strong></h3>
-	<p>Los servidores perimetrales de Cloudflare tienen una configuración casi idéntica. En nuestros comienzos, solíamos asignar direcciones IP /32 (y /128) específicas para la interfaz de red de bucle invertido<a href="http://blog.cloudflare.com/how-we-built-spectrum/#fn1">[1]</a>. Esto funcionaba bien cuando teníamos solo algunas docenas de direcciones IP, pero no se pudo adaptar a medida que fuimos creciendo.</p>
+	<p>Los servidores perimetrales de Cloudflare tienen una configuración casi idéntica. En nuestros comienzos, solíamos asignar direcciones IP /32 (y /128) específicas para la interfaz de red de bucle invertido<a href="https://blog.cloudflare.com/how-we-built-spectrum/#fn1">[1]</a>. Esto funcionaba bien cuando teníamos solo algunas docenas de direcciones IP, pero no se pudo adaptar a medida que fuimos creciendo.</p>
 	<p>Luego apareció el <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank">truco “AnyIP”</a>. AnyIP nos permite asignar prefijos IP enteros (subredes) a la interfaz de bucle invertido, expandiéndose desde direcciones IP específicas. Ya existe un uso común de AnyIP: su computadora tiene 127.0.0.0/8 asignado a la interfaz de bucle invertido. Desde el punto de vista de su equipo, todas las direcciones IP de 127.0.0.1 a 127.255.255.254 corresponden a la máquina local.</p>
 	<p>Este truco es aplicable más allá del bloque 127.0.0.1/8. Para considerar todo el rango de 192.0.2.0/24 como asignado a nivel local, ejecute:</p>
 	<p><code>ip route add local 192.0.2.0/24 dev lo</code></p>
@@ -30,7 +30,7 @@
 	<p>El segundo problema serio es la capacidad de abrir <em>sockets </em>TCP para cualquier número de puerto. En Linux, y por lo general en cualquier sistema compatible con la API de <em>sockets </em>de BSD, solo puede enlazar a un número de puerto TCP específico con una sola llamada al sistema de enlace. No es posible establecer un enlace a varios puertos en una sola operación.</p>
 	<p>Una solución obvia sería establecer 65535 enlaces, uno para cada uno de los 65535 puertos posibles. En realidad, esta podría haber sido una opción, pero con consecuencias terribles:</p>
 	<ul>
-		<li><a href="http://blog.cloudflare.com/revenge-listening-sockets">La venganza de los <em>sockets </em>de escucha o de servidor</a></li>
+		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets">La venganza de los <em>sockets </em>de escucha o de servidor</a></li>
 	</ul>
 	<p>Internamente, el núcleo Linux almacena <em>sockets </em>de escucha en una tabla <em>hash </em>indexada por números de puerto, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank">LHTABLE</a>, utilizando exactamente 32 cubos:</p>
 	<pre><code>/* Yes, really, this is all you need. */
@@ -50,7 +50,7 @@
 	<p>Estas son distintas desde el punto de vista conceptual. El firewall de IP suele ser un software sin estado (por ahora ignoremos el reensamblaje de fragmentación de IP y conntrack). El firewall analiza los paquetes IP y decide si los ACEPTA o los RECHAZA. Tenga en cuenta: en este nivel estamos hablando de <em>paquetes </em>y <em>números de puerto</em> - no de <em>aplicaciones </em>o <em>sockets.</em></p>
 	<p>Luego está la pila de red. Este gigante tiene mucho estado. Su tarea principal es enviar paquetes IP entrantes a <em>sockets</em>, que luego son administrados por las <em>aplicaciones </em>del espacio del usuario. La pila de red administra las abstracciones que se comparten con el espacio del usuario. Vuelve a ensamblar los flujos TCP, se encarga del enrutamiento y sabe qué direcciones IP son locales.</p>
 	<h3 id="el-polvo-m-gico"><strong>El polvo mágico</strong></h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="http://blog.cloudflare.com/content/images/2019/10/image3--1-.jpg" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image3--1-.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Fuente: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank">instantánea de YouTube</a></figcaption>
 	</figure>
 	<p>En algún momento hablamos del módulo de iptables TPROXY. Se suele pasar por alto la<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank">documentación oficial</a>:</p>
@@ -82,7 +82,7 @@ advanced routing rules. </code></pre>
 	<p><code>skb-&gt;sk = sk;</code></p>
 	<p>Esta línea asigna un una estructura struct sock de socket a un paquete entrante y completa el envío.</p>
 	<h3 id="sacar-el-conejo-de-la-galera"><strong>Sacar el conejo de la galera</strong></h3>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="http://blog.cloudflare.com/content/images/2019/10/image4--1-.jpg" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image4--1-.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></figcaption>
 	</figure>
 	<p>Armado con TPROXY, podemos hacer fácilmente el truco de enlace a todos los puertos. Esta es la configuración:</p>
@@ -149,6 +149,6 @@ hello world</code></pre>
 	<p><em>¿Le interesa hacer un trabajo de socket de bajo nivel? Únase a nuestro</em> <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank"><em>equipo de reconocimiento internacional</em></a><em> en Londres, Austin, San Francisco, Champaign y nuestra selecta oficina en Varsovia, Polonia.</em></p>
 	<hr>
 	<ol>
-		<li>La asignación de direcciones IP a la interfaz de bucle invertido, junto con la configuración adecuada de rp_filter y BGP nos permite manejar rangos IP arbitrarios en nuestros servidores perimetrales. <a href="http://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></li>
+		<li>La asignación de direcciones IP a la interfaz de bucle invertido, junto con la configuración adecuada de rp_filter y BGP nos permite manejar rangos IP arbitrarios en nuestros servidores perimetrales. <a href="https://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></li>
 	</ol>
 </div>
