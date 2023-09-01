@@ -308,3 +308,25 @@ export const SupportedTLDs = eg.object({
 export const DomainUpdateResult = eg.object({
   message: eg.string
 });
+
+export const DefaultContactInformation = eg.object({
+  result: eg.object({
+    entry: eg.object({
+      address2: eg.string,
+      address: eg.string,
+      city: eg.string,
+      country: eg.string,
+      default: eg.boolean,
+      email: eg.string,
+      email_verified: eg.boolean,
+      fax: eg.string,
+      first_name: eg.string,
+      id: eg.string,
+      last_name: eg.string,
+      organization: eg.string,
+      phone: eg.string,
+      state: eg.string,
+      zip: eg.string
+    })
+  })
+});
