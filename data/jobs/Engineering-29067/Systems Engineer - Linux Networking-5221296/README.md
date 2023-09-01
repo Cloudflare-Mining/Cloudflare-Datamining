@@ -8,14 +8,14 @@
 <p><strong>About the team</strong></p>
 <p>Cloudflare is redefining the way network functions are deployed at scale. Magic WAN and Magic Transit put the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure, providing a single pane of glass for deploying and managing network functions like Secure Web Gateway, Next Generation Firewall, IDS/IPS, WAN optimization, and more. Magic Platform team is responsible for a set of products, features, and technologies that comprise Magic Transit and Magic WAN, working alongside other engineering teams in this space to deliver a cohesive customer experience. We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>
 <p><strong>About the role</strong></p>
-<p>As a software engineer on the Magic Platform team, you will be designing and developing distributed edge services and monitoring. You will proactively monitor production services, respond to customer escalations and incidents..</p>
+<p>As a software engineer on the Magic Platform team, you will be designing and developing distributed edge services and monitoring. You will proactively monitor production services, respond to customer escalations and incidents.</p>
 <p>We primarily use Go for our control plane services on our distributed edge network. Our dataplane is built with Linux netfilter, network namespaces, and nftables. We operate our systems with the help of tools like SaltStack, Prometheus, and Grafana.</p>
 <p>We're looking for determined, curious, empathetic engineers to join our fast-growing team!</p>
 <p><strong>Desirable skills, knowledge, and experience</strong></p>
 <ul>
 	<li>Expertise with Linux networking internals, bonus points for experience in eBPF, Linux netfilter and user space networking</li>
 	<li>Systems-level programming experience, especially in Go or Rust</li>
-	<li>Understanding of L2, L3 networking and routing protocols</li>
+	<li>Understanding of L3, L4 networking and routing protocols</li>
 	<li>Strong ability to debug issues in complex systems</li>
 	<li>Excited by quickly delivering results that make a meaningful difference to customers</li>
 	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
