@@ -9,7 +9,12 @@ import isValidCSSUnit from 'is-valid-css-unit';
 import hexColorRegex from 'hex-color-regex';
 import cssProperties from 'known-css-properties';
 
-import {tryAndPush, beautify, getHttpsAgent, sortObjectByKeys} from './utils.js';
+import {
+	tryAndPush,
+	beautify,
+	getHttpsAgent,
+	sortObjectByKeys,
+} from './utils.js';
 
 const mainScript = /(main\.bundle\.[\da-z]+\.js)/;
 const staticDashURL = 'https://one.dash.cloudflare.com/';

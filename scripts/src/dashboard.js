@@ -14,7 +14,12 @@ import hexColorRegex from 'hex-color-regex';
 import cssProperties from 'known-css-properties';
 import {generate} from 'astring';
 
-import {tryAndPush, removeSlashes, beautify, getHttpsAgent} from './utils.js';
+import {
+	tryAndPush,
+	removeSlashes,
+	beautify,
+	getHttpsAgent,
+} from './utils.js';
 
 const allVersions = await fs.readJson(path.resolve('../data/dashboard/versions.json'));
 

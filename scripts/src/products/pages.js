@@ -5,7 +5,13 @@ import dateFormat from 'dateformat';
 import jsBeautify from 'js-beautify';
 import ipRegex from 'ip-regex';
 
-import {tryAndPush, propertiesToArray, cfRequest, sleep, sortObjectByKeys} from '../utils.js';
+import {
+	tryAndPush,
+	propertiesToArray,
+	cfRequest,
+	sleep,
+	sortObjectByKeys,
+} from '../utils.js';
 
 const dir = path.resolve('../data/products/pages');
 await fs.ensureDir(dir);

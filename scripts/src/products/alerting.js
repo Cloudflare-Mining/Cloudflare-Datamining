@@ -3,7 +3,12 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 
-import {tryAndPush, propertiesToArray, cfRequest, sortObjectByKeys} from '../utils.js';
+import {
+	tryAndPush,
+	propertiesToArray,
+	cfRequest,
+	sortObjectByKeys,
+} from '../utils.js';
 
 const dir = path.resolve('../data/products/alerting');
 await fs.ensureDir(dir);
