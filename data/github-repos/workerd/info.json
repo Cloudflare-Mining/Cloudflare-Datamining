@@ -42,7 +42,6 @@
 		"bcaimano/ws-release-ok",
 		"bcoll/bump-compat-date-2023-03-07",
 		"bcoll/compat-date-2023-04-19",
-		"bcoll/compat-date-2023-09-04",
 		"bcoll/malonso/chromium_toolchain",
 		"bcoll/types-2022-10-31-and-2022-11-30",
 		"bcoll/types-parameter-names-redo",
@@ -84,7 +83,6 @@
 		"fbaetens/R2-963-multipart-bindings",
 		"felix/aes-ctr-fix",
 		"felix/bazel-exp",
-		"felix/ci-no-cache-reuse",
 		"felix/crypto-includes-cleanup",
 		"felix/crypto-statelessDH",
 		"felix/includes-cleanup",
@@ -166,12 +164,10 @@
 		"jsnell/jsg-completion-avoiding-isolate-in-global-scope",
 		"jsnell/jsg-completion-buffersource",
 		"jsnell/jsg-completion-cfproperty-jsvalue",
-		"jsnell/jsg-completion-loguncaughtexception-jsvalue",
 		"jsnell/jsg-completion-logwarning-lock",
 		"jsnell/jsg-completion-moar-jsg-consistency",
 		"jsnell/jsg-completion-more-use-jsglock-consistently",
 		"jsnell/jsg-completion-node-diagnostics-channel",
-		"jsnell/jsg-completion-r2-admin-jsvalue",
 		"jsnell/jsg-completion-replace-v8-undefined-uses",
 		"jsnell/jsg-completion-todict-jsvalue",
 		"jsnell/jsg-completion-urlpattern-jsvalue",
@@ -325,6 +321,7 @@
 		"webgpu_do",
 		"webgpu_globals",
 		"webgpu_js",
+		"webgpu_write_fix",
 		"workerd-v8-update-11.2.214.9"
 	]
 }
