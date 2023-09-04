@@ -873,8 +873,11 @@ export declare class TextDecoder {
 }
 export declare class TextEncoder {
   constructor();
-  encode(input?: string): Uint8Array;
-  encodeInto(input: string, buffer: Uint8Array): TextEncoderEncodeIntoResult;
+  encode(input?: string): ArrayBuffer | ArrayBufferView;
+  encodeInto(
+    input: string,
+    buffer: ArrayBuffer | ArrayBufferView
+  ): TextEncoderEncodeIntoResult;
   get encoding(): string;
 }
 export interface TextDecoderConstructorOptions {
@@ -1783,10 +1786,10 @@ export declare class URLSearchParams {
   );
   get size(): number;
   append(name: string, value: string): void;
-  delete(name: string, value?: string): void;
+  delete(name: string): void;
   get(name: string): string | null;
   getAll(name: string): string[];
-  has(name: string, value?: string): boolean;
+  has(name: string): boolean;
   set(name: string, value: string): void;
   sort(): void;
   entries(): IterableIterator<[key: string, value: string]>;

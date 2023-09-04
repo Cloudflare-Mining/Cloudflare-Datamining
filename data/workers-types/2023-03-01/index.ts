@@ -14,7 +14,7 @@ and limitations under the License.
 ***************************************************************************** */
 /* eslint-disable */
 // noinspection JSUnusedGlobalSymbols
-declare class DOMException extends Error {
+export declare class DOMException extends Error {
   constructor(message?: string, name?: string);
   readonly message: string;
   readonly name: string;
@@ -46,17 +46,17 @@ declare class DOMException extends Error {
   static readonly INVALID_NODE_TYPE_ERR: number;
   static readonly DATA_CLONE_ERR: number;
 }
-declare type WorkerGlobalScopeEventMap = {
+export type WorkerGlobalScopeEventMap = {
   fetch: FetchEvent;
   scheduled: ScheduledEvent;
   queue: QueueEvent;
   unhandledrejection: PromiseRejectionEvent;
   rejectionhandled: PromiseRejectionEvent;
 };
-declare abstract class WorkerGlobalScope extends EventTarget<WorkerGlobalScopeEventMap> {
+export declare abstract class WorkerGlobalScope extends EventTarget<WorkerGlobalScopeEventMap> {
   EventTarget: typeof EventTarget;
 }
-declare interface Console {
+export interface Console {
   "assert"(condition?: boolean, ...data: any[]): void;
   clear(): void;
   count(label?: string): void;
@@ -78,9 +78,9 @@ declare interface Console {
   trace(...data: any[]): void;
   warn(...data: any[]): void;
 }
-declare const console: Console;
-declare type BufferSource = ArrayBufferView | ArrayBuffer;
-declare namespace WebAssembly {
+export declare const console: Console;
+export type BufferSource = ArrayBufferView | ArrayBuffer;
+export declare namespace WebAssembly {
   class CompileError extends Error {
     constructor(message?: string);
   }
@@ -155,7 +155,7 @@ declare namespace WebAssembly {
   function validate(bytes: BufferSource): boolean;
 }
 /** This ServiceWorker API interface represents the global execution context of a service worker. */
-declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
+export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   DOMException: typeof DOMException;
   WorkerGlobalScope: typeof WorkerGlobalScope;
   btoa(data: string): string;
@@ -203,6 +203,10 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   TransformStream: typeof TransformStream;
   ByteLengthQueuingStrategy: typeof ByteLengthQueuingStrategy;
   CountQueuingStrategy: typeof CountQueuingStrategy;
+  ReadableStreamBYOBRequest: typeof ReadableStreamBYOBRequest;
+  ReadableStreamDefaultController: typeof ReadableStreamDefaultController;
+  ReadableByteStreamController: typeof ReadableByteStreamController;
+  WritableStreamDefaultController: typeof WritableStreamDefaultController;
   CompressionStream: typeof CompressionStream;
   DecompressionStream: typeof DecompressionStream;
   TextEncoderStream: typeof TextEncoderStream;
@@ -235,12 +239,14 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   IdentityTransformStream: typeof IdentityTransformStream;
   HTMLRewriter: typeof HTMLRewriter;
 }
-declare function addEventListener<Type extends keyof WorkerGlobalScopeEventMap>(
+export declare function addEventListener<
+  Type extends keyof WorkerGlobalScopeEventMap
+>(
   type: Type,
   handler: EventListenerOrEventListenerObject<WorkerGlobalScopeEventMap[Type]>,
   options?: EventTargetAddEventListenerOptions | boolean
 ): void;
-declare function removeEventListener<
+export declare function removeEventListener<
   Type extends keyof WorkerGlobalScopeEventMap
 >(
   type: Type,
@@ -248,53 +254,53 @@ declare function removeEventListener<
   options?: EventTargetEventListenerOptions | boolean
 ): void;
 /** Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise. */
-declare function dispatchEvent(
+export declare function dispatchEvent(
   event: WorkerGlobalScopeEventMap[keyof WorkerGlobalScopeEventMap]
 ): boolean;
-declare function btoa(data: string): string;
-declare function atob(data: string): string;
-declare function setTimeout(
+export declare function btoa(data: string): string;
+export declare function atob(data: string): string;
+export declare function setTimeout(
   callback: (...args: any[]) => void,
   msDelay?: number
 ): number;
-declare function setTimeout<Args extends any[]>(
+export declare function setTimeout<Args extends any[]>(
   callback: (...args: Args) => void,
   msDelay?: number,
   ...args: Args
 ): number;
-declare function clearTimeout(timeoutId: number | null): void;
-declare function setInterval(
+export declare function clearTimeout(timeoutId: number | null): void;
+export declare function setInterval(
   callback: (...args: any[]) => void,
   msDelay?: number
 ): number;
-declare function setInterval<Args extends any[]>(
+export declare function setInterval<Args extends any[]>(
   callback: (...args: Args) => void,
   msDelay?: number,
   ...args: Args
 ): number;
-declare function clearInterval(timeoutId: number | null): void;
-declare function queueMicrotask(task: Function): void;
-declare function structuredClone<T>(
+export declare function clearInterval(timeoutId: number | null): void;
+export declare function queueMicrotask(task: Function): void;
+export declare function structuredClone<T>(
   value: T,
   options?: StructuredSerializeOptions
 ): T;
-declare function fetch(
+export declare function fetch(
   input: RequestInfo,
   init?: RequestInit<RequestInitCfProperties>
 ): Promise<Response>;
-declare const self: ServiceWorkerGlobalScope;
-declare const crypto: Crypto;
-declare const caches: CacheStorage;
-declare const scheduler: Scheduler;
-declare const performance: Performance;
-declare const origin: string;
-declare const navigator: Navigator;
-declare interface TestController {}
-declare interface ExecutionContext {
+export declare const self: ServiceWorkerGlobalScope;
+export declare const crypto: Crypto;
+export declare const caches: CacheStorage;
+export declare const scheduler: Scheduler;
+export declare const performance: Performance;
+export declare const origin: string;
+export declare const navigator: Navigator;
+export interface TestController {}
+export interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
 }
-declare type ExportedHandlerFetchHandler<
+export type ExportedHandlerFetchHandler<
   Env = unknown,
   CfHostMetadata = unknown
 > = (
@@ -302,32 +308,32 @@ declare type ExportedHandlerFetchHandler<
   env: Env,
   ctx: ExecutionContext
 ) => Response | Promise<Response>;
-declare type ExportedHandlerTailHandler<Env = unknown> = (
+export type ExportedHandlerTailHandler<Env = unknown> = (
   events: TraceItem[],
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-declare type ExportedHandlerTraceHandler<Env = unknown> = (
+export type ExportedHandlerTraceHandler<Env = unknown> = (
   traces: TraceItem[],
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-declare type ExportedHandlerScheduledHandler<Env = unknown> = (
+export type ExportedHandlerScheduledHandler<Env = unknown> = (
   controller: ScheduledController,
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-declare type ExportedHandlerQueueHandler<Env = unknown, Message = unknown> = (
+export type ExportedHandlerQueueHandler<Env = unknown, Message = unknown> = (
   batch: MessageBatch<Message>,
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-declare type ExportedHandlerTestHandler<Env = unknown> = (
+export type ExportedHandlerTestHandler<Env = unknown> = (
   controller: TestController,
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-declare interface ExportedHandler<
+export interface ExportedHandler<
   Env = unknown,
   QueueHandlerMessage = unknown,
   CfHostMetadata = unknown
@@ -340,22 +346,22 @@ declare interface ExportedHandler<
   email?: EmailExportedHandler<Env>;
   queue?: ExportedHandlerQueueHandler<Env, QueueHandlerMessage>;
 }
-declare interface StructuredSerializeOptions {
+export interface StructuredSerializeOptions {
   transfer?: any[];
 }
-declare abstract class PromiseRejectionEvent extends Event {
+export declare abstract class PromiseRejectionEvent extends Event {
   readonly promise: Promise<any>;
   readonly reason: any;
 }
-declare abstract class Navigator {
+export declare abstract class Navigator {
   readonly userAgent: string;
 }
 /** Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API. */
-declare interface Performance {
+export interface Performance {
   readonly timeOrigin: number;
   now(): number;
 }
-declare interface DurableObject {
+export interface DurableObject {
   fetch(request: Request): Response | Promise<Response>;
   alarm?(): void | Promise<void>;
   webSocketMessage?(
@@ -370,16 +376,16 @@ declare interface DurableObject {
   ): void | Promise<void>;
   webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
 }
-declare interface DurableObjectStub extends Fetcher {
+export interface DurableObjectStub extends Fetcher {
   readonly id: DurableObjectId;
   readonly name?: string;
 }
-declare interface DurableObjectId {
+export interface DurableObjectId {
   toString(): string;
   equals(other: DurableObjectId): boolean;
   readonly name?: string;
 }
-declare interface DurableObjectNamespace {
+export interface DurableObjectNamespace {
   newUniqueId(
     options?: DurableObjectNamespaceNewUniqueIdOptions
   ): DurableObjectId;
@@ -391,11 +397,11 @@ declare interface DurableObjectNamespace {
   ): DurableObjectStub;
   jurisdiction(jurisdiction: DurableObjectJurisdiction): DurableObjectNamespace;
 }
-declare type DurableObjectJurisdiction = "eu" | "fedramp";
-declare interface DurableObjectNamespaceNewUniqueIdOptions {
+export type DurableObjectJurisdiction = "eu" | "fedramp";
+export interface DurableObjectNamespaceNewUniqueIdOptions {
   jurisdiction?: DurableObjectJurisdiction;
 }
-declare type DurableObjectLocationHint =
+export type DurableObjectLocationHint =
   | "wnam"
   | "enam"
   | "sam"
@@ -405,10 +411,10 @@ declare type DurableObjectLocationHint =
   | "oc"
   | "afr"
   | "me";
-declare interface DurableObjectNamespaceGetDurableObjectOptions {
+export interface DurableObjectNamespaceGetDurableObjectOptions {
   locationHint?: DurableObjectLocationHint;
 }
-declare interface DurableObjectState {
+export interface DurableObjectState {
   waitUntil(promise: Promise<any>): void;
   readonly id: DurableObjectId;
   readonly storage: DurableObjectStorage;
@@ -419,7 +425,7 @@ declare interface DurableObjectState {
   getWebSocketAutoResponse(): WebSocketRequestResponsePair | null;
   getWebSocketAutoResponseTimestamp(ws: WebSocket): Date | null;
 }
-declare interface DurableObjectTransaction {
+export interface DurableObjectTransaction {
   get<T = unknown>(
     key: string,
     options?: DurableObjectGetOptions
@@ -450,7 +456,7 @@ declare interface DurableObjectTransaction {
   ): Promise<void>;
   deleteAlarm(options?: DurableObjectSetAlarmOptions): Promise<void>;
 }
-declare interface DurableObjectStorage {
+export interface DurableObjectStorage {
   get<T = unknown>(
     key: string,
     options?: DurableObjectGetOptions
@@ -486,7 +492,7 @@ declare interface DurableObjectStorage {
   sync(): Promise<void>;
   transactionSync<T>(closure: () => T): T;
 }
-declare interface DurableObjectListOptions {
+export interface DurableObjectListOptions {
   start?: string;
   startAfter?: string;
   end?: string;
@@ -496,36 +502,36 @@ declare interface DurableObjectListOptions {
   allowConcurrency?: boolean;
   noCache?: boolean;
 }
-declare interface DurableObjectGetOptions {
+export interface DurableObjectGetOptions {
   allowConcurrency?: boolean;
   noCache?: boolean;
 }
-declare interface DurableObjectGetAlarmOptions {
+export interface DurableObjectGetAlarmOptions {
   allowConcurrency?: boolean;
 }
-declare interface DurableObjectPutOptions {
+export interface DurableObjectPutOptions {
   allowConcurrency?: boolean;
   allowUnconfirmed?: boolean;
   noCache?: boolean;
 }
-declare interface DurableObjectSetAlarmOptions {
+export interface DurableObjectSetAlarmOptions {
   allowConcurrency?: boolean;
   allowUnconfirmed?: boolean;
 }
-declare class WebSocketRequestResponsePair {
+export declare class WebSocketRequestResponsePair {
   constructor(request: string, response: string);
   get request(): string;
   get response(): string;
 }
-declare interface AnalyticsEngineDataset {
+export interface AnalyticsEngineDataset {
   writeDataPoint(event?: AnalyticsEngineDataPoint): void;
 }
-declare interface AnalyticsEngineDataPoint {
+export interface AnalyticsEngineDataPoint {
   indexes?: ((ArrayBuffer | string) | null)[];
   doubles?: number[];
   blobs?: ((ArrayBuffer | string) | null)[];
 }
-declare class Event {
+export declare class Event {
   constructor(type: string, init?: EventInit);
   get type(): string;
   get eventPhase(): number;
@@ -549,21 +555,21 @@ declare class Event {
   static readonly AT_TARGET: number;
   static readonly BUBBLING_PHASE: number;
 }
-declare interface EventInit {
+export interface EventInit {
   bubbles?: boolean;
   cancelable?: boolean;
   composed?: boolean;
 }
-declare type EventListener<EventType extends Event = Event> = (
+export type EventListener<EventType extends Event = Event> = (
   event: EventType
 ) => void;
-declare interface EventListenerObject<EventType extends Event = Event> {
+export interface EventListenerObject<EventType extends Event = Event> {
   handleEvent(event: EventType): void;
 }
-declare type EventListenerOrEventListenerObject<
+export type EventListenerOrEventListenerObject<
   EventType extends Event = Event
 > = EventListener<EventType> | EventListenerObject<EventType>;
-declare class EventTarget<
+export declare class EventTarget<
   EventMap extends Record<string, Event> = Record<string, Event>
 > {
   constructor();
@@ -579,24 +585,24 @@ declare class EventTarget<
   ): void;
   dispatchEvent(event: EventMap[keyof EventMap]): boolean;
 }
-declare interface EventTargetEventListenerOptions {
+export interface EventTargetEventListenerOptions {
   capture?: boolean;
 }
-declare interface EventTargetAddEventListenerOptions {
+export interface EventTargetAddEventListenerOptions {
   capture?: boolean;
   passive?: boolean;
   once?: boolean;
   signal?: AbortSignal;
 }
-declare interface EventTargetHandlerObject {
+export interface EventTargetHandlerObject {
   handleEvent: (event: Event) => any | undefined;
 }
-declare class AbortController {
+export declare class AbortController {
   constructor();
   get signal(): AbortSignal;
   abort(reason?: any): void;
 }
-declare abstract class AbortSignal extends EventTarget {
+export declare abstract class AbortSignal extends EventTarget {
   static abort(reason?: any): AbortSignal;
   static timeout(delay: number): AbortSignal;
   static any(signals: AbortSignal[]): AbortSignal;
@@ -604,16 +610,16 @@ declare abstract class AbortSignal extends EventTarget {
   get reason(): any;
   throwIfAborted(): void;
 }
-declare interface Scheduler {
+export interface Scheduler {
   wait(delay: number, maybeOptions?: SchedulerWaitOptions): Promise<void>;
 }
-declare interface SchedulerWaitOptions {
+export interface SchedulerWaitOptions {
   signal?: AbortSignal;
 }
-declare abstract class ExtendableEvent extends Event {
+export declare abstract class ExtendableEvent extends Event {
   waitUntil(promise: Promise<any>): void;
 }
-declare class Blob {
+export declare class Blob {
   constructor(
     bits?: ((ArrayBuffer | ArrayBufferView) | string | Blob)[],
     options?: BlobOptions
@@ -625,10 +631,10 @@ declare class Blob {
   text(): Promise<string>;
   stream(): ReadableStream;
 }
-declare interface BlobOptions {
+export interface BlobOptions {
   type?: string;
 }
-declare class File extends Blob {
+export declare class File extends Blob {
   constructor(
     bits: ((ArrayBuffer | ArrayBufferView) | string | Blob)[] | undefined,
     name: string,
@@ -637,15 +643,15 @@ declare class File extends Blob {
   get name(): string;
   get lastModified(): number;
 }
-declare interface FileOptions {
+export interface FileOptions {
   type?: string;
   lastModified?: number;
 }
-declare abstract class CacheStorage {
+export declare abstract class CacheStorage {
   open(cacheName: string): Promise<Cache>;
   readonly default: Cache;
 }
-declare abstract class Cache {
+export declare abstract class Cache {
   delete(request: RequestInfo, options?: CacheQueryOptions): Promise<boolean>;
   match(
     request: RequestInfo,
@@ -653,10 +659,10 @@ declare abstract class Cache {
   ): Promise<Response | undefined>;
   put(request: RequestInfo, response: Response): Promise<void>;
 }
-declare interface CacheQueryOptions {
+export interface CacheQueryOptions {
   ignoreMethod?: boolean;
 }
-declare abstract class Crypto {
+export declare abstract class Crypto {
   get subtle(): SubtleCrypto;
   getRandomValues<
     T extends
@@ -672,7 +678,7 @@ declare abstract class Crypto {
   randomUUID(): string;
   DigestStream: typeof DigestStream;
 }
-declare abstract class SubtleCrypto {
+export declare abstract class SubtleCrypto {
   encrypt(
     algorithm: string | SubtleCryptoEncryptAlgorithm,
     key: CryptoKey,
@@ -743,7 +749,7 @@ declare abstract class SubtleCrypto {
     b: ArrayBuffer | ArrayBufferView
   ): boolean;
 }
-declare abstract class CryptoKey {
+export declare abstract class CryptoKey {
   readonly type: string;
   readonly extractable: boolean;
   readonly algorithm:
@@ -755,11 +761,11 @@ declare abstract class CryptoKey {
     | CryptoKeyArbitraryKeyAlgorithm;
   readonly usages: string[];
 }
-declare interface CryptoKeyPair {
+export interface CryptoKeyPair {
   publicKey: CryptoKey;
   privateKey: CryptoKey;
 }
-declare interface JsonWebKey {
+export interface JsonWebKey {
   kty: string;
   use?: string;
   key_ops?: string[];
@@ -779,12 +785,12 @@ declare interface JsonWebKey {
   oth?: RsaOtherPrimesInfo[];
   k?: string;
 }
-declare interface RsaOtherPrimesInfo {
+export interface RsaOtherPrimesInfo {
   r?: string;
   d?: string;
   t?: string;
 }
-declare interface SubtleCryptoDeriveKeyAlgorithm {
+export interface SubtleCryptoDeriveKeyAlgorithm {
   name: string;
   salt?: ArrayBuffer;
   iterations?: number;
@@ -792,7 +798,7 @@ declare interface SubtleCryptoDeriveKeyAlgorithm {
   $public?: CryptoKey;
   info?: ArrayBuffer;
 }
-declare interface SubtleCryptoEncryptAlgorithm {
+export interface SubtleCryptoEncryptAlgorithm {
   name: string;
   iv?: ArrayBuffer;
   additionalData?: ArrayBuffer;
@@ -801,7 +807,7 @@ declare interface SubtleCryptoEncryptAlgorithm {
   length?: number;
   label?: ArrayBuffer;
 }
-declare interface SubtleCryptoGenerateKeyAlgorithm {
+export interface SubtleCryptoGenerateKeyAlgorithm {
   name: string;
   hash?: string | SubtleCryptoHashAlgorithm;
   modulusLength?: number;
@@ -809,57 +815,57 @@ declare interface SubtleCryptoGenerateKeyAlgorithm {
   length?: number;
   namedCurve?: string;
 }
-declare interface SubtleCryptoHashAlgorithm {
+export interface SubtleCryptoHashAlgorithm {
   name: string;
 }
-declare interface SubtleCryptoImportKeyAlgorithm {
+export interface SubtleCryptoImportKeyAlgorithm {
   name: string;
   hash?: string | SubtleCryptoHashAlgorithm;
   length?: number;
   namedCurve?: string;
   compressed?: boolean;
 }
-declare interface SubtleCryptoSignAlgorithm {
+export interface SubtleCryptoSignAlgorithm {
   name: string;
   hash?: string | SubtleCryptoHashAlgorithm;
   dataLength?: number;
   saltLength?: number;
 }
-declare interface CryptoKeyKeyAlgorithm {
+export interface CryptoKeyKeyAlgorithm {
   name: string;
 }
-declare interface CryptoKeyAesKeyAlgorithm {
+export interface CryptoKeyAesKeyAlgorithm {
   name: string;
   length: number;
 }
-declare interface CryptoKeyHmacKeyAlgorithm {
+export interface CryptoKeyHmacKeyAlgorithm {
   name: string;
   hash: CryptoKeyKeyAlgorithm;
   length: number;
 }
-declare interface CryptoKeyRsaKeyAlgorithm {
+export interface CryptoKeyRsaKeyAlgorithm {
   name: string;
   modulusLength: number;
   publicExponent: ArrayBuffer;
   hash?: CryptoKeyKeyAlgorithm;
 }
-declare interface CryptoKeyEllipticKeyAlgorithm {
+export interface CryptoKeyEllipticKeyAlgorithm {
   name: string;
   namedCurve: string;
 }
-declare interface CryptoKeyArbitraryKeyAlgorithm {
+export interface CryptoKeyArbitraryKeyAlgorithm {
   name: string;
   hash?: CryptoKeyKeyAlgorithm;
   namedCurve?: string;
   length?: number;
 }
-declare class DigestStream extends WritableStream<
+export declare class DigestStream extends WritableStream<
   ArrayBuffer | ArrayBufferView
 > {
   constructor(algorithm: string | SubtleCryptoHashAlgorithm);
   get digest(): Promise<ArrayBuffer>;
 }
-declare class TextDecoder {
+export declare class TextDecoder {
   constructor(decoder?: string, options?: TextDecoderConstructorOptions);
   decode(
     input?: ArrayBuffer | ArrayBufferView,
@@ -869,7 +875,7 @@ declare class TextDecoder {
   get fatal(): boolean;
   get ignoreBOM(): boolean;
 }
-declare class TextEncoder {
+export declare class TextEncoder {
   constructor();
   encode(input?: string): ArrayBuffer | ArrayBufferView;
   encodeInto(
@@ -878,18 +884,18 @@ declare class TextEncoder {
   ): TextEncoderEncodeIntoResult;
   get encoding(): string;
 }
-declare interface TextDecoderConstructorOptions {
+export interface TextDecoderConstructorOptions {
   fatal: boolean;
   ignoreBOM: boolean;
 }
-declare interface TextDecoderDecodeOptions {
+export interface TextDecoderDecodeOptions {
   stream: boolean;
 }
-declare interface TextEncoderEncodeIntoResult {
+export interface TextEncoderEncodeIntoResult {
   read: number;
   written: number;
 }
-declare class FormData {
+export declare class FormData {
   constructor();
   append(name: string, value: string): void;
   append(name: string, value: Blob, filename?: string): void;
@@ -913,10 +919,10 @@ declare class FormData {
   ): void;
   [Symbol.iterator](): IterableIterator<[key: string, value: File | string]>;
 }
-declare interface ContentOptions {
+export interface ContentOptions {
   html?: boolean;
 }
-declare class HTMLRewriter {
+export declare class HTMLRewriter {
   constructor();
   on(
     selector: string,
@@ -925,23 +931,23 @@ declare class HTMLRewriter {
   onDocument(handlers: HTMLRewriterDocumentContentHandlers): HTMLRewriter;
   transform(response: Response): Response;
 }
-declare interface HTMLRewriterElementContentHandlers {
+export interface HTMLRewriterElementContentHandlers {
   element?(element: Element): void | Promise<void>;
   comments?(comment: Comment): void | Promise<void>;
   text?(element: Text): void | Promise<void>;
 }
-declare interface HTMLRewriterDocumentContentHandlers {
+export interface HTMLRewriterDocumentContentHandlers {
   doctype?(doctype: Doctype): void | Promise<void>;
   comments?(comment: Comment): void | Promise<void>;
   text?(text: Text): void | Promise<void>;
   end?(end: DocumentEnd): void | Promise<void>;
 }
-declare interface Doctype {
+export interface Doctype {
   readonly name: string | null;
   readonly publicId: string | null;
   readonly systemId: string | null;
 }
-declare interface Element {
+export interface Element {
   tagName: string;
   readonly attributes: IterableIterator<string[]>;
   readonly removed: boolean;
@@ -960,13 +966,13 @@ declare interface Element {
   setInnerContent(content: string, options?: ContentOptions): Element;
   onEndTag(handler: (tag: EndTag) => void | Promise<void>): void;
 }
-declare interface EndTag {
+export interface EndTag {
   name: string;
   before(content: string, options?: ContentOptions): EndTag;
   after(content: string, options?: ContentOptions): EndTag;
   remove(): EndTag;
 }
-declare interface Comment {
+export interface Comment {
   text: string;
   readonly removed: boolean;
   before(content: string, options?: ContentOptions): Comment;
@@ -974,7 +980,7 @@ declare interface Comment {
   replace(content: string, options?: ContentOptions): Comment;
   remove(): Comment;
 }
-declare interface Text {
+export interface Text {
   readonly text: string;
   readonly lastInTextNode: boolean;
   readonly removed: boolean;
@@ -983,22 +989,23 @@ declare interface Text {
   replace(content: string, options?: ContentOptions): Text;
   remove(): Text;
 }
-declare interface DocumentEnd {
+export interface DocumentEnd {
   append(content: string, options?: ContentOptions): DocumentEnd;
 }
-declare abstract class FetchEvent extends ExtendableEvent {
+export declare abstract class FetchEvent extends ExtendableEvent {
   readonly request: Request;
   respondWith(promise: Response | Promise<Response>): void;
   passThroughOnException(): void;
 }
-declare type HeadersInit =
+export type HeadersInit =
   | Headers
   | Iterable<Iterable<string>>
   | Record<string, string>;
-declare class Headers {
+export declare class Headers {
   constructor(init?: HeadersInit);
   get(name: string): string | null;
   getAll(name: string): string[];
+  getSetCookie(): string[];
   has(name: string): boolean;
   set(name: string, value: string): void;
   append(name: string, value: string): void;
@@ -1012,7 +1019,7 @@ declare class Headers {
   values(): IterableIterator<string>;
   [Symbol.iterator](): IterableIterator<[key: string, value: string]>;
 }
-declare type BodyInit =
+export type BodyInit =
   | ReadableStream<Uint8Array>
   | string
   | ArrayBuffer
@@ -1020,7 +1027,7 @@ declare type BodyInit =
   | Blob
   | URLSearchParams
   | FormData;
-declare abstract class Body {
+export declare abstract class Body {
   get body(): ReadableStream | null;
   get bodyUsed(): boolean;
   arrayBuffer(): Promise<ArrayBuffer>;
@@ -1029,7 +1036,7 @@ declare abstract class Body {
   formData(): Promise<FormData>;
   blob(): Promise<Blob>;
 }
-declare class Response extends Body {
+export declare class Response extends Body {
   constructor(body?: BodyInit | null, init?: ResponseInit);
   static redirect(url: string, status?: number): Response;
   static json(any: any, maybeInit?: ResponseInit | Response): Response;
@@ -1043,7 +1050,7 @@ declare class Response extends Body {
   get webSocket(): WebSocket | null;
   get cf(): any | undefined;
 }
-declare interface ResponseInit {
+export interface ResponseInit {
   status?: number;
   statusText?: string;
   headers?: HeadersInit;
@@ -1051,11 +1058,11 @@ declare interface ResponseInit {
   webSocket?: WebSocket | null;
   encodeBody?: "automatic" | "manual";
 }
-declare type RequestInfo<
+export type RequestInfo<
   CfHostMetadata = unknown,
   Cf = CfProperties<CfHostMetadata>
 > = Request<CfHostMetadata, Cf> | string | URL;
-declare class Request<
+export declare class Request<
   CfHostMetadata = unknown,
   Cf = CfProperties<CfHostMetadata>
 > extends Body {
@@ -1071,7 +1078,7 @@ declare class Request<
   get integrity(): string;
   get keepalive(): boolean;
 }
-declare interface RequestInit<Cf = CfProperties> {
+export interface RequestInit<Cf = CfProperties> {
   /** A string to set request's method. */
   method?: string;
   /** A Headers object, an object literal, or an array of two-item arrays to set request's headers. */
@@ -1087,20 +1094,20 @@ declare interface RequestInit<Cf = CfProperties> {
   /** An AbortSignal to set request's signal. */
   signal?: AbortSignal | null;
 }
-declare abstract class Fetcher {
+export declare abstract class Fetcher {
   fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
   connect(address: SocketAddress | string, options?: SocketOptions): Socket;
 }
-declare interface FetcherPutOptions {
+export interface FetcherPutOptions {
   expiration?: number;
   expirationTtl?: number;
 }
-declare interface KVNamespaceListKey<Metadata, Key extends string = string> {
+export interface KVNamespaceListKey<Metadata, Key extends string = string> {
   name: Key;
   expiration?: number;
   metadata?: Metadata;
 }
-declare type KVNamespaceListResult<Metadata, Key extends string = string> =
+export type KVNamespaceListResult<Metadata, Key extends string = string> =
   | {
       list_complete: false;
       keys: KVNamespaceListKey<Metadata, Key>[];
@@ -1112,7 +1119,7 @@ declare type KVNamespaceListResult<Metadata, Key extends string = string> =
       keys: KVNamespaceListKey<Metadata, Key>[];
       cacheStatus: string | null;
     };
-declare interface KVNamespace<Key extends string = string> {
+export interface KVNamespace<Key extends string = string> {
   get(
     key: Key,
     options?: Partial<KVNamespaceGetOptions<undefined>>
@@ -1186,64 +1193,64 @@ declare interface KVNamespace<Key extends string = string> {
   ): Promise<KVNamespaceGetWithMetadataResult<ReadableStream, Metadata>>;
   delete(key: Key): Promise<void>;
 }
-declare interface KVNamespaceListOptions {
+export interface KVNamespaceListOptions {
   limit?: number;
   prefix?: string | null;
   cursor?: string | null;
 }
-declare interface KVNamespaceGetOptions<Type> {
+export interface KVNamespaceGetOptions<Type> {
   type: Type;
   cacheTtl?: number;
 }
-declare interface KVNamespacePutOptions {
+export interface KVNamespacePutOptions {
   expiration?: number;
   expirationTtl?: number;
   metadata?: any | null;
 }
-declare interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
+export interface KVNamespaceGetWithMetadataResult<Value, Metadata> {
   value: Value | null;
   metadata: Metadata | null;
   cacheStatus: string | null;
 }
-declare type QueueContentType = "text" | "bytes" | "json" | "v8";
-declare interface Queue<Body = unknown> {
+export type QueueContentType = "text" | "bytes" | "json" | "v8";
+export interface Queue<Body = unknown> {
   send(message: Body, options?: QueueSendOptions): Promise<void>;
   sendBatch(messages: Iterable<MessageSendRequest<Body>>): Promise<void>;
 }
-declare interface QueueSendOptions {
+export interface QueueSendOptions {
   contentType?: QueueContentType;
 }
-declare interface MessageSendRequest<Body = unknown> {
+export interface MessageSendRequest<Body = unknown> {
   body: Body;
   contentType?: QueueContentType;
 }
-declare interface Message<Body = unknown> {
+export interface Message<Body = unknown> {
   readonly id: string;
   readonly timestamp: Date;
   readonly body: Body;
   retry(): void;
   ack(): void;
 }
-declare interface QueueEvent<Body = unknown> extends ExtendableEvent {
+export interface QueueEvent<Body = unknown> extends ExtendableEvent {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
   retryAll(): void;
   ackAll(): void;
 }
-declare interface MessageBatch<Body = unknown> {
+export interface MessageBatch<Body = unknown> {
   readonly messages: readonly Message<Body>[];
   readonly queue: string;
   retryAll(): void;
   ackAll(): void;
 }
-declare interface R2Error extends Error {
+export interface R2Error extends Error {
   readonly name: string;
   readonly code: number;
   readonly message: string;
   readonly action: string;
   readonly stack: any;
 }
-declare interface R2ListOptions {
+export interface R2ListOptions {
   limit?: number;
   prefix?: string;
   cursor?: string;
@@ -1251,7 +1258,7 @@ declare interface R2ListOptions {
   startAfter?: string;
   include?: ("httpMetadata" | "customMetadata")[];
 }
-declare abstract class R2Bucket {
+export declare abstract class R2Bucket {
   head(key: string): Promise<R2Object | null>;
   get(
     key: string,
@@ -1292,7 +1299,7 @@ declare abstract class R2Bucket {
   delete(keys: string | string[]): Promise<void>;
   list(options?: R2ListOptions): Promise<R2Objects>;
 }
-declare interface R2MultipartUpload {
+export interface R2MultipartUpload {
   readonly key: string;
   readonly uploadId: string;
   uploadPart(
@@ -1302,11 +1309,11 @@ declare interface R2MultipartUpload {
   abort(): Promise<void>;
   complete(uploadedParts: R2UploadedPart[]): Promise<R2Object>;
 }
-declare interface R2UploadedPart {
+export interface R2UploadedPart {
   partNumber: number;
   etag: string;
 }
-declare abstract class R2Object {
+export declare abstract class R2Object {
   readonly key: string;
   readonly version: string;
   readonly size: number;
@@ -1319,7 +1326,7 @@ declare abstract class R2Object {
   readonly range?: R2Range;
   writeHttpMetadata(headers: Headers): void;
 }
-declare interface R2ObjectBody extends R2Object {
+export interface R2ObjectBody extends R2Object {
   get body(): ReadableStream;
   get bodyUsed(): boolean;
   arrayBuffer(): Promise<ArrayBuffer>;
@@ -1327,7 +1334,7 @@ declare interface R2ObjectBody extends R2Object {
   json<T>(): Promise<T>;
   blob(): Promise<Blob>;
 }
-declare type R2Range =
+export type R2Range =
   | {
       offset: number;
       length?: number;
@@ -1339,18 +1346,18 @@ declare type R2Range =
   | {
       suffix: number;
     };
-declare interface R2Conditional {
+export interface R2Conditional {
   etagMatches?: string;
   etagDoesNotMatch?: string;
   uploadedBefore?: Date;
   uploadedAfter?: Date;
   secondsGranularity?: boolean;
 }
-declare interface R2GetOptions {
+export interface R2GetOptions {
   onlyIf?: R2Conditional | Headers;
   range?: R2Range | Headers;
 }
-declare interface R2PutOptions {
+export interface R2PutOptions {
   onlyIf?: R2Conditional | Headers;
   httpMetadata?: R2HTTPMetadata | Headers;
   customMetadata?: Record<string, string>;
@@ -1360,11 +1367,11 @@ declare interface R2PutOptions {
   sha384?: ArrayBuffer | string;
   sha512?: ArrayBuffer | string;
 }
-declare interface R2MultipartOptions {
+export interface R2MultipartOptions {
   httpMetadata?: R2HTTPMetadata | Headers;
   customMetadata?: Record<string, string>;
 }
-declare interface R2Checksums {
+export interface R2Checksums {
   readonly md5?: ArrayBuffer;
   readonly sha1?: ArrayBuffer;
   readonly sha256?: ArrayBuffer;
@@ -1372,14 +1379,14 @@ declare interface R2Checksums {
   readonly sha512?: ArrayBuffer;
   toJSON(): R2StringChecksums;
 }
-declare interface R2StringChecksums {
+export interface R2StringChecksums {
   md5?: string;
   sha1?: string;
   sha256?: string;
   sha384?: string;
   sha512?: string;
 }
-declare interface R2HTTPMetadata {
+export interface R2HTTPMetadata {
   contentType?: string;
   contentLanguage?: string;
   contentDisposition?: string;
@@ -1387,7 +1394,7 @@ declare interface R2HTTPMetadata {
   cacheControl?: string;
   cacheExpiry?: Date;
 }
-declare type R2Objects = {
+export type R2Objects = {
   objects: R2Object[];
   delimitedPrefixes: string[];
 } & (
@@ -1399,21 +1406,21 @@ declare type R2Objects = {
       truncated: false;
     }
 );
-declare abstract class ScheduledEvent extends ExtendableEvent {
+export declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
   noRetry(): void;
 }
-declare interface ScheduledController {
+export interface ScheduledController {
   readonly scheduledTime: number;
   readonly cron: string;
   noRetry(): void;
 }
-declare interface QueuingStrategy<T = any> {
+export interface QueuingStrategy<T = any> {
   highWaterMark?: number | bigint;
   size?: (chunk: T) => number | bigint;
 }
-declare interface UnderlyingSink<W = any> {
+export interface UnderlyingSink<W = any> {
   type?: string;
   start?: (controller: WritableStreamDefaultController) => void | Promise<void>;
   write?: (
@@ -1423,14 +1430,14 @@ declare interface UnderlyingSink<W = any> {
   abort?: (reason: any) => void | Promise<void>;
   close?: () => void | Promise<void>;
 }
-declare interface UnderlyingByteSource {
+export interface UnderlyingByteSource {
   type: "bytes";
   autoAllocateChunkSize?: number;
   start?: (controller: ReadableByteStreamController) => void | Promise<void>;
   pull?: (controller: ReadableByteStreamController) => void | Promise<void>;
   cancel?: (reason: any) => void | Promise<void>;
 }
-declare interface UnderlyingSource<R = any> {
+export interface UnderlyingSource<R = any> {
   type?: "" | undefined;
   start?: (
     controller: ReadableStreamDefaultController<R>
@@ -1440,7 +1447,7 @@ declare interface UnderlyingSource<R = any> {
   ) => void | Promise<void>;
   cancel?: (reason: any) => void | Promise<void>;
 }
-declare interface Transformer<I = any, O = any> {
+export interface Transformer<I = any, O = any> {
   readableType?: string;
   writableType?: string;
   start?: (
@@ -1454,7 +1461,7 @@ declare interface Transformer<I = any, O = any> {
     controller: TransformStreamDefaultController<O>
   ) => void | Promise<void>;
 }
-declare interface StreamPipeOptions {
+export interface StreamPipeOptions {
   /**
    * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
    *
@@ -1477,7 +1484,7 @@ declare interface StreamPipeOptions {
   preventCancel?: boolean;
   signal?: AbortSignal;
 }
-declare type ReadableStreamReadResult<R = any> =
+export type ReadableStreamReadResult<R = any> =
   | {
       done: false;
       value: R;
@@ -1487,7 +1494,7 @@ declare type ReadableStreamReadResult<R = any> =
       value?: undefined;
     };
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
-declare interface ReadableStream<R = any> {
+export interface ReadableStream<R = any> {
   get locked(): boolean;
   cancel(reason?: any): Promise<void>;
   getReader(): ReadableStreamDefaultReader<R>;
@@ -1506,7 +1513,7 @@ declare interface ReadableStream<R = any> {
     options?: ReadableStreamValuesOptions
   ): AsyncIterableIterator<R>;
 }
-declare const ReadableStream: {
+export declare const ReadableStream: {
   prototype: ReadableStream;
   new (
     underlyingSource: UnderlyingByteSource,
@@ -1517,14 +1524,14 @@ declare const ReadableStream: {
     strategy?: QueuingStrategy<R>
   ): ReadableStream<R>;
 };
-declare class ReadableStreamDefaultReader<R = any> {
+export declare class ReadableStreamDefaultReader<R = any> {
   constructor(stream: ReadableStream);
   get closed(): Promise<void>;
   cancel(reason?: any): Promise<void>;
   read(): Promise<ReadableStreamReadResult<R>>;
   releaseLock(): void;
 }
-declare class ReadableStreamBYOBReader {
+export declare class ReadableStreamBYOBReader {
   constructor(stream: ReadableStream);
   get closed(): Promise<void>;
   cancel(reason?: any): Promise<void>;
@@ -1537,40 +1544,39 @@ declare class ReadableStreamBYOBReader {
     view: T
   ): Promise<ReadableStreamReadResult<T>>;
 }
-declare interface ReadableStreamGetReaderOptions {
+export interface ReadableStreamGetReaderOptions {
   mode: "byob";
 }
-declare interface ReadableStreamBYOBRequest {
+export declare abstract class ReadableStreamBYOBRequest {
   readonly view: Uint8Array | null;
   respond(bytesWritten: number): void;
   respondWithNewView(view: ArrayBuffer | ArrayBufferView): void;
   readonly atLeast: number | null;
 }
-declare interface ReadableStreamDefaultController<R = any> {
+export declare abstract class ReadableStreamDefaultController<R = any> {
   readonly desiredSize: number | null;
   close(): void;
   enqueue(chunk?: R): void;
   error(reason: any): void;
 }
-declare interface ReadableByteStreamController {
+export declare abstract class ReadableByteStreamController {
   readonly byobRequest: ReadableStreamBYOBRequest | null;
   readonly desiredSize: number | null;
   close(): void;
   enqueue(chunk: ArrayBuffer | ArrayBufferView): void;
   error(reason: any): void;
 }
-/** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
-declare interface WritableStreamDefaultController {
+export declare abstract class WritableStreamDefaultController {
   readonly signal: AbortSignal;
   error(reason?: any): void;
 }
-declare interface TransformStreamDefaultController<O = any> {
+export interface TransformStreamDefaultController<O = any> {
   get desiredSize(): number | null;
   enqueue(chunk?: O): void;
   error(reason: any): void;
   terminate(): void;
 }
-declare interface ReadableWritablePair<R = any, W = any> {
+export interface ReadableWritablePair<R = any, W = any> {
   /**
    * Provides a convenient, chainable way of piping this readable stream through a transform stream (or any other { writable, readable } pair). It simply pipes the stream into the writable side of the supplied pair, and returns the readable side for further use.
    *
@@ -1579,7 +1585,7 @@ declare interface ReadableWritablePair<R = any, W = any> {
   writable: WritableStream<W>;
   readable: ReadableStream<R>;
 }
-declare class WritableStream<W = any> {
+export declare class WritableStream<W = any> {
   constructor(
     underlyingSink?: UnderlyingSink,
     queuingStrategy?: QueuingStrategy
@@ -1589,7 +1595,7 @@ declare class WritableStream<W = any> {
   close(): Promise<void>;
   getWriter(): WritableStreamDefaultWriter<W>;
 }
-declare class WritableStreamDefaultWriter<W = any> {
+export declare class WritableStreamDefaultWriter<W = any> {
   constructor(stream: WritableStream);
   get closed(): Promise<void>;
   get ready(): Promise<void>;
@@ -1599,7 +1605,7 @@ declare class WritableStreamDefaultWriter<W = any> {
   write(chunk?: W): Promise<void>;
   releaseLock(): void;
 }
-declare class TransformStream<I = any, O = any> {
+export declare class TransformStream<I = any, O = any> {
   constructor(
     transformer?: Transformer<I, O>,
     writableStrategy?: QueuingStrategy<I>,
@@ -1608,61 +1614,64 @@ declare class TransformStream<I = any, O = any> {
   get readable(): ReadableStream<O>;
   get writable(): WritableStream<I>;
 }
-declare class FixedLengthStream extends IdentityTransformStream {
+export declare class FixedLengthStream extends IdentityTransformStream {
   constructor(
     expectedLength: number | bigint,
     queuingStrategy?: IdentityTransformStreamQueuingStrategy
   );
 }
-declare class IdentityTransformStream extends TransformStream<
+export declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
   constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
 }
-declare interface IdentityTransformStreamQueuingStrategy {
+export interface IdentityTransformStreamQueuingStrategy {
   highWaterMark?: number | bigint;
 }
-declare interface ReadableStreamValuesOptions {
+export interface ReadableStreamValuesOptions {
   preventCancel?: boolean;
 }
-declare class CompressionStream extends TransformStream<
+export declare class CompressionStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
   constructor(format: "gzip" | "deflate" | "deflate-raw");
 }
-declare class DecompressionStream extends TransformStream<
+export declare class DecompressionStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
   constructor(format: "gzip" | "deflate" | "deflate-raw");
 }
-declare class TextEncoderStream extends TransformStream<string, Uint8Array> {
+export declare class TextEncoderStream extends TransformStream<
+  string,
+  Uint8Array
+> {
   constructor();
 }
-declare class TextDecoderStream extends TransformStream<
+export declare class TextDecoderStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   string
 > {
   constructor(label?: string, options?: TextDecoderStreamTextDecoderStreamInit);
 }
-declare interface TextDecoderStreamTextDecoderStreamInit {
+export interface TextDecoderStreamTextDecoderStreamInit {
   fatal?: boolean;
 }
-declare class ByteLengthQueuingStrategy
+export declare class ByteLengthQueuingStrategy
   implements QueuingStrategy<ArrayBufferView>
 {
   constructor(init: QueuingStrategyInit);
   get highWaterMark(): number;
   get size(): (chunk?: any) => number;
 }
-declare class CountQueuingStrategy implements QueuingStrategy {
+export declare class CountQueuingStrategy implements QueuingStrategy {
   constructor(init: QueuingStrategyInit);
   get highWaterMark(): number;
   get size(): (chunk?: any) => number;
 }
-declare interface QueuingStrategyInit {
+export interface QueuingStrategyInit {
   /**
    * Creates a new ByteLengthQueuingStrategy with the provided high water mark.
    *
@@ -1670,11 +1679,11 @@ declare interface QueuingStrategyInit {
    */
   highWaterMark: number;
 }
-declare abstract class TailEvent extends ExtendableEvent {
+export declare abstract class TailEvent extends ExtendableEvent {
   readonly events: TraceItem[];
   readonly traces: TraceItem[];
 }
-declare interface TraceItem {
+export interface TraceItem {
   readonly event:
     | (
         | TraceItemFetchEventInfo
@@ -1694,64 +1703,64 @@ declare interface TraceItem {
   readonly scriptTags?: string[];
   readonly outcome: string;
 }
-declare interface TraceItemAlarmEventInfo {
+export interface TraceItemAlarmEventInfo {
   readonly scheduledTime: Date;
 }
-declare interface TraceItemCustomEventInfo {}
-declare interface TraceItemScheduledEventInfo {
+export interface TraceItemCustomEventInfo {}
+export interface TraceItemScheduledEventInfo {
   readonly scheduledTime: number;
   readonly cron: string;
 }
-declare interface TraceItemQueueEventInfo {
+export interface TraceItemQueueEventInfo {
   readonly queue: string;
   readonly batchSize: number;
 }
-declare interface TraceItemEmailEventInfo {
+export interface TraceItemEmailEventInfo {
   readonly mailFrom: string;
   readonly rcptTo: string;
   readonly rawSize: number;
 }
-declare interface TraceItemFetchEventInfo {
+export interface TraceItemFetchEventInfo {
   readonly response?: TraceItemFetchEventInfoResponse;
   readonly request: TraceItemFetchEventInfoRequest;
 }
-declare interface TraceItemFetchEventInfoRequest {
+export interface TraceItemFetchEventInfoRequest {
   readonly cf?: any;
   readonly headers: Record<string, string>;
   readonly method: string;
   readonly url: string;
   getUnredacted(): TraceItemFetchEventInfoRequest;
 }
-declare interface TraceItemFetchEventInfoResponse {
+export interface TraceItemFetchEventInfoResponse {
   readonly status: number;
 }
-declare interface TraceLog {
+export interface TraceLog {
   readonly timestamp: number;
   readonly level: string;
   readonly message: any;
 }
-declare interface TraceException {
+export interface TraceException {
   readonly timestamp: number;
   readonly message: string;
   readonly name: string;
 }
-declare interface TraceDiagnosticChannelEvent {
+export interface TraceDiagnosticChannelEvent {
   readonly timestamp: number;
   readonly channel: string;
   readonly message: any;
 }
-declare interface TraceMetrics {
+export interface TraceMetrics {
   readonly cpuTime: number;
   readonly wallTime: number;
 }
-declare interface UnsafeTraceMetrics {
+export interface UnsafeTraceMetrics {
   fromTrace(item: TraceItem): TraceMetrics;
 }
-declare class URL {
+export declare class URL {
   constructor(url: string | URL, base?: string | URL);
+  get origin(): string;
   get href(): string;
   set href(value: string);
-  get origin(): string;
   get protocol(): string;
   set protocol(value: string);
   get username(): string;
@@ -1768,19 +1777,16 @@ declare class URL {
   set pathname(value: string);
   get search(): string;
   set search(value: string);
-  get searchParams(): URLSearchParams;
   get hash(): string;
   set hash(value: string);
-  toString(): string;
+  get searchParams(): URLSearchParams;
   toJSON(): string;
+  toString(): string;
+  static canParse(url: string, base?: string): boolean;
 }
-declare class URLSearchParams {
+export declare class URLSearchParams {
   constructor(
-    init?:
-      | URLSearchParams
-      | string
-      | Record<string, string>
-      | [key: string, value: string][]
+    init?: Iterable<Iterable<string>> | Record<string, string> | string
   );
   get size(): number;
   append(name: string, value: string): void;
@@ -1805,7 +1811,7 @@ declare class URLSearchParams {
   toString(): string;
   [Symbol.iterator](): IterableIterator<[key: string, value: string]>;
 }
-declare class URLPattern {
+export declare class URLPattern {
   constructor(input?: string | URLPatternURLPatternInit, baseURL?: string);
   get protocol(): string;
   get username(): string;
@@ -1821,7 +1827,7 @@ declare class URLPattern {
     baseURL?: string
   ): URLPatternURLPatternResult | null;
 }
-declare interface URLPatternURLPatternInit {
+export interface URLPatternURLPatternInit {
   protocol?: string;
   username?: string;
   password?: string;
@@ -1832,11 +1838,11 @@ declare interface URLPatternURLPatternInit {
   hash?: string;
   baseURL?: string;
 }
-declare interface URLPatternURLPatternComponentResult {
+export interface URLPatternURLPatternComponentResult {
   input: string;
   groups: Record<string, string>;
 }
-declare interface URLPatternURLPatternResult {
+export interface URLPatternURLPatternResult {
   inputs: (string | URLPatternURLPatternInit)[];
   protocol: URLPatternURLPatternComponentResult;
   username: URLPatternURLPatternComponentResult;
@@ -1847,7 +1853,7 @@ declare interface URLPatternURLPatternResult {
   search: URLPatternURLPatternComponentResult;
   hash: URLPatternURLPatternComponentResult;
 }
-declare class CloseEvent extends Event {
+export declare class CloseEvent extends Event {
   constructor(type: string, initializer: CloseEventInit);
   /** Returns the WebSocket connection close code provided by the server. */
   readonly code: number;
@@ -1856,33 +1862,33 @@ declare class CloseEvent extends Event {
   /** Returns true if the connection closed cleanly; false otherwise. */
   readonly wasClean: boolean;
 }
-declare interface CloseEventInit {
+export interface CloseEventInit {
   code?: number;
   reason?: string;
   wasClean?: boolean;
 }
-declare class MessageEvent extends Event {
+export declare class MessageEvent extends Event {
   constructor(type: string, initializer: MessageEventInit);
   readonly data: ArrayBuffer | string;
 }
-declare interface MessageEventInit {
+export interface MessageEventInit {
   data: ArrayBuffer | string;
 }
 /** Events providing information related to errors in scripts or in files. */
-declare interface ErrorEvent extends Event {
+export interface ErrorEvent extends Event {
   readonly filename: string;
   readonly message: string;
   readonly lineno: number;
   readonly colno: number;
   readonly error: any;
 }
-declare type WebSocketEventMap = {
+export type WebSocketEventMap = {
   close: CloseEvent;
   message: MessageEvent;
   open: Event;
   error: ErrorEvent;
 };
-declare class WebSocket extends EventTarget<WebSocketEventMap> {
+export declare class WebSocket extends EventTarget<WebSocketEventMap> {
   constructor(url: string, protocols?: string[] | string);
   accept(): void;
   send(message: (ArrayBuffer | ArrayBufferView) | string): void;
@@ -1898,31 +1904,31 @@ declare class WebSocket extends EventTarget<WebSocketEventMap> {
   get protocol(): string | null;
   get extensions(): string | null;
 }
-declare const WebSocketPair: {
+export declare const WebSocketPair: {
   new (): {
     0: WebSocket;
     1: WebSocket;
   };
 };
-declare interface Socket {
+export interface Socket {
   get readable(): ReadableStream;
   get writable(): WritableStream;
   get closed(): Promise<void>;
   close(): Promise<void>;
   startTls(options?: TlsOptions): Socket;
 }
-declare interface SocketOptions {
+export interface SocketOptions {
   secureTransport?: string;
   allowHalfOpen: boolean;
 }
-declare interface SocketAddress {
+export interface SocketAddress {
   hostname: string;
   port: number;
 }
-declare interface TlsOptions {
+export interface TlsOptions {
   expectedServerHostname?: string;
 }
-declare interface BasicImageTransformations {
+export interface BasicImageTransformations {
   /**
    * Maximum width in image pixels. The value must be an integer.
    */
@@ -1988,7 +1994,7 @@ declare interface BasicImageTransformations {
    */
   rotate?: 0 | 90 | 180 | 270 | 360;
 }
-declare interface BasicImageTransformationsGravityCoordinates {
+export interface BasicImageTransformationsGravityCoordinates {
   x: number;
   y: number;
 }
@@ -2001,7 +2007,7 @@ declare interface BasicImageTransformationsGravityCoordinates {
  * Note: Currently, these properties cannot be tested in the
  * playground.
  */
-declare interface RequestInitCfProperties extends Record<string, unknown> {
+export interface RequestInitCfProperties extends Record<string, unknown> {
   cacheEverything?: boolean;
   /**
    * A request's cache key is what determines if two requests are
@@ -2051,7 +2057,7 @@ declare interface RequestInitCfProperties extends Record<string, unknown> {
    */
   resolveOverride?: string;
 }
-declare interface RequestInitCfPropertiesImageDraw
+export interface RequestInitCfPropertiesImageDraw
   extends BasicImageTransformations {
   /**
    * Absolute URL of the image file to use for the drawing. It can be any of
@@ -2089,7 +2095,7 @@ declare interface RequestInitCfPropertiesImageDraw
   bottom?: number;
   right?: number;
 }
-declare interface RequestInitCfPropertiesImage
+export interface RequestInitCfPropertiesImage
   extends BasicImageTransformations {
   /**
    * Device Pixel Ratio. Default 1. Multiplier for width/height that makes it
@@ -2215,7 +2221,7 @@ declare interface RequestInitCfPropertiesImage
    */
   compression?: "fast";
 }
-declare interface RequestInitCfPropertiesImageMinify {
+export interface RequestInitCfPropertiesImageMinify {
   javascript?: boolean;
   css?: boolean;
   html?: boolean;
@@ -2223,13 +2229,13 @@ declare interface RequestInitCfPropertiesImageMinify {
 /**
  * Request metadata provided by Cloudflare's edge.
  */
-declare type IncomingRequestCfProperties<HostMetadata = unknown> =
+export type IncomingRequestCfProperties<HostMetadata = unknown> =
   IncomingRequestCfPropertiesBase &
     IncomingRequestCfPropertiesBotManagementEnterprise &
     IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<HostMetadata> &
     IncomingRequestCfPropertiesGeographicInformation &
     IncomingRequestCfPropertiesCloudflareAccessOrApiShield;
-declare interface IncomingRequestCfPropertiesBase
+export interface IncomingRequestCfPropertiesBase
   extends Record<string, unknown> {
   /**
    * [ASN](https://www.iana.org/assignments/as-numbers/as-numbers.xhtml) of the incoming request.
@@ -2308,7 +2314,7 @@ declare interface IncomingRequestCfPropertiesBase
    */
   tlsExportedAuthenticator?: IncomingRequestCfPropertiesExportedAuthenticatorMetadata;
 }
-declare interface IncomingRequestCfPropertiesBotManagementBase {
+export interface IncomingRequestCfPropertiesBotManagementBase {
   /**
    * Cloudflare’s [level of certainty](https://developers.cloudflare.com/bots/concepts/bot-score/) that a request comes from a bot,
    * represented as an integer percentage between `1` (almost certainly a bot) and `99` (almost certainly human).
@@ -2335,7 +2341,7 @@ declare interface IncomingRequestCfPropertiesBotManagementBase {
    */
   detectionIds: number[];
 }
-declare interface IncomingRequestCfPropertiesBotManagement {
+export interface IncomingRequestCfPropertiesBotManagement {
   /**
    * Results of Cloudflare's Bot Management analysis
    */
@@ -2347,7 +2353,7 @@ declare interface IncomingRequestCfPropertiesBotManagement {
    */
   clientTrustScore: number;
 }
-declare interface IncomingRequestCfPropertiesBotManagementEnterprise
+export interface IncomingRequestCfPropertiesBotManagementEnterprise
   extends IncomingRequestCfPropertiesBotManagement {
   /**
    * Results of Cloudflare's Bot Management analysis
@@ -2360,7 +2366,7 @@ declare interface IncomingRequestCfPropertiesBotManagementEnterprise
     ja3Hash: string;
   };
 }
-declare interface IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<
+export interface IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<
   HostMetadata
 > {
   /**
@@ -2371,7 +2377,7 @@ declare interface IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<
    */
   hostMetadata: HostMetadata;
 }
-declare interface IncomingRequestCfPropertiesCloudflareAccessOrApiShield {
+export interface IncomingRequestCfPropertiesCloudflareAccessOrApiShield {
   /**
    * Information about the client certificate presented to Cloudflare.
    *
@@ -2393,7 +2399,7 @@ declare interface IncomingRequestCfPropertiesCloudflareAccessOrApiShield {
 /**
  * Metadata about the request's TLS handshake
  */
-declare interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
+export interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
   /**
    * The client's [`HELLO` message](https://www.rfc-editor.org/rfc/rfc5246#section-7.4.1.2), encoded in hexadecimal
    *
@@ -2422,7 +2428,7 @@ declare interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
 /**
  * Geographic data about the request's origin.
  */
-declare interface IncomingRequestCfPropertiesGeographicInformation {
+export interface IncomingRequestCfPropertiesGeographicInformation {
   /**
    * The [ISO 3166-1 Alpha 2](https://www.iso.org/iso-3166-country-codes.html) country code the request originated from.
    *
@@ -2499,7 +2505,7 @@ declare interface IncomingRequestCfPropertiesGeographicInformation {
   metroCode?: string;
 }
 /** Data about the incoming request's TLS certificate */
-declare interface IncomingRequestCfPropertiesTLSClientAuth {
+export interface IncomingRequestCfPropertiesTLSClientAuth {
   /** Always `"1"`, indicating that the certificate was presented */
   certPresented: "1";
   /**
@@ -2592,7 +2598,7 @@ declare interface IncomingRequestCfPropertiesTLSClientAuth {
   certNotAfter: string;
 }
 /** Placeholder values for TLS Client Authorization */
-declare interface IncomingRequestCfPropertiesTLSClientAuthPlaceholder {
+export interface IncomingRequestCfPropertiesTLSClientAuthPlaceholder {
   certPresented: "0";
   certVerified: "NONE";
   certRevoked: "0";
@@ -2612,7 +2618,7 @@ declare interface IncomingRequestCfPropertiesTLSClientAuthPlaceholder {
   certNotAfter: "";
 }
 /** Possible outcomes of TLS verification */
-declare type CertVerificationStatus =
+export type CertVerificationStatus =
   /** Authentication succeeded */
   | "SUCCESS"
   /** No certificate was presented */
@@ -2630,7 +2636,7 @@ declare type CertVerificationStatus =
 /**
  * An upstream endpoint's response to a TCP `keepalive` message from Cloudflare.
  */
-declare type IncomingRequestCfPropertiesEdgeRequestKeepAliveStatus =
+export type IncomingRequestCfPropertiesEdgeRequestKeepAliveStatus =
   | 0 /** Unknown */
   | 1 /** no keepalives (not found) */
   | 2 /** no connection re-use, opening keepalive connection failed */
@@ -2638,7 +2644,7 @@ declare type IncomingRequestCfPropertiesEdgeRequestKeepAliveStatus =
   | 4 /** connection re-use, refused by the origin server (`TCP FIN`) */
   | 5; /** connection re-use, accepted by the origin server */
 /** ISO 3166-1 Alpha-2 codes */
-declare type Iso3166Alpha2Code =
+export type Iso3166Alpha2Code =
   | "AD"
   | "AE"
   | "AF"
@@ -2889,30 +2895,30 @@ declare type Iso3166Alpha2Code =
   | "ZM"
   | "ZW";
 /** The 2-letter continent codes Cloudflare uses */
-declare type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
-declare type CfProperties<HostMetadata = unknown> =
+export type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
+export type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
 // Copyright (c) 2022-2023 Cloudflare, Inc.
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
 //     https://opensource.org/licenses/Apache-2.0
-declare interface D1Result<T = unknown> {
+export interface D1Result<T = unknown> {
   results: T[];
   success: true;
   meta: any;
   error?: never;
 }
-declare interface D1ExecResult {
+export interface D1ExecResult {
   count: number;
   duration: number;
 }
-declare abstract class D1Database {
+export declare abstract class D1Database {
   prepare(query: string): D1PreparedStatement;
   dump(): Promise<ArrayBuffer>;
   batch<T = unknown>(statements: D1PreparedStatement[]): Promise<D1Result<T>[]>;
   exec(query: string): Promise<D1ExecResult>;
 }
-declare abstract class D1PreparedStatement {
+export declare abstract class D1PreparedStatement {
   bind(...values: unknown[]): D1PreparedStatement;
   first<T = unknown>(colName: string): Promise<T | null>;
   first<T = Record<string, unknown>>(): Promise<T | null>;
@@ -2926,7 +2932,7 @@ declare abstract class D1PreparedStatement {
 /**
  * An email message that can be sent from a Worker.
  */
-declare interface EmailMessage {
+export interface EmailMessage {
   /**
    * Envelope From attribute of the email message.
    */
@@ -2939,7 +2945,7 @@ declare interface EmailMessage {
 /**
  * An email message that is sent to a consumer Worker and can be rejected/forwarded.
  */
-declare interface ForwardableEmailMessage extends EmailMessage {
+export interface ForwardableEmailMessage extends EmailMessage {
   /**
    * Stream of the email message content.
    */
@@ -2969,29 +2975,22 @@ declare interface ForwardableEmailMessage extends EmailMessage {
 /**
  * A binding that allows a Worker to send email messages.
  */
-declare interface SendEmail {
+export interface SendEmail {
   send(message: EmailMessage): Promise<void>;
 }
-declare abstract class EmailEvent extends ExtendableEvent {
+export declare abstract class EmailEvent extends ExtendableEvent {
   readonly message: ForwardableEmailMessage;
 }
-declare type EmailExportedHandler<Env = unknown> = (
+export type EmailExportedHandler<Env = unknown> = (
   message: ForwardableEmailMessage,
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-declare module "cloudflare:email" {
-  let _EmailMessage: {
-    prototype: EmailMessage;
-    new (from: string, to: string, raw: ReadableStream | string): EmailMessage;
-  };
-  export { _EmailMessage as EmailMessage };
-}
 // Copyright (c) 2022-2023 Cloudflare, Inc.
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
 //     https://opensource.org/licenses/Apache-2.0
-declare type Params<P extends string = any> = Record<P, string | string[]>;
-declare type EventContext<Env, P extends string, Data> = {
+export type Params<P extends string = any> = Record<P, string | string[]>;
+export type EventContext<Env, P extends string, Data> = {
   request: Request;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
@@ -3005,12 +3004,12 @@ declare type EventContext<Env, P extends string, Data> = {
   params: Params<P>;
   data: Data;
 };
-declare type PagesFunction<
+export type PagesFunction<
   Env = unknown,
   Params extends string = any,
   Data extends Record<string, unknown> = Record<string, unknown>
 > = (context: EventContext<Env, Params, Data>) => Response | Promise<Response>;
-declare type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
+export type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
   request: Request;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
@@ -3025,7 +3024,7 @@ declare type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
   data: Data;
   pluginArgs: PluginArgs;
 };
-declare type PagesPluginFunction<
+export type PagesPluginFunction<
   Env = unknown,
   Params extends string = any,
   Data extends Record<string, unknown> = Record<string, unknown>,
@@ -3033,9 +3032,6 @@ declare type PagesPluginFunction<
 > = (
   context: EventPluginContext<Env, Params, Data, PluginArgs>
 ) => Response | Promise<Response>;
-declare module "assets:*" {
-  export const onRequest: PagesFunction;
-}
 // Copyright (c) 2023 Cloudflare, Inc.
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
 //     https://opensource.org/licenses/Apache-2.0
@@ -3043,7 +3039,7 @@ declare module "assets:*" {
 // PubSubMessage represents an incoming PubSub message.
 // The message includes metadata about the broker, the client, and the payload
 // itself.
-declare interface PubSubMessage {
+export interface PubSubMessage {
   // Message ID
   readonly mid: number;
   // MQTT broker FQDN in the form mqtts://BROKER.NAMESPACE.cloudflarepubsub.com:PORT
@@ -3069,25 +3065,15 @@ declare interface PubSubMessage {
   payload: string | Uint8Array;
 }
 // JsonWebKey extended by kid parameter
-declare interface JsonWebKeyWithKid extends JsonWebKey {
+export interface JsonWebKeyWithKid extends JsonWebKey {
   // Key Identifier of the JWK
   readonly kid: string;
 }
 // Copyright (c) 2023 Cloudflare, Inc.
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
 //     https://opensource.org/licenses/Apache-2.0
-declare module "cloudflare:sockets" {
-  function _connect(
-    address: string | SocketAddress,
-    options?: SocketOptions
-  ): Socket;
-  export { _connect as connect };
-}
-// Copyright (c) 2023 Cloudflare, Inc.
-// Licensed under the Apache 2.0 license found in the LICENSE file or at:
-//     https://opensource.org/licenses/Apache-2.0
 // https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/
-declare interface DynamicDispatchLimits {
+export interface DynamicDispatchLimits {
   /**
    * Limit CPU time in milliseconds.
    */
@@ -3097,7 +3083,7 @@ declare interface DynamicDispatchLimits {
    */
   subRequests?: number;
 }
-declare interface DynamicDispatchOptions {
+export interface DynamicDispatchOptions {
   /**
    * Limit resources of invoked Worker script.
    */
@@ -3109,7 +3095,7 @@ declare interface DynamicDispatchOptions {
     [key: string]: any;
   };
 }
-declare interface DispatchNamespace {
+export interface DispatchNamespace {
   /**
    * @param name Name of the Worker script.
    * @param args Arguments to Worker script.

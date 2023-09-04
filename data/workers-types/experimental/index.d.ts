@@ -884,8 +884,11 @@ declare class TextDecoder {
 }
 declare class TextEncoder {
   constructor();
-  encode(input?: string): Uint8Array;
-  encodeInto(input: string, buffer: Uint8Array): TextEncoderEncodeIntoResult;
+  encode(input?: string): ArrayBuffer | ArrayBufferView;
+  encodeInto(
+    input: string,
+    buffer: ArrayBuffer | ArrayBufferView
+  ): TextEncoderEncodeIntoResult;
   get encoding(): string;
 }
 declare interface TextDecoderConstructorOptions {

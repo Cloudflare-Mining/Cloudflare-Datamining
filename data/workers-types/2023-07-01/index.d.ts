@@ -203,6 +203,10 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   TransformStream: typeof TransformStream;
   ByteLengthQueuingStrategy: typeof ByteLengthQueuingStrategy;
   CountQueuingStrategy: typeof CountQueuingStrategy;
+  ReadableStreamBYOBRequest: typeof ReadableStreamBYOBRequest;
+  ReadableStreamDefaultController: typeof ReadableStreamDefaultController;
+  ReadableByteStreamController: typeof ReadableByteStreamController;
+  WritableStreamDefaultController: typeof WritableStreamDefaultController;
   CompressionStream: typeof CompressionStream;
   DecompressionStream: typeof DecompressionStream;
   TextEncoderStream: typeof TextEncoderStream;
@@ -999,6 +1003,7 @@ declare class Headers {
   constructor(init?: HeadersInit);
   get(name: string): string | null;
   getAll(name: string): string[];
+  getSetCookie(): string[];
   has(name: string): boolean;
   set(name: string, value: string): void;
   append(name: string, value: string): void;
@@ -1540,27 +1545,26 @@ declare class ReadableStreamBYOBReader {
 declare interface ReadableStreamGetReaderOptions {
   mode: "byob";
 }
-declare interface ReadableStreamBYOBRequest {
+declare abstract class ReadableStreamBYOBRequest {
   readonly view: Uint8Array | null;
   respond(bytesWritten: number): void;
   respondWithNewView(view: ArrayBuffer | ArrayBufferView): void;
   readonly atLeast: number | null;
 }
-declare interface ReadableStreamDefaultController<R = any> {
+declare abstract class ReadableStreamDefaultController<R = any> {
   readonly desiredSize: number | null;
   close(): void;
   enqueue(chunk?: R): void;
   error(reason: any): void;
 }
-declare interface ReadableByteStreamController {
+declare abstract class ReadableByteStreamController {
   readonly byobRequest: ReadableStreamBYOBRequest | null;
   readonly desiredSize: number | null;
   close(): void;
   enqueue(chunk: ArrayBuffer | ArrayBufferView): void;
   error(reason: any): void;
 }
-/** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
-declare interface WritableStreamDefaultController {
+declare abstract class WritableStreamDefaultController {
   readonly signal: AbortSignal;
   error(reason?: any): void;
 }
@@ -1749,9 +1753,9 @@ declare interface UnsafeTraceMetrics {
 }
 declare class URL {
   constructor(url: string | URL, base?: string | URL);
+  get origin(): string;
   get href(): string;
   set href(value: string);
-  get origin(): string;
   get protocol(): string;
   set protocol(value: string);
   get username(): string;
@@ -1768,26 +1772,23 @@ declare class URL {
   set pathname(value: string);
   get search(): string;
   set search(value: string);
-  get searchParams(): URLSearchParams;
   get hash(): string;
   set hash(value: string);
-  toString(): string;
+  get searchParams(): URLSearchParams;
   toJSON(): string;
+  toString(): string;
+  static canParse(url: string, base?: string): boolean;
 }
 declare class URLSearchParams {
   constructor(
-    init?:
-      | URLSearchParams
-      | string
-      | Record<string, string>
-      | [key: string, value: string][]
+    init?: Iterable<Iterable<string>> | Record<string, string> | string
   );
   get size(): number;
   append(name: string, value: string): void;
-  delete(name: string): void;
+  delete(name: string, value?: string): void;
   get(name: string): string | null;
   getAll(name: string): string[];
-  has(name: string): boolean;
+  has(name: string, value?: string): boolean;
   set(name: string, value: string): void;
   sort(): void;
   entries(): IterableIterator<[key: string, value: string]>;
