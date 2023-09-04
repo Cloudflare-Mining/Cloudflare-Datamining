@@ -21,7 +21,7 @@
 	"enabled": true,
 	"fileExtension": "msi",
 	"is_latest": true,
-	"release_notes": "This release contains reliability improvements and general bug fixes.\n \n## Notable updates\n- Fixed an issue where DNS could temporarily fail when DHCP updates were processed\n- Fixed an issue where Learn More links on unable to connect errors in the UI were pointing to the wrong place\n- Fixed an issue on initial device registration that could sometimes cause it to fail and try again\n- Fixed issue where UI could appear in the wrong location when app starts\n- Fixed issue that was causing Windows BSOD (DPC_WATCHDOG_VIOLATION)\n  \n## Known issues\n- No known issues\n",
+	"release_notes": "This release contains reliability improvements and general bug fixes.\n \n## Notable updates\n- Fixed an issue that was causing Windows BSOD (DPC_WATCHDOG_VIOLATION)\n- Fixed an issue where DNS could temporarily fail when DHCP updates were processed\n- Fixed an issue where Learn More links on \"unable to connect\" errors in the UI were pointing to the wrong place\n- Fixed an issue on initial device registration that could sometimes cause it to fail and try again\n- Fixed an issue where UI could appear in the wrong location when the app starts\n  \n## Known issues\n- No known issues\n",
 	"is_udid_provisioned": null,
 	"can_resign": null,
 	"package_hashes": [
