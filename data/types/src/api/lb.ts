@@ -5,6 +5,7 @@ export const Origin = eg.object({
   address: eg.any.optional,
   name: eg.string.optional,
   disabled_at: eg.string.optional,
+  virtual_network_id: eg.string.optional,
   enabled: eg.boolean.optional,
   weight: eg.number.optional,
   header: eg.object({
