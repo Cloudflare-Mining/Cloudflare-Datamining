@@ -50,6 +50,7 @@
 				"name": "dateStart",
 				"schema": {
 					"description": "Start of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
 					"format": "date-time",
 					"type": "string"
 				}
@@ -59,6 +60,7 @@
 				"name": "dateEnd",
 				"schema": {
 					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
 					"format": "date-time",
 					"type": "string"
 				}
@@ -344,6 +346,7 @@
 				"name": "dateStart",
 				"schema": {
 					"description": "Start of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
 					"format": "date-time",
 					"type": "string"
 				}
@@ -353,6 +356,7 @@
 				"name": "dateEnd",
 				"schema": {
 					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
 					"format": "date-time",
 					"type": "string"
 				}
