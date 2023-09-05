@@ -163,7 +163,7 @@ export const SubscriptionRatePlan = eg.object({
   scope: SubscriptionScope,
   externally_managed: eg.boolean,
   is_contract: eg.boolean,
-  is_ent_ss_purchase: eg.boolean.optional,
+  is_contract_ss: eg.boolean.optional,
   sets: eg.array(SubscriptionSet)
 });
 
