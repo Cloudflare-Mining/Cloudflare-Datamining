@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.2
+
+### Patch Changes
+
+- 4c6b62be21: added support for the `children` prop to the `Modal` Typescript definitions
+
 ## 7.1.1
 
 ### Patch Changes

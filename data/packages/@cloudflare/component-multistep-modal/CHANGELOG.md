@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.0.20
+
+### Patch Changes
+
+- Updated dependencies [4c6b62be21]
+  - @cloudflare/component-modal@7.1.2
+
 ## 3.0.19
 
 ### Patch Changes
