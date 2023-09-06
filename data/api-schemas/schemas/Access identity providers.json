@@ -323,6 +323,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"conditional_access_enabled": {
 																							"description": "Should Cloudflare try to load authentication contexts from your account",
 																							"type": "boolean"
@@ -421,6 +443,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -678,19 +722,45 @@
 																{
 																	"properties": {
 																		"config": {
-																			"properties": {
-																				"client_id": {
-																					"description": "Your OAuth Client ID",
-																					"example": "<your client id>",
-																					"type": "string"
+																			"allOf": [
+																				{
+																					"properties": {
+																						"client_id": {
+																							"description": "Your OAuth Client ID",
+																							"example": "<your client id>",
+																							"type": "string"
+																						},
+																						"client_secret": {
+																							"description": "Your OAuth Client Secret",
+																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
-																				"client_secret": {
-																					"description": "Your OAuth Client Secret",
-																					"example": "<your client secret>",
-																					"type": "string"
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
-																			},
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"type": "object"
@@ -772,6 +842,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -959,6 +1051,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"auth_url": {
 																							"description": "The authorization_endpoint URL of your IdP",
 																							"example": "https://accounts.google.com/o/oauth2/auth",
@@ -1078,6 +1192,33 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"authorization_server_id": {
+																							"description": "Your okta authorization server id",
+																							"example": "aus9o8wzkhckw9TLa0h7z",
+																							"type": "string"
+																						},
 																						"okta_account": {
 																							"description": "Your okta account url",
 																							"example": "https://dev-abc123.oktapreview.com",
@@ -1175,6 +1316,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"onelogin_account": {
 																							"description": "Your OneLogin account url",
 																							"example": "https://mycompany.onelogin.com",
@@ -1265,6 +1428,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -1826,6 +2011,28 @@
 																			},
 																			{
 																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
 																					"conditional_access_enabled": {
 																						"description": "Should Cloudflare try to load authentication contexts from your account",
 																						"type": "boolean"
@@ -1924,6 +2131,28 @@
 																					"client_secret": {
 																						"description": "Your OAuth Client Secret",
 																						"example": "<your client secret>",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
 																						"type": "string"
 																					}
 																				},
@@ -2181,19 +2410,45 @@
 															{
 																"properties": {
 																	"config": {
-																		"properties": {
-																			"client_id": {
-																				"description": "Your OAuth Client ID",
-																				"example": "<your client id>",
-																				"type": "string"
+																		"allOf": [
+																			{
+																				"properties": {
+																					"client_id": {
+																						"description": "Your OAuth Client ID",
+																						"example": "<your client id>",
+																						"type": "string"
+																					},
+																					"client_secret": {
+																						"description": "Your OAuth Client Secret",
+																						"example": "<your client secret>",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
 																			},
-																			"client_secret": {
-																				"description": "Your OAuth Client Secret",
-																				"example": "<your client secret>",
-																				"type": "string"
+																			{
+																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
 																			}
-																		},
-																		"type": "object"
+																		]
 																	}
 																},
 																"type": "object"
@@ -2275,6 +2530,28 @@
 																					"client_secret": {
 																						"description": "Your OAuth Client Secret",
 																						"example": "<your client secret>",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
 																						"type": "string"
 																					}
 																				},
@@ -2462,6 +2739,28 @@
 																			},
 																			{
 																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
 																					"auth_url": {
 																						"description": "The authorization_endpoint URL of your IdP",
 																						"example": "https://accounts.google.com/o/oauth2/auth",
@@ -2581,6 +2880,33 @@
 																			},
 																			{
 																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"authorization_server_id": {
+																						"description": "Your okta authorization server id",
+																						"example": "aus9o8wzkhckw9TLa0h7z",
+																						"type": "string"
+																					},
 																					"okta_account": {
 																						"description": "Your okta account url",
 																						"example": "https://dev-abc123.oktapreview.com",
@@ -2678,6 +3004,28 @@
 																			},
 																			{
 																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
 																					"onelogin_account": {
 																						"description": "Your OneLogin account url",
 																						"example": "https://mycompany.onelogin.com",
@@ -2768,6 +3116,28 @@
 																					"client_secret": {
 																						"description": "Your OAuth Client Secret",
 																						"example": "<your client secret>",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"claims": {
+																						"description": "Custom claims",
+																						"example": [
+																							"email_verified",
+																							"preferred_username",
+																							"custom_claim_name"
+																						],
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"email_claim_name": {
+																						"description": "The claim name for email in the id_token response.",
+																						"example": "custom_claim_name",
 																						"type": "string"
 																					}
 																				},
@@ -3223,6 +3593,28 @@
 																					},
 																					{
 																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
 																							"conditional_access_enabled": {
 																								"description": "Should Cloudflare try to load authentication contexts from your account",
 																								"type": "boolean"
@@ -3321,6 +3713,28 @@
 																							"client_secret": {
 																								"description": "Your OAuth Client Secret",
 																								"example": "<your client secret>",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
 																								"type": "string"
 																							}
 																						},
@@ -3578,19 +3992,45 @@
 																	{
 																		"properties": {
 																			"config": {
-																				"properties": {
-																					"client_id": {
-																						"description": "Your OAuth Client ID",
-																						"example": "<your client id>",
-																						"type": "string"
+																				"allOf": [
+																					{
+																						"properties": {
+																							"client_id": {
+																								"description": "Your OAuth Client ID",
+																								"example": "<your client id>",
+																								"type": "string"
+																							},
+																							"client_secret": {
+																								"description": "Your OAuth Client Secret",
+																								"example": "<your client secret>",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
 																					},
-																					"client_secret": {
-																						"description": "Your OAuth Client Secret",
-																						"example": "<your client secret>",
-																						"type": "string"
+																					{
+																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
 																					}
-																				},
-																				"type": "object"
+																				]
 																			}
 																		},
 																		"type": "object"
@@ -3672,6 +4112,28 @@
 																							"client_secret": {
 																								"description": "Your OAuth Client Secret",
 																								"example": "<your client secret>",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
 																								"type": "string"
 																							}
 																						},
@@ -3859,6 +4321,28 @@
 																					},
 																					{
 																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
 																							"auth_url": {
 																								"description": "The authorization_endpoint URL of your IdP",
 																								"example": "https://accounts.google.com/o/oauth2/auth",
@@ -3978,6 +4462,33 @@
 																					},
 																					{
 																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"authorization_server_id": {
+																								"description": "Your okta authorization server id",
+																								"example": "aus9o8wzkhckw9TLa0h7z",
+																								"type": "string"
+																							},
 																							"okta_account": {
 																								"description": "Your okta account url",
 																								"example": "https://dev-abc123.oktapreview.com",
@@ -4075,6 +4586,28 @@
 																					},
 																					{
 																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
 																							"onelogin_account": {
 																								"description": "Your OneLogin account url",
 																								"example": "https://mycompany.onelogin.com",
@@ -4165,6 +4698,28 @@
 																							"client_secret": {
 																								"description": "Your OAuth Client Secret",
 																								"example": "<your client secret>",
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"claims": {
+																								"description": "Custom claims",
+																								"example": [
+																									"email_verified",
+																									"preferred_username",
+																									"custom_claim_name"
+																								],
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"email_claim_name": {
+																								"description": "The claim name for email in the id_token response.",
+																								"example": "custom_claim_name",
 																								"type": "string"
 																							}
 																						},
@@ -4721,6 +5276,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"conditional_access_enabled": {
 																					"description": "Should Cloudflare try to load authentication contexts from your account",
 																					"type": "boolean"
@@ -4819,6 +5396,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -5076,19 +5675,45 @@
 														{
 															"properties": {
 																"config": {
-																	"properties": {
-																		"client_id": {
-																			"description": "Your OAuth Client ID",
-																			"example": "<your client id>",
-																			"type": "string"
+																	"allOf": [
+																		{
+																			"properties": {
+																				"client_id": {
+																					"description": "Your OAuth Client ID",
+																					"example": "<your client id>",
+																					"type": "string"
+																				},
+																				"client_secret": {
+																					"description": "Your OAuth Client Secret",
+																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
-																		"client_secret": {
-																			"description": "Your OAuth Client Secret",
-																			"example": "<your client secret>",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		}
-																	},
-																	"type": "object"
+																	]
 																}
 															},
 															"type": "object"
@@ -5170,6 +5795,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -5357,6 +6004,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"auth_url": {
 																					"description": "The authorization_endpoint URL of your IdP",
 																					"example": "https://accounts.google.com/o/oauth2/auth",
@@ -5476,6 +6145,33 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"authorization_server_id": {
+																					"description": "Your okta authorization server id",
+																					"example": "aus9o8wzkhckw9TLa0h7z",
+																					"type": "string"
+																				},
 																				"okta_account": {
 																					"description": "Your okta account url",
 																					"example": "https://dev-abc123.oktapreview.com",
@@ -5573,6 +6269,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"onelogin_account": {
 																					"description": "Your OneLogin account url",
 																					"example": "https://mycompany.onelogin.com",
@@ -5663,6 +6381,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -6093,6 +6833,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"conditional_access_enabled": {
 																							"description": "Should Cloudflare try to load authentication contexts from your account",
 																							"type": "boolean"
@@ -6191,6 +6953,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -6448,19 +7232,45 @@
 																{
 																	"properties": {
 																		"config": {
-																			"properties": {
-																				"client_id": {
-																					"description": "Your OAuth Client ID",
-																					"example": "<your client id>",
-																					"type": "string"
+																			"allOf": [
+																				{
+																					"properties": {
+																						"client_id": {
+																							"description": "Your OAuth Client ID",
+																							"example": "<your client id>",
+																							"type": "string"
+																						},
+																						"client_secret": {
+																							"description": "Your OAuth Client Secret",
+																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
-																				"client_secret": {
-																					"description": "Your OAuth Client Secret",
-																					"example": "<your client secret>",
-																					"type": "string"
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
-																			},
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"type": "object"
@@ -6542,6 +7352,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -6729,6 +7561,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"auth_url": {
 																							"description": "The authorization_endpoint URL of your IdP",
 																							"example": "https://accounts.google.com/o/oauth2/auth",
@@ -6848,6 +7702,33 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"authorization_server_id": {
+																							"description": "Your okta authorization server id",
+																							"example": "aus9o8wzkhckw9TLa0h7z",
+																							"type": "string"
+																						},
 																						"okta_account": {
 																							"description": "Your okta account url",
 																							"example": "https://dev-abc123.oktapreview.com",
@@ -6945,6 +7826,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"onelogin_account": {
 																							"description": "Your OneLogin account url",
 																							"example": "https://mycompany.onelogin.com",
@@ -7035,6 +7938,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -7476,6 +8401,28 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
 															"conditional_access_enabled": {
 																"description": "Should Cloudflare try to load authentication contexts from your account",
 																"type": "boolean"
@@ -7574,6 +8521,28 @@
 															"client_secret": {
 																"description": "Your OAuth Client Secret",
 																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
 																"type": "string"
 															}
 														},
@@ -7831,19 +8800,45 @@
 									{
 										"properties": {
 											"config": {
-												"properties": {
-													"client_id": {
-														"description": "Your OAuth Client ID",
-														"example": "<your client id>",
-														"type": "string"
+												"allOf": [
+													{
+														"properties": {
+															"client_id": {
+																"description": "Your OAuth Client ID",
+																"example": "<your client id>",
+																"type": "string"
+															},
+															"client_secret": {
+																"description": "Your OAuth Client Secret",
+																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
-													"client_secret": {
-														"description": "Your OAuth Client Secret",
-														"example": "<your client secret>",
-														"type": "string"
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
-												},
-												"type": "object"
+												]
 											}
 										},
 										"type": "object"
@@ -7925,6 +8920,28 @@
 															"client_secret": {
 																"description": "Your OAuth Client Secret",
 																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
 																"type": "string"
 															}
 														},
@@ -8112,6 +9129,28 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
 															"auth_url": {
 																"description": "The authorization_endpoint URL of your IdP",
 																"example": "https://accounts.google.com/o/oauth2/auth",
@@ -8231,6 +9270,33 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"authorization_server_id": {
+																"description": "Your okta authorization server id",
+																"example": "aus9o8wzkhckw9TLa0h7z",
+																"type": "string"
+															},
 															"okta_account": {
 																"description": "Your okta account url",
 																"example": "https://dev-abc123.oktapreview.com",
@@ -8328,6 +9394,28 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
 															"onelogin_account": {
 																"description": "Your OneLogin account url",
 																"example": "https://mycompany.onelogin.com",
@@ -8418,6 +9506,28 @@
 															"client_secret": {
 																"description": "Your OAuth Client Secret",
 																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
 																"type": "string"
 															}
 														},
@@ -8843,6 +9953,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"conditional_access_enabled": {
 																					"description": "Should Cloudflare try to load authentication contexts from your account",
 																					"type": "boolean"
@@ -8941,6 +10073,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -9198,19 +10352,45 @@
 														{
 															"properties": {
 																"config": {
-																	"properties": {
-																		"client_id": {
-																			"description": "Your OAuth Client ID",
-																			"example": "<your client id>",
-																			"type": "string"
+																	"allOf": [
+																		{
+																			"properties": {
+																				"client_id": {
+																					"description": "Your OAuth Client ID",
+																					"example": "<your client id>",
+																					"type": "string"
+																				},
+																				"client_secret": {
+																					"description": "Your OAuth Client Secret",
+																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
-																		"client_secret": {
-																			"description": "Your OAuth Client Secret",
-																			"example": "<your client secret>",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		}
-																	},
-																	"type": "object"
+																	]
 																}
 															},
 															"type": "object"
@@ -9292,6 +10472,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -9479,6 +10681,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"auth_url": {
 																					"description": "The authorization_endpoint URL of your IdP",
 																					"example": "https://accounts.google.com/o/oauth2/auth",
@@ -9598,6 +10822,33 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"authorization_server_id": {
+																					"description": "Your okta authorization server id",
+																					"example": "aus9o8wzkhckw9TLa0h7z",
+																					"type": "string"
+																				},
 																				"okta_account": {
 																					"description": "Your okta account url",
 																					"example": "https://dev-abc123.oktapreview.com",
@@ -9695,6 +10946,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"onelogin_account": {
 																					"description": "Your OneLogin account url",
 																					"example": "https://mycompany.onelogin.com",
@@ -9785,6 +11058,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -10215,6 +11510,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"conditional_access_enabled": {
 																							"description": "Should Cloudflare try to load authentication contexts from your account",
 																							"type": "boolean"
@@ -10313,6 +11630,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -10570,19 +11909,45 @@
 																{
 																	"properties": {
 																		"config": {
-																			"properties": {
-																				"client_id": {
-																					"description": "Your OAuth Client ID",
-																					"example": "<your client id>",
-																					"type": "string"
+																			"allOf": [
+																				{
+																					"properties": {
+																						"client_id": {
+																							"description": "Your OAuth Client ID",
+																							"example": "<your client id>",
+																							"type": "string"
+																						},
+																						"client_secret": {
+																							"description": "Your OAuth Client Secret",
+																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
-																				"client_secret": {
-																					"description": "Your OAuth Client Secret",
-																					"example": "<your client secret>",
-																					"type": "string"
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
-																			},
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"type": "object"
@@ -10664,6 +12029,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -10851,6 +12238,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"auth_url": {
 																							"description": "The authorization_endpoint URL of your IdP",
 																							"example": "https://accounts.google.com/o/oauth2/auth",
@@ -10970,6 +12379,33 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"authorization_server_id": {
+																							"description": "Your okta authorization server id",
+																							"example": "aus9o8wzkhckw9TLa0h7z",
+																							"type": "string"
+																						},
 																						"okta_account": {
 																							"description": "Your okta account url",
 																							"example": "https://dev-abc123.oktapreview.com",
@@ -11067,6 +12503,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"onelogin_account": {
 																							"description": "Your OneLogin account url",
 																							"example": "https://mycompany.onelogin.com",
@@ -11157,6 +12615,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -11610,6 +13090,28 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
 															"conditional_access_enabled": {
 																"description": "Should Cloudflare try to load authentication contexts from your account",
 																"type": "boolean"
@@ -11708,6 +13210,28 @@
 															"client_secret": {
 																"description": "Your OAuth Client Secret",
 																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
 																"type": "string"
 															}
 														},
@@ -11965,19 +13489,45 @@
 									{
 										"properties": {
 											"config": {
-												"properties": {
-													"client_id": {
-														"description": "Your OAuth Client ID",
-														"example": "<your client id>",
-														"type": "string"
+												"allOf": [
+													{
+														"properties": {
+															"client_id": {
+																"description": "Your OAuth Client ID",
+																"example": "<your client id>",
+																"type": "string"
+															},
+															"client_secret": {
+																"description": "Your OAuth Client Secret",
+																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													},
-													"client_secret": {
-														"description": "Your OAuth Client Secret",
-														"example": "<your client secret>",
-														"type": "string"
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
-												},
-												"type": "object"
+												]
 											}
 										},
 										"type": "object"
@@ -12059,6 +13609,28 @@
 															"client_secret": {
 																"description": "Your OAuth Client Secret",
 																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
 																"type": "string"
 															}
 														},
@@ -12246,6 +13818,28 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
 															"auth_url": {
 																"description": "The authorization_endpoint URL of your IdP",
 																"example": "https://accounts.google.com/o/oauth2/auth",
@@ -12365,6 +13959,33 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"authorization_server_id": {
+																"description": "Your okta authorization server id",
+																"example": "aus9o8wzkhckw9TLa0h7z",
+																"type": "string"
+															},
 															"okta_account": {
 																"description": "Your okta account url",
 																"example": "https://dev-abc123.oktapreview.com",
@@ -12462,6 +14083,28 @@
 													},
 													{
 														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
 															"onelogin_account": {
 																"description": "Your OneLogin account url",
 																"example": "https://mycompany.onelogin.com",
@@ -12552,6 +14195,28 @@
 															"client_secret": {
 																"description": "Your OAuth Client Secret",
 																"example": "<your client secret>",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"claims": {
+																"description": "Custom claims",
+																"example": [
+																	"email_verified",
+																	"preferred_username",
+																	"custom_claim_name"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"email_claim_name": {
+																"description": "The claim name for email in the id_token response.",
+																"example": "custom_claim_name",
 																"type": "string"
 															}
 														},
@@ -12977,6 +14642,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"conditional_access_enabled": {
 																					"description": "Should Cloudflare try to load authentication contexts from your account",
 																					"type": "boolean"
@@ -13075,6 +14762,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -13332,19 +15041,45 @@
 														{
 															"properties": {
 																"config": {
-																	"properties": {
-																		"client_id": {
-																			"description": "Your OAuth Client ID",
-																			"example": "<your client id>",
-																			"type": "string"
+																	"allOf": [
+																		{
+																			"properties": {
+																				"client_id": {
+																					"description": "Your OAuth Client ID",
+																					"example": "<your client id>",
+																					"type": "string"
+																				},
+																				"client_secret": {
+																					"description": "Your OAuth Client Secret",
+																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		},
-																		"client_secret": {
-																			"description": "Your OAuth Client Secret",
-																			"example": "<your client secret>",
-																			"type": "string"
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		}
-																	},
-																	"type": "object"
+																	]
 																}
 															},
 															"type": "object"
@@ -13426,6 +15161,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -13613,6 +15370,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"auth_url": {
 																					"description": "The authorization_endpoint URL of your IdP",
 																					"example": "https://accounts.google.com/o/oauth2/auth",
@@ -13732,6 +15511,33 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"authorization_server_id": {
+																					"description": "Your okta authorization server id",
+																					"example": "aus9o8wzkhckw9TLa0h7z",
+																					"type": "string"
+																				},
 																				"okta_account": {
 																					"description": "Your okta account url",
 																					"example": "https://dev-abc123.oktapreview.com",
@@ -13829,6 +15635,28 @@
 																		},
 																		{
 																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
 																				"onelogin_account": {
 																					"description": "Your OneLogin account url",
 																					"example": "https://mycompany.onelogin.com",
@@ -13919,6 +15747,28 @@
 																				"client_secret": {
 																					"description": "Your OAuth Client Secret",
 																					"example": "<your client secret>",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"claims": {
+																					"description": "Custom claims",
+																					"example": [
+																						"email_verified",
+																						"preferred_username",
+																						"custom_claim_name"
+																					],
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"email_claim_name": {
+																					"description": "The claim name for email in the id_token response.",
+																					"example": "custom_claim_name",
 																					"type": "string"
 																				}
 																			},
@@ -14349,6 +16199,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"conditional_access_enabled": {
 																							"description": "Should Cloudflare try to load authentication contexts from your account",
 																							"type": "boolean"
@@ -14447,6 +16319,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -14704,19 +16598,45 @@
 																{
 																	"properties": {
 																		"config": {
-																			"properties": {
-																				"client_id": {
-																					"description": "Your OAuth Client ID",
-																					"example": "<your client id>",
-																					"type": "string"
+																			"allOf": [
+																				{
+																					"properties": {
+																						"client_id": {
+																							"description": "Your OAuth Client ID",
+																							"example": "<your client id>",
+																							"type": "string"
+																						},
+																						"client_secret": {
+																							"description": "Your OAuth Client Secret",
+																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				},
-																				"client_secret": {
-																					"description": "Your OAuth Client Secret",
-																					"example": "<your client secret>",
-																					"type": "string"
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
-																			},
-																			"type": "object"
+																			]
 																		}
 																	},
 																	"type": "object"
@@ -14798,6 +16718,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
@@ -14985,6 +16927,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"auth_url": {
 																							"description": "The authorization_endpoint URL of your IdP",
 																							"example": "https://accounts.google.com/o/oauth2/auth",
@@ -15104,6 +17068,33 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"authorization_server_id": {
+																							"description": "Your okta authorization server id",
+																							"example": "aus9o8wzkhckw9TLa0h7z",
+																							"type": "string"
+																						},
 																						"okta_account": {
 																							"description": "Your okta account url",
 																							"example": "https://dev-abc123.oktapreview.com",
@@ -15201,6 +17192,28 @@
 																				},
 																				{
 																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
 																						"onelogin_account": {
 																							"description": "Your OneLogin account url",
 																							"example": "https://mycompany.onelogin.com",
@@ -15291,6 +17304,28 @@
 																						"client_secret": {
 																							"description": "Your OAuth Client Secret",
 																							"example": "<your client secret>",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"claims": {
+																							"description": "Custom claims",
+																							"example": [
+																								"email_verified",
+																								"preferred_username",
+																								"custom_claim_name"
+																							],
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"email_claim_name": {
+																							"description": "The claim name for email in the id_token response.",
+																							"example": "custom_claim_name",
 																							"type": "string"
 																						}
 																					},
