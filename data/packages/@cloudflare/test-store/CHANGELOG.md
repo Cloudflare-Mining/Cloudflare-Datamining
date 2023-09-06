@@ -1,80 +1,56 @@
 # Change Log
 
+## 1.0.29
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [1.0.28](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.25...@cloudflare/test-store@1.0.28) (2021-10-28)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
-
-
-
-
+- **stratus:** UI-000: Ran yarn run v1.18.0 ([54f1c7e](http://stash.cfops.it:7999/fe/stratus/commits/54f1c7e))
 
 ## [1.0.25](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.24...@cloudflare/test-store@1.0.25) (2021-04-23)
 
 **Note:** Version bump only for package @cloudflare/test-store
 
-
-
-
-
 ## [1.0.24](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.22...@cloudflare/test-store@1.0.24) (2020-04-27)
 
 **Note:** Version bump only for package @cloudflare/test-store
-
-
-
-
 
 ## [1.0.22](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.20...@cloudflare/test-store@1.0.22) (2020-02-12)
 
 **Note:** Version bump only for package @cloudflare/test-store
 
-
-
-
-
 ## [1.0.20](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.14...@cloudflare/test-store@1.0.20) (2020-02-02)
-
 
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 ## [1.0.19](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.14...@cloudflare/test-store@1.0.19) (2020-02-02)
 
-
 ### Bug Fixes
 
-* **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
-* **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
-
-
-
+- **stratus:** UI-2859: bump all package versions ([4cb3c90](http://stash.cfops.it:7999/fe/stratus/commits/4cb3c90))
+- **stratus:** UI-2859: bump all package versions ([6db21c2](http://stash.cfops.it:7999/fe/stratus/commits/6db21c2))
 
 
       <a name="1.0.14"></a>
+
 ## [1.0.14](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.13...@cloudflare/test-store@1.0.14) (2019-02-03)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/test-store
 
       <a name="1.0.13"></a>
+
 ## [1.0.13](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.12...@cloudflare/test-store@1.0.13) (2018-10-12)
-
-
-
 
 **Note:** Version bump only for package @cloudflare/test-store
 
@@ -84,7 +60,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cloudflare/test-store
 
-  <a name="1.0.11"></a>
+<a name="1.0.11"></a>
 
 ## [1.0.11](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/test-store@1.0.10...@cloudflare/test-store@1.0.11) (2018-10-03)
 
@@ -126,8 +102,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* UI-836 fix babelrc and republish all packages
-([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
+- UI-836 fix babelrc and republish all packages
+  ([ee0c90d](http://stash.cfops.it:7999/fe/stratus/commits/ee0c90d))
 
 <a name="1.0.2"></a>
 

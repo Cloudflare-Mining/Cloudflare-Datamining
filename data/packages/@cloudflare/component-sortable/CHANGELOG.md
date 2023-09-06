@@ -1,5 +1,14 @@
 # Change Log
 
+## 4.1.15
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-arrow-swivel@7.0.11
+  - @cloudflare/component-button@7.0.12
+
 ## 4.1.14
 
 ### Patch Changes

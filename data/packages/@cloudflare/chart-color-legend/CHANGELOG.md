@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.2
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+  - @cloudflare/component-box@4.0.2
+
 ## 5.0.1
 
 ### Patch Changes

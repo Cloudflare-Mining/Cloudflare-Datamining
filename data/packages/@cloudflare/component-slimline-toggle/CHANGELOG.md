@@ -1,5 +1,7 @@
 # Change Log
 
+## 5.0.2
+
 ## 5.0.1
 
 ### Patch Changes

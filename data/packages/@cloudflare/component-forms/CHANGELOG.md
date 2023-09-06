@@ -1,5 +1,25 @@
 # Change Log
 
+## 5.3.12
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-grid@2.1.7
+  - @cloudflare/component-input@8.1.2
+  - @cloudflare/component-listbox@1.10.2
+  - @cloudflare/component-radio@5.0.2
+  - @cloudflare/component-search@7.0.11
+  - @cloudflare/component-select-2@6.0.11
+  - @cloudflare/component-time-period-picker@5.0.16
+  - @cloudflare/component-toast@5.1.2
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/util-responsive@1.5.2
+  - @cloudflare/component-button@7.0.12
+  - @cloudflare/component-checkbox@5.3.2
+  - @cloudflare/component-textarea@4.1.2
+
 ## 5.3.11
 
 ### Patch Changes

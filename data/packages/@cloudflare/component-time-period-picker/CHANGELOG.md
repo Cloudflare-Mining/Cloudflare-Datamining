@@ -1,5 +1,16 @@
 # Change Log
 
+## 5.0.16
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-calendar@6.0.11
+  - @cloudflare/component-listbox@1.10.2
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-form@5.0.5
+
 ## 5.0.15
 
 ### Patch Changes

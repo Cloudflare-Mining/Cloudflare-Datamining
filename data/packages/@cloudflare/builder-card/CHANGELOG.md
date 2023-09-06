@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.1.19
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-loading@6.0.2
+  - @cloudflare/component-card@8.0.5
+  - @cloudflare/component-dynamic-content@3.0.2
+
 ## 7.1.18
 
 ### Patch Changes

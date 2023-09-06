@@ -1,5 +1,16 @@
 # Change Log
 
+## 9.1.14
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-arrow-swivel@7.0.11
+  - @cloudflare/component-loading@6.0.2
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-box@4.0.2
+
 ## 9.1.13
 
 ### Patch Changes

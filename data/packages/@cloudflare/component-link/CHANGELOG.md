@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.1.15
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-arrow-swivel@7.0.11
+  - @cloudflare/component-icon@11.5.4
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/util-sparrow@5.3.47
+  - @cloudflare/component-button@7.0.12
+
 ## 7.1.14
 
 ### Patch Changes

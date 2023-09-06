@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.1.2
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-link@7.1.15
+
 ## 6.1.1
 
 ### Patch Changes

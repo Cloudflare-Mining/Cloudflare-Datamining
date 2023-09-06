@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.18
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-legend@5.0.15
+  - @cloudflare/elements@3.0.3
+
 ## 3.0.17
 
 ### Patch Changes

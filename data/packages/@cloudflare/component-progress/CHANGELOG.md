@@ -1,5 +1,14 @@
 # Change Log
 
+## 8.0.13
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-link@7.1.15
+  - @cloudflare/component-visually-hidden@1.0.86
+
 ## 8.0.12
 
 ### Patch Changes

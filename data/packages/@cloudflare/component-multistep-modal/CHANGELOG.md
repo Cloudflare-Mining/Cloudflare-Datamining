@@ -1,5 +1,17 @@
 # Change Log
 
+## 3.0.21
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-modal@7.1.3
+  - @cloudflare/component-progress@8.0.13
+  - @cloudflare/component-button@7.0.12
+  - @cloudflare/component-box@4.0.2
+  - @cloudflare/component-test-dummy@4.0.2
+
 ## 3.0.20
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @cloudflare/component-code-block
 
+## 4.2.3
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-tooltip@4.3.2
+  - @cloudflare/component-visually-hidden@1.0.86
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+
 ## 4.2.2
 
 ### Patch Changes

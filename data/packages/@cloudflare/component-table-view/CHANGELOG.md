@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.140
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/builder-table@3.0.81
+
 ## 1.2.139
 
 ### Patch Changes

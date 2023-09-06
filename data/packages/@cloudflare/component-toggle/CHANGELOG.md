@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.0.11
+
+### Patch Changes
+
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/elements@3.0.3
+
 ## 9.0.10
 
 ## 9.0.9

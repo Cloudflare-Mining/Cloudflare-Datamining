@@ -1,5 +1,16 @@
 # Change Log
 
+## 5.0.15
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-loading@6.0.2
+  - @cloudflare/component-tooltip@4.3.2
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+
 ## 5.0.14
 
 ### Patch Changes

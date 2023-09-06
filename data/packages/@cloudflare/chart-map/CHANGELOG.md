@@ -1,5 +1,22 @@
 # Change Log
 
+## 8.0.7
+
+### Patch Changes
+
+- 58e5dc14a0: fix bug with typeError when there is no map state
+
+## 8.0.6
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/chart-color-legend@5.0.2
+  - @cloudflare/component-tooltip@4.3.2
+  - @cloudflare/component-box@4.0.2
+  - @cloudflare/component-text@4.0.2
+
 ## 8.0.5
 
 ### Patch Changes

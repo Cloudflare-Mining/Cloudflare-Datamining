@@ -1,5 +1,22 @@
 # Change Log
 
+## 6.2.3
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-arrow-swivel@7.0.11
+  - @cloudflare/component-forms@5.3.12
+  - @cloudflare/component-input@8.1.2
+  - @cloudflare/component-link@7.1.15
+  - @cloudflare/component-select@5.0.2
+  - @cloudflare/component-time-period-picker@5.0.16
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+  - @cloudflare/component-box@4.0.2
+  - @cloudflare/component-text@4.0.2
+
 ## 6.2.2
 
 ### Patch Changes

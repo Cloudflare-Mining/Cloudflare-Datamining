@@ -1,5 +1,16 @@
 # Change Log
 
+## 4.0.6
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-loading@6.0.2
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+  - @cloudflare/component-box@4.0.2
+
 ## 4.0.5
 
 ### Patch Changes

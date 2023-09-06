@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.4.15
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-forms@5.3.12
+  - @cloudflare/component-listbox@1.10.2
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+
 ## 6.4.14
 
 ### Patch Changes

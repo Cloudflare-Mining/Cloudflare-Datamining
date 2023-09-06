@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.0.15
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-visually-hidden@1.0.86
+  - @cloudflare/util-responsive@1.5.2
+
 ## 6.0.14
 
 ### Patch Changes

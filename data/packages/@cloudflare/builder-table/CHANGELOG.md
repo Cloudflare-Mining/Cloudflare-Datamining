@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.81
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-sortable@4.1.15
+  - @cloudflare/component-table@9.1.14
+
 ## 3.0.80
 
 ### Patch Changes

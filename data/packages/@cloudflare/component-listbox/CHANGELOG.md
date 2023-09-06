@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.10.2
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/elements@3.0.3
+
 ## 1.10.1
 
 ### Patch Changes

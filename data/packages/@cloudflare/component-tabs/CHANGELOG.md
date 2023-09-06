@@ -1,5 +1,14 @@
 # Change Log
 
+## 5.0.25
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-forms@5.3.12
+  - @cloudflare/util-responsive@1.5.2
+
 ## 5.0.24
 
 ### Patch Changes

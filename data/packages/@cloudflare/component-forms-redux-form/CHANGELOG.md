@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.1.26
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-forms@5.3.12
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+
 ## 5.1.25
 
 ### Patch Changes

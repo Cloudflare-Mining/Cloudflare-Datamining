@@ -1,5 +1,13 @@
 # Change Log
 
+## 7.1.3
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+  - @cloudflare/component-button@7.0.12
+  - @cloudflare/component-checkbox@5.3.2
+
 ## 7.1.2
 
 ### Patch Changes

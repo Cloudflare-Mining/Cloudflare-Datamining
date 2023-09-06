@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.3
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-input@8.1.2
+
 ## 5.0.2
 
 ### Patch Changes

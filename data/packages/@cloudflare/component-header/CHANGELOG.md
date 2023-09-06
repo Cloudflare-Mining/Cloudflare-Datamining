@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.0.16
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-icon@11.5.4
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/util-responsive@1.5.2
+
 ## 6.0.15
 
 ### Patch Changes

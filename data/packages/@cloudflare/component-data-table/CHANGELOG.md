@@ -1,5 +1,18 @@
 # Change Log
 
+## 5.0.13
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-link@7.1.15
+  - @cloudflare/component-loading@6.0.2
+  - @cloudflare/component-pagination@9.0.11
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-button@7.0.12
+  - @cloudflare/component-checkbox@5.3.2
+
 ## 5.0.12
 
 ### Patch Changes

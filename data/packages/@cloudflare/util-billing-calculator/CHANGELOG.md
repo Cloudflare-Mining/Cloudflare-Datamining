@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.2
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+
 ## 2.0.1
 
 ### Patch Changes

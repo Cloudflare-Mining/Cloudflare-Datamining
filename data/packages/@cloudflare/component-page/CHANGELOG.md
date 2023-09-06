@@ -1,5 +1,15 @@
 # Change Log
 
+## 8.0.5
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-link@7.1.15
+  - @cloudflare/elements@3.0.3
+  - @cloudflare/component-label@5.0.4
+
 ## 8.0.4
 
 ### Patch Changes

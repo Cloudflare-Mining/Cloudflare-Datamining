@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.5.2
+
+### Patch Changes
+
+- fc30dc7110: update peer dependencies
+- Updated dependencies [fc30dc7110]
+  - @cloudflare/component-listener@3.2.1
+  - @cloudflare/component-box@4.0.2
+
 ## 1.5.1
 
 ### Patch Changes
