@@ -1,3 +1,4 @@
+<div class="mb2 gray5">13 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" loading="lazy"></figure>
 	<p>Cloudflare 보안 아키텍처는 몇년 전만 해도 전형적인 “성과 해자” VPN 아키텍처였습니다. Cloudflare 직원들은 기업 VPN을 사용하여 내부 애플리케이션과 서버에 연결하여 업무를 수행했습니다. VPN에 로그인할 때 Google Authenticator 또는 Authy와 같은 인증기 앱을 사용하여 시간 기반 일회용 비밀번호(TOTP)를 통한 2단계 인증을 적용했지만, 단지 몇 가지 내부 애플리케이션에만 두 번째 인증 계층이 있었습니다. 이 아키텍처는 외관이 강력해 보이지만, 보안 모델은 취약합니다. Cloudflare는 최근에 <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">방지했던 피싱 공격의 메커니즘을 자세히 설명했으며</a>, 공격자가 TOTP와 같은 2단계 인증 방법으로 “보안이 강화된” 애플리케이션을 피싱하는 방법을 살펴보았습니다. 다행히 Cloudflare는 오래 전에 TOTP를 폐지했고 하드웨어 보안 키와 Cloudflare Access로 교체했습니다. 이 블로그에서는 이것을 어떻게 수행했는지 설명합니다.</p>

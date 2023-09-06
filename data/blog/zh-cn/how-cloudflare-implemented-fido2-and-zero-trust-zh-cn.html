@@ -1,3 +1,4 @@
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" loading="lazy"></figure>
 	<p>几年前，Cloudflare 的安全架构是一个经典的“城堡+护城河” VPN 架构。员工使用企业 VPN 连接到所有内部应用程序和服务器来完成他们的工作。我们使用基于时间的一次性密码(TOTP)执行双因素身份验证，在登录到 VPN 时使用 Google Authenticator 或 Authy 等身份验证应用，但只有少数内部应用程序具有第二层身份验证。这种架构貌似强大，但安全模型非常弱。最近，我们<a href="https://blog.cloudflare.com/zh-cn/2022-07-sms-phishing-attacks-zh-cn">对一次被我们挫败的网络钓鱼攻击的机制</a>做了详细介绍， 其中说明了攻击者如何尝试入侵被 TOTP 等第二因素身份验证方法“保护”的应用程序。幸运的是，我们早就放弃了 TOTP，取而代之的是硬件安全密钥和 Cloudflare Access。本文详细介绍了我们是如何做到的。</p>

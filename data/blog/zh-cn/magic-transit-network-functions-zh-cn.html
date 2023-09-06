@@ -1,3 +1,4 @@
+<div class="mb2 gray5">13 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>今天我们发布了<a href="https://www.cloudflare.com/magic-transit" target="_blank">Cloudflare Magic Transit</a>，它使Cloudflare的网络可被互联网上的任意IP流量使用。到目前为止，Cloudflare主要运营代理服务：我们的服务器终止与Internet用户的HTTP、TCP和UDP会话，并通过与原始服务器创建的新会话传递这些数据。通过Magic Transit，我们现在还在IP层进行运营：除了终止会话之外，我们的服务器还在逐个数据包的基础上应用一套网络功能（DoS缓解、防火墙、路由等等）。</p>
 	<p>在过去的9年里，我们建立了一个强大的、可扩展的全球网络，目前我们的网络覆盖了90多个国家的193个城市，而且还在不断扩大。所有Cloudflare客户都能从这种规模的网络中受益，这要归功于两项重要技术。第一个是任播网络。Cloudflare是任播的<a href="https://blog.cloudflare.com/a-brief-anycast-primer">早期采用者</a>，我们使用这种路由技术在我们的数据中心之间分发互联网流量。这意味着任何数据中心都可以处理任何客户的流量，我们可以在不需要获取和配置新的IP地址的前提下建立新的数据中心。第二种技术是同构服务器架构。我们每个边缘数据中心的每台服务器都<a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world">能够运行每一个任务</a>。我们在标准硬件上构建服务器，通过向现有数据中心添加新服务器，我们很容易就可以快速提高处理能力。没有可依赖的专门硬件也促使我们开发了一种专门的技术，来挑战使用现代Linux内核技术进行网络连接的极限。</p>

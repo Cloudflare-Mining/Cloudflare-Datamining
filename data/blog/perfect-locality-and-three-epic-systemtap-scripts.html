@@ -1,3 +1,4 @@
+<div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>In a recent blog post we discussed <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">epoll behavior causing uneven load</a> among NGINX worker processes. We suggested a work around - the REUSEPORT socket option. It changes the queuing from "combined queue model" aka Waitrose (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank">M/M/s</a>), to a dedicated accept queue per worker aka "the Tesco superstore model" (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank">M/M/1</a>). With this setup the load is spread more evenly, but in certain conditions the latency distribution might suffer.</p>

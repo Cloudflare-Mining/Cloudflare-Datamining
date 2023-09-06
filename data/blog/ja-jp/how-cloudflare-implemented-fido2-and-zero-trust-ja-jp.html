@@ -1,3 +1,4 @@
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-45.png" class="kg-image" alt="How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing" loading="lazy"></figure>
 	<p>数年前のCloudflareのセキュリティアーキテクチャは、古典的な「城と堀」のVPNアーキテクチャでした。社員は企業内VPNを利用して、すべての社内アプリケーションやサーバーに接続し、業務を行っていました。VPNにログインする際には、Google AuthenticatorやAuthyのような認証アプリを使用して、タイムベースのワンタイムパスコード（TOTP）による二要素認証を強制適用しましたが、2層目の認証を持つ内部アプリケーションはごく少数でした。そのアーキテクチャは、外見は強そうですが、セキュリティモデルは弱いのです。私たちは最近、<a href="https://blog.cloudflare.com/ja-jp/2022-07-sms-phishing-attacks-ja-jp">私たちが防いだフィッシング攻撃の仕組みについて詳しくまとめました。</a>攻撃者が、TOTPなどの二要素認証方式で「保護」されているアプリケーションをどのようにフィッシングすることができるかを説明したものです。幸いなことに、私たちは既にTOTPを廃止し、ハードウェアセキュリティキーとCloudflare Accessに置き換えていました。このブログでは、その方法について詳しく説明します。</p>

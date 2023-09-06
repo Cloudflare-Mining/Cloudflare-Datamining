@@ -1,3 +1,4 @@
+<div class="mb2 gray5">19 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>多年来，我一直在探究 Linux 内核，并多次反复研究 TCP 代码。但是，最近我们在努力<a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">优化 TCP 以实现高 WAN 吞吐量并保持低延迟</a>时，我意识到，自己对于 Linux 管理 TCP 接收缓冲区和窗口的方式有认识不足之处。深入探索之下，我发现这个话题很复杂，确实不那么浅显。</p>
 	<p>在这篇博客文章中，我准备谈一谈自己钻研 Linux 网络堆栈的过程，在这期间，我认真学习了 TCP 连接接收端的内存和窗口管理。具体来说，就是设法解答以下看似无关紧要的问题：</p>

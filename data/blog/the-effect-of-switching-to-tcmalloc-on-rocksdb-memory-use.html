@@ -1,3 +1,4 @@
+<div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>In previous posts we wrote about our configuration distribution system <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> and the story of <a href="https://blog.cloudflare.com/moving-quicksilver-into-production">migrating its storage engine to RocksDB</a>. This solution proved to be fast, resilient and stable. During the migration process, we noticed that <a href="https://blog.cloudflare.com/tag/quicksilver">Quicksilver</a> memory consumption was unexpectedly high. After our investigation we found out that the root cause was a default memory allocator that we used. Switching memory allocator improved service memory consumption by almost three times.</p>
 	<h3 id="unexpected-memory-growth">Unexpected memory growth</h3>

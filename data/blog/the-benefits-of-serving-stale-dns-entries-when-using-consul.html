@@ -1,3 +1,4 @@
+<div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
 	<h2 id="introduction">Introduction</h2>
 	<p>We use <a href="https://www.consul.io" target="_blank">Consul</a> for service discovery, and we’ve deployed a cluster that spans several of our data centers. This cluster exposes HTTP and DNS interfaces so that clients can query the Consul catalog and search for a particular service and the majority of the clients use DNS. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers. This, together with the fact that we use <a href="https://en.wikipedia.org/wiki/DNS_over_TLS" target="_blank">DNS over TLS</a>, results in some long latencies. The TTL of these names being low makes it even more impractical when resolving these names in the hot path.</p>

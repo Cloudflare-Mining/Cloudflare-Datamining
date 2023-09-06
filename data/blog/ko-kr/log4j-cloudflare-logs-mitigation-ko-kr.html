@@ -1,3 +1,4 @@
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>2021년 12월 9일에 모두가 <a href="https://logging.apache.org/log4j/2.x/index.html" target="_blank">Apache Log4j 유틸리티</a>에 영향을 주는 제로 데이 취약점 공격인 <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228" target="_blank">CVE-2021-44228</a>에 대해 알게 되었습니다. Cloudflare에서는 이러한 취약점으로부터 보호하기 위해 즉시 <a href="https://blog.cloudflare.com/ko-kr/cve-2021-44228-log4j-rce-0-day-mitigation-ko-kr">당사의 WAF를 업데이트했지만</a> 시스템을 최대한 빨리 업데이트하도록 고객에게 권장하고 있습니다.</p>
 	<p>다만 많은 수의 Cloudflare 고객이 Log4j를 사용하는 소프트웨어를 통해 자신의 로그를 사용하고 있음을 알기에 Cloudflare Logs를 통한 모든 취약점 공격 시도 또한 완화하고 있습니다. 이 글을 작성하는 시점에 당사가 고객에게 전송하는 로그에서 확인되는 취약점 공격 패턴은 초당 최대 1,000회입니다.</p>

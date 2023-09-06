@@ -1,3 +1,4 @@
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>If your organization uses SSH public keys, it’s entirely possible you have already mislaid one. There is a file sitting in a backup or on a former employee’s computer which grants the holder access to your infrastructure. If you share SSH keys between employees it’s likely only a few keys are enough to give an attacker access to your entire system. If you don’t share them, it’s likely your team has generated so many keys you long lost track of at least one.</p>
 	<p>If an attacker can breach a single one of your client devices it’s likely there is a <code>known_hosts</code> file which lists every target which can be trivially reached with the keys the machine already contains. If someone is able to compromise a team member’s laptop, they could use keys on the device that lack password protection to reach sensitive destinations.</p>

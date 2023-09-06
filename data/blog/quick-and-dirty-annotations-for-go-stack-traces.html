@@ -1,3 +1,4 @@
+<div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>

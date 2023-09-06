@@ -1,3 +1,4 @@
+<div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>On January 24, 2022, as a result of an internal Cloudflare product migration, 24 hostnames (including www.cloudflare.com) that were actively proxied through the Cloudflare global network were mistakenly redirected to the wrong origin. During this incident, traffic destined for these hostnames was passed through to the clickfunnels.com origin and may have resulted in a <code>clickfunnels.com</code> page being displayed instead of the intended website. This was our doing and clickfunnels.com was unaware of our error until traffic started to reach their origin.</p>
 	<p>API calls or other expected responses to and from these hostnames may not have responded properly, or may have failed completely. For example, if you were making an API call to api.example.com, and api.example.com was an impacted hostname, you likely would not have received the response you would have expected.</p>

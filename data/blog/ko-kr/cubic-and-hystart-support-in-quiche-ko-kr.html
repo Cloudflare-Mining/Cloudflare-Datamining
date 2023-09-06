@@ -1,3 +1,4 @@
+<div class="mb2 gray5">17 min read</div>
 <div class="post-content lh-copy gray1">
 	<p><a href="https://blog.cloudflare.com/http-3-vs-http-2">Comparing HTTP/3 vs. HTTP/2 Performance</a> 에서도 이야기한 적 있지만 Cloudflare 의 IETF QUIC 구현인 <a href="https://github.com/cloudflare/quiche" target="_blank">quiche</a>는 저희의 실 서비스 환경에서 <a href="https://tools.ietf.org/html/rfc8312" target="_blank">CUBIC 혼잡 제어 알고리즘</a>을 적용하고 있습니다. 최근에는 추가적인 개선인 <a href="https://tools.ietf.org/html/draft-balasubramanian-tcpm-hystartplusplus-03" target="_blank">HyStart++</a> 을 혼잡 제어 모듈에 추가하였습니다.</p>
 	<p>이 글에서는 QUIC의 혼잡 제어와 손실 복구에 대해서 간단히 이야기하고 quiche 혼잡 제어 모듈의 CUBIC와 HyStart++에 대해서 다루도록 하겠습니다. 그리고 테스트 환경에서의 결과와 함께 quiche 라이브러리에 최근 추가된 <a href="https://tools.ietf.org/html/draft-marx-qlog-event-definitions-quic-h3-01" target="_blank">qlog</a> 를 사용하여 이를 어떻게 시각화할지에 대해서도 알아보도록 하겠습니다.</p>

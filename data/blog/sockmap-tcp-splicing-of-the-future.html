@@ -1,3 +1,4 @@
+<div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Recently we stumbled upon the holy grail for reverse proxies - a TCP socket splicing API. This caught our attention because, as you may know, we run a global network of reverse proxy services. Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel's SOCKMAP infrastructure can be reused for this purpose. SOCKMAP is a very promising API and is likely to cause a tectonic shift in the architecture of data-heavy applications like software proxies.</p>
