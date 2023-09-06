@@ -832,6 +832,22 @@
 		]
 	},
 	{
+		"id": "4d62ccf834df44808bc9283d65c4e4e9",
+		"name": "Hyperdrive Read",
+		"description": "Grants read access to Hyperdrive configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "721b2f51fba74871bd361de65aeb7e03",
+		"name": "Hyperdrive Write",
+		"description": "Grants write access to Hyperdrive configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "0cf6473ad41449e7b7b743d14fc20c60",
 		"name": "Images Read",
 		"description": "Grants read access to Images",
@@ -1211,22 +1227,6 @@
 		"id": "910b6ecca1c5411bb894e787362d1312",
 		"name": "Pubsub Configuration Write",
 		"description": "Grants full access to Pubsub Configurations\n",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "4d62ccf834df44808bc9283d65c4e4e9",
-		"name": "Query Cache Read",
-		"description": "Grants read access to Query Cache configuration",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "721b2f51fba74871bd361de65aeb7e03",
-		"name": "Query Cache Write",
-		"description": "Grants write access to Query Cache configuration",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
