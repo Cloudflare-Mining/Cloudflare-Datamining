@@ -1,3 +1,4 @@
+<div class="mb2 gray5">18 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image13-1-1.png" class="kg-image" alt="" loading="lazy" width="1201" height="675"></figure><!--kg-card-begin: markdown-->
 	<p>Internet on muutunud oluliseks teguriks geopoliitilistes konfliktides, näiteks käimasolevas sõjas Ukrainas. Homme möödub üks aasta Venemaa sissetungist sellesse riiki. Selles postituses antakse ülevaade internetist ja arutletakse selle üle, kuidas Ukraina internet püsis vastupidavana hoolimata kümnetest häiretest konflikti kolmes erinevas etapis.</p>
@@ -859,6 +860,28 @@
 			})();
 		</script>
 
+
+		<script>
+			const progressBar = document.querySelector('.reading-progress');
+			//get the combined height of the header and nav including margin to adjust scroll height calculation
+
+
+			function updateProgress() {
+				const header = document.querySelector('header');
+				const nav = document.querySelector('#nav');
+				const totalHeaderHeight = header.offsetHeight + parseInt(window.getComputedStyle(header).marginTop + parseInt(window.getComputedStyle(header).marginBottom))
+				const totalNavHeight = nav.offsetHeight;
+				const headerNavOffsetHeight = totalHeaderHeight + totalNavHeight;
+				const post = document.querySelector('#post');
+				const postHeight = post?.clientHeight;
+				const adjustedPostBodyHeight = postHeight - headerNavOffsetHeight;
+				const progress = window.scrollY / adjustedPostBodyHeight * 100;
+				progressBar.setAttribute('value', progress);
+				requestAnimationFrame(updateProgress);
+			}
+
+			requestAnimationFrame(updateProgress);
+		</script>
 
 		<!-- Google Tag Manager (noscript) -->
 

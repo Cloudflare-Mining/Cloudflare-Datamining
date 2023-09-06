@@ -1,0 +1,404 @@
+<div class="mb2 gray5">21 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/Application-Security-Trends-report.png" class="kg-image" alt="" loading="lazy" width="1201" height="676"></figure>
+	<p>Cloudflare는 인터넷에서 독보적인 우위를 점하고 있습니다. 이러한 위치에서 Cloudflare는 눈에 띄지 않을 수도 있는 트렌드를 보고, 탐색하고, 식별할 수 있습니다. 이 보고서에서는 인터넷 전반의 애플리케이션 보안 동향에 대한 인사이트를 공유합니다.</p>
+	<p>이 보고서는 애플리케이션 보안 보고서의 세 번째 버전입니다. 첫 번째 보고서는 <a href="https://blog.cloudflare.com/ko-kr/application-security-ko-kr">2022년 3월에</a>, 두 번째 보고서는 <a href="https://blog.cloudflare.com/ko-kr/application-security-2023-ko-kr">올해 3월 초에 발간</a>되었으며, 분기별로 발간되는 것은 이번이 처음입니다.</p>
+	<p>지난 보고서 이후 당사 네트워크는 더 크고 빨라졌습니다. 현재 초당 평균 4,600만 건, 최고 6,300만 건의 HTTP 요청을 처리하고 있습니다. 당사는 초당 약 2,500만 개의 DNS 쿼리를 지속적으로 처리하고 있습니다. 이는 하루에 약 2조 1,000억 개의 DNS 쿼리, 한 달에 65조 개의 쿼리에 달하는 수치입니다. 이는 Cloudflare 인프라에서 처리하는 권한 요청과 해결 요청의 합계입니다. HTTP 요청과 DNS 요청을 모두 합치면 악성 트래픽이 많다는 것을 알 수 있습니다. 2023년 2분기에 HTTP 요청에만 초점을 맞춰 Cloudflare는 매일 평균 1,120억 건의 사이버 위협을 차단했으며, 이 데이터가 이 보고서의 근거가 됩니다.</p>
+	<p>하지만 늘 그렇듯이 시작하기 전에 먼저 용어에 대한 정의가 필요합니다.</p>
+	<h2 id="%EC%A0%95%EC%9D%98">정의</h2>
+	<p>이 보고서에서는 다음과 같은 용어를 사용합니다.</p>
+	<ul>
+		<li><strong>완화된 트래픽</strong>: Cloudflare 플랫폼에서 "종료" 액션을 시행한 모든 확인용 HTTP* 요청을 말합니다. 여기에는 <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank"><code>JS_CHALLENGE</code></a> 및 <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank"><code>MANAGED_CHALLENGE</code></a> 액션이 포함됩니다. <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code> 액션이 적용된 요청은 포함되지 않습니다. 작년과 달리 당사 DDoS 완화 시스템에 의해 <code>CONNECTION_CLOSE</code> 및 <code>FORCE_CONNECTION_CLOSE</code> 액션이 적용된 요청은 기술적으로 연결 시작 속도를 늦출 뿐이기 때문에 이번에는 제외했습니다. 또한, 이 요청은 전체 요청 중 상대적으로 적은 비율을 차지했습니다. 여기에 더해, 해결되지 않은 챌린지만 완화된 것으로 계산하기 위해 CHALLENGE 유형 액션과 관련된 연산을 개선했습니다. <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions" target="_blank">액션에 대한 자세한 설명</a>은 개발자 문서에서 확인할 수 있습니다.</li>
+		<li><strong>봇 트래픽/자동화된 트래픽</strong>: Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management" target="_blank">봇 관리</a> 시스템에서 봇이 생성한 것으로 확인된 모든 HTTP* 요청. 여기에는 <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank">봇 점수</a> <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank">1~29</a> 사이의 요청이 포함됩니다. 작년 보고서에서 바뀌지 않았습니다.</li>
+		<li><strong>API 트래픽</strong>: 응답 콘텐츠 유형이 XML 또는 JSON인 모든 HTTP* 요청. 완화된 요청과 같이 응답 콘텐츠 유형을 알 수 없는 경우 대신 그에 준하는 Accept 콘텐츠 유형(사용자 에이전트가 지정)을 사용합니다. 후자의 경우, API 트래픽이 완전히 반영되지 않지만 이 인사이트에서는 여전히 적절한 대표성을 제공합니다.</li>
+	</ul>
+	<p>별도의 언급이 없을 경우, 이 게시물의 평가 기간은 2023년 4월에 시작되어 2023년 6월에 종료되는 3개월 동안을 말합니다.</p>
+	<p>마지막으로 데이터는 Cloudflare 네트워크에서 관찰된 트래픽만을 기준으로 계산하며, 인터넷 전체의 HTTP 트래픽 패턴을 대표하지 않을 수도 있습니다.</p><!--kg-card-begin: markdown-->
+	<p><small>* <em>HTTP 트래픽은 HTTP와 HTTPS를 모두 의미합니다.</em></small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="%EC%A0%84%EC%97%AD-%ED%8A%B8%EB%9E%98%ED%94%BD-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">전역 트래픽 인사이트</h2>
+	<h3 id="%EC%99%84%ED%99%94%EB%90%9C-%EC%9D%BC%EC%9D%BC-%ED%8A%B8%EB%9E%98%ED%94%BD%EC%9D%80-6%EB%A1%9C-%EC%95%88%EC%A0%95%EC%A0%81%EC%9D%B4%EB%A9%B0-%EA%B8%89%EC%A6%9D-%EC%8B%9C-8-%EC%88%98%EC%A4%80%EC%9E%85%EB%8B%88%EB%8B%A4">완화된 일일 트래픽은 6%로 안정적이며, 급증 시 8% 수준입니다.</h3>
+	<p>2021년부터 2022년까지 완화된 일일 HTTP 요청은 평균 6%로 2% 포인트 감소했지만, 평소보다 악성 활동이 많은 날도 네트워크 전체에서 명확하게 확인할 수 있습니다. 아래 그래프에서 명확히 보이는 것처럼 2023년 5월 말에는 급증 트래픽이 거의 8%에 달하는 모습을 확인할 수 있습니다. 이는 일반적인 일일 또는 주간 주기를 따르지 않는 대규모 DDoS 이벤트 및 기타 활동에 기인하며, 대규모 악성 이벤트는 Cloudflare 규모에서도 여전히 글로벌 수준에서 가시적인 영향을 미칠 수 있음을 지속적으로 상기시켜줍니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-22.png" class="kg-image" alt="Percentage of mitigated HTTP requests from April 2023 to end of June 2023" loading="lazy" width="1544" height="974"></figure>
+	<p>완화된 HTTP 요청의 75%가 완전히 BLOCK되었습니다. 이는 이전 보고서에 비해 6% 포인트 감소한 수치입니다. 다른 요청의 대부분은 다양한 CHALLENGE 유형 액션으로 완화되었으며, MANAGED_CHALLENGE가 이 하위 집합의 약 20%를 차지합니다.</p>
+	<h3 id="%EC%89%B4%EB%93%9C-%EA%B0%95%ED%99%94-%EC%9D%B4%EC%A0%9C-%ED%8A%B8%EB%9E%98%ED%94%BD-%EC%99%84%ED%99%94%EC%97%90-%EA%B0%80%EC%9E%A5-%ED%81%B0-%EA%B8%B0%EC%97%AC%EB%A5%BC-%ED%95%98%EB%8A%94-%EA%B3%A0%EA%B0%9D%EC%9D%B4-%EA%B5%AC%EC%84%B1%ED%95%9C-%EA%B7%9C%EC%B9%99">쉴드 강화: 이제 트래픽 완화에 가장 큰 기여를 하는 고객이 구성한 규칙</h3>
+	<p>이전 보고서에서 당사의 자동 DDoS 완화 시스템은 평균적으로 완화 트래픽의 50% 이상에 기여했습니다. 지난 2분기 동안 WAF 도입이 증가했을 뿐만 아니라 조직이 원치 않는 트래픽으로부터 애플리케이션을 더 잘 구성하고 차단한 결과, WAF로 완화한 트래픽이 DDoS 완화 트래픽을 넘어서는 새로운 추세가 나타났습니다. 대부분의 증가는 WAF 관리 규칙이 아닌 WAF 사용자 설정 규칙 BLOCK에 의해 주도되었으며, 이는 이러한 완화가 비즈니스 로직 또는 관련 목적을 위해 고객이 구성한 규칙에 의해 이루어졌음을 나타냅니다. 이는 아래 차트에서 명확하게 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image5-8.png" class="kg-image" alt="Daily mitigated HTTP requests from DDoS and WAF systems separating WAF Managed Rules from WAF Custom Rules. Date range from April 2023 to end of June 2023" loading="lazy" width="1999" height="877"></figure>
+	<p>WAF 관리 규칙 완화(노란색 선)는 전체 WAF 완화 트래픽에 비해 미미한 수준이며, 이는 고객이 알려진 악성 트래픽만 차단하는 것이 아니라 알려진 정상 트래픽을 허용함으로써 긍정적인 보안 모델을 채택하고 있음을 나타냅니다. 그럼에도 불구하고 해당 분기 동안 WAF 관리 규칙 완화 건수는 하루 15억 건에 달했습니다.</p>
+	<p>물론 DDoS 완화는 양적인 측면을 고려한 것이며, 특히 웹에서 새로운 공격과 봇넷이 많이 발생하고 있다는 점을 고려할 때 DDoS 계층 7 규칙에 부합하는 트래픽의 양을 과소평가해서는 안 됩니다. <a href="https://blog.cloudflare.com/ko-kr/ddos-threat-report-2023-q2-ko-kr">2분기 DDoS 위협 보고서</a>에서 DDoS 공격 동향에 대한 자세한 내용을 확인할 수 있습니다.</p>
+	<p>완화된 트래픽의 소스를 집계한 결과, WAF는 현재 전체 완화 트래픽의 약 57%를 차지합니다. 기타 소스의 아래 표를 참조하세요.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image6-1.png" class="kg-image" alt="" loading="lazy" width="1164" height="1192"></figure><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">소스</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">백분율 %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">WAF</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">57%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">DDoS 완화</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">34%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">IP 평판</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">6%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">액세스 규칙</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">2%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">기타</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%EC%A7%80%EB%A6%AC%EC%A0%81-%EC%9C%84%EC%B9%98-%EB%B8%94%EB%A1%9D%EC%97%90-%EC%A0%90%EC%A0%90-%EB%8D%94-%EC%9D%98%EC%A1%B4%ED%95%98%EB%8A%94-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EC%86%8C%EC%9C%A0%EC%9E%90">지리적 위치 블록에 점점 더 의존하는 애플리케이션 소유자</h3>
+	<p>고객이 정의한 WAF 규칙으로 인해 완화된 트래픽이 증가함에 따라, 고객이 차단하는 대상과 차단하는 방법을 한 단계 더 깊이 분석하고 더 잘 이해하는 것이 흥미로울 것이라고 생각했습니다. WAF 사용자 설정 규칙 전반의 규칙 필드 사용 현황을 검토하여 공통 테마를 식별할 수 있을 것입니다. 물론 모든 고객이 모든 필드에 액세스할 수 있는 것은 아니며 계약 및 요금제 수준에 따라 달라지기 때문에 데이터를 올바르게 해석할 필요도 있지만 필드 "카테고리"를 기반으로 몇 가지 추론은 할 수 있습니다. 네트워크에 배포된 약 700만 개의 WAF 사용자 설정 규칙을 모두 검토하고 주요 그룹에만 집중하면 다음과 같은 필드 사용 분포를 확인할 수 있습니다.</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">필드</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> 규칙에서 사용되는 비율(%)</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">지리적 위치 필드</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">40%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">HTTP URI</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">31%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">IP 주소</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">21%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">기타 HTTP 필드(URI 제외)</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">34%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">봇 관리 필드</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">IP 평판 점수</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>특히, 배포된 모든 WAF 사용자 설정 규칙의 40%가 위치 관련 필드를 사용하여 트래픽 처리 방법을 결정합니다. 이는 비즈니스 로직을 구현하거나 트래픽이 예상되지 않는 지역을 제외하는 데 사용되는 일반적인 기법으로, 공격 표면적을 줄이는 데 도움이 됩니다. 이는 정교한 공격자를 막을 수는 없는 거친 제어 방식이지만 공격 표면적을 줄이는 데는 여전히 효율적입니다.</p>
+	<p>또 다른 주목할 만한 점은 WAF 사용자 설정 규칙의 11%에서 봇 관리 관련 필드가 사용된다는 점입니다. 이 수치는 머신 러닝 기반 분류 전략을 채택하여 애플리케이션을 보호하는 고객이 점점 증가하는 데 맞춰 꾸준히 증가하고 있습니다.</p>
+	<h3 id="%EC%97%AC%EC%A0%84%ED%9E%88-%EB%8C%80%EB%9F%89%EC%9C%BC%EB%A1%9C-%EC%95%85%EC%9A%A9%EB%90%98%EA%B3%A0-%EC%9E%88%EB%8A%94-%EC%98%A4%EB%9E%98%EB%90%9C-cve">여전히 대량으로 악용되고 있는 오래된 CVE</h3>
+	<p>WAF 관리 규칙이 전체 트래픽을 완화하는 데 기여한 비율은 약 32%에 달하며, HTTP 이상은 여전히 WAF 관리 규칙에 의해 차단되는 가장 일반적인 공격 카테고리입니다. SQLi는 디렉토리 순회를 제치고 2위로 올라섰는데, 각각 12.7%와 9.9%를 기록했습니다.</p>
+	<p>2023년 4월 초를 살펴보면 DoS 카테고리가 HTTP 이상 카테고리를 훨씬 능가하는 것을 알 수 있습니다. DoS 카테고리의 규칙은 교차 요청 동작을 살펴보지 않고도 단일 요청을 매칭(및 차단)할 수 있을 만큼 충분히 구체적이며, 서비스 거부(DoS)를 유발하는 특정 봇넷 또는 페이로드에 기인할 수 있는 WAF 계층 7 HTTP 시그니처입니다. 일반적으로 이러한 요청은 "분산" 공격의 일부가 아니므로 카테고리 이름에 "분산(distributed)"을 나타내는 첫 번째 글자 "D"가 없습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image10.png" class="kg-image" alt="WAF Managed Rule category matching HTTP requests from April 2023 to end of June 2023" loading="lazy" width="1840" height="964"></figure>
+	<p>참고 표(상위 10개 카테고리):</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">소스</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">백분율 %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">HTTP 이상</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">32%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">SQLi</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">디렉터리 순회</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">10%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">파일 포함</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">DoS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">XSS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">소프트웨어 특정</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">7%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">인증 손상</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">6%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">일반적인 주입</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">3%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">CVE</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>좀 더 자세히 들여다보면서 DoS 카테고리만 필터링한 결과, 대부분의 완화 트래픽이 100031 / ce02fd...(각각 이전의 WAF 및 새 WAF 규칙 ID) 하나의 규칙에 기인한다는 것을 알 수 있습니다. 이 규칙은 “<em>Microsoft IIS - DoS, Anomaly:Header:Range - CVE:CVE-2015-1635</em>”라는 설명과 함께 다수의 Microsoft Windows 구성 요소에 영향을 미쳐 원격 코드 실행*을 초래하는 <a href="https://nvd.nist.gov/vuln/detail/CVE-2015-1635" target="_blank">2015년의 CVE</a>와 관련되어 있습니다. 이는 8년 이상된 오래된 CVE조차도 패치를 적용하지 않았으면서 여전히 취약한 소프트웨어를 실행하고 있을 수 있는 시스템을 손상시키는 데 아직 활발하게 악용되고 있다는 사실을 상기시켜 줍니다.</p><!--kg-card-begin: markdown-->
+	<p><small>* <em>규칙 분류로 인해 이 예제에서는 일부 CVE 특정 규칙이 여전히 DoS와 같은 더 넓은 범주에 할당되어 있습니다. 공격 페이로드가 더 일반적인 다른 카테고리와 명확하게 겹치지 않는 경우에만 규칙이 CVE 카테고리에 할당됩니다.</em></small></p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image2-13.png" class="kg-image" alt="WAF Managed Rule DoS category deep dive from April 2023 to end of June 2023" loading="lazy" width="1999" height="914"></figure>
+	<p>또 다른 흥미로운 점은 6월부터 인증 손상 규칙 일치 건수가 증가했다는 점입니다. 이러한 증가는 Free 사용자를 포함한 모든 고객에게 배포된 단일 규칙, <em>"Wordpress - Broken Access Control, File Inclusion</em>" 때문이기도 합니다. 이 규칙은 일반적으로 웹 서버 문서 루트 디렉터리에 있는 WordPress 기본 구성 파일(HTTP를 통해 직접 액세스해서는 안 되는 파일)인 wp-config.php에 액세스하려는 시도를 차단하고 있습니다.</p>
+	<p>이와 비슷한 맥락에서, CISA/CSA는 최근 <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-215a?cf_target_id=DC7FD2F218498816EEC88041CD1F9A74" target="_blank">2022년 가장 일상적으로 악용되는 상위 취약점</a>을 집중 조명하는 보고서를 발표했습니다. 이 기회에 <a href="https://blog.cloudflare.com/ko-kr/unmasking-the-top-exploited-vulnerabilities-of-2022-ko-kr">CISA의 보고서에 언급된 각 CVE가 Cloudflare의 자체 데이터에 어떻게 반영되었는지</a> 살펴봤습니다. CISA/CSA는 2022년에 악의적인 사이버 공격자들이 일상적으로 악용한 12개의 취약점에 대해 논의했습니다. 그러나 분석에 따르면, CISA 보고서에 언급된 두 가지 CVE인 Log4J 및 Atlassian Confluence Code Injection이 실제 공격 트래픽의 대부분을 발생시키는 것으로 나타났습니다. 당사 데이터에 따르면 이 상위 두 가지와 나머지 목록의 악용 규모에 큰 차이가 있음을 알 수 있습니다. 다음 차트는 로그에 따른 CISA 목록의 상위 6개 취약점의 공격 규모(로그 척도)를 비교한 것입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image8.png" class="kg-image" alt="Number of requests blocked across the Cloudflare network for each CVE. The blocks are triggered by managed rules created to protect Cloudflare users." loading="lazy" width="1600" height="849"></figure>
+	<h2 id="%EB%B4%87-%ED%8A%B8%EB%9E%98%ED%94%BD-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">봇 트래픽 인사이트</h2>
+	<p>브라우저 기반 봇에 대한 보호 기능을 강화하기 위해 JavaScript 인증 URL이 추가되고, 이제 사용자 설정 규칙에서 감지 ID를 사용할 수 있게 되어 구성이 추가되었으며, 온보딩이 더 쉬워지도록 UI가 개선되는 등 Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management" target="_blank">봇 관리</a>에는 상당한 투자가 계속되고 있습니다. 셀프 서비스 고객을 위해 Super Bot 차단 모드 규칙을 "건너뛰는" 기능과 WordPress 루프백 요청에 대한 지원을 추가하여 고객의 애플리케이션과 더 잘 통합하고 필요한 보호 기능을 제공할 수 있습니다.</p>
+	<p>봇 관리 분류 결과에 대한 신뢰도는 여전히 매우 높습니다. 분석된 기간 동안 봇 점수를 그래프로 표시하면 대부분의 요청이 확실히 봇(30점 미만) 또는 확실히 사람(80점 이상)으로 분류되며, 실제로는 2점 미만 또는 95점 이상의 점수를 받는 매우 명확한 분포를 확인할 수 있습니다. 이는 같은 기간 동안 33%의 트래픽이 자동화된(봇에 의해 생성된) 트래픽으로 분류된 것과 일맥상통합니다. 긴 기간 동안 전체 봇 트래픽 비율은 29%로 안정적으로 유지되고 있으며, 이는 <a href="https://radar.cloudflare.com/traffic?dateStart=2023-04-01&amp;dateEnd=2023-07-01" target="_blank">Cloudflare Radar</a>에 표시된 데이터를 반영하는 것입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image3-7.png" class="kg-image" alt="Bot score distribution of eyeball traffic from April 2023 to end of June 2023" loading="lazy" width="1648" height="954"></figure>
+	<h3 id="%ED%8F%89%EA%B7%A0%EC%A0%81%EC%9C%BC%EB%A1%9C-%ED%99%95%EC%9D%B8%EB%90%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EB%B4%87-%ED%8A%B8%EB%9E%98%ED%94%BD%EC%9D%98-%EC%99%84%ED%99%94%EC%9C%A8%EC%9D%80-10-%EC%9D%B4%EC%83%81">평균적으로 확인되지 않은 봇 트래픽의 완화율은 10% 이상</h3>
+	<p>지난 보고서와 비교했을 때, 확인되지 않은 봇 HTTP 트래픽 완화율은 현재 감소 추세에 있습니다(6% 포인트 감소). 그러나 WAF 사용자 설정 규칙 내 봇 관리 필드 사용률은 11%로 무시할 수 없는 수준입니다. 즉, 봇 신호에 의존하여 일부 작업을 수행하는 70만 개 이상의 WAF 사용자 설정 규칙이 Cloudflare에 배포되어 있다는 뜻입니다. 가장 일반적으로 사용되는 필드는 cf.bot_management.verified_bot의 별칭인 cf.Client.bot이며, 이 필드는 <a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank">확인된 봇 목록</a>에 기반하여 고객이 "정상" 봇과 잠재적으로 "악성"일 수 있는 확인되지 않은 봇을 구분할 수 있게 해줍니다.</p>
+	<p>Enterprise 고객은 더 강력한 cf.bot_management.score에 액세스할 수 있습니다. 이는 이전 섹션에서 봇 점수 분포 그래프를 생성하는 데 사용된 것과 동일한 점수인, 각 요청에 대해 계산된 점수에 대한 직접 액세스를 제공합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image7-1.png" class="kg-image" alt="Mitigated HTTP Traffic percentage of non verified bot traffic from April 2023 to end of June 2023" loading="lazy" width="1876" height="984"></figure>
+	<p>위의 데이터는 Cloudflare 서비스가 확인되지 않은 봇 트래픽을 완화하고 있다는 사실을 통해서도 검증됩니다. DDoS 완화 시스템이 모든 고객에 걸쳐 HTTP 트래픽을 자동으로 차단하고 있지만, 이는 확인되지 않은 봇 완화 중 13%에 불과합니다. 반면, WAF와 대부분 고객 정의 규칙은 이러한 방어 액션의 77%를 차지하며, 이는 보고서 초반에 논의한 전체 트래픽에 대한 방어 액션(57%)보다 훨씬 높은 수치입니다. 봇 관리라고 구체적으로 명시되어 있지만 이는 WAF 사용자 설정 규칙에 사용되는 봇 필드와는 별도로 계산되는 "기본" 원클릭 규칙을 의미합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image4-9.png" class="kg-image" alt="" loading="lazy" width="1480" height="1210"></figure>
+	<p>참고 표:</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">소스</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">백분율 %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">WAF</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">77%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">DDoS 완화</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">IP 평판</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">액세스 규칙</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">3%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">기타</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h2 id="api-%ED%8A%B8%EB%9E%98%ED%94%BD-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8">API 트래픽 인사이트</h2>
+	<h3 id="%EB%8F%99%EC%A0%81%EC%BA%90%EC%8B%9C-%EB%B6%88%EA%B0%80-%ED%8A%B8%EB%9E%98%ED%94%BD%EC%9D%98-58%EB%8A%94-api%EC%99%80-%EA%B4%80%EB%A0%A8%EB%90%A9%EB%8B%88%EB%8B%A4">동적(캐시 불가) 트래픽의 58%는 API와 관련됩니다</h3>
+	<p>Cloudflare에서 관찰한 전체 API 트래픽의 증가세는 둔화되지 않고 있습니다. 지난 분기와 비교했을 때, 전체 동적 트래픽의 58%가 API 관련 트래픽으로 분류되고 있습니다. 이는 1분기에 비해 3% 포인트 증가한 수치입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image11.png" class="kg-image" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" loading="lazy" width="1968" height="1002"></figure>
+	<p>API Gateway에 대한 당사의 투자도 비슷한 성장 추세를 보이고 있습니다. 지난 분기에는 몇 가지 새로운 API 보안 기능을 출시했습니다.</p>
+	<p>첫째, <a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#inbox-view" target="_blank">새로운 수신함 보기</a>를 통해 API 탐색을 더 쉽게 사용할 수 있도록 했습니다. API 탐색은 섀도우 IT 및 좀비 API를 방지하기 위해 API를 인벤토리화하며, 이제 고객은 API 탐색에서 찾은 새로운 엔드포인트만 표시하도록 쉽게 필터링할 수 있습니다. API 탐색에서 엔드포인트를 저장하면 <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank">엔드포인트 관리</a> 시스템에 저장됩니다.</p>
+	<p>다음으로, 클라이언트 행동에 따라 API 액세스를 제어할 수 있는 새로운 API 보안 기능, 즉 Cloudflare에서만 제공되는 기능을 추가했습니다. 이를 <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank">시퀀스 완화</a>라고 합니다. 이제 고객은 클라이언트가 액세스하는 API 경로의 순서에 따라 포지티브 또는 네거티브 보안 모델을 만들 수 있습니다. 이제 정상적인 애플리케이션 기능을 무시하는 무차별 암호 대입 공격 시도 대신 애플리케이션 사용자만 API에 액세스하도록 할 수 있습니다. 뱅킹 애플리케이션을 예를 들면, 계좌 잔액 확인 엔드포인트에도 액세스한 사용자만 자금 이체 엔드포인트에도 액세스할 수 있도록 설정할 수 있습니다.</p>
+	<p>2023년 이후에도 API 보안 및 API 관리 기능을 계속 출시할 수 있게 되어 기쁩니다.</p>
+	<h3 id="%EC%A0%84%EC%97%AD-api-%ED%8A%B8%EB%9E%98%ED%94%BD-%EC%A4%91-65%EA%B0%80-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A1%9C-%EC%83%9D%EC%84%B1%EB%90%A9%EB%8B%88%EB%8B%A4">전역 API 트래픽 중 65%가 브라우저로 생성됩니다</h3>
+	<p>브라우저에서 생성되는 API 트래픽의 비율은 지난 분기 동안 매우 안정적으로 유지되었습니다. 이 통계에서 HTTP 요청이란 일반적으로 JSON 기반 응답을 제공하는 AJAX 호출과 같이 일부 전처리 없이 브라우저에서 직접 렌더링되는, HTML 기반 콘텐츠를 제공하지 않는 HTTP 요청을 의미합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image12.png" class="kg-image" alt="Bot score distribution of API traffic" loading="lazy" width="1662" height="960"></figure>
+	<h3 id="http-%EC%9D%B4%EC%83%81%EC%9D%80-api-%EC%97%94%EB%93%9C%ED%8F%AC%EC%9D%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EA%B0%80%EC%9E%A5-%EC%9D%BC%EB%B0%98%EC%A0%81%EC%9D%B8-%EA%B3%B5%EA%B2%A9-%EB%B2%A1%ED%84%B0%EC%9E%85%EB%8B%88%EB%8B%A4">HTTP 이상은 API 엔드포인트에서 가장 일반적인 공격 벡터입니다</h3>
+	<p>지난 분기와 마찬가지로 HTTP 이상은 API 트래픽에 대한 가장 일반적인 완화 공격 벡터로 남아 있습니다. 그러나 SQLi 주입 공격은 무시할 수 없는 수준으로 전체 완화 트래픽의 약 11%를 차지하며, XSS 공격이 약 9%로 그 뒤를 잇고 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image9.png" class="kg-image" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last quarter" loading="lazy" width="1900" height="976"></figure>
+	<p>참조용 표(상위 5개):</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">소스</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">백분율 %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">HTTP 이상</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">64%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">SQLi</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">XSS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">소프트웨어 특정</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">명령 삽입</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%EC%95%9E%EC%9C%BC%EB%A1%9C%EC%9D%98-%EC%A0%84%EB%A7%9D">앞으로의 전망</h3>
+	<p>애플리케이션 보안 보고서를 분기별 주기로 전환하면서 일부 인사이트를 심도 있게 분석하고 Page Shield와 같은 최신 제품의 추가 데이터를 제공하여 HTTP 트래픽을 넘어 온라인에서 타사 종속성 상태까지 살펴볼 수 있도록 했습니다.</p>
+	<p>애플리케이션 보안 보고서 및 인사이트를 더 자주 발표할 예정이니 <a href="https://radar.cloudflare.com" target="_blank">Cloudflare Radar</a>를 계속 지켜봐 주시기 바랍니다.</p>
+</div>

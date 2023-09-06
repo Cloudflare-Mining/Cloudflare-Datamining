@@ -1,3 +1,4 @@
+<div class="mb2 gray5">16 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Flowtrackd-network-namespaces-fix-1.png" class="kg-image" alt="A story about AF_XDP, network namespaces and a cookie" loading="lazy"></figure>
 	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection" target="_blank">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank">network namespace</a> aware.</p>

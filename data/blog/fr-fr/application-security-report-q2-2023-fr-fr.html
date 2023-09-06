@@ -1,0 +1,404 @@
+<div class="mb2 gray5">14 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/m62g9lRq8wGLlhuBxlY0O6ATQor9yJO3rEkOvWNVdKdDeIJtxU9gctzkyrAPZOaKxL7OXmya579ZMDjQcy94GRh3E147dkiyYqubZM33B8vwhL1nDKLJj6sMfIsFn9U6YMctwsmu6iDCcQLNjaBhaQ" class="kg-image" alt="" loading="lazy" width="602" height="339"></figure>
+	<p>Cloudflare dispose d'une visibilité unique sur l'Internet. Cette perspective nous permet d'observer, d'explorer et d'identifier des tendances qui passeraient autrement inaperçues. C'est précisément ce que nous faisons dans ce rapport, en présentant nos observations concernant les tendances en matière de sécurité des applications à l'échelle d'Internet.</p>
+	<p>Ce rapport est la troisième édition de notre rapport sur la sécurité des applications. La première édition a été <a href="https://blog.cloudflare.com/application-security">publiée en mars 2022</a>, et la deuxième <a href="https://blog.cloudflare.com/fr-fr/application-security-2023-fr-fr">au mois de mars cette année</a> ; il s'agit du premier rapport publié sur une base trimestrielle.</p>
+	<p>Depuis le dernier rapport, notre réseau est devenu plus vaste et plus rapide : nous traitons maintenant, en moyenne, 46 millions de requêtes HTTP chaque seconde et 63 millions en période de pointe. Nous traitons continuellement environ 25 millions de requêtes DNS par seconde, ce qui représente près de 2 100 milliards de requêtes DNS par jour, soit 65 000 milliards de requêtes par mois. Il s'agit de la somme des requêtes du DNS de référence et du résolveur servies par notre infrastructure. Si nous additionnons les requêtes HTTP et DNS, nous observons un volume très important de trafic malveillant, et nous nous intéressons uniquement aux requêtes HTTP, Cloudflare a, en moyenne, bloqué 112 milliards de cybermenaces par jour au deuxième trimestre 2023 ; ce sont ces données sur lesquelles repose ce rapport.</p>
+	<p>Comme d'habitude, avant d'entrer dans le vif du sujet, nous devons définir nos termes.</p>
+	<h2 id="d%C3%A9finitions">Définitions</h2>
+	<p>Tout au long de ce rapport, nous allons utiliser les termes suivants :</p>
+	<ul>
+		<li><strong>Trafic atténué </strong>: toute requête HTTP* émanant d'un utilisateur à laquelle la plateforme Cloudflare a appliqué une action de « terminaison ». Ce type d'action inclut notamment des actions suivantes : <code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank"><code>JS_CHALLENGE</code></a> et <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank"><code>MANAGED_CHALLENGE</code></a>. Le trafic atténué n'inclut pas les demandes auxquelles ont été appliquées les actions suivantes : <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code>. Contrairement à l'année dernière, nous excluons désormais les requêtes auxquelles des actions <code>CONNECTION_CLOSE</code> et <code>FORCE_CONNECTION_CLOSE</code> ont été appliquées par notre système d'atténuation des attaques DDoS, dans la mesure où ces actions ne font techniquement que ralentir l'initialisation de la connexion. Par ailleurs, elles ne représentent qu'un pourcentage relativement faible des requêtes. En outre, nous avons amélioré notre calcul concernant les actions de type <code>CHALLENGE</code>, afin de nous assurer que seuls les défis non résolus sont comptabilisés comme étant du trafic atténué. Une <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions" target="_blank">description détaillée des actions</a> est disponible dans notre documentation destinée aux développeurs.</li>
+		<li><strong>Trafic lié aux bots/trafic automatisé</strong> : toute requête HTTP* identifiée par le système de <a href="https://www.cloudflare.com/products/bot-management" target="_blank">gestion des bots</a> de Cloudflare comme ayant été générée par un bot. Cette catégorie inclut les requêtes obtenant un <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank">score de bot</a> compris entre <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank">1 et 29</a>. Aucune modification n'a été apportée par rapport à l'année dernière.</li>
+		<li><strong>Trafic d'API </strong>: toute requête HTTP* avec un type de contenu de réponse <code>XML</code> ou <code>JSON</code>. Lorsque le type de contenu de réponse est indisponible, comme c'est le cas pour les requêtes atténuées, le type de contenu <code>Accept</code> équivalent (spécifié par l'agent utilisateur) est utilisé à la place. Dans ce dernier cas, le trafic d'API n'est pas entièrement pris en compte, mais il offre néanmoins une représentation satisfaisante permettant d'obtenir des informations supplémentaires.</li>
+	</ul>
+	<p>Sauf indication contraire, la période évaluée dans cette publication est la période de 3 mois courant d'avril 2023 à juin 2023 (inclus).</p>
+	<p>Enfin, notez que les données ne sont calculées que sur la base du trafic observé au travers du réseau Cloudflare, elles ne reflètent pas forcément les configurations du trafic HTTP dans tout Internet.</p><!--kg-card-begin: markdown-->
+	<p><small>* <em>Lorsque nous parlons du trafic HTTP, nous faisons référence à la fois au trafic HTTP et HTTPS.</em></small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="informations-concernant-le-trafic-global">Informations concernant le trafic global</h2>
+	<h3 id="le-trafic-quotidien-att%C3%A9nu%C3%A9-est-stable-%C3%A0-6-avec-des-pointes-atteignant-8"><strong>Le trafic quotidien atténué est stable, à 6 %, avec des pointes atteignant 8 %.</strong></h3>
+	<p>Bien que le nombre de requêtes HTTP atténuées ait diminué de 2 points de pourcentage, atteindre 6 % en moyenne entre 2021 et 2022, les jours durant lesquels l'activité malveillante a été plus intense que d'habitude sont clairement observables sur l'ensemble du réseau. Un exemple clair est représenté sur le graphique ci-dessous : vers la fin du mois de mai 2023, nous observons un pic de l'ordre de 8 %. Ce pic est imputable à des événements DDoS de grande ampleur, ainsi qu'à d'autres activités qui ne se conforment pas aux cycles quotidiens ou hebdomadaires habituels, et nous rappelle encore que des événements malveillants de grande ampleur peuvent avoir un impact perceptible au niveau mondial, même à l'échelle de Cloudflare.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/1OGDPWQTKaTicco1GDGUqM8oj1slSKkWUo0YIL3jfHKs5ovzrwjrWKZk7OqOHZbIFinyhu7KfkwmIakBZFXgiIr2-pUHp_bK1ldqFzK8HG2Gtg94UZbrfRjODZg57cJ2LLv4CJjdQ2hnfzn04TWl3Q" class="kg-image" alt="Percentage of mitigated HTTP requests from April 2023 to end of June 2023" loading="lazy" width="602" height="380"></figure>
+	<p>75 % des requêtes HTTP atténuées ont été immédiatement traitées avec l'action BLOCK. Cela représente une baisse de 6 points de pourcentage par rapport à l'édition précédente de ce rapport. La majorité des autres requêtes ont été atténuées avec différentes actions de type CHALLENGE ; les défis gérés arrivent en tête, représentant environ 20 % de ce sous-ensemble.</p>
+	<h3 id="bouclier-activ%C3%A9-les-r%C3%A8gles-configur%C3%A9es-par-les-clients-repr%C3%A9sentent-d%C3%A9sormais-la-principale-source-datt%C3%A9nuation-du-trafic">Bouclier activé : les règles configurées par les clients représentent désormais la principale source d'atténuation du trafic</h3>
+	<p>Dans notre précédent rapport, notre système automatisé d'atténuation des attaques DDoS était, en moyenne, à l'origine de plus de 50 % du trafic atténué. Au cours des deux derniers trimestres, en raison de l'adoption accrue du pare-feu WAF (mais également, selon toute vraisemblance, de meilleures configurations et mesures de protection des applications des entreprises contre le trafic indésirable), nous avons assisté à l'émergence d'une nouvelle tendance : le trafic atténué par le pare-feu WAF a dépassé le trafic lié à l'atténuation d'attaques DDoS. La majeure partie de l'augmentation est imputable aux règles personnalisées BLOCK du pare-feu WAF, plutôt qu'aux règles gérées du pare-feu WAF de Cloudflare, ce qui indique que ces mesures d'atténuation sont déclenchées par des règles configurées par les clients afin de protéger leur logique opérationnelle, ou à des fins connexes. C'est ce que révèle clairement le graphique ci-dessous.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/CvshnZOu0Zxn_EKD9JSQnDqlAMASvM93sakMYyz3i2VeBJw2Hvko2p2ddChsj-YmNS9D_pgI0gMi6bd6f7SLLXXbwmN36EmQk1GAzxyTeoJIc7ChU3dOygegDzZOWUxvofzjU4gZmrcu7QH5daq9cA" class="kg-image" alt="Daily mitigated HTTP requests from DDoS and WAF systems separating WAF Managed Rules from WAF Custom Rules. Date range from April 2023 to end of June 2023" loading="lazy" width="602" height="264"></figure>
+	<p>Vous remarquerez que les atténuations liées aux règles gérées du pare-feu WAF (ligne jaune) représentent un volume négligeable par rapport à l'ensemble du trafic atténué par le pare-feu WAF, ce qui indique également que les clients adoptent des modèles de sécurité positive en autorisant le trafic légitime connu, plutôt qu'en bloquant uniquement le trafic malveillant connu. Cependant, le volume d'atténuations liées aux règles gérées du pare-feu WAF a atteint 1,5 milliard de requêtes par jour au cours du trimestre.</p>
+	<p>Notre atténuation des attaques DDoS est volumétrique, bien entendu, et le volume de trafic correspondant à nos règles d'atténuation des attaques DDoS contre la couche 7 ne doit pas être sous-estimé, d'autant plus que nous observons, sur l'ensemble du web, l'apparition d'un certain nombre d'attaques et de botnets nouveaux. Vous pouvez consulter une analyse approfondie des tendances en matière d'attaques DDoS dans notre <a href="https://blog.cloudflare.com/fr-fr/ddos-threat-report-2023-q2-fr-fr">rapport sur les menaces DDoS du deuxième trimestre</a>.</p>
+	<p>Après agrégation de la source du trafic atténué, le pare-feu WAF est aujourd'hui à l'origine d'environ 57 % de la totalité des atténuations. Les données sont présentées sous forme de tableau ci-dessous, avec d'autres sources pour référence.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/05ghNUCok4D4SVKtYvx_Rfod7_KGsIL-wZ0uTDnU3uP2zfIRYC-0srFD3Zf9ZTUUAB6K-UrkmrZKCM-PccBJe2YcP6PIw6ftaLUNDT9C-5sQjvzHsRSPrR1g6DkzsMPdz5qiXfn2QPzmqHBq25ZUvw" class="kg-image" alt="" loading="lazy" width="602" height="616"></figure><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Source</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pourcentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pare-feu WAF</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">57%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Atténuation des attaques DDoS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">34%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Réputation IP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">6%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Règles d'accès</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">2%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Autre</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="les-propri%C3%A9taires-dapplications-se-fient-toujours-davantage-aux-blocages-reposant-sur-la-g%C3%A9olocalisation">Les propriétaires d'applications se fient toujours davantage aux blocages reposant sur la géolocalisation</h3>
+	<p>Compte tenu de l'augmentation du volume de trafic atténué par des règles de pare-feu WAF définies par les clients, nous avons pensé qu'il serait intéressant d'approfondir la question et de mieux comprendre quel trafic les clients bloquent, et comment ils le font. Pour cela, nous pouvons examiner l'utilisation des champs de règles sur l'ensemble des règles personnalisées de notre pare-feu WAF, afin d'identifier les thématiques communes. Bien entendu, les données doivent être interprétées correctement, car tous les clients n'ont pas accès à tous les champs, en fonction de leur contrat et du niveau de leur offre ; cependant, nous pouvons tout de même effectuer certaines déductions sur la base des « catégories » de champs. Si nous examinons les quelque 7 millions de règles personnalisées du pare-feu WAF déployées sur le réseau, en nous concentrant uniquement sur les principaux groupes, nous constatons la répartition suivante dans l'utilisation des champs :</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Champ</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;"> Pourcentage % de règles d'utilisation</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Champs liés à la géolocalisation</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">40%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">URI HTTP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">31%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">adresse IP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">21%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Autres champs HTTP (hors URI)</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">34%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Champs liés à la gestion des bots</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Score IP Reputation</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Notamment, 40 % de la totalité des règles personnalisées du pare-feu WAF actuellement déployées utilisent des champs liés à la géolocalisation pour prendre des décisions concernant le traitement du trafic. Il s'agit d'une technique couramment utilisée afin de mettre en œuvre une logique opérationnelle ou d'exclure des secteurs géographiques depuis lesquels aucun trafic n'est attendu, permettant ainsi de réduire la surface d'attaque. Bien qu'il s'agisse de contrôles rudimentaires, peu susceptibles d'arrêter l'auteur d'une attaque sophistiquée, ils permettent néanmoins de réduire efficacement la surface d'attaque.</p>
+	<p>Une autre observation remarquable est l'utilisation de champs liés à la gestion des bots dans 11 % des règles personnalisées du pare-feu WAF. Ce nombre augmente continuellement au fil du temps ; en effet, pour protéger leurs applications, un nombre croissant de clients adoptent des stratégies de classification reposant sur l'apprentissage automatique.</p>
+	<h3 id="les-anciennes-cve-sont-encore-exploit%C3%A9es-en-masse">Les anciennes CVE sont encore exploitées en masse</h3>
+	<p>Contribuant à hauteur d'environ 32 % au trafic atténué par les règles gérées du pare-feu WAF, les anomalies HTTP demeurent la catégorie d'attaque la plus fréquemment bloquée par les règles gérées du pare-feu WAF. Les attaques SQLi progressent à la deuxième position, dépassant en nombre les attaques par traversée de répertoires, avec 12,7 % et 9,9 % respectivement.</p>
+	<p>Lorsque l'on examine le début du mois d'avril 2023, on constate que la catégorie des attaques DoS dépasse considérablement la catégorie des anomalies HTTP. Les règles de la catégorie DoS sont des signatures HTTP correspondant à la couche 7 du pare-feu WAF, qui sont suffisamment spécifiques pour identifier (et bloquer) des requêtes uniques sans tenir compte du comportement des requêtes croisées, et qui peuvent être attribuées à des botnets spécifiques ou des charges utiles provoquant un déni de service (DoS). Normalement, comme c'est le cas ici, ces requêtes ne font pas partie des attaques « distribuées », d'où l'absence du premier « D » (correspondant au terme « distribué ») dans le nom de la catégorie.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/9yJacqhtxW6lIkb7hYk3FIbV908IcyUDTJiio6wNrANCF317Z098lN7F0WunvpKnTWYXBgEBZMLKT4nbO4vIseSEqHY0Zg6JZpvBXdtj-XWRniT7j7msfll7fMtZtfcVdcEpRcEw39m0EjrLn_cVgA" class="kg-image" alt="WAF Managed Rule category matching HTTP requests from April 2023 to end of June 2023" loading="lazy" width="602" height="315"></figure>
+	<p>Format tableau pour référence (10 principales catégories) :</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Source</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pourcentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Anomalie HTTP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">32%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">SQLi</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Directory Traversal</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">10%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Inclusion de fichier</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">DoS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">XSS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Spécifique à un logiciel</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">7%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Défaillance d'authentification</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">6%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Injection commune</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">3%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">CVE</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>En réalisant un examen approfondi et en filtrant uniquement les données pertinentes à la catégorie DoS, nous constatons que la majeure partie du trafic atténué est attribuable à une règle : 100031 / ce02fd... (ID de règle de l'ancien pare-feu WAF et du nouveau pare-feu WAF, respectivement). Cette règle, dont la description est « <em>Microsoft IIS - DoS, Anomaly:Header:Range - CVE:CVE-2015-163523</em> », concerne une <a href="https://nvd.nist.gov/vuln/detail/CVE-2015-1635" target="_blank">CVE (« Common Vulnerability and Exposure) datant de 2015</a>, qui affecte un certain nombre de composants Microsoft Windows, permettant l'exécution de code à distance*. Il s'agit d'un rappel pertinent que les anciennes CVE, même celles datant de plus de 8 ans, sont toujours activement exploitées pour compromettre des machines n'ayant pas reçu de correctifs et exécutant encore des logiciels vulnérables.</p><!--kg-card-begin: markdown-->
+	<p><small>* <em>En raison de la catégorisation des règles, certaines règles spécifiques aux CVE sont encore affectées à une catégorie plus vaste, telle que la catégorie DoS, dans cet exemple. Les règles sont uniquement affectées à une catégorie de CVE lorsque la charge utile de l'attaque ne recoupe pas clairement une autre catégorie plus générique.</em></small></p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/3hKuo6FBua9tE_AAL3bwvqMBQhXTC6VgUPl1fCc9GYka842yvP6RGag-Hd5Qf5RVX7Poiho5C-NNkpsYRHWpmwbsB57KJKpSx2ahAxy5oua-96vMkv0bcfVuRDQYBD7WnYbZNtQSZbzgAFpobciTpQ" class="kg-image" alt="WAF Managed Rule DoS category deep dive from April 2023 to end of June 2023" loading="lazy" width="602" height="276"></figure>
+	<p>Une autre observation intéressante est l'augmentation des correspondances avec la règle « Broken Authentication » (authentification défaillante) à partir du mois de juin. Cette augmentation est également attribuable à une règle unique, déployée pour l'ensemble de nos clients, y compris les utilisateurs de notre offre gratuite : « <em>Wordpress - Broken Access Control, File Inclusion</em> ». Cette règle bloque les tentatives d'accès à wp-config.php – le fichier de configuration par défaut de WordPress, qui se trouve normalement dans le répertoire racine du document du serveur web, mais qui, bien entendu, ne devrait jamais être accessible directement via HTTP.</p>
+	<p>Dans le même ordre d'idées, CISA/CSA a récemment publié un rapport intitulé « <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-215a?cf_target_id=DC7FD2F218498816EEC88041CD1F9A74" target="_blank">2022 Top Routinely Exploited Vulnerabilities</a> », présentant les principales vulnérabilités couramment exploitées. Nous avons profité de l'occasion pour examiner <a href="https://blog.cloudflare.com/fr-fr/unmasking-the-top-exploited-vulnerabilities-of-2022-fr-fr">de quelle manière chaque CVE mentionnée dans le rapport de CISA était reflétée dans les données de Cloudflare</a>. CISA/CSA examine 12 vulnérabilités régulièrement exploitées par des cyberacteurs malveillants en 2022. Toutefois, selon notre analyse, deux CVE mentionnées dans le rapport de CISA sont à l'origine de l'immense majorité des attaques que nous avons observées « dans la nature » : Log4J et Atlassian Confluence Code Injection. Nos données suggèrent clairement une différence considérable dans le volume d'exploitations entre ces attaques, qui occupent les deux premières places du classement, et le reste de la liste. Le graphique suivant compare le volume d'attaques (en échelle logarithmique) des six principales vulnérabilités de la liste de CISA d'après nos journaux.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/klQw3g8MYz6hzPv87CF_ERVV5mtKoKk1qb-LKe5lIk_J98fsWQ2rnUrrC4Lai1zbrHsbO0NZMEDwJ7HslNH34wppVoHehEN6UmGM_v-FfBRh_3XVJ6MMDEKZXcnXzLlYkB-2ae2kbDA9Qu__1wxEoA" class="kg-image" alt="Number of requests blocked across the Cloudflare network for each CVE. The blocks are triggered by managed rules created to protect Cloudflare users." loading="lazy" width="602" height="320"></figure>
+	<h2 id="informations-sur-le-trafic-li%C3%A9-aux-bots">Informations sur le trafic lié aux bots</h2>
+	<p>La solution de <a href="https://www.cloudflare.com/products/bot-management" target="_blank">gestion des bots</a> de Cloudflare continue de bénéficier d'investissements importants, à l'image de l'ajout d'URL vérifiées par JavaScript pour une meilleure protection contre les bots ciblant les navigateurs ; par ailleurs, des ID de détection sont désormais disponibles dans les règles personnalisées, pour une plus grande facilité de configuration, tandis qu'une interface utilisateur améliorée offre une prise en main plus aisée. Pour les clients en libre-service, nous avons ajouté la possibilité d'ignorer les règles du mode Super Bot Fight et la prise en charge des requêtes Loopback de Wordpress, afin d'offrir une meilleure intégration aux applications de nos clients, ainsi que la protection qu'ils recherchent.</p>
+	<p>Notre confiance dans les résultats de la classification de la solution de gestion des bots demeure très élevée. Si nous représentons graphiquement les scores des bots sur l'intervalle analysé, nous constatons une répartition très claire, la plupart des requêtes étant classées comme étant certainement liées à des bots (score inférieur à 30) ou certainement d'origine humaine (score supérieur à 80) ; en réalité, la plupart des requêtes obtiennent un score inférieur à 2 ou supérieur à 95. Cela équivaut, sur la même période, à la classification de 33 % du trafic comme automatisé (c'est-à-dire généré par un bot). Sur des périodes plus longues, nous constatons que le pourcentage global de trafic automatisé reste stable, à 29 %, reflétant les données présentées dans <a href="https://radar.cloudflare.com/traffic?dateStart=2023-04-01&amp;dateEnd=2023-07-01" target="_blank">Cloudflare Radar</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/YAtptFw3xzFh62qz8dGC1c-1q4PyonepBDW9-ESFi2W167L98nr4ZcL47Cfu6mWbzk-OSiAFDE5GUd-090UnoH8WURf9Cinx2EelLsXIdjSs_J0O6CK3-CHL4Q-oyF89Qvv-JN4JXUt3nafpaIi3yg" class="kg-image" alt="Bot score distribution of eyeball traffic from April 2023 to end of June 2023" loading="lazy" width="602" height="349"></figure>
+	<h3 id="en-moyenne-plus-de-10-du-trafic-de-bots-non-v%C3%A9rifi%C3%A9s-est-att%C3%A9nu%C3%A9">En moyenne, plus de 10 % du trafic de bots non vérifiés est atténué</h3>
+	<p>Comparée à l'édition précédente du rapport, l'atténuation du trafic HTTP lié à des bots non vérifiés diminue actuellement (moins 6 points de pourcentage). Cependant, l'utilisation du champ Bot Management (gestion des bots) dans les règles personnalisées du pare-feu WAF n'est pas négligeable, puisqu'elle s'élève à 11 %. Cela signifie que plus de 700 000 règles personnalisées du pare-feu WAF déployées sur Cloudflare se fient à des signaux caractéristiques des bots pour exécuter une action. Le champ le plus fréquemment utilisé est cf.client.bot, un alias de cf.bot_management.verified_bot, qui repose sur notre <a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank">liste de bots vérifiés</a> et permet aux clients d'établir une distinction entre les bots légitimes et les bots non vérifiés, potentiellement malveillants.</p>
+	<p>Les entreprises ont accès à la fonctionnalité cf.bot_management.score, plus puissante, qui leur permet d'accéder directement au score calculé pour chaque requête ; il s'agit du même score que celui utilisé pour générer le graphique de répartition des scores des bots dans la section précédente.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/Kbr-b_PdAICld_iJC0OVKfoiesm6yp4v0u9Dk07xzgKll77Ke8Nwz_bTafo56S3Ocdk06Ev-9axutIBec6Ire1umLCOAxb8f0kk0PXMBDTi62nYrhK_Zo3BM4W1b9rFThY9ISA-u7BZDOUZoD3HxBw" class="kg-image" alt="Mitigated HTTP Traffic percentage of non verified bot traffic from April 2023 to end of June 2023" loading="lazy" width="602" height="316"></figure>
+	<p>L'examen du service de Cloudflare exécutant l'atténuation du trafic de bots non vérifiés permet également de valider les données ci-dessus. Bien que notre système d'atténuation des attaques DDoS bloque automatiquement le trafic HTTP pour l'ensemble des clients, cela ne représente que 13 % des mesures d'atténuation de trafic de bots non vérifiés. En revanche, le pare-feu WAF (et principalement les règles définies par les clients) représentent 77 % de ces mesures d'atténuation ; cette valeur est beaucoup plus élevée que les mesures d'atténuation pour l'ensemble du trafic (57 %) évoquées au début du rapport. Notez que la solution de gestion des bots est spécifiquement mentionnée, mais qu'elle fait référence à nos règles en un clic « par défaut », qui sont comptabilisées séparément des champs liés aux bots utilisés dans les règles personnalisées du pare-feu WAF.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/ypd6fuSQdsoqlYxAsi9vfVN8bu_WP5NL8LUHeNz50B6FVjQhqXCNmj3B0IFCT9fn8fY0WVTA8YY2jSi3bAxgUNqtXTPy7KAbQ2ub0iGngR0rDc7y8Fyn_t4clT8BEJTomNekACAxvOqyvVSeqy-fng" class="kg-image" alt="" loading="lazy" width="602" height="492"></figure>
+	<p>Format tableau pour référence :</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Source</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pourcentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pare-feu WAF</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">77%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Atténuation des attaques DDoS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">13%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Réputation IP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Règles d'accès</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">3%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Autre</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h2 id="informations-sur-le-trafic-des-api"><strong>Informations sur le trafic des API</strong></h2>
+	<h3 id="58-du-trafic-dynamique-cest-%C3%A0-dire-ne-pouvant-pas-%C3%AAtre-mis-en-cache-est-li%C3%A9-%C3%A0-des-api"><strong>58 % du trafic dynamique (c'est-à-dire ne pouvant pas être mis en cache) est lié à des API</strong></h3>
+	<p>La croissance du trafic d'API global observée par Cloudflare ne connaît pas de ralentissement. Par rapport au trimestre précédent, nous constatons que 58 % du trafic dynamique total est classé comme étant lié aux API. Cela représente une augmentation de 3 points de pourcentage par rapport au premier trimestre.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/7pw4eIfKfT6G1jdnDmJ7HyMUlfMJ4rA4SUW0joevLkvHnqTqnnI-l-nmOdHHBO2kphNOT7Z0t2e6TlR52vA3EiZPV6VSiX3WiGhjcAQWisN3sSvueZgdqTwPTGINlq7q92iY-d-hcV5TqA92PFtGnQ" class="kg-image" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" loading="lazy" width="602" height="307"></figure>
+	<p>Notre investissement dans la passerelle API Gateway suit également une tendance croissante similaire. Au cours du dernier trimestre, nous avons inauguré plusieurs nouvelles fonctionnalités de sécurité des API.</p>
+	<p>Premièrement, nous avons facilité l'utilisation du service d'identification des API, avec une <a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#inbox-view" target="_blank">nouvelle vue de la boîte de réception</a>. Le service d'identification des API répertorie les API afin d'éviter les problèmes liés à l'informatique fantôme (Shadow IT) et aux API zombies ; les clients peuvent désormais facilement filtrer les données afin d'afficher uniquement les nouveaux points de terminaison identifiés par le service d'identification des API. L'enregistrement des points de terminaison depuis le service d'identification des API entraîne leur ajout à notre <a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank">système de gestion des points de terminaison</a>.</p>
+	<p>Ensuite, nous avons ajouté une toute nouvelle fonctionnalité de sécurité des API, proposée exclusivement par Cloudflare : la possibilité de contrôler l'accès aux API en fonction du comportement du client. Nous l'appelons <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank">Sequence Mitigation</a>. Les clients peuvent désormais créer des modèles de sécurité positive ou négative basés sur l'ordre des chemins d'accès aux API utilisés par les clients. Vous pouvez désormais vous assurer que les utilisateurs de votre application sont les seuls à accéder à votre API, et ainsi, arrêter les tentatives par force brute qui passent outre les fonctionnalités normales de l'application. Par exemple, dans une application de services bancaires, vous pouvez désormais exiger que l'accès au point de terminaison de transfert de fonds soit uniquement possible qu'après qu'un utilisateur ait également accédé au point de terminaison de vérification du solde du compte.</p>
+	<p>Nous sommes heureux de continuer à proposer de nouvelles fonctionnalités de sécurité et de gestion des API pendant le reste de l'année 2023 et après.</p>
+	<h3 id="65-du-trafic-dapi-global-est-g%C3%A9n%C3%A9r%C3%A9-par-les-navigateurs"><strong>65 % du trafic d'API global est généré par les navigateurs</strong></h3>
+	<p>Le pourcentage du trafic d'API généré par les navigateurs est resté très stable au cours du dernier trimestre. Cette statistique fait référence aux requêtes HTTP qui ne servent pas de contenu HTML directement rendu par le navigateur sans traitement préalable, à l'image des requêtes plus communément appelées AJAX, qui servent habituellement des réponses basées sur JSON.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/fIiQkaVGXNvhqsK0iemXKxRFeO8r7mjo_Io2hX-WQof_mbe4LiWEYjBTWEbkpKWNS5ND7FPJ_6P2I-7WKbbesZQm9HJameVUsklttfrTEzGIqNocuwd7TG3nJ6tk3YeyXkK9HgupXy9JoVkRKccGjA" class="kg-image" alt="Bot score distribution of API traffic" loading="lazy" width="602" height="347"></figure>
+	<h3 id="les-anomalies-http-constituent-le-vecteur-dattaque-de-points-de-terminaison-dapi-le-plus-courant"><strong>Les anomalies HTTP constituent le vecteur d'attaque de points de terminaison d'API le plus courant</strong></h3>
+	<p>Comme au trimestre précédent, les anomalies HTTP demeurent le vecteur de trafic d'attaque atténué le plus courant parmi le trafic lié aux API. Les attaques par injection SQLi ne sont pas négligeables, toutefois, puisqu'elles contribuent à hauteur d'environ 11 % au volume total de trafic atténué, suivies de près par les attaques XSS, à hauteur d'environ 9 %.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/CryGxGj3TGo4yYAas0Qf1w7l3X1FaZ-pdPtpjZqtyf4EI4NCy3FC_oqf_Sg1-PKpuFo2XSqzz5BmS0PeHHZoDlOJkBC4jkl46ndbhqpTkgBXoDKIVOTtA4guHRg4pTpC20_kkP-KaYTat3_eil3p3g" class="kg-image" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last quarter" loading="lazy" width="602" height="309"></figure>
+	<p>Présentation sous forme de tableau pour référence (5 premières attaques) :</p><!--kg-card-begin: html-->
+	<table style="border:none;border-collapse:collapse;">
+		<colgroup>
+			<col width="333">
+			<col width="333">
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Source</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Pourcentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Anomalie HTTP</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">64%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">SQLi</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">11%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">XSS</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Spécifique à un logiciel</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Injection de commande</span></p>
+				</td>
+				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
+					<p dir="ltr" style="line-height:1.2;text-align: center;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">4%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="perspectives-davenir"><strong>Perspectives d'avenir</strong></h3>
+	<p>Tandis que nous optons pour une publication trimestrielle de notre rapport sur la sécurité des applications, nous avons l'intention d'approfondir l'examen de certaines informations et de présenter des données supplémentaires issues de certains de nos produits récents, tels que Page Shield ; cela nous permettra d'aller au-delà du trafic HTTP et d'explorer l'état des dépendances tierces en ligne.</p>
+	<p>Restez à l'écoute et gardez un œil sur <a href="https://radar.cloudflare.com" target="_blank">Cloudflare Radar</a> pour bénéficier de rapports et d'informations plus fréquents consacrés à la sécurité des applications.<br></p>
+</div>

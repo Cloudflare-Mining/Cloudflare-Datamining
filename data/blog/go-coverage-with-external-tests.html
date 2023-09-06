@@ -1,3 +1,4 @@
+<div class="mb2 gray5">1 min read</div>
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>The Go test coverage implementation is <a href="https://blog.golang.org/cover" target="_blank">quite ingenious</a>: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap. This is integrated in the <code>go test</code> tool: <code>go test -cover</code> enables it and <code>-coverprofile=</code> allows you to write a profile to then inspect with <code>go tool cover</code>.</p>
