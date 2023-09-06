@@ -644,16 +644,12 @@
 									]
 								},
 								"placement": {
-									"description": "Placement settings (mode and hint)",
 									"properties": {
-										"placement_hint": {
-											"description": "Specifies the placement hint for the Worker (e.g. 'aws/us-east-1')",
-											"example": "aws/us-east-1",
-											"type": "string"
-										},
-										"placement_mode": {
-											"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
-											"example": "smart",
+										"mode": {
+											"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+											"enum": [
+												"smart"
+											],
 											"type": "string"
 										}
 									},
@@ -1295,16 +1291,12 @@
 								]
 							},
 							"placement": {
-								"description": "Placement settings (mode and hint)",
 								"properties": {
-									"placement_hint": {
-										"description": "Specifies the placement hint for the Worker (e.g. 'aws/us-east-1')",
-										"example": "aws/us-east-1",
-										"type": "string"
-									},
-									"placement_mode": {
-										"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
-										"example": "smart",
+									"mode": {
+										"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+										"enum": [
+											"smart"
+										],
 										"type": "string"
 									}
 								},
@@ -1808,16 +1800,12 @@
 									]
 								},
 								"placement": {
-									"description": "Placement settings (mode and hint)",
 									"properties": {
-										"placement_hint": {
-											"description": "Specifies the placement hint for the Worker (e.g. 'aws/us-east-1')",
-											"example": "aws/us-east-1",
-											"type": "string"
-										},
-										"placement_mode": {
-											"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
-											"example": "smart",
+										"mode": {
+											"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+											"enum": [
+												"smart"
+											],
 											"type": "string"
 										}
 									},
