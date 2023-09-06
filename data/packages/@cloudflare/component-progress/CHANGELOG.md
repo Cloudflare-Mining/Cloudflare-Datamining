@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.0.14
+
+### Patch Changes
+
+- c08dae243d: moved prop-types from devDependencies to dependencies
+  - @cloudflare/component-link@7.1.16
+
 ## 8.0.13
 
 ### Patch Changes

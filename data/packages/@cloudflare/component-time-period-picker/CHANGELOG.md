@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.17
+
+### Patch Changes
+
+- c08dae243d: moved prop-types from devDependencies to dependencies
+- Updated dependencies [c08dae243d]
+  - @cloudflare/component-calendar@6.0.12
+
 ## 5.0.16
 
 ### Patch Changes

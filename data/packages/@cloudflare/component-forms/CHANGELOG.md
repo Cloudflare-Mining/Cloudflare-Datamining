@@ -1,5 +1,18 @@
 # Change Log
 
+## 5.3.13
+
+### Patch Changes
+
+- Updated dependencies [c08dae243d]
+- Updated dependencies [be29448d64]
+  - @cloudflare/component-button@7.0.13
+  - @cloudflare/component-search@7.0.12
+  - @cloudflare/component-select-2@6.0.12
+  - @cloudflare/component-time-period-picker@5.0.17
+  - @cloudflare/util-responsive@1.5.3
+  - @cloudflare/component-grid@2.1.8
+
 ## 5.3.12
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.0.13
+
+### Patch Changes
+
+- c08dae243d: moved prop-types from devDependencies to dependencies
+- be29448d64: added support for the `children` prop to the `ButtonGroup` Typescript definitions
+
 ## 7.0.12
 
 ## 7.0.11

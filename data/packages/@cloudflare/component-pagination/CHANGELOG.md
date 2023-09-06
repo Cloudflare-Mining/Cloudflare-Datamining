@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.0.12
+
+### Patch Changes
+
+- c08dae243d: moved prop-types from devDependencies to dependencies
+
 ## 9.0.11
 
 ### Patch Changes

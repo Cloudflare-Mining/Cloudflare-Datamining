@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.1.4
+
+### Patch Changes
+
+- c08dae243d: moved prop-types from devDependencies to dependencies
+- Updated dependencies [c08dae243d]
+- Updated dependencies [be29448d64]
+  - @cloudflare/component-button@7.0.13
+
 ## 7.1.3
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.0.14
+
+### Patch Changes
+
+- Updated dependencies [c08dae243d]
+- Updated dependencies [be29448d64]
+  - @cloudflare/component-button@7.0.13
+  - @cloudflare/component-pagination@9.0.12
+  - @cloudflare/component-link@7.1.16
+
 ## 5.0.13
 
 ### Patch Changes

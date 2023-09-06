@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.4.16
+
+### Patch Changes
+
+- Updated dependencies [c08dae243d]
+- Updated dependencies [be29448d64]
+  - @cloudflare/component-button@7.0.13
+  - @cloudflare/component-forms@5.3.13
+
 ## 6.4.15
 
 ### Patch Changes
