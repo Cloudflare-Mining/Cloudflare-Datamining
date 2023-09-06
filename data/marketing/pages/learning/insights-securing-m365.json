@@ -2809,7 +2809,52 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This article is part of a series on the latest trends and topics impacting today's technology decision-makers.",
+													"value": "This article is part of a ",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/the-net/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "series",
+															"marks": [
+																{
+																	"type": "italic"
+																},
+																{
+																	"type": "bold"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " on the latest trends and topics impacting today's technology decision-makers.",
 													"marks": [
 														{
 															"type": "italic"
