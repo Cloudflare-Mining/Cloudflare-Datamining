@@ -79,7 +79,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
 	global_banner: {
-		notification: ".com prices will be changing soon. <0>Click here</0> for more information about this and other upcoming changes."
+		notification: "Domain fees will be changing soon. <0>Click here</0> for more info."
 	},
 	domain_page: {
 		title: (0, a.d)(C(), "domainName"),
@@ -132,8 +132,6 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
 		expires_on: (0, a.d)(y(), "expires_on"),
-		deleted_description: "This domain was deleted",
-		check_availability: "Check availability",
 		grace_period: {
 			title: "Domain expired",
 			details: (0, a.d)(g(), "grace_period_start", "grace_period_end")
