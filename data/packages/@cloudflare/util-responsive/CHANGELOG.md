@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.4
+
+### Patch Changes
+
+- @cloudflare/component-listener@3.2.2
+
 ## 1.5.3
 
 ## 1.5.2

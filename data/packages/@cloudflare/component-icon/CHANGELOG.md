@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.6.0
+
+### Minor Changes
+
+- 1ac482788d: Add Zeto Trust networks logo
+
 ## 11.5.4
 
 ### Patch Changes
