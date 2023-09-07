@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNet - DDoS is on the rise - page",
+				"pageName": "theNet - DDoS is on the rise - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -570,7 +570,31 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The global business community is facing significant cyber risks that warrant attention. In the first quarter of 2023, over 112 billion cyber threats were mitigated worldwide on average per day. With the surge of digital transformation initiatives and the continued hybrid work trends, there is an increased urgency for businesses to strengthen their defenses against these complex cyber attacks.",
+													"value": "The global business community is facing significant cyber risks that warrant attention. In the first quarter of 2023, over %{ThreatsBlockedPerDay}",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "billion cyber threats were mitigated worldwide on average per day. With the surge of digital transformation initiatives and the continued hybrid work trends, there is an increased urgency for businesses to strengthen their defenses against these complex cyber attacks.",
 													"marks": [],
 													"content": null
 												}
@@ -1334,7 +1358,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "112 billion cyber threats",
+																	"value": "%{ThreatsBlockedPerDay} billion cyber threats",
 																	"marks": [
 																		{
 																			"type": "bold"
