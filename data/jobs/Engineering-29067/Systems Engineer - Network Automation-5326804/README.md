@@ -25,7 +25,7 @@
 	<li>Knowledge of Networking engineering, with competencies in Layer 2 and Layer 3 protocols and vendor equipment: Cisco, Juniper, etc.</li>
 	<li>Experience building and maintaining large distributed systems</li>
 	<li>Experience managing internal and/or external customer requirements and expectations</li>
-	<li>Knowledge of Javascript (Reactor and other frontend frameworks)</li>
+	<li>Knowledge of Javascript (React and other frontend frameworks)</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
