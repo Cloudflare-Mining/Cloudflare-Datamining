@@ -936,6 +936,24 @@
 		"label": "healthcheck_write"
 	},
 	{
+		"id": "4d62ccf834df44808bc9283d65c4e4e9",
+		"name": "Hyperdrive Read",
+		"description": "Grants read access to Hyperdrive configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "query_cache_read"
+	},
+	{
+		"id": "721b2f51fba74871bd361de65aeb7e03",
+		"name": "Hyperdrive Write",
+		"description": "Grants write access to Hyperdrive configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "query_cache_write"
+	},
+	{
 		"id": "212c9ff247b9406d990c017482afb3a5",
 		"name": "IOT Read",
 		"description": "Grants read access to IOT devices",
@@ -1366,24 +1384,6 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "pubsub_write"
-	},
-	{
-		"id": "4d62ccf834df44808bc9283d65c4e4e9",
-		"name": "Query Cache Read",
-		"description": "Grants read access to Query Cache configuration",
-		"scopes": [
-			"com.cloudflare.api.account"
-		],
-		"label": "query_cache_read"
-	},
-	{
-		"id": "721b2f51fba74871bd361de65aeb7e03",
-		"name": "Query Cache Write",
-		"description": "Grants write access to Query Cache configuration",
-		"scopes": [
-			"com.cloudflare.api.account"
-		],
-		"label": "query_cache_write"
 	},
 	{
 		"id": "93ae59e7a40c4287a57ff6e501186a63",
