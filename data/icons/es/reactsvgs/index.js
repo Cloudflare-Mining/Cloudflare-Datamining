@@ -131,6 +131,7 @@ import Wrench from './Wrench';
 import Youtube from './Youtube';
 import Zaraz from './Zaraz';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
+import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
 export default {
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
@@ -264,5 +265,6 @@ export default {
   wrench: Wrench,
   youtube: Youtube,
   zaraz: Zaraz,
-  'zerotrust-casb-logo': ZerotrustCasbLogo
+  'zerotrust-casb-logo': ZerotrustCasbLogo,
+  'zerotrust-networks-logo': ZerotrustNetworksLogo
 };

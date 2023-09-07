@@ -133,5 +133,6 @@ declare const _default: {
     youtube: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     zaraz: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'zerotrust-casb-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'zerotrust-networks-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
 };
 export default _default;
