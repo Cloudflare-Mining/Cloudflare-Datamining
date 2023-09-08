@@ -1,10 +1,10 @@
 [
 	{
-		"id": "fc86e6664bfb8ff279cd5a92f7424b50",
-		"name": "Query Cache Admin",
-		"description": "Can edit Query Cache database configurations.",
+		"id": "17f13fba9173af84903c2be2b56240e5",
+		"name": "Bot Management (Account-Wide)",
+		"description": "Can edit Bot Management (including Super Bot Fight Mode) configurations for all domains in account",
 		"permissions": {
-			"query_cache": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
