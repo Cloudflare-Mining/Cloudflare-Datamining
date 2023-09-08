@@ -31,6 +31,28 @@
 			},
 			{
 				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Location Alpha2 to filter results.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "orderBy",
+				"schema": {
+					"default": "ASN",
+					"description": "Order asn list.",
+					"enum": [
+						"ASN",
+						"POPULATION"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "format",
 				"schema": {
 					"description": "Format results are returned in.",
@@ -87,13 +109,9 @@
 												},
 												"required": [
 													"name",
-													"nameLong",
-													"aka",
 													"asn",
-													"website",
 													"country",
-													"countryName",
-													"orgName"
+													"countryName"
 												],
 												"type": "object"
 											},
@@ -309,7 +327,6 @@
 														},
 														"required": [
 															"name",
-															"aka",
 															"asn"
 														],
 														"type": "object"
@@ -328,8 +345,6 @@
 											},
 											"required": [
 												"name",
-												"nameLong",
-												"aka",
 												"country",
 												"countryName",
 												"confidenceLevel",
@@ -711,7 +726,6 @@
 														},
 														"required": [
 															"name",
-															"aka",
 															"asn"
 														],
 														"type": "object"
@@ -730,8 +744,6 @@
 											},
 											"required": [
 												"name",
-												"nameLong",
-												"aka",
 												"country",
 												"countryName",
 												"related",

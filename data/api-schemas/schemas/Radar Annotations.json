@@ -150,6 +150,10 @@
 														"example": "OUTAGE",
 														"type": "string"
 													},
+													"id": {
+														"example": 550,
+														"type": "integer"
+													},
 													"linkedUrl": {
 														"example": "http://example.com",
 														"type": "string"
@@ -208,6 +212,7 @@
 													}
 												},
 												"required": [
+													"id",
 													"dataSource",
 													"startDate",
 													"asns",
