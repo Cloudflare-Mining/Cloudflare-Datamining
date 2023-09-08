@@ -21,7 +21,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 4 years professional experience as a developer/engineer</li>
+	<li>Minimum 2 years professional experience as a developer/engineer</li>
 	<li>Solid grasp of how TCP and HTTP work</li>
 	<li>Experience designing, implementing and optimizing secure, resilient distributed systems</li>
 	<li>Experience with Linux networking</li>
