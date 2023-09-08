@@ -19,6 +19,25 @@
 		}
 	},
 	{
+		"id": "fc86e6664bfb8ff279cd5a92f7424b50",
+		"name": "Hyperdrive Admin",
+		"description": "Can edit Hyperdrive database configurations.",
+		"permissions": {
+			"query_cache": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "2964cc9c4ebefdc6bf2bdbc4e106b906",
 		"name": "Turnstile Read",
 		"description": "Grants read access to Turnstile",
