@@ -189,17 +189,17 @@
 	var rt = 300020;
 	var nt = 300030;
 
-	function D(e, r) {
+	function P(e, r) {
 		return e.indexOf(r) !== -1
 	}
 	var N;
 	(function(e) {
 		e.MANAGED = "managed", e.NON_INTERACTIVE = "non-interactive", e.INVISIBLE = "invisible"
 	})(N || (N = {}));
-	var P;
+	var D;
 	(function(e) {
 		e.NORMAL = "normal", e.COMPACT = "compact", e.INVISIBLE = "invisible"
-	})(P || (P = {}));
+	})(D || (D = {}));
 	var me;
 	(function(e) {
 		e.AUTO = "auto", e.LIGHT = "light", e.DARK = "dark"
@@ -230,24 +230,24 @@
 	})(Ne || (Ne = {}));
 
 	function Le(e) {
-		return D(["auto", "dark", "light"], e)
-	}
-
-	function De(e) {
-		return D(["auto", "never"], e)
+		return P(["auto", "dark", "light"], e)
 	}
 
 	function Pe(e) {
+		return P(["auto", "never"], e)
+	}
+
+	function De(e) {
 		return e > 0 && e < 9e5
 	}
 
 	function Me(e) {
 		return e > 0 && e < 36e4
 	}
-	var Pt = /^[0-9A-Za-z_-]{3,100}$/;
+	var Dt = /^[0-9A-Za-z_-]{3,100}$/;
 
 	function at(e) {
-		return Pt.test(e)
+		return Dt.test(e)
 	}
 	var Mt = /^[a-z0-9_-]{0,32}$/i;
 
@@ -261,11 +261,11 @@
 	}
 
 	function We(e) {
-		return D(["normal", "compact", "invisible"], e)
+		return P(["normal", "compact", "invisible"], e)
 	}
 
 	function ze(e) {
-		return D(["auto", "manual", "never"], e)
+		return P(["auto", "manual", "never"], e)
 	}
 	var Ft = /^[a-z]{2,3}([-_][a-z]{2})?$/i;
 
@@ -274,11 +274,11 @@
 	}
 
 	function He(e) {
-		return D(["always", "execute", "interaction-only"], e)
+		return P(["always", "execute", "interaction-only"], e)
 	}
 
 	function je(e) {
-		return D(["render", "execute"], e)
+		return P(["render", "execute"], e)
 	}
 	var H = "0/0";
 	var it = 300,
@@ -534,12 +534,12 @@
 			case N.NON_INTERACTIVE:
 			case N.MANAGED:
 				switch (s) {
-					case P.COMPACT:
+					case D.COMPACT:
 						e.style.width = "130px", e.style.height = "120px";
 						break;
-					case P.INVISIBLE:
-						d('Invalid value for parameter "size", expected "'.concat(P.COMPACT, '" or "').concat(P.NORMAL, '", got "').concat(s, '"'), 2817);
-					case P.NORMAL:
+					case D.INVISIBLE:
+						d('Invalid value for parameter "size", expected "'.concat(D.COMPACT, '" or "').concat(D.NORMAL, '", got "').concat(s, '"'), 2817);
+					case D.NORMAL:
 						e.style.width = "300px", e.style.height = "65px";
 						break
 				}
@@ -568,9 +568,9 @@
 		return r
 	}
 
-	function At(e, r, i, s) {
+	function Tt(e, r, i, s) {
 		var u = Bt(i),
-			v = "h/".concat("g", "/");
+			v = "h/".concat("b", "/");
 		return "".concat(u, "/cdn-cgi/challenge-platform/").concat(v, "turnstile/if/ov2/av0/rcv").concat(s, "/").concat(e, "/").concat(r, "/").concat(i.theme, "/").concat(i.size)
 	}
 
@@ -582,7 +582,7 @@
 		return e.startsWith("0x4AAAAAAAAAA") || e.startsWith("0x4AAAAAAAAj")
 	}
 
-	function Tt() {
+	function At() {
 		for (var e = window; e && e.top !== e && !e.location.href.startsWith("http");) e = e.top;
 		return e == null ? void 0 : e.location.href
 	}
@@ -636,15 +636,15 @@
 						o = !1,
 						g = void 0;
 					try {
-						for (var A = a[Symbol.iterator](), T; !(l = (T = A.next()).done); l = !0) {
-							var x = T.value;
+						for (var T = a[Symbol.iterator](), A; !(l = (A = T.next()).done); l = !0) {
+							var x = A.value;
 							t[x] && t[x] !== c.params[x] && n.push(x)
 						}
 					} catch (E) {
 						o = !0, g = E
 					} finally {
 						try {
-							!l && A.return != null && A.return()
+							!l && T.return != null && T.return()
 						} finally {
 							if (o) throw g
 						}
@@ -690,7 +690,7 @@
 						return
 					}
 					var o;
-					l.src = At(t, a.params.sitekey, a.params, (o = a.rcV) !== null && o !== void 0 ? o : H), qe(n), a.retryTimeout && window.clearTimeout(a.retryTimeout)
+					l.src = Tt(t, a.params.sitekey, a.params, (o = a.rcV) !== null && o !== void 0 ? o : H), qe(n), a.retryTimeout && window.clearTimeout(a.retryTimeout)
 				} else {
 					d("Widget ".concat(t, " to reset was not found."), 3331);
 					return
@@ -730,8 +730,8 @@
 				if (l) {
 					var o = Object.assign(l, t),
 						g = o.action,
-						A = o.cData,
-						T = o.chlPageData,
+						T = o.cData,
+						A = o.chlPageData,
 						x = o.sitekey,
 						E;
 					o.theme = (E = o.theme) !== null && E !== void 0 ? E : me.AUTO;
@@ -746,7 +746,7 @@
 					var $;
 					o["expiry-interval"] = ($ = o["expiry-interval"]) !== null && $ !== void 0 ? $ : (it - ot) * 1e3;
 					var te;
-					o.size = (te = o.size) !== null && te !== void 0 ? te : P.NORMAL;
+					o.size = (te = o.size) !== null && te !== void 0 ? te : D.NORMAL;
 					var ce = o.callback,
 						re = o["expired-callback"],
 						ne = o["timeout-callback"],
@@ -770,7 +770,7 @@
 						d('Invalid type for parameter "theme", expected dark|light|auto, got "'.concat(o.theme, '" ').concat(C(o.theme)), 3591);
 						return
 					}
-					if (!De(o.retry)) {
+					if (!Pe(o.retry)) {
 						d('Invalid type for parameter "retry", expected never|auto, got "'.concat(o.retry, '" ').concat(C(o.retry)), 3592);
 						return
 					}
@@ -786,7 +786,7 @@
 						d('Unknown execution value: "'.concat(o.execution, ", expected either: 'render' or 'execute'."), 3601);
 						return
 					}
-					if (!Pe(o["retry-interval"])) {
+					if (!De(o["retry-interval"])) {
 						d('Invalid retry-interval value: "'.concat(o["retry-interval"], ', expected an integer value > 0 and < 900000"'), 3602);
 						return
 					}
@@ -794,21 +794,21 @@
 						d('Invalid expiry-interval value: "'.concat(o["expiry-interval"], ', expected an integer value > 0 and < 360000"'), 3602);
 						return
 					}
-					var Ae, ae = (Ae = o["refresh-expired"]) !== null && Ae !== void 0 ? Ae : M.AUTO;
+					var Te, ae = (Te = o["refresh-expired"]) !== null && Te !== void 0 ? Te : M.AUTO;
 					if (ze(ae)) o["refresh-expired"] = ae;
 					else {
 						d('Invalid type for parameter "refresh-expired", expected never|manual|auto, got "'.concat(ae, '" ').concat(typeof ae == "undefined" ? "undefined" : C(ae)), 3603);
 						return
 					}
-					var Te = a.getElementsByTagName("iframe")[0];
-					Te != null && Te.id.startsWith(Z) && f(a);
+					var Ae = a.getElementsByTagName("iframe")[0];
+					Ae != null && Ae.id.startsWith(Z) && f(a);
 					var k = document.createElement("iframe");
 					if (!Ue(g)) {
 						d('Invalid input for optional parameter "action", got "'.concat(g, '"'), 3604);
 						return
 					}
-					if (!Fe(A)) {
-						d('Invalid input for optional parameter "cData", got "'.concat(A, '"'), 3605);
+					if (!Fe(T)) {
+						d('Invalid input for optional parameter "cData", got "'.concat(T, '"'), 3605);
 						return
 					}
 					var le = s(),
@@ -822,8 +822,8 @@
 						b.set(le, Ce({
 							idx: G,
 							action: g,
-							cData: A,
-							chlPageData: T,
+							cData: T,
+							chlPageData: A,
 							cbSuccess: ce,
 							cbError: Ct,
 							cbExpired: re,
@@ -845,11 +845,11 @@
 								seq: 0,
 								lastAckedSeq: 0
 							}
-						}, Lt)), xt(b), k.style.display = "none", k.style.border = "none", k.style.overflow = "hidden", k.setAttribute("src", At(le, x, o, H)), k.setAttribute("allow", "cross-origin-isolated; fullscreen"), k.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), k.id = J;
+						}, Lt)), xt(b), k.style.display = "none", k.style.border = "none", k.style.overflow = "hidden", k.setAttribute("src", Tt(le, x, o, H)), k.setAttribute("allow", "cross-origin-isolated; fullscreen"), k.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), k.id = J;
 						var Se;
 						k.tabIndex = (Se = o.tabindex) !== null && Se !== void 0 ? Se : 0, k.title = "Widget containing a Cloudflare security challenge", a.appendChild(k);
-						var Re, Dt = (Re = o["response-field"]) !== null && Re !== void 0 ? Re : !0;
-						if (Dt) {
+						var Re, Pt = (Re = o["response-field"]) !== null && Re !== void 0 ? Re : !0;
+						if (Pt) {
 							var se = document.createElement("input");
 							se.type = "hidden";
 							var Oe;
@@ -873,10 +873,10 @@
 					l = void 0;
 				try {
 					for (var o = b[Symbol.iterator](), g; !(a = (g = o.next()).done); a = !0) {
-						var A = ve(g.value, 2),
-							T = A[0],
-							x = A[1];
-						t < x.idx && (c = T, t = x.idx)
+						var T = ve(g.value, 2),
+							A = T[0],
+							x = T[1];
+						t < x.idx && (c = A, t = x.idx)
 					}
 				} catch (E) {
 					n = !0, l = E
@@ -900,14 +900,14 @@
 
 		function S() {
 			return S = Je(function(m, c, t, a) {
-				var n, l, o, g, A, T, x, E, z;
+				var n, l, o, g, T, A, x, E, z;
 				return _e(this, function(I) {
 					switch (I.label) {
 						case 0:
-							if (n = m.params.sitekey, l = Tt(), !l) return h("Cannot determine Turnstile's embedded location, aborting clearance redemption."), r(m, c, !1), [2];
-							o = "h/".concat("g", "/"), g = new URL(l), A = "https", T = "".concat(A, "://").concat(g.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), I.label = 1;
+							if (n = m.params.sitekey, l = At(), !l) return h("Cannot determine Turnstile's embedded location, aborting clearance redemption."), r(m, c, !1), [2];
+							o = "h/".concat("b", "/"), g = new URL(l), T = "https", A = "".concat(T, "://").concat(g.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), I.label = 1;
 						case 1:
-							return I.trys.push([1, 6, , 7]), [4, fetch(T, {
+							return I.trys.push([1, 6, , 7]), [4, fetch(A, {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json"
@@ -970,14 +970,14 @@
 								break
 							}
 							case "reject": {
-								var A = document.getElementById(a);
-								if (n.isExecuting = !1, !A) {
+								var T = document.getElementById(a);
+								if (n.isExecuting = !1, !T) {
 									d("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3075);
 									return
 								}
 								if (t.reason === "outdated_browser") {
-									var T = n.cbUnsupported;
-									T && T()
+									var A = n.cbUnsupported;
+									A && A()
 								}
 								break
 							}
@@ -1057,8 +1057,8 @@
 									cData: n.cData,
 									chlPageData: n.chlPageData,
 									rcV: n.rcV,
-									ch: "3e377faf",
-									url: Tt(),
+									ch: "8827f912",
+									url: At(),
 									retry: n.params.retry,
 									"expiry-interval": n.params["expiry-interval"],
 									"retry-interval": n.params["retry-interval"],
@@ -1194,11 +1194,11 @@
 		var _ = e.getAttribute("data-cdata");
 		typeof _ == "string" && (i.cData = _);
 		var w = e.getAttribute("data-retry");
-		w && (De(w) ? i.retry = w : h('Invalid data-retry value: "'.concat(w, ", expected either 'never' or 'auto'\"")));
+		w && (Pe(w) ? i.retry = w : h('Invalid data-retry value: "'.concat(w, ", expected either 'never' or 'auto'\"")));
 		var p = e.getAttribute("data-retry-interval");
 		if (p) {
 			var S = parseInt(p, 10);
-			Pe(S) ? i["retry-interval"] = S : h('Invalid data-retry-interval value: "'.concat(p, ', expected an integer value > 0 and < 900000"'))
+			De(S) ? i["retry-interval"] = S : h('Invalid data-retry-interval value: "'.concat(p, ', expected an integer value > 0 and < 900000"'))
 		}
 		var b = e.getAttribute("data-expiry-interval");
 		if (b) {
@@ -1223,10 +1223,10 @@
 		l && window[l] && (i["after-interactive-callback"] = window[l]);
 		var o = e.getAttribute("data-before-interactive-callback");
 		o && window[o] && (i["before-interactive-callback"] = window[o]);
-		var g, A = (g = e.getAttribute("data-response-field")) !== null && g !== void 0 ? g : "true";
-		i["response-field"] = A === "true";
-		var T = e.getAttribute("data-response-field-name");
-		T && (i["response-field-name"] = T);
+		var g, T = (g = e.getAttribute("data-response-field")) !== null && g !== void 0 ? g : "true";
+		i["response-field"] = T === "true";
+		var A = e.getAttribute("data-response-field-name");
+		A && (i["response-field-name"] = A);
 		var x = e.getAttribute("data-execution");
 		x && (je(x) ? i.execution = x : h('Unknown data-execution value: "'.concat(x, ", expected either: 'render' or 'execute'.")));
 		var E = e.getAttribute("data-appearance");
@@ -1251,7 +1251,7 @@
 	}
 	var q = Qt();
 	q && (ee = q.get("compat"), (ee == null ? void 0 : ee.toLowerCase()) === "recaptcha" ? window.grecaptcha ? h("grecaptcha is already defined. The compatibility layer will not be enabled") : (h("Compatibility layer enabled"), Ee = !0, window.grecaptcha = Xe) : ee !== null && h('Unknown value for api.js?compat: "'.concat(ee, '", ignoring')), q.forEach(function(e, r) {
-		D(["onload", "compat", "render"], r) || h('Unknown parameter passed to api.js: "?'.concat(r, '=...", ignoring'))
+		P(["onload", "compat", "render"], r) || h('Unknown parameter passed to api.js: "?'.concat(r, '=...", ignoring'))
 	}), L = q.get("onload"), L && setTimeout(function() {
 		typeof window[L] == "function" ? window[L]() : (h("Unable to find onload callback '".concat(L, "' immediately after loading, expected 'function', got '").concat(C(window[L]), "'")), setTimeout(function() {
 			typeof window[L] == "function" ? window[L]() : h("Unable to find onload callback '".concat(L, "' after 1 second, expected 'function', got '").concat(C(window[L]), "'"))
