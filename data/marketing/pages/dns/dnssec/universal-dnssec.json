@@ -232,10 +232,10 @@
 						"title": "Cloudflare Makes DNSSEC Easy",
 						"copy": "<p>Universal DNSSEC is now available to all websites on Cloudflare, for\nfree. We'll do all the heavy lifting by signing your zone and managing\nthe keys. Protecting your domain from DNS forgeries is just a few clicks\naway. All you need to do is enable DNSSEC in your Cloudflare dashboard\nand add one DNS record to your registrar.</p>\n<ol class=\"marketing-ul\">\n<li>\nLog in to your <a class=\"text--white\" href=\"https://dash.cloudflare.com/login\">Cloudflare dashboard</a>.\n</li>\n<li>\nOpen the DNS app.\n</li>\n<li>\nScroll down to the DNSSEC module.\n</li>\n<li>\nClick Enable DNSSEC.\n</li>\n<li>\nA pop-up will open with instructions for how to\n<a href=\"https://support.cloudflare.com/hc/en-us/articles/209114378\"> add the DS record</a>\nto your registrar.\n</li>\n<li>\nCopy the DS record and paste it into your registrar's dashboard.\n</li>\n</ol>\n<p>Once your registrar publishes the DS record, your domain will be\nDNSSEC-enabled. You can verify your DNSSEC configuration with the\nthird-party <a class=\"text--white\" href=\"http://dnsviz.net/\">DNSViz</a>\ntool.</p>\n<p>Universal DNSSEC is designed to work seamlessly with all other\nCloudflare security and performance features, including Universal SSL, a\nglobal CDN, and automatic web content optimization.</p>\n",
 						"toggleText": null,
-						"button": null,
+						"button": [],
 						"learnMoreUrl": null,
 						"learnMoreText": null,
-						"link": null,
+						"link": [],
 						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
@@ -268,7 +268,7 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
-						"featureList": null,
+						"featureList": [],
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
 						"htmlId": null,
@@ -674,7 +674,7 @@
 					}
 				],
 				"noindex": false,
-				"formModal": null,
+				"formModal": [],
 				"hasAdobeExperiment": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
