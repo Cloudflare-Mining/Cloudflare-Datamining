@@ -20,8 +20,8 @@
 	form: {
 		field_validation_error: (0, a.d)(A(), "field"),
 		field_required_error: "This field is required",
-		field_name_required_error: (0, a.d)(T(), "field"),
-		field_mismatch_error: (0, a.d)(R(), "fieldPlural"),
+		field_name_required_error: (0, a.d)(R(), "field"),
+		field_mismatch_error: (0, a.d)(T(), "fieldPlural"),
 		field_min_length_error: (0, a.d)(D(), "length", "characters"),
 		field_length_error: (0, a.d)(P(), "length", "characters"),
 		field_must_contain_alpha_characters_error: "This field must contain more than one alphabetical character",
@@ -79,7 +79,10 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
 	global_banner: {
-		notification: "Domain fees will be changing soon. <0>Click here</0> for more info."
+		notification: "Domain fees will be changing soon. <0>Click here</0> for more info.",
+		notification_toggle_expand: "Click for more information",
+		notification_toggle_collapse: "Hide information",
+		notification_expanded_information: "The registry for .example domain will be unavailable from January 1st 01:00 UTC through 05:00 UTC due to routine maintenance. During this window registrations, transfers, renewals, and updates to .example domains may be unavailable."
 	},
 	domain_page: {
 		title: (0, a.d)(C(), "domainName"),

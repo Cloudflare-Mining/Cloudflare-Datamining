@@ -960,7 +960,7 @@
 	"zoneless_workers.metrics.worker.worker_card.exception_rate.title": "Exception rate",
 	"zoneless_workers.metrics.worker.worker_card.execution_duration": "Execution Duration",
 	"zoneless_workers.metrics.worker.worker_card.request_duration": "Request Duration",
-	"zoneless_workers.metrics.worker.worker_card.request_duration.tooltip": "Average of all request durations including Default and Smart Placement.",
+	"zoneless_workers.metrics.worker.worker_card.request_duration.tooltip": "Average of all request durations including Default and Smart Placement. Does not include 4xx, 5xx status codes.",
 	"zoneless_workers.metrics.worker.worker_card.schedule": "Next scheduled <0></0>",
 	"zoneless_workers.metrics.worker.unbound_overview.duration": "Duration",
 	"zoneless_workers.metrics.worker.unbound_overview.title": "Summary",
