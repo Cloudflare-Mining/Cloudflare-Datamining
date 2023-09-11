@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.4.18
+
+### Patch Changes
+
+- 183a406001: Use lodash get instead of formik getIn
+
 ## 6.4.17
 
 ### Patch Changes
