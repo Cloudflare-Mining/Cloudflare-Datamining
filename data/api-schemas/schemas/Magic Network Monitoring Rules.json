@@ -114,13 +114,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -145,9 +146,9 @@
 													"type": "number"
 												},
 												"duration": {
-													"default": "60s",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-													"example": "1h2m3s",
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"example": "300s",
 													"type": "string"
 												},
 												"id": {
@@ -190,7 +191,7 @@
 				},
 				"description": "Delete rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -279,13 +280,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -310,9 +312,9 @@
 															"type": "number"
 														},
 														"duration": {
-															"default": "60s",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-															"example": "1h2m3s",
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"example": "300s",
 															"type": "string"
 														},
 														"id": {
@@ -446,9 +448,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Delete rule",
@@ -608,9 +607,9 @@
 														"type": "number"
 													},
 													"duration": {
-														"default": "60s",
-														"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-														"example": "1h2m3s",
+														"default": "1m",
+														"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+														"example": "300s",
 														"type": "string"
 													},
 													"id": {
@@ -655,7 +654,7 @@
 				},
 				"description": "List rules response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -795,9 +794,9 @@
 																"type": "number"
 															},
 															"duration": {
-																"default": "60s",
-																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-																"example": "1h2m3s",
+																"default": "1m",
+																"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+																"example": "300s",
 																"type": "string"
 															},
 															"id": {
@@ -933,9 +932,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "List rules",
@@ -1052,13 +1048,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1083,9 +1080,9 @@
 													"type": "number"
 												},
 												"duration": {
-													"default": "60s",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-													"example": "1h2m3s",
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"example": "300s",
 													"type": "string"
 												},
 												"id": {
@@ -1128,7 +1125,7 @@
 				},
 				"description": "Get rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1217,13 +1214,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1248,9 +1246,9 @@
 															"type": "number"
 														},
 														"duration": {
-															"default": "60s",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-															"example": "1h2m3s",
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"example": "300s",
 															"type": "string"
 														},
 														"id": {
@@ -1384,9 +1382,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get rule",
@@ -1509,13 +1504,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -1540,9 +1536,9 @@
 													"type": "number"
 												},
 												"duration": {
-													"default": "60s",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-													"example": "1h2m3s",
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"example": "300s",
 													"type": "string"
 												},
 												"id": {
@@ -1585,7 +1581,7 @@
 				},
 				"description": "Update rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1674,13 +1670,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -1705,9 +1702,9 @@
 															"type": "number"
 														},
 														"duration": {
-															"default": "60s",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-															"example": "1h2m3s",
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"example": "300s",
 															"type": "string"
 														},
 														"id": {
@@ -1841,9 +1838,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update rule",
@@ -1966,13 +1960,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2005,7 +2000,7 @@
 				},
 				"description": "Update advertisement for rule response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2094,13 +2089,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2224,9 +2220,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update advertisement for rule",
@@ -2341,13 +2334,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2372,9 +2366,9 @@
 													"type": "number"
 												},
 												"duration": {
-													"default": "60s",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-													"example": "1h2m3s",
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"example": "300s",
 													"type": "string"
 												},
 												"id": {
@@ -2417,7 +2411,7 @@
 				},
 				"description": "Create rules response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2506,13 +2500,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2537,9 +2532,9 @@
 															"type": "number"
 														},
 														"duration": {
-															"default": "60s",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-															"example": "1h2m3s",
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"example": "300s",
 															"type": "string"
 														},
 														"id": {
@@ -2673,9 +2668,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Create rules",
@@ -2790,13 +2782,14 @@
 												"result": {
 													"anyOf": [
 														{
+															"nullable": true,
 															"type": "object"
 														},
 														{
+															"nullable": true,
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -2821,9 +2814,9 @@
 													"type": "number"
 												},
 												"duration": {
-													"default": "60s",
-													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-													"example": "1h2m3s",
+													"default": "1m",
+													"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+													"example": "300s",
 													"type": "string"
 												},
 												"id": {
@@ -2866,7 +2859,7 @@
 				},
 				"description": "Update rules response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2955,13 +2948,14 @@
 														"result": {
 															"anyOf": [
 																{
+																	"nullable": true,
 																	"type": "object"
 																},
 																{
+																	"nullable": true,
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -2986,9 +2980,9 @@
 															"type": "number"
 														},
 														"duration": {
-															"default": "60s",
-															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
-															"example": "1h2m3s",
+															"default": "1m",
+															"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values [\"1m\",\"5m\",\"10m\",\"15m\",\"20m\",\"30m\",\"45m\",\"60m\"]. The format is AhBmCsDmsEusFns where A, B, C, D, E and F durations are optional; however at least one unit must be provided.",
+															"example": "300s",
 															"type": "string"
 														},
 														"id": {
@@ -3122,9 +3116,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update rules",
