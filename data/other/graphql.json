@@ -37,6 +37,71 @@
 	"AccountAccessLoginRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountAiGatewayCacheAdaptiveGroups": {
+		"__description": "AI Gateway Cache",
+		"count": "Counts cache hits and misses as well - number of requests for an account with caching enabled",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountAiGatewayCacheAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"hit": "Provider Error",
+		"provider": "Which provider was the request sent to"
+	},
+	"AccountAiGatewayCacheAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayCacheAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiGatewayErrorsAdaptiveGroups": {
+		"__description": "AI Gateway Errors",
+		"count": "Number of errors",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountAiGatewayErrorsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"error": "Provider Error",
+		"model": "Which models was the request sent to",
+		"provider": "Which provider was the request sent to"
+	},
+	"AccountAiGatewayErrorsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayErrorsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountAiGatewayRequestsAdaptiveGroups": {
+		"__description": "AI Gateway Requests",
+		"count": "Number of processed requests",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountAiGatewayRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"endpoint": "Provider Endpoint",
+		"model": "Which models was the request sent to",
+		"provider": "Which provider was the request sent to"
+	},
+	"AccountAiGatewayRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAiGatewayRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Cloudflare CDN traffic",
 		"avg": "The average of values for a metric per dimension",
@@ -2673,6 +2738,9 @@
 		"__description": "Access and limitations for an account",
 		"MagicWANConnectorMetricsAdaptiveGroups": "",
 		"accessLoginRequestsAdaptiveGroups": "",
+		"aiGatewayCacheAdaptiveGroups": "",
+		"aiGatewayErrorsAdaptiveGroups": "",
+		"aiGatewayRequestsAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
@@ -5133,6 +5201,9 @@
 		"MagicWANConnectorMetricsAdaptiveGroups": "Beta. Magic WAN Connector Metrics",
 		"accessLoginRequestsAdaptiveGroups": "Access login requests",
 		"accountTag": "",
+		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
+		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
+		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"dosdAttackAnalyticsGroups": "Attack analytics metadata for attacks detected by dosd",
