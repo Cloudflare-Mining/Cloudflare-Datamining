@@ -1,5 +1,18 @@
 # Change Log
 
+## 7.1.23
+
+### Patch Changes
+
+- Updated dependencies [276d2a8162]
+  - @cloudflare/component-loading@6.1.0
+
+## 7.1.22
+
+### Patch Changes
+
+- @cloudflare/component-card@8.0.8
+
 ## 7.1.21
 
 ### Patch Changes

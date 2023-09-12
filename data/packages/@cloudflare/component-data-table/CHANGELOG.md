@@ -1,5 +1,21 @@
 # Change Log
 
+## 5.0.17
+
+### Patch Changes
+
+- Updated dependencies [276d2a8162]
+  - @cloudflare/component-loading@6.1.0
+  - @cloudflare/component-pagination@9.0.15
+
+## 5.0.16
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.15
+- @cloudflare/component-link@7.1.18
+- @cloudflare/component-pagination@9.0.14
+
 ## 5.0.15
 
 ### Patch Changes

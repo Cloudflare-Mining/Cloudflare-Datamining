@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.1.0
+
+### Minor Changes
+
+- 276d2a8162: - Add React 18 to peer deps.
+  - Fix issue where the Canvas ctx wasn't reset, leading to double scaling on newer React versions.
+  - Translate to a TypeScript function based implementation.
+
 ## 6.0.2
 
 ### Patch Changes

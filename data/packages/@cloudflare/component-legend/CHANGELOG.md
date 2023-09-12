@@ -1,5 +1,18 @@
 # Change Log
 
+## 5.0.19
+
+### Patch Changes
+
+- Updated dependencies [276d2a8162]
+  - @cloudflare/component-loading@6.1.0
+
+## 5.0.18
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.15
+
 ## 5.0.17
 
 ### Patch Changes

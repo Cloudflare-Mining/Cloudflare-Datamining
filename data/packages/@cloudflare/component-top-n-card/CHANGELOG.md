@@ -1,5 +1,18 @@
 # Change Log
 
+## 4.0.10
+
+### Patch Changes
+
+- Updated dependencies [276d2a8162]
+  - @cloudflare/component-loading@6.1.0
+
+## 4.0.9
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.15
+
 ## 4.0.8
 
 ### Patch Changes

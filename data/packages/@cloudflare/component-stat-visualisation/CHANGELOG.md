@@ -1,5 +1,17 @@
 # Change Log
 
+## 3.0.22
+
+### Patch Changes
+
+- @cloudflare/component-legend@5.0.19
+
+## 3.0.21
+
+### Patch Changes
+
+- @cloudflare/component-legend@5.0.18
+
 ## 3.0.20
 
 ### Patch Changes
