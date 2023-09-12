@@ -79,5 +79,18 @@
 	"turnstile.widget.mode.non_interactive.label": "Non-interactive",
 	"turnstile.widget.mode.non_interactive.description": "A purely non-interactive challenge. Users will see a widget with a loading bar while the browser challenge is run.",
 	"turnstile.widget.mode.managed.label": "Managed",
-	"turnstile.widget.mode.managed.description": "Cloudflare will use information from the visitor to decide if an interactive challenge should be used. If we do show an interaction, the user will be prompted to check a box (no images or text to decipher)."
+	"turnstile.widget.mode.managed.description": "Cloudflare will use information from the visitor to decide if an interactive challenge should be used. If we do show an interaction, the user will be prompted to check a box (no images or text to decipher).",
+	"turnstile.add_turnstile_widget_page.form_field.clearance_level.opt-in": "Would you like to opt for pre-clearance for this site?",
+	"turnstile.add_turnstile_widget_page.form_field.clearance_level.opt-in.yes": "Yes",
+	"turnstile.add_turnstile_widget_page.form_field.clearance_level.opt-in.no": "No",
+	"turnstile.add_turnstile_widget_page.form_field.clearance_level.opt-in.description": "You can opt to let your Turnstile widget issue a clearance cookie, as if the user had passed a challenge on your Cloudflare proxied website. The cookie will be valid for the challenge passage time specified <0>in your website's security settings</0>",
+	"turnstile.add_turnstile_widget_page.form_field.clearance_level.label": "Choose level of pre-clearance",
+	"turnstile.widget.clearance_level.no_clearance.label": "No clearance",
+	"turnstile.widget.clearance_level.js_challenge.label": "Non-interactive",
+	"turnstile.widget.clearance_level.js_challenge.description": "Allows a user with a clearance cookie of this level to not be challenged by JavaScript Challenge Firewall Rules.",
+	"turnstile.widget.clearance_level.managed.label": "Managed",
+	"turnstile.widget.clearance_level.managed.description": "Allows a user with a clearance cookie of this level to not be challenged by Managed Challenge or JavaScript Challenge Firewall Rules",
+	"turnstile.widget.clearance_level.interactive.label": "Interactive",
+	"turnstile.widget.clearance_level.interactive.description": "Allows a user with a clearance cookie of this level to not be challenged by Interactive, Managed or JavaScript Challenge Firewall Rules",
+	"turnstile.widget.clearance_level.invalid.error_message": "Invalid clearance level"
 }

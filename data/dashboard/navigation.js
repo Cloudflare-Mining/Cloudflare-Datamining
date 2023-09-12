@@ -316,7 +316,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: function() {
-			var c = (0, p.e1)(),
+			var c = (0, m.e1)(),
 				Q = "https://one.dash.cloudflare.com";
 			return c ? "".concat(Q, "/").concat(c, "/") : Q
 		},
@@ -393,7 +393,7 @@ const navigation = {
 			url: "/workers/constellation",
 			labels: ["beta"],
 			hasPermission: function(c) {
-				return !!(0, n.z1)("constellation-ui")(c)
+				return !!(0, n.z1)("constellation-ui")(c) && !(0, r.RO)(c)
 			}
 		}, {
 			title: "navigation.account.workers.plans",
@@ -411,6 +411,28 @@ const navigation = {
 		hasPermission: function(c) {
 			return !!(0, n.z1)("workers-for-platforms")(c) && (0, o.iY)(c) && ((0, f.p1)(c) || !!(0, r.Le)(c, "workers", "workers_for_saas"))
 		}
+	}, {
+		title: "navigation.account.workers.ai-lab",
+		url: "/ai-lab/workers",
+		iconType: "workers-constellation",
+		labels: ["beta"],
+		hasPermission: function(c) {
+			return !!(0, n.z1)("constellation-ui")(c) && (0, r.RO)(c)
+		},
+		testId: "sidenav-workers-ai-link",
+		pages: [{
+			title: "navigation.account.workers.ai-lab.workers-ai",
+			url: "/ai-lab/workers",
+			hasPermission: function(c) {
+				return !!(0, n.z1)("constellation-ui")(c) && (0, r.RO)(c)
+			}
+		}, {
+			title: "navigation.account.workers.ai-lab.vector-db",
+			url: "/ai-lab/vector-db",
+			hasPermission: function(c) {
+				return !!(0, n.z1)("constellation-ui")(c) && (0, r.RO)(c)
+			}
+		}]
 	}, {
 		title: "navigation.account.r2",
 		url: "/r2",

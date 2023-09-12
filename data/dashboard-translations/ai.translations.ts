@@ -1,0 +1,23 @@
+{
+	access_cloudflares_api_directly_in_your_applications: "Access Cloudflare's API directly in your applications",
+	access_requested: "Access requested",
+	api_keys: "API Keys",
+	build_your_first_ai_application: "Build your first AI application",
+	create_ai_worker: "Create an AI Model Worker",
+	create_ai_worker_description: "Choose an AI application template.",
+	edge_ai_documentation: "Workers AI documentation",
+	explore_catalog: "Explore catalog",
+	explore_workers_ai_catalog: "Explore Workers AI Catalog",
+	get_start_with_workers_ai: "Get started with Workers AI",
+	introducing_workers_ai: "Introducing Workers AI",
+	product_title: "Workers AI",
+	request_access: "Request access",
+	tagline: "Run LLM and AI inference models with the performance and reliability of Workers",
+	welcome_to_workers_ai: "Welcome to Workers AI",
+	welcome_tagline: "Workers AI offers a catalog of generative AI models that you can bind to Workers or access directly using the Workers AI API",
+	workers_ai_api_key: "Workers AI API Key",
+	workers_ai_docs: "Workers AI docs",
+	using_edge_ai_api: "Using Workers AI API ",
+	using_templates: "Using Worker {or Pages} Templates",
+	using_templates_description: "Choose from a selection of prebuilt Worker AI applications"
+}
