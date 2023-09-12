@@ -1435,12 +1435,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = nr({}, {
-					branch: "revert-APIOPS-7671-hotfix",
+					branch: "hotfix-undefined-zone-versioned",
 					isReleaseCandidate: "true",
-					commit: "5a4216a261408fe6e88e906a7b9851ac2e752caf",
+					commit: "3bf325b63523712032f7eafeda785d0cd9bc35e3",
 					env: "production",
-					builtAt: 1694464863568,
-					dashVersion: "59a04018c27a2cee88589be93b206bd81236e228",
+					builtAt: 1694534069604,
+					dashVersion: "637ca44e403661dd74fa832c353a94d543c1faeb",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
