@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.6.1
+
+### Patch Changes
+
+- 5d390c6cce: zerotrust-networks-logo - remove fill
+
 ## 11.6.0
 
 ### Minor Changes
