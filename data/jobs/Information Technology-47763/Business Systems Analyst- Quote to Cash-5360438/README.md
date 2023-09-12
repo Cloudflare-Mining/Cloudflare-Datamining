@@ -15,23 +15,20 @@
 	<li>Support on-call rotation with team members.&nbsp;</li>
 	<li>Effectively communicate issue status to internal stakeholders</li>
 	<li>Maintain in-depth functional knowledge of the supported applications and interdependencies</li>
-	<li>Generate, test, and document program code and scripts. Debug and resolve problems. Participate in QA activities for various projects</li>
 	<li>Partner with the business teams to identify gaps, document and re-engineer current processes within business applications.&nbsp;</li>
 	<li>Work on Proof of concepts for new requirements as appropriate</li>
-	<li>Work closely with the accounting team in bringing efficiencies to their monthly close process and improve upon existing system reporting needs</li>
+	<li>Work closely with the finance and other internal teams in bringing efficiencies to their monthly close process and improve upon existing system reporting needs</li>
 	<li>Seek opportunities to streamline and/or automate processes</li>
-	<li>Work closely with business teams, analysts, engineers and product managers to write test plans, test cases and estimates to support project and product releases ensuring consistency with specified requirements agreed with both external and internal customers</li>
+	<li>Participate in QA activities for various projects. Work closely with business teams, analysts, engineers and product managers to write test plans, test cases and estimates to support project and product releases ensuring consistency with specified requirements agreed with both external and internal customers</li>
 </ul>
 <p><strong>&nbsp;&nbsp;Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Minimum 5 years experience implementing a SAAS based/ subscription billing system (eg. Stripe, Zuora, Oracle BRM, GoTransverse etc)</li>
-	<li>Fluency with writing queries any one database language MySQL/ BigQuery/ Oracle</li>
+	<li>Proficient in writing database queries in PostGres/ BigQuery/ Snowflake or other languages</li>
 	<li>Adaptability and Learning Mindset: Demonstrating a willingness to learn new technologies, tools, and methodologies is crucial. Adaptability to changing project requirements and the ability to work in a dynamic environment is highly desirable</li>
 	<li>Possess excellent communication skills – written and oral, interpersonal and organizational.</li>
 	<li>Ability to handle multiple projects and responsibilities with competing priorities</li>
 	<li>Solid understanding of business Financial processes including but not limited to Quote to cash process including OM/ Billing/ AR/ RevRec and understanding of GL</li>
-	<li>Ability to work in a fast-paced, ever-changing environment, learn quickly and solve problems</li>
-	<li>Ability to listen, understand, and respond to external and internal customers’ needs in a timely manner.</li>
 	<li>Able to deliver a high degree of customer satisfaction at all times</li>
 	<li>Must be results/ Outcome focused</li>
 </ul>
@@ -41,7 +38,6 @@
 	<li>5+ years experience in systems analyst roles, implementing and supporting ERP applications such as Oracle, Netsuite, SAP or Workday Financials</li>
 	<li>Business engagement and business analysis experience in implementing ERP systems is preferred</li>
 	<li>Hands-on experience with analytics and monitoring tools like Grafana (configuring, creating queries, dashboards, and alerts), and ability to troubleshoot application/ systems logs using tools like Kibana, Sentry</li>
-	<li>Proficient in writing database queries in PostGres/ BigQuery/ Snowflake or other languages</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
