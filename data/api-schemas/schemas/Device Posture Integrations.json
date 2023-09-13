@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/posture/integration/{uuid}": {
-		"description": "Delete a Device Posture Integration.",
+		"description": "Delete a configured device posture integration.",
 		"operationId": "device-posture-integrations-delete-device-posture-integration",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -96,7 +96,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -143,7 +143,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Integration response"
+				"description": "Delete a device posture integration response"
 			},
 			"4XX": {
 				"content": {
@@ -213,7 +213,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -346,7 +346,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Integration response failure"
+				"description": "Delete a device posture integration response failure"
 			}
 		},
 		"security": [
@@ -355,13 +355,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Device Posture Integration",
+		"summary": "Delete a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
 		]
 	},
 	"GET /accounts/{identifier}/devices/posture/integration": {
-		"description": "List Device Posture Integrations for an account.",
+		"description": "Fetches the list of device posture integrations for an account.",
 		"operationId": "device-posture-integrations-list-device-posture-integrations",
 		"parameters": [
 			{
@@ -440,7 +440,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -499,7 +499,7 @@
 											"items": {
 												"properties": {
 													"config": {
-														"description": "The configuration object containing third party integration information.",
+														"description": "The configuration object containing third-party integration information.",
 														"example": {
 															"api_url": "https://as123.awmdm.com/API",
 															"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -536,23 +536,23 @@
 														"type": "object"
 													},
 													"id": {
-														"description": "API uuid tag.",
+														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
 													},
 													"interval": {
-														"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+														"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 														"example": "10m",
 														"type": "string"
 													},
 													"name": {
-														"description": "The name of the Device Posture Integration.",
+														"description": "The name of the device posture integration.",
 														"example": "My Workspace One Integration",
 														"type": "string"
 													},
 													"type": {
-														"description": "The type of Device Posture Integration.",
+														"description": "The type of device posture integration.",
 														"enum": [
 															"workspace_one",
 															"crowdstrike_s2s",
@@ -576,7 +576,7 @@
 						}
 					}
 				},
-				"description": "List Device Posture Integrations response"
+				"description": "List your device posture integrations response"
 			},
 			"4XX": {
 				"content": {
@@ -646,7 +646,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -705,7 +705,7 @@
 													"items": {
 														"properties": {
 															"config": {
-																"description": "The configuration object containing third party integration information.",
+																"description": "The configuration object containing third-party integration information.",
 																"example": {
 																	"api_url": "https://as123.awmdm.com/API",
 																	"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -742,23 +742,23 @@
 																"type": "object"
 															},
 															"id": {
-																"description": "API uuid tag.",
+																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
 															},
 															"interval": {
-																"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+																"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 																"example": "10m",
 																"type": "string"
 															},
 															"name": {
-																"description": "The name of the Device Posture Integration.",
+																"description": "The name of the device posture integration.",
 																"example": "My Workspace One Integration",
 																"type": "string"
 															},
 															"type": {
-																"description": "The type of Device Posture Integration.",
+																"description": "The type of device posture integration.",
 																"enum": [
 																	"workspace_one",
 																	"crowdstrike_s2s",
@@ -868,7 +868,7 @@
 						}
 					}
 				},
-				"description": "List Device Posture Integrations response failure"
+				"description": "List your device posture integrations response failure"
 			}
 		},
 		"security": [
@@ -877,13 +877,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Device Posture Integrations",
+		"summary": "List your device posture integrations",
 		"tags": [
 			"Device Posture Integrations"
 		]
 	},
 	"GET /accounts/{identifier}/devices/posture/integration/{uuid}": {
-		"description": "Fetch a single Device Posture Integration.",
+		"description": "Fetches details for a single device posture integration.",
 		"operationId": "device-posture-integrations-device-posture-integration-details",
 		"parameters": [
 			{
@@ -891,7 +891,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -973,7 +973,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1013,7 +1013,7 @@
 										"result": {
 											"properties": {
 												"config": {
-													"description": "The configuration object containing third party integration information.",
+													"description": "The configuration object containing third-party integration information.",
 													"example": {
 														"api_url": "https://as123.awmdm.com/API",
 														"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -1050,23 +1050,23 @@
 													"type": "object"
 												},
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"interval": {
-													"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+													"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 													"example": "10m",
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the Device Posture Integration.",
+													"description": "The name of the device posture integration.",
 													"example": "My Workspace One Integration",
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Posture Integration.",
+													"description": "The type of device posture integration.",
 													"enum": [
 														"workspace_one",
 														"crowdstrike_s2s",
@@ -1088,7 +1088,7 @@
 						}
 					}
 				},
-				"description": "Device Posture Integration Details response"
+				"description": "Get device posture integration details response"
 			},
 			"4XX": {
 				"content": {
@@ -1158,7 +1158,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1198,7 +1198,7 @@
 												"result": {
 													"properties": {
 														"config": {
-															"description": "The configuration object containing third party integration information.",
+															"description": "The configuration object containing third-party integration information.",
 															"example": {
 																"api_url": "https://as123.awmdm.com/API",
 																"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -1235,23 +1235,23 @@
 															"type": "object"
 														},
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
 														},
 														"interval": {
-															"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 															"example": "10m",
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the Device Posture Integration.",
+															"description": "The name of the device posture integration.",
 															"example": "My Workspace One Integration",
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Posture Integration.",
+															"description": "The type of device posture integration.",
 															"enum": [
 																"workspace_one",
 																"crowdstrike_s2s",
@@ -1359,7 +1359,7 @@
 						}
 					}
 				},
-				"description": "Device Posture Integration Details response failure"
+				"description": "Get device posture integration details response failure"
 			}
 		},
 		"security": [
@@ -1368,13 +1368,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Device Posture Integration Details",
+		"summary": "Get device posture integration details",
 		"tags": [
 			"Device Posture Integrations"
 		]
 	},
 	"PATCH /accounts/{identifier}/devices/posture/integration/{uuid}": {
-		"description": "Update a Device Posture Integration.",
+		"description": "Updates a configured device posture integration.",
 		"operationId": "device-posture-integrations-update-device-posture-integration",
 		"parameters": [
 			{
@@ -1382,7 +1382,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -1403,7 +1403,7 @@
 					"schema": {
 						"properties": {
 							"config": {
-								"description": "The configuration object containing third party integration information.",
+								"description": "The configuration object containing third-party integration information.",
 								"example": {
 									"api_url": "https://as123.awmdm.com/API",
 									"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -1597,17 +1597,17 @@
 								"type": "object"
 							},
 							"interval": {
-								"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+								"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 								"example": "10m",
 								"type": "string"
 							},
 							"name": {
-								"description": "The name of the Device Posture Integration.",
+								"description": "The name of the device posture integration.",
 								"example": "My Workspace One Integration",
 								"type": "string"
 							},
 							"type": {
-								"description": "The type of Device Posture Integration.",
+								"description": "The type of device posture integration.",
 								"enum": [
 									"workspace_one",
 									"crowdstrike_s2s",
@@ -1693,7 +1693,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1733,7 +1733,7 @@
 										"result": {
 											"properties": {
 												"config": {
-													"description": "The configuration object containing third party integration information.",
+													"description": "The configuration object containing third-party integration information.",
 													"example": {
 														"api_url": "https://as123.awmdm.com/API",
 														"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -1770,23 +1770,23 @@
 													"type": "object"
 												},
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"interval": {
-													"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+													"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 													"example": "10m",
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the Device Posture Integration.",
+													"description": "The name of the device posture integration.",
 													"example": "My Workspace One Integration",
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Posture Integration.",
+													"description": "The type of device posture integration.",
 													"enum": [
 														"workspace_one",
 														"crowdstrike_s2s",
@@ -1808,7 +1808,7 @@
 						}
 					}
 				},
-				"description": "Update Device Posture Integration response"
+				"description": "Update a device posture integration response"
 			},
 			"4XX": {
 				"content": {
@@ -1878,7 +1878,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1918,7 +1918,7 @@
 												"result": {
 													"properties": {
 														"config": {
-															"description": "The configuration object containing third party integration information.",
+															"description": "The configuration object containing third-party integration information.",
 															"example": {
 																"api_url": "https://as123.awmdm.com/API",
 																"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -1955,23 +1955,23 @@
 															"type": "object"
 														},
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
 														},
 														"interval": {
-															"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 															"example": "10m",
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the Device Posture Integration.",
+															"description": "The name of the device posture integration.",
 															"example": "My Workspace One Integration",
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Posture Integration.",
+															"description": "The type of device posture integration.",
 															"enum": [
 																"workspace_one",
 																"crowdstrike_s2s",
@@ -2079,7 +2079,7 @@
 						}
 					}
 				},
-				"description": "Update Device Posture Integration response failure"
+				"description": "Update a device posture integration response failure"
 			}
 		},
 		"security": [
@@ -2088,13 +2088,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Device Posture Integration",
+		"summary": "Update a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
 		]
 	},
 	"POST /accounts/{identifier}/devices/posture/integration": {
-		"description": "Create a new Device Posture Integration.",
+		"description": "Create a new device posture integration.",
 		"operationId": "device-posture-integrations-create-device-posture-integration",
 		"parameters": [
 			{
@@ -2112,7 +2112,7 @@
 					"schema": {
 						"properties": {
 							"config": {
-								"description": "The configuration object containing third party integration information.",
+								"description": "The configuration object containing third-party integration information.",
 								"example": {
 									"api_url": "https://as123.awmdm.com/API",
 									"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -2306,17 +2306,17 @@
 								"type": "object"
 							},
 							"interval": {
-								"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+								"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 								"example": "10m",
 								"type": "string"
 							},
 							"name": {
-								"description": "The name of the Device Posture Integration.",
+								"description": "The name of the device posture integration.",
 								"example": "My Workspace One Integration",
 								"type": "string"
 							},
 							"type": {
-								"description": "The type of Device Posture Integration.",
+								"description": "The type of device posture integration.",
 								"enum": [
 									"workspace_one",
 									"crowdstrike_s2s",
@@ -2408,7 +2408,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2448,7 +2448,7 @@
 										"result": {
 											"properties": {
 												"config": {
-													"description": "The configuration object containing third party integration information.",
+													"description": "The configuration object containing third-party integration information.",
 													"example": {
 														"api_url": "https://as123.awmdm.com/API",
 														"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -2485,23 +2485,23 @@
 													"type": "object"
 												},
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"interval": {
-													"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+													"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 													"example": "10m",
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the Device Posture Integration.",
+													"description": "The name of the device posture integration.",
 													"example": "My Workspace One Integration",
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Posture Integration.",
+													"description": "The type of device posture integration.",
 													"enum": [
 														"workspace_one",
 														"crowdstrike_s2s",
@@ -2523,7 +2523,7 @@
 						}
 					}
 				},
-				"description": "Create Device Posture Integration response"
+				"description": "Create a device posture integration response"
 			},
 			"4XX": {
 				"content": {
@@ -2593,7 +2593,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2633,7 +2633,7 @@
 												"result": {
 													"properties": {
 														"config": {
-															"description": "The configuration object containing third party integration information.",
+															"description": "The configuration object containing third-party integration information.",
 															"example": {
 																"api_url": "https://as123.awmdm.com/API",
 																"auth_url": "https://na.uemauth.vmwservices.com/connect/token",
@@ -2670,23 +2670,23 @@
 															"type": "object"
 														},
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
 														},
 														"interval": {
-															"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\").",
+															"description": "The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).",
 															"example": "10m",
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the Device Posture Integration.",
+															"description": "The name of the device posture integration.",
 															"example": "My Workspace One Integration",
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Posture Integration.",
+															"description": "The type of device posture integration.",
 															"enum": [
 																"workspace_one",
 																"crowdstrike_s2s",
@@ -2794,7 +2794,7 @@
 						}
 					}
 				},
-				"description": "Create Device Posture Integration response failure"
+				"description": "Create a device posture integration response failure"
 			}
 		},
 		"security": [
@@ -2803,7 +2803,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Device Posture Integration",
+		"summary": "Create a device posture integration",
 		"tags": [
 			"Device Posture Integrations"
 		]

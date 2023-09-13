@@ -1104,6 +1104,7 @@
 																		"description": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
 																		"items": {
 																			"description": "Nominal metric values, broken down by time interval.",
+																			"items": {},
 																			"properties": {
 																				"items": {
 																					"description": "Nominal metric value.",
@@ -1424,6 +1425,7 @@
 																				"description": "Array with one item per requested metric. Each item is an array of values, broken down by time interval.",
 																				"items": {
 																					"description": "Nominal metric values, broken down by time interval.",
+																					"items": {},
 																					"properties": {
 																						"items": {
 																							"description": "Nominal metric value.",

@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/networks/{uuid}": {
-		"description": "Delete a Device Managed Network. Returns the remaining Device Managed Networks for the account.",
+		"description": "Deletes a device managed network and fetches a list of the remaining device managed networks for an account.",
 		"operationId": "device-managed-networks-delete-device-managed-network",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -96,7 +96,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -184,18 +184,18 @@
 														"type": "object"
 													},
 													"name": {
-														"description": "The name of the Device Managed Network. Must be unique.",
+														"description": "The name of the device managed network. This name must be unique.",
 														"example": "managed-network-1",
 														"type": "string"
 													},
 													"network_id": {
-														"description": "API uuid tag.",
+														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
 													},
 													"type": {
-														"description": "The type of Device Managed Network.",
+														"description": "The type of device managed network.",
 														"enum": [
 															"tls"
 														],
@@ -213,7 +213,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Managed Network response"
+				"description": "Delete a device managed network response"
 			},
 			"4XX": {
 				"content": {
@@ -283,7 +283,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -371,18 +371,18 @@
 																"type": "object"
 															},
 															"name": {
-																"description": "The name of the Device Managed Network. Must be unique.",
+																"description": "The name of the device managed network. This name must be unique.",
 																"example": "managed-network-1",
 																"type": "string"
 															},
 															"network_id": {
-																"description": "API uuid tag.",
+																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
 															},
 															"type": {
-																"description": "The type of Device Managed Network.",
+																"description": "The type of device managed network.",
 																"enum": [
 																	"tls"
 																],
@@ -486,7 +486,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Managed Network response failure"
+				"description": "Delete a device managed network response failure"
 			}
 		},
 		"security": [
@@ -495,13 +495,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Device Managed Network",
+		"summary": "Delete a device managed network",
 		"tags": [
 			"Device Managed Networks"
 		]
 	},
 	"GET /accounts/{identifier}/devices/networks": {
-		"description": "List Managed Networks for an account.",
+		"description": "Fetches a list of managed networks for an account.",
 		"operationId": "device-managed-networks-list-device-managed-networks",
 		"parameters": [
 			{
@@ -580,7 +580,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -668,18 +668,18 @@
 														"type": "object"
 													},
 													"name": {
-														"description": "The name of the Device Managed Network. Must be unique.",
+														"description": "The name of the device managed network. This name must be unique.",
 														"example": "managed-network-1",
 														"type": "string"
 													},
 													"network_id": {
-														"description": "API uuid tag.",
+														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
 													},
 													"type": {
-														"description": "The type of Device Managed Network.",
+														"description": "The type of device managed network.",
 														"enum": [
 															"tls"
 														],
@@ -697,7 +697,7 @@
 						}
 					}
 				},
-				"description": "List Device Managed Networks response"
+				"description": "List your device managed networks response"
 			},
 			"4XX": {
 				"content": {
@@ -767,7 +767,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -855,18 +855,18 @@
 																"type": "object"
 															},
 															"name": {
-																"description": "The name of the Device Managed Network. Must be unique.",
+																"description": "The name of the device managed network. This name must be unique.",
 																"example": "managed-network-1",
 																"type": "string"
 															},
 															"network_id": {
-																"description": "API uuid tag.",
+																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
 															},
 															"type": {
-																"description": "The type of Device Managed Network.",
+																"description": "The type of device managed network.",
 																"enum": [
 																	"tls"
 																],
@@ -970,7 +970,7 @@
 						}
 					}
 				},
-				"description": "List Device Managed Networks response failure"
+				"description": "List your device managed networks response failure"
 			}
 		},
 		"security": [
@@ -979,13 +979,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Device Managed Networks",
+		"summary": "List your device managed networks",
 		"tags": [
 			"Device Managed Networks"
 		]
 	},
 	"GET /accounts/{identifier}/devices/networks/{uuid}": {
-		"description": "Fetch a single Managed Network.",
+		"description": "Fetches details for a single managed network.",
 		"operationId": "device-managed-networks-device-managed-network-details",
 		"parameters": [
 			{
@@ -993,7 +993,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -1075,7 +1075,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1144,18 +1144,18 @@
 													"type": "object"
 												},
 												"name": {
-													"description": "The name of the Device Managed Network. Must be unique.",
+													"description": "The name of the device managed network. This name must be unique.",
 													"example": "managed-network-1",
 													"type": "string"
 												},
 												"network_id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Managed Network.",
+													"description": "The type of device managed network.",
 													"enum": [
 														"tls"
 													],
@@ -1171,7 +1171,7 @@
 						}
 					}
 				},
-				"description": "Device Managed Network Details response"
+				"description": "Get device managed network details response"
 			},
 			"4XX": {
 				"content": {
@@ -1241,7 +1241,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1310,18 +1310,18 @@
 															"type": "object"
 														},
 														"name": {
-															"description": "The name of the Device Managed Network. Must be unique.",
+															"description": "The name of the device managed network. This name must be unique.",
 															"example": "managed-network-1",
 															"type": "string"
 														},
 														"network_id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Managed Network.",
+															"description": "The type of device managed network.",
 															"enum": [
 																"tls"
 															],
@@ -1423,7 +1423,7 @@
 						}
 					}
 				},
-				"description": "Device Managed Network Details response failure"
+				"description": "Get device managed network details response failure"
 			}
 		},
 		"security": [
@@ -1432,13 +1432,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Device Managed Network Details",
+		"summary": "Get device managed network details",
 		"tags": [
 			"Device Managed Networks"
 		]
 	},
 	"POST /accounts/{identifier}/devices/networks": {
-		"description": "Create a new Device Managed Network.",
+		"description": "Creates a new device managed network.",
 		"operationId": "device-managed-networks-create-device-managed-network",
 		"parameters": [
 			{
@@ -1484,12 +1484,12 @@
 								"type": "object"
 							},
 							"name": {
-								"description": "The name of the Device Managed Network. Must be unique.",
+								"description": "The name of the device managed network. This name must be unique.",
 								"example": "managed-network-1",
 								"type": "string"
 							},
 							"type": {
-								"description": "The type of Device Managed Network.",
+								"description": "The type of device managed network.",
 								"enum": [
 									"tls"
 								],
@@ -1574,7 +1574,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1643,18 +1643,18 @@
 													"type": "object"
 												},
 												"name": {
-													"description": "The name of the Device Managed Network. Must be unique.",
+													"description": "The name of the device managed network. This name must be unique.",
 													"example": "managed-network-1",
 													"type": "string"
 												},
 												"network_id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Managed Network.",
+													"description": "The type of device managed network.",
 													"enum": [
 														"tls"
 													],
@@ -1670,7 +1670,7 @@
 						}
 					}
 				},
-				"description": "Create Device Managed Network response"
+				"description": "Create a device managed networks response"
 			},
 			"4XX": {
 				"content": {
@@ -1740,7 +1740,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1809,18 +1809,18 @@
 															"type": "object"
 														},
 														"name": {
-															"description": "The name of the Device Managed Network. Must be unique.",
+															"description": "The name of the device managed network. This name must be unique.",
 															"example": "managed-network-1",
 															"type": "string"
 														},
 														"network_id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Managed Network.",
+															"description": "The type of device managed network.",
 															"enum": [
 																"tls"
 															],
@@ -1922,7 +1922,7 @@
 						}
 					}
 				},
-				"description": "Create Device Managed Network response failure"
+				"description": "Create a device managed networks response failure"
 			}
 		},
 		"security": [
@@ -1931,13 +1931,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Device Managed Network",
+		"summary": "Create a device managed network",
 		"tags": [
 			"Device Managed Networks"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/networks/{uuid}": {
-		"description": "Update a Device Managed Network.",
+		"description": "Updates a configured device managed network.",
 		"operationId": "device-managed-networks-update-device-managed-network",
 		"parameters": [
 			{
@@ -1945,7 +1945,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -1994,12 +1994,12 @@
 								"type": "object"
 							},
 							"name": {
-								"description": "The name of the Device Managed Network. Must be unique.",
+								"description": "The name of the device managed network. This name must be unique.",
 								"example": "managed-network-1",
 								"type": "string"
 							},
 							"type": {
-								"description": "The type of Device Managed Network.",
+								"description": "The type of device managed network.",
 								"enum": [
 									"tls"
 								],
@@ -2079,7 +2079,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2148,18 +2148,18 @@
 													"type": "object"
 												},
 												"name": {
-													"description": "The name of the Device Managed Network. Must be unique.",
+													"description": "The name of the device managed network. This name must be unique.",
 													"example": "managed-network-1",
 													"type": "string"
 												},
 												"network_id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Managed Network.",
+													"description": "The type of device managed network.",
 													"enum": [
 														"tls"
 													],
@@ -2175,7 +2175,7 @@
 						}
 					}
 				},
-				"description": "Update Device Managed Network response"
+				"description": "Update a device managed network response"
 			},
 			"4XX": {
 				"content": {
@@ -2245,7 +2245,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2314,18 +2314,18 @@
 															"type": "object"
 														},
 														"name": {
-															"description": "The name of the Device Managed Network. Must be unique.",
+															"description": "The name of the device managed network. This name must be unique.",
 															"example": "managed-network-1",
 															"type": "string"
 														},
 														"network_id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Managed Network.",
+															"description": "The type of device managed network.",
 															"enum": [
 																"tls"
 															],
@@ -2427,7 +2427,7 @@
 						}
 					}
 				},
-				"description": "Update Device Managed Network response failure"
+				"description": "Update a device managed network response failure"
 			}
 		},
 		"security": [
@@ -2436,7 +2436,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Device Managed Network",
+		"summary": "Update a device managed network",
 		"tags": [
 			"Device Managed Networks"
 		]

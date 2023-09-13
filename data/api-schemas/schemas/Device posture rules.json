@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/posture/{uuid}": {
-		"description": "Delete a Device Posture Rule.",
+		"description": "Deletes a device posture rule.",
 		"operationId": "device-posture-rules-delete-device-posture-rule",
 		"parameters": [
 			{
@@ -8,7 +8,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -96,7 +96,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -136,7 +136,7 @@
 										"result": {
 											"properties": {
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -150,7 +150,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Rule response."
+				"description": "Delete a device posture rule response"
 			},
 			"4XX": {
 				"content": {
@@ -220,7 +220,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -260,7 +260,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -360,7 +360,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Posture Rule response failure."
+				"description": "Delete a device posture rule response failure"
 			}
 		},
 		"security": [
@@ -369,13 +369,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Device Posture Rule",
+		"summary": "Delete a device posture rule",
 		"tags": [
-			"Device Posture Rules"
+			"Device posture rules"
 		]
 	},
 	"GET /accounts/{identifier}/devices/posture": {
-		"description": "List Device Posture Rules for an account.",
+		"description": "Fetches device posture rules for a Zero Trust account.",
 		"operationId": "device-posture-rules-list-device-posture-rules",
 		"parameters": [
 			{
@@ -454,7 +454,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -513,7 +513,7 @@
 											"items": {
 												"properties": {
 													"description": {
-														"description": "The description of the Device Posture Rule.",
+														"description": "The description of the device posture rule.",
 														"example": "The rule for admin serial numbers",
 														"type": "string"
 													},
@@ -523,7 +523,7 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "API uuid tag.",
+														"description": "API UUID.",
 														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 														"maxLength": 36,
 														"type": "string"
@@ -1126,7 +1126,7 @@
 														"type": "array"
 													},
 													"name": {
-														"description": "The name of the Device Posture Rule.",
+														"description": "The name of the device posture rule.",
 														"example": "Admin Serial Numbers",
 														"type": "string"
 													},
@@ -1136,7 +1136,7 @@
 														"type": "string"
 													},
 													"type": {
-														"description": "The type of Device Posture Rule.",
+														"description": "The type of device posture rule.",
 														"enum": [
 															"file",
 															"application",
@@ -1172,7 +1172,7 @@
 						}
 					}
 				},
-				"description": "List Device Posture Rules response"
+				"description": "List device posture rules response"
 			},
 			"4XX": {
 				"content": {
@@ -1242,7 +1242,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1301,7 +1301,7 @@
 													"items": {
 														"properties": {
 															"description": {
-																"description": "The description of the Device Posture Rule.",
+																"description": "The description of the device posture rule.",
 																"example": "The rule for admin serial numbers",
 																"type": "string"
 															},
@@ -1311,7 +1311,7 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "API uuid tag.",
+																"description": "API UUID.",
 																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																"maxLength": 36,
 																"type": "string"
@@ -1914,7 +1914,7 @@
 																"type": "array"
 															},
 															"name": {
-																"description": "The name of the Device Posture Rule.",
+																"description": "The name of the device posture rule.",
 																"example": "Admin Serial Numbers",
 																"type": "string"
 															},
@@ -1924,7 +1924,7 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "The type of Device Posture Rule.",
+																"description": "The type of device posture rule.",
 																"enum": [
 																	"file",
 																	"application",
@@ -2046,7 +2046,7 @@
 						}
 					}
 				},
-				"description": "List Device Posture Rules response failure"
+				"description": "List device posture rules response failure"
 			}
 		},
 		"security": [
@@ -2055,13 +2055,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Device Posture Rules",
+		"summary": "List device posture rules",
 		"tags": [
-			"Device Posture Rules"
+			"Device posture rules"
 		]
 	},
 	"GET /accounts/{identifier}/devices/posture/{uuid}": {
-		"description": "Fetch a single Device Posture Rule.",
+		"description": "Fetches a single device posture rule.",
 		"operationId": "device-posture-rules-device-posture-rules-details",
 		"parameters": [
 			{
@@ -2069,7 +2069,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -2151,7 +2151,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2191,7 +2191,7 @@
 										"result": {
 											"properties": {
 												"description": {
-													"description": "The description of the Device Posture Rule.",
+													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
 													"type": "string"
 												},
@@ -2201,7 +2201,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -2804,7 +2804,7 @@
 													"type": "array"
 												},
 												"name": {
-													"description": "The name of the Device Posture Rule.",
+													"description": "The name of the device posture rule.",
 													"example": "Admin Serial Numbers",
 													"type": "string"
 												},
@@ -2814,7 +2814,7 @@
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Posture Rule.",
+													"description": "The type of device posture rule.",
 													"enum": [
 														"file",
 														"application",
@@ -2848,7 +2848,7 @@
 						}
 					}
 				},
-				"description": "Device Posture Rules Details response"
+				"description": "Get device posture rule details response"
 			},
 			"4XX": {
 				"content": {
@@ -2918,7 +2918,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2958,7 +2958,7 @@
 												"result": {
 													"properties": {
 														"description": {
-															"description": "The description of the Device Posture Rule.",
+															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
 															"type": "string"
 														},
@@ -2968,7 +2968,7 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -3571,7 +3571,7 @@
 															"type": "array"
 														},
 														"name": {
-															"description": "The name of the Device Posture Rule.",
+															"description": "The name of the device posture rule.",
 															"example": "Admin Serial Numbers",
 															"type": "string"
 														},
@@ -3581,7 +3581,7 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Posture Rule.",
+															"description": "The type of device posture rule.",
 															"enum": [
 																"file",
 																"application",
@@ -3701,7 +3701,7 @@
 						}
 					}
 				},
-				"description": "Device Posture Rules Details response failure"
+				"description": "Get device posture rule details response failure"
 			}
 		},
 		"security": [
@@ -3710,13 +3710,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Device Posture Rules Details",
+		"summary": "Get device posture rule details",
 		"tags": [
-			"Device Posture Rules"
+			"Device posture rules"
 		]
 	},
 	"POST /accounts/{identifier}/devices/posture": {
-		"description": "Create a new Device Posture Rule.",
+		"description": "Creates a new device posture rule.",
 		"operationId": "device-posture-rules-create-device-posture-rule",
 		"parameters": [
 			{
@@ -3734,7 +3734,7 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"description": "The description of the Device Posture Rule.",
+								"description": "The description of the device posture rule.",
 								"example": "The rule for admin serial numbers",
 								"type": "string"
 							},
@@ -4341,7 +4341,7 @@
 								"type": "array"
 							},
 							"name": {
-								"description": "The name of the Device Posture Rule.",
+								"description": "The name of the device posture rule.",
 								"example": "Admin Serial Numbers",
 								"type": "string"
 							},
@@ -4351,7 +4351,7 @@
 								"type": "string"
 							},
 							"type": {
-								"description": "The type of Device Posture Rule.",
+								"description": "The type of device posture rule.",
 								"enum": [
 									"file",
 									"application",
@@ -4453,7 +4453,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4493,7 +4493,7 @@
 										"result": {
 											"properties": {
 												"description": {
-													"description": "The description of the Device Posture Rule.",
+													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
 													"type": "string"
 												},
@@ -4503,7 +4503,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -5106,7 +5106,7 @@
 													"type": "array"
 												},
 												"name": {
-													"description": "The name of the Device Posture Rule.",
+													"description": "The name of the device posture rule.",
 													"example": "Admin Serial Numbers",
 													"type": "string"
 												},
@@ -5116,7 +5116,7 @@
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Posture Rule.",
+													"description": "The type of device posture rule.",
 													"enum": [
 														"file",
 														"application",
@@ -5150,7 +5150,7 @@
 						}
 					}
 				},
-				"description": "Create Device Posture Rule response"
+				"description": "Create device posture rule response"
 			},
 			"4XX": {
 				"content": {
@@ -5220,7 +5220,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5260,7 +5260,7 @@
 												"result": {
 													"properties": {
 														"description": {
-															"description": "The description of the Device Posture Rule.",
+															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
 															"type": "string"
 														},
@@ -5270,7 +5270,7 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -5873,7 +5873,7 @@
 															"type": "array"
 														},
 														"name": {
-															"description": "The name of the Device Posture Rule.",
+															"description": "The name of the device posture rule.",
 															"example": "Admin Serial Numbers",
 															"type": "string"
 														},
@@ -5883,7 +5883,7 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Posture Rule.",
+															"description": "The type of device posture rule.",
 															"enum": [
 																"file",
 																"application",
@@ -6003,7 +6003,7 @@
 						}
 					}
 				},
-				"description": "Create Device Posture Rule response failure"
+				"description": "Create device posture rule response failure"
 			}
 		},
 		"security": [
@@ -6012,13 +6012,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Device Posture Rule",
+		"summary": "Create a device posture rule",
 		"tags": [
-			"Device Posture Rules"
+			"Device posture rules"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/posture/{uuid}": {
-		"description": "Update a Device Posture Rule.",
+		"description": "Updates a device posture rule.",
 		"operationId": "device-posture-rules-update-device-posture-rule",
 		"parameters": [
 			{
@@ -6026,7 +6026,7 @@
 				"name": "uuid",
 				"required": true,
 				"schema": {
-					"description": "API uuid tag.",
+					"description": "API UUID.",
 					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 					"maxLength": 36,
 					"type": "string"
@@ -6047,7 +6047,7 @@
 					"schema": {
 						"properties": {
 							"description": {
-								"description": "The description of the Device Posture Rule.",
+								"description": "The description of the device posture rule.",
 								"example": "The rule for admin serial numbers",
 								"type": "string"
 							},
@@ -6654,7 +6654,7 @@
 								"type": "array"
 							},
 							"name": {
-								"description": "The name of the Device Posture Rule.",
+								"description": "The name of the device posture rule.",
 								"example": "Admin Serial Numbers",
 								"type": "string"
 							},
@@ -6664,7 +6664,7 @@
 								"type": "string"
 							},
 							"type": {
-								"description": "The type of Device Posture Rule.",
+								"description": "The type of device posture rule.",
 								"enum": [
 									"file",
 									"application",
@@ -6766,7 +6766,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -6806,7 +6806,7 @@
 										"result": {
 											"properties": {
 												"description": {
-													"description": "The description of the Device Posture Rule.",
+													"description": "The description of the device posture rule.",
 													"example": "The rule for admin serial numbers",
 													"type": "string"
 												},
@@ -6816,7 +6816,7 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "API uuid tag.",
+													"description": "API UUID.",
 													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 													"maxLength": 36,
 													"type": "string"
@@ -7419,7 +7419,7 @@
 													"type": "array"
 												},
 												"name": {
-													"description": "The name of the Device Posture Rule.",
+													"description": "The name of the device posture rule.",
 													"example": "Admin Serial Numbers",
 													"type": "string"
 												},
@@ -7429,7 +7429,7 @@
 													"type": "string"
 												},
 												"type": {
-													"description": "The type of Device Posture Rule.",
+													"description": "The type of device posture rule.",
 													"enum": [
 														"file",
 														"application",
@@ -7463,7 +7463,7 @@
 						}
 					}
 				},
-				"description": "Update Device Posture Rule response"
+				"description": "Update a device posture rule response"
 			},
 			"4XX": {
 				"content": {
@@ -7533,7 +7533,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -7573,7 +7573,7 @@
 												"result": {
 													"properties": {
 														"description": {
-															"description": "The description of the Device Posture Rule.",
+															"description": "The description of the device posture rule.",
 															"example": "The rule for admin serial numbers",
 															"type": "string"
 														},
@@ -7583,7 +7583,7 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "API uuid tag.",
+															"description": "API UUID.",
 															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 															"maxLength": 36,
 															"type": "string"
@@ -8186,7 +8186,7 @@
 															"type": "array"
 														},
 														"name": {
-															"description": "The name of the Device Posture Rule.",
+															"description": "The name of the device posture rule.",
 															"example": "Admin Serial Numbers",
 															"type": "string"
 														},
@@ -8196,7 +8196,7 @@
 															"type": "string"
 														},
 														"type": {
-															"description": "The type of Device Posture Rule.",
+															"description": "The type of device posture rule.",
 															"enum": [
 																"file",
 																"application",
@@ -8316,7 +8316,7 @@
 						}
 					}
 				},
-				"description": "Update Device Posture Rule response failure"
+				"description": "Update a device posture rule response failure"
 			}
 		},
 		"security": [
@@ -8325,9 +8325,9 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Device Posture Rule",
+		"summary": "Update a device posture rule",
 		"tags": [
-			"Device Posture Rules"
+			"Device posture rules"
 		]
 	}
 }

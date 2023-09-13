@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{identifier}/devices/settings": {
-		"description": "Describes the current device settings Zero Trust account.",
+		"description": "Describes the current device settings for a Zero Trust account.",
 		"operationId": "zero-trust-accounts-get-device-settings-for-zero-trust-account",
 		"parameters": [
 			{
@@ -79,7 +79,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -138,7 +138,7 @@
 						}
 					}
 				},
-				"description": "Get device settings for Zero Trust account response"
+				"description": "Get device settings for a Zero Trust account response"
 			},
 			"4XX": {
 				"content": {
@@ -208,7 +208,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -353,7 +353,7 @@
 						}
 					}
 				},
-				"description": "Get device settings for Zero Trust account response failure"
+				"description": "Get device settings for a Zero Trust account response failure"
 			}
 		},
 		"security": [
@@ -362,7 +362,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get device settings for Zero Trust account",
+		"summary": "Get device settings for a Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
 		]
@@ -3188,7 +3188,7 @@
 		]
 	},
 	"PUT /accounts/{identifier}/devices/settings": {
-		"description": "Updates the current device settings for Zero Trust account.",
+		"description": "Updates the current device settings for a Zero Trust account.",
 		"operationId": "zero-trust-accounts-update-device-settings-for-the-zero-trust-account",
 		"parameters": [
 			{
@@ -3289,7 +3289,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3348,7 +3348,7 @@
 						}
 					}
 				},
-				"description": "Update device settings for the Zero Trust account response"
+				"description": "Update device settings for a Zero Trust account response"
 			},
 			"4XX": {
 				"content": {
@@ -3418,7 +3418,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3563,7 +3563,7 @@
 						}
 					}
 				},
-				"description": "Update device settings for the Zero Trust account response failure"
+				"description": "Update device settings for a Zero Trust account response failure"
 			}
 		},
 		"security": [
@@ -3572,7 +3572,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update device settings for the Zero Trust account",
+		"summary": "Update device settings for a Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
 		]

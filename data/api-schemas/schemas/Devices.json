@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{identifier}/devices/policy/{uuid}": {
-		"description": "Delete a device settings policy. Returns the remaining policies for the account.",
+		"description": "Deletes a device settings profile and fetches a list of the remaining profiles for an account.",
 		"operationId": "devices-delete-device-settings-policy",
 		"parameters": [
 			{
@@ -96,7 +96,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -191,7 +191,7 @@
 														"type": "string"
 													},
 													"disable_auto_fallback": {
-														"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 														"example": true,
 														"type": "boolean"
 													},
@@ -204,18 +204,18 @@
 														"items": {
 															"properties": {
 																"address": {
-																	"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																	"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																	"example": "192.0.2.0/24",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "A description of the split tunnel item, displayed in the client UI.",
+																	"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																	"example": "Exclude testing domains from the tunnel",
 																	"maxLength": 100,
 																	"type": "string"
 																},
 																"host": {
-																	"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																	"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																	"example": "*.example.com",
 																	"type": "string"
 																}
@@ -229,7 +229,7 @@
 														"type": "array"
 													},
 													"exclude_office_ips": {
-														"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+														"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 														"example": true,
 														"type": "boolean"
 													},
@@ -299,7 +299,7 @@
 														"type": "string"
 													},
 													"name": {
-														"description": "The name of the device settings policy.",
+														"description": "The name of the device settings profile.",
 														"example": "Allow Developers",
 														"maxLength": 100,
 														"type": "string"
@@ -351,7 +351,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Settings Policy response"
+				"description": "Delete a device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -421,7 +421,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -516,7 +516,7 @@
 																"type": "string"
 															},
 															"disable_auto_fallback": {
-																"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -529,18 +529,18 @@
 																"items": {
 																	"properties": {
 																		"address": {
-																			"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
 																			"type": "string"
 																		},
 																		"description": {
-																			"description": "A description of the split tunnel item, displayed in the client UI.",
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
 																			"type": "string"
 																		},
 																		"host": {
-																			"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
 																			"type": "string"
 																		}
@@ -554,7 +554,7 @@
 																"type": "array"
 															},
 															"exclude_office_ips": {
-																"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+																"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -624,7 +624,7 @@
 																"type": "string"
 															},
 															"name": {
-																"description": "The name of the device settings policy.",
+																"description": "The name of the device settings profile.",
 																"example": "Allow Developers",
 																"maxLength": 100,
 																"type": "string"
@@ -762,7 +762,7 @@
 						}
 					}
 				},
-				"description": "Delete Device Settings Policy response failure"
+				"description": "Delete a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -771,13 +771,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete Device Settings Policy",
+		"summary": "Delete a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices": {
-		"description": "List Enrolled Devices.",
+		"description": "Fetches a list of enrolled devices.",
 		"operationId": "devices-list-devices",
 		"parameters": [
 			{
@@ -856,7 +856,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1054,7 +1054,7 @@
 						}
 					}
 				},
-				"description": "List Devices response."
+				"description": "List devices response"
 			},
 			"4XX": {
 				"content": {
@@ -1124,7 +1124,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1408,7 +1408,7 @@
 						}
 					}
 				},
-				"description": "List Devices response failure."
+				"description": "List devices response failure"
 			}
 		},
 		"security": [
@@ -1417,13 +1417,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Devices",
+		"summary": "List devices",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/{uuid}": {
-		"description": "Fetch a single Device.",
+		"description": "Fetches details for a single device.",
 		"operationId": "devices-device-details",
 		"parameters": [
 			{
@@ -1513,7 +1513,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1559,7 +1559,7 @@
 						}
 					}
 				},
-				"description": "Device Details response"
+				"description": "Get device details response"
 			},
 			"4XX": {
 				"content": {
@@ -1629,7 +1629,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -1761,7 +1761,7 @@
 						}
 					}
 				},
-				"description": "Device Details response failure"
+				"description": "Get device details response failure"
 			}
 		},
 		"security": [
@@ -1770,13 +1770,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Device Details",
+		"summary": "Get device details",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/{uuid}/override_codes": {
-		"description": "Fetch one-time use admin override code for a device. This relies on the Admin Override setting being enabled in your device configuration.",
+		"description": "Fetches a one-time use admin override code for a device. This relies on the **Admin Override** setting being enabled in your device configuration.",
 		"operationId": "devices-list-admin-override-code-for-device",
 		"parameters": [
 			{
@@ -1866,7 +1866,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -1957,7 +1957,7 @@
 						}
 					}
 				},
-				"description": "List Admin Override code for device response"
+				"description": "Get an admin override code for a device response"
 			},
 			"4XX": {
 				"content": {
@@ -2027,7 +2027,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2204,7 +2204,7 @@
 						}
 					}
 				},
-				"description": "List Admin Override code for device response failure"
+				"description": "Get an admin override code for a device response failure"
 			}
 		},
 		"security": [
@@ -2213,13 +2213,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Admin Override code for device",
+		"summary": "Get an admin override code for a device",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policies": {
-		"description": "Lists the device settings policies for an account.",
+		"description": "Fetches a list of the device settings profiles for an account.",
 		"operationId": "devices-list-device-settings-policies",
 		"parameters": [
 			{
@@ -2298,7 +2298,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -2393,7 +2393,7 @@
 														"type": "string"
 													},
 													"disable_auto_fallback": {
-														"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+														"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 														"example": true,
 														"type": "boolean"
 													},
@@ -2406,18 +2406,18 @@
 														"items": {
 															"properties": {
 																"address": {
-																	"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																	"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																	"example": "192.0.2.0/24",
 																	"type": "string"
 																},
 																"description": {
-																	"description": "A description of the split tunnel item, displayed in the client UI.",
+																	"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																	"example": "Exclude testing domains from the tunnel",
 																	"maxLength": 100,
 																	"type": "string"
 																},
 																"host": {
-																	"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																	"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																	"example": "*.example.com",
 																	"type": "string"
 																}
@@ -2431,7 +2431,7 @@
 														"type": "array"
 													},
 													"exclude_office_ips": {
-														"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+														"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 														"example": true,
 														"type": "boolean"
 													},
@@ -2501,7 +2501,7 @@
 														"type": "string"
 													},
 													"name": {
-														"description": "The name of the device settings policy.",
+														"description": "The name of the device settings profile.",
 														"example": "Allow Developers",
 														"maxLength": 100,
 														"type": "string"
@@ -2553,7 +2553,7 @@
 						}
 					}
 				},
-				"description": "List Device Settings Policies response"
+				"description": "List device settings profiles response"
 			},
 			"4XX": {
 				"content": {
@@ -2623,7 +2623,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -2718,7 +2718,7 @@
 																"type": "string"
 															},
 															"disable_auto_fallback": {
-																"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+																"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -2731,18 +2731,18 @@
 																"items": {
 																	"properties": {
 																		"address": {
-																			"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																			"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																			"example": "192.0.2.0/24",
 																			"type": "string"
 																		},
 																		"description": {
-																			"description": "A description of the split tunnel item, displayed in the client UI.",
+																			"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																			"example": "Exclude testing domains from the tunnel",
 																			"maxLength": 100,
 																			"type": "string"
 																		},
 																		"host": {
-																			"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																			"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																			"example": "*.example.com",
 																			"type": "string"
 																		}
@@ -2756,7 +2756,7 @@
 																"type": "array"
 															},
 															"exclude_office_ips": {
-																"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+																"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -2826,7 +2826,7 @@
 																"type": "string"
 															},
 															"name": {
-																"description": "The name of the device settings policy.",
+																"description": "The name of the device settings profile.",
 																"example": "Allow Developers",
 																"maxLength": 100,
 																"type": "string"
@@ -2964,7 +2964,7 @@
 						}
 					}
 				},
-				"description": "List Device Settings Policies response failure"
+				"description": "List device settings profiles response failure"
 			}
 		},
 		"security": [
@@ -2973,13 +2973,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Device Settings Policies",
+		"summary": "List device settings profiles",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy": {
-		"description": "Get the default device settings policy for an account.",
+		"description": "Fetches the default device settings profile for an account.",
 		"operationId": "devices-get-default-device-settings-policy",
 		"parameters": [
 			{
@@ -3058,7 +3058,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3146,7 +3146,7 @@
 													"type": "boolean"
 												},
 												"disable_auto_fallback": {
-													"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -3159,18 +3159,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -3184,7 +3184,7 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
-													"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -3281,7 +3281,7 @@
 						}
 					}
 				},
-				"description": "Get Default Device Settings Policy response"
+				"description": "Get the default device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -3351,7 +3351,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -3439,7 +3439,7 @@
 															"type": "boolean"
 														},
 														"disable_auto_fallback": {
-															"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -3452,18 +3452,18 @@
 															"items": {
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -3477,7 +3477,7 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
-															"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -3660,7 +3660,7 @@
 						}
 					}
 				},
-				"description": "Get Default Device Settings Policy response failure"
+				"description": "Get the default device settings profile response failure"
 			}
 		},
 		"security": [
@@ -3669,13 +3669,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Default Device Settings Policy",
+		"summary": "Get the default device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/{uuid}": {
-		"description": "Get the device settings policy by ID.",
+		"description": "Fetches a device settings profile by ID.",
 		"operationId": "devices-get-device-settings-policy-by-id",
 		"parameters": [
 			{
@@ -3765,7 +3765,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -3859,7 +3859,7 @@
 													"type": "string"
 												},
 												"disable_auto_fallback": {
-													"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -3872,18 +3872,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -3897,7 +3897,7 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
-													"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -3967,7 +3967,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the device settings policy.",
+													"description": "The name of the device settings profile.",
 													"example": "Allow Developers",
 													"maxLength": 100,
 													"type": "string"
@@ -4017,7 +4017,7 @@
 						}
 					}
 				},
-				"description": "Get Device Settings Policy by ID response"
+				"description": "Get device settings profile by ID response"
 			},
 			"4XX": {
 				"content": {
@@ -4087,7 +4087,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4181,7 +4181,7 @@
 															"type": "string"
 														},
 														"disable_auto_fallback": {
-															"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -4194,18 +4194,18 @@
 															"items": {
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -4219,7 +4219,7 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
-															"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -4289,7 +4289,7 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the device settings policy.",
+															"description": "The name of the device settings profile.",
 															"example": "Allow Developers",
 															"maxLength": 100,
 															"type": "string"
@@ -4425,7 +4425,7 @@
 						}
 					}
 				},
-				"description": "Get Device Settings Policy by ID response failure"
+				"description": "Get device settings profile by ID response failure"
 			}
 		},
 		"security": [
@@ -4434,13 +4434,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Device Settings Policy by ID",
+		"summary": "Get device settings profile by ID",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/{uuid}/exclude": {
-		"description": "Get the list of routes excluded from the WARP client's tunnel for one specific device settings policy.",
+		"description": "Fetches the list of routes excluded from the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-get-split-tunnel-exclude-list-for-a-device-settings-policy",
 		"parameters": [
 			{
@@ -4530,7 +4530,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -4589,18 +4589,18 @@
 											"items": {
 												"properties": {
 													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 														"example": "192.0.2.0/24",
 														"type": "string"
 													},
 													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"description": "A description of the Split Tunnel item, displayed in the client UI.",
 														"example": "Exclude testing domains from the tunnel",
 														"maxLength": 100,
 														"type": "string"
 													},
 													"host": {
-														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 														"example": "*.example.com",
 														"type": "string"
 													}
@@ -4619,7 +4619,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Exclude List for a Device Settings Policy response"
+				"description": "Get the Split Tunnel exclude list for a device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -4689,7 +4689,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -4748,18 +4748,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -4864,7 +4864,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Exclude List for a Device Settings Policy response failure"
+				"description": "Get the Split Tunnel exclude list for a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -4873,13 +4873,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Split Tunnel Exclude List for a Device Settings Policy",
+		"summary": "Get the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/{uuid}/fallback_domains": {
-		"description": "Get the list of domains to bypass Gateway for DNS resolution and instead use the specified server.",
+		"description": "Fetches the list of domains to bypass Gateway DNS resolution from a specified device settings profile. These domains will use the specified local DNS resolver instead.",
 		"operationId": "devices-get-local-domain-fallback-list-for-a-device-settings-policy",
 		"parameters": [
 			{
@@ -4969,7 +4969,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5057,7 +5057,7 @@
 						}
 					}
 				},
-				"description": "Get Local Domain Fallback List for a Device Settings Policy response"
+				"description": "Get the Local Domain Fallback list for a device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -5127,7 +5127,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5301,7 +5301,7 @@
 						}
 					}
 				},
-				"description": "Get Local Domain Fallback List for a Device Settings Policy response failure"
+				"description": "Get the Local Domain Fallback list for a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -5310,13 +5310,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Local Domain Fallback List for a Device Settings Policy",
+		"summary": "Get the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/{uuid}/include": {
-		"description": "Get the list of routes included in the WARP client's tunnel for one specific device settings policy.",
+		"description": "Fetches the list of routes included in the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-get-split-tunnel-include-list-for-a-device-settings-policy",
 		"parameters": [
 			{
@@ -5406,7 +5406,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5495,7 +5495,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Include List for a Device Settings Policy response"
+				"description": "Get the Split Tunnel include list for a device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -5565,7 +5565,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -5740,7 +5740,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Include List for a Device Settings Policy response failure"
+				"description": "Get the Split Tunnel include list for a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -5749,13 +5749,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Split Tunnel Include List for a Device Settings Policy",
+		"summary": "Get the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/exclude": {
-		"description": "Get the list of routes excluded from the WARP client's tunnel.",
+		"description": "Fetches the list of routes excluded from the WARP client's tunnel.",
 		"operationId": "devices-get-split-tunnel-exclude-list",
 		"parameters": [
 			{
@@ -5834,7 +5834,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -5893,18 +5893,18 @@
 											"items": {
 												"properties": {
 													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 														"example": "192.0.2.0/24",
 														"type": "string"
 													},
 													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"description": "A description of the Split Tunnel item, displayed in the client UI.",
 														"example": "Exclude testing domains from the tunnel",
 														"maxLength": 100,
 														"type": "string"
 													},
 													"host": {
-														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 														"example": "*.example.com",
 														"type": "string"
 													}
@@ -5923,7 +5923,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Exclude List response"
+				"description": "Get the Split Tunnel exclude list response"
 			},
 			"4XX": {
 				"content": {
@@ -5993,7 +5993,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -6052,18 +6052,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -6168,7 +6168,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Exclude List response failure"
+				"description": "Get the Split Tunnel exclude list response failure"
 			}
 		},
 		"security": [
@@ -6177,13 +6177,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Split Tunnel Exclude List",
+		"summary": "Get the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/fallback_domains": {
-		"description": "Get the list of domains to bypass Gateway for DNS resolution and instead use the specified server.",
+		"description": "Fetches a list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead.",
 		"operationId": "devices-get-local-domain-fallback-list",
 		"parameters": [
 			{
@@ -6262,7 +6262,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -6350,7 +6350,7 @@
 						}
 					}
 				},
-				"description": "Get Local Domain Fallback List response"
+				"description": "Get your Local Domain Fallback list response"
 			},
 			"4XX": {
 				"content": {
@@ -6420,7 +6420,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -6594,7 +6594,7 @@
 						}
 					}
 				},
-				"description": "Get Local Domain Fallback List response failure"
+				"description": "Get your Local Domain Fallback list response failure"
 			}
 		},
 		"security": [
@@ -6603,13 +6603,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Local Domain Fallback List",
+		"summary": "Get your Local Domain Fallback list",
 		"tags": [
 			"Devices"
 		]
 	},
 	"GET /accounts/{identifier}/devices/policy/include": {
-		"description": "Get the list of routes included in the WARP client's tunnel.",
+		"description": "Fetches the list of routes included in the WARP client's tunnel.",
 		"operationId": "devices-get-split-tunnel-include-list",
 		"parameters": [
 			{
@@ -6688,7 +6688,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -6777,7 +6777,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Include List response"
+				"description": "Get the Split Tunnel include list response"
 			},
 			"4XX": {
 				"content": {
@@ -6847,7 +6847,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -7022,7 +7022,7 @@
 						}
 					}
 				},
-				"description": "Get Split Tunnel Include List response failure"
+				"description": "Get the Split Tunnel include list response failure"
 			}
 		},
 		"security": [
@@ -7031,13 +7031,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Split Tunnel Include List",
+		"summary": "Get the Split Tunnel include list",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PATCH /accounts/{identifier}/devices/policy": {
-		"description": "Update the default device settings policy for an account.",
+		"description": "Updates the default device settings profile for an account.",
 		"operationId": "devices-update-default-device-settings-policy",
 		"parameters": [
 			{
@@ -7080,12 +7080,12 @@
 								"type": "number"
 							},
 							"disable_auto_fallback": {
-								"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
 								"type": "boolean"
 							},
 							"exclude_office_ips": {
-								"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
 							},
@@ -7187,7 +7187,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -7275,7 +7275,7 @@
 													"type": "boolean"
 												},
 												"disable_auto_fallback": {
-													"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -7288,18 +7288,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -7313,7 +7313,7 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
-													"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -7410,7 +7410,7 @@
 						}
 					}
 				},
-				"description": "Update Default Device Settings Policy response"
+				"description": "Update the default device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -7480,7 +7480,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -7568,7 +7568,7 @@
 															"type": "boolean"
 														},
 														"disable_auto_fallback": {
-															"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -7581,18 +7581,18 @@
 															"items": {
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -7606,7 +7606,7 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
-															"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -7789,7 +7789,7 @@
 						}
 					}
 				},
-				"description": "Update Default Device Settings Policy response failure"
+				"description": "Update the default device settings profile response failure"
 			}
 		},
 		"security": [
@@ -7798,13 +7798,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Default Device Settings Policy",
+		"summary": "Update the default device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PATCH /accounts/{identifier}/devices/policy/{uuid}": {
-		"description": "Update a device settings policy.",
+		"description": "Updates a configured device settings profile.",
 		"operationId": "devices-update-device-settings-policy",
 		"parameters": [
 			{
@@ -7864,7 +7864,7 @@
 								"type": "string"
 							},
 							"disable_auto_fallback": {
-								"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
 								"type": "boolean"
 							},
@@ -7874,7 +7874,7 @@
 								"type": "boolean"
 							},
 							"exclude_office_ips": {
-								"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
 							},
@@ -7885,7 +7885,7 @@
 								"type": "string"
 							},
 							"name": {
-								"description": "The name of the device settings policy.",
+								"description": "The name of the device settings profile.",
 								"example": "Allow Developers",
 								"maxLength": 100,
 								"type": "string"
@@ -7993,7 +7993,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -8087,7 +8087,7 @@
 													"type": "string"
 												},
 												"disable_auto_fallback": {
-													"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -8100,18 +8100,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -8125,7 +8125,7 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
-													"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -8195,7 +8195,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the device settings policy.",
+													"description": "The name of the device settings profile.",
 													"example": "Allow Developers",
 													"maxLength": 100,
 													"type": "string"
@@ -8245,7 +8245,7 @@
 						}
 					}
 				},
-				"description": "Update Device Settings Policy response"
+				"description": "Update a device settings profile Policy response"
 			},
 			"4XX": {
 				"content": {
@@ -8315,7 +8315,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -8409,7 +8409,7 @@
 															"type": "string"
 														},
 														"disable_auto_fallback": {
-															"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -8422,18 +8422,18 @@
 															"items": {
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -8447,7 +8447,7 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
-															"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -8517,7 +8517,7 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the device settings policy.",
+															"description": "The name of the device settings profile.",
 															"example": "Allow Developers",
 															"maxLength": 100,
 															"type": "string"
@@ -8653,7 +8653,7 @@
 						}
 					}
 				},
-				"description": "Update Device Settings Policy response failure"
+				"description": "Update a device settings profile Policy response failure"
 			}
 		},
 		"security": [
@@ -8662,13 +8662,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update Device Settings Policy",
+		"summary": "Update a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"POST /accounts/{identifier}/devices/policy": {
-		"description": "Create a device settings policy to be applied to certain devices matching the criteria.",
+		"description": "Creates a device settings profile to be applied to certain devices matching the criteria.",
 		"operationId": "devices-create-device-settings-policy",
 		"parameters": [
 			{
@@ -8717,7 +8717,7 @@
 								"type": "string"
 							},
 							"disable_auto_fallback": {
-								"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+								"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 								"example": true,
 								"type": "boolean"
 							},
@@ -8727,7 +8727,7 @@
 								"type": "boolean"
 							},
 							"exclude_office_ips": {
-								"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
 							},
@@ -8738,7 +8738,7 @@
 								"type": "string"
 							},
 							"name": {
-								"description": "The name of the device settings policy.",
+								"description": "The name of the device settings profile.",
 								"example": "Allow Developers",
 								"maxLength": 100,
 								"type": "string"
@@ -8851,7 +8851,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -8945,7 +8945,7 @@
 													"type": "string"
 												},
 												"disable_auto_fallback": {
-													"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+													"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -8958,18 +8958,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -8983,7 +8983,7 @@
 													"type": "array"
 												},
 												"exclude_office_ips": {
-													"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+													"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 													"example": true,
 													"type": "boolean"
 												},
@@ -9053,7 +9053,7 @@
 													"type": "string"
 												},
 												"name": {
-													"description": "The name of the device settings policy.",
+													"description": "The name of the device settings profile.",
 													"example": "Allow Developers",
 													"maxLength": 100,
 													"type": "string"
@@ -9103,7 +9103,7 @@
 						}
 					}
 				},
-				"description": "Create Device Settings Policy response"
+				"description": "Create a device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -9173,7 +9173,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -9267,7 +9267,7 @@
 															"type": "string"
 														},
 														"disable_auto_fallback": {
-															"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set.",
+															"description": "If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -9280,18 +9280,18 @@
 															"items": {
 																"properties": {
 																	"address": {
-																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																		"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																		"example": "192.0.2.0/24",
 																		"type": "string"
 																	},
 																	"description": {
-																		"description": "A description of the split tunnel item, displayed in the client UI.",
+																		"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																		"example": "Exclude testing domains from the tunnel",
 																		"maxLength": 100,
 																		"type": "string"
 																	},
 																	"host": {
-																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																		"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																		"example": "*.example.com",
 																		"type": "string"
 																	}
@@ -9305,7 +9305,7 @@
 															"type": "array"
 														},
 														"exclude_office_ips": {
-															"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+															"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -9375,7 +9375,7 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "The name of the device settings policy.",
+															"description": "The name of the device settings profile.",
 															"example": "Allow Developers",
 															"maxLength": 100,
 															"type": "string"
@@ -9511,7 +9511,7 @@
 						}
 					}
 				},
-				"description": "Create Device Settings Policy response failure"
+				"description": "Create a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -9520,13 +9520,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create Device Settings Policy",
+		"summary": "Create a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"POST /accounts/{identifier}/devices/revoke": {
-		"description": "Revoke a list of devices.",
+		"description": "Revokes a list of devices.",
 		"operationId": "devices-revoke-devices",
 		"parameters": [
 			{
@@ -9621,7 +9621,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -9658,7 +9658,7 @@
 						}
 					}
 				},
-				"description": "Revoke Devices response"
+				"description": "Revoke devices response"
 			},
 			"4XX": {
 				"content": {
@@ -9726,7 +9726,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -9849,7 +9849,7 @@
 						}
 					}
 				},
-				"description": "Revoke Devices response failure"
+				"description": "Revoke devices response failure"
 			}
 		},
 		"security": [
@@ -9858,13 +9858,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Revoke Devices",
+		"summary": "Revoke devices",
 		"tags": [
 			"Devices"
 		]
 	},
 	"POST /accounts/{identifier}/devices/unrevoke": {
-		"description": "Unrevoke a list of devices.",
+		"description": "Unrevokes a list of devices.",
 		"operationId": "devices-unrevoke-devices",
 		"parameters": [
 			{
@@ -9959,7 +9959,7 @@
 											]
 										},
 										"success": {
-											"description": "Whether the API call was successful",
+											"description": "Whether the API call was successful.",
 											"enum": [
 												true
 											],
@@ -9996,7 +9996,7 @@
 						}
 					}
 				},
-				"description": "Unrevoke Devices response"
+				"description": "Unrevoke devices response"
 			},
 			"4XX": {
 				"content": {
@@ -10064,7 +10064,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -10187,7 +10187,7 @@
 						}
 					}
 				},
-				"description": "Unrevoke Devices response failure"
+				"description": "Unrevoke devices response failure"
 			}
 		},
 		"security": [
@@ -10196,13 +10196,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Unrevoke Devices",
+		"summary": "Unrevoke devices",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/policy/{uuid}/exclude": {
-		"description": "Set the list of routes excluded from the WARP client's tunnel for one specific device settings policy.",
+		"description": "Sets the list of routes excluded from the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-set-split-tunnel-exclude-list-for-a-device-settings-policy",
 		"parameters": [
 			{
@@ -10232,18 +10232,18 @@
 						"items": {
 							"properties": {
 								"address": {
-									"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+									"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 									"example": "192.0.2.0/24",
 									"type": "string"
 								},
 								"description": {
-									"description": "A description of the split tunnel item, displayed in the client UI.",
+									"description": "A description of the Split Tunnel item, displayed in the client UI.",
 									"example": "Exclude testing domains from the tunnel",
 									"maxLength": 100,
 									"type": "string"
 								},
 								"host": {
-									"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+									"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 									"example": "*.example.com",
 									"type": "string"
 								}
@@ -10327,7 +10327,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -10386,18 +10386,18 @@
 											"items": {
 												"properties": {
 													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 														"example": "192.0.2.0/24",
 														"type": "string"
 													},
 													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"description": "A description of the Split Tunnel item, displayed in the client UI.",
 														"example": "Exclude testing domains from the tunnel",
 														"maxLength": 100,
 														"type": "string"
 													},
 													"host": {
-														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 														"example": "*.example.com",
 														"type": "string"
 													}
@@ -10416,7 +10416,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Exclude List for a Device Settings Policy response"
+				"description": "Set the Split Tunnel exclude list for a device settings profile response"
 			},
 			"4xx": {
 				"content": {
@@ -10486,7 +10486,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -10545,18 +10545,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -10661,7 +10661,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Exclude List for a Device Settings Policy response failure"
+				"description": "Set the Split Tunnel exclude list for a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -10670,13 +10670,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set Split Tunnel Exclude List for a Device Settings Policy",
+		"summary": "Set the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/policy/{uuid}/fallback_domains": {
-		"description": "Set the list of domains to bypass Gateway for DNS resolution and instead use the specified server.",
+		"description": "Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. This will only apply to the specified device settings profile.",
 		"operationId": "devices-set-local-domain-fallback-list-for-a-device-settings-policy",
 		"parameters": [
 			{
@@ -10800,7 +10800,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -10888,7 +10888,7 @@
 						}
 					}
 				},
-				"description": "Set Local Domain Fallback List for a Device Settings Policy response"
+				"description": "Set the Local Domain Fallback list for a device settings profile response"
 			},
 			"4XX": {
 				"content": {
@@ -10958,7 +10958,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -11132,7 +11132,7 @@
 						}
 					}
 				},
-				"description": "Set Local Domain Fallback List for a Device Settings Policy response failure"
+				"description": "Set the Local Domain Fallback list for a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -11141,13 +11141,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set Local Domain Fallback List for a Device Settings Policy",
+		"summary": "Set the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/policy/{uuid}/include": {
-		"description": "Set the list of routes included in the WARP client's tunnel for one specific device settings policy.",
+		"description": "Sets the list of routes included in the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-set-split-tunnel-include-list-for-a-device-settings-policy",
 		"parameters": [
 			{
@@ -11272,7 +11272,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -11361,7 +11361,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Include List for a Device Settings Policy response"
+				"description": "Set the Split Tunnel include list for a device settings profile response"
 			},
 			"4xx": {
 				"content": {
@@ -11431,7 +11431,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -11606,7 +11606,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Include List for a Device Settings Policy response failure"
+				"description": "Set the Split Tunnel include list for a device settings profile response failure"
 			}
 		},
 		"security": [
@@ -11615,13 +11615,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set Split Tunnel Include List for a Device Settings Policy",
+		"summary": "Set the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/policy/exclude": {
-		"description": "Set the list of routes excluded from the WARP client's tunnel.",
+		"description": "Sets the list of routes excluded from the WARP client's tunnel.",
 		"operationId": "devices-set-split-tunnel-exclude-list",
 		"parameters": [
 			{
@@ -11640,18 +11640,18 @@
 						"items": {
 							"properties": {
 								"address": {
-									"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+									"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 									"example": "192.0.2.0/24",
 									"type": "string"
 								},
 								"description": {
-									"description": "A description of the split tunnel item, displayed in the client UI.",
+									"description": "A description of the Split Tunnel item, displayed in the client UI.",
 									"example": "Exclude testing domains from the tunnel",
 									"maxLength": 100,
 									"type": "string"
 								},
 								"host": {
-									"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+									"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 									"example": "*.example.com",
 									"type": "string"
 								}
@@ -11735,7 +11735,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -11794,18 +11794,18 @@
 											"items": {
 												"properties": {
 													"address": {
-														"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+														"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 														"example": "192.0.2.0/24",
 														"type": "string"
 													},
 													"description": {
-														"description": "A description of the split tunnel item, displayed in the client UI.",
+														"description": "A description of the Split Tunnel item, displayed in the client UI.",
 														"example": "Exclude testing domains from the tunnel",
 														"maxLength": 100,
 														"type": "string"
 													},
 													"host": {
-														"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+														"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 														"example": "*.example.com",
 														"type": "string"
 													}
@@ -11824,7 +11824,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Exclude List response"
+				"description": "Set the Split Tunnel exclude list response"
 			},
 			"4xx": {
 				"content": {
@@ -11894,7 +11894,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -11953,18 +11953,18 @@
 													"items": {
 														"properties": {
 															"address": {
-																"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present.",
+																"description": "The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.",
 																"example": "192.0.2.0/24",
 																"type": "string"
 															},
 															"description": {
-																"description": "A description of the split tunnel item, displayed in the client UI.",
+																"description": "A description of the Split Tunnel item, displayed in the client UI.",
 																"example": "Exclude testing domains from the tunnel",
 																"maxLength": 100,
 																"type": "string"
 															},
 															"host": {
-																"description": "The domain name to exclude from the tunnel. If host is present, address must not be present.",
+																"description": "The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.",
 																"example": "*.example.com",
 																"type": "string"
 															}
@@ -12069,7 +12069,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Exclude List response failure"
+				"description": "Set the Split Tunnel exclude list response failure"
 			}
 		},
 		"security": [
@@ -12078,13 +12078,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set Split Tunnel Exclude List",
+		"summary": "Set the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/policy/fallback_domains": {
-		"description": "Set the list of domains to bypass Gateway for DNS resolution and instead use the specified server.",
+		"description": "Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead.",
 		"operationId": "devices-set-local-domain-fallback-list",
 		"parameters": [
 			{
@@ -12197,7 +12197,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -12285,7 +12285,7 @@
 						}
 					}
 				},
-				"description": "Set Local Domain Fallback List response"
+				"description": "Set your Local Domain Fallback list response"
 			},
 			"4XX": {
 				"content": {
@@ -12355,7 +12355,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -12529,7 +12529,7 @@
 						}
 					}
 				},
-				"description": "Set Local Domain Fallback List response failure"
+				"description": "Set your Local Domain Fallback list response failure"
 			}
 		},
 		"security": [
@@ -12538,13 +12538,13 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set Local Domain Fallback List",
+		"summary": "Set your Local Domain Fallback list",
 		"tags": [
 			"Devices"
 		]
 	},
 	"PUT /accounts/{identifier}/devices/policy/include": {
-		"description": "Set the list of routes included in the WARP client's tunnel.",
+		"description": "Sets the list of routes included in the WARP client's tunnel.",
 		"operationId": "devices-set-split-tunnel-include-list",
 		"parameters": [
 			{
@@ -12658,7 +12658,7 @@
 													]
 												},
 												"success": {
-													"description": "Whether the API call was successful",
+													"description": "Whether the API call was successful.",
 													"enum": [
 														true
 													],
@@ -12747,7 +12747,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Include List response"
+				"description": "Set the Split Tunnel include list response"
 			},
 			"4xx": {
 				"content": {
@@ -12817,7 +12817,7 @@
 															]
 														},
 														"success": {
-															"description": "Whether the API call was successful",
+															"description": "Whether the API call was successful.",
 															"enum": [
 																true
 															],
@@ -12992,7 +12992,7 @@
 						}
 					}
 				},
-				"description": "Set Split Tunnel Include List response failure"
+				"description": "Set the Split Tunnel include list response failure"
 			}
 		},
 		"security": [
@@ -13001,7 +13001,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set Split Tunnel Include List",
+		"summary": "Set the Split Tunnel include list",
 		"tags": [
 			"Devices"
 		]
