@@ -1,0 +1,156 @@
+<div class="mb2 gray5">15 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-1-7.png" class="kg-image" alt="" loading="lazy" width="1200" height="675"></figure>
+	<p>오늘 데이터 보호를 위한 Cloudflare One을 출시했습니다. 웹, SaaS, 비공개 애플리케이션 전반에 걸친 모든 곳에서 데이터를 보호하는 통합 제품군입니다. 이 제품군에는 <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank">데이터 손실 방지(DLP)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank">클라우드 액세스 보안 브로커(CASB)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank">Zero Trust 네트워크 액세스(ZTNA)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank">보안 웹 게이트웨이(SWG)</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank">원격 브라우저 격리(RBI)</a>, <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank">cl클라우드 이메일 보안</a>서비스가 융합되어 있습니다. 이 제품군을 이용하실 수 있으며 현재 <a href="https://www.cloudflare.com/cloudflare-one" target="_blank">Cloudflare One</a>, Cloudflare의 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank">SASE</a> 플랫폼 패키지에 포함되었습니다.</p>
+	<p>이 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-one-data-protection-announcement-ko-kr">발표 게시물에서는</a> 권장 사용 사례 및 실제 고객 예시를 통해 고객이 최신 데이터 위험을 살펴보는 데 데이터 보호 제품군이 어떤 도움을 주는지 중점적으로 설명했습니다.</p>
+	<p>이 안내 블로그 게시물에서는 지난 1년간 Cloudflare One 제품군에 구축된 기능을 요약하고 고객이 어떤 기능을 기대할 수 있는지 미리 살펴봅니다. 이 블로그는 Cloudflare One을 사용해 데이터와 SaaS 환경을 보호하는 데 관심이 있는 실무자에게 적합합니다.</p>
+	<h2 id="dlp-%EB%B0%8F-%EC%9E%91%EB%85%84%EC%97%90-%EC%B6%9C%EC%8B%9C%EB%90%9C-casb-%EA%B8%B0%EB%8A%A5">DLP 및 작년에 출시된 CASB 기능</h2>
+	<p>2022년 9월, Cloudflare에서는 <a href="https://blog.cloudflare.com/inline-dlp-ga">DLP</a>, <a href="https://blog.cloudflare.com/casb-ga">CASB</a> 등 두 가지 서비스를 출시했으며, 이후 빠르게 기능을 구축하여 다양한 규모의 우리 조직에서 늘어나는 요구 사항을 충족해 왔습니다. 이 두 가지 서비스가 어떻게 발전할지 미리 살펴보기 전에, 작년에 추가된 여러 가지 개선 사항을 요약해보는 것도 의미가 있을 것으로 생각합니다.</p>
+	<p>Cloudflare의 <a href="https://blog.cloudflare.com/inline-dlp-ga">DLP</a> 솔루션은 다양한 특성을 기반으로 조직이 환경 전반에서 중요한 데이터를 탐지하고 보호할 수 있도록 돕습니다. DLP 제어는 금융, 건강, <a href="https://www.cloudflare.com/learning/privacy/what-is-pii" target="_blank">개인 식별</a> 정보 등 규제 대상 데이터의 유출을 방지(및 감지)하고 규정을 준수하는 데 아주 중요할 수 있습니다.</p>
+	<p>DLP 감지 및 정책 개선 사항은 크게 세 가지 주제로 구분됩니다.</p>
+	<ul>
+		<li><strong>사용자 지정: </strong>관리자가 원하는 유연성을 갖추어 DLP 정책을 쉽게 설계할 수 있습니다.</li>
+		<li><strong>심층 감지: </strong>보호할 데이터와 보호 방식을 관리자가 심층적으로 세부 제어할 수 있는 기능을 제공합니다.</li>
+		<li><strong>상세 감지: </strong>관리자가 DLP 정책의 효과를 분석할 수 있도록 더 자세한 가시성과 로그를 제공합니다.</li>
+	</ul>
+	<p>Cloudflare의 <a href="https://blog.cloudflare.com/casb-ga">CASB</a>는 조직에서 타사 SaaS 애플리케이션에 연결하여 잘못된 구성, 부적절한 데이터 공유, 기타 보안 위험이 있는지 검사하고 모니터링할 수 있도록 도와주며, 모두 가벼운 API 통합을 통해 이루어집니다. 그러면 SaaS 앱에 늘어나고 있는 투자 상황에 대한 가시성과 제어를 조직에서 되찾을 수 있습니다.</p>
+	<p>마찬가지로 CASB 제품 개선 사항도 세 가지 주제로 요약할 수 있습니다.</p>
+	<ul>
+		<li><strong>API 통합 확대: </strong>현재 CASB는 <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank">가장 인기 있는 SaaS 앱 18가지</a>(Microsoft 365(OneDrive 포함), Google Workspace(Drive 포함), Salesforce, GitHub 등)와 통합됩니다. 1세대 CASB 솔루션보다 더 적게 클릭하여 API 통합을 설정할 수 있으며 <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse" target="_blank">SSE(보안 서비스 에지)</a> 영역에서 다른 공급업체와 제공 수준이 비슷합니다. space.</li>
+		<li><strong>CASB 검사 결과 강화</strong>: 지침 가이드와 대시보드에 마련된 인라인 정책 동작으로 CASB 검사에서 확인된 잘못된 구성을 더 쉽게 수정할 수 있게 되었습니다.</li>
+		<li><strong>CASB 및 DLP 기능 통합: </strong>조직이 <a href="https://blog.cloudflare.com/casb-dlp">DLP 정책 분류에 따른 중요한 데이터를 SaaS 앱에서 검사</a>할 수 있게 했습니다. 예를 들어, 누구나 인터넷으로 확인할 수 있도록 공개된Google 문서나 스프레드시트에 신용카드나 주민등록번호가 포함되어 있는 경우 조직에서 감지할 수 있습니다.</li>
+	</ul>
+	<p>특히 마지막 주제를 통해, 하나의 플랫폼에서 데이터 보호 기능을 통합하여 워크플로를 간소화하면 유용하다는 점을 알 수 있습니다.아래 표에 지난 9월 일반 공개 발표 이후 출시된 몇 가지 주요 기능이 요약되어 있습니다.</p>
+	<h3 id="%ED%91%9C-1-2022%EB%85%84-4%EB%B6%84%EA%B8%B0-%EC%9D%B4%ED%9B%84-%EC%A0%9C%EA%B3%B5%EB%90%9C-%EC%9D%BC%EB%B6%80dlp-%EB%B0%8F-casb-%EA%B8%B0%EB%8A%A5">표 1: 2022년 4분기 이후 제공된 일부DLP 및 CASB 기능</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-bkhz {
+			background-color: #00379C;
+			color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-bkhz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">주제</span></th>
+				<th class="tg-bkhz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">역량</span></th>
+				<th class="tg-bkhz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">설명</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax" rowspan="3">&nbsp;&nbsp;&nbsp;<br>DLP: 사용자&nbsp;&nbsp;&nbsp;지정 기능&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://blog.cloudflare.com/cloudflare-dlp-mip"><span style="color:#15C">Microsoft 정보&nbsp;&nbsp;&nbsp;보호 레이블 통합</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>신속하게 API를 통합했다면, Cloudflare에서는 DLP 정책 구성 방식을 간소화할 수 있도록 이미 사용 중인 Microsoft 정보 보호(MIP) 레이블과 지속적인 동기화를 수행합니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://blog.cloudflare.com/custom-dlp-profiles"><span style="color:#15C">사용자 지정 DLP 프로필</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>관리자는 전체 Zero Trust 플랫폼에서 사용되는&nbsp;&nbsp;&nbsp;것과 동일한 정규식 정책 빌더로 사용자 지정 감지를 만들어 서비스 전반에서 일관적인 구성 환경을 만들 수 있습니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/advanced-settings" target="_blank"><span style="color:#15C">일치 횟수 제어</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>관리자는 조치(차단 또는 로그 등)가 트리거되기 전에 감지가 수행되는 최소 임계 횟수를 설정할 수 있습니다. 고객은 이러한 방법으로 개별 트랜잭션은 허용되지만 중요한 데이터가 대량으로 포함된 업로드/다운로드는 차단하는 정책을 만들 수 있습니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax" rowspan="3">&nbsp;&nbsp;&nbsp;<br>DLP: 감지&nbsp;&nbsp;&nbsp;강화&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/advanced-settings" target="_blank"><span style="color:#15C">컨텍스트 분석</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>컨텍스트 분석은 근접 키워드를 분석하여 긍정 오류를 줄이는 데 유용합니다(예: 신용카드 번호 근처에 '만료일'이&nbsp;&nbsp;&nbsp;있으면 감지가 트리거될 가능성이 높아짐).&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies/#download-and-upload-file-type" target="_blank"><span style="color:#15C">파일 유형 제어</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Microsoft Office 문서, PDF 파일, ZIP 파일 등 특정 파일 유형으로 DLP 검사 범위를 지정할 수 있습니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles" target="_blank"><span style="color:#15C">사전 정의된 DLP 프로필 확장</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>출시 이후, 금융 데이터, 개인 식별자, 자격 증명 등 일반적인 데이터 유형에 작동하는 더욱 다양한 감지 기능이 DLP에 구축되었습니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>DLP: 세부&nbsp;&nbsp;&nbsp;감지&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#http-logs" target="_blank"><span style="color:#15C">로깅 세부 정보 확장</span></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>이제 Cloudflare는 페이로드 분석, 파일 이름, 정확도가 더욱 높은 개별 파일 정보 등, 로그에서&nbsp;&nbsp;&nbsp;더욱 폭넓고 세분화된 DLP 관련 활동 정보를 포착합니다. 많은 고객들이 이러한 로그를 <a href="https://blog.cloudflare.com/ko-kr/integrate-cloudflare-zero-trust-with-datadog-cloud-siem-ko-kr"><span style="color:#15C">DataDog</span></a>, <a href="https://blog.cloudflare.com/zero-trust-signals-to-sumo-logic"><span style="color:#15C">Sumo Logic</span></a>과 같은 SIEM 도구로 푸시하고 있습니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>CASB: 통합&nbsp;&nbsp;&nbsp;및 결과 확대&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank"><span style="color:#15C">API 기반 통합</span></a><br>&nbsp;&nbsp;&nbsp;<br> <br>&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/manage-findings" target="_blank"><span style="color:#15C">결과 관리</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>현재 Cloudflare는 생산성 제품군, 클라우드 스토리지, 채팅 도구 등을 포함하여 가장 널리 사용되는 SaaS 앱 18가지와 통합됩니다. <br>&nbsp;&nbsp;&nbsp;<br> <br>&nbsp;&nbsp;&nbsp;<br>API 기반 검사는 잘못된 구성을 밝혀낼 뿐만 아니라 기본 제공 HTTP 정책 생성 워크플로와 단계별 수정 가이드까지 제공합니다.&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>DLP 및 CASB 컨버전스&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-dlp" target="_blank"><span style="color:#15C">SaaS 앱에서 중요한&nbsp;&nbsp;&nbsp;데이터 검색</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>현재 조직에서는 CASB를 설정하여 Google Workspace에서 공개적으로 액세스할 수 있는 모든 파일에 DLP 프로필(금융 데이터, 개인 식별 정보 등)과 일치하는 텍스트가 있는지 검사할 수 있습니다.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h2 id="%EC%8B%A0%EA%B7%9C-%EB%B0%8F-%EC%B6%9C%EC%8B%9C-%EC%98%88%EC%A0%95%EC%9D%B8-dlp-%EB%B0%8F-casb-%EA%B8%B0%EB%8A%A5">신규 및 출시 예정인 DLP 및 CASB 기능</h2>
+	<p>Cloudflare는 오늘 <a href="https://www.cloudflare.com/ko-kr/press-releases/2023/cloudflare-announces-unified-data-protection-suite-to-address-the-risks-of" target="_blank">Cloudflare One의 데이터 보호 제품군</a>을 출시하면서, 이러한 주제별 영역 전반에서 DLP 및 CASB 기능에 계속 투자하겠다는 약속을 구체적으로 나타냈습니다. 아래에서는 앞으로 몇 주 내에 Cloudflare One의 데이터 보호 제품군 로드맵에 새롭게 제공되어 데이터 환경 전반의 가시성과 제어를 강화할 몇 가지 기능을 미리 살펴보고자 합니다.</p>
+	<h3 id="%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A7%80%EC%A0%95-%EB%8B%A8%EC%96%B4-%EB%AA%A9%EB%A1%9D%EC%9D%84-%ED%86%B5%ED%95%9C-%EC%A0%95%ED%99%95%ED%95%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%A4%EC%B9%AD"><em>사용자 지정 단어 목록을 통한 정확한 데이터 매칭</em></h3>
+	<p><strong>이미 출시됨: </strong><a href="https://blog.cloudflare.com/edm-beta">정확한 데이터 매칭</a>이 베타 버전에서 정식 버전으로 전환되었습니다. 고객은 이름, 전화번호, 기타 모든 내용을 포함할 수 있는 데이터 세트를 업로드하여 정확히 어떤 데이터를 찾아야 하는지Cloudflare의 DLP에 알려줄 수 있습니다.</p>
+	<p><strong>향후 30일: </strong>곧 고객들은 특정 단어 목록을 업로드하고, 파일에서 중요한 키워드를 검색하고, 해당 활동을 차단하고 기록하는 DLP 정책을 만들 수 있게 됩니다.</p>
+	<p><strong>고객이 누릴 수 있는 장점: </strong>관리자는 가장 중요한 데이터와 조건을 대량 업로드하여 보호할 대상을 더 구체적으로 지정하고 정책을 만드는 시간을 절약할 수 있습니다. 시간이 지나며 조직에서 기존 DLP 서비스에 등록한 용어 목록의 양은 많아지고 있습니다. 사용자 지정 가능한 업로드 기능을 이용하면 <a href="https://blog.cloudflare.com/descaler-program-update">다른 공급업체에서 Cloudflare로 마이그레이션</a>하는 과정이 간소호화됩니다. 다른 모든 DLP 프로필과 마찬가지로, Cloudflare는 인라인 트래픽 및 통합 SaaS 앱에서 사용자 지정 목록과 키워드를 검색합니다.</p>
+	<h3 id="%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-%EB%B0%8F-%EC%83%81%ED%83%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B0%90%EC%A7%80"><em>소스 코드 및 상태 데이터 감지</em></h3>
+	<p><strong>향후 30일: </strong>개발자 소스 코드와 더불어 <a href="https://www.cloudflare.com/learning/privacy/what-is-hipaa-compliance" target="_blank">보호의료정보(Protected Health Information, PHI)</a>를 감지하기 위해 사전 정의된 프로필이 Clouflare의 DLP에 곧 포함됩니다. 코드 데이터에는 현재 가장 많이 사용되는 언어인 Python, Javascript, Java, C++와 같은 언어가 먼저 포함될 예정이며, PHI 데이터에는 아주 중요한 의료 주제 두 가지인 약물 및 진단 이름이 포함될 예정입니다.</p>
+	<p><strong>고객이 누릴 수 있는 장점: </strong>사전 정의된 프로필은 조직 내에서 가장 가치 있고 가장 규제가 엄격한 데이터 유형 중 하나인 PHI 적용 범위를 넓혀줍니다.</p>
+	<h3 id="%EB%AF%B8%EC%82%AC%EC%9A%A9-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B3%B4%ED%98%B8%EB%A5%BC-%EC%9C%84%ED%95%9C-api-%EA%B8%B0%EB%B0%98-casb-%EB%B0%8F-dlp-%EC%9C%B5%ED%95%A9"><em>미사용 데이터 보호를 위한 API 기반 CASB 및 DLP 융합</em></h3>
+	<p><strong>향후 30일: </strong>곧 조직에서는 Microsoft 365(예: OneDrive)에서 미사용 중요 데이터를 검색할 수 있게 됩니다. API에 기반하여 이러한 환경을 검사할 경우, 예를 들어 신용 카드 번호, 소스 코드 또는 DLP 정책을 통해 구성된 기타 데이터가 공개적으로 액세스 가능한 파일 내에 있는지 여부가 표시됩니다. 그러면 관리자가 인라인 CASB 게이트웨이 정책을 통해 규범 조치를 취하여 문제를 해결할 수 있습니다.</p>
+	<p><strong>연말까지 출시 예정: </strong>향후 몇 달 내에 GitHub에서도 동일한 통합 기능을 사용할 수 있습니다.</p>
+	<p><strong>고객이 누릴 수 있는 장점: </strong>고객은 기존의 <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-dlp" target="_blank">Google Workspace</a> 통합과 곧 제공될 Microsoft 365 통합을 이용해, 가장 널리 사용되며 사용자가 많은 시간을 보내고 조직 데이터의 상당 부분이 저장되는 두 가지 클라우드 생산성 제품군에서 중요한 데이터를 검사할 수 있습니다. 새로운Microsoft 통합에는 <a href="https://blog.cloudflare.com/expanding-our-collaboration-with-microsoft-proactive-and-automated-zero-trust-security">ID 및 애플리케이션 액세스 관리</a>, <a href="https://blog.cloudflare.com/cloudflare-microsoft-intune-partner-to-give-cisos-secure-control-across-devices-applications">장치 상태 적용</a>, <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/azuread-risky-users/?cf_target_id=9878E2009FA06D9AC4B5552DD9D7E75D" target="_blank">위험 사용자 격리</a> 등을 포함하여 Microsoft 생태계 전반의 보안 워크플로를 간소화하기 위해 지속적으로 투자하고 있습니다.</p>
+	<p>또한 GitHub까지 통합하므로, 가장 중요하지만 데이터 유출 위험은 점점 더 커지고 있는 개발자 환경에 대한 가시성을 회복할 수 있습니다. 실제로 <a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2023" target="_blank">GitGuardian</a>에 따르면 2022년 공개 GitHub 커밋에서 1,000만 개의 하드코딩된 암호가 노출되었는데, 2021년 대비 67% 증가한 수치이며 이 수치는 계속 늘어날 것으로 예상됩니다. 고객들은 GitHub에서의 소스 코드 노출 방지를 문제 영역으로 꾸준히 제기하고 있습니다. Cloudflare는 앞으로도 개발자 환경 보안을 우선순위에 둘 것입니다.</p>
+	<h3 id="zero-trust-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%97%90-%EA%B3%84%EC%B8%B5%ED%99%94-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9C%84%ED%97%98-%EC%A0%90%EC%88%98"><em>Zero Trust 컨텍스트에 계층화: 사용자 위험 점수</em></h3>
+	<p><strong>향후 30일: </strong>Cloudflare는 Cloudflare One 서비스에서 감지된 사용자 행동과 활동을 기반으로 위험 점수를 도입할 예정입니다. 조직에서는 불가능한 이동 이상 행동이 나타나거나 특정 기간 동안 DLP가 너무 많이 위반된 상황을 감지하는 등, 위험을 초래하는 사용자 행동을 감지할 수 있게 됩니다. 감지 기능에 바로 이어 예방 조치나 복원 정책 조치를 취할 수 있는 옵션이 더욱 폭넓은 Cloudflare One 제품군에 제공됩니다. 이렇게 하면 조직에서 변화하는 위험 요소와 실시간 컨텍스트에 따라 중요한 데이터 액세스와 앱 액세스를 제어할 수 있습니다.</p>
+	<p><strong>고객이 누릴 수 있는 장점: </strong>현재, 위험 패턴을 파악하기 위해 로그 데이터를 대량으로 분석하는 데 시간, 노동력, 비용이 많이 소요되고 있습니다. '즉시 사용 가능한' Cloudflare의 위험 점수는 이러한 프로세스를 간소화하여 조직이 의심스러운 활동에 가시성을 확보하고 신속하고 효율적으로 이러한 활동을 차단할 수 있도록 지원합니다.</p>
+	<h2 id="%EC%8B%9C%EC%9E%91-%EB%B0%A9%EB%B2%95">시작 방법</h2>
+	<p>이러한 기능은 단기 로드맵의 일부입니다. 데이터 보호 제품군의 발전과 함께 더 많은 기능을 공유할 수 있게 되기를 기대합니다. Cloudflare One으로 데이터를 보호하는 방법을 알아볼 준비가 되셨다면 지금 전문가와의 <a href="https://www.cloudflare.com/ko-kr/products/zero-trust/plans/enterprise" target="_blank">워크숍을 요청</a>하세요.</p>
+	<p>Cloudflare One에서 데이터를 보호하는 방법에 대해 자세히 알아보려면 <a href="https://www.cloudflare.com/ko-kr/press-releases/2023/cloudflare-announces-unified-data-protection-suite-to-address-the-risks-of/?cf_target_id=9B15D4144D9F8C1FA6E5CB0E265883F3" target="_blank">오늘의 보도 자료</a>를 읽거나 <a href="https://www.cloudflare.com/zero-trust/solutions/data-protection" target="_blank">웹 사이트</a>에 방문하실 수 있고, <a href="https://cfl.re/data-protection-demo" target="_blank">기술 데모</a>에서도 자세히 살펴보실 수 있습니다.</p>
+</div>

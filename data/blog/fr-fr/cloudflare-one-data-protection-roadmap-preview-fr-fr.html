@@ -1,0 +1,156 @@
+<div class="mb2 gray5">10 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-1-3.png" class="kg-image" alt="" loading="lazy" width="1200" height="675"></figure>
+	<p>Nos avons annoncé aujourd'hui la solution Cloudflare One for Data Protection, une suite unifiée permettant de protéger les données partout, sur l'ensemble des applications (web, SaaS et privées). Cette suite fait converger plusieurs fonctionnalités, comme nos services de <a href="https://www.cloudflare.com/fr-fr/learning/access-management/what-is-dlp" target="_blank">DLP</a> (Data Loss Prevention, prévention de perte des données), de <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank">CASB</a> (Cloud Access Security Broker, agent de sécurité des accès au cloud), de <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank">ZTNA</a> (Zero Trust Network Access, accès réseau Zero Trust), de <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank">SWG</a> (Secure Web Gateway, passerelle web sécurisée), de <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank">RBI</a> (Remote Browser Isolation, isolement de navigateur à distance) et de <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank">sécurité du courrier électronique cloud</a>. La suite est désormais disponible et proposée dans le cadre de <a href="https://www.cloudflare.com/cloudflare-one" target="_blank">Cloudflare One</a>, notre plateforme <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank">SASE</a>.</p>
+	<p>Dans <a href="https://cflr.re/data-protection-announcement-blog" target="_blank">l'article d'annonce</a>, nous nous sommes concentrés sur la manière dont la suite de protection des données aide nos clients à faire face aux risques modernes pesant sur les données, avec des scénarios d'utilisation recommandés et des exemples concrets tirés de scénarios clients.</p>
+	<p>Dans cet article complémentaire, nous récapitulons les fonctionnalités que nous avons intégrées à la suite Cloudflare One au cours de l'année passée et vous présentons en avant-première celles auxquelles nos clients peuvent s'attendre. Il conviendra parfaitement aux professionnels intéressés par la protection des données et des environnements SaaS à l'aide de la plateforme Cloudflare One.</p>
+	<h2 id="les-fonctionnalit%C3%A9s-de-dlp-et-de-casb-lanc%C3%A9es-lann%C3%A9e-pass%C3%A9e">Les fonctionnalités de DLP et de CASB lancées l'année passée</h2>
+	<p>Cloudflare a lancé ses deux services <a href="https://blog.cloudflare.com/inline-dlp-ga">DLP</a>et <a href="https://blog.cloudflare.com/casb-ga">CASB</a> en septembre 2022. Depuis, nous avons rapidement développé ces fonctionnalités conçues pour répondre aux besoins grandissants des entreprises de toutes tailles. Avant de vous donner un aperçu de la manière dont ces services vont évoluer, il peut être intéressant d'effectuer un récapitulatif des nombreuses améliorations apportées au cours de l'année passée.</p>
+	<p>La solution <a href="https://blog.cloudflare.com/fr-fr/inline-dlp-ga-fr-fr">DLP</a>de Cloudflare aide les entreprises à détecter et à protéger les données sensibles sur l'ensemble de leurs environnements, en fonction de plusieurs de leurs caractéristiques. Les mesures de contrôle de DLP peuvent s'avérer essentielles pour prévenir (et détecter) les fuites préjudiciables et assurer la conformité des classes de données réglementées, comme les données financières, les informations médicales et les informations <a href="https://www.cloudflare.com/fr-fr/learning/privacy/what-is-pii" target="_blank">d'identification personnelle</a>.</p>
+	<p>Les améliorations apportées aux mesures de détection et aux politiques de DLP peuvent être classées selon trois axes principaux :</p>
+	<ul>
+		<li><strong>Personnalisation : </strong>pour faciliter la tâche aux administrateurs cherchant à concevoir des politiques DLP dotées de toute la flexibilité souhaitée.</li>
+		<li><strong>Détections profondes : </strong>pour doter les administrateurs de mesures de contrôle de plus en plus précises sur les données qu'ils souhaitent protéger et sur la manière dont ils souhaitent les protéger.</li>
+		<li><strong>Détections détaillées : </strong>pour offrir aux administrateurs plus de visibilité et de journaux détaillés afin de leur permettre d'analyser l'efficacité de leurs politiques DLP.</li>
+	</ul>
+	<p>Le <a href="https://blog.cloudflare.com/fr-fr/casb-ga-fr-fr">CASB</a>de Cloudflare aide les entreprises à se connecter, à analyser et à surveiller les applications tierces à la recherche d'erreurs de configuration, de partages de données abusifs et d'autres risques envers la sécurité, le tout par l'intermédiaire d'intégrations d'API légères. Les entreprises peuvent ainsi récupérer de la visibilité et du contrôle sur leurs investissements croissants en matière d'applications SaaS.</p>
+	<p>De même, les améliorations apportées au CASB peuvent être regroupées selon trois thèmes :</p>
+	<ul>
+		<li><strong>Expansion des intégrations d'API : </strong>à l'heure actuelle, notre CASB s'intègre à <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank">18 des applications SaaS les plus populaires</a>, comme Microsoft 365 (y compris OneDrive), Google Workspace (y compris Drive), Salesforce et GitHub. La configuration de ces intégrations d'API demande moins de clics que dans les solutions de CASB de première génération, avec une couverture comparable à celle des autres fournisseurs de <a href="https://www.cloudflare.com/fr-fr/learning/access-management/security-service-edge-sse" target="_blank">SSE</a> (Security Services Edge, services de sécurité en périphérie).</li>
+		<li><strong>Meilleures conclusions des analyses du CASB </strong>: nous avons facilité la correction des erreurs de configuration identifiées par les analyses du CASB en intégrant des guides prescriptifs et des actions de politiques « in-line » au tableau de bord.</li>
+		<li><strong>Convergence des fonctionnalités CASB et DLP : </strong>nous permettons désormais aux entreprises <a href="https://blog.cloudflare.com/fr-fr/casb-dlp-fr-fr">d'analyser les applications SaaS à la recherche de données sensibles, comme les données protégées par les politiques DLP</a>. À titre d'exemple, cette opération aide les entreprises à détecter les numéros de carte de paiement ou les numéros de sécurité sociale figurant dans des documents ou des feuilles de travail Google publiquement disponibles et donc accessibles à n'importe quel utilisateur sur Internet.</li>
+	</ul>
+	<p>Cette dernière thématique parle, en particulier, de la valeur liée à l'unification des fonctionnalités de protection des données au sein d'une même plateforme, pour des flux de travail plus simples et rationalisés. Le tableau ci-dessous met en valeur certaines des fonctionnalités principales que nous avons lancées depuis nos annonces de mise en disponibilité générale du mois de septembre dernier.</p>
+	<h3 id="tableau-1-une-s%C3%A9lection-des-fonctionnalit%C3%A9s-de-dlp-et-de-casb-lanc%C3%A9es-depuis-le-quatri%C3%A8me-trimestre-2022">Tableau 1: une sélection des fonctionnalités de DLP et de CASB lancées depuis le quatrième trimestre 2022</h3><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-bkhz {
+			background-color: #00379C;
+			color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-bkhz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Thème</span></th>
+				<th class="tg-bkhz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Fonctionnalités</span></th>
+				<th class="tg-bkhz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax" rowspan="3">&nbsp;&nbsp;&nbsp;<br>DLP : personnalisation&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://blog.cloudflare.com/fr-fr/cloudflare-dlp-mip-fr-fr"><span style="color:#15C">Intégration des étiquettes Microsoft Information&nbsp;&nbsp;&nbsp;Protection</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Après une rapide intégration d'API, Cloudflare se synchronise en&nbsp;&nbsp;&nbsp;permanence avec les étiquettes Microsoft Information Protection (MIP) que&nbsp;&nbsp;&nbsp;vous utilisez déjà afin de rationaliser la manière dont vous concevez vos&nbsp;&nbsp;&nbsp;politiques DLP.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://blog.cloudflare.com/custom-dlp-profiles"><span style="color:#15C">Profils DLP personnalisés</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Les administrateurs peuvent créer des profils de détection&nbsp;&nbsp;&nbsp;personnalisés à l'aide du même éditeur de politiques regex que celui utilisé&nbsp;&nbsp;&nbsp;sur l'ensemble de notre plateforme Zero Trust pour une expérience de&nbsp;&nbsp;&nbsp;configuration cohérente sur tous les services.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/advanced-settings" target="_blank"><span style="color:#15C">Compteurs de correspondances</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Les administrateurs peuvent définir un seuil minimum de détections&nbsp;&nbsp;&nbsp;avant le déclenchement d'une action (p. ex blocage ou journalisation). Les&nbsp;&nbsp;&nbsp;clients peuvent ainsi concevoir des politiques permettant des transactions&nbsp;&nbsp;&nbsp;individuelles, mais bloquer les téléchargements/importations de grands&nbsp;&nbsp;&nbsp;volumes de données sensibles.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax" rowspan="3">&nbsp;&nbsp;&nbsp;<br>DLP : détections en&nbsp;&nbsp;&nbsp;profondeur&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/advanced-settings" target="_blank"><span style="color:#15C">Analyse de contexte</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>L'analyse de contexte contribue à réduire le taux de faux positifs en&nbsp;&nbsp;&nbsp;analysant les mots-clés à proximité (p. ex, la présence des termes&nbsp;&nbsp;&nbsp;« date d'expiration » à côté d'un numéro de carte de paiement&nbsp;&nbsp;&nbsp;accroît la probabilité de déclencher une détection).&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway/http-policies/#download-and-upload-file-type" target="_blank"><span style="color:#15C">Contrôle du type de fichier</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Les analyses DLP peuvent être limitées à des types de fichiers&nbsp;&nbsp;&nbsp;spécifiques, comme les documents Microsoft Office, les PDF ou les fichiers&nbsp;&nbsp;&nbsp;ZIP.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles" target="_blank"><span style="color:#15C">Élargissement des profils DLP prédéfinis</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Depuis son lancement, la DLP a conçu une vaste gamme de mesures de&nbsp;&nbsp;&nbsp;détection couvrant les types de données courants, comme les données&nbsp;&nbsp;&nbsp;financières et les identifiants personnels.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>DLP : détections&nbsp;&nbsp;&nbsp;détaillées&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#http-logs" target="_blank"><span style="color:#15C">Extension des détails de journalisation</span></a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Cloudflare capture désormais davantage de détails de large portée et&nbsp;&nbsp;&nbsp;de détails plus granulaires concernant l'activité liée à la DLP dans les&nbsp;&nbsp;&nbsp;journaux, notamment l'analyse du contenu, les noms de fichier et les détails&nbsp;&nbsp;&nbsp;de plus haute fidélité des fichiers individuels. Un large pourcentage de nos&nbsp;&nbsp;&nbsp;clients préfèrent transmettre ces journaux à des outils SIEM, tels que <a href="https://blog.cloudflare.com/fr-fr/integrate-cloudflare-zero-trust-with-datadog-cloud-siem-fr-fr"><span style="color:#15C">DataDog</span></a> et <a href="https://blog.cloudflare.com/fr-fr/zero-trust-signals-to-sumo-logic-fr-fr"><span style="color:#15C">Sumo Logic</span></a>.&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>CASB : extension des&nbsp;&nbsp;&nbsp;intégrations et des conclusions&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank"><span style="color:#15C">Intégrations basées sur API</span></a><br>&nbsp;&nbsp;&nbsp;<br> <br>&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/manage-findings" target="_blank"><span style="color:#15C">Gestion des conclusions</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>À l'heure actuelle, notre CASB s'intègre à 18 des applications&nbsp;&nbsp;&nbsp;SaaS les plus largement utilisées, comme les suites d'amélioration de la&nbsp;&nbsp;&nbsp;productivité, le stockage cloud, les outils de discussion et bien d'autres. <br>&nbsp;&nbsp;&nbsp;<br> <br>&nbsp;&nbsp;&nbsp;<br>Les analyses basées sur API ne révèlent pas uniquement les erreurs de&nbsp;&nbsp;&nbsp;configuration, elles proposent également des procédures intégrées de&nbsp;&nbsp;&nbsp;conception de politiques HTTP et des guides de correction étape par étape.&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>Convergence DLP et CASB&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br><a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-dlp" target="_blank"><span style="color:#15C">Recherche de données sensibles dans les applications&nbsp;&nbsp;&nbsp;SaaS</span></a>&nbsp;&nbsp;&nbsp;</td>
+				<td class="tg-0lax">&nbsp;&nbsp;&nbsp;<br>De nos jours, les entreprises peuvent paramétrer leur CASB afin qu'il&nbsp;&nbsp;&nbsp;analyse chaque fichier publiquement accessible dans Google Workspace à la&nbsp;&nbsp;&nbsp;recherche de texte correspondant à un profil DLP (données financières,&nbsp;&nbsp;&nbsp;identifiants personnels, etc.).&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h2 id="nouvelles-fonctionnalit%C3%A9s-dlp-et-casb-lanc%C3%A9es-et-%C3%A0-venir">Nouvelles fonctionnalités DLP et CASB lancées et à venir</h2>
+	<p>Aujourd'hui, le lancement de la <a href="https://www.cloudflare.com/fr-fr/press-releases/2023/cloudflare-announces-unified-data-protection-suite-to-address-the-risks-of" target="_blank">Cloudflare One Data Protection Suite</a> cristallise notre engagement visant à continuer à investir dans les fonctionnalités DLP et CASB sur l'ensemble de ces thématiques. Nous souhaitions vous présenter ci-dessous quelques-unes des nouvelles fonctionnalités lancées et à venir sur la roadmap de la Cloudflare One Data Protection Suite. Ces dernières seront disponibles dans les prochaines semaines afin de vous assurer plus de visibilité et de contrôle sur vos environnements de données.</p>
+	<h3 id="correspondance-exacte-des-donn%C3%A9es-avec-listes-de-mots-personnalis%C3%A9es"><em>Correspondance exacte des données avec listes de mots personnalisées</em></h3>
+	<p><strong>Déjà lancée : la fonctionnalité </strong><a href="https://blog.cloudflare.com/fr-fr/edm-beta-fr-fr">Exact Data Match</a> (correspondance exacte des données) sort de bêta pour passer en disponibilité générale. Elle permet aux clients d'indiquer au service DLP de Cloudflare quelles données rechercher exactement lors de l'importation d'un ensemble de données, susceptible de contenir des noms, des numéros de téléphone ou toute autre donnée sensible.</p>
+	<p><strong>30 prochains jours : </strong>les clients pourront bientôt importer une liste de mots spécifiques et concevoir des politiques DLP afin de rechercher ces mots-clés importants dans les fichiers, avant de bloquer et de journaliser cette activité.</p>
+	<p><strong>Avantages pour les clients : </strong>les administrateurs pourront être plus spécifiques sur ce qu'ils souhaitent protéger et économiser du temps sur la création des politiques en important en masse les données et les termes dont ils se soucient le plus. Au fil du temps, de nombreuses entreprises ont amassé de longues listes de termes configurées pour leurs services DLP existants. Cette fonctionnalité d'importation personnalisable permet de <a href="https://blog.cloudflare.com/descaler-program-update">rationaliser la migration depuis d'autres fournisseurs</a>vers Cloudflare. Tout comme pour les autres profils DLP, Cloudflare recherche ces listes personnalisées et ces mots-clés dans le trafic interne (in-line) et au sein des applications SaaS intégrées.</p>
+	<h3 id="d%C3%A9tection-du-code-source-et-des-informations-m%C3%A9dicales"><em>Détection du code source et des informations médicales</em></h3>
+	<p><strong>30 prochains jours : </strong>le service DLP de Cloudflare inclura bientôt des profils prédéfinis pour détecter le code source et les <a href="https://www.cloudflare.com/fr-fr/learning/privacy/what-is-hipaa-compliance" target="_blank">informations médicales protégées</a> (Protected Health Information, PHI). Initialement, les données liées au code couvriront quatre des langages les plus populaires à l'heure actuelle (Python, JavaScript, Java et C++). De même, les données PHI couvriront les noms liés aux médicaments et aux diagnostics, deux sujets médicaux particulièrement sensibles.</p>
+	<p><strong>Avantages pour les clients : </strong>ces profils prédéfinis étendent la couverture à certains des types de données les plus précieuses circulant au sein d'une entreprise (et, dans le cas des PHI, parmi les plus régulées).</p>
+	<h3 id="convergence-des-services-casb-et-dlp-orient%C3%A9s-api-pour-la-protection-des-donn%C3%A9es-au-repos"><em>Convergence des services CASB et DLP orientés API pour la protection des données au repos</em></h3>
+	<p><strong>30 prochains jours : </strong>les entreprises pourront bientôt rechercher les données sensibles au repos dans l'environnement Microsoft 365 (p ex. OneDrive). Les analyses basées sur API de ces environnements révèleront, par exemple, si des numéros de cartes de paiement, du code source ou d'autres données configurées par l'intermédiaire de politiques DLP résident dans des fichiers accessibles publiquement. Les administrateurs pourront alors suivre des mesures directives pour corriger la situation par l'intermédiaire de politiques de passerelle CASB internes (in-line).</p>
+	<p><strong>Lancement avant la fin de l'année : </strong>dans les mois à venir, cette même intégration sera disponible dans GitHub.</p>
+	<p><strong>Avantages pour les clients : </strong>entre l'intégration <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-dlp" target="_blank">Google Workspace</a> existante et cette intégration Microsoft 365 à venir, les clients pourront rechercher les données sensibles au sein de deux des suites d'amélioration de la productivité les plus populaires, dans lesquelles de nombreux utilisateurs passent le plus clair de leur temps et où résident de forts volumes de données organisationnelles (en pourcentage). Cette nouvelle intégration à Microsoft est issue d'un investissement constant dans la rationalisation des flux de sécurité sur l'ensemble de l'écosystème Microsoft, qu'il s'agisse de <a href="https://blog.cloudflare.com/fr-fr/expanding-our-collaboration-with-microsoft-proactive-and-automated-zero-trust-security-fr-fr">gérer les identités et les accès</a>, <a href="https://blog.cloudflare.com/cloudflare-microsoft-intune-partner-to-give-cisos-secure-control-across-devices-applications">d'appliquer une stratégie de sécurité des appareils</a>ou <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/azuread-risky-users/?cf_target_id=9878E2009FA06D9AC4B5552DD9D7E75D" target="_blank">d'isoler les utilisateurs à risque</a>.</p>
+	<p>L'intégration à GitHub permet également de regagner de la visibilité sur l'un des environnements les plus essentiels pour les développeurs, mais également de plus en plus sujet au risque de fuites de données. D'ailleurs, selon <a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2023" target="_blank">GitGuardian</a>, 10 millions de secrets codés en dur ont été exposés au sein de commits GitHub publics en 2022, un chiffre supérieur de 67 % par rapport à 2021 et qui ne manquera certainement pas d'augmenter. La prévention de l'exposition de code source sur GitHub est une problématique dont notre équipe Produits entend souvent parler de la part des clients. Nous continuerons à prioriser la sécurisation de ces environnements pour développeurs.</p>
+	<h3 id="superposition-sur-le-contexte-zero-trust-le-score-de-risque-utilisateur"><em>Superposition sur le contexte Zero Trust : le score de risque utilisateur</em></h3>
+	<p><strong>30 prochains jours : </strong>Cloudflare lancera un score de risque basé sur le comportement de l'utilisateur et ses activités détectées sur l'ensemble des services de Cloudflare One. Les entreprises pourront détecter les comportements des utilisateurs qui induisent un risque à partir de diverses actions, comme une anomalie Impossible Travel (Voyage impossible), ou de détections résultant d'un trop grand nombre de violations DLP au cours d'une période donnée. Peu après les fonctionnalités de détection viendra l'option de prendre des actions de politique préventives ou correctives au sein de la suite Cloudflare One dans son ensemble. Les entreprises pourront ainsi contrôler l'accès aux données et aux applications sensibles en fonction de l'évolution des facteurs de risque et du contexte en temps réel.</p>
+	<p><strong>Avantages pour les clients : </strong>de nos jours, une quantité énorme de temps, de travail et d'argent sont consacrés à l'analyse d'importants volumes de journaux afin d'identifier les schémas de risque. Le score de risque « prêt à l'emploi » de Cloudflare simplifie ce processus en aidant les entreprises à gagner de la visibilité sur les activités suspectes et à les verrouiller avec rapidité et efficacité.</p>
+	<h2 id="premiers-pas">Premiers pas</h2>
+	<p>Seul un petit nombre de fonctionnalités figurent sur notre roadmap à court terme, mais nous sommes impatients de vous en faire découvrir davantage au fil des évolutions de notre suite de protection des données. Si vous souhaitez explorer la manière dont Cloudflare One peut protéger vos données, <a href="https://www.cloudflare.com/fr-fr/products/zero-trust/plans/enterprise" target="_blank">demandez un atelier</a> avec nos experts dès aujourd'hui.</p>
+	<p>Sinon, pour plus d'informations sur la manière dont Cloudflare One préserve vos données, consultez le <a href="https://www.cloudflare.com/fr-fr/press-releases/2023/cloudflare-announces-unified-data-protection-suite-to-address-the-risks-of" target="_blank">communiqué de presse publié aujourd'hui</a>, rendez-vous sur notre <a href="https://www.cloudflare.com/zero-trust/solutions/data-protection" target="_blank">site web</a> ou approfondissez vos connaissances à l'aide d'une <a href="https://cfl.re/data-protection-demo" target="_blank">démo technique</a>.</p>
+</div>
