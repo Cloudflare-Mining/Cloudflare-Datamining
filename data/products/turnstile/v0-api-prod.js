@@ -570,7 +570,7 @@
 
 	function Tt(e, r, i, s) {
 		var u = Bt(i),
-			v = "h/".concat("b", "/");
+			v = "h/".concat("g", "/");
 		return "".concat(u, "/cdn-cgi/challenge-platform/").concat(v, "turnstile/if/ov2/av0/rcv").concat(s, "/").concat(e, "/").concat(r, "/").concat(i.theme, "/").concat(i.size)
 	}
 
@@ -905,7 +905,7 @@
 					switch (I.label) {
 						case 0:
 							if (n = m.params.sitekey, l = At(), !l) return h("Cannot determine Turnstile's embedded location, aborting clearance redemption."), r(m, c, !1), [2];
-							o = "h/".concat("b", "/"), g = new URL(l), T = "https", A = "".concat(T, "://").concat(g.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), I.label = 1;
+							o = "h/".concat("g", "/"), g = new URL(l), T = "https", A = "".concat(T, "://").concat(g.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), I.label = 1;
 						case 1:
 							return I.trys.push([1, 6, , 7]), [4, fetch(A, {
 								method: "POST",
@@ -1057,7 +1057,7 @@
 									cData: n.cData,
 									chlPageData: n.chlPageData,
 									rcV: n.rcV,
-									ch: "8827f912",
+									ch: "0cecfec7",
 									url: At(),
 									retry: n.params.retry,
 									"expiry-interval": n.params["expiry-interval"],
