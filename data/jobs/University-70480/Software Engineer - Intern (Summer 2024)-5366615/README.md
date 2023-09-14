@@ -5,31 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>The Team</strong></p>
-<p>We are looking to hire an experienced Security Third Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for completing vendor security reviews, maintaining our vendor master list, and maintaining Cloudflare’s Third Party Risk Program.&nbsp;</p>
-<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored.&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About Cloudflare's Engineering teams</strong></p>
+<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</span></p>
+<p><strong>About the Internship Program</strong></p>
+<p><span style="font-weight: 400;">The ideal summer intern is passionate about making the Internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</span></p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>Conduct Vendor Security Reviews for third parties providing data center, hardware, software, cloud, contractor, and other services to Cloudflare</li>
-	<li>Assess vendor security posture by reviewing vendor security controls and audit documentation</li>
-	<li>Identify third party security risks and recommend risk treatment options&nbsp;</li>
-	<li>Determine security contract requirements and communicate these to the Contracts &amp; Legal teams</li>
-	<li>Maintain Cloudflare’s Vendor Master, including our list of Critical vendors</li>
-	<li>Maintain and improve the Vendor Security Review process, workflow, and tooling</li>
-	<li>Support Cloudflare’s customer-facing and incident response teams by ensuring our vendors are not affected by recent zero-day vulnerabilities or security incidents</li>
-	<li>Support Cloudflare’s security certification audits by providing evidence of vendor security reviews&nbsp;</li>
-	<li>Work with stakeholders across Cloudflare’s Procurement, IT, Contracts, Legal, and Privacy teams to ensure vendor due diligence is completed efficiently&nbsp;</li>
-	<li>Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, or other global Cloudflare locations.&nbsp;&nbsp;</li>
+	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Make friends across the company through our Cloudfriends Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
 </ul>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 4 years working in Security GRC&nbsp;</li>
-	<li>Experience reviewing vendor security documentation including ISO 27001, SOC 2, PCI DSS, and other audit reports</li>
-	<li>Experience identifying security controls gaps, determining risk ratings, and recommending mitigating controls&nbsp;&nbsp;</li>
-	<li>Familiarity with security contract requirements&nbsp;</li>
-	<li>Strong organizational, analytical, and interpersonal skills</li>
-	<li>Self-starter with the ability to work independently with a sense of curiosity</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated critical thinking skills and drive to learn and adapt new technologies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity, empathy and ability to get things done.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to commit to a 12 week summer internship.</span></li>
 </ul>
+<p><strong>Please note</strong></p>
+<ul>
+	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete.&nbsp;</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
