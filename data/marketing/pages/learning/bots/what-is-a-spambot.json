@@ -429,6 +429,12 @@
 								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
 								"displayText": "Email Security Learning Center",
 								"url": "/learning/email-security/what-is-email-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7CoqFqlHQVmsyV0mxgXUs2",
+								"displayText": "AI Learning Center",
+								"url": "/learning/ai/what-is-artificial-intelligence/"
 							}
 						]
 					}
@@ -477,7 +483,7 @@
 				"enablementBlade": {
 					"contentTypeId": "bladeEnablement",
 					"contentfulId": "3WRRo5n8dwVM3PJJxGuzI4",
-					"title": "Defend against bot attacks like credential stuffing and content scraping with Cloudflare's app services plans",
+					"title": "Defend against bot attacks like credential stuffing and content scraping with Cloudflare",
 					"titleSize": "medium",
 					"backgroundColor": "image-background",
 					"buttonText": null,
@@ -542,7 +548,32 @@
 					"headerText": "Want to keep learning?",
 					"subHeadingText": "Sign up to receive security learning articles from Cloudflare.",
 					"hasMarketoForm": true,
-					"marketoForm": null,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2488,
+						"marketoFormLeadSource": "Learning Center - Subscription",
+						"marketoFormLeadSourceDetail": "[EXP] Q3'20 WEB - GBL - PAYGO WWW Product Recommendations",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "Cloudflare learning articles are on the way.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
 					"timeDelay": 20000,
 					"ctaButton": null
 				},
