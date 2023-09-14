@@ -67,6 +67,24 @@
 			},
 			{
 				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Single ASN as integer.",
+					"example": "174",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Location Alpha2 code.",
+					"example": "US",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "format",
 				"schema": {
 					"description": "Format results are returned in.",
@@ -151,8 +169,8 @@
 														"type": "string"
 													},
 													"id": {
-														"example": 550,
-														"type": "integer"
+														"example": "550",
+														"type": "string"
 													},
 													"linkedUrl": {
 														"example": "http://example.com",
