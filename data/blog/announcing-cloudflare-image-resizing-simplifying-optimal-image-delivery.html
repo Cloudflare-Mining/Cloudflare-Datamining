@@ -2,10 +2,9 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image3-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In the past three years, the amount of image data on the median mobile webpage has doubled. Growing images translate directly to users hitting data transfer caps, experiencing slower websites, and even leaving if a website doesn’t load in a reasonable amount of time. The crime is many of these images are so slow because they are larger than they need to be, sending data over the wire which has absolutely no (positive) impact on the user’s experience.</p>
-	<p>To provide a concrete example, let’s consider this photo of Cloudflare’s Lava Lamp Wall:</p>
-	<p></p><!--kg-card-begin: markdown--><img style="display:inline;" src="https://blog.cloudflare.com/content/images/2019/05/lava_300.jpeg" srcset="http://blog.cloudflare.com/content/images/2019/05/lava_300@2x.jpg 2x" alt="">
-	<img style="max-width:300px;display:inline;" src="https://blog.cloudflare.com/content/images/2019/05/lava_full.jpg" alt=""><!--kg-card-end: markdown-->
-	<p></p>
+	<p>To provide a concrete example, let’s consider this photo of Cloudflare’s Lava Lamp Wall:</p><!--kg-card-begin: markdown--><img style="display:inline;" src="https://blog.cloudflare.com/content/images/2019/05/lava_300.jpeg" alt="">
+	<img style="max-width:300px;display:inline;" src="https://blog.cloudflare.com/content/images/2019/05/lava_full.jpg" alt="">
+	<p></p><!--kg-card-end: markdown-->
 	<p>On the left you see the photo, scaled to 300 pixels wide. On the right you see the same image delivered in its original high resolution, scaled in a desktop web browser. On a regular-DPI screen, they both look the same, yet the image on the right takes more than <strong>twenty times more data to load. </strong>Even for the best and most conscientious developers resizing every image to handle every possible device geometry consumes valuable time, and it’s exceptionally easy to forget to do this resizing altogether.</p>
 	<p>Today we are launching a new product, Image Resizing, to fix this problem once and for all.</p>
 	<h3 id="announcing-image-resizing">Announcing Image Resizing</h3>
@@ -25,16 +24,13 @@
 	<p><code>&lt;img src="/cdn-cgi/image/width=75,height=75/images/shoe123.jpg"&gt;</code></p>
 	<h4 id="responsive-images">Responsive Images</h4>
 	<p>When tailoring a site to work on various device types and sizes, it’s important to always use correctly sized images. &nbsp;This can be difficult when images are intended to fill a particular percentage of the screen. &nbsp;To solve this problem, &lt;img srcset sizes&gt; can be used.</p>
-	<p>Without Image Resizing, multiple versions of the same image would need to be created and stored. &nbsp;In this example, a single high quality copy of hero.jpg is stored, and Image Resizing is used to resize for each particular size as needed.</p>
-	<p></p><!--kg-card-begin: markdown-->
+	<p>Without Image Resizing, multiple versions of the same image would need to be created and stored. &nbsp;In this example, a single high quality copy of hero.jpg is stored, and Image Resizing is used to resize for each particular size as needed.</p><!--kg-card-begin: markdown-->
 	<pre><code>&lt;img width="100%" srcset=" /cdn-cgi/image/fit=contain,width=320/assets/hero.jpg 320w, /cdn-cgi/image/fit=contain,width=640/assets/hero.jpg 640w, /cdn-cgi/image/fit=contain,width=960/assets/hero.jpg 960w, /cdn-cgi/image/fit=contain,width=1280/assets/hero.jpg 1280w, /cdn-cgi/image/fit=contain,width=2560/assets/hero.jpg 2560w, " src="/cdn-cgi/image/width=960/assets/hero.jpg"&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p></p>
 	<h4 id="enforce-maximum-size-without-changing-urls">Enforce Maximum Size Without Changing URLs</h4>
 	<p>Image Resizing is also <a href="https://developers.cloudflare.com/images/worker" target="_blank">available</a> from within a Cloudflare Worker. <a href="https://developers.cloudflare.com/workers/about" target="_blank">Workers</a> allow you to write code which runs close to your users all around the world. For example, you might wish to add Image Resizing to your images <strong>while keeping the same URLs</strong>. Your users and client would be able to use the same image URLs as always, but the images will be transparently modified in whatever way you need.</p>
-	<p>You can install a Worker on a route which matches your image URLs, and resize any images larger than a limit:</p>
-	<p></p><!--kg-card-begin: markdown-->
+	<p>You can install a Worker on a route which matches your image URLs, and resize any images larger than a limit:</p><!--kg-card-begin: markdown-->
 	<pre><code>addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
 })
@@ -51,7 +47,6 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p></p>
 	<p>As a Worker is just code, it is also easy to run this worker only on URLs with image extensions, or even to only resize images being delivered to mobile clients.</p>
 	<h3 id="cloudflare-and-images">Cloudflare and Images</h3>
 	<p>Cloudflare has a long history building tools to accelerate images. Our caching has always helped reduce latency by storing a copy of images closer to the user. &nbsp;<a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati">Polish</a> automates options for both <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression" target="_blank">lossless and lossy image compression</a> to remove unnecessary bytes from images. &nbsp;<a href="https://www.cloudflare.com/website-optimization/mirage" target="_blank">Mirage</a> accelerates image delivery based on device type. We are continuing to invest in all of these tools, as they all serve a unique role in improving the image experience on the web.</p>
