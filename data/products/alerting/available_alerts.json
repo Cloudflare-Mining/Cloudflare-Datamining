@@ -232,6 +232,50 @@
 			]
 		}
 	],
+	"Radar Notification": [
+		{
+			"display_name": "Radar notifications",
+			"type": "radar_notification",
+			"description": "Radar Notifications",
+			"filter_options": [
+				{
+					"Key": "event_type",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": [
+						{
+							"ID": "BGP_LEAK",
+							"Description": "BGP leak"
+						},
+						{
+							"ID": "BGP_HIJACK",
+							"Description": "BGP hijack"
+						},
+						{
+							"ID": "TRAFFIC_ANOMALY",
+							"Description": "Traffic anomaly"
+						},
+						{
+							"ID": "TRAFFIC_OUTAGE",
+							"Description": "Traffic outage (verified)"
+						}
+					]
+				},
+				{
+					"Key": "affected_asns",
+					"ComparisonOperator": "contains",
+					"Range": "0-n",
+					"AvailableValues": null
+				},
+				{
+					"Key": "affected_locations",
+					"ComparisonOperator": "contains",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
+		}
+	],
 	"Route Leak Detection": [
 		{
 			"display_name": "Route Leak Detection Alert",
