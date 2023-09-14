@@ -37,7 +37,6 @@
 		"arobinson/types-defines-copyright-headers",
 		"arobinson/writable-stream-abort-error",
 		"bazel-debug-wrappers",
-		"bcaimano/actor-cache-no-state",
 		"bcaimano/actor-shutdown-alarm",
 		"bcaimano/alarm-in-ctor",
 		"bcaimano/do-storage-unlimited-keys",
@@ -46,6 +45,7 @@
 		"bcoll/allow-absolute-module-names",
 		"bcoll/bump-compat-date-2023-03-07",
 		"bcoll/compat-date-2023-04-19",
+		"bcoll/compat-date-2023-09-14",
 		"bcoll/malonso/chromium_toolchain",
 		"bcoll/types-2022-10-31-and-2022-11-30",
 		"bcoll/types-parameter-names-redo",
@@ -226,6 +226,7 @@
 		"jsnell/random-cleanups-isolate-to-lock",
 		"jsnell/refine-asynccontext2",
 		"jsnell/refine-r2-kv-detach-flag",
+		"jsnell/remove-blob-mime-warning",
 		"jsnell/rename-diagnosticChannelEvents-to-diagnosticsChannelEvents",
 		"jsnell/revert-101a34ba",
 		"jsnell/start-using-jsvalue",
@@ -344,6 +345,7 @@
 		"webgpu_buffer_properties",
 		"webgpu_do",
 		"webgpu_globals",
+		"webgpu_improvements",
 		"webgpu_js",
 		"workerd-v8-update-11.2.214.9"
 	]
