@@ -1,5 +1,43 @@
 [
 	{
+		"id": "2d805933d825eb7ee214b294ae7d2e43",
+		"name": "Vectorize Readonly",
+		"description": "Can read Vectorize configurations.",
+		"permissions": {
+			"vectorize": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "89c48528394f516ff4ce47c39036cf12",
+		"name": "Vectorize Admin",
+		"description": "Can edit Vectorize configurations.",
+		"permissions": {
+			"vectorize": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "17f13fba9173af84903c2be2b56240e5",
 		"name": "Bot Management (Account-Wide)",
 		"description": "Can edit Bot Management (including Super Bot Fight Mode) configurations for all domains in account",
