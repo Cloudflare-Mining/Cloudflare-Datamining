@@ -5,24 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the Role</strong></h4>
-<p><span style="font-weight: 400;">The VP of Global Campaigns and Demand Generation will be responsible for driving global customer growth for one of the world’s largest and fastest-growing global cloud companies. This role will manage the global campaign and demand generation teams who are responsible for all campaigns, demand generation, and digital marketing activities, while managing a large and growing program spend budget. As a senior, strategic, hands-on leader, you’ll partner with other leaders and stakeholders across Cloudflare to build integrated, highly-targeted campaigns and programs that drive customer acquisition, retention, and expansion. You will work cross functionally with Product Marketing, Field Marketing, Sales and Customer Success to drive highly measurable ROI on investments. You’ll also navigate unforeseen obstacles gracefully in a fast-paced and rapidly changing environment. This role will report directly to the CMO and is a highly visible leadership role within the Cloudflare organization which will have a significant impact on the long-term growth of the fast-growing Cloudflare business.</span></p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>The Team</strong></p>
+<p>Security Compliance is seen as a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint.</p>
+<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. You will join as a member focused on developing and maintaining an internal control framework, aligned with security and privacy standards and internal security requirements. This team is part of Security Compliance and is part of the greater Security Team under Cloudflare’s Chief Security Officer. We guarantee that you will be challenged and have room for growth on our team!&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven leader and motivator with deep experience building campaigns and leading large, global demand generation organizations.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">At least 15 years experience in the SaaS/Cloud industry, with 10+ years in an executive leadership position in Marketing and oversight of demand generation for a $300M-$5 Billion ARR company. Cyber-security and/or B2B infrastructure marketing experience to CIOs, CISOs, infrastructure leaders, developers, and security practitioners is important.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in organizations with a complex, strategic sale where best practices AND technology define a customer’s success.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Expertise in ABM and the entire ABM and enterprise Marketing tech stack.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Significant experience working with large, global enterprises.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hire, develop, and lead a diverse global team of highly-talented marketing professionals across demand generation, campaign marketing, and digital marketing.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Scale our global marketing efforts, define and improve KPIs, manage a significant (and growing) acquisition budget, and assume primary responsibility for exceeding pipeline opportunity goals each quarter.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and execute programs to drive pipeline and closed revenue, leveraging key channels such as digital advertising, paid search, web marketing, email marketing, nurturing, video, webinars, direct mail, events, field activities and more.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive continued growth of our self-service business with targeted campaigns and programs.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner closely with Product Marketing to define campaign priorities and promote new products and features to new and existing customers.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive continual improvement in lead conversion rates, close rates and other KPIs.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Align closely with Sales partners to execute an effective Account-Based Marketing (ABM) strategy.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrate a strong commitment to ongoing sales and marketing alignment.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ideally located in the Bay Area (we are a remote culture but Bay Area is preferred).</span></li>
+	<li>Improve the maturity of Cloudflare’s Security Compliance program with a focus on our Cloudflare Control Framework</li>
+	<li>Develop, maintain, and mature Cloudflare’s security and privacy controls</li>
+	<li>Collaborate with security, risk, and compliance specialists, and control owners maintaining framework compliance with security and privacy certifications, frameworks, and other security requirements</li>
+	<li>Help lead Cloudflare’s GRC tooling requirements</li>
+	<li>Work cross-functionally with Engineering, Product, IT, Legal and operational teams to drive security control implementation for the organization</li>
+	<li>Ownership of the framework and collaboration in internal and external audits</li>
+	<li>Help guide our overall security and privacy policy and governance architecture</li>
+	<li>Have input and contribute to the overall security compliance strategy and roadmap</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Minimum 3 years working in a IT audit, or Security Compliance role;</li>
+	<li>Knowledge of Security Compliance Frameworks and previous experience managing security control frameworks</li>
+	<li>Experience in auditing of network, operating system, and application security</li>
+	<li>Ability to work closely with auditors and articulate technical concepts</li>
+	<li>Familiarity with additional security standards and frameworks such as ISO 27000 family, SOC 2, PCI DSS, NIST 800-53</li>
+	<li>Ability to work cross-functionally with internal stakeholders and strong communications skills</li>
+	<li>Ability to work efficiently and independently in a fast-paced, high-volume environment</li>
+	<li>Some travel may be required to engage with regulators and auditors</li>
+	<li>CISA, CRISC, CISSP, CIPP, CIPM, CIPT is a plus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
