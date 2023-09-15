@@ -13,6 +13,21 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "6db108c24d014b2db955936470b76f29",
+				"key": "com.cloudflare.edge.vectorize.index.*",
+				"attributes": {
+					"legacy_name": "#vectorize:read,#vectorize:edit"
+				}
+			},
+			{
+				"id": "b81c5fa71128402f9e771e0e8debd6a2",
+				"key": "com.cloudflare.api.account.cloudchamber.configuration.ssh-keys.*"
+			},
+			{
+				"id": "34afedaf999b4e849433ea81ed4c4081",
+				"key": "com.cloudflare.api.account.cloudchamber.configuration.*"
+			},
+			{
 				"id": "a3c465a13b3f40f3978edd7800db66d6",
 				"key": "com.cloudflare.team.connector.warp.*"
 			},
@@ -4269,6 +4284,28 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "0c86134a4d0943939c04ed3170ac3e2e",
+				"key": "com.cloudflare.edge.vectorize.index.read",
+				"attributes": {
+					"legacy_name": "#vectorize:read"
+				}
+			},
+			{
+				"id": "5f6f988375194bf0bfb4d4f2a5b38df3",
+				"key": "com.cloudflare.edge.vectorize.index.list",
+				"attributes": {
+					"legacy_name": "#vectorize:read"
+				}
+			},
+			{
+				"id": "4d2cc6163d344bfb8fc371ae4244c869",
+				"key": "com.cloudflare.api.account.cloudchamber.configuration.ssh-keys.list"
+			},
+			{
+				"id": "2787cf4b40004be7b31425f28c532ba1",
+				"key": "com.cloudflare.api.account.cloudchamber.configuration.read"
+			},
 			{
 				"id": "4d7872528ecd4a7893b3e8c4113bf134",
 				"key": "com.cloudflare.team.connector.warp.read"
@@ -9786,6 +9823,13 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2022-03-23T23:47:46.228595Z",
 		"permissions": [
+			{
+				"id": "6db108c24d014b2db955936470b76f29",
+				"key": "com.cloudflare.edge.vectorize.index.*",
+				"attributes": {
+					"legacy_name": "#vectorize:read,#vectorize:edit"
+				}
+			},
 			{
 				"id": "a7eab5be1ecd42779cb27df330ea4a0f",
 				"key": "com.cloudflare.edge.hyperdrive.database.*",
@@ -18266,6 +18310,21 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "6db108c24d014b2db955936470b76f29",
+				"key": "com.cloudflare.edge.vectorize.index.*",
+				"attributes": {
+					"legacy_name": "#vectorize:read,#vectorize:edit"
+				}
+			},
+			{
+				"id": "b81c5fa71128402f9e771e0e8debd6a2",
+				"key": "com.cloudflare.api.account.cloudchamber.configuration.ssh-keys.*"
+			},
+			{
+				"id": "34afedaf999b4e849433ea81ed4c4081",
+				"key": "com.cloudflare.api.account.cloudchamber.configuration.*"
+			},
 			{
 				"id": "a3c465a13b3f40f3978edd7800db66d6",
 				"key": "com.cloudflare.team.connector.warp.*"
