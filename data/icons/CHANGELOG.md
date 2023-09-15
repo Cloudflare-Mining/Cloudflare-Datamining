@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.7.0
+
+### Minor Changes
+
+- 7fd604a414: Add `none` SVG icon
+
 ## 11.6.1
 
 ### Patch Changes

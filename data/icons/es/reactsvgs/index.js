@@ -71,6 +71,7 @@ import More from './More';
 import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
 import NetworkSecurity from './NetworkSecurity';
 import Network from './Network';
+import None from './None';
 import Notifications from './Notifications';
 import OkSign from './OkSign';
 import Ok from './Ok';
@@ -206,6 +207,7 @@ export default {
   'network-analytics-logo': NetworkAnalyticsLogo,
   'network-security': NetworkSecurity,
   network: Network,
+  none: None,
   notifications: Notifications,
   'ok-sign': OkSign,
   ok: Ok,
