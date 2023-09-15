@@ -428,6 +428,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_management_new_tld_banner_2: "**.US** domains now available!",
 	domain_management_auto_renew_disabled: "No payment method in billing profile. Add one to enable automatic renewal.",
 	domain_management_auto_renew_domain_protection: "As this domain is enrolled in domain protection, it is automatically renewed.",
+	domain_management_clear_filters_button: "Clear All",
 	default_parking_card_header_enabled: "Parking Page is enabled",
 	default_parking_card_header_disabled: "Parking Page is disabled",
 	default_parking_card_description: "A Parking Page can be displayed to a visitors of your domain when you don't have a website ready yet.",
