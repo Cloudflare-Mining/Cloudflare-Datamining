@@ -2885,6 +2885,10 @@
 								"type": "object"
 							},
 							"screenshotsResolutions": {
+								"default": [
+									"desktop"
+								],
+								"description": "Take multiple screenshots targeting different device types",
 								"items": {
 									"default": "desktop",
 									"description": "Device resolutions.",
