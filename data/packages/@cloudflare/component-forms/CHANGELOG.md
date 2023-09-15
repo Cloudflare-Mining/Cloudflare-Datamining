@@ -1,16 +1,21 @@
 # Change Log
 
-## 5.3.16
+## 5.4.0
+
+### Minor Changes
+
+- ce902c8042: Add bodyProps prop to Checkboxes and Radios to enable them to work with form grid
 
 ### Patch Changes
 
-- @cloudflare/component-button@7.0.16
-- @cloudflare/component-grid@2.1.11
-- @cloudflare/component-listbox@1.10.5
-- @cloudflare/component-search@7.0.15
-- @cloudflare/component-select-2@6.0.15
-- @cloudflare/component-time-period-picker@5.0.20
-- @cloudflare/util-responsive@1.5.6
+- 2b6a611378: Improve handling of unwrapped components with children
+  - @cloudflare/component-button@7.0.16
+  - @cloudflare/component-grid@2.1.11
+  - @cloudflare/component-listbox@1.10.5
+  - @cloudflare/component-search@7.0.15
+  - @cloudflare/component-select-2@6.0.15
+  - @cloudflare/component-time-period-picker@5.0.20
+  - @cloudflare/util-responsive@1.5.6
 
 ## 5.3.15
 
