@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.0.11
+
+### Patch Changes
+
+- Updated dependencies [98dad64d3c]
+  - @cloudflare/component-loading@6.1.1
+
 ## 4.0.10
 
 ### Patch Changes

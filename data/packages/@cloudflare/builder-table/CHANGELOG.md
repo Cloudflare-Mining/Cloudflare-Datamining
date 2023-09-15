@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.86
+
+### Patch Changes
+
+- @cloudflare/component-table@9.1.19
+
 ## 3.0.85
 
 ### Patch Changes

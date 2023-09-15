@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.1
+
+### Patch Changes
+
+- 98dad64d3c: fix: Include types in package
+
 ## 6.1.0
 
 ### Minor Changes
