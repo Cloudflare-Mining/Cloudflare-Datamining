@@ -22755,6 +22755,101 @@
 		]
 	},
 	{
+		"id": "c40299dfa99048bd8ce9043afafc3034",
+		"name": "Vectorize Admin",
+		"status": "V",
+		"meta": {
+			"description": "Can edit Vectorize configurations.",
+			"editable": "false",
+			"label": "vectorize_admin",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-09-15T18:54:54.586294Z",
+		"modified_on": "2023-09-15T18:54:54.586294Z",
+		"permissions": [
+			{
+				"id": "6db108c24d014b2db955936470b76f29",
+				"key": "com.cloudflare.edge.vectorize.index.*",
+				"attributes": {
+					"legacy_name": "#vectorize:read,#vectorize:edit"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "f15a31fae6c4433abbf43ad868aed734",
+		"name": "Vectorize Readonly",
+		"status": "V",
+		"meta": {
+			"description": "Can read Vectorize configurations.",
+			"editable": "false",
+			"label": "vectorize_readonly",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-09-15T18:54:54.586294Z",
+		"modified_on": "2023-09-15T18:54:54.586294Z",
+		"permissions": [
+			{
+				"id": "0c86134a4d0943939c04ed3170ac3e2e",
+				"key": "com.cloudflare.edge.vectorize.index.read",
+				"attributes": {
+					"legacy_name": "#vectorize:read"
+				}
+			},
+			{
+				"id": "5f6f988375194bf0bfb4d4f2a5b38df3",
+				"key": "com.cloudflare.edge.vectorize.index.list",
+				"attributes": {
+					"legacy_name": "#vectorize:read"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
 		"id": "b3dae31ebc9a4573943c475576fe03a5",
 		"name": "Waiting Room Admin",
 		"status": "V",
