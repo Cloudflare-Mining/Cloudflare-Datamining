@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2857,
+	"version": "20230918.5",
+	"short_version": "2023.9.109.1",
+	"size": 68664030,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "134c7e0b733ed4893733029a8afea106",
+	"fingerprint": "b6d05a08b04d2eb2ea4c3ffb41a5385c",
+	"uploaded_at": "2023-09-18T14:40:43.303Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains reliability improvements and general bug fixes.\n \n## Notable updates\n- Improved DNS logging to track down an issue where DNS isn't properly applied coming out of sleep\n- Tweaked DNS behavior to work better with some captive portals (United in particular)\n- Fixed an issue with Managed Networks where if the managed endpoint overlapped with your exclude split tunnel configuration, the split tunnel would only be open for IP traffic destined to the same port as your managed TLS endpoint\n- Fixed an issue where IPv6 traffic could be incorrectly sent down the tunnel in exclude mode\n- Fixed an issue introduced in previous beta where the client could be stuck on connecting forever\n \n## Known issues\n- No known issues\n  \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
