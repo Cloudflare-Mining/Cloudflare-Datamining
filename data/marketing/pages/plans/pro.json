@@ -596,8 +596,8 @@
 								"locale": "en-US"
 							}
 						],
-						"learnMoreUrl": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_pro_20_20&add=argo_zone_basic&_ga=2.179103204.138411915.1695042996-827612195.1665417639",
-						"learnMoreText": "Select Pro + Argo",
+						"learnMoreUrl": null,
+						"learnMoreText": null,
 						"link": [],
 						"subheadline": null,
 						"button1Text": null,
@@ -713,7 +713,7 @@
 						"contentfulId": "21v1zdeqNaonIVgKWXH8Wa",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "redwoodEnablementInlineVersion",
+						"htmlId": "pricing",
 						"copy": "<div style= \"text-align: center;\"><p> <span style = \"font-size: 32px;line-height:120%;\" > <strong>Maximize performance by bundling website optimization tools together with your Pro plan</strong></span><p> <span style = \"font-size:18px;\"></span></p></p></div><br><br>",
 						"title": null,
 						"subtitle": null,
@@ -800,7 +800,7 @@
 						"contentfulId": "QL6GYlPFewdEqIrLDUIea",
 						"title": null,
 						"description": null,
-						"htmlId": "pricing",
+						"htmlId": null,
 						"plansList": [
 							{
 								"contentTypeId": "plan",
@@ -1480,6 +1480,264 @@
 															},
 															"value": "Learn more about Load Balancing",
 															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2lvhCYfvyYMKOphN6ZAP2",
+								"title": "What security features and tools are included in the Pro plan?",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Cloudflare Pro plan offers multiple tools to protect your website or application from cyber attacks. These include:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Challenging or blocking definitely automated traffic and verified bots using Super Bot Fight Mode.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Stoping common cyber threats like SQL injection by deploying the OWASP Core Managed Ruleset",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Protecting against new attacks identified by Cloudflare's always learning WAF by deploying the Cloudflare Managed Ruleset",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Performing automated credentials checks against a public database of stolen credentials to prevent fraud and misuse of your applications. Deploy using Cloudflare's Exposed Credentials Check Managed Ruleset for WAF.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Customizing WAF and bot protection using 20 WAF Custom Rules",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/plans/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "View more features",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
