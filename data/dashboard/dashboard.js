@@ -4,7 +4,7 @@
 			"use strict";
 			n.d(z, {
 				J8: function() {
-					return S
+					return A
 				},
 				Jd: function() {
 					return g
@@ -47,7 +47,7 @@
 				U = function(d) {
 					return h.Z ? h.Z.get("cf_beta.".concat(d)) === !0 : !1
 				},
-				S = function(d) {
+				A = function(d) {
 					return U(d) || C(d)
 				},
 				m = function() {
@@ -72,26 +72,26 @@
 				r = n("../node_modules/isomorphic-fetch/fetch-npm-browserify.js"),
 				c = n("../../../../node_modules/fetch-intercept/lib/browser.js");
 
-			function b(A) {
+			function b(O) {
 				for (var v = 1; v < arguments.length; v++) {
 					var w = arguments[v] != null ? Object(arguments[v]) : {},
 						Q = Object.keys(w);
 					typeof Object.getOwnPropertySymbols == "function" && (Q = Q.concat(Object.getOwnPropertySymbols(w).filter(function(Se) {
 						return Object.getOwnPropertyDescriptor(w, Se).enumerable
 					}))), Q.forEach(function(Se) {
-						h(A, Se, w[Se])
+						h(O, Se, w[Se])
 					})
 				}
-				return A
+				return O
 			}
 
-			function h(A, v, w) {
-				return v in A ? Object.defineProperty(A, v, {
+			function h(O, v, w) {
+				return v in O ? Object.defineProperty(O, v, {
 					value: w,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : A[v] = w, A
+				}) : O[v] = w, O
 			}
 			var s = function(v) {
 				var w = v && v.headers || {},
@@ -115,8 +115,8 @@
 				e = "",
 				i = 61;
 
-			function l(A) {
-				var v = A.substr(1);
+			function l(O) {
+				var v = O.substr(1);
 				if (v && e !== v) {
 					var w = document.getElementById(v);
 					if (w) {
@@ -130,8 +130,8 @@
 				e = v
 			}
 
-			function C(A) {
-				A.listen(function(v) {
+			function C(O) {
+				O.listen(function(v) {
 					return l(v.hash)
 				})
 			}
@@ -151,7 +151,7 @@
 							}
 					}
 				},
-				S = function(v) {
+				A = function(v) {
 					var w = U(v);
 					return `
   <style type="text/css">
@@ -206,15 +206,15 @@
 				};
 
 			function g() {
-				var A = document.getElementById("loading-state");
-				A == null || A.classList.add("hide"), A == null || A.addEventListener("transitionend", function() {
+				var O = document.getElementById("loading-state");
+				O == null || O.classList.add("hide"), O == null || O.addEventListener("transitionend", function() {
 					["loading-state", "loading-styles", "loading-script-dark-mode", "loading-script-i18n"].forEach(m)
 				})
 			}
 
-			function u(A) {
+			function u(O) {
 				var v = document.getElementById("loading-state");
-				!v || (v.innerHTML = S(A == null ? void 0 : A.code))
+				!v || (v.innerHTML = A(O == null ? void 0 : O.code))
 			}
 			var f = n("../utils/initStyles.ts"),
 				d = n("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs"),
@@ -227,11 +227,11 @@
 				pe = (0, be.Rf)(),
 				j;
 
-			function W(A) {
-				return ne(A, "react-router-v5")
+			function W(O) {
+				return ne(O, "react-router-v5")
 			}
 
-			function ne(A, v) {
+			function ne(O, v) {
 				return function(w) {
 					var Q = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : !0,
 						Se = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : !0;
@@ -241,7 +241,7 @@
 						tags: {
 							"routing.instrumentation": v
 						}
-					})), Se && A.listen && A.listen(function(ke, Pe) {
+					})), Se && O.listen && O.listen(function(ke, Pe) {
 						if (Pe && (Pe === "PUSH" || Pe === "POP")) {
 							j && j.finish();
 							var Be = {
@@ -278,34 +278,34 @@
 				X = [/cloudflare\.com/, /staging\.cloudflare\.com/, /cloudflare\.lol/, /127\.0\.0\.1/, /webpack/, /localhost/],
 				re = ["top.GLOBALS", "originalCreateNotification", "canvas.contentDocument", "MyApp_RemoveAllHighlights", "http://tt.epicplay.com", "Can't find variable: ZiteReader", "jigsaw is not defined", "ComboSearch is not defined", "http://loading.retry.widdit.com/", "atomicFindClose", "fb_xd_fragment", "bmi_SafeAddOnload", "EBCallBackMessageReceived", "conduitPage", "Script error.", "Failed to construct 'Worker'", "sendBeacon", "ResizeObserver loop limit exceeded", "ResizeObserver loop completed with undelivered notifications."];
 
-			function fe(A, v) {
-				if (!(A instanceof v)) throw new TypeError("Cannot call a class as a function")
+			function fe(O, v) {
+				if (!(O instanceof v)) throw new TypeError("Cannot call a class as a function")
 			}
 
-			function me(A, v) {
+			function me(O, v) {
 				for (var w = 0; w < v.length; w++) {
 					var Q = v[w];
-					Q.enumerable = Q.enumerable || !1, Q.configurable = !0, "value" in Q && (Q.writable = !0), Object.defineProperty(A, Q.key, Q)
+					Q.enumerable = Q.enumerable || !1, Q.configurable = !0, "value" in Q && (Q.writable = !0), Object.defineProperty(O, Q.key, Q)
 				}
 			}
 
-			function K(A, v, w) {
-				return v && me(A.prototype, v), w && me(A, w), A
+			function H(O, v, w) {
+				return v && me(O.prototype, v), w && me(O, w), O
 			}
 
-			function _(A, v, w) {
-				return v in A ? Object.defineProperty(A, v, {
+			function _(O, v, w) {
+				return v in O ? Object.defineProperty(O, v, {
 					value: w,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : A[v] = w, A
+				}) : O[v] = w, O
 			}
 			var te = function() {
-				function A() {
-					fe(this, A), _(this, "name", A.id)
+				function O() {
+					fe(this, O), _(this, "name", O.id)
 				}
-				return K(A, [{
+				return H(O, [{
 					key: "setupOnce",
 					value: function() {
 						n.g.console && (0, D.hl)(n.g.console, "error", function(w) {
@@ -355,7 +355,7 @@
 							}
 						})
 					}
-				}]), A
+				}]), O
 			}();
 			_(te, "id", "ConsoleErrorIntegration");
 			var T = null,
@@ -363,9 +363,9 @@
 				ae = n("../../../../node_modules/@sentry/core/esm/transports/base.js"),
 				_e = n("../../../../node_modules/@sentry/utils/esm/syncpromise.js");
 
-			function he(A, v, w, Q, Se, ke, Pe) {
+			function he(O, v, w, Q, Se, ke, Pe) {
 				try {
-					var Be = A[ke](Pe),
+					var Be = O[ke](Pe),
 						ze = Be.value
 				} catch (Ye) {
 					w(Ye);
@@ -374,12 +374,12 @@
 				Be.done ? v(ze) : Promise.resolve(ze).then(Q, Se)
 			}
 
-			function Re(A) {
+			function Re(O) {
 				return function() {
 					var v = this,
 						w = arguments;
 					return new Promise(function(Q, Se) {
-						var ke = A.apply(v, w);
+						var ke = O.apply(v, w);
 
 						function Pe(ze) {
 							he(ke, Q, Se, Pe, Be, "next", ze)
@@ -481,8 +481,8 @@
 				},
 				He = n("../../../../node_modules/@cloudflare/util-cache/es/index.js");
 
-			function $e(A, v) {
-				return de(A) || le(A, v) || Xe(A, v) || qe()
+			function $e(O, v) {
+				return de(O) || le(O, v) || Xe(O, v) || qe()
 			}
 
 			function qe() {
@@ -490,30 +490,30 @@
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function Xe(A, v) {
-				if (!!A) {
-					if (typeof A == "string") return Ve(A, v);
-					var w = Object.prototype.toString.call(A).slice(8, -1);
-					if (w === "Object" && A.constructor && (w = A.constructor.name), w === "Map" || w === "Set") return Array.from(A);
-					if (w === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(w)) return Ve(A, v)
+			function Xe(O, v) {
+				if (!!O) {
+					if (typeof O == "string") return Ve(O, v);
+					var w = Object.prototype.toString.call(O).slice(8, -1);
+					if (w === "Object" && O.constructor && (w = O.constructor.name), w === "Map" || w === "Set") return Array.from(O);
+					if (w === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(w)) return Ve(O, v)
 				}
 			}
 
-			function Ve(A, v) {
-				(v == null || v > A.length) && (v = A.length);
-				for (var w = 0, Q = new Array(v); w < v; w++) Q[w] = A[w];
+			function Ve(O, v) {
+				(v == null || v > O.length) && (v = O.length);
+				for (var w = 0, Q = new Array(v); w < v; w++) Q[w] = O[w];
 				return Q
 			}
 
-			function le(A, v) {
-				var w = A && (typeof Symbol != "undefined" && A[Symbol.iterator] || A["@@iterator"]);
+			function le(O, v) {
+				var w = O && (typeof Symbol != "undefined" && O[Symbol.iterator] || O["@@iterator"]);
 				if (w != null) {
 					var Q = [],
 						Se = !0,
 						ke = !1,
 						Pe, Be;
 					try {
-						for (w = w.call(A); !(Se = (Pe = w.next()).done) && (Q.push(Pe.value), !(v && Q.length === v)); Se = !0);
+						for (w = w.call(O); !(Se = (Pe = w.next()).done) && (Q.push(Pe.value), !(v && Q.length === v)); Se = !0);
 					} catch (ze) {
 						ke = !0, Be = ze
 					} finally {
@@ -527,8 +527,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}
 
-			function de(A) {
-				if (Array.isArray(A)) return A
+			function de(O) {
+				if (Array.isArray(O)) return O
 			}
 			var Te = function() {
 					var v;
@@ -563,16 +563,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}
 				},
 				I = Te,
-				H = n("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs"),
-				O = n("../node_modules/uuid/dist/esm-browser/v4.js"),
+				K = n("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs"),
+				S = n("../node_modules/uuid/dist/esm-browser/v4.js"),
 				P = "ANON_USER_ID";
 
 			function V() {
-				var A, v, w, Q, Se = (A = n.g) === null || A === void 0 || (v = A.bootstrap) === null || v === void 0 || (w = v.data) === null || w === void 0 || (Q = w.user) === null || Q === void 0 ? void 0 : Q.id;
+				var O, v, w, Q, Se = (O = n.g) === null || O === void 0 || (v = O.bootstrap) === null || v === void 0 || (w = v.data) === null || w === void 0 || (Q = w.user) === null || Q === void 0 ? void 0 : Q.id;
 				if (!Se) {
 					var ke = He.Z.get(P);
 					if (!ke) {
-						var Pe = (0, O.Z)();
+						var Pe = (0, S.Z)();
 						He.Z.set(P, Pe), ke = Pe
 					}
 					return ke
@@ -580,9 +580,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return Se
 			}
 
-			function oe(A, v, w, Q, Se, ke, Pe) {
+			function oe(O, v, w, Q, Se, ke, Pe) {
 				try {
-					var Be = A[ke](Pe),
+					var Be = O[ke](Pe),
 						ze = Be.value
 				} catch (Ye) {
 					w(Ye);
@@ -591,12 +591,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Be.done ? v(ze) : Promise.resolve(ze).then(Q, Se)
 			}
 
-			function Me(A) {
+			function Me(O) {
 				return function() {
 					var v = this,
 						w = arguments;
 					return new Promise(function(Q, Se) {
-						var ke = A.apply(v, w);
+						var ke = O.apply(v, w);
 
 						function Pe(ze) {
 							oe(ke, Q, Se, Pe, Be, "next", ze)
@@ -615,12 +615,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function je() {
-				return je = Me(regeneratorRuntime.mark(function A() {
+				return je = Me(regeneratorRuntime.mark(function O() {
 					var v;
 					return regeneratorRuntime.wrap(function(Q) {
 						for (;;) switch (Q.prev = Q.next) {
 							case 0:
-								return v = (0, a.bh)(), v.dispatch((0, H.nM)({
+								return v = (0, a.bh)(), v.dispatch((0, K.nM)({
 									apiKey: "a23ecf39a767418a832c8f8a5a902a8c",
 									environment: "production"
 								})), Q.next = 4, v.dispatch((0, d.UL)({
@@ -630,24 +630,24 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							case "end":
 								return Q.stop()
 						}
-					}, A, this)
+					}, O, this)
 				})), je.apply(this, arguments)
 			}
 			var Ke = [];
 
-			function Je(A, v, w) {
-				return v in A ? Object.defineProperty(A, v, {
+			function Je(O, v, w) {
+				return v in O ? Object.defineProperty(O, v, {
 					value: w,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : A[v] = w, A
+				}) : O[v] = w, O
 			}
 
 			function Qe() {
 				try {
-					var A = (0, a.bh)().getState(),
-						v = (0, d.T2)(A),
+					var O = (0, a.bh)().getState(),
+						v = (0, d.T2)(O),
 						w = Ke.reduce(function(Q, Se) {
 							return Object.assign(Q, Je({}, Se, v == null ? void 0 : v[Se]))
 						}, {});
@@ -655,8 +655,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				} catch {}
 			}
 
-			function Ae(A, v) {
-				document.cookie = (0, N.q)(A, JSON.stringify(v), {
+			function Ae(O, v) {
+				document.cookie = (0, N.q)(O, JSON.stringify(v), {
 					path: "/",
 					domain: ".cloudflare.com"
 				})
@@ -711,8 +711,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				tt = n("webpack/sharing/consume/default/react/react"),
 				We = n.n(tt),
-				ft = n("webpack/sharing/consume/default/react-dom/react-dom"),
-				at = n("webpack/sharing/consume/default/react-redux/react-redux"),
+				mt = n("webpack/sharing/consume/default/react-dom/react-dom"),
+				rt = n("webpack/sharing/consume/default/react-redux/react-redux"),
 				At = n("../../../../node_modules/connected-react-router/esm/index.js"),
 				wt = n("../../../../node_modules/swr/core/dist/index.mjs"),
 				_t = n("../../../../node_modules/@cloudflare/component-modals/es/index.js"),
@@ -728,35 +728,35 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				ot = n("../../../../node_modules/query-string/query-string.js"),
 				it = n.n(ot),
 				lt = n("../react/common/actions/userActions.ts"),
-				mt = n("../react/common/selectors/userSelectors.ts"),
+				dt = n("../react/common/selectors/userSelectors.ts"),
 				st = n("../react/utils/i18n.ts"),
 				gt = n("../react/utils/bootstrap.ts");
 
-			function Pt(A) {
+			function Pt(O) {
 				for (var v = 1; v < arguments.length; v++) {
 					var w = arguments[v] != null ? Object(arguments[v]) : {},
 						Q = Object.keys(w);
 					typeof Object.getOwnPropertySymbols == "function" && (Q = Q.concat(Object.getOwnPropertySymbols(w).filter(function(Se) {
 						return Object.getOwnPropertyDescriptor(w, Se).enumerable
 					}))), Q.forEach(function(Se) {
-						vt(A, Se, w[Se])
+						vt(O, Se, w[Se])
 					})
 				}
-				return A
+				return O
 			}
 
-			function vt(A, v, w) {
-				return v in A ? Object.defineProperty(A, v, {
+			function vt(O, v, w) {
+				return v in O ? Object.defineProperty(O, v, {
 					value: w,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : A[v] = w, A
+				}) : O[v] = w, O
 			}
 
-			function yt(A, v, w, Q, Se, ke, Pe) {
+			function yt(O, v, w, Q, Se, ke, Pe) {
 				try {
-					var Be = A[ke](Pe),
+					var Be = O[ke](Pe),
 						ze = Be.value
 				} catch (Ye) {
 					w(Ye);
@@ -765,12 +765,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Be.done ? v(ze) : Promise.resolve(ze).then(Q, Se)
 			}
 
-			function dt(A) {
+			function pt(O) {
 				return function() {
 					var v = this,
 						w = arguments;
 					return new Promise(function(Q, Se) {
-						var ke = A.apply(v, w);
+						var ke = O.apply(v, w);
 
 						function Pe(ze) {
 							yt(ke, Q, Se, Pe, Be, "next", ze)
@@ -783,12 +783,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					})
 				}
 			}
-			var rt = it().parse(location.search),
-				pt = function(v) {
+			var at = it().parse(location.search),
+				ft = function(v) {
 					var w = (0, gt.$8)() ? [(0, Ze.Fy)(Ze.if.common), (0, Ze.Fy)(Ze.if.navigation), (0, Ze.Fy)(Ze.if.overview), (0, Ze.Fy)(Ze.if.onboarding), (0, Ze.Fy)(Ze.if.invite), (0, Ze.Fy)(Ze.if.login), (0, Ze.Fy)(Ze.if.dns), (0, Ze.Fy)(Ze.n4.ssl_tls)] : [(0, Ze.Fy)(Ze.if.common), (0, Ze.Fy)(Ze.if.invite), (0, Ze.Fy)(Ze.if.login), (0, Ze.Fy)(Ze.if.onboarding)];
-					rt.lang ? kt(v) : He.Z.get(st.th) && Et(v, He.Z.get(st.ly));
+					at.lang ? kt(v) : He.Z.get(st.th) && Et(v, He.Z.get(st.ly));
 					var Q = function() {
-						var Se = dt(regeneratorRuntime.mark(function ke(Pe) {
+						var Se = pt(regeneratorRuntime.mark(function ke(Pe) {
 							var Be;
 							return regeneratorRuntime.wrap(function(Ye) {
 								for (;;) switch (Ye.prev = Ye.next) {
@@ -820,21 +820,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, v.children)))
 				},
 				kt = function() {
-					var A = dt(regeneratorRuntime.mark(function v(w) {
+					var O = pt(regeneratorRuntime.mark(function v(w) {
 						var Q;
 						return regeneratorRuntime.wrap(function(ke) {
 							for (;;) switch (ke.prev = ke.next) {
 								case 0:
-									if (Q = rt.lang.substring(0, rt.lang.length - 2) + rt.lang.substring(rt.lang.length - 2, rt.lang.length).toUpperCase(), (0, Ee.v)(Q)) {
+									if (Q = at.lang.substring(0, at.lang.length - 2) + at.lang.substring(at.lang.length - 2, at.lang.length).toUpperCase(), (0, Ee.v)(Q)) {
 										ke.next = 6;
 										break
 									}
-									return console.warn("".concat(Q, " is not a supported locale.")), delete rt.lang, w.history.replace({
-										search: it().stringify(rt)
+									return console.warn("".concat(Q, " is not a supported locale.")), delete at.lang, w.history.replace({
+										search: it().stringify(at)
 									}), ke.abrupt("return");
 								case 6:
-									He.Z.set(st.ly, Q), delete rt.lang, Et(w, Q), w.isAuthenticated || w.history.replace({
-										search: it().stringify(rt)
+									He.Z.set(st.ly, Q), delete at.lang, Et(w, Q), w.isAuthenticated || w.history.replace({
+										search: it().stringify(at)
 									});
 								case 10:
 								case "end":
@@ -843,11 +843,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, v, this)
 					}));
 					return function(w) {
-						return A.apply(this, arguments)
+						return O.apply(this, arguments)
 					}
 				}(),
 				Et = function() {
-					var A = dt(regeneratorRuntime.mark(function v(w, Q) {
+					var O = pt(regeneratorRuntime.mark(function v(w, Q) {
 						return regeneratorRuntime.wrap(function(ke) {
 							for (;;) switch (ke.prev = ke.next) {
 								case 0:
@@ -862,7 +862,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									});
 								case 4:
 									He.Z.remove(st.th), w.history.replace({
-										search: it().stringify(rt)
+										search: it().stringify(at)
 									}), ke.next = 12;
 									break;
 								case 8:
@@ -881,11 +881,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						])
 					}));
 					return function(w, Q) {
-						return A.apply(this, arguments)
+						return O.apply(this, arguments)
 					}
 				}(),
 				Ct = function(v) {
-					var w = (0, mt.PR)(v);
+					var w = (0, dt.PR)(v);
 					return {
 						isAuthenticated: !!(w && w.id),
 						languagePreference: He.Z.get(st.ly) || (0, Ee.r)(v)
@@ -894,8 +894,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				ge = {
 					setUserCommPreferences: lt.V_
 				},
-				jt = (0, ie.withRouter)((0, at.connect)(Ct, ge)(pt));
-			pt.propTypes = {
+				jt = (0, ie.withRouter)((0, rt.connect)(Ct, ge)(ft));
+			ft.propTypes = {
 				history: ee().object,
 				languagePreference: ee().string.isRequired,
 				children: ee().node.isRequired,
@@ -919,73 +919,73 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				ue = n("../react/common/actions/modalActions.ts");
 
-			function ht(A) {
+			function ht(O) {
 				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? ht = function(w) {
 					return typeof w
 				} : ht = function(w) {
 					return w && typeof Symbol == "function" && w.constructor === Symbol && w !== Symbol.prototype ? "symbol" : typeof w
-				}, ht(A)
+				}, ht(O)
 			}
 
 			function bt() {
-				return bt = Object.assign || function(A) {
+				return bt = Object.assign || function(O) {
 					for (var v = 1; v < arguments.length; v++) {
 						var w = arguments[v];
-						for (var Q in w) Object.prototype.hasOwnProperty.call(w, Q) && (A[Q] = w[Q])
+						for (var Q in w) Object.prototype.hasOwnProperty.call(w, Q) && (O[Q] = w[Q])
 					}
-					return A
+					return O
 				}, bt.apply(this, arguments)
 			}
 
-			function an(A, v) {
-				if (!(A instanceof v)) throw new TypeError("Cannot call a class as a function")
+			function an(O, v) {
+				if (!(O instanceof v)) throw new TypeError("Cannot call a class as a function")
 			}
 
-			function Wt(A, v) {
+			function Wt(O, v) {
 				for (var w = 0; w < v.length; w++) {
 					var Q = v[w];
-					Q.enumerable = Q.enumerable || !1, Q.configurable = !0, "value" in Q && (Q.writable = !0), Object.defineProperty(A, Q.key, Q)
+					Q.enumerable = Q.enumerable || !1, Q.configurable = !0, "value" in Q && (Q.writable = !0), Object.defineProperty(O, Q.key, Q)
 				}
 			}
 
-			function on(A, v, w) {
-				return v && Wt(A.prototype, v), w && Wt(A, w), A
+			function on(O, v, w) {
+				return v && Wt(O.prototype, v), w && Wt(O, w), O
 			}
 
-			function sn(A, v) {
-				return v && (ht(v) === "object" || typeof v == "function") ? v : cn(A)
+			function sn(O, v) {
+				return v && (ht(v) === "object" || typeof v == "function") ? v : cn(O)
 			}
 
-			function cn(A) {
-				if (A === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-				return A
+			function cn(O) {
+				if (O === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+				return O
 			}
 
-			function Nt(A) {
+			function Nt(O) {
 				return Nt = Object.setPrototypeOf ? Object.getPrototypeOf : function(w) {
 					return w.__proto__ || Object.getPrototypeOf(w)
-				}, Nt(A)
+				}, Nt(O)
 			}
 
-			function un(A, v) {
+			function un(O, v) {
 				if (typeof v != "function" && v !== null) throw new TypeError("Super expression must either be null or a function");
-				A.prototype = Object.create(v && v.prototype, {
+				O.prototype = Object.create(v && v.prototype, {
 					constructor: {
-						value: A,
+						value: O,
 						writable: !0,
 						configurable: !0
 					}
-				}), v && Ft(A, v)
+				}), v && Ft(O, v)
 			}
 
-			function Ft(A, v) {
+			function Ft(O, v) {
 				return Ft = Object.setPrototypeOf || function(Q, Se) {
 					return Q.__proto__ = Se, Q
-				}, Ft(A, v)
+				}, Ft(O, v)
 			}
 			var ln = We().createContext({}),
-				dn = function(A) {
-					un(v, A);
+				dn = function(O) {
+					un(v, O);
 
 					function v() {
 						return an(this, v), sn(this, Nt(v).apply(this, arguments))
@@ -1017,9 +1017,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}
 					}]), v
 				}(We().Component),
-				pn = (0, at.connect)(function(A) {
+				pn = (0, rt.connect)(function(O) {
 					return {
-						modals: o(A)
+						modals: o(O)
 					}
 				}, {
 					closeModal: ue.M
@@ -1028,64 +1028,64 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				mn = n("../react/app/components/ErrorBoundary.tsx"),
 				gn = n("../react/common/actions/notificationsActions.ts");
 
-			function Dt(A) {
+			function Dt(O) {
 				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? Dt = function(w) {
 					return typeof w
 				} : Dt = function(w) {
 					return w && typeof Symbol == "function" && w.constructor === Symbol && w !== Symbol.prototype ? "symbol" : typeof w
-				}, Dt(A)
+				}, Dt(O)
 			}
 
-			function vn(A, v) {
-				if (!(A instanceof v)) throw new TypeError("Cannot call a class as a function")
+			function vn(O, v) {
+				if (!(O instanceof v)) throw new TypeError("Cannot call a class as a function")
 			}
 
-			function Kt(A, v) {
+			function Kt(O, v) {
 				for (var w = 0; w < v.length; w++) {
 					var Q = v[w];
-					Q.enumerable = Q.enumerable || !1, Q.configurable = !0, "value" in Q && (Q.writable = !0), Object.defineProperty(A, Q.key, Q)
+					Q.enumerable = Q.enumerable || !1, Q.configurable = !0, "value" in Q && (Q.writable = !0), Object.defineProperty(O, Q.key, Q)
 				}
 			}
 
-			function yn(A, v, w) {
-				return v && Kt(A.prototype, v), w && Kt(A, w), A
+			function yn(O, v, w) {
+				return v && Kt(O.prototype, v), w && Kt(O, w), O
 			}
 
-			function hn(A, v) {
-				return v && (Dt(v) === "object" || typeof v == "function") ? v : bn(A)
+			function hn(O, v) {
+				return v && (Dt(v) === "object" || typeof v == "function") ? v : bn(O)
 			}
 
-			function bn(A) {
-				if (A === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-				return A
+			function bn(O) {
+				if (O === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+				return O
 			}
 
-			function zt(A) {
+			function zt(O) {
 				return zt = Object.setPrototypeOf ? Object.getPrototypeOf : function(w) {
 					return w.__proto__ || Object.getPrototypeOf(w)
-				}, zt(A)
+				}, zt(O)
 			}
 
-			function _n(A, v) {
+			function _n(O, v) {
 				if (typeof v != "function" && v !== null) throw new TypeError("Super expression must either be null or a function");
-				A.prototype = Object.create(v && v.prototype, {
+				O.prototype = Object.create(v && v.prototype, {
 					constructor: {
-						value: A,
+						value: O,
 						writable: !0,
 						configurable: !0
 					}
-				}), v && xt(A, v)
+				}), v && xt(O, v)
 			}
 
-			function xt(A, v) {
+			function xt(O, v) {
 				return xt = Object.setPrototypeOf || function(Q, Se) {
 					return Q.__proto__ = Se, Q
-				}, xt(A, v)
+				}, xt(O, v)
 			}
 			var En = n.g.bootstrap || {},
 				Ht = En.data || {},
-				Vt = function(A) {
-					_n(v, A);
+				Vt = function(O) {
+					_n(v, O);
 
 					function v() {
 						return vn(this, v), hn(this, zt(v).apply(this, arguments))
@@ -1115,68 +1115,79 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}
 					}]), v
 				}(We().Component),
-				Cn = (0, ie.withRouter)((0, at.connect)(null, {
+				Cn = (0, ie.withRouter)((0, rt.connect)(null, {
 					notifyAdd: gn.IH
 				})(Vt)),
 				On = Cn;
 			Vt.propTypes = {
 				notifyAdd: ee().func.isRequired
 			};
+
+			function Sn() {
+				var O, v = (0, rt.useSelector)(dt.PR),
+					w = (v == null || (O = v.email) === null || O === void 0 ? void 0 : O.endsWith("@cloudflare.com")) ? "cf-internal-employee" : "regular-user",
+					Q = (0, K.Yc)();
+				(0, tt.useEffect)(function() {
+					Q({
+						userType: w
+					})
+				}, [w, Q])
+			}
 			var Yt = n("../react/common/selectors/entitlementsSelectors.ts"),
 				Jt = n("../react/common/selectors/accountSelectors.ts"),
-				Sn = ["accountId", "is_ent"];
+				An = ["accountId", "is_ent"];
 
-			function An() {
-				var A = (0, H.f7)(),
+			function wn() {
+				var O = (0, K.f7)(),
 					v = (0, ie.useHistory)(),
 					w = (0, se.uW)(v.location.pathname),
-					Q = (0, H.Yc)(),
-					Se = (0, H.O$)(),
-					ke = (0, at.useSelector)(Yt.u1),
+					Q = (0, K.Yc)(),
+					Se = (0, K.O$)(),
+					ke = (0, rt.useSelector)(Yt.u1),
 					Pe = !ke.isRequesting && !!ke.data,
-					Be = (0, at.useSelector)(Yt.p1),
-					ze = (0, at.useSelector)(Jt.Xu),
-					Ye = (0, at.useSelector)(Jt.uF),
+					Be = (0, rt.useSelector)(Yt.p1),
+					ze = (0, rt.useSelector)(Jt.Xu),
+					Ye = (0, rt.useSelector)(Jt.uF),
 					nt = !ze.isRequesting && !!ze.data;
 				(0, tt.useEffect)(function() {
 					w && nt && Ye && Pe && w === Ye.account.id ? Q({
 						accountId: Ye.account.id,
 						is_ent: Be
-					}) : (!w || w in A && A.accountId !== w) && Se(Sn)
-				}, [nt, Ye, Q, Se, Pe, Be, w, A])
+					}) : (!w || w in O && O.accountId !== w) && Se(An)
+				}, [nt, Ye, Q, Se, Pe, Be, w, O])
 			}
-			var wn = n("../react/common/selectors/zoneSelectors.ts");
+			var Tn = n("../react/common/selectors/zoneSelectors.ts");
 
-			function Tn() {
-				var A = (0, at.useSelector)(wn.nA),
-					v = (0, H.Yc)();
+			function Pn() {
+				var O = (0, rt.useSelector)(Tn.nA),
+					v = (0, K.Yc)();
 				(0, tt.useEffect)(function() {
 					v({
-						zone_id: A == null ? void 0 : A.id
+						zone_id: O == null ? void 0 : O.id
 					})
-				}, [A, v])
+				}, [O, v])
 			}
-			var Pn = function() {
-					return An(), Tn(), null
+			var kn = function() {
+					return Sn(), wn(), Pn(), null
 				},
-				kn = n("../react/app/components/Persistence/index.tsx"),
-				Rn = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
-				In = n("../react/app/components/LoadingSuspense.tsx"),
-				Ln = We().lazy(function() {
+				Rn = n("../react/app/components/Persistence/index.tsx"),
+				In = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
+				Ln = n("../react/app/components/LoadingSuspense.tsx"),
+				jn = We().lazy(function() {
 					return Promise.all([n.e(2480), n.e(94377), n.e(4616), n.e(72019), n.e(56310), n.e(32426), n.e(58583), n.e(6175), n.e(54749), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx"))
 				}),
-				jn = function() {
-					return We().createElement(In.Z, null, We().createElement(Ln, null))
+				Mn = function() {
+					return We().createElement(Ln.Z, null, We().createElement(jn, null))
 				},
-				Mn = jn,
-				Dn = function() {
+				Dn = Mn,
+				Bn = function() {
 					return tt.useEffect(function() {
 						return g
 					}, []), null
 				},
-				Bn = n("../../../../node_modules/moment/moment.js"),
-				Qt = n.n(Bn),
-				Un = function(v) {
+				Un = n("../../../../node_modules/moment/moment.js"),
+				Qt = n.n(Un),
+				Nn = function(v) {
 					switch (v) {
 						case "en-US":
 						case "es-ES":
@@ -1197,14 +1208,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							return "en"
 					}
 				},
-				Nn = function() {
-					var v = (0, at.useSelector)(Ee.r);
+				Fn = function() {
+					var v = (0, rt.useSelector)(Ee.r);
 					(0, tt.useEffect)(function() {
-						var w = Un(v);
+						var w = Nn(v);
 						w !== Qt().locale() && Qt().locale(w), document.documentElement.lang = v
 					}, [v])
 				},
-				Fn = function() {
+				zn = function() {
 					(0, tt.useEffect)(function() {
 						var v, w, Q;
 						if (((v = window) === null || v === void 0 || (w = v.build) === null || w === void 0 ? void 0 : w.isPreviewDeploy) && (Q = "cookie"), !!Q) try {
@@ -1213,83 +1224,83 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						} catch {}
 					}, [])
 				},
-				zn = n("../react/common/constants/constants.ts"),
-				xn = function() {
+				xn = n("../react/common/constants/constants.ts"),
+				Zn = function() {
 					var v = (0, ie.useLocation)();
 					(0, tt.useEffect)(function() {
 						var w = it().parse(v.search);
-						if (w.pt && He.Z.set(zn.sJ, w.pt), (w == null ? void 0 : w.devPanel) === null) {
+						if (w.pt && He.Z.set(xn.sJ, w.pt), (w == null ? void 0 : w.devPanel) === null) {
 							var Q, Se;
 							(Q = window) === null || Q === void 0 || (Se = Q.localStorage) === null || Se === void 0 || Se.setItem("gates_devtools_ui_gates_controller_enabled", "true")
 						}
 					}, [v.search])
 				},
-				Zn = We().lazy(function() {
+				Gn = We().lazy(function() {
 					return Promise.all([n.e(2480), n.e(94377), n.e(4616), n.e(72019), n.e(56310), n.e(32426), n.e(81778), n.e(48450), n.e(6175), n.e(54749), n.e(47261), n.e(7424), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))
 				}),
-				Gn = We().lazy(function() {
+				Wn = We().lazy(function() {
 					return Promise.all([n.e(94377), n.e(81778), n.e(69088), n.e(7424), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx"))
 				}),
-				Wn = function(v) {
+				Kn = function(v) {
 					var w, Q = v.userIsAuthed;
-					return Nn(), Fn(), xn(), We().createElement(tt.Suspense, {
-						fallback: We().createElement(Dn, null)
+					return Fn(), zn(), Zn(), We().createElement(tt.Suspense, {
+						fallback: We().createElement(Bn, null)
 					}, We().createElement(ie.Switch, null, !Q && !0 && We().createElement(ie.Route, {
 						exact: !0,
 						path: ["/", "/login"]
-					}, We().createElement(Gn, null)), We().createElement(ie.Route, {
+					}, We().createElement(Wn, null)), We().createElement(ie.Route, {
 						render: function() {
-							return We().createElement(Rn.ZC, {
+							return We().createElement(In.ZC, {
 								minHeight: "100vh"
-							}, We().createElement(Zn, null))
+							}, We().createElement(Gn, null))
 						}
-					})), ((w = window) === null || w === void 0 ? void 0 : w.localStorage.getItem("gates_devtools_ui_gates_controller_enabled")) === "true" && We().createElement(Mn, null))
+					})), ((w = window) === null || w === void 0 ? void 0 : w.localStorage.getItem("gates_devtools_ui_gates_controller_enabled")) === "true" && We().createElement(Dn, null))
 				},
-				Kn = Wn,
+				Hn = Kn,
 				Zt = n("../../../../node_modules/yup/lib/index.js"),
-				Hn = n("../../../common/util/types/src/utils/index.ts"),
+				Vn = n("../../../common/util/types/src/utils/index.ts"),
 				Xt = {
 					cfEmail: function() {
 						return Zt.Z_().email((0, Fe.ZP)("common.validation.email")).required((0, Fe.ZP)("common.validation.email"))
 					}
 				};
-			(0, Hn.Yd)(Xt).forEach(function(A) {
-				Zt.kM(Zt.Z_, A, Xt[A])
+			(0, Vn.Yd)(Xt).forEach(function(O) {
+				Zt.kM(Zt.Z_, O, Xt[O])
 			});
 
-			function $t(A, v) {
-				return Qn(A) || Jn(A, v) || Yn(A, v) || Vn()
+			function $t(O, v) {
+				return Xn(O) || Qn(O, v) || Jn(O, v) || Yn()
 			}
 
-			function Vn() {
+			function Yn() {
 				throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function Yn(A, v) {
-				if (!!A) {
-					if (typeof A == "string") return qt(A, v);
-					var w = Object.prototype.toString.call(A).slice(8, -1);
-					if (w === "Object" && A.constructor && (w = A.constructor.name), w === "Map" || w === "Set") return Array.from(A);
-					if (w === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(w)) return qt(A, v)
+			function Jn(O, v) {
+				if (!!O) {
+					if (typeof O == "string") return qt(O, v);
+					var w = Object.prototype.toString.call(O).slice(8, -1);
+					if (w === "Object" && O.constructor && (w = O.constructor.name), w === "Map" || w === "Set") return Array.from(O);
+					if (w === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(w)) return qt(O, v)
 				}
 			}
 
-			function qt(A, v) {
-				(v == null || v > A.length) && (v = A.length);
-				for (var w = 0, Q = new Array(v); w < v; w++) Q[w] = A[w];
+			function qt(O, v) {
+				(v == null || v > O.length) && (v = O.length);
+				for (var w = 0, Q = new Array(v); w < v; w++) Q[w] = O[w];
 				return Q
 			}
 
-			function Jn(A, v) {
-				var w = A && (typeof Symbol != "undefined" && A[Symbol.iterator] || A["@@iterator"]);
+			function Qn(O, v) {
+				var w = O && (typeof Symbol != "undefined" && O[Symbol.iterator] || O["@@iterator"]);
 				if (w != null) {
 					var Q = [],
 						Se = !0,
 						ke = !1,
 						Pe, Be;
 					try {
-						for (w = w.call(A); !(Se = (Pe = w.next()).done) && (Q.push(Pe.value), !(v && Q.length === v)); Se = !0);
+						for (w = w.call(O); !(Se = (Pe = w.next()).done) && (Q.push(Pe.value), !(v && Q.length === v)); Se = !0);
 					} catch (ze) {
 						ke = !0, Be = ze
 					} finally {
@@ -1303,13 +1314,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}
 
-			function Qn(A) {
-				if (Array.isArray(A)) return A
+			function Xn(O) {
+				if (Array.isArray(O)) return O
 			}
 			var en = We().lazy(function() {
 					return Promise.all([n.e(4616), n.e(6368), n.e(44264), n.e(33970)]).then(n.bind(n, "../react/AuthOnlyProviders.tsx"))
 				}),
-				Xn = function() {
+				$n = function() {
 					var v = (0, gt.$8)(),
 						w = (0, tt.useState)(v ? en : We().Fragment),
 						Q = $t(w, 2),
@@ -1339,7 +1350,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							}
 					}, []), We().createElement(tt.Suspense, {
 						fallback: null
-					}, We().createElement(at.Provider, {
+					}, We().createElement(rt.Provider, {
 						store: (0, a.bh)()
 					}, We().createElement(At.xI, {
 						history: $.Z
@@ -1355,33 +1366,33 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								})
 							}
 						}
-					}, We().createElement(Pn, null), We().createElement(On, null), We().createElement(kn.Z_, {
+					}, We().createElement(kn, null), We().createElement(On, null), We().createElement(Rn.Z_, {
 						onDarkModeChangeCb: nt
-					}, We().createElement(Tt.ZP, null, We().createElement(Kn, {
+					}, We().createElement(Tt.ZP, null, We().createElement(Hn, {
 						userIsAuthed: v
 					}))), We().createElement(fn, null), We().createElement(_t.F0, null)))))))))
 				},
-				$n = function() {
-					(0, ft.render)(We().createElement(Xn, null), document.getElementById("react-app"))
+				qn = function() {
+					(0, mt.render)(We().createElement($n, null), document.getElementById("react-app"))
 				},
 				St = n("../utils/initSparrow.ts"),
 				Lt = n("../utils/zaraz.ts"),
-				qn = function() {
-					var v = (0, mt.PR)((0, a.bh)().getState());
-					er(), (0, St.Ug)(), (0, Lt.bM)(), (v == null ? void 0 : v.id) && B().setUserId(v == null ? void 0 : v.id), (0, St.yV)(), !(0, St.Wi)() && (0, St.IM)(), v ? (0, Lt.yn)(v) : (0, Lt.Ro)()
-				},
 				er = function() {
+					var v = (0, dt.PR)((0, a.bh)().getState());
+					tr(), (0, St.Ug)(), (0, Lt.bM)(), (v == null ? void 0 : v.id) && B().setUserId(v == null ? void 0 : v.id), (0, St.yV)(), !(0, St.Wi)() && (0, St.IM)(), v ? (0, Lt.yn)(v) : (0, Lt.Ro)()
+				},
+				tr = function() {
 					var v, w;
 					(v = window) === null || v === void 0 || (w = v.OneTrust) === null || w === void 0 || w.OnConsentChanged(function() {
-						var Q = (0, mt.PR)((0, a.bh)().getState()),
+						var Q = (0, dt.PR)((0, a.bh)().getState()),
 							Se = (0, St.Wi)();
 						Se ? (B().setEnabled(!0), (Q == null ? void 0 : Q.id) ? (B().setUserId(Q.id), (0, Lt.yn)(Q)) : (0, Lt.Ro)(), (0, St.yV)()) : (B().setEnabled(!1), (0, St.IM)())
 					})
 				};
 
-			function tn(A, v, w, Q, Se, ke, Pe) {
+			function tn(O, v, w, Q, Se, ke, Pe) {
 				try {
-					var Be = A[ke](Pe),
+					var Be = O[ke](Pe),
 						ze = Be.value
 				} catch (Ye) {
 					w(Ye);
@@ -1390,12 +1401,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Be.done ? v(ze) : Promise.resolve(ze).then(Q, Se)
 			}
 
-			function tr(A) {
+			function nr(O) {
 				return function() {
 					var v = this,
 						w = arguments;
 					return new Promise(function(Q, Se) {
-						var ke = A.apply(v, w);
+						var ke = O.apply(v, w);
 
 						function Pe(ze) {
 							tn(ke, Q, Se, Pe, Be, "next", ze)
@@ -1409,38 +1420,38 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}
 
-			function nr(A) {
+			function rr(O) {
 				for (var v = 1; v < arguments.length; v++) {
 					var w = arguments[v] != null ? Object(arguments[v]) : {},
 						Q = Object.keys(w);
 					typeof Object.getOwnPropertySymbols == "function" && (Q = Q.concat(Object.getOwnPropertySymbols(w).filter(function(Se) {
 						return Object.getOwnPropertyDescriptor(w, Se).enumerable
 					}))), Q.forEach(function(Se) {
-						rr(A, Se, w[Se])
+						ar(O, Se, w[Se])
 					})
 				}
-				return A
+				return O
 			}
 
-			function rr(A, v, w) {
-				return v in A ? Object.defineProperty(A, v, {
+			function ar(O, v, w) {
+				return v in O ? Object.defineProperty(O, v, {
 					value: w,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : A[v] = w, A
+				}) : O[v] = w, O
 			}
 			var nn = function(v) {
 				y.Tb(v), u(v)
 			};
 			try {
-				n.g.build = nr({}, {
-					branch: "release-Sep.15.2023-1694786691",
+				n.g.build = rr({}, {
+					branch: "release-Sep.18.2023-1695049394",
 					isReleaseCandidate: "true",
-					commit: "db99f2d8344a2751dac5a0e3f55c82abcd2a3cf6",
+					commit: "5a0e89e87c5ac4827db01be8dba485ed5b522f19",
 					env: "production",
-					builtAt: 1694798432985,
-					dashVersion: "a612e674f4793e59f387c38ac657b29d9b6a2411",
+					builtAt: 1695049765311,
+					dashVersion: "e9eb5dbaeddf6d2d3d37bb28a5b5d212f5b84d0f",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -1451,14 +1462,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, {
 					isPreviewDeploy: M()
 				}), Ue(), Ce(), n("../react/utils/api.ts"), C($.Z), (0, f.Z)(), I(), (0, k.k)().then(function() {
-					var A = tr(regeneratorRuntime.mark(function v(w) {
+					var O = nr(regeneratorRuntime.mark(function v(w) {
 						var Q, Se, ke, Pe;
 						return regeneratorRuntime.wrap(function(ze) {
 							for (;;) switch (ze.prev = ze.next) {
 								case 0:
 									return Se = (0, a.bh)(), ke = (w == null ? void 0 : w.data) || {}, Se.dispatch((0, p.mW)("user", ke == null ? void 0 : ke.user)), Pe = w == null || (Q = w.data) === null || Q === void 0 ? void 0 : Q.user, n.g.bootstrap = w, Pe && Pe.id && Le(Pe.id), ze.next = 8, xe();
 								case 8:
-									return Qe(), qn(), ze.abrupt("return", $n());
+									return Qe(), er(), ze.abrupt("return", qn());
 								case 11:
 								case "end":
 									return ze.stop()
@@ -1466,11 +1477,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, v, this)
 					}));
 					return function(v) {
-						return A.apply(this, arguments)
+						return O.apply(this, arguments)
 					}
 				}()).catch(nn)
-			} catch (A) {
-				nn(A)
+			} catch (O) {
+				nn(O)
 			}
 		},
 		"../libs/init/initBootstrap.ts": function(Oe, z, n) {
@@ -1689,7 +1700,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					typeof Object.getOwnPropertySymbols == "function" && (q = q.concat(Object.getOwnPropertySymbols(B).filter(function(D) {
 						return Object.getOwnPropertyDescriptor(B, D).enumerable
 					}))), q.forEach(function(D) {
-						S(M, D, B[D])
+						A(M, D, B[D])
 					})
 				}
 				return M
@@ -1710,7 +1721,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return R && C(M.prototype, R), B && C(M, B), M
 			}
 
-			function S(M, R, B) {
+			function A(M, R, B) {
 				return R in M ? Object.defineProperty(M, R, {
 					value: B,
 					enumerable: !0,
@@ -1721,24 +1732,24 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			var m = function() {
 				function M(R, B) {
 					var q = this;
-					l(this, M), S(this, "deepLink", void 0), S(this, "legacyDeepLink", void 0), S(this, "resolvers", void 0), S(this, "startTime", Date.now()), S(this, "endTime", Date.now()), S(this, "_done", !1), S(this, "resolverStart", function(D) {
+					l(this, M), A(this, "deepLink", void 0), A(this, "legacyDeepLink", void 0), A(this, "resolvers", void 0), A(this, "startTime", Date.now()), A(this, "endTime", Date.now()), A(this, "_done", !1), A(this, "resolverStart", function(D) {
 						q.resolvers.set(D, {
 							name: D,
 							startTime: Date.now(),
 							userActions: []
 						})
-					}), S(this, "resolverDone", function(D) {
+					}), A(this, "resolverDone", function(D) {
 						var we = q.resolvers.get(D);
 						we && (we.endTime = Date.now(), q.resolvers.set(D, we))
-					}), S(this, "resolverCancel", function(D) {
+					}), A(this, "resolverCancel", function(D) {
 						q.resolverDone(D), q.cancel()
-					}), S(this, "start", function() {
+					}), A(this, "start", function() {
 						q.startTime = Date.now()
-					}), S(this, "done", function() {
+					}), A(this, "done", function() {
 						q.endTime = Date.now(), q.track("Deep Link Success")
-					}), S(this, "cancel", function() {
+					}), A(this, "cancel", function() {
 						q.endTime = Date.now(), q.track("Deep Link Cancel")
-					}), S(this, "createUserActionTracker", function(D) {
+					}), A(this, "createUserActionTracker", function(D) {
 						var we = "NO_ACTION",
 							ce = {
 								actionType: we,
@@ -1777,11 +1788,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								},
 								D = this.resolvers.size === 0 ? q : Array.from(this.resolvers.values()).reduce(function(we, ce) {
 									var Y, X = g(ce.startTime, ce.endTime),
-										re = ce.userActions.reduce(function(me, K) {
-											var _ = g(K.startTime, K.endTime);
+										re = ce.userActions.reduce(function(me, H) {
+											var _ = g(H.startTime, H.endTime);
 											return {
 												totalTime: me.totalTime + _,
-												actions: me.actions.set(K.actionType, _)
+												actions: me.actions.set(H.actionType, _)
 											}
 										}, {
 											totalTime: 0,
@@ -1792,8 +1803,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 										totalTime: we.totalTime + X,
 										totalUserActionsTime: we.totalUserActionsTime + re.totalTime,
 										totalCpuTime: we.totalCpuTime + fe
-									}, S(Y, "".concat(ce.name, "ResolverTotalTime"), X), S(Y, "".concat(ce.name, "ResolverTotalCpuTime"), fe), S(Y, "".concat(ce.name, "ResolverTotalUserActionsTime"), re.totalTime), Y), Array.from(re.actions.keys()).reduce(function(me, K) {
-										return i({}, me, S({}, "".concat(ce.name, "Resolver/").concat(K), re.actions.get(K)))
+									}, A(Y, "".concat(ce.name, "ResolverTotalTime"), X), A(Y, "".concat(ce.name, "ResolverTotalCpuTime"), fe), A(Y, "".concat(ce.name, "ResolverTotalUserActionsTime"), re.totalTime), Y), Array.from(re.actions.keys()).reduce(function(me, H) {
+										return i({}, me, A({}, "".concat(ce.name, "Resolver/").concat(H), re.actions.get(H)))
 									}, {}))
 								}, i({}, q, {
 									totalTime: 0,
@@ -1930,9 +1941,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						me = (0, f.j)(void 0, {
 							key: u.Fj
 						}),
-						K = be(me, 2),
-						_ = K[0],
-						te = K[1],
+						H = be(me, 2),
+						_ = H[0],
+						te = H[1],
 						T = (0, f.j)(void 0, {
 							key: u.s$
 						}),
@@ -2096,7 +2107,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				e = n("../react/common/utils/isGuards.ts");
 
 			function i(j, W) {
-				return m(j) || S(j, W) || C(j, W) || l()
+				return m(j) || A(j, W) || C(j, W) || l()
 			}
 
 			function l() {
@@ -2119,7 +2130,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return Ee
 			}
 
-			function S(j, W) {
+			function A(j, W) {
 				var ne = j && (typeof Symbol != "undefined" && j[Symbol.iterator] || j["@@iterator"]);
 				if (ne != null) {
 					var Ee = [],
@@ -2244,7 +2255,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function se() {
 				return se = u(regeneratorRuntime.mark(function j(W, ne, Ee, ye, N, L) {
-					var M, R, B, q, D, we, ce, Y, X, re, fe, me, K, _;
+					var M, R, B, q, D, we, ce, Y, X, re, fe, me, H, _;
 					return regeneratorRuntime.wrap(function(T) {
 						for (;;) switch (T.prev = T.next) {
 							case 0:
@@ -2258,18 +2269,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									T.next = 36;
 									break
 								}
-								if (fe = i(re.value, 2), me = fe[0], K = fe[1], K.type !== "static") {
+								if (fe = i(re.value, 2), me = fe[0], H = fe[1], H.type !== "static") {
 									T.next = 21;
 									break
 								}
-								D = [D, K.value].join("/"), T.next = 33;
+								D = [D, H.value].join("/"), T.next = 33;
 								break;
 							case 21:
-								if (!(K.type === "dynamic" && d.is(K.value) && K.value in B)) {
+								if (!(H.type === "dynamic" && d.is(H.value) && H.value in B)) {
 									T.next = 31;
 									break
 								}
-								return L.resolverStart(K.value), T.next = 25, B[K.value]({
+								return L.resolverStart(H.value), T.next = 25, B[H.value]({
 									deepLink: W,
 									blockRouter: function() {
 										return ne(!0)
@@ -2285,14 +2296,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 										currentPartIdx: me,
 										parts: M
 									},
-									waitForAction: x(Ee, L.createUserActionTracker(K.value)),
-									waitForPageAction: F(Ee, ye, L.createUserActionTracker(K.value))
+									waitForAction: x(Ee, L.createUserActionTracker(H.value)),
+									waitForPageAction: F(Ee, ye, L.createUserActionTracker(H.value))
 								});
 							case 25:
-								_ = T.sent, L.resolverDone(K.value), D = [D, _].join("/"), q[K.value] = _, T.next = 33;
+								_ = T.sent, L.resolverDone(H.value), D = [D, _].join("/"), q[H.value] = _, T.next = 33;
 								break;
 							case 31:
-								throw L.cancel(), new Error("DeepLink: Resolver with name '".concat(K.value, "' is not supported."));
+								throw L.cancel(), new Error("DeepLink: Resolver with name '".concat(H.value, "' is not supported."));
 							case 33:
 								we = !0, T.next = 15;
 								break;
@@ -2376,7 +2387,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						fallback: function(l) {
 							var C = l.error,
 								U = l.eventId;
-							if (C !== void 0 && !1) var S;
+							if (C !== void 0 && !1) var A;
 							var m = h.e.getEventId() || U;
 							return r().createElement(b.Z, {
 								type: "page",
@@ -2476,7 +2487,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								link: me
 							})
 						};
-					return r().createElement(S, {
+					return r().createElement(A, {
 						marginTop: "auto"
 					}, r().createElement(m, null, r().createElement(g, null, r().createElement(u, null, "\xA9 ", X, " Cloudflare, Inc."), r().createElement(u, null, r().createElement(f, null, r().createElement(d, {
 						showOnDeskTop: !1
@@ -2530,7 +2541,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						id: "apple.footer.icanns"
 					}))))))))
 				},
-				S = (0, y.createComponent)(function(Y) {
+				A = (0, y.createComponent)(function(Y) {
 					var X = Y.theme,
 						re = Y.marginTop;
 					return {
@@ -2540,7 +2551,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						marginTop: re
 					}
 				});
-			S.displayName = "Bar";
+			A.displayName = "Bar";
 			var m = (0, y.createComponent)(function() {
 				return {
 					margin: "0 auto",
@@ -2675,17 +2686,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				if (re != null) {
 					var fe = [],
 						me = !0,
-						K = !1,
+						H = !1,
 						_, te;
 					try {
 						for (re = re.call(Y); !(me = (_ = re.next()).done) && (fe.push(_.value), !(X && fe.length === X)); me = !0);
 					} catch (T) {
-						K = !0, te = T
+						H = !0, te = T
 					} finally {
 						try {
 							!me && re.return != null && re.return()
 						} finally {
-							if (K) throw te
+							if (H) throw te
 						}
 					}
 					return fe
@@ -2700,7 +2711,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						re = se(X, 2),
 						fe = re[0],
 						me = re[1],
-						K = (0, $.wV)(),
+						H = (0, $.wV)(),
 						_ = function() {
 							me(!0)
 						},
@@ -2737,7 +2748,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						style: T,
 						onMouseEnter: _,
 						onMouseLeave: te
-					}, K && K === "US" ? (0, i.ZP)("footer.cpra_cta.privacy_choices") : (0, i.ZP)("footer.cpra_cta.cookie_preferences"))
+					}, H && H === "US" ? (0, i.ZP)("footer.cpra_cta.privacy_choices") : (0, i.ZP)("footer.cpra_cta.cookie_preferences"))
 				},
 				N = ye;
 
@@ -2756,8 +2767,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				var re = R(Y, X),
 					fe, me;
 				if (Object.getOwnPropertySymbols) {
-					var K = Object.getOwnPropertySymbols(Y);
-					for (me = 0; me < K.length; me++) fe = K[me], !(X.indexOf(fe) >= 0) && (!Object.prototype.propertyIsEnumerable.call(Y, fe) || (re[fe] = Y[fe]))
+					var H = Object.getOwnPropertySymbols(Y);
+					for (me = 0; me < H.length; me++) fe = H[me], !(X.indexOf(fe) >= 0) && (!Object.prototype.propertyIsEnumerable.call(Y, fe) || (re[fe] = Y[fe]))
 				}
 				return re
 			}
@@ -2766,8 +2777,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				if (Y == null) return {};
 				var re = {},
 					fe = Object.keys(Y),
-					me, K;
-				for (K = 0; K < fe.length; K++) me = fe[K], !(X.indexOf(me) >= 0) && (re[me] = Y[me]);
+					me, H;
+				for (H = 0; H < fe.length; H++) me = fe[H], !(X.indexOf(me) >= 0) && (re[me] = Y[me]);
 				return re
 			}
 			var B = 24,
@@ -2784,23 +2795,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					var re = X.onClick,
 						fe = M(X, ["onClick"]);
 					return r().createElement(q, L({
-						onClick: function(K) {
+						onClick: function(H) {
 							a().sendEvent("navigate footer nav", {
 								destinationPage: fe.href
-							}), re && re(K)
+							}), re && re(H)
 						}
 					}, fe))
 				},
 				we = function() {
 					var X, re, fe = (0, c.useLocation)(),
 						me = fe.pathname,
-						K = (0, h.qf)("dx-signup-redesign") === "illustration" && me === "/sign-up",
+						H = (0, h.qf)("dx-signup-redesign") === "illustration" && me === "/sign-up",
 						_ = [F.d.root.pattern].some(function(te) {
 							return (0, c.matchPath)(location.pathname, {
 								path: te
 							})
 						});
-					return (0, e.PP)() ? r().createElement(x, null) : K || _ ? null : r().createElement(b.$_, {
+					return (0, e.PP)() ? r().createElement(x, null) : H || _ ? null : r().createElement(b.$_, {
 						bg: "background",
 						borderTop: "1px solid",
 						borderColor: "gray.8",
@@ -3121,7 +3132,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				if (Array.isArray(u)) return u
 			}
 
-			function S(u) {
+			function A(u) {
 				var f = (0, t.useState)(!1),
 					d = a(f, 2),
 					Z = d[0],
@@ -3140,8 +3151,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						Z = d === void 0 ? 1e3 : d,
 						x = f.stillLoadingTimeout,
 						F = x === void 0 ? 9e3 : x,
-						$ = S(Z),
-						be = S(F);
+						$ = A(Z),
+						be = A(F);
 					if ((0, p.nW)(), !$ && !be) return r().createElement(y.Z, null);
 					var se = be ? r().createElement(h.cC, {
 						id: "common.still_loading"
@@ -3168,7 +3179,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			"use strict";
 			n.d(z, {
 				Wl: function() {
-					return S
+					return A
 				},
 				lp: function() {
 					return j
@@ -3195,9 +3206,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				y = n("../react/common/selectors/zoneSelectors.ts"),
 				p = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http");
 
-			function a(ce, Y, X, re, fe, me, K) {
+			function a(ce, Y, X, re, fe, me, H) {
 				try {
-					var _ = ce[me](K),
+					var _ = ce[me](H),
 						te = _.value
 				} catch (T) {
 					X(T);
@@ -3213,14 +3224,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return new Promise(function(re, fe) {
 						var me = ce.apply(Y, X);
 
-						function K(te) {
-							a(me, re, fe, K, _, "next", te)
+						function H(te) {
+							a(me, re, fe, H, _, "next", te)
 						}
 
 						function _(te) {
-							a(me, re, fe, K, _, "throw", te)
+							a(me, re, fe, H, _, "throw", te)
 						}
-						K(void 0)
+						H(void 0)
 					})
 				}
 			}
@@ -3255,10 +3266,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				C = function() {
 					var ce = e(regeneratorRuntime.mark(function Y(X, re) {
 						var fe;
-						return regeneratorRuntime.wrap(function(K) {
-							for (;;) switch (K.prev = K.next) {
+						return regeneratorRuntime.wrap(function(H) {
+							for (;;) switch (H.prev = H.next) {
 								case 0:
-									return K.prev = 0, K.next = 3, p.post("".concat(i, "/favorites"), {
+									return H.prev = 0, H.next = 3, p.post("".concat(i, "/favorites"), {
 										body: JSON.stringify({
 											type: "zone",
 											name: X,
@@ -3267,14 +3278,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 										hideErrorAlert: !0
 									});
 								case 3:
-									return fe = K.sent, K.next = 6, fe.body;
+									return fe = H.sent, H.next = 6, fe.body;
 								case 6:
-									return K.abrupt("return", K.sent);
+									return H.abrupt("return", H.sent);
 								case 9:
-									return K.prev = 9, K.t0 = K.catch(0), console.error(K.t0), K.abrupt("return", []);
+									return H.prev = 9, H.t0 = H.catch(0), console.error(H.t0), H.abrupt("return", []);
 								case 13:
 								case "end":
-									return K.stop()
+									return H.stop()
 							}
 						}, Y, this, [
 							[0, 9]
@@ -3313,11 +3324,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return ce.apply(this, arguments)
 					}
 				}(),
-				S = 10;
+				A = 10;
 
-			function m(ce, Y, X, re, fe, me, K) {
+			function m(ce, Y, X, re, fe, me, H) {
 				try {
-					var _ = ce[me](K),
+					var _ = ce[me](H),
 						te = _.value
 				} catch (T) {
 					X(T);
@@ -3333,14 +3344,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return new Promise(function(re, fe) {
 						var me = ce.apply(Y, X);
 
-						function K(te) {
-							m(me, re, fe, K, _, "next", te)
+						function H(te) {
+							m(me, re, fe, H, _, "next", te)
 						}
 
 						function _(te) {
-							m(me, re, fe, K, _, "throw", te)
+							m(me, re, fe, H, _, "throw", te)
 						}
-						K(void 0)
+						H(void 0)
 					})
 				}
 			}
@@ -3375,9 +3386,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					var re = [],
 						fe = !0,
 						me = !1,
-						K, _;
+						H, _;
 					try {
-						for (X = X.call(ce); !(fe = (K = X.next()).done) && (re.push(K.value), !(Y && re.length === Y)); fe = !0);
+						for (X = X.call(ce); !(fe = (H = X.next()).done) && (re.push(H.value), !(Y && re.length === Y)); fe = !0);
 					} catch (te) {
 						me = !0, _ = te
 					} finally {
@@ -3444,7 +3455,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						re = Y.onDarkModeChangeCb,
 						fe = (0, t.useState)(se),
 						me = u(fe, 2),
-						K = me[0],
+						H = me[0],
 						_ = me[1],
 						te = (0, s.$8)(),
 						T = (0, c.useSelector)(function(_e) {
@@ -3456,18 +3467,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						})
 					}, [te]);
 					var G = function(he, Re) {
-							return !!K.favorites.find(function(Ie) {
+							return !!H.favorites.find(function(Ie) {
 								return Ie.type === "zone" && Ie.name === he && Ie.accountId === Re
 							})
 						},
 						ae = function(he) {
-							var Re = K.favorites.filter(function(Ie) {
+							var Re = H.favorites.filter(function(Ie) {
 								return Ie.type === "zone" && Ie.accountId === he
 							}).length;
-							return Re < S
+							return Re < A
 						};
 					return r().createElement(j.Provider, {
-						value: $({}, K, {
+						value: $({}, H, {
 							actions: {
 								canAccountStarZone: ae,
 								isZoneStarred: G,
@@ -3491,7 +3502,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 															return Ve.accountId === Ie && Ve.type === "zone"
 														}).length,
 														totalZones: T == null || (Ue = T.paginationData) === null || Ue === void 0 ? void 0 : Ue.info.total_count
-													}), _($({}, K, {
+													}), _($({}, H, {
 														favorites: $e
 													}));
 												case 10:
@@ -3587,7 +3598,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						re = Y.onClickFn,
 						fe = Y.isDisabled,
 						me = Y.buttonText,
-						K = q[(0, ye.Yc)() ? "dark" : "light"][X ? "active" : "default"];
+						H = q[(0, ye.Yc)() ? "dark" : "light"][X ? "active" : "default"];
 					return r().createElement(B.zx, {
 						display: "inline-flex",
 						alignItems: "center",
@@ -3599,9 +3610,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						borderRadius: "50vh",
 						border: "1px solid",
 						cursor: "pointer",
-						backgroundColor: K.bg,
-						color: K.text,
-						borderColor: K.border,
+						backgroundColor: H.bg,
+						color: H.text,
+						borderColor: H.border,
 						onClick: re,
 						opacity: fe ? .5 : 1,
 						disabled: fe
@@ -3635,7 +3646,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, U(R)
 			}
 
-			function S(R) {
+			function A(R) {
 				for (var B = 1; B < arguments.length; B++) {
 					var q = arguments[B] != null ? Object(arguments[B]) : {},
 						D = Object.keys(q);
@@ -3818,11 +3829,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							value: X.target.value
 						})
 					}), se(be(be(D)), "sendErrToSentry10", g(regeneratorRuntime.mark(function X() {
-						var re, fe, me, K, _, te, T, G, ae;
+						var re, fe, me, H, _, te, T, G, ae;
 						return regeneratorRuntime.wrap(function(he) {
 							for (;;) switch (he.prev = he.next) {
 								case 0:
-									return he.prev = 0, _ = ((re = window) === null || re === void 0 || (fe = re.bootstrap) === null || fe === void 0 || (me = fe.data) === null || me === void 0 || (K = me.user) === null || K === void 0 ? void 0 : K.id) || "Unknown", te = D.props.eventId || p.eW(), T = {
+									return he.prev = 0, _ = ((re = window) === null || re === void 0 || (fe = re.bootstrap) === null || fe === void 0 || (me = fe.data) === null || me === void 0 || (H = me.user) === null || H === void 0 ? void 0 : H.id) || "Unknown", te = D.props.eventId || p.eW(), T = {
 										name: _,
 										email: "".concat(_, "@userid.com"),
 										comments: D.state.value,
@@ -3831,7 +3842,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 										prevUrl: document.referrer,
 										date: Date.now(),
 										dashVersion: window.build.dashVersion,
-										build: S({}, window.build)
+										build: A({}, window.build)
 									}, G = "".concat("https://platform.dash.cloudflare.com", "/sentry/user-feedback"), he.next = 7, fetch(G, {
 										method: "POST",
 										headers: {
@@ -3935,7 +3946,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				U = {
 					reducer: C
 				},
-				S = n("../../../../node_modules/@cloudflare/util-exhausted-reducers/es/index.js"),
+				A = n("../../../../node_modules/@cloudflare/util-exhausted-reducers/es/index.js"),
 				m = n("../react/common/actionTypes.ts"),
 				g = function() {
 					var ee = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : e().from({
@@ -3971,7 +3982,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								return ie.token
 							})
 					}
-					return (0, S.h)(ie, ee)
+					return (0, A.h)(ie, ee)
 				},
 				u = {
 					apikey: (0, s.ZP)(m.Yc.APIKEY),
@@ -4198,28 +4209,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return (0, s.ZP)(ee).on("success", function(ie, Fe, Ge) {
 						var Ze, ot, it = Ge.meta,
 							lt = it.params || {},
-							mt = lt.accountId,
+							dt = lt.accountId,
 							st = lt.zoneId,
 							gt = lt.dateOnly,
 							Pt = gt === void 0 ? !1 : gt,
 							vt = "",
 							yt = {},
-							dt = we({}, (Ze = ie.paginationData) === null || Ze === void 0 || (ot = Ze.options) === null || ot === void 0 ? void 0 : ot.editedDate);
-						ie.data.forEach(function(pt) {
-							var kt = pt.id,
-								Et = pt.allocation,
-								Ct = pt.edited_date;
+							pt = we({}, (Ze = ie.paginationData) === null || Ze === void 0 || (ot = Ze.options) === null || ot === void 0 ? void 0 : ot.editedDate);
+						ie.data.forEach(function(ft) {
+							var kt = ft.id,
+								Et = ft.allocation,
+								Ct = ft.edited_date;
 							yt[kt] = Et.value, Ct > vt && (vt = Ct)
-						}), dt[mt || st] = vt;
-						var rt = {
+						}), pt[dt || st] = vt;
+						var at = {
 							options: {
-								editedDate: dt
+								editedDate: pt
 							}
 						};
 						return Pt ? we({}, ie, {
-							paginationData: rt
+							paginationData: at
 						}) : we({}, ie, {
-							paginationData: rt,
+							paginationData: at,
 							data: yt
 						})
 					})
@@ -4232,7 +4243,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				fe = n("../react/pages/onboarding/components/guide/reducer.ts"),
 				me = n("../../../../node_modules/redux-grim/dist/redux-grim.es.js");
 
-			function K(J) {
+			function H(J) {
 				for (var ee = 1; ee < arguments.length; ee++) {
 					var ie = arguments[ee] != null ? Object(arguments[ee]) : {},
 						Fe = Object.keys(ie);
@@ -4260,7 +4271,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				T = {
 					access: (0, t.combineReducers)({
 						accessOrganizations: (0, s.ZP)("organizations").modifyInitialState(function(J) {
-							return K({}, J, {
+							return H({}, J, {
 								needsHydration: !0,
 								data: {
 									auth_domain: "",
@@ -4269,12 +4280,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								}
 							})
 						}).on("success", function(J, ee) {
-							return K({}, J, {
+							return H({}, J, {
 								data: Array.isArray(J == null ? void 0 : J.data) ? ee == null ? void 0 : ee.data : J == null ? void 0 : J.data,
 								needsHydration: !1
 							})
 						}).on("error", function(J) {
-							return K({}, J, {
+							return H({}, J, {
 								needsHydration: !1
 							})
 						})
@@ -4298,7 +4309,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					invite: U.reducer,
 					membership: (0, s.ZP)("membership"),
 					memberships: (0, s.ZP)("memberships").on("success", function(J, ee, ie) {
-						return ie.meta.method === "delete" ? K({}, J, {
+						return ie.meta.method === "delete" ? H({}, J, {
 							data: ee.data.filter(function(Fe) {
 								return Fe !== ie.payload
 							})
@@ -4366,8 +4377,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				de = n("webpack/sharing/consume/default/@cloudflare/util-http/@cloudflare/util-http"),
 				Te = n("../react/app/redux/makeAction.js"),
 				I = n("../react/common/actions/membershipActions.ts"),
-				H = regeneratorRuntime.mark(P),
-				O = "get";
+				K = regeneratorRuntime.mark(P),
+				S = "get";
 
 			function P(J) {
 				var ee, ie, Fe;
@@ -4376,7 +4387,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						case 0:
 							return ee = {
 								entityType: J.entityType,
-								method: O
+								method: S
 							}, Ze.prev = 1, Ze.next = 4, (0, Ve.gw)(200);
 						case 4:
 							return Ze.next = 6, (0, Ve.gz)((0, Te.dJ)({
@@ -4384,7 +4395,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								meta: ee
 							}));
 						case 6:
-							return Ze.next = 8, (0, Ve.RE)(de[O], J.url, J.params[0]);
+							return Ze.next = 8, (0, Ve.RE)(de[S], J.url, J.params[0]);
 						case 8:
 							return ie = Ze.sent, Fe = ie && ie.body, J.type === le.UM.MEMBERSHIPS_ROOT_REQUESTED && (Fe = (0, I.ct)({
 								payload: Fe.result
@@ -4393,7 +4404,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								payload: Fe,
 								meta: {
 									entityType: J.entityType,
-									method: O
+									method: S
 								}
 							}, {}, J.params, {}, ie));
 						case 13:
@@ -4412,7 +4423,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						case "end":
 							return Ze.stop()
 					}
-				}, H, this, [
+				}, K, this, [
 					[1, 15]
 				])
 			}
@@ -4497,12 +4508,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					writable: !0
 				}) : J[ee] = ie, J
 			}
-			var ft = {
+			var mt = {
 					key: "cf-redux-store",
 					storage: b.Z,
 					whitelist: ["accountAccess", "invite"]
 				},
-				at = (0, Xe.ZP)(),
+				rt = (0, Xe.ZP)(),
 				At = function(ee) {
 					var ie = ee.dispatch;
 					return function(Fe) {
@@ -4513,9 +4524,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}
 					}
 				},
-				wt = [(0, De.Z)(p.Z), At, at, r.Z, ve.Z, G.qR],
+				wt = [(0, De.Z)(p.Z), At, rt, r.Z, ve.Z, G.qR],
 				_t = function(ee) {
-					return (0, c.Wq)(ft, tt({}, T, ee))
+					return (0, c.Wq)(mt, tt({}, T, ee))
 				};
 
 			function It() {
@@ -4527,7 +4538,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					})),
 					Fe = {},
 					Ge = (0, t.createStore)(_t(qe.Z.getReducers()), Fe, ie);
-				at.run(k), (0, c.p5)(Ge);
+				rt.run(k), (0, c.p5)(Ge);
 				var Ze = n.g.bootstrap || {},
 					ot = Ze.data || {};
 				return Ge.dispatch((0, me.mW)("user", ot.user)), Ge
@@ -4664,67 +4675,67 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				c = n.n(r);
 
 			function b(C) {
-				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? b = function(S) {
-					return typeof S
-				} : b = function(S) {
-					return S && typeof Symbol == "function" && S.constructor === Symbol && S !== Symbol.prototype ? "symbol" : typeof S
+				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? b = function(A) {
+					return typeof A
+				} : b = function(A) {
+					return A && typeof Symbol == "function" && A.constructor === Symbol && A !== Symbol.prototype ? "symbol" : typeof A
 				}, b(C)
 			}
 
 			function h(C) {
 				for (var U = 1; U < arguments.length; U++) {
-					var S = arguments[U] != null ? Object(arguments[U]) : {},
-						m = Object.keys(S);
-					typeof Object.getOwnPropertySymbols == "function" && (m = m.concat(Object.getOwnPropertySymbols(S).filter(function(g) {
-						return Object.getOwnPropertyDescriptor(S, g).enumerable
+					var A = arguments[U] != null ? Object(arguments[U]) : {},
+						m = Object.keys(A);
+					typeof Object.getOwnPropertySymbols == "function" && (m = m.concat(Object.getOwnPropertySymbols(A).filter(function(g) {
+						return Object.getOwnPropertyDescriptor(A, g).enumerable
 					}))), m.forEach(function(g) {
-						s(C, g, S[g])
+						s(C, g, A[g])
 					})
 				}
 				return C
 			}
 
-			function s(C, U, S) {
+			function s(C, U, A) {
 				return U in C ? Object.defineProperty(C, U, {
-					value: S,
+					value: A,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : C[U] = S, C
+				}) : C[U] = A, C
 			}
 			var y = h({}, r),
-				p = function(U, S, m) {
+				p = function(U, A, m) {
 					var g = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {},
 						u = U === "delete" ? "del" : U.toLowerCase();
-					return m && u !== "del" && (g.body = m), y[u](S, g)
+					return m && u !== "del" && (g.body = m), y[u](A, g)
 				},
-				a = function(U, S) {
-					return U.meta.params = S, U
+				a = function(U, A) {
+					return U.meta.params = A, U
 				},
-				e = function(U, S, m, g, u) {
+				e = function(U, A, m, g, u) {
 					var f = u.body,
 						d = f === void 0 ? {} : f,
 						Z = d.result,
 						x = d.messages,
 						F = d.result_info,
-						$ = Object.values(S);
+						$ = Object.values(A);
 					if (U.meta.method === "delete") {
 						var be = $[$.length - 1];
 						U.meta.id = b(be) === "object" ? be.id : be
 					}
-					return U.payload = Z, x && (U.meta.messages = x), $.length && (U.meta.params = S), F && (U.meta.paginationData = {
+					return U.payload = Z, x && (U.meta.messages = x), $.length && (U.meta.params = A), F && (U.meta.paginationData = {
 						info: F,
 						actionParameters: $,
 						options: m[0],
 						insertionOffset: 0
 					}), U
 				},
-				i = function(U, S, m, g, u) {
-					return U.payload = u && u.body && u.body.errors, U.meta.messages = u && u.body && u.body.messages, U.meta.params = S, U
+				i = function(U, A, m, g, u) {
+					return U.payload = u && u.body && u.body.errors, U.meta.messages = u && u.body && u.body.messages, U.meta.params = A, U
 				};
 
-			function l(C, U, S, m) {
-				var g = (0, t.RM)(C, U, S, m).apiFetch(p).on("start", a).on("success", e).on("error", i),
+			function l(C, U, A, m) {
+				var g = (0, t.RM)(C, U, A, m).apiFetch(p).on("start", a).on("success", e).on("error", i),
 					u = g.mock;
 				return g.mock = function(f) {
 					return u(function() {
@@ -4781,33 +4792,33 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function p(e, i) {
 				return {
 					get: function(C) {
-						for (var U = arguments.length, S = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) S[m - 1] = arguments[m];
-						return (0, t.ZP)(e, "get", a(C, S), i)
+						for (var U = arguments.length, A = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) A[m - 1] = arguments[m];
+						return (0, t.ZP)(e, "get", a(C, A), i)
 					},
 					post: function(C) {
-						for (var U = arguments.length, S = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) S[m - 1] = arguments[m];
-						return (0, t.ZP)(e, "post", a(C, S), i)
+						for (var U = arguments.length, A = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) A[m - 1] = arguments[m];
+						return (0, t.ZP)(e, "post", a(C, A), i)
 					},
 					delete: function(C) {
-						for (var U = arguments.length, S = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) S[m - 1] = arguments[m];
-						return (0, t.ZP)(e, "delete", a(C, S), i)
+						for (var U = arguments.length, A = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) A[m - 1] = arguments[m];
+						return (0, t.ZP)(e, "delete", a(C, A), i)
 					},
 					put: function(C) {
-						for (var U = arguments.length, S = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) S[m - 1] = arguments[m];
-						return (0, t.ZP)(e, "put", a(C, S), i)
+						for (var U = arguments.length, A = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) A[m - 1] = arguments[m];
+						return (0, t.ZP)(e, "put", a(C, A), i)
 					},
 					patch: function(C) {
-						for (var U = arguments.length, S = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) S[m - 1] = arguments[m];
-						return (0, t.ZP)(e, "patch", a(C, S), i)
+						for (var U = arguments.length, A = new Array(U > 1 ? U - 1 : 0), m = 1; m < U; m++) A[m - 1] = arguments[m];
+						return (0, t.ZP)(e, "patch", a(C, A), i)
 					}
 				}
 			}
 
 			function a(e, i) {
 				for (var l = "", C = r(e.raw), U = r(i); C.length > 0 || U.length > 0;) {
-					var S = C.shift(),
+					var A = C.shift(),
 						m = U.shift();
-					l += S !== void 0 ? S : "", l += m !== void 0 ? "(".concat(m, ")") : ""
+					l += A !== void 0 ? A : "", l += m !== void 0 ? "(".concat(m, ")") : ""
 				}
 				return l
 			}
@@ -4878,7 +4889,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return Z && (F.errors = Z), t.static.merge(g, F)
 			}
 
-			function S(g, u) {
+			function A(g, u) {
 				var f = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {},
 					d = g.data;
 				if (u.type === "".concat(f.insertDelete, ".success")) {
@@ -4907,7 +4918,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				var u = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
 				return u.errorKey = "errors", (0, c.j3)(g, u).modifyInitialState(function(f) {
 					return t.static.set(f, "messages", l)
-				}).on("success", C).on("error", U).on("default", S)
+				}).on("success", C).on("error", U).on("default", A)
 			}
 		},
 		"../react/app/redux/normalizer.js": function(Oe, z, n) {
@@ -5806,54 +5817,54 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				r = n("../react/common/constants/index.ts");
 
 			function c() {
-				var S = s(["/memberships?no-permissions=1"]);
+				var A = s(["/memberships?no-permissions=1"]);
 				return c = function() {
-					return S
-				}, S
+					return A
+				}, A
 			}
 
 			function b() {
-				var S = s(["/memberships/", ""]);
+				var A = s(["/memberships/", ""]);
 				return b = function() {
-					return S
-				}, S
+					return A
+				}, A
 			}
 
 			function h() {
-				var S = s(["/memberships?no-permissions=1"]);
+				var A = s(["/memberships?no-permissions=1"]);
 				return h = function() {
-					return S
-				}, S
+					return A
+				}, A
 			}
 
-			function s(S, m) {
-				return m || (m = S.slice(0)), Object.freeze(Object.defineProperties(S, {
+			function s(A, m) {
+				return m || (m = A.slice(0)), Object.freeze(Object.defineProperties(A, {
 					raw: {
 						value: Object.freeze(m)
 					}
 				}))
 			}
 
-			function y(S) {
+			function y(A) {
 				for (var m = 1; m < arguments.length; m++) {
 					var g = arguments[m] != null ? Object(arguments[m]) : {},
 						u = Object.keys(g);
 					typeof Object.getOwnPropertySymbols == "function" && (u = u.concat(Object.getOwnPropertySymbols(g).filter(function(f) {
 						return Object.getOwnPropertyDescriptor(g, f).enumerable
 					}))), u.forEach(function(f) {
-						p(S, f, g[f])
+						p(A, f, g[f])
 					})
 				}
-				return S
+				return A
 			}
 
-			function p(S, m, g) {
-				return m in S ? Object.defineProperty(S, m, {
+			function p(A, m, g) {
+				return m in A ? Object.defineProperty(A, m, {
 					value: g,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : S[m] = g, S
+				}) : A[m] = g, A
 			}
 			var a = function(m) {
 					var g = m.payload.map(function(u) {
@@ -5964,7 +5975,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return l = l || {},
 					function(C) {
 						var U = b++,
-							S = {
+							A = {
 								id: U,
 								type: e,
 								message: i,
@@ -5975,7 +5986,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									C(c(U)), l.onClose && l.onClose.apply(null, arguments)
 								}
 							};
-						C(r(S))
+						C(r(A))
 					}
 			}
 
@@ -6118,9 +6129,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, N
 			}
 
-			function S() {
+			function A() {
 				var N = u(["/user/create"]);
-				return S = function() {
+				return A = function() {
 					return N
 				}, N
 			}
@@ -6148,7 +6159,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 			var f = (0, t.C)("user").get(g()),
 				d = (0, t.C)("user").patch(m()),
-				Z = (0, t.C)("user").post(S()),
+				Z = (0, t.C)("user").post(A()),
 				x = (0, t.C)("user").put(U()),
 				F = (0, t.C)("user").post(C()),
 				$ = (0, t.C)("user").put(l()),
@@ -6205,16 +6216,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							return
 						}
 					});
-					var S = s() && U;
-					return S && (0, h.C8)(h.LF.OFF), S
+					var A = s() && U;
+					return A && (0, h.C8)(h.LF.OFF), A
 				},
 				l = function(U) {
 					U && r().sendEvent("launch icloud registrar onboarding", {
 						category: "icloud registrar",
 						method: "iCloud SSO"
 					});
-					var S = "https://oidc.iam.cfapi.net/api/v1/sso/init?client=apple&env=".concat("production");
-					U && (S = S + "&jwt=".concat(U)), window.location.href = S
+					var A = "https://oidc.iam.cfapi.net/api/v1/sso/init?client=apple&env=".concat("production");
+					U && (A = A + "&jwt=".concat(U)), window.location.href = A
 				}
 		},
 		"../react/common/components/EmptyPage.jsx": function(Oe, z, n) {
@@ -6269,8 +6280,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			});
 			var t;
-			(function(S) {
-				S.page_rules = "page_rules", S.automatic_platform_optimization = "automatic_platform_optimization"
+			(function(A) {
+				A.page_rules = "page_rules", A.automatic_platform_optimization = "automatic_platform_optimization"
 			})(t || (t = {}));
 			var r = "page_rules",
 				c = "automatic_platform_optimization",
@@ -6383,7 +6394,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return s
 				},
 				Lv: function() {
-					return S
+					return A
 				},
 				S4: function() {
 					return h
@@ -6439,7 +6450,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					if (!!g) return i[g]
 				},
 				U = ["gov"],
-				S = ["graphql_api_v2.enabled_network_analytics_magic_transit", "graphql_api_v2.enabled_network_analytics_spectrum", "graphql_api_v2.enabled_network_analytics_cdn"]
+				A = ["graphql_api_v2.enabled_network_analytics_magic_transit", "graphql_api_v2.enabled_network_analytics_spectrum", "graphql_api_v2.enabled_network_analytics_cdn"]
 		},
 		"../react/common/constants/index.ts": function(Oe, z, n) {
 			"use strict";
@@ -6564,16 +6575,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				var C = i && (typeof Symbol != "undefined" && i[Symbol.iterator] || i["@@iterator"]);
 				if (C != null) {
 					var U = [],
-						S = !0,
+						A = !0,
 						m = !1,
 						g, u;
 					try {
-						for (C = C.call(i); !(S = (g = C.next()).done) && (U.push(g.value), !(l && U.length === l)); S = !0);
+						for (C = C.call(i); !(A = (g = C.next()).done) && (U.push(g.value), !(l && U.length === l)); A = !0);
 					} catch (f) {
 						m = !0, u = f
 					} finally {
 						try {
-							!S && C.return != null && C.return()
+							!A && C.return != null && C.return()
 						} finally {
 							if (m) throw u
 						}
@@ -6590,15 +6601,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				var l = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {},
 					C = l.key,
 					U = l.cache,
-					S = U === void 0 ? c.E : U,
-					m = C !== void 0 && S.get(C),
+					A = U === void 0 ? c.E : U,
+					m = C !== void 0 && A.get(C),
 					g = (0, t.useState)(m || i),
 					u = b(g, 2),
 					f = u[0],
 					d = u[1],
 					Z = function(F) {
 						d(function($) {
-							return F instanceof Function && (F = F($)), C !== void 0 && S.set(C, F), F
+							return F instanceof Function && (F = F($)), C !== void 0 && A.set(C, F), F
 						})
 					};
 				return [f, Z]
@@ -6627,7 +6638,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return C
 				},
 				oV: function() {
-					return S
+					return A
 				}
 			});
 
@@ -6749,7 +6760,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}
 					return g
 				}(C),
-				S = function(m) {
+				A = function(m) {
 					b(g, m);
 
 					function g(u, f) {
@@ -6778,7 +6789,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return Je
 				},
 				D0: function() {
-					return S
+					return A
 				},
 				DT: function() {
 					return D
@@ -6823,7 +6834,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return L
 				},
 				VP: function() {
-					return O
+					return S
 				},
 				Xo: function() {
 					return $e
@@ -6914,7 +6925,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					writable: !0
 				}) : Ae[k] = ve, Ae
 			}
-			var S = function(k) {
+			var A = function(k) {
 					var ve = ne(k);
 					return ve == null ? void 0 : ve.account
 				},
@@ -7034,11 +7045,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				we = function(k) {
 					var ve, De;
-					return (ve = (De = S(k)) === null || De === void 0 ? void 0 : De.meta.has_pro_zones) !== null && ve !== void 0 ? ve : !1
+					return (ve = (De = A(k)) === null || De === void 0 ? void 0 : De.meta.has_pro_zones) !== null && ve !== void 0 ? ve : !1
 				},
 				ce = function(k) {
 					var ve, De;
-					return (ve = (De = S(k)) === null || De === void 0 ? void 0 : De.meta.has_business_zones) !== null && ve !== void 0 ? ve : !1
+					return (ve = (De = A(k)) === null || De === void 0 ? void 0 : De.meta.has_business_zones) !== null && ve !== void 0 ? ve : !1
 				},
 				Y = function(k) {
 					return ce(k) || we(k)
@@ -7058,7 +7069,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				me = function(k) {
 					return X(k, "railgun")
 				},
-				K = function(k) {
+				H = function(k) {
 					return !!k && k["webhooks.webhooks.enabled"]
 				},
 				_ = function(k) {
@@ -7139,11 +7150,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				I = function(k) {
 					return k.webhooks
 				},
-				H = (0, e.P1)("webhook", I),
-				O = function(k) {
+				K = (0, e.P1)("webhook", I),
+				S = function(k) {
 					return k.accountLegoContract
 				},
-				P = (0, e.P1)("accountLegoContract", O),
+				P = (0, e.P1)("accountLegoContract", S),
 				V = function(k) {
 					var ve = P(k);
 					return (ve == null ? void 0 : ve.lego_state) ? ve.lego_state : ""
@@ -7153,7 +7164,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return ve === "signed"
 				},
 				Me = function(k) {
-					var ve = O(k);
+					var ve = S(k);
 					return ve.isRequesting
 				},
 				xe = function(k) {
@@ -7246,7 +7257,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return c
 				},
 				p1: function() {
-					return S
+					return A
 				},
 				pf: function() {
 					return a
@@ -7268,85 +7279,85 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			});
 
-			function t(K, _) {
-				return K && K[_]
+			function t(H, _) {
+				return H && H[_]
 			}
 			var r = function(_) {
 				return !c(_).isRequesting
 			};
 
-			function c(K) {
-				return K.entitlements.zone
+			function c(H) {
+				return H.entitlements.zone
 			}
 
-			function b(K) {
-				return c(K).data
+			function b(H) {
+				return c(H).data
 			}
 			var h = function(_) {
 				var te, T;
 				return ((te = c(_).paginationData) === null || te === void 0 || (T = te.options) === null || T === void 0 ? void 0 : T.editedDate) || {}
 			};
 
-			function s(K, _) {
-				var te = b(K);
+			function s(H, _) {
+				var te = b(H);
 				return te ? t(te, _) : void 0
 			}
 			var y = function(_, te) {
 				return s(_, te) === !0
 			};
 
-			function p(K) {
-				return K.entitlements.account
+			function p(H) {
+				return H.entitlements.account
 			}
 
-			function a(K) {
-				return p(K).data
+			function a(H) {
+				return p(H).data
 			}
 			var e = function(_) {
 				var te, T;
 				return ((te = p(_).paginationData) === null || te === void 0 || (T = te.options) === null || T === void 0 ? void 0 : T.editedDate) || {}
 			};
 
-			function i(K) {
-				var _ = p(K);
+			function i(H) {
+				var _ = p(H);
 				return !_.isRequesting
 			}
 
-			function l(K, _) {
-				var te = a(K);
+			function l(H, _) {
+				var te = a(H);
 				return te ? t(te, _) : void 0
 			}
 
-			function C(K, _) {
-				return l(K, _) === !0
+			function C(H, _) {
+				return l(H, _) === !0
 			}
 
-			function U(K, _) {
+			function U(H, _) {
 				return _.every(function(te) {
-					return C(K, te)
+					return C(H, te)
 				})
 			}
 
-			function S(K) {
-				return C(K, "contract.customer_enabled")
+			function A(H) {
+				return C(H, "contract.customer_enabled")
 			}
 
-			function m(K) {
-				return C(K, "contract.self_service_allowed")
+			function m(H) {
+				return C(H, "contract.self_service_allowed")
 			}
 
-			function g(K) {
-				return C(K, "billing.partners_managed")
+			function g(H) {
+				return C(H, "billing.partners_managed")
 			}
 			var u = function(_) {
-					return S(_) && m(_)
+					return A(_) && m(_)
 				},
 				f = function(_) {
 					return C(_, "enterprise.ecp_allowed")
 				};
 
-			function d(K) {
-				return Z(K) || C(K, "argo.allow_smart_routing") || C(K, "argo.allow_tiered_caching") || C(K, "rate_limiting.enabled") || C(K, "ctm.enabled") || C(K, "workers.enabled") || C(K, "workers.kv_store.enabled") || C(K, "stream.enabled")
+			function d(H) {
+				return Z(H) || C(H, "argo.allow_smart_routing") || C(H, "argo.allow_tiered_caching") || C(H, "rate_limiting.enabled") || C(H, "ctm.enabled") || C(H, "workers.enabled") || C(H, "workers.kv_store.enabled") || C(H, "stream.enabled")
 			}
 			var Z = function(_) {
 					return y(_, "argo.allow_smart_routing") || y(_, "argo.allow_tiered_caching")
@@ -7492,7 +7503,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return y
 				},
 				mV: function() {
-					return S
+					return A
 				},
 				vW: function() {
 					return s
@@ -7539,7 +7550,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					var d = C(f);
 					return d && d["2FA-RECOVERY"] === "scheduled"
 				},
-				S = function(f) {
+				A = function(f) {
 					var d = C(f);
 					return d && d["2FA-RECOVERY"] === "interrupted"
 				},
@@ -7564,7 +7575,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return U
 				},
 				Cu: function() {
-					return S
+					return A
 				},
 				DQ: function() {
 					return X
@@ -7657,7 +7668,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return l
 				},
 				qM: function() {
-					return K
+					return H
 				},
 				rq: function() {
 					return D
@@ -7711,10 +7722,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				for (var de = 1; de < arguments.length; de++) {
 					var Te = arguments[de] != null ? Object(arguments[de]) : {},
 						I = Object.keys(Te);
-					typeof Object.getOwnPropertySymbols == "function" && (I = I.concat(Object.getOwnPropertySymbols(Te).filter(function(H) {
-						return Object.getOwnPropertyDescriptor(Te, H).enumerable
-					}))), I.forEach(function(H) {
-						a(le, H, Te[H])
+					typeof Object.getOwnPropertySymbols == "function" && (I = I.concat(Object.getOwnPropertySymbols(Te).filter(function(K) {
+						return Object.getOwnPropertyDescriptor(Te, K).enumerable
+					}))), I.forEach(function(K) {
+						a(le, K, Te[K])
 					})
 				}
 				return le
@@ -7759,7 +7770,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						meta: de
 					}
 				}),
-				S = function(de) {
+				A = function(de) {
 					var Te, I;
 					return (Te = (I = l(de)) === null || I === void 0 ? void 0 : I.id) !== null && Te !== void 0 ? Te : ""
 				},
@@ -7784,10 +7795,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function F(le, de, Te) {
 				var I = x(le);
 				if (!!I) {
-					var H = s().duration(de, Te),
-						O = new Date(I),
-						P = new Date(new Date().getTime() - H.asMilliseconds());
-					return O.getTime() > P.getTime()
+					var K = s().duration(de, Te),
+						S = new Date(I),
+						P = new Date(new Date().getTime() - K.asMilliseconds());
+					return S.getTime() > P.getTime()
 				}
 			}
 
@@ -7887,21 +7898,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return I && I.betas ? I.betas.includes(Te) : !1
 				},
 				fe = function(de) {
-					for (var Te = arguments.length, I = new Array(Te > 1 ? Te - 1 : 0), H = 1; H < Te; H++) I[H - 1] = arguments[H];
+					for (var Te = arguments.length, I = new Array(Te > 1 ? Te - 1 : 0), K = 1; K < Te; K++) I[K - 1] = arguments[K];
 					return b()(de, ["zoneFlags", "data"].concat(I))
 				},
 				me = function(de) {
-					for (var Te = arguments.length, I = new Array(Te > 1 ? Te - 1 : 0), H = 1; H < Te; H++) I[H - 1] = arguments[H];
+					for (var Te = arguments.length, I = new Array(Te > 1 ? Te - 1 : 0), K = 1; K < Te; K++) I[K - 1] = arguments[K];
 					return b()(de, ["accountFlags", "data"].concat(I))
 				},
-				K = function(de) {
+				H = function(de) {
 					return de.accountFlags.isRequesting
 				},
 				_ = function(de) {
 					return de.zoneFlags.isRequesting
 				},
 				te = function(de) {
-					for (var Te = arguments.length, I = new Array(Te > 1 ? Te - 1 : 0), H = 1; H < Te; H++) I[H - 1] = arguments[H];
+					for (var Te = arguments.length, I = new Array(Te > 1 ? Te - 1 : 0), K = 1; K < Te; K++) I[K - 1] = arguments[K];
 					return b()(de, ["zoneFlagsChanges", "data"].concat(I))
 				},
 				T = function(de) {
@@ -8072,10 +8083,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function t(l) {
 				for (var C = 1; C < arguments.length; C++) {
 					var U = arguments[C] != null ? Object(arguments[C]) : {},
-						S = Object.keys(U);
-					typeof Object.getOwnPropertySymbols == "function" && (S = S.concat(Object.getOwnPropertySymbols(U).filter(function(m) {
+						A = Object.keys(U);
+					typeof Object.getOwnPropertySymbols == "function" && (A = A.concat(Object.getOwnPropertySymbols(U).filter(function(m) {
 						return Object.getOwnPropertyDescriptor(U, m).enumerable
-					}))), S.forEach(function(m) {
+					}))), A.forEach(function(m) {
 						r(l, m, U[m])
 					})
 				}
@@ -8170,33 +8181,33 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				l = regeneratorRuntime.mark(f),
 				C = regeneratorRuntime.mark(d),
 				U = regeneratorRuntime.mark(Z),
-				S = regeneratorRuntime.mark(x);
+				A = regeneratorRuntime.mark(x);
 
 			function m() {
-				var O, P;
+				var S, P;
 				return regeneratorRuntime.wrap(function(oe) {
 					for (;;) switch (oe.prev = oe.next) {
 						case 0:
-							if (O = (0, y.aP)(), O) {
+							if (S = (0, y.aP)(), S) {
 								oe.next = 3;
 								break
 							}
 							throw new y.C6;
 						case 3:
-							if (oe.prev = 3, P = (0, y.he)(O), !(P && (0, y.pw)(P))) {
+							if (oe.prev = 3, P = (0, y.he)(S), !(P && (0, y.pw)(P))) {
 								oe.next = 7;
 								break
 							}
 							throw new y.C6;
 						case 7:
 							return oe.next = 9, (0, t.gz)(c.Nw.setToken({
-								token: O,
+								token: S,
 								parsed: P
 							}));
 						case 9:
-							return oe.next = 11, (0, t.RE)([localStorage, "setItem"], p.m.CloudflareAppsToken, O);
+							return oe.next = 11, (0, t.RE)([localStorage, "setItem"], p.m.CloudflareAppsToken, S);
 						case 11:
-							return oe.next = 13, (0, t.RE)([b.L, "setAuthHeader"], O);
+							return oe.next = 13, (0, t.RE)([b.L, "setAuthHeader"], S);
 						case 13:
 							oe.next = 18;
 							break;
@@ -8212,13 +8223,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function g() {
-				var O, P;
+				var S, P;
 				return regeneratorRuntime.wrap(function(oe) {
 					for (;;) switch (oe.prev = oe.next) {
 						case 0:
 							return oe.next = 2, (0, t.RE)(s);
 						case 2:
-							if (O = oe.sent, P = O.status, P !== 401) {
+							if (S = oe.sent, P = S.status, P !== 401) {
 								oe.next = 6;
 								break
 							}
@@ -8239,7 +8250,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function u() {
-				var O;
+				var S;
 				return regeneratorRuntime.wrap(function(V) {
 					for (;;) switch (V.prev = V.next) {
 						case 0:
@@ -8247,9 +8258,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						case 3:
 							return V.next = 5, (0, t.RE)(h);
 						case 5:
-							return O = V.sent, V.next = 8, (0, t.gz)(O.id ? c.Nw.getCurrentUserSuccess(O) : c.Nw.getCurrentUserFailed());
+							return S = V.sent, V.next = 8, (0, t.gz)(S.id ? c.Nw.getCurrentUserSuccess(S) : c.Nw.getCurrentUserFailed());
 						case 8:
-							return V.abrupt("return", O);
+							return V.abrupt("return", S);
 						case 11:
 							return V.prev = 11, V.t0 = V.catch(0), V.next = 15, (0, t.gz)(c.Nw.getCurrentUserFailed());
 						case 15:
@@ -8275,7 +8286,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, l, this)
 			}
 
-			function d(O) {
+			function d(S) {
 				return regeneratorRuntime.wrap(function(V) {
 					for (;;) switch (V.prev = V.next) {
 						case 0:
@@ -8292,7 +8303,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								V.next = 15;
 								break
 							}
-							return V.next = 14, (0, t.gz)(c.Nw.initSaga(O.zoneId));
+							return V.next = 14, (0, t.gz)(c.Nw.initSaga(S.zoneId));
 						case 14:
 							return V.abrupt("return", V.sent);
 						case 15:
@@ -8300,7 +8311,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						case 19:
 							throw V.prev = 19, V.t1 = V.catch(15), new y.Sf;
 						case 22:
-							return V.next = 24, (0, t.gz)(c.Nw.setZone(O.zoneId));
+							return V.next = 24, (0, t.gz)(c.Nw.setZone(S.zoneId));
 						case 24:
 							return V.next = 26, (0, t.gz)(c.Nw.getCurrentUserSaga());
 						case 26:
@@ -8328,19 +8339,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function x() {
-				var O, P, V, oe, Me;
+				var S, P, V, oe, Me;
 				return regeneratorRuntime.wrap(function(je) {
 					for (;;) switch (je.prev = je.next) {
 						case 0:
 							return je.next = 3, (0, t.qn)(c.XO.SetCurrentUser);
 						case 3:
-							return O = je.sent, je.next = 6, (0, t.RE)([localStorage, "getItem"], p.m.CloudflareAppsToken);
+							return S = je.sent, je.next = 6, (0, t.RE)([localStorage, "getItem"], p.m.CloudflareAppsToken);
 						case 6:
 							if (P = je.sent, !P) {
 								je.next = 15;
 								break
 							}
-							if (V = (0, y.he)(P), oe = (0, r.Z)(V, "sub"), Me = (0, r.Z)(O, "meta.entities.user.".concat(O.payload, ".email")), !(Me && Me !== oe)) {
+							if (V = (0, y.he)(P), oe = (0, r.Z)(V, "sub"), Me = (0, r.Z)(S, "meta.entities.user.".concat(S.payload, ".email")), !(Me && Me !== oe)) {
 								je.next = 15;
 								break
 							}
@@ -8354,7 +8365,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						case "end":
 							return je.stop()
 					}
-				}, S, this)
+				}, A, this)
 			}
 			var F = [Z(), x(), f()],
 				$ = n("../react/pages/apps/marketplace/requests/common.ts"),
@@ -8377,28 +8388,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Ee = n("../react/pages/apps/marketplace/libraries/helpers.ts"),
 				ye = n("../react/pages/apps/marketplace/state/common.reducer.ts");
 
-			function N(O) {
+			function N(S) {
 				for (var P = 1; P < arguments.length; P++) {
 					var V = arguments[P] != null ? Object(arguments[P]) : {},
 						oe = Object.keys(V);
 					typeof Object.getOwnPropertySymbols == "function" && (oe = oe.concat(Object.getOwnPropertySymbols(V).filter(function(Me) {
 						return Object.getOwnPropertyDescriptor(V, Me).enumerable
 					}))), oe.forEach(function(Me) {
-						L(O, Me, V[Me])
+						L(S, Me, V[Me])
 					})
 				}
-				return O
+				return S
 			}
 
-			function L(O, P, V) {
-				return P in O ? Object.defineProperty(O, P, {
+			function L(S, P, V) {
+				return P in S ? Object.defineProperty(S, P, {
 					value: V,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : O[P] = V, O
+				}) : S[P] = V, S
 			}
-			var M = regeneratorRuntime.mark(K),
+			var M = regeneratorRuntime.mark(H),
 				R = regeneratorRuntime.mark(_),
 				B = regeneratorRuntime.mark(te),
 				q = regeneratorRuntime.mark(T),
@@ -8411,7 +8422,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				fe = regeneratorRuntime.mark(Ue),
 				me = regeneratorRuntime.mark(Le);
 
-			function K(O, P, V) {
+			function H(S, P, V) {
 				var oe;
 				return regeneratorRuntime.wrap(function(xe) {
 					for (;;) switch (xe.prev = xe.next) {
@@ -8430,7 +8441,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								excludeApps: P.map(function(je) {
 									return je.appId
 								}).join(",")
-							}, xe.next = 3, (0, t.RE)($.RX, ye.Nw, $.Jb.recommendedApps.name, $.Jb.recommendedApps.url(oe), Ee.Ux.transformers.transformAppIdsToApps.bind(null, O));
+							}, xe.next = 3, (0, t.RE)($.RX, ye.Nw, $.Jb.recommendedApps.name, $.Jb.recommendedApps.url(oe), Ee.Ux.transformers.transformAppIdsToApps.bind(null, S));
 						case 3:
 							return xe.abrupt("return", xe.sent);
 						case 4:
@@ -8441,13 +8452,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function _() {
-				var O, P, V, oe, Me, xe, je;
+				var S, P, V, oe, Me, xe, je;
 				return regeneratorRuntime.wrap(function(Je) {
 					for (;;) switch (Je.prev = Je.next) {
 						case 0:
 							return Je.next = 3, (0, t.qn)(ye.U4.GetHomePageAssetsSaga);
 						case 3:
-							return O = Je.sent, P = O.zoneId, V = O.currentResources, Je.next = 8, (0, t.$6)(N({}, V.appsList.status === "latent" ? {
+							return S = Je.sent, P = S.zoneId, V = S.currentResources, Je.next = 8, (0, t.$6)(N({}, V.appsList.status === "latent" ? {
 								appsList: (0, t.RE)($.RX, ye.Nw, $.Jb.apps.name, $.Jb.apps.url())
 							} : {
 								appsList: V.appsList.value
@@ -8479,13 +8490,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function te() {
-				var O, P, V;
+				var S, P, V;
 				return regeneratorRuntime.wrap(function(Me) {
 					for (;;) switch (Me.prev = Me.next) {
 						case 0:
 							return Me.next = 3, (0, t.qn)(ye.U4.GetDevelopedAppsAssetsSaga);
 						case 3:
-							return O = Me.sent, P = O.userId, V = O.zoneId, Me.next = 8, (0, t.RE)($.RX, ye.Nw, $.Jb.installs.default.name, $.Jb.installs.default.url(V));
+							return S = Me.sent, P = S.userId, V = S.zoneId, Me.next = 8, (0, t.RE)($.RX, ye.Nw, $.Jb.installs.default.name, $.Jb.installs.default.url(V));
 						case 8:
 							return Me.next = 10, (0, t.RE)($.RX, ye.Nw, $.Jb.developedApps.name, $.Jb.developedApps.url(P));
 						case 10:
@@ -8499,13 +8510,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function T() {
-				var O, P, V, oe, Me;
+				var S, P, V, oe, Me;
 				return regeneratorRuntime.wrap(function(je) {
 					for (;;) switch (je.prev = je.next) {
 						case 0:
 							return je.next = 3, (0, t.qn)(ye.U4.GetAppInfoAssetsSaga);
 						case 3:
-							return O = je.sent, P = O.appIdentifier, V = O.zoneId, oe = O.version, je.next = 9, (0, t.RE)($.RX, ye.Nw, $.Jb.installs.default.name, $.Jb.installs.default.url(V));
+							return S = je.sent, P = S.appIdentifier, V = S.zoneId, oe = S.version, je.next = 9, (0, t.RE)($.RX, ye.Nw, $.Jb.installs.default.name, $.Jb.installs.default.url(V));
 						case 9:
 							return Me = je.sent, je.next = 12, (0, t.RE)($.RX, ye.Nw, $.Jb.app.name, $.Jb.app.url(P, oe ? {
 								version: oe
@@ -8521,11 +8532,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function G() {
-				var O;
+				var S;
 				return regeneratorRuntime.wrap(function(V) {
 					for (;;) switch (V.prev = V.next) {
 						case 0:
-							O = regeneratorRuntime.mark(function oe() {
+							S = regeneratorRuntime.mark(function oe() {
 								var Me, xe, je, Ke, Je, Qe, Ae;
 								return regeneratorRuntime.wrap(function(ve) {
 									for (;;) switch (ve.prev = ve.next) {
@@ -8553,7 +8564,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								}, oe, this)
 							});
 						case 1:
-							return V.delegateYield(O(), "t0", 3);
+							return V.delegateYield(S(), "t0", 3);
 						case 3:
 							V.next = 1;
 							break;
@@ -8581,13 +8592,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function _e() {
-				var O, P;
+				var S, P;
 				return regeneratorRuntime.wrap(function(oe) {
 					for (;;) switch (oe.prev = oe.next) {
 						case 0:
 							return oe.next = 3, (0, t.qn)(ye.U4.GetCategoriesSaga);
 						case 3:
-							return O = oe.sent, P = O.queryParams, oe.next = 7, (0, t.RE)($.RX, ye.Nw, $.Jb.categories.name, $.Jb.categories.url(P));
+							return S = oe.sent, P = S.queryParams, oe.next = 7, (0, t.RE)($.RX, ye.Nw, $.Jb.categories.name, $.Jb.categories.url(P));
 						case 7:
 							return oe.abrupt("return", oe.sent);
 						case 10:
@@ -8598,13 +8609,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function he() {
-				var O, P;
+				var S, P;
 				return regeneratorRuntime.wrap(function(oe) {
 					for (;;) switch (oe.prev = oe.next) {
 						case 0:
 							return oe.next = 3, (0, t.qn)(ye.U4.GetInstallsSaga);
 						case 3:
-							return O = oe.sent, P = O.zoneId, oe.next = 7, (0, t.RE)($.RX, ye.Nw, $.Jb.installs.default.name, $.Jb.installs.default.url(P));
+							return S = oe.sent, P = S.zoneId, oe.next = 7, (0, t.RE)($.RX, ye.Nw, $.Jb.installs.default.name, $.Jb.installs.default.url(P));
 						case 7:
 							return oe.abrupt("return", oe.sent);
 						case 10:
@@ -8615,13 +8626,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function Re() {
-				var O, P;
+				var S, P;
 				return regeneratorRuntime.wrap(function(oe) {
 					for (;;) switch (oe.prev = oe.next) {
 						case 0:
 							return oe.next = 3, (0, t.qn)(ye.U4.GetMetadataSaga);
 						case 3:
-							return O = oe.sent, P = O.zoneId, oe.next = 7, (0, t.RE)($.RX, ye.Nw, $.Jb.metadata.get.name, $.Jb.metadata.get.url(P));
+							return S = oe.sent, P = S.zoneId, oe.next = 7, (0, t.RE)($.RX, ye.Nw, $.Jb.metadata.get.name, $.Jb.metadata.get.url(P));
 						case 7:
 							return oe.abrupt("return", oe.sent);
 						case 10:
@@ -8632,13 +8643,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function Ie() {
-				var O, P, V, oe;
+				var S, P, V, oe;
 				return regeneratorRuntime.wrap(function(xe) {
 					for (;;) switch (xe.prev = xe.next) {
 						case 0:
 							return xe.next = 3, (0, t.qn)(ye.U4.GetRecommendedAppsSaga);
 						case 3:
-							return O = xe.sent, P = O.appsList, V = O.installsList, oe = O.metadata, xe.next = 9, (0, t.RE)(K, P, V, oe);
+							return S = xe.sent, P = S.appsList, V = S.installsList, oe = S.metadata, xe.next = 9, (0, t.RE)(H, P, V, oe);
 						case 9:
 							xe.next = 0;
 							break;
@@ -8650,20 +8661,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function Ue() {
-				var O, P, V, oe, Me, xe, je, Ke;
+				var S, P, V, oe, Me, xe, je, Ke;
 				return regeneratorRuntime.wrap(function(Qe) {
 					for (;;) switch (Qe.prev = Qe.next) {
 						case 0:
 							return Qe.next = 3, (0, t.qn)(ye.U4.PostMetadataSaga);
 						case 3:
-							return O = Qe.sent, P = O.zoneId, V = O.data, Qe.prev = 6, Qe.next = 9, (0, t.Ys)(j);
+							return S = Qe.sent, P = S.zoneId, V = S.data, Qe.prev = 6, Qe.next = 9, (0, t.Ys)(j);
 						case 9:
 							return oe = Qe.sent, Me = oe.appsList, xe = oe.installsList, je = oe.metadata, Ke = N({}, je.value, {
 								id: P,
 								markets: [V]
 							}), Qe.next = 16, (0, t.RE)($.JX, ye.Nw, $.Jb.metadata.post.name, $.Jb.metadata.post.url(P), Ke);
 						case 16:
-							return Qe.next = 18, (0, t.RE)(K, Me.value, xe.value, Ke);
+							return Qe.next = 18, (0, t.RE)(H, Me.value, xe.value, Ke);
 						case 18:
 							Qe.next = 22;
 							break;
@@ -8700,8 +8711,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			var He = [_(), G(), te(), T(), ae(), he(), _e(), Re(), Ue(), Ie(), Le()],
 				$e = null;
 
-			function qe(O) {
-				return de(O) || le(O) || Ve(O) || Xe()
+			function qe(S) {
+				return de(S) || le(S) || Ve(S) || Xe()
 			}
 
 			function Xe() {
@@ -8709,31 +8720,31 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function Ve(O, P) {
-				if (!!O) {
-					if (typeof O == "string") return Te(O, P);
-					var V = Object.prototype.toString.call(O).slice(8, -1);
-					if (V === "Object" && O.constructor && (V = O.constructor.name), V === "Map" || V === "Set") return Array.from(O);
-					if (V === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(V)) return Te(O, P)
+			function Ve(S, P) {
+				if (!!S) {
+					if (typeof S == "string") return Te(S, P);
+					var V = Object.prototype.toString.call(S).slice(8, -1);
+					if (V === "Object" && S.constructor && (V = S.constructor.name), V === "Map" || V === "Set") return Array.from(S);
+					if (V === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(V)) return Te(S, P)
 				}
 			}
 
-			function le(O) {
-				if (typeof Symbol != "undefined" && O[Symbol.iterator] != null || O["@@iterator"] != null) return Array.from(O)
+			function le(S) {
+				if (typeof Symbol != "undefined" && S[Symbol.iterator] != null || S["@@iterator"] != null) return Array.from(S)
 			}
 
-			function de(O) {
-				if (Array.isArray(O)) return Te(O)
+			function de(S) {
+				if (Array.isArray(S)) return Te(S)
 			}
 
-			function Te(O, P) {
-				(P == null || P > O.length) && (P = O.length);
-				for (var V = 0, oe = new Array(P); V < P; V++) oe[V] = O[V];
+			function Te(S, P) {
+				(P == null || P > S.length) && (P = S.length);
+				for (var V = 0, oe = new Array(P); V < P; V++) oe[V] = S[V];
 				return oe
 			}
 			var I = qe(F).concat(qe(He));
 
-			function H() {
+			function K() {
 				return regeneratorRuntime.wrap(function(P) {
 					for (;;) switch (P.prev = P.next) {
 						case 0:
@@ -8818,9 +8829,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}), L && f(N, L)
 			}
 
-			function S(N) {
+			function A(N) {
 				var L = typeof Map == "function" ? new Map : void 0;
-				return S = function(R) {
+				return A = function(R) {
 					if (R === null || !u(R)) return R;
 					if (typeof R != "function") throw new TypeError("Super expression must either be null or a function");
 					if (typeof L != "undefined") {
@@ -8839,7 +8850,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							configurable: !0
 						}
 					}), f(B, R)
-				}, S(N)
+				}, A(N)
 			}
 
 			function m(N, L, M) {
@@ -8889,7 +8900,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return i(this, L), M = l(this, d(L).call(this)), M.name = Z.Init, M
 					}
 					return L
-				}(S(Error)),
+				}(A(Error)),
 				F = function(N) {
 					U(L, N);
 
@@ -8898,7 +8909,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return i(this, L), M = l(this, d(L).call(this)), M.name = Z.BadToken, M
 					}
 					return L
-				}(S(Error)),
+				}(A(Error)),
 				$ = function(N) {
 					U(L, N);
 
@@ -8907,7 +8918,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return i(this, L), M = l(this, d(L).call(this)), M.name = Z.RedirectToLogin, M
 					}
 					return L
-				}(S(Error)),
+				}(A(Error)),
 				be = function(N) {
 					U(L, N);
 
@@ -8916,7 +8927,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return i(this, L), M = l(this, d(L).call(this)), M.name = Z.ExpiredToken, M
 					}
 					return L
-				}(S(Error)),
+				}(A(Error)),
 				se = function(L) {
 					try {
 						var M = (0, s.Z)(L);
@@ -9084,7 +9095,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return C
 				},
 				t$: function() {
-					return S
+					return A
 				}
 			});
 			var t = n("../../../../node_modules/lodash-es/random.js"),
@@ -9169,7 +9180,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return f.status
 					})
 				},
-				S = function(u) {
+				A = function(u) {
 					return u.apps ? u.apps : u
 				},
 				m = function(u) {
@@ -9381,42 +9392,42 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			var t = n("../../../../node_modules/lodash-es/defaults.js"),
 				r = n("../react/pages/apps/marketplace/libraries/helpers.ts");
 
-			function c(S) {
+			function c(A) {
 				for (var m = 1; m < arguments.length; m++) {
 					var g = arguments[m] != null ? Object(arguments[m]) : {},
 						u = Object.keys(g);
 					typeof Object.getOwnPropertySymbols == "function" && (u = u.concat(Object.getOwnPropertySymbols(g).filter(function(f) {
 						return Object.getOwnPropertyDescriptor(g, f).enumerable
 					}))), u.forEach(function(f) {
-						i(S, f, g[f])
+						i(A, f, g[f])
 					})
 				}
-				return S
+				return A
 			}
 
-			function b(S, m) {
-				if (S == null) return {};
-				var g = h(S, m),
+			function b(A, m) {
+				if (A == null) return {};
+				var g = h(A, m),
 					u, f;
 				if (Object.getOwnPropertySymbols) {
-					var d = Object.getOwnPropertySymbols(S);
-					for (f = 0; f < d.length; f++) u = d[f], !(m.indexOf(u) >= 0) && (!Object.prototype.propertyIsEnumerable.call(S, u) || (g[u] = S[u]))
+					var d = Object.getOwnPropertySymbols(A);
+					for (f = 0; f < d.length; f++) u = d[f], !(m.indexOf(u) >= 0) && (!Object.prototype.propertyIsEnumerable.call(A, u) || (g[u] = A[u]))
 				}
 				return g
 			}
 
-			function h(S, m) {
-				if (S == null) return {};
+			function h(A, m) {
+				if (A == null) return {};
 				var g = {},
-					u = Object.keys(S),
+					u = Object.keys(A),
 					f, d;
-				for (d = 0; d < u.length; d++) f = u[d], !(m.indexOf(f) >= 0) && (g[f] = S[f]);
+				for (d = 0; d < u.length; d++) f = u[d], !(m.indexOf(f) >= 0) && (g[f] = A[f]);
 				return g
 			}
 
-			function s(S, m, g, u, f, d, Z) {
+			function s(A, m, g, u, f, d, Z) {
 				try {
-					var x = S[d](Z),
+					var x = A[d](Z),
 						F = x.value
 				} catch ($) {
 					g($);
@@ -9425,12 +9436,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				x.done ? m(F) : Promise.resolve(F).then(u, f)
 			}
 
-			function y(S) {
+			function y(A) {
 				return function() {
 					var m = this,
 						g = arguments;
 					return new Promise(function(u, f) {
-						var d = S.apply(m, g);
+						var d = A.apply(m, g);
 
 						function Z(F) {
 							s(d, u, f, Z, x, "next", F)
@@ -9444,38 +9455,38 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}
 
-			function p(S, m) {
-				if (!(S instanceof m)) throw new TypeError("Cannot call a class as a function")
+			function p(A, m) {
+				if (!(A instanceof m)) throw new TypeError("Cannot call a class as a function")
 			}
 
-			function a(S, m) {
+			function a(A, m) {
 				for (var g = 0; g < m.length; g++) {
 					var u = m[g];
-					u.enumerable = u.enumerable || !1, u.configurable = !0, "value" in u && (u.writable = !0), Object.defineProperty(S, u.key, u)
+					u.enumerable = u.enumerable || !1, u.configurable = !0, "value" in u && (u.writable = !0), Object.defineProperty(A, u.key, u)
 				}
 			}
 
-			function e(S, m, g) {
-				return m && a(S.prototype, m), g && a(S, g), S
+			function e(A, m, g) {
+				return m && a(A.prototype, m), g && a(A, g), A
 			}
 
-			function i(S, m, g) {
-				return m in S ? Object.defineProperty(S, m, {
+			function i(A, m, g) {
+				return m in A ? Object.defineProperty(A, m, {
 					value: g,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : S[m] = g, S
+				}) : A[m] = g, A
 			}
 			var l = n("../../../../node_modules/url-join/lib/url-join.js"),
 				C = function() {
-					function S(m) {
+					function A(m) {
 						var g = this;
-						p(this, S), i(this, "token", void 0), i(this, "options", void 0), i(this, "setAuthHeader", function(u) {
+						p(this, A), i(this, "token", void 0), i(this, "options", void 0), i(this, "setAuthHeader", function(u) {
 							g.token = u
-						}), this.token = "", this.options = (0, t.Z)(m, S.defaults)
+						}), this.token = "", this.options = (0, t.Z)(m, A.defaults)
 					}
-					return e(S, [{
+					return e(A, [{
 						key: "getAuthHeaders",
 						value: function() {
 							return {
@@ -9561,7 +9572,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						value: function(g) {
 							return g.json()
 						}
-					}]), S
+					}]), A
 				}();
 			i(C, "defaults", {
 				baseUrl: (0, r.im)() ? "https://api-staging.appstore.cfdata.org" : "https://api.cloudflareapps.com"
@@ -9699,14 +9710,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					[4, 15]
 				])
 			}
-			var S = function(d) {
+			var A = function(d) {
 					return (0, r.Z)(d) ? "" : "?".concat(c.stringify(d))
 				},
 				m = {
 					app: new p({
 						name: "app",
 						url: function(d, Z) {
-							return "apps/".concat(d).concat(S(Z))
+							return "apps/".concat(d).concat(A(Z))
 						}
 					}),
 					apps: new p({
@@ -9733,7 +9744,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						name: "categories",
 						url: function() {
 							var d = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-							return "categories" + S(d)
+							return "categories" + A(d)
 						}
 					}),
 					metadata: {
@@ -9755,7 +9766,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							name: "ratings",
 							url: function() {
 								var d = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-								return "ratings" + S(d)
+								return "ratings" + A(d)
 							}
 						}),
 						delete: new p({
@@ -9769,7 +9780,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						name: "recommendedApps",
 						url: function() {
 							var d = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-							return "apps/recommend" + S(d)
+							return "apps/recommend" + A(d)
 						}
 					}),
 					developedApps: new p({
@@ -10483,13 +10494,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 			var C = "Notifications",
 				U = "notification",
-				S = (0, t.BC)(i(), "accountId"),
-				m = (0, t.BC)(e(), S),
+				A = (0, t.BC)(i(), "accountId"),
+				m = (0, t.BC)(e(), A),
 				g = (0, t.BC)(a(), m),
 				u = (0, t.BC)(p(), m),
 				f = (0, t.BC)(y(), m, "alertId"),
 				d = h({
-					account: S,
+					account: A,
 					alerts: m,
 					destinations: g,
 					createAlert: u,
@@ -10837,7 +10848,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				});
 			C.displayName = "LineWithStarContainer";
 			var U = function() {
-					return r().createElement(S, null, r().createElement("svg", {
+					return r().createElement(A, null, r().createElement("svg", {
 						width: "13",
 						height: "13",
 						viewBox: "0 0 13 13",
@@ -10851,7 +10862,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						fill: "#086FFF"
 					})))
 				},
-				S = (0, c.createComponent)(function(j) {
+				A = (0, c.createComponent)(function(j) {
 					var W = j.theme;
 					return {
 						position: "absolute",
@@ -10865,7 +10876,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}
 					}
 				});
-			S.displayName = "DotContainer";
+			A.displayName = "DotContainer";
 			var m = function() {
 					return r().createElement(g, null, r().createElement("svg", {
 						width: "15",
@@ -11272,9 +11283,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, E
 			}
 
-			function S() {
+			function A() {
 				var E = k(["/accounts/", "/access/identity_providers"]);
-				return S = function() {
+				return A = function() {
 					return E
 				}, E
 			}
@@ -11496,9 +11507,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, E
 			}
 
-			function K() {
+			function H() {
 				var E = k(["/pages/assets/check-missing"]);
-				return K = function() {
+				return H = function() {
 					return E
 				}, E
 			}
@@ -11643,16 +11654,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, E
 			}
 
-			function H() {
+			function K() {
 				var E = k(["/", "/pages/view/", "/domains"]);
-				return H = function() {
+				return K = function() {
 					return E
 				}, E
 			}
 
-			function O() {
+			function S() {
 				var E = k(["/", "/pages/view/", "/analytics/", "(preview|production)"]);
-				return O = function() {
+				return S = function() {
 					return E
 				}, E
 			}
@@ -11745,8 +11756,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					newProjectProvider: (0, t.BC)(oe(), "accountId", "provider"),
 					projectDetails: (0, t.BC)(V(), "accountId", "projectName"),
 					projectAnalyticsRoot: (0, t.BC)(P(), "accountId", "projectName"),
-					projectAnalytics: (0, t.BC)(O(), "accountId", "projectName", "deploymentType"),
-					projectDomains: (0, t.BC)(H(), "accountId", "projectName"),
+					projectAnalytics: (0, t.BC)(S(), "accountId", "projectName", "deploymentType"),
+					projectDomains: (0, t.BC)(K(), "accountId", "projectName"),
 					projectSettings: (0, t.BC)(I(), "accountId", "projectName"),
 					projectSettingsBuildDeployment: (0, t.BC)(Te(), "accountId", "projectName"),
 					projectSettingsEnvironmentVariables: (0, t.BC)(de(), "accountId", "projectName"),
@@ -11769,7 +11780,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				De = {
 					accountSettings: (0, t.BC)(_(), "accountId"),
-					checkMissing: (0, t.BC)(K()),
+					checkMissing: (0, t.BC)(H()),
 					metrics: (0, t.BC)(me(), "accountId"),
 					projects: (0, t.BC)(fe(), "accountId"),
 					projectDetails: (0, t.BC)(re(), "accountId", "projectName"),
@@ -11801,7 +11812,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					deployHooks: (0, t.BC)(u(), "accountId", "projectName"),
 					changeDeployHooks: (0, t.BC)(g(), "accountId", "projectName", "hookId"),
 					accessApps: (0, t.BC)(m(), "accountId"),
-					accessIdPs: (0, t.BC)(S(), "accountId"),
+					accessIdPs: (0, t.BC)(A(), "accountId"),
 					accessOrg: (0, t.BC)(U(), "accountId"),
 					accessPolicies: (0, t.BC)(C(), "accountId", "appId"),
 					accountMembers: (0, t.BC)(l(), "accountId", "page"),
@@ -11933,9 +11944,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, _
 			}
 
-			function S() {
+			function A() {
 				var _ = D(["/accounts/", "/r2/buckets/", "/objects"]);
-				return S = function() {
+				return A = function() {
 					return _
 				}, _
 			}
@@ -12134,7 +12145,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					canUnsubscribe: (0, t.BC)(u(), "accountId"),
 					buckets: (0, t.BC)(g(), "accountId"),
 					bucket: (0, t.BC)(m(), "accountId", "bucketName"),
-					objects: (0, t.BC)(S(), "accountId", "bucketName"),
+					objects: (0, t.BC)(A(), "accountId", "bucketName"),
 					object: (0, t.BC)(U(), "accountId", "bucketName", "objectKey"),
 					bucketUsage: (0, t.BC)(C(), "accountId", "bucketName"),
 					bucketAccess: (0, t.BC)(l(), "accountId", "bucketName"),
@@ -12173,7 +12184,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					var T = fe();
 					return "https://".concat(te, ".").concat(T)
 				},
-				K = function(te, T) {
+				H = function(te, T) {
 					var G = me(te);
 					return "".concat(G, "/").concat(T)
 				}
@@ -12504,7 +12515,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				l = "YYYY-MM-DD HH:mm:SS ZZ",
 				C = "active",
 				U = ["bundled", "unbound"],
-				S = null
+				A = null
 		},
 		"../react/pages/zoneless-workers/routes.ts": function(Oe, z, n) {
 			"use strict";
@@ -12618,9 +12629,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, o
 			}
 
-			function S() {
+			function A() {
 				var o = ge(["/user/tokens"]);
-				return S = function() {
+				return A = function() {
 					return o
 				}, o
 			}
@@ -12842,9 +12853,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, o
 			}
 
-			function K() {
+			function H() {
 				var o = ge(["/accounts/", "/workers/services/", "/environments/", "/content/v2"]);
-				return K = function() {
+				return H = function() {
 					return o
 				}, o
 			}
@@ -12989,16 +13000,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, o
 			}
 
-			function H() {
+			function K() {
 				var o = ge(["/", "/logs"]);
-				return H = function() {
+				return K = function() {
 					return o
 				}, o
 			}
 
-			function O() {
+			function S() {
 				var o = ge(["/", "/developer-platform/workers/success"]);
-				return O = function() {
+				return S = function() {
 					return o
 				}, o
 			}
@@ -13129,16 +13140,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, o
 			}
 
-			function ft() {
+			function mt() {
 				var o = ge(["/", "/workers/services/", "/", "/", "/integrations-setup"]);
-				return ft = function() {
+				return mt = function() {
 					return o
 				}, o
 			}
 
-			function at() {
+			function rt() {
 				var o = ge(["/", "/workers/services/view/", "/", "/deployments"]);
-				return at = function() {
+				return rt = function() {
 					return o
 				}, o
 			}
@@ -13248,9 +13259,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, o
 			}
 
-			function mt() {
+			function dt() {
 				var o = ge(["/", "/workers/plans"]);
-				return mt = function() {
+				return dt = function() {
 					return o
 				}, o
 			}
@@ -13290,23 +13301,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, o
 			}
 
-			function dt() {
-				var o = ge(["/", "/workers/subdomain"]);
-				return dt = function() {
-					return o
-				}, o
-			}
-
-			function rt() {
-				var o = ge(["/", "/workers/overview"]);
-				return rt = function() {
-					return o
-				}, o
-			}
-
 			function pt() {
-				var o = ge(["/", "/workers-and-pages/create"]);
+				var o = ge(["/", "/workers/subdomain"]);
 				return pt = function() {
+					return o
+				}, o
+			}
+
+			function at() {
+				var o = ge(["/", "/workers/overview"]);
+				return at = function() {
+					return o
+				}, o
+			}
+
+			function ft() {
+				var o = ge(["/", "/workers-and-pages/create"]);
+				return ft = function() {
 					return o
 				}, o
 			}
@@ -13352,15 +13363,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					workersOverview: (0, t.BC)(Ct(), "accountId"),
 					zoneRoot: (0, t.BC)(Et(), "accountId", "zoneName"),
 					root: (0, t.BC)(kt(), "accountId"),
-					onboarding: (0, t.BC)(pt(), "accountId"),
-					overview: (0, t.BC)(rt(), "accountId"),
-					subdomain: (0, t.BC)(dt(), "accountId"),
+					onboarding: (0, t.BC)(ft(), "accountId"),
+					overview: (0, t.BC)(at(), "accountId"),
+					subdomain: (0, t.BC)(pt(), "accountId"),
 					defaultUsageModel: (0, t.BC)(yt(), "accountId"),
 					computeSetting: (0, t.BC)(vt(), "accountId"),
 					cli: (0, t.BC)(Pt(), "accountId"),
 					kvRoot: (0, t.BC)(gt(), "accountId"),
 					kvStore: (0, t.BC)(st(), "accountId"),
-					plans: (0, t.BC)(mt(), "accountId"),
+					plans: (0, t.BC)(dt(), "accountId"),
 					purchase: (0, t.BC)(lt(), "accountId"),
 					kvNamespace: (0, t.BC)(it(), "accountId", "namespaceId"),
 					d1Database: (0, t.BC)(ot(), "accountId", "databaseId"),
@@ -13376,8 +13387,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					renameService: (0, t.BC)(_t(), "accountId", "serviceId"),
 					serviceDetailsRoot: (0, t.BC)(wt(), "accountId", "serviceId"),
 					serviceDetails: (0, t.BC)(At(), "accountId", "serviceId", "environmentName"),
-					serviceDetailsDeployments: (0, t.BC)(at(), "accountId", "serviceId", "environmentName"),
-					serviceDetailsIntegrationsFlow: (0, t.BC)(ft(), "accountId", "serviceId", "environmentName", "integrationId"),
+					serviceDetailsDeployments: (0, t.BC)(rt(), "accountId", "serviceId", "environmentName"),
+					serviceDetailsIntegrationsFlow: (0, t.BC)(mt(), "accountId", "serviceId", "environmentName", "integrationId"),
 					serviceDetailsTriggers: (0, t.BC)(We(), "accountId", "serviceId", "environmentName"),
 					serviceDetailsIntegrations: (0, t.BC)(tt(), "accountId", "serviceId", "environmentName"),
 					serviceDetailsSettings: (0, t.BC)(Ce(), "accountId", "serviceId", "environmentName"),
@@ -13396,8 +13407,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					emailRouting: (0, t.BC)(oe(), "accountId", "zoneName"),
 					zones: (0, t.BC)(V(), "accountId"),
 					developerPlatform_workers_create: (0, t.BC)(P(), "accountId"),
-					developerPlatform_workers_success: (0, t.BC)(O(), "accountId"),
-					logpush: (0, t.BC)(H(), "accountId"),
+					developerPlatform_workers_success: (0, t.BC)(S(), "accountId"),
+					logpush: (0, t.BC)(K(), "accountId"),
 					members: (0, t.BC)(I(), "accountId")
 				},
 				Ot = "https://cron-triggers.cloudflareworkers.com",
@@ -13424,7 +13435,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					serviceEnvironment: (0, t.BC)(T(), "accountId", "serviceId", "environmentName"),
 					serviceRoutes: (0, t.BC)(te(), "accountId", "serviceId", "environmentName"),
 					serviceScript: (0, t.BC)(_(), "accountId", "serviceId", "environmentName"),
-					serviceScriptV2: (0, t.BC)(K(), "accountId", "serviceId", "environmentName"),
+					serviceScriptV2: (0, t.BC)(H(), "accountId", "serviceId", "environmentName"),
 					serviceBindings: (0, t.BC)(me(), "accountId", "serviceId", "environmentName"),
 					serviceBindingsReferences: (0, t.BC)(fe(), "accountId", "serviceId", "environmentName"),
 					serviceSettings: (0, t.BC)(re(), "accountId", "serviceId", "environmentName"),
@@ -13456,7 +13467,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					spectrum: (0, t.BC)(u(), "zoneId"),
 					accountMtlsCertificates: (0, t.BC)(g(), "accountId"),
 					permissionGroups: (0, t.BC)(m()),
-					createApiToken: (0, t.BC)(S()),
+					createApiToken: (0, t.BC)(A()),
 					deleteApiToken: (0, t.BC)(U(), "tokenId"),
 					integrations: {
 						getIntegrations: (0, t.BC)(C(), "accountId"),
@@ -13530,7 +13541,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						e(document.activeElement) && l(document.activeElement), s = !0
 					}
 
-					function S(x) {
+					function A(x) {
 						s = !1
 					}
 
@@ -13559,7 +13570,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					function Z(x) {
 						x.target.nodeName.toLowerCase() !== "html" && (s = !1, d())
 					}
-					document.addEventListener("keydown", U, !0), document.addEventListener("mousedown", S, !0), document.addEventListener("pointerdown", S, !0), document.addEventListener("touchstart", S, !0), document.addEventListener("focus", m, !0), document.addEventListener("blur", g, !0), document.addEventListener("visibilitychange", u, !0), f(), document.documentElement.setAttribute("js-focus-visible-polyfill-available", "")
+					document.addEventListener("keydown", U, !0), document.addEventListener("mousedown", A, !0), document.addEventListener("pointerdown", A, !0), document.addEventListener("touchstart", A, !0), document.addEventListener("focus", m, !0), document.addEventListener("blur", g, !0), document.addEventListener("visibilitychange", u, !0), f(), document.documentElement.setAttribute("js-focus-visible-polyfill-available", "")
 				}
 
 				function h(s) {
@@ -13576,7 +13587,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			"use strict";
 			n.r(z), n.d(z, {
 				attachAtokHeader: function() {
-					return S
+					return A
 				},
 				attachErrorHandler: function() {
 					return u
@@ -13660,7 +13671,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				U = function(L) {
 					L.url.charAt(0) !== "/" && (L.url = "/".concat(L.url))
 				},
-				S = function(L) {
+				A = function(L) {
 					n.g.bootstrap && n.g.bootstrap.atok && (L.headers = i({}, L.headers, {
 						"X-ATOK": n.g.bootstrap.atok
 					}))
@@ -13730,7 +13741,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				x = function(L, M) {
 					return ["API Request Failed: ".concat(L.method, " ").concat(L.url, " (").concat(M.status, ")")]
 				};
-			t.beforeSend(U), t.beforeSend(S), t.beforeSend(m), t.beforeSend(g), t.beforeSend(u);
+			t.beforeSend(U), t.beforeSend(A), t.beforeSend(m), t.beforeSend(g), t.beforeSend(u);
 			var F = function(L) {
 				return t.del("/user/sessions/current").then(function(M) {
 					if (s.E.remove(y.Qq), L) window.location.href = L;
@@ -13935,7 +13946,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					staging: l.concat(i, e),
 					production: l.concat(i)
 				},
-				S = {
+				A = {
 					test: C.concat(i, e),
 					development: C.concat(i, e),
 					staging: C.concat(i, e),
@@ -13943,7 +13954,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				m = function(F, $) {
 					var be = c.Q[$];
-					return F ? U.production.includes(be) : S.production.includes(be)
+					return F ? U.production.includes(be) : A.production.includes(be)
 				},
 				g = function(F) {
 					return Object.keys(c.Q).filter(function($) {
@@ -14065,36 +14076,36 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					pseudoLoc: h("is_pseudo_loc")
 				});
 
-			function y(S) {
+			function y(A) {
 				for (var m = arguments.length, g = new Array(m > 1 ? m - 1 : 0), u = 1; u < m; u++) g[u - 1] = arguments[u];
-				return s.t.apply(s, [S].concat(g))
+				return s.t.apply(s, [A].concat(g))
 			}
 			var p = s;
 
-			function a(S) {
+			function a(A) {
 				for (var m = arguments.length, g = new Array(m > 1 ? m - 1 : 0), u = 1; u < m; u++) g[u - 1] = arguments[u];
-				return markdown(y(S, g))
+				return markdown(y(A, g))
 			}
 
-			function e(S) {
-				if (Number(S) !== 0) {
-					if (S % 86400 == 0) return y("time.num_days", {
-						smart_count: S / 86400
+			function e(A) {
+				if (Number(A) !== 0) {
+					if (A % 86400 == 0) return y("time.num_days", {
+						smart_count: A / 86400
 					});
-					if (S % 3600 == 0) return y("time.num_hours", {
-						smart_count: S / 3600
+					if (A % 3600 == 0) return y("time.num_hours", {
+						smart_count: A / 3600
 					});
-					if (S % 60 == 0) return y("time.num_minutes", {
-						smart_count: S / 60
+					if (A % 60 == 0) return y("time.num_minutes", {
+						smart_count: A / 60
 					})
 				}
 				return y("time.num_seconds", {
-					smart_count: S
+					smart_count: A
 				})
 			}
 
-			function i(S, m) {
-				return S in m ? m[S] : void 0
+			function i(A, m) {
+				return A in m ? m[A] : void 0
 			}
 			var l = b.cC,
 				C = b.oc,
@@ -14107,7 +14118,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return j
 				},
 				Fl: function() {
-					return K
+					return H
 				},
 				KT: function() {
 					return te
@@ -14171,7 +14182,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function i(T) {
-				if (Array.isArray(T)) return S(T)
+				if (Array.isArray(T)) return A(T)
 			}
 
 			function l(T, G) {
@@ -14185,14 +14196,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function U(T, G) {
 				if (!!T) {
-					if (typeof T == "string") return S(T, G);
+					if (typeof T == "string") return A(T, G);
 					var ae = Object.prototype.toString.call(T).slice(8, -1);
 					if (ae === "Object" && T.constructor && (ae = T.constructor.name), ae === "Map" || ae === "Set") return Array.from(T);
-					if (ae === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ae)) return S(T, G)
+					if (ae === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ae)) return A(T, G)
 				}
 			}
 
-			function S(T, G) {
+			function A(T, G) {
 				(G == null || G > T.length) && (G = T.length);
 				for (var ae = 0, _e = new Array(G); ae < G; ae++) _e[ae] = T[ae];
 				return _e
@@ -14336,7 +14347,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				me = p(Object.values(b._j)).concat(p(Object.values(h._j)), p(Object.values(s._j))).sort(fe);
 
-			function K(T) {
+			function H(T) {
 				if (!L(T)) return T;
 				var G = !0,
 					ae = !1,
@@ -14346,8 +14357,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						var Ie = Re.value;
 						if (Ie.expression.test(T)) return Ie.pattern
 					}
-				} catch (H) {
-					ae = !0, _e = H
+				} catch (K) {
+					ae = !0, _e = K
 				} finally {
 					try {
 						!G && he.return != null && he.return()
@@ -14424,7 +14435,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return fe
 				},
 				v_: function() {
-					return K
+					return H
 				}
 			});
 			var t = n("webpack/sharing/consume/default/@cloudflare/util-sparrow/@cloudflare/util-sparrow"),
@@ -14461,12 +14472,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					writable: !0
 				}) : T[G] = ae, T
 			}
-			var S = e.eg.exact(e.eg.object({
+			var A = e.eg.exact(e.eg.object({
 					_ga: e.eg.string.optional
 				})),
 				m = (0, i.Z)(function(T) {
 					try {
-						return S.assertDecode((0, y.Q)(T))
+						return A.assertDecode((0, y.Q)(T))
 					} catch (G) {
 						return console.error(G), {}
 					}
@@ -14543,7 +14554,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									case 3:
 										return Le.abrupt("return", Le.sent);
 									case 6:
-										if (Le.prev = 6, Le.t0 = Le.catch(0), console.error(Le.t0), K()) {
+										if (Le.prev = 6, Le.t0 = Le.catch(0), console.error(Le.t0), H()) {
 											Le.next = 11;
 											break
 										}
@@ -14640,7 +14651,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						return e.eg.literal(Ie)
 					}))))
 				},
-				N = ye("abort import", "Access Click", "Access click", "Access Promo Banner Click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add kv key-value", "Add insight", "add payment method", "Add site click", "add workers route", "Added API Shield schema", "Addon Purchase Success", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "Argo click", "Argo Smart Routing click", "Argo Tiered Caching click", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel snippet form", "cancel source deletion", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change default action API Shield SV", "change DNS file upload error visibility", "change DNS setup method", "change pagination page shield", "Change Plan Frequency", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "copy script id page shield", "copy script url page shield", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add sources", "click API shield upsell link", "click API shield enable product button", "click API shield feedback link", "click API snippet drawer", "click back to all policies link", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click complete purchase button", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create load balancer", "Click Create Rule", "click create policy form link", "click deflect community TSF (3.0)", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on edit snippet", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click resolve security issue button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click ticket submission form search result", "click ticket submission form suggestion", "Click to create API Shield portal", "click to create rate limiting rule for endpoint", "click Top N investigate", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "Click", "create migration", "create or update queue consumer", "create queue", "create sink", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close bulk delete image modal", "close delete image modal", "close delete variant modal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script id page shield", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create default environments", "create environment", "create kv namespace", "create migration", "Create New Rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create worker from playground", "cancel create worker from playground", "create sink", "create source", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete brand pattern", "Delete click", "Delete confirmation", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete source", "delete variant", "Deploy API Shield portal", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "Enable or disable API Shield SV", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "exit onboarding guide", "expand account select dropdown", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand zone select dropdown", "Explore demo button click", "export instant logs", "export single image", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "Filter used", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Free Long Wait", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "manage security insight", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "navigate to source detail", "navigate to variant detail", "navigate to WAF Migration Review configuration view", "navigate topbar", "Next onboarding guide section", "next page", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open edit notification page", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase attempt", "purchase completed", "purchase domain transfer", "purchase subscription", "Purge cache click", "purge everything from cache", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "Request trial button click", "resend verification email", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "run security scan", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select file", "Select hostname success", "select language", "select notification type", "select onboarding bundle", "select page rules quantity", "select payment method", "select payment option", "select product", "select r2 plan", "select record addition method", "select source", "select storage plan", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "Selected schema API Shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "Showed API Shield Flyfishing page", "signed exchanges toggle", "site configured", "skip onboarding guide section", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Upload Failure", "Stream Video Upload Success", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "transfer DNS records", "Transfer out survey submitted", "Transfer Step", "Transter purchased", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "update pages project", "update site", "Upload custom click", "Upload custom confirmation", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "upload r2 objects", "Use overflow API Shield SV", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify address", "verify email", "view accounts", "view checkout complete purchase", "View click", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit blog announcements", "click discover card call to action", "click discover card view products", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click stripe beta select plan support link", "click stripe beta change plan support link", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "select rum map range", "select rum map metric", "has payment plan on file", "change appearance", "click star zone", "click star zone filter", "click cloudflare logo", "set marketing preference ent ss purchase", "clicked sidebar Discord link", "clicked sidebar Community Forum link", "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", "clicked R2 feedback link", "clicked R2 CLI guide", "clicked Constellation feedback link"),
+				N = ye("abort import", "Access Click", "Access click", "Access Promo Banner Click", "ack queue message", "ACM Purchase Success", "activate coveo recommended resource TSF (3.0)", "activate helperbot diagnostic TSF (3.0)", "Activity feed cancel download modal", "Activity feed close event", "Activity feed download from modal", "Activity feed download", "Activity feed expand event", "Activity feed expand matches", "Activity feed next page", "Activity feed open download modal", "Activity feed previous page", "Add API Discovery authorization headers", "Add Configuration Rule Settings", "add cron trigger", "Add filter", "add kv key-value", "Add insight", "add payment method", "Add site click", "add workers route", "Added API Shield schema", "Addon Purchase Success", "agree to terms", "Analytics Secondary Nav - Tab Click", "Analytics Time Period Change", "anonymizers found", "API documentation click", "apply recommendation", "Argo click", "Argo Smart Routing click", "Argo Tiered Caching click", "Attempt TOTP reconfigure", "begin deployment log stream", "begin import flow", "begin log stream", "begin zone activation flow", "Billing address country select toggle", "Billing click", "Billing email update failure", "Billing email update success", "Billing invoice download failed", "Billing invoice download success", "brand protection", "bulk delete images", "bulk export images", "Button click", "Cache settings click", "Can not display filter - Unparsable filter", "Can not display filter - Unsupported Fields", "cancel add records later", "cancel addon purchase of automatic platform optimization", "cancel disable totalTLS", "cancel import flow", "cancel form", "cancel notification create", "cancel notification delete", "cancel notification edit", "cancel notification test", "cancel onboarding flow", "cancel snippet form", "cancel source deletion", "cancel variant edit", "Canceled rule form", "Canceled subscription", "Certificate Patch click", "change brand pattern filter", "change certificate authority totalTLS", "change chart time horizon", "Change default action API Shield SV", "change DNS file upload error visibility", "change DNS setup method", "change pagination page shield", "Change Plan Frequency", "change priority submitted", "change SSL recommender", "change tab", "Change time window", "change zone setting", "Change zone setup confirmation", "Change zone status confirmation", "change zone status", "chat submission form submit click", "check nameservers", "choose plan", "copy script id page shield", "copy script url page shield", "Cipher Suites Link Click", "claim yubico promo offer", "click 2fa support token link", "click Account Home TSF (3.0)", "click add sources", "click API shield upsell link", "click API shield enable product button", "click API shield feedback link", "click API snippet drawer", "click back to all policies link", "Click BM bots JS detection", "Click BM bot templates", "Click BM create firewall rule", "Click BM welcome card", "click chat button", "click chat close modal", "click chat start", "click close callback request form", "click complete purchase button", "click configure 2fa support app link", "click continue quick scan", "click continue to support TSF (3.0)", "click coveo recommended resource TSF (3.0)", "click create load balancer", "Click Create Rule", "click create policy form link", "click deflect community TSF (3.0)", "Click Deploy Rule", "click dns completion wizard suggestion", "click dns email security configure", "click dns email security wizard record type", "click documentation link", "click edit policy", "click edge traffic visualisation link", "click enable argo button", "click end stream button", "click expand known issue", "click expand maintenance view", "click helperbot diagnostic report TSF (3.0)", "click Hide Self Help Flow", "click learn more link", "click link to waf migration documentation", "click link", "click load more coveo content TSF (3.0)", "click load balancer step", "click login help forgot email selection", "click login help forgot password selection", "click login help lost two factor selection", "click multi-sku confirmation", "click on edit snippet", "click on expand one sequence on api gateway sequences", "click on filter one sequence on api gateway sequences", "click on main filter api gateway sequences", "click on view endpoint on api gateway sequences", "click Open a Ticket TSF (3.0)", "click open callback request form", "click payment details", "click plan documentation link", "click purchase ACM - totalTLS", "click refresh suggestions", "Click refresh transfer status", "click Request Live Chat TSF (3.0)", "click resolve security issue button", "click save whois", "click scan again", "click select known issue", "click Self Help Flow Answer", "click Self Help Flow Close", "click Start Over TSF (3.0)", "click Start Self Help Flow", "click start stream button", "click submit callback request form", "click submit domain categorization feedback", "click submit feedback TSF (3.0)", "click subscribe system status", "click ticket submission form search result", "click ticket submission form suggestion", "Click to create API Shield portal", "click to create rate limiting rule for endpoint", "click Top N investigate", "click TSF (2.0) community more help", "click TSF (2.0) new category", "click TSF (2.0) search result", "click TSF (2.0) step", "click TSF (2.0) suggested help link", "click TSF (2.0) suggestion", "click Upgrade to Business Close", "click Upgrade to Business Start", "click Upgrade to Business Zone Selected", "click waf upgrade banner", "click domain registration link", "click Workers & Pages link", "Click", "create migration", "create or update queue consumer", "create queue", "create sink", "enter summary TSF (3.0)", "reach chat end TSF (3.0)", "submit login help form submission", "toggle TSF (3.0)", "toggle snippet status", "close abort import modal", "close account select dropdown", "close bulk delete image modal", "close delete image modal", "close delete variant modal", "close rename source modal", "close script modal page shield", "close zone select dropdown", "close support dropdown", "collapse row", "collapse sidebar nav", "Collapse top N", "Community page link click", "complete addon purchase of automatic platform optimization", "complete plan change from automatic platform optimization card", "Configuration Rules Link Click", "confirm add records later", "confirm auth code", "confirm disable totalTLS", "confirm DNS records", "confirm domain transfer purchase", "confirm source deletion", "confirm zone removal", "Confirm", "contentful banner displayed", "continue billing flow", "continue import flow", "continue onboarding flow", "continue to final step", "continue to js snippet", "Continue", "Contract SS - Approver contact details cancel", "Contract SS - Approver contact details submit success", "Contract SS - Legal agreement cancel", "Contract SS - Legal agreement submit success", "Contract SS - Payment type cancel", "Contract SS - Payment type selected success", "Contract SS - Purchase cancel", "Contract SS - Purchase flow enter", "Contract SS - Purchase success", "copy account hash", "copy account id", "copy API snippet from drawer", "copy curl command", "copy delivery url", "copy image delivery url", "copy image id", "copy script id page shield", "copy script url page shield", "copy snippet", "Create Bulk Redirect Rule", "create clone", "create default environments", "create environment", "create kv namespace", "create migration", "Create New Rule", "create notification", "create pages deployment", "create pages deployment", "create pages project", "create pages project", "create r2 api token", "create r2 api token", "create r2 bucket", "create rate limiting rule", "Create Rule (Save)", "Create Rule as Draft (Save as Draft)", "create service", "create worker from playground", "cancel create worker from playground", "create sink", "create source", "create snippet", "create user", "create variant", "create worker", "create zone", "Create, Update or Edit Save Failures (Builder)", "Create, Update or Edit Save Failures (Editor)", "CT Alerting Change", "Custom Hostname create click", "Custom Hostname create success", "Custom Hostname delete click", "Custom Hostname delete success", "Custom Hostname edit click", "Custom Hostname edit success", "Custom Hostname fallback origin add click", "Custom Hostname fallback origin delete click", "Custom Hostname fallback origin delete success", "Custom Hostname fallback origin edit click", "Custom Hostname fallback origin refresh", "Custom Hostname refresh click", "Custom Trust Store delete click", "Custom Trust Store delete success", "Custom Trust Store upload click", "Custom Trust Store upload success", "customer click URL in support ai chat", "customer close support ai chat", "Dashboard search closed", "Dashboard search opened", "Dashboard search result selected", "Dashboard search results empty", "Dedicated Certificates click", "Deep Link Cancel", "Deep Link Success", "delete brand pattern", "Delete click", "Delete confirmation", "delete environment", "delete image", "delete kv key-value", "delete kv namespace", "delete notification", "delete pages project", "delete policy", "delete queue", "delete r2 api token", "delete r2 bucket", "delete r2 objects", "Delete Rule", "delete service", "delete site", "delete snippet", "delete source", "delete variant", "Deploy API Shield portal", "deploy policy", "deploy worker script", "deploy worker script", "deploy version", "Details click", "Dev Mode change confirm", "Dev Mode change", "develop with wrangler cli", "Diagnostic failure", "Diagnostic result", "disable page shield", "disable pages web analytics", "Disable Rule", "disable sidebar nav", "disable totalTLS", "dislike redirect in the same window", "dismiss notification", "dismiss recommendation", "dismiss yubico promo banner", "display recommendation module", "display recommendation", "display record wizard notification", "display self help flow", "display yubico promo banner", "display support ai chat", "DNS settings click", "download file", "download progress log", "download r2 object", "draft new worker script", "edge traffic visualisation is shown", "edit contact information", "edit cron trigger", "edit environment", "Edit filter", "edit image", "edit kv key-value", "edit notification", "edit plan", "edit r2 api token", "edit registration details", "edit service environment variables", "edit service kv bindings", "edit service r2 bindings", "edit service to service bindings", "edit service mtls certificate bindings", "edit service tail consumers", "edit dispatch namespace bindings", "edit variant", "edit workers route", "Edit/Update Rule (Save)", "Enable automatic https rewrites click", "Enable Optimization", "Enable or disable API Shield SV", "enable page shield", "enable pages access policy", "enable pages web analytics", "Enable Rule", "enable sidebar nav", "enable totalTLS", "enable policy toggle", "enable versioning", "enable workers", "encrypt variable", "end WAF migration v2", "environment migrate forward", "environment migrate back", "enter domain search value", "enter icloud registrar", "enter summary TSF (3.0)", "Error adding or removing records", "Error Analytics link click", "Error when retrieving conflicting records", "error creating snippet", "Event Names", "exit onboarding guide", "expand account select dropdown", "expand domain details", "Expand measurement details", "expand row", "expand sidebar nav account selector", "expand sidebar nav zone selector", "expand sidebar nav", "Expand top N", "expand zone select dropdown", "Explore demo button click", "export instant logs", "export single image", "fail addon purchase of automatic platform optimization", "Failed to Switch to Editor", "failed pre-flight check", "Fetched template", "Filter rules", "filter search page shield", "filter search view all page shield", "filter snippet", "Filter used", "finish import flow", "finish loading gates and microfrontends", "finish onboarding guide later", "finish onboarding guide", "Firewall settings click", "Flow authorize", "Flow cancel", "follow contentful banner link", "follow docs link", "follow link to investigate external", "follow link to investigate", "follow link", "follow policy link", "follow recommendation CTA", "follow return to icloud link", "follow support link", "follow yubico promo banner", "follower icloud footer link", "Free Long Wait", "Get your API key click", "go back in billing flow", "go to next page", "go to page", "go to prev page", "hover score tooltip page shield", "hover to read risk identified tooltip", "hover to read threshold tooltip", "http worker editor tab", "identify", "image upload complete", "Initialization error", "Initialization success", "initiate addon purchase of automatic platform optimization", "initiate plan change from automatic platform optimization card", "initiate wordpress plugin installation for automatic platform optimization", "Interaction with Film Strip", "Interacton with Film Strip", "investigate threat search", "IP settings click", "launch icloud registrar onboarding", "launch onboarding guide", "launch sidebar nav survey", "launch teams dashboard", "launch zone overview", "list kv key-values", "list kv namespaces", "list pages projects", "list queues", "list r2 buckets", "list r2 objects", "Load Balancing click", "load web analytics overview", "Logpush Create Job - Open modal", "Logpush Create Job - Step Transition", "Logpush Create Job - Success", "Manage click", "manage pages members", "manage pages policies", "manage security insight", "Map detail type changed", "Matches Entitlement Validation error", "migrate waf", "Mixed content notification test 2019-05-03 link click", "multi-sku purchase error", "multi-sku purchase success", "navigate back", "navigate back", "navigate footer nav", "navigate investigate sidebar nav", "navigate sidebar nav", "navigate to account", "navigate to api tokens", "navigate to appearance", "navigate to billing", "navigate to community forum", "navigate to community", "navigate to compliance docs", "navigate to contact support", "navigate to create first source", "navigate to documentation", "navigate to edit image", "navigate to enterprise customer portal", "navigate to filtered domains", "navigate to help center", "navigate to import detail", "navigate to my activities", "navigate to logout", "navigate to previous onboarding guide task", "navigate to profile", "navigate to request feature", "navigate to request feature", "navigate to source detail", "navigate to variant detail", "navigate to WAF Migration Review configuration view", "navigate topbar", "Next onboarding guide section", "next page", "Notification dismissed", "Notification displayed", "Notification link click", "Notification load on page confirmation", "observe automatic platform optimization card", "Onboarding guide elapsed time", "open abort import modal", "open advanced waiting room sales link", "open alert modal page shield", "open argo subscription modal", "open blog post for automatic platform optimization", "open bot management lead generator link", "open bulk delete image modal", "open create notification page", "open delete image modal", "open delete notification modal", "open delete variant modal", "open edit notification page", "open help documentation for automatic platform optimization", "open image preview", "open load balancing subscription modal", "Open Modal Enable Access", "open priority change modal", "open onboarding guide task manually", "open remove zone modal", "open rename source modal", "open script modal page shield", "open support dropdown", "open security center categorization tooltip", "open waiting room upsell modal", "open zone plan update modal", "Opened BrowserInsights tab", "opt-in to marketing emails", "Order click", "Order success", "Page Rules click", "pageview", "page load gate deflection TSF", "paginate kv key-values", "paginate kv namespaces", "paginate pages projects", "paginate queues", "paginate r2 buckets", "paginate r2 objects", "paginate services", "Pick validity period success", "Plan Purchase Confirmation", "Plan Purchase Failure", "Plan Purchase Success", "Plan Update Confirmation", "Plan Update Failure", "Plan Update Success", "preview live worker", "preview queue messages", "preview worker editor tab", "previous page", "Private keys in china toggle", "Product Purchase Cancel", "Product Purchase Failure", "Product Purchase Success", "Product Update Failure", "Product Update Success", "prompted to verify email", "promote version", "purchase attempt", "purchase completed", "purchase domain transfer", "purchase subscription", "Purge cache click", "purge everything from cache", "Rate Limiting click", "Re-activate zone click", "Re-check nameservers click", "reach ticket end TSF (3.0)", "read kv key-value", "ready to update waf migration phase 2", "recheck zone for automatic platform optimization", "redirect chat", "register site", "Remove filter", "Remove insight", "remove item from checkout", "remove zone", "rename account", "rename service", "rename source", "Reprioritize certificate", "Request review click", "Request trial button click", "resend verification email", "resume onboarding", "retry coveo search", "return to developer platform from modal", "return to developer platform from onboarding", "review onboarding guide task from summary", "review products", "request migrator capacity", "rollback version", "roll r2 api token", "Rule event", "Rule preview that was denied because of an unsupported field or operator", "Rule preview that was denied because of lack of data", "Rule preview that was denied due to error", "rules configured", "run security scan", "save contact information", "save and deploy load balancer", "save load balancer", "save load balancer as draft", "save onboarding guide task", "save payment details", "save registration details", "search auto fetch", "search kv key-values", "search kv namespaces", "search pages projects", "search queues", "search r2 buckets", "search r2 objects", "search services", "search source", "search table", "Search", "See more click", "select account", "select alert type page shield", "select category TSF (3.0)", "select change nameservers", "select directive default value", "select directive value", "select domain", "select file", "Select hostname success", "select language", "select notification type", "select onboarding bundle", "select page rules quantity", "select payment method", "select payment option", "select product", "select r2 plan", "select record addition method", "select source", "select storage plan", "select task", "Select timeseries group by", "select transfer registrars", "Select type success", "select variant", "select version", "select queues plan", "select workers plan", "select zone plan", "select zone", "select summary in support ai chat", "Select", "Selected advanced GeoIP field in rule builder", "Selected schema API Shield portal", "send verification email", "send queue message", "Set Communication Preferences", "Set communication Preferences", "set page size", "set pages do bindings", "set pages environment variables", "set pages kv bindings", "set up custom domain", "set up subdomain", "Setting up", "show access key", "show notification", "show waf upgrade banner v2", "show waf upgrade banner", "Showed API Shield Flyfishing page", "signed exchanges toggle", "site configured", "skip onboarding guide section", "sort auto fetch", "sort column page shield", "sort queues", "sort r2 buckets", "sort services", "sort table", "Speedheader - change your nameservers click", "Speedtest - Headless Chrome fetch returned error", "Speedtest - tests are completed", "Speedtest - Tests are running", "Speedtest - WPT tests failed", "SPF conflict resolution failure", "SSL click", "SSL Mode Change", "start import flow", "start import manually", "start subscription change", "start WAF migration v2", "Status page link click", "Stream click", "Stream Signup Success", "Stream Video Upload Failure", "Stream Video Upload Success", "submit brand pattern", "submit grotto chat feedback", "submit DNS email security wizard failure", "submit DNS email security wizard", "submit DNS entry method", "submit domain name", "submit login form", "submit login help form submission", "submit new grotto chat request", "submit new support ai chat request", "submit order", "submit signup form", "Successful flow and user redirected", "Successful rule preview", "Suggestions query confirmation", "suggest category tsf (3.0)", "suggest category displayed tsf (3.0)", "Marketing banner dismissed", "Survey banner closed", "Marketing banner shown", "Survey banner shown", "Survey opened", "switch DNS entry method", "Switch from Editor and Discarded Changes", "Switch to expression editor", "Test", "test notification", "Ticket form step click", "Ticket submission form button click", "Ticket submission form submit click", "Time range changed", "Toast dismiss click", "Toast load on page confirmation", "toggle advanced options", "Toggle API discovery", "toggle automatic platform optimization feature", "toggle cache by device type", "toggle flexible variants", "toggle key", "toggle recommendation module", "toggle TSF (3.0)", "Toggle user level audit logs", "Toggled injection", "transfer DNS records", "Transfer out survey submitted", "Transfer Step", "Transter purchased", "tried to register unavailable domain", "tried to remove zone of a domain registered on cloudflare registrar", "Under Attack Mode change", "update pages project", "update site", "Upload custom click", "Upload custom confirmation", "upload DNS file", "upload image", "Upload keyless click", "Upload keyless confirmation", "Upload list item CSV", "upload r2 objects", "Use overflow API Shield SV", "use spacebar to pause", "use spacebar to play", "User has recommended optimisations", "User navigated by zone navigation", "Use template", "USSL Certificate Authority: Changed", "USSL Certificate Authority: Modal Launch", "validate spf content", "Validation method change", "Validation success", "verified email successfully", "verify address", "verify email", "view accounts", "view checkout complete purchase", "View click", "view documentation", "view downgrade offer", "view downgrade survey", "view downgrade warning", "view onboarding guide recommendations", "view plan", "view system status", "Viewed Global API Key", "Viewed Origin CA Key", "visit workers developer docs", "visit workers showcase", "visit workers templates", "web analytics upgrade plan click", "WHOIS link click", "Workers:Enablement", "Zap:Opt in", "Zap:Opt out", "Zone setup change", "Bots Report Data", "Information Toast Shown", "Information Toast Closed", "quick edit http tab", "quick edit preview tab", "quick edit schedule tab", "quick edit wrangler tab", "visit product documentation", "visit blog post", "visit blog announcements", "click discover card call to action", "click discover card view products", "click featured product call to action", "click paygo card cta", "click opt-in", "click opt-out", "click close opt out", "click stripe beta select plan support link", "click stripe beta change plan support link", "view stripe beta opt out", "error notification shown", "fetch personalized content", "view page", "run speed test", "delete speed test", "create speed test schedule", "delete speed test schedule", "select speed test trend range", "select speed test trend metric", "view speed recommendation", "view lighthouse audit", "enable speed recommendation", "click speed feature link", "click speed optimization documentation link", "enable all speed optimization recommendations", "complete plan change from speed", "start plan change from speed", "view rum disabled screen", "enable rum from speed", "select rum map range", "select rum map metric", "has payment plan on file", "change appearance", "click star zone", "click star zone filter", "click cloudflare logo", "set marketing preference ent ss purchase", "clicked sidebar Discord link", "clicked sidebar Community Forum link", "clicked Workers for Platforms CLI Guide link", "clicked Workers for Platforms Documentation link", "clicked R2 feedback link", "clicked R2 CLI guide", "clicked Constellation feedback link"),
 				L = e.eg.exactStrict(e.eg.object({
 					".agency": e.eg.any.optional,
 					".auction": e.eg.any.optional,
@@ -15128,7 +15139,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						sourceKey: "ca633f741e204a5291e02fcb6c591020",
 						debug: !1,
 						url: "https://sparrow.cloudflare.com",
-						enabled: K() && !(0, c.gm)() && te(),
+						enabled: H() && !(0, c.gm)() && te(),
 						middlewares: [d, q, g, ce]
 					}, G))
 				},
@@ -15138,7 +15149,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						isCloudflare: !!(0, s.Jd)()
 					}))
 				},
-				K = function() {
+				H = function() {
 					return !0
 				},
 				_ = function() {
@@ -15621,10 +15632,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				C = n("../../../common/intl/intl-core/src/errors.ts");
 
 			function U(se, pe) {
-				return f(se) || u(se, pe) || m(se, pe) || S()
+				return f(se) || u(se, pe) || m(se, pe) || A()
 			}
 
-			function S() {
+			function A() {
 				throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
@@ -15886,7 +15897,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}
 					return g
 				}(C),
-				S = null
+				A = null
 		},
 		"../../../common/intl/intl-core/src/prepare.ts": function(Oe, z, n) {
 			"use strict";
@@ -15964,101 +15975,101 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				s = b.Provider;
 
 			function y(I) {
-				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? y = function(O) {
-					return typeof O
-				} : y = function(O) {
-					return O && typeof Symbol == "function" && O.constructor === Symbol && O !== Symbol.prototype ? "symbol" : typeof O
+				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? y = function(S) {
+					return typeof S
+				} : y = function(S) {
+					return S && typeof Symbol == "function" && S.constructor === Symbol && S !== Symbol.prototype ? "symbol" : typeof S
 				}, y(I)
 			}
 
 			function p() {
 				return p = Object.assign || function(I) {
-					for (var H = 1; H < arguments.length; H++) {
-						var O = arguments[H];
-						for (var P in O) Object.prototype.hasOwnProperty.call(O, P) && (I[P] = O[P])
+					for (var K = 1; K < arguments.length; K++) {
+						var S = arguments[K];
+						for (var P in S) Object.prototype.hasOwnProperty.call(S, P) && (I[P] = S[P])
 					}
 					return I
 				}, p.apply(this, arguments)
 			}
 
-			function a(I, H) {
+			function a(I, K) {
 				if (I == null) return {};
-				var O = e(I, H),
+				var S = e(I, K),
 					P, V;
 				if (Object.getOwnPropertySymbols) {
 					var oe = Object.getOwnPropertySymbols(I);
-					for (V = 0; V < oe.length; V++) P = oe[V], !(H.indexOf(P) >= 0) && (!Object.prototype.propertyIsEnumerable.call(I, P) || (O[P] = I[P]))
+					for (V = 0; V < oe.length; V++) P = oe[V], !(K.indexOf(P) >= 0) && (!Object.prototype.propertyIsEnumerable.call(I, P) || (S[P] = I[P]))
 				}
-				return O
+				return S
 			}
 
-			function e(I, H) {
+			function e(I, K) {
 				if (I == null) return {};
-				var O = {},
+				var S = {},
 					P = Object.keys(I),
 					V, oe;
-				for (oe = 0; oe < P.length; oe++) V = P[oe], !(H.indexOf(V) >= 0) && (O[V] = I[V]);
-				return O
+				for (oe = 0; oe < P.length; oe++) V = P[oe], !(K.indexOf(V) >= 0) && (S[V] = I[V]);
+				return S
 			}
 
-			function i(I, H) {
-				if (!(I instanceof H)) throw new TypeError("Cannot call a class as a function")
+			function i(I, K) {
+				if (!(I instanceof K)) throw new TypeError("Cannot call a class as a function")
 			}
 
-			function l(I, H) {
-				for (var O = 0; O < H.length; O++) {
-					var P = H[O];
+			function l(I, K) {
+				for (var S = 0; S < K.length; S++) {
+					var P = K[S];
 					P.enumerable = P.enumerable || !1, P.configurable = !0, "value" in P && (P.writable = !0), Object.defineProperty(I, P.key, P)
 				}
 			}
 
-			function C(I, H, O) {
-				return H && l(I.prototype, H), O && l(I, O), I
+			function C(I, K, S) {
+				return K && l(I.prototype, K), S && l(I, S), I
 			}
 
-			function U(I, H) {
-				return H && (y(H) === "object" || typeof H == "function") ? H : S(I)
+			function U(I, K) {
+				return K && (y(K) === "object" || typeof K == "function") ? K : A(I)
 			}
 
-			function S(I) {
+			function A(I) {
 				if (I === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
 				return I
 			}
 
 			function m(I) {
-				return m = Object.setPrototypeOf ? Object.getPrototypeOf : function(O) {
-					return O.__proto__ || Object.getPrototypeOf(O)
+				return m = Object.setPrototypeOf ? Object.getPrototypeOf : function(S) {
+					return S.__proto__ || Object.getPrototypeOf(S)
 				}, m(I)
 			}
 
-			function g(I, H) {
-				if (typeof H != "function" && H !== null) throw new TypeError("Super expression must either be null or a function");
-				I.prototype = Object.create(H && H.prototype, {
+			function g(I, K) {
+				if (typeof K != "function" && K !== null) throw new TypeError("Super expression must either be null or a function");
+				I.prototype = Object.create(K && K.prototype, {
 					constructor: {
 						value: I,
 						writable: !0,
 						configurable: !0
 					}
-				}), H && u(I, H)
+				}), K && u(I, K)
 			}
 
-			function u(I, H) {
+			function u(I, K) {
 				return u = Object.setPrototypeOf || function(P, V) {
 					return P.__proto__ = V, P
-				}, u(I, H)
+				}, u(I, K)
 			}
 			var f = function(I) {
-					g(H, I);
+					g(K, I);
 
-					function H(O) {
+					function K(S) {
 						var P;
-						i(this, H), P = U(this, m(H).call(this, O));
-						var V = O.locale,
-							oe = O.phrases,
-							Me = O.translator;
+						i(this, K), P = U(this, m(K).call(this, S));
+						var V = S.locale,
+							oe = S.phrases,
+							Me = S.translator;
 						return V && Me.locale(V), oe && Me.extend(oe), P
 					}
-					return C(H, [{
+					return C(K, [{
 						key: "componentDidUpdate",
 						value: function(P) {
 							P.phrases !== this.props.phrases && this.props.phrases && this.props.translator.locale(this.props.locale)
@@ -16069,11 +16080,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							var P = this.props.children;
 							return P
 						}
-					}]), H
+					}]), K
 				}(t.Component),
-				d = function(H) {
-					var O = H.translator,
-						P = a(H, ["translator"]),
+				d = function(K) {
+					var S = K.translator,
+						P = a(K, ["translator"]),
 						V = function() {
 							return t.createElement(h, null, function(Me) {
 								return t.createElement(f, p({
@@ -16081,80 +16092,80 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								}, P))
 							})
 						};
-					return O ? (O.locale(P.locale), t.createElement(s, {
-						value: O
+					return S ? (S.locale(P.locale), t.createElement(s, {
+						value: S
 					}, V())) : V()
 				},
 				Z = d;
 
 			function x(I) {
-				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? x = function(O) {
-					return typeof O
-				} : x = function(O) {
-					return O && typeof Symbol == "function" && O.constructor === Symbol && O !== Symbol.prototype ? "symbol" : typeof O
+				return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? x = function(S) {
+					return typeof S
+				} : x = function(S) {
+					return S && typeof Symbol == "function" && S.constructor === Symbol && S !== Symbol.prototype ? "symbol" : typeof S
 				}, x(I)
 			}
 
 			function F() {
 				return F = Object.assign || function(I) {
-					for (var H = 1; H < arguments.length; H++) {
-						var O = arguments[H];
-						for (var P in O) Object.prototype.hasOwnProperty.call(O, P) && (I[P] = O[P])
+					for (var K = 1; K < arguments.length; K++) {
+						var S = arguments[K];
+						for (var P in S) Object.prototype.hasOwnProperty.call(S, P) && (I[P] = S[P])
 					}
 					return I
 				}, F.apply(this, arguments)
 			}
 
-			function $(I, H) {
+			function $(I, K) {
 				if (I == null) return {};
-				var O = be(I, H),
+				var S = be(I, K),
 					P, V;
 				if (Object.getOwnPropertySymbols) {
 					var oe = Object.getOwnPropertySymbols(I);
-					for (V = 0; V < oe.length; V++) P = oe[V], !(H.indexOf(P) >= 0) && (!Object.prototype.propertyIsEnumerable.call(I, P) || (O[P] = I[P]))
+					for (V = 0; V < oe.length; V++) P = oe[V], !(K.indexOf(P) >= 0) && (!Object.prototype.propertyIsEnumerable.call(I, P) || (S[P] = I[P]))
 				}
-				return O
+				return S
 			}
 
-			function be(I, H) {
+			function be(I, K) {
 				if (I == null) return {};
-				var O = {},
+				var S = {},
 					P = Object.keys(I),
 					V, oe;
-				for (oe = 0; oe < P.length; oe++) V = P[oe], !(H.indexOf(V) >= 0) && (O[V] = I[V]);
-				return O
+				for (oe = 0; oe < P.length; oe++) V = P[oe], !(K.indexOf(V) >= 0) && (S[V] = I[V]);
+				return S
 			}
 
 			function se(I) {
-				for (var H = 1; H < arguments.length; H++) {
-					var O = arguments[H] != null ? Object(arguments[H]) : {},
-						P = Object.keys(O);
-					typeof Object.getOwnPropertySymbols == "function" && (P = P.concat(Object.getOwnPropertySymbols(O).filter(function(V) {
-						return Object.getOwnPropertyDescriptor(O, V).enumerable
+				for (var K = 1; K < arguments.length; K++) {
+					var S = arguments[K] != null ? Object(arguments[K]) : {},
+						P = Object.keys(S);
+					typeof Object.getOwnPropertySymbols == "function" && (P = P.concat(Object.getOwnPropertySymbols(S).filter(function(V) {
+						return Object.getOwnPropertyDescriptor(S, V).enumerable
 					}))), P.forEach(function(V) {
-						B(I, V, O[V])
+						B(I, V, S[V])
 					})
 				}
 				return I
 			}
 
-			function pe(I, H, O, P, V, oe, Me) {
+			function pe(I, K, S, P, V, oe, Me) {
 				try {
 					var xe = I[oe](Me),
 						je = xe.value
 				} catch (Ke) {
-					O(Ke);
+					S(Ke);
 					return
 				}
-				xe.done ? H(je) : Promise.resolve(je).then(P, V)
+				xe.done ? K(je) : Promise.resolve(je).then(P, V)
 			}
 
 			function j(I) {
 				return function() {
-					var H = this,
-						O = arguments;
+					var K = this,
+						S = arguments;
 					return new Promise(function(P, V) {
-						var oe = I.apply(H, O);
+						var oe = I.apply(K, S);
 
 						function Me(je) {
 							pe(oe, P, V, Me, xe, "next", je)
@@ -16168,46 +16179,46 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}
 
-			function W(I, H) {
-				if (!(I instanceof H)) throw new TypeError("Cannot call a class as a function")
+			function W(I, K) {
+				if (!(I instanceof K)) throw new TypeError("Cannot call a class as a function")
 			}
 
-			function ne(I, H) {
-				for (var O = 0; O < H.length; O++) {
-					var P = H[O];
+			function ne(I, K) {
+				for (var S = 0; S < K.length; S++) {
+					var P = K[S];
 					P.enumerable = P.enumerable || !1, P.configurable = !0, "value" in P && (P.writable = !0), Object.defineProperty(I, P.key, P)
 				}
 			}
 
-			function Ee(I, H, O) {
-				return H && ne(I.prototype, H), O && ne(I, O), I
+			function Ee(I, K, S) {
+				return K && ne(I.prototype, K), S && ne(I, S), I
 			}
 
-			function ye(I, H) {
-				return H && (x(H) === "object" || typeof H == "function") ? H : R(I)
+			function ye(I, K) {
+				return K && (x(K) === "object" || typeof K == "function") ? K : R(I)
 			}
 
 			function N(I) {
-				return N = Object.setPrototypeOf ? Object.getPrototypeOf : function(O) {
-					return O.__proto__ || Object.getPrototypeOf(O)
+				return N = Object.setPrototypeOf ? Object.getPrototypeOf : function(S) {
+					return S.__proto__ || Object.getPrototypeOf(S)
 				}, N(I)
 			}
 
-			function L(I, H) {
-				if (typeof H != "function" && H !== null) throw new TypeError("Super expression must either be null or a function");
-				I.prototype = Object.create(H && H.prototype, {
+			function L(I, K) {
+				if (typeof K != "function" && K !== null) throw new TypeError("Super expression must either be null or a function");
+				I.prototype = Object.create(K && K.prototype, {
 					constructor: {
 						value: I,
 						writable: !0,
 						configurable: !0
 					}
-				}), H && M(I, H)
+				}), K && M(I, K)
 			}
 
-			function M(I, H) {
+			function M(I, K) {
 				return M = Object.setPrototypeOf || function(P, V) {
 					return P.__proto__ = V, P
-				}, M(I, H)
+				}, M(I, K)
 			}
 
 			function R(I) {
@@ -16215,22 +16226,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return I
 			}
 
-			function B(I, H, O) {
-				return H in I ? Object.defineProperty(I, H, {
-					value: O,
+			function B(I, K, S) {
+				return K in I ? Object.defineProperty(I, K, {
+					value: S,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : I[H] = O, I
+				}) : I[K] = S, I
 			}
 			var q = function(I) {
-				L(H, I);
+				L(K, I);
 
-				function H() {
-					var O, P;
-					W(this, H);
+				function K() {
+					var S, P;
+					W(this, K);
 					for (var V = arguments.length, oe = new Array(V), Me = 0; Me < V; Me++) oe[Me] = arguments[Me];
-					return P = ye(this, (O = N(H)).call.apply(O, [this].concat(oe))), B(R(R(P)), "state", {
+					return P = ye(this, (S = N(K)).call.apply(S, [this].concat(oe))), B(R(R(P)), "state", {
 						phrasesByLocale: {}
 					}), B(R(R(P)), "loadLocale", function() {
 						var xe = j(regeneratorRuntime.mark(function je(Ke) {
@@ -16256,7 +16267,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}
 					}()), P
 				}
-				return Ee(H, [{
+				return Ee(K, [{
 					key: "componentDidMount",
 					value: function() {
 						this.loadLocale(this.props.locale)
@@ -16279,15 +16290,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							phrases: Me[oe]
 						}, V) : null
 					}
-				}]), H
+				}]), K
 			}(t.Component);
 			B(q, "defaultProps", {});
-			var D = function(H) {
-					var O = H.locale,
-						P = $(H, ["locale"]);
+			var D = function(K) {
+					var S = K.locale,
+						P = $(K, ["locale"]);
 					return t.createElement(h, null, function(V) {
 						return t.createElement(q, F({
-							locale: O || V.locale()
+							locale: S || V.locale()
 						}, P))
 					})
 				},
@@ -16297,39 +16308,39 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				X = n("../../../../node_modules/@cloudflare/util-markdown/es/index.js");
 
 			function re(I) {
-				for (var H = 1; H < arguments.length; H++) {
-					var O = arguments[H] != null ? Object(arguments[H]) : {},
-						P = Object.keys(O);
-					typeof Object.getOwnPropertySymbols == "function" && (P = P.concat(Object.getOwnPropertySymbols(O).filter(function(V) {
-						return Object.getOwnPropertyDescriptor(O, V).enumerable
+				for (var K = 1; K < arguments.length; K++) {
+					var S = arguments[K] != null ? Object(arguments[K]) : {},
+						P = Object.keys(S);
+					typeof Object.getOwnPropertySymbols == "function" && (P = P.concat(Object.getOwnPropertySymbols(S).filter(function(V) {
+						return Object.getOwnPropertyDescriptor(S, V).enumerable
 					}))), P.forEach(function(V) {
-						fe(I, V, O[V])
+						fe(I, V, S[V])
 					})
 				}
 				return I
 			}
 
-			function fe(I, H, O) {
-				return H in I ? Object.defineProperty(I, H, {
-					value: O,
+			function fe(I, K, S) {
+				return K in I ? Object.defineProperty(I, K, {
+					value: S,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : I[H] = O, I
+				}) : I[K] = S, I
 			}
 
 			function me() {
 				return me = Object.assign || function(I) {
-					for (var H = 1; H < arguments.length; H++) {
-						var O = arguments[H];
-						for (var P in O) Object.prototype.hasOwnProperty.call(O, P) && (I[P] = O[P])
+					for (var K = 1; K < arguments.length; K++) {
+						var S = arguments[K];
+						for (var P in S) Object.prototype.hasOwnProperty.call(S, P) && (I[P] = S[P])
 					}
 					return I
 				}, me.apply(this, arguments)
 			}
 
-			function K(I, H) {
-				return ae(I) || G(I, H) || te(I, H) || _()
+			function H(I, K) {
+				return ae(I) || G(I, K) || te(I, K) || _()
 			}
 
 			function _() {
@@ -16337,35 +16348,35 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function te(I, H) {
+			function te(I, K) {
 				if (!!I) {
-					if (typeof I == "string") return T(I, H);
-					var O = Object.prototype.toString.call(I).slice(8, -1);
-					if (O === "Object" && I.constructor && (O = I.constructor.name), O === "Map" || O === "Set") return Array.from(I);
-					if (O === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(O)) return T(I, H)
+					if (typeof I == "string") return T(I, K);
+					var S = Object.prototype.toString.call(I).slice(8, -1);
+					if (S === "Object" && I.constructor && (S = I.constructor.name), S === "Map" || S === "Set") return Array.from(I);
+					if (S === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(S)) return T(I, K)
 				}
 			}
 
-			function T(I, H) {
-				(H == null || H > I.length) && (H = I.length);
-				for (var O = 0, P = new Array(H); O < H; O++) P[O] = I[O];
+			function T(I, K) {
+				(K == null || K > I.length) && (K = I.length);
+				for (var S = 0, P = new Array(K); S < K; S++) P[S] = I[S];
 				return P
 			}
 
-			function G(I, H) {
-				var O = I && (typeof Symbol != "undefined" && I[Symbol.iterator] || I["@@iterator"]);
-				if (O != null) {
+			function G(I, K) {
+				var S = I && (typeof Symbol != "undefined" && I[Symbol.iterator] || I["@@iterator"]);
+				if (S != null) {
 					var P = [],
 						V = !0,
 						oe = !1,
 						Me, xe;
 					try {
-						for (O = O.call(I); !(V = (Me = O.next()).done) && (P.push(Me.value), !(H && P.length === H)); V = !0);
+						for (S = S.call(I); !(V = (Me = S.next()).done) && (P.push(Me.value), !(K && P.length === K)); V = !0);
 					} catch (je) {
 						oe = !0, xe = je
 					} finally {
 						try {
-							!V && O.return != null && O.return()
+							!V && S.return != null && S.return()
 						} finally {
 							if (oe) throw xe
 						}
@@ -16384,18 +16395,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return Object.keys(I)
 			}
 
-			function Ie(I, H) {
+			function Ie(I, K) {
 				return t.createElement("span", {
 					key: I,
 					dangerouslySetInnerHTML: {
-						__html: H
+						__html: K
 					}
 				})
 			}
 
 			function Ue(I) {
-				var H = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [],
-					O = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [],
+				var K = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [],
+					S = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [],
 					P = 0,
 					V = I.replace(he, "").split(_e);
 				if (V.length === 1) return [Ie(P, I)];
@@ -16410,13 +16421,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					Je = void 0;
 				try {
 					for (var Qe = Le(V)[Symbol.iterator](), Ae; !(je = (Ae = Qe.next()).done); je = !0) {
-						var k = K(Ae.value, 3),
+						var k = H(Ae.value, 3),
 							ve = k[0],
 							De = k[1],
 							Ne = k[2];
-						H[ve] || window.console && console.warn("Missing Component for translation key: ".concat(I, ", index: ").concat(ve, ". Fragment will be used."));
-						var E = H[ve] || t.Fragment,
-							Ce = O[ve] || {},
+						K[ve] || window.console && console.warn("Missing Component for translation key: ".concat(I, ", index: ").concat(ve, ". Fragment will be used."));
+						var E = K[ve] || t.Fragment,
+							Ce = S[ve] || {},
 							tt = Ie(0, De);
 						if (oe.push(t.createElement(E, me({
 								key: P
@@ -16425,8 +16436,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							oe.push(We), typeof We != "string" && P++
 						}
 					}
-				} catch (ft) {
-					Ke = !0, Je = ft
+				} catch (mt) {
+					Ke = !0, Je = mt
 				} finally {
 					try {
 						!je && Qe.return != null && Qe.return()
@@ -16439,12 +16450,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function Le(I) {
 				if (!I.length) return [];
-				var H = I.slice(0, 4),
-					O = K(H, 4),
-					P = O[0],
-					V = O[1],
-					oe = O[2],
-					Me = O[3],
+				var K = I.slice(0, 4),
+					S = H(K, 4),
+					P = S[0],
+					V = S[1],
+					oe = S[2],
+					Me = S[3],
 					xe = [
 						[parseInt(P || oe), V || "", Me]
 					];
@@ -16452,8 +16463,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function He(I) {
-				var H = I.id,
-					O = H === void 0 ? "" : H,
+				var K = I.id,
+					S = K === void 0 ? "" : K,
 					P = I.smartCount,
 					V = I._,
 					oe = I.values,
@@ -16472,9 +16483,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							smart_count: P,
 							_: V
 						}, oe),
-						Qe = Me ? (0, X.Z)(Ke.t(O.toString(), Je), {
+						Qe = Me ? (0, X.Z)(Ke.t(S.toString(), Je), {
 							__dangerouslyDontSanitizeMarkdown: !0
-						}) : Ke.t(O.toString(), Je),
+						}) : Ke.t(S.toString(), Je),
 						Ae = Ue(Qe, xe, je);
 					return Ae.length > 1 ? t.createElement(t.Fragment, null, Ae) : Ae[0]
 				})
@@ -16483,23 +16494,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function qe() {
 				return qe = Object.assign || function(I) {
-					for (var H = 1; H < arguments.length; H++) {
-						var O = arguments[H];
-						for (var P in O) Object.prototype.hasOwnProperty.call(O, P) && (I[P] = O[P])
+					for (var K = 1; K < arguments.length; K++) {
+						var S = arguments[K];
+						for (var P in S) Object.prototype.hasOwnProperty.call(S, P) && (I[P] = S[P])
 					}
 					return I
 				}, qe.apply(this, arguments)
 			}
 
 			function Xe(I) {
-				var H = function(P) {
+				var K = function(P) {
 					return r().createElement(h, null, function(V) {
 						return r().createElement(I, qe({}, P, {
 							translator: V
 						}))
 					})
 				};
-				return H
+				return K
 			}
 			var Ve = Xe;
 
