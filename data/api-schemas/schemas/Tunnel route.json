@@ -505,6 +505,17 @@
 			},
 			{
 				"in": "query",
+				"name": "route_id",
+				"schema": {
+					"description": "UUID of the route.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "page",
 				"schema": {
 					"default": 1,
