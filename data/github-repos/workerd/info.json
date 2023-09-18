@@ -21,6 +21,7 @@
 	"is_template": false,
 	"default_branch": "main",
 	"branches": [
+		"2023.9.18.cherry-pick",
 		"a-robinson/dispatch-exception-tunneling-compat",
 		"arobinson/connect-address-overrides",
 		"arobinson/handle-proxy-status",
@@ -161,6 +162,7 @@
 		"jsnell/debug-traced-move",
 		"jsnell/fixup-builtin-import-from-submodule",
 		"jsnell/fixup-builtin-module-import",
+		"jsnell/fixup-hibernatable-websocket",
 		"jsnell/fixup-node-diagnostic-channel-tailworker-bug",
 		"jsnell/fixup-r2-rpc-unspecifiederror",
 		"jsnell/guard-against-empty-handle-streams",
@@ -300,7 +302,6 @@
 		"milan/hibernation-deliver-ws",
 		"milan/hibernation-lifetime",
 		"milan/hibernation-manager",
-		"milan/hibernation-revert",
 		"milan/pop-hibernatable-websocket",
 		"milan/rpc-session-event",
 		"milan/runtime-demo",
