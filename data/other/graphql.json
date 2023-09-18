@@ -39,18 +39,22 @@
 	},
 	"AccountAiGatewayCacheAdaptiveGroups": {
 		"__description": "AI Gateway Cache",
-		"count": "Counts cache hits and misses as well - number of requests for an account with caching enabled",
+		"count": "Total number of requests for an account with caching enabled: including hits and misses",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountAiGatewayCacheAdaptiveGroupsDimensions": {
 		"__description": "",
+		"cacheOp": "Cache Hit or Miss: 1 = cache hit, 0 = cache miss",
 		"date": "The date when trigger was triggerd",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
-		"hit": "Provider Error",
-		"provider": "Which provider was the request sent to"
+		"gateway": "Gateway name",
+		"model": "Which model was the request sent to",
+		"provider": "Which provider was the request sent to",
+		"tokensIn": "Number of tokens in the request",
+		"tokensOut": "Number of tokens in the response"
 	},
 	"AccountAiGatewayCacheAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -70,7 +74,7 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
-		"error": "Provider Error",
+		"gateway": "Gateway name",
 		"model": "Which models was the request sent to",
 		"provider": "Which provider was the request sent to"
 	},
@@ -87,14 +91,18 @@
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
-		"date": "The date when trigger was triggerd",
+		"cached": "Was the response served from cache?: 1 = cache hit, 0 = cache misss",
+		"date": "The date when trigger was triggered",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
-		"endpoint": "Provider Endpoint",
+		"gateway": "Gateway name",
 		"model": "Which models was the request sent to",
-		"provider": "Which provider was the request sent to"
+		"provider": "Which provider was the request sent to",
+		"rateLimited": "Was the request rate limited?: 1 = rate limit applied, 0 = rate limit not applied",
+		"tokensIn": "Number of tokens in the request",
+		"tokensOut": "Number of tokens in the response"
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -127,6 +135,7 @@
 	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -267,6 +276,7 @@
 		"__description": "Attack analytics metadata for attacks detected by dosd",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
 		"attackType": "Type of attack traffic",
+		"attackVector": "Description of attack vector",
 		"bits": "Sum of bits received during the attack",
 		"commonTcpFlags": "Common TCP flags used by attack traffic, if any",
 		"commonTcpFlagsNames": "Names of common TCP flags used by attack traffic, if any",
@@ -281,6 +291,10 @@
 		"mitigationScope": "Whether mitigation was applied in only some locations or globally",
 		"mitigationType": "Type of mitigation applied to attack traffic",
 		"packets": "Sum of packets received during the attack",
+		"ruleId": "Unique identifier of the rule that matched the packet, if any",
+		"ruleName": "Human-readable name of the rule that matched the packet, if any",
+		"rulesetId": "Unique identifier of the ruleset containing the rule that matched the packet, if any",
+		"rulesetOverrideId": "Unique identifier of the ruleset override containing the rule that matched the packet, if any",
 		"sourceIp": "Fixed source IP used by attack traffic, if any",
 		"sourcePort": "Fixed source port used by attack traffic, if any",
 		"startDatetime": "Date and time that the attack started",
@@ -318,6 +332,7 @@
 	},
 	"AccountDosdNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
 		"attackVector": "Attack vector of the rule that matched the packet, if any",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
@@ -569,6 +584,7 @@
 		"__description": "FBM analytics metadata for attacks detected by dosd",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
 		"attackType": "Type of attack traffic",
+		"attackVector": "Description of attack vector",
 		"bits": "Sum of bits received during the attack",
 		"commonTcpFlags": "Common TCP flags used by attack traffic, if any",
 		"commonTcpFlagsNames": "Names of common TCP flags used by attack traffic, if any",
@@ -583,6 +599,10 @@
 		"mitigationScope": "Whether mitigation was applied in only some locations or globally",
 		"mitigationType": "Type of mitigation applied to attack traffic",
 		"packets": "Sum of packets received during the attack",
+		"ruleId": "Unique identifier of the rule that matched the packet, if any",
+		"ruleName": "Human-readable name of the rule that matched the packet, if any",
+		"rulesetId": "Unique identifier of the ruleset containing the rule that matched the packet, if any",
+		"rulesetOverrideId": "Unique identifier of the ruleset override containing the rule that matched the packet, if any",
 		"sourceIp": "Fixed source IP used by attack traffic, if any",
 		"sourcePort": "Fixed source port used by attack traffic, if any",
 		"startDatetime": "Date and time that the attack started",
@@ -766,6 +786,7 @@
 	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -1699,6 +1720,7 @@
 	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -1956,6 +1978,7 @@
 	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -2879,6 +2902,7 @@
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
+		"applicationTag": "Application tag associated with the packet",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -3504,6 +3528,8 @@
 		"__description": "",
 		"correlation": "Correlation score estimated over a 24 hour window (higher scores mean more correlation between requests in the sequence of endpoint operations)",
 		"numOccurrences": "Estimated number of occurrences of this sequence of endpoint operations",
+		"numOccurrencesPrefix": "Estimated number of occurrences of this sequence of endpoint operations, disregarding the last operation",
+		"numOccurrencesSuffix": "Estimated number of occurrences of this sequence of endpoint operations, disregarding the first operation",
 		"operationsApiEndpoints": "API endpoints comprising the sequence of operations. Individual endpoints are delimited by # symbols",
 		"operationsClientRequestHTTPMethods": "HTTP request methods comprising the sequence of operations. Individual request method names are delimited by # symbols",
 		"samplingFraction": "Fraction of requests sampled"
