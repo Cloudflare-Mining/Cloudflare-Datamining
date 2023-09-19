@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5DgGlyOtiU0vc3Iz2utWtw/8a003b528cbe09df09dcb193328e6cb9/thenetmeta.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5DgGlyOtiU0vc3Iz2utWtw/8a003b528cbe09df09dcb193328e6cb9/thenetmeta.png"
 						}
 					},
 					"facebookCustomImage": null
@@ -52,10 +52,287 @@
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
-				"customTopNav": null,
+				"customTopNav": {
+					"contentTypeId": "navNavigationGroup",
+					"contentfulId": "7vtXhMutS3hr5urm12KUGs",
+					"locale": "en-US",
+					"mainNav": {
+						"contentTypeId": "navNavigation",
+						"contentfulId": "43PdHIHIsgmVJp1nN48Njc",
+						"locale": "en-US",
+						"navigationType": "Header",
+						"isDefaultNav": false,
+						"backgroundColor": "white",
+						"sectionPadding": null,
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "1ll1oUb6JdF7xzHFrL5BtI",
+								"locale": "en-US",
+								"name": "Home",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "1CFvERWkgaLU62M1N1pxQD",
+									"locale": "en-US",
+									"title": "Home",
+									"description": null,
+									"url": "the-net",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "6GKXXIm70KXYwj2jnsBrR7",
+								"locale": "en-US",
+								"name": "Security Innovation",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "2c0im4m95oZ8rlwS8ePtbO",
+									"locale": "en-US",
+									"title": "Security Innovation",
+									"description": null,
+									"url": "/the-net/security-innovation/",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "13DnpsI1G49Zk7wJbppRnd",
+								"locale": "en-US",
+								"name": "Threat Landscape",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "18vMkNil63nAJw79ZSR4UJ",
+									"locale": "en-US",
+									"title": "Threat Landscape",
+									"description": null,
+									"url": "/the-net/threat-landscape/",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "RanCdjDWzy8KI9Ha33Qal",
+								"locale": "en-US",
+								"name": "Future Internet",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "0xC7JehkyUdfAgWDStXHa",
+									"locale": "en-US",
+									"title": "Future Internet",
+									"description": null,
+									"url": "/the-net/future-internet",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							}
+						]
+					},
+					"utilityNav": {
+						"contentTypeId": "navNavigation",
+						"contentfulId": "52CjZzRgYo8tC0nwT23Fc",
+						"locale": "en-US",
+						"navigationType": "Custom Navigation",
+						"isDefaultNav": true,
+						"backgroundColor": null,
+						"sectionPadding": "default",
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
+								"locale": "en-US",
+								"name": "Support",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": null,
+								"navigationItems": [],
+								"mainLink": null,
+								"navigationLinks": [
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "39ahAfcnTcrePwvvA1l0MW",
+										"locale": "en-US",
+										"title": "Contact Support",
+										"description": null,
+										"url": "https://dash.cloudflare.com/?to=/:account/support",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
+										"locale": "en-US",
+										"title": "Help Center",
+										"description": null,
+										"url": "https://support.cloudflare.com/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+										"locale": "en-US",
+										"title": "Cloudflare Community",
+										"description": null,
+										"url": "https://community.cloudflare.com/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									{
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "52WmBFB2P512JhW6jzATzc",
+										"locale": "en-US",
+										"title": "Lost account access?",
+										"description": null,
+										"url": "https://developers.cloudflare.com/support/account-management-billing/common-account-questions/login-and-account-issues/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									}
+								]
+							}
+						]
+					},
+					"rightNav": {
+						"contentTypeId": "navNavigation",
+						"contentfulId": "7K1BCmoOZx7VsJ6AbaOzg",
+						"locale": "en-US",
+						"navigationType": "Custom Navigation",
+						"isDefaultNav": true,
+						"backgroundColor": null,
+						"sectionPadding": "default",
+						"navigationItems": [
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "46DxDIGywOr0PvMTD9SPaR",
+								"locale": "en-US",
+								"name": "Sign Up",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "wXmPzQ9k2K8zZvQmlRYcv",
+									"locale": "en-US",
+									"title": "Sign Up",
+									"description": null,
+									"url": "https://dash.cloudflare.com/sign-up",
+									"badges": null,
+									"specialLinkType": null,
+									"openInNewWindow": true,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "5bNBJ3HDA562GjqIPZsaCp",
+								"locale": "en-US",
+								"name": "Under Attack?",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "25HvfOsOXWuBqUEMZRZe5l",
+									"locale": "en-US",
+									"title": "Under Attack?",
+									"description": null,
+									"url": "under-attack-hotline",
+									"badges": null,
+									"specialLinkType": "CTA",
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+								"locale": "en-US",
+								"name": "Login",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+									"locale": "en-US",
+									"title": "Log In",
+									"description": null,
+									"url": "https://dash.cloudflare.com/login",
+									"badges": null,
+									"specialLinkType": "BLUE_CTA",
+									"openInNewWindow": true,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
+							}
+						]
+					},
+					"experimentId": null,
+					"variant": null
+				},
 				"headerLogo": {
 					"file": {
-						"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5bdSgqJjjsJX1ornr7tfnK/c81302df205bab05d9041405f917bb32/theNET_Cloudflare_Logo.png"
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bdSgqJjjsJX1ornr7tfnK/c81302df205bab05d9041405f917bb32/theNET_Cloudflare_Logo.png"
 					}
 				},
 				"proactivePopup": {
@@ -64,7 +341,32 @@
 					"headerText": "Subscribe to theNET",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
 					"hasMarketoForm": true,
-					"marketoForm": null,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
 					"timeDelay": 1500,
 					"ctaButton": null
 				},
@@ -73,7 +375,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
-						"htmlContent": "<section style=\"width: 100vw;margin-left: calc((100vw - 100%) / -2); \">\n<img alt=\"theNet by CLOUDFLARE\" src= 'https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/285sCZZbKXBtsa5g3auYHu/79a31e8173f207459b8ea3c35e75cb98/BDES-4015_theNET_TopBanner_1440x176_Top_webpage_banner.svg'; style=\"width: 100%; display:block \" /> \n</section>",
+						"htmlContent": "<section style=\"width: 100vw;margin-left: calc((100vw - 100%) / -2); \">\n<img alt=\"theNet by CLOUDFLARE\" src= 'https://cf-assets.www.cloudflare.com/slt3lc6tev37/285sCZZbKXBtsa5g3auYHu/79a31e8173f207459b8ea3c35e75cb98/BDES-4015_theNET_TopBanner_1440x176_Top_webpage_banner.svg'; style=\"width: 100%; display:block \" /> \n</section>",
 						"htmlId": "theNETBanner"
 					},
 					{
@@ -109,7 +411,7 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/1fXskZnrWuLfgC072UUP41/d9479ca7d2dbd8766cff984cdf5a5f7b/ddosisontherise.png"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1fXskZnrWuLfgC072UUP41/d9479ca7d2dbd8766cff984cdf5a5f7b/ddosisontherise.png"
 								}
 							},
 							"brandfolderAsset": null,
@@ -170,7 +472,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5U9fH4sSspgPJZo0sFdJCo/170da599a8ec288b4ed01fc0570e5744/therippleeffect.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5U9fH4sSspgPJZo0sFdJCo/170da599a8ec288b4ed01fc0570e5744/therippleeffect.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -201,7 +503,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/4HZ8UQEXxCAEMTMJpXeIup/a4d45524a280d777e4af736c0fcb307b/23-Q1-DDoS-threat-report.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HZ8UQEXxCAEMTMJpXeIup/a4d45524a280d777e4af736c0fcb307b/23-Q1-DDoS-threat-report.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -232,7 +534,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/Gmf2IdCMEzizgJbQzfBw3/dfad4555cfa2edace0c983e603394011/riskgrows.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Gmf2IdCMEzizgJbQzfBw3/dfad4555cfa2edace0c983e603394011/riskgrows.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -263,7 +565,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/6oxCfEchzRFT6XToC9THzN/45b91841aab00ea1013acc3954f1a32d/Security-Week-2023-Hero-Dark-1.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6oxCfEchzRFT6XToC9THzN/45b91841aab00ea1013acc3954f1a32d/Security-Week-2023-Hero-Dark-1.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -299,7 +601,7 @@
 							"text": "Subscribe to theNET",
 							"url": "#",
 							"loggedInUrl": null,
-							"modalTwo": {
+							"modal": {
 								"contentTypeId": "formModal",
 								"contentfulId": "46yewBLdXHwQh9wdijoTot",
 								"modalName": "theNET - Subscribe Modal Two",
@@ -382,7 +684,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5uSWAY7zCvR5ohbFraSKZM/0b48ec3862939aabe2fdac04f80f21f8/Migrating_the_Cloudflare_API_Gateway_to_the_edge.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5uSWAY7zCvR5ohbFraSKZM/0b48ec3862939aabe2fdac04f80f21f8/Migrating_the_Cloudflare_API_Gateway_to_the_edge.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -413,7 +715,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5tzSd37sB4ShIVcHGON3Tc/1baa3a5a8e2572c6bf1edd56c3758490/Internetshutdownsiniraq.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tzSd37sB4ShIVcHGON3Tc/1baa3a5a8e2572c6bf1edd56c3758490/Internetshutdownsiniraq.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -444,7 +746,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/35UbENoRUVJhChiRwur67b/3b4335782209df24f1294fa79142cf4e/projectgalileo.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/35UbENoRUVJhChiRwur67b/3b4335782209df24f1294fa79142cf4e/projectgalileo.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -475,7 +777,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/29n0WjMz0KAgvAzRUAVWxH/35b050c5f0f99534350cd71289fab38d/Internetdisruptionsinpakistan.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/29n0WjMz0KAgvAzRUAVWxH/35b050c5f0f99534350cd71289fab38d/Internetdisruptionsinpakistan.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -506,7 +808,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/6BLiHh3tGXdFemylyckzkg/08181d3486099ae735550a8a039ece7d/theNETovercomingdown.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6BLiHh3tGXdFemylyckzkg/08181d3486099ae735550a8a039ece7d/theNETovercomingdown.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -537,7 +839,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/6Mnwv0M95ZezX3SB3KKqbE/b19cf3f55e0ccf0361ddf86487b579fb/Q3-saw-a-rise-in-DDoS-threats.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6Mnwv0M95ZezX3SB3KKqbE/b19cf3f55e0ccf0361ddf86487b579fb/Q3-saw-a-rise-in-DDoS-threats.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -568,7 +870,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/1NNu83GlJqkUWV7bLzbDwU/27facbe52b6f7c61da94975e18c43b12/Application_Services_HP_Hero.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NNu83GlJqkUWV7bLzbDwU/27facbe52b6f7c61da94975e18c43b12/Application_Services_HP_Hero.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -599,7 +901,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/7uqsuui5JjROYbgIpNLCJI/07e27d13bc73d351a5cc65d35ff9382f/cisosguidetoapisecurity.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uqsuui5JjROYbgIpNLCJI/07e27d13bc73d351a5cc65d35ff9382f/cisosguidetoapisecurity.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -630,7 +932,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/4HZ8UQEXxCAEMTMJpXeIup/a4d45524a280d777e4af736c0fcb307b/23-Q1-DDoS-threat-report.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4HZ8UQEXxCAEMTMJpXeIup/a4d45524a280d777e4af736c0fcb307b/23-Q1-DDoS-threat-report.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -661,7 +963,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/1NNu83GlJqkUWV7bLzbDwU/27facbe52b6f7c61da94975e18c43b12/Application_Services_HP_Hero.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1NNu83GlJqkUWV7bLzbDwU/27facbe52b6f7c61da94975e18c43b12/Application_Services_HP_Hero.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -692,7 +994,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/3qjvKATDDFElL6CAbeoOW2/5faf8c3289e7e16d1e8f206b4e37baf3/Easter.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qjvKATDDFElL6CAbeoOW2/5faf8c3289e7e16d1e8f206b4e37baf3/Easter.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -723,7 +1025,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/LBdDvHNj4FmYQvi2qEg85/8b68880ed1a7af66c1922908a9c1def3/Q1_disruptions_to_the_Internet.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/LBdDvHNj4FmYQvi2qEg85/8b68880ed1a7af66c1922908a9c1def3/Q1_disruptions_to_the_Internet.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -754,7 +1056,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5PeICj5a0McsmO9nXr34Wt/ee747edb5f6f586214fb1c3c65c26feb/iStock-1155328012__1_.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5PeICj5a0McsmO9nXr34Wt/ee747edb5f6f586214fb1c3c65c26feb/iStock-1155328012__1_.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -785,7 +1087,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/116MQ2YEtiqml5BRAawNkE/dc6afbe33e6e6ec70b2ea30c0ff6e6ed/image1-55.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/116MQ2YEtiqml5BRAawNkE/dc6afbe33e6e6ec70b2ea30c0ff6e6ed/image1-55.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -834,7 +1136,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/2ryjn0F5zolMbRJB2PUTFc/f4e019b441a3de4221eb59ea9781c070/Opportunistic_Phishing_and_Banking.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2ryjn0F5zolMbRJB2PUTFc/f4e019b441a3de4221eb59ea9781c070/Opportunistic_Phishing_and_Banking.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -865,7 +1167,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5a14DTPzJplM3xvE3qbIWD/c629cf6287592126115ec3f691742058/microsoft_security_inovation.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5a14DTPzJplM3xvE3qbIWD/c629cf6287592126115ec3f691742058/microsoft_security_inovation.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -896,7 +1198,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/7J6nH7ELsY8xrvoh2BrdpP/9afdaee42a001c09a24ef25d0a7e2b06/iStock-1279501051__2_.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7J6nH7ELsY8xrvoh2BrdpP/9afdaee42a001c09a24ef25d0a7e2b06/iStock-1279501051__2_.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -927,7 +1229,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/5iklXRpad9s5fT8OnNjGCd/75365b329335f15dc2d1016a8ad2823f/BDES-1398_Proliferation-of-APIs-Attacks_BannerAd_1200x627_Native-2__1___1_.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5iklXRpad9s5fT8OnNjGCd/75365b329335f15dc2d1016a8ad2823f/BDES-1398_Proliferation-of-APIs-Attacks_BannerAd_1200x627_Native-2__1___1_.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -958,7 +1260,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/IDOYV0iCLwHhhmziJPc8f/1bea73e314cb3b921a9a668f512c0edb/securitymonitoringfatigue.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/IDOYV0iCLwHhhmziJPc8f/1bea73e314cb3b921a9a668f512c0edb/securitymonitoringfatigue.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -989,7 +1291,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/3jSS4XZ0f8DWTmd6R7vQ2r/015dccde291885e1f03c24c92d61e008/Thought_Leadership_Hero_Imzge.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3jSS4XZ0f8DWTmd6R7vQ2r/015dccde291885e1f03c24c92d61e008/Thought_Leadership_Hero_Imzge.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1020,7 +1322,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/2Z65HQYA0FHlxOh1VKZEXA/3b62e4e50b1b00dd50225e94d14af1a6/ransome.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2Z65HQYA0FHlxOh1VKZEXA/3b62e4e50b1b00dd50225e94d14af1a6/ransome.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1051,7 +1353,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/63CPpYwGCAOZotPKoCVqPw/023bd9ea2636b5818bb652f0e470525b/The_Edge_BEC.jpeg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/63CPpYwGCAOZotPKoCVqPw/023bd9ea2636b5818bb652f0e470525b/The_Edge_BEC.jpeg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1082,7 +1384,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/1vacb5fDOvXBWfyc0Uy4Fe/905c1ee48b6c4759f2601948d2d7f6d2/insights-.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vacb5fDOvXBWfyc0Uy4Fe/905c1ee48b6c4759f2601948d2d7f6d2/insights-.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1113,7 +1415,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/1YNky1oPsobV4OY0QuPiYM/f67bd1a10329b386b480222667e1df14/Hands-Banner-1920-1080.png"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1YNky1oPsobV4OY0QuPiYM/f67bd1a10329b386b480222667e1df14/Hands-Banner-1920-1080.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1144,7 +1446,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/3ew6yFYYxYVr8nioHFUSVv/d08dbac2b3322b4bff4a0d27058c2730/BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A__1__copy.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ew6yFYYxYVr8nioHFUSVv/d08dbac2b3322b4bff4a0d27058c2730/BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A__1__copy.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1175,7 +1477,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/1vgJOsF3nE9gA8gRzL2Onb/a1d990e1c948b78c651d27d49ae5fd26/thegrowingcost.jpg"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1vgJOsF3nE9gA8gRzL2Onb/a1d990e1c948b78c651d27d49ae5fd26/thegrowingcost.jpg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -1206,7 +1508,7 @@
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "https://asset-proxy-staging.mrk.cfdata.org/slt3lc6tev37/74yN5aH5OTAfbIdaX3O9Ho/57a674bfbfbcd23477660e56ee569d5a/1200x627_Native_stock_1.webp"
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74yN5aH5OTAfbIdaX3O9Ho/57a674bfbfbcd23477660e56ee569d5a/1200x627_Native_stock_1.webp"
 										}
 									},
 									"brandfolderAsset": null,
