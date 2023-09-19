@@ -549,6 +549,15 @@
 		"label": "cloudchamber_write"
 	},
 	{
+		"id": "a92d2450e05d4e7bb7d0a64968f83d11",
+		"name": "Cloudflare AI Read",
+		"description": "Grants access to invoke Workers AI models",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "ai_read"
+	},
+	{
 		"id": "3a1e1ef09dd34271bb44fc4c6a419952",
 		"name": "Cloudflare DEX",
 		"description": "Grants access to Cloudflare DEX",
