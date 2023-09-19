@@ -44,7 +44,7 @@ const navigation = {
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(g) {
-			return !(0, z.n3)() && !(0, n.z1)("oauth-access-management")(g)
+			return !(0, w.n3)() && !(0, n.z1)("oauth-access-management")(g)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -232,7 +232,7 @@ const navigation = {
 		hasPermission: function(g) {
 			return !!(0, o.AB)(g)
 		},
-		tabs: S.DW
+		tabs: z.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -277,7 +277,7 @@ const navigation = {
 		hasPermission: function(g) {
 			return !!(0, o.zJ)(g)
 		},
-		tabs: S.$$
+		tabs: z.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -286,7 +286,7 @@ const navigation = {
 			var F = !!(0, o.Wq)(g) && !!(0, o.fO)(g);
 			return !!(0, o.Tk)(g) || F
 		},
-		tabs: S.Dn
+		tabs: z.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -315,7 +315,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.zero_trust",
 		url: function() {
-			var g = (0, u.e1)(),
+			var g = (0, c.e1)(),
 				F = "https://one.dash.cloudflare.com";
 			return g ? "".concat(F, "/").concat(g, "/") : F
 		},
@@ -354,7 +354,21 @@ const navigation = {
 		},
 		iconType: "email-forwarding",
 		title: "navigation.account.area_one",
-		url: "/area1"
+		url: "/area1",
+		pages: [{
+			title: "navigation.common.overview",
+			url: "/area1"
+		}, {
+			title: "navigation.account.area_one.retro_scan",
+			url: "/area1/retro-scan",
+			hasPermission: function(g) {
+				return (0, n.z1)("area-1-retro-scan")(g) === !0
+			}
+		}, {
+			title: "navigation.account.area_one.dashboard",
+			url: "https://horizon.area1security.com",
+			labels: ["external-link"]
+		}]
 	}, {
 		title: "navigation.account.group_title.developer_platform",
 		url: "/",
@@ -399,7 +413,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(g) {
 				var F = (0, v.tJ)(g);
-				return !(0, w.ky)(F, [a.uD.UnboundEnterpriseTrial])
+				return !(0, S.ky)(F, [a.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -561,7 +575,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(g) {
-				return (0, O.b)(g) ? (0, o.iY)(g) : (0, r.Yj)(g)("auditlogs").read
+				return (0, D.b)(g) ? (0, o.iY)(g) : (0, r.Yj)(g)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
@@ -811,7 +825,7 @@ const navigation = {
 			title: "navigation.zone.security.waf",
 			url: "/security/waf",
 			navigationType: "version",
-			tabs: D.gn,
+			tabs: C.gn,
 			hasPermission: function(g) {
 				return (0, o.$n)(g, "waf", "firewall.rule")
 			}
@@ -819,7 +833,7 @@ const navigation = {
 			title: "navigation.zone.security.page_shield",
 			navigationType: "global-settings",
 			url: "/security/page-shield",
-			tabs: D.mt,
+			tabs: C.mt,
 			hasPermission: function(g) {
 				return (0, o.$n)(g, "page_shield", "script-monitor")
 			}
@@ -846,7 +860,7 @@ const navigation = {
 				var F = (0, i.nA)(g);
 				return F ? !!(0, i.ZB)(g, "firewall", "api_shield_tab") && (0, i.tU)(F, "business") && (0, o.$n)(g, "waf", "firewall.rule") : !1
 			},
-			tabs: D.Dw
+			tabs: C.Dw
 		}, {
 			title: "navigation.zone.security.ddos",
 			url: "/security/ddos",

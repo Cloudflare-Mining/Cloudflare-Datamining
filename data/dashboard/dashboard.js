@@ -1236,7 +1236,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, [v.search])
 				},
 				Gn = We().lazy(function() {
-					return Promise.all([n.e(2480), n.e(94377), n.e(4616), n.e(72019), n.e(56310), n.e(32426), n.e(81778), n.e(48450), n.e(6175), n.e(54749), n.e(47261), n.e(7424), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))
+					return Promise.all([n.e(2480), n.e(94377), n.e(4616), n.e(72019), n.e(56310), n.e(32426), n.e(81778), n.e(25002), n.e(6175), n.e(54749), n.e(47261), n.e(7424), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))
 				}),
 				Wn = We().lazy(function() {
 					return Promise.all([n.e(94377), n.e(81778), n.e(69088), n.e(7424), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx"))
@@ -1446,12 +1446,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = rr({}, {
-					branch: "release-Sep.18.2023-1695049394",
+					branch: "release-Sep.19.2023-1695132468",
 					isReleaseCandidate: "true",
-					commit: "5a0e89e87c5ac4827db01be8dba485ed5b522f19",
+					commit: "7b0b674c2586a53357d4fd2430636afd74f10b3c",
 					env: "production",
-					builtAt: 1695049765311,
-					dashVersion: "e9eb5dbaeddf6d2d3d37bb28a5b5d212f5b84d0f",
+					builtAt: 1695160558776,
+					dashVersion: "b3c71dc09f15d631a3b49d9b1e2e79d84df5465c",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",

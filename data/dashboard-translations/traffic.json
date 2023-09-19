@@ -918,6 +918,7 @@
 	"traffic.waiting_rooms.events.waiting_room_details": "Waiting room details",
 	"traffic.waiting_rooms.events.hostname": "Hostname",
 	"traffic.waiting_rooms.events.path": "Path",
+	"traffic.waiting_rooms.events.additional_routes": "Additional hostnames and paths",
 	"traffic.waiting_rooms.events.always_inherit": "Always inherit",
 	"traffic.waiting_rooms.events.inherit": "Always inherit (current value: %{value})",
 	"traffic.waiting_rooms.events.inherit_tau_nupm": "Always inherit (current values - Total active users: %{totalActive}; New users per minute: %{newUsersPm})",
@@ -1129,6 +1130,7 @@
 	"traffic.waiting_rooms.bypass_rules.edit.title": "Edit waiting room bypass rule for %{waitingRoomName}",
 	"traffic.waiting_rooms.bypass_rules.review.title": "Review waiting room bypass rule for %{waitingRoomName}",
 	"traffic.waiting_rooms.bypass_rules.form.title": "Waiting room details",
+	"traffic.waiting_rooms.bypass_rules.additional_routes": "Additional hostnames and paths",
 	"traffic.waiting_rooms.bypass_rules.form.warning": "Please be advised that the waiting room will not apply to all traffic that matches the expressions written for this rule and will not be counted as active users. No Waiting Room features, including but not limited to, Event pre-queueing, Reject queueing method, or Queue-all will apply to this traffic. For more information, refer to our documentation about the <0>Waiting Room.</0>",
 	"traffic.waiting_rooms.bypass_rules.form.bypass.title": "Bypass waiting room",
 	"traffic.waiting_rooms.bypass_rules.form.bypass.subtitle": "Allow this traffic to bypass the waiting room completely."
