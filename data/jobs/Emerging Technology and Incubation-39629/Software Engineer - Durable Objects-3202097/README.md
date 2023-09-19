@@ -5,8 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><em><span style="color: #3598db;">Thank you for your interest in joining our team at Cloudflare. While we do not have a matching role available, we appreciate your application and encourage you to continue to monitor open roles for a fit. Submitting your resume, will ensure that your qualifications and interest in joining our team are readily accessible when relevant positions become available. </span></em></p>
-<p><strong><br>About the Team</strong></p>
+<p><strong>About the Team</strong></p>
 <p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
 <p><strong>About the Role</strong></p>
 <p>You'll help design and build&nbsp;<a href="https://blog.cloudflare.com/introducing-workers-durable-objects/">Durable Objects</a>, a new approach to stateful serverless computing.</p>
