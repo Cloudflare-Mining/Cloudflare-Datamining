@@ -1,0 +1,4149 @@
+{
+	"DELETE /zones/{zone_identifier}/speed_api/pages/{url}/tests": {
+		"description": "Deletes all tests for a specific webpage from a specific region. Deleted tests are still counted as part of the quota.",
+		"operationId": "speed-delete-tests",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "region",
+				"schema": {
+					"description": "A test region.",
+					"enum": [
+						"asia-east1",
+						"asia-northeast1",
+						"asia-northeast2",
+						"asian-south1",
+						"asia-southeast1",
+						"australia-southeast1",
+						"europe-north1",
+						"europe-southwest1",
+						"europe-west1",
+						"europe-west2",
+						"europe-west3",
+						"europe-west4",
+						"europe-west8",
+						"europe-west9",
+						"me-west1",
+						"southamerica-east1",
+						"us-central1",
+						"us-east1",
+						"us-east4",
+						"us-south1",
+						"us-west1"
+					],
+					"example": "us-central1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"count": {
+													"description": "Number of items affected.",
+													"example": 1,
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Number of deleted tests"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete all page tests",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /zones/{zone_identifier}/speed_api/schedule/{url}": {
+		"description": "Deletes a scheduled test for a page.",
+		"operationId": "speed-delete-test-schedule",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "region",
+				"schema": {
+					"description": "A test region.",
+					"enum": [
+						"asia-east1",
+						"asia-northeast1",
+						"asia-northeast2",
+						"asian-south1",
+						"asia-southeast1",
+						"australia-southeast1",
+						"europe-north1",
+						"europe-southwest1",
+						"europe-west1",
+						"europe-west2",
+						"europe-west3",
+						"europe-west4",
+						"europe-west8",
+						"europe-west9",
+						"me-west1",
+						"southamerica-east1",
+						"us-central1",
+						"us-east1",
+						"us-east4",
+						"us-south1",
+						"us-west1"
+					],
+					"example": "us-central1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"count": {
+													"description": "Number of items affected.",
+													"example": 1,
+													"type": "number"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Number of deleted tests"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete scheduled page test",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/speed_api/availabilities": {
+		"description": "Retrieves quota for all plans, as well as the current zone quota.",
+		"operationId": "speed-get-availabilities",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"quota": {
+													"properties": {
+														"plan": {
+															"description": "Cloudflare plan.",
+															"example": "free",
+															"type": "string"
+														},
+														"quotasPerPlan": {
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "The number of tests available per plan.",
+															"type": "object"
+														},
+														"remainingSchedules": {
+															"description": "The number of remaining schedules available.",
+															"example": 1,
+															"type": "number"
+														},
+														"remainingTests": {
+															"description": "The number of remaining tests available.",
+															"example": 30,
+															"type": "number"
+														},
+														"scheduleQuotasPerPlan": {
+															"additionalProperties": {
+																"type": "number"
+															},
+															"description": "The number of schedules available per plan.",
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"regions": {
+													"items": {
+														"description": "A test region with a label.",
+														"properties": {
+															"label": {
+																"example": "Iowa, USA",
+																"type": "string"
+															},
+															"value": {
+																"description": "A test region.",
+																"enum": [
+																	"asia-east1",
+																	"asia-northeast1",
+																	"asia-northeast2",
+																	"asian-south1",
+																	"asia-southeast1",
+																	"australia-southeast1",
+																	"europe-north1",
+																	"europe-southwest1",
+																	"europe-west1",
+																	"europe-west2",
+																	"europe-west3",
+																	"europe-west4",
+																	"europe-west8",
+																	"europe-west9",
+																	"me-west1",
+																	"southamerica-east1",
+																	"us-central1",
+																	"us-east1",
+																	"us-east4",
+																	"us-south1",
+																	"us-west1"
+																],
+																"example": "us-central1",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"regionsPerPlan": {
+													"additionalProperties": {
+														"description": "Available regions.",
+														"items": {
+															"description": "A test region with a label.",
+															"properties": {
+																"label": {
+																	"example": "Iowa, USA",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "A test region.",
+																	"enum": [
+																		"asia-east1",
+																		"asia-northeast1",
+																		"asia-northeast2",
+																		"asian-south1",
+																		"asia-southeast1",
+																		"australia-southeast1",
+																		"europe-north1",
+																		"europe-southwest1",
+																		"europe-west1",
+																		"europe-west2",
+																		"europe-west3",
+																		"europe-west4",
+																		"europe-west8",
+																		"europe-west9",
+																		"me-west1",
+																		"southamerica-east1",
+																		"us-central1",
+																		"us-east1",
+																		"us-east4",
+																		"us-south1",
+																		"us-west1"
+																	],
+																	"example": "us-central1",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													}
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Page test availability"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get quota and availability",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/speed_api/pages": {
+		"description": "Lists all webpages which have been tested.",
+		"operationId": "speed-list-pages",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"region": {
+														"description": "A test region with a label.",
+														"properties": {
+															"label": {
+																"example": "Iowa, USA",
+																"type": "string"
+															},
+															"value": {
+																"description": "A test region.",
+																"enum": [
+																	"asia-east1",
+																	"asia-northeast1",
+																	"asia-northeast2",
+																	"asian-south1",
+																	"asia-southeast1",
+																	"australia-southeast1",
+																	"europe-north1",
+																	"europe-southwest1",
+																	"europe-west1",
+																	"europe-west2",
+																	"europe-west3",
+																	"europe-west4",
+																	"europe-west8",
+																	"europe-west9",
+																	"me-west1",
+																	"southamerica-east1",
+																	"us-central1",
+																	"us-east1",
+																	"us-east4",
+																	"us-south1",
+																	"us-west1"
+																],
+																"example": "us-central1",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"scheduleFrequency": {
+														"description": "The frequency of the test.",
+														"enum": [
+															"DAILY",
+															"WEEKLY"
+														],
+														"example": "DAILY",
+														"type": "string"
+													},
+													"tests": {
+														"items": {
+															"properties": {
+																"date": {
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"desktopReport": {
+																	"description": "The Lighthouse report.",
+																	"properties": {
+																		"cls": {
+																			"description": "Cumulative Layout Shift.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"deviceType": {
+																			"description": "The type of device.",
+																			"enum": [
+																				"DESKTOP",
+																				"MOBILE"
+																			],
+																			"example": "DESKTOP",
+																			"type": "string"
+																		},
+																		"error": {
+																			"properties": {
+																				"code": {
+																					"description": "The error code of the Lighthouse result.",
+																					"enum": [
+																						"NOT_REACHABLE",
+																						"DNS_FAILURE",
+																						"NOT_HTML",
+																						"LIGHTHOUSE_TIMEOUT",
+																						"UNKNOWN"
+																					],
+																					"example": "NOT_REACHABLE",
+																					"type": "string"
+																				},
+																				"detail": {
+																					"description": "Detailed error message.",
+																					"example": "Details: net::ERR_CONNECTION_CLOSED",
+																					"type": "string"
+																				},
+																				"finalDisplayedUrl": {
+																					"description": "The final URL displayed to the user.",
+																					"example": "example.com",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"fcp": {
+																			"description": "First Contentful Paint.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"jsonReportUrl": {
+																			"description": "The URL to the full Lighthouse JSON report.",
+																			"type": "string"
+																		},
+																		"lcp": {
+																			"description": "Largest Contentful Paint.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"performanceScore": {
+																			"description": "The Lighthouse performance score.",
+																			"example": 90,
+																			"type": "number"
+																		},
+																		"si": {
+																			"description": "Speed Index.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"state": {
+																			"description": "The state of the Lighthouse report.",
+																			"enum": [
+																				"RUNNING",
+																				"COMPLETE",
+																				"FAILED"
+																			],
+																			"example": "COMPLETE",
+																			"type": "string"
+																		},
+																		"tbt": {
+																			"description": "Total Blocking Time.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"ttfb": {
+																			"description": "Time To First Byte.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"tti": {
+																			"description": "Time To Interactive.",
+																			"example": 100,
+																			"type": "number"
+																		}
+																	},
+																	"type": "object"
+																},
+																"id": {
+																	"description": "UUID",
+																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																	"maxLength": 36,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"mobileReport": {
+																	"description": "The Lighthouse report.",
+																	"properties": {
+																		"cls": {
+																			"description": "Cumulative Layout Shift.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"deviceType": {
+																			"description": "The type of device.",
+																			"enum": [
+																				"DESKTOP",
+																				"MOBILE"
+																			],
+																			"example": "DESKTOP",
+																			"type": "string"
+																		},
+																		"error": {
+																			"properties": {
+																				"code": {
+																					"description": "The error code of the Lighthouse result.",
+																					"enum": [
+																						"NOT_REACHABLE",
+																						"DNS_FAILURE",
+																						"NOT_HTML",
+																						"LIGHTHOUSE_TIMEOUT",
+																						"UNKNOWN"
+																					],
+																					"example": "NOT_REACHABLE",
+																					"type": "string"
+																				},
+																				"detail": {
+																					"description": "Detailed error message.",
+																					"example": "Details: net::ERR_CONNECTION_CLOSED",
+																					"type": "string"
+																				},
+																				"finalDisplayedUrl": {
+																					"description": "The final URL displayed to the user.",
+																					"example": "example.com",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"fcp": {
+																			"description": "First Contentful Paint.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"jsonReportUrl": {
+																			"description": "The URL to the full Lighthouse JSON report.",
+																			"type": "string"
+																		},
+																		"lcp": {
+																			"description": "Largest Contentful Paint.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"performanceScore": {
+																			"description": "The Lighthouse performance score.",
+																			"example": 90,
+																			"type": "number"
+																		},
+																		"si": {
+																			"description": "Speed Index.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"state": {
+																			"description": "The state of the Lighthouse report.",
+																			"enum": [
+																				"RUNNING",
+																				"COMPLETE",
+																				"FAILED"
+																			],
+																			"example": "COMPLETE",
+																			"type": "string"
+																		},
+																		"tbt": {
+																			"description": "Total Blocking Time.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"ttfb": {
+																			"description": "Time To First Byte.",
+																			"example": 100,
+																			"type": "number"
+																		},
+																		"tti": {
+																			"description": "Time To Interactive.",
+																			"example": 100,
+																			"type": "number"
+																		}
+																	},
+																	"type": "object"
+																},
+																"region": {
+																	"description": "A test region with a label.",
+																	"properties": {
+																		"label": {
+																			"example": "Iowa, USA",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "A test region.",
+																			"enum": [
+																				"asia-east1",
+																				"asia-northeast1",
+																				"asia-northeast2",
+																				"asian-south1",
+																				"asia-southeast1",
+																				"australia-southeast1",
+																				"europe-north1",
+																				"europe-southwest1",
+																				"europe-west1",
+																				"europe-west2",
+																				"europe-west3",
+																				"europe-west4",
+																				"europe-west8",
+																				"europe-west9",
+																				"me-west1",
+																				"southamerica-east1",
+																				"us-central1",
+																				"us-east1",
+																				"us-east4",
+																				"us-south1",
+																				"us-west1"
+																			],
+																			"example": "us-central1",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"scheduleFrequency": {
+																	"description": "The frequency of the test.",
+																	"enum": [
+																		"DAILY",
+																		"WEEKLY"
+																	],
+																	"example": "DAILY",
+																	"type": "string"
+																},
+																"url": {
+																	"description": "A URL.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"url": {
+														"description": "A URL.",
+														"example": "example.com",
+														"type": "string"
+													}
+												}
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List of pages"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List tested webpages",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/speed_api/pages/{url}/tests": {
+		"description": "Test history (list of tests) for a specific webpage.",
+		"operationId": "speed-list-test-history",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"example": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"example": 20,
+					"maximum": 50,
+					"minimum": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "region",
+				"schema": {
+					"description": "A test region.",
+					"enum": [
+						"asia-east1",
+						"asia-northeast1",
+						"asia-northeast2",
+						"asian-south1",
+						"asia-southeast1",
+						"australia-southeast1",
+						"europe-north1",
+						"europe-southwest1",
+						"europe-west1",
+						"europe-west2",
+						"europe-west3",
+						"europe-west4",
+						"europe-west8",
+						"europe-west9",
+						"me-west1",
+						"southamerica-east1",
+						"us-central1",
+						"us-east1",
+						"us-east4",
+						"us-south1",
+						"us-west1"
+					],
+					"example": "us-central1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"date": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"desktopReport": {
+														"description": "The Lighthouse report.",
+														"properties": {
+															"cls": {
+																"description": "Cumulative Layout Shift.",
+																"example": 100,
+																"type": "number"
+															},
+															"deviceType": {
+																"description": "The type of device.",
+																"enum": [
+																	"DESKTOP",
+																	"MOBILE"
+																],
+																"example": "DESKTOP",
+																"type": "string"
+															},
+															"error": {
+																"properties": {
+																	"code": {
+																		"description": "The error code of the Lighthouse result.",
+																		"enum": [
+																			"NOT_REACHABLE",
+																			"DNS_FAILURE",
+																			"NOT_HTML",
+																			"LIGHTHOUSE_TIMEOUT",
+																			"UNKNOWN"
+																		],
+																		"example": "NOT_REACHABLE",
+																		"type": "string"
+																	},
+																	"detail": {
+																		"description": "Detailed error message.",
+																		"example": "Details: net::ERR_CONNECTION_CLOSED",
+																		"type": "string"
+																	},
+																	"finalDisplayedUrl": {
+																		"description": "The final URL displayed to the user.",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"fcp": {
+																"description": "First Contentful Paint.",
+																"example": 100,
+																"type": "number"
+															},
+															"jsonReportUrl": {
+																"description": "The URL to the full Lighthouse JSON report.",
+																"type": "string"
+															},
+															"lcp": {
+																"description": "Largest Contentful Paint.",
+																"example": 100,
+																"type": "number"
+															},
+															"performanceScore": {
+																"description": "The Lighthouse performance score.",
+																"example": 90,
+																"type": "number"
+															},
+															"si": {
+																"description": "Speed Index.",
+																"example": 100,
+																"type": "number"
+															},
+															"state": {
+																"description": "The state of the Lighthouse report.",
+																"enum": [
+																	"RUNNING",
+																	"COMPLETE",
+																	"FAILED"
+																],
+																"example": "COMPLETE",
+																"type": "string"
+															},
+															"tbt": {
+																"description": "Total Blocking Time.",
+																"example": 100,
+																"type": "number"
+															},
+															"ttfb": {
+																"description": "Time To First Byte.",
+																"example": 100,
+																"type": "number"
+															},
+															"tti": {
+																"description": "Time To Interactive.",
+																"example": 100,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
+													"id": {
+														"description": "UUID",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
+													},
+													"mobileReport": {
+														"description": "The Lighthouse report.",
+														"properties": {
+															"cls": {
+																"description": "Cumulative Layout Shift.",
+																"example": 100,
+																"type": "number"
+															},
+															"deviceType": {
+																"description": "The type of device.",
+																"enum": [
+																	"DESKTOP",
+																	"MOBILE"
+																],
+																"example": "DESKTOP",
+																"type": "string"
+															},
+															"error": {
+																"properties": {
+																	"code": {
+																		"description": "The error code of the Lighthouse result.",
+																		"enum": [
+																			"NOT_REACHABLE",
+																			"DNS_FAILURE",
+																			"NOT_HTML",
+																			"LIGHTHOUSE_TIMEOUT",
+																			"UNKNOWN"
+																		],
+																		"example": "NOT_REACHABLE",
+																		"type": "string"
+																	},
+																	"detail": {
+																		"description": "Detailed error message.",
+																		"example": "Details: net::ERR_CONNECTION_CLOSED",
+																		"type": "string"
+																	},
+																	"finalDisplayedUrl": {
+																		"description": "The final URL displayed to the user.",
+																		"example": "example.com",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"fcp": {
+																"description": "First Contentful Paint.",
+																"example": 100,
+																"type": "number"
+															},
+															"jsonReportUrl": {
+																"description": "The URL to the full Lighthouse JSON report.",
+																"type": "string"
+															},
+															"lcp": {
+																"description": "Largest Contentful Paint.",
+																"example": 100,
+																"type": "number"
+															},
+															"performanceScore": {
+																"description": "The Lighthouse performance score.",
+																"example": 90,
+																"type": "number"
+															},
+															"si": {
+																"description": "Speed Index.",
+																"example": 100,
+																"type": "number"
+															},
+															"state": {
+																"description": "The state of the Lighthouse report.",
+																"enum": [
+																	"RUNNING",
+																	"COMPLETE",
+																	"FAILED"
+																],
+																"example": "COMPLETE",
+																"type": "string"
+															},
+															"tbt": {
+																"description": "Total Blocking Time.",
+																"example": 100,
+																"type": "number"
+															},
+															"ttfb": {
+																"description": "Time To First Byte.",
+																"example": 100,
+																"type": "number"
+															},
+															"tti": {
+																"description": "Time To Interactive.",
+																"example": 100,
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
+													"region": {
+														"description": "A test region with a label.",
+														"properties": {
+															"label": {
+																"example": "Iowa, USA",
+																"type": "string"
+															},
+															"value": {
+																"description": "A test region.",
+																"enum": [
+																	"asia-east1",
+																	"asia-northeast1",
+																	"asia-northeast2",
+																	"asian-south1",
+																	"asia-southeast1",
+																	"australia-southeast1",
+																	"europe-north1",
+																	"europe-southwest1",
+																	"europe-west1",
+																	"europe-west2",
+																	"europe-west3",
+																	"europe-west4",
+																	"europe-west8",
+																	"europe-west9",
+																	"me-west1",
+																	"southamerica-east1",
+																	"us-central1",
+																	"us-east1",
+																	"us-east4",
+																	"us-south1",
+																	"us-west1"
+																],
+																"example": "us-central1",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"scheduleFrequency": {
+														"description": "The frequency of the test.",
+														"enum": [
+															"DAILY",
+															"WEEKLY"
+														],
+														"example": "DAILY",
+														"type": "string"
+													},
+													"url": {
+														"description": "A URL.",
+														"example": "example.com",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								},
+								{
+									"properties": {
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 5,
+													"type": "integer"
+												},
+												"page": {
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"example": 5,
+													"type": "integer"
+												},
+												"total_count": {
+													"example": 3,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List of test history for a page"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List page test history",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/speed_api/pages/{url}/tests/{test_identifier}": {
+		"description": "Retrieves the result of a specific test.",
+		"operationId": "speed-get-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "test_identifier",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"date": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"desktopReport": {
+													"description": "The Lighthouse report.",
+													"properties": {
+														"cls": {
+															"description": "Cumulative Layout Shift.",
+															"example": 100,
+															"type": "number"
+														},
+														"deviceType": {
+															"description": "The type of device.",
+															"enum": [
+																"DESKTOP",
+																"MOBILE"
+															],
+															"example": "DESKTOP",
+															"type": "string"
+														},
+														"error": {
+															"properties": {
+																"code": {
+																	"description": "The error code of the Lighthouse result.",
+																	"enum": [
+																		"NOT_REACHABLE",
+																		"DNS_FAILURE",
+																		"NOT_HTML",
+																		"LIGHTHOUSE_TIMEOUT",
+																		"UNKNOWN"
+																	],
+																	"example": "NOT_REACHABLE",
+																	"type": "string"
+																},
+																"detail": {
+																	"description": "Detailed error message.",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
+																	"type": "string"
+																},
+																"finalDisplayedUrl": {
+																	"description": "The final URL displayed to the user.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"fcp": {
+															"description": "First Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"jsonReportUrl": {
+															"description": "The URL to the full Lighthouse JSON report.",
+															"type": "string"
+														},
+														"lcp": {
+															"description": "Largest Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"performanceScore": {
+															"description": "The Lighthouse performance score.",
+															"example": 90,
+															"type": "number"
+														},
+														"si": {
+															"description": "Speed Index.",
+															"example": 100,
+															"type": "number"
+														},
+														"state": {
+															"description": "The state of the Lighthouse report.",
+															"enum": [
+																"RUNNING",
+																"COMPLETE",
+																"FAILED"
+															],
+															"example": "COMPLETE",
+															"type": "string"
+														},
+														"tbt": {
+															"description": "Total Blocking Time.",
+															"example": 100,
+															"type": "number"
+														},
+														"ttfb": {
+															"description": "Time To First Byte.",
+															"example": 100,
+															"type": "number"
+														},
+														"tti": {
+															"description": "Time To Interactive.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"mobileReport": {
+													"description": "The Lighthouse report.",
+													"properties": {
+														"cls": {
+															"description": "Cumulative Layout Shift.",
+															"example": 100,
+															"type": "number"
+														},
+														"deviceType": {
+															"description": "The type of device.",
+															"enum": [
+																"DESKTOP",
+																"MOBILE"
+															],
+															"example": "DESKTOP",
+															"type": "string"
+														},
+														"error": {
+															"properties": {
+																"code": {
+																	"description": "The error code of the Lighthouse result.",
+																	"enum": [
+																		"NOT_REACHABLE",
+																		"DNS_FAILURE",
+																		"NOT_HTML",
+																		"LIGHTHOUSE_TIMEOUT",
+																		"UNKNOWN"
+																	],
+																	"example": "NOT_REACHABLE",
+																	"type": "string"
+																},
+																"detail": {
+																	"description": "Detailed error message.",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
+																	"type": "string"
+																},
+																"finalDisplayedUrl": {
+																	"description": "The final URL displayed to the user.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"fcp": {
+															"description": "First Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"jsonReportUrl": {
+															"description": "The URL to the full Lighthouse JSON report.",
+															"type": "string"
+														},
+														"lcp": {
+															"description": "Largest Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"performanceScore": {
+															"description": "The Lighthouse performance score.",
+															"example": 90,
+															"type": "number"
+														},
+														"si": {
+															"description": "Speed Index.",
+															"example": 100,
+															"type": "number"
+														},
+														"state": {
+															"description": "The state of the Lighthouse report.",
+															"enum": [
+																"RUNNING",
+																"COMPLETE",
+																"FAILED"
+															],
+															"example": "COMPLETE",
+															"type": "string"
+														},
+														"tbt": {
+															"description": "Total Blocking Time.",
+															"example": 100,
+															"type": "number"
+														},
+														"ttfb": {
+															"description": "Time To First Byte.",
+															"example": 100,
+															"type": "number"
+														},
+														"tti": {
+															"description": "Time To Interactive.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"region": {
+													"description": "A test region with a label.",
+													"properties": {
+														"label": {
+															"example": "Iowa, USA",
+															"type": "string"
+														},
+														"value": {
+															"description": "A test region.",
+															"enum": [
+																"asia-east1",
+																"asia-northeast1",
+																"asia-northeast2",
+																"asian-south1",
+																"asia-southeast1",
+																"australia-southeast1",
+																"europe-north1",
+																"europe-southwest1",
+																"europe-west1",
+																"europe-west2",
+																"europe-west3",
+																"europe-west4",
+																"europe-west8",
+																"europe-west9",
+																"me-west1",
+																"southamerica-east1",
+																"us-central1",
+																"us-east1",
+																"us-east4",
+																"us-south1",
+																"us-west1"
+															],
+															"example": "us-central1",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"scheduleFrequency": {
+													"description": "The frequency of the test.",
+													"enum": [
+														"DAILY",
+														"WEEKLY"
+													],
+													"example": "DAILY",
+													"type": "string"
+												},
+												"url": {
+													"description": "A URL.",
+													"example": "example.com",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Page test result"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a page test result",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/speed_api/pages/{url}/trend": {
+		"description": "Lists the core web vital metrics trend over time for a specific page.",
+		"operationId": "speed-list-page-trend",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "region",
+				"required": true,
+				"schema": {
+					"description": "A test region.",
+					"enum": [
+						"asia-east1",
+						"asia-northeast1",
+						"asia-northeast2",
+						"asian-south1",
+						"asia-southeast1",
+						"australia-southeast1",
+						"europe-north1",
+						"europe-southwest1",
+						"europe-west1",
+						"europe-west2",
+						"europe-west3",
+						"europe-west4",
+						"europe-west8",
+						"europe-west9",
+						"me-west1",
+						"southamerica-east1",
+						"us-central1",
+						"us-east1",
+						"us-east4",
+						"us-south1",
+						"us-west1"
+					],
+					"example": "us-central1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "deviceType",
+				"required": true,
+				"schema": {
+					"description": "The type of device.",
+					"enum": [
+						"DESKTOP",
+						"MOBILE"
+					],
+					"example": "DESKTOP",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "start",
+				"required": true,
+				"schema": {
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "end",
+				"schema": {
+					"example": "2014-01-01T05:20:00.12345Z",
+					"format": "date-time",
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "The timezone of the start and end timestamps.",
+				"example": "America/Chicago",
+				"in": "query",
+				"name": "tz",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A comma-separated list of metrics to include in the results.",
+				"in": "query",
+				"name": "metrics",
+				"required": true,
+				"schema": {
+					"example": "performanceScore,ttfb,fcp,si,lcp,tti,tbt,cls",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"cls": {
+													"description": "Cumulative Layout Shift trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"fcp": {
+													"description": "First Contentful Paint trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"lcp": {
+													"description": "Largest Contentful Paint trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"performanceScore": {
+													"description": "The Lighthouse score trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"si": {
+													"description": "Speed Index trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"tbt": {
+													"description": "Total Blocking Time trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"ttfb": {
+													"description": "Time To First Byte trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												},
+												"tti": {
+													"description": "Time To Interactive trend.",
+													"items": {
+														"nullable": true,
+														"type": "number"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Page trend"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List core web vital metrics trend",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_identifier}/speed_api/schedule/{url}": {
+		"description": "Retrieves the test schedule for a page in a specific region.",
+		"operationId": "speed-get-scheduled-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "region",
+				"schema": {
+					"description": "A test region.",
+					"enum": [
+						"asia-east1",
+						"asia-northeast1",
+						"asia-northeast2",
+						"asian-south1",
+						"asia-southeast1",
+						"australia-southeast1",
+						"europe-north1",
+						"europe-southwest1",
+						"europe-west1",
+						"europe-west2",
+						"europe-west3",
+						"europe-west4",
+						"europe-west8",
+						"europe-west9",
+						"me-west1",
+						"southamerica-east1",
+						"us-central1",
+						"us-east1",
+						"us-east4",
+						"us-south1",
+						"us-west1"
+					],
+					"example": "us-central1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "The test schedule.",
+											"properties": {
+												"frequency": {
+													"description": "The frequency of the test.",
+													"enum": [
+														"DAILY",
+														"WEEKLY"
+													],
+													"example": "DAILY",
+													"type": "string"
+												},
+												"region": {
+													"description": "A test region.",
+													"enum": [
+														"asia-east1",
+														"asia-northeast1",
+														"asia-northeast2",
+														"asian-south1",
+														"asia-southeast1",
+														"australia-southeast1",
+														"europe-north1",
+														"europe-southwest1",
+														"europe-west1",
+														"europe-west2",
+														"europe-west3",
+														"europe-west4",
+														"europe-west8",
+														"europe-west9",
+														"me-west1",
+														"southamerica-east1",
+														"us-central1",
+														"us-east1",
+														"us-east4",
+														"us-south1",
+														"us-west1"
+													],
+													"example": "us-central1",
+													"type": "string"
+												},
+												"url": {
+													"description": "A URL.",
+													"example": "example.com",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Page test schedule"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get a page test schedule",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/speed_api/pages/{url}/tests": {
+		"description": "Starts a test for a specific webpage, in a specific region.",
+		"operationId": "speed-create-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"region": {
+								"description": "A test region.",
+								"enum": [
+									"asia-east1",
+									"asia-northeast1",
+									"asia-northeast2",
+									"asian-south1",
+									"asia-southeast1",
+									"australia-southeast1",
+									"europe-north1",
+									"europe-southwest1",
+									"europe-west1",
+									"europe-west2",
+									"europe-west3",
+									"europe-west4",
+									"europe-west8",
+									"europe-west9",
+									"me-west1",
+									"southamerica-east1",
+									"us-central1",
+									"us-east1",
+									"us-east4",
+									"us-south1",
+									"us-west1"
+								],
+								"example": "us-central1",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"date": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"desktopReport": {
+													"description": "The Lighthouse report.",
+													"properties": {
+														"cls": {
+															"description": "Cumulative Layout Shift.",
+															"example": 100,
+															"type": "number"
+														},
+														"deviceType": {
+															"description": "The type of device.",
+															"enum": [
+																"DESKTOP",
+																"MOBILE"
+															],
+															"example": "DESKTOP",
+															"type": "string"
+														},
+														"error": {
+															"properties": {
+																"code": {
+																	"description": "The error code of the Lighthouse result.",
+																	"enum": [
+																		"NOT_REACHABLE",
+																		"DNS_FAILURE",
+																		"NOT_HTML",
+																		"LIGHTHOUSE_TIMEOUT",
+																		"UNKNOWN"
+																	],
+																	"example": "NOT_REACHABLE",
+																	"type": "string"
+																},
+																"detail": {
+																	"description": "Detailed error message.",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
+																	"type": "string"
+																},
+																"finalDisplayedUrl": {
+																	"description": "The final URL displayed to the user.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"fcp": {
+															"description": "First Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"jsonReportUrl": {
+															"description": "The URL to the full Lighthouse JSON report.",
+															"type": "string"
+														},
+														"lcp": {
+															"description": "Largest Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"performanceScore": {
+															"description": "The Lighthouse performance score.",
+															"example": 90,
+															"type": "number"
+														},
+														"si": {
+															"description": "Speed Index.",
+															"example": 100,
+															"type": "number"
+														},
+														"state": {
+															"description": "The state of the Lighthouse report.",
+															"enum": [
+																"RUNNING",
+																"COMPLETE",
+																"FAILED"
+															],
+															"example": "COMPLETE",
+															"type": "string"
+														},
+														"tbt": {
+															"description": "Total Blocking Time.",
+															"example": 100,
+															"type": "number"
+														},
+														"ttfb": {
+															"description": "Time To First Byte.",
+															"example": 100,
+															"type": "number"
+														},
+														"tti": {
+															"description": "Time To Interactive.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "UUID",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"mobileReport": {
+													"description": "The Lighthouse report.",
+													"properties": {
+														"cls": {
+															"description": "Cumulative Layout Shift.",
+															"example": 100,
+															"type": "number"
+														},
+														"deviceType": {
+															"description": "The type of device.",
+															"enum": [
+																"DESKTOP",
+																"MOBILE"
+															],
+															"example": "DESKTOP",
+															"type": "string"
+														},
+														"error": {
+															"properties": {
+																"code": {
+																	"description": "The error code of the Lighthouse result.",
+																	"enum": [
+																		"NOT_REACHABLE",
+																		"DNS_FAILURE",
+																		"NOT_HTML",
+																		"LIGHTHOUSE_TIMEOUT",
+																		"UNKNOWN"
+																	],
+																	"example": "NOT_REACHABLE",
+																	"type": "string"
+																},
+																"detail": {
+																	"description": "Detailed error message.",
+																	"example": "Details: net::ERR_CONNECTION_CLOSED",
+																	"type": "string"
+																},
+																"finalDisplayedUrl": {
+																	"description": "The final URL displayed to the user.",
+																	"example": "example.com",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"fcp": {
+															"description": "First Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"jsonReportUrl": {
+															"description": "The URL to the full Lighthouse JSON report.",
+															"type": "string"
+														},
+														"lcp": {
+															"description": "Largest Contentful Paint.",
+															"example": 100,
+															"type": "number"
+														},
+														"performanceScore": {
+															"description": "The Lighthouse performance score.",
+															"example": 90,
+															"type": "number"
+														},
+														"si": {
+															"description": "Speed Index.",
+															"example": 100,
+															"type": "number"
+														},
+														"state": {
+															"description": "The state of the Lighthouse report.",
+															"enum": [
+																"RUNNING",
+																"COMPLETE",
+																"FAILED"
+															],
+															"example": "COMPLETE",
+															"type": "string"
+														},
+														"tbt": {
+															"description": "Total Blocking Time.",
+															"example": 100,
+															"type": "number"
+														},
+														"ttfb": {
+															"description": "Time To First Byte.",
+															"example": 100,
+															"type": "number"
+														},
+														"tti": {
+															"description": "Time To Interactive.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"region": {
+													"description": "A test region with a label.",
+													"properties": {
+														"label": {
+															"example": "Iowa, USA",
+															"type": "string"
+														},
+														"value": {
+															"description": "A test region.",
+															"enum": [
+																"asia-east1",
+																"asia-northeast1",
+																"asia-northeast2",
+																"asian-south1",
+																"asia-southeast1",
+																"australia-southeast1",
+																"europe-north1",
+																"europe-southwest1",
+																"europe-west1",
+																"europe-west2",
+																"europe-west3",
+																"europe-west4",
+																"europe-west8",
+																"europe-west9",
+																"me-west1",
+																"southamerica-east1",
+																"us-central1",
+																"us-east1",
+																"us-east4",
+																"us-south1",
+																"us-west1"
+															],
+															"example": "us-central1",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"scheduleFrequency": {
+													"description": "The frequency of the test.",
+													"enum": [
+														"DAILY",
+														"WEEKLY"
+													],
+													"example": "DAILY",
+													"type": "string"
+												},
+												"url": {
+													"description": "A URL.",
+													"example": "example.com",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Page test details"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Start page test",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/speed_api/schedule/{url}": {
+		"description": "Creates a scheduled test for a page.",
+		"operationId": "speed-create-scheduled-test",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "url",
+				"required": true,
+				"schema": {
+					"description": "A URL.",
+					"example": "example.com",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "region",
+				"schema": {
+					"description": "A test region.",
+					"enum": [
+						"asia-east1",
+						"asia-northeast1",
+						"asia-northeast2",
+						"asian-south1",
+						"asia-southeast1",
+						"australia-southeast1",
+						"europe-north1",
+						"europe-southwest1",
+						"europe-west1",
+						"europe-west2",
+						"europe-west3",
+						"europe-west4",
+						"europe-west8",
+						"europe-west9",
+						"me-west1",
+						"southamerica-east1",
+						"us-central1",
+						"us-east1",
+						"us-east4",
+						"us-south1",
+						"us-west1"
+					],
+					"example": "us-central1",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"schedule": {
+													"description": "The test schedule.",
+													"properties": {
+														"frequency": {
+															"description": "The frequency of the test.",
+															"enum": [
+																"DAILY",
+																"WEEKLY"
+															],
+															"example": "DAILY",
+															"type": "string"
+														},
+														"region": {
+															"description": "A test region.",
+															"enum": [
+																"asia-east1",
+																"asia-northeast1",
+																"asia-northeast2",
+																"asian-south1",
+																"asia-southeast1",
+																"australia-southeast1",
+																"europe-north1",
+																"europe-southwest1",
+																"europe-west1",
+																"europe-west2",
+																"europe-west3",
+																"europe-west4",
+																"europe-west8",
+																"europe-west9",
+																"me-west1",
+																"southamerica-east1",
+																"us-central1",
+																"us-east1",
+																"us-east4",
+																"us-south1",
+																"us-west1"
+															],
+															"example": "us-central1",
+															"type": "string"
+														},
+														"url": {
+															"description": "A URL.",
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"test": {
+													"properties": {
+														"date": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"desktopReport": {
+															"description": "The Lighthouse report.",
+															"properties": {
+																"cls": {
+																	"description": "Cumulative Layout Shift.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"deviceType": {
+																	"description": "The type of device.",
+																	"enum": [
+																		"DESKTOP",
+																		"MOBILE"
+																	],
+																	"example": "DESKTOP",
+																	"type": "string"
+																},
+																"error": {
+																	"properties": {
+																		"code": {
+																			"description": "The error code of the Lighthouse result.",
+																			"enum": [
+																				"NOT_REACHABLE",
+																				"DNS_FAILURE",
+																				"NOT_HTML",
+																				"LIGHTHOUSE_TIMEOUT",
+																				"UNKNOWN"
+																			],
+																			"example": "NOT_REACHABLE",
+																			"type": "string"
+																		},
+																		"detail": {
+																			"description": "Detailed error message.",
+																			"example": "Details: net::ERR_CONNECTION_CLOSED",
+																			"type": "string"
+																		},
+																		"finalDisplayedUrl": {
+																			"description": "The final URL displayed to the user.",
+																			"example": "example.com",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"fcp": {
+																	"description": "First Contentful Paint.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"jsonReportUrl": {
+																	"description": "The URL to the full Lighthouse JSON report.",
+																	"type": "string"
+																},
+																"lcp": {
+																	"description": "Largest Contentful Paint.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"performanceScore": {
+																	"description": "The Lighthouse performance score.",
+																	"example": 90,
+																	"type": "number"
+																},
+																"si": {
+																	"description": "Speed Index.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"state": {
+																	"description": "The state of the Lighthouse report.",
+																	"enum": [
+																		"RUNNING",
+																		"COMPLETE",
+																		"FAILED"
+																	],
+																	"example": "COMPLETE",
+																	"type": "string"
+																},
+																"tbt": {
+																	"description": "Total Blocking Time.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"ttfb": {
+																	"description": "Time To First Byte.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"tti": {
+																	"description": "Time To Interactive.",
+																	"example": 100,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														"id": {
+															"description": "UUID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"readOnly": true,
+															"type": "string"
+														},
+														"mobileReport": {
+															"description": "The Lighthouse report.",
+															"properties": {
+																"cls": {
+																	"description": "Cumulative Layout Shift.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"deviceType": {
+																	"description": "The type of device.",
+																	"enum": [
+																		"DESKTOP",
+																		"MOBILE"
+																	],
+																	"example": "DESKTOP",
+																	"type": "string"
+																},
+																"error": {
+																	"properties": {
+																		"code": {
+																			"description": "The error code of the Lighthouse result.",
+																			"enum": [
+																				"NOT_REACHABLE",
+																				"DNS_FAILURE",
+																				"NOT_HTML",
+																				"LIGHTHOUSE_TIMEOUT",
+																				"UNKNOWN"
+																			],
+																			"example": "NOT_REACHABLE",
+																			"type": "string"
+																		},
+																		"detail": {
+																			"description": "Detailed error message.",
+																			"example": "Details: net::ERR_CONNECTION_CLOSED",
+																			"type": "string"
+																		},
+																		"finalDisplayedUrl": {
+																			"description": "The final URL displayed to the user.",
+																			"example": "example.com",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"fcp": {
+																	"description": "First Contentful Paint.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"jsonReportUrl": {
+																	"description": "The URL to the full Lighthouse JSON report.",
+																	"type": "string"
+																},
+																"lcp": {
+																	"description": "Largest Contentful Paint.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"performanceScore": {
+																	"description": "The Lighthouse performance score.",
+																	"example": 90,
+																	"type": "number"
+																},
+																"si": {
+																	"description": "Speed Index.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"state": {
+																	"description": "The state of the Lighthouse report.",
+																	"enum": [
+																		"RUNNING",
+																		"COMPLETE",
+																		"FAILED"
+																	],
+																	"example": "COMPLETE",
+																	"type": "string"
+																},
+																"tbt": {
+																	"description": "Total Blocking Time.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"ttfb": {
+																	"description": "Time To First Byte.",
+																	"example": 100,
+																	"type": "number"
+																},
+																"tti": {
+																	"description": "Time To Interactive.",
+																	"example": 100,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														},
+														"region": {
+															"description": "A test region with a label.",
+															"properties": {
+																"label": {
+																	"example": "Iowa, USA",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "A test region.",
+																	"enum": [
+																		"asia-east1",
+																		"asia-northeast1",
+																		"asia-northeast2",
+																		"asian-south1",
+																		"asia-southeast1",
+																		"australia-southeast1",
+																		"europe-north1",
+																		"europe-southwest1",
+																		"europe-west1",
+																		"europe-west2",
+																		"europe-west3",
+																		"europe-west4",
+																		"europe-west8",
+																		"europe-west9",
+																		"me-west1",
+																		"southamerica-east1",
+																		"us-central1",
+																		"us-east1",
+																		"us-east4",
+																		"us-south1",
+																		"us-west1"
+																	],
+																	"example": "us-central1",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"scheduleFrequency": {
+															"description": "The frequency of the test.",
+															"enum": [
+																"DAILY",
+																"WEEKLY"
+															],
+															"example": "DAILY",
+															"type": "string"
+														},
+														"url": {
+															"description": "A URL.",
+															"example": "example.com",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Page test schedule"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create scheduled page test",
+		"tags": [
+			"Observatory"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
