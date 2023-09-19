@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>If you have <a href="https://www.cloudflare.com/website-optimization/http2" target="_blank">experienced HTTP/2</a> for yourself, you are probably aware of the visible performance gains possible with <a href="https://www.cloudflare.com/website-optimization/http2" target="_blank">HTTP/2</a> due to features like stream multiplexing, explicit stream dependencies, and <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">Server Push</a>.</p>
-	<p>There is however one important feature that is not obvious to the eye. This is the HPACK header compression. Current implementation of nginx, as well edge networks and CDNs using it, do not support the full HPACK implementation. We have, however, implemented the full HPACK in nginx, and <a href="http://mailman.nginx.org/pipermail/nginx-devel/2015-December/007682.html" target="_blank">upstreamed</a> the part that performs Huffman encoding.</p>
+	<p>There is however one important feature that is not obvious to the eye. This is the HPACK header compression. Current implementation of nginx, as well edge networks and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank">CDNs</a> using it, do not support the full HPACK implementation. We have, however, implemented the full HPACK in nginx, and <a href="http://mailman.nginx.org/pipermail/nginx-devel/2015-December/007682.html" target="_blank">upstreamed</a> the part that performs Huffman encoding.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/11/6129093355_9434beed25_z.jpg" alt="" loading="lazy"><br>
 		<small><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/6129093355/in/photolist-akBcVn-6eEtUq-d9Xi2T-c8MwzA-mGVr3z-aVezji-mGVxov-acMJmz-6nvbCJ-6a6DGQ-5uwrr9-rRtCCp-acMKsk-cKeuXY-9F6N13-9GSuHh-acMDBk-cJYes5-cijtcj-akFua9-cK1iqS-fiAHkE-acMCDt-cJZ9Fq-5qtfNv-cJWFiw-e4pfTd-6fzyLV-8RNMTo-p7jJLQ-524dkf-dw52qG-mVDttF-duUbYU-dvXt3Z-c8NkYG-6e6K2S-duKJjZ-5DbaqV-duBiR3-dvGTsM-dvLst4-dvPfJ1-ezYL1J-7f1cMC-bqi5WN-5MMGkV-9F3C7c-eWASXx-cJXsW9" target="_blank">image</a> by <a href="https://www.flickr.com/photos/conchur" target="_blank">Conor Lawless</a></small>
 	</p>
@@ -74,7 +74,7 @@
 			**accept-language:**en-US,en;q=0.8<br>
 			**cookie:**same 297 byte cookie</font><br>
 		<font color="red"><strong>referer:</strong></font>
-		<font color="green"><strong>GHOST_URL</strong>/assets/css/screen.css?v=2237be22c2</font><br>
+		<font color="green"><a href="https://blog.cloudflare.com/assets/css/screen.css?v=2237be22c2">http://blog.cloudflare.com/assets/css/screen.css?v=2237be22c2</a></font><br>
 		<font color="blue">**user-agent:**Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2853.0 Safari/537.36</font>
 	</p>
 	<p>Here I added blue encoded fields. Those indicate fields that were matched from the dynamic dictionary. It is clear that most fields repeat between requests. In this case two fields are again present in the static dictionary and five more are repeated and therefore present in the dynamic dictionary, that means they can be encoded in one or two bytes each. One of those is the ~300 byte <strong>cookie</strong> header, and ~130 byte <strong>user-agent</strong>. That is 430 bytes encoded into mere 4 bytes, 99% compression!</p>

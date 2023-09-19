@@ -46,7 +46,7 @@
 	<pre><code>\&amp;lt;esi:include src=&amp;quot;http://example.com/nav.html&amp;quot; &amp;quot;continue&amp;quot;/&amp;gt;
 </code></pre>
 	<p>ESI is intended for use with HTML content that is delivered via a Content Delivery Network and major CDNs were the sponsor of the original proposal.</p>
-	<p>When a user retrieves a CDN managed page that contains ESI components the CDN reconstructs the complete page from the component parts (which the CDN will either have to retrieve, or, more likely, have in cache since they change infrequently).</p>
+	<p>When a user retrieves a CDN managed page that contains ESI components the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank">CDN</a> reconstructs the complete page from the component parts (which the CDN will either have to retrieve, or, more likely, have in cache since they change infrequently).</p>
 	<p>The CDN delivers the complete, normal HTML to the end user, but because the CDN has access nodes all over the world the latency between the end user web browser and the CDN is minimized. ESI tries to minimize the amount of data sent between the origin web server and the CDN (where the latency may be high) while being transparent to the browser.</p>
 	<p>The biggest problem with adoption of ESI is that it forces web page authors to break pages up into blocks that can be safely cached by a CDN adding to the complexity of web page authoring. In addition, a CDN has to be used to deliver the pages as web browsers do not understand the ESI directives.</p>
 	<h3 id="thetimedimension">The time dimension</h3>

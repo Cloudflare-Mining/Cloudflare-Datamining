@@ -44,7 +44,7 @@
 	<p>With more than 150 routers over the globe, it would be unsafe to rely on these cleartext TCP sessions over the insecure and lossy Internet to our validator. We needed local distribution on a link we know secure and reliable.</p>
 	<p>One option we considered was to install an RPKI RTR server and a validator in each of our 150+ datacenters, but doing so would cause a significant increase in operational cost and reduce debugging capabilities.</p>
 	<h4 id="introducing-gortr">Introducing GoRTR</h4>
-	<p>We needed an easier way of passing an RPKI cache securely. After some system design sessions, we settled on distributing the list of valid routes from a central validator securely, distribute it via our own Content Delivery Network and use a lightweight local RTR server. This server fetches the cache file over HTTPS and passes the routes over RTR.</p>
+	<p>We needed an easier way of passing an RPKI cache securely. After some system design sessions, we settled on distributing the list of valid routes from a central validator securely, distribute it via our own <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank">Content Delivery Network</a> and use a lightweight local RTR server. This server fetches the cache file over HTTPS and passes the routes over RTR.</p>
 	<p>Rolling out this system on all our PoPs using automation was straightforward and we are progressively moving towards enforcing strict validation of RPKI signed routes everywhere.<br></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/gortr-2-01.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h4></h4>
