@@ -50,7 +50,7 @@
 	"remove_single_user_title": "Remove  %{name}'s sessions",
 	"remove_user": "Remove user",
 	"remove_user_description": "End the user's active session and remove them from the user registry.<br/><br/>This will mark the user as Inactive, and they will no longer occupy a seat unless they re-authenticate. To disable a user's ability to authenticate, modify your Access and device enrollment policies.",
-	"remove_user_description_with_warning": "Continuing will remove the seats of selected user(s) and invalidate their active sessions and devices. To prevent user(s) from accessing your Zero Trust organization, update any policies that allow them to authenticate. <br/> <br/> You are attempting to remove one or more users who have already been removed.",
+	"remove_user_description_with_warning": "End the users' active session and mark them as inactive.<br/><br/> They will no longer occupy a seat unless they re-authenticate. To disable a user's ability to authenticate, modify your Access and device enrollment policies.",
 	"remove_user_failure": "Error removing user.",
 	"remove_user_success": "Successfully removed user.",
 	"remove_user_title": "Remove %{name}?",
