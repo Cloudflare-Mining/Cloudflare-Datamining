@@ -1,12 +1,22 @@
 # Change Log
 
+## 6.4.21
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.17
+- @cloudflare/component-forms@5.4.1
+- @cloudflare/component-listbox@1.10.6
+
 ## 6.4.20
 
 ### Patch Changes
 
-- @cloudflare/component-button@7.0.16
-- @cloudflare/component-forms@5.3.16
-- @cloudflare/component-listbox@1.10.5
+- Updated dependencies [ce902c8042]
+- Updated dependencies [2b6a611378]
+  - @cloudflare/component-forms@5.4.0
+  - @cloudflare/component-button@7.0.16
+  - @cloudflare/component-listbox@1.10.5
 
 ## 6.4.19
 

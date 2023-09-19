@@ -115,8 +115,7 @@ Represents where data should be persisted, if anywhere.
 - If this looks like a URL, then:
   - If the protocol is `memory:`, data will be stored in-memory as above.
   - If the protocol is `file:`, data will be stored on the file-system, in the
-    specified directory (e.g. `file:///path/to/directory`). If the `unsanitise`
-    search parameter is `true`, path sanitisation will be disabled.
+    specified directory (e.g. `file:///path/to/directory`).
 - Otherwise, if this is just a regular `string`, data will be stored on the
   file-system, using the value as the directory path.
 
@@ -409,8 +408,6 @@ parameter in module format Workers.
   specified, the binding name and database ID are assumed to be the same.
 
 #### Queues
-
-> :warning: Queues are only supported with Node.js 18 or above.
 
 - `queueProducers?: Record<string, string> | string[]`
 

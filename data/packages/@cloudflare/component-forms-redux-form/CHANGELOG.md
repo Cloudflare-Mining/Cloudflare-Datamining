@@ -1,11 +1,20 @@
 # Change Log
 
+## 5.1.31
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.17
+- @cloudflare/component-forms@5.4.1
+
 ## 5.1.30
 
 ### Patch Changes
 
-- @cloudflare/component-button@7.0.16
-- @cloudflare/component-forms@5.3.16
+- Updated dependencies [ce902c8042]
+- Updated dependencies [2b6a611378]
+  - @cloudflare/component-forms@5.4.0
+  - @cloudflare/component-button@7.0.16
 
 ## 5.1.29
 
