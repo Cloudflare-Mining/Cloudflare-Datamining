@@ -5,6 +5,7 @@ declare const _default: {
     'add-member': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     add: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -27,6 +28,7 @@ declare const _default: {
     'cloudflare-zero-trust': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

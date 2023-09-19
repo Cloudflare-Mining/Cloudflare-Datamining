@@ -3,6 +3,7 @@ import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
 import ApiSecurity from './ApiSecurity';
+import Api from './Api';
 import Applications from './Applications';
 import Backward from './Backward';
 import Bolt from './Bolt';
@@ -25,6 +26,7 @@ import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
 import CloudflareZeroTrust from './CloudflareZeroTrust';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
+import D1 from './D1';
 import Discord from './Discord';
 import Discover from './Discover';
 import Documentation from './Documentation';
@@ -139,6 +141,7 @@ export default {
   'add-member': AddMember,
   add: Add,
   'api-security': ApiSecurity,
+  api: Api,
   applications: Applications,
   backward: Backward,
   bolt: Bolt,
@@ -161,6 +164,7 @@ export default {
   'cloudflare-zero-trust': CloudflareZeroTrust,
   copy: Copy,
   'credit-card': CreditCard,
+  d1: D1,
   discord: Discord,
   discover: Discover,
   documentation: Documentation,

@@ -1,5 +1,17 @@
 # Change Log
 
+## 11.8.0
+
+### Minor Changes
+
+- 83917078a1: yarn update-icons:
+  - Added
+    - API
+    - D1
+    - None
+  - Updated
+    - ZerotrustNetworksLogo
+
 ## 11.7.0
 
 ### Minor Changes
