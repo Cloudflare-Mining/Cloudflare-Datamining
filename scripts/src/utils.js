@@ -4,7 +4,7 @@ import process from 'node:process';
 import fetch from 'node-fetch';
 import simpleGit from 'simple-git';
 import jsBeautify from 'js-beautify';
-import flat from 'flat';
+import {flatten} from 'flat';
 import puppeteer from 'puppeteer';
 
 
@@ -147,7 +147,7 @@ export function sleep(ms) {
 }
 
 export function propertiesToArray(obj) {
-	return Object.keys(flat(obj));
+	return Object.keys(flatten(obj));
 }
 
 const agent = getHttpsAgent();
