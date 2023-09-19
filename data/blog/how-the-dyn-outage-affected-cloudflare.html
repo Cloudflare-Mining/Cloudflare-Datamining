@@ -1,7 +1,7 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Last Friday the popular DNS service Dyn suffered three waves of DDoS attacks that affected users first on the East Coast of the US, and later users worldwide. Popular websites, some of which are also Cloudflare customers, were inaccessible. Although Cloudflare was not attacked, joint Dyn/Cloudflare customers were affected.</p>
+	<p>Last Friday the popular <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank">DNS</a> service Dyn suffered three waves of DDoS attacks that affected users first on the East Coast of the US, and later users worldwide. Popular websites, some of which are also Cloudflare customers, were inaccessible. Although Cloudflare was not attacked, joint Dyn/Cloudflare customers were affected.</p>
 	<p>Almost as soon as Dyn came under attack we noticed a sudden jump in DNS errors on our edge machines and alerted our SRE and support teams that Dyn was in trouble. Support was ready to help joint customers and we began looking in detail at the effect the Dyn outage was having on our systems.</p>
 	<p>An immediate concern internally was that since our DNS servers were unable to reach Dyn they would be consuming resources waiting on timeouts and retrying. The first question I asked the DNS team was: “<em>Are we seeing increased DNS response latency?</em>” rapidly followed by “<em>If this gets worse are we likely to?</em>”. Happily, the response to both those questions (after the team analyzed the situation) was no.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/3685880130_c6d9102cba_b.jpg" alt="" loading="lazy"><br>
