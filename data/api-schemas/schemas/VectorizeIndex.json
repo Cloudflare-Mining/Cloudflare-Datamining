@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/vectorize/index/{index_identifier}": {
+	"DELETE /accounts/{account_identifier}/vectorize/indexes/{index_name}": {
 		"description": "Deletes the specified Vectorize Index.",
 		"operationId": "vectorize-delete-vectorize-index",
 		"parameters": [
@@ -17,13 +17,11 @@
 			},
 			{
 				"in": "path",
-				"name": "index_identifier",
+				"name": "index_name",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
+					"example": "example-index",
+					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
 					"type": "string"
 				}
 			}
@@ -368,7 +366,415 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/vectorize/index/{index_identifier}": {
+	"GET /accounts/{account_identifier}/vectorize/indexes": {
+		"description": "Returns a list of Vectorize Indexes",
+		"operationId": "vectorize-list-vectorize-indexes",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"indexes": {
+													"items": {
+														"properties": {
+															"index": {
+																"properties": {
+																	"config": {
+																		"description": "Specifies the type of configuration to use for the index.",
+																		"oneOf": [
+																			{
+																				"properties": {
+																					"dimensions": {
+																						"description": "Specifies the number of dimensions for the index",
+																						"example": 768,
+																						"maximum": 1536,
+																						"minimum": 1,
+																						"type": "integer"
+																					},
+																					"metric": {
+																						"description": "Specifies the type of metric to use calculating distance.",
+																						"enum": [
+																							"cosine",
+																							"euclidean",
+																							"dot-product"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"dimensions",
+																					"metric"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"model": {
+																						"description": "Specifies the model to use for the index.",
+																						"enum": [
+																							"workers-ai/bge-small-en",
+																							"openai/text-embedding-ada-002",
+																							"cohere/embed-multilingual-v2.0"
+																						],
+																						"example": "workers-ai/bge-small-en",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"model"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"description": {
+																		"description": "Specifies the description of the index.",
+																		"example": "This is my example index.",
+																		"type": "string"
+																	},
+																	"name": {
+																		"example": "example-index",
+																		"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Vectorize Index Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true,
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List Vectorize Index Failure Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Vectorize Indexes",
+		"tags": [
+			"VectorizeIndex"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.vectorize.index.list"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/vectorize/indexes/{index_name}": {
 		"description": "Returns the specified Vectorize Index.",
 		"operationId": "vectorize-get-vectorize-index",
 		"parameters": [
@@ -386,13 +792,11 @@
 			},
 			{
 				"in": "path",
-				"name": "index_identifier",
+				"name": "index_name",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
+					"example": "example-index",
+					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
 					"type": "string"
 				}
 			}
@@ -503,70 +907,68 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"config": {
-													"description": "Specifies the type of configuration to use for the index.",
-													"oneOf": [
-														{
-															"properties": {
-																"dimensions": {
-																	"description": "Specifies the number of dimenions for the index.",
-																	"example": 768,
-																	"maximum": 1536,
-																	"minimum": 1,
-																	"type": "integer"
+												"index": {
+													"properties": {
+														"config": {
+															"description": "Specifies the type of configuration to use for the index.",
+															"oneOf": [
+																{
+																	"properties": {
+																		"dimensions": {
+																			"description": "Specifies the number of dimensions for the index",
+																			"example": 768,
+																			"maximum": 1536,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"metric": {
+																			"description": "Specifies the type of metric to use calculating distance.",
+																			"enum": [
+																				"cosine",
+																				"euclidean",
+																				"dot-product"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"dimensions",
+																		"metric"
+																	],
+																	"type": "object"
 																},
-																"metric": {
-																	"description": "Specifies the type of metric to use calculating distance.",
-																	"enum": [
-																		"cosine",
-																		"euclidean",
-																		"dot-product"
+																{
+																	"properties": {
+																		"model": {
+																			"description": "Specifies the model to use for the index.",
+																			"enum": [
+																				"workers-ai/bge-small-en",
+																				"openai/text-embedding-ada-002",
+																				"cohere/embed-multilingual-v2.0"
+																			],
+																			"example": "workers-ai/bge-small-en",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"model"
 																	],
-																	"type": "string"
+																	"type": "object"
 																}
-															},
-															"required": [
-																"dimensions",
-																"metric"
-															],
-															"type": "object"
+															]
 														},
-														{
-															"properties": {
-																"model": {
-																	"description": "Specifies the model to use for the index.",
-																	"enum": [
-																		"workers-ai/bge-small-en",
-																		"openai/text-embedding-ada-002",
-																		"cohere/embed-multilingual-v2.0"
-																	],
-																	"example": "workers-ai/bge-small-en",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"model"
-															],
-															"type": "object"
+														"description": {
+															"description": "Specifies the description of the index.",
+															"example": "This is my example index.",
+															"type": "string"
+														},
+														"name": {
+															"example": "example-index",
+															"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+															"type": "string"
 														}
-													]
-												},
-												"description": {
-													"description": "Specifies the description of the index.",
-													"example": "This is my example index.",
-													"type": "string"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"example": "example-index",
-													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string"
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -803,411 +1205,6 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/vectorize/indexes": {
-		"description": "Returns a list of Vectorize Indexes",
-		"operationId": "vectorize-list-vectorize-indexes",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "account_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"result": {
-											"anyOf": [
-												{
-													"type": "object"
-												},
-												{
-													"items": {},
-													"type": "array"
-												},
-												{
-													"type": "string"
-												}
-											]
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												true
-											],
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"items": {
-												"properties": {
-													"config": {
-														"description": "Specifies the type of configuration to use for the index.",
-														"oneOf": [
-															{
-																"properties": {
-																	"dimensions": {
-																		"description": "Specifies the number of dimenions for the index.",
-																		"example": 768,
-																		"maximum": 1536,
-																		"minimum": 1,
-																		"type": "integer"
-																	},
-																	"metric": {
-																		"description": "Specifies the type of metric to use calculating distance.",
-																		"enum": [
-																			"cosine",
-																			"euclidean",
-																			"dot-product"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dimensions",
-																	"metric"
-																],
-																"type": "object"
-															},
-															{
-																"properties": {
-																	"model": {
-																		"description": "Specifies the model to use for the index.",
-																		"enum": [
-																			"workers-ai/bge-small-en",
-																			"openai/text-embedding-ada-002",
-																			"cohere/embed-multilingual-v2.0"
-																		],
-																		"example": "workers-ai/bge-small-en",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"model"
-																],
-																"type": "object"
-															}
-														]
-													},
-													"description": {
-														"description": "Specifies the description of the index.",
-														"example": "This is my example index.",
-														"type": "string"
-													},
-													"id": {
-														"description": "Identifier",
-														"example": "023e105f4ecef8ad9ca31a8372d0c353",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"name": {
-														"example": "example-index",
-														"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "List Vectorize Index Response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															],
-															"nullable": true,
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true,
-													"type": "object"
-												}
-											},
-											"type": "object"
-										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
-									],
-									"type": "object"
-								}
-							]
-						}
-					}
-				},
-				"description": "List Vectorize Index Failure Response"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "List Vectorize Indexes",
-		"tags": [
-			"VectorizeIndex"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.edge.vectorize.index.list"
-			]
-		}
-	},
 	"POST /accounts/{account_identifier}/vectorize/indexes": {
 		"description": "Creates and returns a new Vectorize Index.",
 		"operationId": "vectorize-create-vectorize-index",
@@ -1238,7 +1235,7 @@
 											{
 												"properties": {
 													"dimensions": {
-														"description": "Specifies the number of dimenions for the index.",
+														"description": "Specifies the number of dimensions for the index",
 														"example": 768,
 														"maximum": 1536,
 														"minimum": 1,
@@ -1416,70 +1413,68 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"config": {
-													"description": "Specifies the type of configuration to use for the index.",
-													"oneOf": [
-														{
-															"properties": {
-																"dimensions": {
-																	"description": "Specifies the number of dimenions for the index.",
-																	"example": 768,
-																	"maximum": 1536,
-																	"minimum": 1,
-																	"type": "integer"
+												"index": {
+													"properties": {
+														"config": {
+															"description": "Specifies the type of configuration to use for the index.",
+															"oneOf": [
+																{
+																	"properties": {
+																		"dimensions": {
+																			"description": "Specifies the number of dimensions for the index",
+																			"example": 768,
+																			"maximum": 1536,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"metric": {
+																			"description": "Specifies the type of metric to use calculating distance.",
+																			"enum": [
+																				"cosine",
+																				"euclidean",
+																				"dot-product"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"dimensions",
+																		"metric"
+																	],
+																	"type": "object"
 																},
-																"metric": {
-																	"description": "Specifies the type of metric to use calculating distance.",
-																	"enum": [
-																		"cosine",
-																		"euclidean",
-																		"dot-product"
+																{
+																	"properties": {
+																		"model": {
+																			"description": "Specifies the model to use for the index.",
+																			"enum": [
+																				"workers-ai/bge-small-en",
+																				"openai/text-embedding-ada-002",
+																				"cohere/embed-multilingual-v2.0"
+																			],
+																			"example": "workers-ai/bge-small-en",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"model"
 																	],
-																	"type": "string"
+																	"type": "object"
 																}
-															},
-															"required": [
-																"dimensions",
-																"metric"
-															],
-															"type": "object"
+															]
 														},
-														{
-															"properties": {
-																"model": {
-																	"description": "Specifies the model to use for the index.",
-																	"enum": [
-																		"workers-ai/bge-small-en",
-																		"openai/text-embedding-ada-002",
-																		"cohere/embed-multilingual-v2.0"
-																	],
-																	"example": "workers-ai/bge-small-en",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"model"
-															],
-															"type": "object"
+														"description": {
+															"description": "Specifies the description of the index.",
+															"example": "This is my example index.",
+															"type": "string"
+														},
+														"name": {
+															"example": "example-index",
+															"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+															"type": "string"
 														}
-													]
-												},
-												"description": {
-													"description": "Specifies the description of the index.",
-													"example": "This is my example index.",
-													"type": "string"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"example": "example-index",
-													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string"
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -1716,7 +1711,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/vectorize/index/{index_identifier}": {
+	"PUT /accounts/{account_identifier}/vectorize/indexes/{index_name}": {
 		"description": "Updates and returns the specified Vectorize Index.",
 		"operationId": "vectorize-update-vectorize-index",
 		"parameters": [
@@ -1734,13 +1729,11 @@
 			},
 			{
 				"in": "path",
-				"name": "index_identifier",
+				"name": "index_name",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
+					"example": "example-index",
+					"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
 					"type": "string"
 				}
 			}
@@ -1754,15 +1747,9 @@
 								"description": "Specifies the description of the index.",
 								"example": "This is my example index.",
 								"type": "string"
-							},
-							"name": {
-								"example": "example-index",
-								"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-								"type": "string"
 							}
 						},
 						"required": [
-							"name",
 							"description"
 						],
 						"type": "object"
@@ -1877,70 +1864,68 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"config": {
-													"description": "Specifies the type of configuration to use for the index.",
-													"oneOf": [
-														{
-															"properties": {
-																"dimensions": {
-																	"description": "Specifies the number of dimenions for the index.",
-																	"example": 768,
-																	"maximum": 1536,
-																	"minimum": 1,
-																	"type": "integer"
+												"index": {
+													"properties": {
+														"config": {
+															"description": "Specifies the type of configuration to use for the index.",
+															"oneOf": [
+																{
+																	"properties": {
+																		"dimensions": {
+																			"description": "Specifies the number of dimensions for the index",
+																			"example": 768,
+																			"maximum": 1536,
+																			"minimum": 1,
+																			"type": "integer"
+																		},
+																		"metric": {
+																			"description": "Specifies the type of metric to use calculating distance.",
+																			"enum": [
+																				"cosine",
+																				"euclidean",
+																				"dot-product"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"dimensions",
+																		"metric"
+																	],
+																	"type": "object"
 																},
-																"metric": {
-																	"description": "Specifies the type of metric to use calculating distance.",
-																	"enum": [
-																		"cosine",
-																		"euclidean",
-																		"dot-product"
+																{
+																	"properties": {
+																		"model": {
+																			"description": "Specifies the model to use for the index.",
+																			"enum": [
+																				"workers-ai/bge-small-en",
+																				"openai/text-embedding-ada-002",
+																				"cohere/embed-multilingual-v2.0"
+																			],
+																			"example": "workers-ai/bge-small-en",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"model"
 																	],
-																	"type": "string"
+																	"type": "object"
 																}
-															},
-															"required": [
-																"dimensions",
-																"metric"
-															],
-															"type": "object"
+															]
 														},
-														{
-															"properties": {
-																"model": {
-																	"description": "Specifies the model to use for the index.",
-																	"enum": [
-																		"workers-ai/bge-small-en",
-																		"openai/text-embedding-ada-002",
-																		"cohere/embed-multilingual-v2.0"
-																	],
-																	"example": "workers-ai/bge-small-en",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"model"
-															],
-															"type": "object"
+														"description": {
+															"description": "Specifies the description of the index.",
+															"example": "This is my example index.",
+															"type": "string"
+														},
+														"name": {
+															"example": "example-index",
+															"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+															"type": "string"
 														}
-													]
-												},
-												"description": {
-													"description": "Specifies the description of the index.",
-													"example": "This is my example index.",
-													"type": "string"
-												},
-												"id": {
-													"description": "Identifier",
-													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"example": "example-index",
-													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-													"type": "string"
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
