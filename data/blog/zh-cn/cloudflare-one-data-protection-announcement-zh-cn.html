@@ -1,0 +1,69 @@
+<div class="mb2 gray5">13 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3.png" class="kg-image" alt="Cloudflare One for Data Protection" loading="lazy" width="1200" height="675"></figure>
+	<p>数据的数量、种类和速度持续地爆炸式增长，因此各规模组织的安全团队都要面临一大挑战，即需要及时地跟上脚步。企业面对各种原因所导致的不断升级的风险，如各种 SaaS 环境、人工智能（AI）生成工具的出现以及高价值源代码的暴露和被盗，这种情况仍旧让 CISO 和数据官们夜不能寐。 </p>
+	<p>在过去几年中，Cloudflare 推出了各种功能，帮助组织驾驭这些风险并获得对数据的可见性和控制，——包括在 2022 年秋季推出的<a href="https://blog.cloudflare.com/zh-cn/inline-dlp-ga-zh-cn">数据丢失防护 (DLP)</a> 和<a href="https://blog.cloudflare.com/zh-cn/casb-ga-zh-cn">云访问安全代理 (CASB)</a> 服务。</p>
+	<h2 id="%E5%AE%A3%E5%B8%83-cloudflare-one-%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E5%A5%97%E4%BB%B6">宣布 Cloudflare One 的数据保护套件</h2>
+	<p>今天，我们在这一势头的基础上宣布推出<a href="https://www.cloudflare.com/zero-trust/solutions/data-protection" target="_blank">适用于资料保护的 Cloudflare One</a>——我们的统一套件，用于保护 Web、SaaS 和私有应用程序中的数据。Cloudflare One 的数据保护套件建立在我们整个全局网络之上，并通过我们的全局网络交付，其架构可应对现代编码的风险和人工智能使用的增加。</p>
+	<p>具体来说，该套件将 Cloudflare 的 <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank">数据丢失防护</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank">CASB</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank">Zero Trust 网络访问 (ZTNA)</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank">安全 Web 网关 (SWG)</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank">远程浏览器隔离 (RBI)</a> 和 <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank">云电子邮件安全性</a>服务的功能整合到一个平台上，从而简化了管理。所有这些服务现在都可作为 <a href="https://www.cloudflare.com/cloudflare-one" target="_blank">Cloudflare One</a> 的一部分进行提供和打包，我们的 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank">SASE</a> 平台融合了安全性和网络连接服务。</p>
+	<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-data-protection-roadmap-preview-zh-cn">今天发布的另一篇博客文章</a>回顾了我们在过去一年中交付的技术和功能，并预告了客户可以期待的新功能。</p>
+	<p>在本篇博客文章中，我们将更多地关注这些技术和功能在应对现代数据风险方面对客户的<em>影响</em>——并提供实际使用案例的示例。我们相信，Cloudflare One 具有独特的优势，可以提供更好的数据保护来应对现代数据风险。我们所说的“更好”是指</p>
+	<ul>
+		<li>通过简化内联和 API 连接以及策略管理，帮助安全团队<strong>更有效地</strong>保护数据</li>
+		<li>通过确保快速、可靠和一致的用户体验，来帮助员工<strong>提高工作效率</strong></li>
+		<li>通过快速创新，帮助企业<strong>更加灵活</strong>，从而满足不断变化的数据安全性和隐私要求</li>
+	</ul>
+	<h2 id="%E6%AF%94%E4%BB%A5%E5%BE%80%E4%BB%BB%E4%BD%95%E6%97%B6%E5%80%99%E9%83%BD%E6%9B%B4%E9%9A%BE%E7%A1%AE%E4%BF%9D%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8">比以往任何时候都更难确保数据安全</h2>
+	<p>数据跨越的环境比大多数组织所能跟踪到的要多。在与客户的交谈中，有三个明显的现代风险尤为突出：</p>
+	<ol>
+		<li><strong>云和 SaaS 环境日益多样化：</strong>知识工作者最常用的应用程序，如云电子邮件收件箱、共享云存储文件夹和文档、微软 365 等 SaaS 生产力和协作套件，正日益成为威胁行为者的数据外泄目标。</li>
+		<li><strong>新兴的人工智能工具：</strong>企业领导者担心用户通过 ChatGPT 等不透明的大型语言模型工具过度共享敏感信息，但同时又希望充分利用人工智能的优势。</li>
+		<li><strong>源代码暴露或被盗</strong>：开发人员代码助长了数字业务，但这样的高价值源代码可能会在公共存储库等显眼的地方以及在 GitHub 等许多开发人员工具中暴露或成为盗窃目标。</li>
+	</ol>
+	<p>尤其是后两种风险已经交织在一起。<a href="https://www.businessinsider.com/chatgpt-companies-issued-bans-restrictions-openai-ai-amazon-apple-2023-7" target="_blank">亚马逊、苹果、威瑞森、德意志银行</a>等公司都在阻止员工使用 ChatGPT 等工具，因为他们害怕丢失机密数据，而<a href="https://www.forbes.com/sites/siladityaray/2023/05/02/samsung-bans-chatgpt-and-other-chatbots-for-employees-after-sensitive-code-leak/?sh=28ba8bf96078" target="_blank">三星</a>最近就有一名工程师不小心将敏感代码上传到了该工具上。随着企业优先考虑新的数字服务和体验，开发人员越来越迫切地需要更快、更智能地工作。人工智能工具可以帮助释放这种生产力，但与这些工具过度共享敏感数据的长期后果尚不明确。</p>
+	<p>综上所述，数据风险只会不断升级，尤其是随着组织加快数字化转型计划时混合工作和开发会不断扩大攻击面。与此同时，随着越来越多的国家和州采用更严格的数据隐私法，监管合规的要求只会越来越高。</p>
+	<p>传统的数据丢失防护服务无法应对这些现代风险。高设置和操作复杂性加上负面的用户体验，意味着在实践中，数据丢失防护控制往往并未得到充分利用或者被完全绕过。无论是作为独立平台部署，还是集成到安全产品或 SaaS 应用程序中，数据丢失防护产品通常都会成为昂贵的搁置软件。而通过本地数据保护硬件（无论是数据丢失保护、防火墙和 SWG 设备，还是其他设备）回程传输流量会产生成本并带来缓慢的用户体验，从长远来看会阻碍企业的发展。</p>
+	<h3 id="%E5%9B%BE-1%EF%BC%9A%E7%8E%B0%E4%BB%A3%E6%95%B0%E6%8D%AE%E9%A3%8E%E9%99%A9">图 1：现代数据风险</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2.jpg" class="kg-image" alt="" loading="lazy" width="1148" height="1999"></figure>
+	<h2 id="%E5%AE%A2%E6%88%B7%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-cloudflare-%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4">客户如何使用 Cloudflare 进行数据保护</h2>
+	<p>如今，越来越多的客户选择 Cloudflare 来应对这些数据风险，其中包括一家财富 500 强天然气公司、一家美国大型招聘网站、一家美国地区航空公司、一家澳大利亚医疗保健公司等。在与这些客户的合作中，有三个使用案例非常突出，它们是部署 Cloudflare One 进行数据保护时的常见重点领域。</p>
+	<h3 id="%E7%94%A8%E4%BE%8B-1%EF%BC%9A%E7%A1%AE%E4%BF%9D%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%B7%A5%E5%85%B7%E5%92%8C%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E4%BB%A3%E7%A0%81%E7%9A%84%E5%AE%89%E5%85%A8-applied-systems"><em>用例 1：确保人工智能工具和开发人员代码的安全 (Applied Systems)</em></h3>
+	<p><a href="https://www.cloudflare.com/case-studies/applied-systems" target="_blank">Applied Systems</a> 是一家保险技术和软件公司，最近部署了 Cloudflare One 来确保人工智能环境中的数据安全。</p>
+	<p>具体来说，该公司在一个隔离的浏览器中运行 ChatGPT 的公共实例，这样安全团队就可以应用<a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/isolation-policies/#policy-settings" target="_blank">复制粘贴块</a>：防止用户将其他应用中的敏感信息（包括开发人员代码）复制到人工智能工具中。首席信息安全官 Tanner Randolph 称：“我们希望让员工在利用人工智能的同时，也能保证其安全。”</p>
+	<p>这个用例只是 Applied Systems 从 Zscaler 和 Cisco 迁移到 Cloudflare 时处理的几个用例之一，但我们发现客户对保护人工智能和开发人员代码安全的兴趣有所上升。</p>
+	<h3 id="%E7%94%A8%E4%BE%8B-2%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%9A%B4%E9%9C%B2%E5%8F%AF%E8%A7%81%E6%80%A7"><em>用例 #2：数据暴露可见性</em></h3>
+	<p>客户正在利用 Cloudflare One 重新掌握其庞大应用程序环境中数据暴露风险的可见性和控制。对许多人来说，第一步是分析<a href="https://developers.cloudflare.com/cloudflare-one/insights/analytics/access" target="_blank">未经许可的应用程序使用</a>情况，然后采取措施允许、阻止、隔离或对这些资源实施其他控制。第二步，也是越来越受欢迎的一步，<a href="https://blog.cloudflare.com/zh-cn/casb-dlp-zh-cn">通过 CASB 和数据丢失防护</a>服务扫描 SaaS 应用程序中的错误配置和敏感数据，然后通过 SWG 策略采取规定步骤进行补救。</p>
+	<p>一家拥有 7,5000 名员工的英国电子商务巨头选择 Cloudflare 来完成后面这一步。作为<a href="https://blog.cloudflare.com/descaler-program-update">从 Zscaler 迁移到 Cloudflare</a> 更广泛战略的一部分，这家公司迅速在其 SaaS 环境和 Cloudflare CASB 之间建立了 API 集成，并开始扫描错误配置。此外，在集成过程中，该公司还能将数据丢失防护策略与 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-dlp-mip-zh-cn">Microsoft Pureview Information Protection 的敏感性标签</a>同步，这样就能利用现有的框架确定所要保护的数据的优先次序。总之，该公司在一天之内就能开始识别数据暴露风险。</p>
+	<h3 id="%E7%94%A8%E4%BE%8B-3%EF%BC%9A%E6%B3%95%E5%BE%8B%E5%90%88%E8%A7%84"><em>用例 #3：法律合规</em></h3>
+	<p>像 <a href="https://www.cloudflare.com/learning/privacy/what-is-the-gdpr" target="_blank">GDPR</a>、<a href="https://www.cloudflare.com/learning/privacy/what-is-the-ccpa" target="_blank">CCPA</a>、<a href="https://www.cloudflare.com/learning/privacy/what-is-hipaa-compliance" target="_blank">HIPAA</a> 和 <a href="https://www.ftc.gov/business-guidance/resources/how-comply-privacy-consumer-financial-information-rule-gramm-leach-bliley-act" target="_blank">GLBA</a> 这样的全面数据法规已经出现在我们的生活中一段时间了。但新的法律正在迅速涌现：例如，美国现在有 <a href="https://iapp.org/resources/article/us-state-privacy-legislation-tracker" target="_blank">11 个州</a>制定了全面的隐私法，而 2021 年只有 3 个州。并且 <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance" target="_blank">PCI DSS</a> 等现有法律的更新现在包括了更严格、更广泛的要求。</p>
+	<p>越来越多的客户选择 Cloudflare One 来实现合规性，特别是确保他们能够监控和保护受监管的数据（如金融数据、健康数据、<a href="https://www.cloudflare.com/learning/privacy/what-is-pii" target="_blank">个人可识别信息</a>、<a href="https://blog.cloudflare.com/zh-cn/edm-beta-zh-cn">精确数据匹配</a>等）。一些常见的步骤有：首先，<a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank">通过数据丢失防护</a>对敏感数据进行检测和应用控制；其次，通过日志和进一步的 SIEM 分析维护详细的审计跟踪；最后，通过全面的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a> 安全态势来降低整体风险。</p>
+	<p>我们来看一个具体示例。一个 Zero Trust 最佳实践，也是需求日益上升的一个领域，<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank">多因素身份验证 (MFA)</a>。在支付卡行业，将于 2025 年生效的 PCI DSS <a href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf" target="_blank">v4.0</a> 要求针对每个用户和每个位置（包括云环境、本地环境、应用程序、工作站等），对持卡人数据环境的每个访问请求强制执行 MFA 请求。（第 8.4.2 点要求）。此外，这些 MFA 系统必须配置为防止误用（包括重放攻击和绕过尝试），并且必须至少需要<a href="https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication" target="_blank">两个不同的因素</a>才能成功（第 8.5 点要求）。为了帮助组织遵守这两点要求，Cloudflare 帮助组织在所有应用程序和用户中强制实施了 <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/mfa-requirements" target="_blank">MFA，</a>事实上，我们使用相同的服务为我们自己的员工<a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-implemented-fido2-and-zero-trust-zh-cn">实施硬密钥身份验证</a>。</p>
+	<h3 id="%E5%9B%BE-2%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E7%94%A8%E4%BE%8B">图 2：数据保护用例</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1.png" class="kg-image" alt="" loading="lazy" width="1999" height="1294"></figure>
+	<h2 id="cloudflare-%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84">Cloudflare 的不同之处</h2>
+	<p>Cloudflare One 的数据保护套件是为应对这些和其他不断变化的用例而构建，始终站在现代数据风险的最前沿。</p>
+	<p>通过 Cloudflare，数据丢失防护不仅可以与 CASB、SWG、ZTNA、远程浏览器隔离和电子邮件安全性等其他通常不同的安全服务集成，还可以通过一个控制平面和一个接口融合到一个平台上。除了不确定谱系软件 (soup) 之外，我们的网络架构还能帮助组织更有效、更高效且更灵活地保护数据。</p>
+	<p>我们简化了连接，为您提供灵活的选项，让您将流量发送到 Cloudflare 进行强制执行。这些选项包括<a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps" target="_blank">基于 API</a> 的 SaaS 套件扫描，用于查找错误配置和敏感数据。与要求安全团队从 IT 或业务团队获得完整应用权限的解决方案不同，Cloudflare 可通过只读应用权限发现风险。<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank">无客户端部署</a> ZTNA 可<a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps" target="_blank">确保应用访问安全</a>，以及<a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/setup/clientless-browser-isolation" target="_blank">浏览器隔离</a>可控制网站和应用内的数据，这些可扩展至所有用户（员工和承包商等第三方），适用于大型企业。当您确实需要转发代理流量时，Cloudflare 可提供具有自我注册权限的<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank">单个设备客户端</a>或跨安全服务的广域网入口。通过各种实用的部署方法，您的数据保护方法将会很有成效，不再是束之高阁的搁置软件。</p>
+	<p>正如您的数据一样，我们的全局网络无处不在，目前已遍布 100 多个国家的 300 多个城市。事实证明，我们实施控制的<a href="https://blog.cloudflare.com/zh-cn/spotlight-on-zero-trust-zh-cn">速度比 Zscaler、Netskope 和 Palo Alto Networks 等供应商</a>都要快，而且都是一次通过检查。我们确保安全快速、可靠、无干扰，因此您可以在不影响工作效率的情况下层层进行数据控制。</p>
+	<p>我们的<a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">可编程网络架构</a>使我们能够快速构建新功能。我们还能快速采用新的安全标准和协议（如仅 IPv6 连接或 HTTP/3 加密），以确保数据保护始终有效。总之，这种架构使我们能够随着不断变化的数据保护使用案例（如保护人工智能环境中的代码）而发展，并在我们的网络位置快速部署人工智能和<a href="https://blog.cloudflare.com/tag/machine-learning">机器学习</a>模型，以执行更高精度的上下文驱动检测。</p>
+	<h3 id="%E5%9B%BE-3%EF%BC%9Acloudflare-%E7%9A%84%E7%BB%9F%E4%B8%80%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4">图 3：Cloudflare 的统一数据保护</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image4.png" class="kg-image" alt="" loading="lazy" width="1171" height="716"></figure>
+	<h2 id="%E5%A6%82%E4%BD%95%E5%BC%80%E5%A7%8B">如何开始</h2>
+	<p>现代数据风险需要现代安全性。我们认为，Cloudflare One 的统一数据保护套件旨在帮助组织应对当前和未来的重点风险——无论是确保开发人员代码和人工智能工具的安全、重新获得 SaaS 应用程序的可见性还是遵守不断变化的法规。</p>
+	<p>如果您已准备好探索 Cloudflare 如何保护您的数据，请立即申请参加我们今天的专家<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank">研讨会</a>。</p>
+	<p>若想了解有关 Cloudflare One 如何保护数据的更多信息，请阅读<a href="https://cfl.re/data-protection-press-release" target="_blank">今天的新闻稿</a>、访问我们的<a href="https://www.cloudflare.com/zero-trust/solutions/data-protection" target="_blank">网站</a>或通过<a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-data-protection-roadmap-preview-zh-cn">随附的技术博客文章</a>进行更深入的了解。</p><!--kg-card-begin: markdown-->
+	<p><small>***</small></p><small>
+		<ol>
+			<li><a href="https://www.gitguardian.com/state-of-secrets-sprawl-report-2023" target="_blank">GitGuardian《2023 年密钥扩张现状》</a></li>
+			<li><a href="https://www.salesforce.com/news/stories/generative-ai-statistics" target="_blank">Salesforce《2023 年度顶级生成式人工智能的统计数据》</a></li>
+			<li><a href="https://www.ibm.com/reports/data-breach" target="_blank">IBM《2023 年度数据泄漏成本报告》</a></li>
+			<li><a href="https://salt.security/state-of-the-ciso-2023" target="_blank">2023 年度“CISO 现状“报告》，由 Global Survey 编写</a></li>
+			<li><a href="https://unctad.org/page/data-protection-and-privacy-legislation-worldwide" target="_blank">联合国贸易和发展会议</a></li>
+			<li><a href="https://iapp.org/resources/article/us-state-privacy-legislation-tracker" target="_blank">国际隐私专业人士协会 (IAPP)</a><small></small></li><small>
+			</small>
+		</ol><small>
+			<!--kg-card-end: markdown-->
+		</small>
+	</small>
+</div><small><small>
+	</small></small>
