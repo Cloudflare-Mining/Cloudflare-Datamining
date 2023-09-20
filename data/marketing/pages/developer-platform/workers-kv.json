@@ -184,6 +184,33 @@
 						"togglesTo": null
 					},
 					{
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "3OBUEbzkiQKGOKOWUaOWyI",
+						"bladeName": "WorkersKV - Solution",
+						"title": null,
+						"longCopy": null,
+						"header1": "Reliable by default",
+						"subheader1": null,
+						"copy1": "\nKV replicates data automatically to avoid a single point of failure. Application developers can rely on KV to recover from failures with zero downtime.",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": "Improve developer productivity",
+						"subheader2": null,
+						"copy2": "Improve developers productivity by allowing them to focus their time on building new features rather than scaling out key-value stores. \n\nWorkers-KV automatically replicates data to all of Cloudflare's global locations, allowing you to scale seamlessly. ",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": "tile--no-top-padding",
+						"link": null
+					},
+					{
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "6b1jjxRxbUC84qMeo6YWMM",
 						"quote": "\"Over 10 million developers around the world rely on the npm Registry to download packages over 1 billion times a day. We invested in Cloudflare Workers to improve our global performance, and now with the Cloudflare Workers globally available key-value store (Cloudflare Workers KV), we can make performance improvements that used to be impossible. Cloudflare is amazing.\"",
@@ -281,6 +308,68 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "border-top",
 						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "1znLxwqlQccggEYI4wq4cS",
+						"title": "Enforce custom authorization and authentication",
+						"copy": "Store session tokens or other user information to quickly ensure the right user has access to the right content. Move the authentication layer out of applications and into the network.   Reduce the threat of application-level authentication vulnerabilities while improving performance.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMonLCJ4AqMUKqeqIOsEI/dbb143060e844b380b7028473e01213d/Enforce_Custom_Authorization_and_Authentication.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "5f4ea169-25de-5b69-95f2-60f1d468e2a8",
+							"altText": "workerskv-custom-auth-v1",
+							"title": "workerskv-custom-auth-v1",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMonLCJ4AqMUKqeqIOsEI/dbb143060e844b380b7028473e01213d/Enforce_Custom_Authorization_and_Authentication.svg"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 16502,
+								"height": 1024,
+								"width": 1796,
+								"filename": "workers-KV-custom-authorization-authentication-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/workers-KV-custom-authorization-authentication-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-top",
+						"imagePosition": false,
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
