@@ -5,24 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Edge Partner Success - Program Manager</strong><strong>&nbsp;</strong></p>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Infrastructure department at Cloudflare handles all our data centers and network interconnections around the world, from research and development of our servers, to planning network capacity expansions, to getting our equipment anywhere in the world that it’s needed, to executing new deployments and data center expansions.</span></p>
-<p><span style="font-weight: 400;">Within Infrastructure, the Network Strategy group establishes and negotiates interconnections with all our network partners around the world. This includes Cloudflare’s Edge Partner Program (EPP), our effort to embed PoPs directly into as many networks around the world as we possibly can.</span></p>
-<p><strong>What you'll do&nbsp;</strong></p>
-<p><span style="font-weight: 400;">We are seeking a determined leader to build our Edge Partner Success program (like a customer success program, but for our infrastructure partners). In this role, you will:&nbsp;</span></p>
+<h4>About the department</h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.&nbsp;&nbsp;</p>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">The Technical Account Manager (TAM) will own the post-contract end-to-end support experience for Cloudflare’s most strategic customers, to unblock post-go-live technical support challenges.</span> <span style="font-weight: 400;">They are a dedicated technical primary point of contact for our top-tier Premium customers. TAM’s responsibilities are to manage and monitor support interactions, serve as an internal advocate for customers, respond to customer escalations, and proactively escalate issues as needed. TAMs meet regularly with the relevant customer and provide proactive recommendations that support customers’ requirements, roadmap, and ongoing technical needs,</span><span style="font-weight: 400;"> partnering with the Customer Success and Account Team members.</span></p>
+<p><span style="font-weight: 400;">To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</span></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead development of new systems, tools, and processes for supporting our Edge Partners, to streamline the way we resolve their common needs -- don't worry, we have some priorities already mapped out</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">In the short-run, serve as a ‘first line of defense” for the technical needs of our Edge Partners -- be a gracious ambassador &amp; problem solver</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">In the long-run, establish systems &amp; workflows with staying power, that allow the EPP machine to scale beyond our immediate capacity</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as primary technical support contact</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a holistic and dynamic view of customer’s environment and use of Cloudflare products, including the customer deployment topology, expert resolution for all support issues, and proactive advice for long-term improvements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and deliver Quarterly Support Reviews including SLA adherence, top ticket drivers, ticket deep dives, and incident reviews.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel up to 25% of the time.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively engage with the account team during strategic deal closure and throughout the lifecycle of the customer.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Point of escalation during business hours, and backup point of escalation for Cloudflare TAMs in other regions during their off hours.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand client sentiment, own internal and customer facing escalations, and provide product support</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure support tickets solved in a timely manner</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and expand working technical knowledge of Cloudflare products&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Single threaded owner of technical support issues, working with backend teams as needed</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with global TAM’s to ensure coverage on critical issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure rapid Incident response</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist with preparing and communicating CSRs and formal documentation for incidents and major issues</span></li>
 </ul>
-<p><strong>Essential Capabilities &amp; Skills</strong><strong>&nbsp;</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><span style="font-weight: 400;"> </span><span style="font-weight: 400;"> </span><span style="font-weight: 400;">Empathy for external </span><em><span style="font-weight: 400;">and </span></em><span style="font-weight: 400;">internal stakeholders’ priorities &amp; constraints</span></li>
-	<li><span style="font-weight: 400;">Takes pleasure in earning buy-in and support from multiple inter-locking teams that do not report to you</span></li>
-	<li><span style="font-weight: 400;">Persistence, hustle, and strong interest in building an organized machine</span></li>
-	<li><span style="font-weight: 400;">Strong bias toward self-starting organizers, curiosity, and a keen interest in the foundational layers of the internet</span></li>
-	<li><span style="font-weight: 400;">Desirable, not required: familiarity with network routing / engineering &amp; operations (can be learned, curiosity more important than extensive existing knowledge)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of previous experience in a customer-facing team with technical account management responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have the business acumen of working with Fortune 500 companies and their leadership team&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding of how the Internet works, e.g. the OSI Model, Application and Network security, what a proxy is and how it works.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic Troubleshooting skills towards identifying and Escalating to the necessary Team to drive a solution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Passionate about Cloudflare products, helping customers, and building strong relationships across organizations&nbsp;</span></li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
