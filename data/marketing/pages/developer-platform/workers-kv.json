@@ -64,7 +64,7 @@
 						"titleSize": null,
 						"subtitle": "Serverless key-value storage for applications on Cloudflare",
 						"subtitleSize": null,
-						"copy": "Extend your applications' functionality with our serverless key-value store. Workers KV provides a secure low-latency key-value store across 275+ global locations. Automatic scaling supports applications that serve dozens or millions of users. \n\nEventually consistent by design, KV caches data globally and is ideal for reference data or assets that don't change frequently. \n",
+						"copy": "Extend your applications' functionality with our serverless key-value store. Workers KV provides a secure low-latency key-value store across %{DataCenterCount} global locations. Automatic scaling supports applications that serve dozens or millions of users. \n\nEventually consistent by design, KV caches data globally and is ideal for reference data or assets that don't change frequently. \n",
 						"buttonColor": null,
 						"buttonColor2": null,
 						"buttonText1": "Developer Docs",
@@ -131,7 +131,7 @@
 					},
 					{
 						"contentfulId": "7amZDKmmUh5xJzqtD0Eid1",
-						"title": "Improve global response times",
+						"title": "Improve response times everywhere",
 						"copy": "Move your application closer to the user, with edge storage, improving both site performance and the overall user experience. Store, modify, and query key-value data across our globally distributed network quickly and securely. ",
 						"toggleText": null,
 						"button": [],
@@ -198,7 +198,7 @@
 						"buttonText1": null,
 						"buttonUrl1": null,
 						"button1ExtraClass": null,
-						"header2": "Improve developer productivity",
+						"header2": "Boost developer productivity",
 						"subheader2": null,
 						"copy2": "Improve developers productivity by allowing them to focus their time on building new features rather than scaling out key-value stores. \n\nWorkers-KV automatically replicates data to all of Cloudflare's global locations, allowing you to scale seamlessly. ",
 						"buttonText2": null,
@@ -569,6 +569,25 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3zsNA39m4wDBjfBnTpAh4I",
+						"title": "See what companies are building with Workers KV",
+						"titleSize": "medium",
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "large",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
