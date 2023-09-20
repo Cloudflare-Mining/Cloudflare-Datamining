@@ -711,6 +711,15 @@
 																		"example": true,
 																		"type": "boolean"
 																	},
+																	"tags": {
+																		"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																		"items": {
+																			"description": "The tag associated with an application.",
+																			"example": "engineers",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"type": {
 																		"description": "The application type.",
 																		"example": "self_hosted",
@@ -882,6 +891,15 @@
 																			}
 																		},
 																		"type": "object"
+																	},
+																	"tags": {
+																		"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																		"items": {
+																			"description": "The tag associated with an application.",
+																			"example": "engineers",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	},
 																	"type": {
 																		"description": "The application type.",
@@ -1101,6 +1119,15 @@
 																				"description": "Enables automatic authentication through cloudflared.",
 																				"example": true,
 																				"type": "boolean"
+																			},
+																			"tags": {
+																				"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																				"items": {
+																					"description": "The tag associated with an application.",
+																					"example": "engineers",
+																					"type": "string"
+																				},
+																				"type": "array"
 																			},
 																			"type": {
 																				"description": "The application type.",
@@ -1335,6 +1362,15 @@
 																				"description": "Enables automatic authentication through cloudflared.",
 																				"example": true,
 																				"type": "boolean"
+																			},
+																			"tags": {
+																				"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																				"items": {
+																					"description": "The tag associated with an application.",
+																					"example": "engineers",
+																					"type": "string"
+																				},
+																				"type": "array"
 																			},
 																			"type": {
 																				"description": "The application type.",
@@ -1755,6 +1791,15 @@
 																		"example": "Admin Site",
 																		"type": "string"
 																	},
+																	"tags": {
+																		"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																		"items": {
+																			"description": "The tag associated with an application.",
+																			"example": "engineers",
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
 																	"type": {
 																		"description": "The application type.",
 																		"example": "bookmark",
@@ -2110,6 +2155,15 @@
 																				"example": true,
 																				"type": "boolean"
 																			},
+																			"tags": {
+																				"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																				"items": {
+																					"description": "The tag associated with an application.",
+																					"example": "engineers",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
 																			"type": {
 																				"description": "The application type.",
 																				"example": "self_hosted",
@@ -2281,6 +2335,15 @@
 																					}
 																				},
 																				"type": "object"
+																			},
+																			"tags": {
+																				"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																				"items": {
+																					"description": "The tag associated with an application.",
+																					"example": "engineers",
+																					"type": "string"
+																				},
+																				"type": "array"
 																			},
 																			"type": {
 																				"description": "The application type.",
@@ -2500,6 +2563,15 @@
 																						"description": "Enables automatic authentication through cloudflared.",
 																						"example": true,
 																						"type": "boolean"
+																					},
+																					"tags": {
+																						"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																						"items": {
+																							"description": "The tag associated with an application.",
+																							"example": "engineers",
+																							"type": "string"
+																						},
+																						"type": "array"
 																					},
 																					"type": {
 																						"description": "The application type.",
@@ -2734,6 +2806,15 @@
 																						"description": "Enables automatic authentication through cloudflared.",
 																						"example": true,
 																						"type": "boolean"
+																					},
+																					"tags": {
+																						"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																						"items": {
+																							"description": "The tag associated with an application.",
+																							"example": "engineers",
+																							"type": "string"
+																						},
+																						"type": "array"
 																					},
 																					"type": {
 																						"description": "The application type.",
@@ -3153,6 +3234,15 @@
 																				"description": "The name of the application.",
 																				"example": "Admin Site",
 																				"type": "string"
+																			},
+																			"tags": {
+																				"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																				"items": {
+																					"description": "The tag associated with an application.",
+																					"example": "engineers",
+																					"type": "string"
+																				},
+																				"type": "array"
 																			},
 																			"type": {
 																				"description": "The application type.",
@@ -3606,6 +3696,15 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"type": {
 																	"description": "The application type.",
 																	"example": "self_hosted",
@@ -3777,6 +3876,15 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"type": {
 																	"description": "The application type.",
@@ -3996,6 +4104,15 @@
 																			"description": "Enables automatic authentication through cloudflared.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -4230,6 +4347,15 @@
 																			"description": "Enables automatic authentication through cloudflared.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -4650,6 +4776,15 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"type": {
 																	"description": "The application type.",
 																	"example": "bookmark",
@@ -4982,6 +5117,15 @@
 																			"example": true,
 																			"type": "boolean"
 																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"type": {
 																			"description": "The application type.",
 																			"example": "self_hosted",
@@ -5153,6 +5297,15 @@
 																				}
 																			},
 																			"type": "object"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -5372,6 +5525,15 @@
 																					"description": "Enables automatic authentication through cloudflared.",
 																					"example": true,
 																					"type": "boolean"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -5606,6 +5768,15 @@
 																					"description": "Enables automatic authentication through cloudflared.",
 																					"example": true,
 																					"type": "boolean"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -6025,6 +6196,15 @@
 																			"description": "The name of the application.",
 																			"example": "Admin Site",
 																			"type": "string"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -6923,6 +7103,15 @@
 												"example": true,
 												"type": "boolean"
 											},
+											"tags": {
+												"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+												"items": {
+													"description": "The tag associated with an application.",
+													"example": "engineers",
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"type": {
 												"description": "The application type.",
 												"example": "self_hosted",
@@ -7094,6 +7283,15 @@
 													}
 												},
 												"type": "object"
+											},
+											"tags": {
+												"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+												"items": {
+													"description": "The tag associated with an application.",
+													"example": "engineers",
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"type": {
 												"description": "The application type.",
@@ -7313,6 +7511,15 @@
 														"description": "Enables automatic authentication through cloudflared.",
 														"example": true,
 														"type": "boolean"
+													},
+													"tags": {
+														"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+														"items": {
+															"description": "The tag associated with an application.",
+															"example": "engineers",
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"type": {
 														"description": "The application type.",
@@ -7547,6 +7754,15 @@
 														"description": "Enables automatic authentication through cloudflared.",
 														"example": true,
 														"type": "boolean"
+													},
+													"tags": {
+														"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+														"items": {
+															"description": "The tag associated with an application.",
+															"example": "engineers",
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"type": {
 														"description": "The application type.",
@@ -7967,6 +8183,15 @@
 												"example": "Admin Site",
 												"type": "string"
 											},
+											"tags": {
+												"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+												"items": {
+													"description": "The tag associated with an application.",
+													"example": "engineers",
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"type": {
 												"description": "The application type.",
 												"example": "bookmark",
@@ -8296,6 +8521,15 @@
 																			"example": true,
 																			"type": "boolean"
 																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"type": {
 																			"description": "The application type.",
 																			"example": "self_hosted",
@@ -8467,6 +8701,15 @@
 																				}
 																			},
 																			"type": "object"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -8686,6 +8929,15 @@
 																					"description": "Enables automatic authentication through cloudflared.",
 																					"example": true,
 																					"type": "boolean"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -8920,6 +9172,15 @@
 																					"description": "Enables automatic authentication through cloudflared.",
 																					"example": true,
 																					"type": "boolean"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -9340,6 +9601,15 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"type": {
 																			"description": "The application type.",
 																			"example": "bookmark",
@@ -9567,6 +9837,15 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"type": {
 																	"description": "The application type.",
 																	"example": "self_hosted",
@@ -9738,6 +10017,15 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"type": {
 																	"description": "The application type.",
@@ -9957,6 +10245,15 @@
 																			"description": "Enables automatic authentication through cloudflared.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -10191,6 +10488,15 @@
 																			"description": "Enables automatic authentication through cloudflared.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -10611,6 +10917,15 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"type": {
 																	"description": "The application type.",
 																	"example": "bookmark",
@@ -10945,6 +11260,15 @@
 																					"example": true,
 																					"type": "boolean"
 																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"type": {
 																					"description": "The application type.",
 																					"example": "self_hosted",
@@ -11116,6 +11440,15 @@
 																						}
 																					},
 																					"type": "object"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -11335,6 +11668,15 @@
 																							"description": "Enables automatic authentication through cloudflared.",
 																							"example": true,
 																							"type": "boolean"
+																						},
+																						"tags": {
+																							"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																							"items": {
+																								"description": "The tag associated with an application.",
+																								"example": "engineers",
+																								"type": "string"
+																							},
+																							"type": "array"
 																						},
 																						"type": {
 																							"description": "The application type.",
@@ -11569,6 +11911,15 @@
 																							"description": "Enables automatic authentication through cloudflared.",
 																							"example": true,
 																							"type": "boolean"
+																						},
+																						"tags": {
+																							"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																							"items": {
+																								"description": "The tag associated with an application.",
+																								"example": "engineers",
+																								"type": "string"
+																							},
+																							"type": "array"
 																						},
 																						"type": {
 																							"description": "The application type.",
@@ -11989,6 +12340,15 @@
 																					"example": "Admin Site",
 																					"type": "string"
 																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"type": {
 																					"description": "The application type.",
 																					"example": "bookmark",
@@ -12061,6 +12421,15 @@
 																	"description": "The name of the application.",
 																	"example": "Admin Site",
 																	"type": "string"
+																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"type": {
 																	"description": "The application type.",
@@ -12591,6 +12960,15 @@
 												"example": true,
 												"type": "boolean"
 											},
+											"tags": {
+												"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+												"items": {
+													"description": "The tag associated with an application.",
+													"example": "engineers",
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"type": {
 												"description": "The application type.",
 												"example": "self_hosted",
@@ -12762,6 +13140,15 @@
 													}
 												},
 												"type": "object"
+											},
+											"tags": {
+												"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+												"items": {
+													"description": "The tag associated with an application.",
+													"example": "engineers",
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"type": {
 												"description": "The application type.",
@@ -12981,6 +13368,15 @@
 														"description": "Enables automatic authentication through cloudflared.",
 														"example": true,
 														"type": "boolean"
+													},
+													"tags": {
+														"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+														"items": {
+															"description": "The tag associated with an application.",
+															"example": "engineers",
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"type": {
 														"description": "The application type.",
@@ -13215,6 +13611,15 @@
 														"description": "Enables automatic authentication through cloudflared.",
 														"example": true,
 														"type": "boolean"
+													},
+													"tags": {
+														"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+														"items": {
+															"description": "The tag associated with an application.",
+															"example": "engineers",
+															"type": "string"
+														},
+														"type": "array"
 													},
 													"type": {
 														"description": "The application type.",
@@ -13635,6 +14040,15 @@
 												"example": "Admin Site",
 												"type": "string"
 											},
+											"tags": {
+												"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+												"items": {
+													"description": "The tag associated with an application.",
+													"example": "engineers",
+													"type": "string"
+												},
+												"type": "array"
+											},
 											"type": {
 												"description": "The application type.",
 												"example": "bookmark",
@@ -13964,6 +14378,15 @@
 																			"example": true,
 																			"type": "boolean"
 																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"type": {
 																			"description": "The application type.",
 																			"example": "self_hosted",
@@ -14135,6 +14558,15 @@
 																				}
 																			},
 																			"type": "object"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -14354,6 +14786,15 @@
 																					"description": "Enables automatic authentication through cloudflared.",
 																					"example": true,
 																					"type": "boolean"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -14588,6 +15029,15 @@
 																					"description": "Enables automatic authentication through cloudflared.",
 																					"example": true,
 																					"type": "boolean"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -15008,6 +15458,15 @@
 																			"example": "Admin Site",
 																			"type": "string"
 																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
 																		"type": {
 																			"description": "The application type.",
 																			"example": "bookmark",
@@ -15235,6 +15694,15 @@
 																	"example": true,
 																	"type": "boolean"
 																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"type": {
 																	"description": "The application type.",
 																	"example": "self_hosted",
@@ -15406,6 +15874,15 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"type": {
 																	"description": "The application type.",
@@ -15625,6 +16102,15 @@
 																			"description": "Enables automatic authentication through cloudflared.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -15859,6 +16345,15 @@
 																			"description": "Enables automatic authentication through cloudflared.",
 																			"example": true,
 																			"type": "boolean"
+																		},
+																		"tags": {
+																			"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																			"items": {
+																				"description": "The tag associated with an application.",
+																				"example": "engineers",
+																				"type": "string"
+																			},
+																			"type": "array"
 																		},
 																		"type": {
 																			"description": "The application type.",
@@ -16279,6 +16774,15 @@
 																	"example": "Admin Site",
 																	"type": "string"
 																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
 																"type": {
 																	"description": "The application type.",
 																	"example": "bookmark",
@@ -16613,6 +17117,15 @@
 																					"example": true,
 																					"type": "boolean"
 																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"type": {
 																					"description": "The application type.",
 																					"example": "self_hosted",
@@ -16784,6 +17297,15 @@
 																						}
 																					},
 																					"type": "object"
+																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
 																				},
 																				"type": {
 																					"description": "The application type.",
@@ -17003,6 +17525,15 @@
 																							"description": "Enables automatic authentication through cloudflared.",
 																							"example": true,
 																							"type": "boolean"
+																						},
+																						"tags": {
+																							"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																							"items": {
+																								"description": "The tag associated with an application.",
+																								"example": "engineers",
+																								"type": "string"
+																							},
+																							"type": "array"
 																						},
 																						"type": {
 																							"description": "The application type.",
@@ -17237,6 +17768,15 @@
 																							"description": "Enables automatic authentication through cloudflared.",
 																							"example": true,
 																							"type": "boolean"
+																						},
+																						"tags": {
+																							"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																							"items": {
+																								"description": "The tag associated with an application.",
+																								"example": "engineers",
+																								"type": "string"
+																							},
+																							"type": "array"
 																						},
 																						"type": {
 																							"description": "The application type.",
@@ -17657,6 +18197,15 @@
 																					"example": "Admin Site",
 																					"type": "string"
 																				},
+																				"tags": {
+																					"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																					"items": {
+																						"description": "The tag associated with an application.",
+																						"example": "engineers",
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
 																				"type": {
 																					"description": "The application type.",
 																					"example": "bookmark",
@@ -17729,6 +18278,15 @@
 																	"description": "The name of the application.",
 																	"example": "Admin Site",
 																	"type": "string"
+																},
+																"tags": {
+																	"description": "The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.",
+																	"items": {
+																		"description": "The tag associated with an application.",
+																		"example": "engineers",
+																		"type": "string"
+																	},
+																	"type": "array"
 																},
 																"type": {
 																	"description": "The application type.",
