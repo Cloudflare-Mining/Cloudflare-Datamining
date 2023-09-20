@@ -2536,6 +2536,31 @@
 									"isExternalUrl": null
 								},
 								"navigationLinks": []
+							},
+							{
+								"contentTypeId": "navNavigationItem",
+								"contentfulId": "5RVyDopQTJRcit7qLKguL6",
+								"locale": "en-US",
+								"name": "Log In",
+								"description": null,
+								"navIcon": null,
+								"contentfulButton": null,
+								"showIconOnly": false,
+								"hideOnChinaSite": false,
+								"navigationItems": [],
+								"mainLink": {
+									"contentTypeId": "elementNavLink",
+									"contentfulId": "2lsuZC3aMqjZ8qalaBPUmX",
+									"locale": "en-US",
+									"title": "Log In",
+									"description": null,
+									"url": "https://dash.cloudflare.com/login/",
+									"badges": null,
+									"specialLinkType": "BLUE_CTA",
+									"openInNewWindow": false,
+									"isExternalUrl": null
+								},
+								"navigationLinks": []
 							}
 						]
 					},
@@ -6103,7 +6128,43 @@
 										"contentTypeId": "planElementFeatures",
 										"name": "Data Loss Prevention (DLP)",
 										"description": null,
-										"planValues": []
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7lc9r3JwVVojIs3b6iUR27",
+												"textValue": "(add-on)",
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "70fOWLJrcnV0CyXw322wDA",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Enterprise_Plan-CTA",
+														"standardText": null,
+														"text": "Talk to an expert",
+														"url": "/products/zero-trust/plans/enterprise/",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
 									}
 								]
 							},
