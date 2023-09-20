@@ -2228,7 +2228,7 @@
 		]
 	},
 	"POST /accounts/{account_identifier}/mnm/rules": {
-		"description": "Create network monitoring rules for account.",
+		"description": "Create network monitoring rules for account. Currently only supports creating a single rule per API request.",
 		"operationId": "magic-network-monitoring-rules-create-rules",
 		"parameters": [
 			{
