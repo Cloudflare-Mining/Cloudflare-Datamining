@@ -8,7 +8,7 @@
 	<h3 id="backgroundhowemailworks">Background: How Email Works</h3>
 	<p>SMTP - the protocol used for sending email - was <a href="https://blog.cloudflare.com/the-history-of-email">finalized in 1982</a>, when it was just a <a href="https://blog.ted.com/what-the-internet-looked-like-in-1982-a-closer-look-at-danny-hillis-vintage-directory-of-users" target="_blank">small community</a> online. Many of them knew and trusted each other, and so the protocol was built entirely on trust. In an SMTP message, the MAIL FROM field can be arbitrarily defined. That means you could send an email from any email address, even one you don’t own.</p>
 	<p>This is great for phishers, and bad for everyone else.</p>
-	<p>The solution to prevent email spoofing was to create the Sender Policy Framework (SPF). SPF allows the domain owner to specify which servers are allowed to send email from that domain. That policy is stored in a DNS TXT record like this one from cloudflare.com:</p>
+	<p>The solution to <a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing" target="_blank">prevent email spoofing</a> was to create the Sender Policy Framework (SPF). SPF allows the domain owner to specify which servers are allowed to send email from that domain. That policy is stored in a DNS TXT record like this one from cloudflare.com:</p>
 	<pre><code>$ dig cloudflare.com txt
 "v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:customeriomail.com include:stspg-customer.com -all"
 </code></pre>

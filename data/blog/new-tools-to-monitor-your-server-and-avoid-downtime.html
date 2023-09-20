@@ -22,7 +22,7 @@
 	<p>Cloudflare knows when your origin is down, because we’re the ones trying to reach it to serve traffic! When we detect downtime lasting longer than a few minutes, we’ll send you an email. </p>
 	<p>Starting today, you can configure origin monitoring alerts to go to multiple email addresses. Origin Monitoring alerts are available in the new Notification Center (more on that below!) in the Cloudflare dashboard:</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p><strong>Passive Origin Monitoring is available to customers on all Cloudflare plans.</strong></p>
+	<p><strong>Passive Origin Monitoring is available to customers on <a href="https://www.cloudflare.com/plans" target="_blank">all Cloudflare plans</a>.</strong></p>
 	<h3 id="zero-downtime-failover">Zero-Downtime Failover</h3>
 	<p>What’s better than getting notified about downtime? Never having downtime in the first place! With Zero-Downtime Failover, we can automatically retry requests to origin, even before Load Balancing kicks in.</p>
 	<p>How does it work? If a request to your origin fails, and Cloudflare has another record for your origin server, we’ll just try another origin <em>within the same HTTP request</em>. The alternate record could be either an A/AAAA record configured via Cloudflare DNS, or another origin server in the same Load Balancing pool.</p>

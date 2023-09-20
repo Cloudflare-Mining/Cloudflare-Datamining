@@ -145,7 +145,7 @@ function parseMessage(message) {
 	<p>Now that we have the stock we are looking for, we can move on to making the API request!</p>
 	<h3 id="makingtheapirequest">Making the API Request</h3>
 	<p>We want to make sure our bot doesn't have to make a request to the Alpha Vantage API unnecessarily: if we had thousands of users every minute, there's no need to fetch the (same) price every time. We can fetch it once (per Cloudflare PoP), store in the Cloudflare cache for a short period of time (say 1 minute), and serve users that cached copy. This is win-win: our bot responds more quickly and we're kinder to the API we're consuming).</p>
-	<p>For customers on the Enterprise plan, you may also use the <code>cacheTtlByStatus</code> functionality, which allows you to set different TTLs based on the response status. This way, if you get an error code, you may only cache it for 1 second, or not cache at all, so that subsequent requests (once the API has been updated) will not fail as well.</p>
+	<p>For customers on the <a href="https://www.cloudflare.com/plans/enterprise" target="_blank">Enterprise plan</a>, you may also use the <code>cacheTtlByStatus</code> functionality, which allows you to set different TTLs based on the response status. This way, if you get an error code, you may only cache it for 1 second, or not cache at all, so that subsequent requests (once the API has been updated) will not fail as well.</p>
 	<p>Given the requested stock, we'll make a HTTP request to the API, confirm we got an acceptable response (HTTP 200), and then return an object with the fields we need:</p>
 	<pre><code class="language-js">
     let resp = await fetch(
