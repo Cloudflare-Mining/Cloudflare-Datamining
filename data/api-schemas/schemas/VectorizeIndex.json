@@ -467,80 +467,70 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"indexes": {
-													"items": {
-														"properties": {
-															"index": {
+											"items": {
+												"properties": {
+													"config": {
+														"description": "Specifies the type of configuration to use for the index.",
+														"oneOf": [
+															{
 																"properties": {
-																	"config": {
-																		"description": "Specifies the type of configuration to use for the index.",
-																		"oneOf": [
-																			{
-																				"properties": {
-																					"dimensions": {
-																						"description": "Specifies the number of dimensions for the index",
-																						"example": 768,
-																						"maximum": 1536,
-																						"minimum": 1,
-																						"type": "integer"
-																					},
-																					"metric": {
-																						"description": "Specifies the type of metric to use calculating distance.",
-																						"enum": [
-																							"cosine",
-																							"euclidean",
-																							"dot-product"
-																						],
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"dimensions",
-																					"metric"
-																				],
-																				"type": "object"
-																			},
-																			{
-																				"properties": {
-																					"model": {
-																						"description": "Specifies the model to use for the index.",
-																						"enum": [
-																							"workers-ai/bge-small-en",
-																							"openai/text-embedding-ada-002",
-																							"cohere/embed-multilingual-v2.0"
-																						],
-																						"example": "workers-ai/bge-small-en",
-																						"type": "string"
-																					}
-																				},
-																				"required": [
-																					"model"
-																				],
-																				"type": "object"
-																			}
-																		]
+																	"dimensions": {
+																		"description": "Specifies the number of dimensions for the index",
+																		"example": 768,
+																		"maximum": 1536,
+																		"minimum": 1,
+																		"type": "integer"
 																	},
-																	"description": {
-																		"description": "Specifies the description of the index.",
-																		"example": "This is my example index.",
-																		"type": "string"
-																	},
-																	"name": {
-																		"example": "example-index",
-																		"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+																	"metric": {
+																		"description": "Specifies the type of metric to use calculating distance.",
+																		"enum": [
+																			"cosine",
+																			"euclidean",
+																			"dot-product"
+																		],
 																		"type": "string"
 																	}
 																},
+																"required": [
+																	"dimensions",
+																	"metric"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"model": {
+																		"description": "Specifies the model to use for the index.",
+																		"enum": [
+																			"workers-ai/bge-small-en",
+																			"openai/text-embedding-ada-002",
+																			"cohere/embed-multilingual-v2.0"
+																		],
+																		"example": "workers-ai/bge-small-en",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"model"
+																],
 																"type": "object"
 															}
-														},
-														"type": "object"
+														]
 													},
-													"type": "array"
-												}
+													"description": {
+														"description": "Specifies the description of the index.",
+														"example": "This is my example index.",
+														"type": "string"
+													},
+													"name": {
+														"example": "example-index",
+														"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+														"type": "string"
+													}
+												},
+												"type": "object"
 											},
-											"type": "object"
+											"type": "array"
 										}
 									}
 								}
@@ -907,68 +897,63 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"index": {
-													"properties": {
-														"config": {
-															"description": "Specifies the type of configuration to use for the index.",
-															"oneOf": [
-																{
-																	"properties": {
-																		"dimensions": {
-																			"description": "Specifies the number of dimensions for the index",
-																			"example": 768,
-																			"maximum": 1536,
-																			"minimum": 1,
-																			"type": "integer"
-																		},
-																		"metric": {
-																			"description": "Specifies the type of metric to use calculating distance.",
-																			"enum": [
-																				"cosine",
-																				"euclidean",
-																				"dot-product"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"dimensions",
-																		"metric"
-																	],
-																	"type": "object"
+												"config": {
+													"description": "Specifies the type of configuration to use for the index.",
+													"oneOf": [
+														{
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"type": "integer"
 																},
-																{
-																	"properties": {
-																		"model": {
-																			"description": "Specifies the model to use for the index.",
-																			"enum": [
-																				"workers-ai/bge-small-en",
-																				"openai/text-embedding-ada-002",
-																				"cohere/embed-multilingual-v2.0"
-																			],
-																			"example": "workers-ai/bge-small-en",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"model"
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
 																	],
-																	"type": "object"
+																	"type": "string"
 																}
-															]
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															],
+															"type": "object"
 														},
-														"description": {
-															"description": "Specifies the description of the index.",
-															"example": "This is my example index.",
-															"type": "string"
-														},
-														"name": {
-															"example": "example-index",
-															"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-															"type": "string"
+														{
+															"properties": {
+																"model": {
+																	"description": "Specifies the model to use for the index.",
+																	"enum": [
+																		"workers-ai/bge-small-en",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"example": "workers-ai/bge-small-en",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"model"
+															],
+															"type": "object"
 														}
-													},
-													"type": "object"
+													]
+												},
+												"description": {
+													"description": "Specifies the description of the index.",
+													"example": "This is my example index.",
+													"type": "string"
+												},
+												"name": {
+													"example": "example-index",
+													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -1413,68 +1398,63 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"index": {
-													"properties": {
-														"config": {
-															"description": "Specifies the type of configuration to use for the index.",
-															"oneOf": [
-																{
-																	"properties": {
-																		"dimensions": {
-																			"description": "Specifies the number of dimensions for the index",
-																			"example": 768,
-																			"maximum": 1536,
-																			"minimum": 1,
-																			"type": "integer"
-																		},
-																		"metric": {
-																			"description": "Specifies the type of metric to use calculating distance.",
-																			"enum": [
-																				"cosine",
-																				"euclidean",
-																				"dot-product"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"dimensions",
-																		"metric"
-																	],
-																	"type": "object"
+												"config": {
+													"description": "Specifies the type of configuration to use for the index.",
+													"oneOf": [
+														{
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"type": "integer"
 																},
-																{
-																	"properties": {
-																		"model": {
-																			"description": "Specifies the model to use for the index.",
-																			"enum": [
-																				"workers-ai/bge-small-en",
-																				"openai/text-embedding-ada-002",
-																				"cohere/embed-multilingual-v2.0"
-																			],
-																			"example": "workers-ai/bge-small-en",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"model"
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
 																	],
-																	"type": "object"
+																	"type": "string"
 																}
-															]
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															],
+															"type": "object"
 														},
-														"description": {
-															"description": "Specifies the description of the index.",
-															"example": "This is my example index.",
-															"type": "string"
-														},
-														"name": {
-															"example": "example-index",
-															"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-															"type": "string"
+														{
+															"properties": {
+																"model": {
+																	"description": "Specifies the model to use for the index.",
+																	"enum": [
+																		"workers-ai/bge-small-en",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"example": "workers-ai/bge-small-en",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"model"
+															],
+															"type": "object"
 														}
-													},
-													"type": "object"
+													]
+												},
+												"description": {
+													"description": "Specifies the description of the index.",
+													"example": "This is my example index.",
+													"type": "string"
+												},
+												"name": {
+													"example": "example-index",
+													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+													"type": "string"
 												}
 											},
 											"type": "object"
@@ -1864,68 +1844,63 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"index": {
-													"properties": {
-														"config": {
-															"description": "Specifies the type of configuration to use for the index.",
-															"oneOf": [
-																{
-																	"properties": {
-																		"dimensions": {
-																			"description": "Specifies the number of dimensions for the index",
-																			"example": 768,
-																			"maximum": 1536,
-																			"minimum": 1,
-																			"type": "integer"
-																		},
-																		"metric": {
-																			"description": "Specifies the type of metric to use calculating distance.",
-																			"enum": [
-																				"cosine",
-																				"euclidean",
-																				"dot-product"
-																			],
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"dimensions",
-																		"metric"
-																	],
-																	"type": "object"
+												"config": {
+													"description": "Specifies the type of configuration to use for the index.",
+													"oneOf": [
+														{
+															"properties": {
+																"dimensions": {
+																	"description": "Specifies the number of dimensions for the index",
+																	"example": 768,
+																	"maximum": 1536,
+																	"minimum": 1,
+																	"type": "integer"
 																},
-																{
-																	"properties": {
-																		"model": {
-																			"description": "Specifies the model to use for the index.",
-																			"enum": [
-																				"workers-ai/bge-small-en",
-																				"openai/text-embedding-ada-002",
-																				"cohere/embed-multilingual-v2.0"
-																			],
-																			"example": "workers-ai/bge-small-en",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"model"
+																"metric": {
+																	"description": "Specifies the type of metric to use calculating distance.",
+																	"enum": [
+																		"cosine",
+																		"euclidean",
+																		"dot-product"
 																	],
-																	"type": "object"
+																	"type": "string"
 																}
-															]
+															},
+															"required": [
+																"dimensions",
+																"metric"
+															],
+															"type": "object"
 														},
-														"description": {
-															"description": "Specifies the description of the index.",
-															"example": "This is my example index.",
-															"type": "string"
-														},
-														"name": {
-															"example": "example-index",
-															"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
-															"type": "string"
+														{
+															"properties": {
+																"model": {
+																	"description": "Specifies the model to use for the index.",
+																	"enum": [
+																		"workers-ai/bge-small-en",
+																		"openai/text-embedding-ada-002",
+																		"cohere/embed-multilingual-v2.0"
+																	],
+																	"example": "workers-ai/bge-small-en",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"model"
+															],
+															"type": "object"
 														}
-													},
-													"type": "object"
+													]
+												},
+												"description": {
+													"description": "Specifies the description of the index.",
+													"example": "This is my example index.",
+													"type": "string"
+												},
+												"name": {
+													"example": "example-index",
+													"pattern": "^([a-z]+[a-z0-9_-]*[a-z0-9]+)$",
+													"type": "string"
 												}
 											},
 											"type": "object"
