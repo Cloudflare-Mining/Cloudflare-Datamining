@@ -37,7 +37,17 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Birthday Week 2022",
+					"metaDescription": "This week we'll celebrate our 12th birthday. As has become our tradition, we'll be announcing a series of products that we think of as our gifts back to the Internet",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/21et9IlgChHb5Dq9ZtBZMQ/afacfbbdb6be303d04d5ad59e3ee0e9d/Bday_Hero_Illustration_OG.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "5HFnNizVq7hFK8LR3AXoZb",
 				"contentTypeId": "page",
 				"promotionalBanner": {
@@ -52,6 +62,44 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "1lj9e6fnQZmDXdN97mfatU",
+						"menuTitle": "Birthday Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "42sX5OK63yPnB6ZWkwUDS3",
+								"linkText": "Updates and announcements",
+								"page": null,
+								"url": "/birthday-week",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "66PZZ38VcB0PoBl3MZWtRY",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "/birthday-week/cloudflare-tv",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "4ihL3HyMI3pQZ32SIaGTvg",
+								"linkText": "Press Releases",
+								"page": null,
+								"url": "/birthday-week/press-releases",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7jJznLsaHeVr79uDKCqQiJ",
+								"linkText": "GA Week",
+								"page": null,
+								"url": "/ga-week",
+								"subMenuItems": []
+							}
+						]
+					},
 					{
 						"contentfulId": "7qpmgXKSiQwJgJUMQqrxop",
 						"contentTypeId": "bladeHeroAnimation",

@@ -37,7 +37,17 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Birthday Week 2022",
+					"metaDescription": "This week we'll celebrate our 12th birthday. As has become our tradition, we'll be announcing a series of products that we think of as our gifts back to the Internet",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/21et9IlgChHb5Dq9ZtBZMQ/afacfbbdb6be303d04d5ad59e3ee0e9d/Bday_Hero_Illustration_OG.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "4mwQBR9VYHFTKAQAVljmuO",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -47,6 +57,44 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "1lj9e6fnQZmDXdN97mfatU",
+						"menuTitle": "Birthday Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "42sX5OK63yPnB6ZWkwUDS3",
+								"linkText": "Updates and announcements",
+								"page": null,
+								"url": "/birthday-week",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "66PZZ38VcB0PoBl3MZWtRY",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "/birthday-week/cloudflare-tv",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "4ihL3HyMI3pQZ32SIaGTvg",
+								"linkText": "Press Releases",
+								"page": null,
+								"url": "/birthday-week/press-releases",
+								"subMenuItems": []
+							},
+							{
+								"contentfulId": "7jJznLsaHeVr79uDKCqQiJ",
+								"linkText": "GA Week",
+								"page": null,
+								"url": "/ga-week",
+								"subMenuItems": []
+							}
+						]
+					},
 					{
 						"contentfulId": "7qpmgXKSiQwJgJUMQqrxop",
 						"contentTypeId": "bladeHeroAnimation",
@@ -547,6 +595,68 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "6UpQ8rMi1vEP9BP1pYN7zd",
+								"title": "Introducing Cache Rules: precision caching at your fingertips",
+								"titleSize": null,
+								"description": "We have spent the last ten years learning how customers use Page Rules to customize their cached content, and it's clear the time is ripe for evolving rules-based caching on Cloudflare.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-cache-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "e7b61a69-bf9e-52ec-9c26-ba7596f59835",
+									"altText": "Cache Rules",
+									"title": "Cache Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1lEQxx9MOzAyS2tR0S7har/8f6b1bbb110ffc0b7ec7ae19b40f46d3/Cache_Rules_Everything_Around_Me__.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4N2rOc59k0YU6YUSpdVr1",
+								"title": "Introducing Configuration Rules",
+								"titleSize": null,
+								"description": "Configuration Rules is the new and improved way for Cloudflare customers to control and manipulate features that are enabled or disabled for specific requests on their zone.",
+								"learnMoreUrl": "https://blog.cloudflare.com/configuration-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "aa1a620a-8c18-5dd3-b50e-81e0b7489aad",
+									"altText": null,
+									"title": "Config Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2xMNdnmWdBRaUF3MyRTQXp/d071db93771615fb8127f386c50a5ac7/Config_Rules.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "6QJ9ad1zxxMfPtmXMjNxiI",
 								"title": "Where to? Introducing Origin Rules",
 								"titleSize": null,
@@ -598,6 +708,37 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Xq36WYl2nHjr5fGP6SfZ7/ac936755807a30958481e66ffd615134/Next_Gen_Page_Rules__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5TeyEbCuWOVYymyV0Zwp2V",
+								"title": "Dynamic URL Redirects: 301 to the future",
+								"titleSize": null,
+								"description": "With Dynamic redirects, users can redirect visitors to another webpage or website based upon hundreds of options such as the visitor's country of origin or language, without having to write a single line of code.",
+								"learnMoreUrl": "https://blog.cloudflare.com/dynamic-redirect-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "70343359-f061-5381-b0b2-9061c3432033",
+									"altText": "Dynamic Redirect Rules",
+									"title": "Dynamic Redirect Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/496asdEGmk5mpiJ8hjCnTR/32513476b10403a893e449032647f363/Dynamic_Redirect_Rules.png"
 										}
 									},
 									"brandfolderAsset": null,
