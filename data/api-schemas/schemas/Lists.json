@@ -1726,6 +1726,25 @@
 					"example": "zzz",
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"description": "Amount of results to include in each paginated response. A non-negative 32 bit integer.",
+					"maximum": 500,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.",
+					"example": "1.1.1.",
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
