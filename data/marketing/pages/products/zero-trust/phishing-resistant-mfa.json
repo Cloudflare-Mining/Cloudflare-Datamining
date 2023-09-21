@@ -416,7 +416,7 @@
 						"imagePosition": false,
 						"imageSize": "extra-large",
 						"imageTextAlignment": "center",
-						"togglesTo": null
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "3iEP5okS7qiDCcjb93Y7RW",
@@ -468,7 +468,7 @@
 						"imagePosition": true,
 						"imageSize": "large",
 						"imageTextAlignment": "center",
-						"togglesTo": null
+						"togglesTo": []
 					},
 					{
 						"contentfulId": "lTmLHjOfZ7tnk4BqImasK",
@@ -520,47 +520,49 @@
 						"imagePosition": true,
 						"imageSize": "large",
 						"imageTextAlignment": "center",
-						"togglesTo": {
-							"contentfulId": "4FaLPfjKRBtE9KDfKOwcAu",
-							"title": "Selectively enforce strong authentication",
-							"copy": "- Identity providers may support strong authentication but may not allow you to truly require it\n- Ensure FIDO2 authentication is required, especially for apps housing sensitive data, and enforce per user, app, geography, or group",
-							"toggleText": "Without Zero Trust",
-							"button": [],
-							"learnMoreUrl": null,
-							"learnMoreText": null,
-							"link": [],
-							"subheadline": "Don't just support it. Require it.",
-							"button1Text": null,
-							"button1Url": null,
-							"button1Color": null,
-							"button2Text": null,
-							"button2Url": null,
-							"button2Color": null,
-							"streamOptions": [
-								"controls"
-							],
-							"streamCaptions": "en",
-							"streamVideoId": null,
-							"streamThumbnails": null,
-							"streamPoster": null,
-							"streamPosterAssetFile": null,
-							"image": null,
-							"imageAssetFile": {
-								"id": "49b620dc-c7f0-5cd7-ada2-6e93cab01746",
-								"altText": "Selectively enforce strong authentication image (toggle 2)",
-								"title": "Selectively enforce strong authentication image (toggle 2)",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pgYrkw9biuuBSTf5uGmMW/2c4af830f3ef28b9d426988c10c4c097/Selective_enforcement_security_keys__toggle_2__-_no_background_-_SVG.svg"
-									}
+						"togglesTo": [
+							{
+								"contentfulId": "4FaLPfjKRBtE9KDfKOwcAu",
+								"title": "Selectively enforce strong authentication",
+								"copy": "- Identity providers may support strong authentication but may not allow you to truly require it\n- Ensure FIDO2 authentication is required, especially for apps housing sensitive data, and enforce per user, app, geography, or group",
+								"toggleText": "Without Zero Trust",
+								"button": [],
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": [],
+								"subheadline": "Don't just support it. Require it.",
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": "en",
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": null,
+								"imageAssetFile": {
+									"id": "49b620dc-c7f0-5cd7-ada2-6e93cab01746",
+									"altText": "Selectively enforce strong authentication image (toggle 2)",
+									"title": "Selectively enforce strong authentication image (toggle 2)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5pgYrkw9biuuBSTf5uGmMW/2c4af830f3ef28b9d426988c10c4c097/Selective_enforcement_security_keys__toggle_2__-_no_background_-_SVG.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							"featureList": []
-						}
+								"featureList": []
+							}
+						]
 					},
 					{
 						"contentfulId": "3q6dvSZ7ka0yvtg0604ArZ",
@@ -612,47 +614,49 @@
 						"imagePosition": false,
 						"imageSize": "large",
 						"imageTextAlignment": "center",
-						"togglesTo": {
-							"contentfulId": "2MbA6bxFdJCelK2coKJvnb",
-							"title": "Roll out strong authentication everywhere",
-							"copy": "- Broad MFA support exists for cloud services, but this can be more difficult with legacy or non-web apps\n- ZTNA acts as an aggregation layer around all your SaaS, self-hosted, and non-web resources, which makes strong authentication easier to enforce across all of them",
-							"toggleText": "Without Zero Trust",
-							"button": [],
-							"learnMoreUrl": null,
-							"learnMoreText": null,
-							"link": [],
-							"subheadline": "ZTNA makes it easy",
-							"button1Text": null,
-							"button1Url": null,
-							"button1Color": null,
-							"button2Text": null,
-							"button2Url": null,
-							"button2Color": null,
-							"streamOptions": [
-								"controls"
-							],
-							"streamCaptions": "en",
-							"streamVideoId": null,
-							"streamThumbnails": null,
-							"streamPoster": null,
-							"streamPosterAssetFile": null,
-							"image": null,
-							"imageAssetFile": {
-								"id": "9ec67eba-360b-50f1-ad2b-9e1be31192eb",
-								"altText": "Roll out strong authentication everywhere image (toggle 2)",
-								"title": "Roll out strong authentication everywhere image (toggle 2)",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/45YqMv6xd168wwkPasD51c/9b7ffcba52079f99972ad0c342f59401/Roll_out_strong_auth_everywhere__toggle_2__-_no_background_-_SVG.svg"
-									}
+						"togglesTo": [
+							{
+								"contentfulId": "2MbA6bxFdJCelK2coKJvnb",
+								"title": "Roll out strong authentication everywhere",
+								"copy": "- Broad MFA support exists for cloud services, but this can be more difficult with legacy or non-web apps\n- ZTNA acts as an aggregation layer around all your SaaS, self-hosted, and non-web resources, which makes strong authentication easier to enforce across all of them",
+								"toggleText": "Without Zero Trust",
+								"button": [],
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": [],
+								"subheadline": "ZTNA makes it easy",
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": "en",
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": null,
+								"imageAssetFile": {
+									"id": "9ec67eba-360b-50f1-ad2b-9e1be31192eb",
+									"altText": "Roll out strong authentication everywhere image (toggle 2)",
+									"title": "Roll out strong authentication everywhere image (toggle 2)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/45YqMv6xd168wwkPasD51c/9b7ffcba52079f99972ad0c342f59401/Roll_out_strong_auth_everywhere__toggle_2__-_no_background_-_SVG.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							"featureList": []
-						}
+								"featureList": []
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeEnablement",
