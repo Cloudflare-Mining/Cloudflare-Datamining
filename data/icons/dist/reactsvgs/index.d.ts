@@ -18,6 +18,7 @@ declare const _default: {
     'caret-left': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-up': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'case-study': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     chart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     clipboard: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-access': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -87,6 +88,7 @@ declare const _default: {
     printer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'product-security-center': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pub-sub': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'pull-request': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     queues: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     r2: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     refresh: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -112,6 +114,8 @@ declare const _default: {
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'trace:': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     twitter: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'two-way': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

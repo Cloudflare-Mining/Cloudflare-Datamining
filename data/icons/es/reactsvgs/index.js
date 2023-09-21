@@ -1,9 +1,8 @@
-import Dlp from './Dlp';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
-import AddMember from './AddMember';
 import Add from './Add';
-import ApiSecurity from './ApiSecurity';
+import AddMember from './AddMember';
 import Api from './Api';
+import ApiSecurity from './ApiSecurity';
 import Applications from './Applications';
 import Backward from './Backward';
 import Bolt from './Bolt';
@@ -16,6 +15,7 @@ import CaretDown from './CaretDown';
 import CaretLeft from './CaretLeft';
 import CaretRight from './CaretRight';
 import CaretUp from './CaretUp';
+import CaseStudy from './CaseStudy';
 import Chart from './Chart';
 import Clipboard from './Clipboard';
 import CloudflareAccess from './CloudflareAccess';
@@ -29,6 +29,7 @@ import CreditCard from './CreditCard';
 import D1 from './D1';
 import Discord from './Discord';
 import Discover from './Discover';
+import Dlp from './Dlp';
 import Documentation from './Documentation';
 import Download from './Download';
 import Drive from './Drive';
@@ -70,13 +71,13 @@ import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
 import Minus from './Minus';
 import More from './More';
+import Network from './Network';
 import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
 import NetworkSecurity from './NetworkSecurity';
-import Network from './Network';
 import None from './None';
 import Notifications from './Notifications';
-import OkSign from './OkSign';
 import Ok from './Ok';
+import OkSign from './OkSign';
 import OptimizationScale from './OptimizationScale';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
@@ -85,6 +86,7 @@ import Plus from './Plus';
 import Printer from './Printer';
 import ProductSecurityCenter from './ProductSecurityCenter';
 import PubSub from './PubSub';
+import PullRequest from './PullRequest';
 import Queues from './Queues';
 import R2 from './R2';
 import Refresh from './Refresh';
@@ -102,26 +104,28 @@ import Search from './Search';
 import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
-import StarOutline from './StarOutline';
 import Star from './Star';
+import StarOutline from './StarOutline';
 import Stream from './Stream';
 import Subtract from './Subtract';
 import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import Time from './Time';
+import Trace from './Trace';
+import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
 import Twitter from './Twitter';
 import TwoWay from './TwoWay';
 import UnlockOutline from './UnlockOutline';
 import Upload from './Upload';
+import User from './User';
 import UserMulti from './UserMulti';
 import UserOutline from './UserOutline';
-import User from './User';
 import Version from './Version';
 import WaitingRoom from './WaitingRoom';
-import WebAnalyticsLogo from './WebAnalyticsLogo';
 import Web3 from './Web3';
+import WebAnalyticsLogo from './WebAnalyticsLogo';
 import WorkersBundled from './WorkersBundled';
 import WorkersConstellation from './WorkersConstellation';
 import WorkersDurableObjects from './WorkersDurableObjects';
@@ -154,6 +158,7 @@ export default {
   'caret-left': CaretLeft,
   'caret-right': CaretRight,
   'caret-up': CaretUp,
+  'case-study': CaseStudy,
   chart: Chart,
   clipboard: Clipboard,
   'cloudflare-access': CloudflareAccess,
@@ -223,6 +228,7 @@ export default {
   printer: Printer,
   'product-security-center': ProductSecurityCenter,
   'pub-sub': PubSub,
+  'pull-request': PullRequest,
   queues: Queues,
   r2: R2,
   refresh: Refresh,
@@ -248,6 +254,8 @@ export default {
   teams: Teams,
   terraform: Terraform,
   time: Time,
+  'traffic-attack-browser': TrafficAttackBrowser,
+  'trace:': Trace,
   turnstile: Turnstile,
   twitter: Twitter,
   'two-way': TwoWay,
