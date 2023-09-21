@@ -1451,6 +1451,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
 			"vectorize": {
 				"read": true,
 				"edit": false
@@ -1472,10 +1476,6 @@
 				"edit": false
 			},
 			"magic": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
 				"read": true,
 				"edit": false
 			},
