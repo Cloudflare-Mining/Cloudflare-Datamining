@@ -255,7 +255,7 @@ export default {
   terraform: Terraform,
   time: Time,
   'traffic-attack-browser': TrafficAttackBrowser,
-  'trace:': Trace,
+  trace: Trace,
   turnstile: Turnstile,
   twitter: Twitter,
   'two-way': TwoWay,

@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.8.2
+
+### Patch Changes
+
+- 33f7d6d38c: update trace, case-study, pull-request and traffic-attack-browser icons
+
 ## 11.8.1
 
 ### Patch Changes

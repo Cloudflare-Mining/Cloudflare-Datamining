@@ -7,11 +7,11 @@ var SvgTrace = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   "aria-hidden": !props['aria-label'],
   width: "80",
   height: "80",
-  viewBox: "0 0 80 80",
-  fill: "none"
+  viewBox: "0 0 80 80"
 }), /*#__PURE__*/React.createElement("rect", {
   width: "80",
-  height: "80"
+  height: "80",
+  fill: "none"
 }), /*#__PURE__*/React.createElement("path", {
   "fill-rule": "evenodd",
   "clip-rule": "evenodd",

@@ -115,7 +115,7 @@ declare const _default: {
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    'trace:': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     twitter: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'two-way': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
