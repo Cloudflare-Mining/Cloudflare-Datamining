@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.8.1
+
+### Patch Changes
+
+- c2cb03eba4: add pull-request, traffic-attack-browser, trace and case-study icon
+
 ## 11.8.0
 
 ### Minor Changes
