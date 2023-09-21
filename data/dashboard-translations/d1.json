@@ -132,6 +132,8 @@
 	"d1.tables.form.footer": "To add more columns after creating this table, use the <0>Wrangler CLI</0>.",
 	"d1.tables.form.invalid_decimal": "Must be a decimal",
 	"d1.tables.form.invalid_int": "Must be an integer",
+	"d1.tables.insert_or_modify_data.approaching_limit": "You are approaching the D1 storage capacity limit on the Workers Free plan. Once you reach the limit, making updates that require more storage capacity may result in a failure to save your changes. <0>Upgrade to a Workers Paid plan</0> or delete some of your data to access more storage.",
+	"d1.tables.insert_or_modify_data.reached_limit": "You have reached the D1 storage capacity limit on the Workers Free plan. Making updates that require more storage capacity may result in a failure to save your changes. <0>Upgrade to a Workers Paid plan</0> or delete some of your data to access more storage.",
 	"d1.tables.insert_data.action.label": "Add data",
 	"d1.tables.insert_data.title": "Adding to **%{tableName}**",
 	"d1.tables.modify.set_to_null": "Set to NULL",
