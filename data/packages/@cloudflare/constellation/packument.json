@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/constellation",
 	"dist-tags": {
-		"latest": "2.0.7"
+		"latest": "2.0.8"
 	},
 	"versions": {
 		"0.0.6": {
@@ -193,6 +193,31 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQCD8D/MLxYoK8NfgHX0MOOKNicG+z+SIM/dPrWpyKIHUAIgRgOw64TPGfo/XsNM7ctRhokZwQw7xk5YoL0aBdQVzsE="
+					}
+				]
+			}
+		},
+		"2.0.8": {
+			"name": "@cloudflare/constellation",
+			"version": "2.0.8",
+			"devDependencies": {
+				"@types/mocha": "^10.0.1",
+				"@types/node": "^20.3.3",
+				"mocha": "^10.2.0",
+				"prettier": "^2.8.8",
+				"ts-node": "^10.9.1",
+				"typescript": "^5.1.6"
+			},
+			"dist": {
+				"integrity": "sha512-P7jy5/QFSL7FjpIx3xYq8GiIvwzg0aQq5qaef7vACnP4JZtSBf1iLDNx/YhDPWcnjMEl3WPHPYGLmCWoYlpygw==",
+				"shasum": "f164120ad8d8cc0b69c76d58a9307d31973b4c9d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/constellation/-/constellation-2.0.8.tgz",
+				"fileCount": 7,
+				"unpackedSize": 10107,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDQXd8i25GsCW3KKwjXG8MTBcDhakReh6QiEGY5f8JI7gIgNemjEvUy2Pt3ododiItLnTG5GZt3JhoPNZWjz9c0Bd0="
 					}
 				]
 			}
