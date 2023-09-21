@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>Responsibilities</strong>:</p>
-<p>We are looking for a Senior Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 200 points of presence spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operation and engineering of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
+<p>We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 200 points of presence spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operation and engineering of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
 <p><strong>Requirements</strong>:</p>
 <ul>
 	<li>Minimum 3 years of experience working in large scale network engineering environments,</li>
