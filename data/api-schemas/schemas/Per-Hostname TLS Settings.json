@@ -22,8 +22,8 @@
 				"schema": {
 					"description": "The TLS Setting name.",
 					"enum": [
-						"min_tls_version",
 						"ciphers",
+						"min_tls_version",
 						"http2"
 					],
 					"type": "string"
@@ -418,7 +418,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete TLS setting for hostname.",
+		"summary": "Delete TLS setting for hostname",
 		"tags": [
 			"Per-Hostname TLS Settings"
 		],
@@ -457,8 +457,8 @@
 				"schema": {
 					"description": "The TLS Setting name.",
 					"enum": [
-						"min_tls_version",
 						"ciphers",
+						"min_tls_version",
 						"http2"
 					],
 					"type": "string"
@@ -971,7 +971,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List TLS setting for hostnames.",
+		"summary": "List TLS setting for hostnames",
 		"tags": [
 			"Per-Hostname TLS Settings"
 		],
@@ -1010,8 +1010,8 @@
 				"schema": {
 					"description": "The TLS Setting name.",
 					"enum": [
-						"min_tls_version",
 						"ciphers",
+						"min_tls_version",
 						"http2"
 					],
 					"type": "string"
@@ -1482,7 +1482,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Edit TLS setting for hostname.",
+		"summary": "Edit TLS setting for hostname",
 		"tags": [
 			"Per-Hostname TLS Settings"
 		],
