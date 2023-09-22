@@ -5,18 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p>Cloudflare’s Billing Engineering Team built and maintains all the internal/external billing related services, product provisioning services and services related to entitlements. This is a vital team centric to every product launch, campaign or initiative Cloudlfare undertakes. There are constantly multiple high profile initiatives going on, therefore ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.&nbsp;</p>
-<p><strong>What you'll do </strong><br><br>We are looking for an engineer to join our Billing Team; an energetic team focused person who is growth mindset oriented, able to drive his work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>The Team</strong></p>
+<p>Security Compliance is seen as a critical business function at Cloudflare. Compliance certifications allow our customers to be confident in the security and privacy of our products, while also providing frameworks for well-tuned information security management systems and programs. These standards provide clarity to Cloudflare’s teams on how to incorporate security principles in the management of systems, the development of products, and the expansion of our business footprint.</p>
+<p>This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. You will join as a member focused on developing and maintaining an internal control framework, aligned with security and privacy standards and internal security requirements. This team is part of Security Compliance and is part of the greater Security Team under Cloudflare’s Chief Security Officer. We guarantee that you will be challenged and have room for growth on our team!&nbsp;</p>
+<p><strong>What you'll do</strong></p>
+<ul>
+	<li>Improve the maturity of Cloudflare’s Security Compliance program with a focus on our Cloudflare Control Framework</li>
+	<li>Develop, maintain, and mature Cloudflare’s security and privacy controls</li>
+	<li>Collaborate with security, risk, and compliance specialists, and control owners maintaining framework compliance with security and privacy certifications, frameworks, and other security requirements</li>
+	<li>Help lead Cloudflare’s GRC tooling requirements</li>
+	<li>Work cross-functionally with Engineering, Product, IT, Legal and operational teams to drive security control implementation for the organization</li>
+	<li>Ownership of the framework and collaboration in internal and external audits</li>
+	<li>Help guide our overall security and privacy policy and governance architecture</li>
+	<li>Have input and contribute to the overall security compliance strategy and roadmap</li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience<br>● Minimum 3 years professional experience as a developer/engineer<br>● Knowledge of Golang or desire to learn it<br>● Solid understanding of RESTful APIs and service security<br>● Working knowledge of SQL and relational databases such as PostgreSQL or MySQL<br>● Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Minimum 3 years working in a IT audit, or Security Compliance role;</li>
+	<li>Knowledge of Security Compliance Frameworks and previous experience managing security control frameworks</li>
+	<li>Experience in auditing of network, operating system, and application security</li>
+	<li>Ability to work closely with auditors and articulate technical concepts</li>
+	<li>Familiarity with additional security standards and frameworks such as ISO 27000 family, SOC 2, PCI DSS, NIST 800-53</li>
+	<li>Ability to work cross-functionally with internal stakeholders and strong communications skills</li>
+	<li>Ability to work efficiently and independently in a fast-paced, high-volume environment</li>
+	<li>Some travel may be required to engage with regulators and auditors</li>
+	<li>CISA, CRISC, CISSP, CIPP, CIPM, CIPT is a plus</li>
 </ul>
-<p><strong>Bonus</strong><br>● Experience implementing secure and highly-available distributed systems/microservices<br>● Familiarity with event driven architecture<br>● Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)<br>● Strong interpersonal and communication skills with a bias towards action</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
