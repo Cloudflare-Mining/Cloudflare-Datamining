@@ -2396,7 +2396,10 @@
 											},
 											"keep_bindings": {
 												"description": "List of binding types to keep from previous_upload.",
-												"type": "boolean"
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"logpush": {
 												"description": "Whether Logpush is turned on for the Worker.",
