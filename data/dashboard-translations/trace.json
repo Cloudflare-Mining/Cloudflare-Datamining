@@ -47,10 +47,10 @@
 	"trace.search.geo.timezone.label": "Enter a Subdivision 2 ISO code",
 	"trace.search.bot_score": "Bot score",
 	"trace.search.bot_score.description": "Set the bot score for your trace. A lower score suggests automated traffic.",
-	"trace.search.bot_score.label": "Enter a score between 0-99",
+	"trace.search.bot_score.label": "Enter a score between 1-99",
 	"trace.search.threat_score": "Threat Score",
 	"trace.search.threat_score.description": "Set the threat score for your trace. A higher score indicates a higher level of threat.",
-	"trace.search.threat_score.label": "Enter a score between 0-99",
+	"trace.search.threat_score.label": "Enter a score between 1-99",
 	"trace.search.body": "Request Body",
 	"trace.search.body.description": "Enter the content of the request body if applicable. This can include data or information you want to include with the request.",
 	"trace.search.body.label": "Select a body definition",
@@ -144,5 +144,6 @@
 	"trace.results.export.fileName": "Cloudflare Trace Result",
 	"trace.results.request": "Copy this JSON to run the same trace later by pasting it here.",
 	"trace.results.error": "There was an error and your trace could not be performed. Please try another URL or amend your configurations:",
-	"trace.results.build_new_trace": "Build new trace"
+	"trace.results.build_new_trace": "Build new trace",
+	"trace.error.url_schema": "Missing URL Schema"
 }
