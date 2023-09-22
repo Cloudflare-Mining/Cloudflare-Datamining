@@ -60,6 +60,42 @@
 	],
 	"Cloudflare Status": [
 		{
+			"display_name": "Incident Alert",
+			"type": "incident_alert",
+			"description": "Cloudflare is experiencing an incident",
+			"filter_options": [
+				{
+					"Key": "affected_components",
+					"ComparisonOperator": "contains_object_with_id",
+					"Range": "0-n",
+					"AvailableValues": null
+				},
+				{
+					"Key": "incident_impact",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": [
+						{
+							"ID": "INCIDENT_IMPACT_NONE",
+							"Description": "Incidents Without Any Impact"
+						},
+						{
+							"ID": "INCIDENT_IMPACT_MINOR",
+							"Description": "Minor Incidents"
+						},
+						{
+							"ID": "INCIDENT_IMPACT_MAJOR",
+							"Description": "Major Incidents"
+						},
+						{
+							"ID": "INCIDENT_IMPACT_CRITICAL",
+							"Description": "Critical Incidents"
+						}
+					]
+				}
+			]
+		},
+		{
 			"display_name": "Maintenance Event Notification",
 			"type": "maintenance_event_notification",
 			"description": "A maintenance on a point of presence has been scheduled, changed, or canceled",
