@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.23
+
+### Patch Changes
+
+- Updated dependencies [d3bcc5adb7]
+  - @cloudflare/component-loading@6.1.2
+  - @cloudflare/component-pagination@9.0.21
+
 ## 5.0.22
 
 ### Patch Changes

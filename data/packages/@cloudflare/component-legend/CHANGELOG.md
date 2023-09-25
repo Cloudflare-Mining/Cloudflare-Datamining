@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.0.25
+
+### Patch Changes
+
+- Updated dependencies [d3bcc5adb7]
+  - @cloudflare/component-loading@6.1.2
+
 ## 5.0.24
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.1.24
+
+### Patch Changes
+
+- Updated dependencies [d3bcc5adb7]
+  - @cloudflare/component-loading@6.1.2
+
 ## 9.1.23
 
 ### Patch Changes

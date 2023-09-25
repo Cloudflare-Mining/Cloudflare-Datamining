@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.2
+
+### Patch Changes
+
+- d3bcc5adb7: Missing @cloudflare/elements dependency
+
 ## 6.1.1
 
 ### Patch Changes

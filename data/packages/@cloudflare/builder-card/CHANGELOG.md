@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.1.29
+
+### Patch Changes
+
+- Updated dependencies [d3bcc5adb7]
+  - @cloudflare/component-loading@6.1.2
+
 ## 7.1.28
 
 ### Patch Changes

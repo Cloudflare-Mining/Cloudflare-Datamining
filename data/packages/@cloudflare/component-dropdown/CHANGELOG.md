@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.1.10
+
+### Patch Changes
+
+- 72f22717ca: remove capture option from event handlers
+
 ## 6.1.9
 
 ### Patch Changes
