@@ -232,6 +232,14 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   FixedLengthStream: typeof FixedLengthStream;
   IdentityTransformStream: typeof IdentityTransformStream;
   HTMLRewriter: typeof HTMLRewriter;
+  GPUAdapter: typeof gpuGPUAdapter;
+  GPUOutOfMemoryError: typeof gpuGPUOutOfMemoryError;
+  GPUValidationError: typeof gpuGPUValidationError;
+  GPUInternalError: typeof gpuGPUInternalError;
+  GPUDeviceLostInfo: typeof gpuGPUDeviceLostInfo;
+  GPUBufferUsage: typeof gpuGPUBufferUsage;
+  GPUShaderStage: typeof gpuGPUShaderStage;
+  GPUMapMode: typeof gpuGPUMapMode;
 }
 declare function addEventListener<Type extends keyof WorkerGlobalScopeEventMap>(
   type: Type,
@@ -1929,6 +1937,296 @@ declare interface SocketAddress {
 declare interface TlsOptions {
   expectedServerHostname?: string;
 }
+declare abstract class gpuGPUAdapter {
+  requestDevice(param1?: gpuGPUDeviceDescriptor): Promise<gpuGPUDevice>;
+  requestAdapterInfo(unmaskHints?: string[]): Promise<gpuGPUAdapterInfo>;
+  get features(): gpuGPUSupportedFeatures;
+  get limits(): gpuGPUSupportedLimits;
+}
+declare interface gpuGPUDevice extends EventTarget {
+  createBuffer(param1: gpuGPUBufferDescriptor): gpuGPUBuffer;
+  createBindGroupLayout(
+    descriptor: gpuGPUBindGroupLayoutDescriptor
+  ): gpuGPUBindGroupLayout;
+  createBindGroup(descriptor: gpuGPUBindGroupDescriptor): gpuGPUBindGroup;
+  createSampler(descriptor: gpuGPUSamplerDescriptor): gpuGPUSampler;
+  createShaderModule(
+    descriptor: gpuGPUShaderModuleDescriptor
+  ): gpuGPUShaderModule;
+  createPipelineLayout(
+    descriptor: gpuGPUPipelineLayoutDescriptor
+  ): gpuGPUPipelineLayout;
+  createComputePipeline(
+    descriptor: gpuGPUComputePipelineDescriptor
+  ): gpuGPUComputePipeline;
+  createCommandEncoder(
+    descriptor?: gpuGPUCommandEncoderDescriptor
+  ): gpuGPUCommandEncoder;
+  destroy(): void;
+  createQuerySet(descriptor: gpuGPUQuerySetDescriptor): gpuGPUQuerySet;
+  pushErrorScope(filter: string): void;
+  popErrorScope(): Promise<gpuGPUError | null>;
+  get queue(): gpuGPUQueue;
+  get lost(): Promise<gpuGPUDeviceLostInfo>;
+  get features(): gpuGPUSupportedFeatures;
+  get limits(): gpuGPUSupportedLimits;
+}
+declare interface gpuGPUDeviceDescriptor {
+  label?: string;
+  requiredFeatures?: string[];
+  requiredLimits?: Record<string, number | bigint>;
+  defaultQueue?: gpuGPUQueueDescriptor;
+}
+declare interface gpuGPUBufferDescriptor {
+  label: string;
+  size: number | bigint;
+  usage: number;
+  mappedAtCreation: boolean;
+}
+declare interface gpuGPUQueueDescriptor {
+  label?: string;
+}
+declare abstract class gpuGPUBufferUsage {
+  static readonly MAP_READ: number;
+  static readonly MAP_WRITE: number;
+  static readonly COPY_SRC: number;
+  static readonly COPY_DST: number;
+  static readonly INDEX: number;
+  static readonly VERTEX: number;
+  static readonly UNIFORM: number;
+  static readonly STORAGE: number;
+  static readonly INDIRECT: number;
+  static readonly QUERY_RESOLVE: number;
+}
+declare interface gpuGPUBuffer {
+  getMappedRange(size?: number | bigint, param2?: number | bigint): ArrayBuffer;
+  unmap(): void;
+  destroy(): void;
+  mapAsync(
+    mode: number,
+    offset?: number | bigint,
+    size?: number | bigint
+  ): Promise<void>;
+  get size(): number | bigint;
+  get usage(): number;
+  get mapState(): string;
+}
+declare abstract class gpuGPUShaderStage {
+  static readonly VERTEX: number;
+  static readonly FRAGMENT: number;
+  static readonly COMPUTE: number;
+}
+declare interface gpuGPUBindGroupLayoutDescriptor {
+  label?: string;
+  entries: gpuGPUBindGroupLayoutEntry[];
+}
+declare interface gpuGPUBindGroupLayoutEntry {
+  binding: number;
+  visibility: number;
+  buffer?: gpuGPUBufferBindingLayout;
+  sampler?: gpuGPUSamplerBindingLayout;
+  texture?: gpuGPUTextureBindingLayout;
+  storageTexture?: gpuGPUStorageTextureBindingLayout;
+}
+declare interface gpuGPUStorageTextureBindingLayout {
+  access?: string;
+  format: string;
+  viewDimension?: string;
+}
+declare interface gpuGPUTextureBindingLayout {
+  sampleType?: string;
+  viewDimension?: string;
+  multisampled?: boolean;
+}
+declare interface gpuGPUSamplerBindingLayout {
+  type?: string;
+}
+declare interface gpuGPUBufferBindingLayout {
+  type?: string;
+  hasDynamicOffset?: boolean;
+  minBindingSize?: number | bigint;
+}
+declare interface gpuGPUBindGroupLayout {}
+declare interface gpuGPUBindGroup {}
+declare interface gpuGPUBindGroupDescriptor {
+  label?: string;
+  layout: gpuGPUBindGroupLayout;
+  entries: gpuGPUBindGroupEntry[];
+}
+declare interface gpuGPUBindGroupEntry {
+  binding: number;
+  resource: gpuGPUBufferBinding | gpuGPUSampler;
+}
+declare interface gpuGPUBufferBinding {
+  buffer: gpuGPUBuffer;
+  offset?: number | bigint;
+  size?: number | bigint;
+}
+declare interface gpuGPUSampler {}
+declare interface gpuGPUSamplerDescriptor {
+  label?: string;
+  addressModeU?: string;
+  addressModeV?: string;
+  addressModeW?: string;
+  magFilter?: string;
+  minFilter?: string;
+  mipmapFilter?: string;
+  lodMinClamp?: number;
+  lodMaxClamp?: number;
+  compare: string;
+  maxAnisotropy?: number;
+}
+declare interface gpuGPUShaderModule {
+  getCompilationInfo(): Promise<gpuGPUCompilationInfo>;
+}
+declare interface gpuGPUShaderModuleDescriptor {
+  label?: string;
+  code: string;
+}
+declare interface gpuGPUPipelineLayout {}
+declare interface gpuGPUPipelineLayoutDescriptor {
+  label?: string;
+  bindGroupLayouts: gpuGPUBindGroupLayout[];
+}
+declare interface gpuGPUComputePipeline {
+  getBindGroupLayout(index: number): gpuGPUBindGroupLayout;
+}
+declare interface gpuGPUComputePipelineDescriptor {
+  label?: string;
+  compute: gpuGPUProgrammableStage;
+  layout: string | gpuGPUPipelineLayout;
+}
+declare interface gpuGPUProgrammableStage {
+  module: gpuGPUShaderModule;
+  entryPoint: string;
+  constants?: Record<string, number>;
+}
+declare interface gpuGPUCommandEncoder {
+  get label(): string;
+  beginComputePass(
+    descriptor?: gpuGPUComputePassDescriptor
+  ): gpuGPUComputePassEncoder;
+  copyBufferToBuffer(
+    source: gpuGPUBuffer,
+    sourceOffset: number | bigint,
+    destination: gpuGPUBuffer,
+    destinationOffset: number | bigint,
+    size: number | bigint
+  ): void;
+  finish(param0?: gpuGPUCommandBufferDescriptor): gpuGPUCommandBuffer;
+}
+declare interface gpuGPUCommandEncoderDescriptor {
+  label?: string;
+}
+declare interface gpuGPUComputePassEncoder {
+  setPipeline(pipeline: gpuGPUComputePipeline): void;
+  setBindGroup(
+    index: number,
+    bindGroup: gpuGPUBindGroup | null,
+    dynamicOffsets?: Iterable<number>
+  ): void;
+  dispatchWorkgroups(
+    workgroupCountX: number,
+    workgroupCountY?: number,
+    workgroupCountZ?: number
+  ): void;
+  end(): void;
+}
+declare interface gpuGPUComputePassDescriptor {
+  label?: string;
+  timestampWrites?: gpuGPUComputePassTimestampWrite[];
+}
+declare interface gpuGPUQuerySet {}
+declare interface gpuGPUQuerySetDescriptor {
+  label?: string;
+}
+declare interface gpuGPUComputePassTimestampWrite {
+  querySet: gpuGPUQuerySet;
+  queryIndex: number;
+  location: string;
+}
+declare interface gpuGPUCommandBufferDescriptor {
+  label?: string;
+}
+declare interface gpuGPUCommandBuffer {}
+declare interface gpuGPUQueue {
+  submit(commandBuffers: gpuGPUCommandBuffer[]): void;
+  writeBuffer(
+    buffer: gpuGPUBuffer,
+    bufferOffset: number | bigint,
+    data: ArrayBuffer | ArrayBufferView,
+    dataOffset?: number | bigint,
+    size?: number | bigint
+  ): void;
+}
+declare abstract class gpuGPUMapMode {
+  static readonly READ: number;
+  static readonly WRITE: number;
+}
+declare interface gpuGPUAdapterInfo {
+  get vendor(): string;
+  get architecture(): string;
+  get device(): string;
+  get description(): string;
+}
+declare interface gpuGPUSupportedFeatures {
+  has(name: string): boolean;
+  keys(): string[];
+}
+declare interface gpuGPUSupportedLimits {
+  get maxTextureDimension1D(): number;
+  get maxTextureDimension2D(): number;
+  get maxTextureDimension3D(): number;
+  get maxTextureArrayLayers(): number;
+  get maxBindGroups(): number;
+  get maxBindingsPerBindGroup(): number;
+  get maxDynamicUniformBuffersPerPipelineLayout(): number;
+  get maxDynamicStorageBuffersPerPipelineLayout(): number;
+  get maxSampledTexturesPerShaderStage(): number;
+  get maxSamplersPerShaderStage(): number;
+  get maxStorageBuffersPerShaderStage(): number;
+  get maxStorageTexturesPerShaderStage(): number;
+  get maxUniformBuffersPerShaderStage(): number;
+  get maxUniformBufferBindingSize(): number | bigint;
+  get maxStorageBufferBindingSize(): number | bigint;
+  get minUniformBufferOffsetAlignment(): number;
+  get minStorageBufferOffsetAlignment(): number;
+  get maxVertexBuffers(): number;
+  get maxBufferSize(): number | bigint;
+  get maxVertexAttributes(): number;
+  get maxVertexBufferArrayStride(): number;
+  get maxInterStageShaderComponents(): number;
+  get maxInterStageShaderVariables(): number;
+  get maxColorAttachments(): number;
+  get maxColorAttachmentBytesPerSample(): number;
+  get maxComputeWorkgroupStorageSize(): number;
+  get maxComputeInvocationsPerWorkgroup(): number;
+  get maxComputeWorkgroupSizeX(): number;
+  get maxComputeWorkgroupSizeY(): number;
+  get maxComputeWorkgroupSizeZ(): number;
+  get maxComputeWorkgroupsPerDimension(): number;
+}
+declare abstract class gpuGPUError {
+  get message(): string;
+}
+declare abstract class gpuGPUOutOfMemoryError extends gpuGPUError {}
+declare abstract class gpuGPUInternalError extends gpuGPUError {}
+declare abstract class gpuGPUValidationError extends gpuGPUError {}
+declare abstract class gpuGPUDeviceLostInfo {
+  get message(): string;
+  get reason(): string;
+}
+declare interface gpuGPUCompilationMessage {
+  get message(): string;
+  get type(): string;
+  get lineNum(): number;
+  get linePos(): number;
+  get offset(): number;
+  get length(): number;
+}
+declare interface gpuGPUCompilationInfo {
+  get messages(): gpuGPUCompilationMessage[];
+}
 declare interface BasicImageTransformations {
   /**
    * Maximum width in image pixels. The value must be an integer.
@@ -3140,14 +3438,6 @@ declare interface VectorizeError {
   error: string;
 }
 /**
- * A pre-configured list of known models.
- * These can be supplied in place of configuring explicit dimensions.
- */
-declare type VectorizePreset =
-  | "openapi-text-embedding-ada-002"
-  | "workers-ai/bge-small-en"
-  | "cohere/embed-multilingual-v2.0";
-/**
  * Supported distance metrics for an index.
  * Distance metrics determine how other "similar" vectors are determined.
  */
@@ -3166,7 +3456,7 @@ declare type VectorizeIndexConfig =
       metric: VectorizeDistanceMetric;
     }
   | {
-      preset: VectorizePreset;
+      preset: string; // keep this generic, as we'll be adding more presets in the future and this is only in a read capacity
     };
 /**
  * Metadata about an existing index.
