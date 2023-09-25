@@ -10,7 +10,7 @@
 		<div class="layoutArea">
 			<div class="column">
 				<p><strong>Overview:</strong></p>
-				<p>Cloudflare provides consultative and hands-on-keyboard implementation and migration services for enterprise customers. As an Implementation Manager (IM), you are an individual contributor working in the post-sales landscape, responsible for the technical delivery of solutions and guidance to our customers to get the most value possible from their Cloudflare investment.</p>
+				<p>Cloudflare provides consultative and hands-on-keyboard implementation and migration services for enterprise customers. As a Customer Solutions Engineer for Professional Services, you are an individual contributor working in the post-sales landscape, responsible for the technical execution of solutions and guidance to our customers to get the most value possible from their Cloudflare investment. You are an expert in Layer 7 products like: DDoS Protection, WAF, API Gateway, Bot Management, Certificates Manager, Rate Limiting, SSL and Zero Trust Services/SASE.</p>
 				<p>This position has working hours Monday to Friday 09:00 a.m. to 06:00 p.m. Occasionally, we support our customers during the weekends for specific changes that need to be done outside of their business hours.&nbsp;&nbsp;</p>
 				<p><strong>Responsibilities:</strong></p>
 				<ul>
@@ -22,29 +22,16 @@
 				</ul>
 				<p><strong>Experience might include a combination of the skills below:</strong></p>
 				<ul>
-					<li>Minimum 5 years of experience in a customer facing position as a Security Engineer, Implementation Engineer, Onboarding Engineer, Consultant, Technical Support Engineer, Solutions Architect, and/or Network Engineer.</li>
+					<li>5+ years of experience in a customer facing position as a Customer Engineer, Security Engineer, Implementation Engineer, Onboarding Engineer, Consultant, Technical Support Engineer, Solutions Architect, and/or Network Engineer.</li>
 					<li>Layers and protocols of the OSI model, such as TCP/IP, TLS, DNS, HTTP</li>
-					<li>Deep understanding of Internet and Security technologies such as SWG, Sandboxing, Firewalls, DLP, and VPNs</li>
 					<li>Deep understanding of Zero Trust technologies such as Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Remote Browser Isolation (RBI), Data Loss Prevention (DLP), CASB and Cloud Email Security</li>
-					<li>Deep understanding of SSO, ADFS, LDAP and SAML and the role of the IdP for SSO.&nbsp;</li>
+					<li>Deep understanding of SSO, ADFS, LDAP and SAML and the role of the IdP for SSO. Security aspects of an internet property, such as Firewalls, WAFs, Bot Management, Rate Limiting, (M)TLS</li>
+					<li>Deep understanding of Internet and Security technologies such as DDoS, Web Application Firewall, Certificates, DNS, CDN, Analytics andLogs.</li>
 					<li>Demonstrated experience with a scripting language (e.g. Python, JavaScript, Bash) and a desire to expand those skills.</li>
 					<li>Working experience with security aspects of an internet property, such as Firewalls, WAFs, Bot Management, Rate Limiting, (M)TLS</li>
 					<li>Performance aspects of an internet property, such as Speed, Latency, Caching, HTTP/2, TLSv1.3</li>
-					<li>Network transformation technologies such as MPLS, SD-WAN or WAN Optimization</li>
 					<li>Ability to manage a project, work to deadlines, and prioritize between competing demands</li>
-				</ul>
-				<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
-				<ul>
-					<li>Fluency in English (verbal and written)</li>
-					<li>Experience with Microsoft Active Directory, GPO, AzureAD and Intune</li>
-					<li>Experience with Zero Trust Implementation and deep understanding of the Zero Trust Frameworks like NIST will be a huge plus</li>
-					<li>Experience implementing or understanding of regulatory requirements such as PCI DSS, HIPAA, and SOC-2</li>
-					<li>Security skills and certifications such as CISSP, GCIA GCIH, GCFA, GCFE, CCIE, CCNP, JNCIE or MCSE will be a huge plus</li>
-					<li>Proficiency with infrastructure as a code tools and automation such as API automation and Terraform</li>
-					<li>Detailed working knowledge of web based security, network segmentation, security proxies,&nbsp; Firewalls and NGFWs, SSL/IPSec and SSL/TLS VPN appliances &amp; services, etc</li>
-					<li>Windows &amp; Linux Server system administration</li>
-					<li>Experience debugging Network connectivity issues using Network Troubleshooting Tools</li>
-					<li>Fluency in another Asian language would be an added advantage</li>
+					<li>Fluency in an Asian language would be an added advantage</li>
 				</ul>
 			</div>
 		</div>
