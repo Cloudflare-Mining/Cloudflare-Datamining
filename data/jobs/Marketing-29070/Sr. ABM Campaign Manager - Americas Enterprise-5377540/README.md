@@ -6,24 +6,29 @@
 	</div>
 </div>
 <h4><strong>About the Role</strong></h4>
-<p>Cloudflare’s Americas Marketing Team is searching for a Senior Account-Based Marketing (ABM) Campaign Manager for Emerging Markets to develop the ABM strategy, design and execute targeted campaigns and programs that drive pipeline and revenue in specific regions in Americas, including Public Sector, Latin America and Canada..</p>
+<p>Cloudflare’s Americas Marketing Team is searching for a Senior Account-Based Marketing (ABM) Campaign Manager for Enterprise Markets to develop the ABM strategy, design and execute targeted campaigns and programs that drive pipeline and revenue in specific regions in Americas, including the United States and Canada.</p>
 <p>In this high impact role, you will put your creativity and marketing prowess to work to develop, launch, manage and measure 1:Few and 1:Many ABM campaigns that help account teams connect with stakeholders in meaningful ways, increase engagement and breadth with accounts, and contribute to pipeline generation.</p>
 <p>Successful candidates are well versed in full funnel campaign management and a wide variety of digital practices; have experience with account-based tactics; understand the motivations of technical and executive stakeholders, and have a successful track record of achieving Marketing Qualified Account KPIs and pipeline goals.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Demand generation / ABM strategy: Own and build the campaign and demand generation strategy defining the best approach for each segment of the target market: Americas Emerging accounts: Public Sector, Latin America and Canada. Define account tiering, segmentation and framework, and the right programmatic approach for 1:Many and 1:Few programs to drive account engagement and contribute to quarterly and annual pipeline goals.</li>
+	<li>Demand generation / ABM strategy: Own and build the campaign and demand generation strategy defining the best approach for each segment of the target market: Americas US and Canada Enterprise. Define account tiering, segmentation and framework, and the right programmatic approach and mix of 1:1, 1:Few and 1:Many programs to drive account engagement and contribute to quarterly and annual pipeline goals.</li>
 	<li>Campaign strategy and execution: Align closely with Americas Regional Sales leaders and Field Marketing Managers, understand market opportunities, help identify the ICP, and target personas, define tactics and execution channels in order to orchestrate multi-touch programs and campaigns, leveraging a variety of channels (digital, paid social, email, direct mail, display advertising, webinars, etc) and integrating field events into the mix. Partner with sales on account based strategies, share new account insights, and educate them on the benefits of using an account-based approach. Influence cross-functional team members in Content Marketing and Product Marketing to develop messaging and content appropriate for target personas. Leverage tools and platforms (6Sense, Marketo, Contentful, Folloze, PFL, Sendoso, etc.) to progress accounts through the buyer’s journey.</li>
 	<li>Measurement and reporting: Analyze, report, and measure the full impact of ABM campaigns in terms of stakeholder reach/engagement, pipeline and influenced revenue. Leverage Salesforce/Tableau reporting tools to evaluate campaign performance and report ROI. Manage budget and prioritization across tactics/channels with a keen eye on ROI. Provide ongoing reports on account engagement analytics and traction gained with MQAs. Use data and industry best practices to formulate in-depth analysis, insights and interpretation to optimize programs and plays for target accounts</li>
 </ul>
 <h4><strong>Your Qualifications</strong></h4>
 <ul>
-	<li>Minimum 8 years experience in B2B Marketing, more than 5 years experience implementing ABM with ITSMA frameworks preferred</li>
+	<li>8+ years experience in B2B Marketing, more than 5 years experience implementing ABM with ITSMA frameworks preferred</li>
 	<li>BA/BS in Marketing, Business, Communications or other related fields.</li>
 	<li>Experience with demand generation multi-channel campaigns and developing ABM campaigns to help sales teams connect account stakeholders in meaningful ways; public sector experience preferred.</li>
 	<li>High competency with ABM and demand generation martech, digital marketing trends, and best practices (6Sense, Folloze, Salesforce, Tableau, etc).</li>
 	<li>Proven track record meeting/exceeding lead generation and pipeline influence targets.</li>
 	<li>Data-driven and results-oriented in planning and execution.</li>
 	<li>Experience orchestrating plays and partnering with sales teams to deliver results.</li>
+	<li>Ability to work effectively in a fast-paced environment</li>
+	<li>Excellent written and communication skills.</li>
+	<li>Passion for delivering an exceptional customer experience.</li>
+	<li>Experience building rapport with executive stakeholders and speaking their language</li>
+	<li>Self-starter, resourceful, able to multi-task and work autonomously with great attention to detail. Strong sense of teamwork and collaboration.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
@@ -58,15 +63,12 @@
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<ul>
 	<li>Ability to work effectively in a fast-paced environment</li>
 	<li>Excellent written and communication skills.</li>
 	<li>Passion for delivering an exceptional customer experience.</li>
 	<li>Experience building rapport with executive stakeholders and speaking their language</li>
 	<li>Self-starter, resourceful, able to multi-task and work autonomously with great attention to detail. Strong sense of teamwork and collaboration.</li>
 </ul>
-<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
