@@ -6,7 +6,7 @@
 	"instructions": "#Account creation\nCreate a free [trial account](https://datadome.co/free-signup/?utm_source=cloudflare_app).\nDuring the free trial, you will be able to analyze your traffic and see the attacks you are facing. In order to activate the protection, you will have to upgrade to a subscription plan. Pricing plans are available on our [website](https://datadome.co/pricing?utm_source=cloudflare_app).\n\n#License keys retrieval\nOnce logged in, go to your [management section](https://app.datadome.co/dashboard/config/protection/keys) to retrieve your keys.",
 	"alias": "datadome",
 	"orgId": "9f5a5924c8351d8d95de58ee8f349c1c",
-	"icon": "https://images.cloudflareapps.com/nrrlZtGRihtS/icone-DataDome.png",
+	"icon": "",
 	"screenshots": [
 		"https://images.cloudflareapps.com/WGrhNS7mCxgJ/Homepage%204.0%20Mac%20150dpi-l%C3%A9gend%C3%A9.png",
 		"https://images.cloudflareapps.com/FJ-LeDUwa7pr/AI%20Detection%20%20-%20Mac.png",
@@ -27,8 +27,8 @@
 	"adminVisible": true,
 	"userVisible": true,
 	"installable": true,
-	"codeVersion": "1.14.0",
-	"infoVersion": "1.14.0",
+	"codeVersion": "1.15.1",
+	"infoVersion": "1.15.1",
 	"points": 0,
 	"supportEmail": "support@datadome.co",
 	"products": [],
@@ -12791,7 +12791,7 @@
 			"releaseNotes": "- Switch protocol to HTTPS when making calls to the DataDome API",
 			"source": "",
 			"creatorUserId": "",
-			"installable": false,
+			"installable": true,
 			"files": [],
 			"hasCode": true,
 			"fileHandle": "local/KZsxlr8PKBpR",
@@ -12845,12 +12845,13 @@
 				},
 				"created": "2019-03-10T12:47:28.280954Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "approved",
 			"moderationMetadata": {
 				"requestedByUserId": "9f5a5924c8351d8d95de58ee8f349c1c",
 				"requestedAt": "2023-09-21T14:53:17.590570744Z",
 				"canceledAt": null,
-				"reviewedAt": null
+				"reviewedByUserId": "a8bd86639dacd49d059c402244fa6062",
+				"reviewedAt": "2023-09-25T15:28:33.045165164Z"
 			}
 		}
 	]
