@@ -1,6 +1,6 @@
 {
 	"GET /radar/email/security/summary/arc": {
-		"description": "Percentage distribution of emails classified per Arc validation.",
+		"description": "Percentage distribution of emails classified per ARC validation.",
 		"operationId": "radar-get-email-security-summary-by-arc",
 		"parameters": [
 			{
@@ -258,7 +258,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of ARC validations",
+		"summary": "Get ARC Validations Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -533,7 +533,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of DKIM validations",
+		"summary": "Get DKIM Validations Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -808,7 +808,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of DMARC validations",
+		"summary": "Get DMARC Validations Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1095,7 +1095,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of MALICIOUS validations",
+		"summary": "Get MALICIOUS Validations Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1382,7 +1382,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Percentage distribution of emails classified as SPAM.",
+		"summary": "Get SPAM Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1657,7 +1657,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of SPF validations",
+		"summary": "Get SPF Validations Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -1954,7 +1954,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of Threat Categories",
+		"summary": "Get Threat Categories Summary",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2253,7 +2253,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of ARC validations",
+		"summary": "Get ARC Validations Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2552,7 +2552,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of DKIM validations validations",
+		"summary": "Get DKIM Validations Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -2851,7 +2851,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of DMARC validations",
+		"summary": "Get DMARC Validations Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3159,7 +3159,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of MALICIOUS validations",
+		"summary": "Get MALICIOUS Validations Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3467,7 +3467,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of SPAM validations",
+		"summary": "Get SPAM Validations Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -3766,7 +3766,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of SPF validations",
+		"summary": "Get SPF Validations Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4090,7 +4090,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of Threat Categories",
+		"summary": "Get Threat Categories Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4466,7 +4466,7 @@
 		}
 	},
 	"GET /radar/email/security/top/ases/arc/{arc}": {
-		"description": "Get the top autonomous systems (AS), by emails classified, of ARC validations.",
+		"description": "Get the top autonomous systems (AS) by emails ARC validation.",
 		"operationId": "radar-get-email-security-top-ases-by-arc",
 		"parameters": [
 			{
@@ -4806,7 +4806,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems by ARC validations",
+		"summary": "Get Top Autonomous Systems By ARC Validation",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -4823,7 +4823,7 @@
 		}
 	},
 	"GET /radar/email/security/top/ases/dkim/{dkim}": {
-		"description": "Get the top autonomous systems (AS), by emails classified, of DKIM validations.",
+		"description": "Get the top autonomous systems (AS), by email DKIM validation.",
 		"operationId": "radar-get-email-security-top-ases-by-dkim",
 		"parameters": [
 			{
@@ -5163,7 +5163,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems by DKIM validations",
+		"summary": "Get Top Autonomous Systems By DKIM Validation",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5180,7 +5180,7 @@
 		}
 	},
 	"GET /radar/email/security/top/ases/dmarc/{dmarc}": {
-		"description": "Get the top autonomous systems (AS), by emails classified, of DMARC validations.",
+		"description": "Get the top autonomous systems (AS) by emails DMARC validation.",
 		"operationId": "radar-get-email-security-top-ases-by-dmarc",
 		"parameters": [
 			{
@@ -5520,7 +5520,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems by DMARC validations",
+		"summary": "Get Top Autonomous Systems By DMARC Validation",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5537,7 +5537,7 @@
 		}
 	},
 	"GET /radar/email/security/top/ases/malicious/{malicious}": {
-		"description": "Get the top autonomous systems (AS), by emails classified, of Malicious validations.",
+		"description": "Get the top autonomous systems (AS), by emails classified as Malicious or not.",
 		"operationId": "radar-get-email-security-top-ases-by-malicious",
 		"parameters": [
 			{
@@ -5893,7 +5893,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems by Malicious validations",
+		"summary": "Get Top Autonomous Systems By Malicious Classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6283,7 +6283,7 @@
 		}
 	},
 	"GET /radar/email/security/top/ases/spf/{spf}": {
-		"description": "Get the top autonomous systems (AS), by emails classified, of SPF validations.",
+		"description": "Get the top autonomous systems (AS) by email SPF validation.",
 		"operationId": "radar-get-email-security-top-ases-by-spf",
 		"parameters": [
 			{
@@ -6623,7 +6623,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems by SPF validations",
+		"summary": "Get Top Autonomous Systems By SPF Validation",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6982,7 +6982,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by email messages",
+		"summary": "Get Top Locations By Email Messages",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6999,7 +6999,7 @@
 		}
 	},
 	"GET /radar/email/security/top/locations/arc/{arc}": {
-		"description": "Get the locations, by emails classified, of ARC validations.",
+		"description": "Get the locations, by emails ARC validation.",
 		"operationId": "radar-get-email-security-top-locations-by-arc",
 		"parameters": [
 			{
@@ -7339,7 +7339,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by ARC validations",
+		"summary": "Get Top Locations By ARC Validations",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -7356,7 +7356,7 @@
 		}
 	},
 	"GET /radar/email/security/top/locations/dkim/{dkim}": {
-		"description": "Get the locations, by emails classified, of DKIM validations.",
+		"description": "Get the locations, by email DKIM validation.",
 		"operationId": "radar-get-email-security-top-locations-by-dkim",
 		"parameters": [
 			{
@@ -7696,7 +7696,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by DKIM validations",
+		"summary": "Get Top Locations By DKIM Validation",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -7713,7 +7713,7 @@
 		}
 	},
 	"GET /radar/email/security/top/locations/dmarc/{dmarc}": {
-		"description": "Get the locations, by emails classified, of DMARC validations.",
+		"description": "Get the locations by email DMARC validation.",
 		"operationId": "radar-get-email-security-top-locations-by-dmarc",
 		"parameters": [
 			{
@@ -8053,7 +8053,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by DMARC validations",
+		"summary": "Get Top Locations By DMARC Validations",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -8070,7 +8070,7 @@
 		}
 	},
 	"GET /radar/email/security/top/locations/malicious/{malicious}": {
-		"description": "Get the locations, by emails classified, of Malicious validations.",
+		"description": "Get the locations by emails classified as malicious or not.",
 		"operationId": "radar-get-email-security-top-locations-by-malicious",
 		"parameters": [
 			{
@@ -8426,7 +8426,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by Malicious validations",
+		"summary": "Get Top Locations By Malicious Classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -8443,7 +8443,7 @@
 		}
 	},
 	"GET /radar/email/security/top/locations/spam/{spam}": {
-		"description": "Get the locations, by emails classified, of Spam validations.",
+		"description": "Get the top locations by emails classified as Spam or not.",
 		"operationId": "radar-get-email-security-top-locations-by-spam",
 		"parameters": [
 			{
@@ -8799,7 +8799,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by Spam validations",
+		"summary": "Get Top Locations By Spam Classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -8816,7 +8816,7 @@
 		}
 	},
 	"GET /radar/email/security/top/locations/spf/{spf}": {
-		"description": "Get the locations, by emails classified, of SPF validations.",
+		"description": "Get the top locations by email SPF validation.",
 		"operationId": "radar-get-email-security-top-locations-by-spf",
 		"parameters": [
 			{
@@ -9156,7 +9156,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by SPF validations",
+		"summary": "Get top locations by SPF validation",
 		"tags": [
 			"Radar Email Security"
 		],

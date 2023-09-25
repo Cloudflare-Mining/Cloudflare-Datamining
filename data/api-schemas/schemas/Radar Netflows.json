@@ -1,6 +1,6 @@
 {
 	"GET /radar/netflows/timeseries": {
-		"description": "Get network traffic change over time. Values are normalized using min-max by default, with the minimum set to 0. ",
+		"description": "Get network traffic change over time. Visit https://en.wikipedia.org/wiki/NetFlow for more information on NetFlows. ",
 		"operationId": "radar-get-netflows-timeseries",
 		"parameters": [
 			{
@@ -336,7 +336,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get NetFlow time series",
+		"summary": "Get NetFlows Time Series",
 		"tags": [
 			"Radar Netflows"
 		],
@@ -353,7 +353,7 @@
 		}
 	},
 	"GET /radar/netflows/top/ases": {
-		"description": "Get the top autonomous systems (AS) by network traffic. Values are a percentage out of the total network traffic.",
+		"description": "Get the top autonomous systems (AS) by network traffic (NetFlows) over a given time period. Visit https://en.wikipedia.org/wiki/NetFlow for more information.",
 		"operationId": "radar-get-netflows-top-ases",
 		"parameters": [
 			{
@@ -568,7 +568,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems",
+		"summary": "Get Top Autonomous Systems By Network Traffic",
 		"tags": [
 			"Radar Netflows"
 		],
@@ -585,7 +585,7 @@
 		}
 	},
 	"GET /radar/netflows/top/locations": {
-		"description": "Get the top locations by network traffic. Values are a percentage out of the total network traffic.",
+		"description": "Get the top locations by network traffic (NetFlows) over a given time period. Visit https://en.wikipedia.org/wiki/NetFlow for more information.",
 		"operationId": "radar-get-netflows-top-locations",
 		"parameters": [
 			{
@@ -800,7 +800,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations",
+		"summary": "Get Top Locations By Network Traffic",
 		"tags": [
 			"Radar Netflows"
 		],

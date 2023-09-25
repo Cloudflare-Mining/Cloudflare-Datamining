@@ -1,6 +1,6 @@
 {
 	"GET /radar/as112/summary/dnssec": {
-		"description": "Percentage distribution of AS112 dns requests classified per DNSSEC.",
+		"description": "Percentage distribution of DNS queries to AS112 by DNSSEC support.",
 		"operationId": "radar-get-dns-as112-timeseries-by-dnssec",
 		"parameters": [
 			{
@@ -202,7 +202,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of AS112 DNSSEC",
+		"summary": "Get AS112 DNSSEC Summary",
 		"tags": [
 			"Radar AS112"
 		],
@@ -219,7 +219,7 @@
 		}
 	},
 	"GET /radar/as112/summary/edns": {
-		"description": "Percentage distribution of AS112 dns requests classified per EDNS.",
+		"description": "Percentage distribution of DNS queries, to AS112, by EDNS support.",
 		"operationId": "radar-get-dns-as112-timeseries-by-edns",
 		"parameters": [
 			{
@@ -421,7 +421,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of AS112 EDNS",
+		"summary": "Get AS112 EDNS Summary",
 		"tags": [
 			"Radar AS112"
 		],
@@ -438,7 +438,7 @@
 		}
 	},
 	"GET /radar/as112/summary/ip_version": {
-		"description": "Percentage distribution of AS112 dns requests classified per IP Version.",
+		"description": "Percentage distribution of DNS queries to AS112 per IP Version.",
 		"operationId": "radar-get-dns-as112-timeseries-by-ip-version",
 		"parameters": [
 			{
@@ -640,7 +640,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of AS112 IP Version",
+		"summary": "Get AS112 IP Version Summary",
 		"tags": [
 			"Radar AS112"
 		],
@@ -657,7 +657,7 @@
 		}
 	},
 	"GET /radar/as112/summary/protocol": {
-		"description": "Percentage distribution of AS112 dns requests classified per Protocol.",
+		"description": "Percentage distribution of DNS queries to AS112 per protocol.",
 		"operationId": "radar-get-dns-as112-timeseries-by-protocol",
 		"parameters": [
 			{
@@ -859,7 +859,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of AS112 Protocol",
+		"summary": "Get AS112 DNS Protocol Summary",
 		"tags": [
 			"Radar AS112"
 		],
@@ -876,7 +876,7 @@
 		}
 	},
 	"GET /radar/as112/summary/query_type": {
-		"description": "Percentage distribution of AS112 dns requests classified per Query Type.",
+		"description": "Percentage distribution of DNS queries to AS112 by Query Type.",
 		"operationId": "radar-get-dns-as112-timeseries-by-query-type",
 		"parameters": [
 			{
@@ -1093,7 +1093,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a summary of AS112 Query Type",
+		"summary": "Get AS112 Query Types Summary",
 		"tags": [
 			"Radar AS112"
 		],
@@ -1636,7 +1636,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get AS112 time series",
+		"summary": "Get AS112 DNS Queries Time Series",
 		"tags": [
 			"Radar AS112"
 		],
@@ -1653,7 +1653,7 @@
 		}
 	},
 	"GET /radar/as112/timeseries_groups/dnssec": {
-		"description": "Percentage distribution of dns AS112 requests classified per DNSSEC over time.",
+		"description": "Percentage distribution of DNS AS112 queries by DNSSEC support over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-dnssec",
 		"parameters": [
 			{
@@ -1876,7 +1876,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of AS112 DNSSEC",
+		"summary": "Get AS112 DNSSEC Support Time Series",
 		"tags": [
 			"Radar AS112"
 		],
@@ -1893,7 +1893,7 @@
 		}
 	},
 	"GET /radar/as112/timeseries_groups/edns": {
-		"description": "Percentage distribution of AS112 dns requests classified per EDNS over time.",
+		"description": "Percentage distribution of AS112 DNS queries by EDNS support over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-edns",
 		"parameters": [
 			{
@@ -2116,7 +2116,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of AS112 EDNS",
+		"summary": "Get AS112 EDNS Support Summary",
 		"tags": [
 			"Radar AS112"
 		],
@@ -2133,7 +2133,7 @@
 		}
 	},
 	"GET /radar/as112/timeseries_groups/ip_version": {
-		"description": "Percentage distribution of AS112 dns requests classified per IP Version over time.",
+		"description": "Percentage distribution of AS112 DNS queries by IP Version over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-ip-version",
 		"parameters": [
 			{
@@ -2356,7 +2356,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of AS112 IP Version",
+		"summary": "Get AS112 IP Version Time Series",
 		"tags": [
 			"Radar AS112"
 		],
@@ -2596,7 +2596,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of AS112 Protocol",
+		"summary": "Get AS112 DNS Protocol Time Series",
 		"tags": [
 			"Radar AS112"
 		],
@@ -2613,7 +2613,7 @@
 		}
 	},
 	"GET /radar/as112/timeseries_groups/query_type": {
-		"description": "Percentage distribution of AS112 dns requests classified per Query Type over time.",
+		"description": "Percentage distribution of AS112 DNS queries by Query Type over time.",
 		"operationId": "radar-get-dns-as112-timeseries-group-by-query-type",
 		"parameters": [
 			{
@@ -2860,7 +2860,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get a time series of AS112 Query Type",
+		"summary": "Get AS112 Query Types Time Series",
 		"tags": [
 			"Radar AS112"
 		],
@@ -3408,7 +3408,7 @@
 		}
 	},
 	"GET /radar/as112/top/locations/dnssec/{dnssec}": {
-		"description": "Get the locations, by AS112 DNS queries, of DNSSEC validations.",
+		"description": "Get the top locations by DNS queries DNSSEC support to AS112.",
 		"operationId": "radar-get-dns-as112-top-locations-by-dnssec",
 		"parameters": [
 			{
@@ -3696,7 +3696,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by AS112 DNSSEC validations",
+		"summary": "Get Top Locations By DNS Queries DNSSEC Support",
 		"tags": [
 			"Radar AS112"
 		],
@@ -3713,7 +3713,7 @@
 		}
 	},
 	"GET /radar/as112/top/locations/edns/{edns}": {
-		"description": "Get the locations, by AS112 DNS queries, of EDNS validations.",
+		"description": "Get the top locations, by DNS queries EDNS support to AS112.",
 		"operationId": "radar-get-dns-as112-top-locations-by-edns",
 		"parameters": [
 			{
@@ -4001,7 +4001,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by AS112 EDNS validations",
+		"summary": "Get Top Locations By EDNS Support",
 		"tags": [
 			"Radar AS112"
 		],
@@ -4018,7 +4018,7 @@
 		}
 	},
 	"GET /radar/as112/top/locations/ip_version/{ip_version}": {
-		"description": "Get the locations, by AS112 DNS queries, of IP version.",
+		"description": "Get the top locations by DNS queries IP version to AS112.",
 		"operationId": "radar-get-dns-as112-top-locations-by-ip-version",
 		"parameters": [
 			{
@@ -4306,7 +4306,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top locations by AS112 IP version",
+		"summary": "Get Top Locations by DNS Queries IP version",
 		"tags": [
 			"Radar AS112"
 		],
