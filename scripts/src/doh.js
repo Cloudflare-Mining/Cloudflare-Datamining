@@ -16,10 +16,10 @@ async function run() {
 			name: 'schema',
 			url: 'https://cloudflare-dns.com/dns-query?name=cloudflare.com&do=true&type=A',
 		},
-		{
-			name: 'nxdomain',
-			url: 'https://cloudflare-dns.com/dns-query?name=fakedomain&do=true',
-		},
+		// {
+		// 	name: 'nxdomain',
+		// 	url: 'https://cloudflare-dns.com/dns-query?name=fakedomain&do=true',
+		// },
 		{
 			name: 'dnssec-failed',
 			url: 'https://cloudflare-dns.com/dns-query?name=dnssec-failed.org&do=true',
