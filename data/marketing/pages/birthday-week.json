@@ -51,7 +51,15 @@
 				"contentfulId": "7sgmAew6quCmhDRVPtAMaT",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "2EHGrQg85TIEGXUvwZAPic",
+					"text": "Don't miss the new Birthday Week updates! Live + On Demand @ Cloudflare.tv.",
+					"learnMoreText": "Learn more",
+					"learnMoreUrl": "https://cloudflare.tv/shows/birthday-week",
+					"backgroundColor": "blue0",
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -177,6 +185,485 @@
 								]
 							}
 						]
+					},
+					{
+						"contentfulId": "2OX9hm9CvdRBXfFCeryfzx",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "29pj72muydARJ1J9L0t6uG",
+								"title": "Welcome to Birthday Week 2023",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Building the future is, in part, what Birthday Week is about. Over the past 13 years we've announced things like Universal SSL (doubling the size of the encrypted web overnight and helping to usher in the largely encrypted web we all use; Cloudflare Radar shows that worldwide 99% of HTTP requests are encrypted), or Cloudflare Workers (helping change the way people build and scale applications), or unmetered DDoS protection (to help with the scourge of DDoS).\nThis year will be no different.",
+								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-birthday-week-2023",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "ac68b701-41ed-5c9a-8f28-192635ce2cdd",
+									"altText": "Welcome to Birthday Week",
+									"title": "Welcome to Birthday Week",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oyPFXrgM1SOJUMj2fqAcL/62d66c319456511537d80c46fd0957f4/Birthday_week_2023_Wrap_up.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5IKIaptbXBvVWS7cNiuKM3",
+								"title": "Switching to Cloudflare can cut your network carbon emissions up to 96% (and we're joining the SBTi)",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "We're excited to share an independent report published this week that found that switching enterprise network services from on premises devices to Cloudflare services can cut related carbon emissions up to 96%, depending on your current network footprint. Switching to Cloudflare can cut your network carbon emissions up to 96% (and SBTi)",
+								"learnMoreUrl": "https://blog.cloudflare.com/switching-cloudflare-cut-your-network-carbon-emissions-sbti",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "21f36a5a-5dc5-5cee-9167-6158306e5aac",
+									"altText": "Cloudflare Carbon/Emissions Report and Customer Use case",
+									"title": "Cloudflare Carbon/Emissions Report and Customer Use case",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/aiHJbglsASRISiHCO5dU3/eafc5b4df8e8fef01ed8a3fc14b22a72/Emissions_Report.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3z7Rqj7qrzfpTiUNVjJ7fg",
+								"title": "Press Release -  Cloudflare Helps Companies Reduce their IT Infrastructure's Carbon Footprint By Up To 96% by Moving To The Cloud",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "New report finds that switching enterprise network services from on premises devices to Cloudflare services can cut related carbon emissions up to 96% ",
+								"learnMoreUrl": "/press-releases/2023/cloudflare-helps-companies-reduce-their-it-infrastructures-carbon-footprint",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
+									"altText": "Press Release Header",
+									"title": "Press Release Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "14p4NBNnIwy7hfQaYvTLIk",
+								"title": "Cloudflare Account Permissions, how to use them, and best practices",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare has a lot of new roles, how should we use them, and how can we stay safe",
+								"learnMoreUrl": "https://blog.cloudflare.com/permissions-best-practices",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "2c2b5d92-92d9-5640-b40b-153f67e1ba31",
+									"altText": "Cloudflare Account permissions for all",
+									"title": "Cloudflare Account permissions for all",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3h7gE6UPyb2S4x5eEcMhYI/5d6d24b5bbf66f78c3f3d392153d0007/Account_permissions_for_all_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4MthmrLev0wcgNRS9Vhqwk",
+								"title": "How Cloudflare's systems dynamically route traffic across the globe ",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Meet the smartest member of the Cloudflare network team that helps keep you online no matter what happens to the Internet underneath us.",
+								"learnMoreUrl": "https://blog.cloudflare.com/meet-traffic-manager",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "59bd6ce4-1c0a-525f-bbaa-1e32df0d8899",
+									"altText": "Traffic Manager",
+									"title": "Traffic Manager",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5sA6zDsWWTyIBwJd3Oj6bO/7b8131b2792e174f00ec7ab8958d56ab/Traffic_Manager.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6yzQP85YXM8IYNWZJSeDYw",
+								"title": "Announcing Cloudflare Incident Alerts",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Customers may now subscribe to Cloudflare Incident Alerts and choose when to get notified based on affected products and level of impact.",
+								"learnMoreUrl": "https://blog.cloudflare.com/incident-alerts",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "724f29d1-6795-51d6-8d5f-c86ca6f6bd4c",
+									"altText": "Announcing Cloudflare Incident Alerts",
+									"title": "Announcing Cloudflare Incident Alerts",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/48BMpKmDz0UkS6IqhfgdJC/ae06c7a7c165f7ace372fdfa150a921c/Announcing_Cloudflare_Incident_Alerts.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2UAMzHjBhq6PvI0oEv11aw",
+								"title": "Cloudflare Fonts: enhancing website font privacy and speed",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Introducing Cloudflare Fonts. Enhance privacy and performance for websites using Google Fonts by loading fonts from their own origin. Improve user privacy, enhance site performance, and simplify the process. No need for code changes. Simply enable Cloudflare Fonts in your dashboard.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-fonts-enhancing-website-privacy-speed",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "2cb2245d-a5af-5665-830c-5a7151fe7cd2",
+									"altText": "Cloudflare Fonts - Previously known as Fast Fonts",
+									"title": "Cloudflare Fonts - Previously known as Fast Fonts",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1KU1X8x8aqBdNiydRpfrRH/91e820e575ed5aaf717f8225c97aef7e/Cloudflare_Fonts.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6940niJM03Qb3iIROa0gzN",
+								"title": "Traffic transparency: Unleashing the power of Cloudflare Trace",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Today, we are excited to announce Cloudflare Trace! Cloudflare Trace is available to all our customers. Cloudflare Trace enables you to understand how HTTP requests traverse your zone's configuration and what Cloudflare Rules are being applied to the request.",
+								"learnMoreUrl": "https://blog.cloudflare.com/traffic-transparency-unleashing-cloudflare-trace",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "a93edd40-7dfd-53c5-91b8-e1843c42d75d",
+									"altText": "Cloudflare Trace",
+									"title": "Cloudflare Trace",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6I7mVit2b8ihaiskrGP45K/e63a4cc0425009c68b2e0494a8dcb3a6/Cloudflare_Trace.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1mJRoKh40jWcQ2THSOWLVy",
+								"title": "Cloudflare Stream Low-Latency HLS support now in Open Beta",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Cloudflare Stream's LL-HLS support enters open beta today. You can deliver video to your audience faster, reducing the latency a viewer may experience on their player to as little as 3 seconds. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-stream-low-latency-hls-open-beta",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "50eada01-bf14-5756-a289-d543c4387e67",
+									"altText": "Low Latency Live Streaming (LL-HLS)",
+									"title": "Low Latency Live Streaming (LL-HLS)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/45AtkHIGF1h81oWPUnEzcS/deea87dc8175a6280f5a4123101ed422/Introducing_Low-Latency_HLS_Support_for_Cloudflare_Stream.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "61KZw0W1Yvc55OINqImR4r",
+								"title": "CloudflareTV- Welcome to Birthday Week 2023",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "__Monday September 25\t8:30 AM PT__\t\n\nDina Kozlov, John Graham-Cumming",
+								"learnMoreUrl": "https://cloudflare.tv/birthday-week/cloudflare-tv-segment/evRQP7gY",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "32h7MxuYGakoAjBXQVKfas",
+								"title": "CloudflareTV- What Launched Today",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "__Monday, September 25\t9:00 AM PT__\n\nDina Kozlov, Natasha Wissmann",
+								"learnMoreUrl": "https://cloudflare.tv/birthday-week/cloudflare-tv-segment/oZKQpJv4",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "37WI8IZvK82LgkHgzvP2qk",
+								"title": "CloudflareTV- Birthday Week Spotlight: Speeding up Fonts, Live Streams, and more! ",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "__Monday, September 25\t9:30 AM PT__\n\nMatthew Bullock, Taylor Smith",
+								"learnMoreUrl": "https://cloudflare.tv/birthday-week/cloudflare-tv-segment/dg7j12ZO",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7CPgXoIkS7vtrdiVvWlxui",
+								"title": "CloudflareTV- Traffic Manager: How Cloudflare intelligently routes traffic",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "__Monday, September 25\t10:00 AM PT__\n\nDavid Tuber",
+								"learnMoreUrl": "https://cloudflare.tv/birthday-week/cloudflare-tv-segment/Mg6XBDal",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6ZvrA5Ubu0GiCOBhhamemg",
+								"title": "CloudflareTV- Switch to Cloudflare to cut carbon emissions",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "__Monday, September 25\t10:30 AM PT__\n\nAnnika Garbers, Patrick Day, Andrew Daly",
+								"learnMoreUrl": "https://cloudflare.tv/event/cloudflare-tv-segment/xvmbQyam",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/67dBxmhePWXs6nYFZTOrs9/84bbf4e5a4c2bda4fecd4e09b2c7d02e/CFTV.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					}
 				],
 				"noindex": false,
@@ -208,7 +695,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
