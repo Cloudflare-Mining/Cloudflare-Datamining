@@ -457,6 +457,13 @@ const navigation = {
 				return (0, r.RO)(g)
 			}
 		}, {
+			title: "navigation.account.workers.ai.vectorize",
+			url: "/ai/vectorize",
+			testId: "sidenav-ai-vectorize-link",
+			hasPermission: function(g) {
+				return (0, r.RO)(g)
+			}
+		}, {
 			title: "navigation.account.workers.ai.ai-gateway",
 			url: "/ai/ai-gateway/general",
 			testId: "sidenav-ai-gateway-link",
@@ -770,10 +777,10 @@ const navigation = {
 		hasPermission: function(g) {
 			var G = (0, i.nA)(g);
 			if ((0, c.yD)(g) || !(0, o.wB)(g, "zone_settings", "spectrum.app") || !G) return !1;
-			var q = !!((0, j.l8)(g) || (0, i.DQ)(g)),
-				ce = !!(0, i.ZB)(g, "spectrum", "enabled"),
+			var q = !!((0, x.l8)(g) || (0, i.DQ)(g)),
+				se = !!(0, i.ZB)(g, "spectrum", "enabled"),
 				J = !!(0, i.Ns)(G);
-			return ce || q || !J
+			return se || q || !J
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",

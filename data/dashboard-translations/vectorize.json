@@ -1,0 +1,19 @@
+{
+	"vectorize.resources.creating_vector_indexes.title": "Creating vector indexes",
+	"vectorize.resources.creating_vector_indexes.description": "Learn how to create indexes using the Wrangler CLI",
+	"vectorize.resources.insert_data_vectors.title": "Insert data vectors to an index",
+	"vectorize.resources.insert_data_vectors.description": "Learn how to insert data into an index using the Wrangler CLI",
+	"vectorize.resources.quick_links.wrangler_cli": "Wrangler CLI",
+	"vectorize.resources.quick_links.discord_server": "Discord server",
+	"vectorize.resources.quick_links.community_forum": "Community forum",
+	"vectorize.overview.title": "Vectorize",
+	"vectorize.overview.description": "Build full-stack AI applications with Vectorize, Cloudflare's powerful vector database. Combine it with Workers AI to store and query embeddings, or bring-your-own embeddings to Vectorize.",
+	"vectorize.overview.documentation": "Vector documentation",
+	"vectorize.welcome.title": "Welcome to Vectorize",
+	"vectorize.wrangler_tutorial.create_vector_index.heading": "Create your first vector index",
+	"vectorize.wrangler_tutorial.create_vector_index.paragraph": "To create your first index, <0>install the Wrangler CLI</0> and run the following command, specifying the dimensions and distance metric based on the shape of the vectors you will insert:",
+	"vectorize.wrangler_tutorial.bind_to_worker.heading": "Bind to a Worker",
+	"vectorize.wrangler_tutorial.bind_to_worker.paragraph": "To bind your index to a Worker so that you can start querying it, copy the following binding into the wrangler.toml file of your Workers project:",
+	"vectorize.wrangler_tutorial.insert_vectors.heading": "Insert vectors and query your index",
+	"vectorize.wrangler_tutorial.insert_vectors.paragraph": "To insert vectors into an index and to query for similar vectors, use the <0>Workers Client API</0>:"
+}

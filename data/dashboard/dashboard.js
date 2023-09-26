@@ -1446,12 +1446,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = rr({}, {
-					branch: "kkipp/AI-215-workers-ai-ldw-release",
+					branch: "emilio/hyperdrive-vectorize-hotfix",
 					isReleaseCandidate: "true",
-					commit: "c9bed6e6641cd79bb716e406086e927cd61cb171",
+					commit: "a19dd079785e5b836d3fe60af7f0ba35b9c3001c",
 					env: "production",
-					builtAt: 1695753914146,
-					dashVersion: "7ceef3681cc9c1f26aac87c925c65ed73b789fa0",
+					builtAt: 1695758572511,
+					dashVersion: "618f4c775272b92598d0f4f5f1f1062579a6ae20",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -12518,7 +12518,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					editR2Bindings: "edit service r2 bindings",
 					editQueueBindings: "edit service queue bindings",
 					editConstellationBindings: "edit service constellation bindings",
+					editHyperdriveBindings: "edit service hyperdrive bindings",
 					editAiBindings: "edit service ai bindings",
+					editVectorizeBindings: "edit service vectorize bindings",
 					editServiceBindings: "edit service to service bindings",
 					renameService: "rename service",
 					deleteService: "delete service",
