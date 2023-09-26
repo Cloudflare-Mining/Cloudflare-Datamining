@@ -342,7 +342,7 @@
 										"text": "Read the blog",
 										"url": "https://blog.cloudflare.com/welcome-to-connectivity-cloud",
 										"elementModal": null,
-										"openInNewTab": false,
+										"openInNewTab": true,
 										"locale": "en-US"
 									},
 									"image": {
@@ -418,6 +418,38 @@
 										"contentfulAsset": {
 											"file": {
 												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OeTeHGjc8l8gzDFe0zAHk/bc8c90c5759baddfca18e231f49d8db5/Cloudflare_s-CSO-offers-strategies_100x165.png"
+											}
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "cbPDc6hV8A0B2O3h90xaD",
+									"heading": "Blog",
+									"description": "Why Amazon is charging a $2 billion IPv4 tax — and how you can avoid paying it",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "3ZZubGi9HoqG9uyG9BCq2B",
+										"elementName": "What's New - Amazon IPv4 tax - Link",
+										"standardText": null,
+										"text": "Read the blog",
+										"url": "https://blog.cloudflare.com/amazon-2bn-ipv4-tax-how-avoid-paying/",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "38592a9a-949c-5ce3-b9fc-06afd55e0756",
+										"altText": "Amazon's IPv4 tax",
+										"title": null,
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/EQ803YBexS1E6Kw5q6Ewt/55fcad0a1f35c6435ce31c276ab9d8c0/image7-11.png"
 											}
 										},
 										"brandfolderAsset": null,
@@ -1595,11 +1627,23 @@
 									"navigationLinks": [
 										{
 											"contentTypeId": "elementNavLink",
+											"contentfulId": "1cyz6CCuplCmvhUBQNCcIw",
+											"locale": "en-US",
+											"title": "Connectivity cloud",
+											"description": "One cloud that connects and protects your people, apps, and data everywhere.",
+											"url": "connectivity-cloud",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
 											"contentfulId": "7602RDTpQ1pPSb2uCBE3Jc",
 											"locale": "en-US",
 											"title": "Secure hybrid work",
 											"description": "Secure any user accessing any application, on any device, in any location.",
-											"url": "/zero-trust/solutions/",
+											"url": "/zero-trust/",
 											"badges": null,
 											"specialLinkType": null,
 											"openInNewWindow": false,
@@ -1623,7 +1667,7 @@
 											"locale": "en-US",
 											"title": "Protect & accelerate networks",
 											"description": "Network security, performance, & reliability on a global scale.",
-											"url": "/network-services/solutions/",
+											"url": "/network-services/",
 											"badges": null,
 											"specialLinkType": null,
 											"openInNewWindow": false,
