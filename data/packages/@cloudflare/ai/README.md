@@ -1,8 +1,9 @@
-# Workers AI sdk
+# Workers AI SDK
 
-## To release
+The documentation for Workers AI can be found at https://developers.cloudflare.com/ai/
+
+## To install
 
 ```
-yarn version
-git push --tags
+npm install @cloudflare/ai --save-dev
 ```
