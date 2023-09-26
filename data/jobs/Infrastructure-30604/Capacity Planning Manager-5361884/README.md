@@ -5,7 +5,9 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>The Infrastructure Capacity Manager in Infrastructure Forecasting &amp; Insights ensures that the different Data and Analytics teams are aligned with the organization's mission, strategy, and objectives. The Forecasting &amp; Insights team analyzes data and its key drivers for both internal and external users. They take charge of the long-term forecasting of Infrastructure Capacity and develop advanced analytics and models to improve overall forecasts and operational analytics.&nbsp;</p>
+<p><strong>Infrastructure Capacity Manager, Capacity Engineering and Analysis Responsibilities</strong></p>
+<h2><strong>Job Description</strong></h2>
+<p>The Infrastructure Capacity Manager in Infrastructure Forecasting &amp; Insights ensures that the different Data and Analytics teams are aligned with the organization's mission, strategy, and objectives. The Forecasting &amp; Insights team analyzes data and its key drivers for both internal and external users. They take charge of the long-term forecasting of Infrastructure Capacity and develop advanced analytics and models to improve overall forecasts and operational analytics. This position will focus specifically on the forecasting to support the Compute, Storage and Artificial Intelligence needs for Cloudflare’s suite of products&nbsp; Additionally, they will have to be able to leverage their software engineering skills to connect to various upstream and downstream systems ensuring the forecasting plan matches the execution.</p>
 <p><strong>About the team</strong></p>
 <p>In the realm of Cloudflare's global network, capacity engineering takes center stage as the conductor of orchestrated growth and maintenance of Cloudflare’s global infrastructure. This critical role involves forecasting diverse workloads, collaborating closely with engineering teams to optimize resources, and meticulously planning and deploying hardware, including compute, GPU, storage, and network components. The ultimate goal: ensuring Cloudflare's customers enjoy a consistently seamless online experience.</p>
 <p><strong>Core Responsibilities</strong></p>
@@ -16,7 +18,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Minimum 5 years of working experience in an Executive Data Management, Data Analytics or Cloud leadership position within a fast-paced and complex Organization.</li>
+	<li>5+ years of working experience in an Executive Data Management, Data Analytics or Cloud leadership position within a fast-paced and complex Organization.</li>
 	<li>Experience in leading large infrastructure architecture programs, teams and cloud infrastructure architecture management.</li>
 	<li>Experience building and leading data &amp; analytics organization or practices as well as successful experience evangelizing/advocating for data analytics value across an Organization and to diverse audiences.</li>
 	<li>Direct experience driving continuous improvements in process and operational efficiencies. Lead process-improvement efforts and manage the implementation of both business processes and technical solutions. Drive standards across cross functional teams.</li>
