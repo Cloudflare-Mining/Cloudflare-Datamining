@@ -168,9 +168,9 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Secure & Accelerate Networks",
 						"titleSize": null,
-						"subtitle": "Securely connect your data centers, cloud services and offices — without sacrificing performance",
+						"subtitle": "Securely connect data centers, cloud services, and branch offices with Cloudflare's connectivity cloud",
 						"subtitleSize": null,
-						"copy": "- Transform your WAN for the secure hybrid work era\n- Protect your Internet-facing infrastructure and services against security threats like DDoS\n- Improve your network and app performance with our %{DataCenterCount} city global network\n",
+						"copy": "- Transform your WAN for the secure hybrid work era\n- Protect network infrastructure and services against novel security threats with peerless built-in intelligence\n- Improve network performance with our programmable, deeply interconnected network",
 						"buttonColor": "blue",
 						"buttonColor2": "blue-outline",
 						"buttonText1": "View services",
@@ -219,7 +219,7 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25PIwQKJRSuTCRhkS2MBlF/4c24ce92b7e3417c4940ed6ca9ea0b14/Network_Services_HP_Hero.jpg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25PIwQKJRSuTCRhkS2MBlF/12da3e1567fe5324d9e36eed7de50a4a/Network_Services_Hub_Hero.svg"
 								}
 							},
 							"brandfolderAsset": null,
@@ -232,7 +232,7 @@
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Superior security. Unparalleled connectivity.",
 						"subtitle": "The Cloudflare difference",
 						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
@@ -244,11 +244,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5O1vYaumAx184Rnm6AqGcu",
-								"title": "Globally fast",
+								"title": "Any-to-any connectivity ",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "medium",
-								"description": "Cloudflare's global network spans %{DataCenterCount} cities in %{CountryCount} countries, with direct connections to over %{NetworkInterconnects} other networks. This puts your applications within approximately %{OperationMilliseconds}ms of about %{GlobalInternetConnectedPercent}% of the Internet-connected population.",
+								"description": "Easily connect your users with on-premises infrastructure and public, private, and hybrid clouds — with peerless performance and reliability.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -264,11 +264,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6LaoBf09Yz22bYDxan8Skz",
-								"title": "Secure",
+								"title": "Unified security",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "medium",
-								"description": "Configure and enforce security policies throughout your network with cloud-native [firewall-as-a-service](https://www.cloudflare.com/learning/cloud/what-is-a-cloud-firewall/), industry-leading DDoS protection, and seamless Zero Trust security.",
+								"description": "Configure and enforce security policies throughout your network with cloud-native firewall-as-a-service, industry-leading DDoS protection, and seamless Zero Trust security.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -284,11 +284,11 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4dqUk5lUGGIWirsVDfHdfm",
-								"title": "Resilient",
+								"title": "Simplified management",
 								"makeTitleLink": null,
 								"titleUrl": null,
 								"titleSize": "medium",
-								"description": "With the Cloudflare anycast global network, your traffic automatically uses the nearest Cloudflare data center and routes around network failures without any manual intervention, resulting in higher uptime with lower total cost of ownership.",
+								"description": "Simplify security and accelerate network performance — across any location — from a single pane of glass featuring deep request-level analytics and machine learning-assisted policy.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -305,8 +305,8 @@
 					},
 					{
 						"contentfulId": "2Z6TKMCXtRzhJD1sUnMaj7",
-						"title": "Cloudflare's secure networking platform",
-						"copy": "- Connect your private IP infrastructure over the Cloudflare network without backhauling to a hub site\n- Connect your public IP infrastructure to the Internet  with industry-leading DDoS protection built-in\n- Enforce consistent security globally with cloud-native firewall-as-a-service\n- Connect directly from over 1600 locations globally\n- Integrate with existing MPLS, SD-WAN or broadband networks using anycast IPSec or GRE tunnels\n",
+						"title": "Make Cloudflare's connectivity cloud your enterprise perimeter.",
+						"copy": "- Simplify site-to-site connectivity and avoid traffic backhaul to hub sites.\n- Enforce consistent security policies with cloud-native firewall-as-a-service and DDoS mitigation. \n- Integrate with existing MPLS, SD-WAN or broadband networks using anycast IPSec or GRE tunnels\n",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -344,7 +344,7 @@
 						},
 						"featureList": [],
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "CONNECT. SECURE. SCALE.",
+						"sectionTitle": "A single, powerful network",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
@@ -395,41 +395,9 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "7t9qNyLu002bLXmUQu72YC",
-						"title": "Redefine your corporate network",
-						"titleSize": null,
-						"backgroundColor": "image-background",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4NZmz6dQ9JsaMFfarHx4R4",
-							"elementName": "View Services #network-services btn",
-							"standardText": null,
-							"text": "View Services",
-							"url": "#network-services",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null,
-						"eyebrow": null
-					},
-					{
 						"contentfulId": "6CcqXwHL6ZJ7mTZAO88im5",
 						"title": "Top use cases",
-						"copy": "- __WAN Transformation__ - Modernize and accelerate your WAN for hybrid work and SaaS requirements.\n- __DDOS Protection__ - Improve uptime and reliability for your internet-facing infrastructure\n- __Cloud migration__ - Enable secure vendor-agnostic connectivity between hybrid multi-cloud data centers and your business sites",
+						"copy": "- __WAN Transformation:__ - Modernize and accelerate your WAN for hybrid work environments and SaaS applications.\n- __DDOS Protection__ - Mitigate DDoS attacks to ensure uptime and reliability for your network infrastructure.\n- __Cloud migration__ - Enable secure, vendor-agnostic connectivity between multi-cloud and on-prem data centers and business sites.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": "/solutions/secure-hybrid-work/",
@@ -459,7 +427,7 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sT1JSR07VTGTZYPZT3Ob1/00a05c2aa8b5ef35ce647988d116f38f/Network_Services_HP_Top_Use_Cases.jpg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7sT1JSR07VTGTZYPZT3Ob1/626db36eae64c1788c30273f0e425822/Network_Services_Hub_-_Top_Use_Cases.svg"
 								}
 							},
 							"brandfolderAsset": null,

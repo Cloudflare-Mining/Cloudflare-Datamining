@@ -99,11 +99,11 @@
 										"navigationLinks": [
 											{
 												"contentTypeId": "elementNavLink",
-												"contentfulId": "6RqmcaGIRiXdH5Cyg5GIUQ",
+												"contentfulId": "7602RDTpQ1pPSb2uCBE3Jc",
 												"locale": "en-US",
-												"title": "Comprehensive SASE platform",
-												"description": "Connect users to enterprise resources with identity-based security controls.",
-												"url": "/cloudflare-one/",
+												"title": "Secure hybrid work",
+												"description": "Secure any user accessing any application, on any device, in any location.",
+												"url": "/zero-trust/solutions/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -115,23 +115,11 @@
 												"locale": "en-US",
 												"title": "Protect & accelerate applications",
 												"description": "Combine security with performance to ensure you are protected without compromising user experiences.",
-												"url": "/application-services/solutions/",
+												"url": "/application-services/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
 												"isExternalUrl": false
-											},
-											{
-												"contentTypeId": "elementNavLink",
-												"contentfulId": "7602RDTpQ1pPSb2uCBE3Jc",
-												"locale": "en-US",
-												"title": "Secure hybrid work",
-												"description": "Secure any user accessing any application, on any device, in any location.",
-												"url": "/zero-trust/solutions/",
-												"badges": null,
-												"specialLinkType": null,
-												"openInNewWindow": false,
-												"isExternalUrl": null
 											},
 											{
 												"contentTypeId": "elementNavLink",
@@ -151,7 +139,7 @@
 												"locale": "en-US",
 												"title": "Build & deploy cloud applications",
 												"description": "Build powerful applications on our global network with our Developer Platform.",
-												"url": "/developer-platform/solutions/",
+												"url": "/developer-platform/",
 												"badges": null,
 												"specialLinkType": null,
 												"openInNewWindow": false,
@@ -433,22 +421,10 @@
 												"navigationLinks": [
 													{
 														"contentTypeId": "elementNavLink",
-														"contentfulId": "5HFskz3JCjqT1dI4Q6LC7S",
-														"locale": "en-US",
-														"title": "SASE platform",
-														"description": "Integrate WAN and Zero Trust security natively for secure, performant hybrid work.",
-														"url": "cloudflare-one",
-														"badges": null,
-														"specialLinkType": null,
-														"openInNewWindow": false,
-														"isExternalUrl": null
-													},
-													{
-														"contentTypeId": "elementNavLink",
 														"contentfulId": "9Y8PnX49kqJsXjzSsS73z",
 														"locale": "en-US",
-														"title": "➟ Zero Trust",
-														"description": "Secure access and threat defense for Internet, SaaS, and self-hosted apps with ZTNA, CASB, SWG, cloud email security & more.",
+														"title": "SASE & SSE platform",
+														"description": "Converge Zero Trust security (ZTNA, SWG, CASB) & network connectivity (WANaaS, FWaaS) on one platform with Cloud Email Security, DLP, RBI, DEX, DDoS and more built in.",
 														"url": "/zero-trust/products/",
 														"badges": null,
 														"specialLinkType": null,
@@ -459,7 +435,7 @@
 														"contentTypeId": "elementNavLink",
 														"contentfulId": "hzRU5MKmCMcSeX5ekIeVX",
 														"locale": "en-US",
-														"title": "➟ Network security & performance",
+														"title": "Network security & performance",
 														"description": "Modernize your network with DDoS protection, WAN and firewall as a service.",
 														"url": "network-services/products",
 														"badges": null,
@@ -3382,6 +3358,72 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Cy6RUpurh3hxxzkZwh8Ax/e7758d8bd71b19216644a3612915c55a/cloudflare-security-center__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5mEHPtiI4Kxbd7jnTBr5kS",
+								"title": "Magic WAN",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Connect and secure your branch offices, headquarters, data centers, cloud VPCs and SD-WANs using the Cloudflare network.",
+								"learnMoreUrl": "/network-services/products/magic-wan/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
+									"altText": "Network scale ",
+									"title": "Network scale ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/25B0tY2bGsZrocxnifpnpx/2a328b9ddf2ec85b6c026f5b2d03ed42/network-scale.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5eOUJTsDZCKywsLkGurDiB",
+								"title": "Magic Firewall",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "Enforce consistent network security policies across your entire WAN, without backhauling traffic or creating choke points.",
+								"learnMoreUrl": "network-services/products/magic-firewall/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "81936886-7ce4-51c1-8472-58f3698d44a0",
+									"altText": "Cloudflare Firewall as a Service - Magic Firewall",
+									"title": "Firewall as a service icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/xAb8mJ3D3jImhUIC6I781/4e5fcde46add21ab9e397610b06c8e32/security-waf.svg"
 										}
 									},
 									"brandfolderAsset": null,

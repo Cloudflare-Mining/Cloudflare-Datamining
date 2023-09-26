@@ -64,7 +64,7 @@
 						"titleSize": null,
 						"subtitle": "Make project workflow and collaboration effortless ",
 						"subtitleSize": null,
-						"copy": "Build and deploy full-stack applications in a fraction of the time with Pages. Developers, designers, and product can collaborate and deploy with minimal configuration needed. ",
+						"copy": "Build, deploy, and deliver trusted full-stack applications in a fraction of the time with Pages. Developers, designers, and product can collaborate and deploy with minimal configuration needed. ",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "For developers",
@@ -124,7 +124,7 @@
 					{
 						"contentfulId": "3GApKdH3CTE5gPeZfIXOdX",
 						"title": "Fullstack platform for frontend developers",
-						"copy": "Cloudflare Pages with Functions enables developers to easily add dynamic content to any site and deploy to the Cloudflare network within seconds. \n\n- Customize Workers functionality directly from within a Pages project\n- Preview builds to make it easy to get feedback on the final results\n- Automatically generated links for every commit\n- Get real-time insight into your page with privacy-first analytics",
+						"copy": "Cloudflare Pages with Functions enables developers to easily add dynamic content to any site and deploy to the Cloudflare network within seconds.\n\n- Customize Workers functionality directly from within a Pages project\n- Preview builds to make it easy to get feedback on the final results\n- Automatically generated links for every commit\n- Get real-time insight into your page with privacy-first analytics",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -204,29 +204,6 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "cg3FyEIg47aJGkmWPLl50",
-						"quote": "\"Cloudflare Pages is very cost-effective, and it's very easy to deploy code. Additionally, Pages offers additional value through integration with Cloudflare's performance and security tools, such as the CDN and WAF, making it the perfect solution for this.\"",
-						"quoteAuthor": "Matt Weinberg",
-						"quoteTitle": "President of Technology",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7t7X9pZEGEeDJKBzHOOmIu/8b0b288d43c1e0c8a0c19d5c4d30cad9/happy_cog_logo.png"
-							}
-						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
-					},
-					{
 						"contentfulId": "6FZ8QFVR5MifnPVaS97nUc",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -234,7 +211,7 @@
 						"copy": null,
 						"title": "Build applications your way ",
 						"subtitle": "Built-in integration with the Cloudflare Developer Platform",
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -357,8 +334,8 @@
 								"cellText": "Free",
 								"cellTextLinkUrl": null,
 								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
+								"buttonText": "Get Started",
+								"buttonUrl": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 								"commonElements": null,
 								"imageAssetFile": null
 							},
@@ -366,8 +343,8 @@
 								"cellText": "Pro",
 								"cellTextLinkUrl": null,
 								"cellSubtitle": "$25 / month",
-								"buttonText": null,
-								"buttonUrl": null,
+								"buttonText": "Get Started",
+								"buttonUrl": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 								"commonElements": null,
 								"imageAssetFile": null
 							},
@@ -375,8 +352,8 @@
 								"cellText": "Business",
 								"cellTextLinkUrl": null,
 								"cellSubtitle": "$250/month",
-								"buttonText": null,
-								"buttonUrl": null,
+								"buttonText": "Get Started",
+								"buttonUrl": "https://dash.cloudflare.com/sign-up/workers-and-pages",
 								"commonElements": null,
 								"imageAssetFile": null
 							}
@@ -581,6 +558,29 @@
 						"buttonTwo": null,
 						"sectionPadding": "tile--no-top-padding",
 						"eyebrow": null
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "cg3FyEIg47aJGkmWPLl50",
+						"quote": "\"Cloudflare Pages is very cost-effective, and it's very easy to deploy code. Additionally, Pages offers additional value through integration with Cloudflare's performance and security tools, such as the CDN and WAF, making it the perfect solution for this.\"",
+						"quoteAuthor": "Matt Weinberg",
+						"quoteTitle": "President of Technology",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7t7X9pZEGEeDJKBzHOOmIu/8b0b288d43c1e0c8a0c19d5c4d30cad9/happy_cog_logo.png"
+							}
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
 					}
 				],
 				"noindex": false,
