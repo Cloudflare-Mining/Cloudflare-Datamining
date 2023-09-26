@@ -407,7 +407,9 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.d1",
 			url: "/workers/d1",
-			labels: ["alpha"]
+			labels: function(g) {
+				return (0, n.z1)("enable-d1-beta-labels")(g) ? ["beta"] : ["alpha"]
+			}
 		}, {
 			title: "navigation.account.workers.constellation",
 			url: "/workers/constellation",

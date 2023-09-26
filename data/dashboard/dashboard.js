@@ -1446,12 +1446,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = rr({}, {
-					branch: "dan/LOUI-4863-HOTFIX-clear-job-state-on-card-mount",
+					branch: "aig-2-fixes-master",
 					isReleaseCandidate: "true",
-					commit: "fdbd481fd30e02d2d76701d6e954441ed820d37c",
+					commit: "114a61c0eaa10b172ca7443d4b075e917efe577a",
 					env: "production",
-					builtAt: 1695636665388,
-					dashVersion: "ed86ff94da94a8f509fb28b5139a82afd6e27332",
+					builtAt: 1695740168252,
+					dashVersion: "4f3ed8a661d36654b72d6b143a8f390acf2ca548",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
