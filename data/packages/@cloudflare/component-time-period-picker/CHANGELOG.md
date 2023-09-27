@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.24
+
+### Patch Changes
+
+- @cloudflare/component-calendar@6.0.19
+- @cloudflare/component-listbox@1.10.9
+- @cloudflare/component-form@5.0.12
+
 ## 5.0.23
 
 ### Patch Changes

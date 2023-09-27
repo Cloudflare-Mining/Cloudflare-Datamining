@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.8.3
+
+### Patch Changes
+
+- 9f977aca24: Add office, wall, dos and bot icons
+
 ## 11.8.2
 
 ### Patch Changes

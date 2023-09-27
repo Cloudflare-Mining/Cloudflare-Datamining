@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.1.23
+
+### Patch Changes
+
+- Updated dependencies [9f977aca24]
+  - @cloudflare/component-icon@11.8.3
+  - @cloudflare/component-arrow-swivel@7.0.19
+  - @cloudflare/component-button@7.0.20
+
 ## 7.1.22
 
 ### Patch Changes
