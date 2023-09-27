@@ -33,6 +33,7 @@ declare const _default: {
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'ddos-attack': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edgeworker: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -78,6 +79,7 @@ declare const _default: {
     network: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     none: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     notifications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'office-branch': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ok-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     ok: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'optimization-scale': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -103,6 +105,8 @@ declare const _default: {
     right: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     script: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     search: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'security-waf': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'security-bots': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     shield: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     spectrum: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     speech: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

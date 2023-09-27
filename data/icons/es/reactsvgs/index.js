@@ -27,6 +27,7 @@ import CloudflareZeroTrust from './CloudflareZeroTrust';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
 import D1 from './D1';
+import DdosAttack from './DdosAttack';
 import Discord from './Discord';
 import Discover from './Discover';
 import Dlp from './Dlp';
@@ -76,6 +77,7 @@ import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
 import NetworkSecurity from './NetworkSecurity';
 import None from './None';
 import Notifications from './Notifications';
+import OfficeBranch from './OfficeBranch';
 import Ok from './Ok';
 import OkSign from './OkSign';
 import OptimizationScale from './OptimizationScale';
@@ -101,6 +103,8 @@ import Revert from './Revert';
 import Right from './Right';
 import Script from './Script';
 import Search from './Search';
+import SecurityWall from './SecurityWall';
+import SecurityBots from './SecurityBots';
 import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
@@ -173,6 +177,7 @@ export default {
   discord: Discord,
   discover: Discover,
   documentation: Documentation,
+  'ddos-attack': DdosAttack,
   download: Download,
   drive: Drive,
   edgeworker: Edgeworker,
@@ -218,6 +223,7 @@ export default {
   network: Network,
   none: None,
   notifications: Notifications,
+  'office-branch': OfficeBranch,
   'ok-sign': OkSign,
   ok: Ok,
   'optimization-scale': OptimizationScale,
@@ -243,6 +249,8 @@ export default {
   right: Right,
   script: Script,
   search: Search,
+  'security-waf': SecurityWall,
+  'security-bots': SecurityBots,
   shield: Shield,
   spectrum: Spectrum,
   speech: Speech,
