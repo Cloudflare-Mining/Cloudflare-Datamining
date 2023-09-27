@@ -1,25 +1,171 @@
-<div class="mb2 gray5">3 min read</div>
+<div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/Ai-at-the-edge-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Cloudflare has long used machine learning for <a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more">bot detection</a>, identifying anomalies, <a href="https://blog.cloudflare.com/using-data-science-and-machine-learning-for-improved-customer-support">customer support</a> and business intelligence. &nbsp;And internally we have a cluster of GPUs used for model training and inference.</p>
-	<p>For even longer we’ve been running code “at the edge” in more than 200 cities worldwide. Initially, that was code that we wrote and any customization was done through our UI or API. About seven years ago we started deploying custom code, written in Lua, for our enterprise customers.</p>
-	<p>But it’s quite obvious that using a language that isn’t widely understood, and going through an account executive to get code written, isn’t a viable solution and so four years ago we announced Cloudflare Workers. Workers allows anyone, on any plan, to write code that gets deployed to our edge network. And they can do it in the language they choose.</p>
-	<p>After launching Workers we added storage through <a href="https://blog.cloudflare.com/workers-kv-is-ga">Workers KV</a> as programs need <a href="https://www.amazon.com/Algorithms-Structures-Prentice-Hall-Automatic-Computation/dp/0130224189" target="_blank">algorithms plus data</a>. And we’ve continued to add to the Workers platform with <a href="https://blog.cloudflare.com/introducing-workers-unbound">Workers Unbound</a>, <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>, <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects">Jurisdictional Restrictions</a> and more.</p>
-	<p>But many of today’s applications need access to the latest machine learning and deep learning methods. Those applications need three things: to scale easily, to securely handle models and to use familiar tools.</p>
-	<p>To help anyone build AI-based applications Cloudflare is extending the Workers platform to include support for NVIDIA GPUs and TensorFlow. Soon you’ll be able to build AI-based applications that run across the Cloudflare network using pre-built or custom models for inference.</p>
-	<h3 id="nvidia-tensorflow">NVIDIA + TensorFlow</h3>
-	<p>For many years we’ve looked for appropriate hardware to run on our edge network to enable AI-powered applications. We’ve examined a wide variety of dedicated AI accelerator chips, as well as approaches that use clever encoding of the models to make them run efficiently on CPUs.</p>
-	<p>Ultimately, we decided that with our large footprint of servers in more than 200 cities worldwide and the strong support for NVIDIA GPUs in AI toolkits that the best solution was a deployment of NVIDIA GPUs to enable AI-based applications. Today we <a href="https://www.cloudflare.com/press-releases/2021/cloudflare-partners-with-nvidia" target="_blank">announced</a> that we are partnering with NVIDIA to bring AI to our global edge network.</p>
-	<p>Previously machine learning models were deployed on expensive centralized servers or using cloud services that limited them to “regions” around the world. Cloudflare and NVIDIA are putting machine learning at the edge, within milliseconds of the global online population, enabling high performance, low latency AI to be deployed by anyone.</p>
-	<p>Because the models themselves remain in Cloudflare’s data centers, developers can deploy custom models without putting them on end user devices where they might risk being stolen. And because we’ll be deploying models across our large network, scaling becomes trivial and built in.</p>
-	<p>TensorFlow has become one of the defacto standard libraries and toolsets for building and running AI models. Cloudflare’s edge AI will use TensorFlow allowing developers to train and optimize models using familiar tools and tests before deploying them to our edge network.</p>
-	<p>In addition to building your own models using TensorFlow, we plan to offer pre-trained models for tasks such as image labeling/object recognition, text detection, and more.</p>
-	<h3 id="nata-or-not">Nata Or Not</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/Nata-or-Not_.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>As a demonstration of a real AI-based application running on Cloudflare’s infrastructure, the team in the Cloudflare Lisbon office built a website: <a href="https://nataornot.com" target="_blank">nataornot.com</a>. Upload a picture of food and it’ll tell you whether it’s one of Portugal’s delicious <a href="https://en.wikipedia.org/wiki/Pastel_de_nata" target="_blank">pasteis de nata</a> (an egg custard tart pastry dusted with cinnamon) or not. </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The code used a TensorFlow model built from thousands of pictures of pasteis and other foods which runs on a Cloudflare server which has an <a href="https://www.nvidia.com/en-us/data-center/a100" target="_blank">NVIDIA A100</a> Tensor Core GPU in it. If you want to build your own pastel de nata recognizer we’ve open sourced the TensorFlow model <a href="https://github.com/cloudflare/tensorflow-nata" target="_blank">here</a>.</p>
-	<p>If you simply want to know whether the picture of food you have is a pastel de nata or not visit <a href="https://nataornot.com" target="_blank">nataornot.com</a>.</p>
-	<h3 id="going-forward">Going Forward</h3>
-	<p>If you are interested in being notified when Workers AI becomes available <a href="https://www.cloudflare.com/nvidia-workers" target="_blank">please sign up here</a>. And if you’re interested in working on AI at scale <a href="https://www.cloudflare.com/careers" target="_blank">we’re hiring</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-29.png" class="kg-image" alt="" loading="lazy" width="1800" height="1014"></figure>
+	<p>If you're anywhere near the developer community, it's almost impossible to avoid the impact that AI’s recent advancements have had on the ecosystem. Whether you're using AI in your workflow to improve productivity, or you’re shipping AI based features to your users, it’s everywhere. The focus on AI improvements are extraordinary, and we’re super excited about the opportunities that lay ahead, but it's not enough.</p>
+	<p>Not too long ago, if you wanted to leverage the power of AI, you needed to know the ins and outs of machine learning, and be able to manage the infrastructure to power it.</p>
+	<p>As a developer platform with over one million active developers, we believe there is so much potential yet to be unlocked, so we’re changing the way AI is delivered to developers. Many of the current solutions, while powerful, are based on closed, proprietary models and don't address privacy needs that developers and users demand. Alternatively, the open source scene is exploding with powerful models, but they’re simply not accessible enough to every developer. Imagine being able to run a model, from your code, wherever it’s hosted, and never needing to find GPUs or deal with setting up the infrastructure to support it.</p>
+	<p>That's why we are excited to launch Workers AI - an AI inference as a service platform, empowering developers to run AI models with just a few lines of code, all powered by our global network of GPUs. It's open and accessible, serverless, privacy-focused, runs near your users, pay-as-you-go, and it's built from the ground up for a best in class developer experience.</p>
+	<h2 id="workers-aimaking-inference-just-work">Workers AI - making inference <strong>just work</strong></h2>
+	<p>We’re launching Workers AI to put AI inference in the hands of every developer, and to actually deliver on that goal, it should <strong>just work</strong> out of the box. How do we achieve that?</p>
+	<ul>
+		<li>At the core of everything, it runs on the right infrastructure - our world-class network of GPUs</li>
+		<li>We provide off-the-shelf models that run seamlessly on our infrastructure</li>
+		<li>Finally, deliver it to the end developer, in a way that’s delightful. A developer should be able to build their first Workers AI app in minutes, and say “Wow, that’s kinda magical!”.</li>
+	</ul>
+	<p>So what exactly is Workers AI? It’s another building block that we’re adding to our developer platform - one that helps developers run well-known AI models on serverless GPUs, all on Cloudflare’s trusted global network. As one of the latest additions to our developer platform, it works seamlessly with Workers + Pages, but to make it truly accessible, we’ve made it platform-agnostic, so it also works everywhere else, made available via a REST API.</p>
+	<h2 id="models-you-know-and-love">Models you know and love</h2>
+	<p>We’re launching with a curated set of popular, open source models, that cover a wide range of inference tasks:</p>
+	<ul>
+		<li><strong>Text generation (large language model):</strong> meta/llama-2-7b-chat-int8</li>
+		<li><strong>Automatic speech recognition (ASR):</strong> openai/whisper</li>
+		<li><strong>Translation:</strong> meta/m2m100-1.2</li>
+		<li><strong>Text classification:</strong> huggingface/distilbert-sst-2-int8</li>
+		<li><strong>Image classification:</strong> microsoft/resnet-50</li>
+		<li><strong>Embeddings:</strong> baai/bge-base-en-v1.5</li>
+	</ul>
+	<p>You can browse all available models in your Cloudflare dashboard, and soon you’ll be able to dive into logs and analytics on a per model basis!</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-14.png" class="kg-image" alt="" loading="lazy" width="1306" height="832"></figure>
+	<p>This is just the start, and we’ve got big plans. After launch, we’ll continue to expand based on community feedback. Even more exciting - in an effort to take our catalog from zero to sixty, we’re announcing a partnership with Hugging Face, a leading AI community + hub. The partnership is multifaceted, and you can read more about it <a href="https://blog.cloudflare.com/best-place-region-earth-inference">here</a>, but soon you’ll be able to browse and run a subset of the Hugging Face catalog directly in Workers AI.</p>
+	<h2 id="accessible-to-everyone">Accessible to everyone</h2>
+	<p>Part of the mission of our developer platform is to provide <strong>all</strong> the building blocks that developers need to build the applications of their dreams. Having access to the right blocks is just one part of it — as a developer your job is to put them together into an application. Our goal is to make that as easy as possible.</p>
+	<p>To make sure you could use Workers AI easily regardless of entry point, we wanted to provide access via: Workers or Pages to make it easy to use within the Cloudflare ecosystem, and via REST API if you want to use Workers AI with your current stack.</p>
+	<p>Here’s a quick CURL example that translates some text from English to French:</p><!--kg-card-begin: markdown-->
+	<pre><code>curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/@cf/meta/m2m100-1.2b \
+-H "Authorization: Bearer {API_TOKEN}" \
+	-d '{ "text": "I'll have an order of the moule frites", "target_lang": "french" }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>And here are what the response looks like:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">{
+  "result": {
+    "answer": "Je vais commander des moules frites"
+  },
+  "success": true,
+  "errors":[],
+  "messages":[]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Use it with any stack, anywhere - your favorite Jamstack framework, Python + Django/Flask, Node.js, Ruby on Rails, the possibilities are endless. And deploy</p>
+	<h2 id="designed-for-developers">Designed for developers</h2>
+	<p>Developer experience is really important to us. In fact, most of this post has been about just that. Making sure it works out of the box. Providing popular models that just work. Being accessible to all developers whether you build and deploy with Cloudflare or elsewhere. But it’s more than that - the experience should be frictionless, zero to production should be fast, and it should feel good along the way.</p>
+	<p>Let’s walk through another example to show just how easy it is to use! We’ll run Llama 2, a popular large language model open sourced by Meta, in a worker.</p>
+	<p>We’ll assume you have some of the basics already complete (Cloudflare account, Node, NPM, etc.), but if you don’t <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">this guide</a> will get you properly set up!</p>
+	<h3 id="1-create-a-workers-project">1. Create a Workers project</h3>
+	<p>Create a new project named workers-ai by running:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npm create cloudflare@latest
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>When setting up your workers-ai worker, answer the setup questions as follows:</p>
+	<ul>
+		<li>Enter <strong>workers-ai</strong> for the app name</li>
+		<li>Choose <strong>Hello World</strong> script for the type of application</li>
+		<li>Select <strong>yes </strong>to using TypeScript</li>
+		<li>Select <strong>yes</strong> to using Git</li>
+		<li>Select <strong>no</strong> to deploying</li>
+	</ul>
+	<p>Lastly navigate to your new app directory:</p><!--kg-card-begin: markdown-->
+	<pre><code>cd workers-ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="2-connect-workers-ai-to-your-worker">2. Connect Workers AI to your worker</h3>
+	<p>Create a Workers AI binding, which allows your worker to access the Workers AI service without having to manage an API key yourself.</p>
+	<p>To bind Workers AI to your worker, add the following to the end of your <strong>wrangler.toml</strong> file:</p><!--kg-card-begin: markdown-->
+	<pre><code>[ai]
+binding = "AI" #available in your worker via env.AI
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>You can also bind Workers AI to a Pages Function. For more information, refer to <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">Functions Bindings</a>.</p>
+	<h3 id="3-install-the-workers-ai-client-library">3. Install the Workers AI client library</h3><!--kg-card-begin: markdown-->
+	<pre><code>npm install @cloudflare/ai --save-dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="4-run-an-inference-task-in-your-worker">4. Run an inference task in your worker</h3>
+	<p>Update the <strong>source/index.ts</strong> with the following code:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai'
+export default {
+  async fetch(request, env) {
+    const ai = new Ai(env.AI);
+    const input = { prompt: "What's the origin of the phrase 'Hello, World'" };
+    const output = await ai.run('@cf/meta/llama-2-7b-chat-int8', input );
+    return new Response(JSON.stringify(output));
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="5-develop-locally-with-wrangler">5. Develop locally with Wrangler</h3>
+	<p>While in your project directory, test Workers AI locally by running:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wranlger dev --remote
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Note - </strong>These models currently only run on Cloudflare’s network of GPUs (and not locally), so setting `--remote` above is a must, and you’ll be prompted to log in at this point.</p>
+	<p>Wrangler will give you a URL (most likely localhost:8787). Visit that URL, and you’ll see a response like this</p><!--kg-card-begin: markdown-->
+	<pre><code>{
+  "response": "Hello, World is a common phrase used to test the output of a computer program, particularly in the early stages of programming. The phrase "Hello, World!" is often the first program that a beginner learns to write, and it is included in many programming language tutorials and textbooks as a way to introduce basic programming concepts. The origin of the phrase "Hello, World!" as a programming test is unclear, but it is believed to have originated in the 1970s. One of the earliest known references to the phrase is in a 1976 book called "The C Programming Language" by Brian Kernighan and Dennis Ritchie, which is considered one of the most influential books on the development of the C programming language.
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="6-deploy-your-worker">6. Deploy your worker</h3>
+	<p>Finally, deploy your worker to make your project accessible on the Internet:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wranlger dev --remote
+# Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>And that’s it. You can literally go from zero to deployed AI in minutes. This is obviously a simple example, but shows how easy it is to run Workers AI from any project.</p>
+	<h2 id="privacy-by-default">Privacy by default</h2>
+	<p>When Cloudflare was founded, our value proposition had three pillars: more secure, more reliable, and more performant. Over time, we’ve realized that a better Internet is also a more private Internet, and we want to play a role in building it.</p>
+	<p>That’s why Workers AI is private by default - we don’t train our models, LLM or otherwise, on your data or conversations, and our models don’t learn from your usage. You can feel confident using Workers AI in both personal and business settings, without having to worry about leaking your data. Other providers only offer this fundamental feature with their enterprise version. With us, it’s built in for everyone.</p>
+	<p>We’re also excited to support data localization in the future. To make this happen, we have an ambitious GPU rollout plan - we’re launching with seven sites today, roughly 100 by the end of 2023, and nearly everywhere by the end of 2024. Ultimately, this will empower developers to keep delivering killer AI features to their users, while staying compliant with their end users’ data localization requirements.</p>
+	<h2 id="the-power-of-the-platform">The power of the platform</h2>
+	<h4 id="vector-databasevectorize">Vector database - Vectorize</h4>
+	<p>Workers AI is all about running Inference, and making it really easy to do so, but sometimes inference is only part of the equation. Large language models are trained on a fixed set of data, based on a snapshot at a specific point in the past, and have no context on your business or use case. When you submit a prompt, information specific to you can increase the quality of results, making it more useful and relevant. That’s why we’re also launching Vectorize, our vector database that’s designed to work seamlessly with Workers AI. Here’s a quick overview of how you might use Workers AI + Vectorize together.</p>
+	<p>Example: Use your data (knowledge base) to provide additional context to an LLM when a user is chatting with it.</p>
+	<ol>
+		<li><strong>Generate initial embeddings:</strong> run your data through Workers AI using an embedding model. The output will be embeddings, which are numerical representations of those words.</li>
+		<li><strong><strong><strong>Insert those embeddings into Vectorize: </strong></strong></strong>this essentially seeds the vector database with your data, so we can later use it to retrieve embeddings that are similar to your users’ query</li>
+		<li><strong><strong><strong>Generate embedding from user question: </strong></strong></strong>when a user submits a question to your AI app, first, take that question, and run it through Workers AI using an embedding model.</li>
+		<li><strong><strong><strong>Get context from Vectorize: </strong></strong></strong>use that embedding to query Vectorize. This should output embeddings that are similar to your user’s question.</li>
+		<li><strong><strong><strong>Create context aware prompt:</strong> </strong></strong>Now take the original text associated with those embeddings, and create a new prompt combining the text from the vector search, along with the original question</li>
+		<li><strong>Run prompt: </strong>run this prompt through Workers AI using an LLM model to get your final result</li>
+	</ol>
+	<h4 id="ai-gateway">AI Gateway</h4>
+	<p>That covers a more advanced use case. On the flip side, if you are running models elsewhere, but want to get more out of the experience, you can run those APIs through our AI gateway to get features like caching, rate-limiting, analytics and logging. These features can be used to protect your end point, monitor and optimize costs, and also help with data loss prevention. Learn more about AI gateway <a href="https://blog.cloudflare.com/announcing-ai-gateway">here</a>.</p>
+	<h2 id="start-building-today">Start building today</h2>
+	<p>Try it out for yourself, and let us know what you think. Today we’re launching Workers AI as an open Beta for all Workers plans - free or paid. That said, it’s super early, so…</p>
+	<h4 id="warningit%E2%80%99s-an-early-beta">Warning - It’s an early beta</h4>
+	<p>Usage is <strong>not currently recommended for production apps</strong>, and limits + access are subject to change.</p>
+	<h4 id="limits">Limits</h4>
+	<p>We’re initially launching with limits on a per-model basis</p>
+	<ul>
+		<li>@cf/meta/llama-2-7b-chat-int8: 5 reqs/min</li>
+		<li>All other modes are between 120-180 reqs/min</li>
+	</ul>
+	<p>Checkout our <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">docs</a> for a full overview of our limits.</p>
+	<h4 id="pricing">Pricing</h4>
+	<p>What we released today is just a small preview to give you a taste of what’s coming (we simply couldn’t hold back), but we’re looking forward to putting the full-throttle version of Workers AI in your hands.</p>
+	<p>We realize that as you approach building something, you want to understand: how much is this going to cost me? Especially with AI costs being so easy to get out of hand. So we wanted to share the upcoming pricing of Workers AI with you.</p>
+	<p>While we won’t be billing on day one, we are announcing what we expect our pricing will look like.</p>
+	<p>Users will be able to choose from two ways to run Workers AI:</p>
+	<ul>
+		<li><strong>Regular Twitch Neurons (RTN) </strong>- running wherever there's capacity at $0.01 / 1k neurons</li>
+		<li><strong>Fast Twitch Neurons (FTN)</strong> - running at nearest user location at $1.25 / 1k neurons</li>
+	</ul>
+	<p>You may be wondering — what’s a neuron?</p>
+	<p>Neurons are a way to measure AI output that always scales down to zero (if you get no usage, you will be charged for 0 neurons). To give you a sense of what you can accomplish with a thousand neurons, you can: generate 130 LLM responses, 830 image classifications, or 1,250 embeddings.</p>
+	<p>Our goal is to help our customers pay only for what they use, and choose the pricing that best matches their use case, whether it’s price or latency that is top of mind.</p>
+	<h3 id="what%E2%80%99s-on-the-roadmap">What’s on the roadmap?</h3>
+	<p>Workers AI is just getting started, and we want your feedback to help us make it great. That said, there are some exciting things on the roadmap.</p>
+	<h4 id="more-models-please">More models, please</h4>
+	<p>We're launching with a solid set of models that just work, but will continue to roll out new models based on your feedback. If there’s a particular model you'd love to see on Workers AI, pop into our<a href="https://discord.cloudflare.com" target="_blank"> Discord</a> and let us know!</p>
+	<p>In addition to that, we're also announcing a<a href="https://blog.cloudflare.com/best-place-region-earth-inference"> partnership with Hugging Face</a>, and soon you'll be able to access and run a subset of the Hugging Face catalog directly from Workers AI.</p>
+	<h4 id="analytics-observability">Analytics + observability</h4>
+	<p>Up to this point, we’ve been hyper focussed on one thing - making it really easy for any developer to run powerful AI models in just a few lines of code. But that’s only one part of the story. Up next, we’ll be working on some analytics and observability capabilities to give you insights into your usage + performance + spend on a per-model basis, plus the ability to fig into your logs if you want to do some exploring.</p>
+	<h4 id="a-road-to-global-gpu-coverage">A road to global GPU coverage</h4>
+	<p>Our goal is to be the best place to run inference on Region: Earth, so we're adding GPUs to our data centers as fast as we can.</p>
+	<p><strong>We plan to be in 100 data centers by the end this year</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
+	<p><strong>And nearly everywhere by the end of 2024</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p><br><strong>We’re really excited to see you build</strong> - head over to <a href="https://developers.cloudflare.com/workers-ai" target="_blank">our docs</a> to get started.</p>
+	<p>If you need inspiration, want to share something you’re building, or have a question - pop into our <a href="https://discord.com/invite/cloudflaredev" target="_blank">Developer Discord</a>.</p>
 </div>
