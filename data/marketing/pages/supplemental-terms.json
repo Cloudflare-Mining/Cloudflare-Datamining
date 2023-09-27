@@ -110,7 +110,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last updated August 8, 2023",
+													"value": "Last updated September 27, 2023",
 													"marks": [
 														{
 															"type": "bold"
@@ -1142,7 +1142,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" are defined as follows for the purposes of Cloudflare Workers KV: a \"",
+													"value": "\" are defined as follows for the purposes of Cloudflare Workers KV, Durable Objects, D1, and Workers Analytics Engine (as applicable): a \"",
 													"marks": [],
 													"content": null
 												},
@@ -1166,7 +1166,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is a Request where a single value for a given key is read; a \"",
+													"value": "\" is where a single value for a given key, unit, or row is read; a \"",
 													"marks": [],
 													"content": null
 												},
@@ -1190,7 +1190,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is a Request where a single key/value pair is written; a \"",
+													"value": "\" is where a single key/value pair, unit, or row is written; a \"",
 													"marks": [],
 													"content": null
 												},
@@ -1214,7 +1214,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is a Request where a list of keys within a given namespace is returned; and a \"",
+													"value": "\" is where a list of keys within a given namespace is returned; and a \"",
 													"marks": [],
 													"content": null
 												},
@@ -1238,7 +1238,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is a Request where a single key/value pair is removed.",
+													"value": "\" is where a single key/value pair, unit, or row is removed.",
 													"marks": [],
 													"content": null
 												}
@@ -1283,7 +1283,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that hits a Worker on Cloudflare's edge.",
+													"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that hits a Worker or Durable Object on Cloudflare's edge.",
 													"marks": [],
 													"content": null
 												}
@@ -1329,6 +1329,96 @@
 														"uri": null
 													},
 													"value": "\" means an employee, agent, contractor, or other third party, in each case, authorized by you to use a Cloudflare Service, as applicable.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Session",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" means a single instance of a headless browser launched using the Browser Rendering API.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Siteverify Request",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" is a single HTTP/S request that is received by Cloudflare's siteverify API endpoint that Cloudflare reasonably determines is generated by a human.",
 													"marks": [],
 													"content": null
 												}
@@ -1487,7 +1577,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is an image variant resulting from a resize and",
+													"value": "\" is an image variant resulting from a resize and/or other Customer request(s) (e.g., blur, sharpen, crop/trim, etc.) applied to a source image. For billing purposes, the initial Customer request(s) and resulting image counts as a single Transformation that will be available for a 30-day period following generation.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
 													"marks": [],
 													"content": null
 												},
@@ -1497,8 +1608,12 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "/",
-													"marks": [],
+													"value": "Vector Dimensions",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												},
 												{
@@ -1507,7 +1622,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "or other Customer request(s) (e.g., blur, sharpen, crop/trim, etc.) applied to a source image. For billing purposes, the initial Customer request(s) and resulting image counts as a single Transformation that will be available for a 30-day period following generation. ",
+													"value": "\" are the number of elements in a vector.",
 													"marks": [],
 													"content": null
 												}
@@ -1552,27 +1667,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" means each time the Zaraz script is loaded on a website/application ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "or the pageview trigger of the Zaraz tool is activated",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ". For Customers with single page applications, each URL navigation (i.e., every time the URL changes) is counted as a new Zaraz Load.",
+													"value": "\" means each time the Zaraz script is loaded on a website/application or the pageview trigger of the Zaraz tool is activated. For Customers with single page applications, each URL navigation (i.e., every time the URL changes) is counted as a new Zaraz Load.",
 													"marks": [],
 													"content": null
 												}
@@ -5433,7 +5528,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "(Cloudflare Workers; Cloudflare Pages; Workers KV; Durable Objects; Cloudflare Queues; and R2)",
+													"value": "(Cloudflare Workers; Cloudflare Pages; Workers KV; D1; Durable Objects; Vectorize; Hyperdrive; Cloudflare Queues; R2; and Workers AI)",
 													"marks": [],
 													"content": null
 												}
@@ -5517,7 +5612,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; and (iv) Workers KV, Durable Objects, and R2, storage offerings used to serve HTML and non-HTML content.",
+																	"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; (iv) Workers KV, D1, Durable Objects, Vectorize, Hyperdrive, and R2, storage offerings used to serve HTML and non-HTML content; and (v) Workers AI, a Service that allows customers to use Cloudflare's inference infrastructure to invoke select third-party machine learning models (subject to applicable open source licenses or third-party terms of use for such models).",
 																	"marks": [],
 																	"content": null
 																}
@@ -5581,7 +5676,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "You acknowledge that you are solely responsible for your Customer Content, including (i) the performance and functioning of Customer Content with the Services and any reference libraries that Cloudflare may provide from time to time; and (ii) maintaining licenses and adhering to the license terms of any third-party software that may be incorporated into your Customer Content.",
+																	"value": "You acknowledge that you are solely responsible for your Customer Content, including (i) the performance and functioning of Customer Content with the Services and any reference libraries, machine learning models, or other resources that Cloudflare may make available from time to time; and (ii) maintaining licenses and adhering to the license terms of any third-party software that may be incorporated into your Customer Content.",
 																	"marks": [],
 																	"content": null
 																}
@@ -5645,7 +5740,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "You represent and warrant that (i) your Customer Content and Internet Properties associated with your use of the Developer Platform are free from and do not disseminate any viruses, adware, spyware, worms, crypto-mining software or other malicious code; (ii) you will not use the Services to engage in any volumetric attacks or in any other activities to intentionally harm another party's rights; and (iii) you will use the Services in accordance with all associated developer documentation.",
+																	"value": "You represent and warrant that (i) your Customer Content and Internet Properties associated with your use of the Developer Platform are free from and do not disseminate any viruses, adware, spyware, worms, crypto-mining software or other malicious code; (ii) you will not use the Services to engage in any volumetric attacks or in any other activities to intentionally harm another party's rights; and (iii) you will use the Services in accordance with all associated developer documentation and any applicable third-party terms.",
 																	"marks": [],
 																	"content": null
 																}
@@ -5806,6 +5901,69 @@
 																		"uri": null
 																	},
 																	"value": "Subject to Section 9 above, you may be permitted to access the Customer Content you uploaded to the Developer Platform for up to thirty (30) days following the expiration or termination of your trial or subscription. You understand that Cloudflare has no obligation to retain the Customer Content you upload to the Developer Platform following the expiration or termination of your trial or subscription.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Machine learning models made available by Cloudflare in connection with Workers AI constitute Third-Party Products (as defined in the Subscription Terms), and your use thereof is subject to additional terms between you and the model licensor. By using a machine learning model on Workers AI, you agree to the applicable third-party terms, including any acceptable use policies or other restrictions on use of such model. Accordingly, Cloudflare has no obligation to indemnify you for any claims arising from your use of machine learning  models made available to you through Workers AI. Please refer to the ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://cloudflare-docs-ai.pages.dev/workers-ai/models/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Workers AI developer documents",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " for additional information on applicable third-party terms. While we will generally try to provide notice, any suspected violation of applicable third-party terms may result in immediate suspension of Cloudflare Services.",
 																	"marks": [],
 																	"content": null
 																}
