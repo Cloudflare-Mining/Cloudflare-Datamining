@@ -1446,12 +1446,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = rr({}, {
-					branch: "marina/ech",
+					branch: "penalosa/cancel-playground",
 					isReleaseCandidate: "true",
-					commit: "582b81183cc621d6bed4b7f83eef3362c770e324",
+					commit: "00042e2b26ed097d4f562a6d6793cb1dc212fa38",
 					env: "production",
-					builtAt: 1695822050736,
-					dashVersion: "8d6e0c4f4b61e63b9f2648ce93df1e2b3edb33c2",
+					builtAt: 1695826238186,
+					dashVersion: "d1fe815e948ece221d33d184e791f8f47259c2a0",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
