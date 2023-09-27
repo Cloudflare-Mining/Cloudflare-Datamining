@@ -1683,20 +1683,12 @@
 		],
 		"requestBody": {
 			"content": {
-				"multipart/form-data": {
+				"application/x-ndjson": {
 					"schema": {
-						"properties": {
-							"vectors": {
-								"description": "ndjson file appended as form data.",
-								"items": {
-									"example": "vectors=@/path/to/vectors.ndjson",
-									"format": "binary",
-									"type": "string"
-								},
-								"type": "array"
-							}
-						},
-						"type": "object"
+						"description": "ndjson file appended as form data.",
+						"example": "@/path/to/vectors.ndjson",
+						"format": "binary",
+						"type": "string"
 					}
 				}
 			},
