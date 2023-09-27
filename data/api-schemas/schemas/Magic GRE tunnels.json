@@ -535,6 +535,16 @@
 															},
 															"health_check": {
 																"properties": {
+																	"direction": {
+																		"default": "unidirectional",
+																		"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																		"enum": [
+																			"unidirectional",
+																			"bidirectional"
+																		],
+																		"example": "bidirectional",
+																		"type": "string"
+																	},
 																	"enabled": {
 																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
@@ -759,6 +769,16 @@
 																	},
 																	"health_check": {
 																		"properties": {
+																			"direction": {
+																				"default": "unidirectional",
+																				"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																				"enum": [
+																					"unidirectional",
+																					"bidirectional"
+																				],
+																				"example": "bidirectional",
+																				"type": "string"
+																			},
 																			"enabled": {
 																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
@@ -1490,6 +1510,16 @@
 															},
 															"health_check": {
 																"properties": {
+																	"direction": {
+																		"default": "unidirectional",
+																		"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																		"enum": [
+																			"unidirectional",
+																			"bidirectional"
+																		],
+																		"example": "bidirectional",
+																		"type": "string"
+																	},
 																	"enabled": {
 																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
@@ -1714,6 +1744,16 @@
 																	},
 																	"health_check": {
 																		"properties": {
+																			"direction": {
+																				"default": "unidirectional",
+																				"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																				"enum": [
+																					"unidirectional",
+																					"bidirectional"
+																				],
+																				"example": "bidirectional",
+																				"type": "string"
+																			},
 																			"enabled": {
 																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
@@ -2074,6 +2114,16 @@
 															},
 															"health_check": {
 																"properties": {
+																	"direction": {
+																		"default": "unidirectional",
+																		"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																		"enum": [
+																			"unidirectional",
+																			"bidirectional"
+																		],
+																		"example": "bidirectional",
+																		"type": "string"
+																	},
 																	"enabled": {
 																		"default": true,
 																		"description": "Determines whether to run healthchecks for a tunnel.",
@@ -2302,6 +2352,16 @@
 																	},
 																	"health_check": {
 																		"properties": {
+																			"direction": {
+																				"default": "unidirectional",
+																				"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+																				"enum": [
+																					"unidirectional",
+																					"bidirectional"
+																				],
+																				"example": "bidirectional",
+																				"type": "string"
+																			},
 																			"enabled": {
 																				"default": true,
 																				"description": "Determines whether to run healthchecks for a tunnel.",
@@ -2549,6 +2609,16 @@
 									},
 									"health_check": {
 										"properties": {
+											"direction": {
+												"default": "unidirectional",
+												"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.",
+												"enum": [
+													"unidirectional",
+													"bidirectional"
+												],
+												"example": "bidirectional",
+												"type": "string"
+											},
 											"enabled": {
 												"default": true,
 												"description": "Determines whether to run healthchecks for a tunnel.",

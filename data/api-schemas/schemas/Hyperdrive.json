@@ -493,11 +493,6 @@
 																},
 																"type": "object"
 															},
-															"database": {
-																"description": "The name of your origin database.",
-																"example": "postgres",
-																"type": "string"
-															},
 															"name": {
 																"example": "example-hyperdrive",
 																"type": "string"
@@ -506,6 +501,11 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"database": {
+																				"description": "The name of your origin database.",
+																				"example": "postgres",
+																				"type": "string"
+																			},
 																			"host": {
 																				"description": "The host (hostname or IP) of your origin database.",
 																				"example": "database.example.com",
@@ -515,6 +515,20 @@
 																				"description": "The port (default: 5432 for Postgres) of your origin database.",
 																				"example": "5432",
 																				"type": "integer"
+																			},
+																			"scheme": {
+																				"default": "postgres",
+																				"description": "Specifies the URL scheme used to connect to your origin database.",
+																				"enum": [
+																					"postgres",
+																					"postgresql"
+																				],
+																				"type": "string"
+																			},
+																			"user": {
+																				"description": "The user of your origin database.",
+																				"example": "postgres",
+																				"type": "string"
 																			}
 																		},
 																		"type": "object"
@@ -526,28 +540,11 @@
 																		]
 																	}
 																]
-															},
-															"scheme": {
-																"default": "postgres",
-																"description": "Specifies the URL scheme used to connect to your origin database.",
-																"enum": [
-																	"postgres",
-																	"postgresql"
-																],
-																"type": "string"
-															},
-															"user": {
-																"description": "The user of your origin database.",
-																"example": "postgres",
-																"type": "string"
 															}
 														},
 														"required": [
 															"name",
-															"scheme",
-															"origin",
-															"database",
-															"user"
+															"origin"
 														],
 														"type": "object"
 													}
@@ -954,11 +951,6 @@
 															},
 															"type": "object"
 														},
-														"database": {
-															"description": "The name of your origin database.",
-															"example": "postgres",
-															"type": "string"
-														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
@@ -967,6 +959,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"database": {
+																			"description": "The name of your origin database.",
+																			"example": "postgres",
+																			"type": "string"
+																		},
 																		"host": {
 																			"description": "The host (hostname or IP) of your origin database.",
 																			"example": "database.example.com",
@@ -976,6 +973,20 @@
 																			"description": "The port (default: 5432 for Postgres) of your origin database.",
 																			"example": "5432",
 																			"type": "integer"
+																		},
+																		"scheme": {
+																			"default": "postgres",
+																			"description": "Specifies the URL scheme used to connect to your origin database.",
+																			"enum": [
+																				"postgres",
+																				"postgresql"
+																			],
+																			"type": "string"
+																		},
+																		"user": {
+																			"description": "The user of your origin database.",
+																			"example": "postgres",
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -987,28 +998,11 @@
 																	]
 																}
 															]
-														},
-														"scheme": {
-															"default": "postgres",
-															"description": "Specifies the URL scheme used to connect to your origin database.",
-															"enum": [
-																"postgres",
-																"postgresql"
-															],
-															"type": "string"
-														},
-														"user": {
-															"description": "The user of your origin database.",
-															"example": "postgres",
-															"type": "string"
 														}
 													},
 													"required": [
 														"name",
-														"scheme",
-														"origin",
-														"database",
-														"user"
+														"origin"
 													],
 													"type": "object"
 												}
@@ -1300,11 +1294,6 @@
 										},
 										"type": "object"
 									},
-									"database": {
-										"description": "The name of your origin database.",
-										"example": "postgres",
-										"type": "string"
-									},
 									"name": {
 										"example": "example-hyperdrive",
 										"type": "string"
@@ -1313,6 +1302,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"database": {
+														"description": "The name of your origin database.",
+														"example": "postgres",
+														"type": "string"
+													},
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
@@ -1322,6 +1316,20 @@
 														"description": "The port (default: 5432 for Postgres) of your origin database.",
 														"example": "5432",
 														"type": "integer"
+													},
+													"scheme": {
+														"default": "postgres",
+														"description": "Specifies the URL scheme used to connect to your origin database.",
+														"enum": [
+															"postgres",
+															"postgresql"
+														],
+														"type": "string"
+													},
+													"user": {
+														"description": "The user of your origin database.",
+														"example": "postgres",
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -1333,28 +1341,11 @@
 												]
 											}
 										]
-									},
-									"scheme": {
-										"default": "postgres",
-										"description": "Specifies the URL scheme used to connect to your origin database.",
-										"enum": [
-											"postgres",
-											"postgresql"
-										],
-										"type": "string"
-									},
-									"user": {
-										"description": "The user of your origin database.",
-										"example": "postgres",
-										"type": "string"
 									}
 								},
 								"required": [
 									"name",
-									"scheme",
-									"origin",
-									"database",
-									"user"
+									"origin"
 								],
 								"type": "object"
 							}
@@ -1503,11 +1494,6 @@
 															},
 															"type": "object"
 														},
-														"database": {
-															"description": "The name of your origin database.",
-															"example": "postgres",
-															"type": "string"
-														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
@@ -1516,6 +1502,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"database": {
+																			"description": "The name of your origin database.",
+																			"example": "postgres",
+																			"type": "string"
+																		},
 																		"host": {
 																			"description": "The host (hostname or IP) of your origin database.",
 																			"example": "database.example.com",
@@ -1525,6 +1516,20 @@
 																			"description": "The port (default: 5432 for Postgres) of your origin database.",
 																			"example": "5432",
 																			"type": "integer"
+																		},
+																		"scheme": {
+																			"default": "postgres",
+																			"description": "Specifies the URL scheme used to connect to your origin database.",
+																			"enum": [
+																				"postgres",
+																				"postgresql"
+																			],
+																			"type": "string"
+																		},
+																		"user": {
+																			"description": "The user of your origin database.",
+																			"example": "postgres",
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -1536,28 +1541,11 @@
 																	]
 																}
 															]
-														},
-														"scheme": {
-															"default": "postgres",
-															"description": "Specifies the URL scheme used to connect to your origin database.",
-															"enum": [
-																"postgres",
-																"postgresql"
-															],
-															"type": "string"
-														},
-														"user": {
-															"description": "The user of your origin database.",
-															"example": "postgres",
-															"type": "string"
 														}
 													},
 													"required": [
 														"name",
-														"scheme",
-														"origin",
-														"database",
-														"user"
+														"origin"
 													],
 													"type": "object"
 												}
@@ -1861,11 +1849,6 @@
 										},
 										"type": "object"
 									},
-									"database": {
-										"description": "The name of your origin database.",
-										"example": "postgres",
-										"type": "string"
-									},
 									"name": {
 										"example": "example-hyperdrive",
 										"type": "string"
@@ -1874,6 +1857,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"database": {
+														"description": "The name of your origin database.",
+														"example": "postgres",
+														"type": "string"
+													},
 													"host": {
 														"description": "The host (hostname or IP) of your origin database.",
 														"example": "database.example.com",
@@ -1883,6 +1871,20 @@
 														"description": "The port (default: 5432 for Postgres) of your origin database.",
 														"example": "5432",
 														"type": "integer"
+													},
+													"scheme": {
+														"default": "postgres",
+														"description": "Specifies the URL scheme used to connect to your origin database.",
+														"enum": [
+															"postgres",
+															"postgresql"
+														],
+														"type": "string"
+													},
+													"user": {
+														"description": "The user of your origin database.",
+														"example": "postgres",
+														"type": "string"
 													}
 												},
 												"type": "object"
@@ -1894,28 +1896,11 @@
 												]
 											}
 										]
-									},
-									"scheme": {
-										"default": "postgres",
-										"description": "Specifies the URL scheme used to connect to your origin database.",
-										"enum": [
-											"postgres",
-											"postgresql"
-										],
-										"type": "string"
-									},
-									"user": {
-										"description": "The user of your origin database.",
-										"example": "postgres",
-										"type": "string"
 									}
 								},
 								"required": [
 									"name",
-									"scheme",
-									"origin",
-									"database",
-									"user"
+									"origin"
 								],
 								"type": "object"
 							}
@@ -2064,11 +2049,6 @@
 															},
 															"type": "object"
 														},
-														"database": {
-															"description": "The name of your origin database.",
-															"example": "postgres",
-															"type": "string"
-														},
 														"name": {
 															"example": "example-hyperdrive",
 															"type": "string"
@@ -2077,6 +2057,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"database": {
+																			"description": "The name of your origin database.",
+																			"example": "postgres",
+																			"type": "string"
+																		},
 																		"host": {
 																			"description": "The host (hostname or IP) of your origin database.",
 																			"example": "database.example.com",
@@ -2086,6 +2071,20 @@
 																			"description": "The port (default: 5432 for Postgres) of your origin database.",
 																			"example": "5432",
 																			"type": "integer"
+																		},
+																		"scheme": {
+																			"default": "postgres",
+																			"description": "Specifies the URL scheme used to connect to your origin database.",
+																			"enum": [
+																				"postgres",
+																				"postgresql"
+																			],
+																			"type": "string"
+																		},
+																		"user": {
+																			"description": "The user of your origin database.",
+																			"example": "postgres",
+																			"type": "string"
 																		}
 																	},
 																	"type": "object"
@@ -2097,28 +2096,11 @@
 																	]
 																}
 															]
-														},
-														"scheme": {
-															"default": "postgres",
-															"description": "Specifies the URL scheme used to connect to your origin database.",
-															"enum": [
-																"postgres",
-																"postgresql"
-															],
-															"type": "string"
-														},
-														"user": {
-															"description": "The user of your origin database.",
-															"example": "postgres",
-															"type": "string"
 														}
 													},
 													"required": [
 														"name",
-														"scheme",
-														"origin",
-														"database",
-														"user"
+														"origin"
 													],
 													"type": "object"
 												}
