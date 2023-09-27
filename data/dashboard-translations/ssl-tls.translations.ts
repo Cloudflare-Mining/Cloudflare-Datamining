@@ -322,6 +322,14 @@ If you want to be issued a certificate for \`example.com\` and \`*.example.com\`
 
 `
 	},
+	ech_description: "Enable the Encrypted ClientHello feature for the TLS 1.3 protocol for improved privacy.",
+	ech_help: `#### What is Encrypted ClientHello?
+Encrypted ClientHello ("ECH") improves the privacy of visitors to your website by obfuscating the Server Name Indication part of the TLS handshake.`,
+	ech_join_beta: "Join the beta",
+	ech_beta_free: "Enabled by default for Free zones.",
+	ech_beta_requested: "Thanks for your interest! You will be able to enable ECH support once you have been admitted to the beta.",
+	ech_title: "Encrypted ClientHello (ECH)",
+	ech_api_title_get: "Get Zone Enable ECH setting",
 	enable_acm: {
 		card_title: "Advanced Certificate Manager",
 		card_description: `Advanced Certificate Manager gives you more control and flexibility for your certificates and TLS settings. Benefits include:

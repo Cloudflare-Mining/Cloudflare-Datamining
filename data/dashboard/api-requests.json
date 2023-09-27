@@ -460,6 +460,11 @@
 		"id": "speed.earlyhints.zone_api.title.patch"
 	},
 	{
+		"uri": "/zones/:zone_identifier/settings/ech",
+		"method": "GET",
+		"id": "ssl_tls.ech_api_title_get"
+	},
+	{
 		"uri": "/zones/:zone_identifier/settings/email_obfuscation",
 		"method": "GET",
 		"id": "email_filter.api.title.get"
