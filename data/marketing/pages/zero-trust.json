@@ -2864,8 +2864,8 @@
 								"icon": null,
 								"iconAssetFile": {
 									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
-									"altText": "User multi blue",
-									"title": "User multi blue",
+									"altText": "User multi ",
+									"title": "User multi ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
@@ -2885,7 +2885,7 @@
 								"contentTypeId": "feature",
 								"contentfulId": "xtmKqQoXft8MVVTBRqGeR",
 								"title": "Reduce cyber risk",
-								"makeTitleLink": null,
+								"makeTitleLink": false,
 								"titleUrl": null,
 								"titleSize": null,
 								"description": "Protect against multi-channel phishing and ransomware and reduce your attack surface by leveraging Cloudflare's broad threat intelligence.",
@@ -2894,21 +2894,12 @@
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"removeCardBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
-									"altText": "Security shield zero trust ",
-									"title": "Security shield zero trust ",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IIzoGxh6v5RfXBnkF0K4z/4e35734175defb3415cec2e870587a93/cloudflare-zero-trust__1_.svg"
+									}
 								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -4304,7 +4295,7 @@
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
 							"contentfulId": "1ujDGExdXSfyindmg265xQ",
-							"bladeName": "Teams Ent Plan - Contact us",
+							"bladeName": "Zero Trust Ent Plan - Contact us",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
