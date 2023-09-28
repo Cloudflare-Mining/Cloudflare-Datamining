@@ -283,7 +283,7 @@
 		"enabled": false
 	},
 	"enable-d1-beta-labels": {
-		"enabled": false
+		"enabled": true
 	},
 	"enable-d1-region-hints-experimental-backend": {
 		"enabled": true
@@ -327,6 +327,9 @@
 	},
 	"lb-dns-check": {
 		"enabled": true
+	},
+	"load-balancing-least-connections": {
+		"enabled": false
 	},
 	"load-balancing-lors": {
 		"enabled": true
