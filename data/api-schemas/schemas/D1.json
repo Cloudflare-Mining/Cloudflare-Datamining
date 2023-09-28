@@ -1669,37 +1669,47 @@
 								{
 									"properties": {
 										"result": {
-											"properties": {
-												"created_at": {
-													"description": "Specifies the timestamp the resource was created as an ISO8601 string.",
-													"example": "2022-11-15T18:25:44.442097Z",
-													"readOnly": true
+											"items": {
+												"properties": {
+													"meta": {
+														"properties": {
+															"changed_db": {
+																"type": "boolean"
+															},
+															"changes": {
+																"type": "number"
+															},
+															"duration": {
+																"type": "number"
+															},
+															"last_row_id": {
+																"type": "number"
+															},
+															"rows_read": {
+																"type": "number"
+															},
+															"rows_written": {
+																"type": "number"
+															},
+															"size_after": {
+																"type": "number"
+															}
+														},
+														"type": "object"
+													},
+													"results": {
+														"items": {
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"success": {
+														"type": "boolean"
+													}
 												},
-												"file_size": {
-													"description": "The D1 database's size, in bytes.",
-													"example": 12,
-													"type": "number"
-												},
-												"name": {
-													"example": "my-database",
-													"pattern": "^[a-z0-9][a-z0-9-_]*$",
-													"type": "string"
-												},
-												"num_tables": {
-													"example": 12,
-													"type": "number"
-												},
-												"uuid": {
-													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-													"type": "string"
-												},
-												"version": {
-													"example": "beta",
-													"pattern": "^(alpha|beta)$",
-													"type": "string"
-												}
+												"type": "object"
 											},
-											"type": "object"
+											"type": "array"
 										}
 									}
 								}
