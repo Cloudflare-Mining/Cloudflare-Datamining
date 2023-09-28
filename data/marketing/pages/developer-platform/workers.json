@@ -94,9 +94,9 @@
 						"imageSize": null,
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": null,
+						"leftLink": "[Visit workers playground](https://workers.cloudflare.com/playground)",
 						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
+						"leftLinkOptions": "show",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
@@ -204,6 +204,33 @@
 						"togglesTo": []
 					},
 					{
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "7r7XODcdcIOaGP50Dbq2as",
+						"bladeName": "Deploy code without configurations &  Expand your toolkit with Workers Integration Marketplace",
+						"title": null,
+						"longCopy": null,
+						"header1": "Deploy code without configurations",
+						"subheader1": null,
+						"copy1": "With automated configuration, deployment, scale, and agile Developer services, developers can spend more time coding and building new products with the resources needed for scale, performance, security and reliability.",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": "Expand your toolkit with Workers Integration Marketplace",
+						"subheader2": null,
+						"copy2": "Expand your toolkit with developer products to easily discover, configure and deploy products to use with Workers. The Workers Integration Marketplace enables developers to bring any products of their choice to Cloudflare Workers.\n",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "6Om9yecuNyJXTZjmStipNO",
 						"quote": "\"With Workers, we now have the guarantee that our origin would be protected from high traffic volumes. Our readers depend on us, and Workers has been the solidly reliable platform we needed to deliver for them.\"",
@@ -243,7 +270,8 @@
 							"Improve visibility and debugging with events collected via Workers Logpush",
 							"Wrangler, a command-line tool for building Workers",
 							"Ecosystem of developer tools ",
-							"Mutual TLS Authentication for Workers"
+							"Mutual TLS Authentication for Workers",
+							"Run browser automation directly in Workers (Puppeteer)"
 						],
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -400,7 +428,7 @@
 						"contentTypeId": "bladeTable",
 						"contentfulId": "2yZWjAy2GRTKwFfd3FgLvf",
 						"locale": "en-US",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-bottom-padding",
 						"bladeBorder": "none",
 						"backgroundColor": "white",
 						"displayHeader": null,
@@ -793,6 +821,29 @@
 							}
 						],
 						"dataSource": null
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "1WoJp9lYaSBiRIICJ3w1CW",
+						"quote": "\"With Workers, we now have the guarantee that our origin would be protected from high traffic volumes. Our readers depend on us, and Workers has been the solidly reliable platform we needed to deliver for them.\"",
+						"quoteAuthor": "Frank Sharpe",
+						"quoteTitle": "Senior Product Developer",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1s9if3EyH8f1ig9BQKy570/193b79acf5f6c0cfb0a9685e023fef7c/logo_propublica.svg"
+							}
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
 					}
 				],
 				"noindex": false,
