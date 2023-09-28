@@ -39,8 +39,8 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>From here, we just need the database connection string for our database and a quick <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update" target="_blank">wrangler command-line</a> invocation to have Hyperdrive connect to it.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-Python"># Using wrangler v3.8.0 or above
-wrangler hyperdrive databases create a-faster-database --connection-string="postgres://user:password@neon.tech/neondb"
+	<pre><code class="language-Python"># Using wrangler v3.10.0 or above
+wrangler hyperdrive create a-faster-database --connection-string="postgres://user:password@neon.tech:5432/neondb"
 
 # This will return an ID: we'll use this in the next step
 </code></pre>
