@@ -1,0 +1,108 @@
+{
+	"alias": "momento-for-workers",
+	"assets": [],
+	"category": "workers-cache",
+	"description": "Fast serverless cache supporting key/value, dictionaries, and sets, built for production scale.",
+	"docs_url": "https://developers.cloudflare.com/workers/configuration/integrations/momento/",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/6e159a9c-64e4-46a1-313b-27d3a0a1e500/public",
+	"install_target": "worker",
+	"name": "Momento",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Momento",
+			"type": "oauth",
+			"provider": "momento",
+			"client_id": "i5dmcx9OZoVMJALnmJIrF3ZpMBLMnm7D",
+			"authorize_url": "https://gomomento.us.auth0.com/authorize?audience=https://gomomento.com",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "openid profile email offline_access",
+			"submit_action": "submit-momento-oauth"
+		},
+		{
+			"title": "Select your region",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "regionId",
+					"label": "Regions",
+					"description": "Regions available to your Momento account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-momento-regions"
+					}
+				}
+			],
+			"submit_action": "submit-momento-region"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Environment Variables",
+					"description": "These variables will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Variable Name",
+					"right_label": "Credential",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "momentoHttpEndpointSecretName",
+									"required": true,
+									"default_value": "MOMENTO_HTTP_ENDPOINT"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "momentoHttpEndpoint"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "momentoAuthTokenSecretName",
+									"required": true,
+									"default_value": "MOMENTO_API_KEY"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.0.7"
+}
