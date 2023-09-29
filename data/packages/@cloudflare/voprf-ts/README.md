@@ -26,13 +26,13 @@ Oprf.Suite.P384_SHA384
 Oprf.Suite.P521_SHA512
 ```
 
-**Specification:** Complaint with IETF [draft-irtf-cfrg-voprf](https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/) and tests vectors match with [v11](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-voprf-11).
+**Specification:** Compliant with IETF [draft-irtf-cfrg-voprf](https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/) and tests vectors match with [v21](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-voprf-21).
 
 ### Usage
 
 #### Step 1
 
-First setup a client and a server. In this case, we use the VOPRF mode with suite P384-SHA384.
+First set up a client and a server. In this case, we use the VOPRF mode with suite P384-SHA384.
 
 ```js
 import {
@@ -49,11 +49,12 @@ const client = new VOPRFClient(suite, publicKey);
 
 #### Step 2
 
-The client prepares arbitrary input that will be evaluated by the server, the blinding method produces an evaluation request, and some finalization data to be used later. Then, the client sends the evaluation request to the server.
+The client prepares arbitrary input[s] that will be batch evaluated by the server. The blinding method produces an evaluation request, and some finalization data to be used later. Then, the client sends the evaluation request to the server.
 
 ```js
 const input = new TextEncoder().encode("This is the client's input");
-const [finData, evalReq] = await client.blind([input]);
+const batch = [input]
+const [finData, evalReq] = await client.blind(batch);
 ```
 
 #### Step 3
@@ -61,27 +62,29 @@ const [finData, evalReq] = await client.blind([input]);
 Once the server received the evaluation request, it responds to the client with an evaluation.
 
 ```js
-const evaluation = await server.evaluate(evalReq);
+const evaluation = await server.blindEvaluate(evalReq);
 ```
 
 #### Step 4
 
-Finally, the client can produce the output of the OPRF protocol using the server's evaluation and the finalization data from the second step. If the mode is verifiable, this step allows the client to check the proof that the server used the expected private key for the evaluation.
+Finally, the client can produce the output[s] of the OPRF protocol using the server's evaluation and the finalization data from the second step. If the mode is verifiable, this step allows the client to check the proof that the server used the expected private key for the evaluation.
 
 ```js
-const output = await client.finalize(finData, evaluation);
+// Get output matching first input of batch
+const [output] = await client.finalize(finData, evaluation);
 ```
 
 ### Development
 
-| Task | NPM scripts |
-|--|--|
-| Installing         | `$ npm ci`         |
-| Building           | `$ npm run build`  |
-| Unit Tests         | `$ npm run test`   |
-| Benchmarking       | `$ npm run bench`  |
-| Code Linting       | `$ npm run lint`   |
-| Code Formating     | `$ npm run format` |
+| Task            | NPM scripts          |
+|-----------------|----------------------|
+| Installing      | `$ npm ci`           |
+| Building        | `$ npm run build`    |
+| Unit Tests      | `$ npm run test`     |
+| Examples        | `$ npm run examples` |
+| Benchmarking    | `$ npm run bench`    |
+| Code Linting    | `$ npm run lint`     |
+| Code Formatting | `$ npm run format`   |
 
 
 **Dependencies**
