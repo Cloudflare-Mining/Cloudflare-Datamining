@@ -48,7 +48,7 @@ wrangler hyperdrive create a-faster-database --connection-string="postgres://use
 	<p>Add our Hyperdrive to the <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank">wrangler.toml configuration</a> file for our Worker:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">[[hyperdrive]]
 name = "HYPERDRIVE"
-database_id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"
+id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We can now write a <a href="https://developers.cloudflare.com/workers" target="_blank">Worker</a> — or take an existing Worker script — and use Hyperdrive to speed up connections and queries to our existing database. We use <a href="https://node-postgres.com" target="_blank">node-postgres</a> here, but we could just as easily use <a href="https://orm.drizzle.team" target="_blank">Drizzle ORM</a>.</p><!--kg-card-begin: markdown-->
