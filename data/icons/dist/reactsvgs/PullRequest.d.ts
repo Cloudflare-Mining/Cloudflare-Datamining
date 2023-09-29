@@ -1,3 +1,3 @@
 import { SVGProps } from 'react';
-declare const PullRequest: (props: SVGProps<SVGSVGElement>) => JSX.Element;
-export default PullRequest;
+declare const SvgPullRequest: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+export default SvgPullRequest;

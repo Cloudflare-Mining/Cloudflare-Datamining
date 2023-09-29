@@ -1,8 +1,9 @@
+import Dlp from './Dlp';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
-import Add from './Add';
 import AddMember from './AddMember';
-import Api from './Api';
+import Add from './Add';
 import ApiSecurity from './ApiSecurity';
+import Api from './Api';
 import Applications from './Applications';
 import Backward from './Backward';
 import Bolt from './Bolt';
@@ -30,7 +31,6 @@ import D1 from './D1';
 import DdosAttack from './DdosAttack';
 import Discord from './Discord';
 import Discover from './Discover';
-import Dlp from './Dlp';
 import Documentation from './Documentation';
 import Download from './Download';
 import Drive from './Drive';
@@ -72,14 +72,14 @@ import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
 import Minus from './Minus';
 import More from './More';
-import Network from './Network';
 import NetworkAnalyticsLogo from './NetworkAnalyticsLogo';
 import NetworkSecurity from './NetworkSecurity';
+import Network from './Network';
 import None from './None';
 import Notifications from './Notifications';
 import OfficeBranch from './OfficeBranch';
-import Ok from './Ok';
 import OkSign from './OkSign';
+import Ok from './Ok';
 import OptimizationScale from './OptimizationScale';
 import PagesLogo from './PagesLogo';
 import Pause from './Pause';
@@ -103,13 +103,13 @@ import Revert from './Revert';
 import Right from './Right';
 import Script from './Script';
 import Search from './Search';
-import SecurityWall from './SecurityWall';
 import SecurityBots from './SecurityBots';
+import SecurityWaf from './SecurityWaf';
 import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
-import Star from './Star';
 import StarOutline from './StarOutline';
+import Star from './Star';
 import Stream from './Stream';
 import Subtract from './Subtract';
 import TailWorker from './TailWorker';
@@ -123,13 +123,13 @@ import Twitter from './Twitter';
 import TwoWay from './TwoWay';
 import UnlockOutline from './UnlockOutline';
 import Upload from './Upload';
-import User from './User';
 import UserMulti from './UserMulti';
 import UserOutline from './UserOutline';
+import User from './User';
 import Version from './Version';
 import WaitingRoom from './WaitingRoom';
-import Web3 from './Web3';
 import WebAnalyticsLogo from './WebAnalyticsLogo';
+import Web3 from './Web3';
 import WorkersBundled from './WorkersBundled';
 import WorkersConstellation from './WorkersConstellation';
 import WorkersDurableObjects from './WorkersDurableObjects';
@@ -174,10 +174,10 @@ export default {
   copy: Copy,
   'credit-card': CreditCard,
   d1: D1,
+  'ddos-attack': DdosAttack,
   discord: Discord,
   discover: Discover,
   documentation: Documentation,
-  'ddos-attack': DdosAttack,
   download: Download,
   drive: Drive,
   edgeworker: Edgeworker,
@@ -249,8 +249,8 @@ export default {
   right: Right,
   script: Script,
   search: Search,
-  'security-waf': SecurityWall,
   'security-bots': SecurityBots,
+  'security-waf': SecurityWaf,
   shield: Shield,
   spectrum: Spectrum,
   speech: Speech,
@@ -262,8 +262,8 @@ export default {
   teams: Teams,
   terraform: Terraform,
   time: Time,
-  'traffic-attack-browser': TrafficAttackBrowser,
   trace: Trace,
+  'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,
   twitter: Twitter,
   'two-way': TwoWay,

@@ -1,3 +1,3 @@
 import { SVGProps } from 'react';
-declare const CaseStudy: (props: SVGProps<SVGSVGElement>) => JSX.Element;
-export default CaseStudy;
+declare const SvgCaseStudy: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+export default SvgCaseStudy;

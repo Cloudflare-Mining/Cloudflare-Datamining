@@ -30,10 +30,10 @@ declare const _default: {
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'ddos-attack': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    'ddos-attack': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     edgeworker: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -105,8 +105,8 @@ declare const _default: {
     right: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     script: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     search: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    'security-waf': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-bots': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'security-waf': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     shield: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     spectrum: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     speech: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -118,8 +118,8 @@ declare const _default: {
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     twitter: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'two-way': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

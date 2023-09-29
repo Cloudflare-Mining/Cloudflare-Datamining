@@ -6,36 +6,9 @@ var SvgDdosAttack = props => /*#__PURE__*/React.createElement("svg", _extends({}
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  fill: "none"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M32.48 5.94995H21.99V9.94995H32.48V5.94995Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M39.85 11.28H21.99V15.28H39.85V11.28Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M56 16.62H12.49V20.62H56V16.62Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M49.17 21.95H31.99V25.95H49.17V21.95Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M26.67 21.95H17.49V25.95H26.67V21.95Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M44.41 27.28H21.49V31.28H44.41V27.28Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M44.41 32.6199H30.92V36.6199H44.41V32.6199Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M21.49 32.6199H8V36.6199H21.49V32.6199Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M35.48 37.95H8V41.95H35.48V37.95Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M49.17 37.95H41.69V41.95H49.17V37.95Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M39.85 43.2799H31.91V47.2799H39.85V43.2799Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M26.26 43.2799H18.32V47.2799H26.26V43.2799Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M35.48 48.6199H13.43V52.6199H35.48V48.6199Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M35.48 53.95H21.04V57.95H35.48V53.95Z"
+  d: "M32.48 5.95H21.99v4h10.49v-4Zm7.37 5.33H21.99v4h17.86v-4ZM56 16.62H12.49v4H56v-4Zm-6.83 5.33H31.99v4h17.18v-4Zm-22.5 0h-9.18v4h9.18v-4Zm17.74 5.33H21.49v4h22.92v-4Zm0 5.34H30.92v4h13.49v-4Zm-22.92 0H8v4h13.49v-4Zm13.99 5.33H8v4h27.48v-4Zm13.69 0h-7.48v4h7.48v-4Zm-9.32 5.33h-7.94v4h7.94v-4Zm-13.59 0h-7.94v4h7.94v-4Zm9.22 5.34H13.43v4h22.05v-4Zm0 5.33H21.04v4h14.44v-4Z"
 }));
 
 export default SvgDdosAttack;

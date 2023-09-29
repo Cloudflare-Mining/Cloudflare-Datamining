@@ -2,15 +2,13 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 
 import * as React from 'react';
 
-var SvgOfficeBranch = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
+var SvgSecurityWaf = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
   focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M56 20H42V8l-2-2H8L6 8v46l2 2h48l2-2V22l-2-2ZM10 10h28v42H28v-6h-8v6H10V10Zm44 42H42V24h12v28Z"
-}), /*#__PURE__*/React.createElement("path", {
-  d: "M18 14h-4v4h4v-4Zm8 0h-4v4h4v-4Zm-8 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm-8 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm8-16h-4v4h4v-4Zm0 8h-4v4h4v-4Zm0 8h-4v4h4v-4Zm-16 8h-4v4h4v-4Zm8 0h-4v4h4v-4Zm8 0h-4v4h4v-4Zm16-10h-4v4h4v-4Zm0 8h-4v4h4v-4Zm0 8h-4v4h4v-4Z"
+  d: "m58 33.94 2-2v-12l-2-2h-8.4V8l-2-2H6L4 8v12l2 2h8.39v8H6l-2 2v12l2 2h8.39v10l2 2H58l2-2V44l-2-2h-8.4v-8l8.4-.06Zm-2-4H39.19V22H56v7.94ZM45.6 10v8H28.8v-8h16.8ZM8 10h16.8v8H8v-8Zm10.39 12h16.8v8h-16.8v-8ZM8 33.94h16.8v8H8v-8ZM18.39 54v-8h16.8v8h-16.8ZM56 54H39.19v-8H56v8ZM45.61 42H28.8v-8h16.8l.01 8Z"
 }));
 
-export default SvgOfficeBranch;
+export default SvgSecurityWaf;
