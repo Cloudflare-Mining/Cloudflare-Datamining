@@ -5,44 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What you'll do</strong><br>We are seeking a highly skilled and motivated GL Accountant to help support the General ledger team. This position is integral to building a world-class organization to support our growing and complex global business. This role requires a highly skilled and ambitious professional who can support various areas within the Accounting team. Examples of desirable skills, knowledge and experience:</p>
-<p><span style="text-decoration: underline;"><strong>Close</strong></span></p>
+<h1><span style="font-weight: 400;">Software Engineer - Zero Trust Clients</span></h1>
+<h2><span style="font-weight: 400;">What you'll do</span></h2>
+<p><span style="font-weight: 400;">We’re looking for a Software Engineer to join our&nbsp;</span><a href="https://www.cloudflare.com/zero-trust/"><span style="font-weight: 400;">Zero Trust</span></a><span style="font-weight: 400;"> team. You will be working on the </span><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"><span style="font-weight: 400;">Zero Trust desktop client</span></a><span style="font-weight: 400;">, which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Zero Trust policies.</span></p>
+<p><span style="font-weight: 400;">In your role, you will predominantly be using </span><strong>Rust</strong><span style="font-weight: 400;"> alongside platform-native languages &amp; APIs to implement high-performance networking code that runs on multiple desktop platforms. You’ll be expected to </span><strong>improve the code quality</strong><span style="font-weight: 400;"> and to build solid, </span><strong>testable, </strong><span style="font-weight: 400;">and</span><strong> well-documented</strong><span style="font-weight: 400;"> foundations. You will be most successful in this role if you have a good understanding of </span><strong>operating system concepts</strong><span style="font-weight: 400;"> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, firewalls, TCP</span><span style="font-weight: 400;">/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Swift, C#, C, and python.</span></p>
+<p><span style="font-weight: 400;">As a Senior Software Engineer, you will be expected to make significant contributions to the design and implementation of major development projects, working closely with our product managers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</span></p>
+<h2><span style="font-weight: 400;">Examples of desirable skills, knowledge, and experience</span></h2>
 <ul>
-	<li>Assists in posting monthly accrual journal entries</li>
-	<li>Assists in recording internally developed software entries</li>
-	<li>Assists in recording and reconciling credit card and accrual activity</li>
-	<li>Prepares various account reconciliations, schedules, exhibits and summaries to support the general ledger balances and investigate variances</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent programming skills, with experience writing very </span><strong>high-quality</strong><span style="font-weight: 400;"> and </span><strong>low-complexity</strong><span style="font-weight: 400;"> code with thorough documentation.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience writing </span><strong>easily-testable </strong><span style="font-weight: 400;">and</span><strong> thoroughly-tested code</strong><span style="font-weight: 400;"> (e.g. using dependency injection with the right abstractions)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with </span><strong>systems programming</strong><span style="font-weight: 400;"> and familiarity with </span><strong>core OS concepts</strong><span style="font-weight: 400;"> of one or more desktop OSes (macOS, Windows, Linux)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Great experience using </span><strong>lower-level languages</strong><span style="font-weight: 400;">, such as Rust, C, C++</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Very comfortable writing </span><strong>multithreaded, asynchronous</strong><span style="font-weight: 400;"> code</span></li>
+	<li><span style="font-weight: 400;">Strong experience with </span><strong>debugging network-related problems</strong>, especially on desktop devices</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">An understanding of how </span><strong>VPN technologies</strong><span style="font-weight: 400;"> work, and the trade-offs between privacy, security, and anonymity</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good understanding of, and experience with, </span><strong>security protocols</strong><span style="font-weight: 400;"> and standards</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathetic, proactive, and constructive </span><strong>communication skills</strong><span style="font-weight: 400;">, verbal and written</span></li>
 </ul>
-<p><span style="text-decoration: underline;"><strong>Audit</strong></span></p>
-<ul>
-	<li>Participate in the interim and annual audits for the Company</li>
-	<li>Support audits and external reporting requirements (year-end audit, interim audit, quarterly reviews, SOX, Internal Audit, SEC Reporting, etc.)&nbsp;</li>
-</ul>
-<p><span style="text-decoration: underline;"><strong>Process Improvement</strong></span></p>
-<ol>
-	<li>Participant in various cross-functional projects and initiatives ranging in size and scope (i.e. system implementations, process changes, etc.)</li>
-	<li>Drive continuous process improvement activities (enhanced process documentation, process enhancements, automation, cross-training, etc.)</li>
-</ol>
-<p><span style="text-decoration: underline;"><strong>Various Responsibilities</strong></span></p>
-<ul>
-	<li>Provides support to all areas of the Accounting Department as needed</li>
-	<li>Performs other analysis and special projects as assigned&nbsp;</li>
-</ul>
-<p>Examples of desirable skills, knowledge and experience</p>
-<ul>
-	<li>Bachelor's degree in Accounting or Finance.</li>
-	<li>Sound knowledge of generally accepted accounting principles</li>
-	<li>Experience in SAAS industry</li>
-	<li>Systems savvy candidate required: should possess a solid understanding and application of finance and accounting systems (NetSuite or other accounting system etc).</li>
-	<li>Advanced analytical and information gathering skills; ability to evaluate and prioritize extensive detailed data.</li>
-	<li>Excellent interpersonal and communication skills (written and verbal) with the ability to interface effectively with all levels of the Company.</li>
-	<li>Minimum 3 years of relevant experience</li>
-	<li>Ability to manage multiple priorities to meet established timelines</li>
-	<li>Excel skills including working knowledge of pivot tables, Vlookups, formulas, etc.</li>
-	<li>Must possess excellent written and verbal communication skills and have the ability to interact with peers and senior management.</li>
-	<li>Strong problem-solving and analytical skills</li>
-	<li>Ability to work independently</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
