@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.8.4
+
+### Patch Changes
+
+- 59cadecb7d: Fix svgs case-study, ddos-attack, office-branch, pull-request, security-waf, security-bots, trace and traffic-attack-browser
+
 ## 11.8.3
 
 ### Patch Changes
