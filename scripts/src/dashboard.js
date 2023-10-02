@@ -612,7 +612,6 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								) {
 
 									// loop over declarations
-									console.log('loop over declrations', bodyItem.declarations);
 									for(const decl of bodyItem.declarations) {
 										if(
 											decl.type === 'VariableDeclarator' &&
