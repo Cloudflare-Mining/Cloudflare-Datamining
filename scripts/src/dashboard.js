@@ -623,7 +623,6 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 											decl.init?.arguments?.[0]?.right?.right?.type === 'CallExpression' &&
 											decl.init?.arguments?.[0]?.right?.right?.arguments?.[0]?.elements?.every(ele => ele.type === 'Literal')
 										) {
-											console.log('maybe subroutes?', file, decl.init.arguments?.[0]?.right?.right?.arguments?.[0]?.elements);
 											const routeParts = decl.init.arguments[0].right.right.arguments[0].elements.map(ele => ele.value);
 											const addSubroute = parseSubroute(routeParts);
 											if(!addSubroute) {
