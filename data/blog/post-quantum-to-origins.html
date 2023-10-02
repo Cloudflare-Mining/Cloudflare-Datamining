@@ -87,9 +87,12 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Replace <a href="https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids" target="_blank"><code>(zone_id)</code></a> and <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token" target="_blank"><code>(API token)</code></a> appropriately. Then, make sure your server supports TLS 1.3; enable and prefer the key agreement <code>X25519Kyber768Draft00;</code> and ensure it’s configured with <em>server cipher preference</em>. For example, to configure <a href="https://www.nginx.com" target="_blank">nginx</a> (compiled with a recent <a href="https://boringssl.googlesource.com/boringssl" target="_blank">BoringSSL</a>) like this, use</p><!--kg-card-begin: markdown-->
-	<pre><code>	ssl_ecdh_curve X25519Kyber768Draft00:X25519;
-	ssl_prefer_server_ciphers on;
-	ssl_protocols TLSv1.3;
+	<pre><code>	http {
+		# [...]
+		ssl_ecdh_curve X25519Kyber768Draft00:X25519;
+		ssl_prefer_server_ciphers on;
+		ssl_protocols TLSv1.3;
+	}
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>To check your server is properly configured, you can use the <code>bssl</code> tool of <a href="https://github.com/google/boringssl" target="_blank">BoringSSL</a>:</p><!--kg-card-begin: markdown-->
@@ -203,7 +206,8 @@
 			</tr>
 			<tr>
 				<td><span style="font-family:Courier New,Courier,monospace"><span style="background-color:transparent; color:#000000">preferred</span></span></td>
-				<td><span style="background-color:transparent; color:#000000">Send a post-quantum keyshare in the first </span><em>ClientHello</em><span style="background-color:transparent; color:#000000">.When the origin supports X25519+Kyber, a post-quantum connection will be established without an extra roundtrip.This is the most performant way to enable post-quantum.</span></td>
+				<td><span style="background-color:transparent; color:#000000">Send a post-quantum keyshare in the first </span><em>ClientHello</em><span style="background-color:transparent; color:#000000">.When the origin supports X25519+Kyber, a post-quantum connection will be established without an extra roundtrip. We continue advertising support for classical keyshares as well, so that origins that do not support X25519+Kyber will continue to function.
+						This is the most performant way to enable post-quantum.</span></td>
 			</tr>
 			<tr>
 				<td><span style="font-family:Courier New,Courier,monospace"><span style="background-color:transparent; color:#000000">off</span></span></td>
