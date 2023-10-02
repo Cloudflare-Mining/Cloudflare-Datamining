@@ -856,6 +856,22 @@
 		]
 	},
 	{
+		"id": "0d24e472a9654642a97df736e8b0d980",
+		"name": "Fraud Detection Read",
+		"description": "Grants read access to Fraud Detection",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "685f9605fd4e44ec937b6a0db658e629",
+		"name": "Fraud Detection Write",
+		"description": "Grants write access to Fraud Detection",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
 		"id": "fac65912d42144aa86b7dd33281bf79e",
 		"name": "Health Checks Read",
 		"description": "Grants read access to Health Checks",
