@@ -1188,6 +1188,18 @@
 		}
 	},
 	{
+		"id": "hyperdrive.enabled",
+		"feature": {
+			"feature_set": "hyperdrive",
+			"id": 1233,
+			"key": "hyperdrive.enabled",
+			"name": "Hyperdrive - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "image_resizing.enabled",
 		"feature": {
 			"feature_set": "image_resizing",
@@ -1554,6 +1566,18 @@
 			"id": 968,
 			"key": "magic_firewall.pcaps_allowed",
 			"name": "Magic Firewall Pcaps Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "magic_wan_connector.enabled",
+		"feature": {
+			"feature_set": "magic_wan_connector",
+			"id": 1169,
+			"key": "magic_wan_connector.enabled",
+			"name": "Magic WAN Connector Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2853,6 +2877,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "vector_db.enabled",
+		"feature": {
+			"feature_set": "vector_db",
+			"id": 1239,
+			"key": "vector_db.enabled",
+			"name": "Vector DB - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{

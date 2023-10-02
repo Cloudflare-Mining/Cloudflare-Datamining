@@ -912,6 +912,18 @@
 		}
 	},
 	{
+		"id": "logpush.page_shield_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1232,
+			"key": "logpush.page_shield_events.max_jobs_allowed",
+			"name": "Logpush - Page Shield Events - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpush.spectrum_events.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
