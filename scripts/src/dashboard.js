@@ -552,6 +552,40 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 							if(!includesRoutesHelper) {
 								continue;
 							}
+							const parseSubroute = function(routeParts) {
+								const realPage = /react\/pages\/(.*)/.exec(file);
+								const commonAction = /react\/common\/actions\/(.*)/.exec(file);
+								let page = null;
+								if(realPage) {
+									page = realPage[1];
+								}else if(commonAction) {
+									page = '_common/' + commonAction[1];
+								}else if(file.includes('microfrontends/index.ts')) {
+									page = '_common/_index';
+								}else if(file.includes('../init.ts')) {
+									page = '_common/_init';
+								}
+								if(!page) {
+									console.error('Could not determine page for subroutes', file);
+									return false;
+								}
+
+								// making some wild assumptions here, but good enough
+								subRoutes[page] ??= new Set();
+								let route = '';
+								for(const [index, routePart] of routeParts.entries()) {
+									if(routePart.endsWith('/')) {
+										route += `${routePart}[id]`;
+									}else if(routePart === '' && index !== 0) {
+										route += '/*';
+									}else{
+										route += routePart;
+									}
+								}
+								subRoutes[page].add(route);
+								return true;
+							};
+							// old definition
 							for(const bodyItem of buildFile.value.body.body) {
 								if(
 									bodyItem.type === 'FunctionDeclaration' &&
@@ -566,39 +600,44 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 									bodyItem.body.body[0].declarations[0]?.init.arguments[0].elements?.every(ele => ele.type === 'Literal')
 								) {
 									const routeParts = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
-									const realPage = /react\/pages\/(.*)/.exec(file);
-									const commonAction = /react\/common\/actions\/(.*)/.exec(file);
-									let page = null;
-									if(realPage) {
-										page = realPage[1];
-									}else if(commonAction) {
-										page = '_common/' + commonAction[1];
-									}else if(file.includes('microfrontends/index.ts')) {
-										page = '_common/_index';
-									}else if(file.includes('../init.ts')) {
-										page = '_common/_init';
-									}
-									if(!page) {
-										console.error('Could not determine page for subroutes', file);
+									const addSubroute = parseSubroute(routeParts);
+									if(!addSubroute) {
 										continue;
 									}
+								}
 
-									// making some wild assumptions here, but good enough
-									subRoutes[page] ??= new Set();
-									let route = '';
-									for(const [index, routePart] of routeParts.entries()) {
-										if(routePart.endsWith('/')) {
-											route += `${routePart}[id]`;
-										}else if(routePart === '' && index !== 0) {
-											route += '/*';
-										}else{
-											route += routePart;
+								// new definition for subroutes
+								if(
+									bodyItem.type === 'VariableDeclaration'
+								) {
+
+									// loop over declarations
+									console.log('loop over declrations', bodyItem.declarations);
+									for(const decl of bodyItem.declarations) {
+										if(
+											decl.type === 'VariableDeclarator' &&
+											decl.init?.type === 'CallExpression' &&
+											decl.init?.callee?.type === 'SequenceExpression' &&
+											decl.init?.arguments?.length >= 1 &&
+											decl.init?.arguments?.[0]?.type === 'LogicalExpression' &&
+											decl.init?.arguments?.[0]?.right?.type === 'AssignmentExpression' &&
+											decl.init?.arguments?.[0]?.right?.right?.type === 'CallExpression' &&
+											decl.init?.arguments?.[0]?.right?.right?.arguments?.[0]?.elements?.every(ele => ele.type === 'Literal')
+										) {
+											console.log('maybe subroutes?', file, decl.init.arguments?.[0]?.right?.right?.arguments?.[0]?.elements);
+											const routeParts = decl.init.arguments[0].right.right.arguments[0].elements.map(ele => ele.value);
+											const addSubroute = parseSubroute(routeParts);
+											if(!addSubroute) {
+												continue;
+											}
 										}
 									}
-									subRoutes[page].add(route);
+
 								}
 							}
 						}
+
+
 
 					}
 				}
