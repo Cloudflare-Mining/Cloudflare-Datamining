@@ -651,6 +651,13 @@
 	"targeting-test-feature-flag": {
 		"enabled": false
 	},
+	"test-test": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"testt": {
 		"enabled": false
 	},
