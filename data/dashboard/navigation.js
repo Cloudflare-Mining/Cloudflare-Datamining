@@ -44,7 +44,7 @@ const navigation = {
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(g) {
-			return !(0, ne.n3)() && !(0, r.z1)("oauth-access-management")(g)
+			return !(0, re.n3)() && !(0, r.z1)("oauth-access-management")(g)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -226,7 +226,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: H.T
+		hasPermission: V.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -778,9 +778,9 @@ const navigation = {
 			var Ae = (0, d.nA)(g);
 			if ((0, M.yD)(g) || !(0, l.wB)(g, "zone_settings", "spectrum.app") || !Ae) return !1;
 			var Oe = !!((0, ge.l8)(g) || (0, d.DQ)(g)),
-				V = !!(0, d.ZB)(g, "spectrum", "enabled"),
+				H = !!(0, d.ZB)(g, "spectrum", "enabled"),
 				p = !!(0, d.Ns)(Ae);
-			return V || Oe || !p
+			return H || Oe || !p
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -942,7 +942,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: C
+			tabs: O
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -1224,7 +1224,7 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: O.G,
+	support: C.G,
 	application: [{
 		title: "navigation.zone.ssl-tls",
 		url: "/ssl-tls",
