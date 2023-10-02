@@ -6,6 +6,8 @@ body {
 	--dark-gray: #92979b;
 	--gray: #72777b;
 	--light-gray: #f7f7f8;
+	--red: rgb(178, 15, 3);
+	--green: rgb(34, 139, 73);
 
 	margin: 0;
 	padding: 100px 0 0 0;
@@ -298,4 +300,33 @@ select.input__field option {
 
 .aligned_inputs input {
 	width: 90%;
+}
+
+.button-group button {
+	color: var(--white);
+	font-size: 16px;
+	min-width: 220px;
+	margin-bottom: 10px;
+}
+
+.button-group {
+	margin-top: 5px;
+	color: var(--white);
+	font-size: 16px;
+}
+
+button.danger {
+	background-color: var(--red);
+}
+
+button.success {
+	background-color: var(--green);
+}
+
+p a {
+	color: var(--white);
+}
+
+.hidden {
+	display: none;
 }
