@@ -3011,12 +3011,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				r.g.build = io({}, {
-					branch: "release-Oct.02.2023-1696255598",
+					branch: "hotfix/SOPS-9335",
 					isReleaseCandidate: "true",
-					commit: "24e0c169427be2b3ac707589058639f7547a895b",
+					commit: "48a134668789d541e94dc9a730ce7095434dbf47",
 					env: "production",
-					builtAt: 1696255971436,
-					dashVersion: "c0d8d9cb8255cebdf99ad34656d6078697a7d9c8",
+					builtAt: 1696269193230,
+					dashVersion: "2c928f1cc8523b40bde2d906309b1953f3a53ece",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
