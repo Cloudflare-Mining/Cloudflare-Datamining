@@ -44,7 +44,7 @@ const navigation = {
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(g) {
-			return !(0, re.n3)() && !(0, r.z1)("oauth-access-management")(g)
+			return !(0, ne.n3)() && !(0, r.z1)("oauth-access-management")(g)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -226,7 +226,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: V.T
+		hasPermission: H.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -407,9 +407,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.workers.d1",
 			url: "/workers/d1",
-			labels: function(g) {
-				return (0, r.z1)("enable-d1-beta-labels")(g) ? ["beta"] : ["alpha"]
-			}
+			labels: ["beta"]
 		}, {
 			title: "navigation.account.workers.constellation",
 			url: "/workers/constellation",
@@ -778,9 +776,9 @@ const navigation = {
 			var Ae = (0, d.nA)(g);
 			if ((0, M.yD)(g) || !(0, l.wB)(g, "zone_settings", "spectrum.app") || !Ae) return !1;
 			var Oe = !!((0, ge.l8)(g) || (0, d.DQ)(g)),
-				H = !!(0, d.ZB)(g, "spectrum", "enabled"),
+				V = !!(0, d.ZB)(g, "spectrum", "enabled"),
 				p = !!(0, d.Ns)(Ae);
-			return H || Oe || !p
+			return V || Oe || !p
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -942,7 +940,7 @@ const navigation = {
 			title: "navigation.common.overview",
 			navigationType: "global-settings",
 			url: "/caching",
-			tabs: O
+			tabs: C
 		}, {
 			title: "navigation.zone.caching.configuration",
 			url: "/caching/configuration",
@@ -1224,7 +1222,7 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: C.G,
+	support: O.G,
 	application: [{
 		title: "navigation.zone.ssl-tls",
 		url: "/ssl-tls",
