@@ -37,10 +37,25 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Magic WAN | Any-to-any connectivity",
+					"metaDescription": "Magic WAN connects and secures branch sites, multi-cloud VPCs, and data centers. See how Cloudflare simplifies the path to SASE to replace MPLS.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/lvSFPkaBuEfJaeUJ1hFkp/c2b92f2ec64660ddf3a606d15045a38b/WAN_Globe_image.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "5qrLsXF79zi7UB8dcEyjLU",
 				"contentTypeId": "page",
-				"promotionalBanner": null,
+				"promotionalBanner": {
+					"pillText": "LEARN",
+					"linkText": "What is a WAN?",
+					"linkUrl": "https://www.cloudflare.com/learning/network-layer/what-is-a-wan/",
+					"desktopText": "What is a wide area network (WAN)? Read more in our Learning Center."
+				},
 				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
@@ -2668,6 +2683,18 @@
 										"url": "products/zero-trust/email-security/"
 									},
 									{
+										"contentfulId": "3cEoD6Xzdvf5hIktAK21IF",
+										"linkText": "Magic WAN",
+										"page": null,
+										"url": "https://www.cloudflare.com/network-services/products/magic-wan/"
+									},
+									{
+										"contentfulId": "6HePlYqxMr0lbwj2b8sRss",
+										"linkText": "Magic Firewall",
+										"page": null,
+										"url": "https://www.cloudflare.com/network-services/products/magic-firewall/"
+									},
+									{
 										"contentfulId": "mnLAvzd9LxIskwaMFrNob",
 										"linkText": "All Products",
 										"page": null,
@@ -2797,7 +2824,7 @@
 						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Large",
@@ -2816,6 +2843,482 @@
 							}
 						},
 						"imageAssetFile": null
+					},
+					{
+						"contentfulId": "4Ijty3IBKjGZNxvOCdBgqH",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "BENEFITS OF MAGIC WAN",
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4eR4fl006ZNu3R8j8EDsYT",
+								"title": "Better operational agility",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Centrally manage network security and connectivity from one interface. On-ramp traffic in minutes with zero-touch configuration.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5wB2WP2bwo7zdgVhToslhe/5983fd8a6bf159cead4f17a99057913a/ease-of-use-toggle.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3sqhe7RC8GF825QyLpNZbC",
+								"title": "Built-in, not bolt-on, security",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Get cloud-native DDoS protection, network firewalling, SSE and Zero Trust functionality — all deeply integrated and delivered as-a-service.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
+									"altText": "Security shield zero trust ",
+									"title": "Security shield zero trust ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XGYSR66UbDyADSnXT2H2x/f52d425da65a749ebc3f32726acc27d0/cloudflare-zero-trust.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "wrT2fXoM5pVP7OgAvxAAe",
+								"title": "Reduced network costs",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Minimize your branch footprint and shift network functions to the cloud to reduce reliance on expensive MPLS or SD-WAN deployments.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ca8dae98-4f47-5466-a459-bdaacb07a225",
+									"altText": "Dollar",
+									"title": "Dollar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7td2uxheozRtbhflYJ4n7b/f957bd073f41d31f0579dafa98f329c4/price__1_.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentfulId": "69wEaaxvMgol2Ezx7ffUq2",
+						"title": "Cloudflare named a \"Leader\" in 2023 KuppingerCole SASE Leadership Compass",
+						"copy": "Through its 2023 SASE market analysis, KuppingerCole Analysts AG cited several Cloudflare strengths such as our large globally distributed presence and sophisticated traffic acceleration, massive backbone capacity, 100% uptime guarantee, and innovative Remote Browser Isolation.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": "https://www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/",
+						"learnMoreText": "Read the report",
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "837d93d6-fa8b-5dc9-995b-9e109a13171f",
+							"altText": null,
+							"title": "KuppingerCole Logo narrow aspect ratio with space",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7wpjwgF59tFkXIL98qqzpi/3766ee269df1f1fe4b5f6e384094dfcc/KuppingerCole_Logo_SVG_Narrow.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "ANALYST RECOGNITION",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "1rdThFfVrOgvDp80NJir62",
+						"title": "Top use cases",
+						"copy": "__Simplify branch connectivity__ — Facilitate site-to-site connectivity across network locations like branch offices, retail locations, or factory floors, with Anycast-enabled WAN connectors.\n\n__Simplify hybrid and multi-cloud connectivity__ — Use centralized controls to route and secure traffic across varied public cloud environments and on-prem datacenters.\n\n__Secure WAN connectivity__ — Secure connections by applying filters and inspections for traffic between network locations and in/out of the broader Internet.\n\n__Scale WAN performance__ — Augment or eventually replace legacy MPLS or SD-WAN for more agile, cost-effective deployments and faster connections.\n",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "c8a0635c-8a06-5703-a213-91f99e1d0b5e",
+							"altText": "ZT network diagram",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1siGPLF58vwGtLLS7hf337/78e63a7df8b8b6e06e93e7c2e57f3cde/ZT___Network_Diagram_No_Background.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "ANY-TO-ANY CONNECTIVITY",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "1qMf6TU8AhZC8uFFcgckvn",
+						"title": "How it works",
+						"copy": "- Purchase the branch connector software pre-installed and configured on a Cloudflare-certified hardware appliance for the lowest-friction deployment.\n- Or, install the software on physical or virtual Linux appliances within your environment.\n- Zero-touch configuration provides automatic connectivity to the closest Cloudflare network location via Anycast-enabled routes and tunnels, leveraging your existing last mile Internet connectivity.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": "https://developers.cloudflare.com/magic-wan/",
+						"learnMoreText": "Read more about how Magic WAN works",
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "4f96d6f7-6384-5ae5-9442-a82c92985eaf",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2IxFZg5ASUfGnEFUMR0adc/62c5f42eab318238cbc9ab57887067e1/ZT___Network_Diagram_No_Background.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "ON-RAMP TRAFFIC TO CLOUDFLARE",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "4jZslIGa20pm26Qu5YaY1b",
+						"title": "Built-in security",
+						"copy": "Magic WAN comes with Magic Firewall, a built-in software-defined network firewall part of Cloudflare's SASE platform that applies packet filters and intrusion detection signatures for ingress and egress traffic. You can also layer in additional security capabilities like DNS filtering, Secure Web Gateway inspection, Remote Browser Isolation, DDoS protection, and more — all converged in Cloudflare's connectivity cloud.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "4b6837fd-f9fc-5559-9c7e-14421d81ec47",
+							"altText": "Magic Firewall",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/bs5sKQszO4C2UUkjoBsju/7e2f828cf8b4c1185a3fc3278b5c01ee/Magic_Firewall_-_No_Background.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "RETIRE LEGACY HARDWARE",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
+						"contentfulId": "3IrfbRnKR5SxghkFFKDzed",
+						"contentTypeId": "bladeCarousel",
+						"entryTitle": "Client quotes - consolidated",
+						"slides": [
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "2k7DjM6iXulRtXY2AOnYe5",
+								"quote": "\"Cloudflare has built one of the world's most interconnected networks. And to have built-in DDoS protection, traffic acceleration, network firewall, and zero trust functionality, over Cloudflare's global IP network that can be managed using a single management plane — is arguably the biggest leap in enterprise network technology in the last couple of decades.\"",
+								"quoteAuthor": "Enguerrand Gave",
+								"quoteTitle": "Head of Portals & Services",
+								"learnMoreText": null,
+								"sectionPadding": null,
+								"backgroundColor": "light-blue",
+								"bladeBorder": "none",
+								"learnMoreUrl": null,
+								"htmlId": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UP0LLsLDoxlDBQ9DIKpex/ffa86d2478050e3591783d32f9425150/logo_ratp.svg"
+									}
+								},
+								"imageAssetFile": {
+									"id": "1614039c-21d8-5589-b91f-157cf3b07304",
+									"altText": "RATP Logo",
+									"title": "RATP Logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2UP0LLsLDoxlDBQ9DIKpex/ffa86d2478050e3591783d32f9425150/logo_ratp.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageLinkUrl": null,
+								"logoList": null,
+								"logoListAssetFile": null,
+								"quoteCarousel": null
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "2HIKcy2Wp2z2BMKLGGsqqx",
+								"quote": " \"Our network team is excited by Magic WAN. Cloudflare has built a global network-as-a-service platform that will help network teams manage complex edge and multi-cloud environments much more efficiently. Operating a single global WAN with built-in security and fast routing functionality — regardless of the HQ, data center, branch office, or end user location — is a game-changer in WAN technology.\"",
+								"quoteAuthor": "Sander Petersson",
+								"quoteTitle": "Head of Infrastructure",
+								"learnMoreText": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"learnMoreUrl": null,
+								"htmlId": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GJq3vRqCqVsbd1oaaFocH/a4ff7eaff80b8e8a0ebe4a9146bbc6f2/FR24.png"
+									}
+								},
+								"imageAssetFile": {
+									"id": "a05273a1-9237-5d50-aa1f-af1e0682f6af",
+									"altText": "FlightRadar24 (FR24)",
+									"title": "FlightRadar24 (FR24)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/GJq3vRqCqVsbd1oaaFocH/a4ff7eaff80b8e8a0ebe4a9146bbc6f2/FR24.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageLinkUrl": null,
+								"logoList": null,
+								"logoListAssetFile": null,
+								"quoteCarousel": null
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "7t9xMHv7zvNPPByoIyfjpC",
+								"quote": "\"Digital transformation has challenged traditional network architectures, leading to clunky bolt-on security practices that simply do not work for today's global enterprises. As more intelligence moves to the edge, enterprises must leverage modern WAN technologies that offer a broad range of built-in cloud-delivered security services. Fast edge global connectivity with robust security inherently included is what enterprises really want today.\"",
+								"quoteAuthor": "Christopher Rodriguez",
+								"quoteTitle": "IDC Research Manager, Cybersecurity Products",
+								"learnMoreText": null,
+								"sectionPadding": null,
+								"backgroundColor": "light-blue",
+								"bladeBorder": "none",
+								"learnMoreUrl": null,
+								"htmlId": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x21a1PiedETpIEpKJGLh5/91f035974babf976bab2525aa4b05513/logo_idc.svg"
+									}
+								},
+								"imageAssetFile": {
+									"id": "2bed05c3-494b-54fa-b09d-68885b297d72",
+									"altText": "IDC Logo",
+									"title": "IDC Logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x21a1PiedETpIEpKJGLh5/91f035974babf976bab2525aa4b05513/logo_idc.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageLinkUrl": null,
+								"logoList": null,
+								"logoListAssetFile": null,
+								"quoteCarousel": null
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"contentfulId": "4FQPwEcNcdUHKcFKA3nMrx",
+								"quote": "\"Increased cloud adoption coupled with the recent pivot to remote workers has increased the volume of Internet, SaaS, and IaaS traffic, straining traditional network architectures such as MPLS.\n\n\nWAN architectures that offer a global scale, integrated enterprise network security functions, and direct, secure connectivity to remote users are key to organizations looking to increase their operational agility and lower total costs of ownership.\"",
+								"quoteAuthor": "Ghassan Abdo",
+								"quoteTitle": "IDC Research VP, WW Telecom, Virtualization & CDN ",
+								"learnMoreText": null,
+								"sectionPadding": null,
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"learnMoreUrl": null,
+								"htmlId": null,
+								"image": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x21a1PiedETpIEpKJGLh5/91f035974babf976bab2525aa4b05513/logo_idc.svg"
+									}
+								},
+								"imageAssetFile": {
+									"id": "2bed05c3-494b-54fa-b09d-68885b297d72",
+									"altText": "IDC Logo",
+									"title": "IDC Logo",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1x21a1PiedETpIEpKJGLh5/91f035974babf976bab2525aa4b05513/logo_idc.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageLinkUrl": null,
+								"logoList": null,
+								"logoListAssetFile": null,
+								"quoteCarousel": null
+							}
+						],
+						"bladeLayoutConfig": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
