@@ -14,8 +14,8 @@
 		"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 		"source": "firewall_managed",
 		"kind": "managed",
-		"version": "52",
-		"last_updated": "2023-10-03T13:43:31.734669Z",
+		"version": "53",
+		"last_updated": "2023-10-03T17:28:05.940716Z",
 		"phase": "http_request_firewall_managed"
 	},
 	{
@@ -23,8 +23,8 @@
 		"name": "DDoS L7 ruleset",
 		"description": "Automatic mitigation of HTTP-based DDoS attacks. Cloudflare routinely adds signatures to address new attack vectors. Additional configuration allows you to customize the sensitivity of each rule and the performed mitigation action.",
 		"kind": "managed",
-		"version": "1719",
-		"last_updated": "2023-10-03T16:09:25.949971Z",
+		"version": "1720",
+		"last_updated": "2023-10-03T17:40:30.304705Z",
 		"phase": "ddos_l7"
 	}
 ]
