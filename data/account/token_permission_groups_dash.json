@@ -963,6 +963,24 @@
 		"label": "firewall_services_write"
 	},
 	{
+		"id": "0d24e472a9654642a97df736e8b0d980",
+		"name": "Fraud Detection Read",
+		"description": "Grants read access to Fraud Detection",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "fraud_detection_read"
+	},
+	{
+		"id": "685f9605fd4e44ec937b6a0db658e629",
+		"name": "Fraud Detection Write",
+		"description": "Grants write access to Fraud Detection",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "fraud_detection_write"
+	},
+	{
 		"id": "6b60a5a87cae475da7e76e77e4209dd5",
 		"name": "HTTP Applications Read",
 		"description": "Grants read-only access to HTTP Applications",
