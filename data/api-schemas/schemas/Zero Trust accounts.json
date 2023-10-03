@@ -127,6 +127,16 @@
 													"description": "Enable gateway proxy filtering on UDP.",
 													"example": true,
 													"type": "boolean"
+												},
+												"root_certificate_installation_enabled": {
+													"description": "Enable installation of cloudflare managed root certificate.",
+													"example": true,
+													"type": "boolean"
+												},
+												"use_zt_virtual_ip": {
+													"description": "Enable using CGNAT virtual IPv4.",
+													"example": true,
+													"type": "boolean"
 												}
 											},
 											"type": "object"
@@ -254,6 +264,16 @@
 														},
 														"gateway_udp_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on UDP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"root_certificate_installation_enabled": {
+															"description": "Enable installation of cloudflare managed root certificate.",
+															"example": true,
+															"type": "boolean"
+														},
+														"use_zt_virtual_ip": {
+															"description": "Enable using CGNAT virtual IPv4.",
 															"example": true,
 															"type": "boolean"
 														}
@@ -3214,6 +3234,16 @@
 								"description": "Enable gateway proxy filtering on UDP.",
 								"example": true,
 								"type": "boolean"
+							},
+							"root_certificate_installation_enabled": {
+								"description": "Enable installation of cloudflare managed root certificate.",
+								"example": true,
+								"type": "boolean"
+							},
+							"use_zt_virtual_ip": {
+								"description": "Enable using CGNAT virtual IPv4.",
+								"example": true,
+								"type": "boolean"
 							}
 						},
 						"type": "object"
@@ -3335,6 +3365,16 @@
 												},
 												"gateway_udp_proxy_enabled": {
 													"description": "Enable gateway proxy filtering on UDP.",
+													"example": true,
+													"type": "boolean"
+												},
+												"root_certificate_installation_enabled": {
+													"description": "Enable installation of cloudflare managed root certificate.",
+													"example": true,
+													"type": "boolean"
+												},
+												"use_zt_virtual_ip": {
+													"description": "Enable using CGNAT virtual IPv4.",
 													"example": true,
 													"type": "boolean"
 												}
@@ -3464,6 +3504,16 @@
 														},
 														"gateway_udp_proxy_enabled": {
 															"description": "Enable gateway proxy filtering on UDP.",
+															"example": true,
+															"type": "boolean"
+														},
+														"root_certificate_installation_enabled": {
+															"description": "Enable installation of cloudflare managed root certificate.",
+															"example": true,
+															"type": "boolean"
+														},
+														"use_zt_virtual_ip": {
+															"description": "Enable using CGNAT virtual IPv4.",
 															"example": true,
 															"type": "boolean"
 														}
