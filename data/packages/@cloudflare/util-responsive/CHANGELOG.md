@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.12
+
+### Patch Changes
+
+- 03dda27c91: upgrade dependencies for React 18 support
+
 ## 1.5.11
 
 ### Patch Changes

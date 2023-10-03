@@ -1,5 +1,20 @@
 # Change Log
 
+## 5.4.7
+
+### Patch Changes
+
+- Updated dependencies [f805f67a86]
+  - @cloudflare/component-select-2@6.0.21
+
+## 5.4.6
+
+### Patch Changes
+
+- Updated dependencies [03dda27c91]
+  - @cloudflare/util-responsive@1.5.12
+  - @cloudflare/component-grid@2.1.17
+
 ## 5.4.5
 
 ### Patch Changes
