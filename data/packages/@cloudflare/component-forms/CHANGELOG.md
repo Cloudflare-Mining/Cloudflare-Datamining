@@ -1,5 +1,12 @@
 # Change Log
 
+## 5.4.8
+
+### Patch Changes
+
+- Updated dependencies [047948ae45]
+  - @cloudflare/component-search@7.0.21
+
 ## 5.4.7
 
 ### Patch Changes
