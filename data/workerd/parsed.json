@@ -2417,6 +2417,14 @@
 						"compatEnableFlag": "webgpu",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "cryptoPreservePublicExponent",
+					"annotations": {
+						"compatDisableFlag": "no_crypto_preserve_public_exponent",
+						"compatEnableDate": "2023-12-01",
+						"compatEnableFlag": "crypto_preserve_public_exponent"
+					}
 				}
 			]
 		},
