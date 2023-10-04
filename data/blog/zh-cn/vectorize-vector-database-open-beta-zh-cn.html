@@ -1,0 +1,349 @@
+<div class="mb2 gray5">17 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-21.png" class="kg-image" alt="Vectorize: a vector database for shipping AI-powered applications to production, fast" loading="lazy" width="1200" height="668"></figure>
+	<p>Vectorize 是我们全新推出的矢量数据库产品，旨在让您完全在 Cloudflare 的全球网络上构建 AI 加持的全栈应用程序；现已可用。Vectorize 目前处于公测阶段，对任何使用<a href="https://workers.cloudflare.com" target="_blank"> Cloudflare Workers</a>的开发人员可用。</p>
+	<p>可将 Vectorize 配合 <a href="https://blog.cloudflare.com/workers-ai"> Workers AI</a>使用，以直接通过 Workers 进行语义搜索、分类、推荐和异常检测等用例，提高 LLM（大型语言模型）的答案准确性和上下文，以及使用来自流行平台（包括 OpenAI 和 Cohere）的自定义嵌入。</p>
+	<p>欢迎访问<a href="https://developers.cloudflare.com/vectorize/get-started" target="_blank"> Vectorize 文档</a> 以开始使用，或继续阅读，以进一步了解矢量数据库的作用以及 Vectorize 的不同之处。</p>
+	<h2 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9F"><strong>为什么我需要一个向量数据库？</strong></h2>
+	<h3 id="%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E6%97%A0%E6%B3%95%E8%AE%B0%E4%BD%8F%E4%BB%BB%E4%BD%95%E4%BA%8B%E6%83%85%EF%BC%9A%E5%8F%AA%E8%83%BD%E8%AE%B0%E4%BD%8F%E5%AE%83%E4%BB%AC%E8%AE%AD%E7%BB%83%E8%BF%87%E7%9A%84%E5%86%85%E5%AE%B9%E3%80%82"><strong>机器学习模型无法记住任何事情：只能记住它们训练过的内容。</strong></h3>
+	<p>向量数据库旨在解决这个问题，它捕捉机器学习模型表示数据的方式，包括结构化和非结构化的文本、图像和音频，并以一种可以与<em>未来</em>输入进行比较的方式存储数据。这使我们能够利用现有机器学习模型和大型语言模型(LLM)处理它们未经过训练的内容：考虑到训练模型的巨大成本，这将是非常强大的。</p>
+	<p>为了更好地说明为什么像 Vectorize 这样的矢量数据库是有用的，让我们假设它们不存在，并看看向机器学习模型或大预言模型为语义搜索或推荐任务提供上下文是多么痛苦的事情。我们的目标是理解与我们的查询相似的内容并返回它：基于我们自己的数据集。</p>
+	<ol>
+		<li>收到我们的用户查询输入：他们正在搜索“如何从 Cloudflare Workers 写入 R2”。</li>
+		<li>我们加载整个文档数据集——幸好是一个“小”数据集，大约有 65000 个句子，2.1 GB——并将其与用户的查询一起提供。这使得模型可以根据我们的数据获取所需的上下文。</li>
+		<li><strong>我们等待。</strong></li>
+		<li><strong>（很长时间）</strong></li>
+		<li>我们获得与用户查询最相似的句子的相似度分数，然后通过将它们映射回 URL 来返回我们的搜索结果。</li>
+	</ol>
+	<p>……然后收到另一个查询，我们不得不重新开始这个过程。</p>
+	<p>在实践中，这其实是不可能的：我们无法在 API 调用（提示）中传递如此多的上下文给大多数机器学习模型，即使我们可以，也需要巨大的内存和时间来反复处理我们的数据集。</p>
+	<p>通过使用向量数据库，我们无需重复第 2 步：我们只需执行一次，或在数据集更新时执行，并使用向量数据库为我们的机器学习模型提供一种形式的长期记忆。我们的工作流程看起来更像是这样：</p>
+	<ol>
+		<li>我们加载整个文档数据集，将其通过我们的模型运行，并将生成的向量嵌入存储在我们的向量数据库中（仅一次）。</li>
+		<li>对于每个用户查询（且仅该查询），我们向同一模型提出请求并检索一个向量表示。</li>
+		<li>我们使用该查询向量查询我们的向量数据库，该数据库返回与查询向量最接近的向量。</li>
+	</ol>
+	<p>如果我们将这两个流程并排放在一起看，我们可以很快地看出，如果没有向量数据库，使用将我们的数据集与现有模型一起使用是多么低效和不实用：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-11.png" class="kg-image" alt="" loading="lazy" width="1999" height="1333">
+		<figcaption><em>使用向量数据库来帮助机器学习模型记住东西。</em></figcaption>
+	</figure>
+	<p>从这个简单的示例中，您可能开始明白了一些道理：但是您可能也想知道为什么需要矢量数据库而不是常规数据库。</p>
+	<p>向量是模型对输入的表示：它如何将输入映射到其内部结构，即“特征”。广义上说，向量越相似，模型就认为这些输入越相似，这是基于模型从输入中提取特征的方式。</p>
+	<p>只看几个维度的示例向量时，这似乎很容易。但是在实际输出中，跨越 10000 到 250000 个向量进行搜索，每个向量可能有 1536 个维度，那可不是小任务。这就是向量数据库发挥作用的地方了：为了使搜索在规模上起作用，向量数据库使用一种特定类别的算法，例如 k 最近邻(<a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm" target="_blank">kNN</a>) 或其他近似最近邻 (ANN)<a href="https://arxiv.org/abs/1603.09320" target="_blank"> 算法</a>，来确定向量的相似度。</p>
+	<p>尽管向量数据库在构建 AI 和机器学习应用程序时非常有用，但它们<em>不仅仅</em>在这些用例中有用：它们可以用于多种分类和异常检测任务。了解查询输入与其他输入是否相似或潜在不相似可以用于内容审核（是否与已知的不良内容匹配？）和安全警报（我之前见过这个吗？）等任务。</p>
+	<h2 id="%E4%BD%BF%E7%94%A8%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%8E%A8%E8%8D%90%E5%BC%95%E6%93%8E"><strong>使用向量搜索构建一个推荐引擎</strong></h2>
+	<p>我们将 Vectorize 打造成<a href="https://developers.cloudflare.com/workers-ai" target="_blank"> Workers AI</a> 的强大伙伴： 让您能够尽可能地在靠近用户的位置运行向量搜索任务，而无需考虑如何为生产环境而扩展。</p>
+	<p>我们将举一个真实世界的例子——为一个电子商务商店构建一个(产品)推荐引擎——并简化一些事情。</p>
+	<p>我们的目标是在每个产品列表页面上显示一个“相关产品”的列表：这是向量搜索的一个完美用例。在这个示例中，我们的输入向量是占位符，但在实际应用中，我们可以基于产品描述和/或购物车数据，将这些数据通过一个句子相似性模型（如 Worker AI <a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank"> 文本嵌入模型</a>）来生成它们。</p>
+	<p>每个向量代表商店中的一个产品，并将产品的 URL 与之关联。我们还可以将每个向量的 ID 设置为产品ID：这两种方法都是有效的。我们的查询 —— 向量搜索 —— 代表用户当前正在查看的产品的产品描述和内容。让我们分步看看这在代码中的样子：本例是直接从我们的<a href="https://developers.cloudflare.com/vectorize/get-started" target="_blank"> 开发人员文档</a>提取出来的：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">export interface Env {
+	// This makes our vector index methods available on env.MY_VECTOR_INDEX.*
+	// e.g. env.MY_VECTOR_INDEX.insert() or .query()
+	TUTORIAL_INDEX: VectorizeIndex;
+}
+
+// Sample vectors: 3 dimensions wide.
+//
+// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
+// wide (or wider still).
+const sampleVectors: Array&lt;VectorizeVector&gt; = [
+	{ id: '1', values: [32.4, 74.1, 3.2], metadata: { url: '/products/sku/13913913' } },
+	{ id: '2', values: [15.1, 19.2, 15.8], metadata: { url: '/products/sku/10148191' } },
+	{ id: '3', values: [0.16, 1.2, 3.8], metadata: { url: '/products/sku/97913813' } },
+	{ id: '4', values: [75.1, 67.1, 29.9], metadata: { url: '/products/sku/418313' } },
+	{ id: '5', values: [58.8, 6.7, 3.4], metadata: { url: '/products/sku/55519183' } },
+];
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+		if (new URL(request.url).pathname !== '/') {
+			return new Response('', { status: 404 });
+		}
+		// Insert some sample vectors into our index
+		// In a real application, these vectors would be the output of a machine learning (ML) model,
+		// such as Workers AI, OpenAI, or Cohere.
+		let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
+
+		// Log the number of IDs we successfully inserted
+		console.info(`inserted ${inserted.count} vectors into the index`);
+
+		// In a real application, we would take a user query - e.g. "durable
+		// objects" - and transform it into a vector emebedding first.
+		//
+		// In our example, we're going to construct a simple vector that should
+		// match vector id #5
+		let queryVector: Array&lt;number&gt; = [54.8, 5.5, 3.1];
+
+		// Query our index and return the three (topK = 3) most similar vector
+		// IDs with their similarity score.
+		//
+		// By default, vector values are not returned, as in many cases the
+		// vectorId and scores are sufficient to map the vector back to the
+		// original content it represents.
+		let matches = await env.TUTORIAL_INDEX.query(queryVector, { topK: 3, returnVectors: true });
+
+		// We map over our results to find the most similar vector result.
+		//
+		// Since our index uses the 'cosine' distance metric, scores will range
+		// from 1 to -1.  A value of '1' means the vector is the same; the
+		// closer to 1, the more similar. Values of -1 (least similar) and 0 (no
+		// match).
+		// let closestScore = 0;
+		// let mostSimilarId = '';
+		// matches.matches.map((match) =&gt; {
+		// 	if (match.score &gt; closestScore) {
+		// 		closestScore = match.score;
+		// 		mostSimilarId = match.vectorId;
+		// 	}
+		// });
+
+		return Response.json({
+			// This will return the closest vectors: we'll see that the vector
+			// with id = 5 has the highest score (closest to 1.0) as the
+			// distance between it and our query vector is the smallest.
+			// Return the full set of matches so we can see the possible scores.
+			matches: matches,
+		});
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上面的代码故意保持简单，但是它展示了向量搜索的核心：我们将向量插入到数据库中，并查询与我们的查询向量距离最小的向量。</p>
+	<p>以下是结果，以及包含的数值，以便我们直观地观察到我们的查询向量[54.8, 5.5, 3.1] 与我们从搜索返回、得分最高的匹配项: [58.799, 6.699, 3.400] 相似。这个索引使用<a href="https://en.wikipedia.org/wiki/Cosine_similarity" target="_blank"> 余弦</a> 相似度来计算向量之间的距离，这意味着得分越接近 1，匹配项与我们的查询向量越相似。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">{
+  "matches": {
+    "count": 3,
+    "matches": [
+      {
+        "score": 0.999909,
+        "vectorId": "5",
+        "vector": {
+          "id": "5",
+          "values": [
+            58.79999923706055,
+            6.699999809265137,
+            3.4000000953674316
+          ],
+          "metadata": {
+            "url": "/products/sku/55519183"
+          }
+        }
+      },
+      {
+        "score": 0.789848,
+        "vectorId": "4",
+        "vector": {
+          "id": "4",
+          "values": [
+            75.0999984741211,
+            67.0999984741211,
+            29.899999618530273
+          ],
+          "metadata": {
+            "url": "/products/sku/418313"
+          }
+        }
+      },
+      {
+        "score": 0.611976,
+        "vectorId": "2",
+        "vector": {
+          "id": "2",
+          "values": [
+            15.100000381469727,
+            19.200000762939453,
+            15.800000190734863
+          ],
+          "metadata": {
+            "url": "/products/sku/10148191"
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在实际应用中，我们现在可以基于最相似的产品快速返回产品推荐的 URL，按它们的分数（从高到低）进行排序，并且如果我们想显示更多，可以增加 topK 值。与每个向量一起存储的元数据嵌入一个<a href="https://developers.cloudflare.com/r2" target="_blank"> R2 对象</a>的路径，<a href="https://developers.cloudflare.com/d1" target="_blank"> D1 数据库</a>中一行的 UUID，或来自<a href="https://developers.cloudflare.com/kv" target="_blank"> Workers KV</a> 的一个键值对。</p>
+	<h3 id="workers-ai-vectorize%EF%BC%9Acloudflare-%E4%B8%8A%E7%9A%84%E5%85%A8%E6%A0%88%E5%90%91%E9%87%8F%E6%90%9C%E7%B4%A2"><strong>Workers AI + Vectorize：Cloudflare 上的全栈向量搜索</strong></h3>
+	<p>在实际应用中，我们需要一个机器学习模型，它既可以从我们的原始数据集中生成向量嵌入（用于初始化我们的数据库），也可以<em>快速</em>将用户查询转换为向量嵌入。这些向量嵌入需要来自同一个模型，因为每个模型以不同的方式表示特征。</p>
+	<p>这是一个在 Cloudflare 上构建完整端到端向量搜索流程的简洁示例：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+export interface Env {
+	TEXT_EMBEDDINGS: VectorizeIndex;
+	AI: any;
+}
+interface EmbeddingResponse {
+	shape: number[];
+	data: number[][];
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+		const ai = new Ai(env.AI);
+		let path = new URL(request.url).pathname;
+		if (path.startsWith('/favicon')) {
+			return new Response('', { status: 404 });
+		}
+
+		// We only need to generate vector embeddings just the once (or as our
+		// data changes), not on every request
+		if (path === '/insert') {
+			// In a real-world application, we could read in content from R2 or
+			// a SQL database (like D1) and pass it to Workers AI
+			const stories = ['This is a story about an orange cloud', 'This is a story about a llama', 'This is a story about a hugging emoji'];
+			const modelResp: EmbeddingResponse = await ai.run('@cf/baai/bge-base-en-v1.5', {
+				text: stories,
+			});
+
+			// We need to convert the vector embeddings into a format Vectorize can accept.
+			// Each vector needs an id, a value (the vector) and optional metadata.
+			// In a real app, our ID would typicaly be bound to the ID of the source
+			// document.
+			let vectors: VectorizeVector[] = [];
+			let id = 1;
+			modelResp.data.forEach((vector) =&gt; {
+				vectors.push({ id: `${id}`, values: vector });
+				id++;
+			});
+
+			await env.TEXT_EMBEDDINGS.upsert(vectors);
+		}
+
+		// Our query: we expect this to match vector id: 1 in this simple example
+		let userQuery = 'orange cloud';
+		const queryVector: EmbeddingResponse = await ai.run('@cf/baai/bge-base-en-v1.5', {
+			text: [userQuery],
+		});
+
+		let matches = await env.TEXT_EMBEDDINGS.query(queryVector.data[0], { topK: 1 });
+		return Response.json({
+			// We expect vector id: 1 to be our top match with a score of
+			// ~0.896888444
+			// We are using a cosine distance metric, where the closer to one,
+			// the more similar.
+			matches: matches,
+		});
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上面的代码做了四件事情：</p>
+	<ol>
+		<li>它将这三个句子传递给 Workers AI<a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank"> 文本嵌入模型</a> (@cf/baai/bge-base-en-v1.5) 并检索它们的向量嵌入。</li>
+		<li>它将这些向量插入到我们的 Vectorize 索引中。</li>
+		<li>通过相同的 Workers AI 模型，将用户查询转换为向量嵌入。</li>
+		<li>查询我们的 Vectorize 索引以获取匹配项。</li>
+	</ol>
+	<p>这个例子看起来可能“太”简单了，但在实际的应用中，我们只需要改变两个地方：只需一次性插入我们的向量（或通过<a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank"> Cron Triggers</a>定期进行） 并将我们的三个示例句子替换为存储在R2、D1 数据库或其他存储提供商中的真实数据。</p>
+	<p>实际上，这与我们运行 <a href="https://developers.cloudflare.com/workers/ai" target="_blank"> Cursor</a> 的方式非常相似，这是一个可以回答 Cloudflare Worker 相关问题的 AI 助手：我们已将 Cursor 迁移到 Workers AI 和 Vectorize 上运行。我们使用内置的文本嵌入模型从我们的开发人员文档中生成文本嵌入，将它们插入到 Vectorize 索引中，并通过相同的模型实时转换用户查询。</p>
+	<h2 id="%E4%BB%8E%E6%82%A8%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84-ai-api-%E5%AF%BC%E5%85%A5%E8%87%AA%E6%9C%89%E5%B5%8C%E5%85%A5"><strong>从您最喜欢的 AI API 导入自有嵌入</strong></h2>
+	<p>Vectorize 并不局限于 Workers AI，它是一个完全成熟、独立的向量数据库。</p>
+	<p>如果您已经在使用<a href="https://platform.openai.com/docs/guides/embeddings" target="_blank"> OpenAI 的嵌入 API</a>，Cohere 的<a href="https://docs.cohere.com/reference/embed" target="_blank"> 多语言模型</a>，或任何其他嵌入 API，那么您都可以轻松地将自己的向量带到 Vectorize 中。</p>
+	<p>它以完成相同的方式工作：生成您的嵌入，将它们插入到 Vectorize 中，在查询索引之前通过模型传递您的查询。Vectorize 包含一些最流行的嵌入模型的快捷方式。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models
+$ wrangler vectorize create openai-index-example --preset=openai-text-embedding-ada-002
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如果您已经围绕现有的嵌入 API 建立了一个工作流程，并且/或者已经验证了一个特定的多模态或多语言嵌入模型以适应您的用例，那么这将特别有用。</p>
+	<h2 id="%E4%BD%BF-ai-%E7%9A%84%E6%88%90%E6%9C%AC%E5%8F%AF%E9%A2%84%E6%B5%8B"><strong>使 AI 的成本可预测</strong></h2>
+	<p>对于 AI 和 ML，人们都非常兴奋，但也有一个重大关注点：它的实验成本太高，而且难以预测规模化的成本。</p>
+	<p>通过 Vectorize，我们希望为矢量数据库引入一种更简单的定价模型。工作中需要进行概念验证？我们的免费级限制应该适合。扩展和优化嵌入维度，以便在性能和准确性之间取得平衡？这应该不会带来高额成本。</p>
+	<p>重要的是，Vectorize 旨在提供可预测性：您无需估计 CPU 和内存消耗，这在刚开始时可能很困难，而在生产环境中为全新的用例计划高峰和低峰时段则更加困难。相反，您的费用是根据您存储的向量维度总数以及每个月对其进行的查询次数来计算的。我们的任务是处理扩展以满足您的查询模式。</p>
+	<p>以下是 Vectorize 的定价——而且，如果您现在已经使用 Workers 付费计划，则可完全免费使用 Vectorize 至 2024 年：</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers 免费 (即将推出)</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers 付费 (5 美元/月)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">包含的查询向量维度</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30M 总查询维度/月</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50M 总查询维度/月</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">包含的存储向量维度</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5M 存储维度/月</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10M 存储维度/月</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">额外费用 </span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$0.04 美元 / 1M 查询或存储的向量维度</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$0.04 美元 / 1M 查询或存储的向量维度</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>定价完全基于您存储和查询的内容：（查询和存储的总向量维度）* 每个向量的维度 * 价格。需要更多查询？很容易预测。优化到每个向量较小的维度以提高速度和降低总延迟？成本降低。有一些索引用于原型设计或实验新用例？我们不按索引收费。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1123">
+		<figcaption><em>您可以根据需要创建尽可能多的索引，用于根据新想法的原型设计和/或将生产环境从开发环境分离。</em></figcaption>
+	</figure>
+	<p>举个例子：如果您加载了 10000 个 Workers AI 向量（每个向量有 384 个维度），并每天对您的索引进行 5000 次查询，那么总共查询的向量维度将达到 4900 万。这<em>仍然</em>适用于我们的 Workers 付费计划（每月 5 美元）。更好的是：我们不会因为不活动而删除您的索引。</p>
+	<p>请注意，尽管这个定价还不是最终版本，但我们预计日后只有很少的调整。我们希望避免出现令人意外的情况：在您投入时间编写代码、测试和学习一项技术的细节之<em>后</em>，发现定价无法接受，这是非常糟糕的。</p>
+	<h2 id="vectorize%EF%BC%81"><strong>Vectorize！</strong></h2>
+	<p>每个使用 Workers 付费计划的开发人员都可以立即开始使用 Vectorize：公测版现已可用，欢迎<a href="https://developers.cloudflare.com/vectorize" target="_blank"> 访问我们的开发人员文档以开始使用</a>。</p>
+	<p>对于 Cloudflare 的向量数据库而言，这只是一个开端。在接下来的几周和几个月里，我们计划推出一个新的查询引擎，以进一步提高查询性能，支持更大的索引，引入子索引过滤功能，增加元数据限制，并提供按索引的分析功能。</p>
+	<p>如果你正在寻找关于构建的灵感，<a href="https://developers.cloudflare.com/vectorize/get-started/embeddings" target="_blank"> 请参考这个语义搜索教程</a>，它结合使用 Workers AI 和 Vectorize 来进行文档搜索，并完全在 Cloudflare 上运行。也可以参考这个<a href="https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai" target="_blank"> 例子，它结合使用 OpenAI 和 Vectorize</a>，为 LLM 提供更多上下文，并显著提高其答案的准确性。</p>
+	<p>如果您需要向我们的产品和工程团队询问如何使用 Vectorize，或者只是想与其他在 Workers AI 上构建的开发人员交流想法，请在我们的 <a href="https://discord.cloudflare.com" target="_blank"> Developer Discord</a>上加入 #vectorize 和 #workers-ai 频道。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image6-3.png" class="kg-image" alt="" loading="lazy" width="1801" height="448"></figure>
+</div>

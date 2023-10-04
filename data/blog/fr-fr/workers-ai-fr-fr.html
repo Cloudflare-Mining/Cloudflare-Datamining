@@ -1,0 +1,169 @@
+<div class="mb2 gray5">12 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-29.png" class="kg-image" alt="" loading="lazy" width="1800" height="1014"></figure>
+	<p>Il est presque impossible, si vous êtes proche de la communauté des développeurs, d'éviter l'impact des récentes avancées de l'IA sur l'écosystème.Que vous utilisiez l'IA pour améliorer votre productivité ou que vous fournissiez à vos utilisateurs des fonctionnalités basées sur l'IA, celle-ci est omniprésente.Les améliorations apportées par l'IA sont extraordinaires et nous sommes très enthousiastes quant aux possibilités qui s'offrent à nous, mais cela ne suffit pas.</p>
+	<p>Il n'y a pas si longtemps, si vous vouliez tirer parti de la puissance de l'IA, vous deviez connaître les tenants et les aboutissants de l'apprentissage automatique et être en mesure de gérer l'infrastructure nécessaire.</p>
+	<p>En tant que plateforme de développement comptant plus d'un million de développeurs actifs, nous pensons qu'il y a encore beaucoup de potentiel à exploiter, c'est pourquoi nous changeons la façon dont l'IA est mise à la disposition des développeurs.De nombreuses solutions actuelles, bien que puissantes, sont basées sur des modèles fermés et propriétaires et ne répondent pas aux besoins en matière de protection de la vie privée exigés par les développeurs et les utilisateurs.Par ailleurs, le secteur de l'open source regorge de modèles puissants, mais ils ne sont tout simplement pas assez accessibles à tous les développeurs.Imaginez que vous puissiez exécuter un modèle, à partir de votre code, quel que soit l'endroit où il est hébergé, sans avoir à trouver de GPU ni à vous occuper de la mise en place de l'infrastructure nécessaire.</p>
+	<p>C'est la raison pour laquelle, nous sommes ravis d'inaugurer Workers AI, une plateforme d'inférence IA en tant que service permettant aux développeurs d'exécuter des modèles d'IA avec seulement quelques lignes de code, reposant sur notre réseau global de processeurs graphiques. Publique et accessible, serverless, axée sur la confidentialité, lle fonctionne à proximité de vos utilisateurs, est payante, et a été conçue dès le départ pour offrir aux développeurs la meilleure expérience qui soit.</p>
+	<h2 id="workers-aifaire-fonctionner-linf%C3%A9rence">Workers AI - Faire fonctionner l'inférence</h2>
+	<p>Nous lançons Workers AI pour mettre l'inférence de l'IA à la portée de tous les développeurs, et pour atteindre cet objectif, il faut <strong>qu'elle fonctionne</strong> dès le départ. Comment y parvenir–?</p>
+	<ul>
+		<li>Tout repose sur une infrastructure adaptée : notre réseau de GPU de premier ordre.</li>
+		<li>Nous fournissons des modèles prêts à l'emploi qui fonctionnent aisément sur notre infrastructure.</li>
+		<li>Enfin, fournir au développeur final un produit qui lui plaise.Un développeur devrait pouvoir créer sa première application Workers AI en quelques minutes et se dire « Wow, c'est magique ! »</li>
+	</ul>
+	<p>Alors, qu'est-ce que Workers AI exactement ? C'est un nouveau bloc de construction que nous ajoutons à notre plateforme de développeurs - un bloc qui aide les développeurs à exécuter des modèles d'IA bien connus sur des GPU serverless, le tout sur le réseau global sécurisé de Cloudflare.Il s'agit de l'un des derniers ajouts à notre plateforme de développement, qui fonctionne harmonieusement avec Workers + Pages, mais pour le rendre vraiment accessible, nous l'avons rendu agnostique, de sorte qu'il fonctionne également partout ailleurs, et qu'il est disponible via une API REST.</p>
+	<h2 id="des-mod%C3%A8les-que-vous-connaissez-et-adorez">Des modèles que vous connaissez et adorez</h2>
+	<p>Nous lançons un ensemble de modèles populaires et open source, qui couvrent un large éventail de tâches d'inférence :</p>
+	<ul>
+		<li><strong>Génération de texte ( large modèle de langage) :</strong> meta/llama-2-7b-chat-int8</li>
+		<li><strong>Reconnaissance vocale automatique (ASR) :</strong> openai/whisper</li>
+		<li><strong>Traduction :</strong> meta/m2m100-1.2</li>
+		<li><strong>Classification de texte :</strong> huggingface/distilbert-sst-2-int8</li>
+		<li><strong>Classification d'images :</strong> microsoft/resnet-50</li>
+		<li><strong>Embeddings :</strong> baai/bge-base-en-v1.5</li>
+	</ul>
+	<p>Vous pouvez parcourir tous les modèles disponibles dans votre tableau de bord Cloudflare, et vous pourrez bientôt vous plonger dans les journaux et les analyses pour chaque modèle !</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-14.png" class="kg-image" alt="" loading="lazy" width="1306" height="832"></figure>
+	<p>Ce n'est qu'un début et nous avons de grands projets. Après le lancement, nous continuerons à nous étoffer en fonction des commentaires de la communauté. Encore plus excitant - dans un effort pour que notre catalogue se développe au maximum, nous annonçons un partenariat avec Hugging Face, une communauté d'IA de premier plan + un hub. Le partenariat est multiple, et vous pouvez en savoir plus<a href="https://blog.cloudflare.com/best-place-region-earth-inference"> ici</a>, mais bientôt vous pourrez parcourir et exécuter un sous-ensemble du catalogue de Hugging Face directement dans Workers AI.</p>
+	<h2 id="accessible-%C3%A0-tous">Accessible à tous</h2>
+	<p>Un des objectifs de notre plateforme de développement est de fournir aux développeurs <strong>tous</strong> les éléments dont ils ont besoin pour créer les applications de leurs rêves. L'accès aux bons éléments n'est qu'un aspect du problème - en tant que développeur, votre tâche consiste à les assembler pour en faire une application. Notre objectif est de rendre cette tâche aussi facile que possible.</p>
+	<p>Pour s'assurer que vous puissiez utiliser Workers AI facilement quel que soit le point d'entrée, nous voulions fournir un accès via : Workers ou Pages pour faciliter son utilisation au sein de l'écosystème Cloudflare, et via l'API REST si vous souhaitez utiliser Workers AI avec votre stack actuel.</p>
+	<p>Voici un exemple rapide de CURL qui traduit un texte de l'anglais au français :</p><!--kg-card-begin: markdown-->
+	<pre><code>curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/m2m100-1.2b \
+-H "Authorization: Bearer {API_TOKEN}" \
+	-d '{ "text": "I'll have an order of the moule frites", "target_lang": "french" }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Et voici à quoi ressemble la réponse :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">{
+  "result": {
+    "answer": "Je vais commander des moules frites"
+  },
+  "success": true,
+  "errors":[],
+  "messages":[]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Utilisez-le avec n'importe quel stack, n'importe où - votre framework Jamstack préféré, Python + Django/Flask, Node.js,Ruby on Rails, les possibilités sont infinies.Et déployez.</p>
+	<h2 id="con%C3%A7ue-pour-les-d%C3%A9veloppeurs">Conçue pour les développeurs</h2>
+	<p>L'expérience des développeurs est très importante pour nous.C'est d'ailleurs le sujet de la majeure partie de cette chronique.Garantir le fonctionnement immédiat.Fournir des modèles populaires qui fonctionnent.Être accessible à tous les développeurs, que vous construisiez et déployiez avec Cloudflare ou ailleurs.Mais cela va plus loin : l'expérience doit être fluide, le passage de zéro à la production doit être rapide et vous devez vous sentir bien tout au long du processus.</p>
+	<p>Prenons un autre exemple pour montrer à quel point elle est facile à utiliser : nous allons utiliser Llama 2, un modèle de langage très répandu et mis à disposition par Meta, dans un worker.</p>
+	<p>Nous supposons que vous disposez déjà de certaines bases (compte Cloudflare, Node, NPM, etc.), mais si ce n'est pas le cas <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">ce guide</a> vous permettra de vous équiper correctement !</p>
+	<h3 id="1-cr%C3%A9ez-un-projet-workers">1. Créez un projet Workers</h3>
+	<p>Créez un nouveau projet nommé workers-ai en exécutant ce qui suit :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npm create cloudflare@latest
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Lors de la configuration de votre worker-ai, répondez aux questions de configuration comme suit–:</p>
+	<ul>
+		<li>Entrez <strong>workers-ai</strong> pour le nom de l'application</li>
+		<li>Choisissez le script <strong>Hello World</strong> en fonction du type d'application</li>
+		<li>Sélectionnez <strong>oui </strong>concernant l'utilisation de TypeScript</li>
+		<li>Sélectionnez <strong>oui </strong>concernant l'utilisation de Git</li>
+		<li>Sélectionnez <strong>non </strong>concernant le déploiement</li>
+	</ul>
+	<p>Enfin, naviguez jusqu'au répertoire de votre nouvelle application :</p><!--kg-card-begin: markdown-->
+	<pre><code>cd workers-ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="2-connectez-workers-ai-%C3%A0-votre-worker">2. Connectez Workers AI à votre worker</h3>
+	<p>Créez une liaison Workers AI, qui permet à votre worker d'accéder au service Workers AI sans avoir à gérer vous-même une clé API.</p>
+	<p>Pour lier Workers AI à votre worker, ajoutez ce qui suit à la fin de votre fichier <strong>wrangler.toml</strong> :</p><!--kg-card-begin: markdown-->
+	<pre><code>[ai]
+binding = "AI" #available in your worker via env.AI
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Vous pouvez également lier Workers AI à une fonction Pages. Pour plus d'informations, consultez <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">Functions Bindings</a>.</p>
+	<h3 id="3-installez-la-biblioth%C3%A8que-client-workers-ai">3. Installez la bibliothèque client Workers AI</h3><!--kg-card-begin: markdown-->
+	<pre><code>npm install @cloudflare/ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="4-ex%C3%A9cutez-une-t%C3%A2che-dinf%C3%A9rence-dans-votre-worker">4. Exécutez une tâche d'inférence dans votre worker.</h3>
+	<p>Mettez à jour le fichier <strong>source/index.ts</strong> avec le code suivant :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai'
+export default {
+  async fetch(request, env) {
+    const ai = new Ai(env.AI);
+    const input = { prompt: "What's the origin of the phrase 'Hello, World'" };
+    const output = await ai.run('@cf/meta/llama-2-7b-chat-int8', input );
+    return new Response(JSON.stringify(output));
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="5-d%C3%A9veloppez-localement-avec-wrangler">5. Développez localement avec Wrangler</h3>
+	<p>Lorsque vous êtes dans le répertoire de votre projet, testez Workers AI localement en exécutant :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler dev --remote
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Remarque - </strong>Ces modèles ne fonctionnent actuellement que sur le réseau de GPU de Cloudflare (et non localement), il est donc indispensable de définir le paramètre <code>--remote</code> ci-dessus, et vous serez invité à vous connecter à ce stade.</p>
+	<p>Wrangler vous donnera une URL (probablement localhost:8787).Cliquez sur cette URL et vous obtiendrez une réponse comme celle-ci</p><!--kg-card-begin: markdown-->
+	<pre><code>{
+  "response": "Hello, World is a common phrase used to test the output of a computer program, particularly in the early stages of programming. The phrase "Hello, World!" is often the first program that a beginner learns to write, and it is included in many programming language tutorials and textbooks as a way to introduce basic programming concepts. The origin of the phrase "Hello, World!" as a programming test is unclear, but it is believed to have originated in the 1970s. One of the earliest known references to the phrase is in a 1976 book called "The C Programming Language" by Brian Kernighan and Dennis Ritchie, which is considered one of the most influential books on the development of the C programming language.
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="6-d%C3%A9ployez-votre-worker">6. Déployez votre worker</h3>
+	<p>Enfin, déployez votre worker pour rendre votre projet accessible sur Internet :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler deploy
+# Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Et c'est tout.Vous pouvez littéralement passer de zéro au déploiement de votre IA en quelques minutes.Il s'agit évidemment d'un exemple simple, mais il montre à quel point il est facile d'exécuter Workers AI à partir de n'importe quel projet.</p>
+	<h2 id="la-confidentialit%C3%A9-par-d%C3%A9faut">La confidentialité par défaut</h2>
+	<p>Lors de la création de Cloudflare, notre proposition de valeur reposait sur trois piliers : plus sûr, plus fiable et plus performant.Au fil du temps, nous avons réalisé qu'un meilleur internet est aussi un internet plus privé, et nous voulons jouer un rôle dans sa construction.</p>
+	<p>C'est pourquoi Workers AI est privé par défaut - nous n'entraînons pas nos modèles, LLM ou autres, sur vos données ou conversations, et nos modèles n'apprennent pas de votre utilisation.Vous pouvez utiliser Workers AI en toute confiance, que ce soit dans un cadre personnel ou professionnel, sans craindre que vos données ne soient divulguées.D'autres fournisseurs n'offrent cette fonctionnalité fondamentale qu'avec leur version d'entreprise.Chez nous, tout le monde y a accès.</p>
+	<p>Nous sommes également impatients de soutenir la localisation des données à l'avenir.Pour y parvenir, nous avons un plan ambitieux de déploiement de GPU - nous lançons sept sites aujourd'hui, une centaine d'ici à la fin de 2023 et presque tous les sites d'ici à la fin de 2024.Au final, cela permettra aux développeurs de continuer à proposer des fonctions d'IA de premier ordre à leurs utilisateurs, tout en restant conformes aux exigences de localisation des données de leurs utilisateurs finaux.</p>
+	<h2 id="la-puissance-de-la-plateforme">La puissance de la plateforme</h2>
+	<h4 id="de-donn%C3%A9es-vectoriellesvectorize"><strong>de données vectorielles - Vectorize</strong></h4>
+	<p>Workers AI a pour mission d'effectuer des inférences et de faciliter cette tâche, mais l'inférence n'est parfois qu'une partie de l'équation.Les grands modèles de langages sont formés sur un ensemble fixe de données, sur la base d'un instantané à un moment précis dans le passé, et n'ont aucun rapport avec votre activité ou votre cas d'utilisation.Lorsque vous soumettez une requête, les informations qui vous sont propres peuvent améliorer la qualité des résultats, les rendant plus utiles et plus pertinents.C'est pourquoi nous lançons également Vectorize, notre base de données vectorielles conçue pour fonctionner harmonieusement avec Workers AI.Voici un aperçu rapide de la façon dont vous pouvez utiliser ensemble Workers AI + Vectorize.</p>
+	<p>Exemple : Utilisez vos données (base de connaissances) pour fournir un contexte supplémentaire à un LLM lorsqu'un utilisateur chatte avec lui.</p>
+	<ol>
+		<li><strong>Générez les embeddings initiaux :</strong> utilisez un modèle d'embedding dans Workers AI pour traiter vos données. Vous obtiendrez des embeddings, c'est-à-dire des représentations numériques de ces mots.</li>
+		<li><strong>Insérez ces embeddings dans Vectorize : </strong>cela permet de renseigner la base de données vectorielle avec vos données, de sorte que nous puissions l'utiliser ultérieurement pour récupérer des embeddings similaires à la requête de vos utilisateurs.</li>
+		<li><strong>Générez un embedding à partir de la question de l'utilisateur : </strong>lorsqu'un utilisateur soumet une question à votre application d'IA, commencez par prendre cette question et faites-la passer par Workers AI à l'aide d'un modèle d'embedding.</li>
+		<li><strong>Obtenez du contexte à partir de Vectorize : </strong>utilisez cet embedding pour interroger Vectorize, ce qui devrait produire des embeddings similaires à la question de l'utilisateur.</li>
+		<li><strong>Créez une invite tenant compte du contexte : </strong>Prenez maintenant le texte original associé à ces embeddings et créez une nouvelle invite combinant le texte de la recherche vectorielle et la question originale</li>
+		<li><strong>Exécutez l'invite : </strong>exécutez cette invite à travers Workers AI à l'aide d'un modèle LLM pour obtenir votre résultat final</li>
+	</ol>
+	<h4 id="ai-gateway"><strong>AI Gateway</strong></h4>
+	<p>Cela couvre un cas d'utilisation plus avancé. Par ailleurs, si vous exécutez des modèles ailleurs, mais que vous souhaitez tirer davantage parti de l'expérience, vous pouvez exécuter ces API via notre AI Gateway pour bénéficier de fonctionnalités telles que la mise en cache, la limitation du débit, l'analyse et la journalisation. Ces fonctionnalités peuvent être utilisées pour protéger votre point final, surveiller et optimiser les coûts, ainsi que pour contribuer à la prévention des pertes de données. En savoir plus sur AI Gateway <a href="https://blog.cloudflare.com/announcing-ai-gateway">ici</a>.</p>
+	<h2 id="commencez-%C3%A0-construire-aujourdhui">Commencez à construire aujourd'hui</h2>
+	<p>Essayez-la vous-même et dites-nous ce que vous en pensez.Aujourd'hui, nous lançons Workers AI en version bêta ouverte pour tous les plans Workers - gratuits ou payants.Cela dit, c'est vraiment le début alors...</p>
+	<h4 id="avertissementil-sagit-dune-premi%C3%A8re-version-b%C3%AAta"><strong>Avertissement - Il s'agit d'une première version bêta</strong></h4>
+	<p>L'utilisation n'est <strong>actuellement pas recommandée pour les applications de production</strong>, et les limites + l'accès sont susceptibles d'être modifiés.</p>
+	<h4 id="limites"><strong>Limites</strong></h4>
+	<p>Dans un premier temps, nous avons fixé des limites par modèle.</p>
+	<ul>
+		<li>@cf/meta/llama-2-7b-chat-int8 : 50 reqs/min globalement</li>
+	</ul>
+	<p>Consultez notre <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">documentation</a> pour un aperçu complet de nos limites.</p>
+	<h4 id="tarification"><strong>Tarification</strong></h4>
+	<p>Ce que nous avons publié aujourd'hui n'est qu'un petit aperçu pour vous donner un avant-goût de ce qui vous attend (nous ne pouvions tout simplement pas nous retenir), mais nous sommes impatients de mettre à votre disposition la version complète de Workers AI.</p>
+	<p>Nous sommes conscients que lorsque vous vous apprêtez à construire quelque chose, vous voulez savoir : combien cela va-t-il me coûter ?D'autant plus que les coûts de l'IA peuvent facilement devenir incontrôlables.C'est pourquoi nous avons voulu partager avec vous la tarification à venir de Workers AI.</p>
+	<p>Bien que nous ne facturerons pas dès le premier jour, nous annonçons les tarifs que nous prévoyons d'appliquer.</p>
+	<p>Les utilisateurs pourront choisir entre deux modes d'exécution de Workers AI :</p>
+	<ul>
+		<li><strong>Regular Twitch Neurons (RTN) </strong>- fonctionnant partout où il y a de la capacité à 0,01 $ / 1k neurones</li>
+		<li><strong>Fast Twitch Neurons (FTN)</strong> - fonctionnant à l'endroit le plus proche de l'utilisateur à 0,125 $ / 1k neurones</li>
+	</ul>
+	<p>Vous vous demandez peut-être ce qu'est un neurone ?</p>
+	<p>Les neurones sont un moyen de mesurer la production de l'IA qui est toujours ramenée à zéro (si vous n'utilisez rien, vous serez facturé pour 0 neurone).Pour vous donner une idée de ce que vous pouvez accomplir avec un millier de neurones, vous pouvez : générer 130 réponses LLM, 830 classifications d'images ou 1 250 encastrements.</p>
+	<p>Notre objectif est d'aider nos clients à ne payer que pour ce qu'ils utilisent et à choisir la tarification qui correspond le mieux à leur situation, qu'il s'agisse du prix ou de la latence.</p>
+	<h3 id="quelle-est-la-feuille-de-route">Quelle est la feuille de route ?</h3>
+	<p>Workers AI n'en est qu'à ses débuts et nous avons besoin de vos observations pour l'améliorer.Cela dit, la feuille de route comporte des éléments intéressants.</p>
+	<h4 id="plus-de-mod%C3%A8les-sil-vous-pla%C3%AEt"><strong>Plus de modèles, s'il vous plaît</strong></h4>
+	<p>Nous lançons un ensemble solide de modèles qui fonctionnent parfaitement, mais nous continuerons à proposer de nouveaux modèles en fonction de vos commentaires. S'il y a un modèle particulier que vous aimeriez voir sur Workers AI, allez sur notre <a href="https://discord.cloudflare.com" target="_blank">Discord</a> dites-le nous !</p>
+	<p>De plus, nous annonçons également un <a href="https://blog.cloudflare.com/best-place-region-earth-inference">partenariat avecHugging Face</a>, et vous pourrez bientôt accéder à un sous-ensemble du catalogue Hugging Face et l'exécuter directement à partir de Workers AI.</p>
+	<h4 id="analyse-observabilit%C3%A9"><strong>Analyse + observabilité</strong></h4>
+	<p>Jusqu'à présent, nous nous sommes concentrés sur une seule chose : permettre à n'importe quel développeur d'exécuter facilement de puissants modèles d'IA en quelques lignes de code.Mais ce n'est qu'une facette du sujet.Prochainement, nous travaillerons sur des capacités d'analyse et d'observabilité pour vous donner un aperçu de votre utilisation, de vos performances et de vos dépenses par modèle, ainsi que la possibilité d'accéder à vos logs si vous souhaitez faire de l'exploration.</p>
+	<h4 id="vers-une-couverture-gpu-globale"><strong>Vers une couverture GPU globale</strong></h4>
+	<p>Notre objectif est d'être le meilleur endroit pour faire de l'inférence sur Region:Earth. C'est pourquoi nous ajoutons des GPU à nos centres de données aussi rapidement que possible.</p>
+	<p><strong>Nous prévoyons d'être présents dans 100 centres de données d'ici la fin de l'année.</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
+	<p><strong>Et presque partout d'ici à la fin de 2024</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p><strong>Nous sommes impatients de vous voir créer</strong> - consultez <a href="https://developers.cloudflare.com/workers-ai" target="_blank">notre documentation</a> pour commencer.Si vous avez besoin d'inspiration, si vous voulez partager quelque chose que vous construisez ou si vous avez une question, allez sur notre <a href="https://discord.com/invite/cloudflaredev" target="_blank">Developer Discord</a>.</p>
+</div>

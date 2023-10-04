@@ -1,0 +1,101 @@
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-33.png" class="kg-image" alt="Hyperdrive: making databases feel like they’re global" loading="lazy" width="1801" height="1013"></figure>
+	<p>Hyperdriveは、実行されている場所を問わず、Cloudflare Workersから既存のデータベースへのアクセスを超高速にします。Hyperdriveをデータベースに接続し、Hyperdriveを経由して接続するようにコードを1行変更するだけで、接続とクエリーが高速化されます（秘密：<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">本日から 使えます</a> ） 。</p>
+	<p>一言で言えば、Hyperdriveは当社のグローバルネットワークを使用して、レガシーなクラウドプロバイダーであろうとお気に入りのサーバーレスデータベースプロバイダーであろうと、既存のデータベースへのクエリーを高速化し、新しいデータベース接続を繰り返し設定することで発生する遅延を劇的に短縮し、データベースに対して最も一般的な読取りクエリーをキャッシュします。これにより、データベースに戻る必要がなくなります。</p>
+	<p>Hyperdriveがなければ、レガシークラウドプロバイダーのus-east1リージョンにあるコアデータベース（ユーザープロファイル、製品在庫、または重要なWebアプリを実行しているデータベース）へのアクセスは、パリ、シンガポール、ドバイのユーザーにとっては非常に遅くなり、ロサンゼルスやバンクーバーのユーザーにとっては必要以上に遅くなります。各ラウンドトリップに最大200msかかるため、データのクエリーを行う前に、接続をセットアップするためだけに何度もラウンドトリップすることになり、1秒（またはそれ以上）も費やしてしまうことになります。Hyperdrive はこれを解決するために設計されています。 </p>
+	<p>Hyperdriveのパフォーマンスを実証するため、 Hyperdriveを使用した場合とHyperdriveを使用しない場合（直接）の両方で、同じデータベースに対して連続してクエリーを実行する<a href="https://hyperdrive-demo.pages.dev" target="_blank">デモアプリケーションを</a>作成しました。このアプリケーションは、近隣の大陸のデータベースを選択します。ヨーロッパにいる場合は米国のデータベースを選択します。これは、多くのヨーロッパのインターネットユーザーにとって非常に一般的です。アフリカにいる場合はヨーロッパのデータベースを選択します（以下同様）。このクエリーは、厳選された平均値や厳選された指標を使用せず、単純な`SELECT`クエリーから生の結果を返します。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1705">
+		<figcaption><em>Cloudflareでは、Hyperdriveを使用した場合と使用しない場合で、PostgreSQLデータベースに実際のクエリーを実行する</em><a href="https://hyperdrive-demo.pages.dev" target="_blank"><em>デモアプリを作成</em></a><em>しました。</em></figcaption>
+	</figure>
+	<p>社内テスト、初期ユーザーレポート、およびベンチマークでの複数回の実行を通じて、Hyperdriveは、キャッシュされたクエリーではデータベースに直接アクセスする場合と比較して17～25倍、キャッシュされていないクエリーおよび書き込みでは6～8倍のパフォーマンス向上を実現しています。キャッシュされた遅延は驚くことではないかもしれませんが、キャッシュされていないクエリーで6～8倍速くなることは、お客様のご意見を「Cloudflare Workersから集中管理されたデータベースにクエリーできない」を「非常に有用な機能だ！」に変えると私たちは考えています。また、パフォーマンスの改善にも引き続き取り組んでいます。すでに、さらなる遅延の低減を確認しており、今後数週間のうちに、その低減分を推進していく予定です。</p>
+	<p>一番の魅力は？Workersの有料プランにお申込みいただいている開発者は、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">すぐにHyperdriveオープンベータを使い始める</a>ことができます。待機リストや専用の登録フォームへの登録は不要です。</p>
+	<h3 id="hyperdrive%E3%82%92%E8%81%9E%E3%81%84%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B%EF%BC%9F">Hyperdriveを聞いたことがありませんか？</h3>
+	<p>私たちはしばらくの間、Hyperdriveに秘密裏に取り組んできました。ですが、開発者がすでに持っているデータベース（既存のデータ、クエリー、ツール）に接続できるようにすることは、かなり以前から考えていたことでした。</p>
+	<p>Workersのような最新の分散型クラウド環境では、コンピューティングはグローバルに分散され（そのためユーザーの近くにある）、関数は短時間で終了する（そのため必要以上の課金はされない）ため、従来のデータベースへの接続は遅くて拡張性がありませんでした。遅いというのは、接続を確立するのに7往復（TCPハンドシェイク、TLSネゴシエーション、認証）以上かかるためであり、拡張性がないというのは、PostgreSQLのようなデータベースは<a href="https://www.postgresql.org/message-id/flat/31cc6df9-53fe-3cd9-af5b-ac0d801163f4%40iki.fi" target="_blank">接続あたりのリソースコストが高い</a>ためです。データベースへの数百の接続でさえ、クエリーに必要なメモリとは別に、無視できないメモリを消費します。</p>
+	<p>Neon（人気のあるサーバーレスPostgresプロバイダー）の友人たちはこのことについて書いており、接続のオーバーヘッドを<a href="https://neon.tech/blog/serverless-driver-for-postgres" target="_blank">減らすためのWebSocketプロキシとドライバまでリリースして</a>いますが、それでもまだ力戦奮闘しています。カスタムドライバを使うと4往復まで減らすことができますが、それでもそれぞれに50～200ミリ秒以上かかる可能性があります。これらの接続が長寿命であれば、それは問題ありません。しかし、接続が個々の関数呼び出しにスコープ化され、せいぜい数ミリ秒から数分しか役に立たない場合、コードはより多くの待ち時間を費やすことになります。これは事実上、別の種類のコールドスタートです。クエリーを実行する前にデータベースへの新しい接続を開始する必要があるため、分散環境やサーバーレス環境で従来のデータベースを使用するのは（控えめに言っても）<em>本当に遅い</em>のです。</p>
+	<p>これに対抗するため、Hyperdriveは2つのことを行います。</p>
+	<p>第一に、Cloudflare WorkerはCloudflareのネットワーク全体にわたる地域データベース接続プールのセットを維持するので、リクエストごとにデータベースへの新規接続を行う必要がありません。その代わりに、WorkerはHyperdriveへの接続を（高速で）確立し、Hyperdriveはデータベースへの接続プールを維持します。データベースは<em>1回の</em>ラウンドトリップで30msから300msとなることがあるため （新しい接続に必要な7回以上の接続は別として）、利用可能な接続のプールを持つことで、短時間の接続が被る遅延の問題を劇的に減らすことができます。</p>
+	<p>第二に、読み取り（non-mutating）クエリーと書き込み（mutating）クエリーとトランザクションの違いを理解し、最もよく使われる読み取りクエリーを自動的にキャッシュすることができます。このクエリーは、一般的なWebアプリのデータベースに対して行われるクエリーの80%以上を占めます。何万人ものユーザーが毎時間訪れる商品一覧ページ、大手求人サイトの求人情報、あるいは時折変更される設定データに対するクエリーなど、クエリーされる内容の膨大な部分は頻繁に変更されるものではないため、ユーザーがクエリーを実行する場所の近くにキャッシュすることで、次の1万人のユーザーのデータへのアクセスを劇的に高速化することができます。安全にキャッシュすることができない書き込みクエリーは、Hyperdriveの接続プール<em>と</em>Cloudflareの<a href="https://www.cloudflare.com/network" target="_blank">グローバルネットワーク</a>の両方から恩恵を受けることができます。つまり、バックボーンを介してインターネット上で最も早い経路をとることができれば、そこでの待ち時間も短縮できるのです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-16.png" class="kg-image" alt="" loading="lazy" width="1725" height="1005">
+		<figcaption><em>たとえデータベースが国の反対側にあったとしても、70ms×6ラウンドトリップというのは、ユーザーがクエリーの応答を待つにはかなりの時間です。</em></figcaption>
+	</figure>
+	<p>Hyperdriveは、<a href="https://neon.tech" target="_blank">Neon</a>、GoogleクラウドSQL、AWS RDS、 <a href="https://www.timescale.com" target="_blank">Timescaleなどの</a>PostgreSQLデータベースだけでなく、 <a href="https://materialize.com" target="_blank">Materialize</a>（強力なストリーム処理データベース）、<a href="https://www.cockroachlabs.com" target="_blank">CockroachDB</a>（主要な分散データベース）、Googleクラウドの<a href="https://cloud.google.com/alloydb" target="_blank">AlloyDB</a>、AWS Aurora PostgresなどのPostgreSQL互換データベースでも動作します。</p>
+	<p>また、PlanetScaleのようなプロバイダーも含め、MySQLのサポートを年内に実現するよう取り組んでおり、将来的にはさらに多くのデータベースエンジンをサポートする予定です。</p>
+	<h3 id="%E6%8E%A5%E7%B6%9A%E7%94%A8%E3%81%AE%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%E6%96%87%E5%AD%97%E5%88%97">接続用のマジック文字列</h3>
+	<p>Hyperdriveの主要な設計目標の1つは、開発者が既存のドライバ、クエリービルダー、ORM（Object-Relational Mapper）ライブラリを使い続ける必要性でした。Hyperdriveのパフォーマンスの恩恵を受けるために、お気に入りのORMからの移行や、数百行（またはそれ以上）のコードの書き換えが必要であれば、Hyperdriveがどれほど高速であるかは重要ではなかったでしょう。</p>
+	<p>これを達成するために、私たちは<a href="https://node-postgres.com" target="_blank">node-postgres</a>や<a href="https://github.com/porsager/postgres" target="_blank">Postgres.js</a>を含む人気のあるオープンソースドライバのメンテナーと協力し、<a href="https://github.com/wintercg/proposal-sockets-api" target="_blank">標準化プロセスを経ている</a><a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Workerの新しいTCPソケットAPIをライブラリがサポートできるように</a>支援しました。そして、Node.js、Deno、Bunに対するサポートも拡充予定です。</p>
+	<p>地味なデータベース接続文字列は、データベースドライバの共有言語であり、通常、次の形式をとります。</p><!--kg-card-begin: markdown-->
+	<pre><code>postgres://user:password@some.database.host.example.com:5432/postgres
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hyperdriveの魔法は、接続文字列をHyperdriveが生成するものに置き換えるだけで、既存のWorkersアプリで、既存のクエリーで、Hyperdriveを使い始めることができるということです。</p>
+	<h3 id="hyperdrive%E3%81%AE%E4%BD%9C%E6%88%90">Hyperdriveの作成</h3>
+	<p>既存のデータベース（この例では、<a href="https://neon.tech" target="_blank">Neon</a>のPostgresデータベースを使用）が準備できていれば、Hyperdriveを起動させるのに1分もかかりません（実際、時間を計測しました）。</p>
+	<p>既存のCloudflare Workersプロジェクトがない場合は、すぐに作成できます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-Python">$ npm create cloudflare@latest
+# Call the application "hyperdrive-demo"
+# Choose "Hello World Worker" as your template
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ここからは、データベースの接続文字列と、 Hyperdriveに接続させるための簡単な <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update" target="_blank">Wrangler コマンドライン</a> 呼び出しが必要です。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-Python"># Using wrangler v3.10.0 or above
+wrangler hyperdrive create a-faster-database --connection-string="postgres://user:password@neon.tech:5432/neondb"
+
+# This will return an ID: we'll use this in the next step
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Workerの<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank">wrangler.toml構成</a>ファイルにHyperdriveを追加：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">[[hyperdrive]]
+name = "HYPERDRIVE"
+id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これで、<a href="https://developers.cloudflare.com/workers" target="_blank">Worker</a>を書く、あるいは既存のWorkerスクリプトを利用し、Hyperdriveを使って既存のデータベースへの接続とクエリーを高速化することができます。ここで、<a href="https://node-postgres.com" target="_blank">node-postgres</a>を使用していますが、単純に<a href="https://orm.drizzle.team" target="_blank">Drizzle ORM</a>を使うこともできます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">import { Client } from 'pg';
+
+export interface Env {
+	HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		console.log(JSON.stringify(env));
+		// Create a database client that connects to our database via Hyperdrive
+		//
+		// Hyperdrive generates a unique connection string you can pass to
+		// supported drivers, including node-postgres, Postgres.js, and the many
+		// ORMs and query builders that use these drivers.
+		const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+
+		try {
+			// Connect to our database
+			await client.connect();
+
+			// A very simple test query
+			let result = await client.query({ text: 'SELECT * FROM pg_tables' });
+
+			// Return our result rows as JSON
+			return Response.json({ result: result });
+		} catch (e) {
+			console.log(e);
+			return Response.json({ error: JSON.stringify(e) }, { status: 500 });
+		}
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上のコードは意図的にシンプルにしていますが、うまくいけば魔法が見えるでしょう。データベースドライバはHyperdriveから接続文字列を取得しており、何も複雑なことは行っていません。Hyperdriveについて何も知らなくてもいいですし、お気に入りのクエリービルダーライブラリを捨てる必要もありません。クエリーを作成するときにすぐに速度の利点に気付くことができます。</p>
+	<p>接続は自動的にプールされ、使用できる状態に維持され、最もよく使われるクエリーはキャッシュされ、アプリケーション全体が高速化されます。</p>
+	<p>また、 Hyperdriveに必要なもの（接続文字列）を簡単に取得できるよう、<a href="https://developers.cloudflare.com/hyperdrive/examples" target="_blank">主要なデータベースプロバイダごとにガイドを作成</a>しました。</p>
+	<h3 id="%E9%AB%98%E9%80%9F%E3%81%A7%E3%81%82%E3%82%8B%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%AF%E9%AB%98%E3%82%B3%E3%82%B9%E3%83%88%E3%81%A7%E3%81%82%E3%82%8B%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F">高速であるということは高コストであるということですか？ </h3>
+	<p>私たちは、Cloudflare Workers上で構築する際、既存のデータベースにアクセスするためにHyperdriveが不可欠であると考えています。従来のデータベースは、クライアントがグローバルに分散している世界を想定して設計されていなかったのです。 </p>
+	<p><strong>Hyperdriveの接続プールは、現在サポートしているデータベースプロトコルと将来追加する新しいデータベースプロトコルの両方に対して、常に無料です</strong> 。DDoS攻撃対策やグローバル<a href="https://www.cloudflare.com/application-services/products/cdn" target="_blank">CDN</a>と同様に、Hyperdriveのコア機能へのアクセスは、必要不可欠な機能であると考えています。</p>
+	<p>オープンベータ期間中、どのように使ってもHyperdrive自体に利用料は発生しません。GA間近（2024年初頭）にHyperdriveの価格についての詳細を発表する予定です。</p>
+	<h3 id="%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%BC%E3%81%AE%E6%99%82%E9%96%93">クエリーの時間</h3>
+	<p>では、Hyperdriveはここからどこにいくのか？</p>
+	<p>Cloudflareでは、Hyperdriveを2024年初頭にGAに導入する予定です。そして、書き込みに基づいてキャッシュし、自動的に無効化する方法に対するより多くの制御やパフォーマンス分析（まもなくです！）の導入、より多くのデータベースエンジンのサポート（MySQLを含む）、ならびにさらなる高速化に向けた取り組みを続けています。 </p>
+	<p>また、パブリックインターネットに公開されていない（または公開できない）データベースへの接続のため、<a href="https://developers.cloudflare.com/magic-wan" target="_blank">Magic WAN</a>やCloudflare Tunnelを介したプライベートネットワーク接続の有効化にも取り組んでいます。</p>
+	<p>Hyperdriveを既存のデータベースに接続するには、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">開発者向けドキュメント</a>をご覧ください。Hyperdriveを作成し、それを使用するために既存のコードを更新するのに1分もかかりません。Cloudflareの<a href="https://discord.cloudflare.com" target="_blank">開発者向けDiscord</a>の<em>#hyperdrive-beta</em>チャンネルに参加して、質問したり、バグを報告したり、私たちの製品&amp; エンジニアリングチームと直接話したりしましょう。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-31.png" class="kg-image" alt="" loading="lazy" width="1800" height="647"></figure>
+</div>

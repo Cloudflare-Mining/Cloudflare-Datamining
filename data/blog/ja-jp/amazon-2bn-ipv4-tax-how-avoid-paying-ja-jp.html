@@ -1,0 +1,56 @@
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image7-11.png" class="kg-image" alt="Amazon’s $2bn IPv4 tax — and how you can avoid paying it" loading="lazy" width="1801" height="1013"></figure>
+	<p>インターネットの素晴らしいところは、消費者と生産者の両者にとってコストが下がり続けていると言うことです。ひと昔前は、サーバールーム、多数のハードウェア、それらすべてを稼働させるための人員が必要でした。クラウドはそれを変える存在でしたが、SSLやメーター制ではないDDoS攻撃対策のようなサービスは、多くの人にとって手の届かないものでした。私たちは、使いやすさとコスト削減の両方を通じて、よりアクセスしやすいインターネットに進歩することは素晴らしいことだと考えており、その実現に私たちが一役買ったことを誇りに思っています。</p>
+	<p>しかし、時折、進歩の歩みは中断されてしまいます。</p>
+	<p>2023年7月28日、2024年2月1日より「サービスに接続されているか否かにかかわらず、すべてのパブリックIPv4アドレスに対して1時間あたり各IPに対して」課金を開始すると<a href="https://aws.amazon.com/blogs/aws/new-aws-public-ipv4-address-charge-public-ip-insights" target="_blank">Amazon Web Services（AWS）が発表</a>しました。この変更により、Amazonの顧客は使用するIPv4アドレス1つにつき、年間少なくとも43ドルが加算されることになります。大した額ではないと思われるかもしれませんが、私たちは、これがインターネットへの約20億ドルの課税につながることを<a href="https://www.linkedin.com/posts/atoonk_new-aws-public-ipv4-address-charge-public-activity-7091779585368862720-x0zw" target="_blank">示唆</a>する簡単な試算による分析を見てきました。</p>
+	<p>このブログでは、関連するテクノロジーについてもう少し説明しますが、最も重要なポイントである、そもそもAmazonが請求すべきでないものに対する支払いを排除するだけでなく、CloudflareのProまたはBusinessを契約するお客様であれば、43ドルを持ち出すのではなく確保する方法について、段階的に説明していきます。IPv4のためにAmazonに43ドルを支払うのではなく、私たちが43ドルをお客様にお支払いし、IPv4も不要にします。</p>
+	<h3 id="cloudflare%E3%81%AE%E6%94%AF%E6%8F%B4%E5%86%85%E5%AE%B9">Cloudflareの支援内容</h3>
+	<p>AmazonのIPv4に対する課金を避ける唯一の方法は、AWSでIPv6に移行することです。しかし、私たちはすべての人がその移行の準備ができているわけではないことを認識しています。費用のかさむ困難なプロセスである可能性があり、ハードウェアの互換性やネットワークのパフォーマンスに問題が生じる可能性もあります。これらの課題の詳細については後述しますので、今はこのまま読み進めてください。Cloudflareがこの移行を容易にします。IPv6を使用したAWSとの通信はお任せください。加えて、Cloudflareと当社のグローバルネットワークを利用することで、Cloudflareが誇るパフォーマンスとセキュリティを含む、その他のすべてのメリットを得ることができます！</p>
+	<p>このようなIPv6サービスは、私たちが何年も前からCloudflareで提供してきたものであり、実際、このサービスを初めて発表したのは2011年のCloudflare の最初のバースデーウィークでした！このプロセスも簡単に行えるようにしているため、今すぐにでも設定可能です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image6-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="628"></figure>
+	<p>この機能を設定するには、IPv6の互換性を有効にし、<a href="https://docs.aws.amazon.com/vpc/latest/userguide/aws-ipv6-support.html" target="_blank">AWSのオリジンをIPv6オリジン</a>に設定する必要があります。</p>
+	<p>本機能の設定は、以下の手順を実施するだけです：</p>
+	<ol>
+		<li>Cloudflareアカウントにログインします。</li>
+		<li>適切なドメインを選択します。</li>
+		<li>Network（ネットワーク）アプリをクリックします。</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/Screenshot-2023-09-25-at-17.01.11.png" class="kg-image" alt="" loading="lazy" width="1580" height="332"></figure>
+	<p>4. &nbsp; IPv6の互換性がオンになっていることを確認します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/Screenshot-2023-09-25-at-17.01.24.png" class="kg-image" alt="" loading="lazy" width="1590" height="222"></figure>
+	<p>AmazonからIPv6オリジンを取得するには、おそらく以下の手順を踏む必要があります：</p>
+	<ol>
+		<li>IPv6のCIDRブロックをVPCとサブネットに関連付ける</li>
+		<li>ルーティングテーブルを更新する</li>
+		<li>セキュリティグループのルールを更新する</li>
+		<li>インスタンスタイプを変更する</li>
+		<li>インスタンスにIPv6アドレスを割り当てる</li>
+		<li>(オプション）インスタンスでIPv6を設定する</li>
+	</ol>
+	<p>（この移行の詳細については、<a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html#vpc-migrate-ipv6-example" target="_blank">こちらのリンク</a>を参照してください）</p>
+	<p>IPv6オリジンを取得したら、IPv6アドレスを使用するようにCloudflareのオリジンを更新します。ルートに単一のオリジンを持つ単純な例では、Cloudflare DNSエディタでプロキシされた（オレンジ色の雲）AAAAレコードを作成することで行われます：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-8.png" class="kg-image" alt="" loading="lazy" width="1999" height="532"></figure>
+	<p>ロードバランサーを使用している場合は、そこで<a href="https://developers.cloudflare.com/load-balancing/how-to/create-pool/#edit-a-pool" target="_blank">オリジンを更新</a>する必要があります。</p>
+	<p>ここまで完了したら、A/IPv4レコードを削除することでトラフィックはv6アドレスに移行します。現在このプロセスは簡単ですが、私たちはCloudflareでのIPv6への移行をさらに簡単にする方法を研究しています。</p>
+	<p>これらの機能を設定し、少なくとも6か月間、Cloudflareを経由したオリジンへのトラフィックが発生すると、お客様のCloudflareアカウントに43ドルのクレジットを受け取る資格が与えられます！このクレジットは、ProまたはBizサブスクリプション、あるいはWorkersやR2の使用にもご利用いただけます。この案内にオプトインする方法の詳細については<a href="https://www.cloudflare.com/lp/avoid-amazon-ipv4-tax" target="_blank">こちら</a>を参照してください。</p>
+	<p>この機能により、Cloudflareはお客様の要件に応じてIPv6の設定を柔軟に管理することができます。Cloudflareの堅牢なIPv6サポートを活用することで、パブリックIPv4アドレスに関連する追加コストを回避しながら、利用者のシームレスな接続性を確保することができます。</p>
+	<h3 id="ipv4%E3%81%AE%E5%95%8F%E9%A1%8C">IPv4の問題</h3>
+	<p>Cloudflareにこのソリューションがあるのであれば、なぜIPv6に移行する必要があるのでしょうか？これを明確に説明するために、IPv4の問題から見ていきましょう。</p>
+	<p><a href="https://www.cloudflare.com/learning/network-layer/internet-protocol/#:~:text=The%2520Internet%2520Protocol%2520(IP)%2520is,Network%2520layer" target="_blank">IPアドレス</a>は、オフィスのプライベートネットワークのようなプライベートネットワークや、インターネットのような複雑なパブリックネットワークなどのネットワーク上にあるリソースを識別して到達するために使用されます。IPv4アドレスは、198.51.100.1または 198.51.100.50のような形式です。また、このようなユニークなIPv4アドレスが約43億個あり、インターネット上のWebサイト、サーバー、その他の宛先がルーティングに使用されています。</p>
+	<p>43億個のIPv4アドレスと言うと多いように聞こえるかもしれませんが、IPv4の空間は枯渇しているため、そうではありません。2015年9月、IPアドレスを取得できる地域インターネットレジストリの1つであるARINは、利用可能な空間がないと<a href="https://www.arin.net/resources/guide/ipv4" target="_blank">発表</a>したため、IPv4アドレスを購入したい場合は、IPv4アドレスを販売している民間企業に相談する必要がありますが、これらの企業は、IPv4アドレスにかなりの金額を課しています。<a href="https://auctions.ipv4.global" target="_blank">現在、IPv4アドレス1つあたり約40ドル</a>かかります。IPv4アドレスのグループ（プレフィックスとも呼ばれ、最低限必要なサイズは256個）を購入するには、約10,000ドルかかります。</p>
+	<p>インターネット上にドメインやデバイスを持つためにはIPアドレスが必要になりますが、現在IPv4アドレスの取得はますます複雑になっています。そのため、インターネットの成長を促進するためには、バンクを破綻させることなく、より多くのユニークなアドレスを利用できるようにする必要がありました。そこで登場したのがIPv6です。</p>
+	<h3 id="ipv4%E3%81%A8ipv6">IPv4とIPv6</h3>
+	<p>1995年、IETF（Internet Engineering Task Force）は限られたIPv4の空間の問題を解決する提案であるIPv6に関する<a href="https://datatracker.ietf.org/doc/html/rfc1883" target="_blank">RFC</a>を発表しました。IPv6のアドレス空間は32ビットから128ビットに拡張されています。<strong>これは、43億個のアドレスの代わりに、340澗個のIPv6アドレスが利用可能ということになります</strong>。これは地球上に存在する砂粒の数に匹敵する数です。</p>
+	<p>この問題が解決したのならば、これを気にしなければいけない理由は何でしょう？その答えは、インターネット上の多くのネットワークが依然としてIPv4を好んでいること、そしてAWSのような企業がIPv4の使用に対し課金することを始めているためです。</p>
+	<p>まずAWSについてお話しすると、現在AWSはIPv4空間の最大級の塊を保有しています。AWSは、IPv4アドレスが民間市場でIPアドレス1個あたり数ドルで購入することができた時期に、その大きな資本を利用して大量の空間を買い取ることを選択しました。現在、AWSはIPv4アドレス空間の1.7%を所有しており、これは<a href="https://toonk.io/aws-and-their-billions-in-ipv4-addresses/index.html" target="_blank">～1億個のIPv4アドレス</a>に相当します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-11.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1934" height="1190"></figure>
+	<p>そのため、IPv6への移行は正しい動きだと思われるかもしれませんが、インターネットコミュニティにとって、IPv6への移行は非常に困難であることが証明されています。</p>
+	<p>IPv6が発表された90年代には、IPv6をサポートするデバイスを持つネットワークはほとんどありませんでした。しかし、2023の現在においてIPv6をサポートするグローバルネットワークは <a href="https://pulse.internetsociety.org/technologies" target="_blank">46%に増加</a>し、IPv6をサポートするためのハードウェアの制限は減少しています。さらに、不正使用防止ツールやセキュリティツールは当初、IPv6アドレス空間を使用する攻撃やトラフィックに対処する方法を把握していませんでしたが、一部のツールでは未だにこの問題が残っています。2014年には、これらのツールとのギャップを埋めるために<a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6">pseudo IPv4</a>を作成することで、オリジンツールの変換はさらに容易になっています。</p>
+	<p>にもかかわらず、ほとんどのネットワークはIPv4で構築されているため、多くのネットワークはIPv6ネットワーキングのための十分なサポートインフラがありません。Cloudflareでは、「デュアルスタック」と呼ばれる両方のプロトコルをサポートするネットワークを構築しました。</p>
+	<p>また、しばらくの間、IPv4と比較してIPv6のパフォーマンスが著しく悪いというネットワークも多く存在しました。現在では、インターネット全体でIPv4と比較したIPv6の性能低下はわずかしか見られないため、この事実は無くなっています。わずかに残った性能低下の理由としては、レガシーハードウェア、当社のネットワーク外のIPv6接続が最適でないこと、IPv6の導入コストが高いことなどが挙げられます。下のグラフでは、IPv4トラフィックと比較した場合の、CloudflareのネットワークにおけるIPv6トラフィックの追加の遅延を表わしています：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image5-5.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1200" height="742"></figure>
+	<p>IPv6の採用には多くの課題があり、ハードウェアの互換性やネットワークパフォーマンスに関するこれらの問題は、一部の人にとってはいまだに悩みの種となっています。これがIPv6への移行中もIPv4を使い続けることが有用である理由であり、AWSがIPv4への課金を決定したことは、多くのWebサイトに影響を与えます。</p>
+	<h3 id="%E3%81%97%E3%81%9F%E3%81%8C%E3%81%A3%E3%81%A6%E3%80%81aws%E3%81%AB%E8%AA%B2%E9%87%91%E3%81%99%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%AF%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82">したがって、AWSに課金する必要はありません。</h3>
+	<p>ここまでの内容から選択肢は明確です。AmazonからIPを借りてAmazonにさらに課金することになるか、Cloudflareに移行して、わずかな作業でIPv6に移行できる支援サービスを利用するかのどちらかです。</p>
+</div>

@@ -1,0 +1,69 @@
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-10.png" class="kg-image" alt="Announcing AI Gateway: making AI applications more observable, reliable, and scalable" loading="lazy" width="1801" height="1014"></figure>
+	<p>本日、AIアプリケーションの可観測性、信頼性、スケーラビリティを高めるポータルである<strong>AI Gateway</strong>のベータ版を発表できることを嬉しく思います。</p>
+	<p>AI Gatewayは、お客様のアプリケーションとお客様のアプリケーションがリクエストを行うAI API（OpenAIなど）との間に位置し、レスポンスのキャッシュ、リクエストの制限や再試行、使用状況の監視や追跡に役立つアナリティクスを提供します。AI Gatewayは、ほぼすべてのAIアプリケーションが必要とする処理を実行できるため、エンジニアリングの時間を節約し、開発に集中できるようになります。</p>
+	<h3 id="%E3%81%8A%E4%BD%BF%E3%81%84%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92ai-gateway%E3%81%B8%E6%8E%A5%E7%B6%9A">お使いのアプリをAI Gatewayへ接続</h3>
+	<p>開発者はたったの1行でCloudflareのAI Gatewayを使い始めることができます。API呼び出し用のURLを固有のAIゲートウェイエンドポイントと置き換えるだけです。例えばOpenAIの場合、baseURLを「<code>"https://api.openai.com/v1"</code>」ではなく「<code>"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</code>」と定義します。AI Gatewayを通してリクエストをログに記録してからトークンを使用して最終的なAPIにトークンを通過させるようになり、トークンをコード環境に保持することができます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">// configuring AI gateway with the dedicated OpenAI endpoint
+
+const openai = new OpenAI({
+&nbsp; apiKey: env.OPENAI_API_KEY,
+&nbsp; baseURL: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai",
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>現在、OpenAI、Hugging Face、Replicateなどのモデルプロバイダーをサポートしており、今後もさらなる追加を予定しています。プロバイダー内のさまざまなエンドポイントやレスポンスストリーミングをすべてサポートしているため、ゲートウェイを設定すれば即座にすべてが機能します。これらのプロバイダー専用のエンドポイントを使用すると、元のペイロード構造に触れることなく、1行のコードを変更するだけでアプリをAI Gatewayに接続することができます。</p>
+	<p>リクエストの柔軟性を高めたい方のために、ユニバーサルエンドポイントも用意しています。ユニバーサルエンドポイントでは、フォールバックモデルを定義してリクエストの再試行を処理することができます。例えば、リクエストがOpenAI GPT-3に対して行われた際にAPIがダウンしていたとします。ユニバーサルエンドポイントを使用することで、Hugging Face GPT-2をフォールバックモデルとして定義してゲートウェイが自動的にそのリクエストをHugging Faceに再送信することができます。これは、異常なエラーを感知した場合、レート制限を受けた場合、1つの請求が高額になり他のモデルに分散したい場合に、アプリの回復力の向上に非常に役立ちます。ユニバーサルエンドポイントでは、ペイロードを微調整してプロバイダーとエンドポイントを指定するだけで、リクエストの適切なルーティングが可能です。ユニバーサルエンドポイントスキーマの詳細については、以下のリクエストの例と<a href="https://developers.cloudflare.com/ai-gateway" target="_blank">ドキュメント</a>を参照してください。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-bash"># Using the Universal Endpoint to first try OpenAI, then Hugging Face
+
+curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY &nbsp;-X POST \
+&nbsp; --header 'Content-Type: application/json' \
+&nbsp; --data '[
+&nbsp; {
+&nbsp; &nbsp; "provider": "openai",
+&nbsp; &nbsp; "endpoint": "chat/completions",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $OPENAI_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "model": "gpt-3.5-turbo",
+&nbsp; &nbsp; &nbsp; "stream": true,
+&nbsp; &nbsp; &nbsp; "messages": [
+&nbsp; &nbsp; &nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "role": "user",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "content": "What is Cloudflare?"
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; &nbsp; ]
+&nbsp; &nbsp; }
+&nbsp; },
+&nbsp; {
+&nbsp; &nbsp; "provider": "huggingface",
+&nbsp; &nbsp; "endpoint": "gpt2",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $HF_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"
+&nbsp; &nbsp; }
+&nbsp; },
+]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%B3%81%E3%82%92%E5%8F%AF%E8%A6%96%E5%8C%96">アプリの使用状況を可視化</h3>
+	<p>お客様のアプリがCloudflareに接続されると、Cloudflareはお客様のアプリを通過するトラフィックに関する分析を収集し、洞察と制御を提供します。バックエンドで使用しているモデルやインフラに関係なく、リクエストのログを記録し、リクエスト数、ユーザー数、アプリの実行コスト、リクエスト時間などのデータを分析することができます。これらはそもそもモデルプロバイダーが公開すべき基本的な分析のように思えますが、一般的なモデルプロバイダーでこれらの指標を可視化するのは驚くほど困難です。AI Gatewayはさらに一歩進んで、複数のプロバイダー間の分析を集約することもできます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-24.png" class="kg-image" alt="" loading="lazy" width="1999" height="1418"></figure>
+	<h3 id="%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E6%8B%A1%E5%BC%B5%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B">アプリの拡張を制御する</h3>
+	<p>私たちがよく耳にする悩みの1つは、AIアプリの構築と運用にどれだけコストがかかるかというものです。各API呼び出しは予測不可能なほど高価で、コストはすぐに増大するため、開発者がアプリを最大限に拡張しようとする際の妨げになります。業界の進歩のスピードが速まる中、拡張が制限され、取り残されることは望ましくありません。そこで、キャッシュとレート制限が役立ちます。開発者がAPI呼び出しをキャッシュできるようにすることで、新しいリクエストは元のAPIではなくキャッシュから提供されるようになり、より安価かつ高速化することができます。また、<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank">レート制限</a>は、リクエスト数を制限し、過度または不審なアクティビティを防ぐことにより、コストを抑制するのにも役立ちます。開発者はキャッシングとレート制限のルールを完全かつ柔軟に定義できるため、お客様が選択した持続可能なペースでアプリを拡張することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-20.png" class="kg-image" alt="" loading="lazy" width="1999" height="1308"></figure>
+	<h3 id="workers-ai%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0">Workers AIプラットフォーム</h3>
+	<p>AI Gatewayは新しい<a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>および<a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta">Vectorize</a>製品と完璧にペアリングされるため、Workersエコシステム内でフルスタックのAIアプリケーションを構築することができます。Workersを使用したアプリケーションのデプロイから、Workers AIを使用したエッジでのモデル推論の実行、Vectorizeでのベクトル埋め込みデータの保存、AI Gatewayを使用したアプリケーションの可視化まで、WorkersプラットフォームはAIアプリケーションを実現するためのワンストップショップです。Workers AI、または各プロバイダーでAI Gatewayを使用する方法については、<a href="https://developers.cloudflare.com/ai-gateway" target="_blank">ドキュメント</a>を参照してください。</p>
+	<h3 id="%E4%BC%81%E6%A5%AD%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9">企業ユースケース</h3>
+	<p>AI Gatewayのv1はいくつかのコア機能と共に出荷されていますが、使用状況アラート、脱獄保護、A/B テストによる動的モデルルーティング、高度なキャッシュルールなど、より高度なユースケースにも対応できるような製品拡張を計画しています。しかし、私たちが本当に楽しみにしているのは、AI Gatewayを適用する他の方法です...</p>
+	<p>将来的には、AI Gatewayを、組織がユーザーや従業員がどのようにAIを使用しているかを監視·観察するのに役立つ製品に発展させたいと考えています。これを実現すると、（OpenAIのような）プロバイダーへのネットワーク内のすべてのリクエストを最初にCloudflareを経由させ、ユーザーリクエストを記録し、アクセスポリシーを適用し、レート制限や<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank">データ損失防止（DLP）</a>戦略を簡単に有効にすることができるようになります。強力な例として、従業員が誤ってChatGPTにAPIキーを貼り付けてしまった場合も、AI Gatewayが送信リクエストを確認し、APIキーを再編集するか、リクエストを完全にブロックしてOpenAIやエンドプロバイダーに到達しないように設定することができます。また、不審なリクエストをログに記録し、アラートを出すこともできるため、組織は特定の種類のアクティビティを積極的に調査し、制御することができます。AI Gatewayは、AIが解き放つ効率性に期待しながらも、データプライバシーやユーザーエラーが重大な脅威に繋がるためAIを信頼することに躊躇している組織にとって、非常に強力なツールとなります。私たちは、AI Gatewayがこのような懸念を解消し、組織にとってAIツールの採用がより容易になることを願っています。</p>
+	<p>ユーザーがAIをどのように使っているかを理解することが、どのような使い方を望むべきかの判断となるため、アプリケーションの開発者の方にも、従業員のAIの利用方法に知りたい企業の方にも、AI Gatewayがアプリケーション内部で何が行われているかを解明する一助になることを願っています。これらの機能の一部はまだ開発中ですが、この記事でAI Gatewayの力と当社の将来のビジョンについてご理解いただければ幸いです。</p>
+	<p>Cloudflareではイノベーションを生きがいにしており（バースデーウィークの数々の発表でお分かりいただけると思います！）、AIにおけるイノベーションは信じられないほど速いペースで行われています。私たちはアプリの構築と使用を支援するだけでなく、より大きな制御性と可視性でAIの導入と開発の加速を支援できることに興奮しています。皆さんがどのようなものを製作したかを聞くことを楽しみにしています。是非Cloudflareのダッシュボードにアクセスして<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral%29" target="_blank">AI Gateway</a>を<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral%29" target="_blank">お試し</a>いただき、感想をお聞かせください！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-17.png" class="kg-image" alt="" loading="lazy" width="1800" height="588"></figure>
+</div>

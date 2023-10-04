@@ -1,0 +1,101 @@
+<div class="mb2 gray5">12 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-33.png" class="kg-image" alt="Hyperdrive: making databases feel like they’re global" loading="lazy" width="1801" height="1013"></figure>
+	<p>Hyperdrive 让 Cloudflare Workers 快速访问您的现有数据库，无论它们位于何处，都能获得优越性能。您只需将 Hyperdrive 连接到您的数据库，更改一行代码以通过 Hyperdrive 连接， 然后就能加快连接和查询速度（剧透一下：<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">今天</a>就可以使用了）。</p>
+	<p>简而言之，Hyperdrive 利用我们的全球网络加速对您现有数据库的查询，无论它们是在传统的云提供商还是您喜爱的无服务器数据库提供商中；显著减少重复建立新数据库连接所产生的延迟；并缓存对数据库的最常用的读取查询，这往往避免了再次访问数据库的需要。</p>
+	<p>假设核心数据库——包含用户配置文件、产品库存或运行关键网络应用的数据库——位于某个传统云提供商的 us-east1 区域，如果没有 Hyperdrive，对于巴黎、新加坡和迪拜的用户来说，访问速度将非常慢，而对于洛杉矶或温哥华的用户来说，速度也比应有的慢。每次往返所需的时间长达 200 毫秒，仅建立连接所需的多次往返，可能就要耗时 1 秒（或更多！），而您甚至还没有开始进行查询数据。Hyperdrive 旨在解决这个问题。 </p>
+	<p>为了展示 Hyperdrive 的性能，我们构建了一个 <a href="https://hyperdrive-demo.pages.dev" target="_blank">演示应用</a>，该应用对同一个数据库进行连续查询：分别使用 Hyperdrive 和不使用 Hyperdrive （直接）。该应用选择一个位于相邻大陆的数据库：如果您在欧洲，它会选择一个位于美国的数据库——这对许多欧洲互联网用户来说是司空见惯的经历——如果您在非洲，它选择一个位于欧洲的数据库（以此类推）。它返回一个简单的 SELECT 查询的原始结果，没有精心选择的平均值或仔细挑选的指标。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1705">
+		<figcaption><em>我们</em><a href="https://hyperdrive-demo.pages.dev" target="_blank"><em>构建了一个演示应用</em></a><em>，在分别使用和不使用 Hyperdrive 的情况下，对一个 PostgreSQL 数据库发出真实的查询。</em></figcaption>
+	</figure>
+	<p>在内部测试、初步用户报告和我们的多次基准测试中，相对于直接访问数据库的缓存查询，Hyperdrive 提供了 17-25 倍的性能提升；对于未缓存的查询和写入操作，提供 6-8 倍的性能提升。缓存查询的延迟可能不会让您感到惊讶，但是我们认为，对于未缓存的查询，速度提高了 6-8 倍，使“我无法从 Cloudflare Workers 查询集中式数据库”变成“为什么以前不能这样！？”。我们还在继续努力提升性能：我们已经确定了额外的延迟削减，并将在接下来的几周内推出这些改进。</p>
+	<p>最妙之处是什么呢？拥有 Workers 付费计划的开发人员可以<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">立即开始使用 Hyperdrive 公开测试版</a>：无需等待，也不用注册。</p>
+	<h3 id="hyperdrive%EF%BC%9F%E4%BB%8E%E6%9C%AA%E5%90%AC%E8%AF%B4%E8%BF%87%EF%BC%9F">Hyperdrive？从未听说过？</h3>
+	<p>我们秘密研发 Hyperdrive 已有一段时间：但允许开发人员连接到现有的数据库，并使用原有的数据、查询和工具，这是我们已经思考了相当长时间的一件事。</p>
+	<p>在像 Workers 这样的现代分布式云环境中，连接传统数据库一直存在速度慢和不可扩展的问题。连接速度慢是因为需要进行多次往返（TCP 握手、TLS 协商、认证）才能建立连接。而不可扩展的问题在于像 PostgreSQL 这样的数据库，<a href="https://www.postgresql.org/message-id/flat/31cc6df9-53fe-3cd9-af5b-ac0d801163f4%40iki.fi" target="_blank">每个连接的资源成本较高</a>。即使只有数百个到数据库的连接，也会消耗可观的内存，另外查询也需要额外的内存。</p>
+	<p>我们在 Neon（一家流行的无服务器 Postgres 提供商）的朋友曾经写过有关这方面的文章，<a href="https://neon.tech/blog/serverless-driver-for-postgres" target="_blank">甚至发布了一个 WebSocket 代理和驱动程序来减少</a>连接开销，但依然面临艰巨的挑战：尽管使用了自定义驱动程序，我们的往返次数减少到 4 次，每次依然可能需要 50-200 毫秒甚至更多。对于长时间的连接，这是可以接受的，可能最多每几个小时发生一次。但是，如果仅用于几毫秒到最多几分钟的个别函数调用时，您的代码会花费更多时间等待。这实际上相当于另一种冷启动：在查询之前必须建立与数据库的新连接，意味着在分布式或无服务器环境中使用传统数据库<em>非常缓慢</em>。</p>
+	<p>为了应对这个问题，Hyperdrive 做了两件事。</p>
+	<p>首先，它在 Cloudflare 的网络中维护一组区域数据库连接池，以便 Cloudflare Worker 避免为每个请求对数据库建立新连接。相反，Worker 可以与 Hyperdrive 建立连接（快速！），由 Hyperdrive 维护一个准备就绪的连接池返回给数据库。由于到数据库的<em>单次</em>往返需时 30 毫秒到（通常）300 毫秒不等（更不用说建立新连接所需的 7 次或更多往返），拥有一个可用连接池显著减少了短时间连接可能遇到的延迟问题。</p>
+	<p>其次，它能够理解读取（非变异）和写入（变异）查询以及事务之间的区别，并且可以自动缓存您最常用的读取查询：这些查询通常占典型 Web 应用程序中对数据库进行的查询的 80% 以上。每小时有数万用户访问的产品列表页面；主要求职网站上的职位空缺；甚至是对偶尔更改的配置数据的查询；大量被查询的内容并不经常变化，将其缓存到用户查询的位置附近可以显著加快下一批用户访问该数据的速度。无法安全缓存的写入查询仍然可以受益于 Hyperdrive 的连接池<em>和</em> Cloudflare 的<a href="https://www.cloudflare.com/network" target="_blank">全球网络</a>： 能够通过我们的骨干网络在互联网上通过最快的路径传输，同样减少了延迟。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-16.png" class="kg-image" alt="" loading="lazy" width="1725" height="1005">
+		<figcaption><em>即使您的数据库位于国家的另一边，70 毫秒 x 6 次往返对于用户等待查询响应而言也是相当长的时间。</em></figcaption>
+	</figure>
+	<p>Hyperdrive 不仅适用于 PostgreSQL 数据库，包括 <a href="https://neon.tech" target="_blank">Neon</a>、Google Cloud SQL、AWS RDS 和 <a href="https://www.timescale.com" target="_blank">Timescale</a>，也适用于 PostgreSQL 兼容数据库，例如 <a href="https://materialize.com" target="_blank">Materialize</a> （强大的流处理数据库），<a href="https://www.cockroachlabs.com" target="_blank">CockroachDB</a> （主流分布式数据库），Google Cloud 的 <a href="https://cloud.google.com/alloydb" target="_blank">AlloyDB</a>，以及 AWS Aurora Postgres。</p>
+	<p>我们还计划在今年年底前提供对 MySQL 的支持，包括 PlanetScale 等提供商，并计划在未来支持更多数据库引擎。</p>
+	<h3 id="%E7%A5%9E%E5%A5%87%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2">神奇的连接字符串</h3>
+	<p>Hyperdrive 的主要设计目标之一是开发人员需要继续使用他们现有的驱动程序、查询构建器和 ORM（对象关系映射）库。如果我们要求您迁移到其他 ORM 或重写数百行（或更多）的代码和测试来获得 Hyperdrive 的性能优势，那么 Hyperdrive 有多快就无关紧要了。</p>
+	<p>为了实现这一目标，我们与流行开源驱动程序的维护者合作，包括 <a href="https://node-postgres.com" target="_blank">node-postgres</a> 和 <a href="https://github.com/porsager/postgres" target="_blank">Postgres.js</a> ，以帮助它们的库支持 <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Worker 的新 TCP 套接字 API</a>，后者正在通过<a href="https://github.com/wintercg/proposal-sockets-api" target="_blank">标准化过程</a>，而且我们预计它也将在 Node.js、Deno 和 Bun &nbsp;中得到支持。</p>
+	<p>平凡无奇的数据库连接字符串是数据库驱动程序的共同语言，通常采用以下格式：</p><!--kg-card-begin: markdown-->
+	<pre><code>postgres://user:password@some.database.host.example.com:5432/postgres
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hyperdrive 的神奇之处在于您可以在现有的 Workers 应用中使用它来处理现有的查询，只需将连接字符串替换为 Hyperdrive 生成的连接字符串即可。</p>
+	<h3 id="%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-hyperdrive">创建一个 Hyperdrive</h3>
+	<p>对于一个准备就绪的现有数据库， 在这个例子中，我们将使用来自 <a href="https://neon.tech" target="_blank">Neon</a> 的一个 Postgres 数据库，启动 Hyperdrive 需时不到一分钟（没错，我们进行了计时）。</p>
+	<p>如果您还没有 Cloudflare Workers 项目，可以快速创建一个：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-Python">$ npm create cloudflare@latest
+# Call the application "hyperdrive-demo"
+# Choose "Hello World Worker" as your template
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>从这里开始，我们只需要数据库的连接字符串和一个快速的 <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update" target="_blank">wrangler 命令行</a>调用，让 Hyperdrive 连接到数据库。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-Python"># Using wrangler v3.10.0 or above
+wrangler hyperdrive create a-faster-database --connection-string="postgres://user:password@neon.tech:5432/neondb"
+
+# This will return an ID: we'll use this in the next step
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>将我们的 Hyperdrive 加入到 Worker 的 <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank">wrangler.toml 配置</a>文件：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">[[hyperdrive]]
+name = "HYPERDRIVE"
+id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们现在可以编写一个 <a href="https://developers.cloudflare.com/workers" target="_blank">Worker</a> — 或使用现有的 Worker 脚本 — 并使用 Hyperdrive 来加速到现有数据库的连接和查询。我们在这里使用 <a href="https://node-postgres.com" target="_blank">node-postgres</a>，但我们可同样轻松地使用 <a href="https://orm.drizzle.team" target="_blank">Drizzle ORM</a>。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">import { Client } from 'pg';
+
+export interface Env {
+	HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		console.log(JSON.stringify(env));
+		// Create a database client that connects to our database via Hyperdrive
+		//
+		// Hyperdrive generates a unique connection string you can pass to
+		// supported drivers, including node-postgres, Postgres.js, and the many
+		// ORMs and query builders that use these drivers.
+		const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+
+		try {
+			// Connect to our database
+			await client.connect();
+
+			// A very simple test query
+			let result = await client.query({ text: 'SELECT * FROM pg_tables' });
+
+			// Return our result rows as JSON
+			return Response.json({ result: result });
+		} catch (e) {
+			console.log(e);
+			return Response.json({ error: JSON.stringify(e) }, { status: 500 });
+		}
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上面的代码故意保持简单，但希望您能看到其中的神奇之处：我们的数据库驱动程序从 Hyperdrive 获取连接字符串，并且对此一无所知。它不需要了解 Hyperdrive 的任何信息，我们也不需要放弃我们喜欢的查询构建器库，当进行查询时，我们可以立即体验到速度的好处。</p>
+	<p>连接被自动池化和保持可用状态，我们最常用的查询会被缓存，整个应用变得更快。</p>
+	<p>我们还编写了<a href="https://developers.cloudflare.com/hyperdrive/examples" target="_blank">针对每个主流数据库提供商的指南</a>， 让您轻松获得从这些数据库连接到 Hyperdrive 所需的信息（连接字符串）。</p>
+	<h3 id="%E5%BF%AB%E9%80%9F%E8%82%AF%E5%AE%9A%E4%B8%8D%E4%BC%9A%E4%BE%BF%E5%AE%9C%EF%BC%8C%E5%AF%B9%E5%90%97%EF%BC%9F">快速肯定不会便宜，对吗？ </h3>
+	<p>我们认为，在使用 Cloudflare Workers 构建时，Hyperdrive 对于访问现有数据库至关重要：传统数据库从来都不是为客户端全球分布的世界而设计的。 </p>
+	<p><strong>Hyperdrive 的连接池化将始终是免费的</strong>， 无论是我们目前支持的数据库协议还是将来添加的新数据库协议。正如 DDoS 保护和我们的全球 <a href="https://www.cloudflare.com/application-services/products/cdn" target="_blank">CDN</a>， 我们认为 Hyperdrive 的核心功能太有用了，不应该限制。</p>
+	<p>在公测期间，无论你如何使用，Hyperdrive 本身不会产生任何使用费用。我们将在正式发布（2024 年初）前公布有关 Hyperdrive 定价的更多详情，并将充分提前通知。</p>
+	<h3 id="%E6%98%AF%E6%97%B6%E5%80%99%E5%BC%80%E5%A7%8B%E6%9F%A5%E8%AF%A2%E4%BA%86">是时候开始查询了</h3>
+	<p>那么，接下来 Hyperdrive 将如何发展？</p>
+	<p>我们计划在 2024 年初推出 Hyperdrive 的正式版本，并专注于增加对缓存的控制，根据写入操作自动使缓存失效，提供详细的查询和性能分析（即将推出！），支持更多的数据库引擎（包括 MySQL），并继续努力进一步提升速度。 </p>
+	<p>我们还在努力通过 <a href="https://developers.cloudflare.com/magic-wan" target="_blank">Magic WAN</a> 和 Cloudflare Tunnel 实现专用网络连接，以便您就连接到没有或不能公开暴露在互联网上的数据库。 </p>
+	<p>要将 Hyperdrive 连接到您现有的数据库，请访问我们的<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">开发人员文档</a> — 只需不到一分钟就可以创建一个 Hyperdrive 并更新现有的代码以使用它。欢迎加入我们的 &nbsp;<a href="https://discord.cloudflare.com" target="_blank">Developer Discord</a><em>#hyperdrive-beta</em> 频道， 提出问题、报告错误、并直接与我们的产品和工程团队交流。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-31.png" class="kg-image" alt="" loading="lazy" width="1800" height="647"></figure>
+</div>

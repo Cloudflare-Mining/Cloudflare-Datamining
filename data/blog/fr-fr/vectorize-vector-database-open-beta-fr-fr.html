@@ -1,0 +1,347 @@
+<div class="mb2 gray5">14 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-21.png" class="kg-image" alt="Vectorize: a vector database for shipping AI-powered applications to production, fast" loading="lazy" width="1200" height="668"></figure>
+	<p>Vectorize est notre toute nouvelle offre de base de données, conçue pour vous permettre de développer des applications full-stack, basées sur l'IA, entièrement sur le réseau global de Cloudflare : et vous pouvez commencer à développer dès maintenant. Vectorize est disponible en version bêta ouverte pour tous les développeurs qui utilisent <a href="https://workers.cloudflare.com" target="_blank"> Cloudflare Workers</a>.</p>
+	<p>Vous pouvez utiliser Vectorize avec <a href="https://blog.cloudflare.com/workers-ai"> Workers AI</a> pour alimenter la recherche sémantique, la classification, les recommandations et la détection d'anomalie directement avec Workers, pour améliorer la précision et le contexte des réponses provenant des LLM (grands modèles de langage), ou pour apporter vos propres intégrations issues de plateformes populaires, dont OpenAI et Cohere.</p>
+	<p>Consultez la <a href="https://developers.cloudflare.com/vectorize/get-started" target="_blank"> documentation de Vectorize pour les développeurs</a> pour démarrer ou poursuivez la lecture si vous souhaitez mieux comprendre ce que font les bases de données vectorielles et en quoi Vectorize est différent.</p>
+	<h2 id="pourquoi-ai-je-besoin-dune-base-de-donn%C3%A9es-vectorielle">Pourquoi ai-je besoin d'une base de données vectorielle ?</h2>
+	<h3 id="les-mod%C3%A8les-dapprentissage-automatique-ne-peuvent-pas-tout-m%C3%A9moriser-uniquement-ce-pour-quoi-ils-ont-%C3%A9t%C3%A9-entra%C3%AEn%C3%A9s">Les modèles d'apprentissage automatique ne peuvent pas tout mémoriser : uniquement ce pour quoi ils ont été entraînés.</h3>
+	<p>Les bases de données vectorielles sont conçues pour pallier ce manque, puisqu'elles enregistrent la façon dont un modèle ML représente les données — y compris le texte structuré ou non, les images et l'audio — et stocke l'information de telle sorte qu'elles peuvent effectuer une comparaison avec les <em>futures</em> données. Cela nous permet de profiter de la puissance des modèles d'apprentissage automatique existants et des LLM (grands modèles de langage) pour des contenus sur lesquels ils n'ont pas été entraînés : ce qui est extrêmement rentable si l'on considère le coût de l'entraînement des modèles.</p>
+	<p>Pour illustrer plus efficacement l'utilité des bases de données vectorielles telles que Vectorize, imaginons qu'elles n'existent pas, et observons comme il est difficile de donner du contexte à un modèle ML ou LLM pour une recherche sémantique ou une tâche de recommandation. Notre objectif est de comprendre ce qui est similaire à notre requête et de le renvoyer : sur la base de notre propre ensemble de données.</p>
+	<ol>
+		<li>Notre requête utilisateur arrive ; il s'agit de rechercher « comment écrire sur R2 à partir de Cloudflare Workers »</li>
+		<li>Nous chargeons l'intégralité de notre ensemble de données de documentation (un ensemble de données heureusement « petit » comportant environ 65 000 phrases, ce qui représente 2,1 Go) et nous la fournissons accompagnée de la requête de notre utilisateur. Cela permet au modèle de disposer du contexte dont il a besoin, à partir de nos données.</li>
+		<li><strong>Nous patientons.</strong></li>
+		<li><strong>(Longtemps)</strong></li>
+		<li>Nous obtenons nos scores de similarité, avec les phrases les plus similaires à la requête de l'utilisateur, et nous établissons ensuite des correspondances avec des URL avant de renvoyer nos résultats de recherche.</li>
+	</ol>
+	<p>.....puis une autre requête arrive et nous devons tout recommencer depuis le début.</p>
+	<p>En pratique, ce n'est pas vraiment faisable : il est impossible de transmettre autant de contexte dans un appel d'API (invite) vers la plupart des modèles d'apprentissage automatique, et quand bien même nous le pourrions, le temps et la mémoire nécessaires pour recommencer le processus encore et encore sur notre ensemble de données seraient faramineux.</p>
+	<p>Avec une base de données vectorielle, nous n'avons pas besoin de recommencer l'étape 2 : nous l'effectuons une fois, ou à chaque mise à jour de notre ensemble, puis nous utilisons notre base de données vectorielle pour fournir une forme de mémoire à long terme à notre modèle d'apprentissage automatique. Notre flux de travail ressemble un peu plus à ce qui suit :</p>
+	<ol>
+		<li>Nous chargeons l'intégralité de notre ensemble de données de documentation, l'exécutons dans notre modèle et stockons les intégrations vectorielles qui en résultent dans notre base de données vectorielle (une fois pour toute).</li>
+		<li>Pour chaque requête utilisateur (et uniquement la requête) nous demandons le même modèle et récupérons une représentation vectorielle.</li>
+		<li>Nous interrogeons notre base de données vectorielle avec ce vecteur de requête, qui renvoie les vecteurs les plus proches de notre vecteur de requête.</li>
+	</ol>
+	<p>Si nous examinons ces deux flux côte à côte, nous pouvons rapidement constater à quel point il est inefficace et peu pratique d'utiliser notre propre ensemble de données avec un modèle existant sans base de données vectorielle :</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-11.png" class="kg-image" alt="" loading="lazy" width="1999" height="1333">
+		<figcaption><em>Utilisation d'une base de données vectorielle pour aider les modèles d'apprentissage automatique à mémoriser.</em></figcaption>
+	</figure>
+	<p>Avec ce simple exemple, vous commencez certainement à comprendre : mais vous vous demandez peut-être également pourquoi vous avez besoin d'une base de données vectorielle au lieu d'une simple base de données normale.</p>
+	<p>Les vecteurs correspondent à la représentation par le modèle d'une entrée, à savoir la manière dont il met cette entrée en correspondance avec sa structure internet, ou ses « caractéristiques ». Dans les grandes lignes, plus les vecteurs sont similaires, plus le modèle estime que ces entrées sont similaires, en se basant sur la manière dont il extrait les caractéristiques d'une entrée.</p>
+	<p>L'opération semble facile lorsque nous observons des exemples de vecteurs ne comportant qu'une poignée de dimensions. Mais dans le monde réel, lorsque la recherche s'effectue au milieu de 10 000 à 250 000 vecteurs, chacun comptant potentiellement 1 536 dimensions, ce n'est pas une mince affaire. C'est là que les bases de données vectorielles entrent en jeu : pour que la recherche fonctionne à grande échelle, les bases de données vectorielles utilisent une classe spécifique d'algorithmes, tels que le K plus proches voisins ou K-nearest neighbors (<a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm" target="_blank">kNN</a>) ou d'autres <a href="https://arxiv.org/abs/1603.09320" target="_blank">algorithmes</a> du plus proche voisin (ANN pour approximate nearest neighbor)<a href="https://arxiv.org/abs/1603.09320" target="_blank"> </a>pour déterminer la similarité vectorielle.</p>
+	<p>Si les bases de données vectorielles sont extrêmement utiles lorsqu'il s'agit de développer des applications reposant sur l'IA ou l'apprentissage automatique, elles le sont également pour d'<em>autres</em> cas d'utilisation : elles peuvent être utiles pour une multitude de tâches de classification ou de détection d'anomalies. Savoir qu'une entrée de requête est similaire (ou potentiellement similaire) à d'autres entrées peut également être très utile pour les tâches de modération (cette entrée correspond-elle à du contenu connu pour être malveillant ?) et d'alerte sécurité (l'ai-je déjà vue avant ?).</p>
+	<h2 id="d%C3%A9velopper-un-moteur-de-recommandation-avec-la-recherche-vectorielle">Développer un moteur de recommandation avec la recherche vectorielle</h2>
+	<p>Nous avons conçu Vectorize pour en faire un solide partenaire de <a href="https://developers.cloudflare.com/workers-ai" target="_blank"> Workers AI</a> : afin que vous puissiez exécuter des tâches de recherche vectorielle au plus près possible des utilisateurs et sans que le déploiement en production soit un casse-tête.</p>
+	<p>Nous allons prendre un exemple dans la réalité, le développement d'un moteur de recommandations (de produits) pour une boutique en ligne, et simplifier quelques éléments.</p>
+	<p>Notre objectif est de répertorier une liste de « produits pertinents » sur chaque page de liste de produits : un cas d'utilisation parfait pour la recherche vectorielle. Nos vecteurs d'entrée dans l'exemple sont des caractères génériques, mais dans une application réelle, nous nous baserions sur des descriptions de produits ou des données de panier d'achats pour les générer en les faisant passer par un modèle de similarité de phrases (tel que le <a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank"> modèle d'intégration de texte</a> de Workers AI)</p>
+	<p>Chaque vecteur représente un produit de notre boutique, et nous lui associons l'URL du produit. Nous pourrions également attribuer l'ID de chaque vecteur à l'ID du produit : les deux méthodes sont valables. Notre requête (recherche vectorielle) représente la description et le contenu du produit que l'utilisateur est en train de visualiser.Observons un instant ce que cela donne dans le code : cet exemple est directement extrait de notre<a href="https://developers.cloudflare.com/vectorize/get-started" target="_blank"> documentation pour les développeurs</a> :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">export interface Env {
+	// This makes our vector index methods available on env.MY_VECTOR_INDEX.*
+	// e.g. env.MY_VECTOR_INDEX.insert() or .query()
+	TUTORIAL_INDEX: VectorizeIndex;
+}
+
+// Sample vectors: 3 dimensions wide.
+//
+// Vectors from a machine-learning model are typically ~100 to 1536 dimensions
+// wide (or wider still).
+const sampleVectors: Array&lt;VectorizeVector&gt; = [
+	{ id: '1', values: [32.4, 74.1, 3.2], metadata: { url: '/products/sku/13913913' } },
+	{ id: '2', values: [15.1, 19.2, 15.8], metadata: { url: '/products/sku/10148191' } },
+	{ id: '3', values: [0.16, 1.2, 3.8], metadata: { url: '/products/sku/97913813' } },
+	{ id: '4', values: [75.1, 67.1, 29.9], metadata: { url: '/products/sku/418313' } },
+	{ id: '5', values: [58.8, 6.7, 3.4], metadata: { url: '/products/sku/55519183' } },
+];
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+		if (new URL(request.url).pathname !== '/') {
+			return new Response('', { status: 404 });
+		}
+		// Insert some sample vectors into our index
+		// In a real application, these vectors would be the output of a machine learning (ML) model,
+		// such as Workers AI, OpenAI, or Cohere.
+		let inserted = await env.TUTORIAL_INDEX.insert(sampleVectors);
+
+		// Log the number of IDs we successfully inserted
+		console.info(`inserted ${inserted.count} vectors into the index`);
+
+		// In a real application, we would take a user query - e.g. "durable
+		// objects" - and transform it into a vector emebedding first.
+		//
+		// In our example, we're going to construct a simple vector that should
+		// match vector id #5
+		let queryVector: Array&lt;number&gt; = [54.8, 5.5, 3.1];
+
+		// Query our index and return the three (topK = 3) most similar vector
+		// IDs with their similarity score.
+		//
+		// By default, vector values are not returned, as in many cases the
+		// vectorId and scores are sufficient to map the vector back to the
+		// original content it represents.
+		let matches = await env.TUTORIAL_INDEX.query(queryVector, { topK: 3, returnVectors: true });
+
+		// We map over our results to find the most similar vector result.
+		//
+		// Since our index uses the 'cosine' distance metric, scores will range
+		// from 1 to -1.  A value of '1' means the vector is the same; the
+		// closer to 1, the more similar. Values of -1 (least similar) and 0 (no
+		// match).
+		// let closestScore = 0;
+		// let mostSimilarId = '';
+		// matches.matches.map((match) =&gt; {
+		// 	if (match.score &gt; closestScore) {
+		// 		closestScore = match.score;
+		// 		mostSimilarId = match.vectorId;
+		// 	}
+		// });
+
+		return Response.json({
+			// This will return the closest vectors: we'll see that the vector
+			// with id = 5 has the highest score (closest to 1.0) as the
+			// distance between it and our query vector is the smallest.
+			// Return the full set of matches so we can see the possible scores.
+			matches: matches,
+		});
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Le code ci-dessus est volontairement simple, mais il illustre la recherche vectorielle dans son essence : nous insérons des vecteurs dans notre base de données et nous cherchons les vecteurs les plus proches de notre vecteur de requête.Voici les résultats, valeurs comprises. Nous observons visuellement que notre vecteur de requête [54.8, 5.5, 3.1] est similaire à notre correspondance au plus grand score : [58.799, 6.699, 3.400] renvoyé par notre recherche. Cet index utilise la <a href="https://en.wikipedia.org/wiki/Cosine_similarity" target="_blank"> similarité cosinus</a> pour calculer la distance entre deux vecteurs, ce qui signifie que plus le score est proche de 1, plus une correspondance est proche de notre vecteur de recherche.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">{
+  "matches": {
+    "count": 3,
+    "matches": [
+      {
+        "score": 0.999909,
+        "vectorId": "5",
+        "vector": {
+          "id": "5",
+          "values": [
+            58.79999923706055,
+            6.699999809265137,
+            3.4000000953674316
+          ],
+          "metadata": {
+            "url": "/products/sku/55519183"
+          }
+        }
+      },
+      {
+        "score": 0.789848,
+        "vectorId": "4",
+        "vector": {
+          "id": "4",
+          "values": [
+            75.0999984741211,
+            67.0999984741211,
+            29.899999618530273
+          ],
+          "metadata": {
+            "url": "/products/sku/418313"
+          }
+        }
+      },
+      {
+        "score": 0.611976,
+        "vectorId": "2",
+        "vector": {
+          "id": "2",
+          "values": [
+            15.100000381469727,
+            19.200000762939453,
+            15.800000190734863
+          ],
+          "metadata": {
+            "url": "/products/sku/10148191"
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Dans une application réelle, nous pourrions maintenant renvoyer rapidement des URL de recommandation de produits basées sur les produits les plus similaires, en les triant par leur score (du plus élevé au plus bas), et en augmentant la valeur topK si nous voulons en montrer davantage. Les métadonnées stockées avec chaque vecteur peuvent également intégrer un chemin conduisant à un<a href="https://developers.cloudflare.com/r2" target="_blank"> objet R2</a>, un identifiant universel unique (UUID) pour une ligne dans une<a href="https://developers.cloudflare.com/d1" target="_blank"> base de données D1</a>, ou une paire clé-valeur issue de<a href="https://developers.cloudflare.com/kv" target="_blank"> Workers KV</a>.</p>
+	<h3 id="workers-ai-vectorize-recherche-vectorielle-full-stack-sur-cloudflare">Workers AI + Vectorize : recherche vectorielle full-stack sur Cloudflare</h3>
+	<p>Dans une application réelle, nous avons besoin d'un modèle d'apprentissage automatique qui peut à la fois générer des intégrations vectorielles depuis notre ensemble de données d'origine (pour semer notre base de données) et convertir <em>rapidement</em> les requêtes utilisateur en intégrations vectorielles. Elles doivent provenir du même modèle dans la mesure où chaque modèle représente les caractéristiques différemment.</p>
+	<p>Voici un exemple synthétique de création d'un pipeline de recherche vectorielle de bout en bout sur Cloudflare :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+export interface Env {
+	TEXT_EMBEDDINGS: VectorizeIndex;
+	AI: any;
+}
+interface EmbeddingResponse {
+	shape: number[];
+	data: number[][];
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
+		const ai = new Ai(env.AI);
+		let path = new URL(request.url).pathname;
+		if (path.startsWith('/favicon')) {
+			return new Response('', { status: 404 });
+		}
+
+		// We only need to generate vector embeddings just the once (or as our
+		// data changes), not on every request
+		if (path === '/insert') {
+			// In a real-world application, we could read in content from R2 or
+			// a SQL database (like D1) and pass it to Workers AI
+			const stories = ['This is a story about an orange cloud', 'This is a story about a llama', 'This is a story about a hugging emoji'];
+			const modelResp: EmbeddingResponse = await ai.run('@cf/baai/bge-base-en-v1.5', {
+				text: stories,
+			});
+
+			// We need to convert the vector embeddings into a format Vectorize can accept.
+			// Each vector needs an id, a value (the vector) and optional metadata.
+			// In a real app, our ID would typicaly be bound to the ID of the source
+			// document.
+			let vectors: VectorizeVector[] = [];
+			let id = 1;
+			modelResp.data.forEach((vector) =&gt; {
+				vectors.push({ id: `${id}`, values: vector });
+				id++;
+			});
+
+			await env.TEXT_EMBEDDINGS.upsert(vectors);
+		}
+
+		// Our query: we expect this to match vector id: 1 in this simple example
+		let userQuery = 'orange cloud';
+		const queryVector: EmbeddingResponse = await ai.run('@cf/baai/bge-base-en-v1.5', {
+			text: [userQuery],
+		});
+
+		let matches = await env.TEXT_EMBEDDINGS.query(queryVector.data[0], { topK: 1 });
+		return Response.json({
+			// We expect vector id: 1 to be our top match with a score of
+			// ~0.896888444
+			// We are using a cosine distance metric, where the closer to one,
+			// the more similar.
+			matches: matches,
+		});
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Le code ci-dessus exécute quatre actions :</p>
+	<ol>
+		<li>Il transmet les trois phrases au<a href="https://developers.cloudflare.com/workers-ai/models/embedding" target="_blank"> modèle d'intégration de texte</a> de Workers AI (@cf/baai/bge-base-en-v1.5) et récupère les intégrations vectorielles.</li>
+		<li>Il insère ces vecteurs dans notre index Vectorize.</li>
+		<li>Il prend la requête utilisateur et la convertit en intégration vectorielle avec le même modèle Workers AI.</li>
+		<li>Il interroge notre index Vectorize à la recherche de correspondances.</li>
+	</ol>
+	<p>Cet exemple peut sembler « trop » simple, mais dans une application de production, nous ne devrions changer que deux choses : insérer simplement nos vecteurs une seule fois (ou régulièrement à l'aide de<a href="https://developers.cloudflare.com/workers/configuration/cron-triggers" target="_blank"> Cron Triggers</a>), et remplacer nos trois phrases exemples par des données réelles conservées dans R2, une base de données D1, ou auprès d'un autre fournisseur de stockage.</p>
+	<p>En réalité, l'opération est incroyablement similaire à la manière dont nous exécutons<a href="https://developers.cloudflare.com/workers/ai" target="_blank"> Cursor</a>, l'assistant d'IA capable de répondre à des questions concernant Cloudflare Worker : nous avons procédé à une migration de Cursor pour qu'il s'exécute sur Workers AI et Vectorize. Nous générons des intégrations de texte issu de notre documentation pour les développeurs à l'aide de son modèle interne d'intégration de texte, nous les insérons dans un index Vectorize et nous convertissons les requêtes utilisateur à la volée avec le même modèle.</p>
+	<h2 id="utilisez-vos-propres-int%C3%A9grations-depuis-votre-api-dia-de-pr%C3%A9dilection">Utilisez vos propres intégrations depuis votre API d'IA de prédilection</h2>
+	<p>Vectorize ne se limite toutefois pas à Workers AI : il s'agit d'une base de données vectorielle autonome à part entière.</p>
+	<p>Si vous utilisez déjà<a href="https://platform.openai.com/docs/guides/embeddings" target="_blank"> l'API d'intégration d'OpenAI</a>, le<a href="https://docs.cohere.com/reference/embed" target="_blank"> modèle multilingue</a> de Cohere, ou n'importe quelle autre API d'intégration, vous pouvez facilement ajouter vos propres vecteurs dans Vectorize.</p>
+	<p>Cela fonctionne de la même façon : générez vos intégrations, insérez-les dans Vectorize et passez vos requêtes dans le modèle avant d'interroger votre index. Vectorize comporte quelques raccourcis pour certains des modèles d'intégration les plus populaires.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python"># Vectorize has ready-to-go presets that set the dimensions and distance metric for popular embeddings models
+$ wrangler vectorize create openai-index-example --preset=openai-text-embedding-ada-002
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cela peut être particulièrement utile si vous avez déjà un flux de travail existant autour d'une API d'intégration existante ou si vous avez validé un modèle d'intégration multimodal ou multilingue spécifique pour votre cas d'utilisation.</p>
+	<h2 id="pr%C3%A9vision-des-co%C3%BBts-de-lia">Prévision des coûts de l'IA</h2>
+	<p>L'IA et la ML suscitent beaucoup d'enthousiasme, mais elles soulèvent aussi une inquiétude majeure : elles sont trop coûteuses à expérimenter et difficiles à prévoir à grande échelle.</p>
+	<p>Avec Vectorize, nous souhaitions proposer un modèle de tarification plus simple pour les bases de données vectorielles. Vous avez une idée pour une démonstration de faisabilité dans le cadre professionnel ? Cela devrait pouvoir se faire dans les limites de notre offre gratuite. Vous faites évoluer ou vous optimisez les dimensions de votre intégration en fonction des performances et de la précision ? Cela ne devrait pas vous coûter cher.</p>
+	<p>Détail qui a son importance, nous souhaitons que Vectorize soit prévisible : inutile d'estimer la consommation de temps processeur et de mémoire, ce qui peut être difficile lorsque vous débutez, et encore plus difficile lorsque vous essayez de le faire en tenant compte de vos heures de pointe et vos heures creuses en production pour un tout nouveau cas d'utilisation. À la place, vous êtes facturé sur la base du nombre total de dimensions vectorielles que vous stockez, et du nombre de requêtes que vous leur adressez chaque mois. C'est nous qui nous chargeons des évolutions nécessaires en fonction de vos schémas de requêtes.</p>
+	<p>Voici la tarification pour Vectorize ; et si vous êtes déjà abonné à l'offre payante de Workers, vous pouvez utiliser Vectorize entièrement gratuitement jusqu'en 2024 :<br></p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers - offre gratuite (prochainement)</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers - offre payante (5 USD/mois)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dimensions vectorielles interrogées comprises</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Un total de 30 millions de dimensions interrogées / mois</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Un total de 50 millions de dimensions interrogées / mois</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dimensions vectorielles stockées comprises</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5 millions de dimensions stockées / mois</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10 millions de dimensions stockées / mois</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Coûts supplémentaires </span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,04 USD / 1 million de dimensions vectorielles interrogées ou stockées</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,04 USD / 1 million de dimensions vectorielles interrogées ou stockées</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>La tarification repose intégralement sur ce que vous stockez et interrogez : (total des dimensions vectorielles interrogées + stockées) * dimensions_par_vector * prix. Vous interrogez davantage ? Facile à prévoir. Vous souhaitez une optimisation pour utiliser des dimensions plus petites par vecteur afin de gagner en rapidité et de réduire la latence générale ? Les coûts baisseront. Vous avez quelques index à prototyper et expérimenter avec de nouveaux cas d'utilisation ? Nous ne facturons pas pour chaque index.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1123">
+		<figcaption><em>Créez autant d'index que ce dont vous avez besoin pour prototyper de nouvelles idées ou pour distinguer la production du développement.</em></figcaption>
+	</figure>
+	<p>Par exemple, si vous chargez 10 000 vecteurs Workers AI (384 dimensions chacun) et que vous effectuez 5 000 requêtes par jour dans votre index, vous obtiendrez un total de 49 millions de dimensions de vecteurs interrogées et vous <em>restez</em> dans les limites de ce que nous prévoyons dans l'offre payante de Workers (5 USD/mois). Mieux encore : en cas d'inactivité, nous ne supprimons pas vos index.</p>
+	<p>Sachez que cette tarification n'est pas définitive, nous nous attendons à des modifications. Nous souhaitons éviter les éléments de surprise : il n'y a rien de pire que de commencer à développer sur une plateforme et de réaliser que vous ne pouvez pas assumer la tarification <em>après</em> avoir investi du temps pour l'écriture du code, les tests et l'assimilation des nuances d'une technologie.</p>
+	<h2 id="vectorize">Vectorize !</h2>
+	<p>Chaque développeur Workers travaillant dans le cadre d'une offre payante peut commencer immédiatement à utiliser Vectorize : la version Bêta ouverte est disponible dès maintenant et vous pouvez<a href="https://developers.cloudflare.com/vectorize" target="_blank"> consulter notre documentation pour les développeurs pour vous lancer</a>.</p>
+	<p>L'histoire de la base de données vectorielle chez Cloudflare ne fait que commencer. Au cours des quelques prochaines semaines et prochains mois, nous prévoyons de lancer un nouveau moteur de recherche qui devrait améliorer plus encore les performances d'interrogation, prendre en charge un nombre encore plus grand d'index, introduire des possibilités de filtrage de sous-index, des limites de métadonnées plus grandes et des analyses par index.</p>
+	<p>Et si vous cherchez l'inspiration pour savoir quoi développer, <a href="https://developers.cloudflare.com/vectorize/get-started/embeddings" target="_blank">regardez le tutoriel de recherche sémantique</a> qui combine Workers AI et Vectorize pour la recherche documentaire, et qui s'exécute intégralement sur Cloudflare. Vous pouvez aussi consulter un exemple illustrant <a href="https://developers.cloudflare.com/workers-ai/tutorials/build-a-retrieval-augmented-generation-ai" target="_blank">comment combiner OpenAI et Vectorize</a> pour donner plus de contexte à un LLM et améliorer de façon spectaculaire l'exactitude des réponses.</p>
+	<p>Et si vous avez des questions concernant l'utilisation de Vectorize pour vos équipes produit et d’ingénierie, ou si vous voulez simplement soumettre des suggestions à d'autres développeurs qui utilisent Workers AI, rejoignez les canaux #vectorize et #workers-ai sur notre<a href="https://discord.cloudflare.com" target="_blank"> Discord pour développeurs</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image6-3.png" class="kg-image" alt="" loading="lazy" width="1801" height="448"></figure>
+</div>

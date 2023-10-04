@@ -1,0 +1,101 @@
+<div class="mb2 gray5">16 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-33.png" class="kg-image" alt="Hyperdrive: making databases feel like they’re global" loading="lazy" width="1801" height="1013"></figure>
+	<p>Hyperdrive는 어디에서 실행되는 Cloudflare Workers에서 기존 데이터베이스에 액세스하는 것을 매우 빠르게 만듭니다. Hyperdrive를 데이터베이스와 연결하고 Hyperdrive로 연결하기 위해 단 한 줄의 코드를 바꾸면 연결과 쿼리가 마법처럼 빨라집니다(<a href="https://developers.cloudflare.com/hyperdrive" target="_blank">오늘 바로 사용할 수 있습니다</a>).</p>
+	<p>요약하자면, Hyperdrive는 Cloudflare의 전역 네트워크를 사용하므로 기존 데이터베이스에 대한 쿼리 속도가 단축됩니다. 데이터베이스가 레거시 클라우드 공급자에 있든, 여러분이 좋아하는 서버리스 데이터베이스 공급자에 있든 구애받지 않습니다. Hyperdrive를 사용하면 반복적으로 새로운 데이터베이스 연결을 설정할 때 발생하는 대기 시간이 대폭 단축되고, 데이터베이스에 대한 가장 인기 있는 읽기 쿼리가 캐시되어 데이터베이스에 돌아갈 필요가 없어지는 경우가 많습니다.</p>
+	<p>Hyperdrive가 없으면 기존 클라우드 공급자의 미국 동부1 지역에 있는 핵심 데이터베이스(사용자 프로필, 제품 인벤토리, 중요한 웹 앱을 실행하는 데이터베이스)는 파리, 싱가포르, 두바이에 있는 사용자가 액세스하는 속도가 매우 느려질 수 있습니다. 로스앤젤레스나 밴쿠버에 있는 사용자에게도 예상보다 느려질 것입니다. 각 왕복 시간이 최대 200ms이므로 연결을 설정하는 데 필요한 몇 번의 왕복 자체만으로도 최대 1초(또는 그 이상!)가 걸리기 쉽습니다. 데이터를 위해 쿼리를 작성하기도 전에도 말입니다. Hyperdrive는 이러한 현상을 해결하기 위해 설계되었습니다. </p>
+	<p>Hyperdrive의 성능을 선보이기 위해 Cloudflare에서는 <a href="https://hyperdrive-demo.pages.dev" target="_blank">데모 애플리케이션</a>을 구축했습니다. 이는 Hyperdrive를 사용한 채로 그리고 사용하지 않은 채로 (바로) 동일한 데이터베이스에 대해 연속되는 쿼리를 작성합니다. 이 앱은 주변 대륙에 있는 데이터베이스를 선택합니다. 여러분이 유럽에 있다면 이는 미국에 있는 데이터베이스를 선택합니다. 많은 유럽 인터넷 사용자가 흔히 겪는 상황입니다. 여러분이 아프리카에 있다면 이는 유럽에 있는 데이터베이스를 선택합니다(다른 경우에도 비슷합니다). 이는 원시 결과를 간단한 `SELECT` 쿼리에서 반환합니다. 세심하게 선정한 평균이나 고르고 고른 메트릭은 없습니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-25.png" class="kg-image" alt="" loading="lazy" width="1999" height="1705">
+		<figcaption><em>Cloudflare에서는 Hyperdrive를 사용한 채로 그리고 사용하지 않은 채로 PostgreSQL 데이터베이스에 대한 진짜 쿼리를 작성하는 </em><a href="https://hyperdrive-demo.pages.dev" target="_blank"><em>데모 앱을 구축했습니다</em></a><em>.&nbsp;</em></figcaption>
+	</figure>
+	<p>내부 테스트, 초기 사용자 보고서, 벤치마크에서 수행한 여러 번의 실행에 따르면 Hyperdrive는 캐시된 쿼리를 위해 데이터베이스에 직접 접근하는 것에 비해 17~25배 개선된 성능을 제공합니다. 또한, 캐시되지 않은 쿼리 및 쓰기는 6~8배 개선됩니다. 여러분에게 캐시된 대기 시간이 놀랍지 않을 수 있지만, 6~8배 더 빨라진 캐시되지 않은 쿼리가 “Cloudflare Workers에서는 중앙 집중식 데이터베이스를 쿼리할 수 없어”라는 생각을 “이걸 이제야 사용하다니?!”로 바꿀 수 있을 것으로 생각합니다. Cloudflare에서는 성능을 개선하려고 지속해서 노력하고 있습니다. 이미 대기 시간이 추가적으로 단축되었으며 몇 주 후에 이를 선보일 예정입니다.</p>
+	<p>가장 큰 이점은 무엇일까요? 유료 Workers 요금제를 이용하고 있는 개발자는 <a href="https://developers.cloudflare.com/hyperdrive" target="_blank">지금 바로 Hyperdrive의 오픈 베타 사용을 시작할 수 있습니다</a>. 사용해 보려고 대기 명단에 등록하거나 특별 등록 양식을 작성할 필요가 없습니다.</p>
+	<h3 id="hyperdrive%EB%A5%BC-%EB%93%A4%EC%96%B4%EB%B3%B8-%EC%A0%81%EC%9D%B4-%EC%97%86%EC%9C%BC%EC%8B%A0%EA%B0%80%EC%9A%94">Hyperdrive를 들어본 적이 없으신가요?</h3>
+	<p>Cloudflare는 한동안 비밀리에 Hyperdrive를 구축했습니다. 하지만 우리는 한동안 개발자가 이미 보유하고 있는 기존 데이터, 쿼리, 툴링과 데이터베이스를 연결할 수 있도록 하는 것에 초점을 두었습니다.</p>
+	<p>컴퓨팅이 (사용자에 가깝도록) 전 세계에 걸쳐 분산되어 있고 기능의 수명이 짧은 (따라서 더 이상 한 필요하지 않은 기능에 요금을 지불해야 하게 되는) Workers와 같은 최신 분산 클라우드 환경에서는 기존 데이터베이스와의 연결이 느리고 확장할 수 없는 작업이었습니다. 느린 이유는 연결을 설정하려면 7번 이상의 왕복(TCP 핸드셰이크, TLS 협상, 인증)이 필요하기 때문입니다. 확장할 수 없는 이유는 PostgreSQL 등의 데이터베이스에 <a href="https://www.postgresql.org/message-id/flat/31cc6df9-53fe-3cd9-af5b-ac0d801163f4%40iki.fi" target="_blank">연결당 높은 리소스 비용</a>이 들기 때문입니다. 쿼리에 필요한 메모리는 제외하더라도, 데이터베이스와 수백 번 연결하는 것만 해도 무시할 수 없는 양의 메모리가 사용될 수 있습니다.</p>
+	<p>Neon(인기 있는 서버리스 Postgres 공급자)에서 근무하고 있는 지인이 이에 대한 글을 작성하고 <a href="https://neon.tech/blog/serverless-driver-for-postgres" target="_blank">WebSocket 프록시 및 드라이버를 출시하여</a> 연결 오버헤드를 줄이고자 했지만, 여전히 힘든 노력을 하고 있습니다. 사용자 지정 드라이버를 사용하면 왕복 횟수가 4번으로 줄지만, 왕복할 때마다 잠재적으로 여전히 50~200ms 이상이 소요됩니다. 이러한 연결이 오래 유지된다면 괜찮습니다. 최대 몇 시간에 한 번씩 연결되곤 하니까요. 하지만 개별 기능 호출 측면에서 살펴보면 최대 몇 밀리초~몇 분 동안만 유용합니다. 코드는 대기하는 데 더 많은 시간을 씁니다. 사실상 이는 다른 유형의 콜드 스타트입니다. 쿼리를 작성하기 전에 데이터베이스를 대상으로 새로운 연결을 시작해야 한다는 것은 분산 또는 서버리스 환경에서 기존 데이터베이스를 사용하는 것이 (가볍게 표현한다고 해도) <em>정말 느려진다는 것을 의미합니다</em>.</p>
+	<p>이 현상을 해결하기 위해 Hyperdrive는 2가지 조치를 취합니다.</p>
+	<p>첫째, Hyperdrive는 Cloudflare 네트워크에 걸쳐 지역 데이터베이스 연결 풀 세트를 유지하여 Cloudflare Worker가 모든 요청을 대상으로 데이터베이스에 새롭게 연결하지 않도록 합니다. 대신, Worker는 빠르게 Hyperdrive와의 연결을 설정할 수 있습니다. Hyperdrive가 바로 사용할 수 있는 데이터베이스와의 연결 풀을 유지하고 있기 때문입니다. 데이터베이스가 <em>한 번</em> 왕복(새로운 연결의 경우, 7번 이상일 수 있음)하는 데 걸리는 시간은 30~300ms(보통 300ms)이므로, 사용할 수 있는 연결 풀을 확보하고 있으면 단기간 유지되는 연결로 인한 대기 시간 문제가 대폭 줄어듭니다.</p>
+	<p>둘째, Hyperdrive는 읽기(미변형)와 쓰기(변형) 쿼리 및 트랜잭션의 차이를 이해합니다. 또한, 가장 인기 있는 읽기 쿼리를 자동으로 캐시할 수 있습니다. 읽기 쿼리는 일반적인 웹 애플리케이션에서 데이터베이스가 작성하는 대부분의 쿼리에서 80% 이상을 차지합니다. 매시간 수만 명의 사용자가 방문하는 제품 목록 페이지, 대규모 채용 사이트의 일자리, 가끔 바뀌는 구성 데이터에 대한 쿼리 등 많은 쿼리 대상은 자주 바뀌지 않습니다. 그러므로 사용자가 쿼리하는 위치에 더 가깝게 이를 캐시하면 수만 명의 향후 사용자가 이러한 데이터에 액세스하는 데 걸리는 시간을 크게 단축할 수 있습니다. 안전하게 캐시할 수 없는 쓰기 쿼리도 Hyperdrive의 연결 풀링 <em>및</em> Cloudflare <a href="https://www.cloudflare.com/network" target="_blank">전역 네트워크</a>의 이점을 누릴 수 있습니다. 또한, Cloudflare 백본을 지나 인터넷을 거치는 가장 빠른 경로를 사용하면 대기 시간을 단축할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-16.png" class="kg-image" alt="" loading="lazy" width="1725" height="1005">
+		<figcaption><em>데이터베이스가 해당 국가의 반대편에 있더라도 70ms의 속도로 6번 왕복하는 데 걸리는 시간은 사용자가 쿼리 응답을 기다리기에는 너무 깁니다.</em></figcaption>
+	</figure>
+	<p>Hyperdrive는 <a href="https://neon.tech" target="_blank">Neon</a>, Google Cloud SQL, AWS RDS, <a href="https://www.timescale.com" target="_blank">Timescale</a> 등 PostgreSQL 데이터베이스와 작동하지만, <a href="https://materialize.com" target="_blank">Materialize</a>(강력한 스트리밍 처리 데이터베이스), <a href="https://www.cockroachlabs.com" target="_blank">CockroachDB</a>(주요 분산 데이터베이스), Google Cloud의 <a href="https://cloud.google.com/alloydb" target="_blank">AlloyDB</a>, AWS Aurora Postgres 등의 PostgreSQL 호환 가능 데이터베이스와도 작동합니다.</p>
+	<p>Cloudflare에서는 올해 말까지 PlanetScale 같은 공급자를 포함한 MySQL을 지원하기 위해 노력하고 있습니다. 앞으로 더 많은 데이터베이스 엔진을 지원할 예정입니다.</p>
+	<h3 id="%EB%A7%88%EB%B2%95-%EA%B0%99%EC%9D%80-%EC%97%B0%EA%B2%B0-%EB%AC%B8%EC%9E%90%EC%97%B4">마법 같은 연결 문자열</h3>
+	<p>Hyperdrive의 주요 설계 목적 중 하나는 기존 드라이버, 쿼리 빌더, ORM(객체-관계 매퍼) 라이브러리를 계속해서 사용하고자 하는 개발자의 필요를 충족하는 것이었습니다. Hyperdrive의 성능이 선사하는 이점을 누리기 위해 여러분이 좋아하는 ORM에서 마이그레이션하거나 수백 줄의 코드를 다시 작성하고 테스트해야 한다면 Hyperdrive가 얼마나 빠르든 사용하기 어려울 것입니다.</p>
+	<p>이를 실현하기 위해 Cloudflare는 <a href="https://node-postgres.com" target="_blank">node-postgres</a> 및 <a href="https://github.com/porsager/postgres" target="_blank">Postgres.js</a>와 같은 인기 있는 오픈 소스 드라이버를 유지하는 회사와 협업하여 이들이 보유한 라이브러리가 <a href="https://blog.cloudflare.com/workers-tcp-socket-api-connect-databases">Worker의 새로운 TCP 소켓 API</a>( <a href="https://github.com/wintercg/proposal-sockets-api" target="_blank">표준 프로세스</a> 통과)를 지원하는 것을 도왔습니다. Cloudflare에서는 Node.js, Deno, Bun도 지원할 예정입니다.</p>
+	<p>이 간소한 데이터베이스 연결 문자열은 데이터베이스 드라이버의 공통 언어이며 일반적으로 다음과 같은 형식을 가집니다.</p><!--kg-card-begin: markdown-->
+	<pre><code>postgres://user:password@some.database.host.example.com:5432/postgres
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hyperdrive에 숨겨진 마법은 기존 Workers 애플리케이션에서 기존 쿼리로 사용을 시작할 수 있다는 것입니다. 기존 연결 문자열을 Hyperdrive에서 생성하는 문자열로 바꾸기만 하면 됩니다.</p>
+	<h3 id="hyperdrive-%EC%83%9D%EC%84%B1">Hyperdrive 생성</h3>
+	<p>이 예시에서는 기존 데이터베이스가 준비되어 있으니 <a href="https://neon.tech" target="_blank">Neon</a>의 Postgres 데이터베이스를 사용하겠습니다. Hyperdrive를 실행하는 데 1분도 걸리지 않습니다(예, 시간을 직접 측정해 봤습니다).</p>
+	<p>기존 Cloudflare Workers 프로젝트가 없더라도, 빠르게 프로젝트를 생성할 수 있습니다.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-Python">$ npm create cloudflare@latest
+# Call the application "hyperdrive-demo"
+# Choose "Hello World Worker" as your template
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>이 단계에서는 데이터베이스를 위한 데이터베이스 연결 문자열과 Hyperdrive와 연결하기 위한 빠른 <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update" target="_blank">wrangler command-line</a> 호출이 필요합니다.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-Python"># Using wrangler v3.10.0 or above
+wrangler hyperdrive create a-faster-database --connection-string="postgres://user:password@neon.tech:5432/neondb"
+
+# This will return an ID: we'll use this in the next step
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cludflare의 Worker를 위해 <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank">wrangler.toml configuration</a> 파일에 Hyperdrive를 추가합니다.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">[[hyperdrive]]
+name = "HYPERDRIVE"
+id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>이제 <a href="https://developers.cloudflare.com/workers" target="_blank">Worker</a>를 작성하거나 기존 Worker 스크립트를 사용할 수 있습니다. 그리고 Hyperdrive를 사용하여 기존 데이터베이스에 대한 연결과 쿼리 속도를 단축할 수 있습니다. 여기에서는 <a href="https://node-postgres.com" target="_blank">node-postgres</a>를 사용하지만, <a href="https://orm.drizzle.team" target="_blank">Drizzle ORM</a>을 사용하여 똑같이 쉽게 속도를 단축할 수 있습니다.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">import { Client } from 'pg';
+
+export interface Env {
+	HYPERDRIVE: Hyperdrive;
+}
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+		console.log(JSON.stringify(env));
+		// Create a database client that connects to our database via Hyperdrive
+		//
+		// Hyperdrive generates a unique connection string you can pass to
+		// supported drivers, including node-postgres, Postgres.js, and the many
+		// ORMs and query builders that use these drivers.
+		const client = new Client({ connectionString: env.HYPERDRIVE.connectionString });
+
+		try {
+			// Connect to our database
+			await client.connect();
+
+			// A very simple test query
+			let result = await client.query({ text: 'SELECT * FROM pg_tables' });
+
+			// Return our result rows as JSON
+			return Response.json({ result: result });
+		} catch (e) {
+			console.log(e);
+			return Response.json({ error: JSON.stringify(e) }, { status: 500 });
+		}
+	},
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>위에 있는 코드는 의도적으로 단순하게 작성되었지만, 이를 통해 Hyperdrive에 숨겨진 마법을 확인할 수 있으셨기를 바랍니다. Cloudflare 데이터베이스 드라이버는 Hyperdrive에서 연결 문자열을 가져오며 이를 이해하지 못합니다. 데이터베이스 드라이버는 Hyperdrive에 대한 모든 것을 알 필요가 없고, 사용자는 좋아하는 쿼리 빌더 라이브러리의 사용을 중단할 필요가 없습니다. 그리고 쿼리를 작성할 때 속도가 선사하는 이점을 즉각적으로 느낄 수 있습니다.</p>
+	<p>연결은 자동으로 풀링되고 언제든지 사용할 수 있도록 유지됩니다. 이렇게 하면 가장 인기 있는 쿼리가 캐시되고 전체 애플리케이션이 빨라집니다.</p>
+	<p>Cloudflare에서는 <a href="https://developers.cloudflare.com/hyperdrive/examples" target="_blank">모든 대규모 데이터베이스 공급자에 대한 가이드</a>를 작성하여 이러한 데이터베이스에 필요한 것(연결 문자열)을 쉽게 Hyperdrive로 가져올 수 있게 했습니다.</p>
+	<h3 id="%EC%A0%80%EB%B9%84%EC%9A%A9%EC%9C%BC%EB%A1%9C-%EC%86%8D%EB%8F%84%EB%A5%BC-%EB%B9%A0%EB%A5%B4%EA%B2%8C-%ED%95%A0-%EC%88%98%EB%8A%94-%EC%97%86%EC%A3%A0">저비용으로 속도를 빠르게 할 수는 없죠? </h3>
+	<p>Cloudflare에서는 Cloudflare Workers에서 구축할 때 Hyperdrive가 기존 데이터베이스에 액세스하는 데 중요하다고 생각합니다. 기존 데이터베이스는 클라이언트가 전 세계적으로 분산된 환경을 위해 설계되지는 않았습니다. </p>
+	<p><strong>Hyperdrive의 연결 풀링은 항상 무료일 것입니다</strong>. 현재 지원하는 데이터베이스 프로토콜과 앞으로 Cloudflare에서 추가할 새로운 데이터베이스 프로토콜 모두를 대상으로 말입니다. Cloudflare에서는 DDoS 방어 및 글로벌 <a href="https://www.cloudflare.com/application-services/products/cdn" target="_blank">CDN</a>과 마찬가지로 Hyperdrive의 핵심 기능에 대한 액세스가 너무 유용하므로 제한해서는 안 된다고 생각합니다.</p>
+	<p>오픈 베타 기간에는 Hyperdrive를 어떻게 사용하든 요금이 부과되지 않습니다. 충분한 여유 기간을 두고 GA(2024년 초) 시점이 가까워지면 Hyperdrive 이용 가격에 대한 자세한 내용을 발표할 예정입니다.</p>
+	<h3 id="%EC%BF%BC%EB%A6%AC%ED%95%A0-%EC%8B%9C%EA%B0%84">쿼리할 시간</h3>
+	<p>Hyperdrive의 향후 계획은 어떨까요?</p>
+	<p>2024년 초에 Hyperdrive를 대중적으로 제공할 예정입니다. Cloudflare는 쓰기, 상세한 쿼리 및 성능 분석(곧 제공!), 더 많은 데이터베이스 엔진(MySQL 포함) 지원, 추가적인 시간 단축 등을 위한 지속적인 노력을 기반으로 캐시하고 자동으로 무효화하는 방식에 대한 더 많은 제어 기능을 제공하는 데 집중하고 있습니다. </p>
+	<p>Cloudflare에서는 <a href="https://developers.cloudflare.com/magic-wan" target="_blank">Magic WAN</a> 및 Cloudflare Tunnel을 통해 비공개 네트워크 연결을 가능하게 만들기 위해 노력하고 있습니다. 이를 통해 공개 인터넷에 노출되지 않거나 노출할 수 없는 데이터베이스에 연결할 수 있습니다. </p>
+	<p>기존 데이터베이스에 Hyperdrive를 연결하려면 Cloudflare <a href="https://developers.cloudflare.com/hyperdrive" target="_blank">개발자 문서</a>를 읽어보세요. Hyperdrive를 생성하고 이를 사용하기 위해 기존 코드를 업데이트하는 데는 1분도 걸리지 않습니다. Cloudflare Developer Discord에서 <em>#hyperdrive-beta</em> 채널에 참여하여 질문하고, 버그를 신고하며, Cloudflare 제품 및 엔지니어링 팀과 직접 대화를 나눠보세요.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-31.png" class="kg-image" alt="" loading="lazy" width="1800" height="647"></figure>
+</div>

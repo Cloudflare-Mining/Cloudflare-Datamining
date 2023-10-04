@@ -1,0 +1,69 @@
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-10.png" class="kg-image" alt="Announcing AI Gateway: making AI applications more observable, reliable, and scalable" loading="lazy" width="1801" height="1014"></figure>
+	<p>Hoy nos complace anunciar nuestra versión beta de <strong>AI Gateway</strong>, el portal para mejorar la observabilidad, la fiabilidad y la escalabilidad de tus aplicaciones de IA.</p>
+	<p>AI Gateway se encuentra entre tu aplicación y las API de IA a las que tu aplicación envía las solicitudes (como OpenAI), de manera que podemos almacenar en caché las respuestas, limitar y reintentar las solicitudes y proporcionar análisis para ayudarte a supervisar y realizar un seguimiento de su utilización. AI Gateway se ocupa de todo aquello que necesitan prácticamente la totalidad de las aplicaciones de IA, así que te permite ahorrar tiempo de ingeniería, por lo que puedes centrarte en el desarrollo.</p>
+	<h3 id="conectar-tu-aplicaci%C3%B3n-a-ai-gateway">Conectar tu aplicación a AI Gateway</h3>
+	<p>Solo se requiere una línea de código para que los desarrolladores puedan empezar a utilizar AI Gateway de Cloudflare. Lo único que debes hacer es reemplazar la URL en tus llamadas API por tu punto final único de AI Gateway. Por ejemplo, con OpenAI, definirías tu baseURL como <code>"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</code> en lugar de <code>"https://api.openai.com/v1"</code>. Eso es todo. Puedes mantener tus tokens en tu entorno de código, y registraremos la solicitud mediante AI Gateway antes de permitir que pase hasta la API final con tu token.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">// configuring AI gateway with the dedicated OpenAI endpoint
+
+const openai = new OpenAI({
+&nbsp; apiKey: env.OPENAI_API_KEY,
+&nbsp; baseURL: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai",
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Actualmente admitimos proveedores de modelos como OpenAI, Hugging Face y Replicate, y tenemos previsto añadir otros más adelante. Admitimos todos los distintos puntos finales de los proveedores y también la transmisión de respuestas, por lo que, una vez configurada la puerta de enlace, no hace falta ninguna configuración adicional para que todo funcione. El punto final dedicado a estos proveedores te permite conectar tus aplicaciones a AI Gateway modificando una única línea de código, sin tocar tu estructura original de la carga.</p>
+	<p>También disponemos de un punto final universal que puedes utilizar si deseas más flexibilidad con tus solicitudes. Con el punto final universal, tienes la capacidad de definir modelos de reserva y de gestionar los reintentos de las solicitudes. Por ejemplo, supongamos que se ha enviado una solicitud a OpenAI GPT-3, pero la API está caída. Con el punto final universal, podrías definir Hugging Face GPT-2 como tu modelo de reserva, y la puerta de enlace puede reenviar automáticamente esa solicitud a Hugging Face. Esto es realmente útil para mejorar la resiliencia de tu aplicación en casos donde observas errores inusuales, tu velocidad se ve limitada, o cuando una factura sube demasiado, y deseas diversificar a otros modelos. Con el punto final universal, lo único que tienes que hacer es modificar tu carga para especificar el proveedor y el punto final, de manera que podamos enrutar adecuadamente las solicitudes por ti. Consulta la solicitud de ejemplo a continuación y <a href="https://developers.cloudflare.com/ai-gateway" target="_blank">la documentación</a> para obtener más información sobre el esquema de punto final universal.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-bash"># Using the Universal Endpoint to first try OpenAI, then Hugging Face
+
+curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY &nbsp;-X POST \
+&nbsp; --header 'Content-Type: application/json' \
+&nbsp; --data '[
+&nbsp; {
+&nbsp; &nbsp; "provider": "openai",
+&nbsp; &nbsp; "endpoint": "chat/completions",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $OPENAI_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "model": "gpt-3.5-turbo",
+&nbsp; &nbsp; &nbsp; "stream": true,
+&nbsp; &nbsp; &nbsp; "messages": [
+&nbsp; &nbsp; &nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "role": "user",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "content": "What is Cloudflare?"
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; &nbsp; ]
+&nbsp; &nbsp; }
+&nbsp; },
+&nbsp; {
+&nbsp; &nbsp; "provider": "huggingface",
+&nbsp; &nbsp; "endpoint": "gpt2",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $HF_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"
+&nbsp; &nbsp; }
+&nbsp; },
+]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="mayor-visibilidad-del-uso-de-tu-aplicaci%C3%B3n">Mayor visibilidad del uso de tu aplicación</h3>
+	<p>Ahora que tu aplicación está conectada a Cloudflare, podemos ayudarte a recopilar datos de análisis y proporcionarte información y control sobre el tráfico que pasa a través de tus aplicaciones. Independientemente del modelo o la infraestructura que utilices en el backend, podemos ayudarte a registrar las solicitudes y a analizar datos como el número de solicitudes, el número de usuarios, el coste de la ejecución de la aplicación, la duración de las solicitudes, etc. Aunque se trata de análisis básicos que los proveedores de modelos deberían ofrecer, es sorprendentemente difícil obtener visibilidad sobre estas métricas con los proveedores de modelos habituales. AI Gateway va un paso más allá y te permite agregar los análisis de varios proveedores.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-24.png" class="kg-image" alt="" loading="lazy" width="1999" height="1418"></figure>
+	<h3 id="controlar-la-escala-de-tu-aplicaci%C3%B3n">Controlar la escala de tu aplicación</h3>
+	<p>Uno de los puntos débiles que oímos a menudo es el elevado coste del desarrollo y de la ejecución de las aplicaciones de IA. Cada llamada API puede ser imprevisible y sus costes se pueden acumular rápidamente, lo que impide a los desarrolladores aprovechar todo el potencial de la escalabilidad de sus aplicaciones. Considerando el ritmo al que evoluciona el sector, no quieres ver limitada tu escalabilidad y quedarte rezagado. Y aquí es donde el almacenamiento en caché y la limitación de velocidad pueden ayudarte. Permitimos a los desarrolladores almacenar en caché sus llamadas API, de manera que las nuevas solicitudes se puedan atender desde nuestra caché en lugar de desde la API original, por lo que resulta más barato y rápido. Asimismo, la <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank">limitación de velocidad</a> puede ayudar a controlar los costes regulando el número de solicitudes e impidiendo cualquier actividad sospechosa o un volumen excesivo de actividad. Los desarrolladores tienen total flexibilidad para definir reglas de almacenamiento en caché y de limitación de velocidad, por lo que las aplicaciones pueden evolucionar al ritmo que elijas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-20.png" class="kg-image" alt="" loading="lazy" width="1999" height="1308"></figure>
+	<h3 id="la-plataforma-workers-ai">La plataforma Workers AI</h3>
+	<p>AI Gateway combina perfectamente con nuestros nuevos productos <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> y <a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta">Vectorize</a>, por lo que puedes desarrollar aplicaciones integrales de IA en el ecosistema de Workers. Ya se trate de implementar aplicaciones con Workers, de ejecutar la inferencia de modelos en el perímetro con Workers AI, de almacenar inclusiones de vectores en Vectorize o de mejorar la visibilidad sobre tus aplicaciones con AI Gateway, la plataforma Workers es tu solución integral para hacer realidad tus aplicaciones de IA. Para saber cómo utilizar AI Gateway con Workers AI o los distintos proveedores, consulta <a href="https://developers.cloudflare.com/ai-gateway" target="_blank">la documentación</a>.</p>
+	<h3 id="pr%C3%B3xima-fase-el-caso-de-uso-empresarial">Próxima fase: el caso de uso empresarial</h3>
+	<p>Lanzamos la versión 1 de AI Gateway con algunas funciones básicas, pero tenemos previsto ampliar el producto para abordar también casos de uso más avanzados, como alertas de uso, protección contra jailbreak, enrutamiento dinámico de modelos con pruebas A/B y reglas avanzadas de almacenamiento en caché. Pero lo que realmente nos entusiasma son las otras maneras de aplicar AI Gateway…</p>
+	<p>En el futuro, queremos desarrollar AI Gateway para que sea un producto que ayude a las organizaciones a supervisar y observar cómo sus usuarios o empleados utilizan la IA. De esta forma, con un solo clic puedes hacer que todas las solicitudes de tu red enviadas a los proveedores (como OpenAI) pasen primero a través de Cloudflare. de manera que puedas registrar las solicitudes de los usuarios, aplicar políticas de acceso y activar la limitación de velocidad y estrategias de <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank">prevención de pérdida de datos (DLP)</a>. Un buen ejemplo: en el caso de que un empleado pegue accidentalmente una clave de API en ChatGPT, podemos haber configurado AI Gateway para ver la solicitud saliente y eliminar la clave de API o para bloquear la solicitud por completo, impidiendo así que nunca llegue a OpenAI o a cualquier otro proveedor. También podemos registrar las solicitudes sospechosas y emitir las alertas correspondientes, a fin de que las organizaciones puedan investigar de forma proactiva y controlar determinados tipos de actividad. AI Gateway se convierte en una herramienta realmente útil para aquellas organizaciones que podrían estar interesadas en la mejora de eficiencia que ofrece la IA, pero que son reticentes a confiar en ella cuando la privacidad de los datos y los potenciales errores de los usuarios son amenazas realmente críticas. Esperamos que AI Gateway pueda mitigar esta preocupación y facilitar la adopción de las herramientas de IA a las organizaciones.</p>
+	<p>Tanto si eres un desarrollador de aplicaciones como una empresa interesada en cómo los empleados utilizan la IA, esperamos que AI Gateway pueda ayudarte a desmitificar lo que sucede dentro y fuera de tus aplicaciones, porque una vez que entiendas cómo los usuarios utilizan la AI, podrás decidir cómo realmente quieres que la utilicen. Algunas de estas funciones aún están en fase de desarrollo, pero esperamos que muestren la eficiencia de AI Gateway y nuestra visión para el futuro.</p>
+	<p>En Cloudflare, la innovación forma parte de nuestro ADN (¡como puedes constatar por los anuncios con ocasión de nuestra Semana aniversario!) y el ritmo de innovación en el ámbito de la IA es absolutamente impresionante. Nos complace poder no solo ayudar a las personas a desarrollar y utilizar aplicaciones, sino también a <em>acelerar</em> realmente la adopción y el desarrollo de la IA con un mayor control y una mejor visibilidad. Estamos deseando que nos cuentes todo lo que vas a crear. Ve al panel de control de Cloudflare y <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral%29" target="_blank">prueba AI Gateway</a>. ¡Dinos qué te parece!</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-17.png" class="kg-image" alt="" loading="lazy" width="1800" height="588"></figure>
+</div>

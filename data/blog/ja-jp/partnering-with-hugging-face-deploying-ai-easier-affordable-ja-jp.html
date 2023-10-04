@@ -1,0 +1,28 @@
+<div class="mb2 gray5">2 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-26.png" class="kg-image" alt="Partnering with Hugging Face to make deploying AI easier and more affordable than ever 🤗" loading="lazy" width="1801" height="1013"></figure>
+	<p>本日、私たちはHugging Face社と提携することで、AIモデルを開発者の皆様にこれまで以上にアクセスしやすく、手頃な価格での提供をお知らせできることを嬉しく思います。</p>
+	<p>今後数か月間で開発者の皆様に提供できるものが3つあります：</p>
+	<ol>
+		<li>Hugging FaceにサーバーレスGPUモデルを導入します。これにより、インフラにかかる手間や使われていない容量に対する支払いが不要になります。モデルを選択して進めるだけです。</li>
+		<li>人気のHugging Faceに最適化されたモデルをCloudflareのモデルカタログへ取り入れます。</li>
+		<li>Hugging Faceの推論ソリューションの一部としてCloudflare連携を導入します。</li>
+	</ol>
+	<p>Hugging Faceは、50万以上のモデルをホストし、1日に100万以上のモデルがダウンロードされる開発者がアプリケーションにAIを追加するのに最適な場所です。</p>
+	<p>一方、Cloudflareは過去6年間、開発者の皆様が私たちの開発者向けプラットフォームでアイデアやアプリケーションをできるだけ簡単に実現できるようにすることを目標に活動してきました。</p>
+	<p>AIがあらゆるアプリケーションの重要な部分となった今、このパートナーシップは、開発者にAIを簡単かつ手頃な価格で導入できるツールを提供するための自然な組み合わせのように感じられました。</p>
+	<blockquote>「Hugging FaceとCloudflareはともに、最新のAIイノベーションを開発者にとって可能な限りアクセスしやすく、手頃な価格にすることに重点を置いている点で共通しています。Cloudflareとの提携により、開発者がインフラストラクチャに煩わされたり、アプリケーションの将来のニーズを予測したりすることなく、モデルを選んでデプロイするだけで、AIアプリケーションをゼロからグローバルに拡張できるサーバーレスGPUサービスを提供できることを嬉しく思います」 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;— Hugging Face CEO、<strong>Clem Delangue氏</strong></blockquote>
+	<p>私たちの今後のエキサイティングな展開を少しだけご紹介します。</p>
+	<h3 id="hugging-face%E3%83%A2%E3%83%87%E3%83%AB%E3%82%92%E3%81%99%E3%81%90%E3%81%AB%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD%E3%81%AB">Hugging Faceモデルをすぐに利用可能に</h3>
+	<p>開発者であれば、思いついたアイデアをできるだけ早く行動に移すことを望みます。このパートナーシップを通じて、どこから始めるかに関わらず、馴染みのあるモデルを提供することができます。</p>
+	<p>Cloudflareの開発者プラットフォームを使用してアプリケーションを構築している場合、Hugging Faceのモデルをネイティブなエクスペリエンスの一部としてフローに取り込むことができます。性能と速度に最適化されたHugging Faceモデルを、Cloudflareのダッシュボードからすぐにデプロイできるようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-24.png" class="kg-image" alt="" loading="lazy" width="1440" height="1024"></figure>
+	<p>また、Hugging Faceで自分のモデルをじっくりと探すのに慣れた方用に、近日中にHugging FaceのUIから直接Workers AIにモデルをデプロイできるようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/group_4.png" class="kg-image" alt="" loading="lazy" width="1988" height="1135"></figure>
+	<p>当社の両チームは共に可能な限り最高の開発者体験を構築することに尽力しており、開発者が次の大きなAIのアイデアを構築するのを阻害するあらゆるやり辛さを取り除き続けて行きます。それが私たちの喜びです。</p>
+	<h3 id="hugging-face%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AB%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%AC%E3%82%B9gpu%E6%8E%A8%E8%AB%96%E3%82%92%E6%8F%90%E4%BE%9B">Hugging FaceユーザーにサーバーレスGPU推論を提供</h3>
+	<p>Hugging Faceはインフラ管理が不要なプラットフォーム上でホストされている50万モデルから予測を提供する複数の推論ソリューションを提供しており、レート制限のある無料の<a href="https://huggingface.co/docs/api-inference/index" target="_blank">推論API</a>から、<a href="https://huggingface.co/inference-endpoints" target="_blank">推論エンドポイント</a>を使用した専用インフラのデプロイ、さらには<a href="https://huggingface.co/docs/transformers.js/index" target="_blank">Transformers.js</a>を使用したインブラウザのエッジ推論まで提供しています。</p>
+	<p>Hugging Faceのチームと緊密に協力しながら、Cloudflareを活用した新しい体験の準備を進めてまいります。新しいサーバーレスGPU推論ソリューションから新しいエッジユースケースまで、ご期待ください！</p>
+	<h3 id="%E3%81%BE%E3%81%9F%E3%81%8A%E4%BC%9A%E3%81%84%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%EF%BC%81">またお会いしましょう！</h3>
+	<p>私たちは、このパートナーシップに関するニュースをお伝えできることを本当に楽しみにしていました。また今後数か月間で開発者の皆様にこれらの体験を提供できることを待ちきれないほど楽しみにしています。</p>
+</div>

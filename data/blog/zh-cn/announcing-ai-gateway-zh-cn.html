@@ -1,0 +1,69 @@
+<div class="mb2 gray5">8 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-10.png" class="kg-image" alt="Announcing AI Gateway: making AI applications more observable, reliable, and scalable" loading="lazy" width="1801" height="1014"></figure>
+	<p>隆重推出 <strong>AI Gateway</strong> 测试版 —— 旨在让您的人工智能应用更具可观察性、更可靠和可扩展</p>
+	<p>AI Gateway 位于您的应用和应用调用的 AI API （例如 OpenAI）之间 —— 以便我们就可以缓存响应，限制和重试请求，并提供分析功能，帮助您监控和跟踪使用情况。AI Gateway 可以处理几乎所有人工智能应用需要的东西，节省工程时间，使您专注构建工作。</p>
+	<h3 id="%E6%82%A8%E7%9A%84%E5%BA%94%E7%94%A8%E8%BF%9E%E6%8E%A5%E5%88%B0-ai-gateway%EF%BC%9A">您的应用连接到 AI Gateway：</h3>
+	<p>只需要一行代码，开发人员就可以开始使用 Cloudflare 的 AI Gateway。您需要做的就是用您唯一的 AI Gateway 端点替换 API 调用中的URL。例如，对于 OpenAI，您可以将 baseURL 定义为：<code>"https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai"</code>，而不是<code>"https://api.openai.com/v1"</code>，就是这么简单。您可将令牌保存在自己的代码环境，我们将通过 AI Gateway 记录请求，然后使用您的令牌让请求通过以到达最终的 API。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">// configuring AI gateway with the dedicated OpenAI endpoint
+
+const openai = new OpenAI({
+&nbsp; apiKey: env.OPENAI_API_KEY,
+&nbsp; baseURL: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/openai",
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们目前支持 OpenAI、Hugging Face 和 Replicate 等模型提供商，并计划在未来添加更多模型。我们支持提供商的所有不同端点，并支持响应流式传输，因此一旦您配置好网关，一切都应该可以开箱即用。针对这些提供商的专用端点允许您通过更改一行代码，即可将您的应用连接到 AI Gateway，而无需触及原始有效负载结构。</p>
+	<p>我们还有一个通用端点，如果您希望对请求有更多的灵活性，您可以使用该端点。通过通用端点，您可以定义备用模型并处理请求重试。例如，假设发送了一个请求到 OpenAI GPT-3，但是该 API 无法使用 —— 通过通用端点，您可以将 Hugging Face GPT-2 定义为备用模型，网关可以自动重新发送该请求到 Hugging Face。这在改善应用的韧性方面非常有帮助，例如：在您注意到异常错误、受到速率限制或者某个账单变得昂贵时，您会希望转移到其他模型。通过通用端点，您只需要调整有效负载以指定提供商和端点，这样我们就可以为您正确地路由请求。请查看下面的示例请求和<a href="https://developers.cloudflare.com/ai-gateway" target="_blank">文档</a>以获取有关通用端点模式的更多详细信息。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-bash"># Using the Universal Endpoint to first try OpenAI, then Hugging Face
+
+curl https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY &nbsp;-X POST \
+&nbsp; --header 'Content-Type: application/json' \
+&nbsp; --data '[
+&nbsp; {
+&nbsp; &nbsp; "provider": "openai",
+&nbsp; &nbsp; "endpoint": "chat/completions",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $OPENAI_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "model": "gpt-3.5-turbo",
+&nbsp; &nbsp; &nbsp; "stream": true,
+&nbsp; &nbsp; &nbsp; "messages": [
+&nbsp; &nbsp; &nbsp; &nbsp; {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "role": "user",
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "content": "What is Cloudflare?"
+&nbsp; &nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; &nbsp; ]
+&nbsp; &nbsp; }
+&nbsp; },
+&nbsp; {
+&nbsp; &nbsp; "provider": "huggingface",
+&nbsp; &nbsp; "endpoint": "gpt2",
+&nbsp; &nbsp; "headers": { 
+&nbsp; &nbsp; &nbsp; "Authorization": "Bearer $HF_TOKEN",
+&nbsp; &nbsp; &nbsp; "Content-Type": "application/json"
+&nbsp; &nbsp; },
+&nbsp; &nbsp; "query": {
+&nbsp; &nbsp; &nbsp; "inputs": "What is Cloudflare?"
+&nbsp; &nbsp; }
+&nbsp; },
+]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="%E8%8E%B7%E5%BE%97%E5%AF%B9%E5%BA%94%E7%94%A8%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7">获得对应用使用情况的可见性</h3>
+	<p>一旦您的应用连接到 Cloudflare，我们可以帮助您收集分析数据，并就通过您的应用传递的流量提供洞察和控制。无论您在后端使用哪种模型或基础设施，我们都可以帮助您记录请求并分析数据，例如请求数量、用户数量、运行应用的成本、请求持续时间等。尽管这些似乎是模型提供者应该暴露的基本分析，但是令人意外的是，使用典型的模型提供者时，要获得对这些指标的可见性并非易事。AI Gateway 更进一步，让您也可以跨多个提供商聚合分析。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-24.png" class="kg-image" alt="" loading="lazy" width="1999" height="1418"></figure>
+	<h3 id="%E6%8E%A7%E5%88%B6%E6%82%A8%E7%9A%84%E5%BA%94%E7%94%A8%E5%A6%82%E4%BD%95%E6%89%A9%E5%B1%95">控制您的应用如何扩展</h3>
+	<p>我们经常听到的一个痛点是构建和运行 AI 应用的成本非常昂贵。每个 API 调用的成本不可预测，成本可能很快累积起来，阻止开发人员将其应用扩展到最大潜力。在行业高速发展的背景下，您不希望因规模限制并被抛在后头，这就是缓存和速率限制的作用所在。我们允许开发人员缓存 API 调用，以便新的请求可以从我们的缓存中提供，而不是从原始 API 获取，从而降低成本并提高速度。<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank">速率限制</a>也可以通过限制请求数量和防止过度或可疑活动来帮助控制成本。开发人员可以完全灵活地定义缓存和速率限制规则，以便应用可以按您选择的可持续速度进行扩展。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-20.png" class="kg-image" alt="" loading="lazy" width="1999" height="1308"></figure>
+	<h3 id="workers-ai-%E5%B9%B3%E5%8F%B0">Workers AI 平台</h3>
+	<p>AI Gateway 完美配合我们新推出的 <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> 和 <a href="https://blog.cloudflare.com/vectorize-vector-database-open-beta">Vectorize</a> 产品，以便您可以在 Workers 生态系统内构建全栈 AI 应用。从使用 Workers 部署应用，使用 Workers AI 在边缘运行模型推理，将向量嵌入存储在 Vectorize 上，到使用 AI Gateway 了解您的应用使用情况 —— Workers 平台是您将 AI 应用变成现实的一站式商店。要了解 AI Gateway 如何配合 Workers AI或不同的提供商一起使用，请查看<a href="https://developers.cloudflare.com/ai-gateway" target="_blank">文档</a>。</p>
+	<h3 id="%E4%B8%8B%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%94%A8%E4%BE%8B">下一步：企业用例</h3>
+	<p>我们正在推出 AI Gateway 的 v1 版本，其中包含一些核心功能，但我们计划扩展该产品以涵盖更多高级用例，例如使用警报、越狱保护、动态模型路由与 A/B 测试以及高级缓存规则。但让我们真正激动的是您可以应用 AI Gateway 的其他方式……</p>
+	<p>在未来，我们希望将 AI Gateway 发展成一个帮助组织监控和观察用户或员工如何使用 AI 的产品。这样，您可以切换一个开关，让网络中的所有请求都通过 Cloudflare，然后再传输给提供商（例如 OpenAI），以便您就可以记录用户请求、应用访问策略、启用速率限制和 <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank">数据丢失防护 (DLP)</a>策略。一个强大的例子是：如果员工不小心将 API 密钥粘贴到 ChatGPT 中，AI Gateway 可以配置为查看出站请求并删除 API 密钥或完全阻止请求，防止其到达 OpenAI 或任何最终提供商。我们还可以记录可疑请求并发出警报，以便组织可以主动调查和控制某些类型的活动。这样以来，对于为人工智能的效率感到兴奋，但在数据隐私和用户错误会造成严重威胁的情况下不愿信任人工智能的组织而言，AI Gateway 将成为一个非常强大的工具。我们希望 AI Gateway 能够减轻这些担忧，并使组织更容易采用 AI 工具。</p>
+	<p>无论您是构建应用的开发人员，还是对员工如何使用人工智能感兴趣的公司，我们都希望 AI Gateway 可以帮助您揭开应用内部的神秘面纱 —— 因为一旦您了解用户如何使用人工智能，您就可以就希望他们实际如何使用它做出决定。其中一些功能仍在开发中，但我们希望这说明了 AI Gateway 的强大功能和我们对未来的愿景。</p>
+	<p>创新就是 Cloudflare 的生命线（从我们生日周期间发布的公告就可以看出来），而人工智能的创新速度更是令人难以置信。我们非常高兴能够不仅帮助人们构建和使用应用程序，还能以更大的控制和可见性加速AI 的采用和发展。我们迫不及待地想知道您会构建什么。请访问 Cloudflare 仪表板以<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fai-gateway%2Fgeneral%29" target="_blank">试用AI Gateway</a>，让我们知道您有何想法。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-17.png" class="kg-image" alt="" loading="lazy" width="1800" height="588"></figure>
+</div>

@@ -1,0 +1,169 @@
+<div class="mb2 gray5">9 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-29.png" class="kg-image" alt="" loading="lazy" width="1800" height="1014"></figure>
+	<p>開発者コミュニティの近くにいれば、AIの最近の進歩がエコシステムに与えた影響を避けることはほとんど不可能です。生産性を向上させるためにワークフローでAIを使用しているにせよ、AIベースの機能をユーザーに提供しているにせよ、AIはあらゆるところに顕在しています。AIのもたらす改善への注目は大きなものであり、この先にもたらされるチャンスに大いに期待が寄せられる一方、これだけでは十分ではありません。</p>
+	<p>少し前までは、AIの力を活用しようと思えば、機械学習の一部始終を知り、それを支えるインフラストラクチャを管理する能力が必要でした。</p>
+	<p>100万人以上のアクティブな開発者を抱える開発者向けプラットフォームとして、当社はまだ解き放たれていない多くの可能性があると信じており、開発者へのAIの提供方法を変えようとしています。現在のソリューションの多くは、強力ではあるものの、クローズドで占有的なモデルに基づいており、開発者やユーザーが求めるプライバシーのニーズに対応していません。あるいは、オープンソースの現場では強力なモデルにより爆発的に成長しているが、すべての開発者にとってアクセシブルではありません。ホストされている場所に関わらず自分自身のコードからモデルを実行でき、GPUを探したりそれをサポートするためのインフラストラクチャを構築したりする必要がない状況を想像してみると良いでしょう。</p>
+	<p>これこそ、当社がWorkers AIの立ち上げに期待している理由です。当社GPUのグローバルネットワークによって支えられる環境で、開発者がわずか数行のコードでAIモデルを実行できるようにしするものです。オープンかつアクセスシブル、サーバーレスかつプライバシー重視、ユーザーの近くで動作する従量制課金により、クラス最高の開発者体験のためにゼロから構築されています。</p>
+	<h2 id="workers-ai%E6%8E%A8%E8%AB%96%E3%82%92%E6%A9%9F%E8%83%BD%E3%81%95%E3%81%9B%E3%82%8B">Workers AI - 推論を機能させる</h2>
+	<p>当社では、AI推論をすべての開発者の手に届けるためにWorkers AIを立ち上げました。そのまま<strong>すぐに使えます</strong>。これを実現した方法を説明しましょう。</p>
+	<ul>
+		<li>すべての核となるのは、適切なインフラストラクチャーつまり当社のワールドクラスのGPUネットワーク上で動作すること</li>
+		<li>当社のインフラストラクチャ上でシームレスに動作する既製のモデルを提供します。</li>
+		<li>最終開発者に喜んでもらえるような形で提供。開発者は初めてのWorkers AIアプリを数分で構築でき「奇跡みたいだ！」と驚嘆するはずです。</li>
+	</ul>
+	<p>では、Workers AIとは一体どういうものなのでしょうか。これを説明するなら、当社が開発者向けプラットフォームに追加しているもう一つのビルディングブロックであり、開発者がサーバーレスGPU上で有名なAIモデルを実行できるようにするもので、すべてがCloudflareの信頼できるグローバルネットワーク上に存在しています。開発者プラットフォームへの最新の追加機能の1つとして、Workers + Pagesとシームレスに動作ししつつ、真にアクセシブルとするため、REST APIを活用しプラットフォームに依存しない設計によりどこでも稼働するようにしました。</p>
+	<h2 id="%E3%81%8A%E9%A6%B4%E6%9F%93%E3%81%BF%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%9F%E3%81%A1">お馴染みのモデルたち</h2>
+	<p>当社では、幅広い推論タスクをカバーする、人気の高いオープンソースのモデルを厳選して発表しています：</p>
+	<ul>
+		<li><strong>テキスト生成（大規模言語モデル）:</strong>meta/llama-2-7b-chat-int8</li>
+		<li><strong>自動音声認識（ASR）：</strong> openai/whisper</li>
+		<li><strong>翻訳：</strong> meta/m2m100-1.2</li>
+		<li><strong>テキスト分類：</strong> huggingface/distilbert-sst-2-int8</li>
+		<li><strong>画像分類：</strong> microsoft/resnet-50</li>
+		<li><strong>エンベッディング：</strong> baai/bge-base-ja-v1.5</li>
+	</ul>
+	<p>これらのモデルは、Cloudflareのダッシュボードで利用可能なものをすべて閲覧でき、間もなくモデルごとにログや分析にアクセスできるようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-14.png" class="kg-image" alt="" loading="lazy" width="1306" height="832"></figure>
+	<p>これは始まりに過ぎず、当社では壮大なプランを持っています。ローンチ後も、コミュニティからのフィードバックに基づいて拡張を続けていきます。さらに期待が募るのは、当社でのサービスラインナップをゼロから60にするにあたり、AIコミュニティおよびハブにおけるけん引役的存在であるHugging Faceとの提携を発表します。このパートナーシップは多面的なもので、詳しくは<a href="https://blog.cloudflare.com/best-place-region-earth-inference">こちら</a>でご覧いただけます。一方、まもなくWorkers AIで直接Hugging Faceカタログのサブセットを閲覧、実行できるようになります。</p>
+	<h2 id="%E8%AA%B0%E3%81%A7%E3%82%82%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E5%8F%AF%E8%83%BD">誰でもアクセス可能</h2>
+	<p>当社の開発者プラットフォームの使命の一つは、開発者にとって夢のアプリケーションを構築するために必要な<strong>すべて</strong>のビルディングブロックを提供することです。適切なブロックにアクセスできることは、その一部分に過ぎません。開発者としての仕事は、それらをアプリケーションにまとめることになります。当社が目指すのは、それをできるだけ簡単にすることです。</p>
+	<p>エントリーポイントに関係なく簡単にWorkers AIを使えるようにするため、Cloudflareエコシステム内で簡単に使用できるようにWorkersまたはPagesのいずれか、および現在のスタックでWorkers AIを使用したい場合はREST API経由でのアクセスを実現しています。</p>
+	<p>英語からフランス語にテキストを翻訳する簡素なCURLの例を見てみます：</p><!--kg-card-begin: markdown-->
+	<pre><code>curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/m2m100-1.2b \
+-H "Authorization: Bearer {API_TOKEN}" \
+	-d '{ "text": "I'll have an order of the moule frites", "target_lang": "french" }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>レスポンスは、次のようになります：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">{
+  "result": {
+    "answer": "Je vais commander des moules frites"
+  },
+  "success": true,
+  "errors":[],
+  "messages":[]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>お好きなJamstackフレームワーク、Python + Django/Flask、Node.js、Ruby on Railsなど、あらゆるスタックでどこでも使え、その可能性は無限です。そしてもちろん、デプロイできます。</p>
+	<h2 id="%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">開発者のためのデザイン</h2>
+	<p>当社では、開発者にとっての使い勝手を非常に重んじています。実際、この記事の大半はそれについてのものとなってきました。そのままの状態ですぐに使えるようにする、きちんと動作する人気の高いモデルを提供する、そしてCloudflareでビルドおよびデプロイするかどうかにかかわらず、すべての開発者がアクセスできるようにすることを重んじています。しかし、それ以上に重要なのは、わずらわしさのない体験となること、ゼロから本番までが迅速であること、そしてその過程で心地よさを感じられることなのです。</p>
+	<p>別の例で、どれほど使いやすいかを説明します。Workerでの、Metaによってオープンソース化された人気のある大規模言語モデル、Llama 2を見てみましょう。</p>
+	<p>ここでは、基本（Cloudflareアカウント、Node、NPMなど）はすでに対応済みと仮定します。梅移転があれば、<a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">こちらのガイド</a>で適切なセットアップをご案内しています。</p>
+	<h3 id="1-workers%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B">1. Workersプロジェクトを作成する</h3>
+	<p>workers-aiという新しいプロジェクトを作る：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npm create cloudflare@latest
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>workers-ai workerのセットアップの際、セットアップの質問に以下のように答えてください：</p>
+	<ul>
+		<li>アプリ名を<strong>workers-aiと入力</strong></li>
+		<li>アプリケーションのタイプに合わせて<strong>Hello Worldスクリプト</strong>を選択</li>
+		<li>TypeScriptの使用に「<strong>はい</strong>」を選択</li>
+		<li>Gitの使用に「<strong>はい</strong>」を選択</li>
+		<li>デプロイは「<strong>いいえ</strong>」を選択</li>
+	</ul>
+	<p>最後に、新しいアプリのディレクトリに移動します：</p><!--kg-card-begin: markdown-->
+	<pre><code>cd workers-ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="2-workers-ai%E3%82%92worker%E3%81%AB%E6%8E%A5%E7%B6%9A">2. Workers AIをWorkerに接続</h3>
+	<p>Workers AIバインディングを作成し、APIキーを自分で管理することなく、Worker 、Workers AIサービスにアクセスできるようにします。</p>
+	<p>Workers AIをWorke にバインドするには、<strong>Wrangler.toml</strong>ファイルの最後に以下を追加してください：</p><!--kg-card-begin: markdown-->
+	<pre><code>[ai]
+binding = "AI" #available in your worker via env.AI
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>また、Workers AIをCloudflare Pages Functionにバインドすることもできます。詳しくは<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">関数のバインディング</a>を参照してください。</p>
+	<h3 id="3-workers-ai-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">3. Workers AI クライアントライブラリをインストール</h3><!--kg-card-begin: markdown-->
+	<pre><code>npm install @cloudflare/ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="4-%E6%8E%A8%E8%AB%96%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%92worker%E3%81%A7%E5%AE%9F%E8%A1%8C">4. 推論タスクをWorkerで実行</h3>
+	<p><strong>source/index.ts</strong>を以下のコードに更新してください：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai'
+export default {
+  async fetch(request, env) {
+    const ai = new Ai(env.AI);
+    const input = { prompt: "What's the origin of the phrase 'Hello, World'" };
+    const output = await ai.run('@cf/meta/llama-2-7b-chat-int8', input );
+    return new Response(JSON.stringify(output));
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="5-wrangler%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E9%96%8B%E7%99%BA">5. Wranglerでローカル開発</h3>
+	<p>プロジェクトディレクトリで、Workers AIをローカルでテストします：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler dev --remote
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>注意 - </strong>これらのモデルは現在、CloudflareのGPUネットワーク上でのみ（ローカルではない）実行されるため 、上記の<code>--remote</code>の設定は必須であり、この時点でログインを促されます。</p>
+	<p>Wranglerは、URL（おそらくlocalhost:8787となります）を返します。そのURLにアクセスすると、次のような応答が表示されます。</p><!--kg-card-begin: markdown-->
+	<pre><code>{
+  "response": "Hello, World is a common phrase used to test the output of a computer program, particularly in the early stages of programming. The phrase "Hello, World!" is often the first program that a beginner learns to write, and it is included in many programming language tutorials and textbooks as a way to introduce basic programming concepts. The origin of the phrase "Hello, World!" as a programming test is unclear, but it is believed to have originated in the 1970s. One of the earliest known references to the phrase is in a 1976 book called "The C Programming Language" by Brian Kernighan and Dennis Ritchie, which is considered one of the most influential books on the development of the C programming language.
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="6-worker%E3%82%92%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">6. Workerをデプロイ</h3>
+	<p>最後に、Workerをデプロイし、インターネット上でプロジェクトにアクセスできるようにします：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler deploy
+# Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これだけです。文字通り、ゼロから数分でAIをデプロイできます。これは極端に単純な例ですが、どのプロジェクトからでもWorkers AIを実行することがいかに簡単かを示していると言えます。</p>
+	<h2 id="%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC">デフォルトのプライバシー</h2>
+	<p>Cloudflareの設立時、当社の価値提案は、より安全で、より信頼性が高く、よりパフォーマンスが高いとの3つの柱となっていました。時間が経つにつれ、より優れたインターネットとはよりプライベートなインターネットでもあることに気づき、当社はその構築の一翼を担いたいと思うようになりました。</p>
+	<p>これが、Workers AIがデフォルトでプライベートである理由です。LLMであろうとなかろうと、ユーザーからのデータや会話で当社のモデルをトレーニングすることはなく、さらに当社のモデルがユーザーの使用状況から学習することもありません。個人としてでも、企業としてでも、データの漏洩を心配することなく安心してWorkers AIをご利用いただけます。他のプロバイダーは、この基本的な機能をエンタープライズ版でのみ提供しています。当社でなら、組み込み済の機能として誰にでもご利用いただけます。</p>
+	<p>また、将来的にはデータのローカライズもサポートする予定です。この実現のため、当社は野心的にGPUプランの展開を行っています。今日、既に7カ所でスタートしており、2023年末までにおよそ100カ所、そして2024年末までにほぼすべての場所で展開する予定です。最終的には、開発者はエンドユーザーのデータローカリゼーション要件に準拠しながら、AIのキラー機能をユーザーに提供し続けることができるようになります。</p>
+	<h2 id="%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E5%8A%9B">プラットフォームの力</h2>
+	<h4 id="%E3%83%99%E3%82%AF%E3%82%BF%E3%83%BC%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9vectorize"><strong>ベクターデータベース - Vectorize</strong></h4>
+	<p>Workers AIは推論の実行に対応しその実践を非常に簡素化するものですが、推論が方程式の一部でしかないこともあります。大規模な言語モデルでは、過去の特定の時点のスナップショットに基づき固定されたデータセットでトレーニングされ、貴社の事業またはユースケースに関するコンテキストを持っていません。プロンプトを送信する際、貴社に固有の情報があれば、結果の質が高まり、より有用で関連性の高いものになります。だからこそ、Workers AIとシームレスに連動するように設計されたベクターデータベース、Vectorizeもあわせてリリースしています。ここでは、Workers AIとVectorizeの併用方法を簡単にご紹介します。</p>
+	<p>例：ユーザーがLLMとチャットする際、個別のデータ（知識ベース）を使ってLLMに追加でコンテキストを提供。</p>
+	<ol>
+		<li><strong>初期エンベッディングを生成する：</strong>エンベッディングモデルを用い、データをWorkers AIに通します。単語の数値表現としてのエンベッディングが出力されます。</li>
+		<li><strong>このエンベッディングデータをVectorizeに挿入します。</strong>これは基本的に、ベクトルデータベースに個別のデータをシードすることになり、ユーザーのクエリーに類似したエンベッディングを取得するために後から使えるものです。</li>
+		<li><strong>ユーザーの質問からエンベッディングを生成する：</strong>ユーザーがAIアプリに質問を投稿したら、まず、その質問をエンベッディングモデルを使ってWorkers AIを走らせます。</li>
+		<li><strong>Vectorizeからコンテキストを取得：</strong>そのエンベッディングを使用してVectorizeに問い合わせます。ユーザーの質問に似たエンベッディングが出力されるはずです。</li>
+		<li><strong>文脈を意識したプロンプトを作成する：</strong>これらのエンベッディングに関連付けられた元のテキストを取り出し、ベクトル検索からのテキストと元の質問を組み合わせた新しいプロンプトを作成します。</li>
+		<li><strong>プロンプトの実行：</strong>LLMモデルを使ってWorkers AIでこのプロンプトを実行し、最終結果を得ます。</li>
+	</ol>
+	<h4 id="ai-gateway"><strong>AI Gateway</strong></h4>
+	<p>これはより高度なユースケースをカバーしている。一方、他の場所でモデルを運用しているが、その経験をさらに活用したい場合、当社のAIゲートウェイを通してAPIを実行し、キャッシング、レート制限、分析、ロギングなどの機能を利用することができる。これらの機能は、エンドポイントの保護、コストの監視と最適化、データ損失の防止にも役立ちます。AIゲートウェイの詳細<a href="https://blog.cloudflare.com/announcing-ai-gateway">こちらを</a>ご覧ください。</p>
+	<h2 id="%E6%9C%AC%E6%97%A5%E6%A7%8B%E7%AF%89%E3%82%92%E9%96%8B%E5%A7%8B">本日構築を開始</h2>
+	<p>実際にお試しいただき、ご感想をお聞かせください。本日、Workers AIをすべてのWorkersプラン（無料か有料かを問わず）向けにオープンベータとして開放します。とはいえ、まだごく初期段階であることはご了承ください。</p>
+	<h4 id="%E6%B3%A8%E6%84%8F%E5%8E%9F%E7%8A%B6%E3%80%81%E5%88%9D%E6%9C%9F%E3%83%99%E3%83%BC%E3%82%BF%E7%89%88%E3%81%A7%E3%81%99"><strong>注意 - 原状、初期ベータ版です</strong></h4>
+	<p>現在、<strong>本番アプリケーションでの使用は推奨しておりません</strong>。使用上の制限やアクセスは、変更される可能性があります。</p>
+	<h4 id="%E5%88%B6%E9%99%90"><strong>制限</strong></h4>
+	<p>当初は、モデルごとに制限を設けてスタートします</p>
+	<ul>
+		<li>cf/meta/llama-2-7b-chat-int8：グローバルで50リクエスト/分</li>
+	</ul>
+	<p>等車で準備した<a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">ドキュメント</a>をご覧ください。</p>
+	<h4 id="%E4%BE%A1%E6%A0%BC%E8%A8%AD%E5%AE%9A"><strong>価格設定</strong></h4>
+	<p>本日公開したのは、今後の展開を先取りしていただくためのほんのわずかなプレビューに過ぎません（ぜひともお伝えしたかったのです）が、Workers AIの完全版を皆様のお手元にお届けできることを楽しみにしております。</p>
+	<p>当社では、お客様が何かを構築するに当たり把握したいことはコストであることを掴みました。特に、AIのコストは簡単に手に負えないものとなります。そこで、Workers AIの予定価格についてお伝えしたいと思います。</p>
+	<p>初日から料金が発生するわけではないものの、想定される料金体系をお伝えします。</p>
+	<p>Workers AIの実行方法は、2つから選べます：</p>
+	<ul>
+		<li><strong>RegularTwitch Neurons (RTN) </strong>- $0.01/1kニューロン、容量があればどこでも稼動</li>
+		<li><strong>Fast Twitch Neurons (FTN</strong>) - 0.125ドル/1kニューロン、最寄りのユーザーロケーションでで稼動中</li>
+	</ul>
+	<p>ニューロンとは何か、とお感じになるかもしれません。</p>
+	<p>ニューロンは、AIの出力を測定する方法であり、常にゼロにスケールダウンする（使用量がゼロの場合、0ニューロン分の料金が課金される）。 1,000個のニューロンで何ができるかというと、130個のLLM応答、830個の画像分類、1,250個の埋め込みを生成できる。</p>
+	<p>当社では、お客様が利用した分だけ支払い、料金や遅延などにおいてお客様のユースケースに最も適した価格設定を選択できるようにすることを目指しています。</p>
+	<h3 id="%E3%83%AD%E3%83%BC%E3%83%89%E3%83%9E%E3%83%83%E3%83%97%E3%81%AE%E5%86%85%E5%AE%B9">ロードマップの内容</h3>
+	<p>Workers AIは立ち上げたばかりであり、より優れたものにするため、皆様からのフィードバックを求めています。一方で、開発ロードマップは非常に期待に満ちたものとなっています。</p>
+	<h4 id="%E3%81%95%E3%82%89%E3%81%AB%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%82%8B%E3%83%A2%E3%83%87%E3%83%AB"><strong>さらに求められるモデル</strong></h4>
+	<p>当社では、しっかりと機能する堅実なモデルセットでローンチしていますが、皆様のフィードバックに基づき新しいモデルを展開し続ける予定です。Workers AIでご覧になりたい特定のモデルがあれば、当社<a href="https://discord.cloudflare.com" target="_blank">Discord</a>でのご意見をお待ちしています。</p>
+	<p>加えて、当社と<a href="https://blog.cloudflare.com/best-place-region-earth-inference">Hugging Faceとの提携</a>も発表しており、近々Workers AIから直接Hugging Faceのラインナップの一部にアクセスして実行できるようになります。</p>
+	<h4 id="%E5%88%86%E6%9E%90%E3%81%A8%E5%8F%AF%E8%A6%B3%E6%B8%AC%E6%80%A7"><strong>分析と可観測性</strong></h4>
+	<p>現時点まで、当社ではひとつのことに集中してきました。それは、どんな開発者でも、わずか数行のコードで強力なAIモデルを本当に簡単に実行できるようにすることです。しかし、これは物語のほんの一部に過ぎません。次は、モデルごとの使用状況やパフォーマンス、支出に関する洞察を得るための分析・観測機能に取り組みます。</p>
+	<h4 id="%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%ABgpu%E3%81%B8%E3%81%AE%E9%81%93"><strong>グローバルGPUへの道</strong></h4>
+	<p>当社が目指すのは、推論を実行するにあたり域内で最高の場所になることです。そのために、データセンターにGPUを可能な限り速やかに追加しています。</p>
+	<p><strong>今年末までに100のデータセンターへの進出を計画</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
+	<p><strong>そして2024年末までには、ほぼすべての場所をカバー</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p><strong>当社では、お客様による構築を心待ちにしています。</strong>当社で用意した<a href="https://developers.cloudflare.com/workers-ai" target="_blank">ドキュメント</a>をご覧になり、さっそく取り組みを始めてください。インスピレーションが必要な場合、お客様がお作りになっているものをシェアされたい場合、または質問がある場合、ぜひ当社<a href="https://discord.com/invite/cloudflaredev" target="_blank">開発者Discord</a>へお越しください。</p>
+</div>

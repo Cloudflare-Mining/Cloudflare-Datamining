@@ -1,0 +1,170 @@
+<div class="mb2 gray5">15 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-29.png" class="kg-image" alt="" loading="lazy" width="1800" height="1014"></figure>
+	<p>只要您与开发人员社区有任何接触，就几乎不可能忽视人工智能最近取得的进展对这个生态系统产生的影响。无论您是在工作流程中使用人工智能来提高生产力，还是向用户提供基于人工智能的功能，它无处不在。对人工智能改进的关注，我们对即将到来的机会感到非常兴奋，但这还不够。</p>
+	<p>不久前，如果您想利用人工智能的力量，你需要彻底了解机器学习，并能够管理为其提供支持的基础设施。</p>
+	<p>作为一个拥有上百万活跃开发人员的开发人员平台，我们相信还有非常巨大潜力有待挖掘，所以我们正在改变向开发人员提供人工智能的方式。当前许多解决方案虽然功能强大，但基于封闭的专有模型，没有解决开发人员和用户要求的隐私需求。另一方面，开源领域涌现出了许多强大的模型，但并非每个开发人员都能轻易使用它们。想象一下，您可以通过您的代码运行一个模型，无论它托管在哪里，而且无需寻找 GPU 或设置支持该模型的基础设施。</p>
+	<p>因此，我们非常兴奋能够推出 Workers AI：这是一个人工智能推理即服务平台，赋能开发人员，仅用几行代码就能运行 AI 模型，全部由我们的全球 GPU 网络提供支持。它开放，易用，无服务器、注重隐私，靠近用户运行，随用随付，从头开始构建以提供一流的开发体验。</p>
+	<h2 id="workers-ai-%E2%80%94%E2%80%94-%E8%BD%BB%E6%9D%BE%E8%BF%90%E8%A1%8C%E6%8E%A8%E7%90%86">Workers AI —— 轻松运行推理</h2>
+	<p>我们推出 Workers AI ，旨在让每个开发人员都能进行推理，为了实现这个目标，它应该开箱<strong>即用</strong>。我们是如何做到这一点的？</p>
+	<ul>
+		<li>从核心来看，它运行在正确的基础设施上 —— 我们的世界级 GPU 网络</li>
+		<li>我们提供现成的模型，可在我们的基础设施上无缝运行</li>
+		<li>最后，以一种令人愉快的方式将其交付给终端开发人员。开发人员应该能够在几分钟内创造出自己的第一款 Workers AI 应用，并说“哇，太神奇了！”</li>
+	</ul>
+	<p>那么，Workers AI 究竟是什么？这是我们为开发人员平台添加的另一个组成部分，它帮助开发人员在无服务器 GPU 上运行知名的人工智能模型，全部在 Cloudflare 值得信赖的全球网络上进行。作为我们开发人员平台最新增加的组成部分，它与 Workers + Pages 无缝衔接，但为了使它真正易于使用，我们将它设计成与平台无关，以便它也能在其他任何地方工作，通过 REST API 提供服务。</p>
+	<h2 id="%E6%82%A8%E4%BA%86%E8%A7%A3%E5%92%8C%E5%96%9C%E7%88%B1%E7%9A%84%E6%A8%A1%E5%9E%8B">您了解和喜爱的模型</h2>
+	<p>我们推出了一套经过精选的热门开源模型，涵盖了广泛的推理任务：</p>
+	<ul>
+		<li><strong>文本生成 （大语言模型）：</strong> meta/llama-2-7b-chat-int8</li>
+		<li><strong>自动语音识别(ASR)：</strong> openai/whisper</li>
+		<li><strong>翻译：</strong> meta/m2m100-1.2</li>
+		<li><strong>文本分类：</strong> huggingface/distilbert-sst-2-int8</li>
+		<li><strong>图像分类：</strong> microsoft/resnet-50</li>
+		<li><strong>嵌入：</strong> baai/bge-base-en-v1.5</li>
+	</ul>
+	<p>您可在 Cloudflare 仪表板中浏览所有可用的模型，而且很快就能够获得每个模型的日志和分析。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-14.png" class="kg-image" alt="" loading="lazy" width="1306" height="832"></figure>
+	<p>这只是开始，我们有很宏伟的计划。在推出之后，我们将根据社区反馈继续扩展。更令人兴奋的是，为了让我们的目录快速丰富，我们宣布与领先的人工智能社区和中心 Hugging Face 建立合作伙伴关系。这个合作关系是多方面的，可在<a href="https://blog.cloudflare.com/best-place-region-earth-inference">这里</a>查看更多相关信息，但很快您就可以直接在 Workers AI 中浏览和运行 Hugging Face 目录的一个子集。</p>
+	<h2 id="%E4%BA%BA%E4%BA%BA%E5%8F%AF%E7%94%A8">人人可用</h2>
+	<p>对我们的开发人员平台而言，其使命之一是为开发人员提供构建梦想应用需要的<strong>所有</strong>构建块。获得适当的构建块只是其中的一部分 —— 作为开发人员，您的任务是将它们组合成一个应用程序。我们的目标是使这个过程尽可能简单。</p>
+	<p>为了确保无论入口点是什么，您都可以轻松地使用 Workers AI，我们希望通过 Workers 或 Pages 提供访问，使其易于在 Cloudflare 生态系统中使用，如果您想将 Workers AI 与当前堆栈一起使用，则可以通过 REST API 访问。</p>
+	<p>以下是一个快速的 CURL 示例，将一些文本从英语翻译为法语：</p><!--kg-card-begin: markdown-->
+	<pre><code>curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/meta/m2m100-1.2b \
+-H "Authorization: Bearer {API_TOKEN}" \
+	-d '{ "text": "I'll have an order of the moule frites", "target_lang": "french" }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>以下是响应的示例：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">{
+  "result": {
+    "answer": "Je vais commander des moules frites"
+  },
+  "success": true,
+  "errors":[],
+  "messages":[]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>可在任何堆栈、任何地方使用它 —— 您喜欢的 Jamstack 框架、Python + Django/Flask、Node.js、Ruby on Rails，可能性是无限的。然后部署。</p>
+	<h2 id="%E4%B8%93%E4%B8%BA%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E8%AE%BE%E8%AE%A1">专为开发人员设计</h2>
+	<p>开发人员对我们来说非常重要。实际上，本文大部分内容都是讨论开发人员体验。确保它能够开箱即用。提供能够立即使用的热门模型。所有开发人员都能使用，无论是通过 Cloudflare 还是其他平台进行构建和部署。但不仅如此 —— 开发人员体验应该是无摩擦的，快速从零开始到生产，而且全程感觉良好。</p>
+	<p>让我们通过另一个例子来展示它是多么容易使用吧。我们将在一个 Worker 中运行Llama 2，这是一个由 Meta 开源的流行大语言模型。</p>
+	<p>我们假设您已经完成了一些基本的准备工作（Cloudflare账户、Node、NPM等），否则，<a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">这个指南</a>将帮助您正确设置。</p>
+	<h3 id="1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-workers-%E9%A1%B9%E7%9B%AE">1. 创建一个 Workers 项目</h3>
+	<p>运行以下命令创建一个名为 workers-ai 的新项目：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npm create cloudflare@latest
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在设置 workers-ai worker 时，按照以下方式回答设置问题：</p>
+	<ul>
+		<li>输入<strong>workers-ai</strong> 作为应用的名称</li>
+		<li>选择 <strong>Hello World</strong> 脚本作为应用的类型</li>
+		<li>对于使用 TypeScript，选择 <strong>yes</strong></li>
+		<li>对于使用 Git，选择 <strong>yes</strong></li>
+		<li>对于部署，选择 <strong>no</strong></li>
+	</ul>
+	<p>最后，导航到新应用的目录：</p><!--kg-card-begin: markdown-->
+	<pre><code>cd workers-ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="2-%E5%B0%86-workers-ai-%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%82%A8%E7%9A%84-worker">2. 将 Workers AI 连接到您的 worker</h3>
+	<p>创建一个 Workers AI 绑定，使您的 Worker 可以访问 Workers AI 服务，而无需自己管理 API 密钥。</p>
+	<p>为了将 Workers AI 绑定到您的 Worker，请将以下内容添加到您的 <strong>wrangler.toml</strong> 文件末尾：</p><!--kg-card-begin: markdown-->
+	<pre><code>[ai]
+binding = "AI" #available in your worker via env.AI
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您还可以将 Workers AI 绑定到 Pages Function。有关更多信息，请参考 <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">Functions Bindings</a>。</p>
+	<h3 id="3-%E5%AE%89%E8%A3%85-workers-ai-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BA%93">3. 安装 Workers AI 客户端库</h3><!--kg-card-begin: markdown-->
+	<pre><code>npm install @cloudflare/ai
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="4-%E5%9C%A8%E6%82%A8%E7%9A%84-worker-%E4%B8%AD%E8%BF%90%E8%A1%8C%E6%8E%A8%E7%90%86%E4%BB%BB%E5%8A%A1">4. 在您的 worker 中运行推理任务</h3>
+	<p>使用如下代码更新 <strong>source/index.ts</strong>：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai'
+export default {
+  async fetch(request, env) {
+    const ai = new Ai(env.AI);
+    const input = { prompt: "What's the origin of the phrase 'Hello, World'" };
+    const output = await ai.run('@cf/meta/llama-2-7b-chat-int8', input );
+    return new Response(JSON.stringify(output));
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="5-%E4%BD%BF%E7%94%A8-wrangler-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91">5. 使用 Wrangler 在本地开发</h3>
+	<p>在项目目录中，运行以下命令测试 Workers AI:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler dev --remote
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>注： </strong>这些模型目前只运行在 Cloudflare 的 GPU 网络上（而不是本地），所以必须如上设置 <code>--remote</code>，此时您会被提示登录。</p>
+	<p>Wrangler 会给您一个 URL（很可能是 localhost:8787）。访问该 URL，您将看到这样的响应：</p><!--kg-card-begin: markdown-->
+	<pre><code>{
+  "response": "Hello, World is a common phrase used to test the output of a computer program, particularly in the early stages of programming. The phrase "Hello, World!" is often the first program that a beginner learns to write, and it is included in many programming language tutorials and textbooks as a way to introduce basic programming concepts. The origin of the phrase "Hello, World!" as a programming test is unclear, but it is believed to have originated in the 1970s. One of the earliest known references to the phrase is in a 1976 book called "The C Programming Language" by Brian Kernighan and Dennis Ritchie, which is considered one of the most influential books on the development of the C programming language.
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="6-%E9%83%A8%E7%BD%B2%E6%82%A8%E7%9A%84-worker">6. 部署您的 worker</h3>
+	<p>最后，部署 worker，使您的项目可以在互联网上访问。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ npx wrangler deploy
+# Outputs: https://workers-ai.&lt;YOUR_SUBDOMAIN&gt;.workers.dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>大功告成。从零开始部署 AI 仅需几分钟。这显然是一个简单的例子，但显示了在任何项目中运行 Workers AI 是多么容易。</p>
+	<h2 id="%E9%BB%98%E8%AE%A4%E4%BF%9D%E6%8A%A4%E9%9A%90%E7%A7%81">默认保护隐私</h2>
+	<p>Cloudflare 成立时，我们的价值主张有三大支柱：更安全、更可靠、更高效。随着时间的推移，我们意识到，一个更好的互联网同时也是一个更私密的互联网，我们希望为它的建设贡献一份力量。</p>
+	<p>因此 Workers AI 默认是私有的——我们不会根据您的数据或对话来训练我们的模型，无论是 LLM 还是其他，我们的模型也不会从您的使用中学习。您可以放心地在个人和商业环境中使用 Workers AI，而不必担心泄露数据。其他提供商只在其企业版本中提供这个基本功能。对我们而言，这是为所有人而构建的。</p>
+	<p>我们也准备在将来支持数据本地化。为了实现这一目标，我们有一个雄心勃勃的 GPU 推出计划——我们今天启动了 7 个站点，到 2023 年底大约 100 个，到 2024 年底几乎无处不在。最终，这将使开发人员能够继续向用户提供杀手级 AI 功能，同时保持遵守最终用户的数据本地化需求。</p>
+	<h2 id="%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%8A%9B%E9%87%8F">平台的力量</h2>
+	<h4 id="%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93-%E2%80%94%E2%80%94-vectorize"><strong>矢量数据库 —— Vectorize</strong></h4>
+	<p>Workers AI 完全是关于运行推理，并使其变得非常容易，但有时推理只是等式的一部分。大语言模型是在固定的数据集上训练的，基于过去特定点的快照，并且没有关于您的业务或用例的上下文。当提交一个提示时，与您特定的信息可以提高结果的质量，使其更有用、更相关。因此我们同时推出向量数据库 Vectorize，旨在与 Workers AI 无缝协作。以下简要概述您可能如何协同使用 Workers AI + Vectorize。</p>
+	<p>示例：当用户与 LLM 聊天时，使用您的数据（知识库）为它提供额外的上下文。</p>
+	<ol>
+		<li><strong>生成初始嵌入：</strong> 使用嵌入模型通过 Workers AI 运行您数据。输出将成为嵌入，即这些语句的数值表示。</li>
+		<li><strong>将这些嵌入插入到 Vectorize ：</strong>这实际上是用您的数据在矢量数据库中播种，以便以后可以用它来检索与用户查询相似的嵌入。</li>
+		<li><strong>从用户问题中生成嵌入：</strong>当用户向您的 AI 应用提交一个问题时，首先，接受这个问题，并使用嵌入模型在 Workers AI 中运行它。</li>
+		<li><strong>从 Vectorize 获取上下文：</strong>使用该嵌入来查询 Vectorize。这应该输出与用户问题相似的嵌入。</li>
+		<li><strong>创建上下文感知提示：</strong>现在，取与这些嵌入相关的原始文本，并结合来自向量搜索的文本，创建一个新的提示。</li>
+		<li><strong>运行提示：</strong>使用 LLM 模型通过 Workers AI 运行这个提示以获得您的最终结果。</li>
+	</ol>
+	<h4 id="ai-gateway"><strong>AI Gateway</strong></h4>
+	<p>这涵盖一种更高级的用例。另一方面，如果您在其他地方运行模型，但想要获得更佳的体验，您可以通过我们的 AI 网关运行这些API ，以获得缓存、速率限制、分析和日志等功能。这些功能可用于保护您的端点，监控和优化成本，还有助于防止数据丢失。请在<a href="https://blog.cloudflare.com/announcing-ai-gateway">这里</a>进一步了解 AI Gateway。</p>
+	<h2 id="%E7%AB%8B%E5%8D%B3%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA">立即开始构建</h2>
+	<p>亲自试试看，然后让我们知道您的想法。今天，我们将 Workers AI 作为所有Workers 计划（包括免费和付费）的公开测试版发布。但是，目前依然处于早期阶段，因此……</p>
+	<h4 id="%E6%B3%A8%E6%84%8F%EF%BC%9A%E8%BF%99%E6%98%AF%E6%97%A9%E6%9C%9F%E6%B5%8B%E8%AF%95%E7%89%88"><strong>注意：这是早期测试版</strong></h4>
+	<p><strong>目前不推荐用于生产应用</strong>，且有关限制和访问有可能发生变化。</p>
+	<h4 id="%E9%99%90%E5%88%B6"><strong>限制</strong></h4>
+	<p>我们初期推出时对每个模型有限制。</p>
+	<ul>
+		<li>@cf/meta/llama-2-7b-chat-int8： 50 请求/分钟，全球范围</li>
+	</ul>
+	<p>有关限制的概述，请查看<a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">文档</a>。</p>
+	<h4 id="%E5%AE%9A%E4%BB%B7"><strong>定价</strong></h4>
+	<p>今天发布的只是一个小小的预览，让您对即将推出的新产品有初步了解（我们根本无法克制），但我们期待将全功能版本的 Workers AI 交到您的手中。</p>
+	<p>我们意识到，在您开始构建某个项目时，您想要了解的是：这将花费我多少钱？尤其是在 AI 成本很容易失控的情况下。因此，我们想与您分享即将发布的 Workers AI 定价信息。</p>
+	<p>虽然我们不会从第一天就开始计费，但我们现在将宣布预计的定价模式。</p>
+	<p>用户将可运行 Workers AI 的选择两种方式之一：</p>
+	<ul>
+		<li><strong>Regular Twitch Neurons (RTN) </strong>- 在任何有容量的地方运行，价格为 0.01 美元 / 1k 神经元</li>
+		<li><strong>Fast Twitch Neurons (FTN)</strong> - 在最近的用户位置运行，价格为 0.125 美元 / 1k 神经元</li>
+	</ul>
+	<p>您可能会问，什么是神经元？</p>
+	<p>神经元是衡量 AI 输出的一种方式，它始终缩减到零（如果没有使用，您将被收取 0 个神经元的费用）。为了让您了解用 1000 个神经元做什么事情，您可以：生成 130 个 LLM 响应，830 个图像分类，或 1250 个嵌入。</p>
+	<p>我们的目标是帮助客户只为他们使用的部分付费，并选择最符合他们使用情况的定价方式，无论他们最关心的是价格还是延迟。</p>
+	<h3 id="%E8%B7%AF%E7%BA%BF%E5%9B%BE%E6%9C%89%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9%EF%BC%9F">路线图有什么内容？</h3>
+	<p>Workers AI 才刚刚起步，我们希望得到您的反馈，以帮助我们使它变得更好。话虽如此，我们的路线图上有一些令人兴奋的事情。</p>
+	<h4 id="%E8%83%BD%E5%90%A6%E6%8F%90%E4%BE%9B%E6%9B%B4%E5%A4%9A%E6%A8%A1%E5%9E%8B%EF%BC%9F"><strong>能否提供更多模型？</strong></h4>
+	<p>我们推出了一套直接可用的模型，但我们将根据您的反馈继续推出新的模型。如果您希望在 Workers AI 上看到特定的模型，请加入我们的 <a href="https://discord.cloudflare.com" target="_blank">Discord</a> 并告诉我们！</p>
+	<p>除此之外，我们还宣布与 <a href="https://blog.cloudflare.com/best-place-region-earth-inference">Hugging Face 的合作伙伴关系</a>，很快您将能够直接从 Workers AI 访问和运行 Hugging Face 目录的一个子集。</p>
+	<h4 id="%E5%88%86%E6%9E%90-%E5%8F%AF%E8%A7%82%E5%AF%9F%E6%80%A7"><strong>分析 + 可观察性</strong></h4>
+	<p>到目前为止，我们都是高度专注于一件事 —— 让任何开发者能够用几行代码轻松运行强大的 AI 模型。但这只是故事的一部分。接下来，我们将致力于开发一些分析和可观察性功能，以便为您提供有关每个模型的使用情况、性能和费用的洞察，此外，如果您希望进行一些探索，还可以查看日志。</p>
+	<h4 id="%E5%BB%BA%E8%AE%BE%E5%85%A8%E7%90%83-gpu-%E7%BD%91%E7%BB%9C%E4%B9%8B%E8%B7%AF"><strong>建设全球 GPU 网络之路</strong></h4>
+	<p>我们的目标是成为在 Region: 地球中进行推理的最佳选择，因此我们正在尽快向我们的数据中心添加 GPU。</p>
+	<p><strong>我们计划在今年年底之前部署到 100 个数据中心</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
+	<p><strong>并在 2024 年底前基本覆盖每一个地方</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p><strong>我们非常期待看到您开始构建</strong> —— 欢迎查看<a href="https://developers.cloudflare.com/workers-ai" target="_blank">我们的文档</a>以开始使用。</p>
+	<p>如果您需要灵感、想分享你正在构建的东西，或者有任何问题，欢迎加入我们<a href="https://discord.com/invite/cloudflaredev" target="_blank">开发人员 Discord</a>。</p>
+</div>
