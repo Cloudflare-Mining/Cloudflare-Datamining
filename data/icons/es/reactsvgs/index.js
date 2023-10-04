@@ -5,6 +5,7 @@ import Add from './Add';
 import ApiSecurity from './ApiSecurity';
 import Api from './Api';
 import Applications from './Applications';
+import ArrowExternalLink from './ArrowExternalLink';
 import Backward from './Backward';
 import Bolt from './Bolt';
 import Byoip from './Byoip';
@@ -151,6 +152,7 @@ export default {
   'api-security': ApiSecurity,
   api: Api,
   applications: Applications,
+  'arrow-external-link': ArrowExternalLink,
   backward: Backward,
   bolt: Bolt,
   byoip: Byoip,

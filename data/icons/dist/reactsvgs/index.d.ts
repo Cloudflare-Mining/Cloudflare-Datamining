@@ -7,6 +7,7 @@ declare const _default: {
     'api-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     api: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     applications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'arrow-external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     backward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     byoip: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

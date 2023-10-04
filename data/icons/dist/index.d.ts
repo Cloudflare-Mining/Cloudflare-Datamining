@@ -1,5 +1,4 @@
-import type { ComponentProps } from 'react';
-import Icon from './Icon';
-export type { IconType } from './Icon';
-export { Icon };
-export declare type IIconProps = ComponentProps<typeof Icon>;
+import Icon, { IconType } from './Icon';
+import { Example } from './Example';
+export { Icon, Example };
+export type { IconType };
