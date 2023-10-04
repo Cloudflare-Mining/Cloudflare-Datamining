@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.8.5
+
+### Patch Changes
+
+- ec5f6b98cf: add arrow-external-link and icons preview example
+
 ## 11.8.4
 
 ### Patch Changes

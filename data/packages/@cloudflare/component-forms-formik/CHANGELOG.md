@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.4.29
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.22
+- @cloudflare/component-forms@5.4.9
+- @cloudflare/component-listbox@1.10.11
+
 ## 6.4.28
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.0.15
+
+### Patch Changes
+
+- c66be7df18: Update Page component navigation link mobile view location
+  - @cloudflare/component-link@7.1.25
+
 ## 8.0.14
 
 ### Patch Changes
