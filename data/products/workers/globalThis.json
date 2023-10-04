@@ -842,10 +842,12 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
+			"groupBy": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined"
 		},
+		"groupBy": "function",
 		"length": "number",
 		"name": "string"
 	},
@@ -918,6 +920,7 @@
 			"getOwnPropertyNames": "undefined",
 			"getOwnPropertySymbols": "undefined",
 			"getPrototypeOf": "undefined",
+			"groupBy": "undefined",
 			"hasOwn": "undefined",
 			"is": "undefined",
 			"isExtensible": "undefined",
@@ -944,6 +947,7 @@
 		"getOwnPropertyNames": "function",
 		"getOwnPropertySymbols": "function",
 		"getPrototypeOf": "function",
+		"groupBy": "function",
 		"hasOwn": "function",
 		"is": "function",
 		"isExtensible": "function",
@@ -2491,6 +2495,7 @@
 		"Int32Array",
 		"Int8Array",
 		"Intl",
+		"Iterator",
 		"JSON",
 		"Map",
 		"Math",
@@ -2604,6 +2609,7 @@
 		"Int32Array",
 		"Int8Array",
 		"Intl",
+		"Iterator",
 		"JSON",
 		"Map",
 		"Math",
@@ -3168,7 +3174,8 @@
 							"keys": "undefined",
 							"entries": "undefined",
 							"fromEntries": "undefined",
-							"values": "undefined"
+							"values": "undefined",
+							"groupBy": "undefined"
 						}
 					},
 					"slice": {
@@ -5441,7 +5448,8 @@
 					"keys": "undefined",
 					"entries": "undefined",
 					"fromEntries": "undefined",
-					"values": "undefined"
+					"values": "undefined",
+					"groupBy": "undefined"
 				}
 			},
 			"setEngine": {
