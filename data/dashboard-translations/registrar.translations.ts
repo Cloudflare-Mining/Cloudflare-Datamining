@@ -154,9 +154,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_deletion_contact_support: "This domain is currently pending deletion. Please contact support to determine if the domain may be restored."
 	},
 	dnssec_card: {
-		title: "DNSSEC",
-		description: "Adds a layer of trust on top of DNS by providing authentication.",
-		already_secure: "Domain is locked. Please contact support."
+		domain_locked_error: "The domain is currently locked and the DNSSEC setting cannot be updated."
 	},
 	add_years: {
 		toggle_view: "Renew/Extend Domain",
@@ -205,8 +203,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		renews_on: (0, e.d)(S || (S = t(["<0>Renews on</0><1>", "</1>"])), "renewsOn"),
 		price: "Price",
 		per_year: "/ year",
-		billing: (0, e.d)(D || (D = t(["You will be charged to the card ending in <0>", "</0>."])), "last4"),
-		billing_paypal: (0, e.d)(P || (P = t(["You will be charged to your PayPal account <0>", "</0>."])), "email"),
+		billing: (0, e.d)(P || (P = t(["You will be charged to the card ending in <0>", "</0>."])), "last4"),
+		billing_paypal: (0, e.d)(D || (D = t(["You will be charged to your PayPal account <0>", "</0>."])), "email"),
 		billing_cloud: (0, e.d)(T || (T = t(["You will be charged to the card ending in <0>", "</0><1>Your new domain will be automatically set up to use iCloud email. By completing this purchase you agree to Cloudflare's:</1>"])), "last4")
 	},
 	domain_page_sidebar_domain_details: "Domain Details",

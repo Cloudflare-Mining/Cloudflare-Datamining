@@ -70,6 +70,7 @@
 	"dns.dnssec.title": "DNSSEC",
 	"dns.dnssec.secondary.title": "DNSSEC with Secondary DNS",
 	"dns.dnssec.secondary.description": "DNSSEC uses a cryptographic signature to protect your domain against forged DNS answers. Select between Live signing or Pre-signed to have either Cloudflare or your other provider sign the zone, or refer to [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/).",
+	"dns.dnssec.secondary.description_without_pre-signed": "DNSSEC uses a cryptographic signature to protect your domain against forged DNS answers. Select between Live signing or Unsigned to have either Cloudflare or your other provider sign the zone, or refer to [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/).",
 	"dns.dnssec.secondary.setting.unsigned": "Unsigned",
 	"dns.dnssec.secondary.setting.live_signing": "Live signing",
 	"dns.dnssec.secondary.setting.pre_signed": "Pre-signed",
