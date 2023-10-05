@@ -3054,7 +3054,7 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"hideTopDivider": false,
+								"hideTopDivider": true,
 								"featureList1": {
 									"contentTypeId": "featureList",
 									"contentfulId": "3Gqsst7D91UEvT6AHZSyMN",
@@ -3091,9 +3091,23 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "Connect using a variety of on-ramps, including Anycast GRE tunnels, direct connection, forward-proxy, and encrypted (Argo) tunnels",
+											"title": "Connect using a variety of network on-ramps, including WAN connector, Anycast-enabled IPsec/GRE tunnels, and direct connection",
 											"description": null,
 											"displayBorder": null,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Composable with Zero Trust SSE on-ramps, including device client and app connector",
+											"description": null,
+											"displayBorder": false,
 											"learnMoreUrl": null,
 											"learnMoreText": null,
 											"streamId": null,
