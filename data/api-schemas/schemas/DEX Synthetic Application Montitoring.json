@@ -1731,7 +1731,382 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get details and aggregate metrics for a test",
+		"summary": "Get details and aggregate metrics for an http test",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/http-tests/{test_id}/percentiles": {
+		"description": "Get percentiles for an http test for a given time period between 1 hour and 7 days.",
+		"operationId": "dex-endpoints-http-test-percentiles",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path.",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "unique identifier for a specific test",
+				"in": "path",
+				"name": "test_id",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.",
+				"in": "query",
+				"name": "deviceId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start time for aggregate metrics in ISO format",
+				"in": "query",
+				"name": "timeStart",
+				"required": true,
+				"schema": {
+					"example": "2023-09-20T17:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for aggregate metrics in ISO format",
+				"in": "query",
+				"name": "timeEnd",
+				"required": true,
+				"schema": {
+					"example": "2023-09-20T17:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param.",
+				"in": "query",
+				"name": "colo",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"dnsResponseTimeMs": {
+													"properties": {
+														"p50": {
+															"description": "p50 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p90": {
+															"description": "p90 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p95": {
+															"description": "p95 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p99": {
+															"description": "p99 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"resourceFetchTimeMs": {
+													"properties": {
+														"p50": {
+															"description": "p50 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p90": {
+															"description": "p90 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p95": {
+															"description": "p95 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p99": {
+															"description": "p99 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"serverResponseTimeMs": {
+													"properties": {
+														"p50": {
+															"description": "p50 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p90": {
+															"description": "p90 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p95": {
+															"description": "p95 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p99": {
+															"description": "p99 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX HTTP test percentiles response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX HTTP test percentiles failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get percentiles for an http test",
 		"tags": [
 			"DEX Synthetic Application Montitoring"
 		],
@@ -6440,6 +6815,381 @@
 			}
 		],
 		"summary": "Get network path breakdown for a traceroute test",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/traceroute-tests/{test_id}/percentiles": {
+		"description": "Get percentiles for a traceroute test for a given time period between 1 hour and 7 days.",
+		"operationId": "dex-endpoints-traceroute-test-percentiles",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path.",
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "unique identifier for a specific test",
+				"in": "path",
+				"name": "test_id",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a specific device(s). Cannot be used in combination with colo param.",
+				"in": "query",
+				"name": "deviceId",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Start time for aggregate metrics in ISO format",
+				"in": "query",
+				"name": "timeStart",
+				"required": true,
+				"schema": {
+					"example": "2023-09-20T17:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for aggregate metrics in ISO format",
+				"in": "query",
+				"name": "timeEnd",
+				"required": true,
+				"schema": {
+					"example": "2023-09-20T17:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Optionally filter result stats to a Cloudflare colo. Cannot be used in combination with deviceId param.",
+				"in": "query",
+				"name": "colo",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"hopsCount": {
+													"properties": {
+														"p50": {
+															"description": "p50 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p90": {
+															"description": "p90 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p95": {
+															"description": "p95 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p99": {
+															"description": "p99 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"packetLossPct": {
+													"properties": {
+														"p50": {
+															"description": "p50 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p90": {
+															"description": "p90 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p95": {
+															"description": "p95 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p99": {
+															"description": "p99 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												},
+												"roundTripTimeMs": {
+													"properties": {
+														"p50": {
+															"description": "p50 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p90": {
+															"description": "p90 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p95": {
+															"description": "p95 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														},
+														"p99": {
+															"description": "p99 observed in the time period",
+															"nullable": true,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX Traceroute test percentiles response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX Traceroute test percentiles failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get percentiles for a traceroute test",
 		"tags": [
 			"DEX Synthetic Application Montitoring"
 		],
