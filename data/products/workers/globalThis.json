@@ -257,40 +257,6 @@
 		"length": "number",
 		"name": "string"
 	},
-	"CustomEvent": {
-		"__proto": "function",
-		"__type": "function",
-		"_prototype": {
-			"AT_TARGET": "number",
-			"BUBBLING_PHASE": "number",
-			"CAPTURING_PHASE": "number",
-			"NONE": "number",
-			"arguments": "undefined",
-			"bubbles": "boolean",
-			"caller": "undefined",
-			"cancelBubble": "boolean",
-			"cancelable": "boolean",
-			"composed": "boolean",
-			"composedPath": "function",
-			"currentTarget": "undefined",
-			"defaultPrevented": "boolean",
-			"detail": "undefined",
-			"eventPhase": "number",
-			"isTrusted": "boolean",
-			"length": "undefined",
-			"name": "undefined",
-			"preventDefault": "function",
-			"prototype": "undefined",
-			"returnValue": "boolean",
-			"srcElement": "undefined",
-			"stopImmediatePropagation": "function",
-			"stopPropagation": "function",
-			"timeStamp": "number",
-			"type": "string"
-		},
-		"length": "number",
-		"name": "string"
-	},
 	"DOMException": {
 		"ABORT_ERR": "number",
 		"DATA_CLONE_ERR": "number",
@@ -876,12 +842,10 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": {
-			"groupBy": "undefined",
 			"length": "undefined",
 			"name": "undefined",
 			"prototype": "undefined"
 		},
-		"groupBy": "function",
 		"length": "number",
 		"name": "string"
 	},
@@ -954,7 +918,6 @@
 			"getOwnPropertyNames": "undefined",
 			"getOwnPropertySymbols": "undefined",
 			"getPrototypeOf": "undefined",
-			"groupBy": "undefined",
 			"hasOwn": "undefined",
 			"is": "undefined",
 			"isExtensible": "undefined",
@@ -981,7 +944,6 @@
 		"getOwnPropertyNames": "function",
 		"getOwnPropertySymbols": "function",
 		"getPrototypeOf": "function",
-		"groupBy": "function",
 		"hasOwn": "function",
 		"is": "function",
 		"isExtensible": "function",
@@ -2505,7 +2467,6 @@
 		"CountQueuingStrategy",
 		"Crypto",
 		"CryptoKey",
-		"CustomEvent",
 		"DOMException",
 		"DataView",
 		"Date",
@@ -2530,7 +2491,6 @@
 		"Int32Array",
 		"Int8Array",
 		"Intl",
-		"Iterator",
 		"JSON",
 		"Map",
 		"Math",
@@ -2644,7 +2604,6 @@
 		"Int32Array",
 		"Int8Array",
 		"Intl",
-		"Iterator",
 		"JSON",
 		"Map",
 		"Math",
@@ -3209,8 +3168,7 @@
 							"keys": "undefined",
 							"entries": "undefined",
 							"fromEntries": "undefined",
-							"values": "undefined",
-							"groupBy": "undefined"
+							"values": "undefined"
 						}
 					},
 					"slice": {
@@ -5483,8 +5441,7 @@
 					"keys": "undefined",
 					"entries": "undefined",
 					"fromEntries": "undefined",
-					"values": "undefined",
-					"groupBy": "undefined"
+					"values": "undefined"
 				}
 			},
 			"setEngine": {
