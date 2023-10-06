@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-5.png" class="kg-image" alt="Tap devices - the missing manual" loading="lazy" width="1999" height="1125"></figure>
 	<p>It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io" target="_blank">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight “Micro-VM”s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy — the documentation is messy and spread across the Internet.</p>
-	<p>Here are the notes that I wish someone had passed me when I started out on this journey!</p>
+	<p>Here are the notes that I wish someone had passed me when I started out on this journey! </p>
 	<p>A tap device is a virtual <strong>network interface</strong> that looks like an ethernet network card. Instead of having real wires plugged into it, it exposes a nice handy file descriptor to an application willing to send/receive packets. Historically tap devices were mostly used to implement VPN clients. The machine would route traffic towards a <strong>tap interface</strong>, and a VPN client application would pick them up and process accordingly. For example this is what our Cloudflare WARP Linux client does. Here's how it looks on my laptop:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip link list
 ...
