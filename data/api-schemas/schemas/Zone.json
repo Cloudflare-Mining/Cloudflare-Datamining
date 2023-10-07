@@ -18,8 +18,7 @@
 		"requestBody": {
 			"content": {
 				"application/json": {}
-			},
-			"required": true
+			}
 		},
 		"responses": {
 			"200": {
@@ -110,7 +109,7 @@
 				},
 				"description": "Delete Zone response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -198,6 +197,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -223,12 +225,28 @@
 		"operationId": "zones-get",
 		"parameters": [
 			{
+				"examples": {
+					"Basic Query": {
+						"summary": "Simple Query",
+						"value": "example.com"
+					},
+					"Contains Query": {
+						"summary": "Contains Query",
+						"value": "contains:.org"
+					},
+					"Ends With Query": {
+						"summary": "Ends With Query",
+						"value": "ends_with:arpa"
+					},
+					"Starts With Query": {
+						"summary": "Starts With Query",
+						"value": "starts_with:dev"
+					}
+				},
 				"in": "query",
 				"name": "name",
 				"schema": {
-					"description": "A domain name.",
-					"example": "example.com",
-					"format": "hostname",
+					"description": "A domain name. Optional filter operators can be provided to extend refine the search:\n  * `equal` (default)\n  * `not_equal`\n  * `starts_with`\n  * `ends_with`\n  * `contains`\n  * `starts_with_case_sensitive`\n  * `ends_with_case_sensitive`\n  * `contains_case_sensitive`\n",
 					"maxLength": 253,
 					"type": "string"
 				}
@@ -237,6 +255,13 @@
 				"in": "query",
 				"name": "status",
 				"schema": {
+					"description": "A zone status",
+					"enum": [
+						"initializing",
+						"pending",
+						"active",
+						"moved"
+					],
 					"type": "string"
 				}
 			},
@@ -244,13 +269,26 @@
 				"in": "query",
 				"name": "account.id",
 				"schema": {
+					"description": "An account ID",
 					"type": "string"
 				}
 			},
 			{
+				"examples": {
+					"Basic Query": {
+						"summary": "Simple Query",
+						"value": "Dev Account"
+					},
+					"Contains Query": {
+						"summary": "Contains Query",
+						"value": "contains:Test"
+					}
+				},
 				"in": "query",
 				"name": "account.name",
 				"schema": {
+					"description": "An account Name. Optional filter operators can be provided to extend refine the search:\n  * `equal` (default)\n  * `not_equal`\n  * `starts_with`\n  * `ends_with`\n  * `contains`\n  * `starts_with_case_sensitive`\n  * `ends_with_case_sensitive`\n  * `contains_case_sensitive`\n",
+					"maxLength": 253,
 					"type": "string"
 				}
 			},
@@ -691,6 +729,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1058,6 +1099,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1079,7 +1123,7 @@
 		}
 	},
 	"PATCH /zones/{identifier}": {
-		"description": "Editz a zone. Only one zone property can be changed at a time.",
+		"description": "Edits a zone. Only one zone property can be changed at a time.",
 		"operationId": "zones-0-patch",
 		"parameters": [
 			{
@@ -1492,6 +1536,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1894,6 +1941,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []
