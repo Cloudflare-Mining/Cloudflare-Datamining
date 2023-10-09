@@ -1,25 +1,25 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/security/global-dns-hijacking-threat/",
+	"path": "/learning/security/threats/how-to-prevent-sql-injection/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "1ihihHQ5PHYxUBt23FE8H3",
-				"urlSlug": "security/global-dns-hijacking-threat",
+				"contentfulId": "2GxXRB9VP3sI4ScPSReupE",
+				"urlSlug": "security/threats/how-to-prevent-sql-injection",
 				"metaTags": {
-					"metaTitle": "The global DNS hijacking threat",
-					"metaDescription": "A string of international DNS hijacking attacks is being carried out against high-profile targets. Learn how to prevent DNS hijacking.",
+					"metaTitle": "How to prevent SQL injection",
+					"metaDescription": "SQL injection can open the door to data tampering and theft. Explore best practices for preventing SQLi attacks.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OTrCfuNBtywisi2xfBPVp/d54a84949091aed215600b42bb47ed3e/security-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						}
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "The Global DNS Hijacking Threat",
-				"metaDescription": "A string of international DNS hijacking attacks is being carried out against high-profile targets. Learn how to prevent DNS hijacking.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "2AptEr2bqQDzL0VuYp3VhQ",
@@ -935,62 +935,62 @@
 						]
 					}
 				},
-				"header": "The global DNS hijacking threat",
-				"blurbSubHeader": "In a series of related attacks, hackers are forging DNS records to send users to fake websites designed to steal login credentials and other sensitive information.",
-				"objectivesHeader": "Global DNS Hijacking",
+				"header": "How to prevent SQL injection",
+				"blurbSubHeader": "Enforcing least-privilege access, sanitizing user inputs, and restricting database procedures can help prevent SQL injection and subsequent data breaches.",
+				"objectivesHeader": "Preventing SQL injection",
 				"objectivesList": [
-					"Define DNS hijacking",
-					"Outline how attackers are using DNS hijacking to obtain login credentials",
-					"Describe how DNS providers and web browsers can help prevent DNS hijacking"
+					"Explain how SQL injection works",
+					"Review best practices to stop SQL injection",
+					"Learn how Cloudflare helps prevent SQLi attacks"
 				],
-				"relatedContentLinkText": "Related Content",
+				"relatedContentLinkText": "Related content",
 				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "29Fkw1XKWHACE0x4W0BypM",
+						"displayText": "SQL injection",
+						"url": "/learning/security/threats/sql-injection/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
+						"displayText": "What is an API?",
+						"url": "/learning/security/api/what-is-an-api/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6Lv5tCM45ztYTOqzek2loT",
+						"displayText": "How do APIs work?",
+						"url": "/learning/security/api/how-do-apis-work/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "67hyyJkFehDZPSijR5982x",
+						"displayText": "API security",
+						"url": "/learning/security/api/what-is-api-security/"
+					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7esVgOhtx4g1wc9j085HEg",
 						"displayText": "Web application security",
 						"url": "/learning/security/what-is-web-application-security/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "2SaFJ6C5mPRd8BvBp7tArF",
-						"displayText": "BGP hijacking",
-						"url": "/learning/security/glossary/bgp-hijacking/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
-						"displayText": "Phishing attack",
-						"url": "/learning/access-management/phishing-attack/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
-						"displayText": "Data breach",
-						"url": "/learning/security/what-is-a-data-breach/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
-						"displayText": "On-path attack",
-						"url": "/learning/security/threats/on-path-attack/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2-margin-top-16px\" itemprop=\"headline\">What is the global DNS hijacking threat?</h2>\n\n<p>Experts at major cybersecurity firms including Tripwire, FireEye, and Mandiant have reported on an alarmingly large wave of DNS hijacking attacks happening worldwide. These attacks are targeting government, telecom, and Internet entities across the Middle East, Europe, North Africa, and North America.</p>\n\n<p>Researchers have not publicly identified the sites being targeted, but have acknowledged that the number of <a href='/learning/dns/glossary/what-is-a-domain-name/'>domains</a> which have been compromised is in the dozens. These attacks, which have been happening since at least 2017, are being used in conjunction with previously stolen credentials to direct users to fake websites designed to steal login credentials and other sensitive information.</p>\n\n<p>Although no one has taken credit for these attacks, many experts believe the attacks are coming from Iran. Several of the attackers' <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> have been traced back to Iran. While it's possible that the attackers are <a href='/learning/ddos/glossary/ip-spoofing/'>spoofing</a> Iranian IPs to throw off the scent, the targets of the attack also seem to point to Iran. Targets include government sites of several Middle Eastern nations, sites containing data that don't have any financial value but would be very valuable to the government of Iran.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do these DNS hijacking attacks work?</h2>\n\n<p>There are a few different attack strategies being carried out, but the flow of the attacks is as follows:</p>\n\n<ol class=\"learning-list\">\n  <li>The attacker creates a dummy site that looks and feels just like the site they are targeting.</li>\n  <li>The attacker uses a targeted attack (such as <a href='/learning/access-management/phishing-attack/'>spear phishing</a>) to obtain login credentials to the Admin panel of the <a href='/learning/dns/what-is-dns/'>DNS*</a> provider for the target site.</li>\n  <li>The attacker then goes into the DNS admin panel and changes the <a href='/learning/dns/dns-records/'>DNS records</a> for the site they are targeting (this is known as <a href='/learning/dns/dns-security/'>DNS Hijacking</a>), so that users trying to access the site will instead be sent to the dummy site.</li>\n  <li>The attacker forges a <a href='/learning/ssl/transport-layer-security-tls/'>TLS encryption certificate</a> that will convince a user's browser that the dummy site is legitimate.</li>\n  <li>Unsuspecting users go to the URL of the compromised site and get redirected to the dummy site.</li>\n  <li>The users then attempt to log in on the dummy site, and their login credentials are harvested by the attacker.</li>\n</ol>\n\n<img src= \"https://www.cloudflare.com/img/learning/dns/dns-security/dns-hijacking.png\" class=\"responsive-image\" alt=\"DNS Hijacking\" itemprop=\"image\"/>\n\n<p>*The Domain Name System (DNS) is like the phonebook of the Internet. When a user types a URL, like 'google.com' into their browser, its <a href='/learning/dns/dns-records/'>records</a> in DNS servers that direct that user to Google's <a href='/learning/cdn/glossary/origin-server/'>origin server</a>. If those DNS records are tampered with, users can end up somewhere they didn't expect.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can DNS hijacking attacks be prevented?</h2>\n\n<p>Individual users cannot do much to protect themselves from losing credentials in these types of attacks. If the attacker is thorough enough when creating their dummy site, it can be very difficult for even highly technical users to spot the difference.</p>\n\n<p>One way to mitigate these attacks would be for DNS providers to beef up their authentication, taking measures such as requiring <a href='/learning/access-management/what-is-two-factor-authentication/'>2-factor authentication</a>, which would make it dramatically more difficult for attackers to access DNS admin panels. Browsers could also update their security rules, for example scrutinizing the source of <a href='/learning/ssl/what-is-an-ssl-certificate/'>TLS certificates</a> to ensure that they originate from a source that conforms with the domain they are being used on.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How SQL injection attacks work</h2>\n\n<p>Structured Query Language injection (SQLi) is a code injection attack that allows attackers to retrieve, manipulate, or destroy sensitive information located in SQL databases. These attacks work by inserting specialized commands into SQL query fields; when executed, the commands may enable attackers to spoof the identity of legitimate users, <a href='/learning/security/what-is-a-data-breach/'>view or retrieve protected data</a>, and even gain root access to servers.</p>\n\n<p>Often, attackers carry out SQLi by exploiting vulnerabilities in <a href='/learning/security/api/what-is-an-api/'>application programming interfaces (APIs)</a> that cannot properly differentiate between legitimate and untrusted code. Without the ability to detect altered commands or queries, these APIs can be used to execute malicious requests, such as bypassing <a href='/learning/ddos/glossary/web-application-firewall-waf/'>web application firewalls (WAF)</a> or <a href='/learning/access-management/what-is-authentication/'>authentication</a> measures.</p>\n\n<p>Typically, SQLi is performed using one of three methods:</p>\n\n<ol class=\"learning-list\">\n  <li><strong>In-band SQL injection</strong> uses a single communication channel to initiate and complete an attack. Common types of in-band SQLi include <em>error-based SQLi</em> (when error messages help attackers identify critical information about the underlying database) and <em>union-based SQLi</em> (when attackers use UNION SQL operators to uncover vulnerabilities in the database). This is the simplest and most common form of SQLi.</li>\n  <li><strong>Out-of-band SQL injection</strong>, by contrast, does not allow attackers to use the same communication channel to initiate and complete an attack. Instead, the compromised application must be able to exfiltrate data to a remote endpoint within the attacker's control, often via DNS or HTTP request. This is the most difficult and least common form of SQLi.</li>\n    <li><strong>Inferential SQL injection</strong>, also called <em>blind SQLi</em>, requires attackers to send payloads to the targeted server in order to learn how to exploit it. These usually take one of two forms: <em>blind Boolean-based SQLi</em> (when attackers use true-false queries to force a server to produce different responses) or <em>blind time-based SQLi</em> (when attackers can infer the same information via variations in the server's response times). This often takes more time to complete than in-band SQLi, but can be equally damaging.</li>\n</ol></li>\n\n<p>To see real-world examples of benign and malicious SQL queries, read <a href='/learning/security/threats/sql-injection/'>What is SQL injection?</a></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent SQL injection</h2>\n\n<p>While SQL injection is one of <a href='/learning/security/api/owasp-api-security-top-10/'>the most prevalent API threats</a>, it can be effectively avoided with the right prevention strategies. Helpful approaches for preventing SQL injection include restricting database procedures, sanitizing database inputs, and enforcing least-privilege access.</p>\n\n<h4 class=\"learning-content-h4\">Restrict database procedures and code</h4>\n\n<p>SQL injection largely depends on an attacker's ability to manipulate data inputs and database functions. By restricting these inputs and limiting the type of database procedures that can be performed, organizations can minimize the risk of unauthorized or malicious queries. Ways of doing so include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Enforcing prepared statements and parameterized queries:</strong> Prepared statements define acceptable SQL code, then set specific parameters for incoming queries. Any malicious SQL statements are classified as invalid data inputs, rather than executable commands.</li>\n  <li><strong>Using stored procedures:</strong> Like prepared statements, stored procedures are prepared and reusable SQL statements that can be retrieved from a database — and prevent malicious parties from executing code directly on the database itself.</li>\n</ul></li>\n\n<h4 class=\"learning-content-h4\">Validate and sanitize database inputs</h4>\n\n<p>User inputs into any SQL database should be regularly monitored, validated, and sanitized to eliminate malicious code. Input validation ensures that data is properly inspected and formatted according to predetermined criteria, while input sanitization modifies (or \"sanitizes\") the input by removing invalid or unsafe characters and reformatting it as necessary. Ways of ensuring input validation include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Establishing an allowlist:</strong> An allowlist can help define valid user inputs, against which the database can check (and reject) incoming queries that appear abnormal. For instance, special characters and extended URLs are two types of user inputs that can be exploited by attackers to gather information about a database (before running malicious queries). Limiting the use of these inputs can help minimize the likelihood of an attack.</li>\n  <li><strong>Escaping user-supplied input:</strong> Organizations may also choose to escape (i.e. treat as input, rather than commands or conditionals) all user-supplied input, so that specific characters or words cannot be used to form malicious requests.</li>\n</ul></li>\n\n<h4 class=\"learning-content-h4\">Enforce least-privilege access</h4>\n\n<p><a href='/learning/access-management/principle-of-least-privilege/'>Least-privilege access</a> is the principle of giving users only as much access to protected resources as their role requires. For example, this may mean limiting the number of users who are granted administrator-level privileges to a database, or even giving users temporary admin-level access that can later be revoked.</p>\n\n<p><a href='/learning/access-management/role-based-access-control-rbac/'>Restricting user access on a role-based level</a> also helps minimize the impact of a breach, as attackers who breach a database using stolen credentials will be similarly limited in their ability to view, modify, steal, or destroy protected data. For the same reason, organizations should limit shared access to databases across multiple websites and applications.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare helps prevent SQL injection</h2>\n\n<p>Cloudflare helps organizations improve their resilience against SQLi attacks with a powerful <a href='https://www.cloudflare.com/application-services/products/'>application and API security portfolio</a>:</p>\n\n<ul class=\"learning-list\">\n  <li><strong><a href='https://www.cloudflare.com/application-services/products/waf/'>Cloudflare WAF</a></strong> monitors traffic patterns for potential SQL exploits, detects bypasses and variations in attack types, and uses advanced machine learning technologies to adapt WAF rulesets to evolving attack methods</li>\n  <li><strong><a href='https://developers.cloudflare.com/d1/'>Cloudflare D1</a></strong> is a serverless SQL database that natively integrates with <a href='https://workers.cloudflare.com/'>Workers</a> to implement prepared statements and prevent users from modifying or deleting databases</li>\n</ul></li>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -1002,7 +1002,7 @@
 					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
-					"zhHansCN": "Translated for Locale",
+					"zhHansCN": "English for Locale",
 					"plPL": "English for Locale",
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
@@ -1013,20 +1013,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "1ihihHQ5PHYxUBt23FE8H3",
-			"pathname": "/learning/security/global-dns-hijacking-threat/",
+			"contentfulId": "2GxXRB9VP3sI4ScPSReupE",
+			"pathname": "/learning/security/threats/how-to-prevent-sql-injection/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}

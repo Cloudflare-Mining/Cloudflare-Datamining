@@ -1,25 +1,25 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/ddos/glossary/user-datagram-protocol-udp/",
+	"path": "/learning/ddos/how-to-prevent-ddos-attacks/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "320I3hYGd5OK0rxNd37DOX",
-				"urlSlug": "ddos/glossary/user-datagram-protocol-udp",
+				"contentfulId": "5sCdoWkMpYP8TOETEsGJrT",
+				"urlSlug": "ddos/how-to-prevent-ddos-attacks",
 				"metaTags": {
-					"metaTitle": "What is the User Datagram Protocol (UDP)?",
-					"metaDescription": "The User Datagram Protocol (UDP) is a connectionless communication protocol for transporting packets across networks. Learn all about UDP/IP.",
+					"metaTitle": "How to prevent DDoS attacks | Methods and tools",
+					"metaDescription": "Prevent DDoS attacks before they impact critical infrastructure and disrupt site availability. Learn how Cloudflare helps organizations block DDoS attacks.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/dyoDxOK6E2FMohWlBz5yG/ddfed013002607cae294417c23bcdf74/ddos-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						}
 					},
 					"facebookCustomImage": null
 				},
-				"metaTitle": "What is UDP?",
-				"metaDescription": "User Datagram Protocol (UDP/IP) is a connectionless communication protocol. Learn more about UDP/IP.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "28LvlxvxleYGQ8oAcq8Gc2",
@@ -741,164 +741,89 @@
 						]
 					}
 				},
-				"header": "What is UDP?",
-				"blurbSubHeader": "A transport layer communication protocol, UDP is a very common protocol for voice and video traffic.",
-				"objectivesHeader": "UDP/IP",
+				"header": "How to prevent DDoS attacks | Methods and tools",
+				"blurbSubHeader": "Attack surface reduction, real-time threat detection, and always-on DDoS mitigation can help prevent attacks before they reach targeted infrastructure and systems.",
+				"objectivesHeader": "Prevent DDoS attacks",
 				"objectivesList": [
-					"Define UDP/IP",
-					"Describe some use cases for UDP"
+					"Explain how DDoS attacks work",
+					"Explore DDoS attack prevention strategies",
+					"Learn how Cloudflare helps prevent attacks"
 				],
-				"relatedContentLinkText": "Related Content",
+				"relatedContentLinkText": "Related content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
-						"displayText": "HTTP",
-						"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+						"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+						"displayText": "What is a DDoS attack?",
+						"url": "/learning/ddos/what-is-a-ddos-attack/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "6xtVT6OheomGscU244Gy4c",
-						"displayText": "TCP/IP",
-						"url": "/learning/ddos/glossary/tcp-ip/"
+						"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+						"displayText": "Denial of service",
+						"url": "/learning/ddos/glossary/denial-of-service/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
-						"displayText": "Web application firewall (WAF)",
-						"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+						"contentfulId": "b2paLepZMkICu60yMqm6u",
+						"displayText": "How to DDoS",
+						"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
-						"displayText": "Ping (ICMP) flood attack",
-						"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+						"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+						"displayText": "What is a DDoS botnet?",
+						"url": "/learning/ddos/what-is-a-ddos-botnet/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "4sBZoVheo8ICoUuqocecoa",
-						"displayText": "UDP flood attack",
-						"url": "/learning/ddos/udp-flood-ddos-attack/"
+						"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+						"displayText": "DDoS mitigation",
+						"url": "/learning/ddos/ddos-mitigation/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is the User Datagram Protocol (UDP/IP)?</h2>\n<p>The User Datagram Protocol, or UDP, is a communication protocol used across the Internet for especially time-sensitive transmissions such as <a href='/learning/video/what-is-streaming/'>video playback</a> or <a href='/learning/dns/what-is-dns/'>DNS</a> lookups. It speeds up communications by not formally establishing a connection before data is transferred. This allows data to be transferred very quickly, but it can also cause <a href='/learning/network-layer/what-is-a-packet/'>packets</a> to become lost in transit — and create opportunities for exploitation in the form of <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attacks</a>.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How does UDP work?</h2>\n<p>Like all <a href='/learning/network-layer/what-is-a-protocol/'>networking protocols</a>, UDP is a standardized method for transferring data between two computers in a network. Compared to other protocols, UDP accomplishes this process in a simple fashion: it sends packets (units of data transmission) directly to a target computer, without establishing a connection first, indicating the order of said packets, or checking whether they arrived as intended. (UDP packets are referred to as 'datagrams'.)</p>\n\n<h4 class=\"learning-content-h4\">TCP vs. UDP</h4>\n\n<p>UDP is faster but less reliable than <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a>, another common transport protocol. In a TCP communication, the two computers begin by establishing a connection via an automated process called a 'handshake.' Only once this handshake has been completed will one computer actually transfer data packets to the other.</p>\n<p>UDP communications do not go through this process. Instead, one computer can simply begin sending data to the other:</p>\n<img class=\"responsive-image\" title=\"TCP vs UDP Communication\" alt=\"TCP vs UDP Communication\" src=\"/img/learning/ddos/glossary/user-datagram-protocol-udp/tcp-vs-udp.svg\" itemprop=\"image\" />\n<p>In addition, TCP communications indicate the order in which data packets should be received and confirm that packets arrive as intended. If a packet does not arrive — e.g. due to congestion in intermediary networks — TCP requires that it be re-sent. UDP communications do not include any of this functionality.</p>\n\n<p>These differences create some advantages. Because UDP does not require a 'handshake' or check whether data arrives properly, it is able to transfer data much faster than TCP.</p>\n\n<p>However, this speed creates tradeoffs. If a UDP datagram is lost in transit, it will not be re-sent. As a result, applications that use UDP must be able to tolerate errors, loss, and duplication.</p>\n\n<p>(Technically, such packet loss is less a flaw in UDP than a consequence of how the Internet is built. Most network <a href='/learning/network-layer/what-is-a-router/'>routers</a> do not perform packet ordering and arrival confirmation by design, because doing so would require an unfeasible amount of additional memory. TCP is a way of filling this gap when an application requires it.)</p>\n\n <h2 class=\"learning-content-h2\" itemprop=\"headline\">What is UDP used for?</h2>\n <p>UDP is commonly used in time-sensitive communications where occasionally dropping packets is better than waiting. Voice and video traffic are often sent using this protocol because they are both time-sensitive and designed to handle some level of loss. For example, <a href='/learning/video/what-is-voip/'>VoIP (voice over IP)</a>, which is used by many Internet-based telephone services, typically operates over UDP. This is because a static-y phone conversation is preferable to one that is crystal clear but heavily delayed.</p>\n\n<p>This also makes UDP the ideal protocol for online gaming. Similarly, because DNS servers both need to be fast and efficient, they operate through UDP as well.</p> \n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How is UDP used in DDoS attacks?</h2>\n<p>UDP 'risks' like packet loss are not a serious problem in most use cases. However, UDP can be exploited for malicious purposes. Since UDP does not require a handshake, attackers can 'flood' a targeted server with UDP traffic without first getting that server's permission to begin communication.</p>\n\n<img class=\"responsive-image\" title=\"udp flood attack ddos attack diagram\" alt=\"undefined\" src=\"/img/learning/ddos/udp-flood-ddos-attack/udp-flood-attack-ddos-attack-diagram.png\" itemprop=\"image\" />\n\n<p>A typical UDP flood attack sends a large number of UDP datagrams to random <a href='/learning/network-layer/what-is-a-computer-port/'>ports</a> on its target computer. This forces the target to respond with an equally large number of <a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'>ICMP</a> packets, which indicate those ports were unreachable. The computing resources required to respond to each fraudulent datagram can exhaust the target, resulting in a denial-of-service to legitimate traffic. (To learn more, <a href='/learning/ddos/udp-flood-ddos-attack/'>read our article on UDP flood attacks</a>.)</p>\n\n<p>Organizations can defend against UDP flood attacks with a variety of methods. One is to limit the response rate of ICMP packets, though this approach can also filter out legitimate packets. Another method is to receive and respond to UDP traffic through an intermediary network of many distributed data centers, preventing a single origin server from being overwhelmed with fraudulent requests. <a href='/ddos/'>Learn more about how Cloudflare uses this strategy to help organizations mitigate DDoS attacks</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How DDoS attacks work</h2>\n\n<p>A distributed denial-of-service (DDoS) attack disrupts the operations of a server, service, or network by flooding it with unwanted Internet traffic. <a href='/learning/ddos/famous-ddos-attacks/'>At their worst</a>, these attacks can knock a website or entire network offline for extended periods of time.</p>\n\n<p>DDoS attacks work by directing malicious traffic to a target via multiple computers or machines. Often, these machines form a <a href='/learning/ddos/what-is-a-ddos-botnet/'>botnet</a>: a group of devices that have been compromised by <a href='/learning/ddos/glossary/malware/'>malware</a> and can be controlled by a single attacker. Other DDoS attacks may involve multiple attackers or <a href='/learning/ddos/ddos-attack-tools/how-to-ddos/'>DDoS attack tools</a>, such as stress-testing applications (e.g. <a href='/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/'>LOIC</a>) or low-and-slow programs (e.g. <a href='/learning/ddos/ddos-attack-tools/slowloris/'>Slowloris</a>).</p>\n\n<p>Attackers may use one or more of the following strategies to DDoS their targets:</p>\n\n<ol class=\"learning-list\">\n  <li><strong>Application-layer attacks</strong>, also known as <em><a href='/learning/ddos/application-layer-ddos-attack/'>layer 7 DDoS attacks</a></em>, create a denial of service by overwhelming the target's server and network resources with legitimate-seeming HTTP requests.</li>\n  <li><strong>Protocol attacks</strong>, or <em>state-exhaustion attacks</em>, overwhelm network equipment and infrastructure by using <a href='/learning/ddos/layer-3-ddos-attacks/'>layer 3</a> or 4 protocols (e.g. <a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'>ICMP</a>) to send a flood of unwanted traffic to their target.</li>\n  <li><strong>Volumetric attacks</strong> use amplification techniques — for example, deploying a botnet or exploiting common <a href='/learning/ddos/ssdp-ddos-attack/'>networking protocols</a> — to consume all of the target's available bandwidth.</li>\n</ol></li>\n\n<p>To learn more about the tactics employed in a DDoS attack, read <a href='/learning/ddos/what-is-a-ddos-attack/'>What is a distributed denial-of-service (DDoS) attack?</a></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to prevent DDoS attacks</h2>\n\n<p>Preventing DDoS attacks can be challenging, particularly during high-traffic periods or across a vast and distributed network architecture. A truly proactive DDoS threat defense hinges on several key factors: attack surface reduction, threat monitoring, and scalable DDoS mitigation tools.</p>\n\n<h4 class=\"learning-content-h4\">DDoS prevention methods</h4>\n\n<ul class=\"learning-list\">\n  <li><strong>Attack surface reduction:</strong> Limiting attack surface exposure can help minimize the effect of a DDoS attack. Several methods for reducing this exposure include restricting traffic to specific locations, implementing a <a href='/learning/performance/what-is-load-balancing/'>load balancer</a>, and blocking communication from outdated or unused ports, protocols, and applications.</li>\n  <li><strong>Anycast network diffusion:</strong> An <a href='/learning/cdn/glossary/anycast-network/'>Anycast network</a> helps increase the surface area of an organization's network, so that it can more easily absorb volumetric traffic spikes (and prevent outages) by dispersing traffic across multiple distributed servers.</li>\n  <li><strong>Real-time, adaptive threat monitoring:</strong> Log monitoring can help pinpoint potential threats by analyzing network traffic patterns, monitoring traffic spikes or other unusual activity, and adapting to defend against anomalous or malicious requests, protocols, and IP blocks.</li>\n  <li><strong>Caching:</strong> A <a href='/learning/cdn/what-is-caching/'>cache</a> stores copies of requested content so that fewer requests are serviced by origin servers. Using a <a href='/learning/cdn/what-is-a-cdn/'>content delivery network (CDN)</a> to cache resources can reduce the strain on an organization's servers and make it more difficult for them to become overloaded by both legitimate and malicious requests.</li>\n  <li><strong>Rate limiting:</strong> <a href='/learning/bots/what-is-rate-limiting/'>Rate limiting</a> restricts the volume of network traffic over a specific time period, essentially preventing web servers from getting overwhelmed by requests from specific IP addresses. Rate limiting can be used to prevent DDoS attacks that use botnets to spam an endpoint with an abnormal amount of requests at once.</li>\n</ul></li>\n\n<h4 class=\"learning-content-h4\">DDoS prevention tools</h4>\n\n<ul class=\"learning-list\">\n  <li><strong>Web application firewall (WAF):</strong> A <a href='/learning/ddos/glossary/web-application-firewall-waf/'>WAF</a> helps block attacks by using customizable policies to filter, inspect, and block malicious HTTP traffic between web applications and the Internet. With a WAF, organizations can enforce a positive and negative security model that controls incoming traffic from specific locations and IP addresses.</li>\n  <li><strong>Always-on DDoS mitigation:</strong> A DDoS mitigation provider can help prevent DDoS attacks by continuously analyzing network traffic, implementing policy changes in response to emerging attack patterns, and providing an expansive and reliable network of data centers. When evaluating cloud-based DDoS mitigation services, look for a provider that offers adaptive, scalable, and always-on threat protection against sophisticated and volumetric attacks.</li>\n</ul></li>\n\n<p>For a more in-depth look at DDoS mitigation tools and strategies, read <a href='/learning/ddos/ddos-mitigation/'>What is DDoS mitigation?</a></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare helps prevent DDoS attacks</h2>\n\n<p>Cloudflare offers integrated L3-7 <a href='https://www.cloudflare.com/ddos/'>DDoS protection</a> that helps organizations monitor, prevent, and mitigate attacks before they reach targeted applications, networks, and infrastructure. Some of the key benefits of our layered threat defense include:</p>\n\n<ul class=\"learning-list\">\n  <li>A <a href='https://www.cloudflare.com/network/'>global Anycast network</a> that spans over %{DataCenterCount} cities and %{CountryCount} countries worldwide, capable of absorbing even the largest DDoS attacks</li>\n  <li><a href='https://www.cloudflare.com/network-services/products/magic-transit/'>Traffic routing and acceleration</a> to help diffuse traffic spikes across our network and minimize latency and congestion</li>\n  <li>Always-on, automatic DDoS mitigation that can detect and block malicious traffic in less than three seconds</li>\n  <li>A <a href='https://www.cloudflare.com/application-services/products/waf/'>next-generation WAF</a> that offers advanced rate limiting, tailored rulesets, and flexible threat prevention</li>\n</ul></li>\n\n<p>Under attack? Get immediate DDoS protection via the <a href='https://www.cloudflare.com/under-attack-hotline/'>Cloudflare cyber emergency hotline</a>.</p>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
-					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
-				"proactivePopup": {
-					"contentTypeId": "proactivePopup",
-					"contentfulId": "3e078HhDjGwh728YjwsGqd",
-					"headerText": "Want to keep learning?",
-					"subHeadingText": "Sign up to receive security learning articles from Cloudflare.",
-					"hasMarketoForm": true,
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2488,
-						"marketoFormLeadSource": "Learning Center - Subscription",
-						"marketoFormLeadSourceDetail": "[EXP] Q3'20 WEB - GBL - PAYGO WWW Product Recommendations",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "Cloudflare learning articles are on the way.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					},
-					"timeDelay": 20000,
-					"ctaButton": null
-				},
-				"sidebarForm": {
-					"contentTypeId": "learningCenterArticleSidebarForm",
-					"contentfulId": "38cCzU8oRXFlEHKfflIvrj",
-					"heading": "Want to keep learning?",
-					"postSubmissionHeading": "Thank you for subscribing",
-					"description": "Sign up to receive security learning articles from Cloudflare.",
-					"postSubmissionDescription": "Cloudflare learning articles are on their way!",
-					"marketoForm": {
-						"contentTypeId": "marketoEmbeddedForm",
-						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
-						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
-						"backgroundColor": "blue",
-						"marketoFormId": 2488,
-						"marketoFormLeadSource": "Learning Center - Subscription",
-						"marketoFormLeadSourceDetail": "[EXP] Q3'20 WEB - GBL - PAYGO WWW Product Recommendations",
-						"marketoFormHeaderText": null,
-						"marketoFormDefaultComment": null,
-						"showCommentBox": null,
-						"marketoFormThankYouText": "Thank you for subscribing!",
-						"marketoFormCustomSuccessMessage": "Cloudflare learning articles are on the way.",
-						"marketoFormPdfDownload": null,
-						"marketoFormPdfDownloadI18n": [],
-						"marketoFormAssetDownloadButtonText": null,
-						"marketoFormSuccessRedirectUrl": null,
-						"sendAdRoll": null,
-						"meta_adRollCustomSegment": null,
-						"enableSandbox": null,
-						"marketoFormSubmitButtonText": "Subscribe",
-						"marketoFormSubmitButtonColor": null,
-						"enableEmailVerification": null,
-						"disableEnterpriseEmailNotification": null,
-						"enableRingout": null
-					}
-				}
+				"proactivePopup": null,
+				"sidebarForm": null
 			}
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "320I3hYGd5OK0rxNd37DOX",
-			"pathname": "/learning/ddos/glossary/user-datagram-protocol-udp/",
+			"contentfulId": "5sCdoWkMpYP8TOETEsGJrT",
+			"pathname": "/learning/ddos/how-to-prevent-ddos-attacks/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
