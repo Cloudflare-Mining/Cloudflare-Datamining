@@ -41,4 +41,4 @@ You can join the [Discord](https://discord.gg/Z94Hn6qVDm) for notifications of c
 
 ## Contributing
 
-PRs are welcome! If you have an interesting Cloudflare account and would like to contribute your account/zone entitlements to grow the known list, please send me a JSON dump of your entitlements either via Discord (`CherryJimbo#0001`) or Twitter (`@CherryJimbo`).
+PRs are welcome! If you have an interesting Cloudflare account and would like to contribute your account/zone entitlements to grow the known list, please send me a JSON dump of your entitlements either via Discord (`CherryJimbo#0001`) or [Twitter(X)](https://twitter.com/cherryjimbo?lang=de) (`@CherryJimbo`).
