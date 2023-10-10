@@ -89,6 +89,7 @@ declare const _default: {
     'platform-apps': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     plus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     printer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    processing: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'product-security-center': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pub-sub': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'pull-request': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -119,6 +120,7 @@ declare const _default: {
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    timer: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     trace: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'traffic-attack-browser': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

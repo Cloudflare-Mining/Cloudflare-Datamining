@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.9.0
+
+### Minor Changes
+
+- b6d8dcdb35: Add processing, timer SVG icons
+
 ## 11.8.5
 
 ### Patch Changes

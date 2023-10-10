@@ -87,6 +87,7 @@ import Pause from './Pause';
 import PlatformApps from './PlatformApps';
 import Plus from './Plus';
 import Printer from './Printer';
+import Processing from './Processing';
 import ProductSecurityCenter from './ProductSecurityCenter';
 import PubSub from './PubSub';
 import PullRequest from './PullRequest';
@@ -117,6 +118,7 @@ import TailWorker from './TailWorker';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import Time from './Time';
+import Timer from './Timer';
 import Trace from './Trace';
 import TrafficAttackBrowser from './TrafficAttackBrowser';
 import Turnstile from './Turnstile';
@@ -234,6 +236,7 @@ export default {
   'platform-apps': PlatformApps,
   plus: Plus,
   printer: Printer,
+  processing: Processing,
   'product-security-center': ProductSecurityCenter,
   'pub-sub': PubSub,
   'pull-request': PullRequest,
@@ -264,6 +267,7 @@ export default {
   teams: Teams,
   terraform: Terraform,
   time: Time,
+  timer: Timer,
   trace: Trace,
   'traffic-attack-browser': TrafficAttackBrowser,
   turnstile: Turnstile,
