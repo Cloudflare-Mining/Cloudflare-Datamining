@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.2.17
+
+### Patch Changes
+
+- b29e9fc651: Switch form to onSubmitCapture to enable form nesting
+- Updated dependencies [b29e9fc651]
+  - @cloudflare/component-forms@5.5.0
+
 ## 6.2.16
 
 ### Patch Changes

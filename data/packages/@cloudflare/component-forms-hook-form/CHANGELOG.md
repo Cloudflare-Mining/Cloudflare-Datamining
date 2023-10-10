@@ -1,5 +1,16 @@
 # @cloudflare/component-forms-hook-form
 
+## 1.1.0
+
+### Minor Changes
+
+- b29e9fc651: Handle form nesting
+
+### Patch Changes
+
+- Updated dependencies [b29e9fc651]
+  - @cloudflare/component-forms@5.5.0
+
 ## 1.0.10
 
 ### Patch Changes

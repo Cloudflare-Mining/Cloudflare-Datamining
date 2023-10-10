@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.5.0
+
+### Minor Changes
+
+- b29e9fc651: Handle form nesting
+
+### Patch Changes
+
+- Updated dependencies [b29e9fc651]
+  - @cloudflare/component-forms@5.5.0
+
 ## 6.4.29
 
 ### Patch Changes

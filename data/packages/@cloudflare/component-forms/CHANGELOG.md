@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.5.0
+
+### Minor Changes
+
+- b29e9fc651: Add nested property to indicate form is nested (or can be) within another form
+
 ## 5.4.9
 
 ### Patch Changes
