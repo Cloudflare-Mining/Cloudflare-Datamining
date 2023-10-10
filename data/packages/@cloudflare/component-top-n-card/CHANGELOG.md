@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.0.20
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.23
+
 ## 4.0.19
 
 ### Patch Changes
