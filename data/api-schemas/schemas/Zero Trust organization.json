@@ -185,6 +185,11 @@
 													"example": "Widget Corps Internal Applications",
 													"type": "string"
 												},
+												"session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"example": "24h",
+													"type": "string"
+												},
 												"ui_read_only_toggle_reason": {
 													"description": "A description of the reason why the UI read only field is being toggled.",
 													"example": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -386,6 +391,11 @@
 															"example": "Widget Corps Internal Applications",
 															"type": "string"
 														},
+														"session_duration": {
+															"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+															"example": "24h",
+															"type": "string"
+														},
 														"ui_read_only_toggle_reason": {
 															"description": "A description of the reason why the UI read only field is being toggled.",
 															"example": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -576,6 +586,11 @@
 							"name": {
 								"description": "The name of your Zero Trust organization.",
 								"example": "Widget Corps Internal Applications",
+								"type": "string"
+							},
+							"session_duration": {
+								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+								"example": "24h",
 								"type": "string"
 							},
 							"ui_read_only_toggle_reason": {
@@ -769,6 +784,11 @@
 												"name": {
 													"description": "The name of your Zero Trust organization.",
 													"example": "Widget Corps Internal Applications",
+													"type": "string"
+												},
+												"session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"example": "24h",
 													"type": "string"
 												},
 												"ui_read_only_toggle_reason": {
@@ -970,6 +990,11 @@
 														"name": {
 															"description": "The name of your Zero Trust organization.",
 															"example": "Widget Corps Internal Applications",
+															"type": "string"
+														},
+														"session_duration": {
+															"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+															"example": "24h",
 															"type": "string"
 														},
 														"ui_read_only_toggle_reason": {
@@ -1373,6 +1398,11 @@
 								"example": "Widget Corps Internal Applications",
 								"type": "string"
 							},
+							"session_duration": {
+								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+								"example": "24h",
+								"type": "string"
+							},
 							"ui_read_only_toggle_reason": {
 								"description": "A description of the reason why the UI read only field is being toggled.",
 								"example": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -1560,6 +1590,11 @@
 												"name": {
 													"description": "The name of your Zero Trust organization.",
 													"example": "Widget Corps Internal Applications",
+													"type": "string"
+												},
+												"session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"example": "24h",
 													"type": "string"
 												},
 												"ui_read_only_toggle_reason": {
@@ -1761,6 +1796,11 @@
 														"name": {
 															"description": "The name of your Zero Trust organization.",
 															"example": "Widget Corps Internal Applications",
+															"type": "string"
+														},
+														"session_duration": {
+															"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+															"example": "24h",
 															"type": "string"
 														},
 														"ui_read_only_toggle_reason": {

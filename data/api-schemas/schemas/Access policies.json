@@ -1210,7 +1210,7 @@
 													},
 													"isolation_required": {
 														"default": false,
-														"description": "Require this application to be served in an isolated browser for users matching this policy.",
+														"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 														"example": false,
 														"type": "boolean"
 													},
@@ -1535,6 +1535,12 @@
 															"type": "object"
 														},
 														"type": "array"
+													},
+													"session_duration": {
+														"default": "24h",
+														"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+														"example": "24h",
+														"type": "string"
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -2361,7 +2367,7 @@
 															},
 															"isolation_required": {
 																"default": false,
-																"description": "Require this application to be served in an isolated browser for users matching this policy.",
+																"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 																"example": false,
 																"type": "boolean"
 															},
@@ -2686,6 +2692,12 @@
 																	"type": "object"
 																},
 																"type": "array"
+															},
+															"session_duration": {
+																"default": "24h",
+																"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+																"example": "24h",
+																"type": "string"
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -3623,7 +3635,7 @@
 												},
 												"isolation_required": {
 													"default": false,
-													"description": "Require this application to be served in an isolated browser for users matching this policy.",
+													"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 													"example": false,
 													"type": "boolean"
 												},
@@ -3948,6 +3960,12 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"session_duration": {
+													"default": "24h",
+													"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"example": "24h",
+													"type": "string"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -4751,7 +4769,7 @@
 														},
 														"isolation_required": {
 															"default": false,
-															"description": "Require this application to be served in an isolated browser for users matching this policy.",
+															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
 														},
@@ -5076,6 +5094,12 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"session_duration": {
+															"default": "24h",
+															"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+															"example": "24h",
+															"type": "string"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -5889,7 +5913,7 @@
 							},
 							"isolation_required": {
 								"default": false,
-								"description": "Require this application to be served in an isolated browser for users matching this policy.",
+								"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 								"example": false,
 								"type": "boolean"
 							},
@@ -6214,6 +6238,12 @@
 									"type": "object"
 								},
 								"type": "array"
+							},
+							"session_duration": {
+								"default": "24h",
+								"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+								"example": "24h",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -7010,7 +7040,7 @@
 												},
 												"isolation_required": {
 													"default": false,
-													"description": "Require this application to be served in an isolated browser for users matching this policy.",
+													"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 													"example": false,
 													"type": "boolean"
 												},
@@ -7335,6 +7365,12 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"session_duration": {
+													"default": "24h",
+													"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"example": "24h",
+													"type": "string"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -8138,7 +8174,7 @@
 														},
 														"isolation_required": {
 															"default": false,
-															"description": "Require this application to be served in an isolated browser for users matching this policy.",
+															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
 														},
@@ -8463,6 +8499,12 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"session_duration": {
+															"default": "24h",
+															"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+															"example": "24h",
+															"type": "string"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -9287,7 +9329,7 @@
 							},
 							"isolation_required": {
 								"default": false,
-								"description": "Require this application to be served in an isolated browser for users matching this policy.",
+								"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 								"example": false,
 								"type": "boolean"
 							},
@@ -9612,6 +9654,12 @@
 									"type": "object"
 								},
 								"type": "array"
+							},
+							"session_duration": {
+								"default": "24h",
+								"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+								"example": "24h",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -10408,7 +10456,7 @@
 												},
 												"isolation_required": {
 													"default": false,
-													"description": "Require this application to be served in an isolated browser for users matching this policy.",
+													"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 													"example": false,
 													"type": "boolean"
 												},
@@ -10733,6 +10781,12 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"session_duration": {
+													"default": "24h",
+													"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+													"example": "24h",
+													"type": "string"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -11536,7 +11590,7 @@
 														},
 														"isolation_required": {
 															"default": false,
-															"description": "Require this application to be served in an isolated browser for users matching this policy.",
+															"description": "Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.",
 															"example": false,
 															"type": "boolean"
 														},
@@ -11861,6 +11915,12 @@
 																"type": "object"
 															},
 															"type": "array"
+														},
+														"session_duration": {
+															"default": "24h",
+															"description": "The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
+															"example": "24h",
+															"type": "string"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
