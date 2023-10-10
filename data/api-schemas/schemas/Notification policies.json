@@ -1,39 +1,33 @@
 {
-	"DELETE /accounts/{identifier}/alerting/v3/policies/{uuid}": {
+	"DELETE /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"description": "Delete a Notification policy.",
 		"operationId": "notification-policies-delete-a-notification-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier of a notification policy",
+					"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -380,16 +374,16 @@
 			"Notification policies"
 		]
 	},
-	"GET /accounts/{identifier}/alerting/v3/policies": {
+	"GET /accounts/{account_id}/alerting/v3/policies": {
 		"description": "Get a list of all Notification policies.",
 		"operationId": "notification-policies-list-notification-policies",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -601,9 +595,608 @@
 														"type": "boolean"
 													},
 													"filters": {
+														"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
+														"example": {
+															"slo": [
+																"99.9"
+															]
+														},
+														"properties": {
+															"actions": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"affected_asns": {
+																"description": "Used for configuring radar_notification",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"affected_components": {
+																"description": "Used for configuring incident_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"affected_locations": {
+																"description": "Used for configuring radar_notification",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"airport_code": {
+																"description": "Used for configuring maintenance_event_notification",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"alert_trigger_preferences": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"alert_trigger_preferences_value": {
+																"description": "Used for configuring magic_tunnel_health_check_event",
+																"items": {
+																	"enum": [
+																		"99.0",
+																		"98.0",
+																		"97.0"
+																	],
+																	"maxItems": 1,
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"enabled": {
+																"description": "Used for configuring load_balancing_pool_enablement_alert",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"environment": {
+																"description": "Used for configuring pages_event_alert",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"event": {
+																"description": "Used for configuring pages_event_alert",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"event_source": {
+																"description": "Used for configuring load_balancing_health_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"event_type": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"group_by": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"health_check_id": {
+																"description": "Used for configuring health_check_status_notification",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"incident_impact": {
+																"description": "Used for configuring incident_alert",
+																"items": {
+																	"enum": [
+																		"INCIDENT_IMPACT_NONE",
+																		"INCIDENT_IMPACT_MINOR",
+																		"INCIDENT_IMPACT_MAJOR",
+																		"INCIDENT_IMPACT_CRITICAL"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"input_id": {
+																"description": "Used for configuring stream_live_notifications",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"limit": {
+																"description": "Used for configuring billing_usage_alert",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"logo_tag": {
+																"description": "Used for configuring logo_match_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"megabits_per_second": {
+																"description": "Used for configuring advanced_ddos_attack_l4_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"new_health": {
+																"description": "Used for configuring load_balancing_health_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"new_status": {
+																"description": "Used for configuring tunnel_health_event",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"packets_per_second": {
+																"description": "Used for configuring advanced_ddos_attack_l4_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"pool_id": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"product": {
+																"description": "Used for configuring billing_usage_alert",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"project_id": {
+																"description": "Used for configuring pages_event_alert",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"protocol": {
+																"description": "Used for configuring advanced_ddos_attack_l4_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"query_tag": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"requests_per_second": {
+																"description": "Used for configuring advanced_ddos_attack_l7_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"selectors": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"services": {
+																"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"slo": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"status": {
+																"description": "Used for configuring health_check_status_notification",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"target_hostname": {
+																"description": "Used for configuring advanced_ddos_attack_l7_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"target_ip": {
+																"description": "Used for configuring advanced_ddos_attack_l4_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"target_zone_name": {
+																"description": "Used for configuring advanced_ddos_attack_l7_alert",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"traffic_exclusions": {
+																"description": "Used for configuring traffic_anomalies_alert",
+																"items": {
+																	"enum": [
+																		"security_events"
+																	],
+																	"maxItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"tunnel_id": {
+																"description": "Used for configuring tunnel_health_event",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"tunnel_name": {
+																"description": "Used for configuring magic_tunnel_health_check_event",
+																"items": {
+																	"minItems": 1,
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"where": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"zones": {
+																"description": "Usage depends on specific alert type",
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															}
+														},
+														"type": "object"
+													},
+													"id": {
+														"description": "The unique identifier of a notification policy",
+														"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
+													},
+													"mechanisms": {
 														"additionalProperties": {
-															"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
 															"items": {
+																"properties": {
+																	"id": {
+																		"oneOf": [
+																			{
+																				"description": "UUID",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"maxLength": 36,
+																				"readOnly": true,
+																				"type": "string"
+																			},
+																			{
+																				"description": "The email address",
+																				"type": "string"
+																			}
+																		]
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
+														"example": {
+															"email": [
+																{
+																	"id": "test@example.com"
+																}
+															],
+															"pagerduty": [
+																{
+																	"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
+																}
+															],
+															"webhooks": [
+																{
+																	"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
+																}
+															]
+														},
+														"type": "object"
+													},
+													"modified": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "Name of the policy.",
+														"example": "SSL Notification Event Policy",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List Notification policies response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"items": {},
+															"nullable": true,
+															"type": "array"
+														},
+														"result_info": {
+															"properties": {
+																"count": {
+																	"description": "Total number of results for the requested service",
+																	"example": 1,
+																	"type": "number"
+																},
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"example": 1,
+																	"type": "number"
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"example": 20,
+																	"type": "number"
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"example": 2000,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"properties": {
+															"alert_type": {
+																"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+																"enum": [
+																	"access_custom_certificate_expiration_type",
+																	"advanced_ddos_attack_l4_alert",
+																	"advanced_ddos_attack_l7_alert",
+																	"advanced_http_alert_error",
+																	"bgp_hijack_notification",
+																	"billing_usage_alert",
+																	"block_notification_block_removed",
+																	"block_notification_new_block",
+																	"block_notification_review_rejected",
+																	"brand_protection_alert",
+																	"brand_protection_digest",
+																	"clickhouse_alert_fw_anomaly",
+																	"clickhouse_alert_fw_ent_anomaly",
+																	"custom_ssl_certificate_event_type",
+																	"dedicated_ssl_certificate_event_type",
+																	"dos_attack_l4",
+																	"dos_attack_l7",
+																	"expiring_service_token_alert",
+																	"failing_logpush_job_disabled_alert",
+																	"fbm_auto_advertisement",
+																	"fbm_dosd_attack",
+																	"fbm_volumetric_attack",
+																	"health_check_status_notification",
+																	"hostname_aop_custom_certificate_expiration_type",
+																	"http_alert_edge_error",
+																	"http_alert_origin_error",
+																	"incident_alert",
+																	"load_balancing_health_alert",
+																	"load_balancing_pool_enablement_alert",
+																	"logo_match_alert",
+																	"magic_tunnel_health_check_event",
+																	"maintenance_event_notification",
+																	"mtls_certificate_store_certificate_expiration_type",
+																	"pages_event_alert",
+																	"radar_notification",
+																	"real_origin_monitoring",
+																	"scriptmonitor_alert_new_code_change_detections",
+																	"scriptmonitor_alert_new_hosts",
+																	"scriptmonitor_alert_new_malicious_hosts",
+																	"scriptmonitor_alert_new_malicious_scripts",
+																	"scriptmonitor_alert_new_malicious_url",
+																	"scriptmonitor_alert_new_max_length_resource_url",
+																	"scriptmonitor_alert_new_resources",
+																	"secondary_dns_all_primaries_failing",
+																	"secondary_dns_primaries_failing",
+																	"secondary_dns_zone_successfully_updated",
+																	"secondary_dns_zone_validation_warning",
+																	"sentinel_alert",
+																	"stream_live_notifications",
+																	"tunnel_health_event",
+																	"tunnel_update_event",
+																	"universal_ssl_event_type",
+																	"web_analytics_metrics_update",
+																	"zone_aop_custom_certificate_expiration_type"
+																],
+																"example": "universal_ssl_event_type",
+																"type": "string"
+															},
+															"created": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"description": {
+																"description": "Optional description for the Notification policy.",
+																"example": "Something describing the policy.",
+																"type": "string"
+															},
+															"enabled": {
+																"default": true,
+																"description": "Whether or not the Notification policy is enabled.",
+																"example": true,
+																"type": "boolean"
+															},
+															"filters": {
+																"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
+																"example": {
+																	"slo": [
+																		"99.9"
+																	]
+																},
 																"properties": {
 																	"actions": {
 																		"description": "Usage depends on specific alert type",
@@ -914,612 +1507,9 @@
 																},
 																"type": "object"
 															},
-															"type": "array"
-														},
-														"example": {
-															"slo": [
-																"99.9"
-															]
-														},
-														"type": "object"
-													},
-													"id": {
-														"description": "UUID",
-														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-														"maxLength": 36,
-														"readOnly": true,
-														"type": "string"
-													},
-													"mechanisms": {
-														"additionalProperties": {
-															"items": {
-																"properties": {
-																	"id": {
-																		"description": "UUID",
-																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"maxLength": 36,
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
-														"example": {
-															"email": [
-																{
-																	"id": "test@example.com"
-																}
-															],
-															"pagerduty": [
-																{
-																	"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
-																}
-															],
-															"webhooks": [
-																{
-																	"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
-																}
-															]
-														},
-														"type": "object"
-													},
-													"modified": {
-														"example": "2014-01-01T05:20:00.12345Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
-													},
-													"name": {
-														"description": "Name of the policy.",
-														"example": "SSL Notification Event Policy",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											"type": "array"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "List Notification policies response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"items": {},
-															"nullable": true,
-															"type": "array"
-														},
-														"result_info": {
-															"properties": {
-																"count": {
-																	"description": "Total number of results for the requested service",
-																	"example": 1,
-																	"type": "number"
-																},
-																"page": {
-																	"description": "Current page within paginated list of results",
-																	"example": 1,
-																	"type": "number"
-																},
-																"per_page": {
-																	"description": "Number of results per page of results",
-																	"example": 20,
-																	"type": "number"
-																},
-																"total_count": {
-																	"description": "Total results available without any search parameters",
-																	"example": 2000,
-																	"type": "number"
-																}
-															},
-															"type": "object"
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"items": {
-														"properties": {
-															"alert_type": {
-																"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
-																"enum": [
-																	"access_custom_certificate_expiration_type",
-																	"advanced_ddos_attack_l4_alert",
-																	"advanced_ddos_attack_l7_alert",
-																	"advanced_http_alert_error",
-																	"bgp_hijack_notification",
-																	"billing_usage_alert",
-																	"block_notification_block_removed",
-																	"block_notification_new_block",
-																	"block_notification_review_rejected",
-																	"brand_protection_alert",
-																	"brand_protection_digest",
-																	"clickhouse_alert_fw_anomaly",
-																	"clickhouse_alert_fw_ent_anomaly",
-																	"custom_ssl_certificate_event_type",
-																	"dedicated_ssl_certificate_event_type",
-																	"dos_attack_l4",
-																	"dos_attack_l7",
-																	"expiring_service_token_alert",
-																	"failing_logpush_job_disabled_alert",
-																	"fbm_auto_advertisement",
-																	"fbm_dosd_attack",
-																	"fbm_volumetric_attack",
-																	"health_check_status_notification",
-																	"hostname_aop_custom_certificate_expiration_type",
-																	"http_alert_edge_error",
-																	"http_alert_origin_error",
-																	"incident_alert",
-																	"load_balancing_health_alert",
-																	"load_balancing_pool_enablement_alert",
-																	"logo_match_alert",
-																	"magic_tunnel_health_check_event",
-																	"maintenance_event_notification",
-																	"mtls_certificate_store_certificate_expiration_type",
-																	"pages_event_alert",
-																	"radar_notification",
-																	"real_origin_monitoring",
-																	"scriptmonitor_alert_new_code_change_detections",
-																	"scriptmonitor_alert_new_hosts",
-																	"scriptmonitor_alert_new_malicious_hosts",
-																	"scriptmonitor_alert_new_malicious_scripts",
-																	"scriptmonitor_alert_new_malicious_url",
-																	"scriptmonitor_alert_new_max_length_resource_url",
-																	"scriptmonitor_alert_new_resources",
-																	"secondary_dns_all_primaries_failing",
-																	"secondary_dns_primaries_failing",
-																	"secondary_dns_zone_successfully_updated",
-																	"secondary_dns_zone_validation_warning",
-																	"sentinel_alert",
-																	"stream_live_notifications",
-																	"tunnel_health_event",
-																	"tunnel_update_event",
-																	"universal_ssl_event_type",
-																	"web_analytics_metrics_update",
-																	"zone_aop_custom_certificate_expiration_type"
-																],
-																"example": "universal_ssl_event_type",
-																"type": "string"
-															},
-															"created": {
-																"example": "2014-01-01T05:20:00.12345Z",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"description": {
-																"description": "Optional description for the Notification policy.",
-																"example": "Something describing the policy.",
-																"type": "string"
-															},
-															"enabled": {
-																"default": true,
-																"description": "Whether or not the Notification policy is enabled.",
-																"example": true,
-																"type": "boolean"
-															},
-															"filters": {
-																"additionalProperties": {
-																	"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-																	"items": {
-																		"properties": {
-																			"actions": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"affected_asns": {
-																				"description": "Used for configuring radar_notification",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"affected_components": {
-																				"description": "Used for configuring incident_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"affected_locations": {
-																				"description": "Used for configuring radar_notification",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"airport_code": {
-																				"description": "Used for configuring maintenance_event_notification",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"alert_trigger_preferences": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"alert_trigger_preferences_value": {
-																				"description": "Used for configuring magic_tunnel_health_check_event",
-																				"items": {
-																					"enum": [
-																						"99.0",
-																						"98.0",
-																						"97.0"
-																					],
-																					"maxItems": 1,
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"enabled": {
-																				"description": "Used for configuring load_balancing_pool_enablement_alert",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"environment": {
-																				"description": "Used for configuring pages_event_alert",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"event": {
-																				"description": "Used for configuring pages_event_alert",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"event_source": {
-																				"description": "Used for configuring load_balancing_health_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"event_type": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"group_by": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"health_check_id": {
-																				"description": "Used for configuring health_check_status_notification",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"incident_impact": {
-																				"description": "Used for configuring incident_alert",
-																				"items": {
-																					"enum": [
-																						"INCIDENT_IMPACT_NONE",
-																						"INCIDENT_IMPACT_MINOR",
-																						"INCIDENT_IMPACT_MAJOR",
-																						"INCIDENT_IMPACT_CRITICAL"
-																					],
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"input_id": {
-																				"description": "Used for configuring stream_live_notifications",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"limit": {
-																				"description": "Used for configuring billing_usage_alert",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"logo_tag": {
-																				"description": "Used for configuring logo_match_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"megabits_per_second": {
-																				"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"new_health": {
-																				"description": "Used for configuring load_balancing_health_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"new_status": {
-																				"description": "Used for configuring tunnel_health_event",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"packets_per_second": {
-																				"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"pool_id": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"product": {
-																				"description": "Used for configuring billing_usage_alert",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"project_id": {
-																				"description": "Used for configuring pages_event_alert",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"protocol": {
-																				"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"query_tag": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"requests_per_second": {
-																				"description": "Used for configuring advanced_ddos_attack_l7_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"selectors": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"services": {
-																				"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"slo": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"status": {
-																				"description": "Used for configuring health_check_status_notification",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"target_hostname": {
-																				"description": "Used for configuring advanced_ddos_attack_l7_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"target_ip": {
-																				"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"target_zone_name": {
-																				"description": "Used for configuring advanced_ddos_attack_l7_alert",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"traffic_exclusions": {
-																				"description": "Used for configuring traffic_anomalies_alert",
-																				"items": {
-																					"enum": [
-																						"security_events"
-																					],
-																					"maxItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"tunnel_id": {
-																				"description": "Used for configuring tunnel_health_event",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"tunnel_name": {
-																				"description": "Used for configuring magic_tunnel_health_check_event",
-																				"items": {
-																					"minItems": 1,
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"where": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			},
-																			"zones": {
-																				"description": "Usage depends on specific alert type",
-																				"items": {
-																					"type": "string"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																"example": {
-																	"slo": [
-																		"99.9"
-																	]
-																},
-																"type": "object"
-															},
 															"id": {
-																"description": "UUID",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"description": "The unique identifier of a notification policy",
+																"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
 																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
@@ -1529,11 +1519,19 @@
 																	"items": {
 																		"properties": {
 																			"id": {
-																				"description": "UUID",
-																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"maxLength": 36,
-																				"readOnly": true,
-																				"type": "string"
+																				"oneOf": [
+																					{
+																						"description": "UUID",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"readOnly": true,
+																						"type": "string"
+																					},
+																					{
+																						"description": "The email address",
+																						"type": "string"
+																					}
+																				]
 																			}
 																		},
 																		"type": "object"
@@ -1685,30 +1683,30 @@
 			"Notification policies"
 		]
 	},
-	"GET /accounts/{identifier}/alerting/v3/policies/{uuid}": {
+	"GET /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"description": "Get details for a single policy.",
 		"operationId": "notification-policies-get-a-notification-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier of a notification policy",
+					"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1899,9 +1897,587 @@
 													"type": "boolean"
 												},
 												"filters": {
+													"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
+													"example": {
+														"slo": [
+															"99.9"
+														]
+													},
+													"properties": {
+														"actions": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"affected_asns": {
+															"description": "Used for configuring radar_notification",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"affected_components": {
+															"description": "Used for configuring incident_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"affected_locations": {
+															"description": "Used for configuring radar_notification",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"airport_code": {
+															"description": "Used for configuring maintenance_event_notification",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"alert_trigger_preferences": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"alert_trigger_preferences_value": {
+															"description": "Used for configuring magic_tunnel_health_check_event",
+															"items": {
+																"enum": [
+																	"99.0",
+																	"98.0",
+																	"97.0"
+																],
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"enabled": {
+															"description": "Used for configuring load_balancing_pool_enablement_alert",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"environment": {
+															"description": "Used for configuring pages_event_alert",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"event": {
+															"description": "Used for configuring pages_event_alert",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"event_source": {
+															"description": "Used for configuring load_balancing_health_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"event_type": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"group_by": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"health_check_id": {
+															"description": "Used for configuring health_check_status_notification",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"incident_impact": {
+															"description": "Used for configuring incident_alert",
+															"items": {
+																"enum": [
+																	"INCIDENT_IMPACT_NONE",
+																	"INCIDENT_IMPACT_MINOR",
+																	"INCIDENT_IMPACT_MAJOR",
+																	"INCIDENT_IMPACT_CRITICAL"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"input_id": {
+															"description": "Used for configuring stream_live_notifications",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"limit": {
+															"description": "Used for configuring billing_usage_alert",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"logo_tag": {
+															"description": "Used for configuring logo_match_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"megabits_per_second": {
+															"description": "Used for configuring advanced_ddos_attack_l4_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"new_health": {
+															"description": "Used for configuring load_balancing_health_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"new_status": {
+															"description": "Used for configuring tunnel_health_event",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"packets_per_second": {
+															"description": "Used for configuring advanced_ddos_attack_l4_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"pool_id": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"product": {
+															"description": "Used for configuring billing_usage_alert",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"project_id": {
+															"description": "Used for configuring pages_event_alert",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"protocol": {
+															"description": "Used for configuring advanced_ddos_attack_l4_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"query_tag": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"requests_per_second": {
+															"description": "Used for configuring advanced_ddos_attack_l7_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"selectors": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"services": {
+															"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"slo": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"status": {
+															"description": "Used for configuring health_check_status_notification",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"target_hostname": {
+															"description": "Used for configuring advanced_ddos_attack_l7_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"target_ip": {
+															"description": "Used for configuring advanced_ddos_attack_l4_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"target_zone_name": {
+															"description": "Used for configuring advanced_ddos_attack_l7_alert",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"traffic_exclusions": {
+															"description": "Used for configuring traffic_anomalies_alert",
+															"items": {
+																"enum": [
+																	"security_events"
+																],
+																"maxItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"tunnel_id": {
+															"description": "Used for configuring tunnel_health_event",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"tunnel_name": {
+															"description": "Used for configuring magic_tunnel_health_check_event",
+															"items": {
+																"minItems": 1,
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"where": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"zones": {
+															"description": "Usage depends on specific alert type",
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												},
+												"id": {
+													"description": "The unique identifier of a notification policy",
+													"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"mechanisms": {
 													"additionalProperties": {
-														"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
 														"items": {
+															"properties": {
+																"id": {
+																	"oneOf": [
+																		{
+																			"description": "UUID",
+																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																			"maxLength": 36,
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		{
+																			"description": "The email address",
+																			"type": "string"
+																		}
+																	]
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
+													"example": {
+														"email": [
+															{
+																"id": "test@example.com"
+															}
+														],
+														"pagerduty": [
+															{
+																"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
+															}
+														],
+														"webhooks": [
+															{
+																"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
+															}
+														]
+													},
+													"type": "object"
+												},
+												"modified": {
+													"example": "2014-01-01T05:20:00.12345Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "Name of the policy.",
+													"example": "SSL Notification Event Policy",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get a Notification policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"alert_type": {
+															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+															"enum": [
+																"access_custom_certificate_expiration_type",
+																"advanced_ddos_attack_l4_alert",
+																"advanced_ddos_attack_l7_alert",
+																"advanced_http_alert_error",
+																"bgp_hijack_notification",
+																"billing_usage_alert",
+																"block_notification_block_removed",
+																"block_notification_new_block",
+																"block_notification_review_rejected",
+																"brand_protection_alert",
+																"brand_protection_digest",
+																"clickhouse_alert_fw_anomaly",
+																"clickhouse_alert_fw_ent_anomaly",
+																"custom_ssl_certificate_event_type",
+																"dedicated_ssl_certificate_event_type",
+																"dos_attack_l4",
+																"dos_attack_l7",
+																"expiring_service_token_alert",
+																"failing_logpush_job_disabled_alert",
+																"fbm_auto_advertisement",
+																"fbm_dosd_attack",
+																"fbm_volumetric_attack",
+																"health_check_status_notification",
+																"hostname_aop_custom_certificate_expiration_type",
+																"http_alert_edge_error",
+																"http_alert_origin_error",
+																"incident_alert",
+																"load_balancing_health_alert",
+																"load_balancing_pool_enablement_alert",
+																"logo_match_alert",
+																"magic_tunnel_health_check_event",
+																"maintenance_event_notification",
+																"mtls_certificate_store_certificate_expiration_type",
+																"pages_event_alert",
+																"radar_notification",
+																"real_origin_monitoring",
+																"scriptmonitor_alert_new_code_change_detections",
+																"scriptmonitor_alert_new_hosts",
+																"scriptmonitor_alert_new_malicious_hosts",
+																"scriptmonitor_alert_new_malicious_scripts",
+																"scriptmonitor_alert_new_malicious_url",
+																"scriptmonitor_alert_new_max_length_resource_url",
+																"scriptmonitor_alert_new_resources",
+																"secondary_dns_all_primaries_failing",
+																"secondary_dns_primaries_failing",
+																"secondary_dns_zone_successfully_updated",
+																"secondary_dns_zone_validation_warning",
+																"sentinel_alert",
+																"stream_live_notifications",
+																"tunnel_health_event",
+																"tunnel_update_event",
+																"universal_ssl_event_type",
+																"web_analytics_metrics_update",
+																"zone_aop_custom_certificate_expiration_type"
+															],
+															"example": "universal_ssl_event_type",
+															"type": "string"
+														},
+														"created": {
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"description": {
+															"description": "Optional description for the Notification policy.",
+															"example": "Something describing the policy.",
+															"type": "string"
+														},
+														"enabled": {
+															"default": true,
+															"description": "Whether or not the Notification policy is enabled.",
+															"example": true,
+															"type": "boolean"
+														},
+														"filters": {
+															"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
+															"example": {
+																"slo": [
+																	"99.9"
+																]
+															},
 															"properties": {
 																"actions": {
 																	"description": "Usage depends on specific alert type",
@@ -2212,591 +2788,9 @@
 															},
 															"type": "object"
 														},
-														"type": "array"
-													},
-													"example": {
-														"slo": [
-															"99.9"
-														]
-													},
-													"type": "object"
-												},
-												"id": {
-													"description": "UUID",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"maxLength": 36,
-													"readOnly": true,
-													"type": "string"
-												},
-												"mechanisms": {
-													"additionalProperties": {
-														"items": {
-															"properties": {
-																"id": {
-																	"description": "UUID",
-																	"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																	"maxLength": 36,
-																	"readOnly": true,
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
-														"type": "array"
-													},
-													"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
-													"example": {
-														"email": [
-															{
-																"id": "test@example.com"
-															}
-														],
-														"pagerduty": [
-															{
-																"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
-															}
-														],
-														"webhooks": [
-															{
-																"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
-															}
-														]
-													},
-													"type": "object"
-												},
-												"modified": {
-													"example": "2014-01-01T05:20:00.12345Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
-												},
-												"name": {
-													"description": "Name of the policy.",
-													"example": "SSL Notification Event Policy",
-													"type": "string"
-												}
-											},
-											"type": "object"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Get a Notification policy response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
-													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"nullable": true,
-																	"type": "object"
-																},
-																{
-																	"nullable": true,
-																	"type": "string"
-																}
-															]
-														}
-													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"alert_type": {
-															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
-															"enum": [
-																"access_custom_certificate_expiration_type",
-																"advanced_ddos_attack_l4_alert",
-																"advanced_ddos_attack_l7_alert",
-																"advanced_http_alert_error",
-																"bgp_hijack_notification",
-																"billing_usage_alert",
-																"block_notification_block_removed",
-																"block_notification_new_block",
-																"block_notification_review_rejected",
-																"brand_protection_alert",
-																"brand_protection_digest",
-																"clickhouse_alert_fw_anomaly",
-																"clickhouse_alert_fw_ent_anomaly",
-																"custom_ssl_certificate_event_type",
-																"dedicated_ssl_certificate_event_type",
-																"dos_attack_l4",
-																"dos_attack_l7",
-																"expiring_service_token_alert",
-																"failing_logpush_job_disabled_alert",
-																"fbm_auto_advertisement",
-																"fbm_dosd_attack",
-																"fbm_volumetric_attack",
-																"health_check_status_notification",
-																"hostname_aop_custom_certificate_expiration_type",
-																"http_alert_edge_error",
-																"http_alert_origin_error",
-																"incident_alert",
-																"load_balancing_health_alert",
-																"load_balancing_pool_enablement_alert",
-																"logo_match_alert",
-																"magic_tunnel_health_check_event",
-																"maintenance_event_notification",
-																"mtls_certificate_store_certificate_expiration_type",
-																"pages_event_alert",
-																"radar_notification",
-																"real_origin_monitoring",
-																"scriptmonitor_alert_new_code_change_detections",
-																"scriptmonitor_alert_new_hosts",
-																"scriptmonitor_alert_new_malicious_hosts",
-																"scriptmonitor_alert_new_malicious_scripts",
-																"scriptmonitor_alert_new_malicious_url",
-																"scriptmonitor_alert_new_max_length_resource_url",
-																"scriptmonitor_alert_new_resources",
-																"secondary_dns_all_primaries_failing",
-																"secondary_dns_primaries_failing",
-																"secondary_dns_zone_successfully_updated",
-																"secondary_dns_zone_validation_warning",
-																"sentinel_alert",
-																"stream_live_notifications",
-																"tunnel_health_event",
-																"tunnel_update_event",
-																"universal_ssl_event_type",
-																"web_analytics_metrics_update",
-																"zone_aop_custom_certificate_expiration_type"
-															],
-															"example": "universal_ssl_event_type",
-															"type": "string"
-														},
-														"created": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"description": {
-															"description": "Optional description for the Notification policy.",
-															"example": "Something describing the policy.",
-															"type": "string"
-														},
-														"enabled": {
-															"default": true,
-															"description": "Whether or not the Notification policy is enabled.",
-															"example": true,
-															"type": "boolean"
-														},
-														"filters": {
-															"additionalProperties": {
-																"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-																"items": {
-																	"properties": {
-																		"actions": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"affected_asns": {
-																			"description": "Used for configuring radar_notification",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"affected_components": {
-																			"description": "Used for configuring incident_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"affected_locations": {
-																			"description": "Used for configuring radar_notification",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"airport_code": {
-																			"description": "Used for configuring maintenance_event_notification",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"alert_trigger_preferences": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"alert_trigger_preferences_value": {
-																			"description": "Used for configuring magic_tunnel_health_check_event",
-																			"items": {
-																				"enum": [
-																					"99.0",
-																					"98.0",
-																					"97.0"
-																				],
-																				"maxItems": 1,
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"enabled": {
-																			"description": "Used for configuring load_balancing_pool_enablement_alert",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"environment": {
-																			"description": "Used for configuring pages_event_alert",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"event": {
-																			"description": "Used for configuring pages_event_alert",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"event_source": {
-																			"description": "Used for configuring load_balancing_health_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"event_type": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"group_by": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"health_check_id": {
-																			"description": "Used for configuring health_check_status_notification",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"incident_impact": {
-																			"description": "Used for configuring incident_alert",
-																			"items": {
-																				"enum": [
-																					"INCIDENT_IMPACT_NONE",
-																					"INCIDENT_IMPACT_MINOR",
-																					"INCIDENT_IMPACT_MAJOR",
-																					"INCIDENT_IMPACT_CRITICAL"
-																				],
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"input_id": {
-																			"description": "Used for configuring stream_live_notifications",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"limit": {
-																			"description": "Used for configuring billing_usage_alert",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"logo_tag": {
-																			"description": "Used for configuring logo_match_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"megabits_per_second": {
-																			"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"new_health": {
-																			"description": "Used for configuring load_balancing_health_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"new_status": {
-																			"description": "Used for configuring tunnel_health_event",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"packets_per_second": {
-																			"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"pool_id": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"product": {
-																			"description": "Used for configuring billing_usage_alert",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"project_id": {
-																			"description": "Used for configuring pages_event_alert",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"protocol": {
-																			"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"query_tag": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"requests_per_second": {
-																			"description": "Used for configuring advanced_ddos_attack_l7_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"selectors": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"services": {
-																			"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"slo": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"status": {
-																			"description": "Used for configuring health_check_status_notification",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"target_hostname": {
-																			"description": "Used for configuring advanced_ddos_attack_l7_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"target_ip": {
-																			"description": "Used for configuring advanced_ddos_attack_l4_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"target_zone_name": {
-																			"description": "Used for configuring advanced_ddos_attack_l7_alert",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"traffic_exclusions": {
-																			"description": "Used for configuring traffic_anomalies_alert",
-																			"items": {
-																				"enum": [
-																					"security_events"
-																				],
-																				"maxItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"tunnel_id": {
-																			"description": "Used for configuring tunnel_health_event",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"tunnel_name": {
-																			"description": "Used for configuring magic_tunnel_health_check_event",
-																			"items": {
-																				"minItems": 1,
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"where": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		},
-																		"zones": {
-																			"description": "Usage depends on specific alert type",
-																			"items": {
-																				"type": "string"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"type": "object"
-																},
-																"type": "array"
-															},
-															"example": {
-																"slo": [
-																	"99.9"
-																]
-															},
-															"type": "object"
-														},
 														"id": {
-															"description": "UUID",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"description": "The unique identifier of a notification policy",
+															"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
 															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
@@ -2806,11 +2800,19 @@
 																"items": {
 																	"properties": {
 																		"id": {
-																			"description": "UUID",
-																			"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																			"maxLength": 36,
-																			"readOnly": true,
-																			"type": "string"
+																			"oneOf": [
+																				{
+																					"description": "UUID",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"maxLength": 36,
+																					"readOnly": true,
+																					"type": "string"
+																				},
+																				{
+																					"description": "The email address",
+																					"type": "string"
+																				}
+																			]
 																		}
 																	},
 																	"type": "object"
@@ -2960,16 +2962,16 @@
 			"Notification policies"
 		]
 	},
-	"POST /accounts/{identifier}/alerting/v3/policies": {
+	"POST /accounts/{account_id}/alerting/v3/policies": {
 		"description": "Creates a new Notification policy.",
 		"operationId": "notification-policies-create-a-notification-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -3055,325 +3057,319 @@
 								"type": "boolean"
 							},
 							"filters": {
-								"additionalProperties": {
-									"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-									"items": {
-										"properties": {
-											"actions": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"affected_asns": {
-												"description": "Used for configuring radar_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"affected_components": {
-												"description": "Used for configuring incident_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"affected_locations": {
-												"description": "Used for configuring radar_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"airport_code": {
-												"description": "Used for configuring maintenance_event_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"alert_trigger_preferences": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"alert_trigger_preferences_value": {
-												"description": "Used for configuring magic_tunnel_health_check_event",
-												"items": {
-													"enum": [
-														"99.0",
-														"98.0",
-														"97.0"
-													],
-													"maxItems": 1,
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"enabled": {
-												"description": "Used for configuring load_balancing_pool_enablement_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"environment": {
-												"description": "Used for configuring pages_event_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"event": {
-												"description": "Used for configuring pages_event_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"event_source": {
-												"description": "Used for configuring load_balancing_health_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"event_type": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"group_by": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"health_check_id": {
-												"description": "Used for configuring health_check_status_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"incident_impact": {
-												"description": "Used for configuring incident_alert",
-												"items": {
-													"enum": [
-														"INCIDENT_IMPACT_NONE",
-														"INCIDENT_IMPACT_MINOR",
-														"INCIDENT_IMPACT_MAJOR",
-														"INCIDENT_IMPACT_CRITICAL"
-													],
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"input_id": {
-												"description": "Used for configuring stream_live_notifications",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"limit": {
-												"description": "Used for configuring billing_usage_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"logo_tag": {
-												"description": "Used for configuring logo_match_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"megabits_per_second": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"new_health": {
-												"description": "Used for configuring load_balancing_health_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"new_status": {
-												"description": "Used for configuring tunnel_health_event",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"packets_per_second": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"pool_id": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"product": {
-												"description": "Used for configuring billing_usage_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"project_id": {
-												"description": "Used for configuring pages_event_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"protocol": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"query_tag": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"requests_per_second": {
-												"description": "Used for configuring advanced_ddos_attack_l7_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"selectors": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"services": {
-												"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"slo": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"status": {
-												"description": "Used for configuring health_check_status_notification",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"target_hostname": {
-												"description": "Used for configuring advanced_ddos_attack_l7_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"target_ip": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"target_zone_name": {
-												"description": "Used for configuring advanced_ddos_attack_l7_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"traffic_exclusions": {
-												"description": "Used for configuring traffic_anomalies_alert",
-												"items": {
-													"enum": [
-														"security_events"
-													],
-													"maxItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"tunnel_id": {
-												"description": "Used for configuring tunnel_health_event",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"tunnel_name": {
-												"description": "Used for configuring magic_tunnel_health_check_event",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"where": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"zones": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											}
-										},
-										"type": "object"
-									},
-									"type": "array"
-								},
+								"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
 								"example": {
 									"slo": [
 										"99.9"
 									]
+								},
+								"properties": {
+									"actions": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"affected_asns": {
+										"description": "Used for configuring radar_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"affected_components": {
+										"description": "Used for configuring incident_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"affected_locations": {
+										"description": "Used for configuring radar_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"airport_code": {
+										"description": "Used for configuring maintenance_event_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"alert_trigger_preferences": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"alert_trigger_preferences_value": {
+										"description": "Used for configuring magic_tunnel_health_check_event",
+										"items": {
+											"enum": [
+												"99.0",
+												"98.0",
+												"97.0"
+											],
+											"maxItems": 1,
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"enabled": {
+										"description": "Used for configuring load_balancing_pool_enablement_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"environment": {
+										"description": "Used for configuring pages_event_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"event": {
+										"description": "Used for configuring pages_event_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"event_source": {
+										"description": "Used for configuring load_balancing_health_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"event_type": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"group_by": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"health_check_id": {
+										"description": "Used for configuring health_check_status_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"incident_impact": {
+										"description": "Used for configuring incident_alert",
+										"items": {
+											"enum": [
+												"INCIDENT_IMPACT_NONE",
+												"INCIDENT_IMPACT_MINOR",
+												"INCIDENT_IMPACT_MAJOR",
+												"INCIDENT_IMPACT_CRITICAL"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"input_id": {
+										"description": "Used for configuring stream_live_notifications",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"limit": {
+										"description": "Used for configuring billing_usage_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"logo_tag": {
+										"description": "Used for configuring logo_match_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"megabits_per_second": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"new_health": {
+										"description": "Used for configuring load_balancing_health_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"new_status": {
+										"description": "Used for configuring tunnel_health_event",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"packets_per_second": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"pool_id": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"product": {
+										"description": "Used for configuring billing_usage_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"project_id": {
+										"description": "Used for configuring pages_event_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"protocol": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"query_tag": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"requests_per_second": {
+										"description": "Used for configuring advanced_ddos_attack_l7_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"selectors": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"services": {
+										"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"slo": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"status": {
+										"description": "Used for configuring health_check_status_notification",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"target_hostname": {
+										"description": "Used for configuring advanced_ddos_attack_l7_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"target_ip": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"target_zone_name": {
+										"description": "Used for configuring advanced_ddos_attack_l7_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"traffic_exclusions": {
+										"description": "Used for configuring traffic_anomalies_alert",
+										"items": {
+											"enum": [
+												"security_events"
+											],
+											"maxItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"tunnel_id": {
+										"description": "Used for configuring tunnel_health_event",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"tunnel_name": {
+										"description": "Used for configuring magic_tunnel_health_check_event",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"where": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"zones": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
@@ -3382,11 +3378,19 @@
 									"items": {
 										"properties": {
 											"id": {
-												"description": "UUID",
-												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-												"maxLength": 36,
-												"readOnly": true,
-												"type": "string"
+												"oneOf": [
+													{
+														"description": "UUID",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
+													},
+													{
+														"description": "The email address",
+														"type": "string"
+													}
+												]
 											}
 										},
 										"type": "object"
@@ -3780,30 +3784,30 @@
 			"Notification policies"
 		]
 	},
-	"PUT /accounts/{identifier}/alerting/v3/policies/{uuid}": {
+	"PUT /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"description": "Update a Notification policy.",
 		"operationId": "notification-policies-update-a-notification-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier of a notification policy",
+					"example": "0da2b59e-f118-439d-8097-bdfb215203c9",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -3887,325 +3891,319 @@
 								"type": "boolean"
 							},
 							"filters": {
-								"additionalProperties": {
-									"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-									"items": {
-										"properties": {
-											"actions": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"affected_asns": {
-												"description": "Used for configuring radar_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"affected_components": {
-												"description": "Used for configuring incident_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"affected_locations": {
-												"description": "Used for configuring radar_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"airport_code": {
-												"description": "Used for configuring maintenance_event_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"alert_trigger_preferences": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"alert_trigger_preferences_value": {
-												"description": "Used for configuring magic_tunnel_health_check_event",
-												"items": {
-													"enum": [
-														"99.0",
-														"98.0",
-														"97.0"
-													],
-													"maxItems": 1,
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"enabled": {
-												"description": "Used for configuring load_balancing_pool_enablement_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"environment": {
-												"description": "Used for configuring pages_event_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"event": {
-												"description": "Used for configuring pages_event_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"event_source": {
-												"description": "Used for configuring load_balancing_health_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"event_type": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"group_by": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"health_check_id": {
-												"description": "Used for configuring health_check_status_notification",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"incident_impact": {
-												"description": "Used for configuring incident_alert",
-												"items": {
-													"enum": [
-														"INCIDENT_IMPACT_NONE",
-														"INCIDENT_IMPACT_MINOR",
-														"INCIDENT_IMPACT_MAJOR",
-														"INCIDENT_IMPACT_CRITICAL"
-													],
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"input_id": {
-												"description": "Used for configuring stream_live_notifications",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"limit": {
-												"description": "Used for configuring billing_usage_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"logo_tag": {
-												"description": "Used for configuring logo_match_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"megabits_per_second": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"new_health": {
-												"description": "Used for configuring load_balancing_health_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"new_status": {
-												"description": "Used for configuring tunnel_health_event",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"packets_per_second": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"pool_id": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"product": {
-												"description": "Used for configuring billing_usage_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"project_id": {
-												"description": "Used for configuring pages_event_alert",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"protocol": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"query_tag": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"requests_per_second": {
-												"description": "Used for configuring advanced_ddos_attack_l7_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"selectors": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"services": {
-												"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"slo": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"status": {
-												"description": "Used for configuring health_check_status_notification",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"target_hostname": {
-												"description": "Used for configuring advanced_ddos_attack_l7_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"target_ip": {
-												"description": "Used for configuring advanced_ddos_attack_l4_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"target_zone_name": {
-												"description": "Used for configuring advanced_ddos_attack_l7_alert",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"traffic_exclusions": {
-												"description": "Used for configuring traffic_anomalies_alert",
-												"items": {
-													"enum": [
-														"security_events"
-													],
-													"maxItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"tunnel_id": {
-												"description": "Used for configuring tunnel_health_event",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"tunnel_name": {
-												"description": "Used for configuring magic_tunnel_health_check_event",
-												"items": {
-													"minItems": 1,
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"where": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"zones": {
-												"description": "Usage depends on specific alert type",
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											}
-										},
-										"type": "object"
-									},
-									"type": "array"
-								},
+								"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
 								"example": {
 									"slo": [
 										"99.9"
 									]
+								},
+								"properties": {
+									"actions": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"affected_asns": {
+										"description": "Used for configuring radar_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"affected_components": {
+										"description": "Used for configuring incident_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"affected_locations": {
+										"description": "Used for configuring radar_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"airport_code": {
+										"description": "Used for configuring maintenance_event_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"alert_trigger_preferences": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"alert_trigger_preferences_value": {
+										"description": "Used for configuring magic_tunnel_health_check_event",
+										"items": {
+											"enum": [
+												"99.0",
+												"98.0",
+												"97.0"
+											],
+											"maxItems": 1,
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"enabled": {
+										"description": "Used for configuring load_balancing_pool_enablement_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"environment": {
+										"description": "Used for configuring pages_event_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"event": {
+										"description": "Used for configuring pages_event_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"event_source": {
+										"description": "Used for configuring load_balancing_health_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"event_type": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"group_by": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"health_check_id": {
+										"description": "Used for configuring health_check_status_notification",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"incident_impact": {
+										"description": "Used for configuring incident_alert",
+										"items": {
+											"enum": [
+												"INCIDENT_IMPACT_NONE",
+												"INCIDENT_IMPACT_MINOR",
+												"INCIDENT_IMPACT_MAJOR",
+												"INCIDENT_IMPACT_CRITICAL"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"input_id": {
+										"description": "Used for configuring stream_live_notifications",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"limit": {
+										"description": "Used for configuring billing_usage_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"logo_tag": {
+										"description": "Used for configuring logo_match_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"megabits_per_second": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"new_health": {
+										"description": "Used for configuring load_balancing_health_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"new_status": {
+										"description": "Used for configuring tunnel_health_event",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"packets_per_second": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"pool_id": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"product": {
+										"description": "Used for configuring billing_usage_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"project_id": {
+										"description": "Used for configuring pages_event_alert",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"protocol": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"query_tag": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"requests_per_second": {
+										"description": "Used for configuring advanced_ddos_attack_l7_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"selectors": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"services": {
+										"description": "Used for configuring clickhouse_alert_fw_ent_anomaly",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"slo": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"status": {
+										"description": "Used for configuring health_check_status_notification",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"target_hostname": {
+										"description": "Used for configuring advanced_ddos_attack_l7_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"target_ip": {
+										"description": "Used for configuring advanced_ddos_attack_l4_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"target_zone_name": {
+										"description": "Used for configuring advanced_ddos_attack_l7_alert",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"traffic_exclusions": {
+										"description": "Used for configuring traffic_anomalies_alert",
+										"items": {
+											"enum": [
+												"security_events"
+											],
+											"maxItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"tunnel_id": {
+										"description": "Used for configuring tunnel_health_event",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"tunnel_name": {
+										"description": "Used for configuring magic_tunnel_health_check_event",
+										"items": {
+											"minItems": 1,
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"where": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"zones": {
+										"description": "Usage depends on specific alert type",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
 								},
 								"type": "object"
 							},
@@ -4214,11 +4212,19 @@
 									"items": {
 										"properties": {
 											"id": {
-												"description": "UUID",
-												"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-												"maxLength": 36,
-												"readOnly": true,
-												"type": "string"
+												"oneOf": [
+													{
+														"description": "UUID",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"maxLength": 36,
+														"readOnly": true,
+														"type": "string"
+													},
+													{
+														"description": "The email address",
+														"type": "string"
+													}
+												]
 											}
 										},
 										"type": "object"

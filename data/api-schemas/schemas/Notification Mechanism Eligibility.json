@@ -1,14 +1,14 @@
 {
-	"GET /accounts/{identifier}/alerting/v3/destinations/eligible": {
+	"GET /accounts/{account_id}/alerting/v3/destinations/eligible": {
 		"description": "Get a list of all delivery mechanism types for which an account is eligible.",
 		"operationId": "notification-mechanism-eligibility-get-delivery-mechanism-eligibility",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,

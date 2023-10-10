@@ -1,14 +1,14 @@
 {
-	"GET /accounts/{identifier}/alerting/v3/available_alerts": {
+	"GET /accounts/{account_id}/alerting/v3/available_alerts": {
 		"description": "Gets a list of all alert types for which an account is eligible.",
 		"operationId": "notification-alert-types-get-alert-types",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,

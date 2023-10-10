@@ -1,15 +1,15 @@
 {
-	"DELETE /accounts/{identifier}/alerting/v3/destinations/webhooks/{uuid}": {
+	"DELETE /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"description": "Delete a configured webhook destination.",
 		"operationId": "notification-webhooks-delete-a-webhook",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"description": "The unique identifier of a webhook",
+					"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
@@ -17,10 +17,10 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -28,12 +28,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -386,16 +380,16 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{identifier}/alerting/v3/destinations/webhooks": {
+	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"description": "Gets a list of all configured webhook destinations.",
 		"operationId": "notification-webhooks-list-webhooks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -536,8 +530,8 @@
 														"type": "string"
 													},
 													"id": {
-														"description": "UUID",
-														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"description": "The unique identifier of a webhook",
+														"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 														"maxLength": 36,
 														"readOnly": true,
 														"type": "string"
@@ -562,7 +556,7 @@
 														"type": "string"
 													},
 													"secret": {
-														"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+														"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 														"type": "string"
 													},
 													"type": {
@@ -727,8 +721,8 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "UUID",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"description": "The unique identifier of a webhook",
+																"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 																"maxLength": 36,
 																"readOnly": true,
 																"type": "string"
@@ -753,7 +747,7 @@
 																"type": "string"
 															},
 															"secret": {
-																"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+																"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 																"type": "string"
 															},
 															"type": {
@@ -891,30 +885,30 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{identifier}/alerting/v3/destinations/webhooks/{uuid}": {
+	"GET /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"description": "Get details for a single webhooks destination.",
 		"operationId": "notification-webhooks-get-a-webhook",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-					"maxLength": 36,
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
 					"readOnly": true,
 					"type": "string"
 				}
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
+					"description": "The unique identifier of a webhook",
+					"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
+					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
 				}
@@ -1034,8 +1028,8 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "UUID",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"description": "The unique identifier of a webhook",
+													"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 													"maxLength": 36,
 													"readOnly": true,
 													"type": "string"
@@ -1060,7 +1054,7 @@
 													"type": "string"
 												},
 												"secret": {
-													"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+													"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 													"type": "string"
 												},
 												"type": {
@@ -1204,8 +1198,8 @@
 															"type": "string"
 														},
 														"id": {
-															"description": "UUID",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"description": "The unique identifier of a webhook",
+															"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 															"maxLength": 36,
 															"readOnly": true,
 															"type": "string"
@@ -1230,7 +1224,7 @@
 															"type": "string"
 														},
 														"secret": {
-															"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+															"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 															"type": "string"
 														},
 														"type": {
@@ -1366,16 +1360,16 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{identifier}/alerting/v3/destinations/webhooks": {
+	"POST /accounts/{account_id}/alerting/v3/destinations/webhooks": {
 		"description": "Creates a new webhook destination.",
 		"operationId": "notification-webhooks-create-a-webhook",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1394,7 +1388,7 @@
 								"type": "string"
 							},
 							"secret": {
-								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 								"type": "string"
 							},
 							"url": {
@@ -1413,7 +1407,7 @@
 			"required": true
 		},
 		"responses": {
-			"200": {
+			"201": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1768,17 +1762,17 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{identifier}/alerting/v3/destinations/webhooks/{uuid}": {
+	"PUT /accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}": {
 		"description": "Update a webhook destination.",
 		"operationId": "notification-webhooks-update-a-webhook",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "webhook_id",
 				"required": true,
 				"schema": {
-					"description": "UUID",
-					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"description": "The unique identifier of a webhook",
+					"example": "b115d5ec-15c6-41ee-8b76-92c449b5227b",
 					"maxLength": 36,
 					"readOnly": true,
 					"type": "string"
@@ -1786,10 +1780,10 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
+					"description": "The account id",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1808,7 +1802,7 @@
 								"type": "string"
 							},
 							"secret": {
-								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body.",
+								"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.",
 								"type": "string"
 							},
 							"url": {
