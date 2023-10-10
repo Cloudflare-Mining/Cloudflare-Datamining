@@ -59,7 +59,15 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "2jmY15r5WEvIdHjF7suLoL",
+					"text": "Ensure you're protected against high severity vulnerability in widely used HTTP/2 protocol. ",
+					"learnMoreText": "Learn more",
+					"learnMoreUrl": "/h2",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
 					"contentfulId": "5QBJouDQh36hGTJhzTTf2j",
@@ -2897,6 +2905,38 @@
 							"cards": [
 								{
 									"contentTypeId": "elementResourceCard",
+									"contentfulId": "3HIXHkwSj5BdOoYiBmqXA7",
+									"heading": "Press",
+									"description": "Read our press release on the HTTP/2 Rapid Reset attack campaign and Cloudflare's response",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "7pAg1b8h1LHF2rYhCoDadZ",
+										"elementName": "HTTP/2 Reset - Press release",
+										"standardText": null,
+										"text": "Read press release",
+										"url": "press-releases",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
+										"altText": "Press Release Header",
+										"title": "Press Release Header",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
+											}
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
 									"contentfulId": "2RirS16kmuT56xnTzbSdio",
 									"heading": "Press",
 									"description": "Newsweek certifies Cloudflare as one of the Most Loved Workplaces in 2023",
@@ -2952,7 +2992,7 @@
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -3145,38 +3185,6 @@
 										"contentfulAsset": {
 											"file": {
 												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5E0GoeSN6fBTNTYOGasjsf/3e7a337396c5b4d109e3bf13753f95bb/Founders--Letter-2.png"
-											}
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
-									"contentfulId": "7kRybT9tvc4wlrpQ3Gc7nh",
-									"heading": "Blog",
-									"description": "Introducing our platform to build fast, secure, compliant AI at scale",
-									"category": "None",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "5ZwSboBSQc7hjisDA15a99",
-										"elementName": "Blog link - Compliant AI",
-										"standardText": null,
-										"text": "Read the blog",
-										"url": "https://blog.cloudflare.com/workers-ai",
-										"elementModal": null,
-										"openInNewTab": true,
-										"locale": "en-US"
-									},
-									"image": {
-										"id": "dd963086-7de8-5947-8e06-c89fe9db443a",
-										"altText": "AI Customers Building on Workers",
-										"title": "AI Customers Building on Workers",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6xLlqcAKwilIRgKLHxXKaq/689e811d8cf0991e796258ef9be81e0c/AI_Customers_Building_on_Workers.png"
 											}
 										},
 										"brandfolderAsset": null,
@@ -4080,7 +4088,7 @@
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -4112,7 +4120,7 @@
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -4144,39 +4152,7 @@
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
-											}
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
-									"contentfulId": "76bryIB1P6TMN448DikLoh",
-									"heading": "Press",
-									"description": "Cloudflare partners with Databricks to bring AI inference to the edge",
-									"category": "News",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "v3f2E4NSBFWi7O1e94cvp",
-										"elementName": "PR link - Databricks",
-										"standardText": null,
-										"text": "Read more",
-										"url": "/press-releases/2023/cloudflare-partners-with-databricks-to-bring-ai-inference-to-the-edge",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"image": {
-										"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
-										"altText": "Press Release Header",
-										"title": "Press Release Header",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -4208,7 +4184,39 @@
 										"locale": "en-US",
 										"contentfulAsset": {
 											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/48f28951d657f32a5e6ac453df90af7c/press-releases.png"
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
+											}
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "sVB6mHPPbZsBnz5nw0yNv",
+									"heading": "Press",
+									"description": "Cloudflare launches most complete platform to deploy fast, secure, compliant AI inference",
+									"category": "News",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "3HWL8tSzzZ2VHTqMycugJu",
+										"elementName": "PR link - Workers AI",
+										"standardText": null,
+										"text": "Read more",
+										"url": "/press-releases/2023/cloudflare-launches-workers-ai-deploy-ai-inference",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
+										"altText": "Press Release Header",
+										"title": "Press Release Header",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f6cc9faba8d0d00eb34605ccd648fd8f/press-release-thumbnail.svg"
 											}
 										},
 										"brandfolderAsset": null,
@@ -7260,7 +7268,7 @@
 				"ru-RU",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": true,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
