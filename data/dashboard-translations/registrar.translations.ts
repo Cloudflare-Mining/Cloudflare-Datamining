@@ -12,20 +12,20 @@
 		delete: "Delete",
 		addCard: "Add card",
 		invalid_email: "Invalid email",
-		back_to_zone: (0, e.d)(l || (l = t(["Back to ", ""])), "zoneName"),
+		back_to_zone: (0, e.d)`Back to ${"zoneName"}`,
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
 	},
 	form: {
-		field_validation_error: (0, e.d)(r || (r = t(["Invalid input for ", ""])), "field"),
+		field_validation_error: (0, e.d)`Invalid input for ${"field"}`,
 		field_required_error: "This field is required",
-		field_name_required_error: (0, e.d)(n || (n = t(["", " field is required"])), "field"),
-		field_mismatch_error: (0, e.d)(o || (o = t(["", " do not match"])), "fieldPlural"),
-		field_min_length_error: (0, e.d)(_ || (_ = t(["This field must be at least ", " ", " long"])), "length", "characters"),
-		field_length_error: (0, e.d)(c || (c = t(["This field must be ", " ", " long"])), "length", "characters"),
+		field_name_required_error: (0, e.d)`${"field"} field is required`,
+		field_mismatch_error: (0, e.d)`${"fieldPlural"} do not match`,
+		field_min_length_error: (0, e.d)`This field must be at least ${"length"} ${"characters"} long`,
+		field_length_error: (0, e.d)`This field must be ${"length"} ${"characters"} long`,
 		field_must_contain_alpha_characters_error: "This field must contain more than one alphabetical character",
-		field_must_contain_at_least_multiple_alpha_characters_error: (0, e.d)(u || (u = t(["This field must contain at least ", " alphabetical characters"])), "numAlphaCharacters"),
+		field_must_contain_at_least_multiple_alpha_characters_error: (0, e.d)`This field must contain at least ${"numAlphaCharacters"} alphabetical characters`,
 		field_must_contain_at_least_one_alpha_characters_error: "This field must contain at least one alphabetical character",
 		field_must_contain_ascii_characters_error: "This field must only include A-Z, a-z, 0-7, spaces, punctuation, and symbols",
 		field_invalid_email_error: "Invalid email address",
@@ -73,8 +73,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		},
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
-		purchase_agreement: (0, e.d)(m || (m = t(['By completing this purchase, you agree to our <a href="https://www.cloudflare.com/terms/" rel="noopener noreferrer" target="_blank">Terms</a> and <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">Privacy Policy</a>, and <a href="https://www.cloudflare.com/domain-registration-agreement/" rel="noopener noreferrer" target="_blank">Domain Registration Agreement</a>.'], ['By completing this purchase, you agree to our <a href=\\"https://www.cloudflare.com/terms/\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Terms</a> and <a href=\\"https://www.cloudflare.com/privacypolicy/\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Privacy Policy</a>, and <a href=\\"https://www.cloudflare.com/domain-registration-agreement/\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Domain Registration Agreement</a>.']))),
-		purchase_agreement_with_icloud: (0, e.d)(i || (i = t(['Your new domain will be automatically set up to use iCloud email. By completing this purchase, you agree to our <a href="https://www.cloudflare.com/terms/" rel="noopener noreferrer" target="_blank">Terms</a> and <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">Privacy Policy</a>, and <a href="https://www.cloudflare.com/domain-registration-agreement/" rel="noopener noreferrer" target="_blank">Domain Registration Agreement</a>.'], ['Your new domain will be automatically set up to use iCloud email. By completing this purchase, you agree to our <a href=\\"https://www.cloudflare.com/terms/\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Terms</a> and <a href=\\"https://www.cloudflare.com/privacypolicy/\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Privacy Policy</a>, and <a href=\\"https://www.cloudflare.com/domain-registration-agreement/\\" rel=\\"noopener noreferrer\\" target=\\"_blank\\">Domain Registration Agreement</a>.']))),
+		purchase_agreement: (0, e.d)`By completing this purchase, you agree to our <a href=\"https://www.cloudflare.com/terms/\" rel=\"noopener noreferrer\" target=\"_blank\">Terms</a> and <a href=\"https://www.cloudflare.com/privacypolicy/\" rel=\"noopener noreferrer\" target=\"_blank\">Privacy Policy</a>, and <a href=\"https://www.cloudflare.com/domain-registration-agreement/\" rel=\"noopener noreferrer\" target=\"_blank\">Domain Registration Agreement</a>.`,
+		purchase_agreement_with_icloud: (0, e.d)`Your new domain will be automatically set up to use iCloud email. By completing this purchase, you agree to our <a href=\"https://www.cloudflare.com/terms/\" rel=\"noopener noreferrer\" target=\"_blank\">Terms</a> and <a href=\"https://www.cloudflare.com/privacypolicy/\" rel=\"noopener noreferrer\" target=\"_blank\">Privacy Policy</a>, and <a href=\"https://www.cloudflare.com/domain-registration-agreement/\" rel=\"noopener noreferrer\" target=\"_blank\">Domain Registration Agreement</a>.`,
 		automatic_renewal_agreement: 'Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in <a href="/%{accountId}/billing/subscriptions" rel="noopener noreferrer" target="_blank">Billing Subscriptions</a>, or via the Domain Management page in your account for registrar, at least a day before each renewal date.',
 		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
@@ -85,7 +85,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		notification_expanded_information: "The registry for .example domain will be unavailable from January 1st 01:00 UTC through 05:00 UTC due to routine maintenance. During this window registrations, transfers, renewals, and updates to .example domains may be unavailable."
 	},
 	domain_page: {
-		title: (0, e.d)(s || (s = t(["Manage ", ""])), "domainName"),
+		title: (0, e.d)`Manage ${"domainName"}`,
 		back: "Back to Manage Domains",
 		unverified_contacts: "You have unverified Contacts.",
 		view_contacts: "View Contacts",
@@ -105,7 +105,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, e.d)(h || (h = t(["", " is not yet active on Cloudflare"])), "domainName"),
+				subtitle: (0, e.d)`${"domainName"} is not yet active on Cloudflare`,
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -122,28 +122,28 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_foa: "Transfer is pending FOA. Please check your email.",
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter auth code",
-		payment: (0, e.d)(g || (g = t(["Payment - <0>1 year renewal ", "</0>"])), "amount"),
-		approve: (0, e.d)(y || (y = t(["Approve transfer at ", ""])), "registrar"),
+		payment: (0, e.d)`Payment - <0>1 year renewal ${"amount"}</0>`,
+		approve: (0, e.d)`Approve transfer at ${"registrar"}`,
 		success: "Transfer successful"
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, e.d)(w || (w = t(["This domain expired on <0>", `</0>
-    and will be available for purchase by others on <1>`, "</1>."])), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, e.d)`This domain expired on <0>${"expired_on"}</0>
+    and will be available for purchase by others on <1>${"purchaseable_on"}</1>.`,
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Automatic renewal is on",
 		auto_renew_off: "Automatic renewal is off",
 		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, e.d)(b || (b = t(["Your domain will expire on ", ""])), "expires_on"),
+		expires_on: (0, e.d)`Your domain will expire on ${"expires_on"}`,
 		grace_period: {
 			title: "Domain expired",
-			details: (0, e.d)(v || (v = t(["This domain expired on ", ". You have a 40 day grace period during which you can renew this domain, which will end on <strong>", "</strong>."])), "grace_period_start", "grace_period_end")
+			details: (0, e.d)`This domain expired on ${"grace_period_start"}. You have a 40 day grace period during which you can renew this domain, which will end on <strong>${"grace_period_end"}</strong>.`
 		},
 		not_on_cloudflare: {
-			expiration: (0, e.d)(k || (k = t(["Your domain will expire on <0>", "</0>"])), "expiration"),
+			expiration: (0, e.d)`Your domain will expire on <0>${"expiration"}</0>`,
 			transfer_cta: "Transfer to Cloudflare",
-			transfer_cta_subext: (0, e.d)(C || (C = t(["Pay ", " per year. \u{1F389}"])), "price")
+			transfer_cta_subext: (0, e.d)`Pay ${"price"} per year. 🎉`
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
@@ -159,7 +159,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	add_years: {
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
-		due: (0, e.d)(x || (x = t(["Due today: <0>", "</0>"])), "amount"),
+		due: (0, e.d)`Due today: <0>${"amount"}</0>`,
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance."
 	},
 	domainPageNotifications: {
@@ -199,13 +199,13 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cor_resent_email: "Email Sent",
 	cor_resend_email: "Resend Email",
 	renewal_info: {
-		expires_on: (0, e.d)(z || (z = t(["<0>Expires on</0><1>", "</1>"])), "expiresOn"),
-		renews_on: (0, e.d)(S || (S = t(["<0>Renews on</0><1>", "</1>"])), "renewsOn"),
+		expires_on: (0, e.d)`<0>Expires on</0><1>${"expiresOn"}</1>`,
+		renews_on: (0, e.d)`<0>Renews on</0><1>${"renewsOn"}</1>`,
 		price: "Price",
 		per_year: "/ year",
-		billing: (0, e.d)(P || (P = t(["You will be charged to the card ending in <0>", "</0>."])), "last4"),
-		billing_paypal: (0, e.d)(D || (D = t(["You will be charged to your PayPal account <0>", "</0>."])), "email"),
-		billing_cloud: (0, e.d)(T || (T = t(["You will be charged to the card ending in <0>", "</0><1>Your new domain will be automatically set up to use iCloud email. By completing this purchase you agree to Cloudflare's:</1>"])), "last4")
+		billing: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0>.`,
+		billing_paypal: (0, e.d)`You will be charged to your PayPal account <0>${"email"}</0>.`,
+		billing_cloud: (0, e.d)`You will be charged to the card ending in <0>${"last4"}</0><1>Your new domain will be automatically set up to use iCloud email. By completing this purchase you agree to Cloudflare's:</1>`
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
 	domain_page_sidebar_status: "Status",
@@ -220,7 +220,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_page_sidebar_quick_actions: "Quick actions",
 	domain_page_sidebar_update_dns: "Update DNS configuration",
 	domain_page_sidebar_add_pages_site: "Add Pages site",
-	registered_on: (0, e.d)(R || (R = t(["Registered on ", ""])), "registration_date"),
+	registered_on: (0, e.d)`Registered on ${"registration_date"}`,
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
 	renewals_billing_line_item_1: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
 	renewals_billing_line_item_1_meta: "Expires %{expiration}",
@@ -351,14 +351,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment. Don't worry, we're attempting to determine the current state of each  domain. This process may take some time so please try back in 5 minutes. If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: E,
-	instructions_godaddy: L,
-	instructions_namecheap: U,
-	instructions_network_solutions: W,
-	instructions_one_and_one: j,
-	instructions_unknown: Y,
-	instructions_uk: M,
-	instructions_restrictions: O,
+	instructions_enom: o,
+	instructions_godaddy: l,
+	instructions_namecheap: _,
+	instructions_network_solutions: c,
+	instructions_one_and_one: r,
+	instructions_unknown: d,
+	instructions_uk: n,
+	instructions_restrictions: s,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
 	instructions_unknown_title: "Follow these instructions to transfer your domain",
@@ -737,7 +737,7 @@ Payment will be charged in US dollars.`,
 	protection_domains_table_manage: "Manage",
 	protection_domains_table_error: "No domains available",
 	protection_unlock_modal_title_account: "Approval required",
-	protection_unlock_modal_title_domain: (0, e.d)(A || (A = t(["Approval required to unlock ", ""])), "domainName"),
+	protection_unlock_modal_title_domain: (0, e.d)`Approval required to unlock ${"domainName"}`,
 	protection_unlock_modal_subtitle_domain: "You will need to select at least %{smart_count} approver to initiate the initiate the unlock of your domain. |||| You will need to select at least %{smart_count} approvers to  initiate the unlock of your domain.",
 	protection_unlock_modal_subtitle_account: "You will need to select at least %{smart_count} approver to initiate an update to your domain protection configuration. |||| You will need to select at least %{smart_count} approvers to initiate an update your domain protection configuration.",
 	protection_unlock_modal_search_approvers: "Search approvers",

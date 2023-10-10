@@ -55,7 +55,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 		bundle_advanced_short_description: "Includes 10,000 minutes of video and 500,000 images",
 		bundle_advanced_description: "Store up to 500,000 images and 10,000 minutes of video content. Deliver up to 1,000,000 images and 50,000 minutes of video content each month.",
 		bundle_advanced_additional_stream_description: "The Creator Bundle includes 10,000 minutes of video.",
-		bundle_save_up_to: (0, e.d)(n || (n = t(["**$", " / month in savings**"])), "amount"),
+		bundle_save_up_to: (0, e.d)`**$${"amount"} / month in savings**`,
 		single_product_feature_1: "Live streaming, simulcasting and on-demand streaming",
 		single_product_feature_2: "Video Player with support for VAST Ad Tags",
 		single_product_feature_3: "Multi-bitrate Encoding",
@@ -124,21 +124,21 @@ You will only be billed each month based on how many minutes you stream. If you 
 	country: "Country",
 	video_link: "Video Link",
 	storage: {
-		usage: (0, e.d)(s || (s = t(["You may not reduce your storage capacity below your current usage of **", " minutes** of Stream storage."])), "currentMins"),
-		video_count: (0, e.d)(r || (r = t(["You have %{smart_count} video in your Stream library. |||| You have %{smart_count} videos in your Stream library."]))),
-		inadequateProposedPlan: (0, e.d)(d || (d = t(["At least ", " minutes are required for the ", " minutes currently stored"])), "minumumRequired", "currentMinutes"),
+		usage: (0, e.d)`You may not reduce your storage capacity below your current usage of **${"currentMins"} minutes** of Stream storage.`,
+		video_count: (0, e.d)`You have %{smart_count} video in your Stream library. |||| You have %{smart_count} videos in your Stream library.`,
+		inadequateProposedPlan: (0, e.d)`At least ${"minumumRequired"} minutes are required for the ${"currentMinutes"} minutes currently stored`,
 		inputGreaterThanZero: "Please enter a number greater than zero",
 		inputWholeNumber: "Please enter a whole number",
-		howToCancel: (0, e.d)(i || (i = t(["If you'd like to cancel your subscription, visit the [Subscriptions page](/", "/billing/subscriptions)"])), "accountId"),
+		howToCancel: (0, e.d)`If you'd like to cancel your subscription, visit the [Subscriptions page](/${"accountId"}/billing/subscriptions)`,
 		description: "Storage is $5 per 1,000 minutes of video stored. This can be changed later.",
 		plan_title: "Price per minutes watched",
 		title: "**Select storage capacity.**",
 		additional_title: "**Select additional storage capacity.**"
 	},
-	modal_add_storage_custom_calculation: (0, e.d)(c || (c = t(["x 1,000 minutes \u2248 ", " hours"])), "value"),
-	modal_add_extra_storage_custom_calculation: (0, e.d)(_ || (_ = t(["x 100,000 images = ", " images extra"])), "value"),
-	modal_extra_images: (0, e.d)(m || (m = t(["", " x 100,000 images extra"])), "value"),
-	modal_total_storage: (0, e.d)(o || (o = t(["Total stream storage capacity: ", " minutes of video"])), "value"),
+	modal_add_storage_custom_calculation: (0, e.d)`x 1,000 minutes ≈ ${"value"} hours`,
+	modal_add_extra_storage_custom_calculation: (0, e.d)`x 100,000 images = ${"value"} images extra`,
+	modal_extra_images: (0, e.d)`${"value"} x 100,000 images extra`,
+	modal_total_storage: (0, e.d)`Total stream storage capacity: ${"value"} minutes of video`,
 	subscription: {
 		error: "There was an error enabling Stream",
 		success: "Created Stream subscription successfully",
@@ -195,10 +195,10 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	question_mark: "?",
 	banners_beta_end_ent: "Stream beta has ended. Thank you for using Stream during the beta period! Please contact your Success Manager for continued upload service.",
 	banners_beta_end: "Stream Beta has ended. Thank you for using Stream during the beta period!",
-	banners_low_storage_capacity_contract_customer: (0, e.d)(p || (p = t(["Your account has ", "% of its storage capacity remaining. Please contact your Customer Success Manager to increase your Stream storage capacity."])), "percentRemaining"),
-	banners_low_storage_capacity_payg: (0, e.d)(b || (b = t(["Your account has ", "% of its storage capacity remaining. Please <0>add storage capacity</0> to your account."])), "percentRemaining"),
-	banners_no_remaining_capacity_contract_customer: (0, e.d)(f || (f = t(["Your account has no remaining storage capacity. Please contact your Customer Success Manager to increase your Stream storage capacity to continue uploading."]))),
-	banners_no_remaining_capacity_payg: (0, e.d)(w || (w = t(["Your account has no remaining storage capacity. Please delete videos or <0>add storage capacity</0> to your account to continue uploading."]))),
+	banners_low_storage_capacity_contract_customer: (0, e.d)`Your account has ${"percentRemaining"}% of its storage capacity remaining. Please contact your Customer Success Manager to increase your Stream storage capacity.`,
+	banners_low_storage_capacity_payg: (0, e.d)`Your account has ${"percentRemaining"}% of its storage capacity remaining. Please <0>add storage capacity</0> to your account.`,
+	banners_no_remaining_capacity_contract_customer: (0, e.d)`Your account has no remaining storage capacity. Please contact your Customer Success Manager to increase your Stream storage capacity to continue uploading.`,
+	banners_no_remaining_capacity_payg: (0, e.d)`Your account has no remaining storage capacity. Please delete videos or <0>add storage capacity</0> to your account to continue uploading.`,
 	embed: "Embed",
 	public_details: "Public Details",
 	embed_restrictions_tooltip: "Enter allowed origins for embedding video. Leave blank to allow embedding everywhere.",
@@ -207,8 +207,8 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	embed_restrictions_textarea_helper: "Comma separated list of origins to restrict embedding. Cloudflare's dashboard is always allowed. Leave blank to allow all origins.",
 	require_signed_urls: "Require Signed URLs",
 	enable_mp4_downloads: "Enable MP4 Downloads",
-	creating_download: (0, e.d)(S || (S = t(["Creating download... ", "%"])), "percentComplete"),
-	error_creating_download: (0, e.d)(C || (C = t(["Error creating download mp4."]))),
+	creating_download: (0, e.d)`Creating download... ${"percentComplete"}%`,
+	error_creating_download: (0, e.d)`Error creating download mp4.`,
 	get_tokens_here: "(Get an API token)",
 	name: "Name",
 	no_captions_uploaded: "No captions uploaded",
@@ -412,9 +412,9 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 		za: "Zhuang / Chuang",
 		zu: "Zulu"
 	},
-	uploading_caption: (0, e.d)(k || (k = t(["Uploading ", " captions (", "%)"])), "language", "percentProgress"),
+	uploading_caption: (0, e.d)`Uploading ${"language"} captions (${"percentProgress"}%)`,
 	error_fetching_captions: "There was an error fetching captions",
-	caption_upload_success: (0, e.d)(R || (R = t(["", " captions uploaded."])), "language"),
+	caption_upload_success: (0, e.d)`${"language"} captions uploaded.`,
 	caption_upload_another: "Upload another",
 	caption_upload_error: "Invalid .vtt file",
 	paused: "Paused",
@@ -476,8 +476,8 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	json_body: "JSON Body",
 	json: "JSON",
 	return_to_editing: "Return",
-	storage_usage: (0, e.d)(T || (T = t(["You have ", " minutes of video content in your Stream library."])), "currentMins"),
-	storage_capacity: (0, e.d)(P || (P = t(["Your storage capacity is ", " minutes (", "% remaining)."])), "limitMins", "percentRemaining"),
+	storage_usage: (0, e.d)`You have ${"currentMins"} minutes of video content in your Stream library.`,
+	storage_capacity: (0, e.d)`Your storage capacity is ${"limitMins"} minutes (${"percentRemaining"}% remaining).`,
 	storage_capacity_ent: "To modify your Stream usage limits, please contact your Customer Success Manager.",
 	stream_4371_banner: "You have access to a trial of Stream. Once you begin using Stream, your Customer Success Manager will follow up to discuss adding Stream to your existing contract.",
 	connect_page_title: "Inputs",
@@ -487,11 +487,13 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	live_video_inputs: "Live Inputs",
 	live_video_input_id: "Live Input ID",
 	custom_input_domains: "Custom Input Domains",
-	custom_input_domains_description: (0, e.d)(A || (A = t(["Stream live video to your own custom domain with two steps:\n  1. Add the domain here.\n  2. Create a CNAME record in your DNS provider pointing to `live.cloudflare.com`."], ["Stream live video to your own custom domain with two steps:\n  1. Add the domain here.\n  2. Create a CNAME record in your DNS provider pointing to \\`live.cloudflare.com\\`."]))),
+	custom_input_domains_description: (0, e.d)`Stream live video to your own custom domain with two steps:
+  1. Add the domain here.
+  2. Create a CNAME record in your DNS provider pointing to \`live.cloudflare.com\`.`,
 	cname_not_found_yet: "CNAME record not found yet. If you've already created the record it may take some time for DNS caches to expire.",
 	domain_required: "Domain is required",
 	invalid_domain: "Invalid domain",
-	custom_input_domains_limit_reached: (0, e.d)(I || (I = t(["You may only configure up to ", " custom domains."])), "limit"),
+	custom_input_domains_limit_reached: (0, e.d)`You may only configure up to ${"limit"} custom domains.`,
 	error_fetching_custom_input_domains: "An error occured while fetching Custom Domains",
 	add_domain: "Add domain",
 	delete_domain_confirmation_title: "Delete Custom Live Input Domain?",
@@ -515,7 +517,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	stream_key_required: "Stream Key is required.",
 	create_output: "Create Output",
 	output_confirm_delete_title: "Delete Output?",
-	output_confirm_delete_body: (0, e.d)(E || (E = t(["Are you sure you want to delete ", "?"])), "outputUrl"),
+	output_confirm_delete_body: (0, e.d)`Are you sure you want to delete ${"outputUrl"}?`,
 	url_required: "URL is required.",
 	output_url_required: "Output URL is required.",
 	output_url_invalid_protocol: "Output URL must use rtmp:// or rtmps:// protocol.",
@@ -591,13 +593,13 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	reveal_output_key: "Reveal output key",
 	reveal: "Reveal",
 	url: "URL",
-	videoErrorReasons: l.$,
-	createdRelativeTimeAgo: (0, e.d)(L || (L = t(["Created ", ""])), "relativeTimeUnitsAgo"),
-	scheduledForDeletion: (0, e.d)(O || (O = t(["Scheduled for deletion on ", ""])), "date"),
+	videoErrorReasons: a.$,
+	createdRelativeTimeAgo: (0, e.d)`Created ${"relativeTimeUnitsAgo"}`,
+	scheduledForDeletion: (0, e.d)`Scheduled for deletion on ${"date"}`,
 	name_required: "Name is required.",
 	key_required: "Key is required",
 	automatically_delete_video: "Automatically Delete Video",
-	scheduled_deletion_helper: (0, e.d)(D || (D = t(["No earlier than ", " ", ""])), "minimumDate", "minimumTime"),
+	scheduled_deletion_helper: (0, e.d)`No earlier than ${"minimumDate"} ${"minimumTime"}`,
 	scheduled_deletion_aria_label: "Specify a date and time to automatiicaly delete the video",
 	scheduled_deletion_invalid: "Invalid date or time",
 	timeout_seconds: "Timeout Seconds",
@@ -623,7 +625,7 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	key_is_not_unique: "This key is not unique",
 	add_meta_field: "Add Meta Field",
 	videos_created_by_input: "Videos created by live input",
-	started_streaming: (0, e.d)(U || (U = t(["Started streaming ", ""])), "dateTime"),
+	started_streaming: (0, e.d)`Started streaming ${"dateTime"}`,
 	failed_to_fetch_live_input_videos: "Failed to fetch Live Input videos",
 	input_is_offline: "Input is not connected. Connect to start streaming to HLS/DASH.",
 	video_has_no_name: "Video has no name",
@@ -644,28 +646,18 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	gop_duration_unit: "Seconds",
 	experiencing_issues_with_stream_live: "Experiencing issues with Stream Live? <0>Report a bug</0>",
 	email_verification_required: "You must <0>verify your email address</0> before you can enable Cloudflare Stream.",
-	video_minutes_viewed_in_last_thirty_days: (0, e.d)(M || (M = t(["", " minutes delivered in the last 30 days."])), "minutesViewed"),
+	video_minutes_viewed_in_last_thirty_days: (0, e.d)`${"minutesViewed"} minutes delivered in the last 30 days.`,
 	domain_notice: "Cloudflare is investigating reports of `videodelivery.net` being inaccessible from certain local ISPs. While we investigate these reports, we recommend switching to the backup domain `cloudflarestream.com`:\n  - If you are using the Stream Player: `https://iframe.cloudflarestream.com/$VIDEOID`\n  - If you are using your own player: `https://cloudflarestream.com/$VIDEOID/manifest/manifest.m3u8`",
-	custom_subdomain_notice: (0, e.d)(q || (q = t([`**New**: Unique subdomain for your Stream Account
-
-  URLs in the Stream Dashboard and Stream API now use a subdomain specific to your Cloudflare Account: \``, `\`
-
-  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.
-
-  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`], ["**New**: Unique subdomain for your Stream Account\\n\n  URLs in the Stream Dashboard and Stream API now use a subdomain specific to your Cloudflare Account: \\`", `\\\`\\n
-  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.\\n
-  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`])), "customer_subdomain"),
+	custom_subdomain_notice: (0, e.d)`**New**: Unique subdomain for your Stream Account\n
+  URLs in the Stream Dashboard and Stream API now use a subdomain specific to your Cloudflare Account: \`${"customer_subdomain"}\`\n
+  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.\n
+  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`,
 	create_cname_record_title: "Automatically create CNAME record?",
-	coming_in_aug_15_notice: (0, e.d)(N || (N = t([`**Coming Aug 15, 2022**: Unique subdomain for your Stream Account
-
-  Starting August 15, 2022, URLs in the Stream Dashboard and Stream API will use a subdomain specific to your Cloudflare Account: \``, `\`
-
-  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.
-
-  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`], ["**Coming Aug 15, 2022**: Unique subdomain for your Stream Account\\n\n  Starting August 15, 2022, URLs in the Stream Dashboard and Stream API will use a subdomain specific to your Cloudflare Account: \\`", `\\\`\\n
-  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.\\n
-  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`])), "customer_subdomain"),
-	create_cname_record_description: (0, e.d)(j || (j = t(["Would you like us to create the CNAME record `", "` on `", "` pointing to `live.cloudflare.com` for you? You can remove it from the DNS page later."], ["Would you like us to create the CNAME record \\`", "\\` on \\`", "\\` pointing to \\`live.cloudflare.com\\` for you? You can remove it from the DNS page later."])), "cname", "zone"),
+	coming_in_aug_15_notice: (0, e.d)`**Coming Aug 15, 2022**: Unique subdomain for your Stream Account\n
+  Starting August 15, 2022, URLs in the Stream Dashboard and Stream API will use a subdomain specific to your Cloudflare Account: \`${"customer_subdomain"}\`\n
+  This change prevents Internet Service Providers (ISPs) from inadvertently blocking your video content, and gives you further control over what videos are allowed to be played in your website or app.\n
+  No action is required from you, unless you use Content Security Policy (CSP) on your website. For more on CSP, [read the docs](https://developers.cloudflare.com/stream/faq/#what-domains-do-i-need-to-add-to-my-allowlist-if-i-use-content-security-policy-csp-directives-on-my-website).`,
+	create_cname_record_description: (0, e.d)`Would you like us to create the CNAME record \`${"cname"}\` on \`${"zone"}\` pointing to \`live.cloudflare.com\` for you? You can remove it from the DNS page later.`,
 	create_cname_record: "Create CNAME Record",
 	create_cname_record_decline: "No, thanks",
 	create_cname_record_already_exists: "An A, AAAA, or CNAME record with that host already exists.",
