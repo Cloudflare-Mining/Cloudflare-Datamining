@@ -262,6 +262,24 @@ async function writeAssets(files, write) {
 	}
 }
 
+const partMapper = {
+	'zoneId': ':zone_id',
+	'accountId': ':account_id',
+};
+function parseQuasiToRoute(quasi) {
+	// loop through expressions and quasis and order them as appropriate
+	const joined = [...quasi.expressions, ...quasi.quasis].sort((itemA, itemB) => itemA.start - itemB.start);
+	let route = '';
+	for(const part of joined) {
+		if(part.type === 'TemplateElement') {
+			route += part.value.raw;
+		}else if(part.type === 'Literal') {
+			const mapped = partMapper[part.value] ?? `:${part.value}`;
+			route += mapped;
+		}
+	}
+	return route;
+}
 async function writeMeta(files, translations) {
 	const strings = new Set();
 	const properties = new Set();
@@ -552,7 +570,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 							if(!includesRoutesHelper) {
 								continue;
 							}
-							const parseSubroute = function(routeParts) {
+							const getPartPage = function() {
 								const realPage = /react\/pages\/(.*)/.exec(file);
 								const commonAction = /react\/common\/actions\/(.*)/.exec(file);
 								let page = null;
@@ -565,6 +583,10 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								}else if(file.includes('../init.ts')) {
 									page = '_common/_init';
 								}
+								return page;
+							};
+							const parseSubroute = function(routeParts) {
+								const page = getPartPage();
 								if(!page) {
 									console.error('Could not determine page for subroutes', file);
 									return false;
@@ -585,8 +607,9 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								subRoutes[page].add(route);
 								return true;
 							};
-							// old definition
+
 							for(const bodyItem of buildFile.value.body.body) {
+								// old definition
 								if(
 									bodyItem.type === 'FunctionDeclaration' &&
 									bodyItem.body?.body?.length === 2 &&
@@ -631,6 +654,29 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 										}
 									}
 
+									// loop over declarations
+									for(const decl of bodyItem.declarations) {
+										if(
+											decl.type === 'VariableDeclarator' &&
+											decl.init?.type === 'ObjectExpression' &&
+											decl.init?.properties?.length > 0 &&
+											decl.init?.properties?.some(prop => prop?.key?.type === 'Identifier') &&
+											decl.init?.properties?.[0]?.value?.type === 'TaggedTemplateExpression' &&
+											decl.init?.properties?.[0]?.value?.tag?.type === 'SequenceExpression' &&
+											decl.init?.properties?.[0]?.value?.tag?.expressions?.length === 2
+
+										) {
+											const routeString = generate(decl.init.properties[0].value.quasi);
+											const parsed = parseQuasiToRoute(decl.init.properties[0].value.quasi);
+											const page = getPartPage();
+											if(!page) {
+												console.error('Could not determine page for subroutes', file);
+												continue;
+											}
+											subRoutes[page] ??= new Set();
+											subRoutes[page].add(parsed);
+										}
+									}
 								}
 							}
 						}
