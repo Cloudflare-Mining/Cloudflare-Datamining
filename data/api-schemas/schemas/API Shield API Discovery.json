@@ -708,15 +708,15 @@
 																								"type": "number"
 																							}
 																						},
+																						"required": [
+																							"period_seconds",
+																							"requests",
+																							"last_updated"
+																						],
 																						"type": "object"
 																					}
 																				},
 																				"readOnly": true,
-																				"required": [
-																					"period_seconds",
-																					"requests",
-																					"last_updated"
-																				],
 																				"type": "object"
 																			}
 																		],
