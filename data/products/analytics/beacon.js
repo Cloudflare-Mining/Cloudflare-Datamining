@@ -101,16 +101,16 @@
 								m && "multi" !== m.load && (m.load = "single"), window.__cfBeacon = m
 							}
 							if (f && m && m.token) {
-								var S, b = !1;
+								var S, E = !1;
 								document.addEventListener("visibilitychange", (function() {
 									if ("hidden" === document.visibilityState) {
 										if (L && A()) {
 											var t = e();
 											(null == S ? void 0 : S.url) == t && (null == S ? void 0 : S.triggered) || P(), O(t)
-										}!b && S && (b = !0, R())
+										}!E && S && (E = !0, R())
 									} else "visible" === document.visibilityState && (new Date).getTime()
 								}));
-								var E = {};
+								var b = {};
 								"function" == typeof PerformanceObserver && ((0, a.onLCP)(_), (0, a.onFID)(_), (0, a.onFCP)(_), (0, a.onINP)(_), (0, a.onTTFB)(_), PerformanceObserver.supportedEntryTypes && PerformanceObserver.supportedEntryTypes.includes("layout-shift") && (0, a.onCLS)(_));
 								var L = m && (void 0 === m.spa || !0 === m.spa),
 									C = m.send && m.send.to ? m.send.to : void 0 === m.version ? "https://cloudflareinsights.com/cdn-cgi/rum" : null,
@@ -134,13 +134,11 @@
 														startTime: x(),
 														versions: {
 															fl: m ? m.version : "",
-															js: "2023.7.1",
+															js: "2023.10.0",
 															timings: 1
 														},
 														pageloadId: v,
-														location: l,
-														wd: k(),
-														b: m.b
+														location: l
 													};
 												if (null == u) {
 													if ("function" == typeof f.getEntriesByType) {
@@ -148,8 +146,8 @@
 														y && Array.isArray(y) && y.length > 0 && (g.timingsV2 = {}, g.versions.timings = 2, delete g.timings, n(y[0], g.timingsV2))
 													}
 													1 === g.versions.timings && n(s, g.timings), n(d, g.memory)
-												} else M(g);
-												if (g.firstPaint = N("first-paint"), g.firstContentfulPaint = N("first-contentful-paint"), m && (m.icTag && (g.icTag = m.icTag), g.siteToken = m.token), "function" == typeof f.getEntriesByType) {
+												} else k(g);
+												if (g.firstPaint = M("first-paint"), g.firstContentfulPaint = M("first-contentful-paint"), m && (m.icTag && (g.icTag = m.icTag), N(g, m.abtestTags), g.siteToken = m.token), "function" == typeof f.getEntriesByType) {
 													var h = null !== (o = f.getEntriesByType("resource")) && void 0 !== o ? o : [],
 														T = 0,
 														w = 0;
@@ -202,21 +200,19 @@
 												referrer: document.referrer || "",
 												eventType: i.EventType.WebVitalsV2,
 												versions: {
-													js: "2023.7.1"
+													js: "2023.10.0"
 												},
 												pageloadId: v,
 												location: e(),
 												landingPath: n,
-												startTime: x(),
-												wd: k(),
-												b: m.b
+												startTime: x()
 											};
-											return m && (m.version && (r.versions.fl = m.version), m.icTag && (r.icTag = m.icTag), r.siteToken = m.token), E && ["lcp", "fid", "cls", "fcp", "ttfb", "inp"].forEach((function(e) {
+											return m && (m.version && (r.versions.fl = m.version), m.icTag && (r.icTag = m.icTag), N(r, m.abtestTags), r.siteToken = m.token), b && ["lcp", "fid", "cls", "fcp", "ttfb", "inp"].forEach((function(e) {
 												r[e] = {
 													value: -1,
 													path: void 0
-												}, E[e] && void 0 !== E[e].value && (r[e] = E[e])
-											})), M(r), r
+												}, b[e] && void 0 !== b[e].value && (r[e] = b[e])
+											})), k(r), r
 										}();
 										L || (t.resources = [], delete t.tempResources), m && (0, o.sendObjectBeacon)("", t, (function() {}), !0, C)
 									},
@@ -265,24 +261,24 @@
 
 						function _(e) {
 							var t, n, r, i, o, a, c, u = window.location.pathname;
-							switch ("INP" !== e.name && (E[e.name.toLowerCase()] = {
+							switch ("INP" !== e.name && (b[e.name.toLowerCase()] = {
 									value: e.value,
 									path: u
 								}), e.name) {
 								case "CLS":
-									(c = e.attribution) && E.cls && (E.cls.element = c.largestShiftTarget, E.cls.currentRect = null === (t = c.largestShiftSource) || void 0 === t ? void 0 : t.currentRect, E.cls.previousRect = null === (n = c.largestShiftSource) || void 0 === n ? void 0 : n.previousRect);
+									(c = e.attribution) && b.cls && (b.cls.element = c.largestShiftTarget, b.cls.currentRect = null === (t = c.largestShiftSource) || void 0 === t ? void 0 : t.currentRect, b.cls.previousRect = null === (n = c.largestShiftSource) || void 0 === n ? void 0 : n.previousRect);
 									break;
 								case "FID":
-									(c = e.attribution) && E.fid && (E.fid.element = c.eventTarget, E.fid.name = c.eventType);
+									(c = e.attribution) && b.fid && (b.fid.element = c.eventTarget, b.fid.name = c.eventType);
 									break;
 								case "LCP":
-									(c = e.attribution) && E.lcp && (E.lcp.element = c.element, E.lcp.size = null === (r = c.lcpEntry) || void 0 === r ? void 0 : r.size, E.lcp.url = c.url, E.lcp.rld = c.resourceLoadDelay, E.lcp.rlt = c.resourceLoadTime, E.lcp.erd = c.elementRenderDelay, E.lcp.it = null === (i = c.lcpResourceEntry) || void 0 === i ? void 0 : i.initiatorType, E.lcp.fp = null === (a = null === (o = c.lcpEntry) || void 0 === o ? void 0 : o.element) || void 0 === a ? void 0 : a.getAttribute("fetchpriority"));
+									(c = e.attribution) && b.lcp && (b.lcp.element = c.element, b.lcp.size = null === (r = c.lcpEntry) || void 0 === r ? void 0 : r.size, b.lcp.url = c.url, b.lcp.rld = c.resourceLoadDelay, b.lcp.rlt = c.resourceLoadTime, b.lcp.erd = c.elementRenderDelay, b.lcp.it = null === (i = c.lcpResourceEntry) || void 0 === i ? void 0 : i.initiatorType, b.lcp.fp = null === (a = null === (o = c.lcpEntry) || void 0 === o ? void 0 : o.element) || void 0 === a ? void 0 : a.getAttribute("fetchpriority"));
 									break;
 								case "INP":
-									(null == E.inp || Number(E.inp.value) < Number(e.value)) && (E.inp = {
+									(null == b.inp || Number(b.inp.value) < Number(e.value)) && (b.inp = {
 										value: Number(e.value),
 										path: u
-									}, (c = e.attribution) && E.inp && (E.inp.element = c.eventTarget, E.inp.name = c.eventType))
+									}, (c = e.attribution) && b.inp && (b.inp.element = c.eventTarget, b.inp.name = c.eventType))
 							}
 						}
 
@@ -290,11 +286,7 @@
 							return f.timeOrigin
 						}
 
-						function k() {
-							return navigator.webdriver
-						}
-
-						function M(e) {
+						function k(e) {
 							if ("function" == typeof f.getEntriesByType) {
 								var t = f.getEntriesByType("navigation"),
 									r = {};
@@ -302,9 +294,9 @@
 							}
 						}
 
-						function N(e) {
+						function M(e) {
 							var t;
-							if ("first-contentful-paint" === e && E.fcp && E.fcp.value) return E.fcp.value;
+							if ("first-contentful-paint" === e && b.fcp && b.fcp.value) return b.fcp.value;
 							if ("function" == typeof f.getEntriesByType) {
 								var n = null === (t = f.getEntriesByType("paint")) || void 0 === t ? void 0 : t.filter((function(t) {
 									return t.name === e
@@ -312,6 +304,10 @@
 								return n ? n.startTime : 0
 							}
 							return 0
+						}
+
+						function N(e, t) {
+							t && (e.abtestTags = t)
 						}
 					}()
 				}()
@@ -452,19 +448,19 @@
 						S = function() {
 							return "hidden" !== document.visibilityState || document.prerendering ? 1 / 0 : 0
 						},
-						b = function(e) {
+						E = function(e) {
 							"hidden" === document.visibilityState && w > -1 && (w = "visibilitychange" === e.type ? e.timeStamp : 0, L())
 						},
-						E = function() {
-							addEventListener("visibilitychange", b, !0), addEventListener("prerenderingchange", b, !0)
+						b = function() {
+							addEventListener("visibilitychange", E, !0), addEventListener("prerenderingchange", E, !0)
 						},
 						L = function() {
-							removeEventListener("visibilitychange", b, !0), removeEventListener("prerenderingchange", b, !0)
+							removeEventListener("visibilitychange", E, !0), removeEventListener("prerenderingchange", E, !0)
 						},
 						C = function() {
-							return w < 0 && (w = S(), E(), l((function() {
+							return w < 0 && (w = S(), b(), l((function() {
 								setTimeout((function() {
-									w = S(), E()
+									w = S(), b()
 								}), 0)
 							}))), {
 								get firstHiddenTime() {
