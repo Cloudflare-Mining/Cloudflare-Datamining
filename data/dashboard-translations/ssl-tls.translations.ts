@@ -326,7 +326,7 @@ If you want to be issued a certificate for \`example.com\` and \`*.example.com\`
 	ech_help: `#### What is Encrypted ClientHello?
 Encrypted ClientHello ("ECH") improves the privacy of visitors to your website by obfuscating the Server Name Indication part of the TLS handshake.`,
 	ech_join_beta: "Join the beta",
-	ech_beta_free: "Enabled by default for Free zones.",
+	ech_beta_free: "ECH is currently disabled for all Cloudflare zones. We hope to re-enable soon. [Click here to read more.](https://community.cloudflare.com/t/early-hints-and-encrypted-client-hello-ech-are-currently-disabled-globally/567730)",
 	ech_beta_requested: "Thanks for your interest! You will be able to enable ECH support once you have been admitted to the beta.",
 	ech_title: "Encrypted ClientHello (ECH)",
 	ech_api_title_get: "Get Zone Enable ECH setting",
