@@ -13,6 +13,20 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "8837fe80e19f48329ada507b2b912f57",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
+				"id": "091ee2158a6d48f5b2ed252b2ba4b1e8",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
 				"id": "534c7ba78a864b72b77fb5be33ab31df",
 				"key": "com.cloudflare.api.account.zone.fraud-detection.sequence-cookies.*"
 			},
@@ -4307,6 +4321,34 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "506f3de5c8134f2dbd878cd934dc4a5e",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "e4793fa9a948491bad515c52085b04cf",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.list",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "3d2ccda010494aafab9117959eb5e46f",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-detection-leaked-credentials.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "04f1e9bb1cbc40fcbe7a1eafae206836",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-detection-leaked-credentials.list",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
 			{
 				"id": "9bbe5ab41ef047c0af0a35df7372eabe",
 				"key": "com.cloudflare.api.account.zone.fraud-detection.sequence-cookies.read"
@@ -11703,6 +11745,13 @@
 		"modified_on": "2022-03-23T17:02:33.91756Z",
 		"permissions": [
 			{
+				"id": "8837fe80e19f48329ada507b2b912f57",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
 				"id": "534c7ba78a864b72b77fb5be33ab31df",
 				"key": "com.cloudflare.api.account.zone.fraud-detection.sequence-cookies.*"
 			},
@@ -12532,6 +12581,20 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2022-03-23T17:02:33.91756Z",
 		"permissions": [
+			{
+				"id": "506f3de5c8134f2dbd878cd934dc4a5e",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "e4793fa9a948491bad515c52085b04cf",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.list",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
 			{
 				"id": "9bbe5ab41ef047c0af0a35df7372eabe",
 				"key": "com.cloudflare.api.account.zone.fraud-detection.sequence-cookies.read"
@@ -14275,6 +14338,20 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "8837fe80e19f48329ada507b2b912f57",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
+				"id": "091ee2158a6d48f5b2ed252b2ba4b1e8",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
 			{
 				"id": "9ee01831318d4f69b7c671ca0175d51f",
 				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-snippets.*",
@@ -18391,6 +18468,20 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "8837fe80e19f48329ada507b2b912f57",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
+				"id": "091ee2158a6d48f5b2ed252b2ba4b1e8",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-detection-leaked-credentials.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
 				"id": "534c7ba78a864b72b77fb5be33ab31df",
 				"key": "com.cloudflare.api.account.zone.fraud-detection.sequence-cookies.*"
 			},
@@ -18895,6 +18986,10 @@
 				"attributes": {
 					"legacy_name": "#fbm:read"
 				}
+			},
+			{
+				"id": "a4416ba61a7f4b2480a4471913266a1d",
+				"key": "com.cloudflare.registrar.notice.list"
 			},
 			{
 				"id": "ba22ff12432648e3a9533f018a1d5e65",
