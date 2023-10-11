@@ -1,5 +1,17 @@
 # Change Log
 
+## 5.5.2
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.24
+- @cloudflare/component-grid@2.1.20
+- @cloudflare/component-listbox@1.10.13
+- @cloudflare/component-search@7.0.24
+- @cloudflare/component-select-2@6.0.24
+- @cloudflare/component-time-period-picker@5.0.28
+- @cloudflare/util-responsive@1.5.15
+
 ## 5.5.1
 
 ### Patch Changes

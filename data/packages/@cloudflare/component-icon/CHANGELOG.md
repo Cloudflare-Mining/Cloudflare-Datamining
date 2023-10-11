@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.9.1
+
+### Patch Changes
+
+- 1af309d400: add removed export
+
 ## 11.9.0
 
 ### Minor Changes
