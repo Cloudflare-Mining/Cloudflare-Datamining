@@ -4,11 +4,11 @@
 	"description": "Created by the Cloudflare security team, this ruleset is designed to provide protection for free zones",
 	"source": "firewall_managed",
 	"kind": "managed",
-	"version": "55",
+	"version": "56",
 	"rules": [
 		{
 			"id": "c806c77afd784455a5d0b5091702f7a0",
-			"version": "6",
+			"version": "7",
 			"action": "block",
 			"categories": [
 				"atlassian-confluence",
@@ -16,13 +16,13 @@
 				"cve-2022-26134"
 			],
 			"description": "Atlassian Confluence - Code Injection - CVE:CVE-2022-26134 ",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "4ab34bb73cbc6b227f38b637848ef44b",
 			"enabled": true
 		},
 		{
 			"id": "0cc7e2df1d614c74a8e4b1bc91935fcb",
-			"version": "4",
+			"version": "5",
 			"action": "block",
 			"categories": [
 				"atlassian-confluence",
@@ -30,13 +30,13 @@
 				"privilege-escalation"
 			],
 			"description": "Atlassian Confluence - Privilege Escalation - CVE:CVE-2023-22515",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "bb6ae105e94f6eb2ab60891db49b2227",
 			"enabled": true
 		},
 		{
 			"id": "b453c8ace3a54e0ab7c791510b51dc4d",
-			"version": "54",
+			"version": "55",
 			"action": "block",
 			"categories": [
 				"cve-2021-44832",
@@ -45,13 +45,13 @@
 				"rce"
 			],
 			"description": "Log4j Headers",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "147f480ca73e491f903b1924deedbb8f",
 			"enabled": true
 		},
 		{
 			"id": "7dfd111a6bad4b86bf3522cce6c5792f",
-			"version": "54",
+			"version": "55",
 			"action": "block",
 			"categories": [
 				"cve-2021-44832",
@@ -60,13 +60,13 @@
 				"rce"
 			],
 			"description": "Log4j URI",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "3861aedd3c0241a792fb50b02eca0312",
 			"enabled": true
 		},
 		{
 			"id": "9f7e454e4cad45abbcc40696037f70df",
-			"version": "43",
+			"version": "44",
 			"action": "block",
 			"categories": [
 				"cve-2014-6271",
@@ -77,22 +77,22 @@
 				"cve-2014-7187"
 			],
 			"description": "Shellshock",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "bb57123923d27aa608576180c267b5e9",
 			"enabled": true
 		},
 		{
 			"id": "4c6b0411c4f34d7b8a28ca03c803ba82",
-			"version": "12",
+			"version": "13",
 			"action": "block",
 			"description": "Validate Headers",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "1d77c756a2ef9dd72885c4071e9f26fa",
 			"enabled": true
 		},
 		{
 			"id": "8399c1b1b32e45fb9674094a5472b59b",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"broken-access-control",
@@ -100,26 +100,26 @@
 				"wordpress"
 			],
 			"description": "Wordpress - Broken Access Control - CVE:CVE-2018-12895",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "c2db66244d95901873d538715d17fef0",
 			"enabled": true
 		},
 		{
 			"id": "756cd04ee0434ec68da3eb5744a423e8",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"broken-access-control",
 				"wordpress"
 			],
 			"description": "Wordpress - Broken Access Control - Update Script",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "d2ad438b8337b5d0164fd86201bd7e95",
 			"enabled": true
 		},
 		{
 			"id": "9ce4e284ff2a486aaa37d642bff5a079",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"broken-access-control",
@@ -127,26 +127,26 @@
 				"wordpress"
 			],
 			"description": "Wordpress - Broken Access Control, File Inclusion",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "13bc8134cfdbfbec7c0b647ddb242a9f",
 			"enabled": true
 		},
 		{
 			"id": "1478cd46ee7e4979a7f0be58f3e87b31",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"broken-access-control",
 				"wordpress"
 			],
 			"description": "Wordpress - Broken Access Control",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "cfc7c233016ac4575cea7da6bbd4129f",
 			"enabled": true
 		},
 		{
 			"id": "a24d55f20dc94f0ebd69f3a1f982e575",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"code-injection",
@@ -156,26 +156,26 @@
 				"wordpress"
 			],
 			"description": "Wordpress - Code Injection, File Inclusion - CVE:CVE-2019-8943, CVE:CVE-2019-8942",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "29513732ff71d0d07d07cdbb316c82ef",
 			"enabled": true
 		},
 		{
 			"id": "c1d0ed46741e44f19e9b75ecd8b2a9d6",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"command-injection",
 				"wordpress"
 			],
 			"description": "Wordpress - Command Injection",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "ce26522dad467fefaf5698cf6538021a",
 			"enabled": true
 		},
 		{
 			"id": "8211fe3405ca4f1382443e73b6c97bb0",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"cve-2015-2213",
@@ -183,26 +183,26 @@
 				"wordpress"
 			],
 			"description": "Wordpress - SQLi - CVE:CVE-2015-2213",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "12294af12a37bba15f911fa96f12a927",
 			"enabled": true
 		},
 		{
 			"id": "52cc923af3b4484696f6c8ecb9073f5c",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"wordpress",
 				"xss"
 			],
 			"description": "Wordpress - XSS",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "f5d41ad2fdee77aff16d6d23e8014eb0",
 			"enabled": true
 		},
 		{
 			"id": "cdbc99bfeaad43cf9000257c317a7b41",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"deserialization",
@@ -211,13 +211,13 @@
 				"wordpress"
 			],
 			"description": "Wordpress:Plugin:Easy WP SMTP - Deserialization",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "53a32bb6c74faa7ca5c77eb1696f22b3",
 			"enabled": true
 		},
 		{
 			"id": "9aa65152dfd2409b916aa6c6ae0bfb8c",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"code-injection",
@@ -226,13 +226,13 @@
 				"wordpress"
 			],
 			"description": "Wordpress:Plugin:Gravity Forms - Code Injection",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "f86e7b22e6776a17008d96bbb1d67dc2",
 			"enabled": true
 		},
 		{
 			"id": "d379921792144f699029a3b759e1ad94",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"code-injection",
@@ -242,13 +242,13 @@
 				"wordpress"
 			],
 			"description": "Wordpress:Plugin:Mailport - Code Injection - CVE:CVE-2014-4725",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "91d78e18abcc61f9d017ddd4a0151d84",
 			"enabled": true
 		},
 		{
 			"id": "aec3bff788004085a54e63e835909138",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"code-injection",
@@ -258,13 +258,13 @@
 				"wordpress"
 			],
 			"description": "Wordpress:Plugin:Revolution Slider - Code Injection - CVE:CVE-2014-9735",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "f203c2f7acb637c30b0dffca31905a4f",
 			"enabled": true
 		},
 		{
 			"id": "39c91a0a9dfb49a98b9446ab23728616",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"code-injection",
@@ -275,13 +275,13 @@
 				"wp-super-cache"
 			],
 			"description": "Wordpress:Plugin:W3 Total Cache, Wordpress:Plugin:WP Super Cache - Code Injection - CVE:CVE-2013-2010",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "b6b67a8b558838cbd39ea3bd39ee7104",
 			"enabled": true
 		},
 		{
 			"id": "16165bcc426743198ca9846da7377369",
-			"version": "6",
+			"version": "7",
 			"action": "block",
 			"categories": [
 				"cve-2015-2292",
@@ -291,13 +291,13 @@
 				"yoast-seo"
 			],
 			"description": "Wordpress:Plugin:Yoast SEO - SQLi - CVE:CVE-2015-2292",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "7d48d4eb0636ba9c445076c8bd1791bb",
 			"enabled": true
 		},
 		{
 			"id": "93f26552f936415baf994cd877d4ba58",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"cve-2019-11869",
@@ -307,13 +307,13 @@
 				"yuzo-related-posts"
 			],
 			"description": "Wordpress:Plugin:Yuzo Related Posts - XSS - CVE:CVE-2019-11869",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "c7a47c3dff5322d1a59d3ba986ff2d02",
 			"enabled": true
 		},
 		{
 			"id": "b0928a3200fe43bda32999c3edc6475c",
-			"version": "37",
+			"version": "38",
 			"action": "block",
 			"categories": [
 				"theme",
@@ -322,11 +322,11 @@
 				"xss"
 			],
 			"description": "Wordpress:Theme:TwentyFifteen - XSS",
-			"last_updated": "2023-10-04T15:24:38.676965Z",
+			"last_updated": "2023-10-11T14:34:33.86359Z",
 			"ref": "bf2540ee571b3da20c14a2d3a2b95c24",
 			"enabled": true
 		}
 	],
-	"last_updated": "2023-10-04T15:24:38.676965Z",
+	"last_updated": "2023-10-11T14:34:33.86359Z",
 	"phase": "http_request_firewall_managed"
 }
