@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.2.0
+
+### Minor Changes
+
+- 443e4ca612: move react-test-renderer to peer depencency for style-provider
+
 ## 3.1.1
 
 ## 3.1.0

@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.3.292
+
 ## 1.3.291
 
 ### Patch Changes
