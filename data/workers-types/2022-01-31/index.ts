@@ -188,6 +188,7 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   readonly origin: string;
   Event: typeof Event;
   ExtendableEvent: typeof ExtendableEvent;
+  CustomEvent: typeof CustomEvent;
   PromiseRejectionEvent: typeof PromiseRejectionEvent;
   FetchEvent: typeof FetchEvent;
   TailEvent: typeof TailEvent;
@@ -617,6 +618,16 @@ export interface SchedulerWaitOptions {
 export declare abstract class ExtendableEvent extends Event {
   waitUntil(promise: Promise<any>): void;
 }
+export declare class CustomEvent extends Event {
+  constructor(type: string, init?: CustomEventCustomEventInit);
+  get detail(): any | undefined;
+}
+export interface CustomEventCustomEventInit {
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+}
 export declare class Blob {
   constructor(
     bits?: ((ArrayBuffer | ArrayBufferView) | string | Blob)[],
@@ -844,7 +855,7 @@ export interface CryptoKeyHmacKeyAlgorithm {
 export interface CryptoKeyRsaKeyAlgorithm {
   name: string;
   modulusLength: number;
-  publicExponent: ArrayBuffer;
+  publicExponent: ArrayBuffer | (ArrayBuffer | ArrayBufferView);
   hash?: CryptoKeyKeyAlgorithm;
 }
 export interface CryptoKeyEllipticKeyAlgorithm {
@@ -1688,6 +1699,7 @@ export interface TraceItem {
         | TraceItemAlarmEventInfo
         | TraceItemQueueEventInfo
         | TraceItemEmailEventInfo
+        | TraceItemTailEventInfo
         | TraceItemCustomEventInfo
       )
     | null;
@@ -1716,6 +1728,12 @@ export interface TraceItemEmailEventInfo {
   readonly mailFrom: string;
   readonly rcptTo: string;
   readonly rawSize: number;
+}
+export interface TraceItemTailEventInfo {
+  readonly consumedEvents: TraceItemTailEventInfoTailItem[];
+}
+export interface TraceItemTailEventInfoTailItem {
+  readonly scriptName: string | null;
 }
 export interface TraceItemFetchEventInfo {
   readonly response?: TraceItemFetchEventInfoResponse;

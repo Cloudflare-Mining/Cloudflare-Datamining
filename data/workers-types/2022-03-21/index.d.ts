@@ -188,6 +188,7 @@ declare interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   readonly origin: string;
   Event: typeof Event;
   ExtendableEvent: typeof ExtendableEvent;
+  CustomEvent: typeof CustomEvent;
   PromiseRejectionEvent: typeof PromiseRejectionEvent;
   FetchEvent: typeof FetchEvent;
   TailEvent: typeof TailEvent;
@@ -622,6 +623,16 @@ declare interface SchedulerWaitOptions {
 declare abstract class ExtendableEvent extends Event {
   waitUntil(promise: Promise<any>): void;
 }
+declare class CustomEvent extends Event {
+  constructor(type: string, init?: CustomEventCustomEventInit);
+  get detail(): any | undefined;
+}
+declare interface CustomEventCustomEventInit {
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+}
 declare class Blob {
   constructor(
     bits?: ((ArrayBuffer | ArrayBufferView) | string | Blob)[],
@@ -849,7 +860,7 @@ declare interface CryptoKeyHmacKeyAlgorithm {
 declare interface CryptoKeyRsaKeyAlgorithm {
   name: string;
   modulusLength: number;
-  publicExponent: ArrayBuffer;
+  publicExponent: ArrayBuffer | (ArrayBuffer | ArrayBufferView);
   hash?: CryptoKeyKeyAlgorithm;
 }
 declare interface CryptoKeyEllipticKeyAlgorithm {
@@ -1690,6 +1701,7 @@ declare interface TraceItem {
         | TraceItemAlarmEventInfo
         | TraceItemQueueEventInfo
         | TraceItemEmailEventInfo
+        | TraceItemTailEventInfo
         | TraceItemCustomEventInfo
       )
     | null;
@@ -1718,6 +1730,12 @@ declare interface TraceItemEmailEventInfo {
   readonly mailFrom: string;
   readonly rcptTo: string;
   readonly rawSize: number;
+}
+declare interface TraceItemTailEventInfo {
+  readonly consumedEvents: TraceItemTailEventInfoTailItem[];
+}
+declare interface TraceItemTailEventInfoTailItem {
+  readonly scriptName: string | null;
 }
 declare interface TraceItemFetchEventInfo {
   readonly response?: TraceItemFetchEventInfoResponse;
