@@ -378,6 +378,41 @@
 											},
 											{
 												"properties": {
+													"binding": {
+														"description": "A JavaScript variable name for the binding.",
+														"example": "myBinding",
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of the D1 database to bind to",
+														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+														"type": "string"
+													},
+													"name": {
+														"description": "The name of the D1 database associated with the 'id' provided.",
+														"example": "prod-database-auth",
+														"type": "string"
+													},
+													"type": {
+														"description": "The class of resource that the binding provides.",
+														"enum": [
+															"d1"
+														],
+														"example": "d1",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"type",
+													"binding"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
 													"name": {
 														"description": "A JavaScript variable name for the binding.",
 														"example": "myBinding",
@@ -1025,6 +1060,41 @@
 										},
 										{
 											"properties": {
+												"binding": {
+													"description": "A JavaScript variable name for the binding.",
+													"example": "myBinding",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "ID of the D1 database to bind to",
+													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+													"type": "string"
+												},
+												"name": {
+													"description": "The name of the D1 database associated with the 'id' provided.",
+													"example": "prod-database-auth",
+													"type": "string"
+												},
+												"type": {
+													"description": "The class of resource that the binding provides.",
+													"enum": [
+														"d1"
+													],
+													"example": "d1",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"type",
+												"binding"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
 												"name": {
 													"description": "A JavaScript variable name for the binding.",
 													"example": "myBinding",
@@ -1529,6 +1599,41 @@
 													"name",
 													"type",
 													"queue_name"
+												],
+												"type": "object"
+											},
+											{
+												"properties": {
+													"binding": {
+														"description": "A JavaScript variable name for the binding.",
+														"example": "myBinding",
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"description": "ID of the D1 database to bind to",
+														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+														"type": "string"
+													},
+													"name": {
+														"description": "The name of the D1 database associated with the 'id' provided.",
+														"example": "prod-database-auth",
+														"type": "string"
+													},
+													"type": {
+														"description": "The class of resource that the binding provides.",
+														"enum": [
+															"d1"
+														],
+														"example": "d1",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"type",
+													"binding"
 												],
 												"type": "object"
 											},
