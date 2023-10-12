@@ -953,12 +953,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "release-Oct.12.2023-1697119460",
+					branch: "sui/BILL-0-hotfix",
 					isReleaseCandidate: "true",
-					commit: "6819c0167fd92ab7720fdcf26c15780280e96afb",
+					commit: "397d9ac64c999d97b5dc02f1fccd39a23e00f4ec",
 					env: "production",
-					builtAt: 1697135453765,
-					dashVersion: "ae4f163c496cd4311f45e9bf5b2d5255690f14b0",
+					builtAt: 1697140360787,
+					dashVersion: "288503b06ede66750339b0ab04ad6106b8ea1102",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
