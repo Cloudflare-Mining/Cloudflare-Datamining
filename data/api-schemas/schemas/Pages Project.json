@@ -1030,6 +1030,12 @@
 												"build_config": {
 													"description": "Configs for the project build process.",
 													"properties": {
+														"build_caching": {
+															"description": "Enable build caching for the project.",
+															"example": true,
+															"nullable": true,
+															"type": "boolean"
+														},
 														"build_command": {
 															"description": "Command used to build project.",
 															"example": "npm run build",
@@ -2087,6 +2093,12 @@
 														"build_config": {
 															"description": "Configs for the project build process.",
 															"properties": {
+																"build_caching": {
+																	"description": "Enable build caching for the project.",
+																	"example": true,
+																	"nullable": true,
+																	"type": "boolean"
+																},
 																"build_command": {
 																	"description": "Command used to build project.",
 																	"example": "npm run build",
@@ -3516,6 +3528,12 @@
 							"build_config": {
 								"description": "Configs for the project build process.",
 								"properties": {
+									"build_caching": {
+										"description": "Enable build caching for the project.",
+										"example": true,
+										"nullable": true,
+										"type": "boolean"
+									},
 									"build_command": {
 										"description": "Command used to build project.",
 										"example": "npm run build",
