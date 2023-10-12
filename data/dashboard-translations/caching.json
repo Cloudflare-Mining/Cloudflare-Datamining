@@ -149,7 +149,7 @@
 	"purge_cache.url_advanced_link": "Advanced (Purging with custom cache keys) ",
 	"purge_cache.url_error_message": "Please follow example formats above.\n**Example: https&#58;//www&#46;%{zoneName}, https&#58;//www&#46;%{zoneName}/cat.jpg**",
 	"purge_cache.url_hint": "You will need to specify the full path to the file. Wildcards are not supported with single URL purge at this time. You can purge up to 30 URLs at a time.\n\nSeparate URL(s) one per line. \n**Example:\nhttps&#58;//www&#46;%{zoneName}\nhttps&#58;//www&#46;%{zoneName}/cat.jpg**",
-	"purge_cache.url_label": "**URL:** Any assets in the Cloudflare cache that match the URL(s) exactly will be purged from the cache.",
+	"purge_cache.url_label": "**URL:** Purges assets in the Cloudflare cache that match the URL(s) exactly, except these <0>single-file purge exclusions</0>",
 	"purge_cache.warning.purge_all": "Purge all cached files. Purging your cache may slow your website temporarily.",
 	"crawler_hints.banner": "**New!** We have just added Crawler Hints. [Try it now](#crawler-hints).",
 	"crawler_hints.card.title": "Crawler Hints",
