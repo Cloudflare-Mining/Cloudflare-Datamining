@@ -1,0 +1,76 @@
+<div class="mb2 gray5">12 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/DNS-Incident-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p>在 2023 年 10 月 4 日，从 7:00 UTC 到 11:00 UTC 的这段时间里，Cloudflare 出现了 DNS 解析问题。1.1.1.1 或 Warp、Zero Trust 等产品或使用 1.1.1.1 的第三方 DNS 解析器的一些用户可能会收到对有效查询的 SERVFAIL DNS 响应。对于本次故障，我们深表歉意。本次故障是内部软件错误造成的，不是遭到攻击所致。在这篇博文中，我们将讨论出现了什么故障、发生原因以及我们采取了哪些措施来确保这种情况不再发生。</p>
+	<h2 id="%E8%83%8C%E6%99%AF">背景</h2>
+	<p>在<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank">域名系统 (DNS)</a> 中，每个域名都位于一个 DNS 区域中。区域是一起控制的域名和主机名的集合。例如，Cloudflare 负责域名 cloudflare.com，我们称其为在 "cloudflare.com" 区域中。.com 顶级域名 (TLD) 归第三方所有，位于 "com" 区域中。它提供如何访问 cloudflare.com 的指示。对于 TLD，最重要的是<a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank">根区</a>，它提供<a href="https://www.iana.org/domains/root/db" target="_blank">如何访问 TLD 的指示</a>。这意味着根区对于解析所有其他域名非常重要。与 DNS 的其他重要部分一样，<a href="https://www.iana.org/dnssec/procedures" target="_blank">根区也使用 DNSSEC 进行签名</a>，这意味着根区本身包含加密签名。</p>
+	<p>根区在<a href="https://root-servers.org" target="_blank">根服务器</a>上发布，但 DNS 运营商通常也会<a href="https://www.rfc-editor.org/rfc/rfc8806" target="_blank">自动检索并保留根区的副本</a>，使得万一根服务器无法访问时，根区中的信息仍然可用。Cloudflare 的递归 DNS 基础设施也采用了这种方法，因为它还可以加快解析过程。根区的新版本通常每天发布两次。1.1.1.1 有一个名为 static_zone 的 <a href="https://blog.cloudflare.com/zh-cn/big-pineapple-intro-zh-cn">WebAssembly 应用程序</a>，它在主 DNS 逻辑的基础上运行，在新版本可用时为它们提供服务。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image2-1.png" class="kg-image" alt="" loading="lazy" width="951" height="604"></figure>
+	<h2 id="%E7%A9%B6%E7%AB%9F%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">究竟发生了什么</h2>
+	<p>在 9 月 21 日，作为<a href="https://blog.verisign.com/security/root-zone-zonemd" target="_blank">根区管理已知和计划变更</a>的一部分，根区中首次加入了一种新的资源记录类型。新资源记录名为 <a href="https://www.rfc-editor.org/rfc/rfc8976.html" target="_blank">ZONEMD</a>，实际上是根区内容的校验和。</p>
+	<p>根区通过在 Cloudflare 核心网络中运行的软件检索。随后，它被重新分配到 Cloudflare 遍布全球的数据中心。更改后，包含 ZONEMD 记录的根区仍可正常检索和分配。但是，使用该数据的 1.1.1.1 解析器系统在解析 ZONEMD 记录时遇到了问题。由于区域必须完整加载并提供，如果系统无法解析 ZONEMD，则意味着 Cloudflare 解析器系统未使用新版本的根区。一些托管 Cloudflare 解析器基础架构的服务器在未收到新的根区时，无法逐个请求直接查询 DNS 根服务器。然而，继续依赖于根区的已知正常工作版本的其他用户在内存缓存中仍可使用该版本，即在变更前于 9 月 21 日提取的版本。</p>
+	<p>在 2023 年 10 月 4 日 07:00 UTC，9 月 21 日发布的根区版本中的 DNSSEC 签名已过期。由于 Cloudflare 解析器系统无法使用本来应该可以使用的较新版本，Cloudflare 的一些解析器系统无法验证 DNSSEC 签名，因此开始发送错误响应 (SERVFAIL)。Cloudflare 解析器生成 SERVFAIL 响应的比率增长了 12%。下图说明了故障的发展过程以及用户如何看到故障。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image3-1.png" class="kg-image" alt="" loading="lazy" width="1337" height="1999"></figure>
+	<h2 id="%E4%BA%8B%E4%BB%B6%E6%97%B6%E9%97%B4%E7%BA%BF%E5%92%8C%E5%BD%B1%E5%93%8D">事件时间线和影响</h2>
+	<p><strong>9 月 21 日 6:30 UTC</strong>：最后一次成功提取根区<br><strong>10 月 4 日 7:00 UTC</strong>：在 9 月 21 日获得的根区中的 DNSSEC 签名过期，导致对客户端查询的 SERVFAIL 响应增加。<br><strong>7:57</strong>：开始收到第一份关于意外 SERVFAIL 的外部报告。<br><strong>8:03</strong>：宣布内部 Cloudflare 事件。<br><strong>8:50</strong>：首次尝试通过覆盖规则阻止 1.1.1.1 使用过期的根区文件提供响应。<strong>10:30</strong>：完全阻止 1.1.1.1 预装根区文件。<br><strong>10:32</strong>：响应恢复正常。<br><strong>11:02</strong>：事件关闭。</p>
+	<p>下图显示了受影响的时间以及返回 SERVFAIL 错误的 DNS 查询的百分比：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-3.png" class="kg-image" alt="" loading="lazy" width="1431" height="414"></figure>
+	<p>在正常运行期间，我们预计常规流量会出现 SERVFAIL 错误。通常这一比例在 3% 左右。造成这些 SERVFAIL 可能原因有 DNSSEC 链中的正当合理的问题、无法连接到权威性服务器、权威性服务器响应时间过长<a href="https://blog.cloudflare.com/unwrap-the-servfail">等等</a>。在本次事件中，SERVFAIL 数量峰值达到总查询量的 15%，但其影响并不是全球均匀分布，主要集中在我们较大的数据中心，如弗吉尼亚州阿什本、德国法兰克福和新加坡。</p>
+	<h2 id="%E5%8F%91%E7%94%9F%E6%9C%AC%E6%AC%A1%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8E%9F%E5%9B%A0">发生本次事件的原因</h2>
+	<h4 id="%E8%A7%A3%E6%9E%90-zonemd-%E8%AE%B0%E5%BD%95%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%8E%9F%E5%9B%A0">解析 ZONEMD 记录失败的原因</h4>
+	<p>DNS 采用二进制格式存储资源记录。在这种二进制格式中，资源记录的类型 (TYPE) 存储为16 位整数。资源记录的类型决定了资源数据 (RDATA) 的解析方式。当记录类型为 1 时，表示这是一条 A 记录，其 RDATA 可被解析为 IPv4 地址。记录类型 28 是 AAAA 记录，其 RDATA 可被解析为 IPv6 地址。当解析器遇到未知资源类型时，它不知道如何解析其 RDATA，但幸运的是，解析不是必需的：RDLENGTH 字段指出了 RDATA 字段的长度，从而允许解析器将其视为不透明数据元素。</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>                                   1  1  1  1  1  1
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                                               |
+    /                                               /
+    /                      NAME                     /
+    |                                               |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                      TYPE                     |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                     CLASS                     |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                      TTL                      |
+    |                                               |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                   RDLENGTH                    |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
+    /                     RDATA                     /
+    /                                               /
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+</code></pre>
+		<figcaption><a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank">RFC 1035</a></figcaption>
+	</figure>
+	<p>static_zone 之所以不支持新的 ZONEMD 记录，是因为到目前为止，我们一直选择在内部以根区的展示格式分发根区，而不是二进制格式。在查看一些资源记录的文本表述时，我们可以发现不同记录的表述方式存在更多差异。</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>.			86400	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2023100400 1800 900 604800 86400
+.			86400	IN	RRSIG	SOA 8 0 86400 20231017050000 20231004040000 46780 . J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==
+.			518400	IN	NS	a.root-servers.net.
+.			86400	IN	ZONEMD	2023100400 1 241 E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C
+</code></pre>
+		<figcaption>取自 <a href="https://www.internic.net/domain/root.zone" target="_blank">https://www.internic.net/domain/root.zone</a> 的记录示例</figcaption>
+	</figure>
+	<p>当我们遇到未知的资源记录时，往往不知道如何处理它。因此，我们用来解析边缘根区的库不会尝试解析，而是返回解析器错误。</p>
+	<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E4%BD%BF%E7%94%A8%E8%BF%87%E6%9C%9F%E7%89%88%E6%9C%AC%E7%9A%84%E6%A0%B9%E5%8C%BA">为什么会使用过期版本的根区</h3>
+	<p>static_zone 应用程序负责加载和解析根区，以便在本地提供根区服务 (<a href="https://datatracker.ietf.org/doc/html/rfc7706" target="_blank">RFC 7706</a>)，它将最新版本存储在内存中。当有新版本发布时，它会解析新版本，并在解析成功后丢弃旧版本。然而，由于解析失败，static_zone 应用程序未能切换到较新的版本，而是无限期地继续使用旧版本。当 1.1.1.1 服务首次启动时，static_zone 应用程序的内存中没有现有版本。当它尝试解析根区时会失败，但是由于没有旧版本的根区作为后备，它只能针对传入请求直接查询根服务器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1417"></figure>
+	<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%80%E5%88%9D%E5%B0%9D%E8%AF%95%E7%A6%81%E7%94%A8-staticzone-%E6%97%B6%E6%B2%A1%E6%9C%89%E6%88%90%E5%8A%9F">为什么最初尝试禁用 static_zone 时没有成功</h3>
+	<p>起初，我们尝试通过覆盖规则禁用 static_zone 应用程序（覆盖规则是一种允许我们以编程方式更改 1.1.1.1 的某些行为的机制）。我们制定的规则如下：</p>
+	<pre><code>phase = pre-cache set-tag rec_disable_static
+</code></pre>
+	<p>对于任何接收到的请求，此规则都会在请求中添加 rec_disable_static 标记。在 static_zone 应用程序中，我们会检查该标记，如果设置了该标记，我们就不会从缓存的静态根区返回响应。但是，<a href="https://blog.cloudflare.com/zh-cn/big-pineapple-intro-zh-cn">为了提高缓存性能</a>，如果当前节点无法在自己的缓存中找到响应，查询有时会被转发到另一个节点。不幸的是，rec_disable_static 标记并没有包含在转发到其他节点的查询中，这导致 static_zone 应用程序继续以陈旧的信息回复，直到我们最终完全禁用该应用程序。</p>
+	<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BD%B1%E5%93%8D%E6%98%AF%E5%B1%80%E9%83%A8%E7%9A%84">为什么影响是局部的</h3>
+	<p>Cloudflare 会定期对托管我们服务的服务器进行滚动重新启动，以执行内核更新等任务，这些更新只有在系统完全重新启动后才能生效。在本次故障发生时，在 ZONEMD 更改和 DNSSEC 失效之间重新启动的解析器服务器实例不会造成影响。如果它们在这两周内重新启动，它们将无法在启动时加载根区，而只能通过向根服务器发送 DNS 查询来进行解析。此外，解析器还使用了一种称为“过期服务”(serve stale) (<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank">RFC 8767</a>) 的技术，目的是能够继续从可能过期的缓存中提供当前的记录，以限制影响。一旦从上游检索记录的 TTL 秒数已过，该记录就会被视为过期记录。这避免了全面中断；受影响的主要是我们最大的数据中心，这些数据中心有许多服务器在该时间段内没有重新启动 1.1.1.1 服务。</p>
+	<h2 id="%E8%A1%A5%E6%95%91%E5%8F%8A%E5%90%8E%E7%BB%AD%E6%AD%A5%E9%AA%A4">补救及后续步骤</h2>
+	<p>这一事件产生了广泛的影响，而我们非常重视我们服务的可用性。我们已经确定了几个改进的领域，并将继续努力发现任何其他可能导致复发的缺陷。</p>
+	<p>如下是我们目前进行中的工作：</p>
+	<p><strong>可见性</strong>：我们会添加警报功能，以便在 static_zone 提供过期的根区文件时发出通知。这种长时间提供过期的根区文件而毫无所觉的情况不应该发生。如果我们能更好地进行监控，再加上现有的缓存，就不会产生任何影响。我们的目标是保护客户及其用户免受上游变更的影响。</p>
+	<p><strong>恢复能力</strong>：我们将重新评估如何在内部摄取和分发根区。我们的摄取和分发管道应无缝处理新的 RRTYPE，最终用户应看不到管道的任何短暂中断。</p>
+	<p><strong>测试</strong>：尽管围绕这个问题进行了测试，包括与解析新 ZONEMD 记录的未发布变更相关的测试，但我们并未充分测试当根区解析失败时会发生什么情况。我们将改进测试范围和相关流程。</p>
+	<p><strong>架构</strong>：某个时间点过后，我们不应使用过期的根区副本。在有限的时间内继续使用过期的根区数据当然是可能的，但超过一定时间就会产生不可接受的运行风险。我们将采取措施，确保按照 <a href="https://www.rfc-editor.org/rfc/rfc8806" target="_blank">RFC 8806：在解析器本地运行根服务器</a>中所述，更好地管理缓存的根区数据的生命周期 。</p>
+	<h2 id="%E6%80%BB%E7%BB%93">总结</h2>
+	<p>我们对本次事件的发生深表遗憾。本次事件给了我们一个明确的启示：永远不要认为有些东西会一成不变！许多现代系统都有一长串的库，这些库被提取到最终的可执行文件中，每一个库都可能存在错误，或者未能及早更新以在输入发生变化时可以正确运行。我们明白，进行良好的测试是多么重要，它可以检测出在输入发生变化时从容失败回归、系统和组件。我们知道，我们需要始终认为互联网最关键系统（DNS 和 BGP）中的“格式”变化会产生影响。</p>
+	<p>我们内部有很多事情需要跟进，正在夜以继日地工作，以确保类似事件不再发生。</p>
+</div>

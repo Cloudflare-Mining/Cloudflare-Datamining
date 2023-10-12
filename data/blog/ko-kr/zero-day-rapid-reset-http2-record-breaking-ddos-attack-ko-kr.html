@@ -1,0 +1,47 @@
+<div class="mb2 gray5">15 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-10.41.56-PM.png" class="kg-image" alt="" loading="lazy" width="1150" height="612"></figure>
+	<p>오늘 Cloudflare는 Google, Amazon AWS와 함께 “HTTP/2 Rapid Reset” 공격이라는 새로운 zero-day 취약성의 존재를 공개했습니다. 이 공격은 HTTP/2 프로토콜의 약점을 악용하여 거대 하이퍼 볼류메트릭 분산 서비스 거부 (DDoS) 공격을 생성합니다. Cloudflare는 최근 몇 달간 이런 빗발치는 공격을 완화하였는데, 그중에는 <a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">이전에 우리가 목격한 것보다</a> 규모가 3배 큰, 초당 2억 100만 요청(rps)을 넘어서는 공격도 있었습니다. Cloudflare는 2023년 8월 말부터 1,000만 rps가 넘는 기타 공격 1,100건 이상을 완화하였으며, 184건은 이전 DDoS 기록인 7,100만 rps보다도 큰 공격이었습니다.</p><!--kg-card-begin: html-->
+	<center><em><small>공격을 받고 있거나 추가 보호가 필요하신가요? <a href="https://www.cloudflare.com/h2" target="_blank">여기를 클릭하여 도움을 받으세요</a>.</small></em></center><br><!--kg-card-end: html-->
+	<p>위협 행위자들은 이러한 zero-day를 통해 취약성이라는 맥가이버 칼에 치명적인 도구를 새로 더하여 이전에 본 적 없는 규모로 피해자를 공격할 수 있게 되었습니다. 때로는 복잡하고 힘든 싸움이었지만, Cloudflare는 이러한 공격을 통해 zero-day 취약성의 영향을 완화하기 위한 기술을 개발할 수 있었습니다.</p>
+	<p>HTTP DDoS 완화를 위해 Cloudflare를 이용 중이시라면, 여러분은 보호받고 있습니다. 이 취약성에 대해 아래에서 더 알아보고, 스스로를 보호하기 위해 할 수 있는 리소스와 권장 사항을 확인해 보세요.</p>
+	<h3 id="%EA%B3%B5%EA%B2%A9-%EB%B6%84%EC%84%9D-%EB%AA%A8%EB%93%A0-cso%EA%B0%80-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EC%82%AC%ED%95%AD">공격 분석: 모든 CSO가 알아야 할 사항</h3>
+	<p>2023년 8월 말, Cloudflare 팀은 알 수 없는 위협 행위자가 개발한 새로운 zero-day 취약성을 발견하였습니다. 이 취약성은 인터넷 및 모든 웹 사이트의 작동에 필수적인 표준 HTTP/2 프로토콜을 악용합니다. Rapid Reset이라는 별명이 붙은 이 새로운 zero-day 취약성 공격은 요청 전송 후 즉각적 취소를 반복함으로써 HTTP/2 스트림 취소 기능을 활용합니다. &nbsp;</p>
+	<p>작은 규모의 “요청, 취소, 요청, 취소” 패턴을 대규모로 자동화함으로써 위협 행위자는 서비스 거부를 생성하며 HTTP/2의 표준 구현을 실행하는 모든 서버 또는 애플리케이션도 쓰러뜨릴 수 있습니다. 또한 이 기록적인 공격에 대해 알아야 할 한 가지 중대한 사항은 이 공격에 관여하는 봇넷이 대략 2만 개의 머신으로 구성되어 규모가 크지 않다는 사실입니다. Cloudflare는 수십, 수백만 개의 머신으로 구성되어 이보다 훨씬 더 큰 규모의 봇넷을 정기적으로 감지합니다. 비교적 작은 봇넷이 이렇게나 많은 요청을 출력하고 HTTP/2를 지원하는 거의 모든 서버나 애플리케이션을 무력화시킬 수 있다는 것은 이러한 취약성이 보호받지 않는 네트워크에 얼마나 위협적인지 잘 알려 줍니다.</p>
+	<p>위협 행위자는 HTTP/2 취약성과 봇넷을 함께 사용함으로써 이전에 본 적 없는 비율로 요청을 증폭시켰습니다. 그 결과 Cloudflare 팀은 간헐적 에지 불안정을 다소 경험했습니다. Cloudflare 시스템은 압도적인 수의 공격 유입을 완화할 수 있었지만, 네트워크의 일부 구성 요소에 과부하가 발생했습니다. 이로 인해 간헐적으로 400번 대 및 500번 대 오류가 발생하여 소수의 고객 성능에 영향을 미쳤습니다. 하지만 이 오류는 모두 신속하게 해결되었습니다. </p>
+	<p>이러한 문제를 성공적으로 완화하고 모든 고객에 대한 잠재적 공격을 중지시킨 후, Cloudflare 팀은 즉시 책임감 있는 공개 프로세스를 시작했습니다. Cloudflare는 일반 대중에게 이 취약성을 공개하기 전에 업계 동료 기업과의 대화를 통해 Cloudflare의 사명을 진전시키고, 당사 네트워크에 의존하는 인터넷의 상당 부분을 보호하기 위한 방법을 모색했습니다. </p>
+	<p>Cloudflare는 별도의 블로그 게시물을 통해 이 공격에 대한 기술적 세부 사항을 더 자세히 다루었습니다: <a href="https://cfl.re/rapid-reset-breakdown" target="_blank">HTTP/2 Rapid Reset: 기록적인 공격의 분석</a>.</p>
+	<h3 id="cloudflare%EC%99%80-%EC%97%85%EA%B3%84%EB%8A%94-%EC%9D%B4-%EA%B3%B5%EA%B2%A9%EC%9D%84-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%B0%A8%EB%8B%A8%ED%96%88%EC%9D%84%EA%B9%8C%EC%9A%94">Cloudflare와 업계는 이 공격을 어떻게 차단했을까요?</h3>
+	<p>“완벽한 공개”라는 것은 없습니다. 공격을 차단하고 새롭게 발생하는 사건에 대응하기 위해 조직과 보안 팀은 침해를 가정하는 사고방식을 가져야 합니다. 또 다른 zero-day와 새롭게 진화하는 위협 행위자 집단, 전에 본 적 없는 공격과 기술이 앞으로 언제든 등장할 것이기 때문입니다. </p>
+	<p>이러한 “침해 가정” 사고방식은 정보 공유의 핵심 기반이며, 이러한 상황에서 인터넷을 안전하게 유지하도록 보장합니다. Cloudflare는 이러한 공격을 경험하고 완화하는 동시에 업계 파트너와 협업하여 업계 전반이 이러한 공격을 확실히 견뎌낼 수 있도록 노력하고 있습니다. &nbsp;</p>
+	<p>이 공격을 완화하는 과정에서 Cloudflare 팀은 이러한 DDoS 공격을 중지하고, 이번 공격 및 향후 발생할 기타 대규모 공격에 대비하여 자체 완화 능력을 개선시킬 목적으로 새로운 기술을 개발 및 구축했습니다. 이러한 노력은 Cloudflare의 전반적 완화 역량과 복원력을 크게 높였습니다. 만약 Cloudflare를 이용 중이시라면, 여러분은 보호받고 있다고 자신 있게 말씀드릴 수 있습니다. </p>
+	<p>또한 Cloudflare 팀은 이러한 취약성을 절대 악용할 수 없도록 하기 위해, 패치를 개발하고 있는 웹 서버 소프트웨어 파트너사에도 이 사실을 알렸습니다. 해당 파트너사의 웹 사이트에서 자세한 정보를 확인하세요.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Zero-Day-protection-4.png" class="kg-image" alt="" loading="lazy" width="1600" height="416"></figure>
+	<p>공개는 결코 일회성으로 끝나는 것이 아닙니다. Cloudflare의 생명선은 더 나은 인터넷을 보장하는 것이며, 이는 이러한 사례로부터 시작됩니다. 업계 파트너 및 정부와 협력하여 인터넷에 광범위한 영향을 미치지 않도록 보장할 수 있는 기회가 있을 때, Cloudflare는 규모와 범주에 관계없이 모든 조직의 사이버 복원력을 키우기 위해 본분을 다하고 있습니다.</p>
+	<p>완화 전략 및 다음 패치 단계에 대해 자세히 알아보려면, <a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank">웨비나에 등록하세요</a>.</p>
+	<h3 id="http2-rapid-reset-%EB%B0%8F-cloudflare%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%EB%A1%9D%EC%A0%81%EC%9D%B8-%EA%B3%B5%EA%B2%A9%EC%9D%98-%EA%B8%B0%EC%9B%90%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C%EC%9A%94">HTTP/2 Rapid Reset 및 Cloudflare에 대한 기록적인 공격의 기원은 무엇일까요?</h3>
+	<p>이러한 공격을 가장 먼저 목격한 회사 중 하나가 Cloudflare라는 사실이 이상하게 보일 수도 있습니다. 위협 행위자들이 세계에서 가장 강력한 DDoS 공격 방어 체계를 갖춘 회사를 공격하는 이유는 무엇일까요? &nbsp;</p>
+	<p>실제로 Cloudflare는 더 취약한 대상에게 공격이 실행되기 전에 이를 감지하는 경우가 많습니다. 위협 행위자들은 도구를 야생에 배포하기 전에 개발하고 테스트해야 합니다. 전례 없는 공격 기법을 보유한 위협 행위자는 자신들이 개시하는 공격을 소화할 인프라가 부족하므로 공격의 규모와 효과를 테스트하고 파악하는 데 어려움을 겪을 수 있습니다. Cloudflare가 네트워크 성능에 대해 공유하는 투명성과 Cloudflare의 공개 성능 차트에서 확보할 수 있는 공격 측정값 때문에, 위협 행위자는 악용 역량을 파악하기 위하여 Cloudflare를 대상으로 삼았을 가능성이 높습니다.</p>
+	<p>그러나 해당 테스트와 공격을 조기에 감지할 수 있는 능력은 Cloudflare가 고객과 업계 전체에 도움을 주는 공격 완화 방법을 개발할 수 있도록 합니다.</p>
+	<h3 id="cso%EA%B0%80-cso%EC%97%90%EA%B2%8C-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EC%95%BC-%ED%95%A0%EA%B9%8C%EC%9A%94">CSO가 CSO에게: 어떻게 해야 할까요?</h3>
+	<p>저는 20년 이상을 CSO로 일하면서 이와 같은 수없이 많은 공개와 발표를 접해왔습니다. 그러나 이것이 <a href="https://blog.cloudflare.com/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns">Log4J</a>이든, <a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data">Solarwinds</a>, <a href="https://www.cloudflare.com/learning/security/ransomware/how-to-prevent-ransomware" target="_blank">EternalBlue</a> <a href="https://www.cloudflare.com/learning/security/ransomware/petya-notpetya-ransomware" target="_blank">WannaCry/NotPetya</a>, <a href="https://blog.cloudflare.com/heartbleed-revisited">Heartbleed</a>, 혹은 <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a>이든, 이러한 보안 사고에는 모두 공통점이 있습니다. 이 거대한 폭발은 전 세계에 파문을 일으키고 산업이나 규모에 관계 없이 제가 이끌었던 모든 조직을 완전히 혼란에 빠뜨릴 수 기회를 만들어 낸다는 것이죠. </p>
+	<p>이 중 상당수는 제어가 불가능했던 공격이나 취약성이었습니다. 그러나 해당 문제가 제가 제어할 수 있는 사안에서 발생했는지와 관계없이, 제가 이끈 성공적인 이니셔티브와 그렇지 않은 이니셔티브를 차별화할 수 있었던 것은 이와 같은 zero-day 취약성과 그 악용이 발견되었을 때 대응할 수 있는 능력이었습니다. &nbsp; &nbsp;</p>
+	<p>이번 Rapid Reset은 다를 것이라고 말할 수 있었다면 좋았겠지만, 그렇지 않습니다. 수십 년 동안 보안 사고를 겪어온 CSO든 오늘이 CSO로서의 첫 출근이든 관계없이 저는 모든 CSO분들께 지금이 바로 여러분을 보호하고 사이버 사고 대응팀을 강화해야 할 시기라고 말씀드립니다. </p>
+	<p>저희는 최대한 많은 보안 공급자가 대응할 기회를 제공하기 위해 오늘날까지 정보를 제한해 왔습니다. 그러나 언젠가는 이러한 zero-day 위협을 대중에 공개해야 합니다. 오늘이 바로 그날입니다. 이는 오늘 이후로 위협 행위자들이 HTTP/2 취약성에 대해 대부분 인지하게 될 것이며, 이를 악용하는 것은 필연적으로 방어자와 공격자 간의 경쟁, 즉 먼저 패치를 적용하는 것과 먼저 악용하는 것 사이의 경쟁을 시작하게 될 것을 의미합니다. 조직은 시스템이 테스트 될 것이라는 전제하에 보안을 확보하기 위해 사전 조처를 해야 합니다.</p>
+	<p>저에게 이 사건은 Log4J 같은 취약성을 떠올리게 합니다. 많은 변종이 매일 새롭게 떠올라 앞으로 몇 주, 몇 달, 몇 년 동안 연이어 결실을 보게 될 것이니까요. 더 많은 연구원과 위협 행위자들이 이 취약성을 시험함에 따라, 우리는 훨씬 발전한 우회로를 포함하며 훨씬 짧은 악용 주기를 가진 다양한 변종을 마주할 수 있습니다. &nbsp;</p>
+	<p>그리고 Log4J와 마찬가지로, 이러한 사고를 다루는 것은 “패치를 적용하시면 됩니다.”라고 할 수 있을 만큼 간단하지가 않습니다. 여러분은 사고 관리, 패치, 보안 보호의 진화를 지속적인 과정으로 전환시켜야 합니다. 취약성의 각 변종에 대한 패치가 위험 요소를 줄여줄 수는 있지만, 완전히 제거하지는 않기 때문입니다.</p>
+	<p>불안을 조장하려는 것은 아니지만, 직설적으로 말씀드립니다. 여러분은 이 문제를 심각하게 받아들여야 합니다. 조직에 아무 일도 일어나지 않게 하려면 이를 정식 사고로 취급해야 합니다.</p>
+	<h3 id="%EB%B3%80%ED%99%94%EC%9D%98-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B8%B0%EC%A4%80%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B6%8C%EC%9E%A5-%EC%82%AC%ED%95%AD">변화의 새로운 기준을 위한 권장 사항</h3>
+	<p>어떤 보안 사건도 다음 사건과 동일할 수는 없지만, 배울 수 있는 교훈은 있습니다. CSO 여러분, 즉시 시행할 수 있는 권장 사항을 말씀드리겠습니다. 이는 이번 사례뿐만 아니라, 앞으로 다가올 몇 년 동안에도 마찬가지입니다.</p>
+	<ul>
+		<li>외부 맟 파트너 네트워크의 외부 연결을 이해하여 인터넷에 연결된 모든 시스템을 아래의 완화 방법으로 교정하여야 합니다.</li>
+		<li>공격을 보호, 감지, 대응하며 네트워크에서 일어나는 모든 문제를 즉시 교정하는 데 필요한 기존 보안 보호 및 기능을 파악하십시오.</li>
+		<li>트래픽이 데이터 센터에 다다르면 DDoS 공격을 완화하기 어려우므로 DDoS 방어책을 데이터 센터 외부에 두십시오.</li>
+		<li>애플리케이션(계층 7)을 위한 DDoS 방어 기능 및 웹 애플리케이션 방화벽이 있는지 확인하십시오. 추가 모범 사례로 DNS, 네트워크 트래픽(계층 3) 및 API 방화벽을 위한 DDoS 방어 기능이 있는지 확인하십시오.</li>
+		<li>웹 서버와 운영 시스템 패치가 모든 인터넷 연결 웹 서버 전반에 배포될 수 있도록 하십시오. 또한 Terraform 빌드 및 이미지와 같은 자동화 작업에 패치를 모두 적용하여 이전 버전의 웹 서버가 실수로라도 보안 이미지를 통해 프로덕션에 배포되지 않도록 하십시오.</li>
+		<li>마지막 수단으로, 위협을 완화하기 위해 HTTP/2와 HTTP/3(역시 취약할 수 있음)를 해제하는 방법도 고려하십시오. &nbsp;HTTP/1.1로 다운그레이드할 경우 상당한 성능 문제가 발생할 것이므로 이 방법은 최후의 수단으로만 고려되어야 합니다.</li>
+		<li>복원력을 위해 클라우드 기반 DDoS L7 공급자를 보조적으로 두는 것을 고려해 보십시오.</li>
+	</ul>
+	<p>Cloudflare의 사명은 더 나은 인터넷 구축을 지원하는 것입니다. 현재 DDoS 방어 상태가 염려된다면, 성공적인 DDoS 공격 시도를 완화할 수 있는 DDoS 대응 기능 및 복원력을 기꺼이 무료로 제공해 드리겠습니다. &nbsp;Cloudflare는 지난 30일간 이러한 공격에 맞서 싸우며 동급 최고의 시스템을 더욱 개선했기 때문에 여러분이 받고 있는 스트레스를 이해합니다. </p>
+	<p>자세한 내용이 궁금하다면, zero-day에 대한 세부 사항과 대응 방법에 관한 <a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank">웨비나를 시청하세요</a>. 보호받고 있는지 잘 모르겠거나 어떻게 보호받을 수 있는지 알고 싶다면 <a href="https://www.cloudflare.com/h2" target="_blank">이곳으로 문의하세요</a>. 또한 Cloudflare는 별도의 블로그 게시물에서 해당 공격에 대한 기술적 세부 사항을 더 자세히 다루었습니다. <a href="https://cfl.re/rapid-reset-breakdown" target="_blank">HTTP/2 Rapid Reset: 기록적인 공격의 분석</a>. 마지막으로 만약 공격의 대상이 되었거나 즉각적 보호가 필요하다면, 여러분의 Cloudflare 지역 담당자에게 연락하거나 <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank">https://www.cloudflare.com/under-attack-hotline/</a>을 방문하십시오.</p>
+</div>

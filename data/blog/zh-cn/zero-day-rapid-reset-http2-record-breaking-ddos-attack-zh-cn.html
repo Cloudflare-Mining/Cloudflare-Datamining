@@ -1,0 +1,46 @@
+<div class="mb2 gray5">11 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-10.41.56-PM.png" class="kg-image" alt="" loading="lazy" width="1150" height="612"></figure>
+	<p>今天早些时候，Cloudflare 与 Google 和 Amazon AWS 一起披露了一个名为 “HTTP/2 Rapid Reset” 攻击的新型 zero-day 漏洞的存在。此攻击利用 HTTP/2 协议中的弱点来生成巨大的超容量分布式拒绝服务 (DDoS) 攻击。近几个月来，Cloudflare 缓解了一系列攻击，其中一次攻击规模是<a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">我们之前观察到的任何攻击</a>的三倍，每秒超过 2.01 亿个请求 (rps)。自 2023 年 8 月底以来，Cloudflare 已缓解了超过 1,100 起 RPS 超过 1000 万的其他攻击，其中 184 起攻击超过了我们之前 7100 万 RPS 的 DDoS 记录。</p>
+	<p>这个 zero-day 漏洞为威胁行为者提供了一个重要的新工具，即漏洞中的瑞士军刀，能够以前所未有的规模利用和攻击受害者。虽然这些攻击有时非常复杂且难以应对，但正是因为它们，Cloudflare 才有机会开发专用技术来缓解 zero-day 漏洞的影响。</p>
+	<p>如果您使用 Cloudflare 进行 HTTP DDoS 缓解，那么您已经受到保护。下面，我们将提供有关此漏洞的更多信息，以及如何确保自身安全的资源和建议。</p>
+	<h3 id="%E8%A7%A3%E6%9E%84%E6%94%BB%E5%87%BB%EF%BC%9A%E6%AF%8F%E4%BD%8D-cso-%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E5%86%85%E5%AE%B9">解构攻击：每位 CSO 需要了解的内容</h3>
+	<p>2023 年 8 月下旬，我们的 Cloudflare 团队注意到一个新的 zero-day 漏洞，该漏洞由未知威胁行为者开发，它所利用的标准 HTTP/2 协议是一种基本协议，对互联网和所有网站的正常运作至关重要。这种新型 zero-day 漏洞攻击被称为“Rapid Reset”，它利用 HTTP/2 的流取消功能，反复发送请求并立即取消该请求。 &nbsp;</p>
+	<p>透过大规模自动执行这种简单的“请求、取消、请求、取消”模式，威胁行为者能够建立拒绝服务并摧毁任何运行 HTTP/2 标准实施的服务器或应用程序。此外，关于这起破纪录的攻击，还有一个重要事项需要注意，它涉及一个中等规模的僵尸网路，由大约 20,000 台机器组成。 Cloudflare 会定期检测比这大几个数量级的僵尸网路——包括数十万甚至数百万台机器。对于一个相对较小的僵尸网络来说，输出如此大量的请求，有可能使几乎所有支持 HTTP/2 的服务器或应用程序瘫痪，这凸显了此漏洞对未受保护的网络的威胁有多大。</p>
+	<p>威胁行为者利用僵尸网络和 HTTP/2 漏洞，以前所未有的速度放大请求。因此，我们的 Cloudflare 团队经历了一些间歇性的边缘不稳定。虽然我们的系统能够缓解绝大多数传入攻击，但流量使我们网络中的某些组件过载，从而影响了少数客户的性能并出现间歇性 4xx 和 5xx 错误——所有这些都很快得到了解决。 </p>
+	<p>在我们成功缓解了这些问题并阻止了所有客户的潜在攻击后，我们的团队立即启动了负责任的披露流程。在向公众公布这一漏洞之前，我们与业界同行进行了对话，探讨如何合作才能帮助我们完成使命，并保护依赖我们网络的大部分互联网用户的安全。 </p>
+	<p>我们在另一篇博文中详细介绍了这次攻击的技术细节：<a href="https://cfl.re/rapid-reset-breakdown" target="_blank">HTTP/2 Rapid Reset：解构破纪录的攻击</a>。</p>
+	<h3 id="cloudflare-%E5%92%8C%E4%B8%9A%E7%95%8C%E6%98%AF%E5%A6%82%E4%BD%95%E9%81%8F%E6%AD%A2%E6%AD%A4%E6%AC%A1%E6%94%BB%E5%87%BB%E7%9A%84%EF%BC%9F">Cloudflare 和业界是如何遏止此次攻击的？</h3>
+	<p>没有所谓的“完美披露”。阻止攻击和响应新出现的事件需要组织和安全团队以假定泄露的心态生活——因为总会有另一个 zero-day 漏洞、演变而来的新威胁行为者群体，以及前所未见的新型攻击和技术。 </p>
+	<p>这种“假定泄露”的心态是信息共享和确保在这种情况下互联网保持安全的关键基础。在 Cloudflare 经历并缓解这些攻击的同时，我们还与行业合作伙伴合作，以确保整个行业能够抵御这种攻击。 &nbsp;</p>
+	<p>在缓解此攻击的过程中，我们的 Cloudflare 团队开发并专门构建了新技术来阻止这些 DDoS 攻击，并进一步改进我们针对此攻击和未来其他大规模攻击的缓解措施。这些努力显著提高了我们的整体缓解能力和弹性。如果您正在使用 Cloudflare，我们相信您会受到保护。 </p>
+	<p>我们的团队还提醒正在开发补丁的 Web 服务器软件合作伙伴，以确保此漏洞不会被利用——请查看他们的网站以获取更多信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Zero-Day-protection-4.png" class="kg-image" alt="" loading="lazy" width="1600" height="416"></figure>
+	<p>披露绝不是一劳永逸的。Cloudflare 的命脉是确保更好的互联网，这源于诸如此类的实例。我们有机会与行业合作伙伴和政府合作，确保互联网不会受到广泛影响，因此，我们正在尽自己的一份力量来提高每个组织的网络弹性，无论其规模或垂直领域如何。</p>
+	<p>要进一步了解缓解策略和后续修补措施，请<a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank">登记参加我们的网络研讨会</a>。</p>
+	<h3 id="http2-rapid-reset-%E5%92%8C%E8%BF%99%E4%BA%9B%E9%92%88%E5%AF%B9-cloudflare-%E7%9A%84%E7%A0%B4%E7%BA%AA%E5%BD%95%E6%94%BB%E5%87%BB%E7%9A%84%E8%B5%B7%E6%BA%90%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">HTTP/2 Rapid Reset 和这些针对 Cloudflare 的破纪录攻击的起源是什么？</h3>
+	<p>Cloudflare 是最先受到这些攻击的公司之一，这似乎有些奇怪。为什么威胁行为者要攻击一家拥有世界上最强大的 DDoS 攻击防御系统的公司？ &nbsp;</p>
+	<p>现实情况是，Cloudflare 经常在攻击转向更脆弱的目标之前就发现了它们。威胁行为者需要先开发和测试他们的工具，然后再将其实际部署。拥有破纪录攻击方法的威胁行为者可能会难以测试和了解它们的规模和有效性，因为他们没有基础结构来承担他们发起的攻击。由于我们分享网络性能的透明度，以及他们可以从我们的公开性能图表中收集到攻击测量结果，该威胁行为者很可能通过攻击我们来了解该漏洞的功能。</p>
+	<p>但这种测试以及尽早发现攻击的能力可以帮助我们开发针对攻击的缓解措施，从而使我们的客户和整个行业受益。</p>
+	<h3 id="%E5%90%84%E4%BD%8D%E9%A6%96%E5%B8%AD%E5%AE%89%E5%85%A8%E5%AE%98%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD%EF%BC%9A%E6%82%A8%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F">各位首席安全官的应对措施：您应该怎么做？</h3>
+	<p>我担任首席安全官已有 20 多年，经历过无数次类似的披露和公告。但无论是 <a href="https://blog.cloudflare.com/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns">Log4J</a>、<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data">Solarwinds</a>、<a href="https://www.cloudflare.com/learning/security/ransomware/how-to-prevent-ransomware" target="_blank">EternalBlue</a> <a href="https://www.cloudflare.com/learning/security/ransomware/petya-notpetya-ransomware" target="_blank">WannaCry/NotPetya</a>、<a href="https://blog.cloudflare.com/heartbleed-revisited">Heartbleed</a>，还是 <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a>，所有这些安全事件都有一个共同点。巨大的爆炸波及全球，并有可能彻底颠覆我所领导的任何组织——无论行业或规模如何。</p>
+	<p>其中许多是我们可能无法控制的攻击或漏洞。但无论问题的起因是否在我的控制范围之内，我所领导的任何成功计划与不利计划的区别在于，当识别这样的 zero-day 漏洞和利用时，我们能够做出回应。 &nbsp; &nbsp;</p>
+	<p>虽然我希望我可以说这次的 Rapid Reset 可能会有所不同，但事实并非如此。我呼吁所有的首席安全官，无论您是像我一样经历了数十年的安全事件，还是刚刚上任，现在都需要确保您受到保护，并支持您的网络事件响应团队 。 </p>
+	<p>直到今天，我们一直对这些信息进行限制，以便让尽可能多的安全供应商有机会做出反应。不过，在某些时候，公开披露这样的 zero-day 威胁才是负责任的做法。今天就是公开的日子。这意味着今天之后，威胁行为者将在很大程度上意识到 HTTP/2 漏洞；攻击者将能够轻松利用这一漏洞，防御者与攻击者之间的竞赛也将无可避免——是先得到修补还是先被利用。组织应假定系统将受到攻击，并采取主动措施来进行保障。</p>
+	<p>对我来说，这让人想起像 Log4J 这样的漏洞，因为每天都会出现许多变体，并将在未来几周、几个月和几年内继续发挥作用。随着越来越多的研究人员和威胁行为者对该漏洞进行实验，我们可能会发现具有更短利用周期的不同变体，其中包含更高级的绕过方法。 &nbsp;</p>
+	<p>就像 Log4J 一样，管理此类事件并不像“运行补丁，大功告成”那么简单。您需要将事件管理、修补和发展安全保护转变为持续的流程，因为针对每个漏洞变体的修补程序可以降低您的风险，但并不能消除风险。</p>
+	<p>我无意危言耸听，但我要直截了当地说：你们必须认真对待这件事。将此视为一个完全活动的事件，以确保您的组织不会发生任何事情。</p>
+	<h3 id="%E6%96%B0%E5%8F%98%E9%9D%A9%E6%A0%87%E5%87%86%E7%9A%84%E5%BB%BA%E8%AE%AE">新变革标准的建议</h3>
+	<p>虽然安全事件各不相同，但还是可以从中吸取教训。首席安全官们，以下是我提出的必须立即实施的建议。不仅是针对此次漏洞，今后几年也是如此：</p>
+	<ul>
+		<li>了解您的外部网络和合作伙伴网络的连接情况，利用以下缓解措施修复任何面向互联网的系统。</li>
+		<li>了解您现有的安全保护措施以及保护、检测和应对攻击的能力，并立即修复网络中存在的任何问题。</li>
+		<li>确保 DDoS 防护位于数据中心之外，因为如果流量进入数据中心，将很难缓解 DDoS 攻击。</li>
+		<li>确保您拥有针对应用程序（第 7 层）的 DDoS 防护，并确保您拥有 Web 应用程序防火墙。此外，作为最佳实践，确保您拥有针对 DNS、网络流量（第 3 层）和 API 防火墙的完整 DDoS 防护。</li>
+		<li>确保在所有面向互联网的 Web 服务器上都部署了 Web 服务器和操作系统补丁。此外，请确保所有自动化（例如 Terraform 构建和映像）都已完全修补，以便旧版本的 Web 服务器不会意外地通过安全映像部署到生产环境中。</li>
+		<li>在万不得已的情况下，可以考虑关闭 HTTP/2 和 HTTP/3（可能也容易受到攻击）以减轻威胁。这只是最后的手段，因为如果降级到 HTTP/1.1，会出现严重的性能问题。</li>
+		<li>考虑在周边使用基于云的辅助 DDoS L7 提供商以提高弹性。</li>
+	</ul>
+	<p>Cloudflare 的使命是帮助构建更好的互联网。如果您担心当前的 DDoS 防护状态，我们非常乐意免费为您提供我们的 DDoS 功能和弹性，以缓解任何成功的 DDoS 攻击尝试。我们知道您面临的压力，因为我们在过去 30 天里抵御了这些攻击，并使我们本已一流的系统变得更好。 </p>
+	<p>如果您有兴趣了解更多信息，我们即将举行网络研讨会，详细介绍该 zero-day 漏洞以及应对措施；您可以<a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank">在此登记</a>。我们还在另一篇博文中详细介绍了这次攻击的更多技术细节：<a href="https://cfl.re/rapid-reset-breakdown" target="_blank">HTTP/2 Rapid Reset：解构破纪录的攻击</a>。最后，如果您是攻击目标或需要立即保护，请联系您当地的 Cloudflare 代表或访问 <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank">https://www.cloudflare.com/zh-cn/under-attack-hotline/</a>。</p>
+</div>
