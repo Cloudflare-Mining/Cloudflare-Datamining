@@ -3042,6 +3042,10 @@
 				{
 					"name": "https",
 					"annotations": {}
+				},
+				{
+					"name": "tcp",
+					"annotations": {}
 				}
 			]
 		},
@@ -3186,6 +3190,10 @@
 				{
 					"name": "analyticsEngine",
 					"annotations": {}
+				},
+				{
+					"name": "hyperdrive",
+					"annotations": {}
 				}
 			]
 		},
@@ -3277,6 +3285,10 @@
 				{
 					"name": "analyticsEngine",
 					"annotations": {}
+				},
+				{
+					"name": "hyperdrive",
+					"annotations": {}
 				}
 			]
 		},
@@ -3289,6 +3301,31 @@
 				},
 				{
 					"name": "optional",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.hyperdrive",
+			"fields": [
+				{
+					"name": "designator",
+					"annotations": {}
+				},
+				{
+					"name": "database",
+					"annotations": {}
+				},
+				{
+					"name": "user",
+					"annotations": {}
+				},
+				{
+					"name": "password",
+					"annotations": {}
+				},
+				{
+					"name": "scheme",
 					"annotations": {}
 				}
 			]
@@ -3451,6 +3488,19 @@
 					"name": "options",
 					"annotations": {}
 				},
+				{
+					"name": "tlsOptions",
+					"annotations": {}
+				},
+				{
+					"name": "certificateHost",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:ExternalServer.tcp",
+			"fields": [
 				{
 					"name": "tlsOptions",
 					"annotations": {}
