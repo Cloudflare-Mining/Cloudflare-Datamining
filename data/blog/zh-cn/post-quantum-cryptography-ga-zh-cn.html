@@ -1,0 +1,228 @@
+<div class="mb2 gray5">6 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-28.png" class="kg-image" alt="" loading="lazy" width="1800" height="1013"></figure>
+	<p>在过去的十二个月里，我们一直在讨论互联网上的新加密基准：后量子加密。去年生日周期间，我们宣布我们的 <a href="https://blog.cloudflare.com/post-quantum-for-all"> Kyber 测试版可供测试，</a>且 <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a> 可启用后量子加密。今年早些时候，我们明确表示这项基础技术应该<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">永久免费提供给所有人使用。 </a></p>
+	<p>经过六年的努力和 <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 篇博客文章</a>的酝酿，我们今天<a href="https://blog.cloudflare.com/post-quantum-to-origins">正式发布</a>对我们客户、服务和内部系统的后量子加密支持，详情如下。支持的产品包括 <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> （源连接）、1.1.1.1、R2、Argo Smart Routing、Snippets 等等。 </p>
+	<p>这对互联网来说是一个里程碑。我们目前还不知道量子计算机何时会强大到足以破解现今的加密技术，但是现在升级到后量子加密的好处是显而易见的。由于 Cloudflare、Google、Mozilla、美国国家标准与技术研究院、互联网工程任务组以及众多学术机构取得的进展，<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">快速连接和面向未来</a>的安全性在今天才成为可能。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-40.png" class="kg-image" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" width="1999" height="522"></figure>
+	<p>正式发布意味着什么？2022 年 10 月，我们为通过 Cloudflare 服务的<a href="https://blog.cloudflare.com/post-quantum-for-all">所有网站和 API</a> 启用 <a href="https://blog.cloudflare.com/post-quantum-for-all"><em>X25519+Kyber</em></a> 测试版。然而，一个巴掌拍不响：只有浏览器也支持后量子加密，才能确保连接的安全。2023 年 8 月起，<a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank">Chrome</a>逐渐默认启用 <em>X25519+Kyber</em>。</p>
+	<p>用户的请求通过 Cloudflare 的网络进行路由（2）。我们已经升级了许多这些内部连接以使用后量子加密，并预计到 2024 年底将完成所有内部连接的升级。这使得连接（3）成为我们与<em>源服务器</em>之间的最后一环。</p>
+	<p>我们很高兴能<strong>正式推出对大部分入站和出站连接的 X25519+Kyber 支持</strong>，适用于<em>源服务器</em>和 <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> fetch()。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">计划</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">后量子加密出站连接支持</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">免费</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">开始推出。目标是 10 月底前 100% 覆盖</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro 和 Business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">目标是年底前 100% 覆盖</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024 年 2 月开始推出2024 年 3 月 100% 覆盖</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>对于我们的 Enterprise 客户，我们将在接下来的六个月内定期发出更多信息，以帮助您准备迎接这一推出。Pro、Business 和 Enterprise 客户可以跳过这一推出，提前使用我们中<a href="https://blog.cloudflare.com/post-quantum-to-origins">相关博客文章</a>描述的 API，在您的区域内选择加入或者退出。在 2024 年 2 月为 Enterprise 客户推出之前，我们将在仪表板上添加一个切换按钮，以选择退出。 </p>
+	<p>如果您希望马上开始，<a href="https://blog.cloudflare.com/post-quantum-to-origins">请查看我们的博客文章以了解技术细节，并通过 API 启用后量子加密支持</a>!</p>
+	<h3 id="%E5%8C%85%E6%8B%AC%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%8B%E4%B8%80%E6%AD%A5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">包括什么？下一步是什么？</h3>
+	<p>对于如此大规模的升级，我们希望首先专注于我们最常用的产品，然后扩展以覆盖边缘用例。因此本次推出包括如下产品和系统：</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+			<tr>
+				<td>AMP</td>
+			</tr>
+			<tr>
+				<td>API GATEWAY</td>
+			</tr>
+			<tr>
+				<td>Argo Smart Routing</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>自动平台优化</td>
+			</tr>
+			<tr>
+				<td>Automatic Signed Exchanges</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Egress</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rulesets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>自定义错误页</td>
+			</tr>
+			<tr>
+				<td>基于流的监测</td>
+			</tr>
+			<tr>
+				<td>运行状况检查</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Host Head Checker</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Network Error Logging</td>
+			</tr>
+			<tr>
+				<td>Project Flame</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>R2 储存</td>
+			</tr>
+			<tr>
+				<td>Request Tracer</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed on Cloudflare Dash</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>流量管理器</td>
+			</tr>
+			<tr>
+				<td>WAF, Managed Rules</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web Analytics</td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<p>如果您使用的产品或服务未在此处列出，那么我们尚未开始为其推出后量子加密支持。我们正在积极推出对所有产品和服务的后量子加密支持，包括我们的 Zero Trust 产品。在我们实现所有系统的后量子加密支持之前，我们将在每个创新周发布更新博客文章，介绍我们已经为哪些产品推出了后量子加密，下一步将支持的产品以及未来的计划。 </p>
+	<p>我们将在不久后为以下产品提供后量子加密支持：</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+			<tr>
+				<td>Cloudflare DNS</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Load Balancer</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>日志记录</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>Cloudflare WARP</td>
+			</tr>
+			<tr>
+				<td>Bot管理</td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E7%8E%B0%E5%9C%A8%E8%A6%81%E6%8E%A8%E5%87%BA%E8%BF%99%E9%A1%B9%E6%9C%8D%E5%8A%A1%EF%BC%9F">为什么现在要推出这项服务？</h3>
+	<p>正如我们今年早些时候宣布的那样，后量子加密将免费包含在所有能够支持的 Cloudflare 产品和服务中。最好的加密技术应该对每个人免费开放，以帮助支持全球的隐私和人权。</p>
+	<p>正如我们在 3 月所<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">提到的</a>：</p>
+	<p><em>“曾经的实验性前沿已经变成了现代社会的基础结构。它运行在我们最关键的基础设施中，例如电力系统、医院、机场和银行。我们将最珍贵的记忆托付给它。我们把秘密托付给它。这就是为什么互联网需要默认是私密的。它需要默认是安全的。”</em></p>
+	<p>我们对后量子加密技术的研究是基于这样一个论点，即量子计算机可以破解传统密码学，产生类似于“千年虫”的问题。我们知道未来会出现一个问题，可能会给用户、企业甚至国家带来灾难性的后果。这一次的区别在于，我们不知道这种计算范式的突破将会在何年何月发生。更糟糕的是，今天捕获的任何流量在未来可能会被解密。我们今天就需要为应对这种威胁做好准备。</p>
+	<p>我们很高兴每个人都能在他们的系统中采用后量子加密技术。要了解我们部署后量子加密和第三方客户端/服务器支持的最新进展， 请访问 <a href="https://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> 并关注本博客。</p><!--kg-card-begin: markdown-->
+	<p><sup>1</sup>我们正在使用 Kyber （NIST 选择的后量子密钥协商算法）的一个<a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank">初步版本</a>。Kyber 尚未最终定稿。我们预计最终标准将在 2024 年以 ML-KEM 的名称发布，届时我们将迅速采用该标准，并停止支持 X25519Kyber768Draft00。</p>
+	<!--kg-card-end: markdown-->
+</div>

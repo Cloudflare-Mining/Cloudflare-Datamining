@@ -1,0 +1,228 @@
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-28.png" class="kg-image" alt="" loading="lazy" width="1800" height="1013"></figure>
+	<p>Durante los últimos 12 meses, hemos estado hablando sobre la nueva línea base de la encriptación en Internet: la criptografía poscuántica. El año pasado, durante la Semana aniversario anunciamos la disponibilidad de nuestra <a href="https://blog.cloudflare.com/post-quantum-for-all">versión beta de Kyber para fines de prueba,</a> y que <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a> se podría activar con la criptografía poscuántica. Este mismo año, dejamos clara nuestra postura de que creemos que esta tecnología fundamental debería estar disponible para <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">todos de forma gratuita, siempre. </a></p>
+	<p>Hoy, tras seis años y <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 publicaciones del blog</a>, hemos alcanzado un hito importante: estamos empezando a implementar la <a href="https://blog.cloudflare.com/post-quantum-to-origins">disponibilidad general</a> &nbsp;del soporte de la criptografía poscuántica para nuestros clientes, servicios y sistemas internos, tal como se describe más detalladamente a continuación. Esto incluye productos como <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> para la conectividad de origen, 1.1.1.1, R2, Argo Smart Routing, Snippets y muchos más. </p>
+	<p>Esto es un hito para Internet. No sabemos aún cuándo los ordenadores cuánticos alcanzarán la escala suficiente para descifrar la criptografía actual, pero las ventajas de actualizar ahora a la criptografía cuántica son evidentes. Las <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">conexiones rápidas y una seguridad preparada para el futuro</a> son posibles hoy gracias a los avances logrados por Cloudflare, Google, Mozilla, el Instituto Nacional de Estándares y Tecnología de EE. UU., Internet Engineering Task Force y muchas otras instituciones académicas.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-40.png" class="kg-image" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" width="1999" height="522"></figure>
+	<p>¿Qué significa la disponibilidad general? En octubre de 2022 <a href="https://blog.cloudflare.com/post-quantum-for-all">activamos <em>X25519+Kyber</em> como versión beta para todos los sitios web y las API</a> proporcionados a través de Cloudflare. Pero una conexión es cosa de dos: solo está protegida si el navegador también admite la criptografía poscuántica. A partir de agosto de 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank">Chrome</a> está activando poco a poco <em>X25519+Kyber</em> por defecto.</p>
+	<p>La solicitud del usuario se enruta a través de la red de Cloudflare (2). Hemos actualizado muchas de estas conexiones internas para utilizar la criptografía poscuántica, y esperamos dar por terminada la actualización de todas nuestras conexiones internas a finales de 2024. Esto deja como el enlace final la conexión (3) entre nosotros y el <em>servidor de origen</em>.</p>
+	<p>Nos complace anunciar que <strong>estamos implementado la compatibilidad con X25519+Kyber para la mayoría de las conexiones entrantes y salientes como disponibilidad general </strong>para su uso, incluidos los <em>servidores de origen</em> y <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> fetch()es.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Plan</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Compatibilidad con las conexiones salientes poscuánticas</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gratuito</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Implementación iniciada. Nuestro objetivo es la compatibilidad total para finales de octubre.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro y Business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nuestro objetivo es la compatibilidad total para finales de año.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">La implementación se iniciará en febrero de 2024. Compatibilidad total para marzo de 2024.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Para nuestros clientes Enterprise, a lo largo de los próximos seis meses proporcionaremos periódicamente información adicional para ayudarte a preparar para la implementación. Los clientes de los planes Pro, Business y Enterprise pueden omitir la implementación y la activación en su zona hoy, o bien desactivarla con antelación mediante una API tal como se describe en nuestra <a href="https://blog.cloudflare.com/post-quantum-to-origins">publicación complementaria del blog</a>. Antes de la implementación para Enterprise en febrero de 2024, añadiremos un selector en el panel de control para la desactivación. </p>
+	<p>Si te interesa empezar ya, <a href="https://blog.cloudflare.com/post-quantum-to-origins">echa un vistazo a nuestro blog, donde encontrarás todos los detalles técnicos, y activa la compatibilidad con la criptografía poscuántica mediante la API</a>.</p>
+	<h3 id="%C2%BFqu%C3%A9-se-incluye-y-qu%C3%A9-ser%C3%A1-lo-siguiente">¿Qué se incluye y qué será lo siguiente?</h3>
+	<p>Con una actualización de este calibre, queríamos centrarnos primero en nuestros productos más utilizados y a continuación ampliar progresivamente para cubrir nuestros casos extremos. Este proceso nos ha llevado a incluir los siguientes productos y sistemas en esta implementación:</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+			<tr>
+				<td>AMP</td>
+			</tr>
+			<tr>
+				<td>API Gateway</td>
+			</tr>
+			<tr>
+				<td>Argo Smart Routing</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>Optimización automática de la plataforma</td>
+			</tr>
+			<tr>
+				<td>Intercambios firmados automáticos</td>
+			</tr>
+			<tr>
+				<td>Salida de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Conjuntos de reglas de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>Páginas de error personalizado</td>
+			</tr>
+			<tr>
+				<td>Supervisión basada en el flujo</td>
+			</tr>
+			<tr>
+				<td>Comprobaciones de estado</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Verificador de encabezado de servidor</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Registro de errores de red</td>
+			</tr>
+			<tr>
+				<td>Proyecto Flame</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>Almacenamiento R2</td>
+			</tr>
+			<tr>
+				<td>Rastreador de solicitudes</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed en el panel de control de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>Traffic Manager</td>
+			</tr>
+			<tr>
+				<td>WAF, Reglas administradas</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web analytics</td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<p>Si un producto o servicio que utilizas no aparece en esta lista, aún no hemos empezado a implementar la criptografía poscuántica en él. Estamos trabajando activamente para implementar la criptografía poscuántica en todos nuestros productos y servicios, incluidos nuestros productos Zero Trust. Hasta que hayamos logrado la compatibilidad con la criptografía poscuántica en todos nuestros sistemas, en cada Innovation Week ofreceremos una nueva publicación del blog con las últimas noticias acerca de en qué productos ya hemos implementado la criptografía poscuántica, en cuáles lo haremos a continuación y las perspectivas para el futuro. </p>
+	<p>Productos en los que estamos trabajando para que en breve admitan la criptografía poscuántica:</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+			<tr>
+				<td>DNS de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Load Balancer</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>Registro</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>WARP de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Gestión de bots</td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<h3 id="%C2%BFpor-qu%C3%A9-ahora">¿Por qué ahora?</h3>
+	<p>Como ya anunciamos este mismo año, la criptografía poscuántica se incluirá de forma gratuita en todos los productos y los servicios de Cloudflare que puedan admitirla. La mejor tecnología de encriptación debe ser accesible para todos, de forma gratuita, a fin de ayudar a proteger la privacidad y los derechos humanos en todo el mundo.</p>
+	<p>Como <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">mencionamos</a> en marzo:</p>
+	<p><em>"Lo que antes era una tecnología fronteriza experimental se ha convertido en el sustrato subyacente de la sociedad moderna. Se ejecuta en nuestras infraestructuras más críticas, como los sistemas eléctricos, los hospitales, los aeropuertos y los bancos. Le confiamos nuestros recuerdos más preciados, también nuestros secretos. Por ello, Internet debe ser privada por defecto. Debe estar protegida por defecto".</em></p>
+	<p>Nuestro trabajo con la criptografía poscuántica se basa en la tesis de que los ordenadores cuánticos que pueden descifrar la criptografía convencional crean un problema similar al del error del año 2000. Sabemos que habrá un problema en el futuro que podría tener catastróficas consecuencias para los usuarios, las empresas e incluso para los estados-nación. La diferencia esta vez es que no sabemos la fecha y hora en que tendrá lugar este cambio radical en el paradigma informático. Lo que es peor, cualquier tráfico capturado hoy podría ser desencriptado en el futuro. Necesitamos prepararnos hoy para estar listos para esta amenaza.</p>
+	<p>Estamos entusiasmados de que todo el mundo adopte la criptografía poscuántica en sus sistemas. Para seguir los últimos desarrollos de nuestra implementación de la criptografía poscuántica y de la compatibilidad con clientes/servidores externos, consulta <a href="https://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> y no pierdas de vista este blog.</p><!--kg-card-begin: markdown-->
+	<p><sup>1</sup>Estamos utilizando una <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank">versión preliminar</a> de Kyber, la opción de NIST para un acuerdo de claves poscuánticas. Kyber aún no se ha completado. Esperamos la publicación de un estándar final en 2024, denominado ML-KEM. Entonces adoptaremos de inmediato dicho estándar al tiempo que eliminaremos la compatibilidad con X25519Kyber768Draft00.</p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,233 @@
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-28.png" class="kg-image" alt="" loading="lazy" width="1800" height="1013"></figure>
+	<p>Au cours des douze derniers mois, nous avons parlé de la nouvelle référence en matière de chiffrement sur Internet : la cryptographie post-quantique. Durant la Semaine anniversaire, l'année dernière, nous avons annoncé que notre <a href="https://blog.cloudflare.com/fr-fr/post-quantum-for-all-fr-fr">version bêta de Kyber était disponible à des fins de test</a>, et que <a href="https://blog.cloudflare.com/fr-fr/post-quantum-tunnel-fr-fr">Cloudflare Tunnel</a> pouvait être mis en œuvre avec la cryptographie post-quantique. Au début de l'année, nous avons clairement indiqué que nous estimons que cette technologie fondamentale devait être <a href="https://blog.cloudflare.com/fr-fr/post-quantum-crypto-should-be-free-fr-fr">accessible à tous, gratuitement et pour toujours</a>. </p><!--kg-card-begin: markdown-->
+	<p>Aujourd'hui, nous avons franchi une étape importante, après six ans et <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 articles de blog</a> : nous lançons le déploiement de la prise en charge de la cryptographie post-quantique <a href="https://blog.cloudflare.com/post-quantum-to-origins">en disponibilité générale</a><sup>1</sup> pour nos clients, nos services et nos systèmes internes ; nous le décrivons plus en détail ci-dessous. Ce déploiement inclut des produits tels que <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> pour la connectivité aux serveurs d'origine, 1.1.1.1, R2, le routage intelligent Argo, Snippets et bien d'autres.</p>
+	<!--kg-card-end: markdown-->
+	<p>Il s'agit d'une étape importante pour Internet. Nous ne savons pas encore quand les ordinateurs quantiques deviendront suffisamment puissants pour briser la cryptographie actuelle, mais les avantages qu'offre l'adoption de la cryptographie post-quantique sont aujourd'hui manifestes. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">Des connexions rapides et une sécurité pérenne</a> sont désormais possibles, grâce aux progrès accomplis par Cloudflare, Google, Mozilla, NIST (National Institute of Standards and Technology) des États-Unis, Internet Engineering Task Force et de nombreuses institutions universitaires. </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-40.png" class="kg-image" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" width="1999" height="522"></figure>
+	<p>Qu'entend-on par « disponibilité générale » ? En octobre 2022, <a href="https://blog.cloudflare.com/fr-fr/post-quantum-for-all-fr-fr">nous avons déployé X25519+Kyber sous forme de version bêta pour l'ensemble des sites web et API</a> servis par l'intermédiaire de Cloudflare. Cependant, un tango se danse à deux, et une connexion n'est donc sécurisée que si le navigateur prend également en charge la cryptographie post-quantique. À partir d'août 2023, <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank">Chrome</a> activera progressivement <em>X25519+Kyber</em>, par défaut. </p>
+	<p>La requête de l'utilisateur est acheminée sur le réseau de Cloudflare (2). Nous avons amélioré un grand nombre de nos connexions internes afin d'utiliser la cryptographie post-quantique, et nous prévoyons de finaliser l'amélioration de toutes nos connexions internes d'ici fin 2024. La dernière liaison demeure donc la connexion (3) entre Cloudflare et le <em>serveur d'origine</em>.</p>
+	<p>Nous sommes heureux d'annoncer que <strong>nous déployons la prise en charge de X25519+Kyber en disponibilité générale pour la plupart des connexions entrantes et sortantes</strong> dans le cadre d'une utilisation comprenant les <em>serveurs d'origine</em> et les commandes <code>fetch()</code> de <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>. </p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Plan</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Prise en charge des connexions sortantes post-quantiques</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gratuit</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Début du déploiement. Objectif : 100 % d'ici fin octobre.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro et Business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Objectif : 100 % d'ici la fin de l'année.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Le déploiement commencera en février 2024. 100 % d'ici mars 2024.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Nous transmettrons régulièrement à nos clients Enterprise des informations supplémentaires au cours des six prochains mois, afin de les aider à se préparer au déploiement. Les clients des offres Pro, Business et Enterprise peuvent ignorer le déploiement et s'inscrire dès aujourd'hui dans leur zone, ou se désinscrire à l'avance via une API, décrite dans <a href="https://blog.cloudflare.com/post-quantum-to-origins">l'article de blog associé</a>. Avant le déploiement pour les clients de l'offre Enterprise en février 2024, nous ajouterons une option de désinscription au tableau de bord. </p>
+	<p>Si vous êtes impatient(e) de vous lancer maintenant, <a href="https://blog.cloudflare.com/post-quantum-to-origins">consultez notre article de blog contenant les informations techniques détaillées et activez la prise en charge de la cryptographie post-quantique via l'API</a>.</p>
+	<h3 id="quest-ce-qui-est-inclus-et-quest-ce-qui-va-suivre">Qu'est-ce qui est inclus et qu'est-ce qui va suivre ?</h3>
+	<p>Avec une amélioration de cette ampleur, nous voulions d'abord prioriser les produits les plus utilisés, puis étendre le déploiement pour prendre en charge les scénarios d'utilisation particuliers. Cette approche nous a conduits à inclure les produits et systèmes suivants dans ce déploiement :</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AMP (Accelerated Mobile Pages)</td>
+			</tr>
+			<tr>
+				<td>Passerelle API Gateway</td>
+			</tr>
+			<tr>
+				<td>Routage intelligent Argo</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>Optimisation automatique de plateforme</td>
+			</tr>
+			<tr>
+				<td>Échanges signés automatiques</td>
+			</tr>
+			<tr>
+				<td>Trafic sortant de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Ensemble de règles de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>Pages d'erreur personnalisée</td>
+			</tr>
+			<tr>
+				<td>Surveillance fondée sur les flux</td>
+			</tr>
+			<tr>
+				<td>Contrôles d’intégrité</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Host Head Checker</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Journalisation des erreurs réseau</td>
+			</tr>
+			<tr>
+				<td>Project Flame</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>R2 Storage</td>
+			</tr>
+			<tr>
+				<td>Request Tracer</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed sur le tableau de bord de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>Traffic Manager</td>
+			</tr>
+			<tr>
+				<td>Pare-feu WAF, règles gérées</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web Analytics</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Si un produit ou un service que vous utilisez ne figure pas dans cette liste, c'est que le déploiement de la cryptographie post-quantique n'a pas encore débuté pour ce produit. Nous travaillons activement au déploiement de la cryptographie post-quantique pour tous nos produits et services, notamment nos produits Zero Trust. Jusqu'à ce que tous nos systèmes prennent en charge la cryptographie post-quantique, nous publierons un article de blog proposant des informations mises à jour à l'occasion de chaque Innovation Week. Cet article présentera les produits pour lesquels nous avons déployé la cryptographie post-quantique, ceux qui en bénéficieront prochainement et ceux pour lesquels la prise en charge est encore à l'horizon. </p>
+	<p>Voici les produits pour lesquels nous développons la prise en charge de la cryptographie post-quantique :</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>DNS Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Service d'équilibrage de charge de Cloudflare</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>Journalisation</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>Cloudflare WARP</td>
+			</tr>
+			<tr>
+				<td>Gestion des bots</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="pourquoi-maintenant">Pourquoi maintenant ?</h3>
+	<p>Comme nous l'avons annoncé plus tôt cette année, la cryptographie post-quantique sera incluse gratuitement dans tous les produits et services Cloudflare compatibles. La meilleure technologie de chiffrement devrait être accessible à tous, gratuitement, afin de contribuer à la protection de la confidentialité et des droits de l'homme dans le monde entier.</p>
+	<p>Comme nous <a href="https://blog.cloudflare.com/fr-fr/post-quantum-crypto-should-be-free-fr-fr">l'avons indiqué</a> en mars dernier :</p>
+	<p><em>«Ce qui était autrefois une frontière expérimentale est devenu le substrat sous-jacent de la société moderne. Il est présent dans nos infrastructures les plus critiques, à l'image des réseaux électriques, des hôpitaux, des aéroports et des banques. Nous lui confions nos souvenirs les plus précieux. Nous lui confions nos secrets. C'est pourquoi l'Internet doit être privé par défaut, et doit également être sécurisé par défaut.»</em></p>
+	<p>Nos travaux sur la cryptographie post-quantique sont motivés par la théorie selon laquelle les ordinateurs quantiques, capables de briser la cryptographie conventionnelle, sont à l'origine d'un problème comparable à celui du bug de l'an 2000. Nous savons qu'il y aura, à l'avenir, un problème qui pourrait avoir des répercussions catastrophiques sur les utilisateurs, les entreprises et même les États-nations. La différence, cette fois, c'est que nous ne connaissons pas la date et l'heure auxquelles se produira cette véritable rupture du paradigme informatique. Pire encore, tout trafic capturé aujourd'hui pourrait être déchiffré à l'avenir. Nous devons donc nous préparer dès aujourd'hui à cette menace.</p>
+	<p>Nous sommes impatients de voir tous les utilisateurs adopter la cryptographie post-quantique sur leurs systèmes. Pour suivre les derniers développements du déploiement de la cryptographie post-quantique et de la prise en charge de clients/serveurs tiers, consultez <a href="https://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> et suivez ce blog.</p>
+	<p>***</p><!--kg-card-begin: markdown-->
+	<p><sup>1</sup>Nous utilisons une <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank">version préliminaire</a> de Kyber, le choix de l'institut NIST pour les accords de clé post-quantique. Kyber n'a pas été finalisé ; nous nous attendons à la publication d'une norme définitive en 2024, sous le nom « ML-KEM ». Nous l'adopterons alors rapidement, tout en mettant fin à la prise en charge de X25519Kyber768Draft00.</p>
+	<!--kg-card-end: markdown-->
+	<p></p>
+</div>

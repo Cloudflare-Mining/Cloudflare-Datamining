@@ -1,0 +1,26 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-35.png" class="kg-image" alt="Cloudflare is now powering Microsoft Edge Secure Network" loading="lazy" width="1800" height="1014"></figure>
+	<p>从跨网站追踪您活动的第三方 Cookie，到基于您的 IP 地址和浏览数据进行高度定向广告，如今的互联网浏览体验并不像应该那样私密。Cloudflare 认为，每个人都应该能够在没有持续跟踪和窥探的情况下浏览互联网。 </p>
+	<p>因此，我们隆重宣布与 Microsoft Edge 合作，提供一个快速和安全的 VPN，就在浏览器中。用户不需要安装任何新东西或理解复杂的概念，就能获得最新的网络级隐私：Edge 安全网络 VPN 在大多数市场上都可以在最新的 Microsot Edge 消费者版本上使用，并自动附带 5 GB 的数据。如要使用，请转至<em>[Microsoft Edge 设置 &amp; 更多 (…) &gt; 浏览器要素，</em>然后点击 <em>免费获取 VPN]</em>。查看 Microsoft 的 <a href="https://www.microsoft.com/en-us/edge/features/edge-secure-network-vpn?form=MT00D8" target="_blank">Edge 安全网络页面</a>以了解详情。</p>
+	<h3 id="cloudflare-%E7%9A%84%E9%9A%90%E7%A7%81%E4%BB%A3%E7%90%86%E5%B9%B3%E5%8F%B0%E5%B9%B6%E9%9D%9E%E6%82%A8%E7%9A%84%E5%85%B8%E5%9E%8B-vpn">Cloudflare 的隐私代理平台并非您的典型 VPN</h3>
+	<p>回顾一下：VPN 通过由提供商（在本例中是 Cloudflare）运营的中间服务器来隧道传送离开您设备的互联网流量。这其中有许多重要的组成部分，其中之一就是 VPN 协议，它定义了隧道的建立方式以及流量的传输方式。您可能听说过一些这样的协议，例如 Wireguard、IPsec 和 OpenVPN。虽然我们对这些协议并不陌生（Cloudflare 的 WireGuard 实现目前被使用 <a href="https://blog.cloudflare.com/1111-warp-better-vpn">1.1.1.1+WARP</a> 的数百万设备使用）—— 但我们将我们的隐私代理平台视为推动互联网隐私的下一个前沿，并拥抱 Cloudflare 的核心价值之一：开放的互联网标准。</p>
+	<p>隐私代理平台实现了 HTTP CONNECT，这是在 <a href="http://placeholder" target="_blank">HTTP 标准</a>中定义的一种方法，通过建立隧道并通过该隧道发送可靠和有序的字节流来代理流量。如要进一步了解这种代理方法（以及它的历史！），请查看我们的<a href="https://blog.cloudflare.com/a-primer-on-proxies">代理入门</a>。 </p>
+	<p>我们还利用了 Cloudflare 已经大规模部署的基础设施中其他以隐私为导向的部分： 请求首先利用 <a href="https://1.1.1.1/dns" target="_blank">1.1.1.1</a> 进行 DNS 解析，使用基于 <a href="https://datatracker.ietf.org/wg/privacypass/about" target="_blank">Privacy Pass</a> 的令牌代理进行客户端身份验证， 并通过 <a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">Geo-egress</a> 选择准确的出口 IP 地址，而不会暴露用户的精确位置。</p>
+	<h3 id="%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F">工作方式</h3>
+	<p>让我们深入了解这些组件的细节。在本博客文章中，我们将把人们用于浏览互联网的设备（手机、平板电脑或计算机）称为<em>客户端，</em>他们试图访问的网站称为<em>源站。</em></p>
+	<p>隐私代理平台包括三个主要部分：</p>
+	<ol>
+		<li><strong>令牌代理</strong>：这个服务检查您是否拥有合法 Microsoft 账户的 Edge 安全网络用户。</li>
+		<li><strong>隐私 API</strong>: 根据以上检查，Cloudflare 的隐私 API会发放认证令牌，客户端使用这些令牌进行对代理本身的身份验证。</li>
+		<li><strong>隐私代理</strong>：这是基于 HTTP CONNECT 的代理服务，在 Cloudflare 网络上运行。该服务会检查客户端是否提供有效的认证令牌，如果是，则将加密的 HTTP 请求代理到源站。它还负责选择一个有效的出口 IP 地址供使用。 </li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-24.png" class="kg-image" alt="" loading="lazy" width="1600" height="897"></figure>
+	<p>当 Edge 安全网络启用时——例如，用户连接到咖啡店的开放式 Wi-Fi 网络时，我们的代理将自动提示客户端进行令牌身份验证。如果客户端已经有一个令牌，它将呈现该令牌。如果没有，它将利用令牌代理通过验证者和发行者的帮助来创建一个新的令牌池：验证者检查客户端和 Microsoft 账户的有效性，发行者则为该客户端发行令牌。这个过程基于 <a href="https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol">Privacy Pass 协议</a>。重要的是，它允许 Cloudflare 验证客户端的真实身份，而无需收集或存储来自 Microsoft 用户的个人信息。</p>
+	<p>一旦客户端向代理服务器提供了有效的令牌，隐私代理会根据客户端地理位置的哈希值选择一个有效的出口 IP 地址。然后，它使用 DNS 记录（由 Cloudflare 的 DNS 解析器 <a href="https://1.1.1.1" target="_blank">1.1.1.1</a> 提供） 来打开到源站的加密会话。从那里开始，情况就相当简单直接了：如果用户继续在该网站上浏览，进一步的请求将通过该连接发送，如果他们停止或关闭浏览器，该连接也将关闭。 </p>
+	<p>由于 Cloudflare 每秒代理数百万个请求，代理的许多操作方面由我们的代理框架 <a href="https://blog.cloudflare.com/introducing-oxy">Oxy</a> 管理。 Oxy 处理从遥测、优雅重启、流多路复用和 IP回退，到身份验证<a href="https://blog.cloudflare.com/oxy-extensibility">钩子</a>等任务。</p>
+	<h3 id="cloudflare-%E7%9A%84%E7%BD%91%E7%BB%9C%E5%AE%9E%E7%8E%B0%E8%BE%83%E4%BD%8E%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E8%8B%B1%E9%87%8C%E5%BB%B6%E8%BF%9F%E5%92%8C%E5%9C%B0%E7%90%86%E5%B9%B3%E7%AD%89">Cloudflare 的网络实现较低的最后一英里延迟和地理平等</h3>
+	<p>Cloudflare 的隐私代理实现在不牺牲隐私的前提下提供最佳的用户体验。当启用 Edge 安全网络时，用户将获得与他们地理位置相关的搜索和浏览结果。在 Cloudflare，我们称之为“披萨测试”：人们应该能够使用我们的任何隐私代理产品，并且仍然能够获取“附近有哪些披萨店”的结果。我们做到这一点的方式是始终通过具有对应用户位置的 IP 地址的 Cloudflare 数据中心出站。我们曾经详细谈过如何为 <a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">1.1.1.1+WARP </a>实现这一点。</p>
+	<p>与通常拥有几十、有时几百个服务器的典型 VPN 运营商不同，Cloudflare 拥有的网络覆盖范围要大得多：在<a href="https://cloudflare.com/network" target="_blank">超过 300 个城市</a>。由于我们的网络采用一种任播（anycast）方式，即“每种服务都无处不在”，我们的每个数据中心都可以接受来自 Edge 安全网络客户端的流量。这意味着 Edge 用户将自动检测并连接到地理位置非常接近他们的 Cloudflare 数据中心，从而最大程度地减少最后一英里的延迟。最后，由于 Cloudflare 还运营 CDN，已经在 Cloudflare 上的网站将获得“热路径”，加载速度更快。</p>
+	<p>Cloudflare 一直致力于为开放互联网提供更多隐私选项，并很高兴能为 Edge 用户提供更私密、安全的浏览体验。若要了解更多信息，请访问 <a href="https://www.microsoft.com/en-us/edge/features/edge-secure-network-vpn" target="_blank">Microsoft 的 Edge 安全网络页面</a>或 <a href="https://support.microsoft.com/en-us/topic/use-the-microsoft-edge-secure-network-to-protect-your-browsing-885472e2-7847-4d89-befb-c80d3dda6318" target="_blank"> Microsoft 的支持页面</a>。如果您是合作伙伴并兴趣使用类似这样的隐私保护代理，请填写<a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank">这个表单</a>。</p>
+</div>

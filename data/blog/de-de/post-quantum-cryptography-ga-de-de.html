@@ -1,0 +1,228 @@
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image2-28.png" class="kg-image" alt="" loading="lazy" width="1800" height="1013"></figure>
+	<p>In den letzten zwölf Monaten haben wir über die neue Grundlage der Verschlüsselung im Internet gesprochen: Post-Quanten-Kryptographie. Während der Birthday Week im letzten Jahr haben wir angekündigt, dass unsere <a href="https://blog.cloudflare.com/post-quantum-for-all">Beta-Version von Kyber zu Testzwecken verfügbar ist</a> und dass Post-Quanten-Kryptografie für <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a> aktiviert werden kann. Anfang dieses Jahres haben wir uns klar dafür ausgesprochen, dass diese grundlegende Technologie <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">für alle kostenlos und dauerhaft verfügbar sein sollte. </a></p>
+	<p>Heute haben wir nach sechs Jahren und <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 Blog-Beiträgen</a> einen Meilenstein erreicht: Wir führen die <a href="https://blog.cloudflare.com/post-quantum-to-origins">allgemeine Verfügbarkeit</a> der Unterstützung für Post-Quanten-Kryptographie für unsere Kunden, Dienste und internen Systeme ein, wie im Folgenden genauer beschrieben. Dazu gehören Produkte wie <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> für Konnektivität von Ursprungsservern, 1.1.1.1, R2, Argo Smart Routing, Snippets und viele mehr. </p>
+	<p>Dies ist ein Meilenstein für das Internet. Wir wissen noch nicht, wann Quantencomputer leistungsstark genug sein werden, um die heutige Kryptographie zu knacken, aber die Vorteile, jetzt auf Post-Quanten-Kryptographie umzusteigen, liegen auf der Hand. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">Schnelle Verbindungen und vorausschauende</a> Sicherheit sind dank der Fortschritte von Cloudflare, Google, Mozilla, den National Institutes of Standards and Technology (NIST) in den USA, der Internet Engineering Task Force und zahlreichen akademischen Einrichtungen heute möglich.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-40.png" class="kg-image" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" width="1999" height="522"></figure>
+	<p>Was bedeutet Allgemeine Verfügbarkeit (GA)? Im Oktober 2022 <a href="https://blog.cloudflare.com/post-quantum-for-all">aktivierten wir <em>X25519+Kyber</em> als Beta-Version für alle Websites und APIs</a>, die über Cloudflare bereitgestellt werden. Für ein perfektes Zusammenspiel muss jedoch jeder seinen Beitrag leisten: Die Verbindung ist nur dann sicher, wenn der Browser auch Post-Quanten-Kryptographie unterstützt. Ab August 2023 wird <a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank">Chrome</a> langsam <em>X25519+Kyber</em> standardmäßig aktivieren.</p>
+	<p>Die Anfrage des Nutzers wird über das Netzwerk von Cloudflare geleitet (2). Wir haben viele dieser internen Verbindungen auf Post-Quanten-Kryptographie umgestellt und erwarten, dass wir bis Ende 2024 alle unsere internen Verbindungen umgestellt haben werden. Damit bleibt als letztes Glied die Verbindung (3) zwischen uns und dem <em>Ursprungsserver</em>.</p>
+	<p>Wir freuen uns, ankündigen zu können, dass <strong>wir die Unterstützung für X25519+Kyber für die meisten ein- und ausgehenden Verbindungen allgemein verfügbar machen </strong>auch für <em>Ursprungsserver</em> und <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a>-Abrufe via fetch()-Befehl.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tarif</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Unterstützung für ausgehende Post-Quantum-Verbindungen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Einführung lanciert. Ziel ist es, bis Ende Oktober 100 % zu erreichen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro und Business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ziel ist es, bis Ende des Jahres 100 % zu erreichen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die Einführung beginnt im Februar 2024. 100 % bis März 2024.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Enterprise-Kunden werden im Laufe der nächsten sechs Monate regelmäßig zusätzliche Informationen erhalten, um sie auf die Einführung vorzubereiten. Pro-, Business- und Enterprise-Kunden können die Einführung überspringen und sich bereits heute in ihrer Zone anmelden oder sich vorzeitig über eine API abmelden, die in unserem <a href="https://blog.cloudflare.com/post-quantum-to-origins">begleitenden Blogbeitrag</a> beschrieben wird. Vor der Markteinführung für Enterprise-Kunden im Februar 2024 werden wir im Dashboard einen Schalter für die Abmeldung (Opt-out) einrichten. </p>
+	<p>Wenn Sie sofort loslegen möchten, <a href="https://blog.cloudflare.com/post-quantum-to-origins">lesen Sie unseren Blog mit den technischen Details und der Unterstützung von Post-Quanten-Kryptographie über die API</a>!</p>
+	<h3 id="was-ist-inbegriffen-und-wie-geht-es-weiter">Was ist inbegriffen und wie geht es weiter?</h3>
+	<p>Bei einem Upgrade dieser Größenordnung wollten wir uns zunächst auf unsere am häufigsten genutzten Produkte konzentrieren und dann auf speziellere Anwendungsfälle ausweiten. Dieser Prozess hat dazu geführt, dass wir die folgenden Produkte und Systeme in diese Markteinführung einbezogen haben:</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+			<tr>
+				<td>AMP</td>
+			</tr>
+			<tr>
+				<td>API-Gateway</td>
+			</tr>
+			<tr>
+				<td>Argo Smart Routing</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>Automatic Platform Optimization</td>
+			</tr>
+			<tr>
+				<td>Automatische Signed Exchanges</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Egress</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rulesets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>Eigene Fehlerseiten</td>
+			</tr>
+			<tr>
+				<td>Flow-basierte Überwachung</td>
+			</tr>
+			<tr>
+				<td>Integritätsprüfungen</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Host Head Checker</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Protokollierung von Netzwerkfehlern</td>
+			</tr>
+			<tr>
+				<td>Projekt „Flame“</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>R2 Storage</td>
+			</tr>
+			<tr>
+				<td>Nachverfolgung von Anfragen (Request Tracer)</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed auf Cloudflare Dash</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>Traffic Manager</td>
+			</tr>
+			<tr>
+				<td>WAF, Managed Rules (Verwaltete Regel)</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web Analytics</td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<p>Wenn ein von Ihnen genutztes Produkt oder ein Dienst hier nicht aufgeführt ist, haben wir noch nicht mit der Einführung der Post-Quanten-Kryptographie für dieses Produkt begonnen. Wir arbeiten aktiv daran, die Post-Quanten-Kryptographie für alle Produkte und Dienstleistungen, einschließlich unserer Zero Trust-Produkte, einzuführen. Bis wir die Post-Quanten-Kryptographie in allen unseren Systemen unterstützt haben, werden wir in jeder Innovation Week einen Info-Blogbeitrag veröffentlichen, in dem wir darüber berichten, für welche Produkte wir die Post-Quanten-Kryptographie bereits eingeführt haben, welche Produkte als nächstes dran sind und was noch geplant ist. </p>
+	<p>Wir arbeiten daran, die Post-Quanten-Kryptographie bald in unsere folgenden Produkte zu integrieren:</p><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+			<tr>
+				<td>Cloudflare DNS</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Load Balancer</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>Protokollierung</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>Cloudflare WARP</td>
+			</tr>
+			<tr>
+				<td>Bot-Management</td>
+			</tr>
+
+		</thead>
+	</table><!--kg-card-end: html-->
+	<h3 id="warum-gerade-jetzt">Warum gerade jetzt?</h3>
+	<p>Wie wir bereits Anfang des Jahres angekündigt haben, wird die Post-Quanten-Kryptographie kostenlos in alle Cloudflare-Produkte und -Dienste integriert, die sie unterstützen können. Die beste Verschlüsselungstechnologie sollte für jedermann zugänglich sein – und zwar kostenlos –, um die Privatsphäre und die Menschenrechte weltweit zu schützen und zu fördern.</p>
+	<p>Wie wir bereits im März <a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">erwähnt haben</a>:</p>
+	<p><em>„Einst ein experimentelles Neuland, hat es sich zum Fundament der modernen Gesellschaft entwickelt. Unsere kritischsten Infrastrukturen wie Stromnetze, Krankenhäuser, Flughäfen und Banken setzen es ein. Wir vertrauen ihm unsere wertvollsten Erinnerungen an. Wir vertrauen ihm unsere Geheimnisse an. Deshalb muss das Internet standardmäßig privat sein. Es muss standardmäßig sicher sein.“</em></p>
+	<p>Unsere Arbeit an der Post-Quanten-Kryptographie beruht auf der These, dass Quantencomputer, die konventionelle Kryptographie knacken können, ein ähnliches Problem darstellen wie der Jahr-2000-Bug. Wir wissen, dass es in der Zukunft ein Problem geben wird, das katastrophale Folgen für Benutzer, Unternehmen und sogar Nationalstaaten haben könnte. Der Unterschied ist, dass wir dieses Mal nicht wissen, wann und wie dieser Paradigmenwechsel hinsichtlich der Funktionsweise von Computern stattfinden wird. Schlimmer noch, jeder heute erfasste Traffic könnte in Zukunft entschlüsselt werden. Wir müssen uns heute vorbereiten, um für diese Bedrohung gerüstet zu sein.</p>
+	<p>Wir freuen uns über jeden, der die Post-Quanten-Kryptographie in seine Systeme integrieren möchte. Um über die neuesten Entwicklungen unserer Post-Quanten-Kryptographie und der Client/Server-Unterstützung von Drittanbietern auf dem Laufenden zu bleiben, besuchen Sie <a href="https://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> und behalten Sie diesen Blog im Auge.</p><!--kg-card-begin: markdown-->
+	<p><sup>1</sup> Wir verwenden eine <a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank">vorläufige Version</a> von Kyber, das vom NIST für die Post-Quantum-Schlüsselvereinbarung ausgewählt wurde. Kyber ist noch nicht fertiggestellt. Wir gehen davon aus, dass im Jahr 2024 ein endgültiger Standard unter dem Namen ML-KEM veröffentlicht wird, den wir dann umgehend übernehmen werden, während wir die Unterstützung für X25519Kyber768Draft00 einstellen.</p>
+	<!--kg-card-end: markdown-->
+</div>
