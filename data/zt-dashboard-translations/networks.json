@@ -1,5 +1,6 @@
 {
 	"add_error": "Error creating route",
+	"add_route": "Add a route",
 	"add_success": "Successfully created route",
 	"back_button": "Back to routes",
 	"configure_route_description": "Enter your route details and the tunnel you would like to add it to. To create a new tunnel, go to Network > Tunnels.",
@@ -7,11 +8,18 @@
 	"create_route_button": "Create",
 	"create_route_description": "Add a new public hostname or private network. Then, select a tunnel to route the traffic.",
 	"create_route_title": "Create new route",
+	"create_tunnel": "Create and activate a Tunnel",
+	"create_tunnel_bp1": "  Name your Tunnel based on the infrastructure you want to connect.",
+	"create_tunnel_bp2": "Then, install and assign a connector to establish connectivity between Cloudflare’s global network and your private infrastructure.",
 	"delete_confirm_button": "Delete",
 	"delete_confirm_header": "Delete route: %{network}?",
 	"delete_failure": "Error deleting route",
 	"delete_success": "Route successfully deleted",
 	"edit_route_title": "Edit route",
+	"recommendation_description": "Define rules to block or allow access to your network based on identity and device posture conditions.",
+	"recommendation_title": "Protect your network with Gateway policies",
+	"routes_empty_state": "Control the accessibility of your resources",
+	"routes_empty_state_description": " Routes allow you to define network segments and control the resources available via specific tunnels or connectors.",
 	"routes_page_description": "Establish a secure connection between Cloudflare’s edge and your infrastructure.",
 	"routes_page_title": "Routes",
 	"routes_table_cidr_column": "CIDR",
@@ -19,7 +27,9 @@
 	"routes_table_description": "Manage the routes currently connected to your tunnel, or add a new one.",
 	"routes_table_description_column": "Description",
 	"routes_table_search_placeholder": "Search for IP/CIDR",
-	"routes_table_title": "Routes - Entering the tunnel",
+	"routes_table_title": "Your routes",
 	"routes_table_tunnel_column": "Tunnel",
-	"routes_table_vnet_column": "Virtual network"
+	"routes_table_vnet_column": "Virtual network",
+	"traffic_ingress": "Define how traffic will ingress",
+	"traffic_ingress_bp1": "Create logical network segments that are assigned to different connectors, allowing for tailored access and control."
 }
