@@ -1,7 +1,8 @@
-<div class="mb2 gray5">11 min read</div>
+<div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-10.41.56-PM.png" class="kg-image" alt="" loading="lazy" width="1150" height="612"></figure>
-	<p>今天早些时候，Cloudflare 与 Google 和 Amazon AWS 一起披露了一个名为 “HTTP/2 Rapid Reset” 攻击的新型 zero-day 漏洞的存在。此攻击利用 HTTP/2 协议中的弱点来生成巨大的超容量分布式拒绝服务 (DDoS) 攻击。近几个月来，Cloudflare 缓解了一系列攻击，其中一次攻击规模是<a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">我们之前观察到的任何攻击</a>的三倍，每秒超过 2.01 亿个请求 (rps)。自 2023 年 8 月底以来，Cloudflare 已缓解了超过 1,100 起 RPS 超过 1000 万的其他攻击，其中 184 起攻击超过了我们之前 7100 万 RPS 的 DDoS 记录。</p>
+	<p>今天早些时候，Cloudflare 与 Google 和 Amazon AWS 一起披露了一个名为 “HTTP/2 Rapid Reset” 攻击的新型 zero-day 漏洞的存在。此攻击利用 HTTP/2 协议中的弱点来生成巨大的超容量分布式拒绝服务 (DDoS) 攻击。近几个月来，Cloudflare 缓解了一系列攻击，其中一次攻击规模是<a href="https://blog.cloudflare.com/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack">我们之前观察到的任何攻击</a>的三倍，每秒超过 2.01 亿个请求 (rps)。自 2023 年 8 月底以来，Cloudflare 已缓解了超过 1,100 起 RPS 超过 1000 万的其他攻击，其中 184 起攻击超过了我们之前 7100 万 RPS 的 DDoS 记录。</p><!--kg-card-begin: html-->
+	<center><em><small>受到攻击或需要额外保护？<a href="https://www.cloudflare.com/h2" target="_blank">单击此处获取帮助</a>。</small></em></center><br><!--kg-card-end: html-->
 	<p>这个 zero-day 漏洞为威胁行为者提供了一个重要的新工具，即漏洞中的瑞士军刀，能够以前所未有的规模利用和攻击受害者。虽然这些攻击有时非常复杂且难以应对，但正是因为它们，Cloudflare 才有机会开发专用技术来缓解 zero-day 漏洞的影响。</p>
 	<p>如果您使用 Cloudflare 进行 HTTP DDoS 缓解，那么您已经受到保护。下面，我们将提供有关此漏洞的更多信息，以及如何确保自身安全的资源和建议。</p>
 	<h3 id="%E8%A7%A3%E6%9E%84%E6%94%BB%E5%87%BB%EF%BC%9A%E6%AF%8F%E4%BD%8D-cso-%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E5%86%85%E5%AE%B9">解构攻击：每位 CSO 需要了解的内容</h3>
@@ -42,5 +43,5 @@
 		<li>考虑在周边使用基于云的辅助 DDoS L7 提供商以提高弹性。</li>
 	</ul>
 	<p>Cloudflare 的使命是帮助构建更好的互联网。如果您担心当前的 DDoS 防护状态，我们非常乐意免费为您提供我们的 DDoS 功能和弹性，以缓解任何成功的 DDoS 攻击尝试。我们知道您面临的压力，因为我们在过去 30 天里抵御了这些攻击，并使我们本已一流的系统变得更好。 </p>
-	<p>如果您有兴趣了解更多信息，我们即将举行网络研讨会，详细介绍该 zero-day 漏洞以及应对措施；您可以<a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank">在此登记</a>。我们还在另一篇博文中详细介绍了这次攻击的更多技术细节：<a href="https://cfl.re/rapid-reset-breakdown" target="_blank">HTTP/2 Rapid Reset：解构破纪录的攻击</a>。最后，如果您是攻击目标或需要立即保护，请联系您当地的 Cloudflare 代表或访问 <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank">https://www.cloudflare.com/zh-cn/under-attack-hotline/</a>。</p>
+	<p>如果您有兴趣了解更多信息，请<a href="https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF" target="_blank">观看我们的网络研讨会</a>，了解 zero-day 的详细信息以及应对方式。如果您不确定自己是否受到保护或想了解如何受到保护，请<a href="https://www.cloudflare.com/h2" target="_blank">联系我们</a>。我们还在另一篇博文中详细介绍了这次攻击的更多技术细节：<a href="https://cfl.re/rapid-reset-breakdown" target="_blank">HTTP/2 Rapid Reset：解构破纪录的攻击</a>。最后，如果您是攻击目标或需要立即保护，请联系您当地的 Cloudflare 代表或访问 <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank">https://www.cloudflare.com/zh-cn/under-attack-hotline/</a>。</p>
 </div>
