@@ -113,7 +113,7 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic.network_monitoring",
 			url: "/network-monitoring",
-			hasPermission: I => (0, r.iY)(I) && !!(0, o.Le)(I, "account_analytics", "magic_network_monitoring")
+			hasPermission: I => (0, r.iY)(I) && (!!(0, o.Le)(I, "account_analytics", "magic_network_monitoring") || !!(0, d.$f)(I, "rulesets.magic_transit_allowed"))
 		}]
 	}, {
 		title: "navigation.account.security_center",
@@ -361,7 +361,7 @@ const navigation = {
 			title: "navigation.account.workers.ai.vectorize",
 			url: "/ai/vectorize",
 			testId: "sidenav-ai-vectorize-link",
-			hasPermission: I => (0, o.RO)(I)
+			hasPermission: I => (0, o.RO)(I) && !!(0, d.BF)(I, "vector_db.enabled")
 		}, {
 			title: "navigation.account.workers.ai.ai-gateway",
 			url: "/ai/ai-gateway/general",
@@ -464,7 +464,7 @@ const navigation = {
 			title: "navigation.account.audit_log",
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
-			hasPermission: I => (0, L.b)(I) ? (0, r.iY)(I) : (0, o.Yj)(I)("auditlogs").read
+			hasPermission: I => (0, P.b)(I) ? (0, r.iY)(I) : (0, o.Yj)(I)("auditlogs").read
 		}, {
 			title: "navigation.account.billing",
 			url: "/billing",
@@ -795,7 +795,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			navigationType: "version",
-			hasPermission: I => !!(0, P.GM)(I) && (0, r.$n)(I, "waf", "page-rule", "read")
+			hasPermission: I => !!(0, L.GM)(I) && (0, r.$n)(I, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.configuration_rules",
 			labels: ["beta"],
