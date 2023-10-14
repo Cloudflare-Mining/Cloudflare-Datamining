@@ -1,0 +1,94 @@
+<div class="mb2 gray5">25 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Investigating-Rapid-Reset-Vulnerability.png" class="kg-image" alt="" loading="lazy" width="1600" height="901"></figure>
+	<p>从 2023 年 8 月 25 日开始，我们开始注意到一些异常大量的 HTTP 攻击袭击了我们的许多客户。我们的自动化 DDoS 系统检测到并缓解了这些攻击。然而，没过多久，它们就开始达到破纪录的规模 - 最终达到了每秒 2.01 亿次请求的峰值。此数量几乎是我们<a href="https://blog.cloudflare.com/zh-cn/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-zh-cn">以前最大攻击记录数量</a>的 3 倍。</p><!--kg-card-begin: html-->
+	<center><em><small>受到攻击或需要额外保护？ <a href="https://www.cloudflare.com/h2" target="_blank">单击此处获取帮助</a>。</small></em></center><br><!--kg-card-end: html-->
+	<p>而更令人担忧的是，攻击者能够利用一个只有 20,000 台机器的僵尸网络发起这样的攻击。而如今有的僵尸网络由数十万或数百万台机器组成。整个 web 网络通常每秒处理10-30 亿个请求，因此使用此方法可以将整个 web 网络的请求数量等级集中在少数目标上，而这并非不可想象。</p>
+	<h2 id="%E6%A3%80%E6%B5%8B%E5%92%8C%E7%BC%93%E8%A7%A3">检测和缓解</h2>
+	<p>这是一种规模空前的新型攻击手段，Cloudflare 现有的保护措施在很大程度上能够抵御这种攻击的冲击。虽然最初我们看到了对客户流量的一些影响（在第一波攻击期间影响了大约1% 的请求），但今天我们已经能够改进我们的缓解方法，以阻止任何针对Cloudflare 客户的攻击，并保证自身的系统正常运行。</p>
+	<p>我们注意到这些攻击的同时，谷歌和 AWS 这两大行业巨头也发现了同样的情况。我们努力加固 Cloudflare 的系统，以确保目前我们所有的客户都能免受这种新的 DDoS 攻击方法的影响，而不会对客户造成任何影响。我们还与谷歌和 AWS 共同参与了向受影响的供应商和关键基础设施提供商披露攻击事件的协调工作。</p>
+	<p>这种攻击是通过滥用 HTTP/2 协议的某些功能和服务器实施详细信息实现的（详情请参见 <a href="https://www.cve.org/CVERecord?id=CVE-2023-44487" target="_blank">CVE-2023-44487</a>）。由于该攻击滥用了 HTTP/2 协议中的一个潜在弱点，我们认为实施了 HTTP/2 的任何供应商都会受到攻击。这包括所有现代网络服务器。我们已经与谷歌和 AWS 一起向网络服务器供应商披露了攻击方法，我们希望他们能够实施补丁。与此同时，最好的防御方法是在任何面向网络的 Web 服务器或 API 服务器前面使用诸如 Cloudflare 之类的 DDoS 缓解服务。</p>
+	<p>这篇文章深入探讨了 HTTP/2 协议的详细信息、攻击者利用来实施这些大规模攻击的功能，以及我们为确保所有客户受到保护而采取的缓解策略。我们希望通过公布这些详细信息，其他受影响的 Web 服务器和服务能够获得实施缓解策略所需的信息。此外，HTTP/2 协议标准团队以及开发未来 Web 标准的团队可以更好地设计这些标准，以防止此类攻击。</p>
+	<h2 id="rst-%E6%94%BB%E5%87%BB%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF">RST 攻击详细信息</h2>
+	<p>HTTP 是为 Web 提供支持的应用协议。<a href="https://www.rfc-editor.org/rfc/rfc9110.html" target="_blank">HTTP 语义</a>对于所有版本的 HTTP 都是通用的 — 整体架构、术语和协议方面，例如请求和响应消息、方法、状态代码、标头和尾部字段、消息内容等等。每个单独的 HTTP 版本都定义了如何将语义转换为“有线格式”以通过 Internet 进行交换。例如，客户端必须将请求消息序列化为二进制数据并发送，然后服务器将其解析回它可以处理的消息。</p>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc9112.html" target="_blank">HTTP/1.1</a> 使用文本形式的序列化。请求和响应信息以 ASCII 字符流的形式进行交换，通过可靠的传输层（如 TCP）发送，使用以下<a href="https://www.rfc-editor.org/rfc/rfc9112.html#section-2.1" target="_blank">格式</a>（其中 CRLF 表示回车和换行）：</p>
+	<pre><code> HTTP-message   = start-line CRLF
+                   *( field-line CRLF )
+                   CRLF
+                   [ message-body ]
+</code></pre>
+	<p>例如，对于 <code>https://blog.cloudflare.com/</code> 的一个非常简单的 GET 请求在线路上将如下所示：</p>
+	<p><code>GET / HTTP/1.1 CRLFHost: blog.cloudflare.comCRLFCRLF</code></p>
+	<p>响应将如下所示：</p>
+	<p><code>HTTP/1.1 200 OK CRLFServer: cloudflareCRLFContent-Length: 100CRLFtext/html; charset=UTF-8CRLFCRLF&lt;100 bytes of data&gt;</code></p>
+	<p>这种格式在线路上构造消息，这意味着可以使用单个 TCP 连接来交换多个请求和响应。但是，该格式要求每条消息都完整发送。此外，为了正确地将请求与响应关联起来，需要严格的排序；这意味着消息是串行交换的并且不能多路复用。<code>https://blog.cloudflare.com/</code> 和 <code>https://blog.cloudflare.com/page/2/</code> 的两个 GET 请求将是：</p>
+	<p><code>GET / HTTP/1.1 CRLFHost: blog.cloudflare.comCRLFCRLFGET /page/2/ HTTP/1.1 CRLFHost: blog.cloudflare.comCRLFCRLF</code></p>
+	<p>With the responses:</p>
+	<p><code>HTTP/1.1 200 OK CRLFServer: cloudflareCRLFContent-Length: 100CRLFtext/html; charset=UTF-8CRLFCRLF&lt;100 bytes of data&gt;CRLFHTTP/1.1 200 OK CRLFServer: cloudflareCRLFContent-Length: 100CRLFtext/html; charset=UTF-8CRLFCRLF&lt;100 bytes of data&gt;</code></p>
+	<p>Web 页面需要比这些示例更复杂的 HTTP 交互。访问 Cloudflare 博客时，您的浏览器将加载多个脚本、样式和媒体资产。如果您使用 HTTP/1.1 访问首页，然后很快决定导航到第 2 页，您的浏览器可以从两个选项中进行选择。要么在第 2 页开始之前等待对您不再需要的页面的所有已排入队列的响应，要么通过关闭 TCP 连接并打开一个新连接来取消进行中的请求。这两种方法都不太实用。浏览器往往通过管理 TCP 连接池（每台主机最多 6 个连接）并在池上实现复杂的请求分派逻辑来绕过这些限制。</p>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc9113" target="_blank">HTTP/2</a> 解决了 HTTP/1.1 的许多问题。每个 HTTP 消息都被序列化为一组 <strong>HTTP/2 帧</strong>，这些帧具有类型、长度、标志、流标识符 (ID) 和有效负载。流 ID 清楚地表明线路上的哪些字节适用于哪个消息，从而允许安全的多路复用和并发。流是双向的。客户端发送帧，服务器使用相同的 ID 回复帧。</p>
+	<p>在 HTTP/2 中，我们对 <code>https://blog.cloudflare.com</code> 的 GET 请求将通过流 ID 1 交换，客户端发送一个 <a href="https://www.rfc-editor.org/rfc/rfc9113#name-headers" target="_blank">HEADERS</a> 帧，服务器使用一个 HEADERS 帧进行响应，后跟一个或多个 <a href="https://www.rfc-editor.org/rfc/rfc9113#name-data" target="_blank">DATA</a> 帧。客户端请求始终使用奇数流 ID，因此后续请求将使用流 ID 3、5 等。可以以任何顺序提供响应，并且来自不同流的帧可以交织。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-2.13.29-PM.png" class="kg-image" alt="" loading="lazy" width="1172" height="362"></figure>
+	<p>流多路复用和并发是 HTTP/2 的强大功能。它们可以更有效地使用单个 TCP 连接。HTTP/2 优化了资源获取，尤其是在与<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">优先排序</a>相结合时。另一方面，与 HTTP/1.1 相比，让客户端更容易启动大量并行工作会增加对服务器资源的峰值需求。这显然是拒绝服务的一个载体。</p>
+	<p>为了提供一些防护措施，HTTP/2 提供了最大活动<a href="https://www.rfc-editor.org/rfc/rfc9113#section-5.1.2" target="_blank">并发流</a>的概念。<a href="https://www.rfc-editor.org/rfc/rfc9113#SETTINGS_MAX_FRAME_SIZE" target="_blank">SETTINGS_MAX_CONCURRENT_STREAMS</a> 参数允许服务器公布其并发限制。例如，如果服务器声明限制为 100，那么任何时候都最多只能有 100 个请求处于活动状态。如果客户端试图打开超过此限制的流，服务器一定会使用 <a href="https://www.rfc-editor.org/rfc/rfc9113#section-6.4" target="_blank">RST_STREAM</a> 帧拒绝它。流拒绝不会影响连接上的其他正在进行中的流。<br><br>真实情况要复杂一些。流有<a href="https://www.rfc-editor.org/rfc/rfc9113#section-5.1" target="_blank">生命周期</a>。下面是 HTTP/2 流状态机的示意图。客户端和服务器管理各自的流状态视图。当发送或接收 HEADERS、DATA 和 RST_STREAM 帧时，它们会触发转换。虽然流状态的视图是独立的，但它们是同步的。</p>
+	<p>HEADERS 和 DATA 帧包含一个 END_STREAM 标志，当设置为 1 (true) 时，可触发状态转换。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Request-stream-states.png" class="kg-image" alt="" loading="lazy" width="1600" height="1152"></figure>
+	<p>让我们通过一个没有消息内容的 GET 请求示例来解决这个问题。客户端以 HEADERS 帧的形式发送请求，并将 END_STREAM 标志设置为 1。客户端首先将流从<strong>空闲状态</strong>转换为<strong>打开状态</strong>，然后立即转换为<strong>半关闭</strong>状态。客户端半关闭状态意味着它不能再发送HEADERS或DATA，只能发送 <a href="https://www.rfc-editor.org/rfc/rfc9113.html#section-6.9" target="_blank">WINDOW_UPDATE</a>、<a href="https://www.rfc-editor.org/rfc/rfc9113.html#section-6.3" target="_blank">PRIORITY</a> 或 RST_STREAM 帧。然而，它可以接收任何帧。</p>
+	<p>一旦服务器接收并解析了 HEADERS 帧，它就会将流状态从空闲转变为打开，然后半关闭，因此它与客户端匹配。服务器半关闭状态意味着它可以发送任何帧，但只能接收 WINDOW_UPDATE、PRIORITY 或 RST_STREAM 帧。<br><br>对 GET 的响应包含消息内容，因此服务器发送 END_STREAM 标志设置为 0 的 HEADERS，然后发送 END_STREAM 标志设置为 1 的 DATA。DATA 帧触发服务器上流从<strong>半关闭</strong>到<strong>关闭</strong>的转换。当客户端收到它时，它也会转换为关闭状态。一旦流关闭，就无法发送或接收任何帧。</p>
+	<p>将此生命周期应用回并发上下文中，HTTP/2 <a href="https://www.rfc-editor.org/rfc/rfc9113#section-5.1.2-2" target="_blank">指出</a>：</p>
+	<p><em>处于“打开”状态或任一种“半关闭”状态的流计入允许端点打开的最大流数量。处于这三种状态中任何一种状态的流都将计入在 </em><a href="https://www.rfc-editor.org/rfc/rfc9113#SETTINGS_MAX_CONCURRENT_STREAMS" target="_blank"><em>SETTINGS_MAX_CONCURRENT_STREAMS</em></a> 设置中公布的限制。</p>
+	<p>理论上，并发限制是有用的。不过，也有一些实际因素会影响它的效果，我们将在这篇博文的后面部分讲述。</p>
+	<h3 id="http2-%E8%AF%B7%E6%B1%82%E5%8F%96%E6%B6%88">HTTP/2 请求取消</h3>
+	<p>在前文中，我们谈到了客户端取消正在进行的请求的问题。与 HTTP/1.1 相比，HTTP/2 支持这种方式的效率要高得多。客户端无需中断整个连接，只需针对单个流发送一个 RST_STREAM 帧。这将指示服务器停止处理该请求并中止响应，从而释放服务器资源并避免浪费带宽。</p>
+	<p>让我们来看看前面 3 个请求的例子。这一次，客户端在发送完所有 HEADERS 帧后，取消了针对流 1 的请求。服务器在准备好提供响应之前，会解析此 RST_STREAM 帧，并改为只响应流 3 和流 5：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-2.12.04-PM.png" class="kg-image" alt="" loading="lazy" width="1196" height="376"></figure>
+	<p>取消请求是一个非常有用的功能。例如，当滚动包含多个图像的网页时，网络浏览器可以取消落在视口之外的图像，这意味着进入视口的图像可以更快地加载。与 HTTP/1.1 相比，HTTP/2 使这种行为更加高效。</p>
+	<p>被取消的请求流会快速过渡整个流生命周期。 END_STREAM 标志设置为 1 的客户端 HEADERS 状态从<strong>空闲状态</strong>转换为<strong>打开</strong>状态再到<strong>半关闭</strong>状态，然后 RST_STREAM 立即导致从<strong>半关闭</strong>状态转换为<strong>关闭</strong>状态。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Request-stream-states-reset.png" class="kg-image" alt="" loading="lazy" width="1600" height="1152"></figure>
+	<p>回想一下，只有处于打开或半关闭状态的流才会影响流并发限制。当客户端取消流时，它立即能够在其位置打开另一个流，并可以立即发送另一个请求。这就是 <a href="https://www.cve.org/CVERecord?id=CVE-2023-44487" target="_blank">CVE-2023-44487</a> 能够发挥作用的关键所在。</p>
+	<h3 id="%E5%BF%AB%E9%80%9F%E9%87%8D%E7%BD%AE%E5%AF%BC%E8%87%B4%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1">快速重置导致拒绝服务</h3>
+	<p>HTTP/2 请求取消可能被滥用来快速重置无限数量的流。当 HTTP/2 服务器能够足够快地处理客户端发送的 RST_STREAM 帧并拆除状态时，这种快速重置不会导致问题。当整理工作出现任何延误或滞后时，问题就会开始出现。客户端可能会处理大量请求，从而导致工作积压，从而导致服务器上资源的过度消耗。</p>
+	<p>常见的 HTTP 部署架构会在其他组件前面运行 HTTP/2 代理或负载平衡器。当客户端请求到达时，它会被快速分派，而实际工作则作为异步活动在其他地方完成。这样，代理就能非常高效地处理客户端流量。然而，这种关注点的分离会使代理难以整理正在处理的作业。因此，这些部署更有可能遇到快速重置造成的问题。</p>
+	<p>Cloudflare 的<a href="https://www.rfc-editor.org/rfc/rfc9110#section-3.7-6" target="_blank">反向代理</a>处理传入的 HTTP/2 客户端流量时，会将数据从连接的套接字复制到缓冲区，并按顺序处理缓冲的数据。在读取每个请求（HEADERS 和 DATA 帧）时，它会被分派到上游服务。读取 RST_STREAM 帧时，请求的本地状态会被删除，并通知上游请求已被取消。如此循环往复，直到整个缓冲区中的数据处理完毕。然而，这种逻辑可能会被滥用：当恶意客户端开始发送大量请求链，并在连接开始时重置时，我们的服务器就会迫不及待地读取所有请求，给上游服务器造成压力，以至于无法处理任何新的传入请求。</p>
+	<p>需要强调的是，流并发本身并不能缓解快速重置。无论服务器选择的 <a href="https://www.rfc-editor.org/rfc/rfc9113#SETTINGS_MAX_CONCURRENT_STREAMS" target="_blank">SETTINGS_MAX_CONCURRENT_STREAMS</a> 值是多少，客户端可以不断发送请求以创建高请求率。</p>
+	<h3 id="%E5%BF%AB%E9%80%9F%E9%87%8D%E7%BD%AE%E5%89%96%E6%9E%90">快速重置剖析</h3>
+	<p>以下是使用概念验证客户端尝试发出总共 1000 个请求的快速重置示例。我使用了现成的服务器，没有任何缓解措施； 在测试环境中侦听端口 443。为了清楚起见，使用 Wireshark 剖析流量并进行过滤以仅显示 HTTP/2 流量。<a href="https://assets.ctfassets.net/slt3lc6tev37/50OLaCqcT1iGPJP41qKZ0Z/ee9d6f4720a3842867974c85d209305a/rapidreset.pcapng" target="_blank">下载 pcap</a> 以进行后续操作。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="79"></figure>
+	<p>要看清楚有点难，因为有很多帧。我们可以通过 Wireshark 的“统计 &gt; HTTP2”工具快速获得摘要：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-10.50.42-PM.png" class="kg-image" alt="" loading="lazy" width="1058" height="324"></figure>
+	<p>在此跟踪中，数据包 14 中的第一个帧是服务器的 SETTINGS 帧，它标明最大流并发为 100。在数据包 15 中，客户端发送了几个控制帧，然后开始发出会快速重置的请求。第一个 HEADERS 帧长 26 字节，而随后的所有 HEADERS 帧都只有 9 字节。这种大小差异是由于一种名为 <a href="https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2">HPACK</a> 的压缩技术造成。数据包 15 总共包含 525 个请求，最高可达 1051 个流。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled--3-.png" class="kg-image" alt="" loading="lazy" width="619" height="593"></figure>
+	<p>有趣的是，流 1051 的 RST_STREAM 帧并未包含在数据包 15 中，因此在数据包 16 中，我们看到服务器传回 404 响应。然后，在数据包 17 中，客户端发送 RST_STREAM，然后继续发送余下的 475 个请求。</p>
+	<p>请注意，虽然服务器声明有 100 个并发流，但客户端发送的两个数据包的 HEADERS 帧数远超此值。客户端无需等待服务器的任何返回流量，它只受限于它可以发送的数据包大小。在此跟踪中未发现服务器 RST_STREAM 帧，表明服务器未发现并发流违规。</p>
+	<h2 id="%E5%AF%B9%E5%AE%A2%E6%88%B7%E7%9A%84%E5%BD%B1%E5%93%8D">对客户的影响</h2>
+	<p>如上所述，当请求被取消时，上游服务会收到通知，并中止请求以免浪费过多资源。这次攻击就是这种情况，大多数恶意请求从未被转发到源服务器。然而，这些攻击的规模很大，确实造成了一些影响。</p>
+	<p>首先，当传入请求的速度达到前所未有的峰值时，我们收到了客户端发现 502 错误增多的报告。这种情况发生在我们受影响最大的数据中心，彼时它们正在努力处理所有请求。虽然我们的网络可以应对大规模攻击，但这一特殊漏洞暴露了我们基础设施中的薄弱环节。让我们深入探讨一下详细信息，重点关注当传入的请求到达我们的数据中心之一时如何处理：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled-2023-10-04-1953.png" class="kg-image" alt="" loading="lazy" width="1600" height="602"></figure>
+	<p>我们可以看到我们的基础设施由一系列具有不同职责的不同代理服务器组成。特别是，当客户端连接到 Cloudflare 发送 HTTPS 流量时，它首先会命中我们的 TLS 解密代理：它解密 TLS 流量，处理 HTTP 1、2 或 3 流量，然后将其转发到我们的“业务逻辑”代理。它负责加载每个客户的所有设置，然后将请求正确路由到其他上游服务 - 更重要的是，在我们的例子中，<strong>它还负责安全功能</strong>。这是处理 L7 攻击缓解的地方。</p>
+	<p>这种攻击手段的问题在于，它能在每个连接中快速发送大量请求。每个请求都必须转发到业务逻辑代理，我们才有机会阻止它。当请求吞吐量超过我们代理的处理能力时，连接这两项服务的管道在我们的一些服务器中达到了饱和水平。</p>
+	<p>当发生这种情况时，TLS 代理就无法再连接到其上游代理，因此在最严重的攻击中，一些客户端会看到“502 Bad Gateway”错误。值得注意的是，到目前为止，用于创建 HTTP 分析的日志也是由我们的业务逻辑代理发布的。这样做的后果是，在 Cloudflare 仪表板中看不到这些错误。我们的内部仪表板显示，在最初的攻击浪潮中（在我们实施缓解措施之前），约有 1% 的请求受到影响，在 8 月 29 日最严重的一次攻击中，有几秒钟的峰值达到了约 12%。下图显示了出现这种情况时的两小时内这些错误的比率：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/imageLikeEmbed.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1600" height="990"></figure>
+	<p>在接下来的几天里，我们努力大幅减少了这一数字，详见本帖下文。由于我们的堆栈发生了变化，而且我们的缓解措施大大降低了这些攻击的规模，如今这一数字实际上为零。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/imageLikeEmbed--2-.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1600" height="989"></figure>
+	<h3 id="499-%E9%94%99%E8%AF%AF%E5%92%8C-http2-%E6%B5%81%E5%B9%B6%E5%8F%91%E6%8C%91%E6%88%98">499 错误和 HTTP/2 流并发挑战</h3>
+	<p>一些客户报告的另一个症状是 499 错误增加。造成这种情况的原因有些不同，与本贴前面详述的 HTTP/2 连接中的最大流并发相关。</p>
+	<p>HTTP/2 设置在连接开始时使用 SETTINGS 帧进行交换。如果没有收到明确的参数，则会使用默认值。客户端建立 HTTP/2 连接后，可以等待服务器的 SETTINGS（慢），也可以使用默认值开始发出请求（快）。对于 SETTINGS_MAX_CONCURRENT_STREAMS，默认值实际上是无限的（流 ID 使用 31 位数字空间，请求使用奇数，因此实际限制是 1073741824）。规范建议服务器提供不少于 100 个数据流。客户端通常偏向于速度，因此不会等待服务器设置，这就造成了一些竞争情况。客户端会赌服务器可能选择的限制；如果客户端赌错了，请求将被拒绝，并且客户端必须重试。在 1073741824 个流上赌有点傻。取而代之，许多客户端决定将自己限制在发布 100 个并发流，希望服务器遵循规范建议。如果服务器选择低于 100 的数值，则客户端赌错了，流将被重置。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled-2023-10-04-1953--1-.png" class="kg-image" alt="" loading="lazy" width="1600" height="551"></figure>
+	<p>服务器重置超出并发限制的流的原因有很多。HTTP/2 是严格的，在出现解析或逻辑错误时会要求关闭流。在 2019 年，Cloudflare 针对 <a href="https://blog.cloudflare.com/on-the-recent-http-2-dos-attacks">HTTP/2 DoS 漏洞</a>开发了多个缓解措施。其中几个漏洞是由客户端行为不当导致服务器重置流造成的。遏制此类客户端的一个非常有效的策略是对在连接期间服务器重置的次数进行计数，当次数超过某个阈值时，就使用 <a href="https://www.rfc-editor.org/rfc/rfc9113#section-6.8" target="_blank">GOAWAY</a> 帧关闭连接。合法客户可能会在一次连接中犯一两个错误，这是可以接受的。如果客户端犯错误的次数过多，它很可能是损坏的客户端或恶意客户端，关闭连接可以解决这两种情况。</p>
+	<p>在应对由 <a href="https://www.cve.org/CVERecord?id=CVE-2023-44487" target="_blank">CVE-2023-44487</a> 引发的 DoS 攻击时，Cloudflare 将最大流并发降至 64。在进行此更改之前，我们并不知道客户端不会等待 SETTINGS，而是假设并发为 100。某些 Web 页面（如图片库）确实会导致浏览器在连接开始时立即发送 100 个请求。不幸的是，超过限制的 36 个流都需要重置，这触发了我们的计数缓解措施。这意味着我们关闭了合法客户端的连接，导致页面加载完全失败。我们意识到这个互操作性问题后，立即将最大流并发更改为 100。</p>
+	<h2 id="cloudflare-%E6%96%B9%E9%9D%A2%E7%9A%84%E8%A1%8C%E5%8A%A8">Cloudflare 方面的行动</h2>
+	<p>在 2019 年，发现了几个与 HTTP/2 实现相关的 <a href="https://blog.cloudflare.com/on-the-recent-http-2-dos-attacks">DoS 漏洞</a>。作为回应，Cloudflare 开发并部署了一系列检测和缓解措施。<a href="https://www.cve.org/CVERecord?id=CVE-2023-44487" target="_blank">CVE-2023-44487</a> 是 HTTP/2 漏洞的另一种表现形式。不过，为了缓解它，我们能够扩展现有的保护，以监控客户端发送的 RST_STREAM 帧，并在它们被用于滥用时关闭连接。客户端对 RST_STREAM 的合法使用不受影响。</p>
+	<p>除了直接修复外，我们还对服务器的 HTTP/2 帧处理和请求分派代码进行了多项改进。此外，业务逻辑服务器还改进了队列和分派，减少了不必要的工作，提高了对取消操作的响应速度。这些措施多管齐下，减轻了各种潜在滥用模式的影响，并为服务器在饱和前处理请求提供了更多空间。</p>
+	<h3 id="%E5%B0%BD%E6%97%A9%E7%BC%93%E8%A7%A3%E6%94%BB%E5%87%BB">尽早缓解攻击</h3>
+	<p>Cloudflare 已经部署了一套系统，可以通过成本较低的方法有效缓解超大型攻击。其中一个系统名为 IP Jail。对于超容量攻击，该系统会收集参与攻击的客户端 IP，并阻止它们连接到受攻击的财产（无论是在 IP 级别还是在我们的 TLS 代理中）。然而，该系统需要几秒钟才能完全生效； 在这宝贵的几秒钟内，源头已经受到保护，但我们的基础设施仍然需要吸收所有 HTTP 请求。由于这种新的僵尸网络实际上没有启动期，因此我们需要能够在攻击成为问题之前将其消灭。</p>
+	<p>为此，我们扩展了 IP Jail 系统，以保护我们的整个基础设施：一旦一个 IP 被“监禁”，它不仅会被阻止连接到受攻击的资产，我们还会禁止相应的 IP 在一段时间内使用 HTTP/2 连接到 Cloudflare 上的任何其他域。因此，无法通过使用 HTTP/1.x 来滥用协议。这就限制了攻击者实施大规模攻击的能力，而共用同一 IP 的任何合法客户端在此期间只会看到非常小的性能下降。基于 IP 的缓解措施是一种非常笨拙的工具 - 这就是为什么我们在这种规模下使用它们时必须非常小心，并尽可能避免误报。此外，僵尸网络中给定 IP 的寿命通常很短，因此任何长期缓解措施都可能弊大于利。下图显示了我们目睹的攻击中 IP 的变化情况：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/ip-churn.png" class="kg-image" alt="" loading="lazy" width="1014" height="493"></figure>
+	<p>我们可以看到，在某一天发现的许多新 IP 后来很快就消失了。</p>
+	<p>由于所有这些操作都在 HTTPS 管道开始时在我们的 TLS 代理中发生，因此与常规的 L7 缓解系统相比，可以节省大量资源。这使我们能够更顺利地应对这些攻击，现在这些僵尸网络造成的随机 502 错误数量已降至零。</p>
+	<h3 id="%E6%94%BB%E5%87%BB%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E6%94%B9%E8%BF%9B">攻击可观测性改进</h3>
+	<p>我们正在改变的另一个方面是可观察性。将错误返回到客户端但在客户分析中不可见这种情况令人不满。幸运的是，早在最近的袭击发生之前，就有一个项目正在对这些系统进行全面检查。它最终将允许我们基础设施中的每个服务记录自己的数据，而不是依赖我们的业务逻辑代理来整合和发布日志数据。这次事件凸显了这项工作的重要性，我们将加倍努力。</p>
+	<p>我们也在努力改进连接层面的日志记录，使我们能够更快地发现此类协议滥用，从而提高我们的 DDoS 缓解能力。</p>
+	<h2 id="%E6%80%BB%E7%BB%93">总结</h2>
+	<p>虽然这是最近一次破纪录的攻击，但我们知道这不会是最后一次。随着攻击的不断复杂化，Cloudflare 坚持不懈地努力，积极主动地识别新的威胁，并在我们的全球网络中部署应对措施，使我们的数百万客户能够立即自动地受到保护。</p>
+	<p>自从 2017 年以来，Cloudflare 一直为我们的所有客户提供免费、不计量且无限制的 DDoS 防护。此外，我们还提供一系列附加安全功能，以满足各种规模组织的需求。如果您不确定自己是否受到保护，或想了解如何才能受到保护，请<a href="https://www.cloudflare.com/h2" target="_blank">联系我们</a>。</p>
+</div>
