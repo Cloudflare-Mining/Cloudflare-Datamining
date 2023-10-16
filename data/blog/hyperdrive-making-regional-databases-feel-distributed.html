@@ -50,7 +50,7 @@ wrangler hyperdrive create a-faster-database --connection-string="postgres://use
 	<!--kg-card-end: markdown-->
 	<p>Add our Hyperdrive to the <a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank">wrangler.toml configuration</a> file for our Worker:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-python">[[hyperdrive]]
-name = "HYPERDRIVE"
+binding = "HYPERDRIVE"
 id = "cdb28782-0dfc-4aca-a445-a2c318fb26fd"
 </code></pre>
 	<!--kg-card-end: markdown-->
