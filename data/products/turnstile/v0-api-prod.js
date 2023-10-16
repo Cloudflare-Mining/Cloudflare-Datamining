@@ -3,12 +3,12 @@
 	function Ke(e, n, i, f, u, y, m) {
 		try {
 			var l = e[y](m),
-				v = l.value
+				d = l.value
 		} catch (h) {
 			i(h);
 			return
 		}
-		l.done ? n(v) : Promise.resolve(v).then(f, u)
+		l.done ? n(d) : Promise.resolve(d).then(f, u)
 	}
 
 	function Ze(e) {
@@ -18,12 +18,12 @@
 			return new Promise(function(f, u) {
 				var y = e.apply(n, i);
 
-				function m(v) {
-					Ke(y, f, u, m, l, "next", v)
+				function m(d) {
+					Ke(y, f, u, m, l, "next", d)
 				}
 
-				function l(v) {
-					Ke(y, f, u, m, l, "throw", v)
+				function l(d) {
+					Ke(y, f, u, m, l, "throw", d)
 				}
 				m(void 0)
 			})
@@ -69,8 +69,8 @@
 				m, l;
 			try {
 				for (i = i.call(e); !(u = (m = i.next()).done) && (f.push(m.value), !(n && f.length === n)); u = !0);
-			} catch (v) {
-				y = !0, l = v
+			} catch (d) {
+				y = !0, l = d
 			} finally {
 				try {
 					!u && i.return != null && i.return()
@@ -111,60 +111,60 @@
 	}
 
 	function he(e, n) {
-		var i = function(p) {
+		var i = function(v) {
 				return function(w) {
-					return f([p, w])
+					return f([v, w])
 				}
 			},
-			f = function(p) {
+			f = function(v) {
 				if (y) throw new TypeError("Generator is already executing.");
-				for (; v && (v = 0, p[0] && (u = 0)), u;) try {
-					if (y = 1, m && (l = p[0] & 2 ? m.return : p[0] ? m.throw || ((l = m.return) && l.call(m), 0) : m.next) && !(l = l.call(m, p[1])).done) return l;
-					switch (m = 0, l && (p = [p[0] & 2, l.value]), p[0]) {
+				for (; d && (d = 0, v[0] && (u = 0)), u;) try {
+					if (y = 1, m && (l = v[0] & 2 ? m.return : v[0] ? m.throw || ((l = m.return) && l.call(m), 0) : m.next) && !(l = l.call(m, v[1])).done) return l;
+					switch (m = 0, l && (v = [v[0] & 2, l.value]), v[0]) {
 						case 0:
 						case 1:
-							l = p;
+							l = v;
 							break;
 						case 4:
 							return u.label++, {
-								value: p[1],
+								value: v[1],
 								done: !1
 							};
 						case 5:
-							u.label++, m = p[1], p = [0];
+							u.label++, m = v[1], v = [0];
 							continue;
 						case 7:
-							p = u.ops.pop(), u.trys.pop();
+							v = u.ops.pop(), u.trys.pop();
 							continue;
 						default:
-							if (l = u.trys, !(l = l.length > 0 && l[l.length - 1]) && (p[0] === 6 || p[0] === 2)) {
+							if (l = u.trys, !(l = l.length > 0 && l[l.length - 1]) && (v[0] === 6 || v[0] === 2)) {
 								u = 0;
 								continue
 							}
-							if (p[0] === 3 && (!l || p[1] > l[0] && p[1] < l[3])) {
-								u.label = p[1];
+							if (v[0] === 3 && (!l || v[1] > l[0] && v[1] < l[3])) {
+								u.label = v[1];
 								break
 							}
-							if (p[0] === 6 && u.label < l[1]) {
-								u.label = l[1], l = p;
+							if (v[0] === 6 && u.label < l[1]) {
+								u.label = l[1], l = v;
 								break
 							}
 							if (l && u.label < l[2]) {
-								u.label = l[2], u.ops.push(p);
+								u.label = l[2], u.ops.push(v);
 								break
 							}
 							l[2] && u.ops.pop(), u.trys.pop();
 							continue
 					}
-					p = n.call(e, u)
+					v = n.call(e, u)
 				} catch (w) {
-					p = [6, w], m = 0
+					v = [6, w], m = 0
 				} finally {
 					y = l = 0
 				}
-				if (p[0] & 5) throw p[1];
+				if (v[0] & 5) throw v[1];
 				return {
-					value: p[0] ? p[1] : void 0,
+					value: v[0] ? v[1] : void 0,
 					done: !0
 				}
 			},
@@ -177,14 +177,14 @@
 				trys: [],
 				ops: []
 			},
-			y, m, l, v;
-		return v = {
+			y, m, l, d;
+		return d = {
 			next: i(0),
 			throw: i(1),
 			return: i(2)
-		}, typeof Symbol == "function" && (v[Symbol.iterator] = function() {
+		}, typeof Symbol == "function" && (d[Symbol.iterator] = function() {
 			return this
-		}), v
+		}), d
 	}
 	var at = 300020;
 	var it = 300030;
@@ -196,10 +196,10 @@
 	(function(e) {
 		e.MANAGED = "managed", e.NON_INTERACTIVE = "non-interactive", e.INVISIBLE = "invisible"
 	})(L || (L = {}));
-	var F;
+	var W;
 	(function(e) {
 		e.NORMAL = "normal", e.COMPACT = "compact", e.INVISIBLE = "invisible"
-	})(F || (F = {}));
+	})(W || (W = {}));
 	var ge;
 	(function(e) {
 		e.AUTO = "auto", e.LIGHT = "light", e.DARK = "dark"
@@ -237,11 +237,11 @@
 		return U(["auto", "never"], e)
 	}
 
-	function Fe(e) {
+	function We(e) {
 		return e > 0 && e < 9e5
 	}
 
-	function We(e) {
+	function Fe(e) {
 		return e > 0 && e < 36e4
 	}
 	var Mt = /^[0-9A-Za-z_-]{3,100}$/;
@@ -254,10 +254,10 @@
 	function ze(e) {
 		return e === void 0 ? !0 : typeof e == "string" && Ut.test(e)
 	}
-	var Ft = /^[a-z0-9_\-=]{0,255}$/i;
+	var Wt = /^[a-z0-9_\-=]{0,255}$/i;
 
 	function Ve(e) {
-		return e === void 0 ? !0 : typeof e == "string" && Ft.test(e)
+		return e === void 0 ? !0 : typeof e == "string" && Wt.test(e)
 	}
 
 	function qe(e) {
@@ -267,10 +267,10 @@
 	function He(e) {
 		return U(["auto", "manual", "never"], e)
 	}
-	var Wt = /^[a-z]{2,3}([-_][a-z]{2})?$/i;
+	var Ft = /^[a-z]{2,3}([-_][a-z]{2})?$/i;
 
 	function je(e) {
-		return e === "auto" || Wt.test(e)
+		return e === "auto" || Ft.test(e)
 	}
 
 	function Be(e) {
@@ -284,7 +284,7 @@
 	var ct = 300,
 		ut = 10;
 	var ae = "cf-chl-widget-",
-		W = "cloudflare-challenge",
+		F = "cloudflare-challenge",
 		lt = ".cf-turnstile",
 		st = ".cf-challenge",
 		ft = ".g-recaptcha",
@@ -333,8 +333,8 @@
 		return be() ? ce = Reflect.construct : ce = function(u, y, m) {
 			var l = [null];
 			l.push.apply(l, y);
-			var v = Function.bind.apply(u, l),
-				h = new v;
+			var d = Function.bind.apply(u, l),
+				h = new d;
 			return m && q(h, m.prototype), h
 		}, ce.apply(null, arguments)
 	}
@@ -401,7 +401,7 @@
 		return i
 	}(Ee(Error));
 
-	function d(e, n) {
+	function p(e, n) {
 		var i = "[Cloudflare Turnstile] ".concat(e, ".");
 		throw new bt(i, n)
 	}
@@ -431,29 +431,29 @@
 			for (var u = e[Symbol.iterator](), y; !(n = (y = u.next()).done); n = !0) {
 				var m = _e(y.value, 2),
 					l = m[0],
-					v = m[1],
+					d = m[1],
 					h;
-				v.watchcat.seq = Te, v.watchcat.lastAckedSeq === 0 && (v.watchcat.lastAckedSeq = Te);
-				var p = H(l);
-				if (!p) {
-					x("Cannot find Widget ".concat(p, ", consider using turnstile.remove() to clean up a widget."));
+				d.watchcat.seq = Te, d.watchcat.lastAckedSeq === 0 && (d.watchcat.lastAckedSeq = Te);
+				var v = H(l);
+				if (!v) {
+					d.watchcat.missingWidgetWarning || (x("Cannot find Widget ".concat(v, ", consider using turnstile.remove() to clean up a widget.")), d.watchcat.missingWidgetWarning = !0);
 					continue
 				}
-				var w = document.querySelector("#".concat(p));
+				var w = document.querySelector("#".concat(v));
 				if (!w) {
-					x("Cannot find Widget ".concat(p, ", consider using turnstile.remove() to clean up a widget."));
+					d.watchcat.missingWidgetWarning || (x("Cannot find Widget ".concat(v, ", consider using turnstile.remove() to clean up a widget.")), d.watchcat.missingWidgetWarning = !0);
 					continue
 				}
-				if ((v.isExecuting || !v.isInitialized || v.isInitialized && !v.isStale && !v.isExecuted) && v.watchcat.lastAckedSeq !== 0 && v.watchcat.lastAckedSeq < v.watchcat.seq - 1 - Vt) {
-					v.watchcat.lastAckedSeq = 0, v.watchcat.seq = 0, console.log("Turnstile Widget seem to have crashed: ", l), window.postMessage({
-						source: W,
+				if ((d.isExecuting || !d.isInitialized || d.isInitialized && !d.isStale && !d.isExecuted) && d.watchcat.lastAckedSeq !== 0 && d.watchcat.lastAckedSeq < d.watchcat.seq - 1 - Vt) {
+					d.watchcat.lastAckedSeq = 0, d.watchcat.seq = 0, console.log("Turnstile Widget seem to have crashed: ", l), window.postMessage({
+						source: F,
 						widgetId: l,
 						code: it,
 						event: "fail"
 					}, "*");
 					continue
 				}(h = w.contentWindow) === null || h === void 0 || h.postMessage({
-					source: W,
+					source: F,
 					widgetId: l,
 					seq: Te,
 					event: "meow"
@@ -519,29 +519,29 @@
 
 	function jt(e, n) {
 		var i, f = Nt(n.params),
-			u = "h/".concat("g", "/"),
+			u = "h/".concat("b", "/"),
 			y = document.getElementById(e);
 		if (!y) {
-			d("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
+			p("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
 			return
 		}
 		var m = document.createElement("div");
 		m.style.position = "fixed", m.style.zIndex = "21474836419";
 		var l = document.createElement("div");
 		l.className = "cf-turnstile-feedback", l.id = "cf-fr-id", l.style.borderColor = "#000000", l.style.width = "450px", l.style.height = "340px", l.style.position = "absolute", l.style.zIndex = "21474836420", l.style.borderWidth = "1px", l.style.borderColor = "#000", l.style.borderStyle = "solid", l.style.backgroundColor = "#ffffff", l.style.borderRadius = "10px", l.style.left = "52px", l.style.top = "-91px", l.style.overflow = "hidden";
-		var v = document.createElement("iframe");
-		v.id = e + "-fr", v.setAttribute("src", "".concat(f, "/cdn-cgi/challenge-platform/").concat(u, "feedback-reports/").concat(we(e))), v.setAttribute("allow", "cross-origin-isolated fullscreen"), v.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms"), v.setAttribute("scrolling", "no"), v.style.width = "100%", v.style.height = "100%", v.style.overflow = "hidden";
+		var d = document.createElement("iframe");
+		d.id = e + "-fr", d.setAttribute("src", "".concat(f, "/cdn-cgi/challenge-platform/").concat(u, "feedback-reports/").concat(we(e))), d.setAttribute("allow", "cross-origin-isolated; fullscreen"), d.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups allow-forms"), d.setAttribute("scrolling", "no"), d.style.width = "100%", d.style.height = "100%", d.style.overflow = "hidden";
 		var h = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 		h.style.position = "absolute", h.style.width = "26px", h.style.height = "26px", h.style.zIndex = "21474836421", h.style.cursor = "pointer", h.style.right = "2px", h.style.top = "5px", h.setAttribute("width", "26"), h.setAttribute("height", "26"), h.addEventListener("click", function() {
 			var N;
 			(N = m.parentNode) === null || N === void 0 || N.removeChild(m)
 		});
-		var p = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
-		p.setAttribute("ry", "12"), p.setAttribute("rx", "12"), p.setAttribute("cy", "12"), p.setAttribute("cx", "12"), p.setAttribute("fill", "#aaaaaa"), p.setAttribute("stroke-width", "0"), h.appendChild(p);
+		var v = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+		v.setAttribute("ry", "12"), v.setAttribute("rx", "12"), v.setAttribute("cy", "12"), v.setAttribute("cx", "12"), v.setAttribute("fill", "#aaaaaa"), v.setAttribute("stroke-width", "0"), h.appendChild(v);
 		var w = document.createElementNS("http://www.w3.org/2000/svg", "line");
 		w.setAttribute("stroke-width", "3"), w.setAttribute("stroke", "#fff"), w.setAttribute("fill", "none"), w.setAttribute("x1", "6"), w.setAttribute("x2", "18"), w.setAttribute("y1", "18"), w.setAttribute("y2", "5"), h.appendChild(w);
 		var g = document.createElementNS("http://www.w3.org/2000/svg", "line");
-		g.setAttribute("stroke-width", "3"), g.setAttribute("stroke", "#fff"), g.setAttribute("fill", "none"), g.setAttribute("x1", "6"), g.setAttribute("x2", "18"), g.setAttribute("y1", "5"), g.setAttribute("y2", "18"), h.appendChild(g), l.appendChild(v), l.appendChild(h), m.appendChild(l), (i = y.parentNode) === null || i === void 0 || i.appendChild(m)
+		g.setAttribute("stroke-width", "3"), g.setAttribute("stroke", "#fff"), g.setAttribute("fill", "none"), g.setAttribute("x1", "6"), g.setAttribute("x2", "18"), g.setAttribute("y1", "5"), g.setAttribute("y2", "18"), h.appendChild(g), l.appendChild(d), l.appendChild(h), m.appendChild(l), (i = y.parentNode) === null || i === void 0 || i.appendChild(m)
 	}
 
 	function kt(e, n) {
@@ -561,12 +561,12 @@
 			case L.NON_INTERACTIVE:
 			case L.MANAGED:
 				switch (f) {
-					case F.COMPACT:
+					case W.COMPACT:
 						e.style.width = "130px", e.style.height = "120px";
 						break;
-					case F.INVISIBLE:
-						d('Invalid value for parameter "size", expected "'.concat(F.COMPACT, '" or "').concat(F.NORMAL, '", got "').concat(f, '"'), 2817);
-					case F.NORMAL:
+					case W.INVISIBLE:
+						p('Invalid value for parameter "size", expected "'.concat(W.COMPACT, '" or "').concat(W.NORMAL, '", got "').concat(f, '"'), 2817);
+					case W.NORMAL:
 						e.style.width = "300px", e.style.height = "65px";
 						break
 				}
@@ -575,7 +575,7 @@
 				e.style.width = "0", e.style.height = "0", e.style.position = "absolute", e.style.visibility = "hidden", e.setAttribute("tabindex", "-1"), e.setAttribute("aria-hidden", "true");
 				break;
 			default:
-				d('Invalid value for parameter "mode", expected "'.concat(L.NON_INTERACTIVE, '", "').concat(L.MANAGED, '" or "').concat(L.INVISIBLE, '", got "').concat(u, '"'), 2818);
+				p('Invalid value for parameter "mode", expected "'.concat(L.NON_INTERACTIVE, '", "').concat(L.MANAGED, '" or "').concat(L.INVISIBLE, '", got "').concat(u, '"'), 2818);
 				return
 		}
 	}
@@ -597,7 +597,7 @@
 
 	function It(e, n, i, f) {
 		var u = Nt(i),
-			y = "h/".concat("g", "/");
+			y = "h/".concat("b", "/");
 		return "".concat(u, "/cdn-cgi/challenge-platform/").concat(y, "turnstile/if/ov2/av0/rcv").concat(f, "/").concat(e, "/").concat(n, "/").concat(i.theme, "/").concat(i.size)
 	}
 
@@ -625,7 +625,7 @@
 			},
 			n = function(c, t, a) {
 				if (c.response === void 0) {
-					d("[Internal Error] Widget was completed but no response was given", 1362);
+					p("[Internal Error] Widget was completed but no response was given", 1362);
 					return
 				}
 				c.isExecuting = !1, kt(t, c.response);
@@ -649,7 +649,7 @@
 				for (; c.msgQueue.length;) {
 					var r, s = c.msgQueue.pop();
 					(r = a.contentWindow) === null || r === void 0 || r.postMessage({
-						source: W,
+						source: F,
 						widgetId: t,
 						event: s
 					}, "*")
@@ -677,19 +677,19 @@
 						}
 					}
 					if (r.length !== 0) {
-						d("The parameters ".concat(a.join(","), " is/are not allowed be changed between the calls of render() and execute() of a widget.\n    Consider rendering a new widget if you want to change the following parameters ").concat(r.join(",")), 3618);
+						p("The parameters ".concat(a.join(","), " is/are not allowed be changed between the calls of render() and execute() of a widget.\n    Consider rendering a new widget if you want to change the following parameters ").concat(r.join(",")), 3618);
 						return
 					}
 					if (t.action) {
 						if (!ze(t.action)) {
-							d('Invalid input for optional parameter "action", got "'.concat(t.action, '"'), 3604);
+							p('Invalid input for optional parameter "action", got "'.concat(t.action, '"'), 3604);
 							return
 						}
 						c.action = t.action
 					}
 					if (t.cData) {
 						if (!Ve(t.cData)) {
-							d('Invalid input for optional parameter "cData", got "'.concat(t.cData, '"'), 3605);
+							p('Invalid input for optional parameter "cData", got "'.concat(t.cData, '"'), 3605);
 							return
 						}
 						c.cData = t.cData
@@ -700,7 +700,7 @@
 			m = function(c) {
 				var t = C(c);
 				if (!t) {
-					d("Nothing to reset found for provided container", 3329);
+					p("Nothing to reset found for provided container", 3329);
 					return
 				}
 				var a = g.get(t);
@@ -709,17 +709,17 @@
 					var r = H(t),
 						s = document.querySelector("#".concat(r));
 					if (!r || !s) {
-						d("Widget ".concat(t, " to reset was not found."), 3330);
+						p("Widget ".concat(t, " to reset was not found."), 3330);
 						return
 					}
 					if (a.params.appearance === V.INTERACTION_ONLY && At(s), a.params.sitekey === null) {
-						d("Unexpected Error: Sitekey is null", 3347);
+						p("Unexpected Error: Sitekey is null", 3347);
 						return
 					}
 					var o;
 					s.src = It(t, a.params.sitekey, a.params, (o = a.rcV) !== null && o !== void 0 ? o : $), Ye(r), a.retryTimeout && window.clearTimeout(a.retryTimeout)
 				} else {
-					d("Widget ".concat(t, " to reset was not found."), 3331);
+					p("Widget ".concat(t, " to reset was not found."), 3331);
 					return
 				}
 			},
@@ -737,21 +737,21 @@
 				var o = (t = g.get(a)) === null || t === void 0 ? void 0 : t.retryTimeout;
 				o && window.clearTimeout(o), g.delete(a), wt(g)
 			},
-			v = function(c, t) {
+			d = function(c, t) {
 				var a;
 				if (typeof c == "string") try {
 						var r = document.querySelector(c);
 						if (!r) {
-							d('Unable to find a container for "'.concat(c, '"'), 3585);
+							p('Unable to find a container for "'.concat(c, '"'), 3585);
 							return
 						}
 						a = r
 					} catch (Kt) {
-						d('Invalid type for "container", expected "selector" or an implementation of "HTMLElement", got "'.concat(c, '"'), 3586);
+						p('Invalid type for "container", expected "selector" or an implementation of "HTMLElement", got "'.concat(c, '"'), 3586);
 						return
 					} else if (O(c, HTMLElement)) a = c;
 					else {
-						d('Invalid type for parameter "container", expected "string" or an implementation of "HTMLElement"', 3587);
+						p('Invalid type for parameter "container", expected "string" or an implementation of "HTMLElement"', 3587);
 						return
 					} var s = Xt(a);
 				if (s) {
@@ -769,11 +769,11 @@
 					var j;
 					o.appearance = (j = o.appearance) !== null && j !== void 0 ? j : V.ALWAYS;
 					var ee;
-					o["retry-interval"] = (ee = o["retry-interval"]) !== null && ee !== void 0 ? ee : mt;
+					o["retry-interval"] = +((ee = o["retry-interval"]) !== null && ee !== void 0 ? ee : mt);
 					var B;
-					o["expiry-interval"] = (B = o["expiry-interval"]) !== null && B !== void 0 ? B : (ct - ut) * 1e3;
+					o["expiry-interval"] = +((B = o["expiry-interval"]) !== null && B !== void 0 ? B : (ct - ut) * 1e3);
 					var G;
-					o.size = (G = o.size) !== null && G !== void 0 ? G : F.NORMAL;
+					o.size = (G = o.size) !== null && G !== void 0 ? G : W.NORMAL;
 					var ue = o.callback,
 						Se = o["expired-callback"],
 						le = o["timeout-callback"],
@@ -782,60 +782,60 @@
 						de = o["error-callback"],
 						Re = o["unsupported-callback"];
 					if (typeof E != "string") {
-						d('Invalid or missing type for parameter "sitekey", expected "string", got "'.concat(typeof E == "undefined" ? "undefined" : k(E), '"'), 3588);
+						p('Invalid or missing type for parameter "sitekey", expected "string", got "'.concat(typeof E == "undefined" ? "undefined" : k(E), '"'), 3588);
 						return
 					}
 					if (!ot(E)) {
-						d('Invalid input for parameter "sitekey", got "'.concat(E, '"'), 3589);
+						p('Invalid input for parameter "sitekey", got "'.concat(E, '"'), 3589);
 						return
 					}
 					if (!qe(o.size)) {
-						d('Invalid type for parameter "size", expected normal|compact, got "'.concat(o.size, '" ').concat(k(o.size)), 3590);
+						p('Invalid type for parameter "size", expected normal|compact, got "'.concat(o.size, '" ').concat(k(o.size)), 3590);
 						return
 					}
 					if (!Me(o.theme)) {
-						d('Invalid type for parameter "theme", expected dark|light|auto, got "'.concat(o.theme, '" ').concat(k(o.theme)), 3591);
+						p('Invalid type for parameter "theme", expected dark|light|auto, got "'.concat(o.theme, '" ').concat(k(o.theme)), 3591);
 						return
 					}
 					if (!Ue(o.retry)) {
-						d('Invalid type for parameter "retry", expected never|auto, got "'.concat(o.retry, '" ').concat(k(o.retry)), 3592);
+						p('Invalid type for parameter "retry", expected never|auto, got "'.concat(o.retry, '" ').concat(k(o.retry)), 3592);
 						return
 					}
 					if (o.language || (o.language = "auto"), !je(o.language)) {
-						d('Invalid language value: "'.concat(o.language, ", expected either: auto, or an ISO 639-1 two-letter language code (e.g. en) or language and country code (e.g. en-US)"), 3593);
+						p('Invalid language value: "'.concat(o.language, ", expected either: auto, or an ISO 639-1 two-letter language code (e.g. en) or language and country code (e.g. en-US)"), 3593);
 						return
 					}
 					if (!Be(o.appearance)) {
-						d('Unknown appearance value: "'.concat(o.appearance, ", expected either: 'always', 'execute', or 'interaction-only'."), 3600);
+						p('Unknown appearance value: "'.concat(o.appearance, ", expected either: 'always', 'execute', or 'interaction-only'."), 3600);
 						return
 					}
 					if (!Ge(o.execution)) {
-						d('Unknown execution value: "'.concat(o.execution, ", expected either: 'render' or 'execute'."), 3601);
+						p('Unknown execution value: "'.concat(o.execution, ", expected either: 'render' or 'execute'."), 3601);
 						return
 					}
-					if (!Fe(o["retry-interval"])) {
-						d('Invalid retry-interval value: "'.concat(o["retry-interval"], ', expected an integer value > 0 and < 900000"'), 3602);
+					if (!We(o["retry-interval"])) {
+						p('Invalid retry-interval value: "'.concat(o["retry-interval"], ', expected an integer value > 0 and < 900000"'), 3602);
 						return
 					}
-					if (!We(o["expiry-interval"])) {
-						d('Invalid expiry-interval value: "'.concat(o["expiry-interval"], ', expected an integer value > 0 and < 360000"'), 3602);
+					if (!Fe(o["expiry-interval"])) {
+						p('Invalid expiry-interval value: "'.concat(o["expiry-interval"], ', expected an integer value > 0 and < 360000"'), 3602);
 						return
 					}
 					var te, M = (te = o["refresh-expired"]) !== null && te !== void 0 ? te : z.AUTO;
 					if (He(M)) o["refresh-expired"] = M;
 					else {
-						d('Invalid type for parameter "refresh-expired", expected never|manual|auto, got "'.concat(M, '" ').concat(typeof M == "undefined" ? "undefined" : k(M)), 3603);
+						p('Invalid type for parameter "refresh-expired", expected never|manual|auto, got "'.concat(M, '" ').concat(typeof M == "undefined" ? "undefined" : k(M)), 3603);
 						return
 					}
 					var Y = a.getElementsByTagName("iframe")[0];
 					Y != null && Y.id.startsWith(ae) && l(a);
 					var R = document.createElement("iframe");
 					if (!ze(b)) {
-						d('Invalid input for optional parameter "action", got "'.concat(b, '"'), 3604);
+						p('Invalid input for optional parameter "action", got "'.concat(b, '"'), 3604);
 						return
 					}
 					if (!Ve(A)) {
-						d('Invalid input for optional parameter "cData", got "'.concat(A, '"'), 3605);
+						p('Invalid input for optional parameter "cData", got "'.concat(A, '"'), 3605);
 						return
 					}
 					var X = f(),
@@ -870,7 +870,8 @@
 							widgetStartTime: Lt,
 							watchcat: {
 								seq: 0,
-								lastAckedSeq: 0
+								lastAckedSeq: 0,
+								missingWidgetWarning: !1
 							}
 						}, Pt)), Et(g), R.style.display = "none", R.style.border = "none", R.style.overflow = "hidden", R.setAttribute("src", It(X, E, o, $)), R.setAttribute("allow", "cross-origin-isolated; fullscreen"), R.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), R.id = re;
 						var Ce;
@@ -915,13 +916,13 @@
 					}
 				}
 				if (t === -1) {
-					d("Could not find widget", 43778);
+					p("Could not find widget", 43778);
 					return
 				}
 				return c
 			};
 
-		function p(_, c, t, a) {
+		function v(_, c, t, a) {
 			return w.apply(this, arguments)
 		}
 
@@ -932,7 +933,7 @@
 					switch (S.label) {
 						case 0:
 							if (r = _.params.sitekey, s = St(), !s) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), n(_, c, !1), [2];
-							o = "h/".concat("g", "/"), b = new URL(s), A = "https", I = "".concat(A, "://").concat(b.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), S.label = 1;
+							o = "h/".concat("b", "/"), b = new URL(s), A = "https", I = "".concat(A, "://").concat(b.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), S.label = 1;
 						case 1:
 							return S.trys.push([1, 6, , 7]), [4, fetch(I, {
 								method: "POST",
@@ -966,7 +967,7 @@
 			N = 0,
 			Z = function(c) {
 				var t = c.data;
-				if (t.source === W) {
+				if (t.source === F) {
 					if (!Gt(c)) {
 						x("Ignored message from wrong origin: " + c.origin);
 						return
@@ -978,7 +979,7 @@
 							case "init": {
 								var s = document.getElementById(a);
 								if (!s) {
-									d("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3074);
+									p("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3074);
 									return
 								}
 								r.mode = t.mode, r.mode === L.INVISIBLE && r.params["refresh-expired"] === z.MANUAL && x("refresh-expired=manual is impossible in invisible mode, consider using '".concat(z.AUTO, "' or '").concat(z.NEVER, "'")), r.params.appearance === V.ALWAYS ? Xe(s, r) : At(s), s.style.display = "";
@@ -987,7 +988,7 @@
 							case "translationInit": {
 								var o = document.getElementById(a);
 								if (!o) {
-									d("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3074);
+									p("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3074);
 									return
 								}
 								var b = new Map;
@@ -999,7 +1000,7 @@
 							case "reject": {
 								var A = document.getElementById(a);
 								if (r.isExecuting = !1, !A) {
-									d("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3075);
+									p("Cannot initialize Widget, Element not found (#".concat(a, ")."), 3075);
 									return
 								}
 								if (t.reason === "outdated_browser") {
@@ -1013,7 +1014,7 @@
 								break
 							}
 							case "complete": {
-								r.rcV = $, r.response = t.token, t.sToken ? p(r, a, t.sToken, t.chlId) : n(r, a, !1);
+								r.rcV = $, r.response = t.token, t.sToken ? v(r, a, t.sToken, t.chlId) : n(r, a, !1);
 								break
 							}
 							case "fail": {
@@ -1022,7 +1023,7 @@
 								if (E) {
 									var T;
 									E((T = t.code) !== null && T !== void 0 ? T : String(at)) || (t.code && x(t.code), e(r, a, t.code === "crashed"))
-								} else t.code ? (e(r, a, t.code === "crashed"), d(t.code, 3076)) : e(r, a, !1);
+								} else t.code ? (e(r, a, t.code === "crashed"), p(t.code, 3076)) : e(r, a, !1);
 								break
 							}
 							case "feedbackInit": {
@@ -1032,10 +1033,10 @@
 							case "requestFeedbackData": {
 								var D, S = document.querySelector("#".concat(a));
 								if (!S) {
-									d("Received state for an unknown widget: ".concat(t.widgetId), 3078);
+									p("Received state for an unknown widget: ".concat(t.widgetId), 3078);
 									return
 								}(D = S.contentWindow) === null || D === void 0 || D.postMessage({
-									source: W,
+									source: F,
 									widgetId: t.widgetId,
 									event: "requestTurnstileResults"
 								}, "*");
@@ -1044,10 +1045,10 @@
 							case "turnstileResults": {
 								var j, ee = document.querySelector("#".concat(a, "-fr"));
 								if (!ee) {
-									d("Received state for an unknown widget: ".concat(t.widgetId), 3078);
+									p("Received state for an unknown widget: ".concat(t.widgetId), 3078);
 									return
 								}(j = ee.contentWindow) === null || j === void 0 || j.postMessage({
-									source: W,
+									source: F,
 									widgetId: t.widgetId,
 									event: "feedbackData",
 									rayId: t.rayId,
@@ -1061,7 +1062,7 @@
 							case "closeFeedbackReportIframe": {
 								var B, G, ue = document.querySelector("#".concat(a, "-fr"));
 								if (!ue) {
-									d("Received state for an unknown widget: ".concat(t.widgetId), 3078);
+									p("Received state for an unknown widget: ".concat(t.widgetId), 3078);
 									return
 								}(B = ue.parentElement) === null || B === void 0 || (G = B.parentElement) === null || G === void 0 || G.remove();
 								break
@@ -1086,7 +1087,7 @@
 							case "interactiveBegin": {
 								var fe = document.getElementById(a);
 								if (!fe) {
-									d("Cannot layout widget, Element not found (#".concat(a, ")."), 3076);
+									p("Cannot layout widget, Element not found (#".concat(a, ")."), 3076);
 									return
 								}
 								var de = r.cbBeforeInteractive;
@@ -1096,7 +1097,7 @@
 							case "interactiveEnd": {
 								var Re = document.getElementById(a);
 								if (!Re) {
-									d("Cannot unlayout widget, Element not found (#".concat(a, ")."), 3077);
+									p("Cannot unlayout widget, Element not found (#".concat(a, ")."), 3077);
 									return
 								}
 								var te = r.cbAfterInteractive;
@@ -1110,20 +1111,20 @@
 							case "requestExtraParams": {
 								var M, Y = document.querySelector("#".concat(a));
 								if (!Y) {
-									d("Received state for an unknown widget: ".concat(t.widgetId), 3078);
+									p("Received state for an unknown widget: ".concat(t.widgetId), 3078);
 									return
 								}
 								r.isResetting = !1;
 								var R = {};
 								(M = Y.contentWindow) === null || M === void 0 || M.postMessage(Le({
-									source: W,
+									source: F,
 									widgetId: t.widgetId,
 									event: "extraParams",
 									action: r.action,
 									cData: r.cData,
 									chlPageData: r.chlPageData,
 									rcV: r.rcV,
-									ch: "dffb14d6",
+									ch: "7ff8d35b",
 									url: St(),
 									retry: r.params.retry,
 									"expiry-interval": r.params["expiry-interval"],
@@ -1166,7 +1167,7 @@
 		}
 		return {
 			ready: function(c) {
-				if (Rt && (x("turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors"), d("Remove async/defer from the Turnstile api.js script tag before using turnstile.ready().", 3857)), typeof c != "function" && d('turnstile.ready() expected a "function" argument, got "'.concat(typeof c == "undefined" ? "undefined" : k(c), '"'), 3841), c(), typeof c != "function" && d('Invalid value for parameter "callback", you must provide a callback function as argument to ready()', 3842), Ct) {
+				if (Rt && (x("turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors"), p("Remove async/defer from the Turnstile api.js script tag before using turnstile.ready().", 3857)), typeof c != "function" && p('turnstile.ready() expected a "function" argument, got "'.concat(typeof c == "undefined" ? "undefined" : k(c), '"'), 3841), c(), typeof c != "function" && p('Invalid value for parameter "callback", you must provide a callback function as argument to ready()', 3842), Ct) {
 					c();
 					return
 				}
@@ -1177,12 +1178,12 @@
 				var a = C(c);
 				if (!a) {
 					if (t === void 0) {
-						d("Please provide 2 parameters to execute: container and parameters", 43521);
+						p("Please provide 2 parameters to execute: container and parameters", 43521);
 						return
 					}
-					var r = v(c, t);
+					var r = d(c, t);
 					if (!r) {
-						d("Failed to render widget", 43522);
+						p("Failed to render widget", 43522);
 						return
 					}
 					a = r
@@ -1202,13 +1203,13 @@
 					s.isStale && m(o), s.isExpired && x("Call to execute on a expired-widget (".concat(o, "), consider using reset() before")), s.msgQueue.push(Q.EXECUTE), s.isExecuted = !0;
 					var b = document.querySelector("#".concat(o));
 					if (!b) {
-						s.isExecuting = !1, d("Widget ".concat(o, " to execute was not found"), 43522);
+						s.isExecuting = !1, p("Widget ".concat(o, " to execute was not found"), 43522);
 						return
 					}
 					s.isInitialized && u(s, a, b), s.params.appearance === V.EXECUTE && Xe(b, s)
 				}
 			},
-			render: v,
+			render: d,
 			reset: m,
 			remove: l,
 			getResponse: function(c) {
@@ -1218,11 +1219,11 @@
 					if (a) {
 						var r, s = g.get(a);
 						return s != null && s.isExpired && x("Call to getResponse on a widget that expired, consider refreshing the widget."), (r = g.get(a)) === null || r === void 0 ? void 0 : r.response
-					} else d("Could not find a widget", 43794)
+					} else p("Could not find a widget", 43794)
 				}
 				var o = C(c);
 				if (!o) {
-					d("Could not find widget for provided container", 43778);
+					p("Could not find widget for provided container", 43778);
 					return
 				}
 				return (t = g.get(o)) === null || t === void 0 ? void 0 : t.response
@@ -1234,10 +1235,10 @@
 					if (a) {
 						var r, s;
 						return (s = (r = g.get(a)) === null || r === void 0 ? void 0 : r.isExpired) !== null && s !== void 0 ? s : !1
-					} else d("Could not find a widget", 43794)
+					} else p("Could not find a widget", 43794)
 				}
 				var o = C(c);
-				if (!o) return d("Could not find widget for provided container", 43778), !1;
+				if (!o) return p("Could not find widget for provided container", 43778), !1;
 				var b;
 				return (b = (t = g.get(o)) === null || t === void 0 ? void 0 : t.isExpired) !== null && b !== void 0 ? b : !1
 			}
@@ -1257,19 +1258,19 @@
 		if (y && (qe(y) ? i.size = y : x('Unknown data-size value: "'.concat(y, '"'))), !1) var m;
 		var l = e.getAttribute("data-action");
 		typeof l == "string" && (i.action = l);
-		var v = e.getAttribute("data-cdata");
-		typeof v == "string" && (i.cData = v);
+		var d = e.getAttribute("data-cdata");
+		typeof d == "string" && (i.cData = d);
 		var h = e.getAttribute("data-retry");
 		h && (Ue(h) ? i.retry = h : x('Invalid data-retry value: "'.concat(h, ", expected either 'never' or 'auto'\"")));
-		var p = e.getAttribute("data-retry-interval");
-		if (p) {
-			var w = parseInt(p, 10);
-			Fe(w) ? i["retry-interval"] = w : x('Invalid data-retry-interval value: "'.concat(p, ', expected an integer value > 0 and < 900000"'))
+		var v = e.getAttribute("data-retry-interval");
+		if (v) {
+			var w = parseInt(v, 10);
+			We(w) ? i["retry-interval"] = w : x('Invalid data-retry-interval value: "'.concat(v, ', expected an integer value > 0 and < 900000"'))
 		}
 		var g = e.getAttribute("data-expiry-interval");
 		if (g) {
 			var N = parseInt(g, 10);
-			We(N) ? i["expiry-interval"] = N : x('Invalid data-expiry-interval value: "'.concat(N, ', expected an integer value > 0 and < 360000"'))
+			Fe(N) ? i["expiry-interval"] = N : x('Invalid data-expiry-interval value: "'.concat(N, ', expected an integer value > 0 and < 360000"'))
 		}
 		var Z = e.getAttribute("data-refresh-expired");
 		Z && (He(Z) ? i["refresh-expired"] = Z : x('Unknown data-refresh-expired value: "'.concat(Z, ", expected either: 'never', 'auto' or 'manual'.")));
@@ -1309,7 +1310,7 @@
 
 	function $t() {
 		var e = Qt();
-		if (!e) return d("Could not find Turnstile script tag, some features may not be available", 43777), null;
+		if (!e) return p("Could not find Turnstile script tag, some features may not be available", 43777), null;
 		(e.async || e.defer) && (Rt = !0);
 		var n = e.src,
 			i = n.split("?");
