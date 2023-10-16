@@ -2192,6 +2192,158 @@
 				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
 				"reviewedAt": "2020-12-02T20:37:41.07733138Z"
 			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "KubDyVvaI80z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./body.bundle.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./head.bundle.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptColor": {
+							"default": "#5cb85c",
+							"format": "color",
+							"order": 4,
+							"title": "Accept Cookies color",
+							"type": "string"
+						},
+						"acceptText": {
+							"default": "ACCEPT",
+							"order": 2,
+							"placeholder": "Accept the use of cookies",
+							"title": "Accept Text",
+							"type": "string"
+						},
+						"acceptTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 8,
+							"title": "Accept Cookies Text color",
+							"type": "string"
+						},
+						"bannerColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 6,
+							"title": "Cookie Banner color",
+							"type": "string"
+						},
+						"cookieTextColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 7,
+							"title": "Cookies Text color",
+							"type": "string"
+						},
+						"cookietext": {
+							"default": "<p>We use cookies to improve your experience on our site.</p>",
+							"format": "richtext",
+							"order": 1,
+							"placeholder": "Text to be shown for cookies",
+							"title": "Cookie Text",
+							"type": "string"
+						},
+						"settingsText": {
+							"default": "MORE OPTIONS",
+							"order": 3,
+							"placeholder": "Cookie Settings",
+							"title": "Settings Text",
+							"type": "string"
+						},
+						"settingsTextColor": {
+							"default": "#337ab7",
+							"format": "color",
+							"order": 9,
+							"title": "Cookie Settings Text color",
+							"type": "string"
+						},
+						"sliderOpacity": {
+							"default": 1,
+							"format": "slider",
+							"maximum": 1,
+							"minimum": 0.5,
+							"order": 5,
+							"step": 0.05,
+							"title": "Cookie Opacity",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Bug fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WUEkJ8zJha2N",
+			"created": "2023-10-16T06:10:29.216383Z",
+			"proposedApp": {
+				"id": "KubDyVvaI80z",
+				"title": "Cookie Consent",
+				"shortDescription": "GDPR cookie consent banner, Auto block script before accept.",
+				"longDescription": "The Cookie Consent plugin will assist you in making your website GDPR compliant. \n\nMain Features:  \n💯 100% Free to use.  \n🚫 Autoblock non-essential scripts and trackers before user consent.  \n🔥 Customize the cookie consent banner to match your website.  \n🔛 Give users the ability to toggle their privacy settings.  \n✅ Compatible with all websites on Cloudflare.  \n🔌 Easy two-click installation without having to signup or pay.\n\n\nHere is what it will look like when more options button is clicked on the bar:\n![Cloudflare cookie plugin demo](https://collectcdn.com/assets/cloudflare/cookie-example.png)\n\n\nList of scripts that are automatically blocked before user consent and after switching off non-necessary cookies:\n* Google Analytics\n* SoundCloud\n* Vimeo\n* Google Ads\n* Slideshare\n* Hotjar \n* Youtube embeds\n* Linkedin widget\n* Facebook widgets\n* Instagram widget\n* Share this widget\n* Add this widget\n* Twitter widget\n* Pinterest widget\n\n\nCheck out https://collect.chat if you need a 100% automated chatbot for your website for lead generation & data collection.",
+				"instructions": "",
+				"alias": "cookieconsent",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/rLLzmIz64W4T/icons8-cookie-200.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/qIKiuH6oGiSD/gdpr.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/U9Zn9c5-VaNe/cookie%20copy.png",
+				"author": "CFApps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YFsDeFbMUWiH"
+				},
+				"created": "2020-05-14T20:14:03.16717Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2023-10-16T06:10:40.792496263Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }

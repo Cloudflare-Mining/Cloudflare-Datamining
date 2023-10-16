@@ -1612,6 +1612,312 @@
 				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
 				"reviewedAt": "2021-06-22T20:42:23.642919665Z"
 			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "CdJKLfxzp1zQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"button": {
+							"description": "Button to be placed ay any specific section of the website",
+							"order": 1,
+							"properties": {
+								"color": {
+									"default": "#24d366",
+									"format": "color",
+									"order": 5,
+									"showIf": {
+										"button.show": true
+									},
+									"title": "Button Color",
+									"type": "string"
+								},
+								"includeMessage": {
+									"order": 3,
+									"properties": {
+										"link": {
+											"default": false,
+											"order": 3,
+											"showIf": {
+												"button.includeMessage.show": true
+											},
+											"title": "Include page link",
+											"type": "boolean"
+										},
+										"message": {
+											"default": "Hi, I need more info about",
+											"order": 1,
+											"showIf": {
+												"button.includeMessage.show": true
+											},
+											"title": "Message",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 0,
+											"title": "Enable start message",
+											"type": "boolean"
+										},
+										"title": {
+											"default": true,
+											"order": 2,
+											"showIf": {
+												"button.includeMessage.show": true
+											},
+											"title": "Include page title",
+											"type": "boolean"
+										}
+									},
+									"showIf": {
+										"button.show": true
+									},
+									"title": "WhatsApp start message",
+									"type": "object"
+								},
+								"location": {
+									"default": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"description": "Where should the button appear?",
+									"format": "element",
+									"order": 4,
+									"showIf": {
+										"button.show": true
+									},
+									"title": "Button Location",
+									"type": "object"
+								},
+								"message": {
+									"default": "Chat now on WhatsApp",
+									"order": 1,
+									"showIf": {
+										"button.show": true
+									},
+									"title": "Button Message",
+									"type": "string"
+								},
+								"phone": {
+									"default": "+1987654321",
+									"description": "Phone number including country code (ex:+1)",
+									"order": 2,
+									"showIf": {
+										"button.show": true
+									},
+									"title": "Phone number",
+									"type": "string"
+								},
+								"show": {
+									"default": false,
+									"order": 0,
+									"title": "Show Button",
+									"type": "boolean"
+								},
+								"style": {
+									"default": "square",
+									"description": "Button style",
+									"enum": [
+										"square",
+										"round"
+									],
+									"enumNames": {
+										"round": "Round",
+										"square": "Square"
+									},
+									"format": "radios",
+									"order": 6,
+									"showIf": {
+										"button.show": true
+									},
+									"title": "Style",
+									"type": "string"
+								}
+							},
+							"title": "Fixed Button",
+							"type": "object"
+						},
+						"widget": {
+							"description": "Floating button that can appear above content",
+							"order": 0,
+							"properties": {
+								"includeMessage": {
+									"order": 3,
+									"properties": {
+										"link": {
+											"default": false,
+											"order": 3,
+											"showIf": {
+												"widget.includeMessage.show": true
+											},
+											"title": "Include page link",
+											"type": "boolean"
+										},
+										"message": {
+											"default": "Hi, I need more info about",
+											"order": 1,
+											"showIf": {
+												"widget.includeMessage.show": true
+											},
+											"title": "Message",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 0,
+											"title": "Enable start message",
+											"type": "boolean"
+										},
+										"title": {
+											"default": true,
+											"order": 2,
+											"showIf": {
+												"widget.includeMessage.show": true
+											},
+											"title": "Include page title",
+											"type": "boolean"
+										}
+									},
+									"showIf": {
+										"widget.show": true
+									},
+									"title": "WhatsApp start message",
+									"type": "object"
+								},
+								"message": {
+									"default": "👋  Chat now on WhatsApp",
+									"order": 1,
+									"showIf": {
+										"widget.show": true
+									},
+									"title": "Widget Message",
+									"type": "string"
+								},
+								"phone": {
+									"default": "+1987654321",
+									"description": "Phone number including country code (ex:+1)",
+									"order": 2,
+									"showIf": {
+										"widget.show": true
+									},
+									"title": "Phone number",
+									"type": "string"
+								},
+								"position": {
+									"default": "bottom-right",
+									"description": "Where do you want the widget to appear?",
+									"enum": [
+										"bottom-right",
+										"bottom-left"
+									],
+									"enumNames": {
+										"bottom-left": "Bottom Left",
+										"bottom-right": "Bottom Right"
+									},
+									"format": "radios",
+									"order": 4,
+									"showIf": {
+										"widget.show": true
+									},
+									"title": "Position",
+									"type": "string"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show Widget",
+									"type": "boolean"
+								},
+								"waves": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"widget.show": true
+									},
+									"title": "Attention grabber",
+									"type": "boolean"
+								}
+							},
+							"title": "Floating Widget",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Bug fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/v7wI2FDunwmN",
+			"created": "2023-10-16T06:11:52.50277Z",
+			"proposedApp": {
+				"id": "CdJKLfxzp1zQ",
+				"title": "WhatsApp Contact Us - Button & Widget",
+				"shortDescription": "Let website visitors contact you directly on WhatsApp",
+				"longDescription": "The WhatsApp Contact plugin will assist you in making your website more user friendly. Let your users contact you directly on world's #1 messaging app WhatsApp from friendly widgets and buttons.\n\nMain Features:    \n💯 100% Free to use.  \n🎛 Customize the widget and button easily.  \n✅ Custom WhatsApp starting message including title and page link.  \n🔌 Easy two-click installation without having to signup or pay.  \n\nHere is what it will look like when the widget is open:\n![Contact widget plugin demo](https://collectcdn.com/assets/cloudflare/whatsapp-example.png)\n\nCheck out https://collect.chat if you need a 100% automated chatbot for your website for lead generation & data collection.",
+				"instructions": "",
+				"alias": "whatsapp",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/94VRkyKAum9e/whatsapp-logo.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/u2jnSFX9scXi/whatsapp1.png",
+				"featuredAppImage": "",
+				"author": "CFApps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1aUX8IffYdO5"
+				},
+				"created": "2020-12-06T05:52:49.151114Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2023-10-16T06:11:54.463215714Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }

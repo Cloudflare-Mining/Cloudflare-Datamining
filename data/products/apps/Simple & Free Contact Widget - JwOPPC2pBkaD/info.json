@@ -6005,6 +6005,757 @@
 				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
 				"reviewedAt": "2020-12-02T20:38:31.874023729Z"
 			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "JwOPPC2pBkaD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./main.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"badge": {
+							"default": "ME",
+							"enum": [
+								"ME",
+								"US"
+							],
+							"enumNames": {
+								"ME": "Personal",
+								"US": "Company"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Badge",
+							"type": "string"
+						},
+						"links": {
+							"description": "Customize what you want in the widget",
+							"properties": {
+								"discord": {
+									"order": 24,
+									"properties": {
+										"link": {
+											"description": "As in https://discord.gg/<strong>Invite Id</strong>",
+											"order": 2,
+											"showIf": {
+												"links.discord.show": true
+											},
+											"title": "Invite Id",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Discord",
+									"type": "object"
+								},
+								"email": {
+									"order": 2,
+									"properties": {
+										"link": {
+											"default": " ",
+											"order": 2,
+											"showIf": {
+												"links.email.show": true
+											},
+											"title": "E-mail ID",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "E-mail",
+									"type": "object"
+								},
+								"facebook": {
+									"order": 5,
+									"properties": {
+										"link": {
+											"description": "As in facebook.com/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.facebook.show": true
+											},
+											"title": "Facebook ID",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Facebook",
+									"type": "object"
+								},
+								"facebookmessenger": {
+									"order": 10,
+									"properties": {
+										"link": {
+											"description": "As in messenger.com/t/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.facebookmessenger.show": true
+											},
+											"title": "Facebook ID",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Facebook Messenger",
+									"type": "object"
+								},
+								"github": {
+									"order": 17,
+									"properties": {
+										"link": {
+											"description": "Link to your github profile or a repository; as in github.com/<strong>link</strong>",
+											"order": 2,
+											"showIf": {
+												"links.github.show": true
+											},
+											"title": "Github Link",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Github",
+									"type": "object"
+								},
+								"instagram": {
+									"order": 6,
+									"properties": {
+										"link": {
+											"description": "As in  instagram.com/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.instagram.show": true
+											},
+											"title": "Username",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Instagram",
+									"type": "object"
+								},
+								"kickstarter": {
+									"order": 18,
+									"properties": {
+										"link": {
+											"description": "The link to your project or profile; as in kickstarter.com/<strong>link</strong>",
+											"order": 2,
+											"showIf": {
+												"links.kickstarter.show": true
+											},
+											"title": "Project Link",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Kickstarter",
+									"type": "object"
+								},
+								"kik": {
+									"order": 19,
+									"properties": {
+										"link": {
+											"order": 2,
+											"showIf": {
+												"links.kik.show": true
+											},
+											"title": "Username",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Kik",
+									"type": "object"
+								},
+								"linkedin": {
+									"order": 13,
+									"properties": {
+										"link": {
+											"description": "As in linkedin.com/in/<strong>URL</strong>",
+											"order": 2,
+											"showIf": {
+												"links.linkedin.show": true
+											},
+											"title": "Profile URL",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Linkedin",
+									"type": "object"
+								},
+								"medium": {
+									"order": 14,
+									"properties": {
+										"link": {
+											"description": "As in medium.com/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.medium.show": true
+											},
+											"title": "Username",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Medium",
+									"type": "object"
+								},
+								"message": {
+									"description": "A message dispayed in the widget",
+									"order": 1,
+									"properties": {
+										"msgtext": {
+											"default": "Welcome to our website!",
+											"format": "textarea",
+											"order": 3,
+											"showIf": {
+												"links.message.show": true
+											},
+											"title": "Message Text",
+											"type": "string"
+										},
+										"msgtitle": {
+											"default": "INTRODUCTION",
+											"order": 2,
+											"showIf": {
+												"links.message.show": true
+											},
+											"title": "Message Title",
+											"type": "string"
+										},
+										"show": {
+											"default": true,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Message",
+									"type": "object"
+								},
+								"phone": {
+									"order": 3,
+									"properties": {
+										"link": {
+											"order": 2,
+											"showIf": {
+												"links.phone.show": true
+											},
+											"title": "Phone Number",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Phone",
+									"type": "object"
+								},
+								"producthunt": {
+									"order": 22,
+									"properties": {
+										"link": {
+											"description": "As in producthunt.com/<strong>link</strong>",
+											"order": 2,
+											"showIf": {
+												"links.producthunt.show": true
+											},
+											"title": "Username/Product page",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Producthunt",
+									"type": "object"
+								},
+								"skype": {
+									"order": 15,
+									"properties": {
+										"link": {
+											"description": "Your skype User ID",
+											"order": 2,
+											"showIf": {
+												"links.skype.show": true
+											},
+											"title": "User ID",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Skype",
+									"type": "object"
+								},
+								"slack": {
+									"order": 20,
+									"properties": {
+										"link": {
+											"description": "As in <strong>workspace</strong>.slack.com",
+											"order": 2,
+											"showIf": {
+												"links.slack.show": true
+											},
+											"title": "Workspace URL",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Slack",
+									"type": "object"
+								},
+								"snapchat": {
+									"order": 12,
+									"properties": {
+										"link": {
+											"description": "As in snapchat.com/add/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.snapchat.show": true
+											},
+											"title": "Username",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Snapchat",
+									"type": "object"
+								},
+								"soundcloud": {
+									"order": 9,
+									"properties": {
+										"link": {
+											"description": "As in soundcloud.com/<strong>URL</strong>",
+											"order": 2,
+											"showIf": {
+												"links.soundcloud.show": true
+											},
+											"title": "Profile URL",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Soundcloud",
+									"type": "object"
+								},
+								"telegram": {
+									"order": 16,
+									"properties": {
+										"link": {
+											"description": "As in t.me/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.telegram.show": true
+											},
+											"title": "Username",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Telegram",
+									"type": "object"
+								},
+								"twitter": {
+									"order": 7,
+									"properties": {
+										"link": {
+											"description": "As in twitter.com/<strong>username</strong>",
+											"order": 2,
+											"showIf": {
+												"links.twitter.show": true
+											},
+											"title": "Username",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Twitter",
+									"type": "object"
+								},
+								"vimeo": {
+									"order": 21,
+									"properties": {
+										"link": {
+											"description": "As in vimeo.com/<strong>URL</strong>",
+											"order": 2,
+											"showIf": {
+												"links.vimeo.show": true
+											},
+											"title": "Profile URL",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Vimeo",
+									"type": "object"
+								},
+								"vk": {
+									"order": 24,
+									"properties": {
+										"link": {
+											"description": "As in vk.com/<strong>User ID</strong>",
+											"order": 2,
+											"showIf": {
+												"links.vk.show": true
+											},
+											"title": "User Id",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "VK",
+									"type": "object"
+								},
+								"website": {
+									"order": 4,
+									"properties": {
+										"link": {
+											"order": 2,
+											"showIf": {
+												"links.website.show": true
+											},
+											"title": "URL",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Website",
+									"type": "object"
+								},
+								"whatsapp": {
+									"order": 11,
+									"properties": {
+										"link": {
+											"description": "Your phone number, including the country code and without any symbols ie. numbers only",
+											"order": 2,
+											"showIf": {
+												"links.whatsapp.show": true
+											},
+											"title": "Phone Number",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Whatsapp",
+									"type": "object"
+								},
+								"xing": {
+									"order": 23,
+									"properties": {
+										"link": {
+											"description": "As in xing.com/profile/<strong>URL</strong>",
+											"order": 2,
+											"showIf": {
+												"links.xing.show": true
+											},
+											"title": "Profile URL",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "XING",
+									"type": "object"
+								},
+								"youtube": {
+									"order": 8,
+									"properties": {
+										"link": {
+											"description": "As in youtube.com/<strong>link</strong>",
+											"order": 2,
+											"showIf": {
+												"links.youtube.show": true
+											},
+											"title": "Channel Link",
+											"type": "string"
+										},
+										"show": {
+											"default": false,
+											"order": 1,
+											"title": "Show",
+											"type": "boolean"
+										}
+									},
+									"title": "Youtube",
+									"type": "object"
+								}
+							},
+							"title": "Widget Content",
+							"type": "object"
+						},
+						"location": {
+							"default": "bottom-right",
+							"description": "Where do you want the widget to appear?",
+							"enum": [
+								"bottom-right",
+								"bottom-left",
+								"center"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom Left",
+								"bottom-right": "Bottom Right",
+								"center": "Center"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetbutton": {
+							"order": 0,
+							"properties": {
+								"icon": {
+									"description": "The icon for your widget",
+									"enum": [
+										"speech-bubble",
+										"envelope",
+										"telephone",
+										"person",
+										"world",
+										"custom"
+									],
+									"enumNames": {
+										"custom": "⚙️",
+										"envelope": "✉️",
+										"person": "👤",
+										"speech-bubble": "🗨️",
+										"telephone": "📞",
+										"world": "🌍"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Icon",
+									"type": "string"
+								},
+								"iconColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"title": "Icon Color",
+									"type": "string"
+								},
+								"iconCustom": {
+									"format": "image",
+									"order": 1,
+									"showIf": {
+										"widgetbutton.icon": "custom"
+									},
+									"title": "Custom Icon",
+									"type": "string"
+								},
+								"widgetColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 3,
+									"title": "Widget Button Color",
+									"type": "string"
+								}
+							},
+							"title": "Widget Button",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"links"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"widgetbutton"
+							],
+							"execute": "INSTALL_SCOPE.updateButton(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.changeLocation(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"badge"
+							],
+							"execute": "INSTALL_SCOPE.changeBadge(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/KGIfIRNQu88R",
+			"created": "2023-10-16T06:11:16.8676Z",
+			"proposedApp": {
+				"id": "JwOPPC2pBkaD",
+				"title": "Simple & Free Contact Widget",
+				"shortDescription": "A beautiful widget for social links, email & phone.",
+				"longDescription": "The Contact Widget plugin will assist you in making your website more user friendly. Let your users contact you via email, chat, phone or social media easily from an accessible & friendly widget.\n\nMain Features:    \n💯 100% Free to use.  \n🎛 Customize the widget button, position, social and contact links easily.  \n✅ All major social media icons, email and phone available.  \n🔌 Easy two-click installation without having to signup or pay.  \n\nHere is what it will look like when the widget is open:\n![Contact widget plugin demo](https://collectcdn.com/assets/cloudflare/contact-example.png)\n\nCheck out https://collect.chat if you need a 100% automated chatbot for your website for lead generation & data collection.",
+				"instructions": "",
+				"alias": "contactwidget",
+				"orgId": "d12e1ccedf74392864b132132b89180e",
+				"icon": "https://images.cloudflareapps.com/T4xexNm_GGIG/social.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/szn8hOXr0g0H/social420%20copy.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/zdYAluFpA_H6/contact.png",
+				"author": "CFApps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iaxidTut3B9t"
+				},
+				"created": "2020-05-16T19:04:40.68199Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "d12e1ccedf74392864b132132b89180e",
+				"requestedAt": "2023-10-16T06:11:19.106531063Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }
