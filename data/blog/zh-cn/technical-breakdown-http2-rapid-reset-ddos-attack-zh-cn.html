@@ -52,7 +52,7 @@
 	<p>Cloudflare 的<a href="https://www.rfc-editor.org/rfc/rfc9110#section-3.7-6" target="_blank">反向代理</a>处理传入的 HTTP/2 客户端流量时，会将数据从连接的套接字复制到缓冲区，并按顺序处理缓冲的数据。在读取每个请求（HEADERS 和 DATA 帧）时，它会被分派到上游服务。读取 RST_STREAM 帧时，请求的本地状态会被删除，并通知上游请求已被取消。如此循环往复，直到整个缓冲区中的数据处理完毕。然而，这种逻辑可能会被滥用：当恶意客户端开始发送大量请求链，并在连接开始时重置时，我们的服务器就会迫不及待地读取所有请求，给上游服务器造成压力，以至于无法处理任何新的传入请求。</p>
 	<p>需要强调的是，流并发本身并不能缓解快速重置。无论服务器选择的 <a href="https://www.rfc-editor.org/rfc/rfc9113#SETTINGS_MAX_CONCURRENT_STREAMS" target="_blank">SETTINGS_MAX_CONCURRENT_STREAMS</a> 值是多少，客户端可以不断发送请求以创建高请求率。</p>
 	<h3 id="%E5%BF%AB%E9%80%9F%E9%87%8D%E7%BD%AE%E5%89%96%E6%9E%90">快速重置剖析</h3>
-	<p>以下是使用概念验证客户端尝试发出总共 1000 个请求的快速重置示例。我使用了现成的服务器，没有任何缓解措施； 在测试环境中侦听端口 443。为了清楚起见，使用 Wireshark 剖析流量并进行过滤以仅显示 HTTP/2 流量。<a href="https://assets.ctfassets.net/slt3lc6tev37/50OLaCqcT1iGPJP41qKZ0Z/ee9d6f4720a3842867974c85d209305a/rapidreset.pcapng" target="_blank">下载 pcap</a> 以进行后续操作。</p>
+	<p>以下是使用概念验证客户端尝试发出总共 1000 个请求的快速重置示例。我使用了现成的服务器，没有任何缓解措施； 在测试环境中侦听端口 443。为了清楚起见，使用 Wireshark 剖析流量并进行过滤以仅显示 HTTP/2 流量。<a href="https://blog.cloudflare.com/content/images/rapidreset.pcapng">下载 pcap</a> 以进行后续操作。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="79"></figure>
 	<p>要看清楚有点难，因为有很多帧。我们可以通过 Wireshark 的“统计 &gt; HTTP2”工具快速获得摘要：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-09-at-10.50.42-PM.png" class="kg-image" alt="" loading="lazy" width="1058" height="324"></figure>
