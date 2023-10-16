@@ -2770,6 +2770,12 @@
 										"url": "/products/zero-trust/zero-trust-network-access"
 									},
 									{
+										"contentfulId": "735DlHh4jBTX1Gvw8N4Jka",
+										"linkText": "VPN replacement",
+										"page": null,
+										"url": "/products/zero-trust/vpn-replacement"
+									},
+									{
 										"contentfulId": "3yOKdydNn3bEYzoKYJHz5L",
 										"linkText": "Manage third party access ",
 										"page": null,
@@ -2862,6 +2868,38 @@
 								]
 							},
 							{
+								"contentfulId": "6IyJLCs3YY1MTniTWVCGfZ",
+								"linkText": "Case studies",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "6ek9uKLsxHWRCy6FFlFoPK",
+										"linkText": "All Zero Trust case studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "5296MAHd8OFpaieW2MXdyu",
+										"linkText": "Technology",
+										"page": null,
+										"url": "/case-studies?industry=High+Technology&usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "7ia2I0uTM5JelkOklLq7Jv",
+										"linkText": "Financial services",
+										"page": null,
+										"url": "/case-studies?industry=Financial+Services&usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "1F6lQEkWk6MkXgnM7ssDFt",
+										"linkText": "Ecommerce",
+										"page": null,
+										"url": "/case-studies?industry=eCommerce&usecase=Enable+zero+trust+security+for+workforce"
+									}
+								]
+							},
+							{
 								"contentfulId": "7oqf8k1Rn0L1np5ZuVuPDA",
 								"linkText": "Analyst reports",
 								"page": null,
@@ -2910,6 +2948,13 @@
 										"url": "https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing/"
 									}
 								]
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
+								"subMenuItems": []
 							},
 							{
 								"contentfulId": "2wSyxBP4Xy8CZXhKznsEb",
@@ -3155,21 +3200,7 @@
 									},
 									"description": null
 								},
-								"iconAssetFile": {
-									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
-									"altText": "Optimization web blue",
-									"title": "Optimization web blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/76OxPWvxXlUbcfGr05wpg5/429150d8058c40452ee038bd9198ba4d/optimization-web.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -3428,6 +3459,47 @@
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": []
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "2WYT3ojqmGu21lNvikMlrH",
+						"quote": "\"POLITICO needed a way to control access to specific critical resources without the risk and overhead of connecting through a private corporate network. Cloudflare Access aligns with how and where our team works, while helping us embrace a Zero Trust security model, where every request to every app is evaluated for user identity - and no VPN is required.\"",
+						"quoteAuthor": "Michael Irwin",
+						"quoteTitle": "Senior Director, Technology Operations and Cybersecurity",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6IEd3mUna64stWsTxIq8nf/f6738d8c31d03e2245783e118c0d33df/logo_politico_color.svg"
+							},
+							"description": null
+						},
+						"imageAssetFile": {
+							"id": "489299a8-3a50-58be-86b6-c37dc96f2752",
+							"altText": "Logo politico gray",
+							"title": "Logo politico gray",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 3001,
+								"height": 788,
+								"width": 3979,
+								"filename": "logo_politico_gray.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/logo_politico_gray.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": [],
+						"logoListAssetFile": [],
+						"quoteCarousel": []
 					},
 					{
 						"contentfulId": "4mvOC5ec9qE41Eq9vlA30v",
