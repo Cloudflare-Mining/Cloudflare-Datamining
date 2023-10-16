@@ -134,14 +134,34 @@
 										{
 											"properties": {
 												"result": {
-													"anyOf": [
-														{
-															"type": "object"
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
 														},
-														{
-															"type": "string"
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
 														}
-													]
+													},
+													"type": "object"
 												}
 											}
 										}
@@ -191,7 +211,528 @@
 				"content": {
 					"application/json": {
 						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List colos failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Cloudflare colos",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/fleet-status/devices": {
+		"description": "List details for devices using WARP",
+		"operationId": "dex-fleet-status-live-devices",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "time_end",
+				"required": true,
+				"schema": {
+					"description": "Timestamp in ISO format",
+					"example": "2023-10-11T00:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "time_start",
+				"required": true,
+				"schema": {
+					"description": "Timestamp in ISO format",
+					"example": "2023-10-11T00:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"required": true,
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results",
+					"example": 1,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"required": true,
+				"schema": {
+					"description": "Number of items per page",
+					"example": 10,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "timestamp",
+					"description": "Dimension to sort results by",
+					"enum": [
+						"colo",
+						"device_id",
+						"mode",
+						"platform",
+						"status",
+						"timestamp",
+						"version"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "colo",
+				"schema": {
+					"description": "Cloudflare colo",
+					"example": "SJC",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "device_id",
+				"schema": {
+					"description": "Device-specific ID, given as UUID v4",
+					"example": "cb49c27f-7f97-49c5-b6f3-f7c01ead0fd7",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "mode",
+				"schema": {
+					"description": "The mode under which the WARP client is run",
+					"example": "proxy",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Network status",
+					"example": "connected",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "platform",
+				"schema": {
+					"description": "Operating system",
+					"example": "windows",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "version",
+				"schema": {
+					"description": "WARP client version",
+					"example": "1.0.0",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
 							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {},
+													"nullable": true,
+													"type": "array"
+												},
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"colo": {
+														"description": "Cloudflare colo",
+														"example": "SJC",
+														"type": "string"
+													},
+													"deviceId": {
+														"description": "Device identifier (UUID v4)",
+														"type": "string"
+													},
+													"deviceName": {
+														"description": "Device identifier (human readable)",
+														"type": "string"
+													},
+													"personEmail": {
+														"description": "User contact email address",
+														"type": "string"
+													},
+													"platform": {
+														"description": "Operating system",
+														"example": "windows",
+														"type": "string"
+													},
+													"status": {
+														"description": "Network status",
+														"example": "connected",
+														"type": "string"
+													},
+													"version": {
+														"description": "WARP client version",
+														"example": "1.0.0",
+														"type": "string"
+													}
+												},
+												"required": [
+													"colo",
+													"deviceName",
+													"deviceId",
+													"mode",
+													"personEmail",
+													"platform",
+													"status",
+													"timestamp",
+													"version"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List devices response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
 								{
 									"properties": {
 										"errors": {
@@ -280,7 +821,7 @@
 						}
 					}
 				},
-				"description": "List colos failure response"
+				"description": "List devices response failure"
 			}
 		},
 		"security": [
@@ -293,7 +834,721 @@
 				"api_key": []
 			}
 		],
-		"summary": "List Cloudflare colos",
+		"summary": "List fleet status devices",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/fleet-status/live": {
+		"description": "List details for live (up to 60 minutes) devices using WARP",
+		"operationId": "dex-fleet-status-live",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "since_minutes",
+				"required": true,
+				"schema": {
+					"default": 10,
+					"description": "Number of minutes before current time",
+					"example": 10,
+					"maximum": 60,
+					"minimum": 1,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deviceStats": {
+													"properties": {
+														"byColo": {
+															"items": {
+																"properties": {
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"byMode": {
+															"items": {
+																"properties": {
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"byPlatform": {
+															"items": {
+																"properties": {
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"byStatus": {
+															"items": {
+																"properties": {
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"byVersion": {
+															"items": {
+																"properties": {
+																	"uniqueDevicesTotal": {
+																		"description": "Number of unique devices",
+																		"type": "number"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"uniqueDevicesTotal": {
+															"description": "Number of unique devices",
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List device details (live) response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List device details (live) response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List fleet status details by dimension",
+		"tags": [
+			"DEX Synthetic Application Montitoring"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#dex:read",
+				"#teams:report"
+			]
+		}
+	},
+	"GET /accounts/{account_identifier}/dex/fleet-status/over-time": {
+		"description": "List details for devices using WARP, up to 7 days",
+		"operationId": "dex-fleet-status-over-time",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "time_end",
+				"required": true,
+				"schema": {
+					"description": "Timestamp in ISO format",
+					"example": "2023-10-11T00:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "time_start",
+				"required": true,
+				"schema": {
+					"description": "Timestamp in ISO format",
+					"example": "2023-10-11T00:00:00Z",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "colo",
+				"schema": {
+					"description": "Cloudflare colo",
+					"example": "SJC",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "device_id",
+				"schema": {
+					"description": "Device-specific ID, given as UUID v4",
+					"example": "cb49c27f-7f97-49c5-b6f3-f7c01ead0fd7",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"description": "List DEX devices response"
+			},
+			"4xx": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DEX HTTP test details failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List fleet status aggregate details by dimension",
 		"tags": [
 			"DEX Synthetic Application Montitoring"
 		],
@@ -893,588 +2148,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"host": {
-															"description": "The url of the HTTP synthetic application test",
-															"example": "http://example.com",
-															"type": "string"
-														},
-														"httpStats": {
-															"nullable": true,
-															"properties": {
-																"dnsResponseTimeMs": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"min": {
-																			"description": "lowest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"type": "integer"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"httpStatusCode": {
-																	"items": {
-																		"properties": {
-																			"status200": {
-																				"type": "integer"
-																			},
-																			"status300": {
-																				"type": "integer"
-																			},
-																			"status400": {
-																				"type": "integer"
-																			},
-																			"status500": {
-																				"type": "integer"
-																			},
-																			"timestamp": {
-																				"example": "2023-07-16 15:00:00+00",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"timestamp",
-																			"status200",
-																			"status300",
-																			"status400",
-																			"status500"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
-																},
-																"resourceFetchTimeMs": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"min": {
-																			"description": "lowest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"type": "integer"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"serverResponseTimeMs": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"min": {
-																			"description": "lowest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"type": "integer"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"uniqueDevicesTotal": {
-																	"description": "Count of unique devices that have run this test in the given time period",
-																	"example": 57,
-																	"type": "integer"
-																}
-															},
-															"required": [
-																"uniqueDevicesTotal",
-																"resourceFetchTimeMs",
-																"serverResponseTimeMs",
-																"dnsResponseTimeMs",
-																"httpStatusCode"
-															],
-															"type": "object"
-														},
-														"httpStatsByColo": {
-															"items": {
-																"properties": {
-																	"colo": {
-																		"example": "DFW",
-																		"type": "string"
-																	},
-																	"dnsResponseTimeMs": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"min": {
-																				"description": "lowest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"type": "integer"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"httpStatusCode": {
-																		"items": {
-																			"properties": {
-																				"status200": {
-																					"type": "integer"
-																				},
-																				"status300": {
-																					"type": "integer"
-																				},
-																				"status400": {
-																					"type": "integer"
-																				},
-																				"status500": {
-																					"type": "integer"
-																				},
-																				"timestamp": {
-																					"example": "2023-07-16 15:00:00+00",
-																					"type": "string"
-																				}
-																			},
-																			"required": [
-																				"timestamp",
-																				"status200",
-																				"status300",
-																				"status400",
-																				"status500"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"resourceFetchTimeMs": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"min": {
-																				"description": "lowest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"type": "integer"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"serverResponseTimeMs": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"min": {
-																				"description": "lowest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"type": "integer"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"uniqueDevicesTotal": {
-																		"description": "Count of unique devices that have run this test in the given time period",
-																		"example": 57,
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"colo",
-																	"uniqueDevicesTotal",
-																	"resourceFetchTimeMs",
-																	"serverResponseTimeMs",
-																	"dnsResponseTimeMs",
-																	"httpStatusCode"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"interval": {
-															"description": "The interval at which the HTTP synthetic application test is set to run.",
-															"example": "0h5m0s",
-															"type": "string"
-														},
-														"kind": {
-															"enum": [
-																"http"
-															]
-														},
-														"method": {
-															"description": "The HTTP method to use when running the test",
-															"example": "GET",
-															"type": "string"
-														},
-														"name": {
-															"description": "The name of the HTTP synthetic application test",
-															"example": "Atlassian Sign In Page",
-															"type": "string"
-														}
-													},
-													"required": [
-														"kind",
-														"name",
-														"host",
-														"interval",
-														"method"
-													],
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -1764,92 +2519,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -2624,737 +3375,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"overviewMetrics": {
-															"properties": {
-																"avgTracerouteAvailabilityPct": {
-																	"description": "percentage availability for all traceroutes results in response",
-																	"format": "float",
-																	"nullable": true,
-																	"type": "number"
-																},
-																"testsTotal": {
-																	"description": "number of  tests.",
-																	"type": "integer"
-																}
-															},
-															"required": [
-																"testsTotal"
-															],
-															"type": "object"
-														},
-														"tests": {
-															"description": "array of test results objects.",
-															"items": {
-																"properties": {
-																	"created": {
-																		"description": "date the test was created.",
-																		"type": "string"
-																	},
-																	"description": {
-																		"description": "the test description defined during configuration",
-																		"type": "string"
-																	},
-																	"enabled": {
-																		"description": "if true, then the test will run on targeted devices. Else, the test will not run.",
-																		"type": "boolean"
-																	},
-																	"host": {
-																		"type": "string"
-																	},
-																	"httpResults": {
-																		"nullable": true,
-																		"properties": {
-																			"resourceFetchTime": {
-																				"properties": {
-																					"avgMs": {
-																						"nullable": true,
-																						"type": "integer"
-																					},
-																					"history": {
-																						"items": {
-																							"properties": {
-																								"avgMs": {
-																									"nullable": true,
-																									"type": "integer"
-																								},
-																								"deltaPct": {
-																									"format": "float",
-																									"nullable": true,
-																									"type": "number"
-																								},
-																								"timePeriod": {
-																									"properties": {
-																										"units": {
-																											"enum": [
-																												"hours",
-																												"days",
-																												"testRuns"
-																											],
-																											"type": "string"
-																										},
-																										"value": {
-																											"type": "integer"
-																										}
-																									},
-																									"required": [
-																										"value",
-																										"units"
-																									],
-																									"type": "object"
-																								}
-																							},
-																							"required": [
-																								"timePeriod"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
-																					},
-																					"overTime": {
-																						"nullable": true,
-																						"properties": {
-																							"timePeriod": {
-																								"properties": {
-																									"units": {
-																										"enum": [
-																											"hours",
-																											"days",
-																											"testRuns"
-																										],
-																										"type": "string"
-																									},
-																									"value": {
-																										"type": "integer"
-																									}
-																								},
-																								"required": [
-																									"value",
-																									"units"
-																								],
-																								"type": "object"
-																							},
-																							"values": {
-																								"items": {
-																									"properties": {
-																										"avgMs": {
-																											"type": "integer"
-																										},
-																										"timestamp": {
-																											"type": "string"
-																										}
-																									},
-																									"required": [
-																										"timestamp",
-																										"avgMs"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
-																							}
-																						},
-																						"required": [
-																							"values",
-																							"timePeriod"
-																						],
-																						"type": "object"
-																					}
-																				},
-																				"required": [
-																					"history"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"resourceFetchTime"
-																		],
-																		"type": "object"
-																	},
-																	"httpResultsByColo": {
-																		"items": {
-																			"properties": {
-																				"colo": {
-																					"description": "Cloudflare colo",
-																					"example": "SJC",
-																					"type": "string"
-																				},
-																				"resourceFetchTime": {
-																					"properties": {
-																						"avgMs": {
-																							"nullable": true,
-																							"type": "integer"
-																						},
-																						"history": {
-																							"items": {
-																								"properties": {
-																									"avgMs": {
-																										"nullable": true,
-																										"type": "integer"
-																									},
-																									"deltaPct": {
-																										"format": "float",
-																										"nullable": true,
-																										"type": "number"
-																									},
-																									"timePeriod": {
-																										"properties": {
-																											"units": {
-																												"enum": [
-																													"hours",
-																													"days",
-																													"testRuns"
-																												],
-																												"type": "string"
-																											},
-																											"value": {
-																												"type": "integer"
-																											}
-																										},
-																										"required": [
-																											"value",
-																											"units"
-																										],
-																										"type": "object"
-																									}
-																								},
-																								"required": [
-																									"timePeriod"
-																								],
-																								"type": "object"
-																							},
-																							"type": "array"
-																						},
-																						"overTime": {
-																							"nullable": true,
-																							"properties": {
-																								"timePeriod": {
-																									"properties": {
-																										"units": {
-																											"enum": [
-																												"hours",
-																												"days",
-																												"testRuns"
-																											],
-																											"type": "string"
-																										},
-																										"value": {
-																											"type": "integer"
-																										}
-																									},
-																									"required": [
-																										"value",
-																										"units"
-																									],
-																									"type": "object"
-																								},
-																								"values": {
-																									"items": {
-																										"properties": {
-																											"avgMs": {
-																												"type": "integer"
-																											},
-																											"timestamp": {
-																												"type": "string"
-																											}
-																										},
-																										"required": [
-																											"timestamp",
-																											"avgMs"
-																										],
-																										"type": "object"
-																									},
-																									"type": "array"
-																								}
-																							},
-																							"required": [
-																								"values",
-																								"timePeriod"
-																							],
-																							"type": "object"
-																						}
-																					},
-																					"required": [
-																						"history"
-																					],
-																					"type": "object"
-																				}
-																			},
-																			"required": [
-																				"colo",
-																				"resourceFetchTime"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"id": {
-																		"description": "API Resource UUID tag.",
-																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																		"maxLength": 36,
-																		"type": "string"
-																	},
-																	"interval": {
-																		"description": "The interval at which the synthetic application test is set to run.",
-																		"type": "string"
-																	},
-																	"kind": {
-																		"description": "test type, http or traceroute",
-																		"enum": [
-																			"http",
-																			"traceroute"
-																		],
-																		"type": "string"
-																	},
-																	"method": {
-																		"description": "for HTTP, the method to use when running the test",
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "name given to this test",
-																		"type": "string"
-																	},
-																	"tracerouteResults": {
-																		"nullable": true,
-																		"properties": {
-																			"roundTripTime": {
-																				"properties": {
-																					"avgMs": {
-																						"nullable": true,
-																						"type": "integer"
-																					},
-																					"history": {
-																						"items": {
-																							"properties": {
-																								"avgMs": {
-																									"nullable": true,
-																									"type": "integer"
-																								},
-																								"deltaPct": {
-																									"format": "float",
-																									"nullable": true,
-																									"type": "number"
-																								},
-																								"timePeriod": {
-																									"properties": {
-																										"units": {
-																											"enum": [
-																												"hours",
-																												"days",
-																												"testRuns"
-																											],
-																											"type": "string"
-																										},
-																										"value": {
-																											"type": "integer"
-																										}
-																									},
-																									"required": [
-																										"value",
-																										"units"
-																									],
-																									"type": "object"
-																								}
-																							},
-																							"required": [
-																								"timePeriod"
-																							],
-																							"type": "object"
-																						},
-																						"type": "array"
-																					},
-																					"overTime": {
-																						"nullable": true,
-																						"properties": {
-																							"timePeriod": {
-																								"properties": {
-																									"units": {
-																										"enum": [
-																											"hours",
-																											"days",
-																											"testRuns"
-																										],
-																										"type": "string"
-																									},
-																									"value": {
-																										"type": "integer"
-																									}
-																								},
-																								"required": [
-																									"value",
-																									"units"
-																								],
-																								"type": "object"
-																							},
-																							"values": {
-																								"items": {
-																									"properties": {
-																										"avgMs": {
-																											"type": "integer"
-																										},
-																										"timestamp": {
-																											"type": "string"
-																										}
-																									},
-																									"required": [
-																										"timestamp",
-																										"avgMs"
-																									],
-																									"type": "object"
-																								},
-																								"type": "array"
-																							}
-																						},
-																						"required": [
-																							"values",
-																							"timePeriod"
-																						],
-																						"type": "object"
-																					}
-																				},
-																				"required": [
-																					"history"
-																				],
-																				"type": "object"
-																			}
-																		},
-																		"required": [
-																			"roundTripTime"
-																		],
-																		"type": "object"
-																	},
-																	"tracerouteResultsByColo": {
-																		"items": {
-																			"properties": {
-																				"colo": {
-																					"description": "Cloudflare colo",
-																					"example": "SJC",
-																					"type": "string"
-																				},
-																				"roundTripTime": {
-																					"properties": {
-																						"avgMs": {
-																							"nullable": true,
-																							"type": "integer"
-																						},
-																						"history": {
-																							"items": {
-																								"properties": {
-																									"avgMs": {
-																										"nullable": true,
-																										"type": "integer"
-																									},
-																									"deltaPct": {
-																										"format": "float",
-																										"nullable": true,
-																										"type": "number"
-																									},
-																									"timePeriod": {
-																										"properties": {
-																											"units": {
-																												"enum": [
-																													"hours",
-																													"days",
-																													"testRuns"
-																												],
-																												"type": "string"
-																											},
-																											"value": {
-																												"type": "integer"
-																											}
-																										},
-																										"required": [
-																											"value",
-																											"units"
-																										],
-																										"type": "object"
-																									}
-																								},
-																								"required": [
-																									"timePeriod"
-																								],
-																								"type": "object"
-																							},
-																							"type": "array"
-																						},
-																						"overTime": {
-																							"nullable": true,
-																							"properties": {
-																								"timePeriod": {
-																									"properties": {
-																										"units": {
-																											"enum": [
-																												"hours",
-																												"days",
-																												"testRuns"
-																											],
-																											"type": "string"
-																										},
-																										"value": {
-																											"type": "integer"
-																										}
-																									},
-																									"required": [
-																										"value",
-																										"units"
-																									],
-																									"type": "object"
-																								},
-																								"values": {
-																									"items": {
-																										"properties": {
-																											"avgMs": {
-																												"type": "integer"
-																											},
-																											"timestamp": {
-																												"type": "string"
-																											}
-																										},
-																										"required": [
-																											"timestamp",
-																											"avgMs"
-																										],
-																										"type": "object"
-																									},
-																									"type": "array"
-																								}
-																							},
-																							"required": [
-																								"values",
-																								"timePeriod"
-																							],
-																							"type": "object"
-																						}
-																					},
-																					"required": [
-																						"history"
-																					],
-																					"type": "object"
-																				}
-																			},
-																			"required": [
-																				"colo",
-																				"roundTripTime"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"updated": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id",
-																	"name",
-																	"kind",
-																	"interval",
-																	"enabled",
-																	"description",
-																	"updated",
-																	"created",
-																	"host"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														}
-													},
-													"required": [
-														"overviewMetrics",
-														"tests"
-													],
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -3544,206 +3646,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"uniqueDevicesTotal": {
-															"description": "total number of unique devices",
-															"type": "integer"
-														}
-													},
-													"required": [
-														"uniqueDevicesTotal"
-													],
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4021,301 +4005,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"deviceName": {
-															"description": "name of the device associated with this network path response",
-															"nullable": true,
-															"type": "string"
-														},
-														"hops": {
-															"description": "an array of the hops taken by the device to reach the end destination",
-															"items": {
-																"properties": {
-																	"asn": {
-																		"nullable": true,
-																		"type": "integer"
-																	},
-																	"aso": {
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"ipAddress": {
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"location": {
-																		"nullable": true,
-																		"properties": {
-																			"city": {
-																				"nullable": true,
-																				"type": "string"
-																			},
-																			"state": {
-																				"nullable": true,
-																				"type": "string"
-																			},
-																			"zip": {
-																				"nullable": true,
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"mile": {
-																		"enum": [
-																			"client-to-app",
-																			"client-to-cf-egress",
-																			"client-to-cf-ingress",
-																			"client-to-isp"
-																		],
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"name": {
-																		"nullable": true,
-																		"type": "string"
-																	},
-																	"packetLossPct": {
-																		"format": "float",
-																		"nullable": true,
-																		"type": "number"
-																	},
-																	"rttMs": {
-																		"nullable": true,
-																		"type": "integer"
-																	},
-																	"ttl": {
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"ttl"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"resultId": {
-															"description": "API Resource UUID tag.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"type": "string"
-														},
-														"testId": {
-															"description": "API Resource UUID tag.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"type": "string"
-														},
-														"testName": {
-															"description": "name of the tracroute test",
-															"type": "string"
-														},
-														"time_start": {
-															"description": "date time of this traceroute test",
-															"example": "2023-07-16 15:00:00+00",
-															"type": "string"
-														}
-													},
-													"required": [
-														"resultId",
-														"testId",
-														"testName",
-														"deviceName",
-														"time_start",
-														"hops"
-													],
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -4964,620 +4735,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"host": {
-															"description": "The host of the Traceroute synthetic application test",
-															"example": "1.1.1.1",
-															"type": "string"
-														},
-														"interval": {
-															"description": "The interval at which the Traceroute synthetic application test is set to run.",
-															"example": "0h5m0s",
-															"type": "string"
-														},
-														"kind": {
-															"enum": [
-																"traceroute"
-															]
-														},
-														"name": {
-															"description": "The name of the Traceroute synthetic application test",
-															"example": "Atlassian Sign In Page",
-															"type": "string"
-														},
-														"tracerouteStats": {
-															"nullable": true,
-															"properties": {
-																"availabilityPct": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"format": "float",
-																			"nullable": true,
-																			"type": "number"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"format": "float",
-																			"nullable": true,
-																			"type": "number"
-																		},
-																		"min": {
-																			"description": "lowest  observed in the time period",
-																			"format": "float",
-																			"nullable": true,
-																			"type": "number"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"format": "float",
-																						"type": "number"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"hopsCount": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"min": {
-																			"description": "lowest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"type": "integer"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"packetLossPct": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"format": "float",
-																			"nullable": true,
-																			"type": "number"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"format": "float",
-																			"nullable": true,
-																			"type": "number"
-																		},
-																		"min": {
-																			"description": "lowest  observed in the time period",
-																			"format": "float",
-																			"nullable": true,
-																			"type": "number"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"format": "float",
-																						"type": "number"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"roundTripTimeMs": {
-																	"properties": {
-																		"avg": {
-																			"description": "average observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"max": {
-																			"description": "highest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"min": {
-																			"description": "lowest observed in the time period",
-																			"nullable": true,
-																			"type": "integer"
-																		},
-																		"slots": {
-																			"items": {
-																				"properties": {
-																					"timestamp": {
-																						"example": "2023-07-16 15:00:00+00",
-																						"type": "string"
-																					},
-																					"value": {
-																						"type": "integer"
-																					}
-																				},
-																				"required": [
-																					"timestamp",
-																					"value"
-																				],
-																				"type": "object"
-																			},
-																			"type": "array"
-																		}
-																	},
-																	"required": [
-																		"slots"
-																	],
-																	"type": "object"
-																},
-																"uniqueDevicesTotal": {
-																	"description": "Count of unique devices that have run this test in the given time period",
-																	"example": 57,
-																	"type": "integer"
-																}
-															},
-															"required": [
-																"uniqueDevicesTotal",
-																"roundTripTimeMs",
-																"hopsCount",
-																"packetLossPct",
-																"availabilityPct"
-															],
-															"type": "object"
-														},
-														"tracerouteStatsByColo": {
-															"items": {
-																"properties": {
-																	"availabilityPct": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"format": "float",
-																				"nullable": true,
-																				"type": "number"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"format": "float",
-																				"nullable": true,
-																				"type": "number"
-																			},
-																			"min": {
-																				"description": "lowest  observed in the time period",
-																				"format": "float",
-																				"nullable": true,
-																				"type": "number"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"format": "float",
-																							"type": "number"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"colo": {
-																		"example": "DFW",
-																		"type": "string"
-																	},
-																	"hopsCount": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"min": {
-																				"description": "lowest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"type": "integer"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"packetLossPct": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"format": "float",
-																				"nullable": true,
-																				"type": "number"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"format": "float",
-																				"nullable": true,
-																				"type": "number"
-																			},
-																			"min": {
-																				"description": "lowest  observed in the time period",
-																				"format": "float",
-																				"nullable": true,
-																				"type": "number"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"format": "float",
-																							"type": "number"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"roundTripTimeMs": {
-																		"properties": {
-																			"avg": {
-																				"description": "average observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"max": {
-																				"description": "highest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"min": {
-																				"description": "lowest observed in the time period",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"slots": {
-																				"items": {
-																					"properties": {
-																						"timestamp": {
-																							"example": "2023-07-16 15:00:00+00",
-																							"type": "string"
-																						},
-																						"value": {
-																							"type": "integer"
-																						}
-																					},
-																					"required": [
-																						"timestamp",
-																						"value"
-																					],
-																					"type": "object"
-																				},
-																				"type": "array"
-																			}
-																		},
-																		"required": [
-																			"slots"
-																		],
-																		"type": "object"
-																	},
-																	"uniqueDevicesTotal": {
-																		"description": "Count of unique devices that have run this test in the given time period",
-																		"example": 57,
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"colo",
-																	"uniqueDevicesTotal",
-																	"roundTripTimeMs",
-																	"hopsCount",
-																	"packetLossPct",
-																	"availabilityPct"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														}
-													},
-													"required": [
-														"kind",
-														"name",
-														"host",
-														"interval"
-													],
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -5904,308 +5143,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
+							"properties": {
+								"errors": {
 									"allOf": [
 										{
-											"allOf": [
-												{
-													"properties": {
-														"errors": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"messages": {
-															"example": [],
-															"items": {
-																"properties": {
-																	"code": {
-																		"minimum": 1000,
-																		"type": "integer"
-																	},
-																	"message": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"code",
-																	"message"
-																],
-																"type": "object",
-																"uniqueItems": true
-															},
-															"type": "array"
-														},
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"items": {},
-																	"type": "array"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														},
-														"success": {
-															"description": "Whether the API call was successful",
-															"enum": [
-																true
-															],
-															"example": true,
-															"type": "boolean"
-														}
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"required": [
-														"success",
-														"errors",
-														"messages",
-														"result"
-													],
-													"type": "object"
-												},
-												{
-													"properties": {
-														"result": {
-															"anyOf": [
-																{
-																	"type": "object"
-																},
-																{
-																	"type": "string"
-																}
-															]
-														}
+													"message": {
+														"type": "string"
 													}
-												}
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"deviceName": {
-															"nullable": true,
-															"type": "string"
-														},
-														"id": {
-															"description": "API Resource UUID tag.",
-															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-															"maxLength": 36,
-															"type": "string"
-														},
-														"interval": {
-															"description": "The interval at which the Traceroute synthetic application test is set to run.",
-															"example": "0h5m0s",
-															"type": "string"
-														},
-														"kind": {
-															"enum": [
-																"traceroute"
-															]
-														},
-														"name": {
-															"type": "string"
-														},
-														"networkPath": {
-															"nullable": true,
-															"properties": {
-																"sampling": {
-																	"description": "Specifies the sampling applied, if any, to the slots response. When sampled, results shown represent the first test run to the start of each sampling interval.",
-																	"nullable": true,
-																	"properties": {
-																		"unit": {
-																			"enum": [
-																				"hours"
-																			]
-																		},
-																		"value": {
-																			"type": "integer"
-																		}
-																	},
-																	"required": [
-																		"value",
-																		"unit"
-																	],
-																	"type": "object"
-																},
-																"slots": {
-																	"items": {
-																		"properties": {
-																			"clientToAppRttMs": {
-																				"description": "Round trip time in ms of the client to app mile",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"clientToCfEgressRttMs": {
-																				"description": "Round trip time in ms of the client to Cloudflare egress mile",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"clientToCfIngressRttMs": {
-																				"description": "Round trip time in ms of the client to Cloudflare ingress mile",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"clientToIspRttMs": {
-																				"description": "Round trip time in ms of the client to ISP mile",
-																				"nullable": true,
-																				"type": "integer"
-																			},
-																			"id": {
-																				"description": "API Resource UUID tag.",
-																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																				"maxLength": 36,
-																				"type": "string"
-																			},
-																			"timestamp": {
-																				"example": "2023-07-16 15:00:00+00",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"id",
-																			"timestamp",
-																			"clientToAppRttMs",
-																			"clientToCfIngressRttMs",
-																			"clientToCfEgressRttMs"
-																		],
-																		"type": "object"
-																	},
-																	"type": "array"
-																}
-															},
-															"required": [
-																"slots"
-															],
-															"type": "object"
-														},
-														"url": {
-															"description": "The host of the Traceroute synthetic application test",
-															"example": "1.1.1.1",
-															"type": "string"
-														}
-													},
-													"required": [
-														"id",
-														"kind",
-														"name",
-														"deviceName",
-														"url",
-														"interval"
-													],
-													"type": "object"
-												}
-											}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									]
-								},
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
@@ -6495,92 +5514,88 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"type": "array"
-												}
-											],
-											"example": [
-												{
-													"code": 7003,
-													"message": "No route for the URI"
-												}
-											],
-											"minLength": 1
-										},
-										"messages": {
-											"allOf": [
-												{
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												}
-											],
-											"example": []
-										},
-										"result": {
-											"enum": [
-												null
-											],
-											"nullable": true,
-											"type": "object"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"enum": [
-												false
-											],
-											"example": false,
-											"type": "boolean"
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
 										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages",
-										"result"
 									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
 									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
 								}
-							]
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
 						}
 					}
 				},
