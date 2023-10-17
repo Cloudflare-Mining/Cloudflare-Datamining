@@ -710,7 +710,18 @@
 										"locale": "en-US",
 										"name": "Compare all plans",
 										"description": null,
-										"mainLink": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "6usymxfOH4pWYmAhFFIr62",
+											"locale": "en-US",
+											"title": "Compare all plans",
+											"description": null,
+											"url": "/plans/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										},
 										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
@@ -3291,6 +3302,41 @@
 										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6QIPNhZoZfpYbM8YofhOsP",
+												"textValue": "up to 50 users",
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "53PGXLDwjGWU4hMrQE62vG",
 												"textValue": "no user limit with 100% uptime SLA",
 												"plan": {
@@ -5016,6 +5062,41 @@
 										"name": "Usage and uptime",
 										"description": null,
 										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6QIPNhZoZfpYbM8YofhOsP",
+												"textValue": "up to 50 users",
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "1b1zcvHXVhf5RnmejD8Q8c",
+														"elementName": "Plans&Pricing-Product_Category-ZT-Free_Plan-CTA",
+														"standardText": null,
+														"text": "Get started",
+														"url": "https://dash.cloudflare.com/sign-up/teams",
+														"loggedInUrl": null,
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
 											{
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "53PGXLDwjGWU4hMrQE62vG",
