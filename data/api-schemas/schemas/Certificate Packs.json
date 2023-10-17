@@ -1693,13 +1693,12 @@
 										"result": {
 											"properties": {
 												"certificate_authority": {
-													"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions  [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 													"enum": [
-														"digicert",
 														"google",
 														"lets_encrypt"
 													],
-													"example": "digicert",
+													"example": "lets_encrypt",
 													"type": "string"
 												},
 												"cloudflare_branding": {
@@ -1900,13 +1899,12 @@
 												"result": {
 													"properties": {
 														"certificate_authority": {
-															"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions  [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 															"enum": [
-																"digicert",
 																"google",
 																"lets_encrypt"
 															],
-															"example": "digicert",
+															"example": "lets_encrypt",
 															"type": "string"
 														},
 														"cloudflare_branding": {
@@ -2134,13 +2132,12 @@
 					"schema": {
 						"properties": {
 							"certificate_authority": {
-								"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+								"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions  [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 								"enum": [
-									"digicert",
 									"google",
 									"lets_encrypt"
 								],
-								"example": "digicert",
+								"example": "lets_encrypt",
 								"type": "string"
 							},
 							"cloudflare_branding": {
@@ -2307,13 +2304,12 @@
 										"result": {
 											"properties": {
 												"certificate_authority": {
-													"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions  [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 													"enum": [
-														"digicert",
 														"google",
 														"lets_encrypt"
 													],
-													"example": "digicert",
+													"example": "lets_encrypt",
 													"type": "string"
 												},
 												"cloudflare_branding": {
@@ -2514,13 +2510,12 @@
 												"result": {
 													"properties": {
 														"certificate_authority": {
-															"description": "Certificate Authority selected for the order.  Selecting Let's Encrypt will reduce customization of other fields: validation_method must be 'txt', validity_days must be 90, cloudflare_branding must be omitted, and hosts must contain only 2 entries, one for the zone name and one for the subdomain wildcard of the zone name (e.g. example.com, *.example.com).",
+															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions  [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
 															"enum": [
-																"digicert",
 																"google",
 																"lets_encrypt"
 															],
-															"example": "digicert",
+															"example": "lets_encrypt",
 															"type": "string"
 														},
 														"cloudflare_branding": {
