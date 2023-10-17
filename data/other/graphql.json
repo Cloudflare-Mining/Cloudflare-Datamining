@@ -351,6 +351,21 @@
 	"AccountAiGatewayRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountAiInferenceAdaptive": {
+		"__description": "AI Inference logs with adaptive sampling",
+		"datetime": "The date when inferance was triggered",
+		"errorCode": "Error code",
+		"inferenceTimeMs": "Inference time ms",
+		"modelId": "ModelId that was trigger to inference",
+		"neurons": "Monetization unit",
+		"requestBytesIn": "Request size in bytes",
+		"requestBytesOut": "Request size out bytes",
+		"requestSource": "Source who triggered (worker binding, pages binding, rest api)",
+		"sampleInterval": "ABR sample interval"
+	},
+	"AccountAiInferenceAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountAiInferenceAdaptiveGroups": {
 		"__description": "Aggregated AI Inference logs with adaptive sampling",
 		"count": "Total number of inferences for an account",
@@ -364,9 +379,13 @@
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
 		"datetimeHour": "The date and time truncated to the hour",
 		"datetimeMinute": "The date and time truncated to the minute",
+		"errorCode": "Error code",
 		"inferenceTimeMs": "Inference time ms",
 		"modelId": "ModelId that was trigger to inference",
-		"requestSource": "Source who triggerd (worker binding, pages binding, rest api)"
+		"neurons": "Monetization unit",
+		"requestBytesIn": "Request size in bytes",
+		"requestBytesOut": "Request size out bytes",
+		"requestSource": "Source who triggered (worker binding, pages binding, rest api)"
 	},
 	"AccountAiInferenceAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -376,7 +395,13 @@
 	},
 	"AccountAiInferenceAdaptiveGroupsSum": {
 		"__description": "",
-		"totalInferenceTimeMs": "Total inference time ms"
+		"totalInferenceTimeMs": "Total inference time ms",
+		"totalNeurons": "Total neurons",
+		"totalRequestBytesIn": "Total bytes in per request",
+		"totalRequestBytesOut": "Total bytes out per request"
+	},
+	"AccountAiInferenceAdaptiveOrderBy": {
+		"__description": ""
 	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Cloudflare CDN traffic",
@@ -927,6 +952,7 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"kind": "The kind of event, currently only possible values are: firewall",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
 		"matchIndex": "Rules match index in the chain",
 		"metadata": "Additional product-specific information. Metadata is organized in key:value pairs",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
@@ -1698,6 +1724,7 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
@@ -1787,6 +1814,7 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
@@ -3039,6 +3067,7 @@
 		"aiGatewayCacheAdaptiveGroups": "",
 		"aiGatewayErrorsAdaptiveGroups": "",
 		"aiGatewayRequestsAdaptiveGroups": "",
+		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
@@ -3099,6 +3128,8 @@
 		"workersAnalyticsEngineAdaptiveGroups": "",
 		"workersInvocationsAdaptive": "",
 		"workersInvocationsScheduled": "",
+		"workersOverviewDataAdaptiveGroups": "",
+		"workersOverviewRequestsAdaptiveGroups": "",
 		"workersSubrequestsAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
@@ -3621,6 +3652,49 @@
 	},
 	"AccountWorkersInvocationsScheduledOrderBy": {
 		"__description": ""
+	},
+	"AccountWorkersOverviewDataAdaptiveGroups": {
+		"__description": "Beta. Workers account overview invocation data with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersOverviewDataAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "Request datetime",
+		"usageModel": "Usage model of the worker invocation"
+	},
+	"AccountWorkersOverviewDataAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersOverviewDataAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersOverviewDataAdaptiveGroupsSum": {
+		"__description": "",
+		"standardCpuTimeUs": "Standard usage model cpu time in us",
+		"unboundDurationUs": "Unbound usage model duration in us"
+	},
+	"AccountWorkersOverviewRequestsAdaptiveGroups": {
+		"__description": "Beta. Workers account overview invocation count with adaptive sampling",
+		"count": "The number of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersOverviewRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "Request datetime",
+		"status": "Status of the worker invocation",
+		"usageModel": "Usage model of the worker invocation"
+	},
+	"AccountWorkersOverviewRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersOverviewRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersOverviewRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"cpuTimeUs": "Cpu time in us"
 	},
 	"AccountWorkersSubrequestsAdaptiveGroups": {
 		"__description": "Beta. Workers subrequests with adaptive sampling",
@@ -4171,6 +4245,7 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
 		"kind": "The kind of event, currently only possible values are: firewall",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
 		"matchIndex": "Rules match index in the chain",
 		"metadata": "Additional product-specific information. Metadata is organized in key:value pairs",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
@@ -4792,6 +4867,7 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
@@ -4880,6 +4956,7 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"isCrossZoneSubrequest": "'1' if a request was inititiated by a Cloudflare Worker on another zone; '0' otherwise.",
 		"ja3Hash": "MD5 hash of the JA3 TLS fingerprint",
+		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials",
 		"originASN": "",
 		"originASNDescription": "ASN associated with origin",
 		"originIP": "",
@@ -5509,6 +5586,7 @@
 		"aiGatewayCacheAdaptiveGroups": "AI Gateway Cache",
 		"aiGatewayErrorsAdaptiveGroups": "AI Gateway Errors",
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
+		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
@@ -5570,6 +5648,8 @@
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
 		"workersInvocationsScheduled": "Workers scheduled invocations",
+		"workersOverviewDataAdaptiveGroups": "Beta. Workers account overview invocation data with adaptive sampling",
+		"workersOverviewRequestsAdaptiveGroups": "Beta. Workers account overview invocation count with adaptive sampling",
 		"workersSubrequestsAdaptiveGroups": "Beta. Workers subrequests with adaptive sampling",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
