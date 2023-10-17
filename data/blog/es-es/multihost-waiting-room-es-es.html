@@ -1,0 +1,121 @@
+<div class="mb2 gray5">13 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image4.png" class="kg-image" alt="" loading="lazy" width="1300" height="600"></figure>
+	<p><a href="https://www.cloudflare.com/application-services/products/waiting-room" target="_blank">Cloudflare Waiting Room</a> protege los sitios contra las sobrecargas vinculadas a los picos de tráfico, colocando el exceso de visitantes en una sala de espera virtual, completamente personalizable, donde son admitidos dinámicamente a medida que se liberan plazas. En lugar de mostrar páginas de error o entregar páginas del sitio con un bajo rendimiento, Waiting Room permite a los clientes tomar el control de su experiencia de usuario final durante los picos de tráfico inmanejables. </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1.png" class="kg-image" alt="Personaliza el aspecto de tu sala de espera para mejorar la experiencia del usuario final." loading="lazy" width="1440" height="1024"></figure>
+	<p>Una decisión clave que toman los clientes al configurar una sala de espera es acerca de qué páginas protegerán. Hasta ahora, los clientes podían seleccionar una sola combinación de nombre de host y ruta de acceso para determinar las páginas cubiertas por una sala de espera. Hoy nos complace anunciar que Waiting Room ahora ofrece compatibilidad con varias combinaciones de nombres de host y rutas de acceso con una sola sala de espera, y ofrece así a los clientes más flexibilidad y una cobertura más amplia del sitio sin interrupciones de los flujos de los usuarios finales. Esta nueva funcionalidad está disponible para todos los clientes Enterprise con una versión Advanced de Waiting Room.</p>
+	<h3 id="colocaci%C3%B3n-de-un-sitio-en-waiting-room">Colocación de un sitio en Waiting Room</h3>
+	<p>Durante la implementación de una sala de espera, un proceso sencillo y que no requiere codificación, los clientes especifican una combinación de nombre de host y ruta de acceso para indicar las páginas cubiertas por una sala de espera determinada. Cuando un visitante del sitio realiza una solicitud preliminar a ese nombre de host y esa ruta de acceso o a cualquiera de sus rutas de acceso secundarias, recibe una cookie correspondiente a la sala de espera y entonces se admite en el sitio o bien, si el sitio está saturado, se coloca en una sala de espera. </p>
+	<p>El año pasado añadimos la funcionalidad <a href="https://blog.cloudflare.com/waiting-room-bypass-rules">Waiting Room Bypass Rules</a>, que ofrece a los clientes muchas opciones para crear excepciones a esta cobertura de nombre de host y ruta de acceso. Esta funcionalidad ha desbloqueado funciones como la omisión de agente de usuario, el filtrado por geolocalización, las exclusiones de URL y la omisión administrativa de direcciones IP. Asimismo, ha mejorado la flexibilidad en lo referente a las páginas a las que se debe aplicar una sala de espera en el sitio de un cliente, al añadir la posibilidad de excluir URL, rutas de acceso y cadenas de consulta. Aunque esta actualización permitió una mayor especificidad acerca del tráfico que debe filtrar Waiting Room, no ofrecía la cobertura más amplia que aún necesitaban muchos clientes para proteger áreas más extensas de sus sitios con una sola sala de espera.</p>
+	<h3 id="por-qu%C3%A9-los-clientes-necesitaban-una-cobertura-m%C3%A1s-amplia-de-waiting-room">Por qué los clientes necesitaban una cobertura más amplia de Waiting Room</h3>
+	<p>Analicemos algunos ejemplos sencillos pero adecuados de por qué esta opción de una cobertura más amplia era importante para nuestros clientes. Imagina que tienes una tienda en línea, example.com, y quieres asegurarte de que una sola sala de espera cubre todo el recorrido del cliente, desde la página inicial a la navegación por los productos, y finalmente a la validación del pedido. Muchos sitios utilizan rutas de acceso para definir estos pasos en el flujo: example.com/, example.com/shop/product1, example.com/checkout. Puesto que Waiting Room supone que existe un comodín implícito al final de la ruta de acceso configurada para una sala de espera, este caso de uso ya estaba cubierto para estos sitios. Por lo tanto, la configuración de una sala de espera en la dirección example.com/ permitirá cubrir todas las URL asociadas con cada uno de los pasos de este recorrido del cliente. En esta configuración, una vez que un visitante del sitio entraba en la sala de espera, no se volvía a poner en cola en ningún otro paso del flujo del usuario, ya que seguía utilizando la misma cookie correspondiente a la sala de espera, lo que indica a Waiting Room que se trata del mismo usuario en distintas URL.</p>
+	<p>No obstante, muchos sitios utilizan subdominios en lugar de, o además de, rutas de acceso para definir distintos pasos de este tipo de flujo de compra. Por ejemplo, la página de validación del pedido de muchos sitios estará en un subdominio distinto, por ejemplo, checkout.example.com. Hasta ahora, si un cliente tenía esta estructura de sitio y quería proteger todo su sitio con una sola sala de espera, necesitaba implementar una sala de espera en la dirección example.com/ y otra en la dirección checkout.example.com/. Esta opción no era idónea para muchos clientes, puesto que un visitante del sitio podía encontrarse puesto en cola en dos lugares distintos del mismo recorrido de cliente. Esto se debe a que la sala de espera en la dirección checkout.example.com/ contabilizaría el mismo visitante como un usuario distinto que el de la sala de espera que cubre el sitio example.com/.</p>
+	<p>Dicho esto, en algunos casos es recomendable separar las salas de espera que cubren un solo sitio. Por ejemplo, un sitio web de venta de entradas podría implementar una sala de espera en su dominio raíz (example.com) y distintas salas de espera con pre-colas de espera en páginas dedicadas a eventos específicos (example.com/popular_artist_tour). La sala de espera definida en la página example.com/ garantiza que el punto de acceso principal al sitio no se sobrecargue y deje de estar accesible al abrir la venta de entradas para un evento específico. La sala de espera definida en la página dedicada al evento específico garantiza que el tráfico correspondiente a un evento determinado se pueda empezar a poner en cola de espera antes del evento sin afectar al tráfico que se dirige a otros lugares del sitio. </p>
+	<p>En definitiva, independientemente de si un cliente desea tener una o varias salas de espera para proteger su sitio, queríamos ofrecer a nuestros clientes la flexibilidad de implementar Waiting Room de la forma que se ajustara mejor a sus casos de uso y a su estructura del sitio. Nos complace anunciar que Waiting Room ahora admite la cobertura de varios nombres de host y rutas de acceso con una sola sala de espera.</p>
+	<h3 id="c%C3%B3mo-empezar-a-utilizar-la-cobertura-de-varios-hosts-y-rutas-de-acceso">Cómo empezar a utilizar la cobertura de varios hosts y rutas de acceso</h3>
+	<p>Ahora los clientes pueden configurar una sala de espera en varias combinaciones de nombres de host y ruta (o rutas) de acceso correspondientes a la misma zona. Para ello, ve a Tráfico &gt; Waiting Room y selecciona Create (Crear). El nombre de tu dominio ya estará rellenado. Para añadir reglas adicionales a la configuración de tu sala de espera, selecciona Add Hostname and Path (Añadir nombre de host y ruta de acceso). A continuación, puedes especificar otro nombre de host y ruta de acceso que desees que cubra la misma sala de espera. Recuerda que hay un comodín implícito al final de cada ruta de acceso. Por lo tanto, es innecesario crear una sala de espera para cada URL que desees que cubra tu sala de espera. Crea solo rutas de acceso adicionales para las URL que no estén cubiertas por las combinaciones de nombres de host y rutas de acceso que ya hayas especificado.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/image3.png" class="kg-image" alt="Añade varias combinaciones de nombres de host y rutas de acceso a tu sala de espera seleccionando Add Hostname and Path (Añadir nombre de host y ruta de acceso)." loading="lazy" width="1910" height="670"></figure>
+	<p>Al implementar una sala de espera que cubra varias combinaciones de nombres de host y rutas de acceso, debes crear un nombre de cookie exclusivo para esa sala de espera (más información más adelante). A continuación, continúa con el <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room" target="_blank">mismo flujo de trabajo</a> de la forma habitual para implementar tu sala de espera. </p>
+	<h3 id="implementaci%C3%B3n-de-una-sala-de-espera-multiling%C3%BCe">Implementación de una sala de espera multilingüe</h3>
+	<p>Los clientes nos han solicitado a menudo la posibilidad de cubrir un sitio multilingüe con una sola sala de espera, y ofrecer así texto específico para cada idioma al mismo tiempo que se contabiliza todo el tráfico del sitio en los mismos límites de la sala de espera. Hay varios métodos para estructurar un sitio a fin de definir las distintas opciones lingüísticas. Sin embargo, los dos más habituales son por subdominio o por ruta de acceso. Para un sitio que utilice la definición por ruta de acceso, podría presentarse así: example.com/en y example.com/es para inglés y español, respectivamente. Para un sitio que utilice la definición por subdominio, podría presentarse así: en.example.com/ y es.example.com/. Antes de que Waiting Room ofreciera la cobertura de varios hosts, la variación por subdominio no podría haber estado cubierta por una única sala de espera.</p>
+	<p>Las opciones de configuración existentes de Waiting Room ya admitían la variación por ruta de acceso. Sin embargo, esto solo era cierto si el cliente quería filtrar todo el sitio, lo que podía hacer definiendo la sala de espera en la página example.com/. Muchos clientes de comercio electrónico han solicitado la posibilidad de filtrar distintas páginas de productos con alta demanda que ofrecen el mismo producto pero con distintas opciones de idioma. Por ejemplo, considera example.com/en/product_123 y example.com/es/product_123, donde el cliente desea utilizar la misma sala de espera y aplicar los mismos límites de tráfico para cubrir ambas URL. Hasta ahora, esto no habría sido posible sin alguna compleja lógica de reglas de omisión.</p>
+	<p>Ahora, los clientes pueden implementar una sala de espera que se ajuste al método elegido de estructuración de un sitio multilingüe, ya sea por subdominio o por ruta de acceso. Para terminar, solo debes configurar tu sala de espera para que entregue distintos idiomas cuando un usuario se ponga en cola en una sala de espera. Para ello, puedes crear una plantilla que lea la URL a fin de determinar los parámetros de idioma y definir las traducciones adecuadas para cada idioma en la plantilla. </p>
+	<p>A continuación se muestra un ejemplo de una plantilla que determina los parámetros de idioma de la ruta de acceso de la URL, y que presenta el texto traducido:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Waiting Room powered by Cloudflare&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section&gt;
+      &lt;h1 id="inline-msg"&gt;
+        You are now in line.
+      &lt;/h1&gt;
+      &lt;h1 id="patience-msg"&gt;
+        Thank you for your patience.
+      &lt;/h1&gt;
+    &lt;/section&gt;
+    &lt;h2 id="waitTime"&gt;&lt;/h2&gt;
+
+    &lt;script&gt;
+      var locale = location.pathname.split("/")[1] || "en";
+      var translations = {
+        "en": {
+          "waittime_60_less": "Your estimated wait time is {{waitTime}} minute.",
+          "waittime_60_greater": "Your estimated wait time is {{waitTimeHours}} hours and {{waitTimeHourMinutes}} minutes.",
+          "inline-msg": "You are now in line.",
+          "patience-msg": "Thank you for your patience.",
+        },
+        "es": {
+          "waittime_60_less": "El tiempo de espera estimado es {{waitTime}} minuto.",
+          "waittime_60_greater": "El tiempo de espera estimado es {{waitTimeHours}} de horas y {{waitTimeHourMinutes}} minutos.",
+          "inline-msg": "Ahora se encuentra en la fila de espera previa.",
+          "patience-msg": "Gracias por su paciencia.",
+        }
+      };
+
+      {{#waitTimeKnown}}
+      var minutes = parseInt( {{waitTime}} , 10);
+      var time = document.getElementById('waitTime');
+
+      if ( minutes &lt; 61) {
+        time.innerText = translations[locale]["waittime_60_less"]
+      } else {
+        time.innerText = translations[locale]["waittime_60_greater"]
+      }
+      {{/waitTimeKnown}}
+
+      // translate template text for each of the elements with “id” suffixed with “msg”
+      for (const msg of ["inline-msg", "patience-msg"]) {
+        const el = document.getElementById(msg);
+        if (el == null) continue;
+        el.innerText = translations[locale][msg];
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>La plantilla funciona de la forma siguiente: si un sitio distingue entre distintos parámetros de idioma con distintas rutas de acceso, como <code>/en/product_123</code> o <code>/es/product_123</code> en el cuerpo <code>&lt;script /&gt;</code> después de representar la página, el parámetro de idioma se extrae de <code>location.pathname</code> mediante <code>locale = location.pathname.split(“/”)[1]</code>. Si no se ha especificado ningún parámetro de idioma en el objeto `<code>translations</code>`, por defecto utilizamos “en”. Por ejemplo, si un usuario visita example.com/product_123, por defecto se representa la plantilla con el texto en inglés.</p>
+	<p>De la misma forma, para admitir una sala de espera multilingüe correspondiente a sitios que definen la estructura del sitio por subdominio, únicamente deberías actualizar cómo extraer el parámetro de idioma de la URL. En lugar de comprobar `<code>pathname</code>`, comprobamos la propiedad `<code>hostname</code>` del objeto `<code>window.location</code>` como `<code>locale = location.hostname.split(“.”)[0]</code>`, nuestra estructura del sitio será la siguiente: en.example.com, es.example.com.</p>
+	<p>El código anterior es un ejemplo simplificado de las plantillas iniciales que hemos añadido a nuestra <a href="https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room/#multiple-language-support" target="_blank">documentación para desarrolladores</a>. Las hemos incluido para que te sea más fácil empezar a utilizar una sala de espera multilingüe. Puedes descargar estas plantillas y editarlas para que su aspecto se ajuste a tu sitio y a las opciones de idioma que este ofrece.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image2.png" class="kg-image" alt="" loading="lazy" width="1999" height="1197">
+		<figcaption>Se trata de un ejemplo de la plantilla inicial proporcionada en los documentos para desarrolladores. Esta sala de espera está configurada para poner a todos los usuarios en cola de espera y muestra el texto en español cuando el usuario visita example.com/es/product_123.</figcaption>
+	</figure>
+	<p>Estas plantillas se pueden ampliar para incluir otros idiomas añadiendo las traducciones al objeto `translations` para cada uno de los idiomas. De esta forma, una única plantilla puede entregar varios idiomas, en función del parámetro de idioma que se aplique al sitio, ya sea por subdominio o por ruta de acceso.</p>
+	<h3 id="c%C3%B3mo-gestionamos-las-cookies-con-una-sala-de-espera-que-cubre-varios-nombres-de-host-y-rutas-de-acceso">Cómo gestionamos las cookies con una sala de espera que cubre varios nombres de host y rutas de acceso</h3>
+	<p>La sala de espera asigna una <a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/?cf_target_id=3846E4E4DDE3F1103D55F0E70375BE7A" target="_blank">cookie</a> <code>__cfwaitingroom</code> a cada usuario para gestionar el estado del usuario, la cual determina la posición del usuario en la cola de espera, <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects/#:~:text=What%20is%20in%20the%20cookie%20returned%20to%20an%20end%20user%3F">así como otras propiedades</a> necesarias para decidir acerca de la colocación en cola de espera vinculadas al usuario. Tradicionalmente, para una configuración de un único nombre de host y ruta de acceso, era muy sencillo definir simplemente la cookie como <code>__cfwaitingroom=[cookie-value]; Domain=example.com; Path=/es/product_123</code>. Esto garantizaba que cuando se renovará la página nos enviaría la misma cookie de Waiting Room para que la analizáramos y actualizáramos. Sin embargo, dejó de ser sencillo cuando quisimos compartir la misma cookie en distintas combinaciones de subdominios o rutas de acceso, por ejemplo, en <code>example.com/en/product_123</code>.</p>
+	<h3 id="m%C3%A9todos-para-establecer-varias-cookies">Métodos para establecer varias cookies</h3>
+	<p>Consideramos y evaluamos dos métodos para permitir el uso compartido de la cookie para la misma sala de espera. </p>
+	<p>El primer método que consideramos era emitir varios encabezados <code>Set-Cookie</code> en la respuesta HTTP. En el ejemplo multilingüe anterior, por ejemplo, podríamos añadir lo siguiente en el encabezado de la respuesta:</p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom=[cookie-value]…Domain=example.com; Path=/en/product_123 …
+Set-Cookie: __cfwaitingroom=[cookie-value]...Domain=example.com; Path=/es/product_123 …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Este método nos permitiría gestionar los varios nombres de host y rutas de acceso para la misma sala de espera. Sin embargo, no se presenta como una solución escalable. La especificación <a href="https://datatracker.ietf.org/doc/html/rfc6265#section-5.2" target="_blank">RFC6265</a> no define ningún límite estricto, pero los navegadores aplican sus propios límites según cada implementación. Por ejemplo, Chrome permite que el encabezado de la respuesta tenga hasta <a href="https://source.chromium.org/chromium/chromium/src/+/main:net/http/http_stream_parser.h;l=168;drc=4cc7ba01d3c5dc996ddc98f9d0bd709e3d5bbfd3?q=ERR_RESPONSE_HEADERS_TOO_BIG&amp;ss=chromium" target="_blank">256 Kbytes</a> antes de devolver un error ERR_RESPONSE_HEADERS_TOO_BIG para la transacción. Además, en este caso, el encabezado de la respuesta crecería proporcionalmente al número de combinaciones de nombres de host y rutas de acceso exclusivas, y estaríamos repitiendo de forma redundante el mismo valor de cookie N número de veces (donde N es el número de rutas adicionales). Aunque este enfoque nos habría permitido gestionar eficazmente una lista limitada de combinaciones de nombres de host y rutas de acceso que sería necesario establecer, no era idóneo para aquello casos donde se espera un número mayor de rutas para un sitio determinado. </p>
+	<p>El segundo enfoque que hemos considerado, y con el que decidimos seguir adelante, consistía en establecer la cookie en el dominio raíz (o el subdominio más habitual). En otras palabras, buscaríamos el subdominio más habitual en la lista de rutas y lo utilizaríamos como dominio. De la misma forma, en el caso de las rutas, esto implicaría determinar el prefijo menos habitual de la lista de rutas y utilizarlo como el valor que se debe establecer en el atributo path. Por ejemplo, considera una sala de espera con las siguientes dos rutas configuradas, a.example.com/shoes/product_123 y b.example.com/shoes/product_456.</p>
+	<p>Para determinar el dominio que se establecería para la cookie, podemos observar que <code>example.com</code> es el subdominio más habitual en la lista de dominios. Al aplicar el algoritmo de subdominio más habitual, obtendríamos <code>example.com</code> como subdominio. Al aplicar el algoritmo de prefijo menos habitual en el conjunto de rutas de acceso, <code>/shoes/product_123</code> y <code>/shoes/product_456</code>, obtendríamos <code>/shoes</code> como ruta de acceso. Por lo tanto, el encabezado set-cookie sería el siguiente:</p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: … __cfwaitingroom=[cookie-value]; Domain=example.com; Path=/shoes …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Ahora, cuando un visitante accede a cualquiera de las páginas cubiertas por esta sala de espera, podemos garantizar que Waiting Room recibe la cookie adecuada y que solo se habrá incluido Set-Cookie en el encabezado de la respuesta.</p>
+	<p>Sin embargo, aún no hemos terminado. Aunque podemos identificar el subdominio habitual (o dominio raíz) y el prefijo de ruta de acceso común, aún tendríamos un problema si las rutas desde una sala de espera se solaparan con las de otra sala de espera. Por ejemplo, supongamos que configuramos dos salas de espera para el mismo sitio donde vendemos nuestro calzado especial:</p><!--kg-card-begin: html-->
+	<p>Sala de espera A<br>
+		&nbsp; &nbsp; a.example.com/shoes/product_123<br>
+		&nbsp; &nbsp; b.example.com/shoes/product_456</p>
+
+	<p>Sala de espera B<br>
+		&nbsp; &nbsp; c.example.com/shoes/product_789<br>
+		&nbsp; &nbsp; d.example.com/shoes/product_012</p><!--kg-card-end: html-->
+	<p>Si aplicamos el mismo algoritmo tal como hemos descrito anteriormente, se establecerían las mismas propiedades de dominio y ruta de acceso para ambas cookies. Para la sala de espera A, el dominio sería <code>example.com</code> y la ruta de acceso sería <code>/shoes</code>. De la misma forma, para la sala de espera B, el subdominio más habitual también sería example.com y el prefijo de ruta de acceso menos habitual sería be <code>/shoes</code>. Esto nos evitaría eficazmente distinguir ambas cookies y dirigiría al visitante a la sala de espera adecuada. Para resolver el problema del solapamiento de los nombres de cookie, hemos añadido el requisito de definir un sufijo personalizado exclusivo para la zona del cliente. Por este motivo, es necesario proporcionar un sufijo de cookie personalizado al configurar una sala de espera que cubra varios nombres de host y rutas de acceso. Por lo tanto, si se ha asignado a la sala de espera A el sufijo de cookie "a" y a la sala de espera B el sufijo de cookie "b", las dos definiciones de <code>Set-Cookie</code> serán las siguientes:</p>
+	<p><strong>Sala de espera A</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom_a=[cookie-value]; Domain=example.com; Path=/shoes
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Sala de espera B</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom_b=[cookie-value]; Domain=example.com; Path=/shoes
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cuando un visitante envía una solicitud a una página donde hay configuradas dos salas de espera distintas, Waiting Room puede distinguir y seleccionar la cookie correspondiente a esa solicitud específica y utilizarla para determinar qué ajustes de sala de espera son aplicables a ese usuario, en función de dónde se encuentre en el sitio. </p>
+	<p>Con la adición de la cobertura de varios host y rutas de acceso a Waiting Room, nos complace ofrecerte opciones para que puedas incorporar Waiting Room en tu sitio con mayor flexibilidad, proporcionando así a tus visitantes la mejor experiencia posible, al mismo tiempo que proteges tu sitio durante periodos de mucho tráfico. Asegúrate de que tu sitio esté siempre protegido contra los picos de tráfico. Prueba ya <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Ftraffic%2Fwaiting-rooms" target="_blank">Waiting Room</a> o <a href="https://www.cloudflare.com/application-services/products/waiting-room" target="_blank">ponte en contacto con nosotros</a> para saber más sobre la versión Advanced de Waiting Room.<br></p>
+</div>

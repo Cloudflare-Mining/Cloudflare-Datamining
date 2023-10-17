@@ -1,0 +1,76 @@
+<div class="mb2 gray5">16 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/DNS-Incident-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p>2023년 10월 4일, Cloudflare에서는 DNS 확인 문제를 겪었으며, 이 문제는 UTC 07:00에 시작하여 UTC 11:00에 끝났습니다. 1.1.1.1 또는 Warp, Zero Trust 등의 제품 또는 1.1.1.1을 사용하는 타사 DNS 확인자를 사용하는 사람 중 일부는 유효한 쿼리에 대해 SERVFAIL DNS 응답을 받았을 수도 있습니다. 이번에 서비스가 중단되어 정말 죄송합니다. 이번 서비스 중단은 공격이 아니라 내부 소프트웨어 오류로 발생했습니다. 이 블로그에서는 어떤 장애였는지, 장애가 왜 발생했는지, 이런 일이 다시 발생하지 않도록 우리가 무엇을 하고 있는지 설명하겠습니다.</p>
+	<h2 id="%EB%B0%B0%EA%B2%BD">배경</h2>
+	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank">도메인 네임 시스템(DNS)</a>에서 모든 도메인 네임은 DNS 영역 내에 존재합니다. 이 영역은 함께 제어되는 도메인 이름과 호스트 이름의 모음입니다. 예를 들어, Cloudflare에서는 도메인 이름 cloudflare.com을 관리하며, 우리는 이를 "cloudflare.com" 영역이라고 부릅니다. .com의 최상위 도메인(TLD)은 타사 소유이며 "com" 영역에 있습니다. TLD는 cloudflare.com에 접속하는 방법에 대한 지침을 제공합니다. 모든 TLD 위에는 <a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank">루트 영역</a>이 있으며, 이 영역은 <a href="https://www.iana.org/domains/root/db" target="_blank">TLD에 도달하는 방법에 대한 지침</a>을 제공합니다 . 즉, 루트 영역은 다른 모든 도메인 이름을 확인할 수 있는 중요한 영역입니다. DNS의 다른 중요한 부분과 마찬가지로 <a href="https://www.iana.org/dnssec/procedures" target="_blank">루트 영역은 DNSSEC로 서명되며</a>, 이는 루트 영역 자체에 암호화 서명이 포함되어 있음을 의미합니다.</p>
+	<p>루트 영역은 <a href="https://root-servers.org" target="_blank">루트 서버</a>에 게시되지만, 루트 서버에 연결할 수 없는 경우에도 루트 영역의 정보를 계속 사용할 수 있도록 DNS 운영자가 <a href="https://www.rfc-editor.org/rfc/rfc8806" target="_blank">루트 영역의 복사본을 자동으로 검색하고 보유</a>하는 것이 일반적입니다 . Cloudflare의 재귀 DNS 인프라는 이러한 접근 방식을 채택하여 확인 프로세스를 더 빠르게 만듭니다. 루트 영역의 새 버전은 일반적으로 하루에 두 번 게시됩니다. 1.1.1.1에는 기본 DNS 로직 위에 static_zone이라고 불리는 <a href="https://blog.cloudflare.com/ko-kr/big-pineapple-intro-ko-kr">WebAssembly 앱</a>이 실행되어 새 버전을 사용할 수 있을 때 해당 버전을 제공합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image2-1.png" class="kg-image" alt="" loading="lazy" width="951" height="604"></figure>
+	<h2 id="%EC%82%AC%EA%B1%B4-%EB%B0%9C%EC%83%9D-%EA%B3%BC%EC%A0%95">사건 발생 과정</h2>
+	<p>9월 21일, <a href="https://blog.verisign.com/security/root-zone-zonemd" target="_blank">루트 영역 관리의 알려진 요금제 변경</a>의 일환으로 새로운 리소스 레코드 유형이 처음으로 루트 영역에 포함되었습니다. 새 리소스 레코드는 <a href="https://www.rfc-editor.org/rfc/rfc8976.html" target="_blank">ZONEMD</a>라고 불리며, 사실상 루트 영역의 콘텐츠에 대한 검사 합계입니다.</p>
+	<p>루트 영역은 Cloudflare의 코어 네트워크에서 실행되는 소프트웨어에 의해 검색됩니다. 이후 전 세계 Cloudflare의 데이터 센터로 재배포됩니다. 변경 후에도, ZONEMD 레코드가 포함된 루트 영역은 정상적으로 계속 검색되고 배포되었습니다. 그렇지만 해당 데이터를 사용하는 1.1.1.1 확인자 시스템에서 ZONEMD 레코드를 구문 분석하는 데 문제가 있었습니다. 영역은 전체가 로드되어 제공되어야 하므로, 시스템에서 ZONEMD를 구문 분석하지 못했다는 것은 Cloudflare의 확인자 시스템에서 새 버전의 루트 영역이 사용되지 않았다는 것을 의미했습니다. Cloudflare의 확인자 인프라를 호스팅하는 일부 서버에서는 새 루트 영역이 수신되지 않으면 요청별로 DNS 루트 서버를 직접 쿼리하는 방식으로 장애 조치되었습니다. 그러나 다른 서버에서는 변경 전인 9월 21일에 가져온 버전인 메모리 캐시에서 여전히 사용 가능한 루트 영역의 알려진 작동 버전에 계속 의존하고 있었습니다.</p>
+	<p>2023년 10월 4일 07:00 UTC에 9월 21일 루트 영역 버전의 DNSSEC 서명이 만료되었습니다. Cloudflare 확인자 시스템에서 사용할 수 있는 최신 버전이 없었으므로 일부 Cloudflare 확인자 시스템에서 DNSSEC 서명의 유효성을 검사할 수 없게 되었고, 그 결과로 오류 응답(SERVFAIL)을 전송하기 시작했습니다. Cloudflare 확인자가 SERVFAIL 응답을 생성하는 비율이 12% 증가했습니다. 아래 다이어그램에는 장애의 진행 상황과 사용자에게 장애가 표시되는 과정이 나와있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image3-1.png" class="kg-image" alt="" loading="lazy" width="1337" height="1999"></figure>
+	<h2 id="%EC%82%AC%EA%B3%A0-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8-%EB%B0%8F-%EC%98%81%ED%96%A5">사고 타임라인 및 영향</h2>
+	<p><strong>9월 21일 6:30 UTC</strong>: 루트 영역의 마지막 풀 성공<br><strong>10월 4일 7:00 UTC</strong>: 9월 21일에 획득한 루트 영역의 DNSSEC 서명이 만료되어 클라이언트 쿼리에 대한 SERVFAIL 응답이 증가함.<br><strong>7:57</strong>: 예기치 않은 SERVFAIL에 대한 첫 외부 보고가 접수되기 시작함.<br><strong>8:03</strong>: 내부적 Cloudflare 사고가 선언됨.<br><strong>8:50</strong>: 재정의 규칙을 사용하여 1.1.1.1에서 오래된 루트 영역 파일을 사용하여 응답을 제공하지 못하도록 막으려는 첫 번째 시도가 있었음.<br><strong>10:30</strong>: 1.1.1.1에서 루트 영역 파일을 미리 로드하는 것을 완전히 차단했음.<br><strong>10:32</strong>: 응답이 정상으로 복귀함.<br><strong>11:02</strong>: 사고 종결됨.</p>
+	<p>아래 차트에는 영향의 타임라인과 함께 SERVFAIL 오류로 반환된 DNS 쿼리의 비율이 나와있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-3.png" class="kg-image" alt="" loading="lazy" width="1431" height="414"></figure>
+	<p>우리는 정상 운영 시 일반 트래픽에 대한 기본 SERVFAIL 오류의 양을 예상합니다. 그 비율은 일반적으로 3% 정도입니다. 이러한 SERVFAIL은 DNSSEC 체인의 합법적인 문제, 권한 있는 서버에 연결하지 못함, 권한 있는 서버에서 응답하는 데 너무 오래 걸림 <a href="https://blog.cloudflare.com/unwrap-the-servfail">등</a>으로 인해 발생할 수 있습니다. 사고 기간에 SERVFAIL의 양은 전체 쿼리의 15%로 최고조에 달했지만, 그 영향은 전 세계에 걸쳐 고르게 분산되지 않았고 주로 버지니아주 애쉬번, 독일 프랑크푸르트, 싱가포르 등의 대규모 데이터 센터에 집중되었습니다.</p>
+	<h2 id="%EC%9D%B4-%EC%82%AC%EA%B3%A0%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%9C-%EC%9D%B4%EC%9C%A0">이 사고가 발생한 이유</h2>
+	<h4 id="zonemd-%EB%A0%88%EC%BD%94%EB%93%9C-%EA%B5%AC%EB%AC%B8-%EB%B6%84%EC%84%9D%EC%97%90-%EC%8B%A4%ED%8C%A8%ED%95%9C-%EC%9D%B4%EC%9C%A0">ZONEMD 레코드 구문 분석에 실패한 이유</h4>
+	<p>DNS에는 리소스 레코드를 저장하기 위한 바이너리 형식이 있습니다. 이 바이너리 형식에서 리소스 레코드 유형(TYPE)은 16비트 정수로 저장됩니다. 리소스 레코드 유형에 따라 리소스 데이터(RDATA)가 구문 분석되는 방식이 결정됩니다. 레코드 유형이 1이면 A 레코드라는 의미이며, RDATA는 IPv4 주소로 구문 분석될 수 있습니다. 레코드 유형 28은 AAAA 레코드로, 그 RDATA는 대신 IPv6 주소로 구문 분석될 수 있습니다. 파서가 알 수 없는 리소스 유형을 만나면 RDATA를 구문 분석하는 방법을 알 수 없지만, 다행히도 분석할 필요가 없습니다. RDLENGTH 필드가 RDATA 필드의 길이를 나타내어 파서가 불확실한 데이터 요소로 처리할 수 있으니까요.</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>                                   1  1  1  1  1  1
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                                               |
+    /                                               /
+    /                      NAME                     /
+    |                                               |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                      TYPE                     |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                     CLASS                     |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                      TTL                      |
+    |                                               |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+    |                   RDLENGTH                    |
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
+    /                     RDATA                     /
+    /                                               /
+    +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+</code></pre>
+		<figcaption><a href="https://www.ietf.org/rfc/rfc1035.txt" target="_blank">RFC 1035</a></figcaption>
+	</figure>
+	<p>static_zone에서 새로운 ZONEMD 레코드를 지원하지 않았던 이유는 당사에서 지금까지 루트 영역을 내부적으로 바이너리 형식이 아닌 프레젠테이션 형식으로 배포하기로 선택했기 때문입니다. 몇 가지 리소스 레코드의 텍스트 표현을 살펴보면 다양한 레코드가 표시되는 방식에 훨씬 더 많은 차이가 있음을 알 수 있습니다.</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>.			86400	IN	SOA	a.root-servers.net. nstld.verisign-grs.com. 2023100400 1800 900 604800 86400
+.			86400	IN	RRSIG	SOA 8 0 86400 20231017050000 20231004040000 46780 . J5lVTygIkJHDBt6HHm1QLx7S0EItynbBijgNlcKs/W8FIkPBfCQmw5BsUTZAPVxKj7r2iNLRddwRcM/1sL49jV9Jtctn8OLLc9wtouBmg3LH94M0utW86dKSGEKtzGzWbi5hjVBlkroB8XVQxBphAUqGxNDxdE6AIAvh/eSSb3uSQrarxLnKWvHIHm5PORIOftkIRZ2kcA7Qtou9NqPCSE8fOM5EdXxussKChGthmN5AR5S2EruXIGGRd1vvEYBrRPv55BAWKKRERkaXhgAp7VikYzXesiRLdqVlTQd+fwy2tm/MTw+v3Un48wXPg1lRPlQXmQsuBwqg74Ts5r8w8w==
+.			518400	IN	NS	a.root-servers.net.
+.			86400	IN	ZONEMD	2023100400 1 241 E375B158DAEE6141E1F784FDB66620CC4412EDE47C8892B975C90C6A102E97443678CCA4115E27195B468E33ABD9F78C
+</code></pre>
+		<figcaption>다음 출처에서 가져온 레코드의 예 <a href="https://www.internic.net/domain/root.zone" target="_blank">https://www.internic.net/domain/root.zone</a></figcaption>
+	</figure>
+	<p>알 수 없는 리소스 레코드가 발생하면 처리 방법을 쉽사리 알아낼 수 없습니다. 이 때문에 에지에서 루트 영역을 구문 분석하려고 우리가 사용하는 라이브러리에서는 처리하는 것을 시도하지 않고 대신 파서 오류를 반환합니다.</p>
+	<h3 id="%EC%98%A4%EB%9E%98%EB%90%9C-%EB%B2%84%EC%A0%84%EC%9D%98-%EB%A3%A8%ED%8A%B8-%EC%98%81%EC%97%AD%EC%9D%B4-%EC%82%AC%EC%9A%A9%EB%90%9C-%EC%9D%B4%EC%9C%A0">오래된 버전의 루트 영역이 사용된 이유</h3>
+	<p>루트 영역을 로컬로 제공하기 위해 루트 영역을 로드하고 구문 분석하는 작업을 담당하는 static_zone 앱(<a href="https://datatracker.ietf.org/doc/html/rfc7706" target="_blank">RFC 7706</a>)은 최신 버전을 메모리에 저장합니다. 새 버전이 게시되면 이 앱은 이를 구문 분석하고 성공적으로 구문 분석이 완료되면 이전 버전을 삭제합니다. 그러나 구문 분석에 실패했으므로 static_zone 앱은 최신 버전으로 전환하지 않고 이전 버전을 무기한 계속 사용했습니다. 1.1.1.1 서비스가 처음 시작될 때 static_zone 앱의 메모리에는 기존 버전이 없습니다. 루트 영역을 구문 분석하려고 할 때 실패하지만, 의존할 이전 버전의 루트 영역이 없기 때문에 다시 직접 루트 서버에 쿼리하는 것에 의존하여 들어오는 요청을 처리하게 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1417"></figure>
+	<h3 id="staticzone-%EB%B9%84%ED%99%9C%EC%84%B1%ED%99%94%EB%A5%BC-%EC%B2%98%EC%9D%8C-%EC%8B%9C%EB%8F%84%ED%96%88%EC%9D%84-%EB%95%8C-%EC%8B%A4%ED%8C%A8%ED%95%9C-%EC%9D%B4%EC%9C%A0">static_zone 비활성화를 처음 시도했을 때 실패한 이유</h3>
+	<p>우리는 초기에 1.1.1.1의 일부 동작을 프로그래밍 방식으로 변경할 수 있는 메커니즘인 오버라이드 규칙을 통해 static_zone 앱을 비활성화하려고 시도했습니다. 우리가 배포한 규칙은 다음과 같습니다.</p>
+	<pre><code>phase = pre-cache set-tag rec_disable_static
+</code></pre>
+	<p>이 규칙은 들어오는 모든 요청에 대해 rec_disable_static 태그를 추가합니다. static_zone 앱 내에서 이 태그가 설정되어 있는지 확인하고, 설정되어 있으면 캐시된 정적 루트 영역에서 응답을 반환하지 않습니다. 그러나 <a href="https://blog.cloudflare.com/ko-kr/big-pineapple-intro-ko-kr">캐시 성능을 개선하기 위해</a> 현재 노드가 자체 캐시에서 응답을 찾을 수 없는 경우 쿼리가 다른 노드로 전달되는 경우가 있습니다. 안타깝게도 다른 노드로 전달되는 쿼리에는 rec_disable_static 태그가 포함되어 있지 않으므로, 결국 우리가 앱을 완전히 비활성화할 때까지 static_zone 앱에서 오래된 정보로 계속 응답하게 되었습니다.</p>
+	<h3 id="%EC%98%81%ED%96%A5%EC%9D%B4-%EB%B6%80%EB%B6%84%EC%A0%81%EC%9D%B4%EC%97%88%EB%8D%98-%EC%9D%B4%EC%9C%A0">영향이 부분적이었던 이유</h3>
+	<p>Cloudflare에서는 전체 시스템을 다시 시작한 후에만 적용될 수 있는 커널 업데이트와 같은 작업을 위해 서비스를 호스팅하는 서버의 롤링 재부팅을 정기적으로 수행합니다. 이번 중단 당시, ZONEMD 변경과 DNSSEC 무효화 사이에 재시작된 확인자 서버 인스턴스는 영향에 기여하지 않았습니다. 확인자 서버 인스턴스가 이 2주의 기간 동안 다시 시작되었다면 시작 시 루트 영역을 로드하지 못하고 대신 루트 서버로 DNS 쿼리를 전송하는 방식으로 다시 확인했을 것입니다. 또한 확인자는 잠재적으로 오래된 캐시에서 인기 있는 레코드를 계속 제공하여 영향을 제한하기 위한 목적으로 서브 스테일(<a href="https://datatracker.ietf.org/doc/html/rfc8767" target="_blank">RFC 8767</a>)이라는 기술을 사용합니다. 레코드가 업스트림에서 검색된 후 TTL 시간(초)이 경과하면 레코드는 오래된 것으로 간주됩니다. 이로 인해 전체 서비스 중단은 발생하지 않았으며, 해당 기간 동안 1.1.1.1 서비스를 재시작하지 않은 서버가 많은 대규모 데이터 센터에서 주로 영향이 나타났습니다.</p>
+	<h2 id="%EB%B3%B5%EC%9B%90-%EB%B0%8F-%ED%9B%84%EC%86%8D-%EC%A1%B0%EC%B9%98">복원 및 후속 조치</h2>
+	<p>이 사고는 광범위한 영향을 미쳤으며 Cloudflare에서는 당사 서비스의 가용성을 아주 중요하게 생각합니다. 개선 가능한 영역을 몇 가지 확인했으며, 재발을 초래할 수 있는 또 다른 허점이 있는지 찾기 위하여 계속 노력하겠습니다.</p>
+	<p>다음 사항을 즉시 작업하고 있습니다.</p>
+	<p><strong>가시성</strong>: 우리는 static_zone에서 오래된 루트 영역 파일을 제공할 때 알려주는 알림을 추가하고 있습니다. 오래된 루트 영역 파일이 제공되는 것을 그처럼 오랫동안 눈에 알아차리지 못하는 경우는 없어야 합니다. 존재하는 캐싱을 통해 이를 더 잘 모니터링했다면 아무런 영향도 받지 않았을 것입니다. 업스트림 변경으로부터 고객과 사용자를 보호하는 것이 우리의 목표입니다.</p>
+	<p><strong>복원력:</strong> 내부적으로 루트 영역을 수집하고 배포하는 방법을 재평가하겠습니다. 수집 및 배포 파이프라인은 새로운 RRTYPE을 원활하게 처리해야 하며, 파이프라인이 잠시 중단되어도 최종 사용자에게는 보이지 않아야 합니다.</p>
+	<p><strong>테스트:</strong> 이 문제에 대한 테스트가 마련되어 있으며, 새로운 ZONEMD 레코드 구문 분석 시 미공개 변경 사항과 관련된 테스트도 포함되어 있지만, 우리는 루트 영역에서 구문 분석에 실패할 때 발생하는 상황을 적절하게 테스트하지 못했습니다. 테스트 범위와 관련 프로세스를 개선하겠습니다.</p>
+	<p><strong>아키텍처</strong>: 루트 영역의 오래된 사본을 지정된 시점이 지나서 사용해서는 안 됩니다. 한정된 시간 동안은 오래된 루트 영역 데이터를 계속 사용할 수 있지만, 지정된 시점이 지나면 허용할 수 없는 운영상의 위험이 발생할 수 있습니다. 캐시된 루트 영역 데이터의 수명을 <a href="https://www.rfc-editor.org/rfc/rfc8806" target="_blank">'RFC 8806: 확인자에 로컬로 루트 서버 실행'</a>에 설명된 대로 더 잘 관리할 수 있도록 조치를 취하겠습니다.</p>
+	<h2 id="%EA%B2%B0%EB%A1%A0">결론</h2>
+	<p>이번 사고가 발생한 것에 대해 깊은 유감을 표합니다. 이 사고로부터 한 가지 분명한 메시지를 얻을 수 있다면, 절대 무언가가 변하지 않을 것이라고 가정해서는 안 된다는 것입니다! 최신 시스템은 최종 실행 파일로 가져오는 긴 라이브러리 체인으로 구축되는 경우가 많은데, 각 라이브러리는 버그가 있거나 입력 변경이 발생했을 때 프로그램이 올바르게 작동할 수 있도록 충분히 빨리 업데이트되지 않을 수 있습니다. 우리는 입력 변경 시 정상적으로 작동하지 않는 시스템 및 구성 요소와 회귀를 감지할 수 있는 우수한 테스트를 마련하는 것이 얼마나 중요한지 잘 알고 있습니다. 또한 인터넷에서 가장 중요한 시스템(DNS 및 BGP)의 '형식' 변경이 영향을 미칠 것이라는 점을 항상 가정해야 한다는 점도 잘 알고 있습니다.</p>
+	<p>내부적으로 후속 조치를 취해야 할 사항이 많으며, 당사에서는 이와 같은 일이 다시는 발생하지 않도록 불철주야 노력하고 있습니다.</p>
+</div>

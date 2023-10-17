@@ -1,0 +1,121 @@
+<div class="mb2 gray5">9 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image4.png" class="kg-image" alt="" loading="lazy" width="1300" height="600"></figure>
+	<p><a href="https://www.cloudflare.com/application-services/products/waiting-room" target="_blank">Cloudflare Waiting Room</a>は、完全にカスタマイズ可能な仮想待機室に過剰なウェブ訪問者を配置し、空き枠ができると動的にこれを受け入れることにより、急激なトラフィック急増からサイトを保護します。Waiting Roomにより、管理しきれないトラフィック急増時にエラーページを表示したりパフォーマンスの低いサイトページを配信したりするのではなく、エンドユーザーエクスペリエンスをコントロールできるようにします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1.png" class="kg-image" alt="貴社サイトの待機室のルック＆フィールのカスタマイズも可能となっており、エンドユーザーエクスペリエンスの向上にお役立ていただけます。" loading="lazy" width="1440" height="1024"></figure>
+	<p>待機室を設定する際、保護の対象となるページの決定が重要になります。これまでは、ホスト名とパスの組み合わせを1つ選び、待機室の対象となるページを決めることができました。今日、Waiting Roomsでは、単一の待機室で複数のホスト名とパスの組み合わせに対応できるようになりました。これにより、お客様にはより多くの柔軟性がもたらされ、エンドユーザーのフローを中断することなく、より広範なサイトカバレッジを提供できるようになりました。この新機能は、「Waiting Rooms」のアドバンスをご利用のすべてのEnterprise契約のお客様にご利用いただけます。</p>
+	<h3 id="waiting-rooms%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%88%E3%81%A7%E3%81%AE%E8%A8%AD%E7%BD%AE">Waiting Roomsのサイトでの設置</h3>
+	<p>シンプルかつコーディング不要の待機室のデプロイプロセスでは、ホスト名とパスの組み合わせを指定し、特定の待機室がカバーするページを指定します。Web訪問者がそのホスト名とパス、またはそのサブパスに予備リクエストを行うと、待機室クッキーが発行され、サイトへの入場が許可されるか、もしくはサイトの容量が足りない場合、待機室に導きます。 </p>
+	<p>昨年、当社は <a href="https://blog.cloudflare.com/waiting-room-bypass-rules">Waiting Roomのバイパスルール</a>機能を追加し、ホスト名とパスカバレッジの例外を設けるための多くの選択肢をお客様に提供しました。これにより、ユーザーエージェントバイパス、ジオターゲティング、URL除外、管理用IPバイパスなどの機能が活用できるようになりました。また、URL、パス、クエリ文字列を除外する機能を追加することで、顧客サイト上で待機室を適用するページの設定の柔軟性を高めることとなりました。このアップデートにより、Waiting Roomによってゲートされるべきトラフィックをより具体化できるようになった一方、カバレッジは狭いままで多くの顧客が単一の待機室でサイトの大部分を保護することはできませんでした。</p>
+	<h3 id="%E9%A1%A7%E5%AE%A2%E3%81%8C%E3%82%88%E3%82%8A%E3%82%AB%E3%83%90%E3%83%AC%E3%83%83%E3%82%B8%E3%81%AEwaiting-rooms%E3%82%92%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1">顧客がよりカバレッジのWaiting Roomsを必要とした理由</h3>
+	<p>幅広いカバレッジを持つ製品機能が顧客にとって重要であった理由について、簡単ではあるもののインパクトのある例をいくつか挙げてみます。example.comというオンラインストアがあるとします。単一の待機室で、ホームページから商品閲覧、チェックアウトまで、顧客の利用体験全体をカバーできるようにしたいと考えたとします。多くのサイトでは、フロー内のこれらのステップを次のようにパスを用いて指定します：「example.com/, example.com/shop/product1、 example.com/checkout」。Waiting Roomは設定されたパスの最後にワイルドカードを想定するため、これらのサイトではこのユースケースはすでに十分なものでした。したがって、example.com/に待機室を設置すれば、この顧客利用体験のあらゆる段階で関連することになるすべてのURLをカバーすることができました。このセットアップでは、一度待機室を通過したWeb訪問者は、Waiting Roomに対し同一のユーザーであることをURL間の遷移の際に明示する同一待機室のクッキーを使用しているため、ユーザーフローのどのステップでも再キューされなおすことはありません。</p>
+	<p>しかし、多くのサイトでは、パスの代わりもしくはパスと併せサブドメインを使い、この種のショッピングフローの各段階を区切っています。例えば、多くのサイトでは、チェックアウトページをcheckout.example.comのような別のサブドメインに置いています。以前は、このようなサイト構造を持つ顧客がサイト全体を単一の待機室で保護する場合、example.com/ に待機室をデプロイし、checkout.example.com/に別の待機室を配置する必要がありました。このやり方は、多くの顧客にとって理想的なものではありませんでした。あるサイトのWeb訪問者が、同じ顧客利用体験の2つの異なる部分でキューに入れられる可能性があったからです。これは、checkout.example.com/の待機室がexample.com/をカバーするのではなく、Web訪問者を別のユーザーとして同じカウントすることが理由です。</p>
+	<p>とはいえ、1つのサイトで待機室を分けた方が賢明な場合もあります。例えば、チケット販売Webサイトは、そのエイペックスドメイン（example.com）に待機室を置くことができます。 また、特定のイベント（example.com/popular_artist_tour）のページでは、プレキューを持つ個別の待機室を設定しています。example.com/に設定された待機室は、あるイベントのチケット販売が開始されたときに、サイトへの主要な入り口が圧倒されてクラッシュすることがないようにします。 特定のイベントページに置かれた待機室は、サイトの他の部分に行くトラフィックに影響を与えることなく、単一のイベントのためのトラフィックがイベントの前にキューを開始できることを保証します。 </p>
+	<p>最終的には、顧客がサイトの保護に1つまたは複数の待機室を望むかどうかにかかわらず、当社は顧客がユースケースとサイト構造に最適な待機室をデプロイする柔軟性を提供したいと考えました。今回、Waiting Roomが単一の待機室で複数のホスト名とパスカバレッジに対応できるようになったことを発表できることを大変うれしく思います。</p>
+	<h3 id="%E3%83%9E%E3%83%AB%E3%83%81%E3%83%9B%E3%82%B9%E3%83%88%E3%81%A8%E3%83%91%E3%82%B9%E3%82%AB%E3%83%90%E3%83%AC%E3%83%83%E3%82%B8%E3%81%AE%E5%A7%8B%E3%82%81%E6%96%B9">マルチホストとパスカバレッジの始め方</h3>
+	<p>今回、同じゾーンに属する複数のホスト名とパスの組み合わせ（またはルート）に待機室を設定できるようになりました。Traffic &gt; 待機室を開き、Create（作成）を選択します。ドメイン名は、すでに入力されています。待機室設定にさらにルートを追加するには、Add Hostname and Path（ホスト名とパスの追加）を選択します。次に、同じ待機室にカバーさせる別のホスト名とパスを入力してください。各パスの最後はワイルドカード扱いとなります。そのため、待機室にカバーさせたいURLごとに待機室を作成する必要はありません。すでに入力した他のホスト名とパスの組み合わせではカバーできないURLに対してのみ、追加ルートを作成してください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/image3.png" class="kg-image" alt="Add Hostname and Path（ホスト名とパスを追加）を選択し、複数のホスト名とパスの組み合わせを待機室に追加します。" loading="lazy" width="1910" height="670"></figure>
+	<p>複数のホスト名とパスの組み合わせをカバーする待機室をデプロイする場合、この待機室用にユニークなクッキー名を作成する必要があります（詳細は後述します）。その後、普段と<a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room" target="_blank">同じワークフローで</a>待機室をデプロイしてください。</p>
+	<h3 id="%E5%A4%9A%E8%A8%80%E8%AA%9E%E5%BE%85%E6%A9%9F%E5%AE%A4%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">多言語待機室のデプロイ</h3>
+	<p>多言語サイトを1つの待機室でカバーできること、つまり言語ごとに異なるテキストを提供しながら、すべてのサイトトラフィックを同じ待機室の制限にカウントできることは、お客様からよく寄せられていた要望でした。異なる言語オプションを区別するためにサイトを構成する方法はいろいろある中、最も一般的なのはサブドメインかパスによる方法です。パス区切りが使われているサイトでは、example.com/enやexample.com/esのようになります。それぞれ英語とスペイン語に対応するものです。サブドメイン区分を使用するサイトでは、en.example.com/、およびes.example.com/のようになります。マルチホスト待機室がカバーする以前は、サブドメインのバリエーションは単一の待機室ではカバーできませんでした。</p>
+	<p>Waiting Roomの既存の設定オプションでは、すでにパスのバリエーションに対応していました。しかし、これは顧客がサイト全体をゲートしたい場合にのみ、example.com/に待機室を置くことで可能でした。多くのeコマースのお客様から、同じ商品を販売する需要の高い商品ページを異なる言語オプションでゲート表示できるようにしてほしいという要望がよせられていました。例えば、example.com/en/product_123、および example.com/es/product_123の両方のURLをカバーするために同じ待機室とトラフィック制限が望まれていました。これまでは、複雑なバイパスルールのロジックがなければそれは不可能でした。</p>
+	<p>今では、お客様は多言語サイトの構成のために、サブドメインまたはパスのアプローチのいずれかに対応する待機室をデプロイできるようになりました。残る唯一のステップは、ユーザーが待機室にキューイングされているときに異なる言語を提供するように待機室を設定することです。これは、URLを読み込んでロケールを決定し、テンプレート内で各ロケールに適切な翻訳を定義するテンプレートを構築することで実現できます。 </p>
+	<p>以下は、URLパスからロケールを決定し、翻訳されたテキストを表示するテンプレートの例です：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Waiting Room powered by Cloudflare&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section&gt;
+      &lt;h1 id="inline-msg"&gt;
+        You are now in line.
+      &lt;/h1&gt;
+      &lt;h1 id="patience-msg"&gt;
+        Thank you for your patience.
+      &lt;/h1&gt;
+    &lt;/section&gt;
+    &lt;h2 id="waitTime"&gt;&lt;/h2&gt;
+
+    &lt;script&gt;
+      var locale = location.pathname.split("/")[1] || "en";
+      var translations = {
+        "en": {
+          "waittime_60_less": "Your estimated wait time is {{waitTime}} minute.",
+          "waittime_60_greater": "Your estimated wait time is {{waitTimeHours}} hours and {{waitTimeHourMinutes}} minutes.",
+          "inline-msg": "You are now in line.",
+          "patience-msg": "Thank you for your patience.",
+        },
+        "es": {
+          "waittime_60_less": "El tiempo de espera estimado es {{waitTime}} minuto.",
+          "waittime_60_greater": "El tiempo de espera estimado es {{waitTimeHours}} de horas y {{waitTimeHourMinutes}} minutos.",
+          "inline-msg": "Ahora se encuentra en la fila de espera previa.",
+          "patience-msg": "Gracias por su paciencia.",
+        }
+      };
+
+      {{#waitTimeKnown}}
+      var minutes = parseInt( {{waitTime}} , 10);
+      var time = document.getElementById('waitTime');
+
+      if ( minutes &lt; 61) {
+        time.innerText = translations[locale]["waittime_60_less"]
+      } else {
+        time.innerText = translations[locale]["waittime_60_greater"]
+      }
+      {{/waitTimeKnown}}
+
+      // translate template text for each of the elements with “id” suffixed with “msg”
+      for (const msg of ["inline-msg", "patience-msg"]) {
+        const el = document.getElementById(msg);
+        if (el == null) continue;
+        el.innerText = translations[locale][msg];
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>テンプレートの仕組みは、次のようなものになります：ページのレンダリング後、`<code>&lt;script /&gt;</code>` 内で `<code>/en/product_123</code>` や `<code>/es/product_123</code>`などさまざまなパスでロケールを区別しているサイトがある場合、ロケールは `<code>location.pathname</code>` から `<code>locale = location.pathname.split(“/”)[1]</code>` にて抽出されます。`<code>translations</code>`オブジェクトにロケールが指定されていない場合は、デフォルトで "en "になります。例えば、ユーザーがexample.com/product_123にアクセスした場合、デフォルトでは英語のテキストテンプレートがレンダリングされます。</p>
+	<p>同様に、サブドメインでサイト構造を切り分けているサイトで多言語待機室をサポートするには、URLからロケールを抽出する方法を更新するだけで済みます。`<code>pathname</code>`を見る代わりに、`<code>window.location</code>` の `<code>hostname</code>` プロパティの`<code>locale = location.hostname.split(“.”)[0]</code>` などのオブジェクトなどを見ます。この場合、en.example.com、es.example.comなどのサイト構造となっています。</p>
+	<p>上記のコードは、多言語待機室の構築を始めやすくできるよう当社で用意した<a href="https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room/#multiple-language-support" target="_blank">開発者向けドキュメント</a>に記載したスターターテンプレートの抜粋です。これらのテンプレートをダウンロードし、貴社サイトおよび貴社サイトが提供する言語オプションに沿ったルック＆フィールに仕上がるよう、編集できます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image2.png" class="kg-image" alt="" loading="lazy" width="1999" height="1197">
+		<figcaption>開発者ドキュメントで提供されているスターターテンプレートの例を引用しました。この待機室はキュー・オールモードで、ユーザーがexample.com/es/product_123にアクセスするとスペイン語のテキストを表示します。</figcaption>
+	</figure>
+	<p>これらのテンプレートは、それぞれのロケールに対して `translations` オブジェクトに翻訳を追加することで、さらに他の言語を含めて拡張できます。このように、ひとつのテンプレートで、サブドメインやパスを介してサイトが提供されるロケールに応じ複数の言語を提供できます。</p>
+	<h3 id="%E8%A4%87%E6%95%B0%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%9B%E3%82%B9%E3%83%88%E5%90%8D%E3%81%A8%E3%83%91%E3%82%B9%E3%82%92%E6%8C%81%E3%81%A4%E5%BE%85%E6%A9%9F%E5%AE%A4%E3%81%A7%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%81%AE%E6%89%B1%E3%81%84%E6%96%B9">複数のマルチホスト名とパスを持つ待機室でのクッキーの扱い方</h3>
+	<p>待機室は 各ユーザに `<code>__cfwaitingroom</code>` <a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie" target="_blank">クッキー</a>を割り当て、そのユーザの状態を管理します。このクッキーは、ユーザーのキューの決定を行うために必要な<a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects/#:~:text=What%20is%20in%20the%20cookie%20returned%20to%20an%20end%20user%3F">他のプロパティ</a>に合わせてユーザーのキューを決定します。従来は、単一のホスト名とパスの設定には、クッキーを `<code>__cfwaitingroom=[cookie-value]; Domain=example.com; Path=/es/product_123</code>` と設定するだけで済みました。これにより、ページが再読み込みされた際、同じ待機室クッキーが送信され、それを調べて更新することができました。しかし、例えば `<code>example.com/en/product_123</code>`のように、異なるサブドメインやパスの組み合わせで同じクッキーを共有したいとき、これは簡単ではありませんでした。</p>
+	<h3 id="%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81">複数のクッキーを設定するためのアプローチ</h3>
+	<p>同じ待機室のクッキーを共有できるようにするために、当社ではブレインストーミングを行い、2つのアプローチを評価しました。</p>
+	<p>当社が考えた最初のアプローチは、HTTPレスポンスに複数の `<code>Set-Cookie</code>` ヘッダーを発行することでした。例えば、上記の多言語の例では、レスポンスヘッダーに次のように書くことができます：</p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom=[cookie-value]…Domain=example.com; Path=/en/product_123 …
+Set-Cookie: __cfwaitingroom=[cookie-value]...Domain=example.com; Path=/es/product_123 …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この方法を使えば、同じ待機室に対して複数のホスト名とパスを扱うことができます。しかし、スケーラブルなソリューションとは言えません。 <a href="https://datatracker.ietf.org/doc/html/rfc6265#section-5.2" target="_blank">RFC6265</a>ごとに、仕様で定義された厳密な制限はなく、ブラウザはその実装に固有の制限を持っています。例えば、ChromeではERR_RESPONSE_HEADERS_TOO_BIGでトランザクションを投げる前に、レスポンスヘッダが <a href="https://source.chromium.org/chromium/chromium/src/+/main:net/http/http_stream_parser.h;l=168;drc=4cc7ba01d3c5dc996ddc98f9d0bd709e3d5bbfd3?q=ERR_RESPONSE_HEADERS_TOO_BIG&amp;ss=chromium" target="_blank">256Kバイト</a>までの拡大を許容します。さらに、この場合、レスポンスヘッダは一意なホスト名とパスの組み合わせの数に比例して大きくなり、同じクッキー値 N（N は追加ルートの数）を何回も冗長に繰り返すことになります。このアプローチは、設定される必要があるホスト名とパスの組み合わせの限定されたリストを効果的に扱うことを可能にするものの、特定のサイトに対して相当数のルートが予想されるケースには理想的ではありませんでした。 </p>
+	<p>当社が検討し最終的に採用することとなった2つ目のアプローチは、エイペックスドメイン（または最も共通するサブドメイン）にクッキーを設定することでした。つまり、ルーティングのリストから最も共通するサブドメインを割り出し、それをドメインとして使うのです。同様に、パスの場合、パスのリストから共有する最小のプレフィックスを決定し、それをpath属性に設定する値として使用することになります。例えば、a.example.com/shoes/product_123、および b.example.com/shoes/product_456の2つのルーティングが設定された待機室を考えてみましょう。</p>
+	<p>クッキーに設定されるドメインを決定するに当たり、ドメインのリストの中で `<code>example.com</code>` が最も共通するサブドメインであることがわかります。最も共通するサブドメインアルゴリズムを適用すると、ドメインとして `<code>example.com</code>` が得られます。パスの集合である `<code>/shoes/product_123</code>` と `<code>/shoes/product_456</code>` に対して最小共通接頭辞アルゴリズムを適用すると、パスとして `<code>/shoes</code>` が得られます。したがって、set-cookieヘッダーは次のようになります：</p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: … __cfwaitingroom=[cookie-value]; Domain=example.com; Path=/shoes …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これで、Web訪問者がこの待機室がカバーするページのいずれかにアクセスするとき、Waiting Roomが正しいクッキーを受け取り、応答ヘッダーに Set-Cookie のみが含まれるようにできます。</p>
+	<p>しかし、当社はまだここまで到達できていません。共通のサブドメイン（またはエイペックスドメイン）と共通のパスプレフィックスを識別することはできても、ある待機室からのルーティングが別の待機室と重なってしまうと、まだ残る問題があります。例えば、特別な靴を販売している同じサイトに2つの待機室を設定するとします：</p><!--kg-card-begin: html-->
+	<p>Waiting Room A<br>
+		&nbsp; &nbsp; a.example.com/shoes/product_123<br>
+		&nbsp; &nbsp; b.example.com/shoes/product_456</p>
+
+	<p>Waiting Room B<br>
+		&nbsp; &nbsp; c.example.com/shoes/product_789<br>
+		&nbsp; &nbsp; d.example.com/shoes/product_012</p><!--kg-card-end: html-->
+	<p>前述と同じアルゴリズムを適用すれば、2つのクッキーに同じドメインとパスのプロパティが設定されることになります。待機室Aの場合、ドメインは `<code>example.com</code>`、パスは`<code>/shoes</code>` となります。同様に、待機室Bでは、最も共通するサブドメインは同じくexample.comとなり、最も共通していないパスの接頭辞は `<code>/shoes</code>` となります。これにより、2つのクッキーを効果的に区別することができなくなり、Web訪問者を正しい待機室に導くことができなくなります。重複するクッキーネームの問題を解決するために、お客様のゾーンに固有のカスタムサフィックスを設定する要件を導入しました。これが、複数のホスト名やパスをカバーする待機室を設定する際、カスタムクッキーサフィックスの提供が必要な理由となります。したがって、待機室Aにクッキー接尾辞 "a "を、待機室Bにクッキー接尾辞 "b "を割り当てた場合、2つの `<code>Set-Cookie</code>` の定義は以下のようになります：</p>
+	<p><strong>Waiting Room A</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom_a=[cookie-value]; Domain=example.com; Path=/shoes
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Waiting Room B</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom_b=[cookie-value]; Domain=example.com; Path=/shoes
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Web訪問者が、2つの異なる待機室が設定されたページにリクエストを行うと、待機室は指定されたリクエストに対応するクッキーを区別して選択し、これを用いて、ユーザーがサイト上のどこにいるかに応じ、そのユーザーに適用される待機室の設定を決定します。 </p>
+	<p>Waiting Roomがマルチホストとマルチパス対応となったことで、お客様のサイトにWaiting Roomを組み込むための柔軟な選択肢を提供できるようになりました。これにより、Web訪問者に可能な限り優れたエクスペリエンスを提供しながら、トラフィックの多い時間帯にサイトを保護できるようになりました。 お客様のサイトは、トラフィックの急増から常に保護されることになります。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Ftraffic%2Fwaiting-rooms" target="_blank">Waiting Room</a>をさっそくお試しいただき、またWaiting Roomアドバンスの詳細について当社への<a href="https://www.cloudflare.com/application-services/products/waiting-room" target="_blank">お問い合わせ</a>をお待ちしています。</p>
+</div>
