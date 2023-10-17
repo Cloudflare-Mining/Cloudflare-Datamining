@@ -1165,10 +1165,11 @@
 								"type": "object"
 							},
 							"type": {
-								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. This parameter is only available to Enterprise customers or if it has been explicitly enabled on a zone.",
+								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial \nzone is typically a partner-hosted zone or a CNAME setup. This \nparameter is only available to Enterprise customers or if it has \nbeen explicitly enabled on a zone.\n",
 								"enum": [
 									"full",
-									"partial"
+									"partial",
+									"secondary"
 								],
 								"example": "full",
 								"type": "string"
@@ -1580,10 +1581,11 @@
 								"type": "string"
 							},
 							"type": {
-								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.",
+								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is \ntypically a partner-hosted zone or a CNAME setup.\n",
 								"enum": [
 									"full",
-									"partial"
+									"partial",
+									"secondary"
 								],
 								"example": "full",
 								"type": "string"
