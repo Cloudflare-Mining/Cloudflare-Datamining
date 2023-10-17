@@ -2,7 +2,7 @@
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
 		"latest": "1.6.3",
-		"beta": "0.0.0-ab83858",
+		"beta": "0.0.0-5dae9b2",
 		"pre-v1": "0.10.2"
 	},
 	"versions": {
@@ -12761,6 +12761,63 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQD1nsKhNRT77TNBkTh/vso3BLcrHHpW4PxPZPYZEezA/wIhAKBH/o+uKUPSpCzQNI0uJfDTLUcb5clzOWeyx4rIEo9z"
+					}
+				]
+			}
+		},
+		"0.0.0-5dae9b2": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-5dae9b2",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"package-manager-manager": "^0.1.2",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2",
+				"zod": "^3.22.3",
+				"zodcli": "^0.0.4"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0",
+				"image-to-base64": "^2.2.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.0.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-8s4ai5uF3t0ljS7Ict8dDCqywtfMeTweQoWSXw8MCw3pHXnZRZj4Wzy8z6GDRCncahvLwhRTc4qOJJAn8PMu1A==",
+				"shasum": "3b0c25af9157ebabf1e575d7ebba00dfdc04d17f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-5dae9b2.tgz",
+				"fileCount": 21,
+				"unpackedSize": 717638,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHjpjdKeA/LvmbK8URLIXpN8OUlVrcJ2GFfdtb+PgUw0AiBryeGau97zPZbVZz09UmtjbpD300pvfTNkcduoWCj3vw=="
 					}
 				]
 			}

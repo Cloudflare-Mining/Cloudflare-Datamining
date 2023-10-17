@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.10.0"
+		"latest": "0.10.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1052,6 +1052,34 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIBEl2k6ccun/PPiU0/MqpOoLkfJT+SPblfuQ117e7QiFAiBbMOSV+0pC9LCAaaAE3ftiig+7xcEpUnzt5tbLjQQXsQ=="
+					}
+				]
+			}
+		},
+		"0.10.1": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.10.1",
+			"dependencies": {
+				"miniflare": "3.20231016.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20230511.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"concurrently": "^7.3.0",
+				"glob": "^8.0.3",
+				"service-worker-mock": "^2.0.5",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-6uRYZ9r3Hybwxw4Y2Z/g03ttDaAYOl31Tw7wRsbpfGjJ8Gj5CEtEEFsX3DwQ0ArpA5VnozAlhgvGq1aK84SO4A==",
+				"shasum": "f8af733601e59943a9b19b17014c590069819b73",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.10.1.tgz",
+				"fileCount": 17,
+				"unpackedSize": 47629,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDP5dBxVr0K/XvbwG5e697ZMLzYJCl6G+cmBhpds8uqCAiEAmS+eimBJ2AZLuLgn/p/bN3GJs2kKYHtG8aaMik03IOU="
 					}
 				]
 			}
