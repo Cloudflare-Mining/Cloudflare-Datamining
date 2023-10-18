@@ -57,6 +57,25 @@
 		}
 	},
 	{
+		"id": "75312cadbc1dce48bfcd654da1a2ce03",
+		"name": "Hyperdrive Readonly",
+		"description": "Can read Hyperdrive database configurations.",
+		"permissions": {
+			"query_cache": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "fc86e6664bfb8ff279cd5a92f7424b50",
 		"name": "Hyperdrive Admin",
 		"description": "Can edit Hyperdrive database configurations.",
