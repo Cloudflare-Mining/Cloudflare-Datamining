@@ -18,12 +18,10 @@
 			{
 				"in": "header",
 				"name": "Cloudflare-Version",
-				"required": true,
 				"schema": {
-					"description": "Header used to control which version of the API to use.\nOnly the 2.0.0 version is documented. The older 1.0.0 will eventually by deprecated.\nNote: Not including this header will default the API to use the older 1.0.0 version, which is not documented here.\n",
+					"description": "Header used to control which version of the API to use.\nNote: Only the 2.0.0 version is documented. The older 1.0.0 version is deprecated and will soon be removed.\n",
 					"enum": [
 						"2.0.0",
-						"2.0.0+beta",
 						"1.0.0"
 					],
 					"example": "2.0.0",
@@ -804,12 +802,10 @@
 			{
 				"in": "header",
 				"name": "Cloudflare-Version",
-				"required": true,
 				"schema": {
-					"description": "Header used to control which version of the API to use.\nOnly the 2.0.0 version is documented. The older 1.0.0 will eventually by deprecated.\nNote: Not including this header will default the API to use the older 1.0.0 version, which is not documented here.\n",
+					"description": "Header used to control which version of the API to use.\nNote: Only the 2.0.0 version is documented. The older 1.0.0 version is deprecated and will soon be removed.\n",
 					"enum": [
 						"2.0.0",
-						"2.0.0+beta",
 						"1.0.0"
 					],
 					"example": "2.0.0",
