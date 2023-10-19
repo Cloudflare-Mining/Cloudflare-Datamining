@@ -5,39 +5,25 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base.</span></p>
-<p><span style="font-weight: 400;">The Cloudflare for Teams group within the Engineering organization is taking on the mission of ensuring the people and teams within an organization can access the tools they need to do their job safe from malware and other online threats with the speed and reliability that Cloudflare is known for.</span></p>
-<h4>What you'll do</h4>
-<p><span style="font-weight: 400;">In this role you’ll help us build Gateway, an ambitious product that aims to be the most secure and performant method for an organization’s devices to connect to the Internet. As an engineer on the Gateway team, you will focus on our high-performance global edge network data plane services and will also contribute to the control plane API’s that configure the edge services. You will be joining a </span><a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"><span style="font-weight: 400;">global team</span></a><span style="font-weight: 400;"> of bright, hard-working, and supportive engineers who really care about their craft.</span></p>
-<p><span style="font-weight: 400;">Example of systems that the team currently is building:</span></p>
+<p><strong>About the Department</strong></p>
+<p>The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
+<p>&nbsp;</p>
+<p><strong>About the Role</strong></p>
+<p>In this specialized role, you'll focus on service delivery and operational success for partnerships with Global Systems Integrators (GSIs). You will work on intricate, multi-tiered projects, engage in high-level strategic discussions with C-suite executives at partner organizations, and assist GSIs in architecting and deploying service offerings based on Cloudflare technologies.</p>
+<p>&nbsp;</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A forward-proxy service running on every machine of Cloudflare’s extensive edge network, responsible for inspecting, filtering, and blocking device requests based on an organization’s configured policy.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A DNS resolver running on our edge that leverages a Wirefilter based filtering rules engine.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Microservices that allow organizations to configure, manage, and observe their organization's devices and their respective traffic.</span></li>
+	<li>Strategic Alignment: Collaborate with GSIs to develop and execute joint business/technical plans that align with Cloudflare's strategic objectives.</li>
+	<li>Onboarding and Enablement: Lead the onboarding process for new GSIs and provide continual support to ensure their proficiency with Cloudflare solutions.</li>
+	<li>Executive Engagement: Regularly engage in strategic and roadmap planning discussions with key stakeholders at GSIs.</li>
+	<li>Cross-Functional Collaboration: Work closely with internal departments such as sales, product, and engineering to ensure both partner and customer success.</li>
+	<li>Performance Metrics: Develop, manage, and track key performance indicators to measure and improve the effectiveness of GSI partnerships.</li>
+	<li>Global Oversight: Provide governance and oversight on global projects, ensuring that deliverables are met on time and within scope.</li>
 </ul>
-<p><span style="font-weight: 400;">Technologies we use:</span></p>
+<p>&nbsp;</p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Gateway’s core edge services are written in Rust and deployed globally to 200+ data centers&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our frontend is written in Typescript and React.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service monitoring we use Prometheus and Grafana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service logging we use Elasticsearch and Kibana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For product analytics we use Clickhouse and BigQuery.&nbsp;</span></li>
-</ul>
-<p><span style="font-weight: 400;">Because you’ll be </span><a href="https://blog.cloudflare.com/gateway-swg/"><span style="font-weight: 400;">solving problems of massive scale and significance</span></a><span style="font-weight: 400;">, and </span><a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"><span style="font-weight: 400;">shaping the future of the Internet</span></a><span style="font-weight: 400;">, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<p><span style="font-weight: 400;">As an ideal candidate for this position, you are curious, hard-working, and passionate.</span></p>
-<p><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Rust, C++, or similar low level languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go and/or Typescript is a plus, but not required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A strong grasp of networking protocols in Layers 3-7 of the OSI Model</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of HTTP protocols - including experience with HTTP/2 and bonus for HTTP/3 experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here</span></li>
+	<li>Consulting Background: Significant experience in a consulting environment, ideally within a GSI, is required.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
