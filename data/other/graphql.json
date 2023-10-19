@@ -328,7 +328,8 @@
 	"AccountAiGatewayRequestsAdaptiveGroups": {
 		"__description": "AI Gateway Requests",
 		"count": "Number of processed requests",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -350,6 +351,11 @@
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountAiGatewayRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"tokensIn": "Sum of tokens in",
+		"tokensOut": "Sum of tokens out"
 	},
 	"AccountAiInferenceAdaptive": {
 		"__description": "AI Inference logs with adaptive sampling",
