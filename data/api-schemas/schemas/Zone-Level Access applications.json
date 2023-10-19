@@ -11408,7 +11408,7 @@
 		]
 	},
 	"POST /zones/{identifier}/access/apps/{app_id}/revoke_tokens": {
-		"description": "Revokes all service tokens used by an application.",
+		"description": "Revokes all tokens issued for an application.",
 		"operationId": "zone-level-access-applications-revoke-service-tokens",
 		"parameters": [
 			{
@@ -11460,7 +11460,7 @@
 						}
 					}
 				},
-				"description": "Revoke service tokens response"
+				"description": "Revoke application tokens response"
 			},
 			"4XX": {
 				"content": {
@@ -11575,7 +11575,7 @@
 						}
 					}
 				},
-				"description": "Revoke service tokens response failure"
+				"description": "Revoke application tokens response failure"
 			}
 		},
 		"security": [
@@ -11584,7 +11584,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Revoke service tokens",
+		"summary": "Revoke application tokens",
 		"tags": [
 			"Zone-Level Access applications"
 		]
