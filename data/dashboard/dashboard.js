@@ -953,12 +953,12 @@
 			};
 			try {
 				n.g.build = gn({}, {
-					branch: "release-Oct.19.2023-1697724251",
+					branch: "release-Oct.20.2023-1697810704",
 					isReleaseCandidate: "true",
-					commit: "1de87d2fb343f15acb1fdc45444d6a49ecad1d43",
+					commit: "b18020ac55df58779c4765b5f044038d4eac084c",
 					env: "production",
-					builtAt: 1697724532024,
-					dashVersion: "a9d2a3c1ce805ece7b66d61b9a4ba6574323359a",
+					builtAt: 1697810991709,
+					dashVersion: "5e664aecec6d33a4d12da5b1f856a7a51d8ff3cc",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
