@@ -146,6 +146,7 @@ import Youtube from './Youtube';
 import Zaraz from './Zaraz';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
+import ZerotrustRiskScoreLogo from './ZerotrustRiskScoreLogo';
 export default {
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
@@ -294,5 +295,6 @@ export default {
   youtube: Youtube,
   zaraz: Zaraz,
   'zerotrust-casb-logo': ZerotrustCasbLogo,
-  'zerotrust-networks-logo': ZerotrustNetworksLogo
+  'zerotrust-networks-logo': ZerotrustNetworksLogo,
+  'zerotrust-risk-score-logo': ZerotrustRiskScoreLogo
 };

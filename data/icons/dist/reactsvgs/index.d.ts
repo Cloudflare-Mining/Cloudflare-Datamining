@@ -148,5 +148,6 @@ declare const _default: {
     zaraz: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'zerotrust-casb-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'zerotrust-networks-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'zerotrust-risk-score-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
 };
 export default _default;
