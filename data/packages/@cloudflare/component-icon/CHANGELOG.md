@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.10.0
+
+### Minor Changes
+
+- ce06d2a8e6: add ZT Risk Score icon
+
 ## 11.9.1
 
 ### Patch Changes
