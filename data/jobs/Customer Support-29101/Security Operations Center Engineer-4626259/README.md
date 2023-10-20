@@ -5,67 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the role</h4>
-<p>Cloudflare’s Vice President of Procurement is responsible for leading the procurement function, aligning on strategy, enhancing and administering our procurement systems, processes and policies, as well as purchasing goods and services at optimal pricing. We are looking for a highly experienced professional with experience managing the end-to-end procurement process, including systems, efficient use of resources and strategic initiatives. Role will function as the internal point of contact for key business functions.</p>
-<p>The key objective of this position is to continue building the optimal procurement process by implementing current best practices, enabling the efficient transaction flow, ensuring strict adherence to the procure-to-pay process and controls, leveraging the Company’s buying power while ensuring required service quality and supplier performance are maintained with a high degree of stakeholder satisfaction.</p>
-<h4>What you'll do</h4>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
+<h4><strong>Description</strong></h4>
+<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</span></p>
+<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</span></p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Develop and execute procurement strategies aligned with the company's objectives and financial goals.</li>
-	<li>Collaborate with senior management to determine procurement priorities and budget allocation.</li>
-	<li>Establish clear procurement policies, guidelines, and procedures to ensure compliance and consistency across the organization.</li>
-	<li>Continuously seek cost-saving opportunities through strategic sourcing and value analysis initiatives.</li>
-	<li>Implement cost management strategies to control expenses and improve overall procurement efficiency.</li>
-	<li>Monitor and enforce compliance with ethical sourcing practices and sustainability guidelines.</li>
-	<li>Utilize data-driven insights to make informed decisions and optimize procurement processes.</li>
-	<li>Champion a culture of continuous improvement within the procurement function, encouraging innovation and efficiency gains.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor and investigate the alerts to identify attacks</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Configure / Manager security monitoring rules and contribute to tool improvements</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting.</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Key skill sets</strong></p>
 <ul>
-	<li>Minimum 12 years strategic management experience in procurement, with at least 5 years in an executive leadership position</li>
-	<li>Proven leadership experience with deep understanding of best-in-class procurement business practices&nbsp;</li>
-	<li>Demonstrated ability to use technology and new solutions to efficiently scale the procurement function in a high growth company</li>
-	<li>Strong business acumen and ability to analyze how economic trends will impact business</li>
-	<li>Strong project management skills, demonstrated “hands on” leader and the ability to manage competing priorities while driving larger organizational priorities</li>
-	<li>Experience leading global teams and driving year over year cost savings across multiple spend categories, developing KPIs and actionable solutions.&nbsp;</li>
-	<li>An influencer and a problem solver, able to drive consensus across stakeholders and able to demonstrate business partnering expertise</li>
-	<li>Accountable and self-motivated individual with ability to work under pressure with changing priorities and limited information</li>
-	<li>Bachelor’s degree or equivalent experience</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Modern internet protocols like UDP, TCP, etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of iptables</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Analysis of traffic for attack anomaly detection and creation of mitigation rules</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Cloudflare Security Products &amp; Features</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical Support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communication skills with high-value VIP customers under attack</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Command line / Bash shell</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Security skills and certifications: CISSP, GCIA GCIH, GCFA, GCFE, etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Calm under pressure</span></li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires and Washington hires: Estimated annual salary of $283,000 - $346,500</li>
-	<li>For New York City-based and California (excluding Bay Area): Estimated annual salary of $312,300 - $381,700</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $325,800 - $398,000</li>
-</ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
