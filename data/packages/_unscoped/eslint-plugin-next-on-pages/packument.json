@@ -1,8 +1,8 @@
 {
 	"name": "eslint-plugin-next-on-pages",
 	"dist-tags": {
-		"beta": "0.0.0-b474580",
-		"latest": "1.7.1"
+		"beta": "0.0.0-f9b7ced",
+		"latest": "1.7.2"
 	},
 	"versions": {
 		"0.0.0-e6cdfaa": {
@@ -4215,6 +4215,114 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIFfv+8HUC2eOQvbEGUsSjhr06FQfC7vFPqa5m/OsALfjAiAlq/0zzxUMNda7CX8LRcwvh5s+Onu6hYFRS9OY2BWyAg=="
+					}
+				]
+			}
+		},
+		"0.0.0-a1091b1": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "0.0.0-a1091b1",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-7sROqZZLHehWrUgnfc5IQ6PEZgSQ8d3BBkwR7ByFAf6PE8KUGbNxcP1l+vWF2XPYQXk06R6qgAaFV4xQKG8Xhg==",
+				"shasum": "707a7da35c91d3129fee1ba964c28b12a421df5c",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-0.0.0-a1091b1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 31745,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDH/Ip6lxgItNcqTgygHWPinoTjGOLIUjYgbgqR7q8vyQIgVg6NrjmZhqFFE20XHplhfeSE2BSI7JOae3zTjEhYooU="
+					}
+				]
+			}
+		},
+		"0.0.0-f9b7ced": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "0.0.0-f9b7ced",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-dS1drBMVP52AxFeOC2AiXrYy88JZ+dj36Uhrr9L9rtKVex5USAcgg1yU8V/jxE0x68r5WTWhG15A5MZB7C3qKg==",
+				"shasum": "02424449ad8f228fda9532a655ae8a6393fdeb67",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-0.0.0-f9b7ced.tgz",
+				"fileCount": 4,
+				"unpackedSize": 31745,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICAJij4ZOxJgAPjbXhCQfa+XBEQbkY/ub4o3pamnEPWdAiEAnt4N6IGvxbhftzRJ/pLBAPElcmXGFHipuxns2bhjACA="
+					}
+				]
+			}
+		},
+		"1.7.2": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "1.7.2",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-CR351nc7UiPfgywj0szF3nfNz3RulV6sn/KdxDMXFMPIlgJt8DhCn+d6NKafNXsR3IsUC5xiIdb8YNzCLDhXSw==",
+				"shasum": "932f968fe4fef5cdeb25748188e7a2e144e6a662",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-1.7.2.tgz",
+				"fileCount": 4,
+				"unpackedSize": 31737,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCID1qNbbQP/5cVyPzcvVfnVkRSYFhyQpiNHWCMOH9An6VAiBGeufiNHMPnpQIhOmxlqP084EzPvpjtmABvzM4v5CAVQ=="
 					}
 				]
 			}
