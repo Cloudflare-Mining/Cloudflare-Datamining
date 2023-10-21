@@ -1,0 +1,121 @@
+<div class="mb2 gray5">11 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image4.png" class="kg-image" alt="" loading="lazy" width="1300" height="600"></figure>
+	<p><a href="https://www.cloudflare.com/application-services/products/waiting-room" target="_blank">Cloudflare Waiting Room</a> verhindert, dass Websites unter einer zu großen Menge an Datenverkehr zusammenbrechen. Die Lösung bringt Besucher, für die die Kapazitäten gerade nicht ausreichen, in einem vollständig anpassbaren virtuellen Warteraum unter. Von dort aus wird ihnen dynamisch Zugang zur Website gewährt, sobald dies möglich ist. Anstatt Fehlermeldungen anzeigen zu lassen oder schlecht funktionierende Seiten bereitzustellen, können Kunden mit Waiting Room die Kontrolle über die Erfahrung ihrer Endnutzer behalten, auch wenn der Traffic einen Umfang erreicht, der eigentlich nicht mehr zu handhaben ist. </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1.png" class="kg-image" alt="Passen Sie das Erscheinungsbild Ihres Warteraums an, um das Erlebnis für den Endnutzer zu verbessern!" loading="lazy" width="1440" height="1024"></figure>
+	<p>Eine wichtige Entscheidung, die Kunden bei der Einrichtung eines Warteraums treffen müssen, ist die Frage, welche Seiten damit geschützt werden sollen. Bisher konnten sie eine Kombination aus einem Hostnamen und einem Pfad auswählen, um festzulegen, welche Seiten ein Warteraum abdecken soll. Wir freuen uns, bekannt geben zu können, dass Waiting Room jetzt die Abdeckung mehrerer Hostnamen- und Pfadkombinationen in einem einzigen Warteraum unterstützt. Kunden erhalten damit eine größere Flexibilität und können eine breitere Website-Abdeckung anbieten, ohne die Erfahrung der Endnutzer zu stören. Diese neue Funktion steht allen Enterprise-Kunden zur Verfügung, die eine erweiterte Version von Waiting Room erworben haben.</p>
+	<h3 id="ansiedlung-eines-warteraums">Ansiedlung eines Warteraums</h3>
+	<p>Die Implementierung eines Warteraums ist unkompliziert und erfordert keine Programmierung. Kunden geben einfach eine Kombination aus einem Hostnamen und einem Pfad an, um festzulegen, welche Seiten ein bestimmter Warteraum abdecken soll. Stellt ein Website-Besucher eine vorläufige Anfrage an diesen Hostnamen und Pfad oder einen seiner Unterpfade, wird ihm ein Warteraum-Cookie zugewiesen. Dann bekommt er Zutritt zu der Website, es sei denn, diese ist gerade ausgelastet. In diesem Fall wird er zunächst in einem Warteraum geleitet. </p>
+	<p>Im vergangenen Jahr haben wir <a href="https://blog.cloudflare.com/waiting-room-bypass-rules">Regeln zur Umgehung von Waiting Room</a> eingeführt. Diese bieten unsere Kunden viele Möglichkeiten, Ausnahmen von dieser Hostnamen- und Pfadabdeckung zu schaffen. Dadurch wurden Funktionen wie User Agent-Umgehung, Geo-Targeting, URL-Ausschlüsse und administrative IP-Umgehung freigeschaltet. Außerdem wurde die Flexibilität hinsichtlich der Seiten einer Website erhöht, auf die ein Warteraum eines Kunden angewandt wird, da es ab sofort möglich war, URLs, Pfade und Abfragezeichenfolgen auszuschließen. Dieses Update erlaubte somit eine genauere Eingrenzung des durch Waiting Room zu schützenden Datenverkehrs. Allerdings bot es nicht die breitere Abdeckung, die viele Kunden benötigen, um größere Teile ihrer Websites mit einem einzigen Warteraum zu schützen.</p>
+	<h3 id="weshalb-eine-breitere-waiting-room-abdeckung-ben%C3%B6tigt-wird">Weshalb eine breitere Waiting Room-Abdeckung benötigt wird</h3>
+	<p>Schauen wir uns ein paar einfache, aber eingängige Beispiele dafür an, warum diese breitere Abdeckung für unsere Kunden wichtig war. Nehmen wir an, Sie betreiben einen Online-Store unter „example.com“ und möchten sicherstellen, dass ein einziger Warteraum die gesamte Customer Journey abdeckt – vom Aufrufen der Startseite über das Stöbern nach Produkten bis zum Bezahlvorgang. Viele Websites würden die einzelnen Schritte innerhalb dieses Nutzerflows mit Pfaden darstellen: „example.com/“, „example.com/shop/product1“, „example.com/checkout“. Da Waiting Room von der Existenz eines impliziten Platzhalters am Ende des konfigurierten Pfads eines Warteraums ausgeht, war dieser Anwendungsfall für diese Websites bereits erfüllt. Ein Warteraum für „example.com/“ würde also alle URL abdecken, die mit den einzelnen Schritten dieser Customer Journey verbunden sind. Somit würde ein Website-Besucher, der den Warteraum einmal passiert hat, bei keiner Etappe seines Nutzerflows erneut in eine Warteschlange geleitet werden. Das wird sichergestellt, weil er immer noch das Cookie desselben Warteraums verwendet. Dieses verrät dem betreffenden Warteraum, dass es sich trotz wechselnder URL immer um denselben Nutzer handelt.</p>
+	<p>Viele Websites grenzen jedoch verschiedene Schritte dieser Art von Flow ab, indem sie anstelle von oder zusätzlich zu Pfaden Subdomains verwenden. Dann ist beispielsweise die Zahlungsseite einer anderen Subdomain zugeordnet, etwa „checkout.example.com“. Wenn bei einem Kunden eine solche Website-Struktur bestand, musste er bislang einen Warteraum für „example.com/“ und einen weiteren für „checkout.example.com/“ einsetzen. Für viele Kunden war diese Option nicht ideal, denn dadurch war es möglich, dass ein Website-Besucher an zwei verschiedenen Stellen der gleichen Customer Journey in eine Warteschlange geleitet wurde. Der Grund dafür ist, dass ein und derselbe Besucher von den Warteräumen für „checkout.example.com/“ und „example.com/“ als zwei verschiedene Nutzer behandelt werden würde.</p>
+	<p>Es gibt durchaus Fälle, bei denen es sinnvoll ist, für eine einzige Website mehrere Warteräume zu nutzen. Zum Beispiel könnte ein Ticket-Portal einen Warteraum auf seiner übergeordneten Domain („example.com“) ansiedeln und verschiedene weitere Warteräume mit Warteschlangen für Seiten zu einzelnen Veranstaltungen („example.com/popular_artist_tour“) schaffen. Der Warteraum für „example.com/“ stellt sicher, dass der Hauptzugangspunkt zu der Website nicht überlastet wird und abstürzt, wenn der Ticketverkauf für ein bestimmtes Event beginnt. Der Warteraum für die konkrete Veranstaltungsseite sorgt dafür, dass der mit diesem Event verbundene Datenverkehr bereits vor Beginn des Kartenverkaufs in eine Warteschlange geleitet werden kann, ohne den für andere Teile der Website bestimmten Traffic zu beeinträchtigen. </p>
+	<p>Doch ob nun ein oder mehrere Warteräume zum Schutz einer Website benötigt werden: Wir wollten unseren Kunden die Möglichkeit geben, Waiting Room auf die Art und Weise einzusetzen, die für ihre individuellen Anwendungsfälle und die Struktur ihrer Website am besten geeignet ist. Daher freuen wir uns, bekannt geben zu können, dass Waiting Room ab sofort die Abdeckung mehrerer Hostnamen und Pfade mit einem einzigen Warteraum unterstützt.</p>
+	<h3 id="erste-schritte-zur-abdeckung-mehrerer-hostnamen-und-pfade">Erste Schritte zur Abdeckung mehrerer Hostnamen und Pfade</h3>
+	<p>Kunden können jetzt einen Warteraum für mehrere Hostnamen- und Pfadkombinationen – oder Routen – konfigurieren, die zur selben Zone gehören. Rufen Sie dafür „Traffic &gt; Waiting Room“ auf wählen Sie „Create“ aus. Der Name Ihrer Domain ist bereits eingetragen. Um weitere Routen zu Ihrer Warteraumkonfiguration hinzuzufügen, wählen Sie „Add Hostname and Path“ aus. Sie können dann einen weiteren Hostnamen und Pfad eingeben, die vom selben Warteraum abgedeckt werden sollen. Denken Sie daran, dass sich am Ende jedes Pfads ein implizierter Platzhalter befindet. Deshalb ist es nicht nötig, für jede URL, die abgedeckt werden soll, einen eigenen Warteraum zu erstellen. Legen Sie nur zusätzliche Routen für URL an, die nicht von den anderen bereits eingegebenen Kombinationen aus Hostname und Pfad abgedeckt werden.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/image3.png" class="kg-image" alt="Sie können mehrere Hostnamen- und Pfadkombinationen zu Ihrem Warteraum hinzufügen, indem Sie „Add Hostname and Path“ auswählen." loading="lazy" width="1910" height="670"></figure>
+	<p>Wenn Sie einen Warteraum einrichten, der mehrere Hostnamen- und Pfadkombinationen abdeckt, müssen Sie einen eindeutigen Cookie-Namen für diesen Warteraum vergeben (mehr dazu später). Gehen Sie anschließend zur Implementierung Ihres Warteraums <a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room" target="_blank">wie gewohnt</a> vor. </p>
+	<h3 id="bereitstellung-eines-mehrsprachigen-warteraums">Bereitstellung eines mehrsprachigen Warteraums</h3>
+	<p>Von Kunden wurde häufig der Wunsch geäußert, eine mehrsprachige Website mit einem einzigen Warteraum abdecken zu können – mit unterschiedlichem Text je Sprache, wobei der gesamte Website-Traffic demselben Warteraum zugeordnet werden soll. Es gibt mehrere Möglichkeiten, eine Website so zu strukturieren, dass zwischen verschiedenen Sprachoptionen unterschieden werden kann. Am häufigsten erfolgt die Unterscheidung nach Subdomain oder Pfad. Bei einer Website, die eine Pfadabgrenzung verwendet, könnte dies so aussehen: „example.com/en“ und „example.com/es“ für Englisch und Spanisch. Nutzt eine Website Subdomains zur Abgrenzung, sähe das eventuell folgendermaßen aus: „en.example.com/“ und „es.example.com/“. Bevor die gleichzeitige Abdeckung mehrerer Hostnamen bei Waiting Room unterstützt wurde, hätte die Subdomain-Variante nicht von einem einzigen Warteraum abgedeckt werden können.</p>
+	<p>Die bestehenden Konfigurationsoptionen von Waiting Room haben bereits die Pfadvariante unterstützt. Das galt allerdings nur, wenn der Kunde die gesamte Website abdecken wollte, was durch die Ansiedlung des Warteraums bei „example.com/“ möglich war. Viele E-Commerce-Kunden haben sich aber gewünscht, verschiedene stark besuchte Seiten, auf denen dasselbe Produkt verkauft wird, mit unterschiedlichen Sprachoptionen versehen zu können. Nehmen wir zum Beispiel „example.com/en/product_123“ und „example.com/es/product_123“. Der Kunde möchte, dass für beide URL derselbe Warteraum und dieselben Traffic-Obergrenzen gelten. Bisher wäre dies ohne eine komplexe Umgehungsregel nicht zu bewerkstelligen gewesen.</p>
+	<p>Jetzt können Kunden einen Warteraum einrichten, der entweder den Subdomain- oder den Pfad-Ansatz zur Strukturierung einer mehrsprachigen Website unterstützt. Der einzige verbleibende Schritt ist die Einrichtung des Warteraums, sodass verschiedene Sprachversionen bereitgestellt werden können, wenn sich ein Nutzer in einem Warteraum befindet. Das lässt sich durch die Erstellung einer Vorlage erreichen, die die URL liest, um das Gebietsschema (Locale) zu bestimmen und die entsprechenden Übersetzungen für jedes der Gebietsschemata innerhalb der Vorlage zu definieren. </p>
+	<p>Hier ist ein Beispiel für eine Vorlage, die das Gebietsschema aus dem URL-Pfad ermittelt und den übersetzten Text ausgibt:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Waiting Room powered by Cloudflare&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;section&gt;
+      &lt;h1 id="inline-msg"&gt;
+        You are now in line.
+      &lt;/h1&gt;
+      &lt;h1 id="patience-msg"&gt;
+        Thank you for your patience.
+      &lt;/h1&gt;
+    &lt;/section&gt;
+    &lt;h2 id="waitTime"&gt;&lt;/h2&gt;
+
+    &lt;script&gt;
+      var locale = location.pathname.split("/")[1] || "en";
+      var translations = {
+        "en": {
+          "waittime_60_less": "Your estimated wait time is {{waitTime}} minute.",
+          "waittime_60_greater": "Your estimated wait time is {{waitTimeHours}} hours and {{waitTimeHourMinutes}} minutes.",
+          "inline-msg": "You are now in line.",
+          "patience-msg": "Thank you for your patience.",
+        },
+        "es": {
+          "waittime_60_less": "El tiempo de espera estimado es {{waitTime}} minuto.",
+          "waittime_60_greater": "El tiempo de espera estimado es {{waitTimeHours}} de horas y {{waitTimeHourMinutes}} minutos.",
+          "inline-msg": "Ahora se encuentra en la fila de espera previa.",
+          "patience-msg": "Gracias por su paciencia.",
+        }
+      };
+
+      {{#waitTimeKnown}}
+      var minutes = parseInt( {{waitTime}} , 10);
+      var time = document.getElementById('waitTime');
+
+      if ( minutes &lt; 61) {
+        time.innerText = translations[locale]["waittime_60_less"]
+      } else {
+        time.innerText = translations[locale]["waittime_60_greater"]
+      }
+      {{/waitTimeKnown}}
+
+      // translate template text for each of the elements with “id” suffixed with “msg”
+      for (const msg of ["inline-msg", "patience-msg"]) {
+        const el = document.getElementById(msg);
+        if (el == null) continue;
+        el.innerText = translations[locale][msg];
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>So funktioniert die Vorlage: Wenn eine Website unterschiedliche Gebietsschemata mit verschiedenen Pfaden wie „<code>/en/product_123</code>“ oder „<code>/es/product_123</code>“ im „<code>&lt;script /&gt;</code>“-Body nach dem Rendern der Seite voneinander unterscheidet, wird das Gebietsschema aus „<code>location.pathname</code>“ über „<code>locale = location.pathname.split(“/”)[1]</code>“ extrahiert. Ist im Objekt „<code>translations</code>“ kein Gebietsschema angegeben, wird es standardmäßig auf „en“ gesetzt. Besucht also zum Beispiel ein Nutzer „example.com/product_123“, wird standardmäßig die englische Textvorlage angezeigt.</p>
+	<p>Um einen mehrsprachigen Warteraum für Websites zu unterstützen, die ihre Struktur über eine Subdomain abgrenzen, müssten Sie nur die Art und Weise ändern, in der Sie das Gebietsschema aus der URL extrahieren. Anstelle von „<code>pathname</code>“ schauen wir uns die Eigenschaft „<code>hostname</code>“ des angegebenen „ <code>window.location</code>“-Objekts wie „<code>locale = location.hostname.split(“.”)[0]</code>“, an. Die Website-Struktur sieht folgendermaßen aus: „en.example.com“, „es.example.com“.</p>
+	<p>Bei dem obenstehenden Code handelt es sich um ein vereinfachtes Beispiel für die Startvorlagen, die wir in unsere <a href="https://developers.cloudflare.com/waiting-room/how-to/customize-waiting-room/#multiple-language-support" target="_blank">Entwicklerdokumentation</a> aufgenommen haben, um Ihnen den Einstieg bei der Einrichtung eines mehrsprachigen Warteraums zu erleichtern. Sie können diese Vorlagen herunterladen und sie so bearbeiten, dass sie mit dem Erscheinungsbild Ihrer Website und den von dieser gebotenen Sprachoptionen in Einklang stehen.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image2.png" class="kg-image" alt="" loading="lazy" width="1999" height="1197">
+		<figcaption>Dies ist ein Beispiel für eine Startvorlage, die in der Entwicklerdokumentation bereitgestellt wird. Dieser Warteraum befindet sich in dem Modus, in dem alle Besucher in die Warteschlange geleitet werden, und zeigt den spanischen Text an, wenn ein Nutzer „example.com/es/product_123“ aufruft.</figcaption>
+	</figure>
+	<p>Diese Vorlagen können durch Hinzufügen von Übersetzungen zum Objekt „translations“ für jedes der Gebietsschemata um weitere Sprachen erweitert werden. So können mit einer einzigen Vorlage mehrere Sprachen angezeigt werden – je nachdem, in welchem Gebietsschema die Website entweder über eine Subdomain oder einen Pfad bereitgestellt wird.</p>
+	<h3 id="umgang-mit-cookies-bei-einem-warteraum-mit-abdeckung-mehrerer-hostnamen-und-pfade">Umgang mit Cookies bei einem Warteraum mit Abdeckung mehrerer Hostnamen und Pfade</h3>
+	<p>Der Warteraum weist jedem Nutzer ein „<code>__cfwaitingroom</code>“-<a href="https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie" target="_blank">Cookie</a> zu, um den Status des Users zu steuern. Darüber wird <a href="https://blog.cloudflare.com/building-waiting-room-on-workers-and-durable-objects/#:~:text=What%20is%20in%20the%20cookie%20returned%20to%20an%20end%20user%3F">neben anderen Eigenschaften</a>, die für die Entscheidung über die Warteschlangenbildung für den Nutzer erforderlich sind, die Position des Nutzers in der Warteschlange bestimmt. Traditionell war es bei einer Konfiguration mit einem einzelnen Hostnamen und Pfad nicht ungewöhnlich, das Cookie einfach als „<code>__cfwaitingroom=[cookie-value]; Domain=example.com; Path=/es/product_123</code>“ festzulegen. Damit war sichergestellt, dass wir beim Aktualisieren der Seite dasselbe Warteraum-Cookie erhalten, das wir prüfen und aktualisieren können. Komplizierter gestaltet sich dies, wenn wir dasselbe Cookie für verschiedene Subdomän- oder Pfadkombinationen gemeinsam nutzen wollen, z. B. auf „ <code>example.com/en/product_123</code>“.</p>
+	<h3 id="ans%C3%A4tze-f%C3%BCr-das-setzen-mehrerer-cookies">Ansätze für das Setzen mehrerer Cookies</h3>
+	<p>Wir haben zwei Ansätze geprüft und bewertet, um die gemeinsame Nutzung des Cookies für denselben Warteraum zu ermöglichen. </p>
+	<p>Zunächst haben wir die Ausgabe mehrerer „<code>Set-Cookie</code>“-Header in der HTTP-Antwort in Betracht gezogen. Im obigen mehrsprachigen Beispiel könnten wir zum Beispiel im Antwort-Header Folgendes anzeigen lassen:</p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom=[cookie-value]…Domain=example.com; Path=/en/product_123 …
+Set-Cookie: __cfwaitingroom=[cookie-value]...Domain=example.com; Path=/es/product_123 …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Dieser Ansatz würde es uns ermöglichen, mehrere Hostnamen und Pfade für ein und denselben Warteraum zuzulassen. Allerdings ist dies keine sonderlich gut skalierbare Lösung. Laut <a href="https://datatracker.ietf.org/doc/html/rfc6265#section-5.2" target="_blank">RFC6265</a> ist in der Spezifikation keine strenge Grenze definiert und die Browser verfügen über ihre eigenen implementierungsspezifischen Grenzen. So lässt Chrome beispielsweise einen Antwort-Header mit bis zu <a href="https://source.chromium.org/chromium/chromium/src/+/main:net/http/http_stream_parser.h;l=168;drc=4cc7ba01d3c5dc996ddc98f9d0bd709e3d5bbfd3?q=ERR_RESPONSE_HEADERS_TOO_BIG&amp;ss=chromium" target="_blank">256 KByte</a> zu, bevor die Transaktion mit „ERR_RESPONSE_HEADERS_TOO_BIG“ abgebrochen wird. Außerdem würde in diesem Fall der Antwort-Header proportional zur Anzahl der eindeutigen Kombinationen aus Hostname und Pfad wachsen, und wir würden denselben Cookie-Wert N (wobei N die Anzahl der zusätzlichen Routen ist) mehrfach wiederholen. Dieser Ansatz hätte uns die effektive Handhabung einer begrenzten Liste von festzulegenden Hostnamen- und Pfadkombinationen ermöglicht. Für die Fälle, in denen mehr als eine Handvoll Routen für eine bestimmte Website zu erwarten stehen, war er jedoch nur bedingt geeignet. </p>
+	<p>Die zweite von uns erwogene Herangehensweise, für die wir uns letztlich auch entschieden haben, war das Setzen des Cookies auf der übergeordneten Domain (oder auf der häufigsten Subdomain). Mit anderen Worten: Wir ermitteln die häufigste Subdomain aus der Liste der Routen und verwenden diese als Domain. Für die Pfade bedeutet dies, dass das am wenigsten verbreitete Präfix aus der Liste der Pfade bestimmt und als Wert für das Pfadattribut verwendet wird. Nehmen wir zum Beispiel einen Warteraum mit den folgenden zwei konfigurierten Routen: „a.example.com/shoes/product_123“ und „b.example.com/shoes/product_456“.</p>
+	<p>Um die Domain zu bestimmen, die für das Cookie festgelegt werden soll, können wir sehen, dass „<code>example.com</code>“ die häufigste Subdomain in der Domain-Liste ist. Wendet man den Algorithmus für die häufigste Subdomain an, so erhält man „<code>example.com</code>“ als Domain. Wendet man den Algorithmus für das am wenigsten verbreitete Präfix auf die Pfade „<code>/shoes/product_123</code> und „<code>/shoes/product_456</code>“ an, erhält man „<code>/shoes</code>“ als Pfad. Somit würde der „Set-Cookie“-Header wie folgt aussehen:</p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: … __cfwaitingroom=[cookie-value]; Domain=example.com; Path=/shoes …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Greift nun ein Besucher auf eine der von diesem Warteraum abgedeckten Seiten zu, können wir garantieren, dass Waiting Room das richtige Cookie erhält und im Antwort-Header nur „Set-Cookie“ enthalten ist.</p>
+	<p>Allerdings sind wir noch nicht am Ziel. Obwohl wir in der Lage sind, die gemeinsame Subdomain (oder übergeordnete Domain) und das gemeinsame Pfadpräfix zu identifizieren, gäbe es immer noch ein Problem, wenn sich die Routen von einem Warteraum mit dem eines anderen überschneiden würden. Angenommen, wir konfigurieren zwei Warteräume für dieselbe Website, auf der wir Schuhe verkaufen:</p><!--kg-card-begin: html-->
+	<p>Warteraum A<br>
+		&nbsp; &nbsp; a.example.com/shoes/product_123<br>
+		&nbsp; &nbsp; b.example.com/shoes/product_456</p>
+
+	<p>Warteraum B<br>
+		&nbsp; &nbsp; c.example.com/shoes/product_789<br>
+		&nbsp; &nbsp; d.example.com/shoes/product_012</p><!--kg-card-end: html-->
+	<p>Wenn wir den gleichen Algorithmus wie oben beschrieben anwenden, werden für die beiden Cookies die gleichen Domain- und Pfadeigenschaften festgelegt. Für Warteraum A wäre die Domain „<code>example.com</code>“ und der Pfad würde „<code>/shoes</code>“ lauten. Für Warteraum B wäre die häufigste Subdomain ebenfalls „example.com“ und das am wenigsten verbreitete Pfadpräfix wäre auch hier „<code>/shoes</code>“. Dies würde uns daran hindern, die beiden Cookies voneinander zu unterscheiden und den Besucher zum richtigen Warteraum zu leiten. Um das Problem der deckungsgleichen Cookie-Namen zu lösen, haben wir die Vorgabe eingeführt, dass ein benutzerdefiniertes, der Zone des Kunden eindeutig zuordenbares Suffix festgelegt werden muss. Deshalb ist es bei der Konfiguration eines mehrere Hostnamen und Pfade abdeckenden Warteraums erforderlich, ein benutzerdefiniertes Cookie-Suffix anzugeben. Wenn also Warteraum A das Cookie-Suffix „a“ und Warteraum B das Cookie-Suffix „b“ zugewiesen wurde, würden die beiden „<code>Set-Cookie</code>“-Definitionen wie folgt aussehen:</p>
+	<p><br><strong>Warteraum A</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom_a=[cookie-value]; Domain=example.com; Path=/shoes
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Warteraum B</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>Set-Cookie: __cfwaitingroom_b=[cookie-value]; Domain=example.com; Path=/shoes
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Ruft ein Besucher eine Seite auf, auf der die beiden verschiedenen Warteräume konfiguriert sind, kann der Warteraum unterscheiden und auswählen, welches Cookie der jeweiligen Anfrage entspricht. Anhand dessen ist er in der Lage, zu bestimmen, welche Warteraumeinstellungen für diesen Nutzer gelten – je nachdem, wo er sich auf der Website befindet. </p>
+	<p>Durch die Möglichkeit, mehrere Hostnamen und Pfade gleichzeitig abzudecken, sind Sie bei der Einbindung von Waiting Room in Ihre Website jetzt noch flexibler. Das erlaubt es Ihnen, Ihren Besuchern das bestmögliche Erlebnis zu bieten und gleichzeitig Ihre Website bei hohem Datenverkehrsaufkommen zu schützen. Sorgen Sie dafür, dass Ihre Website immer vor Traffic-Spitzen sicher ist. Testen Sie <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Ftraffic%2Fwaiting-rooms" target="_blank">Waiting Room</a> oder <a href="https://www.cloudflare.com/application-services/products/waiting-room" target="_blank">nehmen Sie Verbindung mit uns auf</a>, um mehr über die erweiterte Waiting Room-Funktion zu erfahren.</p>
+</div>
