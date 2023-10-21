@@ -34,8 +34,8 @@ async function getWarpVersions(platform, type, baseURL) {
 		const versionInfoUrl = `${baseURL}/releases/${version.id}`;
 		const versionInfo = await fetch(versionInfoUrl, {agent});
 		if(!versionInfo.ok) {
-			console.log('Failed to get version info', versionInfo.status, await versionInfo.text());
-			throw new Error(`Failed to get ${platform} version info`);
+			console.error('Failed to get version info', versionInfo.status, await versionInfo.text());
+			continue;
 		}
 		const versionInfoJson = await versionInfo.json();
 		// some fields include signatures which change every time
