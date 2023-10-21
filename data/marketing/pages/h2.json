@@ -66,1008 +66,1013 @@
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
-				"template": null,
-				"relatedBlades": [
-					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "7Fu50ZAhTpnbES4tOyDu0B",
-						"menuTitle": null,
-						"mobileOnlyMenuTitle": "HTTP/2 Rapid Reset ",
-						"stickyNav": true,
-						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "76BYUUcr4pDCaEjKuUHrt4",
-								"linkText": "Resources",
-								"page": null,
-								"url": "#http2resources",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "JEGYTO7tTjoIh9BWD8epn",
-								"linkText": "Who is protected?",
-								"page": null,
-								"url": "#http2protected",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "7EcX88W4iRtDQk3A0bgOMT",
-								"linkText": "Defense packages",
-								"page": null,
-								"url": "#http2packages",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "6O0ojRRNPAQUzAeBYt8BzX",
-								"linkText": "Our response",
-								"page": null,
-								"url": "#httpresponse",
-								"subMenuItems": []
-							},
-							{
-								"contentfulId": "3vl1Ut8z7dr1pRMaAgO2GG",
-								"linkText": "The Cloudflare DDoS difference",
-								"page": null,
-								"url": "#http2cfdifference",
-								"subMenuItems": []
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeHalfWidthHero",
-						"contentfulId": "5qeMSjOitcuZs332aaUW2A",
-						"entityTitle": "HTTP/2 Reset - Hero",
-						"leftHalf": {
-							"contentTypeId": "elementHalfWidthHeroContent",
-							"contentfulId": "1w3mW0K60XU5lcJwdncAkU",
-							"entityTitle": "HTTP/2 Rapid Reset - Title",
-							"title": "HTTP/2 Rapid Reset",
-							"eyebrow": null,
-							"copy": "__Cloudflare protects customers against new record-breaking DDoS attack__\n<br><br>\nHTTP/2 Rapid Reset is a flaw in the HTTP/2 protocol that can be exploited to carry out DDoS attacks.\n<br><br>\nBecause 62% of the Internet traffic we see uses HTTP/2, this is a high severity vulnerability. It has been exploited to create the largest DDoS attack we have ever seen.\n<br><br>\nIf you are using any of these Cloudflare products, you are already protected: CDN, SSL/TLS encryption, HTTP DDoS, WAF, Bot Management, Rate Limiting, API Gateway, or Page Shield.\n<br><br>\nIf you're not using one of these products, Cloudflare can protect you today.",
-							"primaryCta": null,
-							"secondaryCta": null
+				"template": {
+					"contentTypeId": "templateBladeList",
+					"contentfulId": "7a6lWDBKDzODtKU72oBnRK",
+					"name": "HTTP/2 Reset Hub - English+",
+					"relatedBlades": [
+						{
+							"contentTypeId": "bladeSubNav",
+							"contentfulId": "7Fu50ZAhTpnbES4tOyDu0B",
+							"menuTitle": null,
+							"mobileOnlyMenuTitle": "HTTP/2 Rapid Reset ",
+							"stickyNav": true,
+							"htmlId": null,
+							"menuItems": [
+								{
+									"contentfulId": "76BYUUcr4pDCaEjKuUHrt4",
+									"linkText": "Resources",
+									"page": null,
+									"url": "#http2resources",
+									"subMenuItems": []
+								},
+								{
+									"contentfulId": "JEGYTO7tTjoIh9BWD8epn",
+									"linkText": "Who is protected?",
+									"page": null,
+									"url": "#http2protected",
+									"subMenuItems": []
+								},
+								{
+									"contentfulId": "7EcX88W4iRtDQk3A0bgOMT",
+									"linkText": "Defense packages",
+									"page": null,
+									"url": "#http2packages",
+									"subMenuItems": []
+								},
+								{
+									"contentfulId": "6O0ojRRNPAQUzAeBYt8BzX",
+									"linkText": "Our response",
+									"page": null,
+									"url": "#httpresponse",
+									"subMenuItems": []
+								},
+								{
+									"contentfulId": "3vl1Ut8z7dr1pRMaAgO2GG",
+									"linkText": "The Cloudflare DDoS difference",
+									"page": null,
+									"url": "#http2cfdifference",
+									"subMenuItems": []
+								}
+							]
 						},
-						"rightHalf": {
-							"contentTypeId": "elementHalfWidthHeroImage",
-							"contentfulId": "YsLk82s4YNKwDGV3fINQ4",
-							"entityTitle": "HTTP/2 Rapid reset vulnerability",
-							"imageAsset": {
-								"id": "6bc7ad8e-2c59-57c7-a816-854286b2aabf",
-								"altText": "HTTP/2 Rapid reset vulnerability",
-								"title": null,
+						{
+							"contentTypeId": "bladeHalfWidthHero",
+							"contentfulId": "5qeMSjOitcuZs332aaUW2A",
+							"entityTitle": "HTTP/2 Reset - Hero",
+							"leftHalf": {
+								"contentTypeId": "elementHalfWidthHeroContent",
+								"contentfulId": "1w3mW0K60XU5lcJwdncAkU",
+								"entityTitle": "HTTP/2 Rapid Reset - Title",
+								"title": "HTTP/2 Rapid Reset",
+								"eyebrow": null,
+								"copy": "__Cloudflare protects customers against new record-breaking DDoS attack__\n<br><br>\nHTTP/2 Rapid Reset is a flaw in the HTTP/2 protocol that can be exploited to carry out DDoS attacks.\n<br><br>\nBecause 62% of the Internet traffic we see uses HTTP/2, this is a high severity vulnerability. It has been exploited to create the largest DDoS attack we have ever seen.\n<br><br>\nIf you are using any of these Cloudflare products, you are already protected: CDN, SSL/TLS encryption, HTTP DDoS, WAF, Bot Management, Rate Limiting, API Gateway, or Page Shield.\n<br><br>\nIf you're not using one of these products, Cloudflare can protect you today.",
+								"primaryCta": null,
+								"secondaryCta": null
+							},
+							"rightHalf": {
+								"contentTypeId": "elementHalfWidthHeroImage",
+								"contentfulId": "YsLk82s4YNKwDGV3fINQ4",
+								"entityTitle": "HTTP/2 Rapid reset vulnerability",
+								"imageAsset": {
+									"id": "6bc7ad8e-2c59-57c7-a816-854286b2aabf",
+									"altText": "HTTP/2 Rapid reset vulnerability",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AiY3WlXDHGraHD12UEcAB/b424fc5df640cbda2ea37a75fd14a220/Investigating_Rapid_Reset_Vulnerability.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							"promotionalBanner": null,
+							"sectionPadding": null,
+							"htmlId": null
+						},
+						{
+							"contentfulId": "786LatDOetM1b7cz2t7uot",
+							"contentTypeId": "bladeLeadGeneration",
+							"title": "Get protected against HTTP/2 Rapid Reset",
+							"description": null,
+							"variant": "full-width",
+							"htmlId": null,
+							"sectionPadding": null,
+							"backgroundImage": {
+								"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+								"altText": "Cloudflare Orange Background",
+								"title": "Cloudflare Orange Background",
 								"activeAsset": "Contentful Asset",
 								"locale": "en-US",
 								"contentfulAsset": {
 									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3AiY3WlXDHGraHD12UEcAB/b424fc5df640cbda2ea37a75fd14a220/Investigating_Rapid_Reset_Vulnerability.png"
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
 									},
 									"description": null
 								},
 								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
+							},
+							"primaryCtaButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "5ZUTVqmy4oPKo7Qo1RFLcR",
+								"elementName": "HTTP/2 Reset Offer",
+								"standardText": null,
+								"text": "Get proactive protection",
+								"url": "h2/offer",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
+							"secondaryCtaButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "4bdVeEa1WtAdXQqbBRnKoQ",
+								"elementName": "HTTP/2 - Currently under attack",
+								"standardText": null,
+								"text": "I'm currently under attack",
+								"url": "under-attack-hotline/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
 							}
 						},
-						"promotionalBanner": null,
-						"sectionPadding": null,
-						"htmlId": null
-					},
-					{
-						"contentfulId": "786LatDOetM1b7cz2t7uot",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Get protected against HTTP/2 Rapid Reset",
-						"description": null,
-						"variant": "full-width",
-						"htmlId": null,
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5ZUTVqmy4oPKo7Qo1RFLcR",
-							"elementName": "HTTP/2 Reset Offer",
-							"standardText": null,
-							"text": "Get proactive protection",
-							"url": "h2/offer",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4bdVeEa1WtAdXQqbBRnKoQ",
-							"elementName": "HTTP/2 - Currently under attack",
-							"standardText": null,
-							"text": "I'm currently under attack",
-							"url": "under-attack-hotline/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						}
-					},
-					{
-						"contentTypeId": "bladeCardMosaic",
-						"contentfulId": "2BZTnP8mBf8s4gJgu8UVns",
-						"entryTitle": "HTTP/2  - Resources",
-						"title": "Resources for HTTP/2 Rapid Reset",
-						"htmlId": "http2resources",
-						"backgroundImage": {
-							"id": "85748e13-8517-5221-887b-d4bfd593f60a",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qOkL7b52oII5tM50rXHvx/244e247fb24d4b337481750c11a25031/Whats-New_Background.svg"
-								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"elementResourceCards": [
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "5f40Q0iaMNkoUn0HrxutKu",
-								"heading": "Webinar",
-								"description": "Learn the latest news on the DDoS attack campaign from Cloudflare CSO, Grant Bourzikas, and Cloudflare Field CTO, John Engates ",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "6iAEpoF9JbQahqzGT20VBn",
-									"elementName": "HTTP/2 Reset - CSO Webinar",
-									"standardText": null,
-									"text": "Watch webinar",
-									"url": "https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "ce791c77-f5ef-5da9-864f-efefa02977cb",
-									"altText": "Cloudflare webcast",
-									"title": "Webcast thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n8NVJMHwMs0WjDLz42FUt/806abcbb547ec15580fc72dcfb07c0e4/webcast-thumnnail.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "3HIXHkwSj5BdOoYiBmqXA7",
-								"heading": "Press",
-								"description": "Read our press release on the HTTP/2 Rapid Reset attack campaign and Cloudflare's response",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "7pAg1b8h1LHF2rYhCoDadZ",
-									"elementName": "HTTP/2 Reset - Press release",
-									"standardText": null,
-									"text": "Read press release",
-									"url": "press-releases/2023/cloudflare-helps-discover-new-online-threat-that-led-to-largest-attack-in/",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
-									"altText": "Press Release Header",
-									"title": "Press Release Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f02c97e3cb43bd31b419e6eaa943749e/Press-releases.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "1glZQNfHIN3jbi8J6vm1UM",
-								"heading": "Blog",
-								"description": "How Cloudflare helped discover and mitigate the largest DDoS attack we've seen",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "2zJ1pEIcGcC5ximB8nKWi6",
-									"elementName": "HTTP/2 - CSO blog",
-									"standardText": null,
-									"text": "Read blog",
-									"url": "https://blog.cloudflare.com/zero-day-rapid-reset-http2-record-breaking-ddos-attack",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "f7c6e5c4-f127-500e-84cb-6d6ae77c59e3",
-									"altText": "Rapid Reset Vulnerability",
-									"title": "Rapid Reset Vulnerability",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HWEAttMaRtI8ZTgklb1zx/b9037be5c56d5c2f280eab2f4926b630/http2-reset-thumbnail.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "6rTWF5tZqmBAAFIOAjCrqR",
-								"heading": "Blog",
-								"description": "Our experts break down how HTTP/2 Rapid Reset played out and what you can do about it",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3GIL2ueYpziz0z6S9InV2F",
-									"elementName": "HTTP/2 Reset - Technical blog link",
-									"standardText": null,
-									"text": "Read blog",
-									"url": "https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "d7c02945-debf-5cad-925e-e8e6a156a087",
-									"altText": "Cloudflare technical blog",
-									"title": "Technical blog thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6auDkwlHhXiPQaGJG6loHe/1a016099ac2b17e8ed632e51e5d234ef/tech-blog-thumbnail.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "2UTBp7LGq9CjoteKtOOFMw",
-								"heading": "Webinar",
-								"description": "Tune in to a discussion with our technical experts covering the specifics of HTTP/2 Rapid Reset and how you can defend against it",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "53A5xu1DSBmhHhtnGbrDj7",
-									"elementName": "HTTP/2 - Technical webinar",
-									"standardText": null,
-									"text": "Watch webinar",
-									"url": "https://event.on24.com/wcc/r/4380154/1054CFA5E4F3C1838617DFAA70F294EB/5042084",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "034f6b80-02b1-5a3c-a2e1-eadce9ee0a46",
-									"altText": "Cloudflare webinar",
-									"title": "Webinar thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K0v03nAT632RiYJ8em8we/952c1031d7cc0c76f7e262ea9087228b/webinar-thumbnail.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							},
-							{
-								"contentTypeId": "elementResourceCard",
-								"contentfulId": "O0a3mOqGEndH8HSRyKLqR",
-								"heading": "Report",
-								"description": "Get the full details of the vulnerability to understand how it impacts your applications and systems",
-								"category": "None",
-								"link": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3ZpDoY9eKGC5jZC82TJT5z",
-									"elementName": "HTTP/2 CVE Report link",
-									"standardText": null,
-									"text": "Read CVE report",
-									"url": "https://www.cve.org/CVERecord?id=CVE-2023-44487",
-									"elementModal": null,
-									"openInNewTab": true,
-									"locale": "en-US"
-								},
-								"image": {
-									"id": "32fa70dc-1685-5ca8-b2bd-caad35776dde",
-									"altText": "CVE",
-									"title": "CVE thumbnail",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2z5JLk5MtHj474A03xkjFU/396ef9ed353a64baa1225fa02e41e3fe/cve-thumnail.svg"
-										},
-										"description": null
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								}
-							}
-						]
-					},
-					{
-						"contentfulId": "6FvBjaKk2ggSayPWzAAUt4",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": null,
-						"eyebrowHeading": null,
-						"description": null,
-						"textLayout": "right",
-						"columnsLayout": "Two Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "elementColumnImageContent",
-								"contentfulId": "4wYxGwSrZfNeeErnjDprKw",
-								"image": {
-									"contentfulId": "1seh1h4pBxqzEQHxdvXDFm",
-									"locale": "en-US",
-									"title": "Application Services Image 18",
+						{
+							"contentTypeId": "bladeCardMosaic",
+							"contentfulId": "2BZTnP8mBf8s4gJgu8UVns",
+							"entryTitle": "HTTP/2  - Resources",
+							"title": "Resources for HTTP/2 Rapid Reset",
+							"htmlId": "http2resources",
+							"backgroundImage": {
+								"id": "85748e13-8517-5221-887b-d4bfd593f60a",
+								"altText": null,
+								"title": null,
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
 									"file": {
-										"name": "Application Services_Image 18.png",
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1seh1h4pBxqzEQHxdvXDFm/444a2c122d2ddd3e013f91cadc228406/Application_Services_Image_18.png",
-										"internal": {
-											"mediaType": "image/png"
-										}
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5qOkL7b52oII5tM50rXHvx/244e247fb24d4b337481750c11a25031/Whats-New_Background.svg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							"elementResourceCards": [
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "5f40Q0iaMNkoUn0HrxutKu",
+									"heading": "Webinar",
+									"description": "Learn the latest news on the DDoS attack campaign from Cloudflare CSO, Grant Bourzikas, and Cloudflare Field CTO, John Engates ",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "6iAEpoF9JbQahqzGT20VBn",
+										"elementName": "HTTP/2 Reset - CSO Webinar",
+										"standardText": null,
+										"text": "Watch webinar",
+										"url": "https://event.on24.com/wcc/r/4378646/EC4EB4A6CE2B363BC6378891E495BEBF",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "ce791c77-f5ef-5da9-864f-efefa02977cb",
+										"altText": "Cloudflare webcast",
+										"title": "Webcast thumbnail",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3n8NVJMHwMs0WjDLz42FUt/806abcbb547ec15580fc72dcfb07c0e4/webcast-thumnnail.svg"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
 									}
 								},
-								"heading": null,
-								"copy": null
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "3HIXHkwSj5BdOoYiBmqXA7",
+									"heading": "Press",
+									"description": "Read our press release on the HTTP/2 Rapid Reset attack campaign and Cloudflare's response",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "7pAg1b8h1LHF2rYhCoDadZ",
+										"elementName": "HTTP/2 Reset - Press release",
+										"standardText": null,
+										"text": "Read press release",
+										"url": "press-releases/2023/cloudflare-helps-discover-new-online-threat-that-led-to-largest-attack-in/",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
+										"altText": "Press Release Header",
+										"title": "Press Release Header",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2aCIuZIN3F07mHamqKvPil/f02c97e3cb43bd31b419e6eaa943749e/Press-releases.svg"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "1glZQNfHIN3jbi8J6vm1UM",
+									"heading": "Blog",
+									"description": "How Cloudflare helped discover and mitigate the largest DDoS attack we've seen",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "2zJ1pEIcGcC5ximB8nKWi6",
+										"elementName": "HTTP/2 - CSO blog",
+										"standardText": null,
+										"text": "Read blog",
+										"url": "https://blog.cloudflare.com/zero-day-rapid-reset-http2-record-breaking-ddos-attack",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "f7c6e5c4-f127-500e-84cb-6d6ae77c59e3",
+										"altText": "Rapid Reset Vulnerability",
+										"title": "Rapid Reset Vulnerability",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7HWEAttMaRtI8ZTgklb1zx/b9037be5c56d5c2f280eab2f4926b630/http2-reset-thumbnail.svg"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "6rTWF5tZqmBAAFIOAjCrqR",
+									"heading": "Blog",
+									"description": "Our experts break down how HTTP/2 Rapid Reset played out and what you can do about it",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "3GIL2ueYpziz0z6S9InV2F",
+										"elementName": "HTTP/2 Reset - Technical blog link",
+										"standardText": null,
+										"text": "Read blog",
+										"url": "https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "d7c02945-debf-5cad-925e-e8e6a156a087",
+										"altText": "Cloudflare technical blog",
+										"title": "Technical blog thumbnail",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6auDkwlHhXiPQaGJG6loHe/1a016099ac2b17e8ed632e51e5d234ef/tech-blog-thumbnail.svg"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "2UTBp7LGq9CjoteKtOOFMw",
+									"heading": "Webinar",
+									"description": "Tune in to a discussion with our technical experts covering the specifics of HTTP/2 Rapid Reset and how you can defend against it",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "53A5xu1DSBmhHhtnGbrDj7",
+										"elementName": "HTTP/2 - Technical webinar",
+										"standardText": null,
+										"text": "Watch webinar",
+										"url": "https://event.on24.com/wcc/r/4380154/1054CFA5E4F3C1838617DFAA70F294EB/5042084",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "034f6b80-02b1-5a3c-a2e1-eadce9ee0a46",
+										"altText": "Cloudflare webinar",
+										"title": "Webinar thumbnail",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2K0v03nAT632RiYJ8em8we/952c1031d7cc0c76f7e262ea9087228b/webinar-thumbnail.svg"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
+									"contentfulId": "O0a3mOqGEndH8HSRyKLqR",
+									"heading": "Report",
+									"description": "Get the full details of the vulnerability to understand how it impacts your applications and systems",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "3ZpDoY9eKGC5jZC82TJT5z",
+										"elementName": "HTTP/2 CVE Report link",
+										"standardText": null,
+										"text": "Read CVE report",
+										"url": "https://www.cve.org/CVERecord?id=CVE-2023-44487",
+										"elementModal": null,
+										"openInNewTab": true,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "32fa70dc-1685-5ca8-b2bd-caad35776dde",
+										"altText": "CVE",
+										"title": "CVE thumbnail",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2z5JLk5MtHj474A03xkjFU/396ef9ed353a64baa1225fa02e41e3fe/cve-thumnail.svg"
+											},
+											"description": null
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								}
+							]
+						},
+						{
+							"contentfulId": "6FvBjaKk2ggSayPWzAAUt4",
+							"contentTypeId": "bladeMultipleColumnsLayout",
+							"title": null,
+							"eyebrowHeading": null,
+							"description": null,
+							"textLayout": "right",
+							"columnsLayout": "Two Columns",
+							"columnContent": [
+								{
+									"contentTypeId": "elementColumnImageContent",
+									"contentfulId": "4wYxGwSrZfNeeErnjDprKw",
+									"image": {
+										"contentfulId": "1seh1h4pBxqzEQHxdvXDFm",
+										"locale": "en-US",
+										"title": "Application Services Image 18",
+										"file": {
+											"name": "Application Services_Image 18.png",
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1seh1h4pBxqzEQHxdvXDFm/444a2c122d2ddd3e013f91cadc228406/Application_Services_Image_18.png",
+											"internal": {
+												"mediaType": "image/png"
+											}
+										}
+									},
+									"heading": null,
+									"copy": null
+								},
+								{
+									"contentTypeId": "elementColumnContent",
+									"contentfulId": "5eUquXomLG6fU1mY6bTh9B",
+									"title": null,
+									"heading": "Who is protected against HTTP/2 Rapid Reset?  ",
+									"copy": "Organizations proxying their HTTP traffic through Cloudflare are automatically protected. The vast majority of organizations using Cloudflare fall into this category. \n\nYou are protected if you have deployed any of these Cloudflare services:\n\n- CDN or SSL/TLS encryption\n- HTTP DDoS\n- WAF\n- Bot Management\n- Rate Limiting or Advanced Rate Limiting\n- API Gateway\n- Page Shield\n\nIf you have HTTP assets or applications that are not behind one of these products, contact Cloudflare or your DDoS protection vendor to learn more."
+								}
+							],
+							"sectionPadding": null,
+							"htmlId": "http2protected"
+						},
+						{
+							"contentfulId": "5EKrl3Ehr8rqqQ4inphGYl",
+							"contentTypeId": "bladeLeadGeneration",
+							"title": "Under attack or need additional protection?",
+							"description": "We're here to help. Our HTTP/2 Rapid Reset Defense packages protect your organization against HTTP/2 attacks as well as other risks. Priority onboarding available.",
+							"variant": "full-width",
+							"htmlId": "http2packages",
+							"sectionPadding": null,
+							"backgroundImage": {
+								"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
+								"altText": "Cloudflare Orange Background",
+								"title": "Cloudflare Orange Background",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+									},
+									"description": null
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
 							},
-							{
-								"contentTypeId": "elementColumnContent",
-								"contentfulId": "5eUquXomLG6fU1mY6bTh9B",
-								"title": null,
-								"heading": "Who is protected against HTTP/2 Rapid Reset?  ",
-								"copy": "Organizations proxying their HTTP traffic through Cloudflare are automatically protected. The vast majority of organizations using Cloudflare fall into this category. \n\nYou are protected if you have deployed any of these Cloudflare services:\n\n- CDN or SSL/TLS encryption\n- HTTP DDoS\n- WAF\n- Bot Management\n- Rate Limiting or Advanced Rate Limiting\n- API Gateway\n- Page Shield\n\nIf you have HTTP assets or applications that are not behind one of these products, contact Cloudflare or your DDoS protection vendor to learn more."
+							"primaryCtaButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "5ZUTVqmy4oPKo7Qo1RFLcR",
+								"elementName": "HTTP/2 Reset Offer",
+								"standardText": null,
+								"text": "Get proactive protection",
+								"url": "h2/offer",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
+							},
+							"secondaryCtaButton": {
+								"buttonAssetFile": null,
+								"buttonTextLoggedIn": null,
+								"contentTypeId": "button",
+								"contentfulId": "4bdVeEa1WtAdXQqbBRnKoQ",
+								"elementName": "HTTP/2 - Currently under attack",
+								"standardText": null,
+								"text": "I'm currently under attack",
+								"url": "under-attack-hotline/",
+								"loggedInUrl": null,
+								"buttonModal": null,
+								"openInNewTab": false,
+								"locale": "en-US"
 							}
-						],
-						"sectionPadding": null,
-						"htmlId": "http2protected"
-					},
-					{
-						"contentfulId": "5EKrl3Ehr8rqqQ4inphGYl",
-						"contentTypeId": "bladeLeadGeneration",
-						"title": "Under attack or need additional protection?",
-						"description": "We're here to help. Our HTTP/2 Rapid Reset Defense packages protect your organization against HTTP/2 attacks as well as other risks. Priority onboarding available.",
-						"variant": "full-width",
-						"htmlId": "http2packages",
-						"sectionPadding": null,
-						"backgroundImage": {
-							"id": "5fb646a4-2af5-50d0-815c-108317d4b5b7",
-							"altText": "Cloudflare Orange Background",
-							"title": "Cloudflare Orange Background",
-							"activeAsset": "Contentful Asset",
+						},
+						{
+							"contentfulId": "6OxYLqvChXhqjUK6yoqXUh",
+							"contentTypeId": "bladePadding",
+							"height": 5,
+							"backgroundColor": null
+						},
+						{
+							"contentfulId": "1PcLvYVZIaH6wtDCfIqTFU",
+							"contentTypeId": "bladeMultipleColumnsLayout",
+							"title": "How Cloudflare protected customers from this attack",
+							"eyebrowHeading": null,
+							"description": null,
+							"textLayout": "left",
+							"columnsLayout": "Three Columns",
+							"columnContent": [
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "1PYIL0kXzlVpb41cEAhcEz",
+									"title": "Helped discover HTTP/2 flaw",
+									"makeTitleLink": false,
+									"titleUrl": null,
+									"titleSize": "medium",
+									"description": "With industry peers, Cloudflare helped discover the underlying flaw in late August, 2023. We worked with governments and industry groups to responsibly disclose the vulnerability and attack campaign.",
+									"learnMoreUrl": null,
+									"learnMoreText": null,
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OI2U1GBOp3QHAlfKBzLV1/1a7b865b3f553a0b91656d1c88612ba3/target__1_.svg"
+										},
+										"description": null
+									},
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "5uXULmFqtT3zyTwdPWl3ZF",
+									"title": "Real time mitigation",
+									"makeTitleLink": false,
+									"titleUrl": null,
+									"titleSize": "medium",
+									"description": "Cloudflare DDoS Protection helps every organization with applications behind Cloudflare, including free customers. Less than 0.0001% of requests served during the attack campaign resulted in errors.",
+									"learnMoreUrl": null,
+									"learnMoreText": null,
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
+										},
+										"description": null
+									},
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "b26M2vj1OzXIwTybzDMHX",
+									"title": "Patched HTTP/2 at our edge",
+									"makeTitleLink": false,
+									"titleUrl": null,
+									"titleSize": "medium",
+									"description": "Cloudflare patched our implementation of HTTP/2 to reduce the impact of the exploit on our customers' applications.",
+									"learnMoreUrl": null,
+									"learnMoreText": null,
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JMg4D04kEvWkrEuZdpovM/abbf6c3202730a1f12c30c8ec2107591/performance-wrench.svg"
+										},
+										"description": null
+									},
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								}
+							],
+							"sectionPadding": "tile--no-bottom-padding",
+							"htmlId": "httpresponse"
+						},
+						{
+							"contentfulId": "6zAaLIXfrazW0rqOdFmmB",
+							"backgroundColor": "white",
+							"contentTypeId": "bladeFourFeatures",
+							"htmlId": "http2cfdifference",
+							"copy": null,
+							"title": "The Cloudflare DDoS difference against HTTP/2 Rapid Reset",
+							"subtitle": null,
+							"bladeStyle": "Feature Blocks - 3 columns",
+							"bladeBorder": "none",
+							"sectionPadding": "tile--no-top-padding",
+							"carouselSlidesToShow": null,
+							"carouselSlidesToScroll": null,
 							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6wvLylL1UDvEfh7N5WBd32/44ff9093b6aa1feb33d12d020ce756df/Generic_Orange_Background.jpeg"
+							"features": [
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "3brhHFrqt2wke5mNikGI3Z",
+									"title": "Modern, distributed architecture",
+									"makeTitleLink": false,
+									"titleUrl": null,
+									"titleSize": "small",
+									"description": "Our connectivity cloud protects our customers' applications and infrastructure without the use of scrubbing centers. We detect and mitigate DDoS attacks like HTTP/2 Rapid Reset at the edge, close to the source.",
+									"learnMoreUrl": null,
+									"learnMoreText": null,
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
 								},
-								"description": null
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "qnM0QuvlakKYjE5bp9d8I",
+									"title": "Threat intelligence at-scale",
+									"makeTitleLink": false,
+									"titleUrl": null,
+									"titleSize": "small",
+									"description": "Cloudflare's platform intelligence drives smarter security through data-driven insights. This intelligence helped us detect and mitigate HTTP/2 exploits in real-time, and improve our machine learning models.",
+									"learnMoreUrl": null,
+									"learnMoreText": null,
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "1Z5kBYzIt12z2VfasP8SDV",
+									"title": "Easy to use and cost efficient",
+									"makeTitleLink": false,
+									"titleUrl": null,
+									"titleSize": "small",
+									"description": "With Cloudflare DDoS Protection, you only pay for clean HTTP traffic. Cloudflare never charges customers for traffic surges associated with DDoS attacks.",
+									"learnMoreUrl": null,
+									"learnMoreText": null,
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"removeCardBorder": false,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageOverlaySuperheader": null,
+									"imageOverlayText": null,
+									"imageAssetFile": null,
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								}
+							]
 						},
-						"primaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "5ZUTVqmy4oPKo7Qo1RFLcR",
-							"elementName": "HTTP/2 Reset Offer",
-							"standardText": null,
-							"text": "Get proactive protection",
-							"url": "h2/offer",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"secondaryCtaButton": {
-							"buttonAssetFile": null,
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "4bdVeEa1WtAdXQqbBRnKoQ",
-							"elementName": "HTTP/2 - Currently under attack",
-							"standardText": null,
-							"text": "I'm currently under attack",
-							"url": "under-attack-hotline/",
-							"loggedInUrl": null,
-							"buttonModal": null,
-							"openInNewTab": false,
-							"locale": "en-US"
+						{
+							"contentTypeId": "bladeFeaturedCompanyLogos",
+							"contentfulId": "5Mq1dWpH2MeMsUMZBY5h3u",
+							"title": "30% of the Fortune 1000 rely on Cloudflare",
+							"htmlId": "company-Logos",
+							"companyLogos": [
+								{
+									"id": "3e79297d-861e-57b1-a1fa-f060fd8b04b6",
+									"altText": "Broadcom",
+									"title": "Broadcom",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tI7zPMdgwOu8KsxmJDy3S/9309834cae3b3c861cf791c446abba0e/featured_logo_broadcom.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "6bab8727-c5b1-51be-a2a6-dd5f7277944f",
+									"altText": null,
+									"title": "Colgate Palmolive",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVlcVxBM7oHC0gQhqhAhg/696a2e2e1211f5ee5ce104036faf364b/featured_logo_colgate_palmolive.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "323ff65d-ba14-504d-b500-be5f9e390ba7",
+									"altText": "DHL",
+									"title": "DHL",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k3b3CsMHw3Tr3r9oRrUeU/b4c0c681dc6f7fdf13c1a55ebfc9a9cb/featured_logo_dhl.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "117ee30a-282a-5fab-b478-fbe6b0d69cdb",
+									"altText": "Doordash",
+									"title": "Doordash",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OWBxeEeZgpxcoAFt3BIOf/ddd74305e760b3872a476d3c427c0466/featured_logo_doordash.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "39287d4d-f0e8-57fe-9a88-8167fa0722ef",
+									"altText": "Garmin",
+									"title": "Garmin",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20TBr23zGqzXgbfSvnY1BK/bfcac6ddc997cad19bccbbc449a520af/featured_logo_garmin.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "42cf8aae-46de-5880-9fd7-0503132a132c",
+									"altText": "GPC",
+									"title": "GPC",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dfLsRXpaFsOQxkDsYnLdX/58164c9bea5b98ba3e5ff853ecf97e20/featured_logo_GPC.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "859ec126-9aca-515e-8d05-ddb785a172c4",
+									"altText": "Japan Airlines",
+									"title": "Japan Airlines",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tH3aestvswYHJh07lZJjO/1f3ac239df323a6316c6f5900eb0b30c/featured_logo_japan_airlines.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "95e00df8-fcd0-5888-b156-42769ae84dc4",
+									"altText": "LabCorp",
+									"title": "LabCorp",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/k1sJUCRn8BrepRd04ZvyA/4bd1ed0b631c2c1f887cb99a9ac80a12/featured_logo_labcorp.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "4e7bdfb6-f045-5a8f-8442-c598fb96a027",
+									"altText": "L'Oreal",
+									"title": "L'Oreal",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XBApB6LjRjaNIy0Cktw9k/fb5aa40999cbbc782642a25c17a0ca9e/featured_logo_loreal.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "a1b10eb3-9e13-51a4-94ac-052317747aa5",
+									"altText": "Mars",
+									"title": "Mars",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i0JyE7PJxW63fNovIs3FR/6f0bec5cb4b1a9f4884086a2cdd50f39/featured_logo_mars.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "18018637-f4be-521a-8329-48bc173433f1",
+									"altText": "NCR",
+									"title": "NCR",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gBYWcUrgtwrxZsPK0iaa3/3bb40c3761934f3f5a8851052030139f/featured_logo_ncr.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "400536c0-a8c2-59e9-a27e-b1631f9b444e",
+									"altText": "Shopify",
+									"title": "Shopify",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6snCzkIRG6x4TVqNqdp8ud/11de2531f20dfa0d859d5993775eb197/featured_logo_shopify.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "a82fef0a-849a-5d8c-87d7-4484f63a2562",
+									"altText": "National Oilwell Varco",
+									"title": "National Oilwell Varco",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SfHC30bLvnVt2Q8VdY7pX/5988ddfdcf17de6cd65938bf73fcfe45/featured_logo_varco.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "3ce88696-8ccb-5bd4-b14d-d4d4f2feec32",
+									"altText": "Intercontinental Exchange Holdings",
+									"title": "Intercontinental Exchange Holdings",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69GbqaMe5hplmWO0KfO0x7/09f5cffe177333fddafa08027b7268c4/featured_logo_ice.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "8fab8575-999d-502b-97e8-489ed1772640",
+									"altText": "Carrefour",
+									"title": "Carrefour",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/56RBCbyjHHeUgoKnzPt5u1/25166e153ba52ecfa97879c966fab007/featured_logo_carrefour.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "3a802750-7324-584d-a36d-3e5c2314478f",
+									"altText": "DeliveryHero",
+									"title": "DeliveryHero",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UR7JNrSk2DMlK6s3OSHGo/d362c6c86d8d67d7ef576307b5d8be86/featured_logo_delivery_hero.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "accfac33-a9fd-5c4f-a63a-776cdbdea261",
+									"altText": "Cintas",
+									"title": "Cintas",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tirSMVcFPrH1glC4WGhg3/25ca2004e1d05d7814bf928cfd75ed1f/featured_logo_cintas.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "25d2f1c8-e74e-5229-9739-a81634cdd187",
+									"altText": "Thomson Reuters",
+									"title": "Thomson Reuters",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DiOULNDmkC76Go9zjnSXs/2fe09a5f27700c5cf6f24b26570a8190/featured_logo_thomson_reuters.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "947cdcdc-5f08-56bc-99b0-6625112b0f89",
+									"altText": "Dropbox",
+									"title": "Dropbox",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TezkcyrSKECJ3033CXgDZ/b98a9e661827064f20431c4521343cb1/featured_logo_dropbox.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "c160dc97-0190-5165-8c3a-03d71053bcd8",
+									"altText": "Pitney Bowes",
+									"title": "Pitney Bowes",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tbBFmgYoEQD6Yx5IcPjOr/67854bf21f4a0ece3a4683040b70bc03/featured_logo_pitney_bowes.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "fec1a3df-3c16-56bf-bc49-c7a9a2bcd401",
+									"altText": "IBM",
+									"title": "IBM",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdLkPlavqnIjAC2IXGtoV/8f905b918b212c08c2616ef91d114c0d/trustedby-ibm-black.svg"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "33f3f7e2-7590-5ba4-917b-5441d0a183fa",
+									"altText": "Melbourne Airport",
+									"title": "Melbourne Airport",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mTtJdvzUAqci4DXlDuZMg/e2bbf87df44278ec8ba30e6afe09e670/featured_logo_melbourne_airport.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "1c533476-07f0-5785-8705-305ae8a1ed85",
+									"altText": "Polestar",
+									"title": "Polestar",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/oqhmwGXDLMCdeH1SYvPMH/7a4f9a1fe781b73b41bc2c17e5358daa/featured_logo_polestar.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								{
+									"id": "31bdab15-eded-5be0-9a4c-ff7728fa3c0f",
+									"altText": "Falabella",
+									"title": "Falabella",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J9gWjrgVqesMQ6Kg0HB3r/eee9c2abc323fbb80746bf98e7ded2cf/featured_logo_falabella.png"
+										},
+										"description": null
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							],
+							"sectionPadding": null
 						}
-					},
-					{
-						"contentfulId": "6OxYLqvChXhqjUK6yoqXUh",
-						"contentTypeId": "bladePadding",
-						"height": 5,
-						"backgroundColor": null
-					},
-					{
-						"contentfulId": "1PcLvYVZIaH6wtDCfIqTFU",
-						"contentTypeId": "bladeMultipleColumnsLayout",
-						"title": "How Cloudflare protected customers from this attack",
-						"eyebrowHeading": null,
-						"description": null,
-						"textLayout": "left",
-						"columnsLayout": "Three Columns",
-						"columnContent": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1PYIL0kXzlVpb41cEAhcEz",
-								"title": "Helped discover HTTP/2 flaw",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "With industry peers, Cloudflare helped discover the underlying flaw in late August, 2023. We worked with governments and industry groups to responsibly disclose the vulnerability and attack campaign.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/OI2U1GBOp3QHAlfKBzLV1/1a7b865b3f553a0b91656d1c88612ba3/target__1_.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5uXULmFqtT3zyTwdPWl3ZF",
-								"title": "Real time mitigation",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Cloudflare DDoS Protection helps every organization with applications behind Cloudflare, including free customers. Less than 0.0001% of requests served during the attack campaign resulted in errors.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/74GDwwyKnKfYYz1QQEQh1P/c7232082d74a2cb16d2197596662f593/security-shield-protection-2.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "b26M2vj1OzXIwTybzDMHX",
-								"title": "Patched HTTP/2 at our edge",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Cloudflare patched our implementation of HTTP/2 to reduce the impact of the exploit on our customers' applications.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3JMg4D04kEvWkrEuZdpovM/abbf6c3202730a1f12c30c8ec2107591/performance-wrench.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						],
-						"sectionPadding": "tile--no-bottom-padding",
-						"htmlId": "httpresponse"
-					},
-					{
-						"contentfulId": "6zAaLIXfrazW0rqOdFmmB",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "http2cfdifference",
-						"copy": null,
-						"title": "The Cloudflare DDoS difference against HTTP/2 Rapid Reset",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3brhHFrqt2wke5mNikGI3Z",
-								"title": "Modern, distributed architecture",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Our connectivity cloud protects our customers' applications and infrastructure without the use of scrubbing centers. We detect and mitigate DDoS attacks like HTTP/2 Rapid Reset at the edge, close to the source.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "qnM0QuvlakKYjE5bp9d8I",
-								"title": "Threat intelligence at-scale",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "Cloudflare's platform intelligence drives smarter security through data-driven insights. This intelligence helped us detect and mitigate HTTP/2 exploits in real-time, and improve our machine learning models.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1Z5kBYzIt12z2VfasP8SDV",
-								"title": "Easy to use and cost efficient",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "small",
-								"description": "With Cloudflare DDoS Protection, you only pay for clean HTTP traffic. Cloudflare never charges customers for traffic surges associated with DDoS attacks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeFeaturedCompanyLogos",
-						"contentfulId": "5Mq1dWpH2MeMsUMZBY5h3u",
-						"title": "30% of the Fortune 1000 rely on Cloudflare",
-						"htmlId": "company-Logos",
-						"companyLogos": [
-							{
-								"id": "3e79297d-861e-57b1-a1fa-f060fd8b04b6",
-								"altText": "Broadcom",
-								"title": "Broadcom",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4tI7zPMdgwOu8KsxmJDy3S/9309834cae3b3c861cf791c446abba0e/featured_logo_broadcom.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6bab8727-c5b1-51be-a2a6-dd5f7277944f",
-								"altText": null,
-								"title": "Colgate Palmolive",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6XVlcVxBM7oHC0gQhqhAhg/696a2e2e1211f5ee5ce104036faf364b/featured_logo_colgate_palmolive.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "323ff65d-ba14-504d-b500-be5f9e390ba7",
-								"altText": "DHL",
-								"title": "DHL",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1k3b3CsMHw3Tr3r9oRrUeU/b4c0c681dc6f7fdf13c1a55ebfc9a9cb/featured_logo_dhl.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "117ee30a-282a-5fab-b478-fbe6b0d69cdb",
-								"altText": "Doordash",
-								"title": "Doordash",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1OWBxeEeZgpxcoAFt3BIOf/ddd74305e760b3872a476d3c427c0466/featured_logo_doordash.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "39287d4d-f0e8-57fe-9a88-8167fa0722ef",
-								"altText": "Garmin",
-								"title": "Garmin",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20TBr23zGqzXgbfSvnY1BK/bfcac6ddc997cad19bccbbc449a520af/featured_logo_garmin.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "42cf8aae-46de-5880-9fd7-0503132a132c",
-								"altText": "GPC",
-								"title": "GPC",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1dfLsRXpaFsOQxkDsYnLdX/58164c9bea5b98ba3e5ff853ecf97e20/featured_logo_GPC.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "859ec126-9aca-515e-8d05-ddb785a172c4",
-								"altText": "Japan Airlines",
-								"title": "Japan Airlines",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/tH3aestvswYHJh07lZJjO/1f3ac239df323a6316c6f5900eb0b30c/featured_logo_japan_airlines.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "95e00df8-fcd0-5888-b156-42769ae84dc4",
-								"altText": "LabCorp",
-								"title": "LabCorp",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/k1sJUCRn8BrepRd04ZvyA/4bd1ed0b631c2c1f887cb99a9ac80a12/featured_logo_labcorp.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "4e7bdfb6-f045-5a8f-8442-c598fb96a027",
-								"altText": "L'Oreal",
-								"title": "L'Oreal",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/XBApB6LjRjaNIy0Cktw9k/fb5aa40999cbbc782642a25c17a0ca9e/featured_logo_loreal.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "a1b10eb3-9e13-51a4-94ac-052317747aa5",
-								"altText": "Mars",
-								"title": "Mars",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6i0JyE7PJxW63fNovIs3FR/6f0bec5cb4b1a9f4884086a2cdd50f39/featured_logo_mars.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "18018637-f4be-521a-8329-48bc173433f1",
-								"altText": "NCR",
-								"title": "NCR",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5gBYWcUrgtwrxZsPK0iaa3/3bb40c3761934f3f5a8851052030139f/featured_logo_ncr.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "400536c0-a8c2-59e9-a27e-b1631f9b444e",
-								"altText": "Shopify",
-								"title": "Shopify",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6snCzkIRG6x4TVqNqdp8ud/11de2531f20dfa0d859d5993775eb197/featured_logo_shopify.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "a82fef0a-849a-5d8c-87d7-4484f63a2562",
-								"altText": "National Oilwell Varco",
-								"title": "National Oilwell Varco",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4SfHC30bLvnVt2Q8VdY7pX/5988ddfdcf17de6cd65938bf73fcfe45/featured_logo_varco.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "3ce88696-8ccb-5bd4-b14d-d4d4f2feec32",
-								"altText": "Intercontinental Exchange Holdings",
-								"title": "Intercontinental Exchange Holdings",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/69GbqaMe5hplmWO0KfO0x7/09f5cffe177333fddafa08027b7268c4/featured_logo_ice.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "8fab8575-999d-502b-97e8-489ed1772640",
-								"altText": "Carrefour",
-								"title": "Carrefour",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/56RBCbyjHHeUgoKnzPt5u1/25166e153ba52ecfa97879c966fab007/featured_logo_carrefour.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "3a802750-7324-584d-a36d-3e5c2314478f",
-								"altText": "DeliveryHero",
-								"title": "DeliveryHero",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UR7JNrSk2DMlK6s3OSHGo/d362c6c86d8d67d7ef576307b5d8be86/featured_logo_delivery_hero.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "accfac33-a9fd-5c4f-a63a-776cdbdea261",
-								"altText": "Cintas",
-								"title": "Cintas",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5tirSMVcFPrH1glC4WGhg3/25ca2004e1d05d7814bf928cfd75ed1f/featured_logo_cintas.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "25d2f1c8-e74e-5229-9739-a81634cdd187",
-								"altText": "Thomson Reuters",
-								"title": "Thomson Reuters",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1DiOULNDmkC76Go9zjnSXs/2fe09a5f27700c5cf6f24b26570a8190/featured_logo_thomson_reuters.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "947cdcdc-5f08-56bc-99b0-6625112b0f89",
-								"altText": "Dropbox",
-								"title": "Dropbox",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6TezkcyrSKECJ3033CXgDZ/b98a9e661827064f20431c4521343cb1/featured_logo_dropbox.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "c160dc97-0190-5165-8c3a-03d71053bcd8",
-								"altText": "Pitney Bowes",
-								"title": "Pitney Bowes",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1tbBFmgYoEQD6Yx5IcPjOr/67854bf21f4a0ece3a4683040b70bc03/featured_logo_pitney_bowes.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "fec1a3df-3c16-56bf-bc49-c7a9a2bcd401",
-								"altText": "IBM",
-								"title": "IBM",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6CdLkPlavqnIjAC2IXGtoV/8f905b918b212c08c2616ef91d114c0d/trustedby-ibm-black.svg"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "33f3f7e2-7590-5ba4-917b-5441d0a183fa",
-								"altText": "Melbourne Airport",
-								"title": "Melbourne Airport",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/mTtJdvzUAqci4DXlDuZMg/e2bbf87df44278ec8ba30e6afe09e670/featured_logo_melbourne_airport.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "1c533476-07f0-5785-8705-305ae8a1ed85",
-								"altText": "Polestar",
-								"title": "Polestar",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/oqhmwGXDLMCdeH1SYvPMH/7a4f9a1fe781b73b41bc2c17e5358daa/featured_logo_polestar.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "31bdab15-eded-5be0-9a4c-ff7728fa3c0f",
-								"altText": "Falabella",
-								"title": "Falabella",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5J9gWjrgVqesMQ6Kg0HB3r/eee9c2abc323fbb80746bf98e7ded2cf/featured_logo_falabella.png"
-									},
-									"description": null
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						],
-						"sectionPadding": null
-					}
-				],
+					]
+				},
+				"relatedBlades": [],
 				"noindex": false,
 				"formModal": [],
 				"hasAdobeExperiment": false,
