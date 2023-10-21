@@ -97,12 +97,18 @@ const fetchURL = async function(url, waitFor, slug) {
 	}
 	const bodyHTML = await page.evaluate(() => document.documentElement.outerHTML);
 	if(waitFor) {
-		const textContent = await page.evaluate(waitFor => document.querySelector(waitFor).innerHTML, waitFor);
-		await page.close();
-		return {
-			selected: textContent,
-			body: bodyHTML,
-		};
+		try{
+			const textContent = await page.evaluate(waitFor => document.querySelector(waitFor).innerHTML, waitFor);
+			await page.close();
+			return {
+				selected: textContent,
+				body: bodyHTML,
+			};
+		}catch(err) {
+			console.warn('Failed to find selector', url, waitFor, err);
+			try{ await page.close(); }catch{}
+			return;
+		}
 	}
 
 	await page.close();
