@@ -18,8 +18,8 @@ async function getWarpVersions(platform, type, baseURL) {
 	const getVersionsURL = `${baseURL}/public_releases?scope=tester&top=10000`;
 	const getVersionsRes = await fetch(getVersionsURL, {agent});
 	if(!getVersionsRes.ok) {
-		console.log('Failed to get versions', getVersionsRes.status, await getVersionsRes.text());
-		throw new Error(`Failed to get ${platform} versions`);
+		console.error('Failed to get versions', getVersionsRes.status, await getVersionsRes.text());
+		return;
 	}
 	const getVersions = await getVersionsRes.json();
 	const platformDir = path.resolve(dir, platform, type);
