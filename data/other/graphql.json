@@ -1964,6 +1964,17 @@
 		"__description": "",
 		"requests": ""
 	},
+	"AccountImagesUniqueTransformations": {
+		"__description": "Image unique transfromations per day",
+		"date": "The date uniques are calculated for",
+		"transformations": "Number of unique image transformations per day in sliding window"
+	},
+	"AccountImagesUniqueTransformationsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesUniqueTransformationsOrderBy": {
+		"__description": ""
+	},
 	"AccountLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
@@ -3101,6 +3112,7 @@
 		"httpRequestsAdaptiveGroups": "",
 		"httpRequestsOverviewAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
+		"imagesUniqueTransformations": "",
 		"logpushHealthAdaptiveGroups": "",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "",
 		"magicFirewallSamplesAdaptiveGroups": "",
@@ -5620,6 +5632,7 @@
 		"httpRequestsAdaptiveGroups": "Aggregated HTTP requests data with adaptive sampling",
 		"httpRequestsOverviewAdaptiveGroups": "A high-level summary of HTTP requests made by end users.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
+		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"magicFirewallNetworkAnalyticsAdaptiveGroups": "Network analytics data for Magic Firewall",
 		"magicFirewallSamplesAdaptiveGroups": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
