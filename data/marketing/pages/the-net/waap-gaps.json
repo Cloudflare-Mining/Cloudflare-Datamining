@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/insights-network-infrastructure/",
+	"path": "/the-net/waap-gaps/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "theNET - The challenges of network infrastructure - Page",
+				"pageName": "theNET - The gaps in web application  security - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,24 +32,24 @@
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
 				},
-				"relativePath": "insights-network-infrastructure",
+				"relativePath": "the-net/waap-gaps",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "theNET | The challenges of network infrastructure",
-					"metaDescription": "Networking functions need to work together, address the challenges of complex cloud environments as you migrate to the cloud.",
+					"metaTitle": "theNET | The gaps in web application security",
+					"metaDescription": "Disparate security solutions can create security gaps - Gartner recommends consolidating with a infrastructure-agnostic web application security platform.\n\n",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3chtWcZo7jmaBAy4le5WcU/07c516131427608074c38392c1703f2c/thechallengesofnetworkinfrastructure_.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VIBHnnCBQrBVW3LTu93St/2dec0d8c1956e764137d84f03bd176c6/thegapsinwebappsec.png"
 						},
 						"description": null
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "6RVuk0PxhoIfhQsrmK8VTC",
+				"contentfulId": "1ERKTZy3TAGaLNHgBfO4NO",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -382,7 +382,7 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "343uaQw7z5DLD8az6CDfG1",
+						"contentfulId": "3IImOOsMINxsQS2IZR22bh",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
@@ -392,8 +392,8 @@
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "4zoA7am1zqlTrmXt3nnTtL",
-								"title": null,
+								"contentfulId": "5Kxm8yFOl6d1MfRojtWuO1",
+								"title": "The gaps in web application security",
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -412,7 +412,53 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The challenges of network infrastructure",
+													"value": "The gaps in web application security",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How disparate security leads to compromise",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -423,18 +469,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "3chtWcZo7jmaBAy4le5WcU",
+														"id": "1VIBHnnCBQrBVW3LTu93St",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "3chtWcZo7jmaBAy4le5WcU",
+															"contentfulId": "1VIBHnnCBQrBVW3LTu93St",
 															"locale": "en-US",
-															"title": "theNET - The challenges of network infrastructure - Meta - Image",
+															"title": "theNET - The gaps in web application security - Meta - Image",
 															"file": {
-																"name": "thechallengesofnetworkinfrastructure .png",
-																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3chtWcZo7jmaBAy4le5WcU/07c516131427608074c38392c1703f2c/thechallengesofnetworkinfrastructure_.png",
+																"name": "thegapsinwebappsec.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1VIBHnnCBQrBVW3LTu93St/2dec0d8c1956e764137d84f03bd176c6/thegapsinwebappsec.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -479,7 +525,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -493,7 +539,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Considerations for your migration to the cloud",
+													"value": "The story of Company A and Company B",
 													"marks": [],
 													"content": null
 												}
@@ -514,7 +560,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloud migration rarely happens in a single clean sweep. A limited number of organizations are able to adopt a single cloud provider, but far more find themselves with some combination of public cloud, private cloud, and on-premise infrastructure.",
+													"value": "This is the story of Company A and Company B, whose seemingly different web application and API security approaches share a subtle yet crucial flaw. This flaw resulted in data breaches (and all the associated negative outcomes) for both.",
 													"marks": [],
 													"content": null
 												}
@@ -535,373 +581,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "There are a variety of good reasons to maintain heterogeneous infrastructure. The same cannot be said for the networking functions which support that infrastructure:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Security",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": ", e.g. firewall, DDoS mitigation, and user access management",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Performance & reliability",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": ", e.g. load balancing, traffic acceleration, and WAN optimization",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Somewhat paradoxically, a hybrid approach to protecting and accelerating complex cloud environments actually creates performance issues, security gaps, and support challenges. To avoid these issues, IT and security teams must find ways for these networking functions to work together as seamlessly as possible.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Security and performance infrastructure — models and common challenges",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Securing and accelerating hybrid cloud and multi cloud infrastructure has typically required one or more of the following:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "On-premise hardware appliances",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Multiple point solutions delivered in the cloud",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Unfortunately, both of these approaches bring considerable challenges.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Challenges with on-premise hardware appliances",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "It's common knowledge that data center hardware is costly and time-consuming to own. It also often faces capacity limitations. For example, 98% of all L3/4 DDoS attacks in Q4 2021 delivered up to 1 million packets per second (pps), according to a ",
+													"value": "Company A has the most secure API protection possible. They block all schema violations, rate limit excessive requests, and use the latest threat intelligence to blocklist known malicious IP addresses. Their password-based API authentication could be more secure if it were replaced with ",
 													"marks": [],
 													"content": null
 												},
@@ -909,7 +589,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://radar.cloudflare.com/reports/ddos-2022-q3"
+														"uri": "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/"
 													},
 													"value": null,
 													"marks": null,
@@ -920,7 +600,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Cloudflare report",
+															"value": "mutual TLS",
 															"marks": [],
 															"content": null
 														}
@@ -932,7 +612,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". Typically, a 1 Gbps Ethernet interface can deliver anywhere between 80k to 1.5M pps.",
+													"value": ", but they have never had a breach yet.",
 													"marks": [],
 													"content": null
 												}
@@ -953,7 +633,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Assuming the interface also serves legitimate traffic, even these 'small' packet rate DDoS attacks can easily take down an Internet property. The alternative is maintaining enough capacity for the worst-case scenario, but this is an expensive proposition.",
+													"value": "But their API security, threat intelligence feed, and WAF are all from different vendors. And thanks to vendor updates, the threat intelligence informing their API security is no longer compatible with their WAF, which protects their account login page. Consequently, an attacker is able to use a new SQL injection exploit on this page and obtain a legitimate user's username and password. The attacker then sends authenticated, schema-validated requests to their API, and obtains reams of sensitive data.",
 													"marks": [],
 													"content": null
 												}
@@ -974,7 +654,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Hardware also creates security gaps. Patches and updates are one example. Patches rely on manual implementation, and might not be installed promptly due to logistical delays or forgetfulness. And once a patch is released, the corresponding vulnerability becomes a higher-profile target for opportunistic attackers.",
+													"value": "Meanwhile, Company B's web application is fully secured against DDoS attacks. Company B also exposes an API to paying users who want to integrate with Company B's application.",
 													"marks": [],
 													"content": null
 												}
@@ -995,7 +675,80 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "What's more—when deployed in a hybrid cloud approach, network hardware appliances create security gaps. It's obviously impossible to install your own hardware in a third-party cloud provider. This means different parts of the infrastructure are protected in different ways, giving security and IT teams less visibility into and control over incoming attacks and legitimate traffic.",
+													"value": "The attacker purchases a legitimate paying user's API key on the dark web. Armed with this key, the attacker launches a ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/ddos/ddos-low-and-slow-attack/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "low-and-slow DDoS attack",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " against Company B's API server. The attacker activates a bot that sends requests at irregular intervals. Each API request the bot sends is accepted as legitimate by the API server, because it comes with an acceptable API key. And unfortunately for Company B, their backend team forgot to proxy their API server through their DDoS mitigation provider — even though all their other servers are protected.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "As the requests pile up on top of each other, the API server becomes overwhelmed, and finally cannot serve Company B's other users at all. Many of them cancel their paid accounts out of frustration.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What issue did Companies A and B have in common?",
 													"marks": [],
 													"content": null
 												}
@@ -1033,7 +786,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1047,7 +800,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Challenges with certain cloud-based solutions",
+													"value": "Disparate solutions led to oversights and gaps",
 													"marks": [],
 													"content": null
 												}
@@ -1068,7 +821,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloud-based services have a lower total cost of ownership than hardware, but they can slow down application and network performance if deployed incorrectly. For example, many of them rely on a limited number of specialized data centers — e.g. scrubbing centers for DDoS mitigation. If you or your end users are not near one of those data centers, your traffic will have to travel a long distance to reach it, even if the final destination is nearby.",
+													"value": "In these examples, both companies' web application and API security approaches were patchwork combinations of solutions from multiple vendors. The solutions were not integrated and also prone to manual error.",
 													"marks": [],
 													"content": null
 												}
@@ -1089,122 +842,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This backhauling process can add considerable latency. And the problem compounds when an organization uses different providers for different networking functions, and traffic must make many network hops before reaching its destination.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Using different providers for different functions also creates support challenges. When something goes wrong, it can be hard to tell which provider is the cause of congestion or outages. In addition, the time (and thus the costs) required to manage all of these providers can still be high.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "How can organizations get around these challenges?",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Distributed cloud networks close security gaps and reduce latency",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "The previously mentioned strategies for securing and accelerating cloud infrastructure share several weaknesses:",
+													"value": "To understand why this is a problem, consider the typical components of a web application and API security framework:",
 													"marks": [],
 													"content": null
 												}
@@ -1243,7 +881,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Performance issues",
+																	"value": "WAF:",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -1257,7 +895,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ": Hardware is limited in capacity, while cloud-based services can cause latency—especially when traffic passes through multiple cloud networks for multiple services.",
+																	"value": " Blocks attacks against web applications and web properties",
 																	"marks": [],
 																	"content": null
 																}
@@ -1289,7 +927,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Inconsistent controls and monitoring",
+																	"value": "Bot management:",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -1303,7 +941,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ": Using separate services for different networking functions makes it hard to apply consistent rules, and to monitor global traffic.",
+																	"value": " Responsible for challenging or blocking probable malicious bots",
 																	"marks": [],
 																	"content": null
 																}
@@ -1335,7 +973,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Support",
+																	"value": "DDoS mitigation:",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -1349,7 +987,53 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ": Using separate services makes it hard to diagnose where problems lie.",
+																	"value": " Keeps web properties online in the face of DDoS attacks of any kind (whether volumetric or low and slow)",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "API protection:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Includes rate limiting, schema validation, authentication, and so on for APIs",
 																	"marks": [],
 																	"content": null
 																}
@@ -1374,7 +1058,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The solutions to all of these problems are integration and global reach—making these networking functions work together as seamlessly as possible, all across the globe.",
+													"value": "\nCompany A and Company B had adopted all of these protections. But because their web application security solutions were disparate (even if best-in-class), they had flaws that the attacker was able to exploit.",
 													"marks": [],
 													"content": null
 												}
@@ -1395,9 +1079,425 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In practice, this typically means using a ",
+													"value": "For Company A, both their WAF and API protection, being layered rather than integrated, had to face and block the attack. Attacks that one might stop could get by the other. Company B's DDoS protection did not protect their API infrastructure, their bot management did not detect API requests that originated from bots, and their authentication was weak and easily compromised.",
 													"marks": [],
 													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "These are just a couple of examples of potential gaps. Other common gaps in web application security include:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Limited threat intelligence:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Threat intelligence that's not up to date, does not go to the right place, or is not in a compatible format. This happened to Company A.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Too much threat intelligence from too many sources:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Resulting in false positives, redundancy, and other inefficiencies.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Bot false positives:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " This can frustrate users, slow down service, and lead to lax enforcement.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/insights-security-fatigue/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Alert fatigue",
+																			"marks": [
+																				{
+																					"type": "bold"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ":",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " The average enterprise uses ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.zdnet.com/article/the-more-cybersecurity-tools-an-enterprise-deploys-the-less-effective-their-defense-is/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "45 cybersecurity tools",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " from multiple vendors, all generating alerts. Too many disparate products can lead to human employees ignoring threats in order to get their work done. ",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Insufficient authentication:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Both Company A and Company B were vulnerable to credential theft in some form.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Non-scalable threat defense:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Hardware security appliances bottleneck traffic and become overwhelmed during large attacks or with a variety of attacks.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "These gaps are becoming even more risky as the complexity and sophistication of cyber attacks increase. ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/cybersecurity/cybersecurity-trends-looking-over-the-horizon"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Per McKinsey",
+															"marks": [],
+															"content": null
+														}
+													]
 												},
 												{
 													"nodeType": "text",
@@ -1405,28 +1505,320 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "distributed cloud network",
+													"value": ", attackers today \"include highly sophisticated organizations that leverage integrated tools and capabilities with artificial intelligence and machine learning.\" Modern attackers are often moving faster and improving their tactics more quickly than their targets.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The added risk of APIs",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/insights-waap-api-security"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "APIs are increasingly importan",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "t to the modern organization's web application infrastructure. Today, 58% of all dynamic traffic processed by Cloudflare is API-based, and that share continues to grow. In fact, many organizations describe themselves as API-first. Moreover, Cloudflare blocks a greater percentage of API traffic as malicious than web traffic, demonstrating that attackers have APIs firmly in their crosshairs.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With APIs so often embedded deeply within web applications, their security must be paramount. Yet well-meaning internal teams often deploy APIs quickly — and often without consulting security. The result: Many web application breaches can be traced back to poor API security.\n\nFor instance, an API-related breach ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.infosecurity-magazine.com/news/us-postal-service-exposes-60m/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "hit the USPS",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " when an API that supported real-time package tracking was found to lack basic authorization. Logged-in users could query account information for any other user, via use of wildcard search parameters that would reveal all the records of the data set. This put the data of 60 million USPS account holders at risk.\n",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nA consolidated solution",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "What if, instead of using a patchwork of security products, Company A and Company B had combined all of their web application and API security services onto one consolidated platform? And those different services all integrated with each other? And data about the state of the company's infrastructure appeared in a single location, so they could quickly assess attacks and their security posture?",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Company A could have ensured all their web application and API security framework components had the latest threat intelligence and stopped the attack before it started — since it would all be on one platform. Company B could have more easily extended their DDoS protection to all their servers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Using a platform would mean easier management, with fewer gaps.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This consolidated approach to web application security requires highly scalable infrastructure, able to proxy all types of traffic. In previous decades, organizations bought appliances when they needed to defend themselves from new attacks, or when they needed to scale up. But a cloud-based service scales up more easily and should be able to proxy any type of infrastructure. And while a consolidated platform is no guarantee against all attacks, it certainly would have helped our hypothetical companies.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [
 														{
 															"type": "bold"
 														}
 													],
 													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ". A distributed cloud network is a network with:",
-													"marks": [],
-													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "unordered-list",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1435,142 +1827,14 @@
 											"marks": null,
 											"content": [
 												{
-													"nodeType": "list-item",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Many points of presence with global distribution",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": ". This means end users are always close to the network, eliminating the latency that comes from traffic traveling to and from a distant scrubbing center, VPN server, or other service.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "The ability to perform multiple security and performance functions at every point of presence",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": ". This means traffic can be scrubbed, routed, and accelerated in a single data center, rather than having to jump from location to location for each function—which also creates redundancy. If one data center becomes overburdened or otherwise goes down, others can take over instantly.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "The ability to work with cloud and on-premise infrastructure",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": ". This capability, along with the previous ones, allows IT and security teams to set consistent controls and monitor global traffic from a single place.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
+													"value": "More than a thought experiment: The growing importance of WAAP",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
@@ -1589,7 +1853,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Distributed cloud networks often rely on ",
+													"value": "This is not merely a hypothetical thought experiment. Gartner ",
 													"marks": [],
 													"content": null
 												},
@@ -1597,7 +1861,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/learning/cdn/glossary/anycast-network/"
+														"uri": "https://www.gartner.com/en/documents/4018226"
 													},
 													"value": null,
 													"marks": null,
@@ -1608,7 +1872,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Anycast",
+															"value": "defines",
 															"marks": [],
 															"content": null
 														}
@@ -1620,7 +1884,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", a network addressing and routing method in which incoming requests can be routed to a variety of different locations or \"nodes.\" Anycast allows such networks to route incoming traffic to the nearest with the capacity to process the request efficiently—a critical component in reducing latency for end-users.",
+													"value": " these consolidated services as \"Web Application and API Protection,\" or WAAP. In 2022, Gartner predicted that \"by 2024, 70% of organizations implementing multicloud strategies for web applications in production environments will favor cloud web application and API protection platform (WAAP) services over WAAP appliances and IaaS-native WAAP.\"",
 													"marks": [],
 													"content": null
 												}
@@ -1641,11 +1905,52 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "With such interconnection, intelligent routing, and redundancy, challenges like inconsistent controls, latency, and support challenges are far less likely to stand in the way of cloud migration.",
+													"value": " WAAP is not just another acronym: Consolidating WAF, bot management, DDoS protection, API security, and other services is increasingly essential for modern organizations. The global nature of the Internet continually exposes web applications and APIs to attacks from many locations and various levels of scale and complexity. It is no surprise that in 2022, IBM ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.ibm.com/reports/data-breach"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "reported",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " that 83% of surveyed companies experienced a data breach, with breaches costing $4.35 million on average globally and $9.44 million on average in the United States.",
 													"marks": [],
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1665,35 +1970,165 @@
 													"value": "",
 													"marks": [],
 													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/enterprise/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Cloudflare's distributed cloud network",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": " has data centers in over %{DataCenterCount} cities across %{CountryCount} countries, each of which is able to enforce firewall rules, mitigate DDoS attacks, load balance traffic, and cache content for fast delivery to end users, among other capabilities.",
+													"value": "Another consideration: heterogeneous infrastructure",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "If Company A and Company B were to build their applications and APIs from scratch today, they might host them entirely in the cloud, perhaps with one hosting provider for ease of deployment. But in reality, most organizations have deployed hybrid infrastructure with legacy on-premise database servers, cloud-based third-party APIs, and application services hosted in multiple clouds. These deployments offer many advantages but also come with security challenges of their own.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "For instance, native security in a given cloud provider's offering may not extend to the entirety of their infrastructure. To begin with, discovering and mapping all their infrastructure in order to then defend it may also prove a challenge. And last, their security products may not be compatible with other solutions in your tech stack.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Therefore, in addition to consolidating crucial web application security capabilities, WAAP needs to be infrastructure-agnostic, meaning it has to be able to sit in front of any type of infrastructure or cloud deployment.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Consolidated, infrastructure-agnostic web security",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare is cloud-native and infrastructure-agnostic, has offered web app security for well over a decade, and offers all these capabilities as one consolidated platform, within a single pane of glass. Cloudflare also has the advantage of seeing a large percentage of the Internet's traffic, serving over %{HTTPRequests} million HTTP requests per second and blocking %{ThreatsBlockedPerDay} billion cyber threats each day on average. This gives Cloudflare unique visibility into zero-day threats and new attacks.",
 													"marks": [],
 													"content": null
 												}
@@ -1773,6 +2208,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -1788,6 +2233,138 @@
 														"uri": null
 													},
 													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Dive deeper into this topic.",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\nGartner recognized Cloudflare as a Leader in the 2022 ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/lp/gartner-magic-quadrant-waap-2022/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Gartner® Magic Quadrant™ for Web Application and API Protection (WAAP)",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".\n",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "1SYwZar6cdqebaEGjq9Ddk",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [
+																{
+																	"buttonAssetFile": null,
+																	"buttonTextLoggedIn": null,
+																	"contentTypeId": "button",
+																	"contentfulId": "1SYwZar6cdqebaEGjq9Ddk",
+																	"elementName": "The gaps in web application  security - button",
+																	"standardText": null,
+																	"text": "Get the report!",
+																	"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-waap-2022/",
+																	"loggedInUrl": null,
+																	"buttonModal": null,
+																	"openInNewTab": true,
+																	"locale": "en-US"
+																}
+															],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
 													"marks": [],
 													"content": null
 												}
@@ -1798,7 +2375,7 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "1rPlSHqXOTC5jZwQ2JhY8M",
+								"contentfulId": "4qkbAqN4f5mUHbAOLmaDdn",
 								"title": null,
 								"column": {
 									"nodeType": "document",
@@ -1870,7 +2447,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "After reading this article you will be able to understand:",
+													"value": "After reading this article you will be able to understand:\n",
 													"marks": [],
 													"content": null
 												}
@@ -1909,12 +2486,8 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Pros and cons",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
+																	"value": "How disparate security solutions can ",
+																	"marks": [],
 																	"content": null
 																},
 																{
@@ -1923,7 +2496,43 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " to heterogeneous infrastructure",
+																	"value": "create security gaps",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Examples of how these gaps might manifest",
 																	"marks": [],
 																	"content": null
 																}
@@ -1955,7 +2564,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The challenges with ",
+																	"value": "Why Gartner recommends ",
 																	"marks": [],
 																	"content": null
 																},
@@ -1965,7 +2574,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "on-premise hardware",
+																	"value": "consolidating with a infrastructure-agnostic",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -1979,87 +2588,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " and ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "multiple point solutions",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " delivered in the cloud",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "How a ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "distributed cloud network",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " eliminates these challenges",
+																	"value": " web application security platform",
 																	"marks": [],
 																	"content": null
 																}
@@ -2116,11 +2645,7 @@
 														"uri": null
 													},
 													"value": "Related resources",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
+													"marks": [],
 													"content": null
 												}
 											]
@@ -2166,7 +2691,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/lp/death-of-network-hardware/"
+																		"uri": "https://www.cloudflare.com/lp/gartner-magic-quadrant-waap-2022/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2177,7 +2702,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "The Death of Network Hardware Appliances",
+																			"value": "Gartner® Magic Quadrant™ for Web Application and API Protection (WAAP)",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2229,7 +2754,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/learning/cdn/glossary/anycast-network/"
+																		"uri": "https://www.cloudflare.com/learning/insights-waap-api-security"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2240,7 +2765,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "What is Anycast?",
+																			"value": "APIs have outgrown traditional security",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2292,7 +2817,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/network/"
+																		"uri": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/16nwKJgYDlxISlm01TWLek/aa37183f5c465fc072911c19b0390455/Cloudflare_One_Design_Guide_-_Jan_2022.pdf"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -2303,7 +2828,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "The Cloudflare Global Network",
+																			"value": "Cloudflare One, our SASE platform",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2329,194 +2854,6 @@
 											"nodeType": "hr",
 											"data": {
 												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "2ajgrim6f6NLdPsSL72nIl",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"columnLayout": "Two Thirds & One Third",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "2N89Tz5OahxsF3Lg4wBj3i",
-								"title": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-2",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Dive deeper on this topic.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Learn more about security strategies for migrating networking functions from hardware to the cloud, in ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/lp/death-of-network-hardware/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "The Death of Network Hardware Appliances",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " white paper.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "2HnKN8qy4OhE9uxWr7YpnW",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [
-														{
-															"buttonAssetFile": null,
-															"buttonTextLoggedIn": null,
-															"contentTypeId": "button",
-															"contentfulId": "2HnKN8qy4OhE9uxWr7YpnW",
-															"elementName": "Dive Deeper blade - death of hardware white paper",
-															"standardText": null,
-															"text": "Get the white paper",
-															"url": "https://www.cloudflare.com/lp/death-of-network-hardware/",
-															"loggedInUrl": null,
-															"buttonModal": null,
-															"openInNewTab": true,
-															"locale": "en-US"
-														}
-													],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
 												"uri": null
 											},
 											"value": null,
@@ -2624,7 +2961,7 @@
 				"noindex": false,
 				"formModal": [],
 				"hasAdobeExperiment": null,
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -2635,8 +2972,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/insights-network-infrastructure/",
-			"contentfulId": "6RVuk0PxhoIfhQsrmK8VTC",
+			"pathname": "/the-net/waap-gaps/",
+			"contentfulId": "1ERKTZy3TAGaLNHgBfO4NO",
 			"allowedHrefLangs": [
 				"en-US",
 				"fr-FR",
