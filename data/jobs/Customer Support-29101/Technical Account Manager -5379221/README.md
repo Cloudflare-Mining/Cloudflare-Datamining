@@ -12,21 +12,22 @@
 <p><span style="font-weight: 400;">To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</span></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as primary technical support contact</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as primary technical support contact.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a holistic and dynamic view of customer’s environment and use of Cloudflare products, including the customer deployment topology, expert resolution for all support issues, and proactive advice for long-term improvements.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and deliver Quarterly Support Reviews including SLA adherence, top ticket drivers, ticket deep dives, and incident reviews.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel up to 25% of the time.&nbsp;</span></li>
+	<li style="font-weight: bold;"><strong>Ability to work one weekend every quarter.</strong></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively engage with the account team during strategic deal closure and throughout the lifecycle of the customer.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Point of escalation during business hours, and backup point of escalation for Cloudflare TAMs in other regions during their off hours.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand client sentiment, own internal and customer facing escalations, and provide product support</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure support tickets solved in a timely manner</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and expand working technical knowledge of Cloudflare products&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Single threaded owner of technical support issues, working with backend teams as needed</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with global TAM’s to ensure coverage on critical issues</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure rapid Incident response</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist with preparing and communicating CSRs and formal documentation for incidents and major issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand client sentiment, own internal and customer facing escalations, and provide product support.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure support tickets solved in a timely manner.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and expand working technical knowledge of Cloudflare products .</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Single threaded owner of technical support issues, working with backend teams as needed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with global TAM’s to ensure coverage on critical issues.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure rapid Incident response.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist with preparing and communicating CSRs and formal documentation for incidents and major issues.</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
