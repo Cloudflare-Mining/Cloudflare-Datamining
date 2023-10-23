@@ -65,7 +65,7 @@
 		"enabled": true
 	},
 	"zt-device-admin-audit-logs": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-device-posture": {
 		"enabled": true
@@ -74,7 +74,7 @@
 		"enabled": true
 	},
 	"zt-device-settings-by-group": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-dlp-context-awareness": {
 		"enabled": true
@@ -122,7 +122,7 @@
 		"enabled": true
 	},
 	"zt-kollide": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-last-seen-jwt": {
 		"enabled": true
@@ -131,19 +131,16 @@
 		"enabled": false
 	},
 	"zt-posture-reporting-logs": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-resolver-policies": {
 		"enabled": true
 	},
 	"zt-root-ca": {
-		"enabled": true
+		"enabled": false
 	},
 	"zt-sentinel-one-s2s-posture-integration": {
 		"enabled": true
-	},
-	"zt-serial-number-posture-rule": {
-		"enabled": false
 	},
 	"zt-service-mode-posture-only": {
 		"enabled": true
