@@ -984,8 +984,13 @@
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
 																	"properties": {
+																		"non_identity_enabled": {
+																			"description": "Enable non-identity onramp support for Browser Isolation.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"url_browser_isolation_enabled": {
-																			"description": "Enable Browser Isolation.",
+																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
 																		}
@@ -1296,8 +1301,13 @@
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
 																			"properties": {
+																				"non_identity_enabled": {
+																					"description": "Enable non-identity onramp support for Browser Isolation.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"url_browser_isolation_enabled": {
-																					"description": "Enable Browser Isolation.",
+																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -2007,8 +2017,13 @@
 									"browser_isolation": {
 										"description": "Browser isolation settings.",
 										"properties": {
+											"non_identity_enabled": {
+												"description": "Enable non-identity onramp support for Browser Isolation.",
+												"example": true,
+												"type": "boolean"
+											},
 											"url_browser_isolation_enabled": {
-												"description": "Enable Browser Isolation.",
+												"description": "Enable Clientless Browser Isolation.",
 												"example": true,
 												"type": "boolean"
 											}
@@ -2294,8 +2309,13 @@
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
 																	"properties": {
+																		"non_identity_enabled": {
+																			"description": "Enable non-identity onramp support for Browser Isolation.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"url_browser_isolation_enabled": {
-																			"description": "Enable Browser Isolation.",
+																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
 																		}
@@ -2606,8 +2626,13 @@
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
 																			"properties": {
+																				"non_identity_enabled": {
+																					"description": "Enable non-identity onramp support for Browser Isolation.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"url_browser_isolation_enabled": {
-																					"description": "Enable Browser Isolation.",
+																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
 																				}
@@ -3745,8 +3770,13 @@
 									"browser_isolation": {
 										"description": "Browser isolation settings.",
 										"properties": {
+											"non_identity_enabled": {
+												"description": "Enable non-identity onramp support for Browser Isolation.",
+												"example": true,
+												"type": "boolean"
+											},
 											"url_browser_isolation_enabled": {
-												"description": "Enable Browser Isolation.",
+												"description": "Enable Clientless Browser Isolation.",
 												"example": true,
 												"type": "boolean"
 											}
@@ -4032,8 +4062,13 @@
 																"browser_isolation": {
 																	"description": "Browser isolation settings.",
 																	"properties": {
+																		"non_identity_enabled": {
+																			"description": "Enable non-identity onramp support for Browser Isolation.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"url_browser_isolation_enabled": {
-																			"description": "Enable Browser Isolation.",
+																			"description": "Enable Clientless Browser Isolation.",
 																			"example": true,
 																			"type": "boolean"
 																		}
@@ -4344,8 +4379,13 @@
 																		"browser_isolation": {
 																			"description": "Browser isolation settings.",
 																			"properties": {
+																				"non_identity_enabled": {
+																					"description": "Enable non-identity onramp support for Browser Isolation.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"url_browser_isolation_enabled": {
-																					"description": "Enable Browser Isolation.",
+																					"description": "Enable Clientless Browser Isolation.",
 																					"example": true,
 																					"type": "boolean"
 																				}
