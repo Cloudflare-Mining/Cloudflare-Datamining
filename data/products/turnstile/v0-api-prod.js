@@ -519,7 +519,7 @@
 
 	function jt(e, n) {
 		var i, f = Nt(n.params),
-			u = "h/".concat("b", "/"),
+			u = "h/".concat("g", "/"),
 			y = document.getElementById(e);
 		if (!y) {
 			p("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
@@ -597,7 +597,7 @@
 
 	function It(e, n, i, f) {
 		var u = Nt(i),
-			y = "h/".concat("b", "/");
+			y = "h/".concat("g", "/");
 		return "".concat(u, "/cdn-cgi/challenge-platform/").concat(y, "turnstile/if/ov2/av0/rcv").concat(f, "/").concat(e, "/").concat(n, "/").concat(i.theme, "/").concat(i.size)
 	}
 
@@ -933,7 +933,7 @@
 					switch (S.label) {
 						case 0:
 							if (r = _.params.sitekey, s = St(), !s) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), n(_, c, !1), [2];
-							o = "h/".concat("b", "/"), b = new URL(s), A = "https", I = "".concat(A, "://").concat(b.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), S.label = 1;
+							o = "h/".concat("g", "/"), b = new URL(s), A = "https", I = "".concat(A, "://").concat(b.host, "/cdn-cgi/challenge-platform/").concat(o, "rc/").concat(a), S.label = 1;
 						case 1:
 							return S.trys.push([1, 6, , 7]), [4, fetch(I, {
 								method: "POST",
@@ -1124,7 +1124,7 @@
 									cData: r.cData,
 									chlPageData: r.chlPageData,
 									rcV: r.rcV,
-									ch: "7ff8d35b",
+									ch: "c359bc3d",
 									url: St(),
 									retry: r.params.retry,
 									"expiry-interval": r.params["expiry-interval"],
