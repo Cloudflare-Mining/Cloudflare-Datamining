@@ -45,7 +45,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": null
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
 					"facebookCustomImage": null
 				},
@@ -214,7 +214,7 @@
 						"titleSize": null,
 						"subtitle": null,
 						"subtitleSize": null,
-						"copy": "Cloudflare's is a privacy-first company. As such, India's IT Act represents many steps we were already taking. We do not sell personal data we process, or use it for any purpose other than delivering our services. In addition, we let people access, correct, and delete their personal information, and give our customers control over the information passing through our network. \n\nTo learn more, explore our IT Act FAQ below, or check out Cloudflare's overall privacy policy.",
+						"copy": "Cloudflare's is a privacy-first company. As such, the Digital Personal Data Protection Bill (DPDP) represents many steps we were already taking. We do not sell personal data we process, or use it for any purpose other than delivering our services. In addition, we let people access, correct, and delete their personal information, and give our customers control over the information passing through our network. \n\nTo learn more, explore our DPDP FAQ below, or check out Cloudflare's overall privacy policy.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Read FAQ",
@@ -293,7 +293,27 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare is a security, performance, and reliability company headquartered in the United States with global operations, including an office in India, that delivers a broad range of network services to businesses of all sizes and in all geographies. We help make our customers' websites and Internet applications more secure, enhance the performance of their business-critical applications, and eliminate the cost and complexity of managing individual network hardware. Cloudflare's Global Network – which is powered by more than 200 Edge servers around the world, as described ",
+													"value": "Cloudflare is a security, performance, and reliability company headquartered in the United States (U.S) with global operations, including an office in India, that delivers a broad range of network services to businesses of all sizes and in all geographies. We help make our customers' websites and Internet applications more secure, enhance the performance of their business-critical applications, and eliminate the cost and complexity of managing individual network hardware. The Cloudflare global network  – which is powered by edge servers in more than ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "%{DataCenterCount} ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "cities around the world, as described ",
 													"marks": [],
 													"content": null
 												},
@@ -313,7 +333,11 @@
 																"uri": null
 															},
 															"value": "here",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -345,7 +369,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare does not have access to or have any control of the data its customers choose to transmit, route, switch, and cache through our Global Network. In a limited number of cases, Cloudflare products can be used for storage of content. Regardless of what Cloudflare services they use, however, our customers are fully responsible for their own compliance with applicable law and their independent contractual arrangements in connection with the data they choose to transmit, route, switch, cache, or store through the Cloudflare Global Network.",
+													"value": "The types of personal data Cloudflare processes on behalf of a customer depend on which Cloudflare services are implemented. For our most popular application services and network services, Cloudflare does not store customer content, nor do we have any control of the data our customers choose to transmit, route, switch, and cache through our global network. In a limited number of cases, Cloudflare products can be used for storage of content. Regardless of what Cloudflare services they use, however, our customers are fully responsible for their own compliance with applicable law and their independent contractual arrangements in connection with the data they choose to transmit, route, switch, cache, or store through the Cloudflare global network.",
 													"marks": [],
 													"content": null
 												}
@@ -366,7 +390,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The types of personal data Cloudflare processes on behalf of a customer depend on which Cloudflare services are implemented. The vast majority of data that transits Cloudflare's network stays on Cloudflare's Edge servers, while metadata about this activity is processed on behalf of our customers in our main data centers in the United States and Europe.",
+													"value": "For our application and network services, the vast majority of data that transits Cloudflare's network stays on our edge servers, while metadata about this activity is processed on behalf of our customers in our data centers in the United States and Europe.",
 													"marks": [],
 													"content": null
 												}
@@ -387,7 +411,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare maintains log data about events on our network. Some of this log data will include information about visitors to and/or authorized users of a customer's domains, networks, websites, application programming interfaces (\"APIs\"), or applications, including the Cloudflare product Cloudflare Zero Trust as may be applicable. This metadata contains extremely limited personal data, most often in the form of IP addresses. We process this type of information on behalf of our customers in our main data centers in the U.S. and Europe for a limited period of time.",
+													"value": "Cloudflare maintains log data about events on our network. Some of this log data will include information about visitors to and/or authorized users of a customer's domains, networks, websites, application programming interfaces (\"APIs\"), or applications, including the Cloudflare product Cloudflare Zero Trust as may be applicable. This metadata contains extremely limited personal data, most often in the form of IP addresses. We process this type of information on behalf of our customers in our data centers in the US and Europe for a limited period of time.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\n",
 													"marks": [],
 													"content": null
 												}
@@ -418,7 +463,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare views security as a critical element of ensuring data privacy. Since Cloudflare launched in 2010, we've released a number of state-of-the-art, privacy-enhancing technologies, typically ahead of the rest of the industry. Among other things, these tools allow our customers to easily encrypt the content of communications through universal SSL, encrypt the metadata in communications using DNS-over-HTTPS or DNS-over-TLS and encrypted SNI, and control where their SSL keys are held or where their traffic is inspected.",
+													"value": "Cloudflare views security as a critical element of ensuring data privacy. Since Cloudflare launched in 2010, we have released a number of state-of-the-art, privacy-enhancing technologies, typically ahead of the rest of the industry. Among other things, these tools allow our customers to easily encrypt the content of communications through universal SSL; encrypt or otherwise protect the metadata in communications using new protocols like DNS-over-HTTPS, DNS-over-TLS, and Oblivious HTTP; and control where their SSL keys are held or where their traffic is inspected.",
 													"marks": [],
 													"content": null
 												}
@@ -439,7 +484,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare maintains a security program that exceeds industry standards. Our security program includes maintaining formal security policies and procedures, establishing proper logical and physical access controls, and implementing technical safeguards in corporate and production environments, including establishing secure configurations, secure transmission and connections, logging, monitoring, and having adequate encryption technologies for personal data.",
+													"value": "Cloudflare maintains a security program in accordance with industry-leading standards. Our security program includes maintaining formal security policies and procedures, establishing proper logical and physical access controls, and implementing technical safeguards in corporate and production environments, including establishing secure configurations, establishing secure transmission and connections, logging, monitoring, and having adequate encryption technologies for personal data.",
 													"marks": [],
 													"content": null
 												}
@@ -460,7 +505,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "We currently maintain the following validations: ISO 27001, ISO 27701, ISO 27018, SOC 2 Type II, and PCI DSS Level 1 compliance. You can learn more about our certifications and reports ",
+													"value": "All Cloudflare employees are subject to privacy and information security onboarding training and afterwards to annual retraining.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "We currently maintain the following validations: ISO 27001, ISO 27701,  SOC 2 Type II, and PCI DSS Level 1 compliance. We are also certified to the European Cloud Code of Conduct and Germany's C5 2020 standard. You can learn more about our certifications ",
 													"marks": [],
 													"content": null
 												},
@@ -468,7 +534,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/trust-hub/technologies/"
+														"uri": "https://www.cloudflare.com/trust-hub/compliance-resources/"
 													},
 													"value": null,
 													"marks": null,
@@ -480,7 +546,11 @@
 																"uri": null
 															},
 															"value": "here",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -512,7 +582,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To view the security measures Cloudflare offers for the protection of personal data, including personal data transferred from India to the U.S., please see Annex 2 of our standard Data Processing Addendum (\"",
+													"value": "To view the security measures Cloudflare offers for the protection of personal data, including personal data transferred from India to the US please see Annex 2 of our standard ",
 													"marks": [],
 													"content": null
 												},
@@ -520,7 +590,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa"
+														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa/"
 													},
 													"value": null,
 													"marks": null,
@@ -532,7 +602,11 @@
 																"uri": null
 															},
 															"value": "DPA",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -543,7 +617,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\").",
+													"value": ". ",
 													"marks": [],
 													"content": null
 												}
@@ -555,7 +629,7 @@
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "3SIW7i74lLbv4wwU6rAZHw",
-								"title": "How does Cloudflare address the requirements of sensitive data transfers?",
+								"title": "How does Cloudflare address the requirements of the Digital Personal Data Protection Bill (DPDP) regarding personal data transfers to the U.S.?",
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -574,7 +648,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare's standard ",
+													"value": "Cloudflare builds into our products and services data processing principles that are consistent with the DPDP: only collect the personal data you need to provide the service you are offering; do not sell personal information; give people the ability to access, correct, or delete their personal information; and, consistent with our role as a data processor, give our customers control over the information that, for example, is cached on our content delivery network (CDN), stored in Workers Key Value Store, or captured by our web application firewall (WAF). In addition, our ",
 													"marks": [],
 													"content": null
 												},
@@ -582,7 +656,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa"
+														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa/"
 													},
 													"value": null,
 													"marks": null,
@@ -593,7 +667,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "DPA",
+															"value": "Data Processing Addendum",
 															"marks": [
 																{
 																	"type": "underline"
@@ -609,7 +683,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " is incorporated by reference into our Enterprise Service Agreement and our ",
+													"value": " (DPA) – which covers our obligations for processing personal data on behalf of our customers and is incorporated by reference into our Enterprise Service Agreement and our ",
 													"marks": [],
 													"content": null
 												},
@@ -628,7 +702,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Self-Service Subscription Agreement",
+															"value": "Self-Serve Subscription Agreement",
 															"marks": [
 																{
 																	"type": "underline"
@@ -644,7 +718,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". The data protection commitments we make in our DPA offer the same level of protection established by the Information Technology Act and clearly state the personal data processed and the purposes of processing, as well as include adequate security measures. Cloudflare's definition of \"personal data\" includes \"sensitive data\" as defined in the SPDI Rules.",
+													"value": " – offers a number of additional safeguards for data we process on behalf of our customers that are consistent with, and in many cases go beyond, the DPDP's protections. As a result, India personal data transferred to the US has comparable protection to that provided by the DPDP.",
 													"marks": [],
 													"content": null
 												}
@@ -675,7 +749,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "When we issued our very first transparency report in 2014 for legal process received in 2013, we pledged that we would require legal process before providing any government entity with any customer data outside of an emergency and that we would provide our customers with notice of any legal process requesting their customer or billing information before disclosure of that information unless legally prohibited. We publicly stated that we have never turned over encryption keys to any government, provided any government a feed of content transiting our network, or deployed law enforcement equipment on our network. We also committed that if we were asked to do any of those things, we would \"exhaust all legal remedies in order to protect our customers from what we believe are illegal or unconstitutional requests.\" Since those days early in Cloudflare's history, we have restated those commitments twice a year, and even expanded on them, in our ",
+													"value": "Cloudflare has a strong commitment to transparency and accountability regarding processing of personal data, and our DPA makes many of these commitments contractually binding. When we issued our very first transparency report in 2014 for legal process received in 2013, we pledged that we would require legal process before providing any government entity with any customer data outside of an emergency and that we would provide our customers with notice of any legal process requesting their customer or billing information before disclosure of that information unless legally prohibited. We publicly stated that we have never turned over encryption keys to any government, provided any government a feed of content transiting our network, or deployed law enforcement equipment on our network. We also committed that if we were asked to do any of those things, we would \"exhaust all legal remedies in order to protect our customers from what we believe are illegal or unconstitutional requests.\" Since those days early in our history, we have restated those commitments twice a year, and even expanded on them, in our ",
 													"marks": [],
 													"content": null
 												},
@@ -727,7 +801,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "We have also demonstrated our belief in transparency and our commitment to protecting our customers by filing litigation when necessary. In 2013, with the help of the Electronic Frontier Foundation, we legally challenged an administratively issued U.S. national security letter (\"NSL\") to protect our customer's rights because of provisions that allowed the government to restrict us from disclosing information about the NSL to the affected customer. Cloudflare provided no customer information in response to that request, but the non-disclosure provisions remained in effect until a court lifted the restrictions in 2016.",
+													"value": "We have also demonstrated our belief in transparency and our commitment to protecting our customers by filing litigation when necessary. In 2013, with the help of the Electronic Frontier Foundation, we legally challenged an administratively issued US. national security letter (\"NSL\") to protect our customer's rights because of provisions that allowed the government to restrict us from disclosing information about the NSL to the affected customer. Cloudflare provided no customer information in response to that request, but the non-disclosure provisions remained in effect until a court lifted the restrictions in 2016.",
 													"marks": [],
 													"content": null
 												}
@@ -821,7 +895,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", on government requests for data.) Consistent with existing U.S. case law and statutory frameworks, Cloudflare may ask U.S. courts to quash a request from U.S. authorities for personal data based on such a conflict of law.",
+													"value": ", on government requests for data.) Consistent with existing US case law and statutory frameworks, Cloudflare may ask US courts to quash a request from US authorities for personal data based on such a conflict of law.",
 													"marks": [],
 													"content": null
 												}
@@ -842,7 +916,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Our standard customer DPA incorporates additionally the above-described measures as contractual commitments. You can view these contractual commitments in section 7 of our ",
+													"value": "Our standard ",
 													"marks": [],
 													"content": null
 												},
@@ -862,7 +936,11 @@
 																"uri": null
 															},
 															"value": "DPA",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -873,7 +951,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".",
+													"value": " for our customers incorporates the above-described supplementary measures and safeguards as contractual commitments. You can view these contractual commitments in section 7 of our DPA.",
 													"marks": [],
 													"content": null
 												}
@@ -885,10 +963,45 @@
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "5eGCeuOkeQVA3QSiZKCZvj",
-								"title": "What U.S. legislation governs law enforcement requests regarding non-U.S. persons located outside of the United States?",
+								"title": "What US legislation governs law enforcement requests regarding non-U.S. persons located outside of the United States?",
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Executive Order 14086 (\"EO14086\"). ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "In October 2022, US President Biden signed EO14086, which introduced new safeguards for US signals intelligence activities, including those conducted pursuant to FISA section 702, described below. The EO14086 protections applicable to transfers from India to the U.S. include safeguards to ensure that privacy and civil liberties are integral considerations such that (i) signals intelligence activities shall be conducted only where \"necessary\" to advance a validated intelligence priority, and (ii) be conducted only to the extent and in a manner that is \"proportionate\" to the validated intelligence priority. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "paragraph",
 											"data": {
@@ -918,7 +1031,31 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Section 702 of the Foreign Intelligence Surveillance Act (FISA) is an authority that allows the U.S. government to request the communications of non-U.S. persons located outside of the United States for foreign intelligence purposes. The U.S. government uses section 702 to collect the content of communications throughspecifical \"selectors\", such as email addresses, that are associated with specific foreign intelligence targets. Because the authority is typically used to collect the content of communications, the \"electronic communications service providers\" asked to comply with section 702 are typically email providers or other providers with access to the content of communications.",
+													"value": "Section 702 of the Foreign Intelligence Surveillance Act (\"FISA\") is an authority that allows the US government to request the communications of non-US persons located outside of the United States for foreign intelligence purposes. The US government uses section 702 to collect the content of communications through",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "specifical \"selectors\", such as email addresses, that are associated with specific foreign intelligence targets. Because the authority is typically used to collect the content of communications, the \"electronic communications service providers\" asked to comply with section 702 are typically email providers or other providers with access to the content of communications.",
 													"marks": [],
 													"content": null
 												}
@@ -939,7 +1076,42 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As noted in our transparency report, Cloudflare does not have access to this type of traditional customer content for Cloudflare's core services. In addition, Cloudflare has had a public commitment for many years that we have never provided any government a feed of our customers' content transiting our network and that we would exhaust all legal remedies if we were asked to do so in order to protect our customers from what we believe are illegal or unconstitutional requests.",
+													"value": "As noted in our Transparency Report, Cloudflare does not have access to this type of traditional customer content for our core services In addition, Cloudflare has had ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/transparency/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "a public commitment for many years",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " that we have never provided any government a feed of our customers' content transiting our network and that we would exhaust all legal remedies if we were asked to do so in order to protect our customers from what we believe are illegal or unconstitutional requests.",
 													"marks": [],
 													"content": null
 												}
@@ -974,7 +1146,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Executive Order 12333 governs U.S. intelligence agencies' foreign intelligence collection targeting non-U.S. persons outside the United States. Executive Order 12333 does not have provisions to compel the assistance of U.S. companies.",
+													"value": " Executive Order 12333 governs US intelligence agencies' foreign intelligence collection targeting non-US persons outside the United States. Executive Order 12333 does not have provisions to compel the assistance of US companies.",
 													"marks": [],
 													"content": null
 												}
@@ -995,7 +1167,42 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare has a longstanding commitment to require legal process before providing any government entity with access to any customer data outside of an emergency. We therefore would not comply with voluntary requests for data under Executive Order 12333. In addition, Cloudflare has been a leader in encouraging additional security for data in transit, for both content and metadata, to prevent personal data from any type of prying eyes. In 2014, for example, we launched Universal SSL, making encryption — something that had been expensive and difficult — free for all Cloudflare customers. The week we launched it, we doubled the size of the encrypted web. Because of an increasing number of laws attempting to target encryption, we have even committed that we have never weakened, compromised, or subverted any of our encryption at the request of a government or other third party.",
+													"value": "Cloudflare has a longstanding commitment to require legal process before providing any government entity with access to any customer data outside of an emergency. We therefore would not comply with voluntary requests for data under Executive Order 12333. In addition, Cloudflare has been a leader in encouraging additional security for data in transit, for both content and metadata, to prevent personal data from any type of prying eyes. In 2014, for example, we launched ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://blog.cloudflare.com/introducing-universal-ssl/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Universal SSL",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", making encryption — something that had been expensive and difficult — free for all Cloudflare customers. The week we launched it, we doubled the size of the encrypted web. Because of an increasing number of laws attempting to target encryption, we have even committed that we have never weakened, compromised, or subverted any of our encryption at the request of a government or other third party.",
 													"marks": [],
 													"content": null
 												}
@@ -1030,7 +1237,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " The Clarifying Lawful Overseas Use of Data (CLOUD) Act does not expand U.S. investigative authority. Tough requirements for law enforcement to obtain a valid warrant remain unchanged. The CLOUD Act also applies to access to content, which we generally do not store, as described above. It is important to note that law enforcement would typically seek to obtain data from the entity which has effective control of the data (i.e., our customers) rather than cloud providers.",
+													"value": " The Clarifying Lawful Overseas Use of Data (CLOUD) Act does not expand US investigative authority. Tough requirements for law enforcement to obtain a valid warrant remain unchanged. The CLOUD Act also applies to access to content, which we generally do not store, as described above. It is important to note that law enforcement would typically seek to obtain data from the entity that has effective control of the data (i.e., our customers) rather than cloud providers.",
 													"marks": [],
 													"content": null
 												}
@@ -1155,7 +1362,63 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "We recognize that some of our Indian customers would prefer that certain types of regulated data remain in India and not be transferred to the U.S. for processing. To that end, we introduced the Data Localization Suite, which helps businesses get the performance and security benefits of Cloudflare's global network, while making it easy to set rules and controls at the edge about where their data is stored and protected.",
+													"value": "DPDP allows for cross-border data transfers  if certain conditions are met. We believe that our network complies with the DPDP without localizing data because our systems are DPDP compliant due to the security measures we have in place and due to the data processing commitments we make in our ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Data Processing Addendum",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " (DPA), which is incorporated by reference into our contractual agreements with all customers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With this in mind, we recognize that some of our customers in India would need certain types of regulated data to remain in India and not be transferred to the US for processing. To that end, we have developed the Data Localization Suite, which helps businesses get the performance and security benefits of our global network, while making it easy to set rules and controls at the edge about where their data is stored and protected.",
 													"marks": [],
 													"content": null
 												}
@@ -1215,7 +1478,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Regional Services. Cloudflare has data centers in over 270 cities across 100+ countries. Regional Services together with our Geo Key Manager solution allows Customers to pick the data center locations where TLS keys are stored and TLS termination takes place. Traffic is ingested globally, applying L3/L4 DDoS mitigations, while security, performance, and reliability functions (such as, WAF, CDN, DDoS mitigation, etc.) are serviced at designated Cloudflare data centers only.",
+																	"value": "Regional Services",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ". Cloudflare has data centers in over %{DataCenterCount} cities across 100+ countries. Regional Services together with our Geo Key Manager solution allows customers to pick the data center locations where SSL keys are stored and SSL termination takes place. Traffic is ingested globally, applying L3/L4 DDoS mitigations, while security, performance, and reliability functions (such as, WAF, CDN, DDoS mitigation, etc.) are serviced at designated Cloudflare data centers only. ",
 																	"marks": [],
 																	"content": null
 																}
@@ -1247,7 +1524,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Keyless SSL. Keyless SSL allows a customer to store and manage their own SSL Private keys for use with Cloudflare. Customers can use a variety of systems for their keystore, including hardware security modules (\"HSMs\"), virtual servers, and hardware running Unix/Linux and Windows that is housed in environments under customers control.",
+																	"value": "Keyless SSL",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ". Keyless SSL allows a customer to store and manage their own SSL private keys for use with Cloudflare. Customers can use a variety of systems for their keystore, including hardware security modules (\"HSMs\"), virtual servers, and hardware running Unix/Linux and Windows that is housed in environments under customers' control.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1279,7 +1570,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Geo Key Manager. Cloudflare has a truly international customer base and we've learned that customers around the world have different regulatory and statutory requirements, and different risk profiles, concerning the placement of their private keys. With that philosophy in mind, we set out to design a very flexible system for deciding where keys can be kept. Geo Key Manager lets customers limit the exposure of their private keys to certain locations. It's similar to Keyless SSL, but instead of having to run a key server inside your infrastructure, Cloudflare hosts key servers in the locations of your choosing.",
+																	"value": "Geo Key Manager",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ". Cloudflare has a truly international customer base and we have learned that customers around the world have different regulatory and statutory requirements, and different risk profiles, concerning the placement of their private keys. With that philosophy in mind, we set out to design a very flexible system for deciding where keys can be kept. Geo Key Manager lets customers limit the exposure of their private keys to certain locations. It is similar to Keyless SSL, but instead of having to run a key server inside your infrastructure, Cloudflare hosts key servers in the locations of your choosing.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1450,7 +1755,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/43PVIP7xl52gR53bMu92mz/9992969dcf14d61f8c151a799c1c694c/analytics-network.png"
 									},
-									"description": null
+									"description": "Analytics network orange"
 								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -1477,7 +1782,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
 									},
-									"description": null
+									"description": ""
 								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
@@ -1558,7 +1863,7 @@
 									"file": {
 										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jRp0ry33bgkOGNiTs6Ifj/dfc5a00a4ce6c6a349931f5f38064f72/certificate-manager.svg"
 									},
-									"description": null
+									"description": "Icon of an award ribbon"
 								},
 								"iconAssetFile": null,
 								"imageOverlaySuperheader": null,
