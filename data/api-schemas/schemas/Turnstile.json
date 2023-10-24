@@ -75,6 +75,17 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"clearance_level": {
+													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"enum": [
+														"no_clearance",
+														"jschallenge",
+														"managed",
+														"interactive"
+													],
+													"example": true,
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the widget was created.",
 													"example": "2014-01-01T05:20:00.123123Z",
@@ -155,7 +166,8 @@
 												"mode",
 												"region",
 												"bot_fight_mode",
-												"offlabel"
+												"offlabel",
+												"clearance_level"
 											],
 											"type": "object"
 										}
@@ -379,6 +391,17 @@
 														"example": true,
 														"type": "boolean"
 													},
+													"clearance_level": {
+														"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+														"enum": [
+															"no_clearance",
+															"jschallenge",
+															"managed",
+															"interactive"
+														],
+														"example": true,
+														"type": "string"
+													},
 													"created_on": {
 														"description": "When the widget was created.",
 														"example": "2014-01-01T05:20:00.123123Z",
@@ -453,7 +476,8 @@
 													"mode",
 													"region",
 													"bot_fight_mode",
-													"offlabel"
+													"offlabel",
+													"clearance_level"
 												],
 												"type": "object"
 											},
@@ -643,6 +667,17 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"clearance_level": {
+													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"enum": [
+														"no_clearance",
+														"jschallenge",
+														"managed",
+														"interactive"
+													],
+													"example": true,
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the widget was created.",
 													"example": "2014-01-01T05:20:00.123123Z",
@@ -723,7 +758,8 @@
 												"mode",
 												"region",
 												"bot_fight_mode",
-												"offlabel"
+												"offlabel",
+												"clearance_level"
 											],
 											"type": "object"
 										}
@@ -847,6 +883,17 @@
 								"description": "If bot_fight_mode is set to `true`, Cloudflare issues computationally\nexpensive challenges in response to malicious bots (ENT only).\n",
 								"example": true,
 								"type": "boolean"
+							},
+							"clearance_level": {
+								"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+								"enum": [
+									"no_clearance",
+									"jschallenge",
+									"managed",
+									"interactive"
+								],
+								"example": true,
+								"type": "string"
 							},
 							"domains": {
 								"example": [
@@ -1011,6 +1058,17 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"clearance_level": {
+													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"enum": [
+														"no_clearance",
+														"jschallenge",
+														"managed",
+														"interactive"
+													],
+													"example": true,
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the widget was created.",
 													"example": "2014-01-01T05:20:00.123123Z",
@@ -1091,7 +1149,8 @@
 												"mode",
 												"region",
 												"bot_fight_mode",
-												"offlabel"
+												"offlabel",
+												"clearance_level"
 											],
 											"type": "object"
 										}
@@ -1295,6 +1354,17 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"clearance_level": {
+													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"enum": [
+														"no_clearance",
+														"jschallenge",
+														"managed",
+														"interactive"
+													],
+													"example": true,
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the widget was created.",
 													"example": "2014-01-01T05:20:00.123123Z",
@@ -1375,7 +1445,8 @@
 												"mode",
 												"region",
 												"bot_fight_mode",
-												"offlabel"
+												"offlabel",
+												"clearance_level"
 											],
 											"type": "object"
 										}
@@ -1500,6 +1571,17 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"clearance_level": {
+								"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+								"enum": [
+									"no_clearance",
+									"jschallenge",
+									"managed",
+									"interactive"
+								],
+								"example": true,
+								"type": "string"
+							},
 							"domains": {
 								"example": [
 									"203.0.113.1",
@@ -1620,6 +1702,17 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"clearance_level": {
+													"description": "If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,\nthis setting can determine the clearance level to be set\n",
+													"enum": [
+														"no_clearance",
+														"jschallenge",
+														"managed",
+														"interactive"
+													],
+													"example": true,
+													"type": "string"
+												},
 												"created_on": {
 													"description": "When the widget was created.",
 													"example": "2014-01-01T05:20:00.123123Z",
@@ -1700,7 +1793,8 @@
 												"mode",
 												"region",
 												"bot_fight_mode",
-												"offlabel"
+												"offlabel",
+												"clearance_level"
 											],
 											"type": "object"
 										}
