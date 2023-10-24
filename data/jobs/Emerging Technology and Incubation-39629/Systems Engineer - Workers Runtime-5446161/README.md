@@ -5,36 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><strong>About the Team</strong></h2>
-<p>The Support Operations &amp; Planning (SOAP) department is made up of a dynamic group of teams and specialists who partner with Product and Support stakeholders to improve the customer and Support team experiences. Inside the Customer Support organization, the SOAP department consists of Project / Program Management, Support Operations Engineering, Business Analysis, Technical Support Enablement / Quality Assurance, Supportability, and Support Content teams. We focus on customer self service and satisfaction, internal efficiency improvements, as well as initiatives to optimize service delivery.&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>A <strong>Support Content Manager </strong>is responsible for designing, creating and maintaining digital content for the Customer Support team at Cloudflare.<br>You will partner with product, engineering, operations, IT, service delivery teams, and other stakeholders to develop and improve internal and public facing, Support-related content. <br>You will help improve self serviceability, reduce customer support contacts and internal engineering escalations by creating high quality Support-related content. Beyond Support-related content, you will have the opportunity to contribute to our customer experience improvement initiatives by creating enablement materials, demos and tutorials, as well as other digital resources that will help customers adopt and use Cloudflare products more effectively, as well as for internal teams to service them.</p>
-<p><strong>Responsibilities</strong></p>
+<h3 id="SystemsEngineerWorkersRuntime-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3 id="SystemsEngineerWorkersRuntime-AbouttheTeam">About the Team</h3>
+<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.</p>
+<h3 id="SystemsEngineerWorkersRuntime-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>We are looking for a Systems Engineer to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product features based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment.</p>
+<h3 id="SystemsEngineerWorkersRuntime-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Create and maintain Support documentation and content</li>
-	<li>Develop multimedia content when appropriate</li>
-	<li>Collaborate with experts to create usable content covering products, services, and tools&nbsp;</li>
-	<li>Translate complex information and concepts into accessible learning materials</li>
-	<li>Work with a variety of operations and service delivery teams to document how to use products and tools for both technical and non-technical audiences</li>
-	<li>Help manage all Support content</li>
-	<li>Help to develop content strategies that streamline knowledge management</li>
-	<li>Work independently and manage multiple, simultaneous projects</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed systems programming language such as Go, Java, C#, Rust, or C++.</li>
+	<li>An operational mindset - we don't just write code, we also own it in production</li>
+	<li>Strong understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
+	<li>Experience working with cloud platforms, especially server-less platforms</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h3 id="SystemsEngineerWorkersRuntime-BonusPoints"><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Proven verbal and written communication skills - <strong>must provide samples of excellent technical writing or content creation skills</strong></li>
-	<li>1-3 years of professional technical writing or content development experience for technical and general audiences</li>
-	<li>Familiarity with Markdown</li>
-	<li>Familiarity with industry standard content management and authoring tools</li>
-	<li>Familiarity with KCS or other knowledge management methodologies</li>
-	<li>Familiarity with industry standard Support CRMs / ticketing systems</li>
-	<li>Relevant baseline web development knowledge and experience, e.g., HTML, JavaScript, HTTP</li>
-	<li>Bachelor's degree or higher (or equivalent experience) in English, Technical Communication, or other major with writing-intensive component and/or a technology emphasis,</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Familiarity with Git, Python, SQL, or other modern programming languages and tools&nbsp;</li>
-	<li>Experience with multimedia and graphic design</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;a large-scale Linux-based distributed system.</li>
+	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
+	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
+	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
+	<li>Managing contributes to large open-source projects</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
