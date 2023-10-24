@@ -1,6 +1,6 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<p>A few months ago, we made a <a href="https://blog.cloudflare.com/rpki">first</a> then a <a href="https://blog.cloudflare.com/rpki-details">second</a> announcement about Cloudflare’s involvement in Resource Public Key Infrastructure (RPKI), and our desire to make BGP Internet routing more secure. Our mission is to build a safer Internet. We want to make it easier for network operators to deploy RPKI.</p>
+	<p>A few months ago, we made a <a href="https://blog.cloudflare.com/rpki">first</a> then a <a href="https://blog.cloudflare.com/rpki-details">second</a> announcement about Cloudflare’s involvement in Resource Public Key Infrastructure (RPKI), and our desire to make BGP Internet routing more secure. Our mission is to build a safer Internet. We want to make it easier for network operators to deploy RPKI. </p>
 	<p>Today’s article is going to cover our experience and the tools we are using. As a brief reminder, RPKI is a framework that allows networks to deploy route filtering using cryptography-validated information. Picture TLS certificates for IP addresses and Autonomous System Numbers (ASNs)</p>
 	<h3 id="what-it-means-for-you-">What it means for you:</h3>
 	<p>We validate our IP routes. This means, as a 1.1.1.1 DNS resolver user, you are less likely to be victim of cache poisoning. We signed our IP routes. This means a user browsing the websites on Cloudflare’s network are unlikely to experience route hijacks.</p>
