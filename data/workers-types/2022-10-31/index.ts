@@ -243,6 +243,8 @@ export interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
   GPUBufferUsage: typeof gpuGPUBufferUsage;
   GPUShaderStage: typeof gpuGPUShaderStage;
   GPUMapMode: typeof gpuGPUMapMode;
+  GPUTextureUsage: typeof gpuGPUTextureUsage;
+  GPUColorWrite: typeof gpuGPUColorWrite;
 }
 export declare function addEventListener<
   Type extends keyof WorkerGlobalScopeEventMap
@@ -1978,9 +1980,13 @@ export interface gpuGPUDevice extends EventTarget {
   createComputePipeline(
     descriptor: gpuGPUComputePipelineDescriptor
   ): gpuGPUComputePipeline;
+  createRenderPipeline(
+    descriptor: gpuGPURenderPipelineDescriptor
+  ): gpuGPURenderPipeline;
   createCommandEncoder(
     descriptor?: gpuGPUCommandEncoderDescriptor
   ): gpuGPUCommandEncoder;
+  createTexture(param1: gpuGPUTextureDescriptor): gpuGPUTexture;
   destroy(): void;
   createQuerySet(descriptor: gpuGPUQuerySetDescriptor): gpuGPUQuerySet;
   pushErrorScope(filter: string): void;
@@ -2249,6 +2255,133 @@ export interface gpuGPUCompilationMessage {
 }
 export interface gpuGPUCompilationInfo {
   get messages(): gpuGPUCompilationMessage[];
+}
+export declare abstract class gpuGPUTextureUsage {
+  static readonly COPY_SRC: number;
+  static readonly COPY_DST: number;
+  static readonly TEXTURE_BINDING: number;
+  static readonly STORAGE_BINDING: number;
+  static readonly RENDER_ATTACHMENT: number;
+}
+export interface gpuGPUTextureDescriptor {
+  label: string;
+  size: number[] | gpuGPUExtent3DDict;
+  mipLevelCount?: number;
+  sampleCount?: number;
+  dimension?: string;
+  format: string;
+  usage: number;
+  viewFormats?: string[];
+}
+export interface gpuGPUExtent3DDict {
+  width: number;
+  height?: number;
+  depthOrArrayLayers?: number;
+}
+export interface gpuGPUTexture {
+  createView(descriptor?: gpuGPUTextureViewDescriptor): gpuGPUTextureView;
+  destroy(): void;
+  get width(): number;
+  get height(): number;
+  get depthOrArrayLayers(): number;
+  get mipLevelCount(): number;
+  get dimension(): string;
+  get format(): string;
+  get usage(): number;
+}
+export interface gpuGPUTextureView {}
+export interface gpuGPUTextureViewDescriptor {
+  label: string;
+  format: string;
+  dimension: string;
+  aspect?: string;
+  baseMipLevel?: number;
+  mipLevelCount: number;
+  baseArrayLayer?: number;
+  arrayLayerCount: number;
+}
+export declare abstract class gpuGPUColorWrite {
+  static readonly RED: number;
+  static readonly GREEN: number;
+  static readonly BLUE: number;
+  static readonly ALPHA: number;
+  static readonly ALL: number;
+}
+export interface gpuGPURenderPipeline {}
+export interface gpuGPURenderPipelineDescriptor {
+  label?: string;
+  layout: string | gpuGPUPipelineLayout;
+  vertex: gpuGPUVertexState;
+  primitive?: gpuGPUPrimitiveState;
+  depthStencil?: gpuGPUDepthStencilState;
+  multisample?: gpuGPUMultisampleState;
+  fragment?: gpuGPUFragmentState;
+}
+export interface gpuGPUVertexState {
+  module: gpuGPUShaderModule;
+  entryPoint: string;
+  constants?: Record<string, number>;
+  buffers?: gpuGPUVertexBufferLayout[];
+}
+export interface gpuGPUVertexBufferLayout {
+  arrayStride: number | bigint;
+  stepMode?: string;
+  attributes: gpuGPUVertexAttribute[];
+}
+export interface gpuGPUVertexAttribute {
+  format: string;
+  offset: number | bigint;
+  shaderLocation: number;
+}
+export interface gpuGPUPrimitiveState {
+  topology?: string;
+  stripIndexFormat?: string;
+  frontFace?: string;
+  cullMode?: string;
+  unclippedDepth?: boolean;
+}
+export interface gpuGPUStencilFaceState {
+  compare?: string;
+  failOp?: string;
+  depthFailOp?: string;
+  passOp?: string;
+}
+export interface gpuGPUDepthStencilState {
+  format: string;
+  depthWriteEnabled: boolean;
+  depthCompare: string;
+  stencilFront?: gpuGPUStencilFaceState;
+  stencilBack?: gpuGPUStencilFaceState;
+  stencilReadMask?: number;
+  stencilWriteMask?: number;
+  depthBias?: number;
+  depthBiasSlopeScale?: number;
+  depthBiasClamp?: number;
+}
+export interface gpuGPUMultisampleState {
+  count?: number;
+  mask?: number;
+  alphaToCoverageEnabled?: boolean;
+}
+export interface gpuGPUFragmentState {
+  module: gpuGPUShaderModule;
+  entryPoint: string;
+  constants?: Record<string, number>;
+  targets: gpuGPUColorTargetState[];
+}
+export interface gpuGPUColorTargetState {
+  format: string;
+  blend: gpuGPUBlendState;
+  writeMask?: number;
+}
+export interface gpuGPUBlendState {
+  color: gpuGPUBlendComponent;
+  alpha: gpuGPUBlendComponent;
+}
+export interface gpuGPUBlendComponent {
+  operation?: string;
+  srcFactor?: string;
+  dstFactor?: string;
 }
 export interface BasicImageTransformations {
   /**
