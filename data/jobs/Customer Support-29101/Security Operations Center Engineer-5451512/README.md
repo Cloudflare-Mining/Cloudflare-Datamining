@@ -5,38 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong><strong><br></strong><span style="font-weight: 400;">Cloudflare is looking for a EMEA Marketing &amp; Events Manager</span><span style="font-weight: 400;">, who is dynamic, motivated, creative, analytical and has bags of positive energy. The right candidate will join the EMEA Events Center of Excellence team to help support and deliver events across the region that generate leads from new prospects and expansion accounts and help grow marketing pipeline dollars.</span></p>
-<p><span style="font-weight: 400;">This is a broad and challenging role within the EMEA Marketing team where you will support the launch and management of a series of events campaigns – including its contract negotiation, promotion, team coordination, booth build/execution until its closure to ensure sales follow up and event ROI is met. You have a natural inclination to measure the effectiveness of marketing activities, strong project management skills and the ability to think strategically and orchestrate many moving parts.</span></p>
-<p><span style="font-weight: 400;">The right candidate will learn first hand how the sales process works, how to deliver strategic marketing activities that align with bold goals and how to collaborate with various departments to ensure success. Perfect for any ambitious marketer looking to start their career in Marketing.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Other languages are a plus since you will be supporting different regions. </span></p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
+<h4><strong>Description</strong></h4>
+<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</span></p>
+<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</span></p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with cross-functional team members (Design, Sales, Marketing, Localization, Product) to orchestrate high-impact integrated online marketing campaigns.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Define campaign objectives and enable effective reporting, target audiences, segment leads, and create marketing assets (website offers, email templates, landing pages, banners, etc.) to execute the campaign.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help evaluate and manage local vendors to support EMEA events&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Plan, promote, and host marketing events (trade shows, conferences, meetups, breakfast briefings, digital events) across the region that capture prospects and help move them into customers as well as cross sell into the customer base.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ongoing project management of campaign execution across Marketo and Salesforce, including data hygiene. Manage campaigns timeline, ROI, and data-driven improvements through optimization.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate campaign results to key stakeholders</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor and investigate the alerts to identify attacks</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Configure / Manager security monitoring rules and contribute to tool improvements</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting</span></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Key skill sets</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Very good proficiency in English</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Based in London, UK or Lisbon, Portugal</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Motivated, positive and above all a team player</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Analytically inclined, exceptional organizational skills, with rigorous attention to detail</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work effectively in a fast-paced and ever-changing environment with tight deadlines</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and strong organisation skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Extreme curiosity</span></li>
-</ul>
-<p><strong>Bonus points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Events Marketing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with Salesforce, Marketo, Contentful, Eloqua (or other marketing automation tool)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with Adobe Creative (Indesign, Illustrator, Photoshop)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience rewriting translated titles/descriptions (webinars, events) to make them compelling</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Skills in outreach messaging and content creation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Prior internship experience in a high growth company in the SaaS, security, or network space, combined with knowledge of how the Internet works is a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Language skills would be considered a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Modern internet protocols like UDP, TCP, etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of iptables</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Analysis of traffic for attack anomaly detection and creation of mitigation rules</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Cloudflare Security Products &amp; Features</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical Support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communication skills with high-value VIP customers under attack</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Command line / Bash shell</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</span></li>
+	<li style="font-weight: 400;">Security skills and certifications preferred: CISSP, GCIA GCIH, GCFA, GCFE, etc.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Calm under pressure</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
