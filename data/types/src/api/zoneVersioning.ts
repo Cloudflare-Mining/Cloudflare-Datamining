@@ -76,18 +76,6 @@ const CreateZoneVersion = eg.object({
 
 export type CreateZoneVersion = TypeFromCodec<typeof CreateZoneVersion>;
 
-export const ZoneInfo = eg.object({
-  zone_name: eg.string,
-  zone_tag: eg.string
-});
-type ZoneInfo = TypeFromCodec<typeof ZoneInfo>;
-
-export type ConvertedZoneVersion = {
-  root: ZoneInfo;
-  parent: ZoneInfo;
-  versionId: number;
-} & ZoneInfo;
-
 const WAFMigrationStatus = eg.object({
   new_waf_status: eg.string,
   old_waf_status: eg.string

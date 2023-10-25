@@ -164,9 +164,7 @@ export type Reverse<Tuple extends any[], Result extends any[] = []> = {
  * // becomes {foo: string, baz: boolean}
  * type Foo = Compute<{bar: string} & {baz: boolean}>
  */
-export type Compute<A extends any> = A extends Function
-  ? A
-  : { [K in keyof A]: A[K] } & {};
+export type Compute<A> = A extends Function ? A : { [K in keyof A]: A[K] } & {};
 
 /**
  * Same as Partial, but recursively.

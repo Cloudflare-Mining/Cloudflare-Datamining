@@ -1,7 +1,7 @@
 {
   "name": "@cloudflare/types",
   "description": "Cloudflare API data types and various type helpers.",
-  "version": "6.23.6",
+  "version": "6.24.0",
   "types": "./dist/index.d.ts",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -9,6 +9,7 @@
   "license": "BSD-3-Clause",
   "sideEffects": false,
   "publishConfig": {
+    "main": "lib/index.js",
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
@@ -19,12 +20,10 @@
   },
   "scripts": {
     "lint": "yarn global:lint",
-    "test": "yarn global:test",
-    "test-coverage": "stratus test --coverage",
-    "test-watch": "stratus test --watch"
+    "test": "yarn global:test"
   },
   "dependencies": {
-    "@cloudflare/intl-types": "^1.5.1",
+    "@cloudflare/intl-types": "^1.5.2",
     "@cloudflare/util-en-garde": "^8.0.10"
   },
   "devDependencies": {
@@ -33,6 +32,5 @@
   },
   "peerDependencies": {
     "react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
-  },
-  "gitHead": "97597180a614da57c69fe8117ac28e6154f837c7"
+  }
 }

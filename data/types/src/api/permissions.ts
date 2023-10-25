@@ -19,6 +19,7 @@ export const Permissions = eg.object({
   lb: PermValue,
   legal: PermValue,
   logs: PermValue,
+  magic: PermValue,
   member: PermValue,
   organization: PermValue,
   r2_bucket: PermValue,

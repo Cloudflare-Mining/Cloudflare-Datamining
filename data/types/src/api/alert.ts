@@ -136,3 +136,10 @@ export type AvailableAlert = TypeFromCodec<typeof AvailableAlert>;
 
 export const TestAlertRequest = eg.object({});
 export type TestAlertRequest = TypeFromCodec<typeof TestAlertRequest>;
+
+export const StatuspageComponent = eg.object({
+  id: eg.string,
+  name: eg.string,
+  parent_component_id: eg.string.optional
+});
+export type StatuspageComponent = TypeFromCodec<typeof StatuspageComponent>;
