@@ -143,7 +143,6 @@
 													"properties": {
 														"id": {
 															"description": "Identifier of the zone setting.",
-															"example": "development_mode",
 															"type": "string"
 														},
 														"modified_on": {
@@ -305,7 +304,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -475,6 +473,20 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"examples": {
+							"off": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "cache_reserve",
+										"value": "off"
+									},
+									"success": true
+								}
+							}
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -594,7 +606,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -655,6 +666,21 @@
 			"4XX": {
 				"content": {
 					"application/json": {
+						"examples": {
+							"Error": {
+								"value": {
+									"errors": [
+										{
+											"code": 12345,
+											"message": "Some error message"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -776,7 +802,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -943,6 +968,561 @@
 			"pro": true
 		}
 	},
+	"GET /zones/{zone_identifier}/cache/cache_reserve_clear": {
+		"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
+		"operationId": "zone-cache-settings-get-cache-reserve-clear",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Completed": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"end_ts": "2023-10-02T12:00:00.12345Z",
+										"id": "cache_reserve_clear",
+										"start_ts": "2023-10-02T10:00:00.12345Z",
+										"state": "Completed"
+									},
+									"success": true
+								}
+							},
+							"In-progress": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"id": "cache_reserve_clear",
+										"start_ts": "2023-10-02T10:00:00.12345Z",
+										"state": "In-progress"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"modified_on"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"cache_reserve_clear"
+																	],
+																	"example": "cache_reserve_clear"
+																}
+															}
+														}
+													],
+													"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
+													"title": "Cache Reserve Clear"
+												},
+												{
+													"properties": {
+														"end_ts": {
+															"description": "The time that the latest Cache Reserve Clear operation completed.",
+															"example": "2023-10-02T12:00:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"start_ts": {
+															"description": "The time that the latest Cache Reserve Clear operation started.",
+															"example": "2023-10-02T10:00:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"state": {
+															"description": "The current state of the Cache Reserve Clear operation.",
+															"enum": [
+																"In-progress",
+																"Completed"
+															],
+															"example": "In-progress",
+															"type": "string"
+														}
+													},
+													"required": [
+														"state",
+														"start_ts"
+													]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Cache Reserve Clear response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Not found": {
+								"value": {
+									"errors": [
+										{
+											"code": 1142,
+											"message": "Unable to retrieve cache_reserve_clear setting value. The zone setting does not exist because you never performed a Cache Reserve Clear operation."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"errors": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"messages": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"success": {
+																	"description": "Whether the API call was successful",
+																	"enum": [
+																		true
+																	],
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"success",
+																"errors",
+																"messages",
+																"result"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the zone setting.",
+																			"type": "string"
+																		},
+																		"modified_on": {
+																			"description": "last time this setting was modified.",
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"nullable": true,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"modified_on"
+																	]
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"cache_reserve_clear"
+																			],
+																			"example": "cache_reserve_clear"
+																		}
+																	}
+																}
+															],
+															"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
+															"title": "Cache Reserve Clear"
+														},
+														{
+															"properties": {
+																"end_ts": {
+																	"description": "The time that the latest Cache Reserve Clear operation completed.",
+																	"example": "2023-10-02T12:00:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"start_ts": {
+																	"description": "The time that the latest Cache Reserve Clear operation started.",
+																	"example": "2023-10-02T10:00:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"state": {
+																	"description": "The current state of the Cache Reserve Clear operation.",
+																	"enum": [
+																		"In-progress",
+																		"Completed"
+																	],
+																	"example": "In-progress",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"start_ts"
+															]
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Cache Reserve Clear failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Cache Reserve Clear",
+		"tags": [
+			"Zone Cache Settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /zones/{zone_identifier}/cache/regional_tiered_cache": {
 		"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
 		"operationId": "zone-cache-settings-get-regional-tiered-cache-setting",
@@ -1083,7 +1663,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -1123,7 +1702,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -1294,7 +1872,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -1334,7 +1911,6 @@
 																			"properties": {
 																				"id": {
 																					"description": "Identifier of the zone setting.",
-																					"example": "development_mode",
 																					"type": "string"
 																				},
 																				"modified_on": {
@@ -1630,7 +2206,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -1919,7 +2494,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -2237,6 +2811,20 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"examples": {
+							"off": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "cache_reserve",
+										"value": "off"
+									},
+									"success": true
+								}
+							}
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -2356,7 +2944,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -2417,6 +3004,21 @@
 			"4XX": {
 				"content": {
 					"application/json": {
+						"examples": {
+							"Denied": {
+								"value": {
+									"errors": [
+										{
+											"code": 1153,
+											"message": "Cache Reserve cannot be enabled because a deletion is already in progress."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
 						"schema": {
 							"allOf": [
 								{
@@ -2538,7 +3140,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -2868,7 +3469,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -2908,7 +3508,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -3079,7 +3678,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -3119,7 +3717,6 @@
 																			"properties": {
 																				"id": {
 																					"description": "Identifier of the zone setting.",
-																					"example": "development_mode",
 																					"type": "string"
 																				},
 																				"modified_on": {
@@ -3545,7 +4142,6 @@
 															"properties": {
 																"id": {
 																	"description": "Identifier of the zone setting.",
-																	"example": "development_mode",
 																	"type": "string"
 																},
 																"modified_on": {
@@ -3834,7 +4430,6 @@
 																	"properties": {
 																		"id": {
 																			"description": "Identifier of the zone setting.",
-																			"example": "development_mode",
 																			"type": "string"
 																		},
 																		"modified_on": {
@@ -4105,6 +4700,557 @@
 			"business": true,
 			"enterprise": true,
 			"free": false,
+			"pro": true
+		}
+	},
+	"POST /zones/{zone_identifier}/cache/cache_reserve_clear": {
+		"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
+		"operationId": "zone-cache-settings-start-cache-reserve-clear",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"example": "{}"
+				}
+			},
+			"description": "The request body is currently not used.",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"In-progress": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"id": "cache_reserve_clear",
+										"start_ts": "2023-10-02T10:00:00.12345Z",
+										"state": "In-progress"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"modified_on"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "ID of the zone setting.",
+																	"enum": [
+																		"cache_reserve_clear"
+																	],
+																	"example": "cache_reserve_clear"
+																}
+															}
+														}
+													],
+													"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
+													"title": "Cache Reserve Clear"
+												},
+												{
+													"properties": {
+														"end_ts": {
+															"description": "The time that the latest Cache Reserve Clear operation completed.",
+															"example": "2023-10-02T12:00:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"start_ts": {
+															"description": "The time that the latest Cache Reserve Clear operation started.",
+															"example": "2023-10-02T10:00:00.12345Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"state": {
+															"description": "The current state of the Cache Reserve Clear operation.",
+															"enum": [
+																"In-progress",
+																"Completed"
+															],
+															"example": "In-progress",
+															"type": "string"
+														}
+													},
+													"required": [
+														"state",
+														"start_ts"
+													]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Start Cache Reserve Clear response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Rejected": {
+								"value": {
+									"errors": [
+										{
+											"code": 1152,
+											"message": "Turn off Cache Reserve sync to proceed with deletion."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"errors": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"messages": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"success": {
+																	"description": "Whether the API call was successful",
+																	"enum": [
+																		true
+																	],
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"success",
+																"errors",
+																"messages",
+																"result"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the zone setting.",
+																			"type": "string"
+																		},
+																		"modified_on": {
+																			"description": "last time this setting was modified.",
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"nullable": true,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"modified_on"
+																	]
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "ID of the zone setting.",
+																			"enum": [
+																				"cache_reserve_clear"
+																			],
+																			"example": "cache_reserve_clear"
+																		}
+																	}
+																}
+															],
+															"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
+															"title": "Cache Reserve Clear"
+														},
+														{
+															"properties": {
+																"end_ts": {
+																	"description": "The time that the latest Cache Reserve Clear operation completed.",
+																	"example": "2023-10-02T12:00:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"start_ts": {
+																	"description": "The time that the latest Cache Reserve Clear operation started.",
+																	"example": "2023-10-02T10:00:00.12345Z",
+																	"format": "date-time",
+																	"type": "string"
+																},
+																"state": {
+																	"description": "The current state of the Cache Reserve Clear operation.",
+																	"enum": [
+																		"In-progress",
+																		"Completed"
+																	],
+																	"example": "In-progress",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"state",
+																"start_ts"
+															]
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Start Cache Reserve Clear failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Start Cache Reserve Clear",
+		"tags": [
+			"Zone Cache Settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
 			"pro": true
 		}
 	}
