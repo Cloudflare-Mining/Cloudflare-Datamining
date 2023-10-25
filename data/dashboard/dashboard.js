@@ -778,7 +778,7 @@
 			var Vt = n("../react/app/components/Persistence/index.tsx"),
 				Yt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Jt = n("../react/app/components/LoadingSuspense.tsx");
-			const Qt = pe().lazy(() => Promise.all([n.e(2480), n.e(15613), n.e(4616), n.e(56310), n.e(30489), n.e(98283), n.e(78413), n.e(98210), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Qt = pe().lazy(() => Promise.all([n.e(2480), n.e(15613), n.e(4616), n.e(56310), n.e(76877), n.e(98283), n.e(78413), n.e(98210), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Xt = () => pe().createElement(Jt.Z, null, pe().createElement(Qt, null));
 			const qt = () => (Se.useEffect(() => E, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
@@ -832,7 +832,7 @@
 						}
 					}, [g.search])
 				},
-				sn = pe().lazy(() => Promise.all([n.e(2480), n.e(15613), n.e(4616), n.e(56310), n.e(30489), n.e(81778), n.e(72019), n.e(12419), n.e(78413), n.e(98210), n.e(47261), n.e(35812), n.e(77637), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				sn = pe().lazy(() => Promise.all([n.e(2480), n.e(15613), n.e(4616), n.e(56310), n.e(76877), n.e(81778), n.e(72019), n.e(12419), n.e(78413), n.e(98210), n.e(47261), n.e(35812), n.e(77637), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				cn = pe().lazy(() => Promise.all([n.e(15613), n.e(81778), n.e(78413), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: g
@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "marina/LOUI-0000",
+					branch: "release-Oct.25.2023-1698242704",
 					isReleaseCandidate: "true",
-					commit: "5850ed1e1963c6a438c3ad94e4745ab009b6ecc6",
+					commit: "ffa2dda6b0b7a5b06074e4981327651471e284c6",
 					env: "production",
-					builtAt: 1698238873226,
-					dashVersion: "d6a0f2f3187d05e6c99823c74ef2cb1856dea5aa",
+					builtAt: 1698253893932,
+					dashVersion: "3b153b9d32e5645e2133a3df73d2cfbf30d72f1c",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -9072,6 +9072,7 @@
 					ssl: (0, t.BC)`/${"accountId"}/${"zoneId"}/ssl-tls/edge-certificates`,
 					analyticsEngine: (0, t.BC)`/${"accountId"}/workers/analytics-engine`,
 					emailRouting: (0, t.BC)`/${"accountId"}/${"zoneName"}/email/routing/routes`,
+					emailRoutingRule: (0, t.BC)`/${"accountId"}/${"zoneName"}/email/routing/routes/${"ruleId"}`,
 					zones: (0, t.BC)`/${"accountId"}`,
 					developerPlatform_workers_create: (0, t.BC)`/${"accountId"}/developer-platform/workers/onboarding`,
 					developerPlatform_workers_success: (0, t.BC)`/${"accountId"}/developer-platform/workers/success`,
