@@ -12,7 +12,7 @@
 	"education": "education_optional",
 	"internal_job_id": 2706258,
 	"location": {
-		"name": "Austin, TX"
+		"name": "Remote and/or any of these Cloudflare Offices: San Francisco, CA, Austin, TX, Champaign, IL, New York, NY, Seattle, WA, Washington, D.C."
 	},
 	"metadata": [
 		{
@@ -31,13 +31,15 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Austin, US",
+				"San Francisco, US",
 				"Remote, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
 	"id": 5451512,
-	"updated_at": "2023-10-25T10:52:52-04:00",
+	"updated_at": "2023-10-25T15:36:06-04:00",
 	"requisition_id": "305",
 	"title": "Security Operations Center Engineer",
 	"departments": [
@@ -53,6 +55,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
