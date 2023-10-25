@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "release-Oct.25.2023-1698242704",
+					branch: "hotfix-page-rules-broke-in-zv",
 					isReleaseCandidate: "true",
-					commit: "ffa2dda6b0b7a5b06074e4981327651471e284c6",
+					commit: "5ebc837a394dd8dcde66cf189f55e048ba38755c",
 					env: "production",
-					builtAt: 1698253893932,
-					dashVersion: "3b153b9d32e5645e2133a3df73d2cfbf30d72f1c",
+					builtAt: 1698270233664,
+					dashVersion: "363cb090dcd6209b3f43ca7ca30bdb2f00bb157d",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
