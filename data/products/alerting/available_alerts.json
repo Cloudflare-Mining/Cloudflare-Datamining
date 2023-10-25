@@ -28,7 +28,7 @@
 			]
 		}
 	],
-	"Brand Protection Alert": [
+	"Brand Protection": [
 		{
 			"display_name": "Brand Protection Domain Match Alert",
 			"type": "brand_protection_alert",
@@ -41,9 +41,7 @@
 					"AvailableValues": null
 				}
 			]
-		}
-	],
-	"Brand Protection Digest": [
+		},
 		{
 			"display_name": "Brand Protection Domain Match Digest",
 			"type": "brand_protection_digest",
@@ -51,6 +49,19 @@
 			"filter_options": [
 				{
 					"Key": "query_tag",
+					"ComparisonOperator": "==",
+					"Range": "0-n",
+					"AvailableValues": null
+				}
+			]
+		},
+		{
+			"display_name": "Logo Match Alert",
+			"type": "logo_match_alert",
+			"description": "Get alerts when saved logos match images from URLs scanned by Security Center",
+			"filter_options": [
+				{
+					"Key": "logo_tag",
 					"ComparisonOperator": "==",
 					"Range": "0-n",
 					"AvailableValues": null
@@ -185,21 +196,6 @@
 					"Key": "enabled",
 					"ComparisonOperator": "==",
 					"Range": "1-n",
-					"AvailableValues": null
-				}
-			]
-		}
-	],
-	"Logo Match Alert": [
-		{
-			"display_name": "Logo Match Alert",
-			"type": "logo_match_alert",
-			"description": "Get alerts when saved logos match images from URLs scanned by Security Center",
-			"filter_options": [
-				{
-					"Key": "logo_tag",
-					"ComparisonOperator": "==",
-					"Range": "0-n",
 					"AvailableValues": null
 				}
 			]
