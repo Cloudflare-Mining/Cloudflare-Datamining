@@ -1006,7 +1006,8 @@
 		"name": "string",
 		"race": "function",
 		"reject": "function",
-		"resolve": "function"
+		"resolve": "function",
+		"withResolvers": "function"
 	},
 	"PromiseRejectionEvent": {
 		"__proto": "function",
@@ -2530,7 +2531,6 @@
 		"Int32Array",
 		"Int8Array",
 		"Intl",
-		"Iterator",
 		"JSON",
 		"Map",
 		"Math",
@@ -2644,7 +2644,6 @@
 		"Int32Array",
 		"Int8Array",
 		"Intl",
-		"Iterator",
 		"JSON",
 		"Map",
 		"Math",
@@ -2743,7 +2742,8 @@
 					"any": "undefined",
 					"race": "undefined",
 					"resolve": "undefined",
-					"reject": "undefined"
+					"reject": "undefined",
+					"withResolvers": "undefined"
 				}
 			},
 			"doesNotThrow": {
@@ -2857,7 +2857,8 @@
 					"any": "undefined",
 					"race": "undefined",
 					"resolve": "undefined",
-					"reject": "undefined"
+					"reject": "undefined",
+					"withResolvers": "undefined"
 				}
 			},
 			"strict": {
@@ -3043,6 +3044,17 @@
 						"length": "number",
 						"name": "string",
 						"_prototype": {}
+					},
+					"inspect": {
+						"__proto": "function",
+						"__type": "function",
+						"length": "number",
+						"name": "string",
+						"_prototype": {
+							"length": "undefined",
+							"name": "undefined",
+							"prototype": "undefined"
+						}
 					},
 					"compare": {
 						"__proto": "function",
@@ -4619,7 +4631,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -4636,7 +4649,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -5290,7 +5304,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -5307,7 +5322,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -6500,7 +6516,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -6517,7 +6534,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -6886,7 +6904,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -6903,7 +6922,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -7484,7 +7504,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -7501,7 +7522,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -8125,7 +8147,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -8142,7 +8165,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -8781,7 +8805,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -8798,7 +8823,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -9437,7 +9463,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					},
 					"finished": {
@@ -9454,7 +9481,8 @@
 							"any": "undefined",
 							"race": "undefined",
 							"resolve": "undefined",
-							"reject": "undefined"
+							"reject": "undefined",
+							"withResolvers": "undefined"
 						}
 					}
 				},
@@ -9487,7 +9515,8 @@
 						"any": "undefined",
 						"race": "undefined",
 						"resolve": "undefined",
-						"reject": "undefined"
+						"reject": "undefined",
+						"withResolvers": "undefined"
 					}
 				},
 				"finished": {
@@ -9504,7 +9533,8 @@
 						"any": "undefined",
 						"race": "undefined",
 						"resolve": "undefined",
-						"reject": "undefined"
+						"reject": "undefined",
+						"withResolvers": "undefined"
 					}
 				}
 			},
@@ -9928,281 +9958,6 @@
 		},
 		"util": {
 			"types": {
-				"isAsyncFunction": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isGeneratorFunction": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isGeneratorObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isAnyArrayBuffer": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isArrayBuffer": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isArgumentsObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isBoxedPrimitive": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isDataView": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isMap": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isMapIterator": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isModuleNamespaceObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isNativeError": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isPromise": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isSet": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isSetIterator": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isSharedArrayBuffer": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isWeakMap": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isWeakSet": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isRegExp": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isDate": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isStringObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isSymbolObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isNumberObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isBooleanObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
-				"isBigIntObject": {
-					"__proto": "function",
-					"__type": "function",
-					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
-				},
 				"isCryptoKey": {
 					"__proto": "function",
 					"__type": "function",
@@ -10225,148 +9980,239 @@
 						"prototype": "undefined"
 					}
 				},
+				"isAsyncFunction": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isGeneratorFunction": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isGeneratorObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isAnyArrayBuffer": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isArrayBuffer": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isArgumentsObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isBoxedPrimitive": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isDataView": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isMap": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isMapIterator": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isModuleNamespaceObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isNativeError": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isPromise": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isProxy": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isSet": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isSetIterator": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isSharedArrayBuffer": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isWeakMap": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isWeakSet": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isRegExp": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isDate": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isStringObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isSymbolObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isNumberObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isBooleanObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
+				"isBigIntObject": {
+					"__proto": "function",
+					"__type": "function",
+					"length": "number",
+					"name": "string"
+				},
 				"isArrayBufferView": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isBigInt64Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isBigUint64Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isFloat32Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isFloat64Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isInt8Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isInt16Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isInt32Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isTypedArray": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isUint8Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isUint8ClampedArray": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isUint16Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				},
 				"isUint32Array": {
 					"__proto": "function",
 					"__type": "function",
 					"length": "number",
-					"name": "string",
-					"_prototype": {
-						"length": "undefined",
-						"name": "undefined",
-						"prototype": "undefined"
-					}
+					"name": "string"
 				}
 			},
 			"callbackify": {
@@ -10384,6 +10230,261 @@
 				"_prototype": {},
 				"custom": "symbol"
 			},
+			"inspect": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {
+					"length": "undefined",
+					"name": "undefined",
+					"prototype": "undefined",
+					"custom": "undefined",
+					"defaultOptions": "undefined",
+					"colors": "undefined",
+					"styles": "undefined"
+				},
+				"custom": "symbol",
+				"defaultOptions": {
+					"showHidden": "boolean",
+					"depth": "number",
+					"colors": "boolean",
+					"customInspect": "boolean",
+					"showProxy": "boolean",
+					"maxArrayLength": "number",
+					"maxStringLength": "number",
+					"breakLength": "number",
+					"compact": "number",
+					"sorted": "boolean",
+					"getters": "boolean",
+					"numericSeparator": "boolean"
+				},
+				"colors": {
+					"reset": {
+						"0": "number",
+						"1": "number"
+					},
+					"bold": {
+						"0": "number",
+						"1": "number"
+					},
+					"dim": {
+						"0": "number",
+						"1": "number"
+					},
+					"italic": {
+						"0": "number",
+						"1": "number"
+					},
+					"underline": {
+						"0": "number",
+						"1": "number"
+					},
+					"blink": {
+						"0": "number",
+						"1": "number"
+					},
+					"inverse": {
+						"0": "number",
+						"1": "number"
+					},
+					"hidden": {
+						"0": "number",
+						"1": "number"
+					},
+					"strikethrough": {
+						"0": "number",
+						"1": "number"
+					},
+					"doubleunderline": {
+						"0": "number",
+						"1": "number"
+					},
+					"black": {
+						"0": "number",
+						"1": "number"
+					},
+					"red": {
+						"0": "number",
+						"1": "number"
+					},
+					"green": {
+						"0": "number",
+						"1": "number"
+					},
+					"yellow": {
+						"0": "number",
+						"1": "number"
+					},
+					"blue": {
+						"0": "number",
+						"1": "number"
+					},
+					"magenta": {
+						"0": "number",
+						"1": "number"
+					},
+					"cyan": {
+						"0": "number",
+						"1": "number"
+					},
+					"white": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgBlack": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgRed": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgGreen": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgYellow": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgBlue": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgMagenta": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgCyan": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgWhite": {
+						"0": "number",
+						"1": "number"
+					},
+					"framed": {
+						"0": "number",
+						"1": "number"
+					},
+					"overlined": {
+						"0": "number",
+						"1": "number"
+					},
+					"gray": {
+						"0": "number",
+						"1": "number"
+					},
+					"redBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"greenBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"yellowBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"blueBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"magentaBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"cyanBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"whiteBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgGray": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgRedBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgGreenBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgYellowBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgBlueBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgMagentaBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgCyanBright": {
+						"0": "number",
+						"1": "number"
+					},
+					"bgWhiteBright": {
+						"0": "number",
+						"1": "number"
+					}
+				},
+				"styles": {
+					"special": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"number": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"bigint": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"boolean": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"undefined": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"null": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"string": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"symbol": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"date": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"name": "undefined",
+					"regexp": {
+						"__proto": "object",
+						"__type": "string"
+					},
+					"module": {
+						"__proto": "object",
+						"__type": "string"
+					}
+				}
+			},
 			"format": {
 				"__proto": "function",
 				"__type": "function",
@@ -10394,6 +10495,20 @@
 					"name": "undefined",
 					"prototype": "undefined"
 				}
+			},
+			"formatWithOptions": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
+			},
+			"stripVTControlCharacters": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string",
+				"_prototype": {}
 			},
 			"inherits": {
 				"__proto": "function",
