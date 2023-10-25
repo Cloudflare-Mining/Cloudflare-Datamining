@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "release-Oct.24.2023-1698156227",
+					branch: "hotfix-zv-environment-states",
 					isReleaseCandidate: "true",
-					commit: "a82dfe8f3ba3b1903a63a11aa9be818db7577f60",
+					commit: "32a161c5b9855d82b94ab8ad18dafe059725fff9",
 					env: "production",
-					builtAt: 1698172608067,
-					dashVersion: "311d893dc2609306941577a9dd8116feecc389d7",
+					builtAt: 1698180865569,
+					dashVersion: "004ddc1c9887fa1cd5505f2a11cefa46e484c424",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
