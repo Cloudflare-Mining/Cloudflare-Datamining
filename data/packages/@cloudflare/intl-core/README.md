@@ -11,5 +11,3 @@ For the latest docs please see: [burrito guide internationalization](https://bur
 ```sh
 $ npm install @cloudflare/intl-core
 ```
-
-.

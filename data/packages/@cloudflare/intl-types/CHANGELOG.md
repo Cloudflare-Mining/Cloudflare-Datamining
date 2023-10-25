@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-types@1.5.1...@cloudflare/intl-types@1.5.2) (2023-10-25)
+
+**Note:** Version bump only for package @cloudflare/intl-types
+
+
+
+
+
 ## [1.5.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-types@1.5.0...@cloudflare/intl-types@1.5.1) (2023-08-30)
 
 

@@ -1,6 +1,10 @@
 # Change Log
 
-## 5.0.29
+## 5.1.0
+
+### Minor Changes
+
+- d39b5c7fe4: Add scrollHorizontally prop
 
 ### Patch Changes
 
