@@ -5,41 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About The Role</strong></p>
-<p>We announced Cloudflare Workers in 2017 &nbsp;— since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
-<p>Over the past few years, Workers has grown from a simple functions-as-a-service option into a complete full-stack platform. We’re growing this platform in new ways, and looking for a Product Manager to drive challenging initiatives, working directly with engineering teams across AI and GPU-based workloads, integrations with external tools and services, to new APIs and observability tooling for Cloudflare Workers.</p>
-<p>You’ll be responsible for driving, building and shipping at least two soon-to-be-announced products in the database and data space:</p>
-<ul>
-	<li>The first will dramatically improve how developers connect to and query existing databases from Cloudflare Workers, making it even easier to build sophisticated full stack applications with Workers.</li>
-	<li>The second will enable developers to define, execute, and manage multi-step workflows on top of Workers, R2, Queues, and other sources/sinks, making it easier to ingest, process and transform data on the Workers platform.</li>
-</ul>
-<p>You get to join these teams from the ground floor and will be engaging with developers from “week one” as we rapidly innovate and iterate.</p>
+<p><strong>To the attention of candidates (Mexico City):&nbsp;</strong></p>
+<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp;&nbsp;</strong><strong>Visa sponsorship is NOT provided for this position</strong><strong>.</strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
 <p><strong>What You’ll Do</strong></p>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Zero Trust, Workers, Speed, Images, Stream, CDN and others.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Drive the strategy, roadmap &amp; represent your products across the organization</li>
-	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
-	<li>Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</li>
-	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
-	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
-	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
-	<li>Delve into market research to drive new investments opportunities</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
+	<li>You have experience solving DNS and other networking-related problems</li>
+	<li>You understand how the Internet works</li>
+	<li>You understand and have previous experience working with Microsoft Exchange, Active Directory, ADFS for Office365, Google Workspace.</li>
+	<li>You understand and have previous experience working with Identity and Access Management protocols and technologies (SSO, SAML, OAuth, Federation, SCIM, etc.)</li>
+	<li>You understand and have previous experience supporting and troubleshooting multi-factor mechanisms (TOTP, SMS, FIDO, U2F, WebAuth, EMAIL, Push MFA, SMTP etc).</li>
+	<li>You have experience with cyber threats (Phishing, spam, greymails etc)</li>
+	<li>You have experience working with Linux</li>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+	<li>You are a motivated self-starter and always looking to expand your existing skill set</li>
 </ul>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
-<p>The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment.&nbsp;</p>
-<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
-	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
-	<li>BS/MS in a technology field.&nbsp;</li>
-	<li>Professional product management experience (3-4 years)</li>
-	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
-	<li>A desire to sweat the details and ship great developer experiences</li>
-	<li>Experience using developer tools (such as source-control management tools, CLIs, etc)</li>
-	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
-	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</li>
+	<li>You are fluent in Portuguese, Spanish, German, Japanese, French or Mandarin</li>
+	<li>You are familiar with Cloudflare One products (Zero Trust / Access / Gateway / Tunnel / CASB / DLP / Area1 Email Security / WARP client) and have a site actively using our platform</li>
+	<li>You have a solid grasp of problem-solving with command line tools (dig / traceroute / curl / tcpdump)</li>
+	<li>You are familiar with Apache, Nginx, IIS, and other web servers</li>
+	<li>You are committed to gaining a deeper understanding of the following technologies: Zero Trust / Secure Web Gateway policies / Endpoint protections / security best practices (Certificates, Zero Trust, least privileged access etc)</li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+	<li>Bachelor's Degree in Computer Science or a related field a plus</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

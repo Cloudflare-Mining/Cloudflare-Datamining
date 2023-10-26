@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5355880?gh_jid=5355880",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5465556?gh_jid=5465556",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,63 +9,60 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2674263,
+	"education": "education_optional",
+	"internal_job_id": 2710087,
 	"location": {
-		"name": "London, UK"
+		"name": "Remote US"
 	},
 	"metadata": [
 		{
 			"id": 164993,
 			"name": "Cross-post department",
-			"value": "Engineering",
+			"value": null,
 			"value_type": "single_select"
 		},
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4500 - Emerg Tech & Incubation",
+			"value": "5700 - Customer Support",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
-			"value": [],
+			"value": [
+				"Lisbon, Portugal",
+				"Remote, US"
+			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5355880,
-	"updated_at": "2023-10-23T13:56:57-04:00",
-	"requisition_id": null,
-	"title": "Product Manager - Database Connectivity & Cloudflare Workers",
+	"id": 5465556,
+	"updated_at": "2023-10-26T14:52:11-04:00",
+	"requisition_id": "312",
+	"title": "Content Manager",
 	"departments": [
 		{
-			"id": 39629,
-			"name": "Emerging Technology and Incubation",
+			"id": 29101,
+			"name": "Customer Support",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
-		},
-		{
-			"id": 82455,
-			"name": "Remote Portugal",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
-			"id": 82456,
-			"name": "Remote UK",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 74843
 		}
 	]
 }

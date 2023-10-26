@@ -6,8 +6,7 @@
 	</div>
 </div>
 <p><strong>About The Role</strong></p>
-<p>We announced Cloudflare Workers in 2017&nbsp; — since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.</p>
-<p>Over the past few years, Workers has grown from a simple functions-as-a-service option into a fully blown full-stack platform. With any application, however, in addition to serverless compute, you need to be able to manage state and connect to data you already have.</p>
+<p>We announced Cloudflare Workers in 2017 &nbsp;— since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support.<br>Over the past few years, Workers has grown from a simple functions-as-a-service option into a complete full-stack platform. We’re growing this platform in new ways, and looking for a Product Manager to drive challenging initiatives, working directly with engineering teams across AI and GPU-based workloads, integrations with external tools and services, to new APIs and observability tooling for Cloudflare Workers.</p>
 <p>You’ll be responsible for driving, building and shipping at least two soon-to-be-announced products in the database and data space:</p>
 <ul>
 	<li>The first will dramatically improve how developers connect to and query existing databases from Cloudflare Workers, making it even easier to build sophisticated full stack applications with Workers.</li>
