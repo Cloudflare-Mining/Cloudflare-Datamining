@@ -1,0 +1,60 @@
+<div class="mb2 gray5">2 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image11-1.png" class="kg-image" alt="Cyber attacks in the Israel-Hamas war" loading="lazy" width="1800" height="1014"></figure>
+	<p>ב-7 לאוקטובר 2023 בשעה 03:30 GMT (06:30 שעון ישראל), ארגון הטרור חמאס החל במתקפת פתע על ערים ישראליות ושיגר אלפי רקטות לעבר אזורי אוכלוסייה בדרום ובמרכז ישראל, לרבות תל אביב וירושלים. אזעקות "צבע אדום" המורות לאזרחים לתפוס מחסה החלו להישמע.</p>
+	<p>בערך 12 דקות מאוחר יותר, המערכות האוטומטיות של Cloudflare זיהו והפחיתו מתקפות DDoS נגד אתרי אינטרנט המספקים מידע חיוני והתרעות "צבע אדום" לאזרחים. המתקפה הראשונית הגיעה לשיא של 100,000 בקשות לשרתים בשנייה (rps) ונמשכה 10 דקות. 45 דקות מאוחר יותר, הגיעה המתקפה השנייה שהייתה רחבה הרבה יותר והגיעה לשיא של מיליון בקשות לשרתים בשנייה. היא נמשכה 6 דקת. מתקפות DDoS נוספות קטנות יותר כוונו נגד אתרי האינטרנט מספר שעות לאחר מכן.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image9.png" class="kg-image" alt="DDoS attacks against Israeli websites that provide civilians information and alerts on rocket attacks" loading="lazy" width="1999" height="805">
+		<figcaption>מתקפות DDoS נגד אתרי אינטרנט ישראלים המספקים מידע לאזרחים ומתריעים בזמן אזעקות "צבע אדום"</figcaption>
+	</figure>
+	<h3 id="%D7%9C%D7%90-%D7%A8%D7%A7-%D7%9E%D7%AA%D7%A7%D7%A4%D7%95%D7%AA-ddos">לא רק מתקפות DDoS</h3>
+	<p>אתרי אינטרנט ישראלים רבים ואפליקציות לטלפונים הניידים הפכו למטרות של קבוצות האקטיביסטיות פרו-פלסטיניות רבות. לפי Cybernews, אחת מהקבוצות האלה, AnonGhost, ניצלה את נקודת התורפה באפליקציה לטלפון הנייד המתריעה בעת ירי רקטות וטילים - "Red Alert: Israel". ניצול נקודת התורפה אפשר להם ליירט בקשות, לחשוף שרתים וממשקי APIs, ולשלוח התרעות "צבע אדום" כוזבות למספר משתמשים באפליקציה, לרבות הודעה לפיה "שוגרה פצצה גרעינית". AnonGhost טענה גם שתקפה אפליקציות רבות אחרות המתריעות בעת ירי רקטי.</p>
+	<p>ב-14 לאוקטובר חשפנו את ממצאי אחת החקירות שלנו שבוצעו על ידי צוות תפעול איומים של Cloudforce One שזיהה כי אפליקציות זדוניות לטלפונים הניידים של Android התחזו ל-RedAlert החוקית - אפליקציה המתריעה על ירי רקטות. האפליקציות הזדוניות השיגו גישה למידע משתמשים רגיש כגון רשימת אנשי הקשר, הודעות SMS, יומני שיחות טלפון, אפליקציות מותקנות ומידע אודות הטלפון וכרטיס ה-SIM של המשתמשים. ניתן למצוא מידע טכני נוסף על החקירה שלנו כאן.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image10.png" class="kg-image" alt="Screenshot of the malicious site linking to malicious mobile apps" loading="lazy" width="1600" height="1334">
+		<figcaption>צילום מסך של האתר הזדוני עם הקישור לאפליקציות הזדוניות לטלפון הנייד</figcaption>
+	</figure>
+	<p>יתרה מכך, Cloudflare זיהתה אתר אינטרנט ישראלי שהושחת חלקית על ידי AnonGhost. האתר הזה לא נמנה על המשתמשים ב-Cloudflare, אך יצרנו קשר עם הארגון כדי להציע את תמיכתנו.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-7.png" class="kg-image" alt="“Death to all Jews” in a part of a website that was hacked and defaced by AnonGhost" loading="lazy" width="1999" height="1192">
+		<figcaption>"מוות לכל היהודים" בחלק מהאתר שנפרץ והושחת על ידי AnonGhost</figcaption>
+	</figure>
+	<h3 id="%D7%94%D7%9E%D7%A9%D7%9A-%D7%9E%D7%AA%D7%A7%D7%A4%D7%95%D7%AA-ddos-%D7%90%D7%99%D7%A0%D7%98%D7%A0%D7%A1%D7%99%D7%91%D7%99%D7%95%D7%AA">המשך מתקפות DDoS אינטנסיביות</h3>
+	<p>בימים שלאחר מתקפת הטרור של ה-7 לאוקטובר, אתרי אינטרנט ישראלים חוו מתקפות DDoS אינטנסיביות. מאז, Cloudflare סייעה להגן על רבים מהם.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--7-.png" class="kg-image" alt="HTTP DDoS attacks against Israeli websites using Cloudflare" loading="lazy" width="1600" height="864">
+		<figcaption>מתקפות HTTP DDoS נגד אתרי אינטרנט ישראלים המשתמשים ב-Cloudflare</figcaption>
+	</figure>
+	<p>מאז מתקפת ה-7 לאוקטובר 2023, אתרי חדשות ותקשורת ישראלים הם היעדים העיקריים למתקפות DDoS—ומהווים 56% מסך כל המתקפות נגד אתרי אינטרנט ישראלים. ראינו את אותן מגמות כשרוסיה תקפה את אוקראינה. אתרי שידור ותקשורת אוקראיניים הותקפו קשות. המלחמה הקרקעית מלווה לעיתים קרובות במתקפות סייבר נגד אתרי אינטרנט המספקים מידע חיוני לאזרחים.</p>
+	<p>הענף השני הכי מותקף בישראל היה ענף התוכנה. כמעט 34% מסך כל מתקפות ה-DDoS כוונו הכד חברות תוכנה. במקום השלישי, ובאופן משמעותי יותר, הותקפו חברות בנקאות, שירותים פיננסיים וביטוח (BFSI). למקום הרביעי הגיעו אתרי מנהל ממשלתיים.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0.png" class="kg-image" alt="Top Israeli industries targeted by HTTP DDoS attacks" loading="lazy" width="1600" height="853">
+		<figcaption>ענפים ישראלים מובילים שחוו מתקפות HTTP DDoS</figcaption>
+	</figure>
+	<p>אנו יכולים גם לראות שאתרי חדשות ותקשורת ישראלים הותקפו מיד לאחר מתקפת הטרור שהתרחשה ב-7 לאוקטובר.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--1-.png" class="kg-image" alt="HTTP DDoS attacks against Israeli websites using Cloudflare by industry" loading="lazy" width="1600" height="820">
+		<figcaption>מתקפות HTTP DDoS נגד אתרים ישראלים המשתמשים ב-Cloudflare לפי ענף</figcaption>
+	</figure>
+	<p>מאז ה-1 לאוקטובר 2023, Cloudflare זיהתה והפחיתה באופן אוטומטי מעל 5 מיליארד HTTP בקשות שהיוו חלק ממתקפות ה-DDoS. לפני ה-7 לאוקטובר, כמעט ולא היו ניסיונות לבצע מתקפות HTTP DDoS נגד אתרי אינטרנט ישראלים המשתמשים ב- Cloudflare.</p>
+	<p>עם זאת, ביום בו ארגון הטרור חמאס ביצע את המתקפה, הייתה עלייה באחוז תעבורת מתקפות DDoS. כמעט בקשה אחת מכל 100 מאתרי אינטרנט ישראלים המשתמשים ב- Cloudflare היו חלק ממתקפות HTTP DDoS. הנתון הזה גדל פי ארבע ב-8 לאוקטובר.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--2-.png" class="kg-image" alt="Percentage of DDoS requests out of all requests towards Israeli websites using Cloudflare" loading="lazy" width="1600" height="961">
+		<figcaption>אחוז בקשות DDoS מסך כל הבקשות מאתרי אינטרנט ישראלים המשתמשים ב-Cloudflare</figcaption>
+	</figure>
+	<h3 id="%D7%9E%D7%AA%D7%A7%D7%A4%D7%95%D7%AA-%D7%A1%D7%99%D7%99%D7%91%D7%A8-%D7%A0%D7%92%D7%93-%D7%90%D7%AA%D7%A8%D7%99-%D7%90%D7%99%D7%A0%D7%98%D7%A8%D7%A0%D7%98-%D7%A4%D7%9C%D7%A1%D7%98%D7%99%D7%A0%D7%99%D7%99%D7%9D">מתקפות סייבר נגד אתרי אינטרנט פלסטיניים</h3>
+	<p>באותה מסגרת זמן, החל מה-1 לאוקטובר, Cloudflare זיהתה והפחיתה באופן אוטומטי מעל 454 מיליון בקשות לביצוע מתקפות HTTP DDoS שכוונו נגד אתרי אינטרנט פלסטיניים המשתמשים ב-Cloudflare. בעוד נתון זה מהווה בקושי עשירית מכמות הבקשות למתקפות שראינו נגד אתרי אינטרנט ישראלים המשתמשים ב-Cloudflare, הוא מייצג חלק גדול יותר באופן יחסי מסך התעבורה הכוללת באתרי אינטרנט פלסטיניים המשתמשים ב- Cloudflare.</p>
+	<p>בימים שלפני המתקפה של ארגון הטרור חמאס, לא ראינו מתקפות DDoS נגד אתרים פלסטיניים המשתמשים ב-Cloudflare. זה השתנה ב-7 לאוקטובר; מעל 46% מסך כל התעבורה באתרי אינטרנט פלסטיניים המשתמשים ב-Cloudflare היו חלק ממתקפות HTTP DDoS.</p>
+	<p>ב-9 לאוקטובר, הנתון הזה גדל לכמעט 60%. כמעט 6 מכל 10 בקשות HTTP לאתרי אינטרנט פלסטיניים המשתמשים ב-Cloudflare היו חלק ממתקפות DDoS.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--3-.png" class="kg-image" alt="Percentage of DDoS requests out of all requests towards Palestinian websites using Cloudflare" loading="lazy" width="1600" height="997">
+		<figcaption>אחוז בקשות DDoS מסך כל הבקשות לאתרי אינטרנט פלסטיניים המשתמשים ב-Cloudflare</figcaption>
+	</figure>
+	<p>אנחנו יכולים גם לראות שהמתקפות האלה המיוצגות בעליות החדות בגרף שלהלן ארעו לאחר מתקפת הטרור של חמאס.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--4-.png" class="kg-image" alt="HTTP DDoS attacks against Palestinian websites using Cloudflare" loading="lazy" width="1600" height="864">
+		<figcaption>מתקפות HTTP DDoS נגד אתרי אינטרנט פלסטיניים המשתמשים ב-Cloudflare</figcaption>
+	</figure>
+	<p>שלושה ענפים פלסטיניים הותקפו בשלושת השבועות האחרונים. רובן המוחלט של מתקפות HTTP DDoS כוונו נגד אתרי בנקאות—כמעט 76% מסך כל המתקפות. הענף השני המותקף ביותר היה ענף האינטרנט שספג 24% מסך כל מתקפות ה-DDoS. אחוז נוסף קטן מהמתקפות כוון נגד אתרי הפקת מדיה.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--5-.png" class="kg-image" alt="HTTP DDoS attacks against Palestinian websites using Cloudflare by industry" loading="lazy" width="1600" height="843">
+		<figcaption>מתקפות HTTP DDoS נגד אתרי אינטרנט פלסטיניים המשתמשים ב-Cloudflare לפי ענף</figcaption>
+	</figure>
+	<h3 id="%D7%90%D7%91%D7%98%D7%97%D7%AA-%D7%94%D7%90%D7%A4%D7%9C%D7%99%D7%A7%D7%A6%D7%99%D7%95%D7%AA-%D7%A9%D7%9C%D7%9B%D7%9D-%D7%95%D7%9E%D7%A0%D7%99%D7%A2%D7%AA-%D7%9E%D7%AA%D7%A7%D7%A4%D7%95%D7%AA-ddos">אבטחת האפליקציות שלכם ומניעת מתקפות DDoS</h3>
+	<p>כפי שראינו בשנים האחרונות, קונפליקטים ומלחמות תמיד מלוות במתקפות סייבר. הרכבנו רשימת המלצות כדי למטב את ההגנות שלכם נגד מתקפות DDoS. אתם יכולים גם לעקוב אחר המומחים שלנו שלב אחר שלב באבטחת האפליקציות שלכם ובמניעת מתקפות DDoS.</p>
+	<p>הקוראים גם מוזמנים להתעמק יותר ב-Radar Dashboard כדי לצפות בתובנות הקשורות לתעבורה ולמתקפות ומגמות בישראל ובקרב הפלסטינים. ביכולתכם גם לקרוא עוד על תעבורת האינטרנט ומגמת המתקפות בישראל ואצל הפלסטינים לאחר מתקפת הטרור ב-7 לאוקטובר.</p>
+	<p>תחת מתקפה או זקוקים להגנה נוספת? לחצו כאן<em><strong> </strong></em>לקבלת סיוע.</p>
+	<p>לחצו כאן לקבלת הגנה נגד אפליקציות זדוניות לטלפונים ניידים</p>
+	<h3 id="%D7%94%D7%A2%D7%A8%D7%94-%D7%91%D7%A0%D7%95%D7%92%D7%A2-%D7%9C%D7%9E%D7%AA%D7%95%D7%93%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95">הערה בנוגע למתודולוגיות שלנו</h3>
+	<p>התובנות שאנו מספקים מתבסס על תעבורה ומתקפות בהן אנו מבחינים נגד אתרים שמשתמשים ב- Cloudflare, אלא אם כן צוין אחרת או שקיימת הפנייה למקור צד שלישי. ניתן למצוא מידע נוסף אודות המתודולוגיות שלנו כאן.</p>
+</div>
