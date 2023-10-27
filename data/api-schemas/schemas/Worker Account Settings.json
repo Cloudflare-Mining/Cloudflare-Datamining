@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_identifier}/workers/account-settings": {
-		"description": "Fetches Worker Account Settings for an account.",
+		"description": "Fetches Worker account settings for an account.",
 		"operationId": "worker-account-settings-fetch-worker-account-settings",
 		"parameters": [
 			{
@@ -118,7 +118,7 @@
 				},
 				"description": "Fetch Worker Account Settings response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -310,11 +310,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Fetch Worker Account Settings",
@@ -328,7 +328,7 @@
 		}
 	},
 	"PUT /accounts/{account_identifier}/workers/account-settings": {
-		"description": "Creates Worker Account Settings for an account.",
+		"description": "Creates Worker account settings for an account.",
 		"operationId": "worker-account-settings-create-worker-account-settings",
 		"parameters": [
 			{
@@ -456,7 +456,7 @@
 				},
 				"description": "Create Worker Account Settings response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -648,11 +648,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Worker Account Settings",

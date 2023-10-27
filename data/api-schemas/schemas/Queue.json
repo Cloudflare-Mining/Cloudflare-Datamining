@@ -155,9 +155,12 @@
 									"nullable": true,
 									"properties": {
 										"result": {
-											"nullable": true
+											"items": {},
+											"nullable": true,
+											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -165,7 +168,7 @@
 				},
 				"description": "Delete Queue response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -290,9 +293,12 @@
 											"nullable": true,
 											"properties": {
 												"result": {
-													"nullable": true
+													"items": {},
+													"nullable": true,
+													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -389,11 +395,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Queue",
@@ -571,9 +577,12 @@
 									"nullable": true,
 									"properties": {
 										"result": {
-											"nullable": true
+											"items": {},
+											"nullable": true,
+											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -581,7 +590,7 @@
 				},
 				"description": "Delete Queue Consumer response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -706,9 +715,12 @@
 											"nullable": true,
 											"properties": {
 												"result": {
-													"nullable": true
+													"items": {},
+													"nullable": true,
+													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -805,11 +817,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Queue Consumer",
@@ -962,14 +974,18 @@
 								{
 									"properties": {
 										"errors": {
-											"nullable": true
+											"items": {},
+											"nullable": true,
+											"type": "array"
 										}
 									}
 								},
 								{
 									"properties": {
 										"messages": {
-											"nullable": true
+											"items": {},
+											"nullable": true,
+											"type": "array"
 										}
 									}
 								},
@@ -1051,7 +1067,7 @@
 				},
 				"description": "List Queues response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1175,14 +1191,18 @@
 										{
 											"properties": {
 												"errors": {
-													"nullable": true
+													"items": {},
+													"nullable": true,
+													"type": "array"
 												}
 											}
 										},
 										{
 											"properties": {
 												"messages": {
-													"nullable": true
+													"items": {},
+													"nullable": true,
+													"type": "array"
 												}
 											}
 										},
@@ -1353,11 +1373,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Queues",
@@ -1568,7 +1588,7 @@
 				},
 				"description": "Queue Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1830,11 +1850,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Queue Details",
@@ -1996,14 +2016,18 @@
 								{
 									"properties": {
 										"errors": {
-											"nullable": true
+											"items": {},
+											"nullable": true,
+											"type": "array"
 										}
 									}
 								},
 								{
 									"properties": {
 										"messages": {
-											"nullable": true
+											"items": {},
+											"nullable": true,
+											"type": "array"
 										}
 									}
 								},
@@ -2084,7 +2108,7 @@
 				},
 				"description": "List Queue Consumers response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2208,14 +2232,18 @@
 										{
 											"properties": {
 												"errors": {
-													"nullable": true
+													"items": {},
+													"nullable": true,
+													"type": "array"
 												}
 											}
 										},
 										{
 											"properties": {
 												"messages": {
-													"nullable": true
+													"items": {},
+													"nullable": true,
+													"type": "array"
 												}
 											}
 										},
@@ -2385,11 +2413,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Queue Consumers",
@@ -2591,7 +2619,7 @@
 				},
 				"description": "Create Queue response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2841,11 +2869,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Queue",
@@ -3084,7 +3112,7 @@
 				},
 				"description": "Create Queue Consumer response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3355,11 +3383,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Queue Consumer",
@@ -3570,7 +3598,7 @@
 				},
 				"description": "Update Queue response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3820,11 +3848,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Update Queue",
@@ -4069,7 +4097,7 @@
 				},
 				"description": "Update Queue Consumer response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -4339,11 +4367,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Update Queue Consumer",

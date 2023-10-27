@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_identifier}/workers/domains/{domain_identifier}": {
-		"description": "Detaches a worker from a zone and hostname.",
+		"description": "Detaches a Worker from a zone and hostname.",
 		"operationId": "worker-domain-detach-from-domain",
 		"parameters": [
 			{
@@ -34,7 +34,7 @@
 				},
 				"description": "Detach from Domain response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {}
 				},
@@ -43,11 +43,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Detach from Domain",
@@ -61,7 +61,7 @@
 		}
 	},
 	"GET /accounts/{account_identifier}/workers/domains": {
-		"description": "Lists all Worker Domains.",
+		"description": "Lists all Worker Domains for an account.",
 		"operationId": "worker-domain-list-domains",
 		"parameters": [
 			{
@@ -245,7 +245,7 @@
 				},
 				"description": "List Domains response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -463,11 +463,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Domains",
@@ -481,7 +481,7 @@
 		}
 	},
 	"GET /accounts/{account_identifier}/workers/domains/{domain_identifier}": {
-		"description": "Gets a Worker Domain.",
+		"description": "Gets a Worker domain.",
 		"operationId": "worker-domain-get-a-domain",
 		"parameters": [
 			{
@@ -627,7 +627,7 @@
 				},
 				"description": "Get a Domain response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -842,11 +842,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get a Domain",
@@ -860,7 +860,7 @@
 		}
 	},
 	"PUT /accounts/{account_identifier}/workers/domains": {
-		"description": "Attaches a worker to a zone and hostname.",
+		"description": "Attaches a Worker to a zone and hostname.",
 		"operationId": "worker-domain-attach-to-domain",
 		"parameters": [
 			{
@@ -1034,7 +1034,7 @@
 				},
 				"description": "Attach to Domain response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1249,11 +1249,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Attach to Domain",

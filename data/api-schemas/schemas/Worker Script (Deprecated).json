@@ -1,7 +1,7 @@
 {
 	"DELETE /zones/{zone_identifier}/workers/script": {
 		"deprecated": true,
-		"description": "Delete your worker. This call has no response body on a successful delete.",
+		"description": "Delete your Worker. This call has no response body on a successful delete.",
 		"operationId": "worker-script-(-deprecated)-delete-worker",
 		"parameters": [
 			{
@@ -28,22 +28,22 @@
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete Worker response"
+				"description": "Delete Worker response."
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {}
 				},
-				"description": "Delete Worker response failure"
+				"description": "Delete Worker response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Worker",
@@ -85,7 +85,7 @@
 				},
 				"description": "Download Worker response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"undefined": {
 						"schema": {
@@ -98,11 +98,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Download Worker",
@@ -236,8 +236,7 @@
 														{
 															"type": "string"
 														}
-													],
-													"nullable": true
+													]
 												}
 											}
 										}
@@ -257,7 +256,7 @@
 				},
 				"description": "Upload Worker response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -351,8 +350,7 @@
 																{
 																	"type": "string"
 																}
-															],
-															"nullable": true
+															]
 														}
 													}
 												}
@@ -461,11 +459,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Upload Worker",

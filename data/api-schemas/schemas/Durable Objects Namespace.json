@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_identifier}/workers/durable_objects/namespaces": {
-		"description": "Returns the namespaces owned by an account.",
+		"description": "Returns the Durable Object namespaces owned by an account.",
 		"operationId": "durable-objects-namespace-list-namespaces",
 		"parameters": [
 			{
@@ -167,7 +167,7 @@
 				},
 				"description": "List Namespaces response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -408,11 +408,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Namespaces",
@@ -637,7 +637,7 @@
 				},
 				"description": "List Objects response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -892,11 +892,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Objects",

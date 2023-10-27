@@ -139,7 +139,7 @@
 				},
 				"description": "Get Cron Triggers response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -343,9 +343,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Get Cron Triggers",
@@ -508,7 +505,7 @@
 				},
 				"description": "Update Cron Triggers response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -712,9 +709,6 @@
 			{
 				"api_email": [],
 				"api_key": []
-			},
-			{
-				"api_token": []
 			}
 		],
 		"summary": "Update Cron Triggers",

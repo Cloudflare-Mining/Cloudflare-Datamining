@@ -126,7 +126,7 @@
 				},
 				"description": "Delete Tail response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -299,11 +299,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Tail",
@@ -318,7 +318,7 @@
 		}
 	},
 	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/tails": {
-		"description": "Get list of tails currently deployed on a worker.",
+		"description": "Get list of tails currently deployed on a Worker.",
 		"operationId": "worker-tail-logs-list-tails",
 		"parameters": [
 			{
@@ -450,7 +450,7 @@
 				},
 				"description": "List Tails response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -645,11 +645,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Tails",
@@ -801,7 +801,7 @@
 				},
 				"description": "Start Tail response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -996,11 +996,11 @@
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Start Tail",
