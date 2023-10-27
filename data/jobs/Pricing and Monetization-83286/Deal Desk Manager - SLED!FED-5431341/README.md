@@ -15,6 +15,7 @@
 	<li>Provide additional deal desk supporting to other commercial businesses based on business need</li>
 </ul>
 <p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
+<p>***<strong>Must be able to work <span style="text-decoration: underline;">East Coast Hours</span>.</strong></p>
 <p><strong>What you'll do</strong></p>
 <ul>
 	<li>Collaborate with the sales team in structuring and executing large/strategic deals, liaison with all organizations involved in the agreement process (e.g., finance, legal, order management, product, services/support).</li>
