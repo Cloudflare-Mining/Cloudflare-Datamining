@@ -5,22 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Create a technology partnerships go-to-market strategy working with sales, channel team, product, finance, operations, engineering, legal and marketing</li>
-	<li>Build deep relationships at the executive level with key technology go-to-market partners</li>
+	<li>Identify key technology partners that should be prioritized to support Cloudflare’s go-to-market efforts</li>
+</ul>
+<ul>
+	<li>Create go-to-market strategy for key technology partners working with sales, channels, product, finance, operations, engineering, legal and marketing</li>
+	<li>Build go to market relationships at the executive level with key technology partners</li>
+</ul>
+<ul>
+	<li>Drive partner sourced and influenced pipeline and revenue with key technology partners through co-sell or meet-in-the-channel motions&nbsp;</li>
 	<li>Manage internal communication and collaborate closely with cross functional stakeholders to ensure alignment in vision and execution of tech partnership go-to-market</li>
-	<li>Identify existing technology partnerships that should be focused on for building a joint go-to-market in order to drive partner sourced pipeline and partner influenced bookings</li>
-	<li>Identify new technology partnership that should be prioritized for recruitment in order to support the go-to-market teams priorities</li>
-	<li>Manage relationships with existing and new technology GTM partners including defining KPIs, tracking and monitoring KPIs, managing and optimizing partner performance in order to drive go-to-market goals</li>
+</ul>
+<ul>
+	<li>Identify new technology partnerships that should be prioritized for recruitment in order to support the go-to-market teams priorities</li>
+</ul>
+<ul>
+	<li>Manage relationships with key technology GTM partners including defining KPIs, tracking and monitoring KPIs, managing and optimizing partner performance in order to drive go-to-market goals</li>
 	<li>Manage partner contract negotiations, build go-to-market plans, identify and deploy incentives to drive pipeline and influence bookings goals</li>
-	<li>Influence product and engineering teams to drive product features that will accelerate pipeline and bookings with technology partnerships</li>
 	<li>Manage journey of technology GTM partnerships including contract negotiation, go-to-market planning, marketing, sales incentives, training &amp; enablement, pipeline generation and sales</li>
 	<li>Develop joint value propositions, sales playbooks, and partner programs to grow Cloudflare’s technology go-to-market partnership ecosystem</li>
 </ul>
 <p><strong>&nbsp;Requirements</strong></p>
 <ul>
-	<li>Minimum 15 years in Software/SaaS/Security Sales &amp; Channel management.</li>
+	<li>15+ years in Software/SaaS/Security Sales &amp; Channel management, ideally with 5+ years of experience driving revenue and pipeline through technology partners</li>
 	<li>Strategic thinker with sound business judgment, analytical and presentation skills, and ability to influence C-level executives using data</li>
 	<li>Strong bias for action and able to deliver results in a scrappy environment with limited resources</li>
 	<li>Extensive experience negotiating complex contracts with the ability to drive to win-win outcomes for both parties in the partnership</li>
