@@ -8,10 +8,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -20,6 +16,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -120,10 +117,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -412,10 +405,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -424,6 +413,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -709,10 +699,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			}
@@ -1044,10 +1030,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1056,6 +1038,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -1277,10 +1260,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1289,6 +1268,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			},
@@ -1297,8 +1277,8 @@
 				"name": "version",
 				"required": true,
 				"schema": {
-					"format": "uuid",
-					"type": "string"
+					"format": "int64",
+					"type": "integer"
 				}
 			}
 		],
@@ -1594,10 +1574,6 @@
 				"name": "account_identifier",
 				"required": true,
 				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"readOnly": true,
 					"type": "string"
 				}
 			},
@@ -1606,6 +1582,7 @@
 				"name": "dataset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
