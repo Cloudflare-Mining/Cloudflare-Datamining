@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/intl-types",
 	"dist-tags": {
-		"latest": "1.5.2"
+		"latest": "1.5.3"
 	},
 	"versions": {
 		"1.1.0": {
@@ -191,6 +191,30 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQC1g3ZZH/haSR/UI8z9Wc3NGMsgEOn1wfm/bpQVlTAoRgIgdbfx3B3kvvebuX6YULXReCl0+AmqrVI4VFz6Lf7q9Lg="
+					}
+				]
+			},
+			"stratus": {
+				"srcDirectory": "./src",
+				"isStandAloneApp": false
+			}
+		},
+		"1.5.3": {
+			"name": "@cloudflare/intl-types",
+			"version": "1.5.3",
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "19c6d561f2d334d76ff90b49319d2a34bf7395b0",
+				"integrity": "sha512-RhVaa6nfztt/jEbL9o+tv68iUFG1Ta7QGVRrtFIKafVXtmCeICtL2c2wzmZH52P0b3cTdZZQ8OolLNY6NDc2Tg==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/intl-types/-/intl-types-1.5.3.tgz",
+				"fileCount": 8,
+				"unpackedSize": 11998,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBB/kdp3LLsJtu09jlG/m9waBsPFwxtpQ2Ja2zksVL70AiBUknmtKUKBkylfwbaf9tFf6E0okeycxRLNLRntwY9hpQ=="
 					}
 				]
 			},

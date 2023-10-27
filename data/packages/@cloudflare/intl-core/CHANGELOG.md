@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.14.2](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.14.1...@cloudflare/intl-core@1.14.2) (2023-10-25)
+## [1.14.3](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.14.1...@cloudflare/intl-core@1.14.3) (2023-10-27)
 
 **Note:** Version bump only for package @cloudflare/intl-core
 
