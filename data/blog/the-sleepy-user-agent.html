@@ -128,6 +128,6 @@ $stmt-&gt;execute();
 	<h3 id="conclusion">Conclusion</h3>
 	<p>SQL injection is a perennial favorite of attackers and can happen anywhere input controlled by an attacker is processed by a web application. It's easy to imagine how an attacker might manipulate a web form or a URI, but even HTTP request headers are vulnerable. Literally any input the web browser sends to a web application should be considered hostile.</p>
 	<p>We saw the same attacker use many variants on this theme. Some tried to make the web server respond slowly using SQL, others using Python or Ruby code (to see if the web server could be tricked into running that code).</p>
-	<p>CloudFlare's WAF helps mitigate attacks like this with rules to block injection of SQL statements and code.</p>
+	<p>CloudFlare's WAF helps mitigate attacks like this with rules to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank">block injection of SQL statements</a> and code.</p>
 	<!--kg-card-end: markdown-->
 </div>
