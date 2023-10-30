@@ -57,7 +57,15 @@
 					"linkUrl": "/lp/gartner-magic-quadrant-waap-2022/",
 					"desktopText": "Cloudflare was recently named a Leader in the Gartner® Magic Quadrant™ for Web Application and API Protection (WAAP)"
 				},
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "71P9GEcfHOv0wtHr83reCL",
+					"text": "__CYBERSECURITY ALERT:__ Ensure you're protected against high severity vulnerability in widely used HTTP/2 protocol.",
+					"learnMoreText": "Learn More",
+					"learnMoreUrl": "/h2",
+					"backgroundColor": null,
+					"hideCloseButton": false
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -2045,7 +2053,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
