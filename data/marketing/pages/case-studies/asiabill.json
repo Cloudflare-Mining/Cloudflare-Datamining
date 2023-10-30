@@ -36,17 +36,17 @@
 				"longDescription": "## __Cloudflare helps AsiaBill deliver a fast and safe payment experience for independent sellers__\nFounded in 2015, AsiaBill is headquartered in Hong Kong Science Park. Their business includes international credit card transaction processing and a payment gateway service across borders for independent stores. In 2018, AsiaBill launched a Shopify transaction processing service as Shopify's official payment service provider worldwide.\n\n### __Challenge: Manage risks and provide a safe & easy payment service for sellers__\nCompared to other third-party payment tools, AsiaBill's key advantage is its excellent risk management. With a comprehensive fraud monitoring system that monitors and analyzes login devices, shopping behavior, account changes, and more, it  identifies most risk signals and fully safeguards payment.\n\nIn addition to excellent risk control, speed is also critical for payment services. Since AsiaBill servers are located in Hong Kong, they could not guarantee a quick payment experience for buyers around the world. AsiaBill noticed an unusually high cart abandonment rate on some independent sites: some consumers were canceling the transaction on the final payment page.\n\nTian Jun, Technical Director at AsiaBill, explained, \"We guessed that consumers in some countries or regions might have a slow response when accessing the payment page, so the users lose patience and give up on payments.\" Therefore, AsiaBill started looking for a solution to improve response times. They tried a free version of the Cloudflare CDN service to see if this could help improve the issue.\n\n### __Cloudflare makes the payment process smooth and reduces the cart abandonment rate__\nAsiaBill's self-developed monitoring system can record and analyze every step of the consumer journey, including time spent between starting and finishing payment. \"After our comparison test, the overall loading speed of the payment page is greatly improved after using Cloudflare,\" said Tian Jun.\n\nAsiaBill was so pleased with the improvement from Cloudflare that they decided to become an Enterprise customer. They added Argo Smart Routing to their plan to further optimize the payment experience.\n\nWith the Cloudflare global network, which is spread out across more than %{DataCenterCount} cities around the world, AsiaBill is able to cache static content in a location closer to consumers. And with Argo Smart Routing, dynamic content is delivered over the fastest and most reliable dedicated backbone links. The result is a seamless payment experience for consumers wherever they are in the world.\n\n\"In addition to significant acceleration in Europe and the United States, the performance in some smaller countries, such as Tanzania, Algeria, and Morocco, is also much improved.\" said Tian Jun, \"Previously it took 8 seconds to complete page loading, but after using the Cloudflare Global Network, it only takes 3 seconds, an improvement of 62.5%.\" \n\nThanks to Cloudflare, AsiaBill has not only improved the consumer shopping experience, but also reduced the cart abandonment rate of independent sites. Tian Jun said, \"After activating Cloudflare, the overall order abandonment rate for the independent site platform has been reduced by up to 20%.\"\n\nWith these challenges solved, AsiaBill's labor costs have also been reduced. Tian Jun said, \"After solving the unusual order abandonment issue, we also saved a lot on labor costs, especially communication costs. It made communication between the sales department and the technical department easier. After our optimization, we have not received any abnormal cart abandonment feedback from sales.\"\n",
 				"cloudflareStreamVideoId": null,
 				"keyResults": "- Page loading speed improved by 62.5%\n\n- Overall cart abandonment rate for independent sites reduced by up to 20%\n\n- Communication costs for AsiaBill technical and business teams lowered",
-				"relatedCaseStudies": [
+				"relatedCaseStudies": [],
+				"relatedCaseStudyLinks": [
 					{
-						"name": "Megalayer",
-						"nameUrlSlug": "megalayer"
+						"text": "Megalayer",
+						"url": "/case-studies/megalayer"
 					},
 					{
-						"name": "SHOPYY",
-						"nameUrlSlug": "shopyy"
+						"text": "SHOPYY",
+						"url": "/case-studies/shopyy"
 					}
 				],
-				"relatedCaseStudyLinks": null,
 				"inPartnershipWith": [],
 				"relatedCloudflareProducts": [
 					{
