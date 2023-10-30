@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "hotfix/INCIDENT-4490-2",
+					branch: "release-Oct.30.2023-1698674686",
 					isReleaseCandidate: "true",
-					commit: "ae037f3fedb55ff63eb0868e0c180cf385e80bea",
+					commit: "92ae973bb0c4ac63754093aa43c5f95b23a66930",
 					env: "production",
-					builtAt: 1698630625289,
-					dashVersion: "1916f3d9e47fc5dd99e928cea3f869b4d454b0bb",
+					builtAt: 1698689064062,
+					dashVersion: "f2d778d51e1e6ff9d7a441774a9247b107e2401f",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -8542,6 +8542,7 @@
 					accountSettings: (0, t.BC)`/accounts/${"accountId"}/pages/account-settings`,
 					checkMissing: (0, t.BC)`/pages/assets/check-missing`,
 					metrics: (0, t.BC)`/accounts/${"accountId"}/pages/metrics`,
+					migrateUsageModelsBulk: (0, t.BC)`/accounts/${"accountId"}/pages/migrate-usage-model`,
 					projects: (0, t.BC)`/accounts/${"accountId"}/pages/projects`,
 					projectDetails: (0, t.BC)`/accounts/${"accountId"}/pages/projects/${"projectName"}`,
 					purgeCache: (0, t.BC)`/accounts/${"accountId"}/pages/projects/${"projectName"}/purge_build_cache`,
@@ -8835,7 +8836,8 @@
 						tailWorkers: "https://developers.cloudflare.com/workers/platform/tail-workers",
 						dispatchNamespaces: "https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform/outbound-workers",
 						invalidCORSPolicy: "https://developers.cloudflare.com/r2/buckets/cors/#common-issues",
-						createCloudflare: "https://www.npmjs.com/package/create-cloudflare"
+						createCloudflare: "https://www.npmjs.com/package/create-cloudflare",
+						userCpuLimits: "https://developers.cloudflare.com/workers/platform/pricing/#standard-usage-model"
 					},
 					serverlist: "https://blog.cloudflare.com/tag/serverlist/",
 					discord: "https://discord.gg/cloudflaredev",
@@ -8850,7 +8852,8 @@
 					usageModelSurvey: "https://docs.google.com/forms/d/e/1FAIpQLSeOKaVp9pC-sXvEQsgmKZc1b-BxdDRcIoL0jpOQWCHlAR9SiA/viewform",
 					workersUnboundBlogPost: "https://blog.cloudflare.com/workers-unbound-ga/",
 					cloudflareSubscriptionTerms: "https://www.cloudflare.com/terms",
-					integrationsFeedback: "https://forms.gle/cMkH8G78MpGFP7Yo6"
+					integrationsFeedback: "https://forms.gle/cMkH8G78MpGFP7Yo6",
+					workersStandardPricing: "https://blog.cloudflare.com/workers-pricing-scale-to-zero"
 				},
 				p = 800,
 				a = "40rem",
@@ -8886,6 +8889,8 @@
 					ubb_price_ent: .6,
 					additional_million_requests_price: .15,
 					additional_million_requests_price_ent: .18,
+					additional_million_standard_requests_price: .3,
+					additional_million_standard_cpu_time_price: .02,
 					additional_million_gb_duration_price: 12.5,
 					additional_million_gb_duration_price_ent: 15,
 					additional_egress_gb_transfer_price: .045,
@@ -8936,6 +8941,10 @@
 						unboundEgress: 5,
 						kvMonthlyRead: 10,
 						kvMonthlyWrite: 1
+					},
+					standard: {
+						requests: 10,
+						cpuTimeMilliseconds: 30
 					}
 				},
 				m = {
@@ -9003,7 +9012,7 @@
 				c = "workers.dev",
 				C = "YYYY-MM-DD HH:mm:SS ZZ",
 				d = "active",
-				S = ["bundled", "unbound"],
+				S = ["bundled", "unbound", "standard"],
 				M = null
 		},
 		"../react/pages/zoneless-workers/routes.ts": function(Y, T, n) {
@@ -9043,6 +9052,7 @@
 					kvStore: (0, t.BC)`/${"accountId"}/workers/kv/namespaces`,
 					plans: (0, t.BC)`/${"accountId"}/workers/plans`,
 					purchase: (0, t.BC)`/${"accountId"}/workers/plans/purchase`,
+					standardOptIn: (0, t.BC)`/${"accountId"}/workers/standard/opt-in`,
 					kvNamespace: (0, t.BC)`/${"accountId"}/workers/kv/namespaces/${"namespaceId"}`,
 					d1Database: (0, t.BC)`/${"accountId"}/workers/d1/databases/${"databaseId"}`,
 					editServiceScript: (0, t.BC)`/${"accountId"}/workers/services/edit/${"serviceId"}/${"environmentName"}`,
@@ -9155,7 +9165,9 @@
 					},
 					scriptsByHandler: (0, t.BC)`/accounts/${"accountId"}/workers/scripts?handlers=${"handler"}`,
 					tailsByConsumer: (0, t.BC)`/accounts/${"accountId"}/workers/tails/by-consumer/${"serviceId"}/environment/${"environment"}`,
-					outboundDispatchers: (0, t.BC)`/accounts/${"accountId"}/workers/dispatch_outbounds/by-outbound/${"serviceId"}/environment/${"environmentName"}`
+					outboundDispatchers: (0, t.BC)`/accounts/${"accountId"}/workers/dispatch_outbounds/by-outbound/${"serviceId"}/environment/${"environmentName"}`,
+					standard: (0, t.BC)`/accounts/${"accountId"}/workers/standard`,
+					migrateUsageModelsBulk: (0, t.BC)`/accounts/${"accountId"}/workers/scripts/migrate-usage-model`
 				}
 		},
 		"../react/shims/focus-visible.js": function() {
