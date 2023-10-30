@@ -1,6 +1,6 @@
 {
 	"azure-ad-policy-sync": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-zt-apple-pay-gate": {
 		"enabled": false
@@ -31,6 +31,9 @@
 	},
 	"protocol-detection": {
 		"enabled": true
+	},
+	"zt-access-auth-in-warp": {
+		"enabled": false
 	},
 	"zt-access-custom-pages": {
 		"enabled": false
