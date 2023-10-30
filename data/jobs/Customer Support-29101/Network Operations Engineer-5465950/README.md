@@ -20,7 +20,7 @@
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li>Minimum 5 years experience in a customer-facing technical support role</li>
+	<li>Minimum 3 years experience in a customer-facing technical support role</li>
 	<li>Modern internet protocols like HTTPS, UDP, TCP, etc.</li>
 	<li>Analysis of traffic for anomaly detection and creation of mitigation rules</li>
 	<li>Knowledge of Cloudflare Products &amp; Features</li>
