@@ -36,7 +36,7 @@
 		<li>Resumed Connection: 3 RTT + DNS</li>
 	</ul>
 	<h3 id="howdotls13and0rttimproveconnectiontimes">How do TLS 1.3 and 0-RTT improve connection times?</h3>
-	<p>One of the biggest advantages of TLS 1.3 over earlier versions is that it only requires one round trip to set up the connection, resumed or not. This provides a significant speed up for new connections, but none for resumed connections. Our measurements show that around 40% of HTTPS connections are resumptions (either via session IDs or session tickets). With 0-RTT, a round trip can be eliminat<img src="https://blog.cloudflare.com/content/images/2017/03/image04.jpg" alt="" loading="lazy">images/2017/03/image04.jpg)](/content/images/2017/03/image04.jpg)<br>
+	<p>One of the biggest advantages of TLS 1.3 over earlier versions is that it only requires one round trip to set up the connection, resumed or not. This provides a significant speed up for new connections, but none for resumed connections. Our measurements show that around 40% of HTTPS connections are resumptions (either via session IDs or session tickets). With 0-RTT, a round trip can be eliminated for most of that 40%.<img src="https://blog.cloudflare.com/content/images/2017/03/image04.jpg" alt="TLS connection reuse by time of day" title="TLS connection reuse by time of day" loading="lazy"><br>
 		<small>TLS connection reuse by time of day.</small>
 	</p>
 	<p>To summarize the performance differences:</p>
