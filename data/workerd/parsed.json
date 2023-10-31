@@ -2425,6 +2425,14 @@
 						"compatEnableDate": "2023-12-01",
 						"compatEnableFlag": "crypto_preserve_public_exponent"
 					}
+				},
+				{
+					"name": "vectorizeQueryMetadataOptional",
+					"annotations": {
+						"compatDisableFlag": "vectorize_query_original",
+						"compatEnableDate": "2023-11-08",
+						"compatEnableFlag": "vectorize_query_metadata_optional"
+					}
 				}
 			]
 		},
