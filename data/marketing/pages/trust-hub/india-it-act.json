@@ -5,33 +5,7 @@
 		"data": {
 			"page": {
 				"pageName": "Cloudflare and IT Act compliance [New for GA Week 2022]",
-				"localeList": {
-					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
-					"itIT": "Translated for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
-					"enAU": "English for Locale",
-					"enCA": "English for Locale",
-					"enIN": "English for Locale",
-					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
-					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
-				},
+				"localeList": null,
 				"relativePath": "trust-hub/india-it-act",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
@@ -66,50 +40,6 @@
 						"stickyNav": true,
 						"htmlId": null,
 						"menuItems": [
-							{
-								"contentfulId": "49ua01z3ZoPUbrHGGPgzya",
-								"linkText": "Privacy & data protection",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "3T5MTAEnMZxpgDcH8QTNvz",
-										"linkText": "Europe (GDPR)",
-										"page": null,
-										"url": "/trust-hub/gdpr/"
-									},
-									{
-										"contentfulId": "4jcIu8w1i4SwOVFFPgtwfq",
-										"linkText": "Japan (APPI)",
-										"page": null,
-										"url": "https://www.cloudflare.com/trust-hub/appi/"
-									},
-									{
-										"contentfulId": "5agE8jWKzGmi1RxiymFXvl",
-										"linkText": "India",
-										"page": null,
-										"url": "https://www.cloudflare.com/trust-hub/india-it-act/"
-									},
-									{
-										"contentfulId": "6iExt2cthu7CLapuKYusvB",
-										"linkText": "Australia (Privacy Act)",
-										"page": null,
-										"url": "https://www.cloudflare.com/trust-hub/australia-privacy-act/"
-									},
-									{
-										"contentfulId": "4ulEfXkZVy80Nxdcpn7hff",
-										"linkText": "United States",
-										"page": null,
-										"url": "/trust-hub/us-privacy-compliance/"
-									},
-									{
-										"contentfulId": "7bT7F1ooWx5vibmcju4Mzu",
-										"linkText": "Privacy policy",
-										"page": null,
-										"url": "/privacypolicy/"
-									}
-								]
-							},
 							{
 								"contentfulId": "4hZZA4VbGtrVg07DrdTgmb",
 								"linkText": "Compliance resources",
@@ -1697,185 +1627,6 @@
 						"filterMenu": null
 					},
 					{
-						"contentfulId": "4tshyNXaM0wLtoZv80uWCj",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Cloudflare features that support data protection",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "78cYp9ZYcxS1xLmMmVBhxS",
-								"title": "Encryption",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare's network can encrypt data throughout its journey from origin servers to end-users, using the very latest protocols.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
-									},
-									"description": "Padlock icon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5QGEMA5Uf0Dh8OqYLU1SnF",
-								"title": "Privacy-first analytics",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare's Web Analytics does not use any client-side state, such as cookies or localStorage, to collect usage metrics — and never 'fingerprints' individual users.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/43PVIP7xl52gR53bMu92mz/9992969dcf14d61f8c151a799c1c694c/analytics-network.png"
-									},
-									"description": "Analytics network orange"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5yVG5WmCKFRtH0p2ifMT7S",
-								"title": "Data localization",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "In many regions — Cloudflare lets organizations control which regional data centers their traffic is inspected in and where logs are sent.",
-								"learnMoreUrl": "https://www.cloudflare.com/data-localization/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1GW5rZk37RG9xe8GUKbH4Z/9a1912e4d0b69607a3a698779e8c2a45/internet-globe.svg"
-									},
-									"description": ""
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6OFijfZnQkwM6D95OeGYIK",
-								"title": "Access management",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare Zero Trust lets organizations enforce country-specific access rules, block risky sites and content, and log access events for internal applications and data.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ojyC6ycEL6cGFCYW2GWUV/dcceed4f2e0b98d5812650e551022824/cloudflare-access__2_.png"
-									},
-									"description": "Cloudflare Zero Trust icon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5Ynnyio0s1F8MM6RTs0t1T",
-								"title": "Reporting",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare Logs gives granular insights into every HTTP request, helping you investigate potential breaches and other security incidents.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/68TLXIuB6HOZo3RgLAp1Ji/6a953e33858490426d4e2ca753bea3ad/documentation-list.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4qQWxK9SC5e5fklaCW4qa3",
-								"title": "Certifications",
-								"makeTitleLink": null,
-								"titleUrl": null,
-								"titleSize": null,
-								"description": "Cloudflare complies with many industry-standard security certifications, including several focusing on privacy and personal data protection.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7jRp0ry33bgkOGNiTs6Ifj/dfc5a00a4ce6c6a349931f5f38064f72/certificate-manager.svg"
-									},
-									"description": "Icon of an award ribbon"
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "5uQdAeXMiE7VMDSvCLDXum",
 						"title": "Protect and accelerate your websites, apps, and teams.",
@@ -1924,19 +1675,7 @@
 			"locale": "en-US",
 			"pathname": "/trust-hub/india-it-act/",
 			"contentfulId": "2RJFlernsUUZjZGvjyrnxA",
-			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"it-IT",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
-			],
+			"allowedHrefLangs": null,
 			"hasPsaBanner": false,
 			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
