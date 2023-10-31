@@ -15,7 +15,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/53qCYhQbir5WtIU0VDWESo/954a48bfb17f429acf469e5f14345d83/unnamed-3.png"
 						},
-						"description": null
+						"description": "DO NOT REMOVE, THIS IS CLOUDFLARE'S GLOBAL OG META ASSET"
 					},
 					"facebookCustomImage": null
 				},
@@ -25,7 +25,114 @@
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "5VN0O1cbmsiAVCpoZnqpvd",
 					"learningCenterName": "video",
-					"links": null
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "4RvI7ShHsao950EHk7rqKy",
+							"displayText": "What is streaming?",
+							"url": "/learning/video/what-is-streaming/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3epaS6l2IrCuDqgE9j96QB",
+							"displayText": "What is live streaming?",
+							"url": "/learning/video/what-is-live-streaming/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "1JUiyOH6FTYNPGElp49fc2",
+							"displayText": "Video CDN",
+							"url": "/learning/video/what-is-video-cdn/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6PrldxtM9CQyaUUxrcUEtZ",
+							"name": "Video Streaming Streaming Protocols",
+							"displayText": "Streaming protocols",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Tg1FPe1qW9ExqODjaEXbS",
+									"displayText": "HTTP Live Streaming",
+									"url": "/learning/video/what-is-http-live-streaming/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6EE6jrIGZNBpNM2uGUrvoR",
+									"displayText": "HTTP Dynamic Streaming",
+									"url": "/learning/video/what-is-http-dynamic-streaming/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4q1Rl5hHIlU6ZsGo7IpLSc",
+									"displayText": "What is MPEG-DASH?",
+									"url": "/learning/video/what-is-mpeg-dash/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6ck0i8DTHExNpAFAGMU05l",
+							"name": "Video Streaming Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3rdNhJ4cd9dYtSFwutuG8R",
+									"displayText": "Video encoding formats",
+									"url": "/learning/video/video-encoding-formats/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2axQ4OrEGG3aG4H0sf4cll",
+									"displayText": "Live stream encoding",
+									"url": "/learning/video/live-stream-encoding/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4m5VfgUK7wBjRSlW1ouoYh",
+									"displayText": "HTML5 video",
+									"url": "/learning/video/how-html5-video-works/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "drfInyEGATu5TdagmTuJ3",
+									"displayText": "What is H.264?",
+									"url": "/learning/video/what-is-h264-avc/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MvgenHAR5ESNSy06BFiTq",
+									"displayText": "What is MP4?",
+									"url": "/learning/video/what-is-mp4/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5fu0t9PvjQa2N6qR1mdl9k",
+									"displayText": "MOV vs. MP4",
+									"url": "/learning/video/mov-vs-mp4/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3yoA8r5yxNv8H8PDRNpgNE",
+									"displayText": "What is buffering?",
+									"url": "/learning/video/what-is-buffering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "488trtGhQfgkxOszC6ar4Y",
+									"displayText": "What is adaptive bitrate streaming?",
+									"url": "/learning/video/what-is-adaptive-bitrate-streaming/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3jjQFycJwzlkCrAlfa8QtM",
+									"displayText": "Voice over Internet Protocol (VoIP)",
+									"url": "/learning/video/what-is-voip/"
+								}
+							]
+						}
+					]
 				},
 				"learningCenterArticleFooter": {
 					"contentTypeId": "learningCenterArticleFooter",
@@ -299,7 +406,7 @@
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP dynamic streaming (HDS)?</h2>\n\n<p>HTTP dynamic streaming, or HDS, is an <a href='/learning/video/what-is-adaptive-bitrate-streaming/'>adaptive bitrate streaming</a> method developed by Adobe. HDS delivers MP4 video content over <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> connections. HDS can be used for on-demand <a href='/learning/video/what-is-streaming/'>streaming</a> or <a href='/learning/video/what-is-live-streaming/'>live streaming</a>. Since they are delivered over HTTP, HDS streams can be cached — either by a content delivery network (<a href='/learning/cdn/what-is-a-cdn/'>CDN</a>) or another <a href='/learning/cdn/what-is-caching/'>caching</a> server.</p>\n\n<p>HDS was developed for use with Adobe Flash Player and Adobe AIR. Adobe Flash Player has been discontinued, and an outside firm now supports AIR instead of Adobe. HDS is not supported by Apple devices.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What was Adobe Flash Player?</h2>\n\n<p>Adobe Flash Player was a browser plugin for playing video content. For many years, the Flash plugin was the most widespread way to embed video into webpages. However, after the release of the <a href='/learning/video/how-html5-video-works/'>HTML5 video element</a>, Flash was no longer the main option for embedded video. In addition, Flash had many security vulnerabilities that made it dangerous. (For instance, several Flash vulnerabilities allowed attackers to execute any code they wanted in someone's browser.)</p>\n\n<p>Browsers and operating systems gradually dropped support for Flash over the years to avoid security incidents. Finally, Adobe stopped supporting Flash Player on December 31, 2020.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does HDS streaming work?</h2>\n\n<p>The process of creating and delivering an HDS stream is roughly:</p>\n\n<p><strong>Server:</strong> Before video files can be streamed via HDS, they must be converted from regular MP4 to the F4F (fragmented MP4) file format. F4F video files contain audio, video, and metadata. Because the files are \"fragmented,\" these three elements can be stored separately from each other.</p>\n\n<p>HDS videos are encoded with <a href='/learning/video/what-is-h264-avc/'>H.264</a>, which is a common <a href='/learning/video/video-encoding-formats/'>encoding</a> standard. Like many other streaming technologies, HDS encodes versions of the video file at multiple quality levels and divides videos into shorter segments a few seconds in length. This makes adaptive bitrate streaming possible (learn more below).</p>\n\n<p><strong>Distribution:</strong> HDS video segments are pushed out to client devices that request the stream over the Internet. A CDN usually helps distribute the stream, along with caching the stream to serve it more quickly.</p>\n\n<p><strong>Client:</strong> The device that requested the stream uses the video's manifest file, which is contained within the metadata, as a reference for assembling and playing the video segments in order. It also changes the picture quality as needed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a manifest file?</h2>\n\n<p>A manifest file can be compared to a set of directions for assembling a model airplane. The directions indicate where each piece goes, enabling someone who owns the model kit to build the airplane themselves.</p>\n\n<p>Similarly, a video's manifest file tells a client device playing the video (such as a user's laptop or smartphone) how to assemble the video segments in order, how to load the audio file, where subtitles are stored, and so on. This allows the client device to construct and play the video correctly.</p>\n\n<p>Manifest files are stored in video metadata. A file's \"metadata\" is information about the rest of the file.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is adaptive bitrate streaming?</h2>\n\n<p>Adaptive bitrate streaming is a technique that allows video players to adjust the quality level of a video in response to network conditions. If a network connection is performing slowly, the player loads lower-quality video segments, which can load more quickly. If a network connection is performing better, the player loads the video in high definition instead. These adjustments are made while the video is playing.</p>\n\n<p>Adaptive bitrate streaming is possible because streamed videos are divided into segments and encoded at several different quality levels. As a result, a player can select from multiple quality levels for each segment of video. After each segment, the player can switch to a higher or lower quality level as needed.</p>\n\n<p>HDS uses adaptive bitrate streaming, and the similarly named <a href='/learning/video/what-is-http-live-streaming/'>HTTP live streaming (HLS)</a> does as well.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">HLS vs. HDS: What is the difference?</h2>\n\n<p>HLS is one of the most widely used streaming protocols. HLS started out as a proprietary streaming protocol developed by Apple, although it has since become an open standard. Apple devices still support only HLS.</p>\n\n<p>One important difference between these two streaming methods is  that HDS has less widespread support and adoption than HLS. As of 2021, Apple has close to one-fourth of the smartphone market worldwide, so using HDS cuts out a significant chunk of potential viewers. In fact, HDS was meant for use with Adobe Flash, which has been discontinued. Today, relatively few viewers are likely to have devices that can play HDS streams.</p>\n\n<p>Cloudflare Stream makes it easy to upload and stream video to viewers all over the world. <a href='/products/cloudflare-stream/'>Learn more</a> about the formats supported by Stream.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP dynamic streaming (HDS)?</h2>\n\n<p>HTTP dynamic streaming, or HDS, is an <a href='/learning/video/what-is-adaptive-bitrate-streaming/'>adaptive bitrate streaming</a> method developed by Adobe. HDS delivers MP4 video content over <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> connections. HDS can be used for on-demand <a href='/learning/video/what-is-streaming/'>streaming</a> or <a href='/learning/video/what-is-live-streaming/'>live streaming</a>. Since they are delivered over HTTP, HDS streams can be cached — either by a content delivery network (<a href='/learning/cdn/what-is-a-cdn/'>CDN</a>) or another <a href='/learning/cdn/what-is-caching/'>caching</a> server.</p>\n\n<p>HDS was developed for use with Adobe Flash Player and Adobe AIR. Adobe Flash Player has been discontinued, and an outside firm now supports AIR instead of Adobe. HDS is not supported by Apple devices.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What was Adobe Flash Player?</h2>\n\n<p>Adobe Flash Player was a browser plugin for playing video content. For many years, the Flash plugin was the most widespread way to embed video into webpages. However, after the release of the <a href='/learning/video/how-html5-video-works/'>HTML5 video element</a>, Flash was no longer the main option for embedded video. In addition, Flash had many security vulnerabilities that made it dangerous. (For instance, several Flash vulnerabilities allowed attackers to execute any code they wanted in someone's browser.)</p>\n\n<p>Browsers and operating systems gradually dropped support for Flash over the years to avoid security incidents. Finally, Adobe stopped supporting Flash Player on December 31, 2020.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does HDS streaming work?</h2>\n\n<p>The process of creating and delivering an HDS stream is roughly:</p>\n\n<p><strong>Server:</strong> Before video files can be streamed via HDS, they must be converted from regular MP4 to the F4F (fragmented MP4) file format. F4F video files contain audio, video, and metadata. Because the files are \"fragmented,\" these three elements can be stored separately from each other.</p>\n\n<p>HDS videos are encoded with <a href='/learning/video/what-is-h264-avc/'>H.264</a>, which is a common <a href='/learning/video/video-encoding-formats/'>encoding</a> standard. Like many other streaming technologies, HDS encodes versions of the video file at multiple quality levels and divides videos into shorter segments a few seconds in length. This makes adaptive bitrate streaming possible (learn more below).</p>\n\n<p><strong>Distribution:</strong> HDS video segments are pushed out to client devices that request the stream over the Internet. A CDN usually helps distribute the stream, along with caching the stream to <a href='https://www.cloudflare.com/developer-platform/solutions/live-streaming/'>serve it more quickly.</a></p>\n\n<p><strong>Client:</strong> The device that requested the stream uses the video's manifest file, which is contained within the metadata, as a reference for assembling and playing the video segments in order. It also changes the picture quality as needed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a manifest file?</h2>\n\n<p>A manifest file can be compared to a set of directions for assembling a model airplane. The directions indicate where each piece goes, enabling someone who owns the model kit to build the airplane themselves.</p>\n\n<p>Similarly, a video's manifest file tells a client device playing the video (such as a user's laptop or smartphone) how to assemble the video segments in order, how to load the audio file, where subtitles are stored, and so on. This allows the client device to construct and play the video correctly.</p>\n\n<p>Manifest files are stored in video metadata. A file's \"metadata\" is information about the rest of the file.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is adaptive bitrate streaming?</h2>\n\n<p>Adaptive bitrate streaming is a technique that allows video players to adjust the quality level of a video in response to network conditions. If a network connection is performing slowly, the player loads lower-quality video segments, which can load more quickly. If a network connection is performing better, the player loads the video in high definition instead. These adjustments are made while the video is playing.</p>\n\n<p>Adaptive bitrate streaming is possible because streamed videos are divided into segments and encoded at several different quality levels. As a result, a player can select from multiple quality levels for each segment of video. After each segment, the player can switch to a higher or lower quality level as needed.</p>\n\n<p>HDS uses adaptive bitrate streaming, and the similarly named <a href='/learning/video/what-is-http-live-streaming/'>HTTP live streaming (HLS)</a> does as well.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">HLS vs. HDS: What is the difference?</h2>\n\n<p>HLS is one of the most widely used streaming protocols. HLS started out as a proprietary streaming protocol developed by Apple, although it has since become an open standard. Apple devices still support only HLS.</p>\n\n<p>One important difference between these two streaming methods is  that HDS has less widespread support and adoption than HLS. As of 2021, Apple has close to one-fourth of the smartphone market worldwide, so using HDS cuts out a significant chunk of potential viewers. In fact, HDS was meant for use with Adobe Flash, which has been discontinued. Today, relatively few viewers are likely to have devices that can play HDS streams.</p>\n\n<p>Cloudflare Stream makes it easy to upload and stream video to viewers all over the world. <a href='/products/cloudflare-stream/'>Learn more</a> about the formats supported by Stream.</p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {

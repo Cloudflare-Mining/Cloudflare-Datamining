@@ -9,24 +9,24 @@
 				"urlSlug": "access-management/what-is-sase",
 				"metaTags": {
 					"metaTitle": "What is SASE? | Secure access service edge",
-					"metaDescription": "Secure access service edge (SASE) is a cloud-based network infrastructure model that merges networking and security services. Learn about SASE security.",
+					"metaDescription": "Secure access service edge (SASE) is a cloud-based architecture that unifies software-defined networking and security services. Learn about SASE security.",
 					"twitterCustomImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OTrCfuNBtywisi2xfBPVp/d54a84949091aed215600b42bb47ed3e/security-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17RhepZZwxiD452Hs0gKFk/5324e2c81dcdef79c74efea2c60812ac/Network_Plus_Zero_Trust_Diagram_-_No_CF_Logo_smaller.png"
 						},
-						"description": null
+						"description": "Secure access service edge (SASE) architecture is an IT model that combines security and networking services on one cloud platform. "
 					},
 					"metaImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OTrCfuNBtywisi2xfBPVp/d54a84949091aed215600b42bb47ed3e/security-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17RhepZZwxiD452Hs0gKFk/5324e2c81dcdef79c74efea2c60812ac/Network_Plus_Zero_Trust_Diagram_-_No_CF_Logo_smaller.png"
 						},
-						"description": null
+						"description": "Secure access service edge (SASE) architecture is an IT model that combines security and networking services on one cloud platform. "
 					},
 					"facebookCustomImage": {
 						"file": {
-							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2OTrCfuNBtywisi2xfBPVp/d54a84949091aed215600b42bb47ed3e/security-lc.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/17RhepZZwxiD452Hs0gKFk/5324e2c81dcdef79c74efea2c60812ac/Network_Plus_Zero_Trust_Diagram_-_No_CF_Logo_smaller.png"
 						},
-						"description": null
+						"description": "Secure access service edge (SASE) architecture is an IT model that combines security and networking services on one cloud platform. "
 					}
 				},
 				"metaTitle": "What is SASE? | Secure access service edge",
@@ -35,7 +35,366 @@
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "X61tS7cHdYUy1Jpp9N5Mb",
 					"learningCenterName": "accessmanagement",
-					"links": null
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+							"displayText": "What is IAM? ",
+							"url": "/learning/access-management/what-is-identity-and-access-management/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5TtqrotpypiEg485b2l2tf",
+							"displayText": "What is SASE?",
+							"url": "/learning/access-management/what-is-sase/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3IwB78Wq3DsbhUeCBPNs2L",
+							"name": "Access Management Header: Zero Trust Security",
+							"displayText": "Zero Trust security",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+									"displayText": "Zero Trust security",
+									"url": "/learning/security/glossary/what-is-zero-trust/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+									"displayText": "What is ZTNA?",
+									"url": "/learning/access-management/what-is-ztna/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+									"displayText": "Castle-and-moat security",
+									"url": "/learning/access-management/castle-and-moat-network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+									"displayText": "Principle of least privilege",
+									"url": "/learning/access-management/principle-of-least-privilege/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6mO5Xax2Dr4MOVty2psUx3",
+									"displayText": "Microsegmentation",
+									"url": "/learning/access-management/what-is-microsegmentation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+									"displayText": "Security service edge (SSE)",
+									"url": "/learning/access-management/security-service-edge-sse/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7GhMQh5cXBGTcKQlfZLvOE",
+							"name": "Access Management Header: Authentication",
+							"displayText": "Authentication",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+									"displayText": "What is authentication?",
+									"url": "/learning/access-management/what-is-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+									"displayText": "Two-factor authentication ",
+									"url": "/learning/access-management/what-is-two-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+									"displayText": "Multi-factor authentication",
+									"url": "/learning/access-management/what-is-multi-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+									"displayText": "What is SSO?",
+									"url": "/learning/access-management/what-is-sso/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+									"displayText": "What is SAML?",
+									"url": "/learning/access-management/what-is-saml/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+									"displayText": "What is OAuth?",
+									"url": "/learning/access-management/what-is-oauth/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+									"displayText": "Identity provider (IdP)",
+									"url": "/learning/access-management/what-is-an-identity-provider/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+									"displayText": "Identity as a service",
+									"url": "/learning/access-management/what-is-identity-as-a-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+									"displayText": "Phishing attack",
+									"url": "/learning/access-management/phishing-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+									"displayText": "Spear phishing",
+									"url": "/learning/access-management/spear-phishing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+									"displayText": "Mutual authentication",
+									"url": "/learning/access-management/what-is-mutual-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+									"displayText": "Mutual TLS (mTLS)",
+									"url": "/learning/access-management/what-is-mutual-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+									"displayText": "Authn vs. Authz",
+									"url": "/learning/access-management/authn-vs-authz/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+									"displayText": "Token-based authentication",
+									"url": "/learning/access-management/token-based-authentication/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "qo6Z0A22GGHuaNqiVcaIx",
+							"name": "Access Management Header: Remote Access",
+							"displayText": "Remote access",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+									"displayText": "VPN",
+									"url": "/learning/access-management/what-is-a-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+									"displayText": "VPN security",
+									"url": "/learning/access-management/vpn-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+									"displayText": "VPN speed",
+									"url": "/learning/access-management/vpn-speed/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+									"displayText": "Business VPN ",
+									"url": "/learning/access-management/what-is-a-business-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+									"displayText": "GDPR remote access",
+									"url": "/learning/access-management/gdpr-remote-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+									"displayText": "Remote workforce security",
+									"url": "/learning/access-management/remote-workforce-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+									"displayText": "What is the RDP?",
+									"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+									"displayText": "RDP security",
+									"url": "/learning/access-management/rdp-security-risks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3Q9rh1JjGiYTFcBwEAsWVD",
+									"displayText": "What is SSH?",
+									"url": "/learning/access-management/what-is-ssh/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4fsKOVXIb6uDYmCQOVdlMl",
+							"name": "Access Management Header: Access Glossary",
+							"displayText": "Access glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+									"displayText": "Access control",
+									"url": "/learning/access-management/what-is-access-control/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+									"displayText": "Role-based access control (RBAC)",
+									"url": "/learning/access-management/role-based-access-control-rbac/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "65VABQOAzccr6p12Tlosw4",
+									"displayText": "Secure web gateway",
+									"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+									"displayText": "What is a CASB? ",
+									"url": "/learning/access-management/what-is-a-casb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+									"displayText": "DNS filtering",
+									"url": "/learning/access-management/what-is-dns-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+									"displayText": "URL filtering",
+									"url": "/learning/access-management/what-is-url-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+									"displayText": "Data loss prevention (DLP)",
+									"url": "/learning/access-management/what-is-dlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+									"displayText": "Software-defined perimeter",
+									"url": "/learning/access-management/software-defined-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+									"displayText": "Network perimeter",
+									"url": "/learning/access-management/what-is-the-network-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+									"displayText": "Browser isolation",
+									"url": "/learning/access-management/what-is-browser-isolation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+									"displayText": "What is an insider threat?",
+									"url": "/learning/access-management/what-is-an-insider-threat/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+									"displayText": "What is shadow IT?",
+									"url": "/learning/access-management/what-is-shadow-it/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+									"displayText": "Identity",
+									"url": "/learning/access-management/what-is-identity/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Z3cXPjtyPPmapEnNCLO28",
+									"displayText": "What is account takeover?",
+									"url": "/learning/access-management/account-takeover/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1H8EbGxdv2N9Ak908AaBC5",
+							"name": "Access Management: theNET",
+							"displayText": "theNET",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7akEuCGGNzlr1ufpM39JJO",
+									"displayText": "The Internet is the new corporate network",
+									"url": "https://www.cloudflare.com/learning/insights-internet-corp-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "32xi3h91JgkC7V1Vua8f4K",
+									"displayText": "Risk grows as multi-vector attacks become the norm",
+									"url": "https://www.cloudflare.com/learning/insights-multi-vector-threats/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "AHSB2JThnJhtg3YJP2wfb",
+									"displayText": "The trade-offs in Microsoft 365's native security ",
+									"url": "https://www.cloudflare.com/learning/insights-securing-m365/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3h3E4btP1QgwPPWbyA1fX3",
+									"displayText": "Bypassing multi-factor authentication",
+									"url": "/learning/insights-bypassing-mfa/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1GXw1K6oAtiM6LI17bzM6q",
+									"displayText": "Roadmap to Zero Trust",
+									"url": "/learning/insights-roadmap-zerotrust/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "66tnC4ikBCDYIpaowouRNv",
+									"displayText": "The ripple effect of compromised credentials",
+									"url": "https://www.cloudflare.com/the-net/credential-stuffing "
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "164NbfhGi2U7QdPF7TxD5q",
+									"displayText": "Simplify and secure M&A",
+									"url": "https://www.cloudflare.com/the-net/secure-mergers-acquisitions/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6hJ5WtYEu9HHvDKi3nDfve",
+									"displayText": "Reducing complexity and risk in the security stack",
+									"url": "https://www.cloudflare.com/the-net/everywhere-security "
+								}
+							]
+						}
+					]
 				},
 				"learningCenterArticleFooter": {
 					"contentTypeId": "learningCenterArticleFooter",
@@ -441,13 +800,14 @@
 						]
 					}
 				},
-				"header": "What is SASE? | Secure access service edge ",
-				"blurbSubHeader": "Secure access service edge, or SASE, is a cloud-based IT model that combines networking and security services.",
+				"header": "What is SASE architecture? | Secure access service edge",
+				"blurbSubHeader": "Secure access service edge (SASE) architecture is an IT model that combines security and networking services on one cloud platform.",
 				"objectivesHeader": "SASE",
 				"objectivesList": [
-					"Define secure access service edge (SASE)",
-					"Learn the components of a SASE approach",
-					"Explore the advantages of adopting a SASE framework"
+					"Define the secure access service edge (SASE) model",
+					"Learn about SASE architectural components",
+					"Explore the benefits and use cases for SASE",
+					"Understand how SASE relates to SSE and Zero Trust security"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
@@ -459,15 +819,15 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "65VABQOAzccr6p12Tlosw4",
-						"displayText": "Secure web gateway",
-						"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+						"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+						"displayText": "Network-as-a-service (NaaS)",
+						"url": "/learning/network-layer/network-as-a-service-naas/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
-						"displayText": "What is IAM? ",
-						"url": "/learning/access-management/what-is-identity-and-access-management/"
+						"contentfulId": "65VABQOAzccr6p12Tlosw4",
+						"displayText": "Secure web gateway",
+						"url": "/learning/access-management/what-is-a-secure-web-gateway/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -477,13 +837,13 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
-						"displayText": "Software-defined perimeter",
-						"url": "/learning/access-management/software-defined-perimeter/"
+						"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+						"displayText": "Cloud security",
+						"url": "/learning/cloud/what-is-cloud-security/"
 					}
 				],
 				"enablementBlade": null,
-				"desktopMainContent": "<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is SASE?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>Secure access service edge, or SASE, is a cloud-based IT model that bundles <a href='/learning/network-layer/what-is-sdn/'>software-defined networking</a> with network security functions and delivers them from a single service provider. <a href='https://blogs.gartner.com/andrew-lerner/2019/12/23/say-hello-sase-secure-access-service-edge/' target='_blank'>Gartner</a>, a global research and advisory firm, coined the term \"SASE\" in 2019.</p>\n      </div>\n    </div>\n  </div>\n<p>A SASE approach offers better control over and visibility into the users, traffic, and data accessing a corporate network — vital capabilities for modern, globally distributed organizations. Networks built with SASE are flexible and scalable, able to connect globally distributed employees and offices across any location and via any device.</p>\n\n<img width=\"643\" height=\"533\" loading=\"lazy\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4pbDhJrdK2BpHCQfA5pz8S/e49500fa200b677aa591511fd5b60bca/BDES-1175_SASE-Illustrations_SASE-circle-hero-illustration_REV_SASE-circle-hero-illustration_Working.svg\" class=\"responsive-image--60-pct-center\" alt=\"SASE - secure access service edge\" itemprop=\"image\" />\n\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What security capabilities does SASE include?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>SASE combines software-defined wide area networking (<a href='/learning/network-layer/what-is-an-sd-wan/'>SD-WAN</a>) capabilities with a number of <a href='/learning/network-layer/network-security/'>network security</a> functions, all of which are delivered from a single <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> platform. In this way, SASE enables employees to authenticate and securely connect to internal resources from anywhere, and gives organizations better control over the traffic and data that enters and leaves their internal network.</p>\n     </div>\n    </div>\n  </div>\n</div>\n<p>SASE includes four core security components:</p>\n\n<ol class=\"learning-list\">\n  <li><i><a href=\"/learning/access-management/what-is-a-secure-web-gateway/\">Secure web gateways (SWG):</a></i> An SWG prevents cyber threats and data breaches by filtering unwanted content from web traffic, blocking unauthorized user behavior, and enforcing company security policies. SWGs can be deployed anywhere, making them ideal for <a href='/learning/access-management/remote-workforce-security/'>securing remote workforces</a>.</li>\n  <li><i><a href=\"/learning/access-management/what-is-a-casb/\">Cloud access security broker (CASB):</a></i> A CASB performs several security functions for cloud-hosted services, including revealing <a href='/learning/access-management/what-is-shadow-it/'>shadow IT</a> (unauthorized corporate systems), securing confidential data through <a href='/learning/access-management/what-is-access-control/'>access control</a> and <a href='/learning/access-management/what-is-dlp/'>data loss prevention (DLP)</a>, and ensuring compliance with <a href='/learning/privacy/what-is-data-privacy/'>data privacy</a> regulations.</li>\n  <li><i><a href='/learning/access-management/what-is-ztna/'>Zero Trust Network Access (ZTNA):</a></i> ZTNA platforms lock down internal resources from public view and help defend against potential data breaches by requiring real-time verification of every user and device to every protected application.</li>\n  <li><i><a href=\"/learning/cloud/what-is-a-cloud-firewall/\">Firewall-as-a-service (FWaaS):</a></i> FWaaS refers to firewalls delivered from the cloud as a service. FWaaS protects cloud-based platforms, infrastructure, and applications from cyber attacks. Unlike traditional firewalls, FWaaS is not a physical appliance, but a set of security capabilities that includes <a href='/learning/access-management/what-is-url-filtering/'>URL filtering</a>, intrusion prevention, and uniform policy management across all network traffic.</li>\n</ol>\n\n<p>Depending on the vendor and the needs of the enterprise, these core components may be bundled with additional security services, including web application and <a href='/learning/security/api/what-is-an-api/'>API</a> protection (WAAP), <a href='/learning/access-management/what-is-browser-isolation/'>remote browser isolation</a>, or Wi-Fi hotspot protection.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the advantages of a SASE framework?</h2>\n\n<p>SASE offers several benefits compared to a traditional, data center-based network security model:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Identity-based Zero Trust network access.</strong> SASE leans heavily on a <a href='https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/'>Zero Trust security</a> model, which does not grant a user access to applications and data until their <a href='/learning/access-management/what-is-identity/'>identity</a> has been verified — even if they are already inside the <a href='/learning/access-management/what-is-the-network-perimeter/'>perimeter</a> of a private network. When establishing access policies, a SASE approach takes more than an entity's identity into account; it also considers factors like user location, time of day, enterprise security standards, compliance policies, and an ongoing evaluation of risk/trust.</li>\n  <li><strong>Blocking attacks against network infrastructure.</strong> The firewall and CASB components of SASE help prevent external attacks (like <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attacks</a> and vulnerability exploits) from getting in and compromising internal resources. Both on-premise and cloud-based networks can be protected by a SASE approach.</li>\n  <li><strong>Preventing malicious activity.</strong> By filtering URLs, DNS queries, and other outgoing and incoming network traffic, SASE helps prevent malware-based attacks, data exfiltration, and other threats to corporate data.</li>\n  <li><strong>Streamlined implementation and management.</strong> SASE merges single-point security solutions into one cloud-based service, freeing enterprises to interact with fewer vendors and to spend less time, money, and internal resources configuring physical infrastructure.</li>\n  <li><strong>Simplified policy management.</strong> Instead of juggling multiple policies for separate solutions, SASE allows organizations to set, adjust, and enforce access policies across all locations, users, devices, and applications from a single portal.</li>\n  <li><strong>Latency-optimized routing.</strong> SASE helps cut down on latency by routing network traffic across a global edge network in which traffic is processed as close to the user as possible. Routing optimizations can help determine the fastest network path based on network congestion and other factors.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does SASE compare to traditional networking?</h2>\n\n<p>In a traditional network model, data and applications live in a core data center. In order to access those resources, users, branch offices, and applications connect to the data center from within a localized private network or a secondary network that typically connects to the primary one through a secure leased line or <a href='/learning/access-management/what-is-a-vpn/'>VPN</a>.</p>\n\n<p>This model has proved to be ill-equipped to handle the complexities introduced by cloud-based services like <a href='/learning/cloud/what-is-saas/'>software-as-a-service (SaaS)</a> and the rise of distributed workforces. It is no longer practical to reroute all traffic through a centralized data center if applications and data are hosted in the cloud.</p>\n\n<p>By contrast, SASE places network controls on the cloud edge — not the corporate data center. Instead of layering cloud services that require separate configuration and management, SASE streamlines network and security services to create a secure network edge. Implementing identity-based, Zero Trust access policies on the edge network allows enterprises to expand their network perimeter to any remote user, branch office, device, or application.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How organizations can implement SASE</h2>\n\n<p>Many organizations take a piecemeal approach to SASE implementation. In fact, some may have already adopted certain SASE elements without knowing it. Key steps organizations can take towards fully adopting a SASE model include:</p>\n\n<ol class=\"learning-list\">\n  <li>Securing remote workforces</li>\n  <li>Placing branch offices behind a cloud perimeter</li>\n  <li>Moving DDoS protection to the edge</li>\n  <li>Migrating self-hosted applications to the cloud</li>\n  <li>Replacing security appliances with unified, cloud-native policy enforcement</li>\n</ol>\n\n<p>These steps are broken down further in the white paper \"Getting started with SASE,\" <a href='https://www.cloudflare.com/static/998cecbf3a3d72f79cc0f760d533da85/Cloudflare_One_SASE_Whitepaper.pdf' target='_blank'>available for download here</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare enables SASE</h2>\n\n<p>Cloudflare is uniquely architected to deliver a platform of integrated network and security services across data centers in over %{DataCenterCount} globally distributed cities, eliminating the need for enterprises to purchase and manage a complex collection of point solutions.</p>\n\n<p>Cloudflare One is a SASE platform that securely connects remote users, offices, and data centers to each other and the resources that they need. To get started with Cloudflare One, see the <a href='/cloudflare-one/'>Cloudflare One product page</a>. Or, <a href='/learning/access-management/what-is-ztna/'>learn more about ZTNA</a>, a crucial technology behind SASE.</p>",
+				"desktopMainContent": "<div itemscope itemtype=\"https://schema.org/FAQPage\">\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What is SASE?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>Secure access service edge, or SASE (pronounced \"sassy\") is an architectural model that converges network connectivity with network security functions, and delivers them through a single cloud platform and/or centralized policy control.</p>\n      </div>\n    </div>\n  </div>\n<p>As organizations increasingly migrate applications and data to the cloud, it has become more complex and risky to manage <a href='/learning/network-layer/network-security/'>network security</a> with a traditional <a href='/learning/access-management/castle-and-moat-network-security/'>\"castle and moat\"</a> approach. Unlike the traditional networking approach, SASE unifies security and networking onto one cloud platform and one control plane for consistent visibility, controls, and experiences from any user to any application.</p>\n      </div>\n    </div>\n  </div>\n<p>In this way, SASE creates a new unified corporate network based on cloud services run over the Internet — allowing organizations to transition away from many architectural layers and point solutions.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/17RhepZZwxiD452Hs0gKFk/5324e2c81dcdef79c74efea2c60812ac/Network_Plus_Zero_Trust_Diagram_-_No_CF_Logo_smaller.png\" alt=\"SASE architecture combines Zero Trust security and network services\" itemprop=\"image\" loading=\"lazy\" />\n\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">How does SASE compare to traditional networking?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>In a traditional network model, data and applications live in a core data center. To access those resources, users, branch offices, and applications connect to the data center from within a localized private network or a secondary network (which typically connects to the primary one through a secure leased line or <a href='/learning/access-management/what-is-a-vpn/'>VPN</a>).</p>\n      </div>\n    </div>\n  </div>\n<p>However, this model is ill-equipped to handle the complexities introduced by new cloud-based services and the rise of distributed workforces. It is impractical, for example, to reroute all traffic through a centralized data center if an organization hosts <a href='/learning/cloud/what-is-saas/'>SaaS applications</a> and data in the cloud.</p>  \n      </div>\n    </div>\n  </div>\n<p>By contrast, SASE places network controls on the cloud <a href='/learning/serverless/glossary/what-is-edge-computing/'>edge</a> — not the corporate data center. Instead of layering services that require separate configuration and management, SASE converges network and security services using one control plane. It implements identity-based, <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust security</a> policies on the edge network, which allows enterprises to expand network access to any remote user, branch office, device, or application.</p>\n\n  <div itemscope itemprop=\"mainEntity\" itemtype=\"https://schema.org/Question\">\n<h2 itemprop=\"name\">What capabilities does SASE deliver?</h2>\n  <div itemscope itemprop=\"acceptedAnswer\" itemtype=\"https://schema.org/Answer\">\n     <div itemprop=\"text\">\n<p>SASE platforms combine <a href='/learning/network-layer/network-as-a-service-naas/'>network-as-a-service (NaaS)</a> capabilities with a number of security functions managed from one interface and delivered from one control plane.</p>\n     </div>\n    </div>\n  </div>\n</div>\n<p>These services include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Network services that simplify connectivity</strong>, such as <a href='/learning/network-layer/what-is-an-sd-wan/'>software-defined wide area networking (SD-WAN)</a> or WAN-as-a-service (WANaaS), to connect a variety of networks together into a single corporate network</li>\n  <li><strong>Security services</strong> applied to traffic flowing in and out of the network to help secure user and device access, defend against threats, and protect sensitive data</li>\n  <li><strong>Operational services</strong> that provide platform-wide capabilities, such as network monitoring and logging</li>\n  <li><strong>A policy engine</strong> that underpins all contextual attributes and security rules, then applies those policies across all connected services</li>\n</ul>\n      </div>\n    </div>\n  </div>\n<p>By merging these services into a unified architecture, SASE simplifies network infrastructure.</p>\n\n<a id='SASEcomponents'><h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the technology components of a SASE platform?</h2></a>\n\n<p>Because secure access service edge involves converging a number of traditionally disparate services, organizations may move towards a SASE architecture progressively, instead of all at once. Organizations can first implement the components that fulfill their highest-priority <a href='#SASEusecases'>use cases</a>, before moving all networking and security services to a single platform.</p>\n\n<p><strong>SASE platforms typically include the following technology components:</strong></p>\n\n<ul class=\"learning-list\">\n  <li><strong>Zero Trust Network Access (ZTNA):</strong> The Zero Trust security model assumes threats are present both inside and outside a network; therefore, strict contextual verification is required every time a person, app, or device tries to access resources on a corporate network.  <a href='/learning/access-management/what-is-ztna/'>Zero Trust Network Access (ZTNA)</a> is the technology that makes the Zero Trust approach possible — it sets up one-to-one connections between users and the resources they need, and requires periodic reverification and recreation of those connections.</li>\n  <li><strong>Secure web gateway (SWG):</strong> A (<a href='/learning/access-management/what-is-a-secure-web-gateway/'>SWG</a>) prevents cyber threats and protects data by filtering unwanted web traffic content and blocking risky or unauthorized user behavior online. SWGs can be deployed anywhere, making them ideal for securing hybrid work.</li>\n  <li><strong>Cloud access security broker (CASB):</strong> Using the cloud and SaaS apps makes it harder to ensure that data stays private and secure. A <a href='/learning/access-management/what-is-a-casb/'>CASB</a> is one solution to this challenge: it provides data security controls over (and visibility into) an organization's cloud-hosted services and applications.</li>\n  <li><strong>Software-defined WAN (SD-WAN) or WANaaS:</strong> In a SASE architecture, organizations adopt either SD-WAN or WAN-as-a-Service (WANaaS) to connect and scale operations (e.g., offices, retail stores, data centers) across large distances. SD-WAN and WANaaS use different approaches:\n  <ul>\n    <li><em>SD-WAN</em> technology uses software at enterprise sites and a centralized controller to overcome some of the limitations of traditional WAN architectures, simplifying operations and traffic steering decisions.</li>\n    <li><em>WANaaS</em> builds on the benefits of SD-WAN by taking a \"light branch, heavy cloud\" approach that deploys the minimum required hardware within physical locations and uses low-cost Internet connectivity to reach the nearest \"service edge\" location. This can reduce total costs, offer more integrated security, improve middle mile performance, and better serve cloud infrastructure.</li>\n  </ul>\n  <li><strong>Next-generation firewall (NGFW)</strong> An <a href='/learning/security/what-is-next-generation-firewall-ngfw/'>NGFW</a> inspects data on a deeper level than a traditional firewall. For instance, NGFWs can offer application awareness and control, intrusion prevention, and threat intelligence — which allows them to identify and block threats that may be hidden in normal-seeming traffic. NGFWs that can be deployed in the cloud are called cloud firewalls or <a href='/learning/cloud/what-is-a-cloud-firewall/'>firewall-as-a-service (FWaaS)</a>.</li>\n</ul>\n\n</p>Depending on the vendor's capabilities, SASE components above may also be bundled with <a href='/learning/email-security/what-is-email-security/'>cloud email security</a>, <a href='https://blog.cloudflare.com/cloudflare-waap-named-leader-gartner-magic-quadrant-2022/'>web application and API protection (WAAP)</a>, <a href='/learning/dns/dns-security/'>DNS security</a>, and/or security service edge (SSE) <a href='#SSEcapabilities'>capabilities</a> described further below.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the key benefits of SASE?</h2>\n\n<p>SASE offers several benefits compared to a traditional, data center-based network security model:</p>\n\n<p><strong>Reduced risk through Zero Trust principles:</strong> SASE leans heavily on the Zero Trust security model, which does not grant a user access to applications and data until their identity has been verified — even if they are already inside the <a href='/learning/access-management/what-is-the-network-perimeter/'>perimeter</a> of a private network. When establishing access policies, a SASE approach takes more than an entity's identity into account; it can also consider factors like geolocation, device posture, enterprise security standards, and a continuous evaluation of risk/trust.</p>\n\n<p><strong>Reduced costs through platform consolidation:</strong> SASE converges single-point security solutions into one cloud-based service, freeing enterprises to interact with fewer vendors and to spend less time, money, and internal resources trying to force disparate products to integrate.</p>\n\n<p><strong>Operational efficiency and agility:</strong> Instead of juggling point solutions that were not designed to work together, SASE enables organizations to set, adjust, and enforce security policies across all locations, users, devices, and applications from a single interface. IT teams can troubleshoot more effectively and spend less time resolving simple issues.</p>\n<p><strong>Improved user experience for hybrid work:</strong> Network routing optimizations can help determine the fastest network path based on network congestion and other factors. SASE helps reduce end user <a href='/learning/performance/glossary/what-is-latency/'>latency</a> by securely routing traffic across a global edge network in which traffic is processed as close to the user as possible.</p>\n\n<a id=\"SASEusecases\"><h2 class=\"learning-content-h2\" itemprop=\"headline\">What are common SASE use cases?</h2></a>\n\n<p><strong>Augmenting or replacing VPNs for modernized secure access</strong></p>\n<p>One common driver for moving to a SASE architecture is to improve resource access and connectivity. Routing and processing network traffic across a global cloud network as close to the user as possible — instead of through VPNs — reduces end user friction, while eliminating the risk of <a href='/learning/security/glossary/what-is-lateral-movement/'>lateral movement</a>.</p>\n\n<p><strong>Simplifying contractor (third-party) access</strong></p>\n<p>Secure access service edge extends secure access beyond internal employees to third-parties like contractors, partners, and other temporary or independent workers. With resource-based access, organizations mitigate the risk of overprovisioning contractors.</p>\n\n<p><strong>Threat defense for distributed offices and remote workers</strong></p>\n<p>SASE allows organizations to apply consistent IT security policies across all users, irrespective of their location. By filtering and inspecting all outgoing and incoming network traffic, SASE can help prevent threats such as <a href='/learning/ddos/glossary/malware/'>malware-based attacks</a>, multi-channel <a href='learning/access-management/phishing-attack/'>phishing</a> (attacks that span multiple communication channels), <a href='/learning/access-management/what-is-an-insider-threat/'>insider threats</a>, data exfiltration, and more.</p>\n\n<p><strong>Data protection for regulatory compliance</strong></p>\n<p>Because SASE provides visibility over every network request, organizations can apply policies to the data in each request. These policies help ensure compliance with <a href='/learning/privacy/what-is-data-privacy/'>data privacy</a> laws that require organizations to process sensitive data in certain ways.</p>\n\n<p><strong>Simplify branch connectivity</strong></p>\n<p>A SASE architecture can help augment or replace a patchwork of <a href='/learning/network-layer/what-is-mpls/'>multiprotocol label switching (MPLS)</a> circuits and network appliances to more easily route traffic between branch offices, and to facilitate site-to-site connectivity across locations.</p>\n\n<a id='SSEcapabilities'><h2 class=\"learning-content-h2\" itemprop=\"headline\">How are SASE and SSE (security service edge) different?</h2></a>\n\n<p>Industry analyst firm Gartner defines secure access service edge as including SD-WAN, SWG, CASB, NGFW, and ZTNA to \"enable zero trust access based on the identity of the device or entity, combined with real-time context and security and compliance policies.\"</p>\n\n<p><strong>In other words, SASE incorporates a user's secure access as part of the network architecture.</strong> <em>(It is worth noting here that industry analyst firm Forrester categorizes the SASE model as \"Zero Trust Edge,\" or ZTE).</em></p>\n\n<p>But not all organizations have a cohesive approach across IT, network security, and networking teams. Therefore, they may prioritize <a href='/learning/access-management/security-service-edge-sse/'>security service edge (SSE)</a> — a subset of SASE functionality primarily focused on securing access to the web, cloud services, and private applications.</p>\n\n<p>Additionally, while most SASE platforms include the <a href='#SASEcomponents'>core capabilities</a> noted earlier, some include additional SSE capabilities, such as:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/access-management/what-is-browser-isolation/'>Remote browser isolation (RBI):</a> RBI applies the Zero Trust principle to web browsing by assuming no website code (e.g. HTML, CSS, JavaScript) should be trusted to run by default. RBI loads webpages and executes any associated code in the cloud — away from users' local devices. This separation helps prevent malware downloads, minimizes the risk of <a href='/learning/security/threats/zero-day-exploit/'>zero-day</a> browser vulnerabilities, and defends against other browser-borne threats</li>\n  <li><a href='/learning/access-management/what-is-dlp/'>Data loss prevention (DLP):</a> To prevent data from being stolen or destroyed without permission, DLP technologies detect the presence of sensitive data in web, SaaS, and private applications. In combination with a SWG, DLP solutions can scan data in transit; in combination with a CASB, DLP solutions can scan <a href='/learning/security/glossary/data-at-rest/'>data at rest</a>.</li>\n  <li><a href='/learning/performance/what-is-digital-experience-monitoring/'>Digital experience monitoring (DEM):</a> DEM is a tool for monitoring user behavior and their experiences with website traffic and app performance. DEM helps organizations capture real-time data around network issues, performance slow-downs, and application outages. This helps to pinpoint network issues and identify the root causes of connectivity anomalies</li>\n</ul>\n\n<p>SSE is a common stepping stone to a full SASE deployment. However, some organizations (particularly those with mature SD-WAN deployments) may not be looking to fully consolidate to a single SASE vendor. Those organizations can deploy individual SASE components to address their immediate use cases, with the option to expand their platform consolidation efforts over time.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How Cloudflare enables SASE</h2>\n\n<p><a href='/cloudflare-one/' target=\"_blank\">Cloudflare One</a> is Cloudflare's SASE platform for securing enterprise applications, users, devices, and networks. It is built on Cloudflare's <a href='/connectivity-cloud/' target=\"_blank\">connectivity cloud</a> - a unified, composable platform of programmable cloud-native services that enable any-to-any connectivity between all networks (enterprise and Internet), cloud environments, applications and users.</p>\n\n<p>Cloudflare One services (which includes all the aspects of SASE) are designed to run across all Cloudflare network locations, so all traffic is connected, inspected, and filtered close to the source for the best performance and consistent user experience. Learn more about <a href='/cloudflare-one/' target=\"_blank\">Cloudflare One</a>.</p>\n",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {

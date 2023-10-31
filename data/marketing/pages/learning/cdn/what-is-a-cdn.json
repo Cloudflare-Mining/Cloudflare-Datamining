@@ -15,7 +15,7 @@
 						"file": {
 							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2fkUOlpeGbZoV4Cq2NgLlz/69471d35eb36c7d061b415845594c5e4/cdn-lc.png"
 						},
-						"description": null
+						"description": "Learning Center CDN OG Image"
 					},
 					"facebookCustomImage": null
 				},
@@ -25,7 +25,160 @@
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "1TmxktXfUAclAhABE2horM",
 					"learningCenterName": "cdn",
-					"links": null
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+							"displayText": "What is a CDN?  ",
+							"url": "/learning/cdn/what-is-a-cdn/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "zygaXlW07J4MrONnddhcM",
+							"name": "CDN Header: CDN Benefits",
+							"displayText": "CDN benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+									"displayText": "CDN benefits summary",
+									"url": "/learning/cdn/cdn-benefits/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1TT4G3C7LJsolyiywM89vS",
+									"displayText": "CDN performance",
+									"url": "/learning/cdn/performance/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6jyrxonbzcxCgqdepHymae",
+									"displayText": "CDN reliability",
+									"url": "/learning/cdn/cdn-load-balance-reliability/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6igaSfAmzhyUfouCsoHbVq",
+									"displayText": "How CDNs reduce costs",
+									"url": "/learning/cdn/how-cdns-reduce-bandwidth-cost/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3Pl0qF0hFWqaFsAVHWu7y5",
+							"name": "CDN Header: CDN Metrics",
+							"displayText": "CDN metrics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1T54LIEtYSk6kRVn76Nj55",
+									"displayText": "Round-trip time (RTT)",
+									"url": "/learning/cdn/glossary/round-trip-time-rtt/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "xRhnt5OShurSlFpIZ8TMV",
+									"displayText": "Time-to-live (TTL)",
+									"url": "/learning/cdn/glossary/time-to-live-ttl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4P70BNgiPfigHxGdCl803c",
+									"displayText": "Cache hit ratio",
+									"url": "/learning/cdn/what-is-a-cache-hit-ratio/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "PaGO0WjMX7EYeZkB3pdoA",
+							"name": "CDN Header: How Caching Works",
+							"displayText": "How caching works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7oxj52SCzgMFJWTD2JRMDU",
+									"displayText": "What is caching?",
+									"url": "/learning/cdn/what-is-caching/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47QfhUCWZNVc492FRdChU5",
+									"displayText": "Static vs. dynamic caching",
+									"url": "/learning/cdn/caching-static-and-dynamic-content/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4SURNvqLXnEF90z0rluKXj",
+									"displayText": "Cache control",
+									"url": "/learning/cdn/glossary/what-is-cache-control/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "63eV3I9XCEzLfNvwycmmmS",
+							"name": "CDN Header: CDN Glossary",
+							"displayText": "CDN glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4qXkaiE0w1Gv6ByBCtJSA1",
+									"displayText": "Anycast",
+									"url": "/learning/cdn/glossary/anycast-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4wiEjYpswyW7KqrYywtFHs",
+									"displayText": "Data center",
+									"url": "/learning/cdn/glossary/data-center/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38ZIPiWHhYthel2M0phbnU",
+									"displayText": "Origin server",
+									"url": "/learning/cdn/glossary/origin-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uTWD4D65UfywkSudIU392",
+									"displayText": "Edge server",
+									"url": "/learning/cdn/glossary/edge-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5PAq9dBn9Q9KLVLRN84xu8",
+									"displayText": "Internet exchange point (IXP)",
+									"url": "/learning/cdn/glossary/internet-exchange-point-ixp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7BXEVgdbR1yC2UegiHYOFu",
+									"displayText": "Reverse proxy",
+									"url": "/learning/cdn/glossary/reverse-proxy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "58uteVo7HkNVlD4piR5sOu",
+									"displayText": "GSLB",
+									"url": "/learning/cdn/glossary/global-server-load-balancing-gslb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5sZpyP6Z4glWzcyC45momG",
+									"displayText": "CDN SSL TLS security",
+									"url": "/learning/cdn/cdn-ssl-tls-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "45TluEipOXLFfyI5JctqPV",
+									"displayText": "CDN for WordPress",
+									"url": "/learning/cdn/cdn-for-wordpress/"
+								}
+							]
+						}
+					]
 				},
 				"learningCenterArticleFooter": {
 					"contentTypeId": "learningCenterArticleFooter",
@@ -362,17 +515,17 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"proactivePopup": null,
 				"sidebarForm": null
