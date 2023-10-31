@@ -37,7 +37,18 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Developer Week 2022",
+					"metaDescription": "Join us to learn about how Cloudflare helps Developers during Developer Week 2022",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3pXmS9eVJon6vavxS8zN8c/661ca822fc08cdda332c654cf28b37f8/2022_Developer_Week_Hero.png"
+						},
+						"description": ""
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "2JOLrhfld0JJ3VjouPYH5p",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -163,7 +174,44 @@
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
-						"features": null
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6wori6OYhi64N5C5x3kC1Q",
+								"title": "ICYMI: Developer Week 2022 announcements",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "This week we made over 30 announcements, in case you missed any here's a quick round-up. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/icymi-developer-week-2022-announcements/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "e0d380bd-7f8c-5bd9-b93f-18c646989d5b",
+									"altText": "Dev Week Wrap up Post",
+									"title": "Dev Week Wrap up Post",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2wG1LFzncOlNU8nmJzAvsi/2ef281e227d84a587e2bb6c610e667ce/2022_Developer_Week_Hero_Dark.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentfulId": "1W6J827KCCLFyRqyXaIyfA",
@@ -278,6 +326,78 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1oTs6LBB6TJ8eOEhlqyKLV/08955d3ef9bf32dcc8b5b701e17a430e/Segment_Edge_SDK.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2SZ5MZHkktX3IPN4lsnvTq",
+								"title": "How Cloudflare instruments services using Workers Analytics Engine",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Learn how Cloudflare uses our own Workers Analytics Engine product to capture analytics about our own products!",
+								"learnMoreUrl": "https://blog.cloudflare.com/using-analytics-engine-to-improve-analytics-engine",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "b95f7b7f-32d3-5c76-9557-62adbf11e98e",
+									"altText": "Workers Analytics Engine",
+									"title": "Workers Analytics Engine",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/L04rGZ2u2nP1R3NtQkCTr/5b84cbe981beb48c130b847cc570f648/Workers_Analytics_Engine_Public_Beta__1_.png"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4nwbLfF9uguSWCVhyxcxzL",
+								"title": "Doubling down on local development with Workers: Miniflare meets workerd",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Today, we're taking local development to the next level by releasing Miniflare 3, powered by the open-source workerd runtime, along with support for migrating existing dashboard projects and using real data locally.",
+								"learnMoreUrl": "https://blog.cloudflare.com/miniflare-and-workerd",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": {
+									"id": "626e68e7-851f-578e-a649-9e32aa78d37e",
+									"altText": "Workerd integration with wrangler",
+									"title": "Workerd integration with wrangler",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ecx6BvhFuwyLNGRd4zUwH/b884f05feb81eda8a998918340981d18/Miniflare_Camping_with_Workerd.png"
 										},
 										"description": ""
 									},
