@@ -61,7 +61,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -364,7 +364,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -416,6 +416,19 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -619,7 +632,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -671,6 +684,19 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -879,7 +905,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -915,6 +941,19 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -1103,7 +1142,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1138,6 +1177,19 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -1336,7 +1388,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1388,6 +1440,19 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"type": "string"
 				}
 			},
 			{
@@ -1591,7 +1656,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -1679,6 +1744,19 @@
 					"enum": [
 						"BYTES",
 						"BYTES_OLD"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
 					],
 					"type": "string"
 				}
@@ -1889,7 +1967,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2236,7 +2314,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2301,6 +2379,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -2537,7 +2628,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2602,6 +2693,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -2845,7 +2949,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -2893,6 +2997,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -3117,7 +3234,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3166,6 +3283,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -3381,7 +3511,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3429,6 +3559,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -3658,7 +3801,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3723,6 +3866,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -3947,7 +4103,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -3995,6 +4151,19 @@
 						"MIN0_MAX"
 					],
 					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "ORIGIN",
+					"description": "Together with the `location` parameter, will apply the filter to origin or target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
 					"type": "string"
 				}
 			},
@@ -4143,6 +4312,340 @@
 			"pro": true
 		}
 	},
+	"GET /radar/attacks/layer3/top/attacks": {
+		"description": "Get the top attacks from origin to target location. Values are a percentage out of the total layer 3 attacks (with billing country). You can optionally limit the number of attacks per origin/target location (useful if all the top attacks are from or to the same location).",
+		"operationId": "radar-get-attacks-layer3-top-attacks",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limitDirection",
+				"schema": {
+					"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
+					"enum": [
+						"ORIGIN",
+						"TARGET"
+					],
+					"example": "ORIGIN",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limitPerLocation",
+				"schema": {
+					"description": "Limit the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
+					"example": 10,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"originCountryAlpha2": {
+														"example": "FR",
+														"type": "string"
+													},
+													"originCountryName": {
+														"example": "France",
+														"type": "string"
+													},
+													"value": {
+														"example": "4.323214",
+														"type": "string"
+													}
+												},
+												"required": [
+													"originCountryAlpha2",
+													"originCountryName",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get top attack pairs (origin and target locations) of Layer 3 attacks",
+		"tags": [
+			"Radar Attacks"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/attacks/layer3/top/industry": {
 		"description": "Get the Industry of attacks.",
 		"operationId": "radar-get-attacks-layer3-top-industries",
@@ -4213,7 +4716,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -4450,6 +4953,630 @@
 			"pro": true
 		}
 	},
+	"GET /radar/attacks/layer3/top/locations/origin": {
+		"description": "Get the origin locations of attacks.",
+		"operationId": "radar-get-attacks-layer3-top-origin-locations",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"originCountryAlpha2": {
+														"example": "FR",
+														"type": "string"
+													},
+													"originCountryName": {
+														"example": "France",
+														"type": "string"
+													},
+													"value": {
+														"example": "4.323214",
+														"type": "string"
+													}
+												},
+												"required": [
+													"originCountryAlpha2",
+													"originCountryName",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get top origin locations of attack",
+		"tags": [
+			"Radar Attacks"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/attacks/layer3/top/locations/target": {
+		"description": "Get the target locations of attacks.",
+		"operationId": "radar-get-attacks-layer3-top-target-locations",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "ipVersion",
+				"schema": {
+					"description": "Filter for ip version.",
+					"example": "IPv4",
+					"items": {
+						"enum": [
+							"IPv4",
+							"IPv6"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "protocol",
+				"schema": {
+					"description": "Array of L3/4 attack types.",
+					"items": {
+						"enum": [
+							"UDP",
+							"TCP",
+							"ICMP",
+							"GRE"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"targetCountryAlpha2": {
+														"example": "FR",
+														"type": "string"
+													},
+													"targetCountryName": {
+														"example": "France",
+														"type": "string"
+													},
+													"value": {
+														"example": "4.323214",
+														"type": "string"
+													}
+												},
+												"required": [
+													"targetCountryAlpha2",
+													"targetCountryName",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get top target locations of attack",
+		"tags": [
+			"Radar Attacks"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/attacks/layer3/top/vertical": {
 		"description": "Get the Verticals of attacks.",
 		"operationId": "radar-get-attacks-layer3-top-verticals",
@@ -4520,7 +5647,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -4818,7 +5945,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -4952,43 +6079,43 @@
 										},
 										"summary_0": {
 											"properties": {
-												"access_rules": {
+												"ACCESS_RULES": {
 													"example": "0.9",
 													"type": "string"
 												},
-												"api_shield": {
+												"API_SHIELD": {
 													"example": "0.9",
 													"type": "string"
 												},
-												"bot_management": {
+												"BOT_MANAGEMENT": {
 													"example": "0.9",
 													"type": "string"
 												},
-												"data_loss_prevention": {
+												"DATA_LOSS_PREVENTION": {
 													"example": "0.9",
 													"type": "string"
 												},
-												"ddos": {
+												"DDOS": {
 													"example": "34",
 													"type": "string"
 												},
-												"ip_reputation": {
+												"IP_REPUTATION": {
 													"example": "0.1",
 													"type": "string"
 												},
-												"waf": {
+												"WAF": {
 													"example": "65",
 													"type": "string"
 												}
 											},
 											"required": [
-												"waf",
-												"ddos",
-												"ip_reputation",
-												"access_rules",
-												"bot_management",
-												"api_shield",
-												"data_loss_prevention"
+												"WAF",
+												"DDOS",
+												"IP_REPUTATION",
+												"ACCESS_RULES",
+												"BOT_MANAGEMENT",
+												"API_SHIELD",
+												"DATA_LOSS_PREVENTION"
 											],
 											"type": "object"
 										}
@@ -5151,7 +6278,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -5508,7 +6635,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -5652,44 +6779,51 @@
 										},
 										"serie_0": {
 											"properties": {
-												"access_rules": {
+												"ACCESS_RULES": {
 													"items": {
 														"example": "5",
 														"type": "string"
 													},
 													"type": "array"
 												},
-												"api_shield": {
+												"API_SHIELD": {
 													"items": {
 														"example": "5",
 														"type": "string"
 													},
 													"type": "array"
 												},
-												"bot_management": {
+												"BOT_MANAGEMENT": {
 													"items": {
 														"example": "5",
 														"type": "string"
 													},
 													"type": "array"
 												},
-												"data_loss_prevention": {
+												"DATA_LOSS_PREVENTION": {
 													"items": {
 														"example": "5",
 														"type": "string"
 													},
 													"type": "array"
 												},
-												"ddos": {
+												"DDOS": {
 													"items": {
 														"example": "60",
 														"type": "string"
 													},
 													"type": "array"
 												},
-												"ip_reputation": {
+												"IP_REPUTATION": {
 													"items": {
 														"example": "5",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"WAF": {
+													"items": {
+														"example": "30",
 														"type": "string"
 													},
 													"type": "array"
@@ -5700,24 +6834,17 @@
 														"type": "string"
 													},
 													"type": "array"
-												},
-												"waf": {
-													"items": {
-														"example": "30",
-														"type": "string"
-													},
-													"type": "array"
 												}
 											},
 											"required": [
 												"timestamps",
-												"waf",
-												"ddos",
-												"ip_reputation",
-												"access_rules",
-												"bot_management",
-												"api_shield",
-												"data_loss_prevention"
+												"WAF",
+												"DDOS",
+												"IP_REPUTATION",
+												"ACCESS_RULES",
+												"BOT_MANAGEMENT",
+												"API_SHIELD",
+												"DATA_LOSS_PREVENTION"
 											],
 											"type": "object"
 										}
@@ -5874,7 +7001,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -6099,7 +7226,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -6369,7 +7496,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
@@ -6594,7 +7721,7 @@
 				"in": "query",
 				"name": "dateEnd",
 				"schema": {
-					"description": "Array of datetimes to filter the end of a series.",
+					"description": "End of the date range (inclusive).",
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
