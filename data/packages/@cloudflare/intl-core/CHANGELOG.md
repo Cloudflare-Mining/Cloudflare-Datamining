@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.14.3](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.14.1...@cloudflare/intl-core@1.14.3) (2023-10-27)
+## [1.14.4](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/intl-core@1.14.1...@cloudflare/intl-core@1.14.4) (2023-10-31)
 
-**Note:** Version bump only for package @cloudflare/intl-core
+
+### Bug Fixes
+
+* **stratus:** UI-0000 ran `yarn update-packages-with-wrong-version` ([ab92fd1](https://stash.cfops.it:7999/fe/stratus/commits/ab92fd16487770f4399973ea366d925f68f65c5e))
 
 
 

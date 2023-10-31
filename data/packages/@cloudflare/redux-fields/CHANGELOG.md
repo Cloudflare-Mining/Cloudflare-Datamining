@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.5.2](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.5.0...@cloudflare/redux-fields@2.5.2) (2023-10-27)
+## [2.5.3](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/redux-fields@2.5.0...@cloudflare/redux-fields@2.5.3) (2023-10-31)
 
-**Note:** Version bump only for package @cloudflare/redux-fields
+
+### Bug Fixes
+
+* **stratus:** UI-0000 ran `yarn update-packages-with-wrong-version` ([ab92fd1](https://stash.cfops.it:7999/fe/stratus/commits/ab92fd16487770f4399973ea366d925f68f65c5e))
 
 
 
