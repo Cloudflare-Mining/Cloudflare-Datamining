@@ -164,7 +164,11 @@ export const DeploymentConfigEnv = eg.object({
   compatibility_flags: eg.array(eg.string).optional,
   always_use_latest_compatibility_date: eg.boolean.optional,
   build_image_major_version: eg.number.optional,
-  usage_model: eg.union([eg.literal('bundled'), eg.literal('unbound')]).optional
+  usage_model: eg.union([
+    eg.literal('bundled'),
+    eg.literal('unbound'),
+    eg.literal('standard')
+  ]).optional
 });
 
 export type DeploymentConfigEnv = TypeFromCodec<typeof DeploymentConfigEnv>;
@@ -265,7 +269,11 @@ export type UploadFileGroupPayload = TypeFromCodec<
   typeof UploadFileGroupPayload
 >;
 
-export const FunctionsUsageModel = enumerable(['bundled', 'unbound']);
+export const FunctionsUsageModel = enumerable([
+  'bundled',
+  'unbound',
+  'standard'
+]);
 export type FunctionsUsageModel = TypeFromEnumerable<
   typeof FunctionsUsageModel
 >;

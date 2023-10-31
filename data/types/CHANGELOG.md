@@ -3,12 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [6.25.0](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.23.5...@cloudflare/types@6.25.0) (2023-10-27)
+# [6.26.0](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.23.5...@cloudflare/types@6.26.0) (2023-10-31)
 
 
 ### Bug Fixes
 
 * **stratus:** RTG-2923 Removal of Privacy Pass toggle from dashboard to ([464ab9b](https://stash.cfops.it:7999/fe/stratus/commits/464ab9b9ce0f19bda589f42c55d5ccdc20831207))
+* **stratus:** UI-0000 ran `yarn update-packages-with-wrong-version` ([ab92fd1](https://stash.cfops.it:7999/fe/stratus/commits/ab92fd16487770f4399973ea366d925f68f65c5e))
 
 
 ### Features
