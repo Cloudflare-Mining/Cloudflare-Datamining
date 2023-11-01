@@ -62,7 +62,15 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "4JB9V1D9fMc3yH94qLUCug",
+					"text": "__Connect Chicago:__ Network with industry peers to learn about security transformation on 11/9. Use code CLOUD to waive registration fee.",
+					"learnMoreText": "Register Today",
+					"learnMoreUrl": "https://events.www.cloudflare.com/connectchicago",
+					"backgroundColor": null,
+					"hideCloseButton": false
+				},
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
 					"contentfulId": "5QBJouDQh36hGTJhzTTf2j",
@@ -11964,7 +11972,7 @@
 				"ru-RU",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
