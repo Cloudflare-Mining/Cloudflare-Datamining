@@ -531,7 +531,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								// base64 encoded file, decode it
 								const fileBuffer = dataUriToBuffer(fileData.value);
 								if(fileBuffer) {
-									files[file] = fileBuffer;
+									files[file] = fileBuffer.buffer;
 								}
 							}else{
 								// no match?
