@@ -217,6 +217,13 @@
 	"dash-account-home-v2": {
 		"enabled": false
 	},
+	"dashboard-canary-preview": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"dashboard-search": {
 		"enabled": true
 	},
