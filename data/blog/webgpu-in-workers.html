@@ -64,7 +64,7 @@
 	<!--kg-card-end: markdown-->
 	<p>The WebGPU API can only be accessed using <a href="https://developers.cloudflare.com/durable-objects" target="_blank">Durable Objects</a>, which are essentially global singleton instances of Cloudflare Workers. There are two important reasons for this:</p>
 	<ul>
-		<li>WebGPU code typically wants to store the state between requests, for example, loading an AI model into the GPU memory once and using it multiple times for inference.</li>
+		<li>WebGPU code typically wants to store the state between requests, for example, loading an <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank">AI model</a> into the GPU memory once and using it multiple times for inference.</li>
 		<li>Not all Cloudflare servers have GPUs yet, so although the worker that receives the request is typically the closest one available, the Durable Object that uses WebGPU will be instantiated where there are GPU resources available, which may not be on the same machine.</li>
 	</ul>
 	<p>Using Durable Objects instead of regular Workers allow us to address both of these issues.</p>

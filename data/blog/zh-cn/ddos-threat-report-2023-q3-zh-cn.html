@@ -1,0 +1,186 @@
+<div class="mb2 gray5">22 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image19.png" class="kg-image" alt="DDoS threat report for 2023 Q3" loading="lazy" width="1999" height="1125"></figure>
+	<p>欢迎阅读 2023 年的第二份 DDoS 威胁报告。 DDoS 攻击，即<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank">分布式拒绝服务攻击</a>，是一种网络攻击，旨在通过发送超过目标网站或其他网络资源处理能力的流量，使其无法为合法用户提供服务，类似于一位驾车人士在前往杂货店的路上遇到堵车的情况。</p>
+	<p>我们经常遇到各种类型和规模的 DDoS 攻击，我们的<a href="https://www.cloudflare.com/network" target="_blank">网络</a>是世界上最大的网络之一，横跨 100 多个国家的 300 多个城市。通过这个网络，我们在峰值时每秒提供超过 6400 万次 HTTP 请求，每天提供约 23 亿次 DNS 查询。我们平均每天减少 1400 亿次网络威胁。庞大的数据量为我们提供了一个独特的有利位置，使我们能够了解威胁状况，并为社区提供具有洞察力和可操作性的 DDoS 趋势。 </p>
+	<p>最近几周，我们还发现针对以色列报纸和媒体网站以及金融机构和政府网站的 DDoS 攻击和其他网络攻击激增。巴勒斯坦网站受到的 DDoS 攻击也大幅增加。 <a href="https://blog.cloudflare.com/cyber-attacks-in-the-israel-hamas-war">点击此处</a>查看完整报道 。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--7--1.png" class="kg-image" alt="HTTP DDoS attacks against Israeli websites using Cloudflare" loading="lazy" width="1600" height="864">
+		<figcaption>使用 Cloudflare 对以色列网站进行 HTTP DDoS 攻击</figcaption>
+	</figure>
+	<h2 id="%E5%85%A8%E7%90%83-ddos-%E5%A8%81%E8%83%81%E5%BD%A2%E5%8A%BF">全球 DDoS 威胁形势</h2>
+	<p>2023 年第三季度，Cloudflare 面临着有史以来最复杂、最持久的 DDoS 攻击活动之一。 </p>
+	<ol>
+		<li>Cloudflare 缓解了数千次超体积 HTTP DDoS 攻击，其中 89 次超过每秒 1 亿次请求 (rps)，最大的一次达到 2.01 亿次请求 (rps)，是上一次<a href="https://blog.cloudflare.com/zh-cn/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-zh-cn">最大攻击记录</a>（7100 万次请求 (rps) ）的三倍 。</li>
+		<li>与上一季度相比，该活动导致第三季度 HTTP DDoS 攻击流量总体增长了 65%。同样，L3/4 DDoS 攻击也增加了 14%。</li>
+		<li>游戏和博彩公司受到的 HTTP DDoS 攻击流量最大，超过了上一季度的加密货币行业。</li>
+	</ol>
+	<p><em>提醒：本报告的交互式版本也可作为 </em><a href="https://radar.cloudflare.com/reports/ddos-2023-q3" target="_blank"><em>Cloudflare Radar 报告</em></a>提供<em>。在</em><a href="https://radar.cloudflare.com" target="_blank"><em>雷达</em></a>上 <em>，您还可以更深入地探索流量趋势、攻击、中断以及针对特定行业、网络和国家的更多洞察。</em></p>
+	<h3 id="http-ddos-%E6%94%BB%E5%87%BB%E5%92%8C%E8%B6%85%E5%AE%B9%E9%87%8F%E8%80%97%E5%B0%BD%E6%94%BB%E5%87%BB">HTTP DDoS 攻击和超容量耗尽攻击</h3>
+	<p><a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack" target="_blank">HTTP DDoS 攻击</a>是通<a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank">过超文本传输协议 (HTTP) </a>进行的 DDoS 攻击。它的目标是 HTTP 互联网资产，如移动应用程序服务器、电子商务网站和 API 网关。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled.png" class="kg-image" alt="Illustration of an HTTP DDoS attack" loading="lazy" width="1134" height="600">
+		<figcaption>HTTP DDoS 攻击示意图</figcaption>
+	</figure>
+	<p><a href="https://developers.cloudflare.com/support/network/understanding-cloudflare-http2-and-http3-support/#http2" target="_blank">HTTP/2</a> 占 HTTP 流量的 62%，是旨在提高应用程序性能的协议版本。缺点是，HTTP/2 也有助于<em>提高</em>僵尸网络的性能。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="900">
+		<figcaption>按雷达分列的 HTTP 版本分布</figcaption>
+	</figure>
+	<h3 id="%E5%88%A9%E7%94%A8-http2-rapid-reset-%E7%9A%84%E8%B6%85%E4%BD%93%E7%A7%AF-ddos-%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8">利用 HTTP/2 Rapid Reset 的超体积 DDoS 攻击活动</h3>
+	<p>从 2023 年 8 月下旬开始，Cloudflare 和其他多家供应商遭到了利用 <a href="https://blog.cloudflare.com/zh-cn/zero-day-rapid-reset-http2-record-breaking-ddos-attack-zh-cn">HTTP/2 Rapid Reset</a> 漏洞 (<a href="https://www.cve.org/CVERecord?id=CVE-2023-44487" target="_blank">CVE-2023-44487</a>) 的复杂而持续的 DDoS 攻击活动。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--1--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="626">
+		<figcaption>HTTP/2 Rapid Reset DDoS 攻击示例</figcaption>
+	</figure>
+	<p>这次 DDoS 攻击活动包括通过 HTTP/2 发起的数千次超体积 DDoS 攻击，峰值达到每秒数百万次请求。平均攻击速度为 30M rps。大约 89 次攻击的峰值超过了 1 亿 rps，我们看到的最大一次攻击达到了 2.01 亿 rps。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="515">
+		<figcaption>超体积 DDoS 攻击的 HTTP/2 Rapid Reset 活动</figcaption>
+	</figure>
+	<p>Cloudflare 的系统自动检测并缓解了绝大多数攻击。我们部署了紧急应对措施，并提高了缓解系统的功效和效率，以确保我们和客户网络的可用性。 </p>
+	<p>查看我们的工程<a href="https://blog.cloudflare.com/zh-cn/technical-breakdown-http2-rapid-reset-ddos-attack-zh-cn">博客</a> ，深入了解 HTTP/2、我们学到了什么以及我们采取了哪些措施来提高互联网的安全性。</p>
+	<h3 id="%E5%9F%BA%E4%BA%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%83%B5%E5%B0%B8%E7%BD%91%E7%BB%9C%E6%94%AF%E6%8C%81%E8%B6%85%E4%BD%93%E7%A7%AF-ddos-%E6%94%BB%E5%87%BB">基于虚拟机的僵尸网络支持超体积 DDoS 攻击</h3>
+	<p>正如我们在这次活动和以前的<a href="https://blog.cloudflare.com/zh-cn/ddos-threat-report-2023-q1-zh-cn">活动</a>中所看到的 ，利用云计算平台和 HTTP/2 的僵尸网络，每个僵尸网络节点能够产生多达 <strong>x5,000 倍</strong>的攻击力。这使他们能够利用仅 5 到 20 千个节点的小型僵尸网络发动超体积 DDoS 攻击。从这个角度来看，过去基于 IoT 的僵尸网络由数百万个节点组成，每秒只能发出几百万个请求。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="920">
+		<figcaption>基于物联网 (IoT) 的僵尸网络与基于虚拟机 (VM) 的僵尸网络的比较</figcaption>
+	</figure>
+	<p>通过分析长达两个月的 DDoS 活动，我们可以发现 Cloudflare 基础设施是主要攻击目标。更具体地说，所有攻击中有 19% 针对 Cloudflare 网站和基础设施。另有 18% 的人以游戏公司为目标，10% 的人以知名的 VoIP 提供商为目标。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--4--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="961">
+		<figcaption>HTTP/2 Rapid Reset DDoS 攻击的主要目标行业</figcaption>
+	</figure>
+	<h3 id="http-ddos-%E6%94%BB%E5%87%BB%E6%B5%81%E9%87%8F%E5%A2%9E%E5%8A%A0%E4%BA%86-65">HTTP DDoS 攻击流量增加了 65%</h3>
+	<p>攻击活动导致攻击流量总体增加。上一季度，HTTP DDoS 攻击量环比增长了 15%。本季度的增长幅度更大。攻击数量环比增长 65%，达到 8.9 万亿次 HTTP DDoS 请求，Cloudflare 系统自动检测并缓解了这一惊人数字。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled9.png" class="kg-image" alt="" loading="lazy" width="1388" height="806">
+		<figcaption>按季度分列的 HTTP DDoS 攻击请求总量</figcaption>
+	</figure>
+	<p>除了 HTTP DDoS 攻击增加了 65% 之外，L3/4 DDoS 攻击也略微增加了 14%，与今年第一季度的数据类似。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--5--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="921">
+		<figcaption>按季度分列的 L3/4 级 DDoS 攻击</figcaption>
+	</figure>
+	<p>大规模 DDoS 攻击的增加导致了这一增长。在第三季度，我们的 DDoS 防御自动检测并缓解了每秒 TB 范围内的大量 DDoS 攻击。我们观察到的最大攻击峰值为 2.6 Tbps，来自一次由 <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank">Mirai 变体僵尸网络</a>发起的<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank"> UDP 洪水攻击</a>。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-007.png" class="kg-image" alt="" loading="lazy" width="1600" height="778"></figure>
+	<h2 id="http-ddos-%E6%94%BB%E5%87%BB%E7%9A%84%E4%B8%BB%E8%A6%81%E6%9D%A5%E6%BA%90">HTTP DDoS 攻击的主要来源</h2>
+	<p>在比较全球和特定国家的 HTTP DDoS 攻击请求量时，我们发现美国仍然是最大的 HTTP DDoS 攻击源。每 25 个 HTTP DDoS 请求中就有一个来自美国。中国仍然位居第二。巴西取代德国成为第三大 HTTP DDoS 攻击源，德国则跌至第四位。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy" width="1600" height="730">
+		<figcaption>HTTP DDoS 攻击：与所有攻击流量相比的最大来源</figcaption>
+	</figure>
+	<p>由于诸如人口数量和互联网使用等多种因素的影响，某些国家/地区自然而然地会接收到更多的流量，因此也会面临/产生更多的攻击。因此，虽然了解源自特定国家/地区的攻击总流量是有意义的，但通过计算攻击流量占特定国家/地区总流量的百分比来消除偏差也是有所帮助。</p>
+	<p>这样做时，我们会看到不同的模式。美国甚至没有进入前十名。相反，莫桑比克排名第一（再次）。每五个来自莫桑比克的 HTTP 请求中，就有一个是 HTTP DDoS 攻击流量的一部分。 </p>
+	<p>埃及仍然位居第二--大约 13% 的来自埃及的请求属于 HTTP DDoS 攻击的一部分。利比亚和中国紧随其后，成为第三和第四大 HTTP DDoS 攻击源。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--8-.png" class="kg-image" alt="" loading="lazy" width="1600" height="730">
+		<figcaption>HTTP DDoS 攻击：主要攻击源与自身流量的比较</figcaption>
+	</figure>
+	<h2 id="l34-ddos-%E6%94%BB%E5%87%BB%E7%9A%84%E4%B8%BB%E8%A6%81%E6%9D%A5%E6%BA%90">L3/4 DDoS 攻击的主要来源</h2>
+	<p>当我们查看 L3/4 DDoS 攻击的源头时，我们会忽略源 IP 地址，因为它可能被<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank">欺骗</a>。取而代之的是，我们依赖于流量摄取地 Cloudflare 数据中心的位置。得益于我们庞大的网络和全球覆盖范围，我们能够实现准确的地理位置，从而了解攻击的来源。</p>
+	<p>在第三季度， &nbsp;我们看到的所有 <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks" target="_blank">L3/4 DDoS 攻击</a>流量中，约有 36% 来自美国。紧随其后的是德国，占 8%，英国占 5%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy" width="1600" height="763">
+		<figcaption>L3/4 DDoS 攻击：与所有攻击流量相比的最大来源</figcaption>
+	</figure>
+	<p>在对数据进行规范化处理后，我们发现越南在连续两个季度成为 L3/4 DDoS 攻击的第一大来源国后，又降至第二大来源国。由南太平洋数十个岛屿组成的法国领土新喀里多尼亚夺得了第一名。Cloudflare 位于新喀里多尼亚的数据中心每摄取四个字节中就有两个是攻击。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy" width="1600" height="880">
+		<figcaption>L3/4 DDoS 攻击：主要来源与自身流量的比较</figcaption>
+	</figure>
+	<h2 id="%E5%8F%97-http-ddos-%E6%94%BB%E5%87%BB%E6%9C%80%E5%A4%9A%E7%9A%84%E8%A1%8C%E4%B8%9A">受 HTTP DDoS 攻击最多的行业</h2>
+	<p>就 HTTP DDoS 攻击流量的绝对值而言，游戏和赌博行业超过加密货币行业，跃居首位。在 Cloudflare 看到的所有 HTTP DDoS 攻击流量中，有超过 5% 是针对游戏和赌博行业的。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--11--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="714">
+		<figcaption>HTTP DDoS 攻击：与所有攻击流量相比，受攻击最多的行业</figcaption>
+	</figure>
+	<p>与其他行业相比，游戏和博彩业一直是受攻击最多的行业之一。但是，当我们查看每个特定行业的 HTTP DDoS 攻击流量时，我们看到的却是另一番景象。游戏和赌博行业的用户流量非常大，尽管<em>按流量计算</em>，它是受攻击最多的行业 ，但如果按行业来计算，它甚至排不进前十名。</p>
+	<p>相反，我们看到的是，与总流量相比，采矿和金属行业受到的攻击最多--采矿和金属公司的所有流量中有 17.46% 是 DDoS 攻击流量。 </p>
+	<p>紧随其后，非营利组织的所有流量中有 17.41% 是 HTTP DDoS 攻击。其中许多攻击都是针对 111 个国家/地区的 2400 多家非营利和独立媒体机构的，作为 Galileo 项目的一部分 ，Cloudflare 为这些组织提供免费保护，该项目今年迎来了<a href="https://blog.cloudflare.com/nine-years-of-project-galileo-and-how-the-last-year-has-changed-it">九周年</a> 。仅在上一季度 ，Cloudflare 就平均每天减少 1.805 亿次针对 Galileo 保护网站的网络威胁。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--12--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="826">
+		<figcaption>HTTP DDoS 攻击：受攻击最多的行业与自身流量对比</figcaption>
+	</figure>
+	<p>制药、生物技术和保健公司排名第三，美国联邦政府网站排名第四。在向美国联邦政府互联网资产发出的每 10 个 HTTP 请求中，几乎就有一个是攻击的一部分。排在第五位的是加密货币，然后是紧随其后的农业和渔业。</p>
+	<h3 id="%E6%8C%89%E5%9C%B0%E5%8C%BA%E5%88%86%E7%9A%84%E6%94%BB%E5%87%BB%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87%E8%A1%8C%E4%B8%9A">按地区分的攻击主要目标行业</h3>
+	<p>现在，让我们深入了解各地区哪些行业最受关注。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Top-Attacked-Industry-by-Region-Q3-2023.png" class="kg-image" alt="" loading="lazy" width="1600" height="1052">
+		<figcaption>HTTP DDoS 攻击：按地区划分的 HTTP DDoS 攻击的主要目标行业</figcaption>
+	</figure>
+	<h2 id="%E5%9C%B0%E5%8C%BA%E6%B7%B1%E5%BA%A6%E8%B0%83%E6%9F%A5">地区深度调查</h2>
+	<h3 id="%E9%9D%9E%E6%B4%B2">非洲</h3>
+	<p>在连续两个季度成为受攻击最多的行业之后，电信业从第一位降至第四位。媒体制作公司是非洲最受攻击的行业。银行、金融服务和保险业 (BFSI) 紧随其后，成为第二大受攻击行业。游戏和赌博公司排名第三。</p>
+	<h3 id="%E4%BA%9A%E6%B4%B2">亚洲</h3>
+	<p>加密货币行业连续两个季度成为亚太地区最受攻击的行业。游戏和 Gambling 排在第二位。信息技术和服务公司排名第三。</p>
+	<h3 id="%E6%AC%A7%E6%B4%B2">欧洲</h3>
+	<p>游戏和赌博业连续第四个季度成为欧洲最受攻击的行业。零售公司排名第二，计算机软件公司排名第三。</p>
+	<h3 id="%E6%8B%89%E4%B8%81%E7%BE%8E%E6%B4%B2">拉丁美洲</h3>
+	<p>农业是拉丁美洲第三季度最受攻击的行业。在针对拉丁美洲的所有攻击中，它占了高达 53%的比例。紧随其后，游戏和赌博公司成为第二大目标。公民和社会组织排名第三。</p>
+	<h3 id="%E4%B8%AD%E4%B8%9C">中东</h3>
+	<p>在中东，零售公司是第三季度最受攻击的目标。计算机软件公司位居第二，游戏和赌博业位居第三。</p>
+	<h3 id="%E5%8C%97%E7%BE%8E">北美</h3>
+	<p>在连续两个季度之后，市场营销和广告业从第一位降至第二位。计算机软件领先。第三位是电信公司。</p>
+	<h3 id="%E5%A4%A7%E6%B4%8B%E6%B4%B2">大洋洲</h3>
+	<p>到目前为止，电信业是大洋洲第三季度遭受攻击最多的行业，占大洋洲所有攻击的 45% 以上。加密货币公司和计算机软件公司分别位居第二和第三位。</p>
+	<h2 id="%E5%8F%97-l34-ddos-%E6%94%BB%E5%87%BB%E6%9C%80%E5%A4%9A%E7%9A%84%E8%A1%8C%E4%B8%9A">受 L3/4 DDoS 攻击最多的行业</h2>
+	<p>从 <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank">OSI 模型</a>的层级来看 ，信息技术和服务行业的互联网网络和服务成为攻击的最大目标。在所有 L3/4 DDoS 攻击流量中，近 35% 的流量（以字节为单位）以信息技术和互联网行业为目标。</p>
+	<p>紧随其后的是电信公司，仅占 3%。游戏和博彩业排名第三，银行、金融服务和保险公司 (BFSI) 排名第四。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--13--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="871">
+		<figcaption>L3/4 DDoS 攻击：与所有攻击流量相比，受攻击最多的行业</figcaption>
+	</figure>
+	<p>如果将各行业受到的攻击与该特定行业的所有流量进行比较，我们会发现音乐行业跃居首位，其次是计算机和网络安全公司、信息技术和互联网公司以及航空和航天公司。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--14--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="714">
+		<figcaption>L3/4 DDoS 攻击：受攻击最多的行业与自身流量的比较</figcaption>
+	</figure>
+	<h2 id="%E5%8F%97-http-ddos-%E6%94%BB%E5%87%BB%E6%9C%80%E5%A4%9A%E7%9A%84%E5%9B%BD%E5%AE%B6">受 HTTP DDoS 攻击最多的国家</h2>
+	<p>从攻击流量总量来看，美国仍然是 HTTP DDoS 攻击的主要目标。在所有 HTTP DDoS 攻击流量中，有近 5% 的流量以美国为目标。新加坡排名第二，中国排名第三。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--15--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="730">
+		<figcaption>HTTP DDoS 攻击：与所有流量相比，受攻击最多的国家</figcaption>
+	</figure>
+	<p>如果我们将每个国家和地区的数据标准化，并将攻击流量除以总流量，就会得到不同的结果。受攻击最多的前三个国家都是岛国。 </p>
+	<p>安圭拉是波多黎各以东的一个小岛，一跃成为受攻击次数最多的国家。安圭拉网站 75% 以上的流量都是 HTTP DDoS 攻击。第二名是美属萨摩亚，这是斐济以东的一组岛屿。第三是英属维尔京群岛。 </p>
+	<p>第四名是阿尔及利亚，然后是肯尼亚、俄罗斯、越南、新加坡、伯利兹和日本。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--16-.png" class="kg-image" alt="" loading="lazy" width="1600" height="730">
+		<figcaption>HTTP DDoS 攻击：受攻击最多的国家与本国流量对比</figcaption>
+	</figure>
+	<h3 id="%E5%8F%97%E5%88%B0-l34-ddos-%E6%94%BB%E5%87%BB%E6%9C%80%E5%A4%9A%E7%9A%84%E5%9B%BD%E5%AE%B6">受到 L3/4 DDoS 攻击最多的国家</h3>
+	<p>中国互联网网络和服务连续两个季度成为 L3/4 DDoS 攻击的最大目标。这些针对中国的攻击占我们在第三季度看到的所有攻击的 29%。</p>
+	<p>远远落后的美国位居第二 (3.5%)，台湾位居第三 (3%)。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--17-.png" class="kg-image" alt="" loading="lazy" width="1600" height="714">
+		<figcaption>L3/4 DDoS 攻击：与所有流量相比，受攻击最多的国家</figcaption>
+	</figure>
+	<p>如果将攻击流量与一个国家的所有流量进行正常化比较，中国仍然位居第一，而美国则从前十名中消失。Cloudflare 发现，中国互联网网络的流量中有 73% 是攻击流量。然而，从第二名开始，正常化排名发生了变化，荷兰的攻击流量比例位居第二（占全国总流量的 35%），紧随其后的是泰国、台湾和巴西。 &nbsp;</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--18-.png" class="kg-image" alt="" loading="lazy" width="1600" height="714">
+		<figcaption>L3/4 DDoS 攻击：受攻击最多的国家与本国流量对比</figcaption>
+	</figure>
+	<h2 id="%E4%B8%BB%E8%A6%81%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5">主要攻击手段</h2>
+	<p>域名系统 (<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank">DNS</a>) 是互联网的电话簿。DNS 帮助将人类友好的网站地址 (例如 <a href="https://www.cloudflare.com" target="_blank">www.cloudflare.com</a>) 转换为机器友好的 IP 地址 (例如 104.16.124.96)。通过破坏 DNS 服务器，攻击者可影响机器与网站连接的能力，从而导致网站对用户不可用。</p>
+	<p>连续第二个季度，<a href="https://www.cloudflare.com/learning/ddos/dns-flood-ddos-attack" target="_blank">基于 DNS 的 DDoS 攻击</a>最为常见。在所有攻击中，近 47% 是基于 DNS 的攻击。与上一季度相比，增加了 44%。 <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack" target="_blank">SYN 泛洪</a>仍然位居第二，其次是 RST 泛洪、 <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack" target="_blank">UDP 泛洪</a>和 <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet" target="_blank">Mirai 攻击</a>。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--19-.png" class="kg-image" alt="" loading="lazy" width="1600" height="714">
+		<figcaption>主要攻击手段</figcaption>
+	</figure>
+	<h3 id="%E6%96%B0%E5%87%BA%E7%8E%B0%E7%9A%84%E5%A8%81%E8%83%81%E5%87%8F%E5%B0%91%E3%80%81%E5%86%8D%E5%88%A9%E7%94%A8%E5%92%8C%E5%86%8D%E5%BE%AA%E7%8E%AF">新出现的威胁 - <em>减少、再利用和再循环</em></h3>
+	<p>除了最常见的攻击手段，我们还发现鲜为人知的攻击手段也显著增加。由于威胁方试图 <em>"减少、重复使用和回收 " </em>旧的攻击手段，这些攻击手段往往非常不稳定。这些往往是基于 UDP 的协议，可被用来发起放大和反射 DDoS 攻击。</p>
+	<p>我们不断发现的一种众所周知的策略是使用放大/反射攻击。在这种攻击方法中，攻击者从服务器上弹回流量，并将响应对准受害者。攻击者可以通过各种方法（如 <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank">IP 欺骗</a>）将反弹流量瞄准受害者 。 </p>
+	<p>另一种反射形式可以通过一种名为 "DNS 洗网攻击 "的攻击以不同方式实现。在 DNS 清洗攻击中，攻击者会查询由受害者 DNS 服务器管理的域的子域。定义子域的前缀是随机的，在此类攻击中绝不会使用超过一次或两次。由于存在随机化元素，递归 DNS 服务器永远不会有缓存响应，而是需要将查询转发到受害者的权威性 DNS 服务器。这样，权威性 DNS 服务器就会受到大量查询的轰炸，直到无法为合法查询提供服务，甚至完全崩溃。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--20-.png" class="kg-image" alt="" loading="lazy" width="1600" height="889">
+		<figcaption>反射和放大攻击示意图</figcaption>
+	</figure>
+	<p>总体而言，在第三季度，基于多播 DNS (mDNS) 的 DDoS 攻击是增加最多的攻击方式。排在第二位的是利用受限应用协议 (CoAP) 的攻击，第三位是利用封装安全恶意有效负载 (ESP) 的攻击。让我们进一步了解这些攻击手段。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--21-.png" class="kg-image" alt="" loading="lazy" width="1600" height="714">
+		<figcaption>新出现的主要威胁</figcaption>
+	</figure>
+	<h3 id="mdns-ddos-%E6%94%BB%E5%87%BB%E5%A2%9E%E5%8A%A0%E4%BA%86-456">mDNS DDoS 攻击增加了 456</h3>
+	<p>多播 DNS (mDNS) 是基于 UDP 的协议，在本地网络中用于服务和设备发现。易受攻击的 mDNS 服务器响应源自本地网络外的单播查询，这些查询“伪装”（篡改）成受害者的源地址，造成 DNS 放大攻击。我们注意到在第三季度 mDNS 攻击数量大幅增加；与上一季度相比，其增长了 456%。</p>
+	<h3 id="coap-ddos-%E6%94%BB%E5%87%BB%E5%A2%9E%E5%8A%A0%E4%BA%86-387">CoAP DDoS 攻击增加了 387</h3>
+	<p>受限应用协议 (CoAP) 设计用于简单的电子设备，能以低功耗、轻量级的方式实现设备间通信。然而，它可能会被滥用于通过 <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing" target="_blank">IP 欺骗</a>或放大进行 DDoS 攻击 ， 因为恶意行为者会利用它的组播支持或利用配置不佳的 CoAP 设备产生大量不需要的网络流量。这会导致服务中断或目标系统超载，使合法用户无法使用这些系统。</p>
+	<h3 id="esp-ddos-%E6%94%BB%E5%87%BB%E5%A2%9E%E5%8A%A0%E4%BA%86-303">ESP DDoS 攻击增加了 303</h3>
+	<p>封装安全恶意有效负载 (<a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec/#:~:text=Encapsulating%20Security%20Protocol%20(ESP)" target="_blank">ESP</a>) 协议是 <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec" target="_blank">IPsec</a> 的一部分 &nbsp;，为网络通信提供保密性、身份验证和完整性。但是，如果恶意行为者利用配置错误或脆弱的系统来反射或放大流向目标的流量，导致服务中断，它就有可能在 DDoS 攻击中被滥用。与其他协议一样，确保使用 ESP 的系统的安全和正确配置对于降低 DDoS 攻击的风险至关重要。</p>
+	<h2 id="ddos-%E5%8B%92%E7%B4%A2%E6%94%BB%E5%87%BB">DDoS 勒索攻击</h2>
+	<p>有时，发动 DDoS 攻击的目的是勒索赎金。我们对 Cloudflare 客户的调查现已进入第三个年头，以跟踪<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank">勒索 DDoS 攻击</a>事件的发生。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Untitled--1--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="876">
+		<figcaption>勒索软件和勒索 DDoS 攻击的比较</figcaption>
+	</figure>
+	<p>在<a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware" target="_blank">勒索软件</a>攻击中，通常是受害者被骗下载恶意文件或单击有问题的电子邮件链接，导致其文件被锁定、删除或泄露，直到支付赎金为止。对恶意行为者来说，执行<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack" target="_blank">勒索 DDoS 攻击</a>要简单得多。勒索 DDoS 攻击不需要欺骗手段，比如引诱受害者打开可疑的电子邮件或点击欺诈链接，也不需要侵入网络或访问公司资源。</p>
+	<p>在过去一个季度中，有关赎金 DDoS 攻击的报告持续减少。约有 8% 的受访者报告受到随机 DDoS 攻击的威胁或影响，这是我们全年跟踪发现的持续下降趋势。这是我们全年跟踪发现的持续下降趋势。希望这是因为威胁行为者已经意识到组织不会付钱给他们（这也是我们的<a href="https://www.cloudflare.com/ransom-ddos" target="_blank">建议</a>）。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--22-.png" class="kg-image" alt="" loading="lazy" width="1600" height="955">
+		<figcaption>按季度分列的赎金 DDoS 攻击</figcaption>
+	</figure>
+	<p>不过，请记住，这也是非常季节性的，我们可以预计 11 月和 12 月的赎金 DDoS 攻击会增加。如果我们看一下过去三年的第四季度数据，就会发现赎金 DDoS 攻击在 11 月份出现了明显的环比增长。 在之前的第四季度，每四名受访者中就有一人报告受到赎金 DDoS 攻击。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--23-.png" class="kg-image" alt="" loading="lazy" width="1600" height="952"></figure>
+	<h2 id="%E5%9C%A8%E8%B6%85%E4%BD%93%E7%A7%AF-ddos-%E6%94%BB%E5%87%BB%E6%97%B6%E4%BB%A3%E6%8F%90%E9%AB%98%E9%98%B2%E5%BE%A1%E8%83%BD%E5%8A%9B">在超体积 DDoS 攻击时代提高防御能力</h2>
+	<p>在上一季度，我们看到 DDoS 攻击流量空前激增。这一激增主要是由超体积 HTTP/2 DDoS 攻击活动推动的。 </p>
+	<p>使用我们的 HTTP 反向代理（即我们的 CDN/WAF 服务）的 Cloudflare 客户<a href="https://www.cloudflare.com/h2" target="_blank">已受到保护</a>，不会受到此类及其他 HTTP DDoS 攻击。我们强烈建议使用非 HTTP 服务的 Cloudflare 客户和完全不使用 Cloudflare 的组织为其 HTTP 应用程序使用自动、始终在线的 HTTP DDoS 防护服务。</p>
+	<p>重要的是要记住，安全是一个过程，而不是单一产品或网络交换机的翻转。在自动 DDoS 保护系统之上，我们还提供全面的捆绑功能，如<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules" target="_blank">防火墙</a>、<a href="https://developers.cloudflare.com/bots" target="_blank">机器人检测</a>、<a href="https://developers.cloudflare.com/api-shield" target="_blank">API 保护</a>和<a href="https://developers.cloudflare.com/cache" target="_blank">缓存</a>， 以加强您的防御。我们的多层方法可优化您的安全态势，并将潜在影响降至最低。我们还提供了一份<a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks" target="_blank">建议清单</a>， 帮助您优化防御 DDoS 攻击的措施，您可以按照我们的向导逐步操作，以<a href="https://developers.cloudflare.com/learning-paths/application-security" target="_blank">确保应用程序的安全</a> 并<a href="https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks" target="_blank">防止 DDoS 攻击</a>。</p><!--kg-card-begin: markdown-->
+	<p>...<br>
+		<small><strong>报告方法</strong><br>
+			了解更多有关我们的方法以及我们如何生成这些洞察力 的信息： <a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports" target="_blank">https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports</a></small>
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

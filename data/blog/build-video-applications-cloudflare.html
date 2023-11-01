@@ -125,7 +125,7 @@ async function uploadVideo() {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="adding-real-time-video-with-stream-live">Adding real time video with Stream Live</h3>
-	<p>You can add a livestreaming section to your application as well, using <a href="https://blog.cloudflare.com/stream-live">Stream Live</a> in conjunction with the techniques we've already covered. &nbsp;You could allow logged-in users to start a broadcast and then allow other logged-in users, or even the public, to watch it in real-time! The streams will automatically save to your account, so they can be viewed immediately after the broadcast finishes in the main section of your application.</p>
+	<p>You can add a <a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming" target="_blank">livestreaming</a> section to your application as well, using <a href="https://blog.cloudflare.com/stream-live">Stream Live</a> in conjunction with the techniques we've already covered. &nbsp;You could allow logged-in users to start a broadcast and then allow other logged-in users, or even the public, to watch it in real-time! The streams will automatically save to your account, so they can be viewed immediately after the broadcast finishes in the main section of your application.</p>
 	<h3 id="securing-our-app-with-middleware">Securing our app with middleware</h3>
 	<p>We put all authenticated pages behind this middleware function. It checks the request headers to make sure the user is sending a valid authenticated user email.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
