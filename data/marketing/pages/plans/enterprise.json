@@ -2033,8 +2033,8 @@
 									{
 										"contentfulId": "6fmGt6EXW8u2gR3uCLGVsu",
 										"contentTypeId": "planElementFeatures",
-										"name": "WAF Rules",
-										"description": null,
+										"name": "Number of Custom WAF Rules",
+										"description": "Customize how the Cloudflare WAF protects your specific application or website from cyber attacks. Based on the criteria you define, perform actions like blocking or challenging incoming requests. Enterprise contract customers can create regular expressions and create rules to log traffic.",
 										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueText",
@@ -2350,8 +2350,8 @@
 									{
 										"contentfulId": "1oLevNpaQBLZIU1XgzYHTt",
 										"contentTypeId": "planElementFeatures",
-										"name": "Rate Limiting",
-										"description": "<br><br>\n##### Pricing\n<br>\n\n*Free, Pro, and Business Plan pricing:*\n\n- First 10,000 good requests are free\n- $0.05 per 10,000 good requests thereafter\n\n*Enterprise customers can negotiate a reduced rate through custom pricing.*\n",
+										"name": "IP-based Rate Limiting",
+										"description": "With IP-based rate limiting, you can limit the number of requests a certain IP address can make, and prevent abuse from \"repeat offender\" IP addresses.\n\n##### Pricing\n<br>\n\n*Free, Pro, and Business Plan pricing:*\n\n- First 10,000 good requests are free\n- $0.05 per 10,000 good requests thereafter\n\n*Enterprise customers can negotiate a reduced rate through custom pricing.*\n",
 										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueBoolean",
@@ -2485,9 +2485,9 @@
 												}
 											},
 											{
-												"contentTypeId": "planElementFeatureValueText",
-												"contentfulId": "5Fr2lNesMFVzk3WHLyk49C",
-												"textValue": "Custom Pricing",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "6DmZwpQG3YyVMiolQuGRZx",
+												"value": true,
 												"plan": {
 													"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
 													"contentTypeId": "planElementPlan",
