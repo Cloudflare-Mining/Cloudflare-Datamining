@@ -62,15 +62,7 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": {
-					"contentTypeId": "psaBanner",
-					"contentfulId": "4JB9V1D9fMc3yH94qLUCug",
-					"text": "__Connect Chicago:__ Network with industry peers to learn about security transformation on 11/9. Use code CLOUD to waive registration fee.",
-					"learnMoreText": "Register Today",
-					"learnMoreUrl": "https://events.www.cloudflare.com/connectchicago",
-					"backgroundColor": null,
-					"hideCloseButton": false
-				},
+				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
 					"contentfulId": "5QBJouDQh36hGTJhzTTf2j",
@@ -4966,6 +4958,12 @@
 					"contentfulId": "WApgu7YOBxAcLBxsJnoGm",
 					"name": "Homepage - Lightning Strike version - 9/26/2023",
 					"relatedBlades": [
+						{
+							"contentTypeId": "bladeHtml",
+							"contentfulId": "231TkBUNAHKAKUIoCmmPui",
+							"htmlContent": "<style>\n.wrapper { background-color: #003682; margin: 0; padding: 20px; width: 100vw;margin-left: calc((100vw - 100%) / -2);  }\n.content { color: #ffffff; margin: 0px auto;  width: fit-content; }\n.link-helper {color: #ffffff !important; margin-left: 5px; text-decoration: underline !important; text-underline-offset: 4px;}\n.link-helper:hover { text-decoration: underline; color: #ffffff !important; text-underline-offset: 4px; }\n</style>\n\n    <section class=\" wrapper\" id=\"contentful-psa-banner\">\n        <div class=\"content\">\n            <span><strong>Connect Chicago 11/9:</strong> Network with industry peers to learn about transforming security. Use code CLOUD to </span>\n   <a class=\"link-helper\"  href=\"https://events.www.cloudflare.com/connectchicago\"> <strong>Register for Free ></strong></a>    \n\n        </div>\n    </section>",
+							"htmlId": null
+						},
 						{
 							"contentTypeId": "bladeFullWidthHero",
 							"contentfulId": "1aiNHwPqxQp1tVnno4dREM",
@@ -11972,7 +11970,7 @@
 				"ru-RU",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": true,
+			"hasPsaBanner": false,
 			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
