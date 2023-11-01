@@ -354,8 +354,10 @@
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsSum": {
 		"__description": "",
-		"tokensIn": "Sum of tokens in",
-		"tokensOut": "Sum of tokens out"
+		"cachedTokensIn": "Sum of cached tokens in",
+		"cachedTokensOut": "Sum of cached tokens out",
+		"uncachedTokensIn": "Sum of uncached tokens in",
+		"uncachedTokensOut": "Sum of uncached tokens out"
 	},
 	"AccountAiInferenceAdaptive": {
 		"__description": "AI Inference logs with adaptive sampling",
