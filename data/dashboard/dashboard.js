@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "dan/LOUI-4983-bump-modals-version",
+					branch: "release-Nov.01.2023-1698847557",
 					isReleaseCandidate: "true",
-					commit: "2ac1c35bad88e3f04a8f748b9dde6b3abe084100",
+					commit: "9be16875474d97335387d9360f96b565baf29143",
 					env: "production",
-					builtAt: 1698842380518,
-					dashVersion: "105f88a08cb525e85f0c998e529a8008cddf6245",
+					builtAt: 1698853258953,
+					dashVersion: "a15a7d5eea02cfe62c10453404bec14cbf5c7483",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
