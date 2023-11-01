@@ -432,7 +432,10 @@
 					"description": "The type of tunnel.",
 					"enum": [
 						"cfd_tunnel",
-						"warp_connector"
+						"warp_connector",
+						"ip_sec",
+						"gre",
+						"cni"
 					],
 					"example": "cfd_tunnel",
 					"type": "string"
@@ -1082,6 +1085,18 @@
 													"tunnel_name": {
 														"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
 													},
+													"type": {
+														"description": "The type of tunnel.",
+														"enum": [
+															"cfd_tunnel",
+															"warp_connector",
+															"ip_sec",
+															"gre",
+															"cni"
+														],
+														"example": "cfd_tunnel",
+														"type": "string"
+													},
 													"virtual_network_id": {
 														"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
 													},
@@ -1263,6 +1278,18 @@
 															},
 															"tunnel_name": {
 																"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
+															},
+															"type": {
+																"description": "The type of tunnel.",
+																"enum": [
+																	"cfd_tunnel",
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
+																],
+																"example": "cfd_tunnel",
+																"type": "string"
 															},
 															"virtual_network_id": {
 																"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
@@ -1535,6 +1562,18 @@
 												"tunnel_name": {
 													"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
 												},
+												"type": {
+													"description": "The type of tunnel.",
+													"enum": [
+														"cfd_tunnel",
+														"warp_connector",
+														"ip_sec",
+														"gre",
+														"cni"
+													],
+													"example": "cfd_tunnel",
+													"type": "string"
+												},
 												"virtual_network_id": {
 													"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
 												},
@@ -1674,6 +1713,18 @@
 														},
 														"tunnel_name": {
 															"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
+														},
+														"type": {
+															"description": "The type of tunnel.",
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
+															],
+															"example": "cfd_tunnel",
+															"type": "string"
 														},
 														"virtual_network_id": {
 															"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
@@ -1840,7 +1891,10 @@
 								"description": "The type of tunnel.",
 								"enum": [
 									"cfd_tunnel",
-									"warp_connector"
+									"warp_connector",
+									"ip_sec",
+									"gre",
+									"cni"
 								],
 								"example": "cfd_tunnel",
 								"type": "string"

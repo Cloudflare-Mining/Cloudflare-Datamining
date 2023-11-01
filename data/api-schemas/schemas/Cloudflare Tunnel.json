@@ -240,7 +240,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -361,7 +364,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -584,7 +590,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -705,7 +714,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -1398,7 +1410,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -1519,7 +1534,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -1742,7 +1760,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -1863,7 +1884,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -2331,7 +2355,10 @@
 																"description": "The type of tunnel.",
 																"enum": [
 																	"cfd_tunnel",
-																	"warp_connector"
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
 																],
 																"example": "cfd_tunnel",
 																"type": "string"
@@ -2452,7 +2479,10 @@
 																"description": "The type of tunnel.",
 																"enum": [
 																	"cfd_tunnel",
-																	"warp_connector"
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
 																],
 																"example": "cfd_tunnel",
 																"type": "string"
@@ -2717,7 +2747,10 @@
 																		"description": "The type of tunnel.",
 																		"enum": [
 																			"cfd_tunnel",
-																			"warp_connector"
+																			"warp_connector",
+																			"ip_sec",
+																			"gre",
+																			"cni"
 																		],
 																		"example": "cfd_tunnel",
 																		"type": "string"
@@ -2838,7 +2871,10 @@
 																		"description": "The type of tunnel.",
 																		"enum": [
 																			"cfd_tunnel",
-																			"warp_connector"
+																			"warp_connector",
+																			"ip_sec",
+																			"gre",
+																			"cni"
 																		],
 																		"example": "cfd_tunnel",
 																		"type": "string"
@@ -3188,7 +3224,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -3309,7 +3348,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -3532,7 +3574,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -3653,7 +3698,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -5535,7 +5583,10 @@
 																"description": "The type of tunnel.",
 																"enum": [
 																	"cfd_tunnel",
-																	"warp_connector"
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
 																],
 																"example": "cfd_tunnel",
 																"type": "string"
@@ -5656,7 +5707,10 @@
 																"description": "The type of tunnel.",
 																"enum": [
 																	"cfd_tunnel",
-																	"warp_connector"
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
 																],
 																"example": "cfd_tunnel",
 																"type": "string"
@@ -5921,7 +5975,10 @@
 																		"description": "The type of tunnel.",
 																		"enum": [
 																			"cfd_tunnel",
-																			"warp_connector"
+																			"warp_connector",
+																			"ip_sec",
+																			"gre",
+																			"cni"
 																		],
 																		"example": "cfd_tunnel",
 																		"type": "string"
@@ -6042,7 +6099,10 @@
 																		"description": "The type of tunnel.",
 																		"enum": [
 																			"cfd_tunnel",
-																			"warp_connector"
+																			"warp_connector",
+																			"ip_sec",
+																			"gre",
+																			"cni"
 																		],
 																		"example": "cfd_tunnel",
 																		"type": "string"
@@ -6512,7 +6572,10 @@
 																"description": "The type of tunnel.",
 																"enum": [
 																	"cfd_tunnel",
-																	"warp_connector"
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
 																],
 																"example": "cfd_tunnel",
 																"type": "string"
@@ -6633,7 +6696,10 @@
 																"description": "The type of tunnel.",
 																"enum": [
 																	"cfd_tunnel",
-																	"warp_connector"
+																	"warp_connector",
+																	"ip_sec",
+																	"gre",
+																	"cni"
 																],
 																"example": "cfd_tunnel",
 																"type": "string"
@@ -6898,7 +6964,10 @@
 																		"description": "The type of tunnel.",
 																		"enum": [
 																			"cfd_tunnel",
-																			"warp_connector"
+																			"warp_connector",
+																			"ip_sec",
+																			"gre",
+																			"cni"
 																		],
 																		"example": "cfd_tunnel",
 																		"type": "string"
@@ -7019,7 +7088,10 @@
 																		"description": "The type of tunnel.",
 																		"enum": [
 																			"cfd_tunnel",
-																			"warp_connector"
+																			"warp_connector",
+																			"ip_sec",
+																			"gre",
+																			"cni"
 																		],
 																		"example": "cfd_tunnel",
 																		"type": "string"
@@ -7369,7 +7441,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -7490,7 +7565,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -7713,7 +7791,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -7834,7 +7915,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -8523,7 +8607,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -8644,7 +8731,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -8867,7 +8957,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -8988,7 +9081,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -9358,7 +9454,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -9479,7 +9578,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -9702,7 +9804,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -9823,7 +9928,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -10194,7 +10302,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -10315,7 +10426,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -10538,7 +10652,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -10659,7 +10776,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -11360,7 +11480,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -11481,7 +11604,10 @@
 															"description": "The type of tunnel.",
 															"enum": [
 																"cfd_tunnel",
-																"warp_connector"
+																"warp_connector",
+																"ip_sec",
+																"gre",
+																"cni"
 															],
 															"example": "cfd_tunnel",
 															"type": "string"
@@ -11704,7 +11830,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
@@ -11825,7 +11954,10 @@
 																	"description": "The type of tunnel.",
 																	"enum": [
 																		"cfd_tunnel",
-																		"warp_connector"
+																		"warp_connector",
+																		"ip_sec",
+																		"gre",
+																		"cni"
 																	],
 																	"example": "cfd_tunnel",
 																	"type": "string"
