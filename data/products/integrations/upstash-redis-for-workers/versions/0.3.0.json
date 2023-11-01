@@ -1,0 +1,108 @@
+{
+	"alias": "upstash-redis-for-workers",
+	"assets": [],
+	"category": "workers-databases",
+	"description": "A fully-managed, Redis-compatible database service.",
+	"docs_url": "https://developers.cloudflare.com/workers/databases/native-integrations/upstash/#upstash-redis",
+	"flags": [],
+	"get_data_action": "get-data",
+	"icon_url": "https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/1e94c44c-312a-41ef-3d36-3f93f6a9fe00/public",
+	"install_target": "worker",
+	"name": "Upstash Redis",
+	"permissions": {
+		"scopes": {
+			"account": [
+				{
+					"group": "Workers Scripts Write",
+					"reason": "Needed for adding secrets to your Worker."
+				}
+			]
+		},
+		"submit_action": "submit-cloudflare-token"
+	},
+	"setup_steps": [
+		{
+			"title": "Connect to Upstash",
+			"type": "oauth",
+			"provider": "upstash",
+			"client_id": "eRZWzFtAltz5mTn2t0M4EAOnTn4oX8D2",
+			"authorize_url": "https://auth.upstash.com/authorize?audience=upstash-api",
+			"grant_type": "authorization_code",
+			"pkce": true,
+			"scope": "offline_access",
+			"submit_action": "submit-upstash-oauth"
+		},
+		{
+			"title": "Select your Redis database",
+			"type": "form",
+			"components": [
+				{
+					"type": "select_input",
+					"name": "databaseId",
+					"label": "Databases",
+					"description": "Databases linked to your Upstash account are displayed here.",
+					"required": true,
+					"options": {
+						"type": "action",
+						"action": "get-upstash-databases"
+					}
+				}
+			],
+			"submit_action": "submit-upstash-database"
+		},
+		{
+			"title": "Configure secrets",
+			"type": "form",
+			"components": [
+				{
+					"type": "mapping_input",
+					"name": "secretsMap",
+					"label": "Secrets",
+					"description": "These Secrets will be added to the existing Environment Variables of this Worker.",
+					"required": true,
+					"left_label": "Secret Name",
+					"right_label": "Credential",
+					"rows": {
+						"type": "static",
+						"content": [
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "upstashRedisRestURLSecretName",
+									"required": true,
+									"default_value": "UPSTASH_REDIS_REST_URL"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "data_driven",
+										"data_name": "upstashRedisRestURL"
+									}
+								}
+							},
+							{
+								"left_component": {
+									"type": "text_input",
+									"name": "upstashRedisRestTokenSecretName",
+									"required": true,
+									"default_value": "UPSTASH_REDIS_REST_TOKEN"
+								},
+								"right_component": {
+									"type": "markdown",
+									"content": {
+										"type": "static",
+										"static": "xxxxxxxxxxxx"
+									}
+								}
+							}
+						]
+					}
+				}
+			],
+			"submit_action": "submit-secrets-map"
+		}
+	],
+	"templates": [],
+	"uninstall_action": "uninstall",
+	"version": "0.3.0"
+}
