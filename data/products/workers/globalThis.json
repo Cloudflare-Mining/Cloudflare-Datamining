@@ -895,7 +895,14 @@
 	"Navigator": {
 		"__proto": "function",
 		"__type": "function",
-		"_prototype": {},
+		"_prototype": {
+			"sendBeacon": {
+				"__proto": "function",
+				"__type": "function",
+				"length": "number",
+				"name": "string"
+			}
+		},
 		"length": "number",
 		"name": "string"
 	},
@@ -2067,6 +2074,12 @@
 		"name": "string"
 	},
 	"navigator": {
+		"sendBeacon": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
 		"userAgent": {
 			"__proto": "object",
 			"__type": "string",
