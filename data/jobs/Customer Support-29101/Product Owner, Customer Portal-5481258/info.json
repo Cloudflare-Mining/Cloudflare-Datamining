@@ -1,0 +1,124 @@
+{
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5481258?gh_jid=5481258",
+	"data_compliance": [
+		{
+			"type": "gdpr",
+			"requires_consent": false,
+			"requires_processing_consent": false,
+			"requires_retention_consent": false,
+			"retention_period": null
+		}
+	],
+	"education": "education_optional",
+	"internal_job_id": 2715894,
+	"location": {
+		"name": "Austin or Remote US"
+	},
+	"metadata": [
+		{
+			"id": 164993,
+			"name": "Cross-post department",
+			"value": null,
+			"value_type": "single_select"
+		},
+		{
+			"id": 825338,
+			"name": "Cost Center",
+			"value": "5700 - Customer Support",
+			"value_type": "single_select"
+		},
+		{
+			"id": 8654220,
+			"name": "Job Posting Location",
+			"value": [
+				"Lisbon, Portugal",
+				"London, UK",
+				"Remote, Portugal",
+				"Remote, UK",
+				"Austin, US",
+				"Remote, US"
+			],
+			"value_type": "multi_select"
+		}
+	],
+	"id": 5481258,
+	"updated_at": "2023-11-03T16:52:32-04:00",
+	"requisition_id": "318",
+	"title": "Product Owner, Customer Portal",
+	"departments": [
+		{
+			"id": 29101,
+			"name": "Customer Support",
+			"child_ids": [],
+			"parent_id": null
+		}
+	],
+	"offices": [
+		{
+			"id": 19983,
+			"name": "Austin, TX",
+			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 63782,
+			"name": "Lisbon, Portugal",
+			"location": "Lisboa, Lisboa, Portugal",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 74843,
+			"name": "EMEA",
+			"location": "Dubai, United Arab Emirates",
+			"child_ids": [
+				89601,
+				86073,
+				84344,
+				84343,
+				82456,
+				82455,
+				82454,
+				82452,
+				82439,
+				78483,
+				77970,
+				48758,
+				48350,
+				19988,
+				63782,
+				69464
+			],
+			"parent_id": null
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 82455,
+			"name": "Remote Portugal",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 82456,
+			"name": "Remote UK",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
+		}
+	]
+}
