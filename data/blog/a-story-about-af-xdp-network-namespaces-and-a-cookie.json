@@ -9,6 +9,6 @@
 	"datePublished": "2022-07-18T12:56:42.000Z",
 	"dateModified": "2022-07-18T12:56:42.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2022/07/Flowtrackd-network-namespaces-fix.png",
-	"keywords": "Deep Dive, Linux, Networking",
+	"keywords": "Deep Dive, Linux",
 	"description": "A crash in a development version of flowtrackd (the daemon that powers our Advanced TCP Protection) highlighted the fact that libxdp (and specifically the AF_XDP part) was not Linux network namespace aware. This blogpost describes the debugging journey to find the bug, as well as a fix."
 }
