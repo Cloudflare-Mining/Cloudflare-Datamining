@@ -107,8 +107,9 @@ for(const req of reqs) {
 	}
 }
 
-// fetch globalThis dump
-const res = await fetch('https://dump.jross.dev/');
+// fetch globalThis dump in canary
+const globalThisUrl = `${process.env.FETCH_FROM_COLO_URL}coloid=56&url=https://dump.jross.dev/`;
+const res = await fetch(globalThisUrl);
 if(res.ok) {
 	const json = await res.json();
 	await fs.writeJson(path.resolve(dir, 'globalThis.json'), json, {spaces: '\t'});
