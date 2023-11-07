@@ -22,12 +22,9 @@
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li>Minimum 5 years of Product Ownership / Management experience.</li>
-	<li><em>&lt;building Customer or Support Portal — digitizing processes&gt;</em></li>
-	<li>Ideal / nice to have</li>
-	<ul>
-		<li>Strong visual design skills, 2+ years product/UX design experience.</li>
-	</ul>
+	<li>5+ years of Product Ownership / Management experience.</li>
+	<li>Experience building a Customer or Support Portal, digitizing processes, and improving the customer experience.</li>
+	<li>Bonus points for visual design skills or product/UX design experience.</li>
 	<li>Demonstrated ability to lead, drive consensus, and ship products at a high velocity with multiple stakeholders.</li>
 	<li>Must be able to define and manage complex process and/or product issues of a broad scope using independent judgment.</li>
 	<li>Experience balancing execution, agility, and culture at a fast growing business.</li>
