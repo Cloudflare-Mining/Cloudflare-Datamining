@@ -6,41 +6,51 @@
 	</div>
 </div>
 <p><strong>Candidate Requirements:</strong></p>
-<p>- Hands-on experience with how the internet works and the desire to expand that knowledge. For example:</p>
 <ul>
-	<li>Layers and protocols of the OSI model, such as TCP/IP, TLS, DNS, or HTTP</li>
-	<li>Reverse and forward proxies and the applications of both</li>
-	<li>Security aspects of an internet property, such as Firewalls, WAFs, Bot Management, Rate Limiting, (M)TLS, Zero Trust</li>
-	<li>Performance aspects of an internet property, such as Speed, Latency, Caching, HTTP/2, or TLSv1.3</li>
-	<li>Enjoy the adventure of troubleshooting technical problems</li>
-	<li>Understand why Cloudflare plays an important role on today’s internet</li>
+	<li>Customer/partner-facing experience, and experience translating business requirements into technological solutions.</li>
+	<li>Proven ability in stakeholder management, with a track record of building and maintaining long-term relationships with both external and internal stakeholders at different levels, including executive levels.</li>
+	<li>Proven experience building deep technical relationships with channel partners, systems integrators, and third-party developers to deliver high-impact Cloudflare solutions.</li>
+	<li>Previous technical service delivery experience in service organization is preferred, e.g., project management, technical account manager, professional services consultant</li>
+	<li>Hands-on experience in one of these solutions:</li>
+	<ul>
+		<li>Internet application performance and security</li>
+		<li>Network security solutions</li>
+		<li>SASE, ZTNA, identity management, end points, cloud and SaaS environments</li>
+	</ul>
+	<li>Ability to perform troubleshooting and solve technical problems</li>
+	<li>Ability to prioritize, multi-task, and perform effectively in a fast-paced environment while helping partners drive successful services engagements and outcomes</li>
+	<li>Experience in educating services partners to build technical competency and practice and deliver quality services to Cloudflare customers</li>
+	<li>Excellent communication, documentation, problem-solving, and project management skills</li>
 </ul>
-<p>- Minimum 5 years of customer/partner-facing experience, and experience translating business requirements into technological solutions.</p>
-<p>- Proven experience building deep technical relationships with channel partners, systems integrators, and third-party developers to deliver high-impact Cloudflare solutions.</p>
-<p>- Excellent communication, documentation, problem-solving, and project management skills</p>
-<p>- Experience with a scripting language (e.g. Python, JavaScript, Bash) will be an advantage</p>
-<p>- Fluency in English and Mandarin is required to work with regional partners</p>
-<p>&nbsp;</p>
 <p><strong>Bonus points:</strong></p>
-<p>- Hands-on experience with similar Cloudflare Solutions (Zscaler, Akamai, Imperva, Cloudfront, etc.) will be preferred</p>
-<p>- Experience with, regulatory requirements such a PCI DSS, HIPAA, and SOC-2</p>
+<ul>
+	<li>Experience with a scripting language (e.g. Python, JavaScript, Bash)</li>
+	<li>Fluency in English and Mandarin is required to work with regional partners</li>
+</ul>
 <p>&nbsp;</p>
 <p><strong>Job Roles:</strong></p>
-<p>- Cloudflare Partner Services organization provides services and product implementation advisory expertise to our strategic Services Partners to help them build service management offerings around Cloudflare.</p>
-<p>- As a Technical Services Manager (TSM), you will draw on your technical acumen and partner-facing skills to help Services Partner successfully migrate, implement, and manage Cloudflare solutions.</p>
-<p>- In this role, you will manage the successful technical delivery of Services Partner engagements to drive customer adoption of Cloudflare solutions, for example, Cloudflare Zero Trust, Application Services, Network Services, and Edge Developer solutions.</p>
-<p>- You will build deep technical relationships and regularly engage with diverse stakeholder groups within the partner and customer organizations (as needed), including executives of large enterprises and a cross-functional and geographically dispersed team.&nbsp;</p>
-<p>- You'll utilize your relationship management skills and technical credibility to effectively communicate at all levels of the organization.&nbsp;</p>
-<p>- Ability to travel (domestically and internationally) approximately 25% of the time, as needed.</p>
+<ul>
+	<li>Cloudflare Partner Services organization provides services and product implementation advisory expertise to our strategic Services Partners to help them build service management offerings around Cloudflare.</li>
+	<li>As a Partner Technical Services Manager (TSM), you will draw on your technical acumen and partner-facing skills to help Services Partner successfully migrate, implement, and manage Cloudflare solutions.</li>
+	<li>In this role, you will manage the successful technical delivery of Services Partner engagements to drive customer adoption of Cloudflare, for example, Cloudflare Zero Trust, Application Services, Network Services, and Edge Developer solutions.</li>
+	<li>You will build deep technical relationships and regularly engage with diverse stakeholder groups within the partner and customer organizations (as needed), including executives of large enterprises and a cross-functional and geographically dispersed team.&nbsp;</li>
+	<li>You'll utilize your relationship management skills and technical credibility to effectively communicate at all levels of the organization.&nbsp;</li>
+	<li>Ability to travel (domestically and internationally) approximately 30% of the time, as needed.</li>
+	<li>You will be responsible for managing relationships with a variety of stakeholders, both within and outside of Cloudflare. This will include establishing and nurturing long-term connections with service partners in the region at the technical management level, as well as internal stakeholders across various cross-functional teams. Your ability to collaborate and communicate effectively will be key to driving success in this role.</li>
+</ul>
 <p>&nbsp;</p>
-<p><strong>Job Responsibilities</strong></p>
-<p>- Develop strategic relationships with partner organization stakeholders to understand their services business offering and develop strategic roadmaps.&nbsp;</p>
-<p>- Provide Services Partners with technical guidance, timelines, milestones, migration goals, and business transformation strategies to address customer technical requirements.</p>
-<p>- Build up Services Partners' technical competency in delivering Cloudflare services during the incubation period.</p>
-<p>- Lead quarterly technical services reviews to better Services Partners' technical needs.</p>
-<p>- Plan for Services Partners Practice workshops partnering with Customer Support, Technical Marketing Engineering, Product and Enablement team to ensure Partner Service Delivery success during migration/implementation projects.&nbsp;</p>
-<p>- Work with Partners and Support to guide issues/escalations to resolution, as needed, with regards to migration/implementation projects.</p>
-<p>- Develop best practices and assets based on the learnings from project engagements to support initiatives to scale through partners and accelerate Cloudflare adoption.</p>
+<p>&nbsp;<strong>Job Responsibilities</strong></p>
+<ul>
+	<li>Develop strategic relationships with partner organization stakeholders to understand their services business offering and develop strategic roadmaps.&nbsp;</li>
+	<li>Provide Services Partners with technical guidance, timelines, milestones, migration goals, and business transformation strategies to address customer technical requirements.</li>
+	<li>Build up Services Partners' technical competency in delivering Cloudflare services during the incubation period.</li>
+	<li>Leverage your technical expertise and experience to develop services practices and processes within the organizations and drive cross-functional teamwork to bring these practices to market.</li>
+	<li>Lead regular technical services reviews to better Services Partners' technical needs.</li>
+	<li>Run Services Partners workshops partnering with Customer Support, Product Engineering, and Enablement team to ensure Partner Service Delivery success during migration/implementation projects.&nbsp;</li>
+	<li>Work with Partners and Support to guide issues/escalations to resolution, as needed, with regards to migration/implementation projects.</li>
+	<li>Develop best practices and assets based on the learnings from project engagements to support initiatives to scale through partners and accelerate Cloudflare adoption.</li>
+</ul>
+<p><strong>&nbsp;</strong></p>
 <p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
