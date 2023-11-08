@@ -1,7 +1,7 @@
 <div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/post-mortem-on-cloudflare-control-plane-and-analytics-outage-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/post-mortem-on-cloudflare-control-plane-and-analytics-outage-es-es">Español</a>.</small></p>
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/post-mortem-on-cloudflare-control-plane-and-analytics-outage-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/post-mortem-on-cloudflare-control-plane-and-analytics-outage-es-es">Español</a> and <a href="https://blog.cloudflare.com/ko-kr/post-mortem-on-cloudflare-control-plane-and-analytics-outage-ko-kr">한국어</a>.</small></p>
 	<!--kg-card-end: markdown-->
 	<p>Beginning on Thursday, November 2, 2023, at 11:43 UTC Cloudflare's control plane and analytics services experienced an outage. The control plane of Cloudflare consists primarily of the customer-facing interface for all of our services including our website and APIs. Our analytics services include logging and analytics reporting.</p>
 	<p>The incident lasted from November 2 at 11:44 UTC until November 4 at 04:25 UTC. We were able to restore most of our control plane at our disaster recovery facility as of November 2 at 17:57 UTC. Many customers would not have experienced issues with most of our products after the disaster recovery facility came online. However, other services took longer to restore and customers that used them may have seen issues until we fully resolved the incident. Our raw log services were unavailable for most customers for the duration of the incident.</p>
