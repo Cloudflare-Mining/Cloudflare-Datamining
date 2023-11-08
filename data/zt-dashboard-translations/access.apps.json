@@ -433,5 +433,10 @@
 	"user_input_start_testing": "Test policies",
 	"user_input_title": "Enter a user email address",
 	"validation_settings_max_age": "Maximum age can only be a number between %{min} and %{max}.",
-	"view": "View"
+	"view": "View",
+	"warp_auth_card_subtitle": "Allow users to log in with their WARP/Gateway session identity. Users need to reauthenticate based on default session durations. WARP authentication identity must be turned on in your device enrollment permissions.",
+	"warp_auth_card_title": "WARP authentication identity ",
+	"warp_auth_identity": "Turn on WARP authentication identity",
+	"warp_auth_identity_description": "Changes will override default WARP authentication identity settings for this application only.",
+	"warp_auth_manage_settings": "Manage default settings"
 }
