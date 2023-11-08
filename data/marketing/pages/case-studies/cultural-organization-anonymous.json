@@ -36,29 +36,29 @@
 				"longDescription": "This Project Galileo participant was one of the first to take advantage of new [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) tools [announced](https://blog.cloudflare.com/cloudflare-zero-trust-for-galileo-and-athenian/) during Impact Week 2022. They have elected to remain anonymous to avoid sharing details about their security stack and overall readiness.\n\n__Roadblocks to staying online__\n\nThis century-old nonprofit provides cultural education and events, with much of it available for free online. While carrying out its mission to inspire and educate, however, its team has faced security threats from internal and external sources. Before joining Project Galileo, they had problems with long site outages, which restricted public access to educational resources and the ability to promote events. \n\n__Starting the Zero Trust journey__\n\nThey applied to Project Galileo in August 2022 and were quickly approved by the program's partners. According to the engineer who is responsible for maintaining and architecting the organization's technology infrastructure, \"We recognized Cloudflare's lead and prominence in the emerging Zero Trust / secure DNS market, and were excited to find Project Galileo. We immediately saw how the program would make securing our environment so much easier.\"\n\nSince they operate with a lean staff and do not have the budget or headcount for a full security operations center (SOC), tools via Project Galileo help fill this gap. For example, Cloudflare DNS simplifies the process of making changes to support remote workers. According to the engineer, \"Cloudflare is enabling me, as a one-man IT team, to manage the threats a global organization faces daily.\" \n\nA user-friendly interface also helps with handling the site's security; the engineer finds that using the Cloudflare dashboard for DNS and Zero Trust is more intuitive than other security tools he has used.\n\nLike many other nonprofits, the organization is a hybrid workplace. Staff needs to be able to connect to data and applications — with the right level of permissions — as part of their programs and public outreach. Before adopting Zero Trust tools, the number one cause of IT tickets was an inability to access resources. This occasionally caused problems for important deadlines, such as for in-person events.\n\nThe organization's engineer adds, \"Cloudflare Zero Trust protects our network and mobile workforce by providing secure, auditable access to our work resources.\"\n\n__The onboarding experience__\n\nTheir website experiences monthly traffic of millions of requests per month and more than 100,000 unique visitors. In the first three months of implementing a Zero Trust architecture, they used Cloudflare tools to block more than 66 security threats and 4,131 malicious [DNS requests](https://www.cloudflare.com/learning/dns/what-is-dns/). \n\nResources they find particularly useful include: \n- [WARP](https://1.1.1.1/), a device client, improves secure access across all platforms, including laptops and smartphones\n- [Cloudflare Access](https://www.cloudflare.com/products/zero-trust/access/) provides a one-stop portal for redirecting network addresses on demand\n\n__What's next__ \n\nThe organization hopes to continue implementing more tools and get farther in their Zero Trust journey. Future goals include being able to block access to [SaaS applications](https://www.cloudflare.com/learning/cloud/what-is-saas/) like Google Drive or Box from personal devices so there is one fewer [attack vector](https://www.cloudflare.com/learning/security/glossary/attack-vector/) to worry about.\n\nAccording to the organization's engineer, \"I would be hard-pressed to perform IT functions for our hybrid staff without Cloudflare. Cloudflare DNS and Zero Trust have enabled me to look forward to a future without Microsoft Servers, and reallocating those funds to software and coding efforts that expand our cultural programs.\"\n",
 				"cloudflareStreamVideoId": null,
 				"keyResults": null,
-				"relatedCaseStudies": [
+				"relatedCaseStudies": [],
+				"relatedCaseStudyLinks": [
 					{
-						"name": "Muzeon",
-						"nameUrlSlug": "muzeon"
+						"text": "Muzeon",
+						"url": "/case-studies/muzeon"
 					},
 					{
-						"name": "Polish Scouting and Guiding Association (ZHP)",
-						"nameUrlSlug": "polish-scouting-and-guiding-association-zhp"
+						"text": "Polish Scouting and Guiding Association (ZHP)",
+						"url": "/case-studies/polish-scouting-and-guiding-association-zhp"
 					},
 					{
-						"name": "Sheltersuit",
-						"nameUrlSlug": "sheltersuit"
+						"text": "Sheltersuit",
+						"url": "/case-studies/sheltersuit"
 					},
 					{
-						"name": "Dream Girl Foundation",
-						"nameUrlSlug": "dream-girl-foundation"
+						"text": "Dream Girl Foundation",
+						"url": "/case-studies/dream-girl-foundation"
 					},
 					{
-						"name": "HERA Digital Health",
-						"nameUrlSlug": "hera-digital-health"
+						"text": "HERA Digital Health",
+						"url": "/case-studies/hera-digital-health"
 					}
 				],
-				"relatedCaseStudyLinks": null,
 				"inPartnershipWith": [],
 				"relatedCloudflareProducts": [],
 				"employeeHeadshot": null,
