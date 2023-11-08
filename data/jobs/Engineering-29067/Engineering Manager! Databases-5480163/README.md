@@ -17,7 +17,7 @@
 	<li>Minimum 4 years experience in engineering management</li>
 	<li>Solid foundation in computer science, with strong competencies in software design, and building large, distributed systems</li>
 	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Demonstrate a track record of managing a team including hiring, onboarding, and professional development. You inspire your team to reach higher. You’re as good at explaining “why” as you are “how”</li>
 	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
 	<li>Comfortable managing teams/projects with competing priorities and short release cycles</li>
 	<li>Hands-on experience with Postgres</li>
