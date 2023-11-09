@@ -1,5 +1,8 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-october-30-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-october-30-2023-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-incident-on-october-30-2023-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-october-30-2023-ko-kr">한국어</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Vulnerabilitiy-1.png" class="kg-image" alt="" loading="lazy" width="2401" height="1350"></figure>
 	<p>Multiple Cloudflare services were unavailable for 37 minutes on October 30, 2023. This was due to the misconfiguration of a deployment tool used by Workers KV. This was a frustrating incident, made more difficult by Cloudflare’s reliance on our own suite of products. We are deeply sorry for the impact it had on customers. What follows is a discussion of what went wrong, how the incident was resolved, and the work we are undertaking to ensure it does not happen again. </p>
 	<p>Workers KV is our globally distributed key-value store. It is used by both customers and Cloudflare teams alike to manage configuration data, routing lookups, static asset bundles, authentication tokens, and other data that needs low-latency access.</p>
