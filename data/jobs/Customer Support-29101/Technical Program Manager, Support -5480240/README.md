@@ -14,7 +14,7 @@
 <p><strong>Requirements</strong></p>
 <ul>
 	<li>Minimum 5 years experience in technical program management, large-scale project management, or in a related function like Consulting or implementation</li>
-	<li>Experience in developing new product or service offerings, bringing the offerings to market, and enabling sales and services teams to sell and support the offerings.&nbsp;</li>
+	<li>Experience working with Engineering teams, and ideally improving cross-functional processes</li>
 	<li>Experience running multiple large initiatives concurrently and prioritizing many competing tasks daily</li>
 	<li>Flexibility and adaptability, experience trying different approaches and adapting as you go based on the needs of your team / project</li>
 	<li>Proficiency in change management, stakeholder management, communications planning and development, and selling the benefits of your work</li>
