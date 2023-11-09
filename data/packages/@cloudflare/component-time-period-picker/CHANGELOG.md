@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.0.0
+
+### Patch Changes
+
+- Updated dependencies [adc3d4c834]
+- Updated dependencies [2061cf4285]
+  - @cloudflare/component-icon@12.0.0
+  - @cloudflare/component-calendar@7.0.0
+  - @cloudflare/component-listbox@2.0.0
+  - @cloudflare/component-form@5.0.18
+
 ## 5.0.29
 
 ### Patch Changes

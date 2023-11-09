@@ -1,9 +1,20 @@
 # Change Log
 
+## 12.0.0
+
+### Major Changes
+
+- 2061cf4285: Renamed `zerotrust-risk-score-logo` to `zero-trust-risk-scoring`
+
+### Minor Changes
+
+- adc3d4c834: Add code icon
+
 ## 11.10.0
 
 ### Minor Changes
 
+- 4f845e60a2: Change svg props to prevent console error
 - ce06d2a8e6: add ZT Risk Score icon
 
 ## 11.9.1
