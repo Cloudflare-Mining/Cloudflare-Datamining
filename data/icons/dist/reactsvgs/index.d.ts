@@ -28,6 +28,7 @@ declare const _default: {
     'cloudflare-security-application': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-network': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-zero-trust': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    code: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -146,8 +147,8 @@ declare const _default: {
     wrench: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     youtube: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     zaraz: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'zero-trust-risk-scoring': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'zerotrust-casb-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'zerotrust-networks-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
-    'zerotrust-risk-score-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
 };
 export default _default;

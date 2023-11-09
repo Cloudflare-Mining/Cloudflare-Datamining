@@ -26,6 +26,7 @@ import CloudflareMagicWan from './CloudflareMagicWan';
 import CloudflareSecurityApplication from './CloudflareSecurityApplication';
 import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
 import CloudflareZeroTrust from './CloudflareZeroTrust';
+import Code from './Code';
 import Copy from './Copy';
 import CreditCard from './CreditCard';
 import D1 from './D1';
@@ -144,9 +145,9 @@ import Wrangler from './Wrangler';
 import Wrench from './Wrench';
 import Youtube from './Youtube';
 import Zaraz from './Zaraz';
+import ZeroTrustRiskScoring from './ZeroTrustRiskScoring';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 import ZerotrustNetworksLogo from './ZerotrustNetworksLogo';
-import ZerotrustRiskScoreLogo from './ZerotrustRiskScoreLogo';
 export default {
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
@@ -176,6 +177,7 @@ export default {
   'cloudflare-security-application': CloudflareSecurityApplication,
   'cloudflare-security-network': CloudflareSecurityNetwork,
   'cloudflare-zero-trust': CloudflareZeroTrust,
+  code: Code,
   copy: Copy,
   'credit-card': CreditCard,
   d1: D1,
@@ -294,7 +296,7 @@ export default {
   wrench: Wrench,
   youtube: Youtube,
   zaraz: Zaraz,
+  'zero-trust-risk-scoring': ZeroTrustRiskScoring,
   'zerotrust-casb-logo': ZerotrustCasbLogo,
-  'zerotrust-networks-logo': ZerotrustNetworksLogo,
-  'zerotrust-risk-score-logo': ZerotrustRiskScoreLogo
+  'zerotrust-networks-logo': ZerotrustNetworksLogo
 };
