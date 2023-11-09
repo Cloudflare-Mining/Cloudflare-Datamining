@@ -36,29 +36,29 @@
 				"longDescription": "The [British Beekeepers Association](https://www.bbka.org.uk) (BBKA) is a charity that represents 25,000 hobbyist beekeepers and aims to raise standards in beekeeping. Founded in 1874, the group is known for their educational programs, lectures, and workshops.\n\nTheir initiatives include: \n- Promoting the importance of honeybees and pollination\n- Educating about the craft of beekeeping \n- Campaigning against the use of neonicotinoids, a class of insecticides\n- Supporting bee-related research, such as on bee health and behavior\n\nOne recent program involved welcoming students for visits to the apiary based at The National Beekeeping Centre in Warwickshire. Notes Diane Drinkwater, chair of the executive committee, \"This enables us to share our love of honeybees with schoolchildren and complements our online resources.\" On the BBKA website, \"Bees in the Curriculum\" provides worksheets and activity ideas for schools to incorporate into lesson plans.\n\nAnother way they engage with the public through their website is via a \"swarm map\" of member beekeepers who give advice about bees and arrange to collect swarms. \n\n__Defending against bot attacks__ \n\nThe BBKA applied to Project Galileo in May 2022 after experiencing an increase in bot traffic. Technical IT and Web Security Consultant Mark Oakley comments that he was curious to see what protection the program could provide for the association. He was familiar with the importance of cyber security after a [DDoS attack](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) took them offline in 2016; the charity has also been targeted with some unsuccessful attempts at [business email compromise](https://www.cloudflare.com/learning/email-security/business-email-compromise-bec/). \n\nAfter onboarding, Oakley and his team became much more aware of the amount of bot traffic they were experiencing and quickly got their defenses set up. \"Cloudflare gave us the reassurance that this traffic was being blocked,\" Oakley said. \n\n__Expanding to Zero Trust tools__ \n\nAfter the Impact Week 2022 [announcement](https://blog.cloudflare.com/democratizing-access-to-zero-trust-with-project-galileo/) that [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) products were being added to Project Galileo, the BBKA added measures to protect their network, employees, trustees, and volunteers.\n\nThus far, the BBKA is using the Cloudflare One Zero Trust suite to:\n- Block access to [malware](https://www.cloudflare.com/learning/ddos/glossary/malware/) sites for in-office staff via Cloudflare Gateway\n- Secure trustees' and volunteers' cellphone connections by encouraging the use of WARP\n- Defend against [phishing](https://www.cloudflare.com/learning/access-management/phishing-attack/) attacks targeting employees, trustees, and volunteers with Area 1 email protection\n\nOakley particularly appreciates the ability of [remote browser isolation](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/) to reduce the risks of clicking on links in emails. \"In less than a fortnight since deploying it, it was blocking business email compromise-type emails impersonating key BBKA people,\" he comments. \"Having Cloudflare in place gives reassurance that we are taking steps to protect ourselves from the hazards of being connected to the Internet.\"\n",
 				"cloudflareStreamVideoId": null,
 				"keyResults": null,
-				"relatedCaseStudies": [
+				"relatedCaseStudies": [],
+				"relatedCaseStudyLinks": [
 					{
-						"name": "Musopen",
-						"nameUrlSlug": "musopen"
+						"text": "Musopen",
+						"url": "/case-studies/musopen"
 					},
 					{
-						"name": "Raissa Robles",
-						"nameUrlSlug": "raissa-robles"
+						"text": "Raissa Robles",
+						"url": "/case-studies/raissa-robles"
 					},
 					{
-						"name": "Lake County News",
-						"nameUrlSlug": "lake-county-news"
+						"text": "Lake County News",
+						"url": "/case-studies/lake-county-news"
 					},
 					{
-						"name": "BullyingCanada",
-						"nameUrlSlug": "bullyingcanada"
+						"text": "BullyingCanada",
+						"url": "/case-studies/bullyingcanada"
 					},
 					{
-						"name": "Bedayaa",
-						"nameUrlSlug": "bedayaa"
+						"text": "Bedayaa",
+						"url": "/case-studies/bedayaa"
 					}
 				],
-				"relatedCaseStudyLinks": null,
 				"inPartnershipWith": [],
 				"relatedCloudflareProducts": [],
 				"employeeHeadshot": null,
