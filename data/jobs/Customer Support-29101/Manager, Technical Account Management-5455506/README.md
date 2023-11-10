@@ -28,7 +28,7 @@
 </ul>
 <h4><strong>Requirements</strong></h4>
 <ul>
-	<li>5 to 8 years of technical leadership experience, preferably in SaaS or Network/General Cyber Security.</li>
+	<li>Minimum 5 years of technical leadership experience, preferably in SaaS or Network/General Cyber Security.</li>
 	<li>Previous experience leading a regionally distributed team connected to a 24/7 Follow-the-sun service delivery model.</li>
 	<li>Experience in scaling and operationalizing new/existing TAM offerings for large enterprise customers.</li>
 	<li>Prior experience with paid support services, including observability (Security/Network Operations Center).</li>
