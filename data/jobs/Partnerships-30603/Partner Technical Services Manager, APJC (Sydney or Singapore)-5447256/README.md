@@ -22,11 +22,6 @@
 	<li>Experience in educating services partners to build technical competency and practice and deliver quality services to Cloudflare customers</li>
 	<li>Excellent communication, documentation, problem-solving, and project management skills</li>
 </ul>
-<p><strong>Bonus points:</strong></p>
-<ul>
-	<li>Experience with a scripting language (e.g. Python, JavaScript, Bash)</li>
-	<li>Fluency in English and Mandarin is required to work with regional partners</li>
-</ul>
 <p>&nbsp;</p>
 <p><strong>Job Roles:</strong></p>
 <ul>
