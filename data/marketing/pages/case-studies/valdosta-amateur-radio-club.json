@@ -36,29 +36,29 @@
 				"longDescription": "__Connecting a community__\n\nStarted in 1927, the [Valdosta Amateur Radio Club](https://www.w4vld.com/) (VARC) is a nonprofit organization of amateur radio enthusiasts based in Valdosta, Georgia. The club promotes the use of amateur radio as a means of emergency preparedness, communication, and public service; provides support to its 60+ members; and engages with the local community via events, licensing classes, and radio operator testing. The group serves Southern Georgia and North Florida with critical communication during emergencies, including extreme weather. \n\nBobby Lacey, the vice president of operations, and Michael Hancock, the vice president of technical operations, work with fellow members to ensure the VARC's communication infrastructure remains operational and reliable. The club maintains several repeater stations that allow communication locally, regionally, across Georgia, and globally — each connects with other stations in a network to allow longer-range radio communications.\n\nThe team is also responsible for the operation of the regional microwave IP network, which provides high-speed data communication between repeaters and various strategic sites, such as regional hospitals, emergency management centers, and the local regional airport; this entails troubleshooting network issues and implementing necessary upgrades. \n\n__Storm readiness__\n\nOne major focus for the club is its extensive weather camera network; it provides real-time video and images of local weather conditions via cameras strategically located throughout the Valdosta area. The network is understandably a valuable resource for Amateur Radio Emergency Service (ARES) teams during tornado and hurricane season, as it allows them to monitor conditions and track severe weather events. \n\nEnd users access the live video feed and images through the club's website and mobile app; having the data easily accessible helps ensure a quick response. According to Lacey, \"The VARC weather camera network is a great example of how amateur radio operators can use technology to enhance their ability to provide valuable public service during times of emergency.\"\n\n__Weathering cyber attacks__\n\nBecause the website plays an essential role in real-time communication during extreme weather, the VARC's priorities include keeping the site up to date and secure. Unfortunately, the site has been subject to relentless attacks from domestic and foreign entities. Some [DDoS attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) have been severe enough to take the site offline. \n\nLacey notes that these past attacks caused significant inconvenience and frustration for the club's members, who rely on the website for critical communication and updates. \"Amateur radio operators may not consider their website a high-value target, but without proper security measures, their website is still vulnerable to attacks,\" he says.\n\n__Bolstering site security and performance__\n\nAs part of its strategy to mitigate attacks, the VARC joined Project Galileo in January 2022 and started using a wide variety of tools from Cloudflare. They have also been conducting regular network monitoring to avoid incidents. \"Since the VARC began using Cloudflare's services, we have experienced a significant improvement in the reliability and security of our website,\" Lacey says.\n\nAfter joining Project Galileo, the VARC has also deployed:\n- Performance optimization features, such as with the Cloudflare [CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), to reduce site downtime and [load times](https://www.cloudflare.com/learning/performance/speed-up-a-website/). Both of these aid in improving user experience and encouraging repeat visitors.\n- DDoS mitigation to mitigate attacks and keep the site online.\n- [SSL encryption](https://www.cloudflare.com/learning/ssl/what-is-ssl/) to help protect members' privacy, comply with regulations, and avoid potential legal consequences and reputational damage.\n- The [Web Application Firewall](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/) (WAF) and [Bot Management](https://www.cloudflare.com/learning/bots/what-is-bot-management/) to protect against attacks.\n\nNotes Lacey, \"Cloudflare protection is essential for any website, including the VARC's site, to ensure its security, performance, and compliance with regulations.\"\n\n__Getting started with Zero Trust__\n\nThe VARC was an early adopter of [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) tools available through Project Galileo, and they upgraded their network security in part to protect their regional environmental camera network, which is used by the ARES teams and the community. For end users, the upgrade has been seamless because of the integration with the VARC's existing Microsoft Azure Active Directory authentication platform. \n\nUsing the Zero Trust suite, the VARC team is able to provide secure access to the camera network for authorized users while blocking unauthorized access attempts. Lacey comments, \"This has helped us to maintain the confidentiality, integrity, and availability of our camera network data, ensuring that our ARES teams, news organizations, and the general public have access to critical real-time video and imagery during times of emergency.\"\n\nAcross all the Cloudflare tools the VARC uses, some early results include mitigating an average of 3,000 malicious attacks per month and increasing the website's reliability by 300%. Lacey looks forward to digging deeper into the potential of Zero Trust and the benefits for the organization, including by learning how others are protecting their networks.\n\nLacey concludes, \"Overall, Cloudflare Zero Trust has been a valuable asset in enhancing the security and reliability of our regional environmental camera network.\" \n",
 				"cloudflareStreamVideoId": null,
 				"keyResults": null,
-				"relatedCaseStudies": [
+				"relatedCaseStudies": [],
+				"relatedCaseStudyLinks": [
 					{
-						"name": "Sheltersuit",
-						"nameUrlSlug": "sheltersuit"
+						"text": "Sheltersuit",
+						"url": "/case-studies/sheltersuit"
 					},
 					{
-						"name": "Polish Scouting and Guiding Association (ZHP)",
-						"nameUrlSlug": "polish-scouting-and-guiding-association-zhp"
+						"text": "Polish Scouting and Guiding Association (ZHP)",
+						"url": "/case-studies/polish-scouting-and-guiding-association-zhp"
 					},
 					{
-						"name": "Muzeon",
-						"nameUrlSlug": "muzeon"
+						"text": "Muzeon",
+						"url": "/case-studies/muzeon"
 					},
 					{
-						"name": "Dream Girl Foundation",
-						"nameUrlSlug": "dream-girl-foundation"
+						"text": "Dream Girl Foundation",
+						"url": "/case-studies/dream-girl-foundation"
 					},
 					{
-						"name": "HERA Digital Health",
-						"nameUrlSlug": "hera-digital-health"
+						"text": "HERA Digital Health",
+						"url": "/case-studies/hera-digital-health"
 					}
 				],
-				"relatedCaseStudyLinks": null,
 				"inPartnershipWith": [],
 				"relatedCloudflareProducts": [],
 				"employeeHeadshot": null,
