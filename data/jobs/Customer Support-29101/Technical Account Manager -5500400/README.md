@@ -5,43 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>About the Role</strong></p>
-<p>We are seeking a Data Center Selection - Technical Business Developer to improve the quality and unit cost and grow the size and number of our colocation sites/PoPs, and help us understand where on the map Cloudflare’s infrastructure needs to go next.&nbsp; You possess a broad set of contacts across the data center industry and are able to navigate local and international businesses in various markets to drive the best possible deal parameters.&nbsp; You will unlock efficiency within our vendor partner portfolio by understanding how to structure contracts to follow demand, keeping abreast of unique market dynamics and insights that help us negotiate, and managing vendor partner relationships to know where to invest and partner further with existing or new partners.&nbsp; We are looking for someone who excels at progressing many projects in parallel, managing dynamic day to day priorities with many stakeholders, and has experience implementing and refining sourcing best practices in a high growth environment.&nbsp; Getting stuff done is a must!</p>
-<p>&nbsp;</p>
-<p>The Data Center Strategy team is part of Cloudflare’s global Infrastructure (INF) team. The INF team grows and manages Cloudflare’s global data center/PoP footprint, enabling Cloudflare’s tremendous growth with compute, network, and data center infrastructure, utilizing an extensive range of global partner vendors.&nbsp;&nbsp;</p>
-<p><br><br></p>
-<p><strong>What you get to do in this role:</strong></p>
+<h4><strong>To the attention of candidates (Remote, UK): </strong></h4>
+<h4><strong>This role requires UK Security Clearance.</strong></h4>
+<h4>About the department</h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.&nbsp;&nbsp;</p>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">The Technical Account Manager (TAM) will own the post-contract end-to-end support experience for Cloudflare’s most strategic customers, to unblock post-go-live technical support challenges.</span> <span style="font-weight: 400;">They are a dedicated technical primary point of contact for our top-tier Premium customers. TAM’s responsibilities are to manage and monitor support interactions, serve as an internal advocate for customers, respond to customer escalations, and proactively escalate issues as needed. TAMs meet regularly with the relevant customer and provide proactive recommendations that support customers’ requirements, roadmap, and ongoing technical needs,</span><span style="font-weight: 400;"> partnering with the Customer Success and Account Team members.</span></p>
+<p><span style="font-weight: 400;">To be successful in this role, you must possess strong customer service and leadership skills, be a self-starter, be committed to ongoing self-education, be able to collaborate across organizations and have excellent technical problem-solving skills.</span></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Define regional vendor strategy for data centers</li>
-	<li>Own deals end to end involving new and existing data center vendors and sites to support Cloudflare’s infrastructure growth including planning, RFP, commercial negotiation and execution</li>
-	<li>Work cross-functionally with data center operations teams, capacity planning, network strategy and security teams to understand requirements and project timelines</li>
-	<li>Establish and conduct scheduled QBR and other vendor management activities with top category partners</li>
-	<li>Represent Cloudflare credibly to external partner C-level senior management and at public conferences/events</li>
-	<li>Expert point of contact for internal business customers &amp; external colocation partner vendors as needed</li>
-	<li>Contribute information to annual data center budget for effective tracking and benchmarking of infrastructure costs</li>
-	<li>Review colocation spend &amp; invoices for management approval&nbsp;</li>
-	<li>Other duties as assigned</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as primary technical support contact.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the Account Team, as well as Engineering and Product, to help ensure high customer satisfaction by providing world-class dedicated support throughout the entire life of the customer partnership.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide product and engineering teams with customer feedback to help identify Support challenges and opportunities.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a holistic and dynamic view of customer’s environment and use of Cloudflare products, including the customer deployment topology, expert resolution for all support issues, and proactive advice for long-term improvements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and deliver Quarterly Support Reviews including SLA adherence, top ticket drivers, ticket deep dives, and incident reviews.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel up to 25% of the time.&nbsp;</span></li>
+	<li style="font-weight: bold;"><strong>Ability to work one weekend every quarter.</strong></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively engage with the account team during strategic deal closure and throughout the lifecycle of the customer.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Point of escalation during business hours, and backup point of escalation for Cloudflare TAMs in other regions during their off hours.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand client sentiment, own internal and customer facing escalations, and provide product support.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure support tickets solved in a timely manner.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and expand working technical knowledge of Cloudflare products .</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Single threaded owner of technical support issues, working with backend teams as needed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with global TAM’s to ensure coverage on critical issues.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure rapid Incident response.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist with preparing and communicating CSRs and formal documentation for incidents and major issues.</span></li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 8 years of previous experience in a customer-facing team with technical account management responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have the business acumen of working with Fortune 500 companies and their leadership team&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding of how the Internet works, e.g. the OSI Model, Application and Network security, what a proxy is and how it works.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic Troubleshooting skills towards identifying and Escalating to the necessary Team to drive a solution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Passionate about Cloudflare products, helping customers, and building strong relationships across organizations&nbsp;</span></li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Skills/Experience:</strong></p>
-<p>&nbsp;</p>
-<ul>
-	<li>5+ years in planning and managing data center footprints within a fast moving enterprise technology organization or cloud services, software or colocation company</li>
-	<li>Ability to multi-task and manage complex projects across multiple teams and geographies within set deadlines</li>
-	<li>Ability to navigate, solve problems and answer questions with minimal supervision</li>
-	<li>Relationship management experience and excellent communication skills</li>
-	<li>Demonstrated experience in commercial negotiation&nbsp;</li>
-	<li>Experience with rack, site power and white space planning (data center sales engineering) a plus</li>
-	<li>Experience with or understanding of network concepts a plus</li>
-	<li>Experience in budget planning, financial analysis, or other analytical role a plus</li>
-	<li>Experience with Jira a plus</li>
-	<li>Multilingual and/or experience living/working/conducting business in another country a plus</li>
-	<li>Bachelors degree or equivalent experience required</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
