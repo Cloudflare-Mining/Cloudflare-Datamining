@@ -1,0 +1,36 @@
+<div class="mb2 gray5">9 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Traffic-anomalies-1.png" class="kg-image" alt="Introducing notifications for HTTP Traffic Anomalies" loading="lazy" width="2401" height="1350"></figure>
+	<p>인터넷 자산을 관리할 때 사소한 기술적 문제와 대형 사고의 차이는 속도 문제인 경우가 많습니다. 사전 경고는 매우 중요한 역할을 하므로 최종 사용자에게 오류가 발생하는 시점을 관리자가 파악할 수 있는 <a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">HTTP 오류 비율 알림</a>을 출시하게 된 것을 기쁘게 생각합니다. </p>
+	<p>하지만 트래픽이 갑자기 감소하거나 급증하는 등 오류로 나타나지 않는 문제가 발생하는 경우 어떻게 해야 할까요? </p>
+	<p>오늘, Enterprise 고객을 위한 트래픽 이상 알림을 도입한다는 소식을 발표하게 되어 기쁘게 생각합니다. 이러한 알림은 Cloudflare가 트래픽의 예상치 못한 변화를 감지할 때 트리거되며, 시스템 상태에 대한 또 다른 중요한 관점을 제공합니다. &nbsp;</p>
+	<p>트래픽의 예상치 못한 변화는 여러 가지 사실을 나타낼 수 있습니다. 전자 상거래 사이트를 운영하면서 트래픽이 급증하는 것을 목격했다면, 이는 고객이 세일에 몰려들고 있거나 인기 TV 프로그램에 광고가 게재되었다는 좋은 소식일 수 있습니다. 그러나 이는 누군가 실수로 방화벽 규칙을 비활성화하여 악성 트래픽이 증가하는 등 문제가 발생하고 있다는 의미일 수도 있습니다. 어느 쪽이든, 무언가 변화했다는 사실을 알고 싶을 것입니다. </p>
+	<p>마찬가지로 트래픽의 급격한 감소는 여러 가지를 의미할 수 있습니다. 금요일 오후에 모든 직원이 로그오프하여 더 이상 회사 웹 사이트에 접속하지 않는다고 가정해 보겠습니다. 또는 사이트로 연결되는 링크가 끊어져 잠재 고객이 사이트에 접속할 수 없게 될 수도 있습니다. 트래픽이 낮은 순간마다 잠재적인 수익이 손실될 수 있으므로 가능한 한 빨리 원인을 조사하여 파악하고 싶을 것입니다.</p>
+	<h3 id="%EC%95%8C%EB%A6%BC%EC%9D%84-%EB%B3%B4%EB%82%BC-%EC%8B%9C%EA%B8%B0%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B2%B0%EC%A0%95%ED%95%98%EB%82%98%EC%9A%94">알림을 보낼 시기를 어떻게 결정하나요? </h3>
+	<p>일련의 데이터세트에서 이상값을 계산하는 것은 어렵습니다. 가장 간단한 방법은 기본 임계값을 사용하는 것입니다. 그러나 <a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">이전에 블로그에서 설명한 것처럼</a>, 실제 문제가 발생하는 시점을 판단할 때 단순 임계값은 그다지 정확하지 않습니다. 임계값이 효과적으로 작동하기에는 에지 케이스가 너무 많기 때문입니다. </p>
+	<p>오류에서 이상을 계산하는 것은 비교적 쉽습니다. 일반적으로 오류의 수가 매우 적어야 하므로 급증하는 것은 좋지 않으므로 경고해야 한다는 것을 알고 있습니다. 따라서 <a href="https://sre.google/workbook/alerting-on-slos" target="_blank">서비스 수준 목표(SLOs)</a>를 사용하여 <a href="https://developers.cloudflare.com/notifications/notification-available/#traffic-monitoring" target="_blank">HTTP 오류율 알림</a>에 대한 이상을 계산합니다. </p>
+	<p>그러나 과거 추세에서 계산된 몇 가지 일반적인 이벤트 기준선이 존재하기 때문에 전체 HTTP 트래픽을 분석하는 것은 <a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">Cloudflare 보안 이벤트</a>와 더 유사하게 작동합니다. 이러한 기준선에서 벗어나면 경고를 보낼 수 있습니다. 이러한 유사성 때문에 이전에 보안 이벤트 알림에 사용했던 것과 동일한 계산, 즉 <a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">z-점수</a>를 트래픽 이상 알림에 사용하기로 결정했습니다. 여기에는 현재 값을 일정 기간 동안의 평균과 비교하는 것이 포함됩니다. z-점수는 현재 값이 평균에서 얼마나 벗어나는지를 나타냅니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image4-6.png" class="kg-image" alt="" loading="lazy" width="1292" height="898">
+		<figcaption><em>z-점수에 대한 HTTP 트래픽 도표. 파란색은 HTTP 트래픽을, 보라색은 트래픽의 z-점수 경계가 양수인 경우, 녹색은 트래픽의 z-점수 경계가 음수인 경우를 나타냅니다.</em></figcaption>
+	</figure>
+	<p>트래픽 이상 알림의 경우, 지난 5분 동안의 트래픽(짧은 기간)과 지난 4시간 동안의 평균 트래픽(긴 기간)을 비교합니다. z-점수가 양수이면 급증을 나타내고, 음수이면 감소를 나타냅니다. 현재 값이 평균에서 표준 편차 3.5를 초과하면 알림이 전송됩니다. 5분마다 측정하기 때문에 트래픽이 급증하거나 감소할 때 적시에 알림을 받을 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image2-9.png" class="kg-image" alt="" loading="lazy" width="1375" height="125">
+		<figcaption><em>녹색 구간은 긴 기간을, 빨간색 구간은 짧은 기간을 나타냅니다</em></figcaption>
+	</figure>
+	<p>보안 이벤트 알림은 보안 이벤트가 급격히 증가할 때만 트리거되지만(감소는 거의 항상 좋은 신호임), 트래픽 이상 현상의 경우 급증<em>과</em> 감소 모두에 대해 알림이 전송됩니다. HTTP 트래픽이 감소하면 문제가 있을 가능성이 높지만, 증가하면 좋은 신호일 수도 있고 나쁜 신호일 수도 있습니다. </p>
+	<p>보안 이벤트와 마찬가지로 트래픽 이상 알림도 <a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">최소 임계값</a>을 지원합니다. 즉, 이벤트가 표준 편차 3.5를 초과하는 것으로 판단되더라도 이벤트 수가 경미한 경우 알림이 전송되지 않습니다. 급증은 최소 200건 이상의 요청으로 구성되어야 하며, 감소는 최소 200건 이상의 요청으로 구성되어야 합니다. 이렇게 하면 작은 증가와 하락에 대해서는 알림이 전송되지 않으므로 불필요한 알림이 줄어듭니다. </p>
+	<h3 id="%EC%A1%B0%EA%B8%88-%EB%8D%94-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0">조금 더 자세히 알아보기</h3>
+	<p>Cloudflare는 네트워크를 통과하는 요청에 대한 샘플링된 통계를 <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">Clickhouse</a>에 저장합니다. Cloudflare는 매분마다 Clickhouse에서 HTTP 트래픽을 가져와 시계열 데이터 스토리지 솔루션인 VictoriaMetrics의 인스턴스에 저장합니다. VictoriaMetrics는 무료로 즉시 사용할 수 있는 알고리즘 기능을 제공하기 때문에 당사의 사용 사례에 잘 맞았습니다. Cloudflare는 몇 가지 이유로 VictoriaMetrics를 선택했습니다.</p>
+	<p>첫째, 구성과 운영이 쉽다는 점입니다. 당사는 팀으로서 운영 부담을 최소화하고 싶었고, VictoriaMetrics는 지금까지 이러한 요구 사항을 훌륭하게 충족해 왔습니다. 둘째, VictoriaMetrics는 수평적으로 확장할 수 있어 고가용성 모드로 실행할 수 있습니다. 고객을 위해 시간에 중요한 정보를 계산할 수 있는 안정적인 시스템을 원한다면 고가용성 요구 사항이 필수적입니다. 마지막으로, 테스트 결과 VictoriaMetrics는 동일한 사용 사례에서 유사한 대체 제품인 Prometheus가 소비하는 메모리의 약 ⅓을 사용하는 것으로 나타났습니다. </p>
+	<p>VictoriaMetrics에서 데이터를 수집하면 이를 조회하여 쿼리를 실행하고 고객이 미리 생성한 알림 구성을 기반으로 고객에게 알림 전송 여부를 결정하는 데 사용할 수 있습니다. 이를 위해 <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">2019년에 처음으로 블로그에 소개한</a> 기존 알림 시스템을 활용합니다. 당사는 현재의 알림 시스템이 이러한 중요한 알림을 고객에게 최종 단계까지 전달할 수 있다고 확신합니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-9.png" class="kg-image" alt="" loading="lazy" width="1999" height="387">
+		<figcaption><em>HTTP 요청에서 알림까지의 데이터 흐름</em></figcaption>
+	</figure>
+	<h6 id="%EC%95%8C%EB%A6%BC-%EC%84%A4%EC%A0%95"><em>알림 설정</em></h6>
+	<p>이 알림을 구성하려면 대시보드의 '알림' 탭으로 이동합니다. 트래픽 이상에 대한 알림 유형을 선택합니다. 모든 Cloudflare 알림과 마찬가지로, 알림의 이름과 설명을 설정하고 알림 수신 방법을 선택할 수 있습니다. </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image5-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="482">
+		<figcaption><em>대시보드의 트래픽 이상 알림</em></figcaption>
+	</figure>
+	<p>트래픽 이상을 모니터링할 도메인을 선택할 수 있으며, Cloudflare의 DoS 또는 WAF 제품으로 이미 완화한 트래픽을 포함할지 여부와 포함하거나 제외할 특정 상태 코드가 있는지 여부를 결정할 수 있습니다. 또한 트래픽 급증, 감소 또는 두 가지 모두에 대한 알림을 받을지 여부를 선택할 수도 있습니다. </p>
+	<p>이 시스템을 사용하여 Enterprise 고객에게 시스템의 전반적인 상태에 관한 유용한 알림을 제공하게 되어 기쁘게 생각합니다. 대시보드의 알림 탭으로 이동하여 새로운 알림을 지금 바로 확인하세요! </p>
+</div>

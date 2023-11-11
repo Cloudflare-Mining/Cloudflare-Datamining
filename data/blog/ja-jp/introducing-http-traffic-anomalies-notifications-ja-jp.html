@@ -1,0 +1,36 @@
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Traffic-anomalies-1.png" class="kg-image" alt="Introducing notifications for HTTP Traffic Anomalies" loading="lazy" width="2401" height="1350"></figure>
+	<p>インターネットプロパティの管理に関して言えば、小さな技術的な障害と重大なインシデントの違いは、多くの場合、速度の問題です。積極的なアラートは重要な役割を果たします。それが<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">HTTPエラー率通知</a>をリリースにした理由です。—これにより、いつエンドユーザーがエラーに遭遇しているのか、管理者に可視化できます。</p>
+	<p>しかし、トラフィックの急激な減少やスパイクなど、エラーとして表示されない問題があった場合はどうしたらよいのでしょうか？ </p>
+	<p>本日、企業のお客様が利用できるトラフィックの異常通知を発表できることを嬉しく思います。この通知は、Cloudflareがトラフィックの予期せぬ変化を検出した際、トリガーされます。これにより、システムの健全性に対する重要な見方が提供されます。 &nbsp;</p>
+	<p>トラフィックの予期せぬ変化は、多くのことを示唆している可能性があります。eコマースサイトを運営していて、トラフィックにスパイクが見られるなら、それは素晴らしいニュースかもしれません。—お客様は、おそらくセールに群がっているのか、有名なTV番組の広告が流れただけかもしれません。しかし、何かが間違っている可能性もあります。おそらく、誰かが誤ってファイアウォールのルールをオフにしてしまい、悪意のあるトラフィックが増加している可能性があります。どちらにしても、何かが変わったことを知りたいと思うかもしれません。 </p>
+	<p>同様に、トラフィックの急激な減少は、さまざまなことを意味する可能性があります。金曜日の午後、従業員全員がサインオフし、企業のWebサイトにアクセスしなくなっている可能性があります。あるいは、サイトへのリンクが壊れていて、潜在的なお客様がアクセスできなくなっている可能性があります。トラフィックが少ないと、毎分潜在的な収益を失っている可能性があるので、できるだけ早く調査する必要があります。</p>
+	<h3 id="%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%82%92%E5%87%BA%E3%81%99%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AF%E3%81%A9%E3%81%86%E5%88%A4%E6%96%AD%E3%81%99%E3%82%8C%E3%81%B0%E3%82%88%E3%81%84%E3%81%AE%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F">アラートを出すタイミングはどう判断すればよいのでしょうか？ </h3>
+	<p>時系列データセットの異常を正確に計算するのは難しいです。最も単純な方法は、基本的な閾値を使用することです。しかし、<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">以前ブログで紹介したように</a>、単純な閾値は、物事が実際にうまくいっていないときを判断しようとする際には、あまり正確ではありません。エッジケースが多すぎて、効果的に機能しません。</p>
+	<p>HTTPエラーの異常を計算するのは比較的簡単です。通常、エラーの数は非常に少ないはずですから、どのスパイクも問題であり、アラートを出すべきだとわかっています。そのため、<a href="https://sre.google/workbook/alerting-on-slos" target="_blank">サービスレベル目標（SLO）</a>を使用して、<a href="https://developers.cloudflare.com/notifications/notification-available/#traffic-monitoring" target="_blank">HTTPエラー率通知の異常</a>を計算します。</p>
+	<p>しかし、全体的なHTTPトラフィックの分析は、<a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">Cloudflareのセキュリティイベント</a>に類似して動作します。履歴傾向から計算されたイベントの一般的なベースラインがあります。そのベースラインからの逸脱はアラートすべきです。これらの類似点から、以前にセキュリティイベント通知に使用したのと同じ計算をトラフィックの異常通知にも使用することにしました：<a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">z-スコア</a>。これには、現在の値を一定期間の平均値と比較する作業が含まれます。現在の値が平均から何標準偏差離れているかを示すのがz-スコアです。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image4-6.png" class="kg-image" alt="" loading="lazy" width="1292" height="898">
+		<figcaption><em>z-スコアに対するHTTPトラフィックのプロット。青はHTTPトラフィック、紫はトラフィックの正のz-スコア境界、緑はトラフィックの負のz-スコア境界です。</em></figcaption>
+	</figure>
+	<p>トラフィックの異常通知では、過去5分間のトラフィック（短いウィンドウ）と過去4時間のトラフィックの平均（長いウィンドウ）を比較しています。正のz-スコアはスパイクを示し、負のz-スコアは減少を示します。現在の値が平均から3.5標準偏差を超えて離れている場合、アラートします。5分ごとに測定するため、トラフィックスパイクや減少を適時にアラートすることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image2-9.png" class="kg-image" alt="" loading="lazy" width="1375" height="125">
+		<figcaption><em>緑のバケツが長いウィンドウ、赤いバケツが短いウィンドウです</em></figcaption>
+	</figure>
+	<p>セキュリティイベントの通知は、セキュリティイベントにスパイクがある場合のみトリガーされますが（減少はほとんどの場合、良いことです）、トラフィックの異常の場合は、スパイク<em>と</em>減少の両方に対し、通知を送信します。これは、HTTPトラフィックの減少は問題を示している可能性が高く、サージは良いことでもあり、悪いことでもある可能性があるからです。</p>
+	<p>セキュリティイベントと同様に、トラフィックの異常通知は<a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">最小閾値</a>をサポートします。これは、イベントが3.5標準偏差の範囲外であると判断されたとしても、イベントの数がわずかであれば、アラートを発しないことを意味します。スパイクは少なくとも200リクエストでなければならず、少なくとも200リクエストの減少がある必要があります。これにより、小さなスパイクや減少でアラートすることがなくなるため、通知のノイズが少なくなります。</p>
+	<h3 id="%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E6%8E%98%E3%82%8A%E4%B8%8B%E3%81%92%E3%82%8B">もう少し掘り下げる</h3>
+	<p>Cloudflareは、自身のネットワークを通過するリクエストに関するサンプリングされた統計情報を<a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">Clickhouse</a>に保存しています。毎分、ClickhouseからHTTPトラフィックを取得し、時系列データストレージソリューションであるVictoriaMetricsのインスタンスに保存します。VictoriaMetricsは、すぐに使えるアルゴリズム関数を無料で提供しており、当社のユースケースに非常に適しています。VictoriaMetricsを選択した理由はいくつかあります。</p>
+	<p>まず、設定と操作が簡単でです。当社はチームとして、運用上の負担を軽減するために最適化したいと考えており、VictoriaMetricsはこれまでのところ素晴らしい成果を上げています。次に、VictoriaMetricsには水平方向に拡張する機能があり、高可用性モードで実行できます。このようなシステムでは、お客様のために時間に敏感な情報を信頼性のある方法で計算する必要があります。そのため、高可用性の要件は不可欠です。最後に、当社のテストでは、VictoriaMetricsが使用しているメモリは、同様の代替製品であるPrometheusが同じユースケースで使用したメモリの約1/3であることがわかりました。 </p>
+	<p>VictoriaMetricsにデータを取得したら、それに対してクエリーを実行し、事前に作成した通知設定に基づいて、お客様にアラートする必要があるかどうかを判断できます。これを行うには、<a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">2019年当初にブログで紹介した</a>既存のアラート通知システムを活用します。これらの重要な通知をお客様に配信するために、ラストワンマイルの現在の通知システムが頼りにできることは分かっています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-9.png" class="kg-image" alt="" loading="lazy" width="1999" height="387">
+		<figcaption><em>HTTPリクエストから通知までのデータの流れ</em></figcaption>
+	</figure>
+	<h6 id="%E9%80%9A%E7%9F%A5%E3%82%92%E8%A8%AD%E5%AE%9A"><em>通知を設定</em></h6>
+	<p>この通知を設定するには、ダッシュボードの「通知」タブに移動します。通知の種類として「トラフィックの異常」を選択します。すべてのCloudflare通知と同様に、通知に名前を付けて説明し、通知方法を選択できます。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image5-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="482">
+		<figcaption><em>ダッシュボード上のトラフィックの異常通知</em></figcaption>
+	</figure>
+	<p>トラフィックの異常を監視するドメイン、Cloudflare DoSまたはWAF製品によってすでに軽減されているトラフィックを含めるかどうか、および含めるまたは除外する必要のある特定のステータスコードがあるかどうかを選択できます。また、トラフィックスパイク、減少、またはその両方についてアラートを出すかどうかを選択することもできます。 </p>
+	<p>このシステムを使用して、システム全体の健全性に関する貴重な通知をEnterpriseのお客様に提供できることを嬉しく思います。ダッシュボードの「通知」タブに移動して、この新しい通知をチェックしましょう！ </p>
+</div>

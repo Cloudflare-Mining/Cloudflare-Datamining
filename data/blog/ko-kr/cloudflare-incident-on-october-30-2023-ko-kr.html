@@ -1,0 +1,223 @@
+<div class="mb2 gray5">15 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Vulnerabilitiy-1.png" class="kg-image" alt="" loading="lazy" width="2401" height="1350"></figure>
+	<p>2023년 10월 30일에 37분 동안 여러 Cloudflare 서비스를 사용할 수 없었습니다. 이는 Workers KV에서 사용하는 배포 도구의 구성이 잘못되었기 때문입니다. 이는 매우 실망스러운 사고였으며, Cloudflare의 자체 제품군에 대한 의존도 때문에 더욱 어려워졌습니다. 고객 여러분께 끼친 영향에 대해 정말 죄송하게 생각합니다. 다음은 무엇이 잘못되었는지, 사고가 어떻게 해결되었는지, 그리고 이러한 일이 재발하지 않도록 하기 위해 우리가 어떤 작업을 하고 있는지에 대한 설명입니다.</p>
+	<p>Workers KV는 전 세계에 분산된 우리의 키-값 저장소입니다. 키-값은 고객과 Cloudflare 팀 모두 구성 데이터, 라우팅 조회, 정적 자산 번들, 인증 토큰, 대기 시간이 짧은 액세스가 필요한 기타 데이터를 관리하는 데 사용됩니다.<br><br>이 사고가 발생하는 동안 KV에서 사용하는 새로운 배포 도구의 버그로 인해 요청된 키-값 쌍 대신 유효한 HTTP 401(권한 없음) 상태 코드라고 생각되는 코드가 KV에서 반환되었습니다.</p>
+	<p>이러한 오류는 각 서비스에서 KV를 사용하는 방식에 따라 각 제품마다 다르게 나타났으며, 그 영향은 아래에서 자세히 설명합니다.</p>
+	<h3 id="%EC%98%81%ED%96%A5%EC%9D%84-%EB%B0%9B%EC%9D%80-%EB%8C%80%EC%83%81">영향을 받은 대상</h3>
+	<p>다수의 Cloudflare 서비스는 Workers KV에 의존하여 구성, 라우팅 정보, 정적 자산 제공, 인증 상태를 전 세계에 배포합니다. 대신 이들 서비스는 KV 네임스페이스에 대해 가져오기, 넣기, 삭제, 목록 작업을 수행할 때 HTTP 401(권한 없음) 오류를 수신합니다. </p>
+	<p>다음과 같은 Cloudflare 제품을 사용하는 고객은 사고 발생 기간 동안 오류율이 증가했거나 일부 또는 모든 기능에 액세스할 수 없었을 것입니다.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7s56 {
+			background-color: #F4F5F7;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">제품</span></th>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">영향</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers KV</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">KV를 활용하는 앱을 사용하는 고객은 이 사고가 발생하는 동안 Workers 내의 KV API와 REST API를 모두 포함하여 해당 앱이 실패하는 것을 목격했습니다.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers KV를 사용하지 않는 앱은 영향을 받지 않았습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Pages에서 호스팅되는 앱에는 사고 기간 동안 연결이 불가능했으며 사용자에게 HTTP 500 오류가 반환되었습니다. 또한 해당 기간 동안 새로운 Cloudflare Pages 배포의 경우에도 사용자에게 HTTP 500 오류가 반환되었습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Access</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">인증되지 않은 사용자는 로그인할 수 없었고, /certs 엔드포인트를 사용하여 JWT의 유효성을 검사하려는 모든 원본은 실패했을 것이며, 장치 상태 정책이 있는 모든 애플리케이션이 모든 사용자의 경우에 실패했습니다.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/certs 엔드포인트 또는 상태 검사를 사용하지 않는 기존의 로그인 세션은 영향을 받지 않았습니다. 전반적으로 기존 세션의 상당수가 여전히 영향을 받았습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WARP / Zero Trust</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">사용자는 장치 상태 확인 또는 Warp 세션 제한 시간 초과를 적용하는 정책에 따라 새 장치를 등록하거나 리소스에 연결할 수 없었습니다.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">이미 등록된 장치, 장치 상태에 의존하지 않는 리소스, 이 기간 이후에 재인증된 리소스는 영향을 받지 않았습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Images</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">사고 중에 Images API에서 오류가 반환되었습니다. 기존의 이미지 전송은 영향을 받지 않았습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">캐시 제거(단일 파일)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">일부 데이터 센터에서 KV의 구성 데이터에 액세스할 수 없었으므로 사고 발생 기간 동안 단일 파일 제거를 부분적으로 사용할 수 없었습니다. 기존의 구성 데이터가 로컬에 캐시된 데이터 센터는 영향을 받지 않았습니다.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">태그별 삭제를 포함한 다른 캐시 제거 메커니즘은 영향을 받지 않았습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">대시보드, Wrangler, API를 통해 Workers를 업로드하거나 편집할 때 사고 발생 중에 오류가 반환되었습니다. 배포된 Workers는 KV를 사용하지 않는 한 영향을 받지 않았습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway는 사고 기간 동안 요청을 프록시할 수 없었습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room 구성은 Workers KV의 에지에 저장됩니다. Waiting Room 구성 및 구성 변경을 사용할 수 없었으며 서비스를 열지 못했습니다.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">KV 액세스가 복구되었을 때 일부 Waiting Room 사용자는 서비스가 다시 시작되면서 대기열을 경험했을 것입니다. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile 및 Challenge Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile의 JavaScript 자산은 KV에 저장되어 있으며, Turnstile(API.js)의 진입점은 제공되지 않았습니다. Turnstile을 사용하여 페이지에 액세스하는 클라이언트는 Turnstile 위젯을 초기화할 수 없었으며 사고 기간 동안 닫는 데 실패했을 것입니다.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Challenge Pages(사용자 지정, 관리형, 레이트 리미팅 규칙 등의 제품에서 사용하는 제품)도 특정 조건에서 사용자에게 인증 질문 페이지를 표시하기 위해 Turnstile 인프라를 사용하며, 해당 기간에 챌린지가 표시되는 사용자를 차단했을 것입니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 대시보드</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile 및/또는 우리의 내부 기능 플래그 도구(구성에 KV를 사용함)에 의존하는 Cloudflare 대시보드의 일부에서 해당 기간에 사용자에게 오류를 반환했습니다. </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p></p>
+	<h3 id="%EC%9D%BC%EC%A0%95">일정</h3>
+	<p><em>언급된 모든 타임스탬프는 협정세계시(UTC) 기준입니다.</em></p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ppch {
+			background-color: #F4F5F7;
+			color: #000000;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-096r {
+			color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">시간</span></th>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">설명</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 18:58 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Workers KV 팀이 새로운 KV 빌드를 프로덕션에 프로그레시 브 배포를 시작했습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">내부 프로그레시브 배포 API는 프로덕션 빌드를 나열하기 위한 호출에 스테이징 빌드 GUID를 반환합니다. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:40 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">프로그레시브 배포 API가 릴리스를 계속 롤아웃하는 데 사용되었습니다. 이로 인해 일부 트래픽이 잘못된 목적지로 라우팅되어 알림이 트리거되고 롤백 결정으로 이어졌습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:54 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">프로그레시브 배포 API를 통한 롤백이 시도되었고, 트래픽이 대규모로 실패하기 시작합니다. </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— 영향 시작 —</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:15 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Cloudflare 엔지니어들이 대부분의 트래픽에 대해 마지막으로 알려진 양호한 빌드로 되돌리기 위해 배포 경로를 수동으로 수정(브레이크 글래스 메커니즘을 통해)합니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Workers KV 오류율이 사고 발생 전 정상 수준으로 회복되고 영향을 받은 서비스는 다음 시점 이내에 복구됩니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:31 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">영향 해결됨 </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— 영향 종료 —</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>위의 타임라인에서 볼 수 있듯이 문제가 발생했다는 사실을 인지한 시점(19:54 UTC)과 실제로 롤백을 수행할 수 있었던 시점(20:15 UTC) 사이에 지연이 발생했습니다.</p>
+	<p>이는 Cloudflare 내의 여러 도구에서 Cloudflare Access를 포함한 Workers KV에 의존하기 때문에 발생한 문제입니다. Access에서는 요청 확인 프로세스의 일부로 Workers KV를 활용합니다. 이 때문에 우리는 내부 도구를 활용할 수 없었고, 브레이크 글래스 메커니즘을 사용해서 일반 도구를 우회해야 했습니다. 아래에서 설명된 하겠지만, 우리는 롤백 메커니즘을 테스트하는 데 충분한 시간을 할애하지 못했습니다. 앞으로 이를 강화할 계획입니다.</p>
+	<h3 id="%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0">문제 해결</h3>
+	<p>Cloudflare 엔지니어가 수동으로(브레이크 글라스 메커니즘을 통해) 프로덕션 경로를 이전에 작동 중이던 Workers KV 버전으로 전환하여 실패한 요청 경로를 즉시 제거했고, 이후 Workers KV 배포 문제를 해결했습니다.</p>
+	<h3 id="%EB%B6%84%EC%84%9D">분석</h3>
+	<p>Workers KV는 대기 시간이 짧은 키-값 저장소로, 사용자가 최대한 사용자와 가까운 Cloudflare 네트워크에 영구 데이터를 저장할 수 있습니다. 이 분산 키-값 저장소는 많은 애플리케이션에서 사용하며, 그 중 일부는 Cloudflare Pages, Access, Zero Trust 등의 1차 당사자 Cloudflare 제품입니다.</p>
+	<p>Workers KV 팀에서는 전문 배포 도구를 사용하여 새 릴리스를 점진적으로 배포하고 있었습니다. 배포 메커니즘에는 스테이징 환경과 프로덕션 환경이 포함되며, 모든 프로덕션 환경이 최신 프로덕션 빌드로 업그레이드될 때까지 프로덕션 환경이 점진적인 비율로 새 버전으로 업그레이드되는 프로세스를 활용합니다. 해당 배포 도구에는 릴리스와 해당 버전을 반환하는 방식에 잠재적인 버그가 있었습니다. 이 도구가 단일 환경으로부터 릴리스를 반환하는 대신 의도된 것보다 더 광범위한 릴리스 목록을 반환하여 프로덕션 릴리스와 스테이징 릴리스가 함께 반환되는 결과로 이어졌습니다.</p>
+	<p>이 사고에서는 서비스를 단계적으로 배포하고 테스트했습니다. 그러나 배포 자동화 버그로 인해 프로덕션으로 승격할 때 스테이징 계정에 배포된 스크립트가 프로덕션 계정의 사전 프로덕션 버전 대신 잘못 참조되는 문제가 발생했습니다. 그 결과 배포 메커니즘이 프로덕션 환경 어디에서도 실행되지 않는 버전을 프로덕션 환경으로 지정하여 트래픽이 사실상 블랙홀화 되었습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1.png" class="kg-image" alt="" loading="lazy" width="1749" height="894"></figure>
+	<p>이러한 문제가 발생하면 제품에 대한 호출이 프로덕션 액세스 권한이 없는 버전으로 연결되어 HTTP 401 오류 코드를 반환하므로 프로덕션에서 Workers KV에 연결할 수 없게 됩니다. 이로 인해 키-값 쌍이 로컬에 캐시되었는지 여부와 관계없이 KV에 키-값 쌍을 저장하는 종속 제품이 실패했습니다.</p>
+	<p>자동화된 알림 기능에서 문제를 즉시 감지했지만, 문제가 있다는 것을 인지한 시점과 실제로 롤백을 수행할 수 있었던 시점 사이에 지연이 있었습니다. 이는 Cloudflare 내의 여러 도구에서 Cloudflare Access를 포함한 Workers KV에 의존하기 때문에 발생한 문제입니다. Access에서는 사용자 JWT(JSON 웹 토큰)에 대한 확인 프로세스의 일부로 Workers KV가 사용됩니다.</p>
+	<p>이러한 도구에는 변경 사항을 되돌리기 위해 사용된 대시보드와 지속적인 통합(CI) 시스템에 액세스하기 위한 인증 메커니즘이 포함됩니다. Workers KV가 다운되면서 이들 서비스도 중단되었습니다. CI 시스템을 통한 자동 롤백은 이전에 성공적으로 테스트되었지만, 사고로 인한 인증 문제(Access가 KV에 의존함)로 인해 배포를 롤백하는 데 필요한 암호에 액세스할 수 없게 되었습니다.</p>
+	<p>결국 프로덕션 빌드 경로를 이전에 알려진 정상 상태로 수동으로 변경하는 것으로 해결되었습니다. 이 경로는 이미 배포된 것으로 알려져 있었으며 배포 시도가 있기 전의 이전 프로덕션 빌드였습니다.</p>
+	<h3 id="%EB%8B%A4%EC%9D%8C-%EB%8B%A8%EA%B3%84">다음 단계</h3>
+	<p>Cloudflare의 더 많은 팀에서 Workers를 기반으로 구축함에 따라, 우리는 "유기적으로" Workers KV가 이제 엄청난 양의 제품과 서비스를 뒷받침하는 위치에 도달했습니다. 이 사고를 계기로 배포 도구의 정교함, 내부 팀의 사용 편의성, 이러한 종속성에 대한 제품 수준 제어를 개선하는 등 중요한 종속성의 영향이 미치는 범위를 줄이는 방법을 재검토해야 할 필요성이 계속 강조되고 있습니다. 우리는 이러한 사고가 반복되지 않도록 이러한 노력을 최우선으로 하고 있습니다.</p>
+	<p>따라서 우리는 내부적 또는 고객에 대한 Workers 애플리케이션의 프로그레시브 배포와 관련하여 도구를 개선하고 해당 도구의 안전성을 개선해야 한다는 필요성을 더욱 실감하고 있습니다.</p>
+	<p>여기에는 이번 분기에 시행할 주요 후속 조치 목록(정해진 순서는 아님)이 포함됩니다(이에 국한되지는 않음).</p>
+	<ol>
+		<li>영향 감지 및 복구를 위해 자동화된 시스템을 사용하는 표준화된 Workers 배포 모델에 KV 배포를 온보딩합니다.</li>
+		<li>롤백 프로세스에 알려진 정상 배포 식별자에 대한 액세스 권한이 있고 Cloudflare Access가 다운되었을 때 작동하는지 확인합니다.</li>
+		<li>배포에 사전 검사를 추가해서 입력 매개변수의 유효성을 검사하여 버전 불일치가 프로덕션 환경으로 전파되지 않도록 합니다.</li>
+		<li>멀티테넌시를 위해 설계된 방식으로 운영되도록 프로그레시브 배포 도구를 강화합니다. 현재 설계에서는 단일 테넌트 모델을 가정합니다.</li>
+		<li>프로그레시브 배포 스크립트에 추가 유효성 검사를 추가하여 배포가 앱 환경(프로덕션, 스테이징 등)과 일치하는지 확인합니다.</li>
+	</ol>
+	<p>다시 한 번 이번 사고에 대해 정말 죄송하다는 말씀을 드립니다. 우리는 이번 사고가 고객에게 미치는 영향을 아주 심각하게 받아들이고 있습니다.</p>
+</div>

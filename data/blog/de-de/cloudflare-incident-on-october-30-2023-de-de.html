@@ -1,0 +1,225 @@
+<div class="mb2 gray5">8 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Vulnerabilitiy-1.png" class="kg-image" alt="" loading="lazy" width="2401" height="1350"></figure>
+	<p>Mehrere Cloudflare-Dienste waren am 30. Oktober 2023 für 37 Minuten nicht verfügbar. Der Grund dafür war eine Fehlkonfiguration eines von Workers KV verwendeten Bereitstellungstools. Dieser frustrierende Vorfall wurde durch unsere Abhängigkeit von den eigenen Cloudflare-Produkten noch verstärkt. Wir möchten uns ausdrücklich für die Unannehmlichkeiten entschuldigen, die unsere Kunden dadurch erfahren haben. Im Folgenden wird erörtert, was schief gelaufen ist, wie der Vorfall gelöst wurde und welche Maßnahmen wir ergreifen, um sicherzustellen, dass sich so etwas nicht wiederholt.</p>
+	<p>Workers KV ist unser global verteilter Schlüssel-Werte-Speicher. Es wird von Kunden und Cloudflare-Teams gleichermaßen genutzt, um Konfigurationsdaten, Routing-Informationen, Bündel statischer Assets, Authentifizierungstoken sowie andere auf geringe Latenz angewiesene Daten zu verwalten.</p>
+	<p>Im Verlauf dieses Vorfalls gab KV aufgrund eines Fehlers in einem neu implementierten Verteilungstool fälschlicherweise HTTP 401 (Unauthorized)-Statuscodes statt der angeforderten Schlüssel-Wert-Paare aus.</p>
+	<p>Die Fehlerauswirkungen variierten je nach Nutzung von KV durch die einzelnen Dienste; eine detaillierte Erörterung der Auswirkungen folgt im Anschluss.</p>
+	<h3 id="was-wurde-beeintr%C3%A4chtigt">Was wurde beeinträchtigt?</h3>
+	<p>Eine Reihe von Cloudflare-Diensten sind auf Workers KV angewiesen, um Konfiguration, Routing-Informationen, die Bereitstellung statischer Assets und den Authentifizierungsstatus global zu verteilen. Diese Dienste erhielten stattdessen einen HTTP-401-Fehler (Unauthorized), wenn sie einen Get-, Put-, Delete- oder List-Vorgang für einen KV-Namespace durchführten.</p>
+	<p>Kunden, die die folgenden Cloudflare-Produkte verwenden, haben erhöhte Fehlerraten festgestellt und/oder konnten für die Dauer des Vorfalls nicht auf einige oder alle Features zugreifen:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7s56 {
+			background-color: #F4F5F7;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Produkt</span></th>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Auswirkung</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers KV</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bei Kunden mit Anwendungen, die KV nutzen, fielen diese Anwendungen während der Dauer des Vorfalls aus, einschließlich der KV-API in Workers und der REST-API.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers-Anwendungen, die KV nicht verwenden, waren nicht betroffen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die auf Pages gehosteten Anwendungen waren für die Dauer des Vorfalls nicht erreichbar und gaben den Nutzenden HTTP 500-Fehler aus. Bei der Bereitstellung neuer Seiten wurden den Nutzenden während der gesamten Dauer ein HTTP 500-Fehler angezeigt.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Access</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nutzende, die nicht authentifiziert waren, konnten sich nicht anmelden; jeder Versuch, das JWT über den /certs-Endpunkt zu validieren, schlug fehl; jede Anwendung mit einer Richtlinie zum Gerätestatus gab sämtlichen Nutzenden eine Fehlermeldung aus.
+					</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bestehende angemeldete Sitzungen, die nicht den /certs-Endpunkt oder die Sicherheitsüberprüfung verwendeten, waren davon nicht betroffen. Insgesamt war ein großer Prozentsatz der bestehenden Sitzungen weiterhin betroffen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WARP / Zero Trust</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nutzende waren nicht in der Lage, neue Geräte zu registrieren oder eine Verbindung zu Ressourcen herzustellen, die Richtlinien unterliegen, die Überprüfungen des Gerätestatus oder Timeouts von WARP-Sitzungen erzwingen.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bereits registrierte Geräte, Ressourcen, die sich nicht auf den Gerätestatus verlassen oder die außerhalb dieses Zeitfensters neu autorisiert wurden, waren davon nicht betroffen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Images</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die Images-API gab während des Vorfalls Fehlermeldungen aus. Bestehende Bildübertragungen wurden nicht beeinträchtigt.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cache-Bereinigung (einzelne Datei)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Für die Dauer des Vorfalls war die Bereinigung einzelner Dateien teilweise nicht möglich, da einige Rechenzentren keinen Zugriff auf die Konfigurationsdaten in KV hatten. Rechenzentren, die bestehende Konfigurationsdaten lokal zwischengespeichert hatten, waren davon nicht betroffen.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Andere Mechanismen zur Cache-Bereinigung, einschließlich der Bereinigung nach Tags, waren davon nicht betroffen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Das Hochladen oder Bearbeiten von Workers über das Dashboard, den Wrangler oder die API führte während des Vorfalls zu Fehlermeldungen. Bereitgestellte Workers waren davon nicht betroffen, es sei denn, sie nutzten KV. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway war für die Dauer des Vorfalls nicht in der Lage, Proxy-Anfragen zu bearbeiten.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die Konfiguration des Waiting Room wird in Workers KV an der Edge gespeichert. Waiting Room-Konfigurationen und Konfigurationsänderungen waren nicht verfügbar, auch das Öffnen des Dienstes war nicht möglich.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nach der Wiederherstellung des KV-Zugangs kam es bei einigen Nutzenden von Waiting Room zu Warteschlangen, als der Dienst wieder in Betrieb genommen wurde. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile und Challenge-Seiten</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die JavaScript-Assets von Turnstile sind in KV gespeichert, wobei der Einstiegspunkt für Turnstile (api.js) nicht bereitgestellt werden konnte. Clients, die auf Seiten mit Turnstile zugreifen, konnten das Turnstile-Widget nicht initialisieren und wären während des Ereignisfensters fehlerhaft geschlossen worden.</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Challenge-Seiten (die von Produkten wie Custom, Managed und Rate Limiting Rules verwendet werden) nutzen ebenfalls die Turnstile-Infrastruktur, um Nutzenden unter bestimmten Bedingungen Challenge-Seiten anzuzeigen, und hätten Nutzende blockiert, denen in diesem Zeitraum eine Challenge präsentiert wurde.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare-Dashboard</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Teile des Cloudflare-Dashboards, die sich auf Turnstile und/oder unser internes Feature-Flag-Tooling (das KV für die Konfiguration verwendet) stützen, zeigten den Nutzenden während der gesamten Zeit Fehler an. </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><br></p>
+	<h3 id="zeitplan">Zeitplan</h3>
+	<p><em>Alle Zeitangaben beziehen sich auf die Koordinierte Weltzeit (UTC).</em></p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ppch {
+			background-color: #F4F5F7;
+			color: #000000;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-096r {
+			color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">Zeit</span></th>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">Beschreibung</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 18:58 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Das Workers KV-Team begann damit, einen neuen KV-Build schrittweise in die Produktion einzuführen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Die interne API zur schrittweisen Bereitstellung gibt die Staging-Build-GUID infolge eines Aufrufs zur Auflistung von Produktions-Builds aus. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:40 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Die schrittweise Bereitstellungs-API wurde verwendet, um den Release fortzusetzen. Dadurch wurde ein bestimmter Prozentsatz des Traffics an das falsche Ziel geleitet, was eine Warnmeldung auslöste und zu der Entscheidung führte, das System zurückzusetzen.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:54 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Ein Rollback-Versuch über die schrittweise Bereitstellungs-API wird unternommen, Traffic beginnt bei Skalierung zu scheitern. </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— BEGINN DER AUSWIRKUNGEN —</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:15 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Cloudflare-Techniker bearbeiten die Bereitstellungsrouten manuell (über Notfallmechanismen bzw. „Break-Glass-Mechanismen“), um für den Großteil des Traffics zum letzten bekannten fehlerfreien Build zurückzukehren.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Die Fehlerraten von Workers KV kehren auf das normale Niveau vor dem Vorfall zurück, und die betroffenen Dienste erholen sich innerhalb der nächsten Minute.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:31 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Auswirkungen behoben </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— ENDE DER AUSWIRKUNGEN — </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Wie aus der obigen Zeitleiste hervorgeht, gab es eine Verzögerung zwischen dem Zeitpunkt, an dem wir das Problem um 19:54 Uhr UTC erkannten, und dem Zeitpunkt, an dem wir den Rollback um 20:15 Uhr UTC tatsächlich durchführen konnten.</p>
+	<p>Die Ursache dafür ist, dass mehrere Tools innerhalb von Cloudflare auf Workers KV angewiesen sind, einschließlich Cloudflare Access. Access nutzt Workers KV als Teil seines Verfahrens zur Prüfung von Anfragen. Aus diesem Grund konnten wir unsere internen Werkzeuge nicht nutzen und mussten Notfallmechanismen einsetzen, um die normalen Werkzeuge zu umgehen. Wie weiter unten beschrieben, hatten wir nicht genügend Zeit, um die Rollback-Mechanismen zu testen. Wir planen, dies in Zukunft zu verstärken.</p>
+	<h3 id="l%C3%B6sung">Lösung</h3>
+	<p>Cloudflare-Techniker wechselten die Produktionsroute manuell (über den Notfall- bzw. „Break-Glass-Mechanismus“) auf die vorherige fehlerfreie Version von Workers KV. Dadurch wurde der fehlerhafte Anfragepfad sofort beseitigt und das Problem mit der Workers KV-Bereitstellung gelöst.</p>
+	<h3 id="phase-1">Phase 1:</h3>
+	<p>Workers KV ist ein Schlüssel-Werte-Speicher mit niedriger Latenz, der es Nutzenden ermöglicht, persistente Daten im Cloudflare-Netzwerk zu speichern – so nah wie möglich an den Nutzenden. Dieser verteilte Schlüssel-Werte-Speicher wird in vielen Anwendungen verwendet, von denen einige unsere eigenen Cloudflare-Produkte wie Pages, Access und Zero Trust sind.</p>
+	<p>Das Workers KV-Team stellte nach und nach eine neue Version mit Hilfe eines speziellen Tools zur Verteilung bereit. Der Bereitstellungsmechanismus umfasst eine Staging- und eine Produktionsumgebung und nutzt einen Prozess, bei dem die Produktionsumgebung schrittweise auf die neue Version aktualisiert wird, bis alle Produktionsumgebungen auf den neuesten Produktions-Build aktualisiert sind. Das Bereitstellungstool hatte einen latenten Fehler bei der Rückgabe von Releases und deren jeweiligen Versionen. Anstatt Releases aus einer einzigen Umgebung auszugeben, meldete das Tool eine breitere Liste von Releases als vorgesehen, was dazu führte, dass Produktions- und Staging-Releases zusammen ausgegeben wurden.</p>
+	<p>Bei diesem Vorfall wurde der Dienst im Staging-Modus eingesetzt und getestet. Aufgrund eines Fehlers in der automatischen Bereitstellung wurde jedoch beim Heraufstufen zur Produktion ein Skript, das im Staging-Konto bereitgestellt worden war, fälschlicherweise anstelle der Vorproduktionsversion im Produktionskonto referenziert. Das Ergebnis war, dass der Bereitstellungsmechanismus die Produktionsumgebung auf eine Version verwies, die nirgendwo in der Produktionsumgebung lief, wodurch der Traffic effektiv blockiert wurde.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1.png" class="kg-image" alt="" loading="lazy" width="1749" height="894"></figure>
+	<p>Als dies geschah, wurde Workers KV in der Produktion unerreichbar, da Aufrufe an das Produkt an eine Version weitergeleitet wurden, die für den Produktionszugriff nicht autorisiert war und einen HTTP 401-Fehlercode meldete. Dies führte dazu, dass abhängige Produkte, die Schlüssel-Wert-Paare in KV speicherten, fehlschlugen, unabhängig davon, ob das Schlüssel-Wert-Paar lokal zwischengespeichert wurde oder nicht.</p>
+	<p>Obwohl die automatische Warnfunktion das Problem sofort erkannte, gab es eine Verzögerung zwischen dem Zeitpunkt, an dem wir das Problem erkannten, und dem Zeitpunkt, an dem wir das Rollback tatsächlich durchführen konnten. Die Ursache dafür ist, dass mehrere Tools innerhalb von Cloudflare auf Workers KV angewiesen sind, einschließlich Cloudflare Access. Access verwendet Workers KV als Teil des Verifizierungsprozesses für Nutzer-JWTs (JSON Web Tokens).</p>
+	<p>Zu diesen Tools gehören das Dashboard, mit dem die Änderung rückgängig gemacht wurde, und der Authentifizierungsmechanismus für den Zugriff auf unser Continuous-Integration-System (CI). Als Workers KV ausfiel, fielen auch diese Dienste aus. Automatische Rollbacks über unser KI-System waren zuvor erfolgreich getestet worden, aber die durch den Vorfall verursachten Authentifizierungsprobleme (Access beruht auf KV) machten den Zugriff auf die für das Rollback erforderlichen Secrets unmöglich.</p>
+	<p>Die Lösung bestand letztlich in einer manuellen Änderung des Pfads des Produktions-Builds auf einen früheren und als fehlerfrei bekannten Zustand. Es war bekannt, dass dieser Pfad bereits bereitgestellt wurde, und es handelte sich um den vorherigen Produktions-Build vor der versuchten Bereitstellung.</p>
+	<h3 id="n%C3%A4chste-schritte">Nächste Schritte</h3>
+	<p>Da immer mehr Teams bei Cloudflare auf Workers entwickelten, sind wir "organisch" an einem Punkt angelangt, aan dem ein Großteil unserer Produkte und Dienstleistungen auf Workers KV basiert. Dieser Vorfall hat uns erneut vor Augen geführt, wie wir das Ausmaß der Auswirkungen (der oft als „Blast Radius“ bezeichnet wird) kritischer Abhängigkeiten verringern können. Dazu gehört die Verbesserung der Komplexität unserer Bereitstellungswerkzeuge, ihrer Benutzerfreundlichkeit für unsere internen Teams und die Kontrolle dieser Abhängigkeiten auf Produktebene. Wir geben diesen Bemühungen Vorrang, um sicherzustellen, dass sich dieser Vorfall nicht wiederholt.</p>
+	<p>Dies unterstreicht auch die Notwendigkeit für Cloudflare, die Werkzeuge und die Sicherheit dieser Werkzeuge hinsichtlich der schrittweisen Bereitstellung von Workers-Anwendungen intern und für Kunden zu verbessern.</p>
+	<p>Dazu gehört unter anderem die nachstehende Liste der wichtigsten Folgemaßnahmen (in keiner bestimmten Reihenfolge) in diesem Quartal:</p>
+	<ol>
+		<li>Einbindung von KV-Bereitstellungen in standardisierte Bereitstellungsmodelle für Workers, die automatisierte Systeme zur Erkennung und Wiederherstellung von Auswirkungen verwenden.</li>
+		<li>Sicherstellen, dass der Rollback-Prozess Zugang zu einer bekannten fehlerfreien Bereitstellungskennung hat und dass er funktioniert, wenn Cloudflare Access nicht verfügbar ist.</li>
+		<li>Hinzufügen von Vorabprüfungen zu Bereitstellungen, die Eingabeparameter validieren, um sicherzustellen, dass Versionsabweichungen nicht in Produktionsumgebungen übertragen werden.</li>
+		<li>Anpassung der Tools für die fortschreitende Bereitstellung an die Anforderungen der Mandantenfähigkeit. Das aktuelle Designmodell geht von einem einzelnen Mandanten aus.</li>
+		<li>Hinzufügen einer zusätzlichen Validierung zu Skripten für die schrittweise Bereitstellung, um zu überprüfen, ob die Bereitstellung mit der Anwendungsumgebung (Produktion, Staging usw.) übereinstimmt.</li>
+	</ol>
+	<p>Wir bedauern diesen Vorfall außerordentlich und nehmen die Auswirkungen dieses Vorfalls auf unsere Kunden sehr ernst.</p>
+</div>

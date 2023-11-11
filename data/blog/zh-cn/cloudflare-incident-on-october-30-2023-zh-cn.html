@@ -1,0 +1,223 @@
+<div class="mb2 gray5">11 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Vulnerabilitiy-1.png" class="kg-image" alt="" loading="lazy" width="2401" height="1350"></figure>
+	<p>2023 年 10 月 30 日，多个 Cloudflare 服务在 37 分钟内不可用。这是由于 Workers KV 使用的部署工具配置错误造成的。这是一起令人懊恼的事件，由于 Cloudflare 依赖于我们自己的产品套件，这起事件变得更加棘手。我们对此事给客户造成的影响深表歉意。下面我们将讨论出错的原因、事件的解决方式以及我们为确保此类事件不再发生而正在开展的工作。</p>
+	<p>Workers KV 是我们的全球分布式键值存储服务。客户和 Cloudflare 团队都使用它来管理配置数据、路由查询、静态资产捆绑、身份验证令牌和其他需要低延迟访问的数据。<br><br>在此事件中，由于 KV 使用的新部署工具中存在错误，KV 返回了它认为有效的 HTTP 401 (Unauthorized) 状态代码，而不是请求的键值对。</p>
+	<p>这些错误对于每个产品的表现有所不同，具体取决于每个服务使用 KV 的情况，其影响详述如下。</p>
+	<h3 id="%E5%8F%97%E5%BD%B1%E5%93%8D%E7%9A%84%E5%86%85%E5%AE%B9">受影响的内容</h3>
+	<p>许多 Cloudflare 服务都依赖 Workers KV 在全球范围内分发配置、路由信息、静态资产服务和身份验证状态。这些服务在对 KV 命名空间执行任何 get、put、delete 或 list 操作时，会收到 HTTP 401 (Unauthorized) 错误。 </p>
+	<p>使用以下 Cloudflare 产品的客户遇到该错误的可能性更高，而且/或在事件发生期间无法访问部分或全部功能：</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-7s56 {
+			background-color: #F4F5F7;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">产品</span></th>
+				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">影响</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers KV</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">对于利用 KV 的应用程序，其客户会在此次事件期间发现这些应用程序失败，包括 Workers 中的 KV API 和 REST API。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不使用 KV 的 Workers 应用程序不受影响。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件发生期间，Pages 上托管的应用程序无法访问，并向用户返回了 HTTP 500 错误。在此期间，新的 Pages 部署也会向用户返回 HTTP 500 错误。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Access</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">未经身份验证的用户无法登录；任何尝试使用 /certs 端点验证 JWT 的源都会失败；任何具有设备状态策略的应用程序对所有用户来说都会失败。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不使用 /certs 端点或态势检查的现有登录会话不受影响。总体而言，很大一部分现有会话仍然受到影响。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WARP / Zero Trust</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">用户无法注册新设备或连接到受执行设备态势检查或 WARP 会话超时策略约束的资源。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">已注册的设备、不依赖设备态势的资源或在此时间段外重新授权的设备不受影响。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">画像</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件发生期间，Images API 返回了错误。现有的图像传输不受影响。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">缓存清除（单个文件）</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">由于某些数据中心无法访问 KV 中的配置数据，在事件发生期间，单个文件清除部分不可用。本地缓存有现有配置数据的数据中心不受影响。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">其他缓存清除机制（包括按标记清除）未受影响。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Workers</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件发生期间，通过仪表板、Wrangler 或 API 上传或编辑 Workers 返回了错误。除了利用 KV 的 Workers 外，已部署的 Workers 不受影响。 </span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Gateway</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件发生期间，AI Gateway 无法代理请求。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Waiting Room 配置存储在边缘的 Workers KV 中。Waiting Room 配置和配置更改不可用，服务无法打开。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在对 KV 的访问恢复后，一些 Waiting Room 用户会在服务恢复时遇到排队问题。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile 和 Challenge Pages</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Turnstile 的 JavaScript 资源存储在 KV 中，并且无法提供 Turnstile (api.js) 的入口点。使用 Turnstile 访问页面的客户端无法初始化 Turnstile 小部件，并且在事件持续期间无法关闭。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（自定义、托管和速率限制规则等产品使用的）Challenge Pages 也使用 Turnstile 基础结构在特定条件下向用户呈现挑战页面，并且会阻止在此期间遇到挑战的用户。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Dashboard</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 仪表板中依赖于 Turnstile 和/或我们的内部功能标记工具（使用 KV 进行配置）的部分在此期间向用户返回了错误。 </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><br></p>
+	<h3 id="%E6%97%B6%E9%97%B4%E8%A1%A8">时间表</h3>
+	<p><em>所有时间戳均为协调世界时 (UTC)。</em></p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ppch {
+			background-color: #F4F5F7;
+			color: #000000;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-096r {
+			color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">时间</span></th>
+				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">描述</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 18:58 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Workers KV 团队开始逐步将新的 KV 版本部署到生产。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">内部渐进式部署 API 将暂存版本 GUID 返回给一个调用，以列出生产版本。 </span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:40 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">使用渐进式部署 API 继续推出发布版本。这将一定比例的流量路由到错误的目的地，触发警报并导致决定回滚。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:54 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">尝试通过渐进式部署 API 进行回滚，流量开始大规模失败。</span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— 影响开始 —</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:15 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Cloudflare 工程师（通过 break glass 机制）手动编辑部署路线，使大部分流量恢复到最后已知的良好版本。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:29 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Workers KV 错误率恢复到事件前的正常水平，受影响的服务在随后一分钟内恢复。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:31 UTC</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">影响解决 </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— 影响结束 — </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>如上面的时间线所示，我们在协调世界时 19:54 意识到出现问题，而在协调世界时 20:15 才实际上能够执行回滚，二者之间存在延迟。</p>
+	<p>造成这种情况的原因是，Cloudflare 中的多个工具都依赖于 Workers KV，包括 Cloudflare Access。Access 利用 Workers KV 作为其请求验证流程的一部分。因此，我们无法利用我们的内部工具，只能使用 break-glass 机制来绕过正常的工具。如下所述，我们没有花费足够的时间来测试回滚机制。我们计划进一步加强这一点。</p>
+	<h3 id="%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">解决方案</h3>
+	<p>Cloudflare 工程师（通过 break glass 机制）手动将生产路线切换到 Workers KV 的先前工作版本，这立即消除了失败的请求路径，并随后解决了 Workers KV 部署的问题。</p>
+	<h3 id="%E5%88%86%E6%9E%90">分析</h3>
+	<p>Workers KV 是一种低延迟键值存储服务，允许用户在 Cloudflare 网络上尽可能靠近用户的地方存储持久数据。这种分布式键值存储用于许多应用程序，其中一些是 Cloudflare 的第一方产品，如 Pages、Access 和 Zero Trust。</p>
+	<p>事件发生时，Workers KV 团队正在使用专门的部署工具逐步部署新版本。部署机制包含一个暂存环境和一个生产环境，并利用一个流程，将生产环境逐步升级到新版本，直到所有生产环境都升级到最新的生产版本。部署工具在其返回发布版本及其各自版本的方式上存在一个潜在错误。该工具不是从单个环境返回发布版本，而是返回比预期更广泛的版本列表，导致生产版本和暂存版本一起返回。</p>
+	<p>在此次事件中，服务在暂存中进行了部署和测试。但由于部署自动化错误，在升级到生产时，错误地引用了已部署到暂存帐户的脚本，而不是生产帐户上的预生产版本。结果，部署机制将生产环境指向一个未在生产环境中任何地方运行的版本，导致阻断了流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1.png" class="kg-image" alt="" loading="lazy" width="1749" height="894"></figure>
+	<p>发生这种情况时，Workers KV 在生产中变得无法访问，因为对产品的调用被定向到未授权生产访问的版本，从而返回 HTTP 401 错误代码。这导致在 KV 中存储键值对的依赖产品失败，无论键值对是否在本地缓存。</p>
+	<p>虽然自动警报系统立即检测到了问题，但从我们意识到出现问题到实际能够执行回滚之间还是有一定的延迟。造成这种情况的原因是，Cloudflare 中的多个工具都依赖于 Workers KV，包括 Cloudflare Access。Access 使用 Workers KV 作为用户 JWT（JSON Web 令牌）验证流程的一部分。</p>
+	<p>这些工具包括用于恢复更改的仪表板，以及访问我们的持续集成 (CI) 系统的身份验证机制。由于 Workers KV 出现故障，这些服务也随之中断。通过我们的 CI 系统进行的自动回滚之前已成功测试，但由于该事件导致的身份验证问题（Access 依赖于 KV），使得无法访问回滚部署所需的机密。</p>
+	<p>最终的修复方法是将生产版本路径手动更改为之前的已知良好状态。该路径之前已部署，并且是本次部署尝试之前的先前生产版本。</p>
+	<h3 id="%E5%90%8E%E7%BB%AD%E6%AD%A5%E9%AA%A4">后续步骤</h3>
+	<p>随着 Cloudflare 越来越多的团队建立在 Workers 之上，我们最终“有组织地”达到了现在的状态，即由 Workers KV 来支持我们大量产品和服务。此次事件的发生让我们再一次意识到，我们需要重新审视如何减少关键依赖项的影响范围的必要性，其中包括提高部署工具的复杂性、其对于内部团队的易用性以及对这些依赖关系的产品级别控制。我们正在优先开展这些工作，以确保不再发生类似事件。</p>
+	<p>这也加强了 Cloudflare 在内部和为客户逐步部署 Workers 应用程序时改进工具和工具安全性的必要性。</p>
+	<p>这包括（但不限于）以下本季度主要后续行动列表（排名不分先后）：</p>
+	<ol>
+		<li>将 KV 部署纳入标准化 Workers 部署模型，该模型使用自动化系统进行影响检测和恢复。</li>
+		<li>确保回滚过程可以访问已知良好的部署标识符，并且在 Cloudflare Access 关闭时可以正常运行。</li>
+		<li>向部署添加预检查，这将验证输入参数，以确保版本不匹配不会传播到生产环境。</li>
+		<li>强化渐进式部署工具，使其以专为多租户设计的方式运行。当前设计采用单租户模型。</li>
+		<li>向渐进式部署脚本添加额外的验证，以验证部署是否与应用程序环境（生产、暂存等）相匹配。</li>
+	</ol>
+	<p>我们再次对这一事件的发生深表歉意，并非常严肃地对待这一事件对客户造成的影响。</p>
+</div>

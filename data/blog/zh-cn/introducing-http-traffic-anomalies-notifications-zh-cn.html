@@ -1,0 +1,36 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Traffic-anomalies-1.png" class="kg-image" alt="Introducing notifications for HTTP Traffic Anomalies" loading="lazy" width="2401" height="1350"></figure>
+	<p>在管理互联网资产时，一个小的技术故障和重大事件之间的区别往往是速度问题。主动提醒起着至关重要的作用，这就是我们今天非常开心地推出 <a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">HTTP 错误率通知</a>的原因——它让管理员能够在最终用户遇到错误时及时知晓。</p>
+	<p>但是，对于那些不会显示为错误的问题（比如流量突然下降或激增），该怎么办？ </p>
+	<p>今天，我们很高兴地宣布向 Enterprise 方案客户提供流量异常通知。当 Cloudflare 检测到流量发生意外变化时，这些通知就会触发，为您提供了解系统运行状况的另一个宝贵视角。 &nbsp;</p>
+	<p>流量的意外变化可能预示着很多事情。如果您经营的是一个电子商务网站，看到流量激增，这可能是个好消息——也许是客户蜂拥而至，也许是您刚刚在一个热门电视节目上投放了广告。不过，这也可能意味着出了问题：也许有人不小心关闭了一条防火墙规则，现在您看到了更多的恶意流量。无论是哪一种情况，您可能都想知道具体发生了什么变化。 </p>
+	<p>同样，流量突然下降也可能意味着很多事情。也许现在是周五下午，所有员工都已下班，不再访问公司网站。又或者，您网站的链接被破坏了，现在潜在客户无法访问您的网站。流量低的每一分钟都可能使您损失潜在的收入，因此您会想要尽快了解情况并进行调查。</p>
+	<h3 id="%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%BD%95%E6%97%B6%E5%8F%91%E5%87%BA%E6%8F%90%E9%86%92%EF%BC%9F">如何判断何时发出提醒？ </h3>
+	<p>计算时间序列数据集的异常是很困难的。最简单的方法是使用基本阈值。然而，正如我们<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">之前在博客中提到</a>的，当试图确定事情何时真正出错时，简单的阈值并不是很准确。边缘情况太多，它们无法有效运作。</p>
+	<p>计算 HTTP 错误中的异常情况相对容易。我们知道，一般来说，错误数量应该非常低，因此任何峰值都是不好的，都是值得警惕的。这就是为什么我们使用<a href="https://sre.google/workbook/alerting-on-slos" target="_blank">服务级别目标 (SLO)</a> 来计算 <a href="https://developers.cloudflare.com/notifications/notification-available/#traffic-monitoring" target="_blank">HTTP 错误率通知</a>的异常情况。</p>
+	<p>然而，分析总体 HTTP 流量的行为与 <a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">Cloudflare Security Events</a> 更相似：有一些根据历史趋势计算的一般事件基线。与该基线的任何偏差都是值得警惕的。由于这些相似之处，我们决定，对于流量异常通知，也采用之前用于安全事件通知的相同计算方式：<a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">Z 值 (z-score)</a>。这涉及到将当前值与平均值进行比较。当前值与平均值之间有多少个标准差，即为 Z 值。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image4-6.png" class="kg-image" alt="" loading="lazy" width="1292" height="898">
+		<figcaption><em>HTTP 流量与 Z 值的关系图。蓝色为 HTTP 流量，紫色为流量的正 Z 值边界，绿色为流量的负 Z 值边界。</em></figcaption>
+	</figure>
+	<p>对于流量异常通知，我们将过去 5 分钟（短时间段）的流量与过去 4 小时（长时间段）的平均流量进行比较。Z 值为正数时，表示激增；Z 值为负数时，表示下降。如果当前值与平均值的偏差超过 3.5 个标准差，我们就会发出提醒。我们每 5 分钟测量一次，因此可以及时对任何流量激增或下降发出提醒。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image2-9.png" class="kg-image" alt="" loading="lazy" width="1375" height="125">
+		<figcaption><em>绿色部分为长时间段，红色部分为短时间段。</em></figcaption>
+	</figure>
+	<p>虽然我们的安全事件通知仅在安全事件出现激增时才会触发（下降几乎总是一件好事），但对于流量异常，我们会针对激增<em>和</em>下降都发送通知。这是因为 HTTP 流量下降可能表明存在问题，而流量激增可能是好事，也可能是坏事。</p>
+	<p>与安全事件一样，流量异常通知也支持<a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">最小阈值</a>。这意味着，即使我们确定某个事件超出了 3.5 个标准差的范围，但如果事件数量微不足道，我们也不会发出提醒。激增必须至少达到 200 个请求，下降也必须至少达到 200 个请求。这样可以减少通知的噪音，因为我们不会对小的增长和下降发出提醒。</p>
+	<h3 id="%E6%B7%B1%E5%85%A5%E6%8C%96%E6%8E%98">深入挖掘</h3>
+	<p>Cloudflare <a href="https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse">在 Clickhouse 中</a>存储通过其网络的请求的采样统计信息。每分钟，我们都会从 Clickhouse 获取 HTTP 流量并将其存储在 VictoriaMetrics（一个时间序列数据存储解决方案）的实例中。VictoriaMetrics 免费为我们提供开箱即用的算法函数，它非常适合我们的用例。我们选择 VictoriaMetrics 有几个原因。</p>
+	<p>首先，它易于配置和操作。作为一个团队，我们希望通过优化来降低运营负担，VictoriaMetrics 到目前为止一直非常出色。其次，VictoriaMetrics 具有横向扩展能力，这意味着我们可以在高可用模式下运行它。对于这样的系统，我们需要可靠的东西来为客户计算时间敏感信息，高可用性要求至关重要。最后，在我们的测试中，我们发现 VictoriaMetrics 使用的内存约为 Prometheus（一款类似的替代产品）的 ⅓。 </p>
+	<p>当我们在 VictoriaMetrics 中存储数据后，我们就可以对其运行查询，并根据客户提前创建的通知配置确定是否需要提醒客户。为此，我们利用了现有的提醒通知系统，<a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">我们最初于 2019 年在博客中介绍了该系统</a>。我们知道，我们可以依靠当前的通知系统在最后一英里向客户传递这些重要通知。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-9.png" class="kg-image" alt="" loading="lazy" width="1999" height="387">
+		<figcaption><em>从 HTTP 请求到通知的数据流</em></figcaption>
+	</figure>
+	<h6 id="%E8%AE%BE%E7%BD%AE%E9%80%9A%E7%9F%A5"><em>设置通知</em></h6>
+	<p>要配置此通知，请导航至仪表板的“通知”选项卡。选择“流量异常”作为通知类型。与所有 Cloudflare 通知一样，您可以命名和描述通知，并选择您想要接收通知的方式。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image5-3.png" class="kg-image" alt="" loading="lazy" width="1999" height="482">
+		<figcaption><em>仪表板中的流量异常通知</em></figcaption>
+	</figure>
+	<p>您可以选择要对哪些域进行流量异常监控，是否要包括 Cloudflare DoS 或 WAF 产品已经缓解的流量，以及是否要包括或排除特定的状态代码。您还可以选择是在流量激增时发出提醒、在流量下降时发出提醒，还是对二者均发出提醒。 </p>
+	<p>我们很高兴能利用该系统为我们的 Enterprise 方案客户提供有关其系统总体运行状况的宝贵通知。前往仪表板中的“通知”选项卡，立即查看此新通知！</p>
+</div>
