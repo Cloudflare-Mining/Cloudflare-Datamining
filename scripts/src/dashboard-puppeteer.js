@@ -5,14 +5,14 @@ This script is used to hit dash APIs, which require a cookie
 import 'dotenv/config';
 import path from 'node:path';
 
-import fs from 'fs-extra';
 import dateFormat from 'dateformat';
+import fs from 'fs-extra';
 import fetch from 'node-fetch';
-import {executablePath} from 'puppeteer';
+import { executablePath } from 'puppeteer';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
-import {tryAndPush, userAgent} from './utils.js';
+import { tryAndPush, userAgent } from './utils.js';
 
 const ROOT_URL = 'https://dash.cloudflare.com/';
 async function run() {
@@ -20,7 +20,7 @@ async function run() {
 	const dir = path.resolve('../data');
 	await fs.ensureDir(dir);
 
-	try{
+	try {
 		puppeteer.use(StealthPlugin());
 		const browser = await puppeteer.launch({
 			defaultViewport: {
@@ -112,7 +112,7 @@ async function run() {
 
 		console.log('Querying APIs...');
 		// hit CF API with cookie for each req
-		for(const api of apis) {
+		for (const api of apis) {
 			const response = await fetch(api.url, {
 				headers: {
 					cookie: cookieString,
@@ -120,12 +120,12 @@ async function run() {
 			});
 			const json = await response.json();
 			let result;
-			if(json.success && json.result) {
+			if (json.success && json.result) {
 				result = json.result;
-			}else{
+			} else {
 				result = json;
 			}
-			if(api.file === 'account/permission_groups.json') {
+			if (api.file === 'account/permission_groups.json') {
 				result = result.sort((groupA, groupB) => groupA.name.localeCompare(groupB.name));
 			}
 
@@ -143,7 +143,7 @@ async function run() {
 		);
 
 		console.log('Done! :)');
-	}catch(err) {
+	} catch (err) {
 		console.error(err);
 	}
 }

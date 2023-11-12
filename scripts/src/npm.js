@@ -1,13 +1,14 @@
 import 'dotenv/config';
-import search from 'libnpmsearch';
 import path from 'node:path';
-import fs from 'fs-extra';
+
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
-import pacote from 'pacote';
+import fs from 'fs-extra';
 import getUrls from 'get-urls';
+import search from 'libnpmsearch';
+import pacote from 'pacote';
 
-import {tryAndPush} from './utils.js';
+import { tryAndPush } from './utils.js';
 
 const wantedPackumentFields = [
 	'name',
@@ -56,8 +57,8 @@ async function run() {
 
 	const rawMaintainers = rawData.flatMap(pkg => pkg.maintainers);
 	const uniqueMaintainers = [];
-	for(const maintainer of rawMaintainers) {
-		if(!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)) {
+	for (const maintainer of rawMaintainers) {
+		if (!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)) {
 			uniqueMaintainers.push({
 				username: maintainer.username,
 			});
@@ -68,14 +69,14 @@ async function run() {
 	await fs.writeFile(path.resolve('../data/packages/maintainers.json'), JSON.stringify(uniqueMaintainers, null, '\t'));
 
 	const getDataAndWriteFiles = [];
-	for(const packageInfo of rawData) {
+	for (const packageInfo of rawData) {
 
-		let name = filenamify(packageInfo.name, {replacement: '__'});
-		if(packageInfo.scope) {
+		let name = filenamify(packageInfo.name, { replacement: '__' });
+		if (packageInfo.scope) {
 			const nameWithoutScope = filenamify(packageInfo.name.replace(`@${packageInfo.scope}/`, ''));
-			if(packageInfo.scope === 'unscoped') {
+			if (packageInfo.scope === 'unscoped') {
 				name = `_unscoped/${nameWithoutScope}`;
-			}else{
+			} else {
 				name = `@${packageInfo.scope}/${nameWithoutScope}`;
 			}
 		}
@@ -92,7 +93,7 @@ async function run() {
 
 			const rawTags = Object.keys(packument['dist-tags']);
 			const tags = {};
-			for(const tag of rawTags) {
+			for (const tag of rawTags) {
 				tags[tag] = {
 					version: packument['dist-tags'][tag],
 					date: packument.time?.[packument['dist-tags'][tag]],
@@ -111,12 +112,12 @@ async function run() {
 			);
 
 			const trimmedPackument = {};
-			for(const field of wantedPackumentFields) {
+			for (const field of wantedPackumentFields) {
 				trimmedPackument[field] = packument[field];
 			}
-			for(const version of Object.keys(trimmedPackument.versions)) {
+			for (const version of Object.keys(trimmedPackument.versions)) {
 				const trimmedVersion = {};
-				for(const field of wantedVersionFields) {
+				for (const field of wantedVersionFields) {
 					trimmedVersion[field] = packument.versions[version][field];
 				}
 				trimmedPackument.versions[version] = trimmedVersion;
@@ -128,16 +129,16 @@ async function run() {
 
 			// get various files if they exist
 			const getFiles = ['README.md', 'CHANGELOG.md', 'changelog.md', 'readme.md'];
-			for(const file of getFiles) {
+			for (const file of getFiles) {
 				const filePath = path.resolve(`${extractDir}/${file}`);
-				if(await fs.pathExists(filePath)) {
-					try{
+				if (await fs.pathExists(filePath)) {
+					try {
 						const fileContents = await fs.readFile(filePath, 'utf8');
 						fs.writeFile(
 							path.resolve(`${dir}/${file}`),
 							fileContents,
 						);
-					}catch{
+					} catch {
 						// we tried
 					}
 				}
@@ -148,12 +149,12 @@ async function run() {
 
 	// scan all packages for links
 	async function* getFiles(dir) {
-		const dirents = await fs.readdir(dir, {withFileTypes: true});
-		for(const dirent of dirents) {
+		const dirents = await fs.readdir(dir, { withFileTypes: true });
+		for (const dirent of dirents) {
 			const res = path.resolve(dir, dirent.name);
-			if(dirent.isDirectory()) {
+			if (dirent.isDirectory()) {
 				yield* getFiles(res);
-			}else{
+			} else {
 				yield res;
 			}
 		}
@@ -173,61 +174,61 @@ async function run() {
 		'/compare/cf-',
 	];
 	const links = new Set();
-	for await(const file of getFiles('../data/packages-extracted')) {
+	for await (const file of getFiles('../data/packages-extracted')) {
 		const newLinks = [];
 		let data;
-		try{
+		try {
 			data = await fs.readFile(file, 'utf8');
-		}catch{
+		} catch {
 			continue;
 		}
 		const urls = getUrls(data, {
 			requireSchemeOrWww: true,
 		});
-		if(urls) {
+		if (urls) {
 			newLinks.push(...urls);
 		}
-		for(const match of data.matchAll(/["'](https?:\/\/[^"']*)["']/g)) {
-			if(match && match[1] && !match[1].includes('`')) {
+		for (const match of data.matchAll(/["'](https?:\/\/[^"']*)["']/g)) {
+			if (match && match[1] && !match[1].includes('`')) {
 				newLinks.push(match[1]);
 			}
 		}
-		for(const link of newLinks) {
-			try{
+		for (const link of newLinks) {
+			try {
 				const url = new URL(link);
 				url.pathname = url.pathname.replace(/\/\/+/g, '/');
-				if(!ignoreURLs.some(str => url.href.includes(str))) {
+				if (!ignoreURLs.some(str => url.href.includes(str))) {
 					links.add(url.href);
 				}
-			}catch{
+			} catch {
 				//console.warn('Found a bad link', match[1]);
 			}
 		}
-		if(file.endsWith('package.json')) {
-			try{
+		if (file.endsWith('package.json')) {
+			try {
 				const packageData = JSON.parse(data);
-				if(packageData?.stratus) {
+				if (packageData?.stratus) {
 					stratus.packages.push(packageData.name);
-					if(packageData.stratus.category) {
+					if (packageData.stratus.category) {
 						stratus.categories.add(packageData.stratus.category);
 					}
 				}
-				if(packageData?.name?.startsWith?.('@cloudflare/')) {
+				if (packageData?.name?.startsWith?.('@cloudflare/')) {
 					knownCFPackages.add(packageData.name);
 				}
 				const deps = [];
-				if(packageData.dependencies) {
+				if (packageData.dependencies) {
 					deps.push(...Object.keys(packageData.dependencies));
 				}
-				if(packageData.devDependencies) {
+				if (packageData.devDependencies) {
 					deps.push(...Object.keys(packageData.devDependencies));
 				}
-				for(const dep of deps) {
-					if(dep.startsWith('@cloudflare/')) {
+				for (const dep of deps) {
+					if (dep.startsWith('@cloudflare/')) {
 						knownCFPackages.add(dep);
 					}
 				}
-			}catch(err) {
+			} catch (err) {
 				console.warn('Found a bad package.json', err);
 			}
 		}
@@ -242,11 +243,11 @@ async function run() {
 	}, null, '\t'));
 
 	const privatePackages = [];
-	for(const npmPackage of knownCFPackages) {
-		try{
+	for (const npmPackage of knownCFPackages) {
+		try {
 			await pacote.packument(npmPackage);
-		}catch(error) {
-			if(error.statusCode === 404) {
+		} catch (error) {
+			if (error.statusCode === 404) {
 				// safe to assume this is private
 				privatePackages.push(npmPackage);
 			}

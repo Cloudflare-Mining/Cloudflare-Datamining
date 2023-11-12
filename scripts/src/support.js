@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fetch from 'node-fetch';
+
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
 import fs from 'fs-extra';
-
-import {tryAndPush} from './utils.js';
 import jsBeautify from 'js-beautify';
+import fetch from 'node-fetch';
+
+import { tryAndPush } from './utils.js';
 
 async function run() {
 	console.log('Fetching Support Articles...');
@@ -18,17 +19,17 @@ async function run() {
 	const categoriesReq = await fetch('https://cloudflare.zendesk.com/api/v2/help_center/en-us/categories.json');
 	const rawCategories = await categoriesReq.json();
 	const categories = [];
-	for(const category of rawCategories?.categories ?? []) {
-		const {updated_at, ...rest} = category;
+	for (const category of rawCategories?.categories ?? []) {
+		const { updated_at, ...rest } = category;
 		categories.push(rest);
 	}
 
-	await fs.writeJson(path.resolve(dir, 'categories.json'), categories, {spaces: '\t'});
+	await fs.writeJson(path.resolve(dir, 'categories.json'), categories, { spaces: '\t' });
 
 	// get articles
 	const articles = [];
 	let next_url = 'https://cloudflare.zendesk.com/api/v2/help_center/en-us/articles.json?per_page=100';
-	while(next_url) {
+	while (next_url) {
 		console.log('Fetch', next_url);
 		const response = await fetch(next_url);
 		const json = await response.json();
@@ -36,8 +37,8 @@ async function run() {
 		next_url = json.next_page;
 	}
 
-	for(const article of articles) {
-		const folderName = filenamify(`${article.name}-${article.id}`, {replacement: '_'});
+	for (const article of articles) {
+		const folderName = filenamify(`${article.name}-${article.id}`, { replacement: '_' });
 		const articleDir = path.resolve(dir, folderName);
 		await fs.ensureDir(articleDir);
 		const {
@@ -48,7 +49,7 @@ async function run() {
 			updated_at, // edited_at seems more stable. This changes whenever votees and things change, which is very frequent
 			...info
 		} = article;
-		await fs.writeJson(path.resolve(articleDir, 'article.json'), info, {spaces: '\t'});
+		await fs.writeJson(path.resolve(articleDir, 'article.json'), info, { spaces: '\t' });
 		await fs.writeFile(path.resolve(articleDir, 'article.html'), jsBeautify.html_beautify(body, {
 			'indent_size': 4,
 			'indent_char': '\t',

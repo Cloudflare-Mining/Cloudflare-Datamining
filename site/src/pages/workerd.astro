@@ -1,12 +1,13 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { marked } from 'marked';
+
+import workerdData from '../../../data/workerd/parsed.json';
 import Description from '../components/Description.astro';
 import MainHeading from '../components/MainHeading.astro';
 import SubHeading from '../components/SubHeading.astro';
-import workerdData from '../../../data/workerd/parsed.json';
 import Table from '../components/Table.astro';
+import Layout from '../layouts/Layout.astro';
 
-import {marked} from 'marked';
 export const prerender = true;
 
 
@@ -50,13 +51,13 @@ interface RemoteFlagInfoType {
 }
 
 let flagsInfo = null;
-for(const struct of workerdData.structs) {
-	if(struct.name.endsWith('compatibility-date.capnp:CompatibilityFlags')) {
+for (const struct of workerdData.structs) {
+	if (struct.name.endsWith('compatibility-date.capnp:CompatibilityFlags')) {
 		flagsInfo = struct.fields;
 		break;
 	}
 }
-if(!flagsInfo) { throw new Error('Could not find flags info!'); }
+if (!flagsInfo) { throw new Error('Could not find flags info!'); }
 
 const flagStatusRes = await fetch('https://compat-date-testing-dump.jross.workers.dev/status');
 const flagStatus: FlagStatus = await flagStatusRes.json();
@@ -65,9 +66,9 @@ const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers
 const remoteFlagInfo: RemoteFlagInfoType[] = await remoteFlagInfoRes.json();
 
 const flags = [];
-for(const flag of flagsInfo as WorkerdFlagInfo[]) {
+for (const flag of flagsInfo as WorkerdFlagInfo[]) {
 	const enableFlag = flag.annotations?.compatEnableFlag;
-	if(!enableFlag) { continue; }
+	if (!enableFlag) { continue; }
 	const remoteFlag = remoteFlagInfo.find(rf => rf.enable_flag === enableFlag);
 
 	const flagInfo: FlagInfo = {
@@ -81,14 +82,14 @@ for(const flag of flagsInfo as WorkerdFlagInfo[]) {
 		publicly_documented: false,
 		usable: false,
 	};
-	if(remoteFlag) {
+	if (remoteFlag) {
 		flagInfo.description = marked.parse(remoteFlag.description);
 		flagInfo.experimental = remoteFlag.experimental;
 		flagInfo.friendly_name = remoteFlag.name;
 		flagInfo.publicly_documented = true;
 	}
 
-	if(flagStatus[enableFlag]?.success) {
+	if (flagStatus[enableFlag]?.success) {
 		flagInfo.usable = true;
 	}
 	flags.push(flagInfo);

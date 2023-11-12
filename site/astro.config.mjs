@@ -1,14 +1,13 @@
-import {defineConfig} from 'astro/config';
-import robotsTxt from 'astro-robots-txt';
-import tailwind from '@astrojs/tailwind';
-
-// https://astro.build/config
-import react from '@astrojs/react';
-
-// https://astro.build/config
-import sitemap from '@astrojs/sitemap';
-
 import cloudflare from '@astrojs/cloudflare';
+import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
+import robotsTxt from 'astro-robots-txt';
+
+// https://astro.build/config
+
+// https://astro.build/config
 
 // https://astro.build/config
 export default defineConfig({

@@ -46,10 +46,10 @@ const updated = new Date().toISOString();
 	});
 
 	const updated = document.querySelector('#updated');
-	if(updated) {
+	if (updated) {
 		const time = updated.textContent as string;
 		const diff = new Date(time).getTime() - Date.now();
-		const formatter = new Intl.RelativeTimeFormat('en-GB', {numeric: 'auto'});
+		const formatter = new Intl.RelativeTimeFormat('en-GB', { numeric: 'auto' });
 		updated.textContent = formatter.format(Math.round(diff / 1000 / 60 / 60 / 24), 'day');
 	}
 </script>

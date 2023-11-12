@@ -1,14 +1,15 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
-import fetch from 'node-fetch';
+
 import dateFormat from 'dateformat';
+import { decodeHTML } from 'entities';
 import filenamify from 'filenamify';
-import {decodeHTML} from 'entities';
+import fs from 'fs-extra';
 import jsBeautify from 'js-beautify';
+import fetch from 'node-fetch';
 
 
-import {tryAndPush, getHttpsAgent} from './utils.js';
+import { getHttpsAgent, tryAndPush } from './utils.js';
 
 const agent = getHttpsAgent();
 
@@ -17,13 +18,13 @@ await fs.ensureDir(dir);
 await fs.emptyDir(dir);
 
 function sortJobInfo(jobInfo) {
-	if(jobInfo.metadata) {
+	if (jobInfo.metadata) {
 		jobInfo.metadata = jobInfo.metadata.sort((metaA, metaB) => metaA.id - metaB.id);
 	}
-	if(jobInfo.departments) {
+	if (jobInfo.departments) {
 		jobInfo.departments = jobInfo.departments.sort((depA, depB) => depA.id - depB.id);
 	}
-	if(jobInfo.offices) {
+	if (jobInfo.offices) {
 		jobInfo.offices = jobInfo.offices.sort((officeA, officeB) => officeA.id - officeB.id);
 	}
 	return jobInfo;
@@ -31,7 +32,7 @@ function sortJobInfo(jobInfo) {
 
 function sortDepartmentInfo(departmentInfo) {
 	departmentInfo.children = departmentInfo.children.sort((childA, childB) => childA.id - childB.id);
-	for(const child of departmentInfo.children) {
+	for (const child of departmentInfo.children) {
 		child.jobs = child.jobs.map(job => sortJobInfo(job));
 		child.jobs = child.jobs.sort((jobA, jobB) => jobA.updated_at.localeCompare(jobB.updated_at) || jobA.id - jobB.id);
 	}
@@ -39,11 +40,11 @@ function sortDepartmentInfo(departmentInfo) {
 }
 
 console.log('Fetch information for offices...');
-const officesRes = await fetch('https://boards-api.greenhouse.io/v1/boards/cloudflare/offices/', {agent});
-if(officesRes.ok) {
+const officesRes = await fetch('https://boards-api.greenhouse.io/v1/boards/cloudflare/offices/', { agent });
+if (officesRes.ok) {
 	const offices = await officesRes.json();
 	const mapped = (offices?.offices ?? []).map((office) => {
-		const {departments, ...officeInfo} = office;
+		const { departments, ...officeInfo } = office;
 		return officeInfo;
 	});
 
@@ -51,26 +52,26 @@ if(officesRes.ok) {
 }
 
 console.log('Fetch information for departments...');
-const departmentsRes = await fetch('https://boards-api.greenhouse.io/v1/boards/cloudflare/departments/?render_as=tree', {agent});
-if(departmentsRes.ok) {
+const departmentsRes = await fetch('https://boards-api.greenhouse.io/v1/boards/cloudflare/departments/?render_as=tree', { agent });
+if (departmentsRes.ok) {
 	const departments = await departmentsRes.json();
-	for(const department of departments?.departments ?? []) {
+	for (const department of departments?.departments ?? []) {
 		const departmentDirName = filenamify(`${department.name}-${department.id}`).trim();
 		const departmentDir = path.resolve(dir, departmentDirName);
 		await fs.ensureDir(departmentDir);
-		const {jobs, ...departmentInfo} = sortDepartmentInfo(department);
+		const { jobs, ...departmentInfo } = sortDepartmentInfo(department);
 
-		for(const job of jobs) {
+		for (const job of jobs) {
 			const jobDirName = filenamify(job.title + '-' + job.id).trim();
 			console.log(`Fetch information for job ${jobDirName}...`);
 			const jobsDir = path.resolve(departmentDir, jobDirName);
 			await fs.ensureDir(jobsDir);
 
-			const jobInfo = await fetch(`https://boards-api.greenhouse.io/v1/boards/cloudflare/jobs/${job.id}`, {agent});
-			if(jobInfo.ok) {
+			const jobInfo = await fetch(`https://boards-api.greenhouse.io/v1/boards/cloudflare/jobs/${job.id}`, { agent });
+			if (jobInfo.ok) {
 				const jobInfoData = await jobInfo.json();
-				const {content, ...jobInfoDataWithoutContent} = jobInfoData;
-				if(content) {
+				const { content, ...jobInfoDataWithoutContent } = jobInfoData;
+				if (content) {
 					const decoded = decodeHTML(content);
 					const beautified = jsBeautify.html_beautify(decoded, {
 						'indent_size': 4,

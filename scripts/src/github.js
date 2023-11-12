@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import path from 'node:path';
 
-import fs from 'fs-extra';
+import { Octokit } from '@octokit/rest';
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
-import {Octokit} from '@octokit/rest';
+import fs from 'fs-extra';
 import pick from 'object.pick';
 import pLimit from 'p-limit';
 
-import {tryAndPush} from './utils.js';
+import { tryAndPush } from './utils.js';
 
 const wantedKeys = [
 	'id',
@@ -36,33 +36,33 @@ async function run() {
 	});
 	console.log('Fetching GitHub Data...');
 
-	try{
+	try {
 		const repos = await octokit.paginate(octokit.rest.repos.listForOrg, {
 			org: 'cloudflare',
 		});
 		const getDataAndWriteFiles = [];
 		const limit = pLimit(1);
-		for(const repo of repos) {
-			const filename = filenamify(repo.name, {replacement: '__'});
+		for (const repo of repos) {
+			const filename = filenamify(repo.name, { replacement: '__' });
 			getDataAndWriteFiles.push(limit(async () => {
 				console.log('Fetching data for ' + repo.name);
 				await fs.ensureDir(path.resolve('../data/github-repos/' + filename));
 
 				// get branches
 				const branches = [];
-				try{
+				try {
 					const rawBranches = await octokit.paginate(octokit.rest.repos.listBranches, {
 						owner: 'cloudflare',
 						repo: repo.name,
 					});
-					for(const branch of rawBranches) {
-						if(!branch || !branch.name || branch.name.startsWith('dependabot/')) {
+					for (const branch of rawBranches) {
+						if (!branch || !branch.name || branch.name.startsWith('dependabot/')) {
 							continue;
 						}
 						branches.push(branch.name);
 					}
 
-				}catch(err) {
+				} catch (err) {
 					console.error('Failed to get branches for ' + repo.name);
 					console.error(err);
 				}
@@ -93,7 +93,7 @@ async function run() {
 		);
 
 		console.log('Done! :)');
-	}catch(err) {
+	} catch (err) {
 		console.error('Failed to fetch GitHub data');
 		console.error(err);
 	}

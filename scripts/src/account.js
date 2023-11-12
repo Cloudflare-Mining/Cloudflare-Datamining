@@ -1,11 +1,12 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
 import process from 'node:process';
-import fetch from 'node-fetch';
-import dateFormat from 'dateformat';
 
-import {tryAndPush} from './utils.js';
+import dateFormat from 'dateformat';
+import fs from 'fs-extra';
+import fetch from 'node-fetch';
+
+import { tryAndPush } from './utils.js';
 
 const BASE = 'https://api.cloudflare.com/client/v4';
 
@@ -17,9 +18,9 @@ async function callApi(path) {
 		},
 	});
 
-	if(res.status === 200) {
+	if (res.status === 200) {
 		const json = await res.json();
-		if(json.success) {
+		if (json.success) {
 			return json.result;
 		}
 	}
@@ -29,10 +30,10 @@ async function callApi(path) {
 async function fetchAndWrite(apiPath, filePath, sortFunc = null) {
 	const json = await callApi(apiPath);
 
-	if(json !== null) {
+	if (json !== null) {
 		await fs.ensureDir(path.dirname(filePath));
 		let data = json;
-		if(sortFunc !== null) {
+		if (sortFunc !== null) {
 			data = json.sort(sortFunc);
 		}
 		await fs.writeFile(path.resolve(filePath), JSON.stringify(data, null, '\t'));

@@ -1,16 +1,16 @@
 import 'dotenv/config';
 import path from 'node:path';
 
-import fs from 'fs-extra';
-import dateFormat from 'dateformat';
-import fetch from 'node-fetch';
-import filenamify from 'filenamify';
-import {rimraf} from 'rimraf';
 import $RefParser from '@stoplight/json-schema-ref-parser';
-//import OpenAPIParser from '@readme/openapi-parser';
+import dateFormat from 'dateformat';
+import filenamify from 'filenamify';
+import fs from 'fs-extra';
 import stringify from 'json-stringify-safe';
+import fetch from 'node-fetch';
+import { rimraf } from 'rimraf';
+//import OpenAPIParser from '@readme/openapi-parser';
 
-import {tryAndPush, sortObjectByKeys} from './utils.js';
+import { sortObjectByKeys, tryAndPush } from './utils.js';
 
 async function run() {
 	console.log('Fetching API Schemas...');
@@ -25,10 +25,10 @@ async function run() {
 
 	// query schemas from git
 	const schemasRes = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.json');
-	if(!schemasRes.ok) {
+	if (!schemasRes.ok) {
 		throw new Error('Failed to fetch schemas');
 	}
-	try{
+	try {
 		const schemasJson = sortObjectByKeys(await schemasRes.json());
 
 		const dereferenced = await $RefParser.dereference(schemasJson);
@@ -43,14 +43,14 @@ async function run() {
 
 		const byTag = {};
 		// loop over paths and assign to byTag
-		for(const [path, pathData] of Object.entries(toWrite.paths)) {
-			for(const [method, methodData] of Object.entries(pathData)) {
-				if(methodData.tags) {
-					for(const tag of methodData.tags) {
+		for (const [path, pathData] of Object.entries(toWrite.paths)) {
+			for (const [method, methodData] of Object.entries(pathData)) {
+				if (methodData.tags) {
+					for (const tag of methodData.tags) {
 						byTag[tag] ??= {};
 						byTag[tag][`${method.toUpperCase()} ${path}`] = methodData;
 					}
-				}else{
+				} else {
 					byTag.Untagged ??= {};
 					byTag.Untagged[`${method.toUpperCase()} ${path}`] = methodData;
 				}
@@ -58,8 +58,8 @@ async function run() {
 		}
 
 		// write to folders by tag
-		for(const [tag, tagData] of Object.entries(byTag)) {
-			const tagName = filenamify(tag, {replacement: '-'});
+		for (const [tag, tagData] of Object.entries(byTag)) {
+			const tagName = filenamify(tag, { replacement: '-' });
 			const file = path.resolve(`../data/api-schemas/schemas/${tagName}.json`);
 			await fs.writeFile(file, stringify(sortObjectByKeys(tagData), null, '\t'));
 		}
@@ -78,7 +78,7 @@ async function run() {
 		);
 
 		console.log('Done! :)');
-	}catch(err) {
+	} catch (err) {
 		console.log('Failed to parse schemas');
 		console.error(err);
 	}

@@ -1,16 +1,17 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
+
 import dateFormat from 'dateformat';
-import jsBeautify from 'js-beautify';
+import fs from 'fs-extra';
 import ipRegex from 'ip-regex';
+import jsBeautify from 'js-beautify';
 
 import {
-	tryAndPush,
-	propertiesToArray,
 	cfRequest,
+	propertiesToArray,
 	sleep,
 	sortObjectByKeys,
+	tryAndPush,
 } from '../utils.js';
 
 const dir = path.resolve('../data/products/pages');
@@ -72,10 +73,10 @@ const reqs = [
 ];
 const results = {};
 console.log('Making requests...');
-for(const req of reqs) {
+for (const req of reqs) {
 	const file = path.resolve(dir, `${req.name}.json`);
 	let url = req.url;
-	if(url.includes('{deployment_id}') && results['deployments-create']?.result?.id) {
+	if (url.includes('{deployment_id}') && results['deployments-create']?.result?.id) {
 		url = url.replace('{deployment_id}', results['deployments-create'].result.id);
 	}
 
@@ -83,22 +84,22 @@ for(const req of reqs) {
 	const res = await cfRequest(url, {
 		method: req.method,
 	});
-	if(!res.ok) {
+	if (!res.ok) {
 		console.log(`${req.name} failed: ${res.status} ${res.statusText}`);
 		continue;
 	}
 	const json = await res.json();
 	results[req.name] = json;
-	if(req.write !== false) {
-		if(req.transform) {
-			await fs.writeJson(file, req.transform(json), {spaces: '\t'});
-		}else{
-			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+	if (req.write !== false) {
+		if (req.transform) {
+			await fs.writeJson(file, req.transform(json), { spaces: '\t' });
+		} else {
+			await fs.writeJson(file, propertiesToArray(json).sort(), { spaces: '\t' });
 		}
 	}
 }
 
-if(!results['deployments-create']?.result?.id) {
+if (!results['deployments-create']?.result?.id) {
 	// no deployment created. What did Walshy break now?
 	console.log('Missing deployment. Can\'t get any more Pages details');
 	// eslint-disable-next-line no-process-exit
@@ -110,20 +111,20 @@ const maxAttempts = 60;
 let waiting = true;
 let attempts = 0;
 
-while(waiting) {
-	if(attempts > maxAttempts) {
+while (waiting) {
+	if (attempts > maxAttempts) {
 		throw new Error('Max attempts reached, exiting.');
 	}
 	attempts++;
 	const deploymentRes = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${results['deployments-create'].result.id}`);
-	if(!deploymentRes.ok) {
+	if (!deploymentRes.ok) {
 		console.log(`deployment-get failed: ${deploymentRes.status} ${deploymentRes.statusText}`);
 		continue;
 	}
 	const deploymentJson = await deploymentRes.json();
-	if(deploymentJson?.result?.latest_stage?.status === 'failure') {
+	if (deploymentJson?.result?.latest_stage?.status === 'failure') {
 		throw new Error('Deployment failed, exiting.');
-	}else if(deploymentJson?.result?.latest_stage?.name === 'deploy' && deploymentJson?.result?.latest_stage?.status === 'success') {
+	} else if (deploymentJson?.result?.latest_stage?.name === 'deploy' && deploymentJson?.result?.latest_stage?.status === 'success') {
 		waiting = false;
 	}
 
@@ -144,66 +145,66 @@ const logs = logsRes.result.data ?? [];
 // get env
 const startEnvIndex = logs.findIndex(log => log.line === '---start-env---');
 const endEnvIndex = logs.findIndex(log => log.line === '---end-env---');
-if(startEnvIndex && endEnvIndex) {
+if (startEnvIndex && endEnvIndex) {
 	const envLogs = logs.slice(startEnvIndex + 1, endEnvIndex);
 	const env = {};
-	for(const log of envLogs) {
+	for (const log of envLogs) {
 		const split = log.line.split('=');
-		if(truncateEnvVars.has(split[0])) {
+		if (truncateEnvVars.has(split[0])) {
 			env[split[0]] = '-snip-';
-		}else if(split[0] === 'PATH') {
+		} else if (split[0] === 'PATH') {
 			const path = split.slice(1).join('=').split(':');
 			const newVal = [];
-			for(const part of path) {
-				if(part.includes('cache')) {
+			for (const part of path) {
+				if (part.includes('cache')) {
 					newVal.push('-cache-dir-snip-');
-				}else{
+				} else {
 					newVal.push(part);
 				}
 			}
 			env[split[0]] = newVal;
-		}else{
+		} else {
 			env[split[0]] = split.slice(1).join('=');
 		}
 	}
 	const sorted = sortObjectByKeys(env);
 	// check a common env var like `PATH` to make sure we have a valid object
-	if(sorted.PATH) {
-		await fs.writeJson(path.resolve(dir, 'deployments-logs-env.json'), sorted, {spaces: '\t'});
+	if (sorted.PATH) {
+		await fs.writeJson(path.resolve(dir, 'deployments-logs-env.json'), sorted, { spaces: '\t' });
 	}
 }
 
 // get lscpu
 const startLscpuIndex = logs.findIndex(log => log.line === '---start-lscpu---');
 const endLscpuIndex = logs.findIndex(log => log.line === '---end-lscpu---');
-if(startLscpuIndex && endLscpuIndex) {
+if (startLscpuIndex && endLscpuIndex) {
 	const lscpuLogs = logs.slice(startLscpuIndex + 1, endLscpuIndex);
 	const cpuinfo = {};
-	for(const log of lscpuLogs) {
+	for (const log of lscpuLogs) {
 		const regex = /^(?<key>[\w()-\s]+):\s+(?<val>.*)$/;
 		const match = log.line.match(regex);
-		if(!match?.groups?.key || !match?.groups?.val) {
+		if (!match?.groups?.key || !match?.groups?.val) {
 			continue;
 		}
 		// round a few things to prevent unstable diffs
-		if(match.groups.key === 'CPU MHz' || match.groups.key === 'BogoMIPS') {
+		if (match.groups.key === 'CPU MHz' || match.groups.key === 'BogoMIPS') {
 			cpuinfo[match.groups.key] = String(Math.round(Number.parseFloat(match.groups.val)));
-		}else{
+		} else {
 			cpuinfo[match.groups.key] = match.groups.val;
 		}
 	}
-	await fs.writeJSON(path.resolve(dir, 'deployments-logs-lscpu.json'), cpuinfo, {spaces: '\t'});
+	await fs.writeJSON(path.resolve(dir, 'deployments-logs-lscpu.json'), cpuinfo, { spaces: '\t' });
 }
 
 // get memory
 const startMemtotalIndex = logs.findIndex(log => log.line === '---start-memory---');
 const endMemtotalIndex = logs.findIndex(log => log.line === '---end-memory---');
-if(startMemtotalIndex && endMemtotalIndex) {
+if (startMemtotalIndex && endMemtotalIndex) {
 	const memLogs = logs.slice(startMemtotalIndex + 1, endMemtotalIndex);
 	const memInfo = {};
-	for(const log of memLogs) {
+	for (const log of memLogs) {
 		const line = log.line.split(':');
-		if(line.length !== 2) {
+		if (line.length !== 2) {
 			continue;
 		}
 		memInfo[line[0]] = line[1].trim();
@@ -213,35 +214,35 @@ if(startMemtotalIndex && endMemtotalIndex) {
 		obj[key] = memInfo[key];
 		return obj;
 	}, {});
-	await fs.writeJson(path.resolve(dir, 'deployments-logs-memory.json'), filteredMemInfo, {spaces: '\t'});
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-memory.json'), filteredMemInfo, { spaces: '\t' });
 }
 
 // get os-release
 const startOsReleaseIndex = logs.findIndex(log => log.line === '---start-os-release---');
 const endOsReleaseIndex = logs.findIndex(log => log.line === '---end-os-release---');
-if(startOsReleaseIndex && endOsReleaseIndex) {
+if (startOsReleaseIndex && endOsReleaseIndex) {
 	const osReleaseLogs = logs.slice(startOsReleaseIndex + 1, endOsReleaseIndex);
 	const osRelease = {};
-	for(const log of osReleaseLogs) {
+	for (const log of osReleaseLogs) {
 		const line = log.line.split('=');
-		if(line.length !== 2) {
+		if (line.length !== 2) {
 			continue;
 		}
 		osRelease[line[0]] = line.slice(1).join('=');
 	}
-	await fs.writeJson(path.resolve(dir, 'deployments-logs-os-release.json'), osRelease, {spaces: '\t'});
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-os-release.json'), osRelease, { spaces: '\t' });
 }
 
 // get dpkg
 const startDpkgIndex = logs.findIndex(log => log.line === '---start-dpkg---');
 const endDpkgIndex = logs.findIndex(log => log.line === '---end-dpkg---');
-if(startDpkgIndex && endDpkgIndex) {
+if (startDpkgIndex && endDpkgIndex) {
 	const dpkgLogs = logs.slice(startDpkgIndex + 1, endDpkgIndex);
 	const dpkg = {};
-	for(const log of dpkgLogs) {
+	for (const log of dpkgLogs) {
 		const line = log.line.split('#;SPLIT;#');
 		console.log(line);
-		if(line.length < 3) {
+		if (line.length < 3) {
 			continue;
 		}
 		dpkg[line[0]] = {
@@ -251,19 +252,19 @@ if(startDpkgIndex && endDpkgIndex) {
 		};
 	}
 	const sorted = sortObjectByKeys(dpkg);
-	await fs.writeJson(path.resolve(dir, 'deployments-logs-dpkg.json'), sorted, {spaces: '\t'});
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-dpkg.json'), sorted, { spaces: '\t' });
 }
 
 // delete all previous deployments
 console.log('Cleaning up old deployments...');
-for(const deployment of results['deployments-list'].result) {
-	if(deployment.id === results['deployments-create']?.result?.id) {
+for (const deployment of results['deployments-list'].result) {
+	if (deployment.id === results['deployments-create']?.result?.id) {
 		continue;
 	}
 	const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${deployment.id}`, {
 		method: 'DELETE',
 	});
-	if(!res.ok) {
+	if (!res.ok) {
 		console.log(`Failed to delete deployment: ${res.status} ${res.statusText}`);
 	}
 }
@@ -278,11 +279,11 @@ const getErrors = {
 	'not-found': `${process.env.PAGES_DISPATCH_WORKER}/errors/not-found`,
 };
 
-for(const [code, url] of Object.entries(getErrors)) {
+for (const [code, url] of Object.entries(getErrors)) {
 	console.log(`Fetch error for ${code}...`);
 	const res = await fetch(url);
 	const rayID = res.headers.get('cf-ray');
-	if(!rayID) {
+	if (!rayID) {
 		console.log(`Error page ${code} has no Ray ID`);
 		continue;
 	}

@@ -1,10 +1,11 @@
 import 'dotenv/config';
 import path from 'node:path';
+
+import dateFormat from 'dateformat';
 import fs from 'fs-extra';
 import fetch from 'node-fetch';
-import dateFormat from 'dateformat';
 
-import {tryAndPush, getHttpsAgent} from './utils.js';
+import { getHttpsAgent, tryAndPush } from './utils.js';
 
 const agent = getHttpsAgent();
 
@@ -26,7 +27,7 @@ async function getCoveoResults(source, filterNoLanguage) {
 		sortCriteria: 'date descending',
 		timezone: 'Europe/London',
 	});
-	if(filterNoLanguage) {
+	if (filterNoLanguage) {
 		body.set('aq', `(@customer_facing_source=="${source}")`);
 	}
 
@@ -41,21 +42,21 @@ async function getCoveoResults(source, filterNoLanguage) {
 		method: 'POST',
 		agent,
 	});
-	if(!response.ok) {
+	if (!response.ok) {
 		throw new Error(`Failed to get initial results: ${response.status}`);
 	}
 	const results = await response.json();
 
 	const URLs = new Set([]);
 	let queried = 0;
-	for(const result of results.results) {
+	for (const result of results.results) {
 		queried++;
-		if(filterNoLanguage && result?.raw?.language?.length > 0) {
+		if (filterNoLanguage && result?.raw?.language?.length > 0) {
 			continue;
 		}
 		URLs.add(result.clickUri);
 	}
-	while(results.totalCount > queried) {
+	while (results.totalCount > queried) {
 		console.log('Fetching more results for source', source, queried);
 		const nextBody = new URLSearchParams(body.toString());
 		nextBody.set('firstResult', queried);
@@ -67,16 +68,16 @@ async function getCoveoResults(source, filterNoLanguage) {
 			method: 'POST',
 			agent,
 		});
-		if(!nextResponse.ok) {
+		if (!nextResponse.ok) {
 			throw new Error(`Failed to get more results after ${queried}: ${nextResponse.status}`);
 		}
 		const nextResults = await nextResponse.json();
-		if(nextResults.results.length === 0) {
+		if (nextResults.results.length === 0) {
 			throw new Error(`No more results after ${URLs.size}: ${nextResponse.status}`);
 		}
-		for(const result of nextResults.results) {
+		for (const result of nextResults.results) {
 			queried++;
-			if(filterNoLanguage && result?.raw?.language?.length > 0) {
+			if (filterNoLanguage && result?.raw?.language?.length > 0) {
 				continue;
 			}
 			URLs.add(result.clickUri);
@@ -111,7 +112,7 @@ const data = [
 		filename: 'support-knowledgebase.json',
 	},
 ];
-for(const {source, filename, filterNoLanguage} of data) {
+for (const { source, filename, filterNoLanguage } of data) {
 	const results = await getCoveoResults(source, filterNoLanguage);
 	await fs.writeFile(path.resolve(dir, filename), JSON.stringify(results, null, '\t'));
 }

@@ -1,10 +1,11 @@
 import 'dotenv/config';
-import path from 'node:path';
 import crypto from 'node:crypto';
-import fs from 'fs-extra';
-import dateFormat from 'dateformat';
+import path from 'node:path';
 
-import {tryAndPush, propertiesToArray, cfRequest} from '../utils.js';
+import dateFormat from 'dateformat';
+import fs from 'fs-extra';
+
+import { cfRequest, propertiesToArray, tryAndPush } from '../utils.js';
 
 const dir = path.resolve('../data/products/workers');
 await fs.ensureDir(dir);
@@ -62,7 +63,7 @@ const reqs = [
 		name: 'services-schedules-put',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}/environments/production/schedules`,
 		method: 'PUT',
-		body: JSON.stringify([{'cron': '*/30 * * * *'}]),
+		body: JSON.stringify([{ 'cron': '*/30 * * * *' }]),
 	},
 	{
 		name: 'services-schedules-get',
@@ -83,7 +84,7 @@ const reqs = [
 ];
 const results = {};
 console.log('Making requests...');
-for(const req of reqs) {
+for (const req of reqs) {
 	const file = path.resolve(dir, `${req.name}.json`);
 	const url = req.url;
 	console.log(`Fetch for ${req.name}...`);
@@ -92,17 +93,17 @@ for(const req of reqs) {
 		body: req.body,
 		headers: req.headers,
 	});
-	if(!res.ok) {
+	if (!res.ok) {
 		console.log(`${req.name} failed: ${res.status} ${res.statusText}`);
 		continue;
 	}
 	const json = await res.json();
 	results[req.name] = json;
-	if(req.write !== false) {
-		if(req.transform) {
-			await fs.writeJson(file, req.transform(json), {spaces: '\t'});
-		}else{
-			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+	if (req.write !== false) {
+		if (req.transform) {
+			await fs.writeJson(file, req.transform(json), { spaces: '\t' });
+		} else {
+			await fs.writeJson(file, propertiesToArray(json).sort(), { spaces: '\t' });
 		}
 	}
 }
@@ -110,9 +111,9 @@ for(const req of reqs) {
 // fetch globalThis dump in canary
 const globalThisUrl = `${process.env.FETCH_FROM_COLO_URL}coloid=56&url=https://dump.jross.dev/`;
 const res = await fetch(globalThisUrl);
-if(res.ok) {
+if (res.ok) {
 	const json = await res.json();
-	await fs.writeJson(path.resolve(dir, 'globalThis.json'), json, {spaces: '\t'});
+	await fs.writeJson(path.resolve(dir, 'globalThis.json'), json, { spaces: '\t' });
 }
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(

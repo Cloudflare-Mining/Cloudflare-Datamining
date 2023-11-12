@@ -1,63 +1,64 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
-import fetch from 'node-fetch';
+
+import * as cheerio from 'cheerio';
 import dateFormat from 'dateformat';
+import fs from 'fs-extra';
 import ipRegex from 'ip-regex';
 import jsBeautify from 'js-beautify';
-import * as cheerio from 'cheerio';
+import fetch from 'node-fetch';
 
 const ip = ipRegex();
 const isoDate = /(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
 const niceDate = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+A-Za-z-]+/g;
 
-import {tryAndPush, getHttpsAgent} from './utils.js';
+import { getHttpsAgent, tryAndPush } from './utils.js';
 
 const agent = getHttpsAgent();
 
 const dir = path.resolve('../data/cdn-cgi');
-try{
+try {
 	await fs.rm(path.resolve(dir, './error'), {
 		recursive: true,
 	});
-}catch{} // we tried
+} catch {} // we tried
 await fs.ensureDir(dir);
 
 // iterate for error pages between 100 and 1500 - wide range
 const errors = {};
-for(let i = 100; i <= 1500; i++) {
+for (let i = 100; i <= 1500; i++) {
 	const controller = new AbortController();
 	const timeout = setTimeout(() => {
 		controller.abort();
 	}, 1000);
 	let dataReq = null;
-	try{
+	try {
 		dataReq = await fetch(`https://cloudflare.com/cdn-cgi/error/${i}`, {
 			agent,
 			signal: controller.signal,
 		});
-	}catch(err) {
+	} catch (err) {
 		console.log(`Error fetching error page ${i}: ${err?.code ?? err}`);
 		continue;
-	}finally{
+	} finally {
 		clearTimeout(timeout);
 	}
 	const data = await dataReq.text();
-	if(!dataReq.headers.get('content-type')?.includes?.('text/html') || data === '') {
+	if (!dataReq.headers.get('content-type')?.includes?.('text/html') || data === '') {
 		console.log('Not an HTML error page, or empty contents', i);
 		continue;
 	}
 	// if the page is a 500 and we're not asking for a 500, it's probably not a real error page
-	if(dataReq.status === 500 && i !== 500 && data.includes(': Internal server error')) {
+	if (dataReq.status === 500 && i !== 500 && data.includes(': Internal server error')) {
 		console.log(`Error page ${i} not found (500 error)`);
 		continue;
 	}
-	if(dataReq.status === i && data.includes(': Internal server error')) {
+	if (dataReq.status === i && data.includes(': Internal server error')) {
 		console.log(`Error page ${i} not found (matching status, but internal server error)`);
 		continue;
 	}
 	const rayID = dataReq.headers.get('cf-ray');
-	if(!rayID) {
+	if (!rayID) {
 		console.log(`Error page ${i} has no Ray ID`);
 		continue;
 	}
@@ -76,7 +77,7 @@ for(let i = 100; i <= 1500; i++) {
 
 	const dom = cheerio.load(fixedData);
 	const cfCloudflareStatus = dom('#cf-cloudflare-status');
-	if(cfCloudflareStatus) {
+	if (cfCloudflareStatus) {
 		cfCloudflareStatus.find('span.w-full.truncate').text('[location]');
 	}
 
@@ -109,9 +110,9 @@ const styles = [
 	'main.css',
 ];
 // get errors styles
-for(const styleName of styles) {
-	const styleRes = await fetch(`https://cloudflare.com/cdn-cgi/styles/${styleName}`, {agent});
-	if(styleRes.ok) {
+for (const styleName of styles) {
+	const styleRes = await fetch(`https://cloudflare.com/cdn-cgi/styles/${styleName}`, { agent });
+	if (styleRes.ok) {
 		const style = await styleRes.text();
 		const stylePath = path.resolve(dir, `styles/${styleName}`);
 		await fs.ensureFile(stylePath);

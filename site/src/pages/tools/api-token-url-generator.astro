@@ -1,27 +1,27 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import MainHeading from '../../components/MainHeading.astro';
-import Description from '../../components/Description.astro';
-import PermissionsBoxes from '../../components/PermissionsBoxes.astro';
-import commonTranslations from '../../../../data/dashboard-translations/common.json';
 import tokenPermissionGroups from '../../../../data/account/token_permission_groups_dash.json';
+import commonTranslations from '../../../../data/dashboard-translations/common.json';
+import Description from '../../components/Description.astro';
+import MainHeading from '../../components/MainHeading.astro';
+import PermissionsBoxes from '../../components/PermissionsBoxes.astro';
+import Layout from '../../layouts/Layout.astro';
 export const prerender = true;
 
 
 let permissions = [];
-for(const scope of tokenPermissionGroups) {
+for (const scope of tokenPermissionGroups) {
 	const lastUnderscore = scope.label.lastIndexOf('_');
 	const key = scope.label.slice(0, Math.max(0, lastUnderscore));
 	let value = scope.label.slice(Math.max(0, lastUnderscore + 1));
 	// handle zaraz
-	if(key === 'zaraz' && value === 'write') {
+	if (key === 'zaraz' && value === 'write') {
 		value = 'edit_publish';
 	}
 	const existing = permissions.find(perm => perm.name === key);
-	if(value === 'write') {
+	if (value === 'write') {
 		value = 'edit';
 	}
-	if(existing) {
+	if (existing) {
 		existing.types.push(value);
 		continue;
 	}
@@ -31,17 +31,17 @@ for(const scope of tokenPermissionGroups) {
 		`api_tokens.permission_${key.replace('account_', '')}`,
 		`api_tokens.permission_${key.replace('zone_', '')}`,
 	];
-	for(const translationKey of translationKeysToTry) {
-		if(commonTranslations[translationKey]) {
+	for (const translationKey of translationKeysToTry) {
+		if (commonTranslations[translationKey]) {
 			description = commonTranslations[translationKey];
 			break;
 		}
 	}
-	if(!description) {
+	if (!description) {
 		description = scope.name;
 		console.log(`Missing translation for api_tokens.permission_${key}`);
 	}
-	if(description.endsWith(' Read') || description.endsWith(' Write')) {
+	if (description.endsWith(' Read') || description.endsWith(' Write')) {
 		description = description.slice(0, Math.max(0, description.length - 5));
 	}
 	permissions.push({
@@ -86,22 +86,22 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 <script>
 	type PermissionTypes = {
 		[key: string]: 'read' | 'edit';
-	}
+	};
 	function setupForm() {
 		const form = document.querySelector('#apiTokenUrlGenerator') as HTMLFormElement;
 		const output = form.querySelector('output[name="result"]');
-		if(!form || !output) { return; }
+		if (!form || !output) { return; }
 
 		// TODO better types
 		function triggerChange() {
 			const formData = new FormData(form);
 			const permissions = {};
 			const types:PermissionTypes = {};
-			for(const [key, value] of formData.entries()) {
-				if(key.startsWith('permission_')) {
+			for (const [key, value] of formData.entries()) {
+				if (key.startsWith('permission_')) {
 					permissions[key.replace('permission_', '')] = value;
 				}
-				if(key.startsWith('type_')) {
+				if (key.startsWith('type_')) {
 					types[key.replace('type_', '')] = value;
 				}
 			}
@@ -109,8 +109,8 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 			const url = new URL('https://dash.cloudflare.com/profile/api-tokens');
 			const permissionGroupKeys = [];
 
-			for(const [key, value] of Object.entries(permissions)) {
-				if(value === 'on') {
+			for (const [key, value] of Object.entries(permissions)) {
+				if (value === 'on') {
 					permissionGroupKeys.push({
 						key,
 						type: types[key] ?? 'read',
@@ -118,7 +118,7 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 				}
 			}
 			url.searchParams.set('permissionGroupKeys', JSON.stringify(permissionGroupKeys));
-			if(formData.has('name')) {
+			if (formData.has('name')) {
 				url.searchParams.set('name', formData.get('name') as string);
 			}
 			output.textContent = url.toString();
@@ -135,20 +135,20 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 
 		// handle checkboxes triggering dropdowns to stop being disabled
 		const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-		for(const checkbox of checkboxes) {
+		for (const checkbox of checkboxes) {
 			checkbox.addEventListener('change', (event) => {
 				const checkbox = event.target as HTMLInputElement;
 				const dropdown = form.querySelector(`select[name="type_${checkbox.name.replace('permission_', '')}"]`) as HTMLSelectElement;
-				if(checkbox.checked) {
+				if (checkbox.checked) {
 					dropdown.disabled = false;
-				}else{
+				} else {
 					dropdown.disabled = true;
 				}
 			});
 		}
 
 		const copyToClipboard = document.querySelector('#copyToClipboard') as HTMLButtonElement;
-		if(copyToClipboard) {
+		if (copyToClipboard) {
 			copyToClipboard.addEventListener('click', (event) => {
 				event.preventDefault();
 				navigator.clipboard.writeText(output.textContent);

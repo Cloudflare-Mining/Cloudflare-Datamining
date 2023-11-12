@@ -5,12 +5,12 @@ type Permission = {
 	name: string
 	description: string
 	types: string[]
-}
+};
 export interface Props {
 	permissions: Permission[]
 }
 
-const {permissions} = Astro.props;
+const { permissions } = Astro.props;
 ---
 <div class="grid grid-cols-3 gap-x-6">
 	{permissions.map(permission => (

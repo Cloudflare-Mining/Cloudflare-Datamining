@@ -1,13 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import FlagsTable from '../../components/FlagsTable.astro';
+import Layout from '../../layouts/Layout.astro';
 export const prerender = true;
 
 const importFiles = await Astro.glob('../../../../data/account/account_flags.json');
 const flags = importFiles[0].default;
 
 // manual overrides
-if(flags.workers.cloudflare_pages_functions_daily_limit) {
+if (flags.workers.cloudflare_pages_functions_daily_limit) {
 	flags.workers.cloudflare_pages_functions_daily_limit = 100000;
 }
 ---

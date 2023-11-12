@@ -1,9 +1,10 @@
 import 'dotenv/config';
-import pacote from 'pacote';
 import path from 'node:path';
-import dateFormat from 'dateformat';
 
-import {tryAndPush} from './utils.js';
+import dateFormat from 'dateformat';
+import pacote from 'pacote';
+
+import { tryAndPush } from './utils.js';
 
 async function run() {
 	console.log('Fetching Cloudflare Workers Types...');

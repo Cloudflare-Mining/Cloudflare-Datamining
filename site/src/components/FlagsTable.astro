@@ -1,18 +1,18 @@
 ---
-import Table from './Table.astro';
 import MainHeading from './MainHeading.astro';
 import SubHeading from './SubHeading.astro';
+import Table from './Table.astro';
 export interface Props {
 	data: object;
 	title: string;
 	headers?: string[]
 }
 
-const {data, title, headers}: {data: any, title: string, headers?: string[]} = Astro.props;
+const { data, title, headers }: { data: any, title: string, headers?: string[] } = Astro.props;
 const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 
-function getValue(data:string|object) {
-	if(typeof data === 'string') {
+function getValue(data:string | object) {
+	if (typeof data === 'string') {
 		return data;
 	}
 	return JSON.stringify(data);

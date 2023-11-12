@@ -4,7 +4,7 @@ export interface Props {
 	subcategory?: string;
 }
 
-const {category, subcategory} = Astro.props;
+const { category, subcategory } = Astro.props;
 ---
 
 <h2 class="break-all text-xl font-semibold" id={category}><a href={`#${category}`}>{category}</a></h2>

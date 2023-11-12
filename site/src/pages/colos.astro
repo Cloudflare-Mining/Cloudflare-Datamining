@@ -1,23 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Table from '../components/Table.astro';
 
-import {airports} from '../airportsWithLocations.js';
-import {types} from '../coloTypes';
-import MainHeading from '../components/MainHeading.astro';
+import { airports } from '../airportsWithLocations.js';
+import { types } from '../coloTypes';
 import Description from '../components/Description.astro';
+import MainHeading from '../components/MainHeading.astro';
+import Table from '../components/Table.astro';
+import Layout from '../layouts/Layout.astro';
 export const prerender = true;
 
 const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
 const colos = importFiles[0].default;
 
-for(const coloId in colos) {
+for (const coloId in colos) {
 	const colo = colos[coloId];
 	const airport = airports.find(air => colo.toUpperCase().startsWith(air.code));
-	if(!airport) {
+	if (!airport) {
 		continue;
 	}
-	if(airport?.name.includes('China')) {
+	if (airport?.name.includes('China')) {
 		types[colo] = 'JDC';
 	}
 }
@@ -28,8 +28,8 @@ const additionalTags: {
 
 const DOColosRes = await fetch('https://colo-route.jross.dev/colo-route/colos');
 const DOColos = await DOColosRes.json();
-for(const colo of DOColos) {
-	if(!additionalTags[colo]) {
+for (const colo of DOColos) {
+	if (!additionalTags[colo]) {
 		additionalTags[colo] = [];
 	}
 	additionalTags[colo].push('DOs');
@@ -72,52 +72,52 @@ for(const colo of DOColos) {
 
 async function getColosStatus() {
 	const coloTable = document.querySelector('table#colos');
-	if(!coloTable) {
+	if (!coloTable) {
 		return;
 	}
 	const headers = coloTable.querySelectorAll('thead tr th');
-	if(!headers) {
+	if (!headers) {
 		return;
 	}
 	let statusIndex = null;
-	for(const [index, header] of headers.entries()) {
-		if(header.textContent === 'Status') {
+	for (const [index, header] of headers.entries()) {
+		if (header.textContent === 'Status') {
 			statusIndex = index + 1;
 			break;
 		}
 	}
 	let tableRows = coloTable.querySelectorAll('tbody tr');
-	if(!tableRows) {
+	if (!tableRows) {
 		return;
 	}
 
 	const coloStatusRes = await fetch('https://colos-status.jross.workers.dev/');
 	const coloStatus = await coloStatusRes.json();
-	const colosStatuses = {Online: 0, China: 0, Offline: 0};
+	const colosStatuses = { Online: 0, China: 0, Offline: 0 };
 	let totalColos = 0;
 
-	for(const row of tableRows) {
+	for (const row of tableRows) {
 		const coloName = row.querySelector('td:nth-child(2)')?.textContent?.trim?.();
 		const status = row.querySelector(`td:nth-child(${statusIndex})`);
 		const tags = row.querySelector('td:nth-child(3)')?.innerHTML?.trim?.();
-		if(!coloName || !status) {
+		if (!coloName || !status) {
 			continue;
 		}
 		status.textContent = '';
 		let spanElement = status.querySelector('span');
-		if(!spanElement) {
+		if (!spanElement) {
 			spanElement = document.createElement('span');
 			status.append(spanElement);
 		}
 		spanElement.classList.add('font-sans', 'inline-flex', 'items-center', 'rounded-full', 'px-2.5', 'py-0.5', 'text-xs', 'font-medium');
 		const online = coloStatus?.[coloName] === true;
-		if(online) {
+		if (online) {
 			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
 			spanElement.textContent = 'Online';
-		}else if(tags?.includes('JDC')) {
+		} else if (tags?.includes('JDC')) {
 			spanElement.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100');
 			spanElement.textContent = 'China';
-		}else{
+		} else {
 			spanElement.classList.add('bg-red-100', 'dark:bg-red-800', 'text-red-800', 'dark:text-red-100');
 			spanElement.textContent = 'Offline';
 		}
@@ -127,18 +127,18 @@ async function getColosStatus() {
 	}
 
 	const statusTable = document.querySelector('table#status');
-	if(!statusTable) {
+	if (!statusTable) {
 		return;
 	}
 	tableRows = statusTable.querySelectorAll('tbody tr');
-	if(!tableRows) {
+	if (!tableRows) {
 		return;
 	}
-	for(const row of tableRows) {
+	for (const row of tableRows) {
 		const status = row.querySelector('td:nth-child(1)')?.textContent?.trim?.() as 'Online' | 'Offline' | 'China';
 		const total = row.querySelector('td:nth-child(2)');
 		const percent = row.querySelector('td:nth-child(3)');
-		if(!status || !total || !percent || colosStatuses[status] === undefined) {
+		if (!status || !total || !percent || colosStatuses[status] === undefined) {
 			continue;
 		}
 		total.textContent = colosStatuses[status] as unknown as string;

@@ -1,11 +1,12 @@
 import 'dotenv/config';
-import path from 'node:path';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import process from 'node:process';
-import fetch from 'node-fetch';
-import dateFormat from 'dateformat';
 
-import {tryAndPush} from './utils.js';
+import dateFormat from 'dateformat';
+import fetch from 'node-fetch';
+
+import { tryAndPush } from './utils.js';
 
 async function run() {
 	const result = {};
@@ -30,11 +31,11 @@ async function run() {
 	});
 
 	const types = await typesRes.json();
-	if(!types?.data?.__schema?.types) {
+	if (!types?.data?.__schema?.types) {
 		throw new Error('Failed to get GraphQL types');
 	}
 	let query = 'query {\n';
-	for(const type of types.data.__schema.types) {
+	for (const type of types.data.__schema.types) {
 		query += `  ${type.name}: __type(name:"${type.name}") {\n`
           + '    fields {\n'
           + '      name\n'
@@ -63,10 +64,10 @@ async function run() {
 
 	const fields = await fieldsRes.json();
 
-	for(const type of Object.keys(result)) {
+	for (const type of Object.keys(result)) {
 		const typeFields = fields.data[type].fields;
 
-		for(const field of typeFields) {
+		for (const field of typeFields) {
 			result[type][field.name] = field.description;
 		}
 	}
@@ -182,7 +183,7 @@ async function run() {
 			query: rawQuery,
 		}),
 	});
-	if(rawGraphQLRes.ok) {
+	if (rawGraphQLRes.ok) {
 		const rawGraphQL = await rawGraphQLRes.json();
 		await fs.writeFile(path.resolve('../data/other/graphql-raw.json'), JSON.stringify(rawGraphQL, null, '\t'));
 	}

@@ -1,11 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
 
 import icons from '../../../data/icons/es/reactsvgs/index.js';
 import CFIcon from '../components/CFIcon.astro';
 import Description from '../components/Description.astro';
-
 import MainHeading from '../components/MainHeading.astro';
+import Layout from '../layouts/Layout.astro';
 export const prerender = true;
 ---
 
@@ -36,16 +35,16 @@ export const prerender = true;
 <script>
 	function addButtonClickHandlers() {
 		const copyButtons = document.querySelectorAll('button.copyButton');
-		if(!copyButtons) {
+		if (!copyButtons) {
 			return;
 		}
-		for(const button of copyButtons) {
+		for (const button of copyButtons) {
 			button.addEventListener('click', async (event) => {
 				const target = event?.target as HTMLElement;
 				const parent =
 					target?.parentElement?.parentElement?.parentElement;
 				const code = parent?.querySelector('svg');
-				if(!code) {
+				if (!code) {
 					return alert('Could not find code to copy.');
 				}
 				await navigator.clipboard.writeText(code.outerHTML);

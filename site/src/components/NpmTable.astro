@@ -7,7 +7,7 @@ export interface Props {
 	headers?: string[]
 }
 
-const {data, title, headers}: {data: any, title: string, headers?: string[]} = Astro.props;
+const { data, title, headers }: { data: any, title: string, headers?: string[] } = Astro.props;
 const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 
 ---
@@ -39,7 +39,7 @@ const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 												{data[namespace][pkg].description}
 											</p>
 											<div>
-												{new Date(data[namespace][pkg].date).toLocaleString('en-GB', {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'})}
+												{new Date(data[namespace][pkg].date).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })}
 													&middot;
 												<span class="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 font-sans text-xs font-medium text-gray-800 dark:bg-gray-900 dark:text-gray-100">v{data[namespace][pkg].version}</span>
 													&middot;

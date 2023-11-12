@@ -1,10 +1,11 @@
 import 'dotenv/config';
 import path from 'node:path';
+
+import dateFormat from 'dateformat';
 import fs from 'fs-extra';
 import slug from 'slug';
-import dateFormat from 'dateformat';
 
-import {tryAndPush, cfRequest} from '../utils.js';
+import { cfRequest, tryAndPush } from '../utils.js';
 
 const dir = path.resolve('../data/products/rulesets');
 await fs.ensureDir(dir);
@@ -12,24 +13,24 @@ await fs.ensureDir(dir);
 async function run() {
 	const rulesets = await cfRequest(`https://api.cloudflare.com/client/v4/zones/${process.env.CLOUDFLARE_ZONE_ID}/rulesets`);
 	const rulesetsJson = await rulesets.json();
-	if(!rulesets.ok) {
+	if (!rulesets.ok) {
 		console.error(`rulesets failed: ${rulesets.status} ${rulesets.statusText}`);
 		return;
 	}
-	await fs.writeJson(path.resolve(dir, 'rulesets.json'), rulesetsJson.result, {spaces: '\t'});
+	await fs.writeJson(path.resolve(dir, 'rulesets.json'), rulesetsJson.result, { spaces: '\t' });
 
 	// get more info about each ruleset
-	for(const ruleset of rulesetsJson.result) {
+	for (const ruleset of rulesetsJson.result) {
 		const rulesetDetails = await cfRequest(`https://api.cloudflare.com/client/v4/zones/${process.env.CLOUDFLARE_ZONE_ID}/rulesets/${ruleset.id}`);
 		const rulesetDetailsJson = await rulesetDetails.json();
-		if(!rulesetDetails.ok) {
+		if (!rulesetDetails.ok) {
 			console.error(`ruleset ${ruleset.id} failed: ${rulesetDetails.status} ${rulesetDetails.statusText}`);
 			continue;
 		}
 		const resultRaw = rulesetDetailsJson.result;
 		const resultSorted = resultRaw;
 		resultSorted.rules = resultRaw.rules.sort((ruleA, ruleB) => (ruleA.description + ruleA.id).localeCompare(ruleB.description + ruleB.id));
-		await fs.writeJson(path.resolve(dir, `rulesets-${slug(ruleset.name)}-${ruleset.id}.json`), rulesetDetailsJson.result, {spaces: '\t'});
+		await fs.writeJson(path.resolve(dir, `rulesets-${slug(ruleset.name)}-${ruleset.id}.json`), rulesetDetailsJson.result, { spaces: '\t' });
 	}
 
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');

@@ -94,10 +94,10 @@ const navItems = [
 ];
 
 let currentPath = Astro.url.pathname;
-if(currentPath.charAt(-1) === '/') {
+if (currentPath.charAt(-1) === '/') {
 	currentPath = currentPath.slice(-1);
 }
-const {usage} = Astro.props;
+const { usage } = Astro.props;
 ---
 
 <nav aria-label="Sidebar" class="sticky top-4">
@@ -105,7 +105,7 @@ const {usage} = Astro.props;
 		<div class="space-y-1">
 			{
 				navItems.map((item, index) => {
-					if(item.submenu) {
+					if (item.submenu) {
 						return (
 							<div class="space-y-1">
 								<button
@@ -253,21 +253,21 @@ const {usage} = Astro.props;
 </nav>
 
 <script>
-	for(const button of document.querySelectorAll('button')) {
+	for (const button of document.querySelectorAll('button')) {
 		button.addEventListener('click', function() {
 			document
 				.querySelector(`#${button.id}-menu`)
 				?.classList.toggle('hidden');
 			const icon = document.querySelector(`#${button.id}-icon`)!;
-			if(!icon) {
+			if (!icon) {
 				return;
 			}
 			icon.classList.toggle('text-gray-300');
 			icon.classList.toggle('text-gray-400');
 			icon.classList.toggle('rotate-90');
-			if(button.ariaExpanded === 'true') {
+			if (button.ariaExpanded === 'true') {
 				button.ariaExpanded = 'false';
-			}else{
+			} else {
 				button.ariaExpanded = 'true';
 			}
 		});

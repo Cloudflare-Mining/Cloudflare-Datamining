@@ -1,19 +1,20 @@
 import path from 'node:path';
-import fs from 'fs-extra';
+
+import { parse } from 'acorn';
+import { parse as parseLoose } from 'acorn-loose';
+import { full } from 'acorn-walk';
 import dateFormat from 'dateformat';
-import fetch from 'node-fetch';
-import {parse} from 'acorn';
-import {parse as parseLoose} from 'acorn-loose';
-import {full} from 'acorn-walk';
-import isValidCSSUnit from 'is-valid-css-unit';
+import fs from 'fs-extra';
 import hexColorRegex from 'hex-color-regex';
+import isValidCSSUnit from 'is-valid-css-unit';
 import cssProperties from 'known-css-properties';
+import fetch from 'node-fetch';
 
 import {
-	tryAndPush,
 	beautify,
 	getHttpsAgent,
 	sortObjectByKeys,
+	tryAndPush,
 } from './utils.js';
 
 const mainScript = /(main\.bundle\.[\da-z]+\.js)/;
@@ -35,11 +36,11 @@ async function findWantedChunks(chunks) {
 	};
 	const getChunks = [];
 	let fetched = 0;
-	for(const chunk of chunks) {
+	for (const chunk of chunks) {
 		getChunks.push(async function() {
-			const res = await fetch(`${staticDashURL}${chunk}`, {agent});
+			const res = await fetch(`${staticDashURL}${chunk}`, { agent });
 			fetched++;
-			if(!res.ok) {
+			if (!res.ok) {
 				throw new Error('Failed to fetch chunk ' + chunk);
 			}
 			const text = await res.text();
@@ -54,7 +55,7 @@ async function findWantedChunks(chunks) {
 	const logProgress = setInterval(() => {
 		console.log(`Fetched ${fetched}/${chunks.length} chunks`);
 	}, 1000);
-	while(getChunks.length > 0) {
+	while (getChunks.length > 0) {
 		// 10 at a time
 		await Promise.all(getChunks.splice(0, 10).map(func => func()));
 	}
@@ -64,18 +65,18 @@ async function findWantedChunks(chunks) {
 }
 
 async function getChunks() {
-	const response = await fetch(staticDashURL, {agent});
+	const response = await fetch(staticDashURL, { agent });
 	const text = await response.text();
 
 	// Find `main.js` bundle
 	const match = mainScript.exec(text);
-	if(match === null || match.length < 2) {
+	if (match === null || match.length < 2) {
 		return;
 	}
 
 	const appFile = match[1];
 
-	const appRes = await fetch(`${staticDashURL}${appFile}`, {agent});
+	const appRes = await fetch(`${staticDashURL}${appFile}`, { agent });
 	const appJs = await appRes.text();
 	//await writeJS(appFile, appJs);
 
@@ -84,9 +85,9 @@ async function getChunks() {
 	const translations = {};
 	const rawTranslations = new Set();
 	let version = null;
-	const ast = parse(appJs, {ecmaVersion: 2022});
+	const ast = parse(appJs, { ecmaVersion: 2022 });
 	full(ast, (node) => {
-		if(
+		if (
 			node.type === 'AssignmentExpression' &&
 			node.left?.type === 'MemberExpression' &&
 			node.right?.type === 'FunctionExpression' &&
@@ -103,10 +104,10 @@ async function getChunks() {
 		) {
 			// first find all chunks
 			const properties = node.right?.body?.body[0]?.argument?.left?.right?.object.properties;
-			for(const property of properties) {
+			for (const property of properties) {
 				chunks.push(`${property.key.value}.${property.value.value}.js`);
 			}
-		}else if(
+		} else if (
 			node.type === 'CallExpression' &&
 			node.callee?.type === 'SequenceExpression' &&
 			node.callee?.expressions?.length === 2 &&
@@ -116,22 +117,22 @@ async function getChunks() {
 
 		) {
 			// then get some translations
-			if(!node.arguments[0].value || node?.arguments?.[0]?.value?.startsWith?.('/')) {
+			if (!node.arguments[0].value || node?.arguments?.[0]?.value?.startsWith?.('/')) {
 				return;
 			}
 			translations[node.arguments[0].value] ??= {};
 			console.log('Found translation', node.arguments[0].value);
-			for(const property of node.arguments[1].properties) {
-				if(property.key.type === 'Identifier') {
+			for (const property of node.arguments[1].properties) {
+				if (property.key.type === 'Identifier') {
 					translations[node.arguments[0].value][property.key.name] = property.value.value;
 					rawTranslations.add(property.key.name);
-				}else if(property.key.type === 'Literal') {
+				} else if (property.key.type === 'Literal') {
 					translations[node.arguments[0].value][property.key.value] = property.value.value;
 					rawTranslations.add(property.key.value);
 				}
 				rawTranslations.add(property.value.value);
 			}
-		}else if(
+		} else if (
 			node.type === 'ObjectExpression' &&
 			node.properties?.length === 1 &&
 			node.properties[0]?.key?.type === 'Identifier' &&
@@ -140,8 +141,8 @@ async function getChunks() {
 			node.properties[0]?.value?.properties?.length > 0
 		) {
 			// and some more translations
-			for(const property of node.properties[0].value.properties) {
-				if(!property.key?.value || property?.key?.value?.startsWith?.('/')) {
+			for (const property of node.properties[0].value.properties) {
+				if (!property.key?.value || property?.key?.value?.startsWith?.('/')) {
 					continue;
 				}
 				console.log('Found translation', property.key.value);
@@ -149,7 +150,7 @@ async function getChunks() {
 				rawTranslations.add(property.value.value);
 				const split = property.key.value.split('.');
 				const namespace = split[0];
-				if(!namespace) {
+				if (!namespace) {
 					console.warn('No namespace found for', property.key.value);
 					continue;
 				}
@@ -157,12 +158,12 @@ async function getChunks() {
 				translations[namespace] ??= {};
 				translations[namespace][key] = property.value.value;
 			}
-		}else if(
+		} else if (
 			node.type === 'ObjectExpression' &&
 			node.properties.some(property => property.key?.type === 'Identifier' && (property.key?.name === 'release' || property.key?.name === 'dsn'))
 		) {
 			const findVersion = node.properties.find(property => property.key?.type === 'Identifier' && property.key?.name === 'release')?.value?.value;
-			if(findVersion) {
+			if (findVersion) {
 				version = findVersion;
 			}
 		}
@@ -190,126 +191,126 @@ async function generateDashboardStructure(wantedChunks, translations) {
 	const addString = (str, type = 'string') => {
 		// handle all strings
 		// ignore a bunch of things we don't care about or want to dupe
-		if(typeof(str) !== 'string') {
+		if (typeof(str) !== 'string') {
 			return;
 		}
-		if(translations.has(str)) {
+		if (translations.has(str)) {
 			return;
 		}
-		if(str.trim() === '') {
+		if (str.trim() === '') {
 			return;
 		}
-		if(str.startsWith('<html>')) {
+		if (str.startsWith('<html>')) {
 			return;
 		}
-		if(str.startsWith('[{')) {
+		if (str.startsWith('[{')) {
 			return;
 		}
 		// likely SVG string
-		if(/^m\s?\d+/i.test(str)) {
+		if (/^m\s?\d+/i.test(str)) {
 			return;
 		}
 		// images and stuff
-		if(str.startsWith('data:')) {
+		if (str.startsWith('data:')) {
 			return;
 		}
-		if(str.startsWith('url(')) {
+		if (str.startsWith('url(')) {
 			return;
 		}
-		if(str.startsWith('http')) {
+		if (str.startsWith('http')) {
 			return;
 		}
 		// likely CSS string
-		if(str.includes('!important')) {
+		if (str.includes('!important')) {
 			return;
 		}
-		if(str.startsWith(';\n')) {
+		if (str.startsWith(';\n')) {
 			return;
 		}
-		if(str.startsWith('calc(')) {
+		if (str.startsWith('calc(')) {
 			return;
 		}
 		// css units
-		if(isValidCSSUnit.default(str)) {
+		if (isValidCSSUnit.default(str)) {
 			return;
 		}
-		if(hexColorRegex({strict: true}).test(str)) {
+		if (hexColorRegex({ strict: true }).test(str)) {
 			return;
 		}
-		if(cssProperties.all.includes(str)) {
+		if (cssProperties.all.includes(str)) {
 			return;
 		}
 		// number px/fr
-		if(/^\d+\s?(px|fr|rem)/i.test(str)) {
+		if (/^\d+\s?(px|fr|rem)/i.test(str)) {
 			return;
 		}
 		// likely more css/svg stuff
-		if(str.startsWith('0 ')) {
+		if (str.startsWith('0 ')) {
 			return;
 		}
-		if(type === 'string') {
+		if (type === 'string') {
 			strings.add(str?.trim?.());
-		}else if(type === 'property') {
+		} else if (type === 'property') {
 			properties.add(str?.trim?.());
-		}else if(type === 'identifier') {
+		} else if (type === 'identifier') {
 			identifiers.add(str?.trim?.());
 		}
 	};
-	for(const chunk of wantedChunks) {
-		for(const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)) {
-			if(match && match[1] && !match[1].includes('`')) {
-				try{
+	for (const chunk of wantedChunks) {
+		for (const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)) {
+			if (match && match[1] && !match[1].includes('`')) {
+				try {
 					const url = new URL(match[1]);
 					url.pathname = url.pathname.replace(/\/\/+/g, '/');
 					links.add(url.toString());
-				}catch{
+				} catch {
 					//console.warn('Found a bad link', match[1]);
 				}
 			}
 		}
 
 		// get callees, strings, etc.
-		try{
+		try {
 			const ast = parseLoose(chunk.code, {
 				sourceType: 'script',
 				ecmaVersion: 2022,
 			});
 			full(ast, (node) => {
-				if(node.type === 'StringLiteral' || node.type === 'Literal') {
-					if(node.regex && node.raw) {
+				if (node.type === 'StringLiteral' || node.type === 'Literal') {
+					if (node.regex && node.raw) {
 						regexes.add(node.raw?.trim?.());
-					}else if(node.value) {
+					} else if (node.value) {
 						addString(node.value);
 					}
 				}
-				if(node.type === 'TemplateLiteral') {
+				if (node.type === 'TemplateLiteral') {
 					addString(node.quasis[0].value.raw?.trim?.());
 				}
-				if(node.type === 'Identifier' && node.name?.length > 3) {
+				if (node.type === 'Identifier' && node.name?.length > 3) {
 					addString(node.name, 'identifier');
 				}
-				if(node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 3) {
+				if (node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 3) {
 					callees.add(node.callee.name);
 				}
-				if(node.type === 'Property' && node.key?.name && node.key.name.length > 3) {
+				if (node.type === 'Property' && node.key?.name && node.key.name.length > 3) {
 					addString(node.key.name, 'property');
 				}
-				if(node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 3) {
+				if (node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 3) {
 					addString(node.property.name, 'property');
 				}
-				if(node.type === 'SwitchStatement') {
-					for(const switchCase of node.cases) {
-						if(switchCase.test) {
-							if(switchCase.test.type === 'Literal') {
+				if (node.type === 'SwitchStatement') {
+					for (const switchCase of node.cases) {
+						if (switchCase.test) {
+							if (switchCase.test.type === 'Literal') {
 								addString(switchCase.test.value);
-							}else if(switchCase.test.type === 'MemberExpression') {
+							} else if (switchCase.test.type === 'MemberExpression') {
 								addString(switchCase.test.property.name);
 							}
 						}
 					}
 				}
 			});
-		}catch{}
+		} catch {}
 	}
 
 	const linksFile = path.resolve('../data/zt-dashboard/links.json');
@@ -340,7 +341,7 @@ async function run() {
 	console.log('Fetching and analysing additional chunks...');
 	const wantedChunks = await findWantedChunks(chunks.chunks);
 
-	if(!wantedChunks || wantedChunks.dashboard === null) {
+	if (!wantedChunks || wantedChunks.dashboard === null) {
 		console.error('Failed to find main chunk!');
 		return;
 	}
@@ -353,7 +354,7 @@ async function run() {
 	console.log('Writing translations...');
 	const translationsDir = path.resolve('../data/zt-dashboard-translations/');
 	await fs.emptyDir(translationsDir);
-	for(const [translationName, translation] of Object.entries(chunks.app.translations)) {
+	for (const [translationName, translation] of Object.entries(chunks.app.translations)) {
 		const file = path.resolve(`${translationsDir}/${translationName}.json`);
 		await fs.ensureDir(path.dirname(file));
 		const sorted = sortObjectByKeys(translation);
@@ -368,21 +369,21 @@ async function run() {
 
 	// parse navigation
 	let navigation = null;
-	if(wantedChunks.navigation) {
+	if (wantedChunks.navigation) {
 		const ast = parse(wantedChunks.navigation.code, {
 			sourceType: 'script',
 			ecmaVersion: 2022,
 		});
 		full(ast, (node) => {
-			if(node.type === 'ObjectExpression') {
+			if (node.type === 'ObjectExpression') {
 				const hasRoot = node.properties?.find?.(prop => prop.key.name === 'root');
 				// this is probably our navigation
-				if(hasRoot && hasRoot.value.type === 'ArrayExpression') {
+				if (hasRoot && hasRoot.value.type === 'ArrayExpression') {
 					navigation = node;
 				}
 			}
 		});
-		if(navigation) {
+		if (navigation) {
 			console.log('Found navigation');
 			const rawNavigation = wantedChunks.navigation.code.slice(navigation.start, navigation.end);
 			// eslint-disable-next-line no-eval
@@ -397,15 +398,15 @@ async function run() {
 		}
 	}
 
-	const version = await fetch(`${staticDashURL}version.json`, {agent});
-	if(version.ok) {
+	const version = await fetch(`${staticDashURL}version.json`, { agent });
+	if (version.ok) {
 		const json = await version.json();
 		const file = path.resolve('../data/zt-dashboard/version.json');
 		await fs.ensureDir(path.dirname(file));
 		await fs.writeFile(file, JSON.stringify(json, null, '\t'));
 
 		const allVersions = await fs.readJson(path.resolve('../data/zt-dashboard/versions.json'));
-		if(!allVersions.some(existingVersion => existingVersion.revision === json.revision && existingVersion.build_id === json.build_id)) {
+		if (!allVersions.some(existingVersion => existingVersion.revision === json.revision && existingVersion.build_id === json.build_id)) {
 			allVersions.unshift(json);
 		}
 		await fs.writeFile(path.resolve('../data/zt-dashboard/versions.json'), JSON.stringify(allVersions, null, '\t'));

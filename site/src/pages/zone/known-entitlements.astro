@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import FlagsTable from '../../components/FlagsTable.astro';
-import {sortObjectByKeys} from '../../utils.js';
+import Layout from '../../layouts/Layout.astro';
+import { sortObjectByKeys } from '../../utils.js';
 export const prerender = true;
 
 const importFiles = await Astro.glob('../../../../data/entitlements/zone.json');
 const rawCategories:any = {};
-for(const entitlement of importFiles[0].default) {
+for (const entitlement of importFiles[0].default) {
 	const category = rawCategories[entitlement.feature.feature_set] ?? {};
 	category[entitlement.id] = entitlement.allocation.type;
 	rawCategories[entitlement.feature.feature_set] = category;

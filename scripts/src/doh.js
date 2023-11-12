@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import path from 'node:path';
 
+import dateFormat from 'dateformat';
 import fs from 'fs-extra';
 import fetch from 'node-fetch';
-import dateFormat from 'dateformat';
 
-import {tryAndPush, propertiesToArray} from './utils.js';
+import { propertiesToArray, tryAndPush } from './utils.js';
 
 async function run() {
 	const dir = path.resolve('../data/doh');
@@ -26,13 +26,13 @@ async function run() {
 		},
 	];
 
-	for(const test of tests) {
+	for (const test of tests) {
 		const dohResponse = await fetch(test.url, {
 			headers: {
 				'accept': 'application/dns-json',
 			},
 		});
-		if(!dohResponse.ok) {
+		if (!dohResponse.ok) {
 			console.log('Failed to get DNS response', dohResponse.status, await dohResponse.text());
 			return;
 		}
@@ -42,8 +42,8 @@ async function run() {
 
 		// trim to a single item in arrays for nice diffs
 		const trimmed = json;
-		for(const key in trimmed) {
-			if(Array.isArray(trimmed[key])) {
+		for (const key in trimmed) {
+			if (Array.isArray(trimmed[key])) {
 				trimmed[key] = trimmed[key].slice(0, 1);
 			}
 		}

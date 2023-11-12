@@ -1,13 +1,14 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
+
 import dateFormat from 'dateformat';
+import fs from 'fs-extra';
 
 import {
-	tryAndPush,
-	propertiesToArray,
 	cfRequest,
+	propertiesToArray,
 	sortObjectByKeys,
+	tryAndPush,
 } from '../utils.js';
 
 const dir = path.resolve('../data/products/alerting');
@@ -20,7 +21,7 @@ const reqs = [
 		method: 'GET',
 		transform: (json) => {
 			const results = json.result;
-			for(const key in results) {
+			for (const key in results) {
 				results[key] = results[key].sort((itemA, itemB) => itemA.display_name.localeCompare(itemB.display_name));
 			}
 			return sortObjectByKeys(results);
@@ -35,7 +36,7 @@ const reqs = [
 ];
 
 console.log('Making requests...');
-for(const req of reqs) {
+for (const req of reqs) {
 	const file = path.resolve(dir, `${req.name}.json`);
 	const url = req.url;
 
@@ -43,16 +44,16 @@ for(const req of reqs) {
 	const res = await cfRequest(url, {
 		method: req.method,
 	});
-	if(!res.ok) {
+	if (!res.ok) {
 		console.log(`${req.name} failed: ${res.status} ${res.statusText}`);
 		continue;
 	}
 	const json = await res.json();
-	if(req.write !== false) {
-		if(req.transform) {
-			await fs.writeJson(file, req.transform(json), {spaces: '\t'});
-		}else{
-			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+	if (req.write !== false) {
+		if (req.transform) {
+			await fs.writeJson(file, req.transform(json), { spaces: '\t' });
+		} else {
+			await fs.writeJson(file, propertiesToArray(json).sort(), { spaces: '\t' });
 		}
 	}
 }

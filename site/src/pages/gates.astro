@@ -1,12 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Table from '../components/Table.astro';
-import MainHeading from '../components/MainHeading.astro';
-import SubHeading from '../components/SubHeading.astro';
-import Description from '../components/Description.astro';
-
 import dashGatesImport from '../../../data/gates/dashboard.json';
 import ztGatesImport from '../../../data/gates/zt-dashboard.json';
+import Description from '../components/Description.astro';
+import MainHeading from '../components/MainHeading.astro';
+import SubHeading from '../components/SubHeading.astro';
+import Table from '../components/Table.astro';
+import Layout from '../layouts/Layout.astro';
 export const prerender = true;
 
 interface Gates {

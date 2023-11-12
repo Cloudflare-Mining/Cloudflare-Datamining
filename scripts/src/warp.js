@@ -1,12 +1,13 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
-import fetch from 'node-fetch';
+
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
+import fs from 'fs-extra';
+import fetch from 'node-fetch';
 
 
-import {tryAndPush, getHttpsAgent} from './utils.js';
+import { getHttpsAgent, tryAndPush } from './utils.js';
 
 const agent = getHttpsAgent();
 
@@ -16,8 +17,8 @@ await fs.ensureDir(dir);
 async function getWarpVersions(platform, type, baseURL) {
 	console.log('Fetching WARP Versions', platform, type);
 	const getVersionsURL = `${baseURL}/public_releases?scope=tester&top=10000`;
-	const getVersionsRes = await fetch(getVersionsURL, {agent});
-	if(!getVersionsRes.ok) {
+	const getVersionsRes = await fetch(getVersionsURL, { agent });
+	if (!getVersionsRes.ok) {
 		console.error('Failed to get versions', getVersionsRes.status, await getVersionsRes.text());
 		return;
 	}
@@ -27,13 +28,13 @@ async function getWarpVersions(platform, type, baseURL) {
 	await fs.writeFile(path.resolve(platformDir, 'versions.json'), JSON.stringify(getVersions, null, '\t'));
 
 	console.log('Querying for specific version info', platform, type);
-	for(const version of getVersions) {
+	for (const version of getVersions) {
 		const versionString = filenamify(version.version);
 		const versionDir = path.resolve(platformDir, versionString);
 		await fs.ensureDir(versionDir);
 		const versionInfoUrl = `${baseURL}/releases/${version.id}`;
-		const versionInfo = await fetch(versionInfoUrl, {agent});
-		if(!versionInfo.ok) {
+		const versionInfo = await fetch(versionInfoUrl, { agent });
+		if (!versionInfo.ok) {
 			console.error('Failed to get version info', versionInfo.status, await versionInfo.text());
 			continue;
 		}

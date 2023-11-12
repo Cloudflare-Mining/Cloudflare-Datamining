@@ -1,13 +1,14 @@
 import 'dotenv/config';
 import path from 'node:path';
-import fs from 'fs-extra';
-import dateFormat from 'dateformat';
-import jsBeautify from 'js-beautify';
+
 import * as cheerio from 'cheerio';
+import dateFormat from 'dateformat';
+import fs from 'fs-extra';
+import jsBeautify from 'js-beautify';
 import fetch from 'node-fetch';
 
 
-import {tryAndPush} from '../utils.js';
+import { tryAndPush } from '../utils.js';
 
 const dir = path.resolve('../data/products/registrar');
 await fs.ensureDir(dir);
@@ -34,11 +35,11 @@ const css = [
 		url: 'https://foa.cloudflareregistrar.com/ui/style.css',
 	},
 ];
-for(const item of html) {
+for (const item of html) {
 	const filename = path.resolve(dir, `${item.name}.html`);
 	console.log(`Fetch for HTML ${item.name}...`);
 	const res = await fetch(item.url);
-	if(!res.ok) {
+	if (!res.ok) {
 		console.log(`${item.name} failed: ${res.status} ${res.statusText}`);
 		continue;
 	}
@@ -52,11 +53,11 @@ for(const item of html) {
 	}));
 }
 
-for(const item of css) {
+for (const item of css) {
 	const filename = path.resolve(dir, `${item.name}.css`);
 	console.log(`Fetch for CSS ${item.name}...`);
 	const res = await fetch(item.url);
-	if(!res.ok) {
+	if (!res.ok) {
 		console.log(`${item.name} failed: ${res.status} ${res.statusText}`);
 		continue;
 	}

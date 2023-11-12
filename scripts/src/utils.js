@@ -1,15 +1,16 @@
 /* eslint-disable unicorn/no-await-expression-member */
+import https from 'node:https';
 import path from 'node:path';
 import process from 'node:process';
-import fetch from 'node-fetch';
-import simpleGit from 'simple-git';
+
+import { flatten } from 'flat';
 import jsBeautify from 'js-beautify';
-import {flatten} from 'flat';
+import fetch from 'node-fetch';
 import puppeteer from 'puppeteer';
+import simpleGit from 'simple-git';
 
 
 // enablle keepalives for faster fetching
-import https from 'node:https';
 export function getHttpsAgent() {
 	const agent = new https.Agent({
 		keepAlive: true,
@@ -19,14 +20,14 @@ export function getHttpsAgent() {
 https.globalAgent = getHttpsAgent();
 
 // We want it to be ran from root not scripts
-const git = simpleGit({baseDir: path.resolve('..')});
+const git = simpleGit({ baseDir: path.resolve('..') });
 
 export async function sendToDiscord(name, msg, type) {
 	let url = process.env.DISCORD_URL;
-	if(type?.startsWith?.('DISCORD_WEBHOOK') && process.env[type]) {
+	if (type?.startsWith?.('DISCORD_WEBHOOK') && process.env[type]) {
 		url = process.env[type];
 	}
-	if(!url) {
+	if (!url) {
 		console.warn('Can not send Discord webhook as no URL is set', name, msg);
 		return;
 	}
@@ -43,15 +44,15 @@ export async function sendToDiscord(name, msg, type) {
 }
 
 export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage, type = 'default') {
-	if(!process.env.CI) {
+	if (!process.env.CI) {
 		console.log('Not pushing changes as not in CI environment.');
 		return;
 	}
-	try{
+	try {
 		await git.pull();
-		const prevCommit = (await git.log({maxCount: 1})).latest;
+		const prevCommit = (await git.log({ maxCount: 1 })).latest;
 		const result = await git.status();
-		if(result.files.length === 0) {
+		if (result.files.length === 0) {
 			console.log('No changes to commit');
 			return;
 		}
@@ -59,21 +60,21 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		await git.add(files);
 		await git.commit(commitMessage);
 		await git.push('origin', 'main');
-		const commit = (await git.log({maxCount: 1})).latest;
-		if(commit.hash !== prevCommit.hash) {
+		const commit = (await git.log({ maxCount: 1 })).latest;
+		if (commit.hash !== prevCommit.hash) {
 			const commitUrl = `https://github.com/Cloudflare-Mining/Cloudflare-Datamining/commit/${commit.hash}`;
 			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`, type);
 		}
-	}catch(err) {
+	} catch (err) {
 		console.error(err);
 	}
 }
 
 const getUnescapedAny = (sequence, code) => {
-	if(code !== null) {
+	if (code !== null) {
 		return String.fromCodePoint(code);
 	}
-	switch(sequence) {
+	switch (sequence) {
 		case '\\b': {
 			return '\b';
 		}
@@ -100,30 +101,30 @@ export function removeSlashes(source) {
 	const rx = /(?:(\\(u([0-9a-f]{4})|u\{([0-9a-f]+)\}|x([0-9a-f]{2})|(\d{1,3})|([\s\S]|$)))|([\s\S]))/giu;
 	let match;
 	let result = '';
-	while((match = rx.exec(source)) !== null) {
+	while ((match = rx.exec(source)) !== null) {
 		const [, sequence, fallback, unicode, unicodePoint, hex, octal, char, literal] = match;
-		if(literal) {
+		if (literal) {
 			result += literal;
 			continue;
 		}
 		let code;
-		if(char !== null) {
+		if (char !== null) {
 			code = null;
-		}else if(octal) {
+		} else if (octal) {
 			code = Number.parseInt(octal, 8);
-		}else{
+		} else {
 			code = Number.parseInt(unicodePoint || unicode || hex, 16);
 		}
-		try{
+		try {
 			const unescaped = getUnescapedAny(sequence, code);
-			if(!unescaped) {
+			if (!unescaped) {
 				result += fallback;
-			}else if(unescaped === true) {
+			} else if (unescaped === true) {
 				result += getUnescapedAny(sequence, code) || fallback;
-			}else{
+			} else {
 				result += unescaped;
 			}
-		}catch{
+		} catch {
 			result += fallback;
 		}
 	}

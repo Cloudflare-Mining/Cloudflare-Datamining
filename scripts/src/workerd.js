@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import path from 'node:path';
 
-import fs from 'fs-extra';
 import dateFormat from 'dateformat';
+import fs from 'fs-extra';
 
-import {tryAndPush} from './utils.js';
+import { tryAndPush } from './utils.js';
 
 async function run() {
 	console.log('Parsing workerd capnp-parse output');

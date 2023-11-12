@@ -1,10 +1,11 @@
 import 'dotenv/config';
-import pacote from 'pacote';
 import path from 'node:path';
-import dateFormat from 'dateformat';
-import {deleteAsync} from 'del';
 
-import {tryAndPush} from './utils.js';
+import dateFormat from 'dateformat';
+import { deleteAsync } from 'del';
+import pacote from 'pacote';
+
+import { tryAndPush } from './utils.js';
 
 async function run() {
 	console.log('Fetching Cloudflare types...');
