@@ -1,8 +1,8 @@
 interface coloTypes {
-	[name: string]: "CAN" | "DOG" | "LAB" | "PIG" | "MCP" | "JDC";
+	[name: string]: 'CAN' | 'DOG' | 'LAB' | 'PIG' | 'MCP' | 'JDC';
 }
 
-export const types:coloTypes = {
+export const types: coloTypes = {
 	// canaries
 	'blr01': 'CAN',
 	'kul01': 'CAN',

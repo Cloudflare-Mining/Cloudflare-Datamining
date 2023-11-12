@@ -2,12 +2,12 @@
 import commonTranslations from '../../../data/dashboard-translations/common.json';
 
 type Permission = {
-	name: string
-	description: string
-	types: string[]
+	name: string;
+	description: string;
+	types: string[];
 };
 export interface Props {
-	permissions: Permission[]
+	permissions: Permission[];
 }
 
 const { permissions } = Astro.props;

@@ -4,10 +4,10 @@ import SubHeading from './SubHeading.astro';
 export interface Props {
 	data: object;
 	title: string;
-	headers?: string[]
+	headers?: string[];
 }
 
-const { data, title, headers }: { data: any, title: string, headers?: string[] } = Astro.props;
+const { data, title, headers }: { data: any; title: string; headers?: string[] } = Astro.props;
 const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 
 ---
@@ -24,7 +24,7 @@ const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 							<table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
 								<thead class="bg-gray-50 dark:bg-gray-800">
 									<tr>
-										{(tableHeaders ?? []).map((header:string) => (
+										{(tableHeaders ?? []).map((header: string) => (
 											<th scope="col" class="truncate whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold first:pl-4">{header}</th>
 										))}
 									</tr>

@@ -19,28 +19,28 @@ const OS: any = await importFiles[Object.keys(importFiles).find(path => path.end
 	<SubHeading category="Environment" />
 	<Table
 		headers = {['Key', 'Value']}
-		data = {Object.keys(env.default).map((item:string) => [item, JSON.stringify(env.default[item], null, '\t')])}
+		data = {Object.keys(env.default).map((item: string) => [item, JSON.stringify(env.default[item], null, '\t')])}
 	></Table>
 
 	<!-- OS -->
 	<SubHeading category="OS Info" />
 	<Table
 		headers = {['Key', 'Value']}
-		data = {Object.keys(OS.default).map((item:string) => [item, OS.default[item]])}
+		data = {Object.keys(OS.default).map((item: string) => [item, OS.default[item]])}
 	></Table>
 
 	<!-- CPU -->
 	<SubHeading category="CPU Info" />
 	<Table
 		headers = {['Key', 'Value']}
-		data = {Object.keys(CPU.default).map((item:string) => [item, CPU.default[item]])}
+		data = {Object.keys(CPU.default).map((item: string) => [item, CPU.default[item]])}
 	></Table>
 
 	<!-- Package versions -->
 	<SubHeading category="Package Versions" />
 	<Table
 		headers = {['Package', 'Version', 'Description', 'Author']}
-		data = {Object.keys(packageVersions.default).map((item:string) => [
+		data = {Object.keys(packageVersions.default).map((item: string) => [
 			item,
 			packageVersions.default[item]?.version,
 			packageVersions.default[item]?.short_description,

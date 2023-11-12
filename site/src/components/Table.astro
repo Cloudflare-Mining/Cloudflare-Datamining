@@ -16,13 +16,13 @@ const { id, headers, data, widths } = Astro.props;
 				<table id={id} class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
 					<thead class="bg-gray-50 dark:bg-gray-800">
 						<tr>
-							{(headers ?? []).map((header:string) => (
+							{(headers ?? []).map((header: string) => (
 								<th scope="col" class="truncate whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold first:pl-4">{header}</th>
 							))}
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-600 dark:bg-gray-700">
-						{data.map((item:string[]) => (
+						{data.map((item: string[]) => (
 							<tr>
 								{item.map((value: string | string[], index: number) => (
 									<td class={['whitespace-nowrap py-2 pl-2 first:pl-4 pr-3 text-sm text-gray-500 dark:text-gray-300 truncate font-mono', widths?.[index]].join(' ').trim()}>

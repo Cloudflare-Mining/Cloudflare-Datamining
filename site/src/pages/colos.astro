@@ -46,7 +46,7 @@ for (const colo of DOColos) {
 		headers = {['Status', 'Total', '%']}
 		widths={['w-[80%]', 'w-[10%]', 'w-[10%]']}
 		id="status"
-		data = {['Online', 'Offline', 'China'].map((name:string) => [
+		data = {['Online', 'Offline', 'China'].map((name: string) => [
 			name,
 			'loading...',
 			'loading...',
@@ -56,7 +56,7 @@ for (const colo of DOColos) {
 		headers = {['ID', 'Colo', 'Tags', 'Status']}
 		widths={['w-[30%]', 'w-[30%]', 'w-[30%]', 'w-[10%]']}
 		id="colos"
-		data = {Object.keys(colos).map((id:string) => [
+		data = {Object.keys(colos).map((id: string) => [
 			id,
 			colos[id],
 			[

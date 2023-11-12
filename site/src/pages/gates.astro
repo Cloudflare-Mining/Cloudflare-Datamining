@@ -10,9 +10,9 @@ export const prerender = true;
 
 interface Gates {
 	[key: string]: {
-		enabled: boolean,
-		branches?: string[],
-	}
+		enabled: boolean;
+		branches?: string[];
+	};
 }
 const dashGates = dashGatesImport as Gates;
 const ztGates = ztGatesImport as Gates;
@@ -26,7 +26,7 @@ const ztGates = ztGatesImport as Gates;
 	<SubHeading category="Dashboard" />
 	<Table
 		headers = {['ID', 'Enabled', 'Branches']}
-		data = {Object.keys(dashGates).map((id:string) => [
+		data = {Object.keys(dashGates).map((id: string) => [
 			id,
 			String(dashGates[id].enabled),
 			JSON.stringify(dashGates[id].branches),
@@ -36,7 +36,7 @@ const ztGates = ztGatesImport as Gates;
 	<SubHeading category="ZT Dashboard" />
 	<Table
 		headers = {['ID', 'Enabled', 'Branches']}
-		data = {Object.keys(ztGates).map((id:string) => [
+		data = {Object.keys(ztGates).map((id: string) => [
 			id,
 			String(ztGates[id].enabled),
 			JSON.stringify(ztGates[id].branches),

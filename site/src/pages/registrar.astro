@@ -1,0 +1,30 @@
+---
+import MainHeading from '../components/MainHeading.astro';
+import Table from '../components/Table.astro';
+import Layout from '../layouts/Layout.astro';
+
+const importFiles = await Astro.glob('../../../data/registrar/_list.json');
+const registrar = importFiles[0].default;
+const formatter = new Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
+	minimumFractionDigits: 2,
+});
+---
+<Layout
+	title="Registrar - Cloudflare Datamining"
+	description="Automated listing of all Cloudflare Registrar TLDs and their prices."
+>
+	<MainHeading title="Registrar" />
+	<Table
+		headers = {['TLD', 'Price', 'Renewal', 'ICANN Fee']}
+		data = {Object.keys(registrar).map(tld => (
+			[
+				tld,
+				formatter.format(registrar[tld].price),
+				formatter.format(registrar[tld].renewal),
+				formatter.format(registrar[tld].icann_fee),
+			]
+		))}
+	></Table>
+</Layout>

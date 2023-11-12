@@ -5,13 +5,13 @@ import Table from './Table.astro';
 export interface Props {
 	data: object;
 	title: string;
-	headers?: string[]
+	headers?: string[];
 }
 
-const { data, title, headers }: { data: any, title: string, headers?: string[] } = Astro.props;
+const { data, title, headers }: { data: any; title: string; headers?: string[] } = Astro.props;
 const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 
-function getValue(data:string | object) {
+function getValue(data: string | object) {
 	if (typeof data === 'string') {
 		return data;
 	}
@@ -27,7 +27,7 @@ function getValue(data:string | object) {
 			<Table
 				headers = {tableHeaders}
 				widths={['w-2/3', 'w-1/3']}
-				data = {Object.keys(data[category]).map((item:string) => [item, getValue(data[category][item])])}
+				data = {Object.keys(data[category]).map((item: string) => [item, getValue(data[category][item])])}
 			></Table>
 		</div>
 	))}

@@ -5,7 +5,7 @@ import { sortObjectByKeys } from '../../utils.js';
 export const prerender = true;
 
 const importFiles = await Astro.glob('../../../../data/account/account_entitlements.json');
-const rawCategories:any = {};
+const rawCategories: any = {};
 for (const entitlement of importFiles[0].default) {
 	const category = rawCategories[entitlement.feature.feature_set] ?? {};
 	category[entitlement.id] = entitlement.allocation.value;

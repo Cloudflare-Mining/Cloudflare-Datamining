@@ -96,7 +96,7 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 		function triggerChange() {
 			const formData = new FormData(form);
 			const permissions = {};
-			const types:PermissionTypes = {};
+			const types: PermissionTypes = {};
 			for (const [key, value] of formData.entries()) {
 				if (key.startsWith('permission_')) {
 					permissions[key.replace('permission_', '')] = value;
