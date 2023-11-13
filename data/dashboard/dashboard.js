@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "CUSTESC-35175",
+					branch: "release-Nov.13.2023-1699884255",
 					isReleaseCandidate: "true",
-					commit: "7e1f80450c6ac4a52590102ac8b2dba990651f77",
+					commit: "c3d87616296c3c474c71588d9091b67f00241530",
 					env: "production",
-					builtAt: 1699639250612,
-					dashVersion: "711fec8e168cb61300504397f498c03adf722dd8",
+					builtAt: 1699884664306,
+					dashVersion: "56e2c0f2b2de7add92ee1db7ef3d1e6c13f5f431",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
