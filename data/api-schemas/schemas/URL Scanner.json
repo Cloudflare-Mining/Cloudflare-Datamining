@@ -4,7 +4,6 @@
 		"operationId": "urlscanner-search-scans",
 		"parameters": [
 			{
-				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -14,126 +13,104 @@
 				}
 			},
 			{
-				"description": "Scan uuid",
 				"in": "query",
 				"name": "scanId",
 				"schema": {
 					"description": "Scan uuid",
 					"format": "uuid",
-					"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Limit the number of objects in the response.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"default": 100,
 					"description": "Limit the number of objects in the response.",
 					"example": 100,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Pagination cursor to get the next set of results.",
 				"in": "query",
 				"name": "next_cursor",
 				"schema": {
-					"default": "",
 					"description": "Pagination cursor to get the next set of results.",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans requested after date (inclusive).",
 				"in": "query",
 				"name": "date_start",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "Filter scans requested after date (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans requested before date (inclusive).",
 				"in": "query",
 				"name": "date_end",
 				"schema": {
-					"example": "2022-09-15T00:00:00Z",
+					"description": "Filter scans requested before date (inclusive).",
 					"format": "date-time",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by exact match URL of _any_ request made by the webpage",
 				"in": "query",
 				"name": "url",
 				"schema": {
-					"default": "",
 					"description": "Filter scans by exact match URL of _any_ request made by the webpage",
 					"example": "https://example.com/?hello",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by hostname of _any_ request made by the webpage.",
 				"in": "query",
 				"name": "hostname",
 				"schema": {
-					"default": "",
 					"description": "Filter scans by hostname of _any_ request made by the webpage.",
 					"example": "example.com",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by url path of _any_ request made by the webpage.",
 				"in": "query",
 				"name": "path",
 				"schema": {
-					"default": "",
 					"description": "Filter scans by url path of _any_ request made by the webpage.",
 					"example": "/samples/subresource-integrity/",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by exact match to scanned URL (_after redirects_)",
 				"in": "query",
 				"name": "page_url",
 				"schema": {
-					"default": "",
 					"description": "Filter scans by exact match to scanned URL (_after redirects_)",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by main page hostname .",
 				"in": "query",
 				"name": "page_hostname",
 				"schema": {
-					"default": "",
 					"description": "Filter scans by main page hostname .",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Filter scans by exact match URL path (also supports suffix search).",
 				"in": "query",
 				"name": "page_path",
 				"schema": {
-					"default": "",
 					"description": "Filter scans by exact match URL path (also supports suffix search).",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Return only scans created by account.",
 				"in": "query",
 				"name": "account_scans",
 				"schema": {
-					"default": false,
 					"description": "Return only scans created by account.",
 					"type": "boolean"
 				}
@@ -186,7 +163,6 @@
 													},
 													"time": {
 														"description": "When scan was submitted (UTC)",
-														"example": "2022-09-15T00:00:00Z",
 														"format": "date-time",
 														"type": "string"
 													},
@@ -198,7 +174,6 @@
 													"uuid": {
 														"description": "Scan id",
 														"format": "uuid",
-														"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 														"type": "string"
 													}
 												},
@@ -233,7 +208,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Search results"
 			},
 			"400": {
 				"content": {
@@ -259,7 +234,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -272,7 +246,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -315,19 +288,16 @@
 		"operationId": "urlscanner-get-scan",
 		"parameters": [
 			{
-				"description": "Scan uuid",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
 				"schema": {
 					"description": "Scan uuid",
 					"format": "uuid",
-					"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -378,8 +348,10 @@
 										"scan": {
 											"properties": {
 												"asns": {
+													"description": "Dictionary of Autonomous System Numbers where ASN's are the keys",
 													"properties": {
 														"asn": {
+															"description": "ASN's contacted",
 															"properties": {
 																"asn": {
 																	"example": "15133",
@@ -418,7 +390,6 @@
 													"items": {
 														"properties": {
 															"issuer": {
-																"example": "",
 																"type": "string"
 															},
 															"subjectName": {
@@ -627,6 +598,7 @@
 												"geo": {
 													"properties": {
 														"continents": {
+															"description": "GeoIP continent location",
 															"items": {
 																"description": "GeoIP continent location",
 																"example": "North America",
@@ -635,6 +607,7 @@
 															"type": "array"
 														},
 														"locations": {
+															"description": "GeoIP country location",
 															"items": {
 																"description": "GeoIP country location",
 																"example": "US",
@@ -706,11 +679,9 @@
 																	"type": "string"
 																},
 																"subdivision1Name": {
-																	"example": "",
 																	"type": "string"
 																},
 																"subdivision2Name": {
-																	"example": "",
 																	"type": "string"
 																}
 															},
@@ -900,7 +871,6 @@
 																				"type": "integer"
 																			},
 																			"description": {
-																				"example": "",
 																				"type": "string"
 																			},
 																			"evidence": {
@@ -1078,7 +1048,6 @@
 																		"type": "number"
 																	},
 																	"httpOnly": {
-																		"example": false,
 																		"type": "boolean"
 																	},
 																	"name": {
@@ -1094,11 +1063,9 @@
 																		"type": "string"
 																	},
 																	"sameParty": {
-																		"example": false,
 																		"type": "boolean"
 																	},
 																	"secure": {
-																		"example": false,
 																		"type": "boolean"
 																	},
 																	"session": {
@@ -1234,11 +1201,9 @@
 															"type": "number"
 														},
 														"subdivision1Name": {
-															"example": "",
 															"type": "string"
 														},
 														"subdivision2name": {
-															"example": "",
 															"type": "string"
 														},
 														"url": {
@@ -1342,15 +1307,12 @@
 																"type": "string"
 															},
 															"redirectCount": {
-																"example": 0,
 																"type": "number"
 															},
 															"redirectEnd": {
-																"example": 0,
 																"type": "number"
 															},
 															"redirectStart": {
-																"example": 0,
 																"type": "number"
 															},
 															"requestStart": {
@@ -1366,11 +1328,9 @@
 																"type": "number"
 															},
 															"secureConnectionStart": {
-																"example": 0,
 																"type": "number"
 															},
 															"startTime": {
-																"example": 0,
 																"type": "number"
 															},
 															"transferSize": {
@@ -1382,15 +1342,12 @@
 																"type": "string"
 															},
 															"unloadEventEnd": {
-																"example": 0,
 																"type": "number"
 															},
 															"unloadEventStart": {
-																"example": 0,
 																"type": "number"
 															},
 															"workerStart": {
-																"example": 0,
 																"type": "number"
 															}
 														},
@@ -1455,7 +1412,6 @@
 															"items": {
 																"properties": {
 																	"message": {
-																		"example": "",
 																		"type": "string"
 																	}
 																},
@@ -1564,6 +1520,7 @@
 																	"type": "array"
 																},
 																"gsb_threat_types": {
+																	"description": "Please visit https://safebrowsing.google.com/ for more information.",
 																	"items": {
 																		"description": "Please visit https://safebrowsing.google.com/ for more information.",
 																		"example": "Malware",
@@ -1642,7 +1599,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -1682,7 +1638,6 @@
 															"items": {
 																"properties": {
 																	"message": {
-																		"example": "",
 																		"type": "string"
 																	}
 																},
@@ -1793,7 +1748,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -1806,7 +1760,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -1845,7 +1798,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -1858,7 +1810,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -1901,19 +1852,16 @@
 		"operationId": "urlscanner-get-scan-har",
 		"parameters": [
 			{
-				"description": "Scan uuid",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
 				"schema": {
 					"description": "Scan uuid",
 					"format": "uuid",
-					"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -2028,7 +1976,6 @@
 																	"request": {
 																		"properties": {
 																			"bodySize": {
-																				"example": 0,
 																				"type": "number"
 																			},
 																			"headers": {
@@ -2138,7 +2085,6 @@
 																				"type": "string"
 																			},
 																			"redirectURL": {
-																				"example": "",
 																				"type": "string"
 																			},
 																			"status": {
@@ -2279,7 +2225,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Returns the scan's har."
 			},
 			"202": {
 				"content": {
@@ -2290,7 +2236,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -2330,7 +2275,6 @@
 															"items": {
 																"properties": {
 																	"message": {
-																		"example": "",
 																		"type": "string"
 																	}
 																},
@@ -2441,7 +2385,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -2454,7 +2397,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -2493,7 +2435,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -2506,7 +2447,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -2549,19 +2489,16 @@
 		"operationId": "urlscanner-get-scan-screenshot",
 		"parameters": [
 			{
-				"description": "Scan uuid",
 				"in": "path",
 				"name": "scanId",
 				"required": true,
 				"schema": {
 					"description": "Scan uuid",
 					"format": "uuid",
-					"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 					"type": "string"
 				}
 			},
 			{
-				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -2571,12 +2508,11 @@
 				}
 			},
 			{
-				"description": "Target device type",
 				"in": "query",
 				"name": "resolution",
 				"schema": {
 					"default": "desktop",
-					"description": "Device resolutions.",
+					"description": "Target device type",
 					"enum": [
 						"desktop",
 						"mobile",
@@ -2596,7 +2532,7 @@
 						}
 					}
 				},
-				"description": "Successful Response"
+				"description": "Returns the scan's requested screenshot."
 			},
 			"202": {
 				"content": {
@@ -2607,7 +2543,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -2647,7 +2582,6 @@
 															"items": {
 																"properties": {
 																	"message": {
-																		"example": "",
 																		"type": "string"
 																	}
 																},
@@ -2758,7 +2692,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -2771,7 +2704,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -2810,7 +2742,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -2823,7 +2754,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -2866,7 +2796,6 @@
 		"operationId": "urlscanner-create-scan",
 		"parameters": [
 			{
-				"description": "Account Id",
 				"in": "path",
 				"name": "accountId",
 				"required": true,
@@ -2882,6 +2811,10 @@
 					"schema": {
 						"properties": {
 							"customHeaders": {
+								"additionalProperties": {
+									"type": "string"
+								},
+								"description": "Set custom headers",
 								"type": "object"
 							},
 							"screenshotsResolutions": {
@@ -2963,7 +2896,6 @@
 									"properties": {
 										"time": {
 											"description": "Time when url was submitted for scanning.",
-											"example": "2022-09-15T00:00:00Z",
 											"format": "date-time",
 											"type": "string"
 										},
@@ -2974,7 +2906,6 @@
 										"uuid": {
 											"description": "Scan ID.",
 											"format": "uuid",
-											"pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
 											"type": "string"
 										},
 										"visibility": {
@@ -3031,7 +2962,6 @@
 									"items": {
 										"properties": {
 											"message": {
-												"example": "",
 												"type": "string"
 											}
 										},
@@ -3044,7 +2974,6 @@
 								},
 								"success": {
 									"description": "Whether request was successful or not",
-									"example": false,
 									"type": "boolean"
 								}
 							},
@@ -3120,7 +3049,6 @@
 														"items": {
 															"properties": {
 																"message": {
-																	"example": "",
 																	"type": "string"
 																}
 															},
