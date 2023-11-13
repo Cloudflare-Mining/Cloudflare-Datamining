@@ -46,7 +46,7 @@
 	<h2 id="letsspeakaboutdns">Let's speak about DNS</h2>
 	<p>At CloudFlare we are using a custom DNS server called <code>rrdns</code>. Among many other requirements, the server is designed to withstand DDoS attacks.</p>
 	<p>Even though our server is pretty fast, when a large attack kicks in it might be unable to cope with the attack load. If that happens we must contain the damage - even if one IP address is under a heavy attack the server must still handle legitimate traffic on other IP addresses. In fact, our DNS architecture is designed to spread the load among 16k IP addresses.</p>
-	<p>When an IP address is under attack, and the server is not keeping up with incoming packets, the kernel receive queue on a UDP socket will overflow. We monitor that by looking at the <code>netstat</code> counters:</p>
+	<p>When <a href="https://www.cloudflare.com/ddos/under-attack" target="_blank">an IP address is under attack</a>, and the server is not keeping up with incoming packets, the kernel receive queue on a UDP socket will overflow. We monitor that by looking at the <code>netstat</code> counters:</p>
 	<pre><code>$ netstat -s --udp
 Udp:
     43957575 packet receive errors
