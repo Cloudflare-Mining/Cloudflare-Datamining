@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "release-Nov.13.2023-1699884255",
+					branch: "kkipp/STREAM-5354-fix-stream-edit-subscription-bugs",
 					isReleaseCandidate: "true",
-					commit: "c3d87616296c3c474c71588d9091b67f00241530",
+					commit: "0a096df31cdb1b3bd094eb80913501799e1b82fa",
 					env: "production",
-					builtAt: 1699884664306,
-					dashVersion: "56e2c0f2b2de7add92ee1db7ef3d1e6c13f5f431",
+					builtAt: 1699895798821,
+					dashVersion: "1a3946e2c0037ac2aff3c6a58606bdbf47a5a80d",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
