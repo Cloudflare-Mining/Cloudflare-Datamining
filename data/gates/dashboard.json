@@ -193,6 +193,9 @@
 	"cache-reserve-overview-promo": {
 		"enabled": true
 	},
+	"cache-reserve-purchase-page-experiment": {
+		"enabled": false
+	},
 	"client-certificates": {
 		"enabled": false
 	},
@@ -560,6 +563,9 @@
 			"registrar",
 			"buy-domains"
 		]
+	},
+	"registrar-domain-restore": {
+		"enabled": true
 	},
 	"rl-throttle-behaviour": {
 		"enabled": true
