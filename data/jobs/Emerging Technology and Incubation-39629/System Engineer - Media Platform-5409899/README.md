@@ -5,33 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the Department</strong></h4>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday.&nbsp; To help fulfill this mission, we are seeking a talented Threat Response Analyst, to identify, track, and defeat sophisticated email-borne cyber threats.&nbsp; In this position, your experience, thinking, and action will be the key to our success.&nbsp; You will identify Tactics, Techniques, and Procedures (TTPs) of ongoing Cyber Attacks in the real world. You will collaborate with our team to develop new ways to present and interact with our insights. You will stop the adversary. You will show the world how the adversary works.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4><strong>About the department</strong></h4>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p><strong>What you'll do</strong></p>
+<p>The Media platform organization builds and maintains a suite of products that are easy to enable and make web experiences faster.&nbsp; The <a href="https://developers.cloudflare.com/images/">Cloudflare Image Optimization</a> suite of products allow customers to focus on building great experiences rather than spending time optimizing for performance. You will own code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify the request flow of Media products, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Rust, Go, Typescript, Lua.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Undergraduate with a US College Degree Program in one of the following majors or equivalent: Computer Science, Information Technology, Information Security, or Computer Security or Information Systems.</li>
-	<li>At least 2 years experience in tracking and analyzing cyber campaigns utilizing technical indicators such as Domains, IP Addresses, Emails (Subjects, From, To, etc)</li>
-	<li>Experience analyzing, tracking and defending against phishing and BEC attacks</li>
-	<li>Working knowledge of email authentication protocols, and experience in email header analysis</li>
-	<li>You have the ability to synthesize technical information and document it in a non-technical manner including through graphical and verbal depictions</li>
-	<li>You have excellent English skills, both. verbal and written</li>
-	<li>You are capable and comfortable communicating actionable threat intelligence to both technical and executive-level stakeholders</li>
-	<li>Desire to learn and improve</li>
-	<li>Willing and eager to share knowledge, mentor and collaborate with a team</li>
+	<li>Experience building, deploying, and operating full-stack services.</li>
+	<li>You will be working mainly with systems programming languages like Rust, Golang, Typescript, Lua, etc</li>
+	<li>Solid understanding of computer science fundamentals such as data structures and system design.</li>
+	<li>Experience debugging, optimizing, and identifying failure modes in a large-scale distributed system.</li>
+	<li>A keen interest in the web and technologies such as web browsers, HTTP and JavaScript.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Experience in a Team Lead Role</li>
-	<li>Experience tracking and analyzing cyber campaigns utilizing technical Indicators of Compromise (IOCs)</li>
-	<li>Experience with malicious file formats such as Microsoft Office Documents, Adobe PDFs</li>
-	<li>Familiarity with regular expressions and their practical application in tracking malicious activity</li>
-	<li>Working knowledge of SQL and devising SQL queries</li>
-	<li>Experience with Yara</li>
-	<li>Experience with DNS, IPv4, IPv6, HTTP/HTTPS, SMTP/SMTPS</li>
+	<li>Experience with audio and video protocols – specifically, ingestion (SRT, RTMP, WebRTC) and delivery (HLS, DASH)</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>Expertise in data analysis and troubleshooting large-scale distributed systems</li>
+	<li>Managing contributions to open-source projects</li>
 </ul>
-<h4><br><br></h4>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
