@@ -114,7 +114,12 @@
 							"title": "workers-kv-main-image-1",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n8OYQf8Jn2pVfN9bOnI8j/258b9cdc97a708894d8fe614c9b110a1/BDES-5041_-_Workers-KV-serverless-applications.svg"
+								},
+								"description": "workers kv main image"
+							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
@@ -146,18 +151,15 @@
 							"id": "5d2b3c7a-f456-59fb-a6a6-906246ae6626",
 							"altText": "Developer week hero illustration",
 							"title": "Developer week hero illustration",
-							"activeAsset": "Brandfolder Asset",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 16760,
-								"height": 1392,
-								"width": 2184,
-								"filename": "developer-week-hero-illustration.svg",
+							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/developer-week-hero-illustration.svg"
-								}
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/eQa4uPwNrHTRhKehv3rDY/a4d03d39de4040c9a8338ac677792688/BDES-5041_-_Developer-week-hero-illustration.svg"
+								},
+								"description": "Developer week hero illustration"
 							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
@@ -169,8 +171,8 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
 						"togglesTo": []
 					},
 					{
