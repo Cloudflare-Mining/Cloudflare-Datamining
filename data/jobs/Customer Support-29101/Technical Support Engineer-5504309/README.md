@@ -5,61 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4 class="p1"><strong>About the role</strong></h4>
-<p class="p1">We're rekindling efforts to leverage acceleration and machine learning at Cloudflare in 2023, and the HW systems team is looking to hire senior technical engineers with a strong understanding of deep learning, ML end-to-end workloads and frameworks, and experience with hardware accelerator and processor architectures (GPUs, CPUs w/AI features, ASICs). This is an exciting opportunity with real world impact, where you'll get to build and deploy hardware accelerators on our data center platform.&nbsp;</p>
-<h4 class="p1"><strong>Responsibilities&nbsp;</strong></h4>
-<ul class="ul1">
-	<li class="li1">Evaluate, design and deploy cutting edge acceleration solutions for our growing services</li>
-	<li class="li1">Lead the design of scalable AI infrastructure for Cloudflare's own internal machine learning platform and tune for optimal performance</li>
-	<li class="li1">Collaborate with product/data science teams to identify customer use-cases and translate workloads to technical design and hardware requirements (architecture definition, hardware selection, performance tuning)</li>
-	<li class="li1">Engage with hardware vendors to identify hardware solutions that best fit needs of the platform</li>
-	<li class="li1">Set the strategy and long term roadmap to demonstrate the value proposition of AI/ML workloads for the edge&nbsp;</li>
-	<li class="li1">Engage with AI leaders across the industry and influence design based on open industry standards&nbsp;</li>
-</ul>
-<h4 class="p1"><span class="s1"><strong>Qualifications</strong></span></h4>
-<ul class="ul1">
-	<li class="li1">Masters or equivalent experience in Computer Architecture, Computer Science, Electrical Engineering or related field with 12 years of relevant experience or equivalent</li>
-	<li class="li1">Has demonstrated technical leadership on critical company wide projects with experience in computer architecture (GPU, CPU w/AI. acceleration) and ML software ecosystem. Experience with programming models a plus</li>
-	<li class="li1">Strong technical foundation and deep understanding of cloud technologies, DL/ML workloads in the industry, frameworks (Tensorflow/Pytorch), and containers tools.&nbsp;</li>
-	<li class="li1">Ability to work in a constantly changing ambiguous environment and bridget the software/hardware divide&nbsp;</li>
-	<li class="li1">Industry-wide impact. Proactively creates formal networks involving coordination with internal and external technical leaders and has tangible proof points (patents, papers, conference contributions, open source SW or HW contributions, and/or sitting on a standards committee or board, etc.) demonstrating industry-wide influence as an influential spokesperson for the organization</li>
-	<li class="li1">Must be collaborative and has demonstrated ability to work effectively across cross functional teams, sound technical judgement and is capable of building positive working relationships</li>
-	<li class="li1">Seeks to mentor team members, offers technical advice&nbsp; and seeks to continuously learn</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</span></p>
+<p><strong>What You’ll do</strong></p>
+<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare’s technology and gain a deeper understanding of internet technologies.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $168,000 - $248,000.</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $187,000 - $281,000.</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $196,000 - $286,000.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable communicating in writing and always put the customer first</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are a motivated self-starter who always looking to expand your skill sets</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You take initiatives and capable of learning new technologies / systems / features with little guidance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy troubleshooting and solving unknown technical problems and issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are inquisitive and able to communicate to different kind of audiences</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You understand how the Internet works</span></li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have web development, hosting, or customer support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have the ability to read and write in multiple languages</span></li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
