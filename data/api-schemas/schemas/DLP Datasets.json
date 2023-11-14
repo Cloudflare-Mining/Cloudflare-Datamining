@@ -912,6 +912,11 @@
 													],
 													"type": "object"
 												},
+												"max_cells": {
+													"format": "int64",
+													"minimum": 0,
+													"type": "integer"
+												},
 												"secret": {
 													"description": "The secret to use for Exact Data Match datasets. This is not present in\nCustom Wordlists.",
 													"format": "password",
@@ -925,6 +930,7 @@
 											},
 											"required": [
 												"version",
+												"max_cells",
 												"dataset"
 											],
 											"type": "object"
@@ -1145,6 +1151,11 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"max_cells": {
+													"format": "int64",
+													"minimum": 0,
+													"type": "integer"
+												},
 												"secret": {
 													"format": "password",
 													"type": "string"
@@ -1155,7 +1166,8 @@
 												}
 											},
 											"required": [
-												"version"
+												"version",
+												"max_cells"
 											],
 											"type": "object"
 										}

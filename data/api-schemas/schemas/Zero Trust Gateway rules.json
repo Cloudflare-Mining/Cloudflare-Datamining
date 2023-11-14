@@ -673,6 +673,74 @@
 																},
 																"type": "object"
 															},
+															"dns_resolvers": {
+																"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																"properties": {
+																	"ipv4": {
+																		"items": {
+																			"properties": {
+																				"ip": {
+																					"description": "IP address of upstream resolver.",
+																					"example": "2001:DB8::/64",
+																					"type": "string"
+																				},
+																				"port": {
+																					"description": "A port number to use for upstream resolver.",
+																					"example": 5053,
+																					"type": "integer"
+																				},
+																				"route_through_private_network": {
+																					"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"vnet_id": {
+																					"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"ip"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"ipv6": {
+																		"items": {
+																			"properties": {
+																				"ip": {
+																					"description": "IP address of upstream resolver.",
+																					"example": "2001:DB8::/64",
+																					"type": "string"
+																				},
+																				"port": {
+																					"description": "A port number to use for upstream resolver.",
+																					"example": 5053,
+																					"type": "integer"
+																				},
+																				"route_through_private_network": {
+																					"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																					"example": true,
+																					"type": "boolean"
+																				},
+																				"vnet_id": {
+																					"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"ip"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
 															"egress": {
 																"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 																"properties": {
@@ -752,6 +820,11 @@
 																	}
 																},
 																"type": "object"
+															},
+															"resolve_dns_through_cloudflare": {
+																"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																"example": true,
+																"type": "boolean"
 															},
 															"untrusted_cert": {
 																"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -1149,6 +1222,74 @@
 																		},
 																		"type": "object"
 																	},
+																	"dns_resolvers": {
+																		"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																		"properties": {
+																			"ipv4": {
+																				"items": {
+																					"properties": {
+																						"ip": {
+																							"description": "IP address of upstream resolver.",
+																							"example": "2001:DB8::/64",
+																							"type": "string"
+																						},
+																						"port": {
+																							"description": "A port number to use for upstream resolver.",
+																							"example": 5053,
+																							"type": "integer"
+																						},
+																						"route_through_private_network": {
+																							"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"vnet_id": {
+																							"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"ip"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"ipv6": {
+																				"items": {
+																					"properties": {
+																						"ip": {
+																							"description": "IP address of upstream resolver.",
+																							"example": "2001:DB8::/64",
+																							"type": "string"
+																						},
+																						"port": {
+																							"description": "A port number to use for upstream resolver.",
+																							"example": 5053,
+																							"type": "integer"
+																						},
+																						"route_through_private_network": {
+																							"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																							"example": true,
+																							"type": "boolean"
+																						},
+																						"vnet_id": {
+																							"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"ip"
+																					],
+																					"type": "object"
+																				},
+																				"type": "array"
+																			}
+																		},
+																		"type": "object"
+																	},
 																	"egress": {
 																		"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 																		"properties": {
@@ -1228,6 +1369,11 @@
 																			}
 																		},
 																		"type": "object"
+																	},
+																	"resolve_dns_through_cloudflare": {
+																		"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																		"example": true,
+																		"type": "boolean"
 																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -1725,6 +1871,74 @@
 															},
 															"type": "object"
 														},
+														"dns_resolvers": {
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+															"properties": {
+																"ipv4": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IP address of upstream resolver.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ipv6": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IP address of upstream resolver.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 															"properties": {
@@ -1804,6 +2018,11 @@
 																}
 															},
 															"type": "object"
+														},
+														"resolve_dns_through_cloudflare": {
+															"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"example": true,
+															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -2178,6 +2397,74 @@
 																	},
 																	"type": "object"
 																},
+																"dns_resolvers": {
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																	"properties": {
+																		"ipv4": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IP address of upstream resolver.",
+																						"example": "2001:DB8::/64",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"ipv6": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IP address of upstream resolver.",
+																						"example": "2001:DB8::/64",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 																	"properties": {
@@ -2257,6 +2544,11 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"resolve_dns_through_cloudflare": {
+																	"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -2623,6 +2915,74 @@
 										},
 										"type": "object"
 									},
+									"dns_resolvers": {
+										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+										"properties": {
+											"ipv4": {
+												"items": {
+													"properties": {
+														"ip": {
+															"description": "IP address of upstream resolver.",
+															"example": "2001:DB8::/64",
+															"type": "string"
+														},
+														"port": {
+															"description": "A port number to use for upstream resolver.",
+															"example": 5053,
+															"type": "integer"
+														},
+														"route_through_private_network": {
+															"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+															"example": true,
+															"type": "boolean"
+														},
+														"vnet_id": {
+															"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"type": "string"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"ipv6": {
+												"items": {
+													"properties": {
+														"ip": {
+															"description": "IP address of upstream resolver.",
+															"example": "2001:DB8::/64",
+															"type": "string"
+														},
+														"port": {
+															"description": "A port number to use for upstream resolver.",
+															"example": 5053,
+															"type": "integer"
+														},
+														"route_through_private_network": {
+															"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+															"example": true,
+															"type": "boolean"
+														},
+														"vnet_id": {
+															"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"type": "string"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
 									"egress": {
 										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 										"properties": {
@@ -2702,6 +3062,11 @@
 											}
 										},
 										"type": "object"
+									},
+									"resolve_dns_through_cloudflare": {
+										"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+										"example": true,
+										"type": "boolean"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -3068,6 +3433,74 @@
 															},
 															"type": "object"
 														},
+														"dns_resolvers": {
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+															"properties": {
+																"ipv4": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IP address of upstream resolver.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ipv6": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IP address of upstream resolver.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 															"properties": {
@@ -3147,6 +3580,11 @@
 																}
 															},
 															"type": "object"
+														},
+														"resolve_dns_through_cloudflare": {
+															"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"example": true,
+															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -3521,6 +3959,74 @@
 																	},
 																	"type": "object"
 																},
+																"dns_resolvers": {
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																	"properties": {
+																		"ipv4": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IP address of upstream resolver.",
+																						"example": "2001:DB8::/64",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"ipv6": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IP address of upstream resolver.",
+																						"example": "2001:DB8::/64",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 																	"properties": {
@@ -3600,6 +4106,11 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"resolve_dns_through_cloudflare": {
+																	"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -3977,6 +4488,74 @@
 										},
 										"type": "object"
 									},
+									"dns_resolvers": {
+										"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+										"properties": {
+											"ipv4": {
+												"items": {
+													"properties": {
+														"ip": {
+															"description": "IP address of upstream resolver.",
+															"example": "2001:DB8::/64",
+															"type": "string"
+														},
+														"port": {
+															"description": "A port number to use for upstream resolver.",
+															"example": 5053,
+															"type": "integer"
+														},
+														"route_through_private_network": {
+															"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+															"example": true,
+															"type": "boolean"
+														},
+														"vnet_id": {
+															"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"type": "string"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"ipv6": {
+												"items": {
+													"properties": {
+														"ip": {
+															"description": "IP address of upstream resolver.",
+															"example": "2001:DB8::/64",
+															"type": "string"
+														},
+														"port": {
+															"description": "A port number to use for upstream resolver.",
+															"example": 5053,
+															"type": "integer"
+														},
+														"route_through_private_network": {
+															"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+															"example": true,
+															"type": "boolean"
+														},
+														"vnet_id": {
+															"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"type": "string"
+														}
+													},
+													"required": [
+														"ip"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
 									"egress": {
 										"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 										"properties": {
@@ -4056,6 +4635,11 @@
 											}
 										},
 										"type": "object"
+									},
+									"resolve_dns_through_cloudflare": {
+										"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+										"example": true,
+										"type": "boolean"
 									},
 									"untrusted_cert": {
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -4422,6 +5006,74 @@
 															},
 															"type": "object"
 														},
+														"dns_resolvers": {
+															"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+															"properties": {
+																"ipv4": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IP address of upstream resolver.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ipv6": {
+																	"items": {
+																		"properties": {
+																			"ip": {
+																				"description": "IP address of upstream resolver.",
+																				"example": "2001:DB8::/64",
+																				"type": "string"
+																			},
+																			"port": {
+																				"description": "A port number to use for upstream resolver.",
+																				"example": 5053,
+																				"type": "integer"
+																			},
+																			"route_through_private_network": {
+																				"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																				"example": true,
+																				"type": "boolean"
+																			},
+																			"vnet_id": {
+																				"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																				"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"ip"
+																		],
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
 														"egress": {
 															"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 															"properties": {
@@ -4501,6 +5153,11 @@
 																}
 															},
 															"type": "object"
+														},
+														"resolve_dns_through_cloudflare": {
+															"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"example": true,
+															"type": "boolean"
 														},
 														"untrusted_cert": {
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
@@ -4875,6 +5532,74 @@
 																	},
 																	"type": "object"
 																},
+																"dns_resolvers": {
+																	"description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve_dns_through_cloudflare is set. DNS queries will route to the address closest to their origin.",
+																	"properties": {
+																		"ipv4": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IP address of upstream resolver.",
+																						"example": "2001:DB8::/64",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"ipv6": {
+																			"items": {
+																				"properties": {
+																					"ip": {
+																						"description": "IP address of upstream resolver.",
+																						"example": "2001:DB8::/64",
+																						"type": "string"
+																					},
+																					"port": {
+																						"description": "A port number to use for upstream resolver.",
+																						"example": 5053,
+																						"type": "integer"
+																					},
+																					"route_through_private_network": {
+																						"description": "Whether to connect to this resolver over a private network. Must be set when vnet_id is set.",
+																						"example": true,
+																						"type": "boolean"
+																					},
+																					"vnet_id": {
+																						"description": "Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"ip"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
 																"egress": {
 																	"description": "Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.",
 																	"properties": {
@@ -4954,6 +5679,11 @@
 																		}
 																	},
 																	"type": "object"
+																},
+																"resolve_dns_through_cloudflare": {
+																	"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",

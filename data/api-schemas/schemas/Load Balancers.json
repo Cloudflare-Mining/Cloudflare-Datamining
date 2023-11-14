@@ -951,6 +951,7 @@
 																"priority": {
 																	"default": 0,
 																	"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																	"minimum": 0,
 																	"type": "integer"
 																},
 																"terminates": {
@@ -1647,6 +1648,7 @@
 																		"priority": {
 																			"default": 0,
 																			"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																			"minimum": 0,
 																			"type": "integer"
 																		},
 																		"terminates": {
@@ -2444,6 +2446,7 @@
 															"priority": {
 																"default": 0,
 																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"minimum": 0,
 																"type": "integer"
 															},
 															"terminates": {
@@ -3119,6 +3122,7 @@
 																	"priority": {
 																		"default": 0,
 																		"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																		"minimum": 0,
 																		"type": "integer"
 																	},
 																	"terminates": {
@@ -3797,6 +3801,7 @@
 										"priority": {
 											"default": 0,
 											"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+											"minimum": 0,
 											"type": "integer"
 										},
 										"terminates": {
@@ -4466,6 +4471,7 @@
 															"priority": {
 																"default": 0,
 																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"minimum": 0,
 																"type": "integer"
 															},
 															"terminates": {
@@ -5141,6 +5147,7 @@
 																	"priority": {
 																		"default": 0,
 																		"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																		"minimum": 0,
 																		"type": "integer"
 																	},
 																	"terminates": {
@@ -5804,6 +5811,7 @@
 										"priority": {
 											"default": 0,
 											"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+											"minimum": 0,
 											"type": "integer"
 										},
 										"terminates": {
@@ -6478,6 +6486,7 @@
 															"priority": {
 																"default": 0,
 																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"minimum": 0,
 																"type": "integer"
 															},
 															"terminates": {
@@ -7153,6 +7162,7 @@
 																	"priority": {
 																		"default": 0,
 																		"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																		"minimum": 0,
 																		"type": "integer"
 																	},
 																	"terminates": {
@@ -7831,6 +7841,7 @@
 										"priority": {
 											"default": 0,
 											"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+											"minimum": 0,
 											"type": "integer"
 										},
 										"terminates": {
@@ -8505,6 +8516,7 @@
 															"priority": {
 																"default": 0,
 																"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																"minimum": 0,
 																"type": "integer"
 															},
 															"terminates": {
@@ -9180,6 +9192,7 @@
 																	"priority": {
 																		"default": 0,
 																		"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+																		"minimum": 0,
 																		"type": "integer"
 																	},
 																	"terminates": {
