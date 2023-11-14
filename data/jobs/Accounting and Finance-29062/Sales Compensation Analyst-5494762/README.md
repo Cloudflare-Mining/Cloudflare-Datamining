@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>**This position is based in <span style="text-decoration: underline;">Mexico City, Mexico and is applicable only to Mexican Citizens</span>**</strong></p>
 <p><strong>What You'll Do</strong></p>
 <p><span style="font-weight: 400;">We are looking for a Sales Compensation Analyst to join our team within the Finance &amp; Business Operations Function. As a key team member of a high-visibility organization, the Sales Compensation Analyst will provide data analysis, reporting and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with GTM Finance, the Sales Compensation Analyst will play an active role in compensation plan administration, sales performance analytics, managing the Anaplan ICM platform, compensation plan distribution, and commissions calculations.</span></p>
 <p><span style="font-weight: 400;"><strong>***Please Note:</strong> We are open to hiring this role at the Analyst or Senior level, depending on the candidate's experience.</span></p>
