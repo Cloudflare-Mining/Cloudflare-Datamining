@@ -30,27 +30,14 @@
 	<li>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</li>
 </ul>
 <ul>
-	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
-</ul>
-<ul>
-	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)</li>
-</ul>
-<ul>
-	<li>You are familiar with Nginx, Apache, IIS or any other web servers</li>
-</ul>
-<ul>
-	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers</li>
-</ul>
-<ul>
-	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
-</ul>
-<ul>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
-</ul>
-<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform<br><br></li>
 	<li>You have experience with Cloudflare Workers or JavaScript&nbsp;</li>
 </ul>
 <ul>
+	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)<br><br></li>
+	<li>You are familiar with Nginx, Apache, IIS or any other web servers<br><br></li>
+	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers<br><br></li>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers<br><br></li>
 	<li>You have experience with Video encoding and streaming solutions</li>
 </ul>
 <div class="content-conclusion">
