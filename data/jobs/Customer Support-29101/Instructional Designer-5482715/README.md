@@ -26,7 +26,7 @@
 </ul>
 <p><strong>Required&nbsp;</strong></p>
 <ul>
-	<li>Minimum 2 years of experience in an Instructional Designer (or equivalent) role, with a preference for experience in a technical or software development environment.</li>
+	<li><strong>1-2 years </strong>of experience in an Instructional Designer (or equivalent) role, with a preference for experience in a technical or software development environment.</li>
 	<li>Understanding of instructional design methodologies and practices.</li>
 	<li>Proven ability to distill complex content from diverse sources into clear and logically structured material, presented in an instructionally sound manner.</li>
 	<li>Proficiency in eLearning authoring tools, including Articulate Storyline 360, RISE, and/or TechSmith's Camtasia.</li>
