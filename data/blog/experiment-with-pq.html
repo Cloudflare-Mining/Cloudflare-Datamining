@@ -1,4 +1,4 @@
-<div class="mb2 gray5">5 min read</div>
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2-4.png" class="kg-image" alt="Experiment with post-quantum cryptography today" loading="lazy"></figure>
 	<p>Practically all data sent over the Internet today is at <a href="https://blog.cloudflare.com/the-quantum-menace">risk </a>in the future if a sufficiently large and stable quantum computer is created. Anyone who captures data now could decrypt it.</p>
@@ -54,35 +54,49 @@ Connected.
 	<!--kg-card-end: markdown-->
 	<h3 id="go">Go</h3>
 	<p>Our <a href="https://github.com/cloudflare/go" target="_blank">Go fork</a> doesn’t enable the post-quantum key agreement by default. The following simple Go program enables PQ by default for the http package and GETs pq.cloudflareresearch.com.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-go">​​package main
+	<pre><code class="language-go">package main
 
 import (
-  "crypto/tls"
-  "fmt"
-  "net/http"
+    "context"
+    "crypto/tls"
+    "fmt"
+    "net/http"
 )
 
 func main() {
-  http.DefaultTransport.(*http.Transport).TLSClientConfig = &amp;tls.Config{
-    CurvePreferences: []tls.CurveID{tls.X25519Kyber512Draft00, tls.X25519},
-    CFEventHandler: func(ev tls.CFEvent) {
-      switch e := ev.(type) {
-      case tls.CFEventTLS13HRR:
-        fmt.Printf("HelloRetryRequest\n")
-      case tls.CFEventTLS13NegotiatedKEX:
-        switch e.KEX {
-        case tls.X25519Kyber512Draft00:
-          fmt.Printf("Used X25519Kyber512Draft00\n")
-        default:
-          fmt.Printf("Used %d\n", e.KEX)
-        }
-      }
-    },
-  }
+    req, err := http.NewRequestWithContext(
+        context.WithValue(
+            context.Background(),
+            tls.CFEventHandlerContextKey{},
+            func(ev tls.CFEvent) {
+                switch e := ev.(type) {
+                case tls.CFEventTLS13HRR:
+                    fmt.Printf("HelloRetryRequest\n")
+                case tls.CFEventTLS13NegotiatedKEX:
+                    switch e.KEX {
+                    case tls.X25519Kyber512Draft00:
+                        fmt.Printf("Used X25519Kyber512Draft00\n")
+                    default:
+                        fmt.Printf("Used %d\n", e.KEX)
+                    }
+                }
+            },
+        ),
+        "GET",
+        "https://pq.cloudflareresearch.com",
+        nil,
+    )
+    if err != nil {
+        panic(err)
+    }
 
-  if _, err := http.Get("https://pq.cloudflareresearch.com"); err != nil {
-    fmt.Println(err)
-  }
+    http.DefaultTransport.(*http.Transport).TLSClientConfig = &amp;tls.Config{
+        CurvePreferences: []tls.CurveID{tls.X25519Kyber512Draft00, tls.X25519},
+    }
+
+    if _, err = (&amp;http.Client{}).Do(req); err != nil {
+        fmt.Println(err)
+    }
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
