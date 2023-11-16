@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "kkipp/STREAM-5459",
+					branch: "release-Nov.16.2023-1700143461",
 					isReleaseCandidate: "true",
-					commit: "5b78f5a61d1ce6ad2cb98aaa52a0303ffa459198",
+					commit: "ade60a5fffce39f3cb6035623fb9a172f3e58616",
 					env: "production",
-					builtAt: 1700072476787,
-					dashVersion: "c3036792da082492a3fa08453da8f94ca3b9e45f",
+					builtAt: 1700147872382,
+					dashVersion: "c70c6f5d06b447a5d400077e20ab3cca1c351ebd",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
