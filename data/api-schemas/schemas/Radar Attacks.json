@@ -7766,6 +7766,363 @@
 			"pro": true
 		}
 	},
+	"GET /radar/attacks/layer7/timeseries": {
+		"description": "Get a timeseries of Layer 7 attacks. Values represent HTTP requests and are normalized using min-max by default.",
+		"operationId": "radar-get-attacks-layer7-timeseries",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "attack",
+				"schema": {
+					"description": "Array of L7 attack types.",
+					"items": {
+						"enum": [
+							"DDOS",
+							"WAF",
+							"BOT_MANAGEMENT",
+							"ACCESS_RULES",
+							"IP_REPUTATION",
+							"API_SHIELD",
+							"DATA_LOSS_PREVENTION"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
+					"example": "15169",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "location",
+				"schema": {
+					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
+					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE_CHANGE",
+						"MIN0_MAX"
+					],
+					"example": "MIN0_MAX",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"aggInterval": {
+													"example": "1h",
+													"type": "string"
+												},
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"properties": {
+														"endTime": {
+															"description": "Adjusted end of date range.",
+															"example": "2022-09-17T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"startTime": {
+															"description": "Adjusted start of date range.",
+															"example": "2022-09-16T10:22:57.555Z",
+															"format": "date-time",
+															"type": "string"
+														}
+													},
+													"required": [
+														"startTime",
+														"endTime"
+													],
+													"type": "object"
+												},
+												"lastUpdated": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"aggInterval",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"timestamps": {
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"values": {
+													"items": {
+														"example": 0.56,
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"values"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Layer 7 Attacks Time Series",
+		"tags": [
+			"Radar Attacks"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/attacks/layer7/timeseries_groups": {
 		"deprecated": true,
 		"description": "Get a time series of the percentual distribution of mitigation techniques, over time.",
@@ -10631,7 +10988,7 @@
 			"pro": true
 		}
 	},
-	"GET /radar/attacks/layer7/top/as/origin": {
+	"GET /radar/attacks/layer7/top/ases/origin": {
 		"description": "Get the top origin Autonomous Systems of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin Autonomous Systems is determined by the client IP.",
 		"operationId": "radar-get-attacks-layer7-top-origin-as",
 		"parameters": [
