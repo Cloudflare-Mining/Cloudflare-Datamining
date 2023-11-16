@@ -18,7 +18,7 @@ import { Miniflare } from "miniflare";
 
 // Create a new Miniflare instance, starting a workerd server
 const mf = new Miniflare({
-  script: `addEventListener("fetch", (event) => {
+	script: `addEventListener("fetch", (event) => {
     event.respondWith(new Response("Hello Miniflare!"));
   })`,
 });
@@ -458,8 +458,8 @@ Options shared between all Workers/"nanoservices".
 
   ```js
   new Miniflare({
-    httpsKeyPath: "key.pem",
-    httpsCertPath: "cert.pem",
+  	httpsKeyPath: "key.pem",
+  	httpsCertPath: "cert.pem",
   });
   ```
 
