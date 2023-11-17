@@ -1,0 +1,215 @@
+<div class="mb2 gray5">5 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--3--2.png" class="kg-image" alt="Streaming LLMs and longer context lengths available in Workers AI" loading="lazy" width="1600" height="901"></figure>
+	<p>Unsere mittels Grafikprozessor betriebene Serverless-Inferenzplattform Workers AI setzt auf dem weltumspannenden Netzwerk von Cloudflare auf. Sie bietet eine wachsende Auswahl an direkt einsetzbaren Modellen, die sich nahtlos in Workers einfügen und es Entwicklern erlauben, binnen weniger Minuten wirkmächtige und skalierbare KI-Anwendungen zu schaffen. Mithilfe von Workers AI wurden schon großartige Dinge entwickelt und wir können es nicht erwarten, zu sehen, was mit der schrittweisen Erweiterung der Plattform in Zukunft noch alles entstehen wird. Insofern freuen wir uns besonders, heute die Einführung einiger der am häufigsten nachgefragten Funktionen in diesem Zusammenhang bekannt geben zu können: das Streamen von Antworten für alle <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank">Large Language Models</a> (LLM) bei Workers AI, größere Kontext- und Sequenzfenster sowie eine Variante des <a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank">Llama-2</a>-Modells mit voller Präzision.</p>
+	<p>Wenn Sie ChatGPT schon einmal verwendet haben, sind Sie sich der Vorteile bewusst, die eine tokenweise Ausgabe der Antworten bietet. Intern arbeiten LLM, indem sie Antworten mittels wiederholter Inferenz nacheinander generieren: Beim dem vollständigen Output eines LLM handelt es sich im Grunde um eine Sequenz aus Hunderten oder Tausenden einzelner Vorhersagen. Obwohl es nur ein paar Millisekunden dauert, einen einzelnen Token (Bestandteil der Antwort) zu generieren, nimmt deshalb die Erstellung der gesamten Antwort mehr Zeit (und zwar ein paar Sekunden) in Anspruch. Die gute Nachricht ist, dass die Ausgabe der Antwort in dem Moment beginnen kann, in dem die ersten Token generiert werden. Anschließend werden weitere Token ergänzt, bis die Antwort vollständig ist. Für den Endnutzer ist das deutlich angenehmer: Wenn der Text nach und nach ausgegeben wird, sobald er verfügbar ist, signalisiert das sofortige Reaktionsfähigkeit. Zugleich hat der Endnutzer so Zeit, den Text zu lesen und zu interpretieren.</p>
+	<p>Künftig kann das Streamen von Antworten bei jedem von uns angebotenem LLM genutzt werden, darunter auch dem ausgesprochen beliebten <a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank">Llama-2-Modell</a>. So funktioniert’s:</p>
+	<h3 id="%E2%80%9Eserver-sent-events%E2%80%9C-ein-kleiner-schatz-in-der-browser-api">„Server-Sent Events“: ein kleiner Schatz in der Browser-API</h3>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank">„Server-Sent Events“</a> sind leicht zu benutzen und serverseitig zu implementieren, standardisiert und bei vielen Plattformen nativ oder als Polyfill verfügbar. Sie decken eine Nische ab, indem sie einen Update-Stream vom Server verarbeiten und den Standard-Programmcode überflüssig machen, der sonst für die Verarbeitung des Ereignis-Streams erforderlich wäre.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lt9p {
+			background-color: #F3F3F3;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-9qck {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-lt9p"></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Einfache Handhabung</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bidirektional</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fetch</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">„Server-Sent Events“</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WebSockets</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<center><small><sup>Fetch, „Server-Sent Events“ und WebSockets im Vergleich
+			</sup></small></center><!--kg-card-end: markdown-->
+	<p>Um mit bei den Textgenerierungsmodellen von Workers AI mit dem Streamen mittels „Server-Sent Events“ zu beginnen, setzen Sie den Parameter „stream“ in der Eingabe der Anfrage auf „true“. Dadurch werden das Antwortformat und der MIME-Type auf text/event-stream umgestellt.</p>
+	<p>Es folgt ein Beispiel für das Streamen mit der <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank">REST-API</a>:</p>
+	<pre><code class="language-bash">curl -X POST \
+"https://api.cloudflare.com/client/v4/accounts/&lt;account&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8" \
+-H "Authorization: Bearer &lt;token&gt;" \
+-H "Content-Type:application/json" \
+-d '{ "prompt": "where is new york?", "stream": true }'
+
+data: {"response":"New"}
+
+data: {"response":" York"}
+
+data: {"response":" is"}
+
+data: {"response":" located"}
+
+data: {"response":" in"}
+
+data: {"response":" the"}
+
+...
+
+data: [DONE]</code></pre>
+	<p>Und hier sehen Sie ein Beispiel für die Verwendung eines Worker-Skripts:</p>
+	<pre><code class="language-TypeScript">import { Ai } from "@cloudflare/ai";
+export default {
+    async fetch(request, env, ctx) {
+        const ai = new Ai(env.AI, { sessionOptions: { ctx: ctx } });
+        const stream = await ai.run(
+            "@cf/meta/llama-2-7b-chat-int8",
+            { prompt: "where is new york?", stream: true  }
+        );
+        return new Response(stream,
+            { headers: { "content-type": "text/event-stream" } }
+        );
+    }
+}</code></pre>
+	<p>Wenn der von diesem Worker ausgegebene Ereignis-Stream in einer Browserseite angezeigt werden soll, sieht der clientseitige JavaScript-Code ungefähr so aus:</p>
+	<pre><code class="language-typescript">const source = new EventSource("/worker-endpoint");
+source.onmessage = (event) =&gt; {
+    if(event.data=="[DONE]") {
+        // SSE spec says the connection is restarted
+        // if we don't explicitly close it
+        source.close();
+        return;
+    }
+    const data = JSON.parse(event.data);
+    el.innerHTML += data.response;
+}</code></pre>
+	<p>Sie können dieses simple Programm mit jeder einfachen HTML-Seite, komplizierten SPA unter Verwendung von React oder anderen Web-Frameworks zusammen benutzen.</p>
+	<p>Auf diese Weise wird dem Nutzer eine viel größere Interaktionsfähigkeit vermittelt. Er muss nun nicht mehr warten, bis die gesamte Antwortsequenz generiert wurde. Vielmehr wird ihm eine sich stetig aktualisierende Version der Seite angezeigt, während die Antwort schrittweise erstellt wird. Unter <a href="https://ai.cloudflare.com" target="_blank">ai.cloudflare.com</a> können Sie das Streamen ausprobieren.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/llama-streaming.gif" class="kg-image" alt="" loading="lazy" width="1518" height="610"></figure>
+	<p>Workers AI unterstützt das Streamen von textbasierten Anworten für das <a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank">Llama-2</a>-Modell und alle LLM, die wir künftig noch in unserer Sortiment aufnehmen werden.</p>
+	<p>Das ist aber noch nicht alles.</p>
+	<h3 id="h%C3%B6here-genauigkeit-gr%C3%B6%C3%9Fere-kontextund-sequenzl%C3%A4nge">Höhere Genauigkeit, größere Kontext- und Sequenzlänge</h3>
+	<p>Nach der Einführung von Workers AI wünschte sich unsere Community außerdem besonders oft die Möglichkeit, in unserem Llama-2-Modell längere Fragen stellen und längere Antworten erhalten zu können. Bei LLM bedeutet das eine höhere Kontextlänge (die Zahl der Token, die das Modell bei der Eingabe annimmt, bevor es eine Vorhersage trifft) und eine höhere Sequenzlänge (die Zahl der Token, die das Modell als Antwort generiert).</p>
+	<p>Wir haben uns das zu Herzen genommen und führen deshalb heute nicht nur das Streamen ein, sondern ergänzen unser Angebot auch um eine 16-Bit-Variante von Llama-2 mit voller Präzision. Außerdem haben wie die Kontext- und Sequenzlänge der bestehenden 8-Bit-Version erhöht.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-9qck {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Modell</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kontextlänge (Eingabe)</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sequenzlänge (Ausgabe)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">@cf/meta/llama-2-7b-chat-int8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2048 (bisher: 768)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1800 (bisher: 256)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">@cf/meta/llama-2-7b-chat-fp16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3072</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2500</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Streaming, höhere Genauigkeit sowie größere Kontext- und Sequenzlängen stellen für den Nutzer eine Verbesserung dar und erlauben neue, vielfältigere Anwendungen, die Large Language Models in Workers AI nutzen.</p>
+	<p>Weitere Informationen und Optionen finden Sie in der <a href="https://developers.cloudflare.com/workers-ai" target="_blank">Entwicklerdokumentation</a> zu Workers AI. Sie haben Fragen oder Anmerkungen zu Workers AI? Dann schauen Sie doch einfach in der <a href="https://community.cloudflare.com" target="_blank">Cloudflare Community</a> und dem <a href="https://discord.gg/cloudflaredev" target="_blank">Cloudflare Discord</a>-Kanal vorbei. </p>
+	<p>Wenn Sie Interesse an maschinellem Lernen und Serverless-KI haben: Das Team von Cloudflare Workers AI entwickelt eine Plattform mit globalem Maßstab und Werkzeuge, die es unseren Kunden erlauben, schnell funktionierende, latenzarme Inferenzaufgaben über unser Netzwerk auszuführen. Und vielleicht findet sich ja auf unserer <a href="https://www.cloudflare.com/careers/jobs" target="_blank">Stellenseite</a> der richtige Job für Sie.</p>
+</div>
