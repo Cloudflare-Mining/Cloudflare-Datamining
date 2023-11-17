@@ -527,7 +527,7 @@ struct ext_jump {
 	<p>As we saw above, we need four instructions: <code>mov</code>, <code>movk</code>, <code>movk</code>, <code>br</code>. We don’t need a stack frame as we aren’t preserving any local variables. We just want to load the address into the register and branch to it. But we can’t write human-readable code</p>
 	<p>e.g. <code>mov &nbsp;x0, #0xc14</code> into instructions, we need machine binary or hex representation, e.g. <code>d2818280</code>. </p>
 	<p>Let’s write a simple assembly code to get it:</p>
-	<p>plt.s:</p><!--kg-card-begin: markdown-->
+	<p>hw.s:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cpp">.global _start
 
 _start: mov     x9, #0xc14 
