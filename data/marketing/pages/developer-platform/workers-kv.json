@@ -92,8 +92,8 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": false,
+						"imageSize": null,
+						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": "Already a customer? [Activate Today](https://dash.cloudflare.com/workers)",
 						"leftLinkLoggedIn": null,
@@ -102,20 +102,33 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4s4Si9tf0AkOoymqMU2kyQ/5766d6f09232847995f586c23f750b65/Cloudflare_Workers_KV.svg"
+							},
+							"description": "Workers KV primary image."
+						},
 						"imageAssetFile": {
 							"id": "9b7d7f2f-fea6-5060-a2d4-a79a102f6a6e",
-							"altText": "workers kv main image",
+							"altText": "workers-kv-main-image-1",
 							"title": "workers-kv-main-image-1",
-							"activeAsset": "Contentful Asset",
+							"activeAsset": "Brandfolder Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7n8OYQf8Jn2pVfN9bOnI8j/258b9cdc97a708894d8fe614c9b110a1/BDES-5041_-_Workers-KV-serverless-applications.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4s4Si9tf0AkOoymqMU2kyQ/5766d6f09232847995f586c23f750b65/Cloudflare_Workers_KV.svg"
 								},
-								"description": "workers kv main image"
+								"description": "Workers KV primary image."
 							},
-							"brandfolderAsset": null,
+							"brandfolderAsset": {
+								"size": 16255,
+								"height": 1492,
+								"width": 1800,
+								"filename": "workers-KV-serverless-applications-hero-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/workers-KV-serverless-applications-hero-illustration.svg"
+								}
+							},
 							"brandfolderAssetMobile": null
 						}
 					},
@@ -146,15 +159,18 @@
 							"id": "5d2b3c7a-f456-59fb-a6a6-906246ae6626",
 							"altText": "Developer week hero illustration",
 							"title": "Developer week hero illustration",
-							"activeAsset": "Contentful Asset",
+							"activeAsset": "Brandfolder Asset",
 							"locale": "en-US",
-							"contentfulAsset": {
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 16760,
+								"height": 1392,
+								"width": 2184,
+								"filename": "developer-week-hero-illustration.svg",
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/eQa4uPwNrHTRhKehv3rDY/a4d03d39de4040c9a8338ac677792688/BDES-5041_-_Developer-week-hero-illustration.svg"
-								},
-								"description": "Developer week hero illustration"
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/developer-week-hero-illustration.svg"
+								}
 							},
-							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
@@ -166,8 +182,8 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
@@ -262,7 +278,7 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LC1KcKDF6QuOGC2qYk2si/f528760b98e424f4477b7cd04e535330/BDES-5041_-_Workers-KV-customize-application-behavior-spot-illustration.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LC1KcKDF6QuOGC2qYk2si/e91c3408d8feac8abaf61e55698c4c5c/Customize_Application_Behavior.svg"
 							},
 							"description": "Customize Application Behavior"
 						},
@@ -270,15 +286,23 @@
 							"id": "b3915b49-39d3-5de6-b335-28a9a290fab1",
 							"altText": "customize-app-behavior-v1",
 							"title": "customize-app-behavior-v1",
-							"activeAsset": "Contentful Asset",
+							"activeAsset": "Brandfolder Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LC1KcKDF6QuOGC2qYk2si/f528760b98e424f4477b7cd04e535330/BDES-5041_-_Workers-KV-customize-application-behavior-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7LC1KcKDF6QuOGC2qYk2si/e91c3408d8feac8abaf61e55698c4c5c/Customize_Application_Behavior.svg"
 								},
 								"description": "Customize Application Behavior"
 							},
-							"brandfolderAsset": null,
+							"brandfolderAsset": {
+								"size": 15909,
+								"height": 1024,
+								"width": 1796,
+								"filename": "workers-KV-customize-application-behavior-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/workers-KV-customize-application-behavior-spot-illustration.svg"
+								}
+							},
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
@@ -290,8 +314,8 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "border-top",
 						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
@@ -318,7 +342,7 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMonLCJ4AqMUKqeqIOsEI/5fc855bcc6af53e403838d0a967d5236/BDES-5041_-_Workers-KV-custom-authorization-authentication-spot-illustration.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMonLCJ4AqMUKqeqIOsEI/dbb143060e844b380b7028473e01213d/Enforce_Custom_Authorization_and_Authentication.svg"
 							},
 							"description": "Enforce Custom Authorization and Authentication"
 						},
@@ -326,15 +350,23 @@
 							"id": "5f4ea169-25de-5b69-95f2-60f1d468e2a8",
 							"altText": "workerskv-custom-auth-v1",
 							"title": "workerskv-custom-auth-v1",
-							"activeAsset": "Contentful Asset",
+							"activeAsset": "Brandfolder Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMonLCJ4AqMUKqeqIOsEI/5fc855bcc6af53e403838d0a967d5236/BDES-5041_-_Workers-KV-custom-authorization-authentication-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3iMonLCJ4AqMUKqeqIOsEI/dbb143060e844b380b7028473e01213d/Enforce_Custom_Authorization_and_Authentication.svg"
 								},
 								"description": "Enforce Custom Authorization and Authentication"
 							},
-							"brandfolderAsset": null,
+							"brandfolderAsset": {
+								"size": 16502,
+								"height": 1024,
+								"width": 1796,
+								"filename": "workers-KV-custom-authorization-authentication-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/workers-KV-custom-authorization-authentication-spot-illustration.svg"
+								}
+							},
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
@@ -346,8 +378,8 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "border-top",
 						"imagePosition": false,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
@@ -374,7 +406,7 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OgwrRgGPYCWcmeEcq6sM4/d65ce847ca229e50363703383af5e075/BDES-5041_-_Workers-KV-remember-specific-attackers-spot-illustration.svg"
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OgwrRgGPYCWcmeEcq6sM4/40d284f90282905de875acd0c667f9ae/Remember_Specific_Bad_Actors.svg"
 							},
 							"description": "Remember Specific Bad Actors"
 						},
@@ -386,11 +418,19 @@
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OgwrRgGPYCWcmeEcq6sM4/d65ce847ca229e50363703383af5e075/BDES-5041_-_Workers-KV-remember-specific-attackers-spot-illustration.svg"
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3OgwrRgGPYCWcmeEcq6sM4/40d284f90282905de875acd0c667f9ae/Remember_Specific_Bad_Actors.svg"
 								},
 								"description": "Remember Specific Bad Actors"
 							},
-							"brandfolderAsset": null,
+							"brandfolderAsset": {
+								"size": 6563,
+								"height": 1024,
+								"width": 1796,
+								"filename": "workers-KV-remember-specific-attackers-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/workers-KV-remember-specific-attackers-spot-illustration.svg"
+								}
+							},
 							"brandfolderAssetMobile": null
 						},
 						"featureList": [],
@@ -402,8 +442,8 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "border-top",
 						"imagePosition": true,
-						"imageSize": "medium",
-						"imageTextAlignment": "center",
+						"imageSize": null,
+						"imageTextAlignment": null,
 						"togglesTo": []
 					},
 					{
