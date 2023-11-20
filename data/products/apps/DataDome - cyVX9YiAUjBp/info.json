@@ -12853,6 +12853,490 @@
 				"reviewedByUserId": "a8bd86639dacd49d059c402244fa6062",
 				"reviewedAt": "2023-09-25T15:28:33.045165164Z"
 			}
+		},
+		{
+			"tag": "1.16.0",
+			"appId": "cyVX9YiAUjBp",
+			"definition": {
+				"options": {
+					"properties": {
+						"DATADOME_ACCOUNT": {
+							"description": "Login with your account to fetch your server-side and client-side keys.",
+							"format": "account",
+							"order": 1,
+							"services": [
+								"app_datadome"
+							],
+							"title": "DataDome Account",
+							"type": "object"
+						},
+						"DATADOME_ENABLE_DEBUGGING": {
+							"default": false,
+							"order": 26,
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "Enable DataDome debug by logging in headers",
+							"type": "boolean"
+						},
+						"DATADOME_ENABLE_GRAPHQL_SUPPORT": {
+							"default": false,
+							"order": 30,
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "Enable support for graphql",
+							"type": "boolean"
+						},
+						"DATADOME_ENABLE_VOLATILE_SESSION": {
+							"default": false,
+							"order": 27,
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "Enable experimental volatile session",
+							"type": "boolean"
+						},
+						"DATADOME_HOSTNAME_REGEX_EXCLUSION": {
+							"default": "",
+							"description": "Will NOT send traffic associated to matching hostnames to DataDome.",
+							"format": "code",
+							"order": 23,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_HOSTNAME_REGEX_EXCLUSION": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "Hostname exclusion regex for Server-side detection",
+							"type": "string"
+						},
+						"DATADOME_IP_FILTERING": {
+							"default": "",
+							"description": "Will NOT send traffic associated to these IPs to DataDome.",
+							"format": "code",
+							"order": 25,
+							"placeholder": "[\"x.x.x.x\"]",
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "IPs exclusion for server-side detection",
+							"type": "string"
+						},
+						"DATADOME_JS_ENDPOINT": {
+							"default": "",
+							"description": "URL of the JS tag endpoint. Change default value to include the tag as a first party.",
+							"format": "url",
+							"order": 62,
+							"placeholder": "https://api-js.datadome.co/js/",
+							"showIf": {
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvancedFirstPartyJS": true,
+								"showAdvancedJS": true
+							},
+							"title": "Client-side endpoint URL",
+							"type": "string"
+						},
+						"DATADOME_JS_HOSTNAME_REGEX_EXCLUSION": {
+							"default": "",
+							"description": "Disable Client-side detection on matching hostnames.",
+							"format": "code",
+							"order": 51,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_JS_HOSTNAME_REGEX_EXCLUSION": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvancedJS": true
+							},
+							"title": "Hostname exclusion regex for Client-side detection",
+							"type": "string"
+						},
+						"DATADOME_JS_KEY": {
+							"default": "",
+							"description": "To be copy/paste from DataDome dashboard",
+							"order": 3,
+							"placeholder": "YOUR DATADOME JS KEY",
+							"showIf": {
+								"DATADOME_ACCOUNT.app_datadome": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"title": "Client-side key",
+							"type": "string"
+						},
+						"DATADOME_JS_TAG_OPTIONS": {
+							"default": "{\"ajaxListenerPath\": true}",
+							"description": "Optional JSON parameters, used to configure the AJAX listener.",
+							"format": "code",
+							"order": 50,
+							"placeholder": "{\"ajaxListenerPath\": [\"api1\", \"api2\"]}",
+							"showIf": {
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvancedJS": true
+							},
+							"title": "Client-side advanced options",
+							"type": "string"
+						},
+						"DATADOME_JS_URI_REGEX_EXCLUSION": {
+							"default": "",
+							"description": "Disable Client-side detection on matching URIs.",
+							"format": "code",
+							"order": 52,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_JS_URI_REGEX_EXCLUSION": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvancedJS": true
+							},
+							"title": "URI exclusion regex for Client-side detection",
+							"type": "string"
+						},
+						"DATADOME_JS_URL": {
+							"default": "",
+							"description": "URL of the JS tag. Change default value to include the tag as a first party.",
+							"format": "url",
+							"order": 61,
+							"placeholder": "https://js.datadome.co/tags.js",
+							"showIf": {
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvancedFirstPartyJS": true,
+								"showAdvancedJS": true
+							},
+							"title": "Client-side tag URL",
+							"type": "string"
+						},
+						"DATADOME_JS_URL_REGEX": {
+							"default": "",
+							"description": "Enable Client-side detection ONLY on matching URLs. Default value matches everything.",
+							"format": "code",
+							"order": 53,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_JS_HOSTNAME_REGEX_EXCLUSION": "",
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_JS_URI_REGEX_EXCLUSION": "",
+								"showAdvancedJS": true
+							},
+							"title": "URL inclusion regex for Client-side detection",
+							"type": "string"
+						},
+						"DATADOME_JS_URL_REGEX_EXCLUSION": {
+							"default": "",
+							"description": "Disable Client-side detection on matching URLs.",
+							"format": "code",
+							"order": 54,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_JS_HOSTNAME_REGEX_EXCLUSION": "",
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_JS_URI_REGEX_EXCLUSION": "",
+								"showAdvancedJS": true
+							},
+							"title": "URL exclusion regex for Client-side detection",
+							"type": "string"
+						},
+						"DATADOME_LICENSE_KEY": {
+							"default": "",
+							"description": "To be copy/paste from DataDome dashboard",
+							"order": 2,
+							"placeholder": "YOUR DATADOME SERVER KEY",
+							"showIf": {
+								"DATADOME_ACCOUNT.app_datadome": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"title": "Server-side key",
+							"type": "string"
+						},
+						"DATADOME_TIMEOUT_OPTIONS": {
+							"default": 300,
+							"description": "Time duration to wait for DataDome servers response (in ms).",
+							"maximum": 1000,
+							"minimum": 1,
+							"order": 10,
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "Timeout",
+							"type": "integer"
+						},
+						"DATADOME_URI_REGEX": {
+							"default": "",
+							"description": "Will exclude traffic associated with NOT matching URIs to DataDome. Default value matches everything.",
+							"format": "code",
+							"order": 20,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_URI_REGEX": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "URI inclusion regex for Server-side detection",
+							"type": "string"
+						},
+						"DATADOME_URI_REGEX_EXCLUSION": {
+							"default": "/\\.(avi|flv|mka|mkv|mov|mp4|mpeg|mpg|mp3|flac|ogg|ogm|opus|wav|webm|webp|bmp|gif|ico|jpeg|jpg|png|svg|svgz|swf|eot|otf|ttf|woff|woff2|css|less|js)$/i",
+							"description": "Will NOT send traffic associated with static assets. Only executed for GET and HEAD requests.",
+							"format": "code",
+							"order": 22,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "Static assets URI exclusion regex for Server-side detection",
+							"type": "string"
+						},
+						"DATADOME_URL_REGEX": {
+							"default": "",
+							"description": "Will exclude traffic associated with NOT matching URLs to DataDome. Default value matches everything.",
+							"format": "code",
+							"order": 21,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"DATADOME_URI_REGEX": "",
+								"showAdvanced": true
+							},
+							"title": "URL inclusion regex for Server-side detection",
+							"type": "string"
+						},
+						"DATADOME_URL_REGEX_EXCLUSION": {
+							"default": "",
+							"description": "Will NOT send traffic associated to matching URLs to DataDome.",
+							"format": "code",
+							"order": 24,
+							"placeholder": "/REGEX/i",
+							"showIf": {
+								"DATADOME_HOSTNAME_REGEX_EXCLUSION": "",
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvanced": true
+							},
+							"title": "URL exclusion regex for Server-side detection",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 4,
+							"showIf": {
+								"DATADOME_LICENSE_KEY": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Optional Server-side settings",
+							"type": "boolean"
+						},
+						"showAdvancedFirstPartyJS": {
+							"default": false,
+							"order": 60,
+							"showIf": {
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								},
+								"showAdvancedJS": true
+							},
+							"title": "Optional first party Client-side settings",
+							"type": "boolean"
+						},
+						"showAdvancedJS": {
+							"default": false,
+							"order": 40,
+							"showIf": {
+								"DATADOME_JS_KEY": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Optional Client-side settings",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"DATADOME_LICENSE_KEY",
+								"DATADOME_TIMEOUT_OPTIONS",
+								"DATADOME_URI_REGEX_EXCLUSION",
+								"DATADOME_URI_REGEX",
+								"DATADOME_JS_KEY",
+								"DATADOME_JS_TAG_OPTIONS",
+								"DATADOME_JS_HOSTNAME_REGEX_EXCLUSION",
+								"DATADOME_IP_FILTERING",
+								"DATADOME_ENABLE_DEBUGGING",
+								"DATADOME_ENABLE_HYBRID_SESSION"
+							],
+							"reload": true
+						},
+						{
+							"options": [
+								"showAdvanced",
+								"showAdvancedJS"
+							],
+							"reload": false
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.datadome.co/api/module-configuration/cloudflare-app/account-keys",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with your DataDome account to retrieve your account keys."
+						},
+						"authenticate": [
+							"DATADOME_ACCOUNT"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./datadome.js"
+					}
+				]
+			},
+			"releaseNotes": "- Add GraphQL support\n- Support JS Tag injection in responses to POST requests\n- Fix headers truncation",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fc3F5Ku9TMkh",
+			"metadata": {
+				"code": {
+					"sourceTag": "fc3F5Ku9TMkh",
+					"uploadedOn": "2023-11-20T09:41:11.363685398Z"
+				}
+			},
+			"created": "2023-11-20T09:41:10.761107Z",
+			"proposedApp": {
+				"id": "cyVX9YiAUjBp",
+				"title": "DataDome",
+				"shortDescription": "Bot Detection for Mobile Apps, Websites, & APIs",
+				"longDescription": "DataDome’s bot and online fraud protection detects and mitigates attacks with unparalleled accuracy and zero compromise. Our machine learning solution analyzes 3 trillion signals per day to adapt to new threats in real time. Our 24/7 SOC experts protect hundreds of high-profile brands worldwide, including Reddit, Patreon, and AngelList. A force multiplier for IT and security teams, DataDome is fully transparent, easy to deploy, and frictionless for consumers. In 2022, DataDome was named a Strong Performer in the Forrester Wave: Bot Management and ranked the top G2 Leader in Bot Detection & Mitigation for Fall 2022.\n\n#Deploy in seconds\nDataDome is the only bot protection solution delivered as-a-service. It requires no architecture changes or DNS rerouting, and will never be a single point of failure. Deploying the solution is extremely simple and takes only a few seconds. \n\nThe DataDome app for Cloudflare enables Real-Time Bot Protection on Cloudflare websites.\n\n#Real-time AI bot detection\nOur bot detection engine compares every hit to your website with a massive in-memory pattern database, and uses a blend of AI and machine learning to decide in less than 2 milliseconds whether access to your pages should be granted or not.\n\nOur algorithm analyzes hundreds of billions of daily events, and updates continuously in order to identify both familiar and zero-day threats.\n\n#Best-in-class bot protection\nDataDome detects and identifies 100% of OWASP automated threats, and classifies them in your dashboard for easy monitoring and analysis: Denial of Service, Web scraping, Checkout abuse, Inventory hoarding, Card fraud, Credential stuffing, Business logic, Vulnerability scanning, ...\n\n<img src=\"https://datadome.co/wp-content/uploads/2019/06/notifications-screens-zoom3.jpg\">\n\n#Instant shared intelligence\nThere’s strength in numbers – and in cutting-edge stacks. When a new undesirable bot is detected on one of the more than 10,000 domains protected by DataDome, all our customers are automatically protected in less than 50 milliseconds.\n\nWe’ll send you real-time notifications via email or Slack whenever your site is under attack, but you don’t have to do anything. DataDome will deal with the bots, so your on-call teams can focus on other issues.\n\n#Bot management on autopilot\nDataDome requires no daily interventions from your teams. Once you have set up your whitelist of trusted partner bots, the solution will take care of all your unwanted traffic.\n\nOf course, your mobile apps and APIs are just as safe as your website. Because every interface has different legitimate usage patterns, DataDome protects each of them with a dedicated algorithm.\n\n<img src=\"https://datadome.co/wp-content/uploads/2019/05/dashboard-bad-bots-1.gif\">\n\n#Unmatched customization options\nOur unique Custom Rules function allows you, for example, to block human traffic from countries you are not selling to, or to allow partner bots to access your site only in specific circumstances.\n\n<img src=\"https://datadome.co/wp-content/uploads/2019/05/dashboard-custom-rules.gif\">\n\n#Powerful analytics tools\nNo other bot protection solution provides you with more detailed insights into the automated traffic that targets your site. Once activated, DataDome enriches every hit to your site with ID tags in real time.\n\n<img src=\"https://datadome.co/wp-content/uploads/2019/05/dashboard-analytics-800x444.png\">\n\n#References\nWe are proud to count first class ecommerce and classifieds businesses from all over the world amongst our references: ClassMates, Rakuten, UBM (Black Hat), Kurt Geiger, TripAdvisor, BlaBlaCar, Schibsted.\n\n#Trial & Pricing\nYou can try DataDome free for 30 days. During the free trial, you will be able to analyze your traffic and see the attacks you are facing. In order to activate the protection, you will have to upgrade to a subscription plan. Pricing plans are available on our [website](https://datadome.co/pricing?utm_source=cloudflare_app).",
+				"instructions": "#Account creation\nCreate a free [trial account](https://datadome.co/free-signup/?utm_source=cloudflare_app).\nDuring the free trial, you will be able to analyze your traffic and see the attacks you are facing. In order to activate the protection, you will have to upgrade to a subscription plan. Pricing plans are available on our [website](https://datadome.co/pricing?utm_source=cloudflare_app).\n\n#License keys retrieval\nOnce logged in, go to your [management section](https://app.datadome.co/dashboard/config/protection/keys) to retrieve your keys.",
+				"alias": "datadome",
+				"orgId": "9f5a5924c8351d8d95de58ee8f349c1c",
+				"icon": "",
+				"screenshots": [
+					"https://images.cloudflareapps.com/WGrhNS7mCxgJ/Homepage%204.0%20Mac%20150dpi-l%C3%A9gend%C3%A9.png",
+					"https://images.cloudflareapps.com/FJ-LeDUwa7pr/AI%20Detection%20%20-%20Mac.png",
+					"https://images.cloudflareapps.com/FJ-LeDUwa7pr/Custom%20Rules%20-%20Mac.png",
+					"https://images.cloudflareapps.com/FJ-LeDUwa7pr/Explore%20%20-%20Mac.png",
+					"https://images.cloudflareapps.com/FJ-LeDUwa7pr/Responses%20%20-%20Mac.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/V7ESxJpYm-nJ/DataDomeLogo2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/9W6vY5L7EEhP/Feature%20image-AWS.png",
+				"author": "DataDome",
+				"tagline": "",
+				"website": "https://datadome.co/?utm_source=cloudflare_app",
+				"sourceURL": "https://datadome.co/?utm_source=cloudflare_app",
+				"termsOfServiceURL": "https://datadome.co/terms-of-service/",
+				"privacyPolicyURL": "https://datadome.co/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@datadome.co",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "9dsVnFzVWDRM"
+				},
+				"created": "2019-03-10T12:47:28.280954Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "9f5a5924c8351d8d95de58ee8f349c1c",
+				"requestedAt": "2023-11-20T09:41:12.74733325Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }
