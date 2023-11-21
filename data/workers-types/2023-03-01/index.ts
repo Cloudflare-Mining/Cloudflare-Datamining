@@ -365,6 +365,16 @@ export declare abstract class PromiseRejectionEvent extends Event {
   readonly reason: any;
 }
 export declare abstract class Navigator {
+  sendBeacon(
+    url: string,
+    body?:
+      | ReadableStream
+      | string
+      | (ArrayBuffer | ArrayBufferView)
+      | Blob
+      | URLSearchParams
+      | FormData
+  ): boolean;
   readonly userAgent: string;
   readonly gpu: gpuGPU;
 }
@@ -2135,6 +2145,9 @@ export interface gpuGPUCommandEncoder {
   beginComputePass(
     descriptor?: gpuGPUComputePassDescriptor
   ): gpuGPUComputePassEncoder;
+  beginRenderPass(
+    descriptor: gpuGPURenderPassDescriptor
+  ): gpuGPURenderPassEncoder;
   copyBufferToBuffer(
     source: gpuGPUBuffer,
     sourceOffset: number | bigint,
@@ -2386,6 +2399,53 @@ export interface gpuGPUBlendComponent {
   operation?: string;
   srcFactor?: string;
   dstFactor?: string;
+}
+export interface gpuGPURenderPassEncoder {
+  setPipeline(pipeline: gpuGPURenderPipeline): void;
+  draw(
+    vertexCount: number,
+    instanceCount?: number,
+    firstVertex?: number,
+    firstInstance?: number
+  ): void;
+}
+export interface gpuGPURenderPassDescriptor {
+  label?: string;
+  colorAttachments: gpuGPURenderPassColorAttachment[];
+  depthStencilAttachment?: gpuGPURenderPassDepthStencilAttachment;
+  occlusionQuerySet?: gpuGPUQuerySet;
+  timestampWrites?: gpuGPURenderPassTimestampWrite[];
+  maxDrawCount?: number | bigint;
+}
+export interface gpuGPURenderPassColorAttachment {
+  view: gpuGPUTextureView;
+  depthSlice?: number;
+  resolveTarget?: gpuGPUTextureView;
+  clearValue?: number[] | gpuGPUColorDict;
+  loadOp: string;
+  storeOp: string;
+}
+export interface gpuGPUColorDict {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+}
+export interface gpuGPURenderPassDepthStencilAttachment {
+  view: gpuGPUTextureView;
+  depthClearValue?: number;
+  depthLoadOp?: string;
+  depthStoreOp?: string;
+  depthReadOnly?: boolean;
+  stencilClearValue?: number;
+  stencilLoadOp?: string;
+  stencilStoreOp?: string;
+  stencilReadOnly?: boolean;
+}
+export interface gpuGPURenderPassTimestampWrite {
+  querySet: gpuGPUQuerySet;
+  queryIndex: number;
+  location: string;
 }
 export interface BasicImageTransformations {
   /**
@@ -3358,10 +3418,19 @@ export type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
 export type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
+export interface D1Meta {
+  duration: number;
+  size_after: number;
+  rows_read: number;
+  rows_written: number;
+  last_row_id: number;
+  changed_db: boolean;
+  changes: number;
+}
 export interface D1Result<T = unknown> {
   results: T[];
   success: true;
-  meta: any;
+  meta: D1Meta & Record<string, unknown>;
   error?: never;
 }
 export interface D1ExecResult {
@@ -3588,7 +3657,8 @@ export type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
 export interface VectorizeQueryOptions {
   topK?: number;
   namespace?: string;
-  returnVectors?: boolean;
+  returnValues?: boolean;
+  returnMetadata?: boolean;
 }
 /**
  * Information about the configuration of an index.
@@ -3626,20 +3696,17 @@ export interface VectorizeVector {
   values: VectorFloatArray | number[];
   /** The namespace this vector belongs to. */
   namespace?: string;
-  /** Metadata associated with the binding. Includes the values of the other fields and potentially additional details. */
+  /** Metadata associated with the vector. Includes the values of the other fields and potentially additional details. */
   metadata?: Record<string, VectorizeVectorMetadata>;
 }
 /**
  * Represents a matched vector for a query along with its score and (if specified) the matching vector information.
  */
-export interface VectorizeMatch {
-  /** The ID for the vector. This can be user-defined, and must be unique. It should uniquely identify the object, and is best set based on the ID of what the vector represents. */
-  vectorId: string;
-  /** The score or rank for similarity, when returned as a result */
-  score: number;
-  /** Vector data for the match. Included only if the user specified they want it returned (via {@link VectorizeQueryOptions}). */
-  vector?: VectorizeVector;
-}
+export type VectorizeMatch = Pick<Partial<VectorizeVector>, "values"> &
+  Omit<VectorizeVector, "values"> & {
+    /** The score or rank for similarity, when returned as a result */
+    score: number;
+  };
 /**
  * A set of vector {@link VectorizeMatch} for a particular query.
  */

@@ -359,6 +359,16 @@ declare abstract class PromiseRejectionEvent extends Event {
   readonly reason: any;
 }
 declare abstract class Navigator {
+  sendBeacon(
+    url: string,
+    body?:
+      | ReadableStream
+      | string
+      | (ArrayBuffer | ArrayBufferView)
+      | Blob
+      | URLSearchParams
+      | FormData
+  ): boolean;
   readonly userAgent: string;
   readonly gpu: gpuGPU;
 }
@@ -2126,6 +2136,9 @@ declare interface gpuGPUCommandEncoder {
   beginComputePass(
     descriptor?: gpuGPUComputePassDescriptor
   ): gpuGPUComputePassEncoder;
+  beginRenderPass(
+    descriptor: gpuGPURenderPassDescriptor
+  ): gpuGPURenderPassEncoder;
   copyBufferToBuffer(
     source: gpuGPUBuffer,
     sourceOffset: number | bigint,
@@ -2377,6 +2390,53 @@ declare interface gpuGPUBlendComponent {
   operation?: string;
   srcFactor?: string;
   dstFactor?: string;
+}
+declare interface gpuGPURenderPassEncoder {
+  setPipeline(pipeline: gpuGPURenderPipeline): void;
+  draw(
+    vertexCount: number,
+    instanceCount?: number,
+    firstVertex?: number,
+    firstInstance?: number
+  ): void;
+}
+declare interface gpuGPURenderPassDescriptor {
+  label?: string;
+  colorAttachments: gpuGPURenderPassColorAttachment[];
+  depthStencilAttachment?: gpuGPURenderPassDepthStencilAttachment;
+  occlusionQuerySet?: gpuGPUQuerySet;
+  timestampWrites?: gpuGPURenderPassTimestampWrite[];
+  maxDrawCount?: number | bigint;
+}
+declare interface gpuGPURenderPassColorAttachment {
+  view: gpuGPUTextureView;
+  depthSlice?: number;
+  resolveTarget?: gpuGPUTextureView;
+  clearValue?: number[] | gpuGPUColorDict;
+  loadOp: string;
+  storeOp: string;
+}
+declare interface gpuGPUColorDict {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+}
+declare interface gpuGPURenderPassDepthStencilAttachment {
+  view: gpuGPUTextureView;
+  depthClearValue?: number;
+  depthLoadOp?: string;
+  depthStoreOp?: string;
+  depthReadOnly?: boolean;
+  stencilClearValue?: number;
+  stencilLoadOp?: string;
+  stencilStoreOp?: string;
+  stencilReadOnly?: boolean;
+}
+declare interface gpuGPURenderPassTimestampWrite {
+  querySet: gpuGPUQuerySet;
+  queryIndex: number;
+  location: string;
 }
 declare interface BasicImageTransformations {
   /**
@@ -3349,10 +3409,19 @@ declare type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
 declare type CfProperties<HostMetadata = unknown> =
   | IncomingRequestCfProperties<HostMetadata>
   | RequestInitCfProperties;
+declare interface D1Meta {
+  duration: number;
+  size_after: number;
+  rows_read: number;
+  rows_written: number;
+  last_row_id: number;
+  changed_db: boolean;
+  changes: number;
+}
 declare interface D1Result<T = unknown> {
   results: T[];
   success: true;
-  meta: any;
+  meta: D1Meta & Record<string, unknown>;
   error?: never;
 }
 declare interface D1ExecResult {
@@ -3596,7 +3665,8 @@ declare type VectorizeDistanceMetric = "euclidean" | "cosine" | "dot-product";
 declare interface VectorizeQueryOptions {
   topK?: number;
   namespace?: string;
-  returnVectors?: boolean;
+  returnValues?: boolean;
+  returnMetadata?: boolean;
 }
 /**
  * Information about the configuration of an index.
@@ -3634,20 +3704,17 @@ declare interface VectorizeVector {
   values: VectorFloatArray | number[];
   /** The namespace this vector belongs to. */
   namespace?: string;
-  /** Metadata associated with the binding. Includes the values of the other fields and potentially additional details. */
+  /** Metadata associated with the vector. Includes the values of the other fields and potentially additional details. */
   metadata?: Record<string, VectorizeVectorMetadata>;
 }
 /**
  * Represents a matched vector for a query along with its score and (if specified) the matching vector information.
  */
-declare interface VectorizeMatch {
-  /** The ID for the vector. This can be user-defined, and must be unique. It should uniquely identify the object, and is best set based on the ID of what the vector represents. */
-  vectorId: string;
-  /** The score or rank for similarity, when returned as a result */
-  score: number;
-  /** Vector data for the match. Included only if the user specified they want it returned (via {@link VectorizeQueryOptions}). */
-  vector?: VectorizeVector;
-}
+declare type VectorizeMatch = Pick<Partial<VectorizeVector>, "values"> &
+  Omit<VectorizeVector, "values"> & {
+    /** The score or rank for similarity, when returned as a result */
+    score: number;
+  };
 /**
  * A set of vector {@link VectorizeMatch} for a particular query.
  */
