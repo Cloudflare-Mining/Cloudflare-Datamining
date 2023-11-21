@@ -211,7 +211,6 @@
 	"speed.earlyhints.zone_api.title.patch": "Change Early Hints zone setting",
 	"speed.earlyhints.card_title": "Early Hints",
 	"speed.earlyhints.card_description": "Cloudflare's edge will cache and send 103 Early Hints responses with Link headers from your HTML pages. Early Hints allows browsers to preload linked assets before they see a 200 OK or other final response from the origin.",
-	"speed.earlyhints.card_warning": "Early Hints is currently disabled for all Cloudflare zones. We hope to re-enable soon.  [Click here to read more.](https://community.cloudflare.com/t/early-hints-and-encrypted-client-hello-ech-are-currently-disabled-globally/567730)",
 	"speed.earlyhints.card_help": "103 Early Hints is an HTTP status code designed to speed up content delivery. When enabled, Cloudflare can cache the Link headers marked with preload and/or preconnect from HTML pages and serve them in a 103 Early Hints response before reaching the origin server. Browsers can use these hints to fetch linked assets while waiting for the origin's final response, dramatically improving page load speeds.\n\nPlease see the [feature docs](https://developers.cloudflare.com/cache/about/early-hints) and [announcement blog](https://blog.cloudflare.com/early-hints) for more information.",
 	"speed.smart_hints.card_title": "Smart Hints",
 	"speed.smart_hints.sign_up": "Sign up",
