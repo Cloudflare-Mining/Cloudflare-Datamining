@@ -6106,7 +6106,7 @@
 								"buttonTextLoggedIn": null,
 								"contentTypeId": "button",
 								"contentfulId": "3Tyvr6tmM2Ih6TzYzBIakd",
-								"elementName": "[SAM TEST] SEE ALL CASE STUDIES",
+								"elementName": "SEE ALL CASE STUDIES",
 								"standardText": null,
 								"text": "See all case studies",
 								"url": "/case-studies",
@@ -11734,7 +11734,56 @@
 					}
 				],
 				"contactField": null,
-				"column1": [],
+				"column1": [
+					{
+						"customClassName": null,
+						"contentfulId": "5LaT8GIIvMGfE2vAKtxMlq",
+						"url": "/plans/free/",
+						"title": "Free plans",
+						"trackingLabel": "free-plans",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "7HdgQngVqx1xplUaS4S4jZ",
+						"url": "/enterprise/",
+						"title": "For enterprises",
+						"trackingLabel": "enterprises",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "5EcYatWxZWTYbxOtFMsEpF",
+						"url": "/plans/",
+						"title": "Compare plans",
+						"trackingLabel": "Compare plans",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "N2F4KP3flAEB6G73dllnX",
+						"url": "/about-your-website/",
+						"title": "Get a recommendation",
+						"trackingLabel": "get-a-recommendation",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "486N0IFYRtKgeM54ebLblX",
+						"url": "/plans/enterprise/demo/",
+						"title": "Request a demo",
+						"trackingLabel": "request-a-demo",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "2Ekkn62N8a0ULwW7B5OqMk",
+						"url": "/plans/enterprise/contact/",
+						"title": "Contact sales",
+						"trackingLabel": "contact-sales",
+						"hideOnChinaSite": null
+					}
+				],
 				"column1Title": "Getting Started",
 				"column2": [
 					{
@@ -11755,6 +11804,14 @@
 					},
 					{
 						"customClassName": null,
+						"contentfulId": "60m1wZ7Zp7B6wFMv6BKNuO",
+						"url": "https://radar.cloudflare.com/",
+						"title": "Cloudflare Radar",
+						"trackingLabel": "cloudflare-radar",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
 						"contentfulId": "531LFHyMIKJ8Y9pVsA6kZK",
 						"url": "https://cloudflare.tv/live",
 						"title": "Cloudflare TV",
@@ -11768,10 +11825,83 @@
 						"title": "Case Studies",
 						"trackingLabel": "case_studies",
 						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "17Wj5lHw3xo3dSgS5xZFDu",
+						"url": "/resource-hub/",
+						"title": "Webinars & white papers",
+						"trackingLabel": "webinars-white-papers",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "7K5hiyAT088Ir5YMkC7Dxg",
+						"url": "https://developers.cloudflare.com/",
+						"title": "Developer docs",
+						"trackingLabel": "developer-docs",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "6T3rD2oCtwTZbvJ4UrmUnf",
+						"url": "/the-net/",
+						"title": "Insights",
+						"trackingLabel": "Insights",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "7F0BhzTkojkCHkV2tozboQ",
+						"url": "https://blog.cloudflare.com/",
+						"title": "Blog",
+						"trackingLabel": "blog",
+						"hideOnChinaSite": null
 					}
 				],
 				"column2Title": "Resources",
-				"column3": [],
+				"column3": [
+					{
+						"customClassName": null,
+						"contentfulId": "7bRrwgAUUFZ93xwoaU3zM4",
+						"url": "/connectivity-cloud/",
+						"title": "Connectivity cloud",
+						"trackingLabel": "connectivity-cloud",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "5NWnppRj7D4mhzSKkwvvhj",
+						"url": "/zero-trust/products/",
+						"title": "SSE and SASE services",
+						"trackingLabel": "sse-sase-services",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "R4bObm2Q9oVmWYan8sAJj",
+						"url": "/application-services/products/",
+						"title": "Application services",
+						"trackingLabel": "application-services",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "16VAPJ9aiiVNJ7Gzt6YV4u",
+						"url": "/network-services/products/",
+						"title": "Network services",
+						"trackingLabel": "network-services",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "idUUGJE2qa7doH9JrrMuU",
+						"url": "/developer-platform/products/",
+						"title": "Agile developer services",
+						"trackingLabel": "agile-developer-services",
+						"hideOnChinaSite": null
+					}
+				],
 				"column3Title": "Solutions",
 				"column4": [
 					{
@@ -11804,6 +11934,22 @@
 						"url": "/campaigns/",
 						"title": "Cloudflare for Campaigns",
 						"trackingLabel": null,
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "3RwLKHg9C0IuucVk9qFVmy",
+						"url": "/partners/technology-partners/cidp/",
+						"title": "Critical Infrastructure Defense Project",
+						"trackingLabel": "cidp",
+						"hideOnChinaSite": null
+					},
+					{
+						"customClassName": null,
+						"contentfulId": "RueE2vpS5TpNDJ3PODxIW",
+						"url": "/connect2023/",
+						"title": "Cloudflare Connect 2023",
+						"trackingLabel": "cloudflare_connect_2023",
 						"hideOnChinaSite": null
 					}
 				],
