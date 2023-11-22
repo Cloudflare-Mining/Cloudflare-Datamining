@@ -2950,6 +2950,19 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Config.Autogate",
+			"fields": [
+				{
+					"name": "enabled",
+					"annotations": {}
+				},
+				{
+					"name": "name",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Config",
 			"fields": [
 				{
@@ -2966,6 +2979,10 @@
 				},
 				{
 					"name": "extensions",
+					"annotations": {}
+				},
+				{
+					"name": "autogates",
 					"annotations": {}
 				}
 			]
