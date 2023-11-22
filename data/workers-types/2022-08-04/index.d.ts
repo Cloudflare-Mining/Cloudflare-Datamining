@@ -2150,6 +2150,11 @@ declare interface gpuGPUCommandEncoder {
     size: number | bigint
   ): void;
   finish(param0?: gpuGPUCommandBufferDescriptor): gpuGPUCommandBuffer;
+  copyTextureToBuffer(
+    source: gpuGPUImageCopyTexture,
+    destination: gpuGPUImageCopyBuffer,
+    copySize: Iterable<number> | gpuGPUExtent3DDict
+  ): void;
 }
 declare interface gpuGPUCommandEncoderDescriptor {
   label?: string;
@@ -2402,6 +2407,7 @@ declare interface gpuGPURenderPassEncoder {
     firstVertex?: number,
     firstInstance?: number
   ): void;
+  end(): void;
 }
 declare interface gpuGPURenderPassDescriptor {
   label?: string;
@@ -2440,6 +2446,23 @@ declare interface gpuGPURenderPassTimestampWrite {
   querySet: gpuGPUQuerySet;
   queryIndex: number;
   location: string;
+}
+declare interface gpuGPUImageCopyTexture {
+  texture: gpuGPUTexture;
+  mipLevel?: number;
+  origin?: number[] | gpuGPUOrigin3DDict;
+  aspect?: string;
+}
+declare interface gpuGPUImageCopyBuffer {
+  buffer: gpuGPUBuffer;
+  offset?: number | bigint;
+  bytesPerRow?: number;
+  rowsPerImage?: number;
+}
+declare interface gpuGPUOrigin3DDict {
+  x?: number;
+  y?: number;
+  z?: number;
 }
 declare interface BasicImageTransformations {
   /**
