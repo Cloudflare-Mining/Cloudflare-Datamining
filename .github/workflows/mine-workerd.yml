@@ -41,7 +41,7 @@ jobs:
           curl -L -O https://github.com/KianNH/capnp-parse/releases/download/0.0.5/capnp-parse-x86_64-unknown-linux-gnu.tar.gz
           tar zxf capnp-parse-x86_64-unknown-linux-gnu.tar.gz
           git clone --depth 1 https://github.com/cloudflare/workerd.git
-          ./capnp-parse -g "./workerd/**/*.capnp" -e "config.capnp" -e "worker-interface.capnp" -e "icudata-embed.capnp" -e "burrito-shop.capnp" -e "extension.capnp" -o "workerd-output.json" -e "rtti-test.capnp" -e "resource-test.capnp"
+          ./capnp-parse -g "./workerd/**/*.capnp" -e "config.capnp" -e "worker-interface.capnp" -e "icudata-embed.capnp" -e "burrito-shop.capnp" -e "extension.capnp" -o "workerd-output.json" -e "rtti-test.capnp" -e "resource-test.capnp" -e "supported-compatibility-date.capnp"
 
       - name: Parse capnp-parse output
         run: |
