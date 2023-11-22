@@ -385,7 +385,11 @@
 								"togglesTo": []
 							}
 						],
-						"bladeLayoutConfig": null
+						"bladeLayoutConfig": {
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"sectionPadding": "tile--no-bottom-padding"
+						}
 					},
 					{
 						"contentfulId": "7Jwe0mO8l4DukhZT6CLt78",
@@ -639,7 +643,7 @@
 							"locale": "en-US"
 						},
 						"buttonTwo": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"eyebrow": null
 					}
 				],
