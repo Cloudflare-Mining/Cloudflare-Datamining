@@ -2504,18 +2504,7 @@
 								"showIconOnly": false,
 								"hideOnChinaSite": false,
 								"navigationItems": [],
-								"mainLink": {
-									"contentTypeId": "elementNavLink",
-									"contentfulId": "1jJPW8bmohP1eXvIWgSHBC",
-									"locale": "en-US",
-									"title": "Sign Up",
-									"description": null,
-									"url": "https://dash.cloudflare.com/sign-up",
-									"badges": null,
-									"specialLinkType": null,
-									"openInNewWindow": false,
-									"isExternalUrl": null
-								},
+								"mainLink": null,
 								"navigationLinks": []
 							},
 							{
@@ -2716,12 +2705,6 @@
 								"page": null,
 								"url": null,
 								"subMenuItems": [
-									{
-										"contentfulId": "59Gxkab1yfmnzFDnL78ZXq",
-										"linkText": "Gartner® Magic Quadrant™ for Security Service Edge (SSE), 2023",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/"
-									},
 									{
 										"contentfulId": "6i8WRohX9yfvKsiERYenxg",
 										"linkText": "Forrester Wave™ for Zero Trust Platforms, Q3 2023",
@@ -3745,6 +3728,58 @@
 								"contentTypeId": "planElementFeaturesGroup",
 								"name": "Network Resiliency",
 								"features": [
+									{
+										"contentfulId": "K9VoSECO9kJIJB01vP24Z",
+										"contentTypeId": "planElementFeatures",
+										"name": "Global connectivity",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "23G6pIPyGbcvhGzzqVKOX8",
+												"textValue": "Yes: Anycast architecture",
+												"plan": {
+													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
+													"name": "Cloudflare",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1ytqf3jGIfWF2H1iE1PmmA",
+												"textValue": "No: Active/active local termination",
+												"plan": {
+													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
+													"name": "Zscaler",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
 									{
 										"contentfulId": "1W630lBcuI7MIDZp46ccTc",
 										"contentTypeId": "planElementFeatures",
