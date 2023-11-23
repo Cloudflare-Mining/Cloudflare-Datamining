@@ -16,7 +16,7 @@
 "https://api.cloudflare.com/client/v4/accounts/{account-id}/ai/run/@cf/stabilityai/stable-diffusion-xl-base-1.0" \
 -H "Authorization: Bearer {api-token}" \
 -H "Content-Type:application/json" \
--d '{ "prompt": "A happy llama running through an orange cloud" }'
+-d '{ "prompt": "A happy llama running through an orange cloud" }' \
 -o 'happy-llama.png'
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -54,7 +54,7 @@ export default {
   async fetch(request, env) {
     const ai = new Ai(env.AI);
     const response = await ai.run('@hf/thebloke/codellama-7b-instruct-awq', {
-      prompt: 'In JavaScript, define a priority queue class. The constructor                must take a function that is called on each object to determine its   priority.'
+      prompt: 'In JavaScript, define a priority queue class. The constructor must take a function that is called on each object to determine its priority.'
     });
     return Response.json(response);
   }
