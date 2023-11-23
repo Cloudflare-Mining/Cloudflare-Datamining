@@ -372,108 +372,93 @@
 						"togglesTo": []
 					},
 					{
-						"contentTypeId": "bladeTable",
-						"contentfulId": "4UXlEi6qYk3fokNt7h2tLN",
-						"locale": "en-US",
-						"sectionPadding": "tile--no-bottom-padding",
-						"bladeBorder": "none",
+						"contentfulId": "2p3k55Plcnj91CulXg61ua",
 						"backgroundColor": "white",
-						"displayHeader": null,
-						"showFilter": null,
-						"sectionTitle": null,
-						"title": "Cache Reserve Pricing",
-						"copy": "Cache Reserve charges based on the total volume of data stored and two classes of operations on that data. You pay zero egress fees.",
+						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"columnHeaders": [
+						"copy": "Cache Reserve charges based on the total volume of data stored and two classes of operations on that data. You pay zero egress fees.",
+						"title": "Cash reserve pricing and features",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
 							{
-								"cellText": "Rates",
-								"cellTextLinkUrl": null,
-								"cellSubtitle": null,
-								"buttonText": null,
-								"buttonUrl": null,
-								"commonElements": null,
-								"imageAssetFile": null
-							}
-						],
-						"groupsInTable": [],
-						"rowsInTable": [
-							{
-								"contentfulId": "ih0Kmz1d2j6sStKzD8QQx",
-								"rowHeader2": {
-									"contentfulId": "6H1GSKgia7pPA6UVipywl6",
-									"cellText": "Storage",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "5Df59HFrDhZfBPVtROwBqu",
-										"cellText": "$0.015 /GB storage",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
+								"contentTypeId": "feature",
+								"contentfulId": "6itkLyrCX7wA4YEg5XFWSN",
+								"title": "Storage",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "$0.015 /GB storage",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": true,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentfulId": "3szxwCmEAT9OjNevKFnhy0",
-								"rowHeader2": {
-									"contentfulId": "3ltLUXm0G9RcUcRO6VGCKF",
-									"cellText": "Class A Operations (writes)",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "7mSPSSIcyRLEe2a2cIssxv",
-										"cellText": "$4.50 /million requests",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
+								"contentTypeId": "feature",
+								"contentfulId": "7zbc6Gvqq4hlwglrufwkEa",
+								"title": "Class A Operations (writes)",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "\n$4.50 /million requests",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": true,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
 							{
-								"contentfulId": "6tuIQy2yUxqdxdZ6sOROPs",
-								"rowHeader2": {
-									"contentfulId": "3YsxOPnnt1DuPcJ2IM7hus",
-									"cellText": "Class B Operations (reads)",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "7Gp3TbTnfGduOrp025DLoF",
-										"cellText": "$0.36 /million requests",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
+								"contentTypeId": "feature",
+								"contentfulId": "6ZXJdgu2nEBjRaSOViysr",
+								"title": "Class B Operations (reads)",
+								"makeTitleLink": false,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "$0.36 /million requests",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": true,
+								"openLinkInNewTab": null,
+								"removeCardBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						],
-						"dataSource": null
+						]
 					},
 					{
 						"contentfulId": "6oENe1bOkCYIPUrqAHMBGo",
 						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
+						"backgroundColor": "white",
+						"title": null,
 						"keyFeature": [
 							"Zero egress fees",
 							"One-click activation",
@@ -483,9 +468,9 @@
 							"Enhanced performance"
 						],
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": "blue1",
-						"variant": null,
+						"sectionPadding": "tile--no-top-padding",
+						"titleColor": "orange0",
+						"variant": "stacked",
 						"description": null,
 						"featuresTextStyle": "body1",
 						"htmlId": null
