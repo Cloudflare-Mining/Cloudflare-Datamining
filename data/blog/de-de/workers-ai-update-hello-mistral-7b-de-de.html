@@ -1,0 +1,134 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Mistral-1.png" class="kg-image" alt="Workers AI Update: Hello Mistral 7B" loading="lazy" width="1600" height="900"></figure>
+	<p>Wir freuen uns, heute ankündigen zu können, dass wir Mistral-7B-v0.1-instruct zu Workers AI hinzugefügt haben. Mistral 7B ist ein 7,3 Milliarden Parameter-umfassendes Sprachmodell mit einer Reihe von einzigartigen Vorteilen. Mit Hilfe der Gründer von Mistral AI werden wir uns einige der Highlights des Mistral 7B-Modells ansehen und die Gelegenheit nutzen, um tiefer in das Thema „Attention“ (Aufmerksamkeit) und seine Variationen wie Multi-Query-Attention und Grouped-Query-Attention einzutauchen.</p>
+	<h2 id="kurz-erkl%C3%A4rt-was-ist-mistral-7b">Kurz erklärt: Was ist Mistral 7B?</h2>
+	<p>Mistral 7B ist ein 7,3 Milliarden Parameter-umfassendes KI-Modell, das <a href="https://mistral.ai/news/announcing-mistral-7b" target="_blank">bei Benchmarks beeindruckende Zahlen</a> liefert. Das Modell:</p>
+	<ul>
+		<li>übertrifft Llama 2 13B bei allen Benchmarks</li>
+		<li>übertrifft Llama 1 34B bei vielen Benchmarks,</li>
+		<li>erreicht bei Programmieraufgaben fast die Performance von CodeLlama 7B, während es bei Englisch-Aufgaben noch immer gut abschneidet</li>
+		<li>Die optimierte, auf Chat-Dialog ausgerichtete Version, die wir eingesetzt haben, übertrifft Llama 2 13B Chat in den von Mistral durchgeführten Benchmarks.</li>
+	</ul>
+	<p>Es folgt ein Beispiel für das Streamen mit der <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank">REST-API</a>:</p><!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+“https://api.cloudflare.com/client/v4/accounts/{account-id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1” \
+-H “Authorization: Bearer {api-token}” \
+-H “Content-Type:application/json” \
+-d '{ “prompt”: “What is grouped query attention”, “stream”: true }'
+
+API Response: { response: “Grouped query attention is a technique used in natural language processing  (NLP) and machine learning to improve the performance of models…” }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Und hier sehen Sie ein Beispiel für die Verwendung eines Worker-Skripts:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+export default {
+    async fetch(request, env) {
+        const ai = new Ai(env.AI);
+        const stream = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', {
+            prompt: 'What is grouped query attention',
+            stream: true
+        });
+        return Response.json(stream, { headers: { “content-type”: “text/event-stream” } });
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Mistral nutzt die sogenannte <a href="https://arxiv.org/abs/2305.13245" target="_blank">Grouped-Query Attention</a> für schnellere Inferenz. Diese kürzlich entwickelte Technik verbessert die Geschwindigkeit der Inferenz, ohne die Qualität der Ergebnisse zu beeinträchtigen. Bei Modellen mit 7 Milliarden Parametern können wir dank der Grouped-Query Attention mit Mistral fast 4x so viele Token pro Sekunde generieren wie mit Llama.</p>
+	<p>Sie benötigen natürlich keine weiteren Informationen als diese, um Mistral-7B zu nutzen. Sie können es noch heute testen unter <a href="https://ai.cloudflare.com" target="_blank">ai.cloudflare.com</a>. Wenn Sie mehr über Attention und Grouped-Query-Attention erfahren möchten, lesen Sie einfach weiter!</p>
+	<h2 id="was-bedeutet-%E2%80%9Eattention%E2%80%9C-also-aufmerksamkeit-eigentlich-im-bereich-der-ki">Was bedeutet „Attention“, also Aufmerksamkeit, eigentlich im Bereich der KI?</h2>
+	<p>Der grundlegende Attention-Mechanismus, insbesondere die „Scaled Dot-Product Attention“, wie sie in der bahnbrechenden Forschungsarbeit „<a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a>“, vorgestellt wurde, ist recht einfach:</p>
+	<blockquote>Wir nennen unsere spezielle Aufmerksamkeit „Scale Dot-Product Attention“. Der Input besteht aus der Abfrage und den Schlüsseln der Dimension d_k und den Werten der Dimension d_v. Wir berechnen die Dot-Produkte der Abfrage mit allen Schlüsseln, teilen jedes durch sqrt(d_k) und wenden eine Softmax-Funktion an, um die Gewichtung der Werte zu erhalten.</blockquote>
+	<p>Konkret sieht das folgendermaßen aus:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/Screenshot-2023-11-21-at-09.12.30.png" class="kg-image" alt="" loading="lazy" width="1882" height="680">
+		<figcaption><a href="https://arxiv.org/abs/1706.03762" target="_blank">source</a></figcaption>
+	</figure>
+	<p>Vereinfacht ausgedrückt, können sich die Modelle so auf wichtige Teile des Inputs konzentrieren. Stellen Sie sich vor, Sie lesen einen Satz und versuchen, ihn zu verstehen. Scaled Dot-Product-Attention ermöglicht es Ihnen, bestimmten Wörtern auf der Grundlage ihrer Relevanz mehr Aufmerksamkeit zu schenken. Dabei wird die Ähnlichkeit zwischen jedem Wort (K) im Satz und einer Abfrage (Q) berechnet. Anschließend werden die Ähnlichkeitswerte durch die Quadratwurzel der Dimension der Abfrage geteilt. Diese Skalierung hilft, sehr kleine oder sehr große Werte zu vermeiden. Anhand dieser skalierten Ähnlichkeitswerte können wir schließlich bestimmen, wie viel Aufmerksamkeit oder Bedeutung jedes Wort erhalten sollte. Dieser Aufmerksamkeitsmechanismus hilft den Modellen, wichtige Informationen (V) zu erkennen und ihre Verständnis- und Übersetzungsfähigkeiten zu verbessern.</p>
+	<p>Eigentlich ganz einfach, oder? Um von diesem einfachen Mechanismus zu einer KI zu gelangen, der man komplexe Schreibaufträge erteilen kann wie z. B. „Schreibe eine Seinfeld-Folge, in der Jerry den Bubble-Sort-Algorithmus erlernt“, müssen wir ihn jedoch noch komplexer machen. (Tatsächlich hat alles, was wir gerade behandelt haben, nicht einmal gelernte Parameter – konstante Werte, die während des Trainierens des Modells gelernt werden und die die Ausgabe des Attention-Blocks anpassen!)</p>
+	<p>Attention-Blöcke im Stile von „<em>Attention is All You Need</em>“ führen hauptsächlich drei Arten von Komplexität ein:</p>
+	<h3 id="gelernte-parameter">Gelernte Parameter</h3>
+	<p>Gelernte Parameter beziehen sich auf Werte oder Gewichte, die während des Trainingsprozesses eines Modells angepasst werden, um dessen Performance zu verbessern. Diese Parameter werden verwendet, um den Informationsfluss oder die Aufmerksamkeit innerhalb des Modells zu steuern, damit es sich auf die wichtigsten Teile der Inputdaten konzentrieren kann. Einfacher ausgedrückt: Gelernte Parameter sind wie einstellbare Knöpfe an einer Maschine, an denen man drehen kann, um ihren Betrieb zu optimieren.</p>
+	<h3 id="%E2%80%9Evertikale%E2%80%9C-stapelung-%E2%80%93-%C3%BCbereinandergelagerte-attention-bl%C3%B6cke">„Vertikale“ Stapelung – übereinandergelagerte Attention-Blöcke</h3>
+	<p>Bei der vertikalen Stapelung werden mehrere Aufmerksamkeitsmechanismen übereinander gestapelt, wobei jede Schicht auf dem Ergebnis der vorherigen Schicht aufbaut. Dadurch kann sich das Modell auf verschiedene Teile der Inputdaten auf unterschiedlichen Abstraktionsebenen konzentrieren, was zu einer besseren Performance bei bestimmten Aufgaben führen kann.</p>
+	<h3 id="horizontale-stapelung-%E2%80%93-auch-bekannt-als-%E2%80%9Emulti-head-attention%E2%80%9C">Horizontale Stapelung – auch bekannt als „Multi-Head-Attention“</h3>
+	<p>Die Abbildung aus der Arbeit zeigt das vollständige Multi-Head-Attention-Modul. Mehrere Attention-Operationen werden parallel durchgeführt, wobei das Q-K-V-Input für jede durch eine eindeutige lineare Projektion der gleichen Input-Daten (definiert durch einen eindeutigen Satz gelernter Parameter) erzeugt wird. Diese parallelen Attention-Blöcke werden als „Attention-Heads“ bezeichnet. Die gewichteten Summen-Outputs aller Attention-Heads werden zu einem einzigen Vektor verkettet und durch eine weitere parametrisierte lineare Transformation geleitet, um das endgültige Output zu erhalten.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/Screenshot-2023-11-21-at-09.13.49.png" class="kg-image" alt="" loading="lazy" width="1806" height="722">
+		<figcaption><a href="https://arxiv.org/abs/1706.03762" target="_blank">source</a></figcaption>
+	</figure>
+	<p>Dieser Mechanismus ermöglicht es einem Modell, sich gleichzeitig auf verschiedene Teile der Inputdaten zu konzentrieren. Stellen Sie sich vor, Sie versuchen, eine komplexe Information zu verstehen, etwa einen Satz oder einen Absatz. Um diesen zu verstehen, müssen Sie gleichzeitig auf verschiedene Teile achten. So müssen Sie beispielsweise gleichzeitig auf das Subjekt des Satzes, das Verb und das Objekt achten, um die Bedeutung des Satzes zu begreifen. Die Multi-Headed-Attention funktioniert sehr ähnlich. Sie ermöglicht es einem Modell, gleichzeitig auf verschiedene Teile der Inputdaten zu achten, indem es mehrere „Bereiche“ der Aufmerksamkeit („Heads of Attention“) verwendet. Jeder Aufmerksamkeitsbereich konzentriert sich auf einen anderen Aspekt der Inputdaten, und die Ergebnisse aller Bereiche werden kombiniert, um das endgültige Ergebnis des Modells zu erhalten.</p>
+	<h2 id="arten-von-attention">Arten von Attention</h2>
+	<p>Es gibt drei gängige Anordnungen von Attention-Blöcken, die von LLMs verwendet werden, die in den letzten Jahren entwickelt wurden: Multi-Head-Attention, Grouped-Query-Attention und Multi-Query-Attention. Sie unterscheiden sich durch die Anzahl der K- und V-Vektoren im Verhältnis zur Anzahl der Abfragevektoren. <strong>Multi-Head-Attention</strong> verwendet die gleiche Anzahl von K- und V-Vektoren wie Q-Vektoren, in der folgenden Tabelle mit „N“ bezeichnet. <strong>Multi-Query-Attention</strong> verwendet nur einen einzigen K- und V-Vektor. <strong>Grouped-Query-Attention</strong>, die Art, die im Mistral 7B-Modell verwendet wird, teilt die Q-Vektoren gleichmäßig in Gruppen mit jeweils „G“ Vektoren auf und verwendet dann einen einzelnen K- und V-Vektor für jede Gruppe, so dass insgesamt N durch G Gruppen von K- und V-Vektoren geteilt werden. Soweit zu den Unterschieden. Wir werden uns weiter unten mit den Auswirkungen dieser Unterschiede befassen.</p><!--kg-card-begin: html-->
+	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
+		<tbody>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">&nbsp;</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Anzahl der Schlüssel/Wert-Blöcke</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Qualität</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Speicher-verbrauch</strong></span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-head attention (MHA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Beste</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Am meisten</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Grouped-query attention (GQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N / G</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Besser</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Weniger</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-query attention (MQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">1</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Gutartiger</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Am wenigsten</span></span></span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align:center"><span style="font-size:9pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Zusammenfassung der Attention-Stile</span></span></span></p><!--kg-card-end: html-->
+	<p>Diese Abbildung verdeutlicht den Unterschied zwischen den drei Stilen:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-6.png" class="kg-image" alt="" loading="lazy" width="1112" height="388">
+		<figcaption><a href="https://arxiv.org/pdf/2305.13245.pdf" target="_blank">source</a></figcaption>
+	</figure>
+	<h3 id="multi-query-attention">Multi-Query-Attention</h3>
+	<p>Multi-Query Attention wurde 2019 in einer Arbeit von Google beschrieben: „<a href="https://arxiv.org/abs/1911.02150" target="_blank">Fast Transformer Decoding: One Write-Head is All You Need</a>“. Die Idee besteht darin, dass für jeden Q-Vektor im Attention-Mechanismus keine separaten K- und V-Einträge erstellt werden, wie bei der obigen Multi-Head-Attention, sondern nur ein einziger K- und V-Vektor für den gesamten Satz von Q-Vektoren verwendet wird. Daher der Name: mehrere Abfragen kombiniert in einem einzigen Attention-Mechanismus. In der Arbeit wurde dies an einer Übersetzungsaufgabe getestet und zeigte die gleiche Performance wie die Multi-Head-Attention bei der Benchmark-Aufgabe.</p>
+	<p>Ursprünglich war die Idee, die Gesamtgröße des Speichers zu reduzieren, auf den bei der Durchführung der Inferenz für das Modell zugegriffen wird. Seitdem haben sich verallgemeinerte Modelle herausgebildet und die Anzahl der Parameter ist gestiegen. Der benötigte GPU-Speicher ist oft der Engpass. Hier zeigt sich die Stärke der Multi-Query-Attention, da sie von den drei Attention-Arten den geringsten Beschleunigungsspeicher benötigt. Mit zunehmender Größe und Allgemeingültigkeit der Modelle nahm die Performance der Multi-Query-Attention im Vergleich zur Multi-Head-Attention jedoch ab.</p>
+	<h3 id="grouped-query-attention">Grouped-Query-Attention</h3>
+	<p>Der neueste – und der von Mistral verwendete Ansatz – ist die Grouped-Query-Attention, wie sie in der im Mai 2023 auf arxiv.org veröffentlichten Arbeit <a href="https://arxiv.org/abs/2305.13245" target="_blank">GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</a> beschrieben wurde. Grouped-Query-Attention kombiniert das Beste beider Ansätze: die Qualität von Multi-Head-Attention mit der Geschwindigkeit und dem geringen Speicherbedarf von Multi-Query-Attention. Anstelle eines einzigen Satzes von K- und V-Vektoren oder eines Satzes für jeden Q-Vektor wird ein festes Verhältnis von einem Satz von K- und V-Vektoren für jeden Q-Vektor verwendet, was die Speichernutzung reduziert, aber eine hohe Performance bei vielen Aufgaben sichert.</p>
+	<p>Bei der Auswahl eines für den laufenden Betrieb zu implementierenden Modells geht es oft nicht nur darum, das beste verfügbare Modell auszuwählen, denn wir müssen Kompromisse zwischen Performance, Speichernutzung, Batch-Größe und verfügbarer Hardware (oder Cloud-Kosten) berücksichtigen. Das Wissen um diese drei Arten der Attention (Aufmerksamkeit) kann uns helfen, diese Entscheidungen zu treffen und zu verstehen, wann wir unter den jeweiligen Umständen ein bestimmtes Modell wählen sollten.</p>
+	<h2 id="hier-kommt-mistral-ins-spiel-%E2%80%93-testen-sie-es-noch-heute">Hier kommt Mistral ins Spiel – testen Sie es noch heute</h2>
+	<p>Als eines der ersten Large-Language-Modelle, das die Grouped-Query-Attention nutzt und sie mit der Sliding-Window-Attention kombiniert, scheint Mistral die perfekte Lösung gefunden zu haben – niedrige Latenz, hoher Durchsatz und eine sehr gute Performance bei Benchmarks, selbst im Vergleich zu größeren Modellen (13B). Alles, was ich sagen will, ist, dass es für seine Größe sehr viel zu bieten hat, und wir freuen uns sehr, es heute allen Entwicklern über Workers AI zur Verfügung stellen zu können. </p>
+	<p>Schauen Sie sich unsere <a href="https://developers.cloudflare.com/workers-ai/models/text-generation" target="_blank">Entwicklerdokumente</a> an, um loszulegen, und wenn Sie Hilfe benötigen, Feedback geben oder Ihre Arbeit mit anderen teilen möchten, besuchen Sie einfach unseren <a href="https://discord.com/invite/cloudflaredev" target="_blank">Developer Discord</a>!</p>
+	<p>Das Workers AI-Team wächst und stellt neue Mitarbeitende ein. Schauen Sie auf unserer <a href="https://www.cloudflare.com/careers/jobs" target="_blank">Karriere-Seite</a> nach offenen Stellen, wenn Sie sich für KI-Engineering begeistern und uns beim Aufbau und der Weiterentwicklung unserer globalen, serverlosen GPU-gestützten Inferenzplattform unterstützen möchten.</p>
+</div>

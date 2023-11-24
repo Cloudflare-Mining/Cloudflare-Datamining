@@ -1,0 +1,134 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Mistral-1.png" class="kg-image" alt="Workers AI Update: Hello Mistral 7B" loading="lazy" width="1600" height="900"></figure>
+	<p>Vandaag kunnen we met trots aankondigen dat we de Mistral-7B-v0.1-instructie hebben toegevoegd aan Workers AI. Mistral 7B is een taalmodel met 7,3 miljard parameters en een aantal unieke voordelen. Met wat hulp van de oprichters van Mistral AI bekijken we enkele van de hoogtepunten van het Mistral 7B-model en maken we van de gelegenheid gebruik om dieper in te gaan op "attention" en variaties daarop, zoals multi-query attention en grouped-query attention.</p>
+	<h2 id="mistral-7b-tldr">Mistral 7B tl;dr:</h2>
+	<p>Mistral 7B is een model met 7,3 miljard parameters dat <a href="https://mistral.ai/news/announcing-mistral-7b" target="_blank">indrukwekkende scores behaalt op benchmarks</a>. Het model:</p>
+	<ul>
+		<li>Presteert beter dan Llama 2 13B op alle benchmarks</li>
+		<li>Presteert beter dan Llama 1 34B op veel benchmarks,</li>
+		<li>Benadert de prestaties van CodeLlama 7B op code, zonder afbreuk aan het Engelse taalvermogen, en</li>
+		<li>De versie met gespecialiseerde chat die we hebben ingezet presteert beter dan Llama 2 13B chat op de benchmarks die Mistral heeft geleverd.</li>
+	</ul>
+	<p>Hier is een voorbeeld van het gebruik van streaming met de <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank">REST API</a>:</p><!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+“https://api.cloudflare.com/client/v4/accounts/{account-id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1” \
+-H “Authorization: Bearer {api-token}” \
+-H “Content-Type:application/json” \
+-d '{ “prompt”: “What is grouped query attention”, “stream”: true }'
+
+API Response: { response: “Grouped query attention is a technique used in natural language processing  (NLP) and machine learning to improve the performance of models…” }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>En hier is een voorbeeld met een Worker-script:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+export default {
+    async fetch(request, env) {
+        const ai = new Ai(env.AI);
+        const stream = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', {
+            prompt: 'What is grouped query attention',
+            stream: true
+        });
+        return Response.json(stream, { headers: { “content-type”: “text/event-stream” } });
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Mistral maakt gebruik van <a href="https://arxiv.org/abs/2305.13245" target="_blank">grouped-query attention</a> voor snellere inferentie. Deze recent ontwikkelde techniek verbetert de snelheid van inferentie zonder afbreuk te doen aan de uitvoerkwaliteit. Voor modellen met 7 miljard parameters kunnen we met Mistral bijna 4x zoveel tokens per seconde genereren als met Llama, dankzij Grouped-Query attention.</p>
+	<p>U heeft verder geen informatie nodig om Mistral-7B te gaan gebruiken, u kunt het vandaag nog uitproberen op <a href="https://ai.cloudflare.com" target="_blank">ai.cloudflare.com</a>. Lees verder voor meer informatie over attention en grouped-query attention!</p>
+	<h2 id="wat-is-%E2%80%9Cattention%E2%80%9D-eigenlijk">Wat is “attention” eigenlijk?</h2>
+	<p>Het basismechanisme van attention, specifiek “Scaled Dot-Product Attention” zoals geïntroduceerd in het baanbrekende artikel <a href="https://arxiv.org/abs/1706.03762" target="_blank">Attention Is All You Need</a>, is vrij eenvoudig:</p>
+	<blockquote>We noemen onze bijzondere attention “Scale Dot-Product Attention”. De invoer bestaat uit een query en sleutels van dimensie d_k, en waarden van dimensie d_v. We berekenen de puntproducten van de query met alle sleutels, delen elk door sqrt(d_k) en passen een softmax-functie toe om de gewichten op de waarden te verkrijgen.</blockquote>
+	<p>Concreet ziet dit er als volgt uit:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/Screenshot-2023-11-21-at-09.12.30.png" class="kg-image" alt="" loading="lazy" width="1882" height="680">
+		<figcaption><a href="https://arxiv.org/abs/1706.03762" target="_blank">source</a></figcaption>
+	</figure>
+	<p>Eenvoudiger gezegd: hierdoor kunnen modellen zich richten op belangrijke delen van de invoer. Stel je voor dat je een zin leest en probeert te begrijpen. Met Scaled dot product attention kun je meer aandacht besteden aan bepaalde woorden op basis van hun relevantie. Het werkt door de gelijkenis tussen elk woord (K) in de zin en een query (Q) te berekenen. Vervolgens worden de similariteitsscores geschaald door ze te delen door de vierkantswortel van de dimensie van de query. Deze schaling helpt om erg kleine of erg grote waarden te vermijden. Tot slot kunnen we met behulp van deze geschaalde similariteitsscores bepalen hoeveel aandacht of belang elk woord zou moeten krijgen. Dit attention-mechanisme helpt modellen cruciale informatie (V) te identificeren en hun begrip en vertaalvermogen te verbeteren.</p>
+	<p>Simpel, toch? Om van dit eenvoudige mechanisme naar een AI te komen die een “Seinfeld-aflevering” kan schrijven waarin Jerry het bubble sort-algoritme leert, moeten we het complexer maken. In feite heeft alles wat we net hebben behandeld niet eens geleerde parameters - constante waarden die tijdens de modeltraining worden geleerd en die de uitvoer van het attention-blok aanpassen!</p>
+	<p>Attention blocks in the style of <em>Attention is All You Need</em> add mainly three types of complexity:</p>
+	<h3 id="aangeleerde-parameters">Aangeleerde parameters</h3>
+	<p>Aangeleerde parameters verwijzen naar waarden of gewichten die worden aangepast tijdens het trainingsproces van een model om de prestaties ervan te verbeteren. Deze parameters worden gebruikt om de informatiestroom of aandacht binnen het model te regelen, zodat het model zich kan richten op de meest relevante delen van de invoergegevens. Eenvoudiger gezegd, zijn geleerde parameters als instelbare knoppen op een machine waaraan gedraaid kan worden om de werking te optimaliseren.</p>
+	<h3 id="verticaal-stapelengelaagde-attention-blokken">Verticaal stapelen - gelaagde attention-blokken</h3>
+	<p>Verticaal stapelen in lagen is een manier om meerdere attention-mechanismen op elkaar te stapelen, waarbij elke laag voortbouwt op de uitvoer van de vorige laag. Hierdoor kan het model zich richten op verschillende delen van de invoergegevens op verschillende abstractieniveaus, wat kan leiden tot betere prestaties bij bepaalde taken.</p>
+	<h3 id="horizontaal-stapelenook-wel-bekend-als-multi-head-attention">Horizontaal stapelen - ook wel bekend als Multi-Head Attention</h3>
+	<p>De figuur uit de paper toont de volledige multi-head attention-module. Meerdere attention-operaties worden parallel uitgevoerd, waarbij de Q-K-V invoer voor elke operatie wordt gegenereerd door een unieke lineaire projectie van dezelfde invoergegevens (gedefinieerd door een unieke set aangeleerde parameters). Deze parallelle attention-blokken worden “attention heads” genoemd. De gewogen-som outputs van alle attention heads worden samengevoegd tot een enkele vector en door een andere geparametriseerde lineaire transformatie gehaald om de uiteindelijke output te krijgen.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/Screenshot-2023-11-21-at-09.13.49.png" class="kg-image" alt="" loading="lazy" width="1806" height="722">
+		<figcaption><a href="https://arxiv.org/abs/1706.03762" target="_blank">source</a></figcaption>
+	</figure>
+	<p>Dankzij dit mechanisme kan een model zich tegelijkertijd op verschillende delen van de invoergegevens richten. Stel je voor dat je een complex stuk informatie probeert te begrijpen, zoals een zin of een alinea. Om het te begrijpen, moet je aandacht besteden aan verschillende delen tegelijk. Je moet bijvoorbeeld aandacht besteden aan het onderwerp van de zin, het werkwoord en het lijdend voorwerp, allemaal tegelijk, om de betekenis van de zin te begrijpen. Multi-headed attention werkt op dezelfde manier. Het stelt een model in staat om aandacht te besteden aan verschillende delen van de invoergegevens op hetzelfde moment, door gebruik te maken van meerdere “attention heads”. Elk attention-head richt zich op een ander aspect van de invoergegevens en de uitvoer van alle heads wordt gecombineerd tot de uiteindelijke uitvoer van het model.</p>
+	<h2 id="soorten-attention">Soorten attention</h2>
+	<p>Er zijn drie veelvoorkomende opstellingen van attention-blocks die worden gebruikt door grote taalmodellen die de afgelopen jaren zijn ontwikkeld: multi-head attention, grouped-query attention en multi-query attention. Ze verschillen in het aantal K- en V-vectoren ten opzichte van het aantal queryvectoren. <strong>Multi-head attention</strong> gebruikt hetzelfde aantal K- en V-vetoren als Q-vectoren, aangegeven als “N” in de onderstaande tabel. <strong>Multi-query attention</strong> gebruikt slechts een enkele K- en V-vector. <strong>Grouped-query attention</strong>, het type dat gebruikt wordt in het Mistral 7B model, verdeelt de Q-vectoren gelijkmatig in groepen die elk “G” vectoren bevatten en gebruikt dan een enkele K- en V-vector voor elke groep voor een totaal van N gedeeld door G sets van K- en V-vectoren. Dit is een samenvatting van de verschillen en we gaan hieronder in de implicaties hiervan.</p><!--kg-card-begin: html-->
+	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
+		<tbody>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">&nbsp;</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Aantal key/value-blokken</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Kwaliteit</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Geheugengebruik</strong></span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-head attention (MHA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Beste</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Meeste</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Grouped-query attention (GQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N / G</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Beter</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Minder</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-query attention (MQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">1</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Goed</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Minste</span></span></span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align:center"><span style="font-size:9pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Samenvatting van soorten attention</span></span></span></p><!--kg-card-end: html-->
+	<p>En dit diagram helpt het verschil tussen de drie soorten te illustreren:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-6.png" class="kg-image" alt="" loading="lazy" width="1112" height="388">
+		<figcaption><a href="https://arxiv.org/pdf/2305.13245.pdf" target="_blank">source</a></figcaption>
+	</figure>
+	<h3 id="multi-query-attention">Multi-Query Attention</h3>
+	<p>Multi-query attention werd in 2019 beschreven in het paper van Google: <a href="https://arxiv.org/abs/1911.02150" target="_blank">Fast Transformer Decoding: One Write-Head is All You Need</a>. Het idee is dat in plaats van aparte K- en V-items te maken voor elke Q-vector in het attention-mechanisme, zoals in de bovengenoemde multi-head attention, er slechts één enkele K- en V-vector wordt gebruikt voor de hele reeks Q-vectoren. Vandaar de naam, meerdere query's gecombineerd in een enkel aandachtsmechanisme. In de paper werd dit gebenchmarkt op een vertaaltaak en toonde het prestaties gelijk aan multi-head aandacht op de benchmarktaak.</p>
+	<p>Oorspronkelijk was het idee om de totale grootte van het geheugen dat wordt gebruikt bij het uitvoeren van inferentie voor het model te verkleinen. Sindsdien, met de opkomst van gegeneraliseerde modellen en het toenemen van het aantal parameters, is het benodigde GPU-geheugen vaak de bottleneck. Dit is de kracht van multi-query aandacht, omdat het van de drie soorten aandacht het minste versnellergeheugen vereist. Naarmate de modellen echter groter en algemener werden, daalde de prestatie van multi-query aandacht ten opzichte van multi-head aandacht.</p>
+	<h3 id="grouped-query-attention">Grouped-Query Attention</h3>
+	<p>De jongste van het stel, en de attention die gebruikt wordt door Mistral, is grouped-query attention, zoals beschreven in de paper <a href="https://arxiv.org/abs/2305.13245" target="_blank">GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</a> dat in mei 2023 werd gepubliceerd op arxiv.org. Gegroepeerde-query aandacht combineert het beste van twee werelden: de kwaliteit van meervoudige aandacht met de snelheid en het lage geheugengebruik van multi-query attention. In plaats van een enkele set van K- en V-vectoren of een set voor elke Q-vector, wordt een vaste verhouding van 1 set van K- en V-vectoren voor elke Q-vector gebruikt, waardoor minder geheugen wordt gebruikt maar de hoge prestaties op veel taken behouden blijven.</p>
+	<p>Vaak gaat het bij het kiezen van een model voor een productietaak niet alleen om het kiezen van het beste model dat beschikbaar is, omdat we afwegingen moeten maken tussen prestaties, geheugengebruik, batchgrootte en beschikbare hardware (of cloudkosten). Inzicht in deze drie stijlen van aandacht kan helpen bij het nemen van deze beslissingen en begrijpen wanneer we, gegeven onze omstandigheden, voor een bepaald model zouden kunnen kiezen.</p>
+	<h2 id="werk-met-mistral-%E2%80%94-probeer-het-vandaag-nog">Werk met Mistral — probeer het vandaag nog</h2>
+	<p>Als een van de eerste grote taalmodellen die gebruik maakt van grouped-query attention en deze combineert met 'sliding window'-attention, lijkt Mistral het optimale compromis gevonden te hebben: het heeft een lage latentie, een hoge doorvoer en het presteert echt goed op benchmarks, zelfs in vergelijking met grotere modellen (13B). Dit alles wil zeggen dat het een kracht heeft voor zijn grootte. Met veel trots maken we het vandaag beschikbaar voor alle ontwikkelaars, via Workers AI. </p>
+	<p>Ga nu naar onze <a href="https://developers.cloudflare.com/workers-ai/models/text-generation" target="_blank">developer docs</a> om te beginnen, en als u hulp nodig heeft, feedback wilt geven, of wilt delen wat u aan het bouwen bent, kom gewoon langs op onze <a href="https://discord.com/invite/cloudflaredev" target="_blank">Developer Discord</a>!</p>
+	<p>Het Workers AI-team is ook op zoek naar nieuwe medewerkers, zie onze <a href="https://www.cloudflare.com/careers/jobs" target="_blank">jobs-pagina</a> voor openstaande functies als je gepassioneerd bent over AI-engineering en ons wilt helpen bij het bouwen en ontwikkelen van ons wereldwijde, serverloze GPU-aangedreven inferentieplatform.</p>
+</div>

@@ -1,0 +1,213 @@
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--3--2.png" class="kg-image" alt="Streaming LLMs and longer context lengths available in Workers AI" loading="lazy" width="1600" height="901"></figure>
+	<p>Workers AIは、Cloudflareのグローバルネットワーク上で動作するサーバーレスGPU駆動の推論プラットフォームです。Workersとシームレスに連携し、開発者が数分で強力でスケーラブルなAIアプリを構築できるようにする、既製モデルの増加し続けるカタログを提供しています。すでに開発者がWorkers AIを使用して驚くべきことを成し遂げており、プラットフォームを拡大し続ける中で彼らがどのようなことをするかを見るのが楽しみです。そのために、今日は以下、いくつかの最も要望の多かった新機能であるすべての<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank">大規模言語モデル</a>（LLM）に対するストリーミング応答、より大きなコンテキストとシーケンスウィンドウ、そして完全な精度の<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank">Llama-2</a>モデルのバリアントを発表できることを嬉しく思います。</p>
+	<p>もし以前にChatGPTをご使用されたことがあれば、トークン単位でレスポンスが流れてくるレスポンスストリーミングの利点はよくご存知でしょう。LLMは内部的には、推論を繰り返すプロセスを用いてレスポンスを逐次生成することで動作します。LLMモデルの完全な出力は、基本的に数百から数千の個々の予測タスクのシーケンスです。このため、トークンの生成には数ミリ秒しかかかりませんが、完全なレスポンスの生成には数秒単位で時間がかかります。良いニュースは、最初のトークンが生成されたらすぐにレスポンスを表示し始め、レスポンスが完了するまでトークンを追加していくことができるということです。これにより、エンドユーザーのエクスペリエンスが大幅に向上します。生成されたテキストを段階的に表示することで、即座に応答するだけでなく、エンドユーザーがテキストを読んで解釈する時間をも確保できます。</p>
+	<p>本日より、カタログ内の人気モデルである<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank">Llama-2モデル</a>を含む、どのLLMモデルに対してもレスポンスストリーミングを利用できるようになりました。動作方法は以下の通りです。</p>
+	<h3 id="%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E9%80%81%E4%BF%A1%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%EF%BC%9A%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6api%E3%81%AE%E4%B8%AD%E3%81%A7%E3%81%AE%E5%B0%8F%E3%81%95%E3%81%AA%E5%AE%9D%E7%9F%B3">サーバー送信イベント：ブラウザAPIの中での小さな宝石</h3>
+	<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank">サーバー送信イベント</a>は使いやすく、サーバーサイドで実装が簡単で、標準化されており、多くのプラットフォームでネイティブにまたはポリフィルとして広く利用可能です。サーバー送信イベントは、サーバーからの更新ストリームを処理するニッチな用途を満たし、イベントストリームを処理するためにそれ以外に必要なボイラープレートコードを排除します。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-lt9p {
+			background-color: #F3F3F3;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-9qck {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-lt9p"></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使いやすい</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ストリーミング</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">双方向</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">フェッチ</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">サーバー送信イベント</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Websockets</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<center><small><sup>フェッチ、サーバー送信イベント、およびWebSocketsを比較</sup></small></center><!--kg-card-end: markdown-->
+	<p>Workers AIのテキスト生成モデルでサーバー送信イベントを使用するには、リクエストの入力で"stream"パラメータをtrueに設定します。これにより、レスポンスのフォーマットと<code>mime-type</code>が<code>text/event-stream</code>に変更されます。</p>
+	<p>以下は、<a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank">REST API</a>を使用してストリーミングを行う例です：</p>
+	<pre><code class="language-bash">curl -X POST \
+"https://api.cloudflare.com/client/v4/accounts/&lt;account&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8" \
+-H "Authorization: Bearer &lt;token&gt;" \
+-H "Content-Type:application/json" \
+-d '{ "prompt": "where is new york?", "stream": true }'
+
+data: {"response":"New"}
+
+data: {"response":" York"}
+
+data: {"response":" is"}
+
+data: {"response":" located"}
+
+data: {"response":" in"}
+
+data: {"response":" the"}
+
+...
+
+data: [DONE]</code></pre>
+	<p>以下は、Workerスクリプトを使用した例です：</p>
+	<pre><code class="language-TypeScript">import { Ai } from "@cloudflare/ai";
+export default {
+    async fetch(request, env, ctx) {
+        const ai = new Ai(env.AI, { sessionOptions: { ctx: ctx } });
+        const stream = await ai.run(
+            "@cf/meta/llama-2-7b-chat-int8",
+            { prompt: "where is new york?", stream: true  }
+        );
+        return new Response(stream,
+            { headers: { "content-type": "text/event-stream" } }
+        );
+    }
+}</code></pre>
+	<p>このWorkerからの出力イベントストリームをブラウザページで消費する場合、クライアントサイドのJavaScriptは次のようになります：</p>
+	<pre><code class="language-typescript">const source = new EventSource("/worker-endpoint");
+source.onmessage = (event) =&gt; {
+    if(event.data=="[DONE]") {
+        // SSE spec says the connection is restarted
+        // if we don't explicitly close it
+        source.close();
+        return;
+    }
+    const data = JSON.parse(event.data);
+    el.innerHTML += data.response;
+}</code></pre>
+	<p>このシンプルなコードは、簡単なHTMLページだけでなく、Reactや他のWebフレームワークを使用した複雑なSPAにも利用できます。</p>
+	<p>これにより、ユーザーにとってはページが逐次的に更新されるため、全体のレスポンスシーケンスが生成されるまでスピナーで待つのではなく、よりインタラクティブな体験が得られます。<a href="https://ai.cloudflare.com" target="_blank">ai.cloudflare.com</a>でストリーミングをお試しください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/10/llama-streaming.gif" class="kg-image" alt="" loading="lazy" width="1518" height="610"></figure>
+	<p>Workers AIは、<a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank">Llama-2</a>モデルおよび将来的にカタログに追加するすべてのLLMモデルに対して、テキストのストリーミング応答をサポートしています。</p>
+	<p>しかし、それだけではありません。</p>
+	<h3 id="%E9%AB%98%E3%81%84%E7%B2%BE%E5%BA%A6%E3%80%81%E3%82%88%E3%82%8A%E9%95%B7%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%8A%E3%82%88%E3%81%B3%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AE%E9%95%B7%E3%81%95">高い精度、より長いコンテキストおよびシーケンスの長さ</h3>
+	<p>Workers AIの発売後、コミュニティから寄せられたもう1つの主要な要望は、Llama-2モデルでのより長い質問と回答のサポートでした。LLMの用語では、これはコンテキストの長さ（予測を行う前にモデルが入力として受け取るトークンの数）とシーケンスの長さ（モデルがレスポンスで生成するトークンの数）の増加につながります。</p>
+	<p>その要望にお応えすべく、ストリーミングと連動して、今日はカタログにより高い16ビットのフルプレシジョンなLlama-2バリアントを追加し、既存の8ビットバージョンのコンテキストとシーケンスの長さを増やしています。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-9qck {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">モデル</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">コンテキストの長さ（入力）</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">シーケンスの長さ（出力）</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">@cf/meta/llama-2-7b-chat-int8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2048（以前は768）</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1800（以前は256）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">@cf/meta/llama-2-7b-chat-fp16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3072</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2500</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>ストリーミング、高い精度、およびより長いコンテキストとシーケンスの長さは、大規模言語モデルをWorkers AIで使用することにより、より良いユーザーエクスペリエンスを提供し、新しい、より豊かなアプリを可能にします。</p>
+	<p>より詳細な情報やオプションについては、Workers AIの<a href="https://developers.cloudflare.com/workers-ai" target="_blank">開発者ドキュメント</a>をご確認ください。Workers AIに関する質問やフィードバックがあれば、ぜひ<a href="https://community.cloudflare.com" target="_blank">Cloudflareコミュニティ</a>または<a href="https://discord.gg/cloudflaredev" target="_blank">Cloudflare Discord</a>でお知らせください。<br>機械学習やサーバーレスAIにご興味をお持ちの場合、Cloudflare Workers AIチームは、当社のネットワーク上で高速で低遅延の推論タスクを実行できるようにする、グローバル規模のプラットフォームとツールを構築しています。よろしければ<a href="https://www.cloudflare.com/careers/jobs" target="_blank">求人情報ページ</a>をご確認ください。</p>
+</div>

@@ -1,0 +1,45 @@
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Zero Trustでは、アプリケーション、ユーザー、デバイスごとにきめ細かな制御と認可ポリシーを定義することが基本となります。このためには、規制要件とセキュリティ要件の両方を満たすため、十分な粒度を持つシステムを用意することが重要になります。しかし、制御が多くなれば、潜在的にデメリットが増えることになります。ユーザーの問題のトラブルシューティングにおいて、管理者はアプリケーション、ユーザー ID、およびデバイス情報全体の変数の複雑な組み合わせを考慮することが必要になり、ログを丹念にふるいにかける必要が出てくることになります。</p>
+	<p>当社では、この点が改善されるべきと考えました。そして、この度Cloudflare Oneポリシーで使用されるすべてのアクティブなユーザーセッションと関連データを管理者が簡単に監査できるようにしました。これにより、単一のシンプルなコントロールパネルで<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a>の実装におけるトラブルシューティングと診断を行う性能を維持しながら、非常にきめ細かな制御を実現し、両方の長所が活きることとなりました。以前はユーザーのブラウザに存在していた情報や動的に変更されていた情報が、エンドユーザーを煩わしたりログを掘り下げたりすることなく、管理者に利用できるようになったのです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image4.png" class="kg-image" alt="" loading="lazy" width="1828" height="893"></figure>
+	<h3 id="%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%AA%8D%E8%A8%BC%E3%81%A8%E8%AA%8D%E5%8F%AF%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E7%B0%A1%E6%98%93%E7%9A%84%E8%AA%AC%E6%98%8E"><strong>アプリケーションの認証と認可に関する簡易的説明</strong></h3>
+	<p><em>認証</em>と<em>認可</em>は、Zero Trustポリシーにおいてリソースへのユーザーアクセスを許可する前に評価される2つのコンポーネントです。</p>
+	<p><strong>認証は</strong>、ユーザー、デバイス、またはシステムの識別を検証するプロセスです。一般的な<a href="https://www.cloudflare.com/learning/access-management/what-is-authentication" target="_blank">認証</a>の方法には、ユーザー名とパスワードの入力、デジタル証明書の提示、さらには指紋や顔スキャンなどの生体認証などがあります。<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank">多要素認証（MFA）</a>では、セキュリティ強化のため、ハードウェアキーとパスワードの組み合わせなど、2つ以上の個別の認証方法が必要になります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image6.png" class="kg-image" alt="" loading="lazy" width="814" height="586"></figure>
+	<p><strong>認可は</strong>、エンティティが正常に認証された後に、特定のリソースまたはアクセスの許可または拒否を行うプロセスです。ここでは、認証されたエンティティがシステム内でできることとできないことを定義します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-3.png" class="kg-image" alt="" loading="lazy" width="1555" height="757"></figure>
+	<h3 id="%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E8%AA%8D%E8%A8%BC%E8%AA%8D%E5%8F%AF%E3%83%A1%E3%82%AB%E3%83%8B%E3%82%BA%E3%83%A0"><strong>アプリケーションの認証/認可メカニズム</strong></h3>
+	<p>この項で取り上げるWebアプリケーションでは、通常、次のようにHTTP Cookieを使用して認証と認可の両方を処理します。</p>
+	<p><strong>認証：</strong></p>
+	<ol>
+		<li><strong>ログイン</strong>：ユーザーがユーザー名とパスワードを入力してWebアプリケーションにログインすると、アプリケーションはこれらの資格情報をデータベースまたは<a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank">IDプロバイダー（IDP）</a>と照合して検証します。追加の認証形式を適用し、複数の認証要素を設けることもできます。これらが一致した場合、サーバーまたは外部セキュリティサービス（Cloudflare Accessなど）は、ユーザーが認証されたと見なします。</li>
+		<li><strong>Cookie/トークンの作成：</strong>次に、サーバーがCookieまたはJSON Webトークンの形式でユーザーのセッションを作成します。Cookieは、ユーザーが再認証を行う必要があるタイミングまで、一定期間有効となります。</li>
+		<li><strong>Cookieの送信と保存：</strong>サーバーは、セッションIDとCookie内のユーザーに関するその他の識別情報を含む応答をユーザーのブラウザに送り返します。その後、ブラウザはこのCookieを保存します。このCookieは、後に続く要求でユーザーを認識する際に用いられることになります。</li>
+	</ol>
+	<p><strong>認可：</strong></p>
+	<ol>
+		<li><strong>以降の要求：</strong>Web アプリケーションに対し以降発生するすべての要求について、ユーザーのブラウザは自動的に要求にCookie（セッション ID およびその他の識別情報を含む）を含めます。</li>
+		<li><strong>サーバー側の検証：</strong>サーバーはCookieからユーザーデータを取得し、セッションが有効かどうかを確認します。有効な場合、サーバーはユーザーの詳細とそのセッションIDに関連付けられているアクセス許可も取得します。</li>
+		<li><strong>認可の判断：</strong>サーバーは、ユーザーのアクセス許可に基づき、要求された操作の実行または要求されたリソースへのアクセスをユーザーに許可するかどうかを決定します。</li>
+	</ol>
+	<p>こうして、ユーザーはログイン後、セッションの有効期限が切れるかログアウトするまで、以降続くすべての要求に対し認可されたまま（および毎回承認が確認される）になります。</p>
+	<p>最新のWebアプリケーションでは、このセッション状態はJSON Webトークン（JWT）の形式で格納されるのが最も一般的です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image8.png" class="kg-image" alt="" loading="lazy" width="1820" height="678"></figure>
+	<h3 id="jwt%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E8%AA%8D%E8%A8%BC%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0"><strong>JWTベースの認証のデバッグ</strong></h3>
+	<p>多くの最新のWebアプリやCloudflare Accessなどの<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank">Zero Trustネットワークアクセス（ZTNA）</a>ソリューションでは、JWTが認証と認可に用いられています。JWTには、ユーザーに関する情報やその他のデータをエンコードする悪意のあるペイロードが含まれており、改ざんを防ぐためにサーバーによって署名されます。JWTはステートレスな方法で使用されることが多く、サーバーは各JWTのコピーを保持するのではなく、リクエストが届いたときに検証してデコードするだけで済みます。JWTのステートレスな性質は、ユーザーセッション管理の処理のために中央システムに依存する必要がないことを意味し、システムにアクセスするユーザーの数が増えてもスケーラビリティの問題の発生を回避できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image2-2.png" class="kg-image" alt="" loading="lazy" width="1470" height="662"></figure>
+	<p>ただし、このJWTのステートレスな性質により、ユーザーから特定のJWTを取得しない限りJWTベースの認証のデバッグは難しくなります。その理由は、次のとおりです:</p>
+	<p><strong>1. トークンの特異性：</strong>各JWTは、ユーザーとセッションに固有となっています。ユーザー、発行権限者、トークン発行時刻、有効期限、および場合によってはその他のデータに関する情報（要求）がここに含まれます。したがって多くの場合、問題をデバッグする際に問題の原因となっている正確なJWTが必要となります。</p>
+	<p><strong>2. サーバー側のレコードの不在：</strong>JWTはステートレスであるため、サーバーはデフォルトでセッションを保存しません。過去のトークンや関連する状態についての情報は、ログに記録するように特別に設計されていない限り、検索できません。さらに、プライバシーとデータ最小化の目的により、通常は実現しません。</p>
+	<p><strong>3. 一時的な問題：</strong>JWTに関する問題は一時的なものとなる場合があり、トークンが使用された特定の瞬間にのみ関連するものとなり得ます。たとえば、ユーザーがトークンを使用しようとしたときにトークンの有効期限が切れていた場合、問題をデバッグするにはその特定のトークンが必要になります。</p>
+	<p><strong>4. プライバシーとセキュリティ：</strong>JWTには機密情報が含まれている可能性があるため、取り扱いには注意が必要です。ユーザーからJWTを取得すると、問題をデバッグしているユーザーに個人情報やセキュリティ資格情報が公開される可能性があります。さらに、ユーザーが安全でないチャネルを介して開発者やITヘルプデスクにJWTを送信すると、傍受される可能性があります（Cloudflareは最近、この懸念の軽減を目的に無料でご利用いただける<a href="https://blog.cloudflare.com/introducing-har-sanitizer-secure-har-sharing">HARサニタイザー</a>をリリースしています)。</p>
+	<p>これらの要因により、問題となる特定のトークンがないと、JWTベースの認証に関する問題のトラブルシューティングが困難になります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image3.png" class="kg-image" alt="" loading="lazy" width="1825" height="740"></figure>
+	<h3 id="%E8%AD%98%E5%88%A5%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%95%8F%E9%A1%8C%E3%82%92%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%82%88%E3%82%8A%E5%84%AA%E3%82%8C%E3%81%9F%E6%96%B9%E6%B3%95"><strong>識別における問題をデバッグするためのより優れた方法</strong></h3>
+	<p>当社では、JWTやHARファイルをやり取りすることなく、Cloudflare Zero Trustでユーザー識別に関連する問題のデバッグにおけるより優れた方法の構築に着手しました。これにより、ユーザーのレジストリID（Gatewayポリシーに使用）とすべてのアクティブなアクセスセッションを管理者が確認できるようになりました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image7.png" class="kg-image" alt="" loading="lazy" width="1536" height="536"></figure>
+	<p>このセッション情報には、IdP要求、デバイスポスチャー情報、ネットワークコンテクストなどZero Trustによる完全識別評価が含まれます。この情報は、Cloudflare Workers KVを活用し、Acessの認証ロジックで一切付加的な負荷をかけずに小袿できます。ユーザーがAccessで認証する時点で、関連する識別情報は即座にWorkers KVのKey/Valueペアに保存されます。これらはすべて、ユーザーの認証イベントのコンテクスト内で行われ、遅延の影響または外部サービスへの依存が最小限となることを意味しています。</p>
+	<p>この機能は、すべてのZero Trustプランのすべてのお客様が利用できます。Cloudflare Zero Trustを使い始めるには、最大50ユーザーまで利用できる<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">無料アカウントにサインアップ</a>してください。または、<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank">Cloudflareのエキスパート</a>とともに貴社のSSEまたはSASEについてレビューを行い、貴社のZero Trustのユースケースに合わせ一歩ずつ進めていくことも可能です。</p>
+</div>

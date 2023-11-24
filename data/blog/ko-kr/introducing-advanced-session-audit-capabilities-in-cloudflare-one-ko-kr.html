@@ -1,0 +1,45 @@
+<div class="mb2 gray5">10 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Zero Trust의 기본은 애플리케이션, 사용자 및 장치별로 세분화된 제어 및 권한 부여 정책을 정의하는 것입니다. 이를 수행할 수 있는 충분한 수준의 세분화된 시스템을 갖추는 것은 규정 및 보안 요구 사항을 모두 충족하는 데 중요합니다. 그러나 제어 기능이 너무 많으면 잠재적인 단점이 있습니다. 관리자는 사용자 문제를 해결하기 위해 애플리케이션, 사용자 ID 및 장치 정보 전반에 걸쳐 복잡한 변수 조합을 고려해야 하며, 이를 위해 로그를 면밀히 검토해야 할 수도 있습니다.</p>
+	<p>당사는 더 나은 방법이 있다고 믿기 때문에 오늘부터 관리자는 Cloudflare One 정책에 사용된 모든 활성 사용자 세션과 관련 데이터를 쉽게 감사할 수 있습니다. 이렇게 하면 간단한 단일 제어판에서 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a> 배포 문제를 해결하고 진단하는 향상된 기능을 유지하는 동시에 매우 세분화된 제어의 이점을 모두 누릴 수 있습니다. 이제 관리자는 최종 사용자에게 불편을 주거나 로그를 파헤칠 필요 없이 사용자의 브라우저에 존재하거나 동적으로 변화하는 정보에 액세스할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image4.png" class="kg-image" alt="" loading="lazy" width="1828" height="893"></figure>
+	<h3 id="%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EC%9D%B8%EC%A6%9D-%EB%B0%8F-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC%EC%97%90-%EB%8C%80%ED%95%9C-%EB%B9%A0%EB%A5%B8-%EC%A7%80%EC%B9%A8%EC%84%9C"><strong>애플리케이션 인증 및 권한 부여에 대한 빠른 지침서</strong></h3>
+	<p><em>인증</em> 및 <em>권한 부여</em> 는 Zero Trust 정책이 리소스에 대한 사용자 액세스를 허용하기 전에 평가하는 두 가지 구성 요소입니다.</p>
+	<p><strong>인증</strong>은 사용자, 장치 또는 시스템 ID를 확인하는 프로세스입니다. 일반적인 <a href="https://www.cloudflare.com/learning/access-management/what-is-authentication" target="_blank">인증</a> 방법에는 사용자 이름과 비밀번호 입력, 디지털 인증서 제시 또는 지문이나 얼굴 스캔과 같은 생체 인식이 포함됩니다. <a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank">다단계 인증(MFA)</a>은 보안을 강화하기 위해 비밀번호와 하드웨어 키를 결합하는 등 두 가지 이상의 개별 인증 방법을 사용해야 합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image6.png" class="kg-image" alt="" loading="lazy" width="814" height="586"></figure>
+	<p>권한 부여는 엔터티가 성공적으로 인증된 후 특정 리소스 또는 권한에 대한 액세스 권한을 부여하거나 거부하는 프로세스입니다. 인증된 엔터티가 시스템 내에서 수행할 수 있는 것과 수행할 수 없는 작업을 정의합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-3.png" class="kg-image" alt="" loading="lazy" width="1555" height="757"></figure>
+	<h3 id="%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EC%9D%B8%EC%A6%9D%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC-%EB%A9%94%EC%BB%A4%EB%8B%88%EC%A6%98"><strong>애플리케이션 인증/권한 부여 메커니즘</strong></h3>
+	<p>이 글에서 집중적으로 살펴볼 웹 애플리케이션은 일반적으로 HTTP 쿠키를 사용하여 인증과 권한 부여를 모두 처리합니다.</p>
+	<p><strong>인증</strong></p>
+	<ol>
+		<li><strong>로그인: </strong>사용자가 웹 애플리케이션에 로그인하기 위해 사용자 이름과 비밀번호를 입력하면 애플리케이션은 데이터베이스 또는 <a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank">ID 공급자(IdP)</a>에 대해 이러한 자격 증명을 확인합니다. 여러 인증 요소를 달성하기 위해 추가 인증 형태를 적용할 수도 있습니다. 이러한 요소가 일치하는 경우 서버 또는 외부 보안 서비스(예: Cloudflare Access)는 사용자가 인증된 것으로 간주합니다.</li>
+		<li><strong>쿠키/토큰 생성:</strong> 다음으로 서버는 쿠키 또는 JSON 웹 토큰의 형태로 사용자에 대한 세션을 생성합니다. 쿠키는 사용자가 다시 인증해야 할 때까지 일정 기간 동안 유효합니다.</li>
+		<li><strong>쿠키 전송 및 저장:</strong> 서버가 사용자의 브라우저에 응답을 전송할 때 쿠키에 세션 ID 및 기타 사용자 식별 정보가 포함됩니다. 그러면 브라우저는 이 쿠키를 저장합니다. 해당 쿠키는 후속 요청에서 사용자를 인식하는 데 사용합니다.</li>
+	</ol>
+	<p><strong>권한 부여:</strong></p>
+	<ol>
+		<li><strong>후속 요청:</strong> 웹 애플리케이션에 대한 모든 후속 요청의 경우 사용자의 브라우저는 요청에 쿠키(세션 ID 및 기타 식별 정보 포함)를 자동으로 포함합니다.</li>
+		<li><strong>서버 측 확인:</strong> 서버는 쿠키에서 사용자 데이터를 검색하여 세션이 유효한지 확인합니다. 세션이 유효한 경우 서버는 해당 세션 ID와 관련된 사용자의 세부 정보 및 액세스 권한도 검색합니다.</li>
+		<li><strong>권한 부여 결정:</strong> 서버는 사용자의 액세스 권한에 따라 사용자가 요청된 작업을 수행하거나 요청된 리소스에 액세스할 수 있는 권한이 있는지 여부를 결정합니다.</li>
+	</ol>
+	<p>이를 통해 사용자는 로그인 후 세션이 만료되거나 로그아웃할 때까지 모든 후속 요청에 대해 인증된 상태를 유지하고 권한 부여를 확인할 수 있습니다.</p>
+	<p>최신 웹 애플리케이션에서 이 세션 상태는 일반적으로 JSON 웹 토큰(JWT) 형식으로 저장됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image8.png" class="kg-image" alt="" loading="lazy" width="1820" height="678"></figure>
+	<h3 id="jwt-%EA%B8%B0%EB%B0%98-%EC%9D%B8%EC%A6%9D-%EB%94%94%EB%B2%84%EA%B9%85"><strong>JWT 기반 인증 디버깅</strong></h3>
+	<p>JWT는 인증 및 권한 부여 목적으로 많은 최신 웹 애플리케이션과 Cloudflare Access와 같은 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank">Zero Trust 네트워크 액세스(ZTNA)</a> 솔루션에서 활용됩니다. 여기에는 사용자 및 기타 데이터에 대한 정보를 인코딩하는 페이로드가 포함되어 있으며 변조를 방지하기 위해 서버에서 서명합니다. JWT는 종종 상태 비저장 방식으로 사용되는데, 이는 서버가 각 JWT의 사본을 보관하지 않고 요청을 수신할 때 이를 확인하고 디코딩한다는 의미입니다. JWT의 상태 비저장 특성으로 인해 사용자 세션 관리를 처리하기 위해 중앙 시스템에 의존할 필요가 없으므로 시스템에 액세스하는 사용자 수가 증가하더라도 확장성을 보장할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image8.png" class="kg-image" alt="" loading="lazy" width="1820" height="678"></figure>
+	<p>그러나 JWT의 이러한 상태 비저장 특성으로 인해 사용자로부터 특정 JWT를 가져오지 않고는 JWT 기반 인증을 디버깅하기가 어려울 수 있습니다. 그 이유는 다음과 같습니다.</p>
+	<p><strong>1. 토큰 특이성: </strong>각 JWT는 사용자 및 세션에 따라 다릅니다. 여기에는 사용자, 발급 기관, 토큰 발급 시간, 만료 시간 및 기타 데이터에 대한 정보(클레임)가 포함되어 있습니다. 따라서 문제를 디버깅하려면 문제의 원인이 되는 정확한 JWT가 필요한 경우가 많습니다.</p>
+	<p><strong>2. 서버 측 레코드 없음: </strong>JWT는 상태 비저장 방식이므로 서버는 기본적으로 세션을 저장하지 않습니다. 과거 토큰 또는 관련 상태를 기록하도록 특별히 설계된 경우가 아니라면 이를 조회할 수 없으며, 일반적으로 개인정보 보호 및 데이터 최소화 고려 사항으로 인해 검색하지 않습니다.</p>
+	<p><strong>3. 일시적인 문제: </strong>JWT는 토큰이 사용된 특정 시점과 관련된 일시적인 문제가 있을 수 있습니다. 예를 들어, 사용자가 만료된 토큰을 사용하려고 할 때 문제를 디버깅하려면 해당 특정 토큰이 있어야 합니다.</p>
+	<p><strong>4. 개인정보 보호 및 보안: </strong>JWT는 민감한 정보를 포함할 수 있으므로 신중하게 처리해야 합니다. 사용자로부터 JWT를 받을 때 문제를 디버깅하는 사람은 사용자의 개인 정보나 보안 자격 증명에 노출될 수 있습니다. 또한 사용자가 안전하지 않은 채널을 통해 개발자나 IT 헬프 데스크에 JWT를 보내면 가로챌 수 있습니다(최근 Cloudflare는 이 문제를 완화하는 데 도움이 될 수 있도록 <a href="https://blog.cloudflare.com/introducing-har-sanitizer-secure-har-sharing">HAR Sanitizer</a>를 무료로 출시했습니다).</p>
+	<p>이러한 요인으로 인해 문제와 관련된 특정 토큰이 없으면 JWT 기반 인증 문제를 해결하기가 어렵습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image3.png" class="kg-image" alt="" loading="lazy" width="1825" height="740"></figure>
+	<h3 id="id-%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EB%94%94%EB%B2%84%EA%B9%85%ED%95%98%EB%8A%94-%EB%8D%94-%EB%82%98%EC%9D%80-%EB%B0%A9%EB%B2%95"><strong>ID 문제를 디버깅하는 더 나은 방법</strong></h3>
+	<p>Cloudflare는 JWT를 공유하거나 HAR 파일을 주고받지 않고도 Cloudflare Zero Trust에서 사용자 ID와 관련된 문제를 디버깅할 수 있는 더 나은 방법을 구축하기 시작했습니다. 이제 관리자는 사용자의 레지스트리 ID(게이트웨이 정책에 사용됨)와 모든 활성 Access 세션을 볼 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image7.png" class="kg-image" alt="" loading="lazy" width="1536" height="536"></figure>
+	<p>이 세션 정보에는 IdP 클레임, 장치 상태 정보, 네트워크 컨텍스트 등 Zero Trust 에서 평가된 전체 ID가 포함됩니다. 당사는 Cloudflare Workers KV를 활용하여 Access의 인증 로직에 추가적인 부하를 주지 않고도 이 기능을 구축할 수 있었습니다. 사용자가 Access를 사용하여 인증할 때 연결된 ID는 Workers KV의 키/값 쌍에 즉시 저장됩니다. 이 모든 것은 사용자의 인증 이벤트 컨텍스트 내에서 이루어지므로 대기 시간 영향이나 서비스에 대한 의존성을 최소화할 수 있습니다.</p>
+	<p>이 기능은 Zero Trust 요금제를 사용하는 모든 고객에게 제공됩니다. 최대 50명의 사용자를 위한 <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">무료 계정에 가입하고 </a> Cloudflare Zero Trust를 지금 바로 사용해 보세요! 또는 <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank">Cloudflare 전문가와 협력하여</a> 조직을 위한 SSE 또는 SASE에 대해 논의하고 Zero Trust 사용 사례를 단계별로 해결해 보세요.</p>
+</div>

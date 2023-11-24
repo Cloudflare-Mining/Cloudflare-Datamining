@@ -1,0 +1,45 @@
+<div class="mb2 gray5">8 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Zero Trust 的基础是为每个应用程序、用户和设备定义精细的控制和授权政策。拥有足够精细的系统来做到这一点对于同时满足监管和安全要求至关重要。但如此多的控制有一个潜在的缺点：为了解决用户问题，管理员必须考虑应用程序、用户身份和设备信息等变量的复杂组合，这可能需要费力地筛选日志。</p>
+	<p>我们认为有一种更好的方法，正因如此，从今天开始，管理员可以轻松审核其 Cloudflare One 政策使用的所有活动用户会话和相关数据。这可以实现两全其美的效果：极其精细的控制，同时在单个简单的控制面板中保持更高的故障排除和诊断 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a> 部署的能力。管理员现在可以使用以前存在于用户浏览器中或动态更改的信息，而无需打扰最终用户或深入挖掘日志。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image4.png" class="kg-image" alt="" loading="lazy" width="1828" height="893"></figure>
+	<h3 id="%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E5%92%8C%E6%8E%88%E6%9D%83%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><strong>应用程序身份验证和授权快速入门</strong></h3>
+	<p><em>身份验证</em>和<em>授权</em>是 Zero Trust 政策在允许用户访问资源之前评估的两个组件。</p>
+	<p><strong>身份验证</strong>是验证用户、设备或系统身份的过程。常见的<a href="https://www.cloudflare.com/learning/access-management/what-is-authentication" target="_blank">身份验证</a>方法包括输入用户名和密码、出示数字证书，以及指纹或面部扫描等生物识别技术。<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank">多因素身份验证 (MFA)</a> 需要两种或更多独立的身份验证方法来增强安全性，例如硬件密钥与密码相结合。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image6.png" class="kg-image" alt="" loading="lazy" width="814" height="586"></figure>
+	<p><strong>授权</strong>是在实体成功通过身份验证后授予或拒绝对特定资源或权限的访问的过程。它定义了经过身份验证的实体在系统中可以做什么和不能做什么。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-3.png" class="kg-image" alt="" loading="lazy" width="1555" height="757"></figure>
+	<h3 id="%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6"><strong>应用程序身份验证/授权机制</strong></h3>
+	<p>我们将重点介绍 Web 应用程序，此类应用程序通常使用 HTTP cookie 来处理身份验证和授权。</p>
+	<p><strong>身份验证：</strong></p>
+	<ol>
+		<li><strong>登录</strong>：当用户通过输入用户名和密码登录 Web 应用程序时，应用程序会根据其数据库或<a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider" target="_blank">身份提供商 (IdP) </a>验证这些凭证。还可以应用其他形式的身份验证来实现多因素身份验证。如果它们匹配，服务器或外部安全服务（例如 Cloudflare Access）就会认为用户已通过身份验证。</li>
+		<li><strong>Cookie/令牌创建</strong>：然后，服务器以 Cookie 或 JSON Web 令牌的形式为用户创建会话。Cookie 在一段时间内有效，之后用户必须重新进行身份验证。</li>
+		<li><strong>发送和存储 Cookie</strong>：服务器向用户的浏览器发送响应，其中包括会话 ID 和 Cookie 中有关用户的其他识别信息。然后，浏览器会存储这个 Cookie。此 Cookie 用于在用户的后续请求中识别该用户。</li>
+	</ol>
+	<p><strong>授权：</strong></p>
+	<ol>
+		<li><strong>后续请求</strong>：对于对 Web 应用程序的所有后续请求，用户的浏览器会自动在请求中包含 cookie（带有会话 ID 和其他识别信息）。</li>
+		<li><strong>服务器端验证</strong>：服务器从 Cookie 中获取用户数据并检查会话是否有效。如果有效，服务器还会检索用户的详细信息及其与该会话 ID 相关的访问权限。</li>
+		<li><strong>授权决定</strong>：根据用户的访问权限，服务器决定用户是否有权执行请求的操作或访问请求的资源。</li>
+	</ol>
+	<p>这样，用户在登录后，其所有后续请求都保持经过身份验证的状态（并且可以检查其授权），直到会话到期或他们退出帐户。</p>
+	<p>在现代 Web 应用程序中，此会话状态通常以 JSON Web 令牌 (JWT) 的形式存储。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image8.png" class="kg-image" alt="" loading="lazy" width="1820" height="678"></figure>
+	<h3 id="%E8%B0%83%E8%AF%95%E5%9F%BA%E4%BA%8E-jwt-%E7%9A%84%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81"><strong>调试基于 JWT 的身份验证</strong></h3>
+	<p>许多现代 Web 应用程序和 Cloudflare Access 等 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank">Zero Trust 网络访问 (ZTNA)</a> 解决方案都使用 JWT 来进行身份验证和授权。JWT 包含一个有效负载，该有效负载对有关用户的信息和可能的其他数据进行编码，并且由服务器对其进行签名以防止篡改。JWT 通常以无状态方式使用，这意味着服务器不会保留每个 JWT 的副本，它只是在其随着请求传入时对其进行验证和解码。JWT 的无状态性质意味着您不必依赖中央系统来处理用户会话管理，这可以避免随着访问系统的用户数量增加而产生可扩展性问题。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image2-2.png" class="kg-image" alt="" loading="lazy" width="1470" height="662"></figure>
+	<p>但是，由于 JWT 的这种无状态性质，如果不从用户处获得特定的 JWT，则很难调试基于 JWT 的身份验证。原因如下：</p>
+	<p>1. <strong>令牌特定性</strong>：每个 JWT 都特定于一个用户和一个会话。它包含有关用户、颁发机构、令牌的颁发时间、到期时间以及可能的其他数据的信息（声明）。因此，要调试问题，您通常需要获得导致问题的确切 JWT。</p>
+	<p>2. <strong>无服务器端记录</strong>：由于 JWT 是无状态的，因此服务器默认不存储会话。它无法查找过去的令牌或其关联状态，除非它是专门设计用来记录它们的，但出于隐私和数据最小化考虑，通常情况并非如此。</p>
+	<p>3. <strong>暂时性问题</strong>：JWT 的问题可能是暂时性的，它们可能与使用令牌的具体时刻有关。例如，如果用户尝试使用令牌时，该令牌已过期，则需要该特定令牌来调试问题。</p>
+	<p>4. <strong>隐私和安全</strong>：JWT 可能包含敏感信息，因此应谨慎处理。从用户那里获取 JWT 可能会将他们的个人信息或安全凭证暴露给调试问题的人员。此外，如果用户通过不安全的渠道将 JWT 发送给开发人员或 IT 帮助台，则可能会被拦截（Cloudflare 最近发布了免费的 <a href="https://blog.cloudflare.com/introducing-har-sanitizer-secure-har-sharing">HAR Sanitizer</a> 来帮助缓解这一问题）。</p>
+	<p>这些因素使得在没有相关特定令牌的情况下，很难对基于 JWT 的身份验证问题进行故障排除。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image3.png" class="kg-image" alt="" loading="lazy" width="1825" height="740"></figure>
+	<h3 id="%E8%B0%83%E8%AF%95%E8%BA%AB%E4%BB%BD%E9%97%AE%E9%A2%98%E7%9A%84%E6%9B%B4%E5%A5%BD%E6%96%B9%E6%B3%95"><strong>调试身份问题的更好方法</strong></h3>
+	<p>我们着手构建一种更好的方法来调试与 Cloudflare Zero Trust 中用户身份相关的问题，而无需来回分享 JWT 或 HAR 文件。管理员现在可以查看用户的注册表身份（用于 Gateway 政策）和所有活动 Access 会话。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/image7.png" class="kg-image" alt="" loading="lazy" width="1536" height="536"></figure>
+	<p>此会话信息包括 Zero Trust 评估的完整身份，包括 IdP 声明、设备态势信息、网络背景信息等。通过利用 Cloudflare Workers KV，我们能够在不对 Access 的身份验证逻辑进行任何额外负载的情况下构建此功能。当用户使用 Access 进行身份验证时，其关联的身份会立即保存到 Workers KV 中的键/值对中。这一切都发生在用户身份验证事件的上下文中，这意味着延迟影响或对外部服务的依赖极小。</p>
+	<p>所有 Zero Trust 计划的所有客户都可以使用此功能。如果您想开始使用 Cloudflare Zero Trust，请立即<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册</a>一个最多可容纳 50 位用户的<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">免费帐户</a>！或者，与 <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank">Cloudflare 专家合作</a>，讨论适合贵组织的 SSE 或 SASE，一步一步地解决您的 Zero Trust 用例。</p>
+</div>
