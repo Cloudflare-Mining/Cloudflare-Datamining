@@ -85,6 +85,10 @@
 								"description": "cities in %{CountryCount}+ countries, including mainland China"
 							},
 							{
+								"title": "%{NetworkInterconnects}",
+								"description": "networks directly connect to Cloudflare, including every major ISP, cloud provider, and enterprise"
+							},
+							{
 								"title": "%{NetworkCapacityV2}",
 								"description": "global network edge capacity, consisting of transit connections, peering and private network interconnects\n"
 							},
@@ -165,6 +169,10 @@
 								},
 								{
 									"cityName": "Tbilisi, GE",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Johor Bahru, MY",
 									"region": "Asia"
 								},
 								{
@@ -324,6 +332,10 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
+									"cityName": "Curitiba, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
 									"cityName": "Reunion, FR",
 									"region": "Africa"
 								},
@@ -388,12 +400,24 @@
 									"region": "Asia"
 								},
 								{
+									"cityName": "St. Petersburg, RU",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Manama, BH",
+									"region": "Middle East"
+								},
+								{
 									"cityName": "Columbus, US*",
 									"region": "North America"
 								},
 								{
 									"cityName": "Charlotte, US*",
 									"region": "North America"
+								},
+								{
+									"cityName": "Lagos, NG",
+									"region": "Africa"
 								},
 								{
 									"cityName": "Ulaanbaatar, MN",
@@ -406,6 +430,10 @@
 								{
 									"cityName": "Norfolk, US",
 									"region": "North America"
+								},
+								{
+									"cityName": "Luxembourg City, LU*",
+									"region": "Europe"
 								},
 								{
 									"cityName": "Winnipeg, CA*",
@@ -570,6 +598,10 @@
 								{
 									"cityName": "Yerevan, AM",
 									"region": "Asia"
+								},
+								{
+									"cityName": "Detroit, US*",
+									"region": "North America"
 								},
 								{
 									"cityName": "Nashville, US*",
@@ -776,6 +808,10 @@
 									"region": "Europe"
 								},
 								{
+									"cityName": "Melbourne, AU**",
+									"region": "Oceania"
+								},
+								{
 									"cityName": "Johannesburg, ZA**",
 									"region": "Africa"
 								},
@@ -794,6 +830,10 @@
 								{
 									"cityName": "Seoul, KR**",
 									"region": "Asia"
+								},
+								{
+									"cityName": "Prague, CZ*",
+									"region": "Europe"
 								},
 								{
 									"cityName": "Toronto, CA**",
@@ -965,6 +1005,10 @@
 								},
 								{
 									"cityName": "Shanghai, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Shenyang, CN",
 									"region": "Mainland China"
 								},
 								{
@@ -1333,6 +1377,10 @@
 									"region": "Asia"
 								},
 								{
+									"cityName": "Johor Bahru, MY",
+									"region": "Asia"
+								},
+								{
 									"cityName": "Monrovia, LR",
 									"region": "Africa"
 								},
@@ -1489,6 +1537,10 @@
 									"region": "Latin America & the Caribbean"
 								},
 								{
+									"cityName": "Curitiba, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
 									"cityName": "Reunion, FR",
 									"region": "Africa"
 								},
@@ -1553,12 +1605,24 @@
 									"region": "Asia"
 								},
 								{
+									"cityName": "St. Petersburg, RU",
+									"region": "Europe"
+								},
+								{
+									"cityName": "Manama, BH",
+									"region": "Middle East"
+								},
+								{
 									"cityName": "Columbus, US*",
 									"region": "North America"
 								},
 								{
 									"cityName": "Charlotte, US*",
 									"region": "North America"
+								},
+								{
+									"cityName": "Lagos, NG",
+									"region": "Africa"
 								},
 								{
 									"cityName": "Ulaanbaatar, MN",
@@ -1571,6 +1635,10 @@
 								{
 									"cityName": "Norfolk, US",
 									"region": "North America"
+								},
+								{
+									"cityName": "Luxembourg City, LU*",
+									"region": "Europe"
 								},
 								{
 									"cityName": "Winnipeg, CA*",
@@ -1735,6 +1803,10 @@
 								{
 									"cityName": "Yerevan, AM",
 									"region": "Asia"
+								},
+								{
+									"cityName": "Detroit, US*",
+									"region": "North America"
 								},
 								{
 									"cityName": "Nashville, US*",
@@ -1941,6 +2013,10 @@
 									"region": "Europe"
 								},
 								{
+									"cityName": "Melbourne, AU**",
+									"region": "Oceania"
+								},
+								{
 									"cityName": "Johannesburg, ZA**",
 									"region": "Africa"
 								},
@@ -1959,6 +2035,10 @@
 								{
 									"cityName": "Seoul, KR**",
 									"region": "Asia"
+								},
+								{
+									"cityName": "Prague, CZ*",
+									"region": "Europe"
 								},
 								{
 									"cityName": "Toronto, CA**",
@@ -2130,6 +2210,10 @@
 								},
 								{
 									"cityName": "Shanghai, CN",
+									"region": "Mainland China"
+								},
+								{
+									"cityName": "Shenyang, CN",
 									"region": "Mainland China"
 								},
 								{
@@ -2544,6 +2628,42 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4wP5LKSCVMZzy2mn0MsQyq/6d0239e7354806aa1b0dfcfec7ac7b6b/cloudflare-workers.svg"
+										},
+										"description": ""
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "ET3OO0OpvHRXvfx9S0RMZ",
+								"title": "Enterprise architects",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "Simplify application delivery architecture and ensure a seamless experience for all users globally.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "d6805df6-b097-51a8-b87a-56eca15b1a63",
+									"altText": "Regional services blue",
+									"title": "Regional services blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6jf9lTe4UHC0l6EmbDHKi9/03dc05288befaa18d386705d2e0f05fe/regional-services.svg"
 										},
 										"description": ""
 									},
@@ -3414,6 +3534,28 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2TTRrhBpJe8434TchiNiRU",
+								"title": "How our network maintains data privacy",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "small",
+								"description": "This white paper describes how data travels on the Cloudflare network, data collection and privacy, and our protection of encryption keys.",
+								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2PpV3ceAMWJLMlXvDvGaWH/91d7fadd51bc346746239d9dcb8212a0/How_the_Cloudflare_network_maintains_data_privacy.pdf",
+								"learnMoreText": "Download PDF",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4RDa8d7bK0nWmqVvvd2665",
