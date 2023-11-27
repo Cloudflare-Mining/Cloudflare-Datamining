@@ -293,6 +293,7 @@
 					"description": "Array of comma separated list of domains names.",
 					"example": "google.com,facebook.com",
 					"items": {
+						"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,63}[a-zA-Z0-9-])?\\.)+[a-zA-Z0-9-]{2,63}$",
 						"type": "string"
 					},
 					"type": "array"
@@ -377,25 +378,28 @@
 										"meta": {
 											"properties": {
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
 												}
 											},
 											"required": [

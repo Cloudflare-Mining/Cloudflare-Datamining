@@ -116,6 +116,93 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
 											"type": "object"
 										},
 										"summary_0": {
@@ -335,6 +422,93 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
 											"type": "object"
 										},
 										"summary_0": {
@@ -554,6 +728,93 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
 											"type": "object"
 										},
 										"summary_0": {
@@ -773,6 +1034,93 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
 											"type": "object"
 										},
 										"summary_0": {
@@ -992,6 +1340,93 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
 											"type": "object"
 										},
 										"summary_0": {
@@ -1226,6 +1661,93 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
 											"type": "object"
 										},
 										"summary_0": {
@@ -1514,25 +2036,28 @@
 													"type": "object"
 												},
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
 												},
 												"lastUpdated": {
 													"format": "date-time",
@@ -3292,29 +3817,37 @@
 													"type": "object"
 												},
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
 												}
 											},
 											"required": [
-												"dateRange"
+												"dateRange",
+												"lastUpdated"
 											],
 											"type": "object"
 										},
@@ -3597,29 +4130,37 @@
 													"type": "object"
 												},
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
 												}
 											},
 											"required": [
-												"dateRange"
+												"dateRange",
+												"lastUpdated"
 											],
 											"type": "object"
 										},
@@ -3902,29 +4443,37 @@
 													"type": "object"
 												},
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
 												}
 											},
 											"required": [
-												"dateRange"
+												"dateRange",
+												"lastUpdated"
 											],
 											"type": "object"
 										},
@@ -4207,29 +4756,37 @@
 													"type": "object"
 												},
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
 												}
 											},
 											"required": [
-												"dateRange"
+												"dateRange",
+												"lastUpdated"
 											],
 											"type": "object"
 										},

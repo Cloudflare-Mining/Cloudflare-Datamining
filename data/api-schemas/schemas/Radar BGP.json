@@ -1568,25 +1568,28 @@
 													"type": "object"
 												},
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
 												},
 												"lastUpdated": {
 													"format": "date-time",
@@ -1850,25 +1853,28 @@
 										"meta": {
 											"properties": {
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
 												}
 											},
 											"required": [
@@ -2270,25 +2276,28 @@
 										"meta": {
 											"properties": {
 												"dateRange": {
-													"properties": {
-														"endTime": {
-															"description": "Adjusted end of date range.",
-															"example": "2022-09-17T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
 														},
-														"startTime": {
-															"description": "Adjusted start of date range.",
-															"example": "2022-09-16T10:22:57.555Z",
-															"format": "date-time",
-															"type": "string"
-														}
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
 													},
-													"required": [
-														"startTime",
-														"endTime"
-													],
-													"type": "object"
+													"type": "array"
 												}
 											},
 											"required": [
