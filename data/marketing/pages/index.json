@@ -62,7 +62,15 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "1WehPjtYoEhJe1dD6feffD",
+					"text": "Join us at AWS re:Invent 2023",
+					"learnMoreText": "Learn more",
+					"learnMoreUrl": "https://www.cloudflare.com/aws-reinvent-2023/",
+					"backgroundColor": "blue0",
+					"hideCloseButton": null
+				},
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
 					"contentfulId": "6vywjvUNE13NxBvty6vFBy",
@@ -5220,6 +5228,39 @@
 							"cards": [
 								{
 									"contentTypeId": "elementResourceCard",
+									"contentfulId": "mw4jlrTpoc7DoMl9iQHQW",
+									"heading": "Report",
+									"description": "Cloudflare named a 'Leader' in the Forrester Wave for Edge Development Platforms, Q4 2023",
+									"category": "None",
+									"link": {
+										"contentTypeId": "elementLink",
+										"contentfulId": "38Ko1VPe8okjUGWbqTz5uf",
+										"elementName": "What's New - Forrester WAVE report for Dev Platform",
+										"standardText": null,
+										"text": "Read the report",
+										"url": "https://www.cloudflare.com/lp/forrester-wave-email-security-2023/",
+										"elementModal": null,
+										"openInNewTab": false,
+										"locale": "en-US"
+									},
+									"image": {
+										"id": "ef586f37-6023-50a2-ab31-641b3b85398e",
+										"altText": "Insights from Forrester",
+										"title": null,
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/472Uj25x4L3jM0WkIfqRSz/c04869f0bd2680b2372d9e034e74f35f/Insights-from-new-Forrester-2_100x165.png"
+											},
+											"description": ""
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									}
+								},
+								{
+									"contentTypeId": "elementResourceCard",
 									"contentfulId": "4dHjd3qHIC9F2L2gQrSN2F",
 									"heading": "Event",
 									"description": "Join Cloudflare at AWS re:Invent 2023 at booth 794",
@@ -5475,39 +5516,6 @@
 										"contentfulAsset": {
 											"file": {
 												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4TJ82BbjM3QNTMqu08MBSS/09669836da0fced2fc5c00faae642992/image2-28.png"
-											},
-											"description": ""
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
-									"contentfulId": "291TAnKjQX2seJSedsHUCm",
-									"heading": "Blog",
-									"description": "Email Security RetroScan catches the threats your security provider missed",
-									"category": "None",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "itGJs4Oyn5R95vZzGQIQZ",
-										"elementName": "What's New - Email security RetroScan",
-										"standardText": null,
-										"text": "Read the blog",
-										"url": "https://blog.cloudflare.com/threats-lurking-office-365-cloudflare-email-retro-scan",
-										"elementModal": null,
-										"openInNewTab": true,
-										"locale": "en-US"
-									},
-									"image": {
-										"id": "5eb33713-dba5-5566-8204-4c45fad55a50",
-										"altText": "Cloud Email Security Graph API Retro Scan",
-										"title": "Cloud Email Security Graph API Retro Scan",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2tKE2Ei2sM08xDHWRfcj4L/852ad60c9f17b3001628d6722c66067c/Cloud_Email_Security_Graph_API_Retro_Scan.png"
 											},
 											"description": ""
 										},
@@ -12102,7 +12110,7 @@
 				"ru-RU",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": true,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
