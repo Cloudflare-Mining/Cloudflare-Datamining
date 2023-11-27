@@ -5,28 +5,43 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>&nbsp;</p>
-<p><strong>About the team</strong></p>
-<p>Cloudflare wants to give customers deeper insights into how their network operates.&nbsp; We are building products that help visualize your network across all Cloudflare One products including Magic and Zero Trust. We are building new products to give customers deeper visibility into how their network is performing, provide insights into network threats, and give actionable recommendations to improve the security, performance, and reliability of their networks.</p>
-<p>We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>
-<p><strong>About the role</strong></p>
-<p>As a software engineer on the Magic Visibility team, you will contribute across a wide range of technologies and systems to deliver new products that provide network visibility to our customers. You will help build and grow a globally distributed network data collector and the pipeline that delivers, processes, and stores the massive stream of data. You will build backend services that analyze this network data and correlate it with a multitude of other data sources within Cloudflare. You will build APIs and integrations with other products such as DDoS mitigation, Magic Transit, and Magic Firewall to enable customers to take action on insights we surface. You will scale all of these technologies to enable access to these products to all Cloudflare customers. We primarily use technologies such as Go, Linux networking, Kafka, Clickhouse, GraphQL, SaltStack, Prometheus and Grafana.</p>
-<p>We're looking for determined, curious, empathetic engineers to join our team!</p>
-<p><strong>Desirable skills, knowledge, and experience</strong></p>
+<p><strong>Our Mission</strong></p>
+<p>The Security Response Team’s mission is to systematically respond to security threats safeguarding Cloudflare. We operate 24/7 across the globe to respond to security incidents, continuously improve our response capabilities, lead digital investigations and enhance our overall security posture. Our “Cloudflare on Cloudflare”, data and automation first philosophy makes us a cohesive team with high impact.&nbsp;</p>
+<p><strong>The Role</strong></p>
+<p>As a Senior Incident Response Engineer, you'll refine security processes, focusing on operations and response. Responsibilities span proactive threat management across edge, product, cloud, workloads, and containers. You'll handle and lead&nbsp; critical security events through triage, cyber-attack analysis, scoping, containment, and forensics. You will help create scalable analysis processes and methods, build response frameworks, and collaborate with IT, Engineering, Product, and Legal teams. This role demands diverse technical skills, such as tooling development, automation, custom log analysis, a solid understanding of OS internals, and deep technical expertise in threat detection, incident analysis, forensics and SIEM systems.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Programming experience in Go, Python, or Rust</li>
-	<li>Experience building large-scale, highly distributed systems</li>
-	<li>Experience with message streaming and stream processing technologies such as Kafka</li>
-	<li>Knowledge of SQL and experience working with common relational databases</li>
-	<li>Familiarity in statistics and data modeling</li>
-	<li>Bonus points for background in networking or flow collection and analysis</li>
-	<li>Excited by quickly delivering results that make a meaningful difference to customers</li>
-	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
-	<li>Able to work across teams and level common, sustainable solutions</li>
-	<li>Creative, open-minded, collaborative problem solver</li>
-	<li>Focus on clarity in written and verbal communication</li>
+	<li>Monitor, analyze, and resolve attacks, serving as Incident Commander throughout the entire incident lifecycle.</li>
+	<li>Participate in On-Call rotations with roles in IR Lead, Triage, and Project functions.</li>
+	<li>Act as a liaison between security leadership and experts, facilitating clear communication to both technical and non-technical stakeholders.</li>
+	<li>Perform detailed log analysis to identify indicators of compromise and anomalous behavior.</li>
+	<li>Design, develop, and maintain security tools to enhance the organization's overall cybersecurity posture.</li>
+	<li>Enhance Incident Response by ensuring compliance, creating documentation, and automating processes.</li>
+	<li>Collaborate with teams to identify and automate manual efforts in incident response.</li>
+	<li>Conduct code reviews, testing, and debugging of automation solutions.</li>
+	<li>Develop scalable solutions to minimize investigation time and integrate forensic capabilities into incident response workflows.</li>
+	<li>Assist in establishing KPIs and metrics for measuring incident response effectiveness and provide regular reporting to stakeholders.</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>Minimum 7 years of experience within an Information Security team, primarily focused on incident response, security engineering, threat research, pentest or product security team.</li>
+	<li>Able to self-scope, define, and manage short and long term technical goals.</li>
+	<li>Able to support and coach junior team members.</li>
+	<li>In-depth understanding of Linux/UNIX, MACOS, AWS, GCP and Azure environments.</li>
+	<li>Extensive experience in security operations, including incident detection, response, investigation, and mitigation. Proven track record of handling complex security incidents and managing incident response teams.</li>
+	<li>Experience with SIEM, SOAR, and EDR that are used to detect anomalous behavior and respond.</li>
+	<li>Proficient in automating tasks and interfacing with APIs using Python, Go, Ruby or a similar scripting language.</li>
+	<li>Proficient in SQL or other query languages.</li>
+	<li>Great verbal/written communication, problem solving, analytical and independent judgment skills to support an environment driven by teamwork; must be able to positively influence, mentor and be a credible source of knowledge to less experienced team members..</li>
+</ul>
+<p><strong>Preferred Qualifications</strong></p>
+<ul>
+	<li>Comprehensive knowledge of digital forensics investigations, encompassing chain of custody, evidence procedures, investigative interviewing techniques, information management, and legal processes.</li>
+	<li>Working knowledge of Information Security standards and policies like ISO 27001/27002, NIST, and others.</li>
+	<li>Experience with designing incident response and security operations programs.</li>
+	<li>Experience with software engineering, and designing custom security response tools.</li>
+	<li>Experience with maturity and gap assessmentsGCFA, GCFR, GNFA , and/or Public Cloud Certifications</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
