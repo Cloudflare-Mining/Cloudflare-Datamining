@@ -7,7 +7,7 @@
 	"headline": "Unbounded memory usage by TCP for receive buffers, and how we fixed it",
 	"url": "http://blog.cloudflare.com/unbounded-memory-usage-by-tcp-for-receive-buffers-and-how-we-fixed-it/",
 	"datePublished": "2023-05-25T15:31:46.000Z",
-	"dateModified": "2023-07-03T08:53:18.000Z",
+	"dateModified": "2023-11-28T16:38:43.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2023/05/image14-2.png",
 	"keywords": "TCP, Deep Dive",
 	"description": "We are constantly monitoring and optimizing the performance and resource utilization of our systems. Recently, we noticed that some of our TCP sessions were allocating more memory than expected. This blog post describes in detail the root cause of the problem and shows the test results of a solution"

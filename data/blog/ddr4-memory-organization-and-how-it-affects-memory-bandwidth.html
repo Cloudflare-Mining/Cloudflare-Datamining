@@ -15,7 +15,7 @@
 		<figcaption>Figure 1: DQ signal path on a dual rank memory module</figcaption>
 	</figure>
 	<p>Dual-rank and quad-rank memory modules double or quadruple the memory capacity on a module, within the existing memory technology. Even though only one rank can be accessed at a time, the other ranks are not sitting idle. Multi-rank memory modules use a process called rank interleaving, where the ranks that are not accessed go through their refresh cycles in parallel. This pipelined process reduces memory response time, as soon as the previous rank completes data transmission, the next rank can start its transmission.</p>
-	<p>On the other hand, there is some I/O latency penalty with multi-rank memory modules, since memory controllers need additional clock cycles to move from one rank to another. The overall latency performance difference between single rank and multi-rank memories depend heavily on the type of application.</p>
+	<p>On the other hand, there is some I/O latency penalty with multi-rank memory modules, since memory controllers need additional clock cycles to move from one rank to another. The overall <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank">latency performance</a> difference between single rank and multi-rank memories depend heavily on the type of application.</p>
 	<p>In addition, because there are less memory chips on each module, single-rank modules produce less heat and are less likely to fail.</p>
 	<h2 id="memory-depth-and-width">Memory depth and width</h2>
 	<p>The capacity of each memory chip, or device, is defined as memory depth x memory width. Memory width refers to the width of the data bus, i.e. the number of DQ lines of each memory chip.</p>
