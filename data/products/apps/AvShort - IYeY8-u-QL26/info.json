@@ -1,0 +1,902 @@
+{
+	"id": "IYeY8-u-QL26",
+	"title": "AvShort",
+	"shortDescription": "Shorten your URLs and make them more manageable",
+	"longDescription": "# AvShort: A Cutting-Edge URL Shortening Service\n\nAvShort is a cutting-edge URL shortening service designed to make your links more manageable. With AvShort, you can shorten long URLs into shorter, more manageable links that are easy to share. AvShort also provides a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n\n## Features\n\n- Shorten long URLs into shorter, more manageable links.\n- Share your shortened links on social media, email, and other channels.\n- Track your link clicks and see where your traffic is coming from.\n- Customize your shortened links with your own branding.\n- **Database Integration:** Utilize a robust database system to enhance link management and retrieval.\n- **URL Extraction from API or Web Pages:** Effortlessly extract URLs from APIs or web pages to streamline link creation.\n- **Cache Mechanism:** Optimize link retrieval speed with a smart caching system.\n- **Save Query Parameter (Adding UTM parameters):** Customize your links with specific UTM parameters for detailed tracking.\n\n## Changelog\n\n- **Version 1.0:** Initial release.\n- **Version 2.1:** Added new features.\n\n## Benefits\n\n- **Easy to use:** AvShort's simple and intuitive interface makes it easy to shorten your URLs.\n- **Powerful features:** AvShort offers a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n- **Reliable:** AvShort is a reliable URL shortening service that you can count on.\n- **Affordable:** AvShort is an affordable URL shortening service that fits your budget.\n\n## Get started with AvShort today!\n\nSign up for a free AvShort account today and start shortening your URLs!",
+	"instructions": "## USE RESTRICTIONS \n##Your permission to use the App is conditioned upon the following Use Restrictions and Conduct Restrictions: You agree that you will not under any circumstances:\n\n###post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive.\n\n###use the service for any unlawful purpose or for the promotion of illegal activities.\n\n###attempt to, or harass, abuse or harm another person or group.\n\n###use another user’s account without permission.\n\n###provide false or inaccurate information when registering an account.\n\n###interfere or attempt to interfere with the proper functioning of the Service.\n\n###make any automated use of the system, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure.\n\n###bypass any robot exclusion headers or other measures we take to restrict access to the Service or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data.\n\n###publish or link to malicious content intended to damage or disrupt another user’s browser or computer.",
+	"alias": "avshort",
+	"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+	"icon": "https://images.cloudflareapps.com/TpMhrqWd9jTT/dW5kZWZpbmVk",
+	"screenshots": [
+		"https://images.cloudflareapps.com/cBf5-05ZfzuX/dW5kZWZpbmVk",
+		"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk",
+		"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk"
+	],
+	"tileImage": "https://images.cloudflareapps.com/R1VLI9RqimL7/dW5kZWZpbmVk",
+	"featuredAppImage": "https://images.cloudflareapps.com/wJQasHDCTgd_/dW5kZWZpbmVk",
+	"author": "AvShort",
+	"tagline": "",
+	"website": "https://avshor.webghost.bid",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://avshort.webghost.bid/Terms-of-Service.html",
+	"privacyPolicyURL": "https://avshort.webghost.bid/Privacy-Policy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.2",
+	"infoVersion": "2.1.2",
+	"points": 0,
+	"supportEmail": "avshort@webghost.bid",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "edc223d6a62a72777c2e397fb7c54bb3",
+			"created": "2022-06-27T21:04:25.467469613Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "CPmp9wtK5oP1"
+	},
+	"created": "2021-02-08T13:35:38.660664Z",
+	"org": {
+		"id": "edc223d6a62a72777c2e397fb7c54bb3",
+		"title": "",
+		"username": "edc223d6a62a72777c2e397fb7c54bb3",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.2",
+			"appId": "IYeY8-u-QL26",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": ""
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id1": {
+							"order": 1,
+							"placeholder": "http://yourdomain.com/",
+							"title": "Your Domain/Subdomain in this account",
+							"type": "string"
+						},
+						"id2": {
+							"order": 2,
+							"placeholder": "http://domain2clone.com/",
+							"title": "Clone To",
+							"type": "string"
+						},
+						"id3": {
+							"items": {
+								"products": [
+									"pro"
+								],
+								"properties": {
+									"find": {
+										"order": 1,
+										"placeholder": "<script>, <iframe>, etc...",
+										"products": [
+											"pro"
+										],
+										"title": "Find :",
+										"type": "string"
+									},
+									"products": [
+										"pro"
+									],
+									"rep": {
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"products": [
+											"pro"
+										],
+										"title": "Replace :",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"products": [
+								"pro"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Find & Replace in Full/All Pages",
+							"type": "array"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.\n- Replace/Add HTML.",
+						"visible": true,
+						"price": 399,
+						"order": 2,
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./source/app.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kUYYh18BnhuH",
+			"metadata": {
+				"code": {
+					"sourceTag": "kUYYh18BnhuH",
+					"uploadedOn": "2021-02-08T13:52:03.227983925Z"
+				}
+			},
+			"created": "2021-02-08T13:35:40.429233Z",
+			"proposedApp": {
+				"id": "IYeY8-u-QL26",
+				"title": "SiteCloner",
+				"shortDescription": "Make Clone or Copie of any Your website in other server",
+				"longDescription": "Make Clones or Copies of any Your websites in External Server out cloudflare\nSiteCloner is a framework help you to fetch content from any sites you have and display them on your website in cloudflare. It is modularized, easy to use, templating and cache supported and more.\n\nAbout SiteCloner\n\nThere are various instances where you may want to clone a website.\n.\n\nScenario #1 Testing Website Codes\n\nYou have found a website or theme for which you desire and it contains some modern styling for which you want to learn and practice. This tool is convenient method to acquire the template and test the code. However, you may want to have permission from the copyright holder.\n\nScenario #2 Teaching Web Design and Do It Your Self Website Builder\n\nThe SiteCloner is very lightweight and can be used to help people build their own websites, or, teach html, css and Javascript coding online. The process is very simple, they can login, edit . If you teach your client to only edit text and change images, anybody can build their own website without any coding experience.\n\nScenario #3 Acquiring Web Project (in Future :) )\n\nOne such instance is that you have a client who had a website built by another web designer / developer and he disappeared or refuses to cooperate at giving the owner his working website files. Thus, with the site clone tool, you can easily acquire all those files and return them back to the copyright owner, which is the client. Also, if the site is created in another platform, you can acquire the files and customize it with the new SiteCloner",
+				"instructions": "# USE RESTRICTIONS \n\n-Your permission to use the App is conditioned upon the following Use Restrictions and Conduct Restrictions: You agree that you will not under any circumstances:\n\n-post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive; \n\n-use the service for any unlawful purpose or for the promotion of illegal activities; \n\n-attempt to, or harass, abuse or harm another person or group; \n\n-use another user’s account without permission; \n\n-provide false or inaccurate information when registering an account; \n\n-interfere or attempt to interfere with the proper functioning of the Service; \n\n-make any automated use of the system, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure; \n\n-bypass any robot exclusion headers or other measures we take to restrict access to the Service or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data; \n\n-publish or link to malicious content intended to damage or disrupt another user’s browser or computer.",
+				"alias": "sitecloner",
+				"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"icon": "https://images.cloudflareapps.com/L7P7lrHJLPbn/i.jpg",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Z0PnS6tPkYHS/Clone_Copy%21%20%281%29.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/jddTpkh1Sd7T/SiteCloner.png",
+				"author": "MasterAM",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://siteclonercf.blogspot.com/p/terms-of-service-sitecloner.html",
+				"privacyPolicyURL": "https://siteclonercf.blogspot.com/p/privacy-policy-sitecloner.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "haha.hou29@googlemail.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.\n- Replace/Add HTML.",
+						"visible": true,
+						"price": 399,
+						"order": 2,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CPmp9wtK5oP1"
+				},
+				"created": "2021-02-08T13:35:38.660664Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"requestedAt": "2021-02-08T13:52:05.27880884Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-19T22:24:31.236459409Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "IYeY8-u-QL26",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": ""
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id1": {
+							"order": 1,
+							"placeholder": "http://yourdomain.com/",
+							"title": "Your Domain/Subdomain in this account",
+							"type": "string"
+						},
+						"id2": {
+							"order": 2,
+							"placeholder": "http://domain2clone.com/",
+							"title": "Clone To",
+							"type": "string"
+						},
+						"id3": {
+							"items": {
+								"products": [
+									"pro"
+								],
+								"properties": {
+									"find": {
+										"order": 1,
+										"placeholder": "<script>, <iframe>, etc...",
+										"products": [
+											"pro"
+										],
+										"title": "Find :",
+										"type": "string"
+									},
+									"products": [
+										"pro"
+									],
+									"rep": {
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"products": [
+											"pro"
+										],
+										"title": "Replace :",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"products": [
+								"pro"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Find & Replace in Full/All Pages",
+							"type": "array"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.\n- Replace/Add HTML.",
+						"visible": true,
+						"price": 399,
+						"order": 2,
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./source/app.js"
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kUYYh18BnhuH",
+			"created": "2021-05-27T21:43:39.398401Z",
+			"proposedApp": {
+				"id": "IYeY8-u-QL26",
+				"title": "SiteCloner",
+				"shortDescription": "Make Clone or Copie of any Your website in other server",
+				"longDescription": "Make Clones or Copies of any Your websites in External Server out cloudflare\nSiteCloner is a framework help you to fetch content from any sites you have and display them on your website in cloudflare. It is modularized, easy to use, templating and cache supported and more.\n\nAbout SiteCloner\n\nThere are various instances where you may want to clone a website.\n.\n\nScenario #1 Testing Website Codes\n\nYou have found a website or theme for which you desire and it contains some modern styling for which you want to learn and practice. This tool is convenient method to acquire the template and test the code. However, you may want to have permission from the copyright holder.\n\nScenario #2 Teaching Web Design and Do It Your Self Website Builder\n\nThe SiteCloner is very lightweight and can be used to help people build their own websites, or, teach html, css and Javascript coding online. The process is very simple, they can login, edit . If you teach your client to only edit text and change images, anybody can build their own website without any coding experience.\n\nScenario #3 Acquiring Web Project (in Future :) )\n\nOne such instance is that you have a client who had a website built by another web designer / developer and he disappeared or refuses to cooperate at giving the owner his working website files. Thus, with the site clone tool, you can easily acquire all those files and return them back to the copyright owner, which is the client. Also, if the site is created in another platform, you can acquire the files and customize it with the new SiteCloner",
+				"instructions": "# USE RESTRICTIONS \n\n-Your permission to use the App is conditioned upon the following Use Restrictions and Conduct Restrictions: You agree that you will not under any circumstances:\n\n-post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive; \n\n-use the service for any unlawful purpose or for the promotion of illegal activities; \n\n-attempt to, or harass, abuse or harm another person or group; \n\n-use another user’s account without permission; \n\n-provide false or inaccurate information when registering an account; \n\n-interfere or attempt to interfere with the proper functioning of the Service; \n\n-make any automated use of the system, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure; \n\n-bypass any robot exclusion headers or other measures we take to restrict access to the Service or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data; \n\n-publish or link to malicious content intended to damage or disrupt another user’s browser or computer.",
+				"alias": "sitecloner",
+				"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"icon": "https://images.cloudflareapps.com/L7P7lrHJLPbn/i.jpg",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Z0PnS6tPkYHS/Clone_Copy%21%20%281%29.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/jddTpkh1Sd7T/SiteCloner.png",
+				"author": "MasterAM",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://siteclonercf.blogspot.com/p/terms-of-service-sitecloner.html",
+				"privacyPolicyURL": "https://siteclonercf.blogspot.com/p/privacy-policy-sitecloner.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "haha.hou29@googlemail.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.\n- Replace/Add HTML.",
+						"visible": true,
+						"price": 400,
+						"order": 2,
+						"plan": "APPS_SITE_CLONER_PRO",
+						"feature": "apps.sitecloner_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CPmp9wtK5oP1"
+				},
+				"created": "2021-02-08T13:35:38.660664Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"requestedAt": "2021-05-27T21:43:39.836776302Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-05-27T21:44:11.782349819Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "IYeY8-u-QL26",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": ""
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"id1": {
+							"order": 1,
+							"placeholder": "http://yourdomain.com/",
+							"title": "Your Domain/Subdomain in this account",
+							"type": "string"
+						},
+						"id2": {
+							"order": 2,
+							"placeholder": "http://domain2clone.com/",
+							"title": "Clone To",
+							"type": "string"
+						},
+						"id3": {
+							"items": {
+								"products": [
+									"pro"
+								],
+								"properties": {
+									"find": {
+										"order": 1,
+										"placeholder": "<script>, <iframe>, etc...",
+										"products": [
+											"pro"
+										],
+										"title": "Find :",
+										"type": "string"
+									},
+									"products": [
+										"pro"
+									],
+									"rep": {
+										"order": 2,
+										"placeholder": "<script>, <iframe>, etc...",
+										"products": [
+											"pro"
+										],
+										"title": "Replace :",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"products": [
+								"pro"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Find & Replace in Full/All Pages",
+							"type": "array"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.\n- Replace/Add HTML.",
+						"visible": true,
+						"price": 399,
+						"order": 2,
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./source/app.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kUYYh18BnhuH",
+			"created": "2022-06-27T20:48:26.238904Z",
+			"proposedApp": {
+				"id": "IYeY8-u-QL26",
+				"title": "SiteCloner",
+				"shortDescription": "Make Clone or Copie of any Your website in other server",
+				"longDescription": "Make Clones or Copies of any Your websites in External Server out cloudflarenSiteCloner is a framework help you to fetch content from any sites you have and display them on your website in cloudflare. It is modularized, easy to use, templating and cache supported and more.nnAbout SiteClonernnThere are various instances where you may want to clone a website.n.nnScenario #1 Testing Website CodesnnYou have found a website or theme for which you desire and it contains some modern styling for which you want to learn and practice. This tool is convenient method to acquire the template and test the code. However, you may want to have permission from the copyright holder.nnScenario #2 Teaching Web Design and Do It Your Self Website BuildernnThe SiteCloner is very lightweight and can be used to help people build their own websites, or, teach html, css and Javascript coding online. The process is very simple, they can login, edit . If you teach your client to only edit text and change images, anybody can build their own website without any coding experience.nnScenario #3 Acquiring Web Project (in Future :) )nnOne such instance is that you have a client who had a website built by another web designer / developer and he disappeared or refuses to cooperate at giving the owner his working website files. Thus, with the site clone tool, you can easily acquire all those files and return them back to the copyright owner, which is the client. Also, if the site is created in another platform, you can acquire the files and customize it with the new SiteCloner",
+				"instructions": "# USE RESTRICTIONS nn-Your permission to use the App is conditioned upon the following Use Restrictions and Conduct Restrictions: You agree that you will not under any circumstances:nn-post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive; nn-use the service for any unlawful purpose or for the promotion of illegal activities; nn-attempt to, or harass, abuse or harm another person or group; nn-use another user’s account without permission; nn-provide false or inaccurate information when registering an account; nn-interfere or attempt to interfere with the proper functioning of the Service; nn-make any automated use of the system, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure; nn-bypass any robot exclusion headers or other measures we take to restrict access to the Service or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data; nn-publish or link to malicious content intended to damage or disrupt another user’s browser or computer.",
+				"alias": "sitecloner",
+				"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"icon": "https://images.cloudflareapps.com/L7P7lrHJLPbn/i.jpg",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/Z0PnS6tPkYHS/Clone_Copy%21%20%281%29.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/jddTpkh1Sd7T/SiteCloner.png",
+				"author": "MasterAM",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://siteclonercf.blogspot.com/p/terms-of-service-sitecloner.html",
+				"privacyPolicyURL": "https://siteclonercf.blogspot.com/p/privacy-policy-sitecloner.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "haha.hou29@googlemail.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.n- Replace/Add HTML.",
+						"visible": true,
+						"price": 1000,
+						"order": 2,
+						"plan": "APPS_SITE_CLONER_PRO",
+						"feature": "apps.sitecloner_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CPmp9wtK5oP1"
+				},
+				"created": "2021-02-08T13:35:38.660664Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"requestedAt": "2022-06-27T21:04:25.464759503Z",
+				"canceledByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"canceledAt": "2023-11-15T19:10:46.649547142Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "IYeY8-u-QL26",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"uZykp5UKmcGq"
+							],
+							"title": "AvShort Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1",
+						"events": [
+							"oauth-login",
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1/provision",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1/post-install",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1/d-post-install",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "# Release Notes\n\n## Version 2.1\n\n### We Had Been add New Features\n\n### Service Changes:\n- Improved overall performance and reliability.\n\n- **Authorization Enhancement:** In response to unauthorized use detection, certain options have been suspended to ensure the integrity and security of the service.\n\n### Bug Fixes:\n- Addressed security vulnerabilities related to unauthorized access.\n\n### Deprecated:\n- Certain options have been deprecated, pending a comprehensive security review.\n\nWe appreciate your understanding and cooperation as we prioritize the security and reliability of AvShort. Please update to Version 2.1 for the latest improvements and security enhancements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6bVeY75GRbYm",
+			"metadata": {
+				"code": {
+					"sourceTag": "6bVeY75GRbYm",
+					"uploadedOn": "2023-11-15T19:10:44.472244477Z"
+				}
+			},
+			"created": "2023-11-15T19:10:43.554876Z",
+			"proposedApp": {
+				"id": "IYeY8-u-QL26",
+				"title": "AvShort",
+				"shortDescription": "Shorten your URLs and make them more manageable",
+				"longDescription": "# AvShort: A Cutting-Edge URL Shortening Service\n\nAvShort is a cutting-edge URL shortening service designed to make your links more manageable. With AvShort, you can shorten long URLs into shorter, more manageable links that are easy to share. AvShort also provides a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n\n## Features\n\n- Shorten long URLs into shorter, more manageable links.\n- Share your shortened links on social media, email, and other channels.\n- Track your link clicks and see where your traffic is coming from.\n- Customize your shortened links with your own branding.\n- **Database Integration:** Utilize a robust database system to enhance link management and retrieval.\n- **URL Extraction from API or Web Pages:** Effortlessly extract URLs from APIs or web pages to streamline link creation.\n- **Cache Mechanism:** Optimize link retrieval speed with a smart caching system.\n- **Save Query Parameter (Adding UTM parameters):** Customize your links with specific UTM parameters for detailed tracking.\n\n## Changelog\n\n- **Version 1.0:** Initial release.\n- **Version 2.1:** Added new features.\n\n## Benefits\n\n- **Easy to use:** AvShort's simple and intuitive interface makes it easy to shorten your URLs.\n- **Powerful features:** AvShort offers a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n- **Reliable:** AvShort is a reliable URL shortening service that you can count on.\n- **Affordable:** AvShort is an affordable URL shortening service that fits your budget.\n\n## Get started with AvShort today!\n\nSign up for a free AvShort account today and start shortening your URLs!",
+				"instructions": "## USE RESTRICTIONS \n#-Your permission to use the App is conditioned upon the following Use Restrictions and Conduct Restrictions: You agree that you will not under any circumstances:\n#-post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive; \n#-use the service for any unlawful purpose or for the promotion of illegal activities; \n#-attempt to, or harass, abuse or harm another person or group; \n#-use another user’s account without permission; \n#-provide false or inaccurate information when registering an account; \n#-interfere or attempt to interfere with the proper functioning of the Service; \n#-make any automated use of the system, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure; \n#-bypass any robot exclusion headers or other measures we take to restrict access to the Service or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data;\n#-publish or link to malicious content intended to damage or disrupt another user’s browser or computer.",
+				"alias": "avshort",
+				"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"icon": "https://images.cloudflareapps.com/TpMhrqWd9jTT/dW5kZWZpbmVk",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cBf5-05ZfzuX/dW5kZWZpbmVk",
+					"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk",
+					"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk"
+				],
+				"tileImage": "https://images.cloudflareapps.com/R1VLI9RqimL7/dW5kZWZpbmVk",
+				"featuredAppImage": "https://images.cloudflareapps.com/wJQasHDCTgd_/dW5kZWZpbmVk",
+				"author": "AvShort",
+				"tagline": "",
+				"website": "https://avshor.webghost.bid",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://avshort.webghost.bid/Terms-of-Service.html",
+				"privacyPolicyURL": "https://avshort.webghost.bid/Privacy-Policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "avshort@webghost.bid",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Clone Your Site",
+						"longDescription": "- Clone Your Site.",
+						"visible": false,
+						"price": 500,
+						"order": 1,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "SiteCloner With Replace/Add HTML",
+						"longDescription": "- Clone Your Site.n- Replace/Add HTML.",
+						"visible": false,
+						"price": 1000,
+						"order": 2,
+						"plan": "APPS_SITE_CLONER_PRO",
+						"feature": "apps.sitecloner_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CPmp9wtK5oP1"
+				},
+				"created": "2021-02-08T13:35:38.660664Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"requestedAt": "2023-11-15T19:10:46.660473451Z",
+				"canceledByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"canceledAt": "2023-11-15T19:29:42.816374688Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "IYeY8-u-QL26",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"uZykp5UKmcGq"
+							],
+							"title": "AvShort Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1",
+						"events": [
+							"oauth-login",
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1/provision",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1/post-install",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://lg.webghost.bid/webhooks/cloudflare/v1/d-post-install",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "# Release Notes\n\n## Version 2.1\n\n### We Had Been add New Features\n\n### Service Changes:\n- Improved overall performance and reliability.\n\n- **Authorization Enhancement:** In response to unauthorized use detection, certain options have been suspended to ensure the integrity and security of the service.\n\n### Bug Fixes:\n- Addressed security vulnerabilities related to unauthorized access.\n\n### Deprecated:\n- Certain options have been deprecated, pending a comprehensive security review.\n\nWe appreciate your understanding and cooperation as we prioritize the security and reliability of AvShort. Please update to Version 2.1 for the latest improvements and security enhancements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6bVeY75GRbYm",
+			"created": "2023-11-15T19:25:27.040431Z",
+			"proposedApp": {
+				"id": "IYeY8-u-QL26",
+				"title": "AvShort",
+				"shortDescription": "Shorten your URLs and make them more manageable",
+				"longDescription": "# AvShort: A Cutting-Edge URL Shortening Service\n\nAvShort is a cutting-edge URL shortening service designed to make your links more manageable. With AvShort, you can shorten long URLs into shorter, more manageable links that are easy to share. AvShort also provides a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n\n## Features\n\n- Shorten long URLs into shorter, more manageable links.\n- Share your shortened links on social media, email, and other channels.\n- Track your link clicks and see where your traffic is coming from.\n- Customize your shortened links with your own branding.\n- **Database Integration:** Utilize a robust database system to enhance link management and retrieval.\n- **URL Extraction from API or Web Pages:** Effortlessly extract URLs from APIs or web pages to streamline link creation.\n- **Cache Mechanism:** Optimize link retrieval speed with a smart caching system.\n- **Save Query Parameter (Adding UTM parameters):** Customize your links with specific UTM parameters for detailed tracking.\n\n## Changelog\n\n- **Version 1.0:** Initial release.\n- **Version 2.1:** Added new features.\n\n## Benefits\n\n- **Easy to use:** AvShort's simple and intuitive interface makes it easy to shorten your URLs.\n- **Powerful features:** AvShort offers a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n- **Reliable:** AvShort is a reliable URL shortening service that you can count on.\n- **Affordable:** AvShort is an affordable URL shortening service that fits your budget.\n\n## Get started with AvShort today!\n\nSign up for a free AvShort account today and start shortening your URLs!",
+				"instructions": "## USE RESTRICTIONS \n##Your permission to use the App is conditioned upon the following Use Restrictions and Conduct Restrictions: You agree that you will not under any circumstances:\n\n###post any information that is abusive, threatening, obscene, defamatory, libelous, or racially, sexually, religiously, or otherwise objectionable and offensive.\n\n###use the service for any unlawful purpose or for the promotion of illegal activities.\n\n###attempt to, or harass, abuse or harm another person or group.\n\n###use another user’s account without permission.\n\n###provide false or inaccurate information when registering an account.\n\n###interfere or attempt to interfere with the proper functioning of the Service.\n\n###make any automated use of the system, or take any action that we deem to impose or to potentially impose an unreasonable or disproportionately large load on our servers or network infrastructure.\n\n###bypass any robot exclusion headers or other measures we take to restrict access to the Service or use any software, technology, or device to scrape, spider, or crawl the Service or harvest or manipulate data.\n\n###publish or link to malicious content intended to damage or disrupt another user’s browser or computer.",
+				"alias": "avshort",
+				"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"icon": "https://images.cloudflareapps.com/TpMhrqWd9jTT/dW5kZWZpbmVk",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cBf5-05ZfzuX/dW5kZWZpbmVk",
+					"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk",
+					"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk"
+				],
+				"tileImage": "https://images.cloudflareapps.com/R1VLI9RqimL7/dW5kZWZpbmVk",
+				"featuredAppImage": "https://images.cloudflareapps.com/wJQasHDCTgd_/dW5kZWZpbmVk",
+				"author": "AvShort",
+				"tagline": "",
+				"website": "https://avshor.webghost.bid",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://avshort.webghost.bid/Terms-of-Service.html",
+				"privacyPolicyURL": "https://avshort.webghost.bid/Privacy-Policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "avshort@webghost.bid",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CPmp9wtK5oP1"
+				},
+				"created": "2021-02-08T13:35:38.660664Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"requestedAt": "2023-11-15T19:29:42.827108865Z",
+				"canceledAt": null,
+				"reviewedByUserId": "a8bd86639dacd49d059c402244fa6062",
+				"reviewedAt": "2023-11-27T22:35:57.40919919Z"
+			}
+		}
+	]
+}
