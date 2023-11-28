@@ -1191,10 +1191,161 @@
 				},
 				"created": "2021-02-08T13:35:38.660664Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "canceled",
 			"moderationMetadata": {
 				"requestedByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
 				"requestedAt": "2023-11-28T22:16:23.282550424Z",
+				"canceledByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"canceledAt": "2023-11-28T22:24:42.419486338Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.1.5",
+			"appId": "IYeY8-u-QL26",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"uZykp5UKmcGq"
+							],
+							"title": "AvShort Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api-hook.avshort.com/webhooks/cloudflare/v1",
+						"events": [
+							"oauth-login",
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api-hook.avshort.com/webhooks/cloudflare/v1/provision",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api-hook.avshort.com/webhooks/cloudflare/v1/post-install",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api-hook.avshort.com/webhooks/cloudflare/v1/d-post-install",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with AvShort."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "# Release Notes\n\n## Version 2.1\n\n### We Had Been add New Features\n\n### Service Changes:\n- Improved overall performance and reliability.\n\n- **Authorization Enhancement:** In response to unauthorized use detection, certain options have been suspended to ensure the integrity and security of the service.\n\n### Bug Fixes:\n- Addressed security vulnerabilities related to unauthorized access.\n\n### Deprecated:\n- Certain options have been deprecated, pending a comprehensive security review.\n\nWe appreciate your understanding and cooperation as we prioritize the security and reliability of AvShort. Please update to Version 2.1 for the latest improvements and security enhancements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/RExkSp7padOg",
+			"metadata": {
+				"code": {
+					"sourceTag": "RExkSp7padOg",
+					"uploadedOn": "2023-11-28T22:24:40.429600019Z"
+				}
+			},
+			"created": "2023-11-28T22:24:39.617503Z",
+			"proposedApp": {
+				"id": "IYeY8-u-QL26",
+				"title": "AvShort",
+				"shortDescription": "Shorten your URLs and make them more manageable",
+				"longDescription": "# AvShort: A Cutting-Edge URL Shortening Service\n\nAvShort is a cutting-edge URL shortening service designed to make your links more manageable. With AvShort, you can shorten long URLs into shorter, more manageable links that are easy to share. AvShort also provides a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n\n## Features\n\n- Shorten long URLs into shorter, more manageable links.\n- Share your shortened links on social media, email, and other channels.\n- Track your link clicks and see where your traffic is coming from.\n- Customize your shortened links with your own branding.\n- **Database Integration:** Utilize a robust database system to enhance link management and retrieval.\n- **URL Extraction from API or Web Pages:** Effortlessly extract URLs from APIs or web pages to streamline link creation.\n- **Cache Mechanism:** Optimize link retrieval speed with a smart caching system.\n- **Save Query Parameter (Adding UTM parameters):** Customize your links with specific UTM parameters for detailed tracking.\n\n## Changelog\n\n- **Version 1.0:** Initial release.\n- **Version 2.1:** Added new features.\n\n## Benefits\n\n- **Easy to use:** AvShort's simple and intuitive interface makes it easy to shorten your URLs.\n- **Powerful features:** AvShort offers a number of features that make it the perfect URL shortening service for businesses and individuals alike.\n- **Reliable:** AvShort is a reliable URL shortening service that you can count on.\n- **Affordable:** AvShort is an affordable URL shortening service that fits your budget.\n\n## Get started with AvShort today!\n\nSign up for a free AvShort account today and start shortening your URLs!",
+				"instructions": "## By using this application, you agree to the Privacy Policy, Terms of Use, and Restrictions.",
+				"alias": "avshort",
+				"orgId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"icon": "https://images.cloudflareapps.com/TpMhrqWd9jTT/dW5kZWZpbmVk",
+				"screenshots": [
+					"https://images.cloudflareapps.com/cBf5-05ZfzuX/dW5kZWZpbmVk",
+					"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk",
+					"https://images.cloudflareapps.com/SSCiRqyOd0vr/dW5kZWZpbmVk"
+				],
+				"tileImage": "https://images.cloudflareapps.com/R1VLI9RqimL7/dW5kZWZpbmVk",
+				"featuredAppImage": "https://images.cloudflareapps.com/wJQasHDCTgd_/dW5kZWZpbmVk",
+				"author": "AvShort",
+				"tagline": "",
+				"website": "https://avshort.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://avshort.com/terms-of-service.html",
+				"privacyPolicyURL": "https://avshort.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@avshort.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CPmp9wtK5oP1"
+				},
+				"created": "2021-02-08T13:35:38.660664Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "edc223d6a62a72777c2e397fb7c54bb3",
+				"requestedAt": "2023-11-28T22:24:42.429207336Z",
 				"canceledAt": null,
 				"reviewedAt": null
 			}
