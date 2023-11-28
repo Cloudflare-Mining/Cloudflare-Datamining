@@ -253,6 +253,13 @@
 	"dns-tab-sections": {
 		"enabled": true
 	},
+	"domain-connect-legacy-flow": {
+		"enabled": false,
+		"branches": [
+			"wordpress_google_teststring",
+			"other"
+		]
+	},
 	"domain-connect-sig-and-key-fix": {
 		"enabled": true
 	},
