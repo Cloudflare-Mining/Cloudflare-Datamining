@@ -1,7 +1,7 @@
 <div class="mb2 gray5">11 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Email-Routing.png" class="kg-image" alt="Email Routing subdomain support, new APIs and security protocols" loading="lazy" width="1600" height="900"></figure>
-	<p>It's been two years since we announced Email Routing, our solution to create custom email addresses for your domains and route incoming emails to your preferred mailbox. Since then, the team has worked hard to evolve the product and add more powerful features to meet our users' expectations. Examples include <a href="https://blog.cloudflare.com/announcing-route-to-workers">Route to Workers</a>, which allows you to <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank">process your Emails programmatically</a> using Workers scripts, <a href="https://blog.cloudflare.com/email-routing-leaves-beta">Public APIs</a>, Audit Logs, or <a href="https://blog.cloudflare.com/dmarc-management">DMARC Management</a>.</p>
+	<p>It's been two years since we announced Email Routing, our solution to create custom email addresses for your domains and route incoming emails to your preferred mailbox. Since then, the team has worked hard to evolve the product and add more powerful features to meet our users' expectations. Examples include <a href="https://blog.cloudflare.com/announcing-route-to-workers">Route to Workers</a>, which allows you to <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank">process your Emails programmatically</a> using Workers scripts, <a href="https://blog.cloudflare.com/email-routing-leaves-beta">Public APIs</a>, Audit Logs, or <a href="https://blog.cloudflare.com/dmarc-management">DMARC Management</a>. </p>
 	<p>We also made significant progress in supporting more email security extensions and protocols, protecting our customers from unwanted traffic, and keeping our IP space reputation for email egress impeccable to maximize our deliverability rates to whatever inbox upstream provider you chose.</p>
 	<p>Since <a href="https://blog.cloudflare.com/email-routing-leaves-beta">leaving beta</a>, Email Routing has grown into one of our most popular products; it’s used by more than one million different customer zones globally, and we forward around 20 million messages daily to every major email platform out there. Our product is mature, robust enough for general usage, and suitable for any production environment. And it keeps evolving: today, we announce three new features that will help make Email Routing more secure, flexible, and powerful than ever.</p>
 	<h2 id="new-security-protocols">New security protocols</h2>
@@ -117,7 +117,33 @@ export default {
 
 </code></pre>
 	<p>As of today, you can now truly reply to incoming emails with another new message and implement smart auto-responders programmatically, adding any content and context in the main body of the message. Think of a customer support email automatically generating a ticket and returning the link to the sender, an out-of-office reply with instructions when you're on vacation, or a detailed explanation of why you rejected an email. Here’s a code example:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-26-at-12.05.33.png" class="kg-image" alt="" loading="lazy" width="1198" height="1122"></figure>
+	<pre><code class="language-javascript">import { EmailMessage } from "cloudflare:email";
+import { createMimeMessage } from "mimetext";
+
+export default {
+  async email(message, env, ctx) {
+
+    const ticket = createTicket(message);
+
+    const msg = createMimeMessage();
+    msg.setHeader("In-Reply-To", message.headers.get("Message-ID"));
+    msg.setSender({ name: "Thank you for you contact", addr: "joe@example.com" });
+    msg.setRecipient("mary@domain.example");
+    msg.setSubject("An email generated in a worker");
+    msg.addMessage({
+      contentType: 'text/plain',
+      data: `We got your message, your ticket number is ${ ticket }`
+    });
+
+    const replyMessage = new EmailMessage(
+      "joe@example.com",
+      message.from,
+      msg.asRaw()
+    );
+
+    await message.reply(replyMessage);
+  }
+}</code></pre>
 	<p>To mitigate security risks and abuse, replying to incoming emails has a few requirements:</p>
 	<ul>
 		<li>The incoming email has to have valid DMARC.</li>
