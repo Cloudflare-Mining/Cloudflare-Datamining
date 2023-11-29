@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "efawcett/revert-WP-650",
+					branch: "sui/BILL-20700",
 					isReleaseCandidate: "true",
-					commit: "024dc7ee1a3660f2077338dca35fc6ff4e952e87",
+					commit: "f8e4902cbca46d9a754580a4361257161b2f5623",
 					env: "production",
-					builtAt: 1701291197591,
-					dashVersion: "33a506ab4e8203d0afe9b83d4565a542452b9de7",
+					builtAt: 1701294195920,
+					dashVersion: "dcc21242a2bac24ab658d417eea33fc1e6703b19",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
