@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "nduarte/AI-375_master",
+					branch: "nduarte/AI-354_hotfix",
 					isReleaseCandidate: "true",
-					commit: "e403bb8a334cab26331719512159fbde3cb30b4a",
+					commit: "9adedb3c7956f65dc8bb45c17ce4b12837317274",
 					env: "production",
-					builtAt: 1700825564242,
-					dashVersion: "d71dd0ab1f58dd62de3db8727530b2c14a71818a",
+					builtAt: 1701120228642,
+					dashVersion: "0e19c43bcbe1624e3cee5bd72b55109fc960321d",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",

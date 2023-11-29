@@ -55,6 +55,10 @@
 		vector_embedding_app: {
 			title: "Vector Embedding App",
 			description: "Convert text into mathematical vectors so that you can perform text analysis and transformations."
+		},
+		text_to_image: {
+			title: "Text to Image",
+			description: "Generate image based on text prompt."
 		}
 	},
 	terms: "Terms",
