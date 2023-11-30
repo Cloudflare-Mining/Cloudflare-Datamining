@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "ben/LOUI-5052-bots-feedback-loop",
+					branch: "cwei/SCTR-633",
 					isReleaseCandidate: "true",
-					commit: "d18aa24afa7a081468fc78deb3f7101ef8743ffc",
+					commit: "923c6503c4eacb7c43151c813f53c03eefa6002a",
 					env: "production",
-					builtAt: 1701357207498,
-					dashVersion: "deada53e774fd73fb37b8c4b016e3a878a07118a",
+					builtAt: 1701360942626,
+					dashVersion: "a92fca00dcf95ada6a33336be50b06f0924b38b8",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
