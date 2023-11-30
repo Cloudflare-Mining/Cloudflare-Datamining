@@ -854,6 +854,11 @@
 																				},
 																				"type": "object"
 																			},
+																			"default_relay_state": {
+																				"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																				"example": "https://example.com",
+																				"type": "string"
+																			},
 																			"idp_entity_id": {
 																				"description": "The unique identifier for your SaaS application.",
 																				"example": "https://example.cloudflareaccess.com",
@@ -2297,6 +2302,11 @@
 																							}
 																						},
 																						"type": "object"
+																					},
+																					"default_relay_state": {
+																						"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																						"example": "https://example.com",
+																						"type": "string"
 																					},
 																					"idp_entity_id": {
 																						"description": "The unique identifier for your SaaS application.",
@@ -3839,6 +3849,11 @@
 																			},
 																			"type": "object"
 																		},
+																		"default_relay_state": {
+																			"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																			"example": "https://example.com",
+																			"type": "string"
+																		},
 																		"idp_entity_id": {
 																			"description": "The unique identifier for your SaaS application.",
 																			"example": "https://example.cloudflareaccess.com",
@@ -5259,6 +5274,11 @@
 																						}
 																					},
 																					"type": "object"
+																				},
+																				"default_relay_state": {
+																					"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																					"example": "https://example.com",
+																					"type": "string"
 																				},
 																				"idp_entity_id": {
 																					"description": "The unique identifier for your SaaS application.",
@@ -7246,6 +7266,11 @@
 														},
 														"type": "object"
 													},
+													"default_relay_state": {
+														"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+														"example": "https://example.com",
+														"type": "string"
+													},
 													"idp_entity_id": {
 														"description": "The unique identifier for your SaaS application.",
 														"example": "https://example.cloudflareaccess.com",
@@ -8664,6 +8689,11 @@
 																					},
 																					"type": "object"
 																				},
+																				"default_relay_state": {
+																					"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																					"example": "https://example.com",
+																					"type": "string"
+																				},
 																				"idp_entity_id": {
 																					"description": "The unique identifier for your SaaS application.",
 																					"example": "https://example.cloudflareaccess.com",
@@ -9979,6 +10009,11 @@
 																				}
 																			},
 																			"type": "object"
+																		},
+																		"default_relay_state": {
+																			"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																			"example": "https://example.com",
+																			"type": "string"
 																		},
 																		"idp_entity_id": {
 																			"description": "The unique identifier for your SaaS application.",
@@ -11402,6 +11437,11 @@
 																								}
 																							},
 																							"type": "object"
+																						},
+																						"default_relay_state": {
+																							"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																							"example": "https://example.com",
+																							"type": "string"
 																						},
 																						"idp_entity_id": {
 																							"description": "The unique identifier for your SaaS application.",
@@ -13103,6 +13143,11 @@
 														},
 														"type": "object"
 													},
+													"default_relay_state": {
+														"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+														"example": "https://example.com",
+														"type": "string"
+													},
 													"idp_entity_id": {
 														"description": "The unique identifier for your SaaS application.",
 														"example": "https://example.cloudflareaccess.com",
@@ -14521,6 +14566,11 @@
 																					},
 																					"type": "object"
 																				},
+																				"default_relay_state": {
+																					"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																					"example": "https://example.com",
+																					"type": "string"
+																				},
 																				"idp_entity_id": {
 																					"description": "The unique identifier for your SaaS application.",
 																					"example": "https://example.cloudflareaccess.com",
@@ -15836,6 +15886,11 @@
 																				}
 																			},
 																			"type": "object"
+																		},
+																		"default_relay_state": {
+																			"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																			"example": "https://example.com",
+																			"type": "string"
 																		},
 																		"idp_entity_id": {
 																			"description": "The unique identifier for your SaaS application.",
@@ -17259,6 +17314,11 @@
 																								}
 																							},
 																							"type": "object"
+																						},
+																						"default_relay_state": {
+																							"description": "The URL that the user will be redirected to after a successful login for IDP initiated logins.",
+																							"example": "https://example.com",
+																							"type": "string"
 																						},
 																						"idp_entity_id": {
 																							"description": "The unique identifier for your SaaS application.",
