@@ -1937,6 +1937,39 @@
 		"requests": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
+	"AccountHyperdriveQueriesAdaptiveGroups": {
+		"__description": "Beta. Hyperdrive query events with adaptive sampling.",
+		"avg": "The average value for a metric per dimension",
+		"count": "Total number of Hyperdrive queries",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountHyperdriveQueriesAdaptiveGroupsAvg": {
+		"__description": "",
+		"queryBytes": "Average size (in bytes) of queries handled by Hyperdrive",
+		"resultBytes": "Average size (in bytes) of query results served by Hyperdrive",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountHyperdriveQueriesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "The cache status of the Hyperdrive query events",
+		"configId": "The ID of the Hyperdrive Config",
+		"date": "Hyperdrive query event timestamp, truncated to start of a day",
+		"datetime": "Hyperdrive query event timestamp",
+		"datetimeHour": "Hyperdrive query event timestamp, truncated to start of hour",
+		"datetimeMinute": "Hyperdrive query event timestamp, truncated to start of minute"
+	},
+	"AccountHyperdriveQueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountHyperdriveQueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountHyperdriveQueriesAdaptiveGroupsSum": {
+		"__description": "",
+		"queryBytes": "Total size (in bytes) of queries handled by Hyperdrive",
+		"resultBytes": "Total size (in bytes) of query results served by Hyperdrive"
+	},
 	"AccountImagesRequestsAdaptiveGroups": {
 		"__description": "A high-level summary of Cloudflare Images served to end users.",
 		"avg": "The average value for a metric per dimension",
@@ -3113,6 +3146,7 @@
 		"httpRequestsAdaptive": "",
 		"httpRequestsAdaptiveGroups": "",
 		"httpRequestsOverviewAdaptiveGroups": "",
+		"hyperdriveQueriesAdaptiveGroups": "",
 		"imagesRequestsAdaptiveGroups": "",
 		"imagesUniqueTransformations": "",
 		"logpushHealthAdaptiveGroups": "",
@@ -5633,6 +5667,7 @@
 		"httpRequestsAdaptive": "Raw HTTP requests with adaptive sampling",
 		"httpRequestsAdaptiveGroups": "Aggregated HTTP requests data with adaptive sampling",
 		"httpRequestsOverviewAdaptiveGroups": "A high-level summary of HTTP requests made by end users.",
+		"hyperdriveQueriesAdaptiveGroups": "Beta. Hyperdrive query events with adaptive sampling.",
 		"imagesRequestsAdaptiveGroups": "A high-level summary of Cloudflare Images served to end users.",
 		"imagesUniqueTransformations": "Image unique transfromations per day",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
