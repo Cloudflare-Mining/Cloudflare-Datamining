@@ -62,15 +62,7 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": {
-					"contentTypeId": "psaBanner",
-					"contentfulId": "1WehPjtYoEhJe1dD6feffD",
-					"text": "Join us at AWS re:Invent 2023",
-					"learnMoreText": "Learn more",
-					"learnMoreUrl": "https://www.cloudflare.com/aws-reinvent-2023/",
-					"backgroundColor": "blue0",
-					"hideCloseButton": null
-				},
+				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -572,39 +564,6 @@
 										"contentfulAsset": {
 											"file": {
 												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/472Uj25x4L3jM0WkIfqRSz/c04869f0bd2680b2372d9e034e74f35f/Insights-from-new-Forrester-2_100x165.png"
-											},
-											"description": ""
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									}
-								},
-								{
-									"contentTypeId": "elementResourceCard",
-									"contentfulId": "4dHjd3qHIC9F2L2gQrSN2F",
-									"heading": "Event",
-									"description": "Join Cloudflare at AWS re:Invent 2023 at booth 794",
-									"category": "None",
-									"link": {
-										"contentTypeId": "elementLink",
-										"contentfulId": "7exENLHi56Y42AKBusPoOX",
-										"elementName": "AWS Reinvent",
-										"standardText": "Learn More",
-										"text": null,
-										"url": "https://www.cloudflare.com/aws-reinvent-2023/",
-										"elementModal": null,
-										"openInNewTab": false,
-										"locale": "en-US"
-									},
-									"image": {
-										"id": "ab10c259-5e81-57d1-87ef-0a78c447f932",
-										"altText": "The future of software development is AI ",
-										"title": "The future of software development is AI ",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2P47P7LijLrrQ1QtiJwla3/97455aaf6b6263e736b979c1735ee904/The_future_of_software_development_is_AI.png"
 											},
 											"description": ""
 										},
@@ -4587,31 +4546,6 @@
 						},
 						{
 							"contentTypeId": "navNavigationItem",
-							"contentfulId": "4ufLTiLADHvy4VxUAB0IqW",
-							"locale": "en-US",
-							"name": "Utility Nav - Sign Up",
-							"description": null,
-							"navIcon": null,
-							"contentfulButton": null,
-							"showIconOnly": false,
-							"hideOnChinaSite": false,
-							"navigationItems": [],
-							"mainLink": {
-								"contentTypeId": "elementNavLink",
-								"contentfulId": "1jJPW8bmohP1eXvIWgSHBC",
-								"locale": "en-US",
-								"title": "Sign Up",
-								"description": null,
-								"url": "https://dash.cloudflare.com/sign-up",
-								"badges": null,
-								"specialLinkType": null,
-								"openInNewWindow": false,
-								"isExternalUrl": null
-							},
-							"navigationLinks": []
-						},
-						{
-							"contentTypeId": "navNavigationItem",
 							"contentfulId": "5RVyDopQTJRcit7qLKguL6",
 							"locale": "en-US",
 							"name": "Log in",
@@ -5131,7 +5065,7 @@
 				"zh-Hans-CN",
 				"pl-PL"
 			],
-			"hasPsaBanner": true,
+			"hasPsaBanner": false,
 			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
