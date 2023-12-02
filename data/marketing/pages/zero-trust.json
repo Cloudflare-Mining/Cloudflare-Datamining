@@ -57,15 +57,7 @@
 					"linkUrl": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/",
 					"desktopText": "What is Zero Trust security and what does it do for organizations? Read more in our Learning Center."
 				},
-				"psaBanner": {
-					"contentTypeId": "psaBanner",
-					"contentfulId": "7lA0x0nUBV8SBw5AVwy4tm",
-					"text": "Cloudflare cites continued disruptive momentum in the SSE market via analyst recognition. ",
-					"learnMoreText": "Read the report",
-					"learnMoreUrl": "https://www.cloudflare.com/lp/forrester-wave-zero-trust-platforms-2023/",
-					"backgroundColor": "blue0",
-					"hideCloseButton": null
-				},
+				"psaBanner": null,
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
 					"contentfulId": "1x9L7UUrSDQWzsi0wF27RK",
@@ -355,30 +347,6 @@
 												"isExternalUrl": null
 											}
 										],
-										"navIcon": null,
-										"showIconOnly": false,
-										"hideOnChinaSite": false,
-										"navigationItems": []
-									},
-									{
-										"contentTypeId": "navNavigationItem",
-										"contentfulId": "1XZTYaqYosPnufFMwXzkO4",
-										"locale": "en-US",
-										"name": "Need help choosing?",
-										"description": null,
-										"mainLink": {
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "30UfAJTObpHoS5QyhV7uaE",
-											"locale": "en-US",
-											"title": "Need help choosing?",
-											"description": null,
-											"url": "https://www.cloudflare.com/about-your-website/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										},
-										"navigationLinks": [],
 										"navIcon": null,
 										"showIconOnly": false,
 										"hideOnChinaSite": false,
@@ -2705,12 +2673,6 @@
 										"url": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/"
 									},
 									{
-										"contentfulId": "6i8WRohX9yfvKsiERYenxg",
-										"linkText": "Forrester Wave™ for Zero Trust Platforms, Q3 2023",
-										"page": null,
-										"url": "https://www.cloudflare.com/lp/forrester-wave-zero-trust-platforms-2023/"
-									},
-									{
 										"contentfulId": "1gJYOT56w0z5OZeb1VfYmG",
 										"linkText": "Forrester Wave™ for Enterprise Email Security, Q2 2023",
 										"page": null,
@@ -2885,33 +2847,6 @@
 												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5XA6P5ZUYwcjq9LZGBbAcj/1517e2b34ef3bf213fca28586ae33170/ease-of-use-toggle.svg"
 											},
 											"description": "checkbox - orange"
-										},
-										"iconAssetFile": null,
-										"imageOverlaySuperheader": null,
-										"imageOverlayText": null,
-										"imageAssetFile": null,
-										"streamId": null,
-										"streamThumbnail": null,
-										"streamThumbnailAssetFile": null
-									},
-									{
-										"contentTypeId": "feature",
-										"contentfulId": "1Ic0tKXwA2Ijzx93NR4a2y",
-										"title": "Trusted, secure connectivity",
-										"makeTitleLink": false,
-										"titleUrl": null,
-										"titleSize": "small",
-										"description": "Ensure reliable and scalable network connectivity with consistent protection from any location. Deliver Zero Trust for your business using the same Cloudflare proxies that route ~20% of all websites.",
-										"learnMoreUrl": null,
-										"learnMoreText": null,
-										"displayBorder": false,
-										"openLinkInNewTab": null,
-										"removeCardBorder": false,
-										"icon": {
-											"file": {
-												"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1Tz4MFKkKlNBzAkA1z0Tdc/6c55e9705ce3bf24d4516761c3139fb4/network-scale__2_.svg"
-											},
-											"description": "Icon of connected points"
 										},
 										"iconAssetFile": null,
 										"imageOverlaySuperheader": null,
@@ -3339,257 +3274,6 @@
 										"sectionPadding": "tile--no-top-padding",
 										"columnLayout": "One Third & Two Thirds",
 										"columns": [
-											{
-												"contentTypeId": "elementRichText",
-												"contentfulId": "3deOZ8afeBHpxj2Pd19ILM",
-												"title": null,
-												"column": {
-													"nodeType": "document",
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Cloudflare Zero Trust services for unified SSE",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "unordered-list",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Adaptive access:",
-																					"marks": [
-																						{
-																							"type": "bold"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Continuously verify risk context like identity and device posture and automatically adapt policy decisions.",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Threat intelligence:",
-																					"marks": [
-																						{
-																							"type": "bold"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Mitigate risk from known and unknown threats via broad, AI/ML-powered threat intelligence.",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Visibility:",
-																					"marks": [
-																						{
-																							"type": "bold"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Log all interactions, detect sensitive data, track security compliance, and get granular insights into end user experiences.",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Composability:",
-																					"marks": [
-																						{
-																							"type": "bold"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Easily expand your deployment with our flexible architecture using in-line security services and single-pass inspection.",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											},
 											{
 												"contentTypeId": "elementRichText",
 												"contentfulId": "7frZmniZGX53Jxjxptr9J0",
@@ -5067,7 +4751,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": true,
+			"hasPsaBanner": false,
 			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
