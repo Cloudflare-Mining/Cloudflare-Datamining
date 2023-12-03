@@ -39,15 +39,15 @@
 						},
 						{
 							"contentTypeId": "learningCenterArticleLink",
-							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
-							"displayText": "Large language models (LLMs)",
-							"url": "/learning/ai/what-is-large-language-model/"
+							"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+							"displayText": "What is machine learning?",
+							"url": "/learning/ai/what-is-machine-learning/"
 						},
 						{
 							"contentTypeId": "learningCenterArticleLink",
-							"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
-							"displayText": "What are embeddings?",
-							"url": "/learning/ai/what-are-embeddings/"
+							"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
+							"displayText": "Large language models (LLMs)",
+							"url": "/learning/ai/what-is-large-language-model/"
 						},
 						{
 							"contentTypeId": "learningCenterArticleLink",
@@ -69,9 +69,21 @@
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5TheR9rp9ZfJIyLeCo93oq",
+									"displayText": "Big data",
+									"url": "/learning/ai/big-data/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "2MQDOpshVTC5lqGfPJckFU",
 									"displayText": "ChatGPT plugins",
 									"url": "/learning/ai/chatgpt-plugins/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
+									"displayText": "What are embeddings?",
+									"url": "/learning/ai/what-are-embeddings/"
 								}
 							]
 						}
@@ -105,6 +117,12 @@
 						"links": [
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3KWX7josW5KFyGkx9WGxmj",
+								"displayText": "What is machine learning?",
+								"url": "/learning/ai/what-is-machine-learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "7lSEVfyAjPWCZDHNj1v27k",
 								"displayText": "Large language models (LLMs)",
 								"url": "/learning/ai/what-is-large-language-model/"
@@ -123,6 +141,12 @@
 								"contentfulId": "6oEjFOQyE5WSiuDLmNgmOu",
 								"displayText": "What are embeddings?",
 								"url": "/learning/ai/what-are-embeddings/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x6FotqqlG1hJShGntgbVC",
+								"displayText": "What is big data?",
+								"url": "/learning/ai/big-data/"
 							}
 						]
 					},
@@ -325,8 +349,75 @@
 					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
 				},
-				"proactivePopup": null,
-				"sidebarForm": null
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "4g1Pt1sKrA9BOPdZsrimQK",
+					"headerText": "Subscribe to theNET",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "3soF5uZQQ3FUQig9wvpk69",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe (Learning Center version)",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 1500,
+					"ctaButton": null
+				},
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "4ad3l3edBzH8KRefyi225g",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Receive a monthly recap of the most popular Internet insights!",
+					"postSubmissionDescription": "We're looking forward to sharing content with you.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q4'24 WEB - GBL - Learning Center Subscription",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": [],
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
 			}
 		},
 		"pageContext": {
