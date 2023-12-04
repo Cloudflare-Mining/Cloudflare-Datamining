@@ -34,7 +34,7 @@
 		}
 	],
 	"id": 5316364,
-	"updated_at": "2023-11-22T05:16:31-05:00",
+	"updated_at": "2023-12-04T15:33:55-05:00",
 	"requisition_id": null,
 	"title": "Senior Software Engineer - Zero Trust Mobile & Desktop Client",
 	"departments": [
@@ -47,17 +47,23 @@
 	],
 	"offices": [
 		{
-			"id": 48756,
-			"name": "Tokyo, Japan",
-			"location": "Japan, 東京都東京都",
-			"child_ids": [],
-			"parent_id": 74844
-		},
-		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				73335,
+				75596,
+				75884,
+				75885,
+				75886
+			],
 			"parent_id": 48752
 		}
 	]
