@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
-		"latest": "1.8.0",
-		"beta": "0.0.0-8ece962",
+		"latest": "1.8.1",
+		"beta": "0.0.0-8fe72f1",
 		"pre-v1": "0.10.2"
 	},
 	"versions": {
@@ -14804,6 +14804,182 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQDffqpIYcD6IWAyHbgxd77deSZT0+fhU3bTHoFg67tUUAIhAPhSQspVD9Xd4SlyXW0jaSyIY7h6/E6drFSG/kZJvShy"
+					}
+				]
+			}
+		},
+		"1.8.1": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "1.8.1",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2",
+				"zod": "^3.22.4",
+				"zodcli": "^0.0.4",
+				"miniflare": "^3.20231002.1"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.0.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-tHkpmIpp3l5c6eELp8HVip7bqHbl7LwDSnDJTW6r9aRnGsHiLGtzafpxpnjWNDOamXcwJ/xDaJmKZ0jfhf20bg==",
+				"shasum": "f249d66143ea2ebf0a725e3b789034abb1a673f3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-1.8.1.tgz",
+				"fileCount": 28,
+				"unpackedSize": 968133,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCNRPzjdly0lnJCBo0m5aNpohFDYfMjo2LD2qUakI74jAIhAI2zK7Z8jwbo+QvcetbY95GY60d5JRW0f/uqjK7KiETi"
+					}
+				]
+			}
+		},
+		"0.0.0-91acc21": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-91acc21",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2",
+				"zod": "^3.22.4",
+				"zodcli": "^0.0.4",
+				"miniflare": "^3.20231002.1"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.0.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-pIAcYHE5yB1zkzT9NC8Nw2lHL+y1ZCgSEx24Rh8AAE3QhXi4zA2xkjnXFHmqVH7V1Eu5r0jF8GBkLjGR9hBICg==",
+				"shasum": "55300d3137c036701ab76861342f5341a3a5e45b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-91acc21.tgz",
+				"fileCount": 28,
+				"unpackedSize": 968239,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCUawgdhW+t5aUEzv87saDN3gCrrFd6ME+fD/L5ZwSDEQIgdwgLhn3zZAyEgo1YHLbKYd3yd8wu7ZNpJXZ39bOdLj0="
+					}
+				]
+			}
+		},
+		"0.0.0-8fe72f1": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-8fe72f1",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"commander": "^11.1.0",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"miniflare": "^3.20231002.1",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.0.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-+SCUshukC8aWxfddqY/d1LFejw6/5eitv2EzlLFC5u6jwVcFNoLKd8kWv9uE+V+ld4UwKhYfWvCEPYE2n396XQ==",
+				"shasum": "8e9399bab066728f7ad2517f8eb1b3e474edbd39",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-8fe72f1.tgz",
+				"fileCount": 28,
+				"unpackedSize": 926984,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAMwzDuCTC3ADUuQsEz2M7Jk3c6RGhT/apDQEGrRYTf9AiEA6zUFm6Rjs93D1nGKL3HH2J6XQxZn0a3RGFqE/AeyVn0="
 					}
 				]
 			}
