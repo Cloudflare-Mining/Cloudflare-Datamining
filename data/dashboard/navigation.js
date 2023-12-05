@@ -616,10 +616,10 @@ const navigation = {
 		hasPermission: T => {
 			const K = (0, i.nA)(T);
 			if ((0, p.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !K) return !1;
-			const ee = !!((0, D.l8)(T) || (0, i.DQ)(T)),
-				oe = !!(0, i.ZB)(T, "spectrum", "enabled"),
-				F = !!(0, i.Ns)(K);
-			return oe || ee || !F
+			const re = !!((0, D.l8)(T) || (0, i.DQ)(T)),
+				ee = !!(0, i.ZB)(T, "spectrum", "enabled"),
+				G = !!(0, i.Ns)(K);
+			return ee || re || !G
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
