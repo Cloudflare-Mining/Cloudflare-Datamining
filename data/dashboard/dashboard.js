@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "AIG-37",
+					branch: "catia/LOUI-5021-fix-MFW-rules-table-loading",
 					isReleaseCandidate: "true",
-					commit: "5494c53cd2d86fbeb963950f9701022ae5b0f093",
+					commit: "0193617266cda3c5586f92cf37c8f80d513a8ec7",
 					env: "production",
-					builtAt: 1701716743435,
-					dashVersion: "36741e24793f5dfbabfc93fb04c8f2245a0fd4ab",
+					builtAt: 1701768290040,
+					dashVersion: "9c5f7db5e8b39aa774df28e3526f601e7c2b085d",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
