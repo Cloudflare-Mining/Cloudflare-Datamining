@@ -542,6 +542,29 @@
 																	"type": "object"
 																},
 																{
+																	"description": "Matches an email address from a list.",
+																	"properties": {
+																		"email_list": {
+																			"properties": {
+																				"id": {
+																					"description": "The ID of a previously created email list.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"email_list"
+																	],
+																	"title": "Email list",
+																	"type": "object"
+																},
+																{
 																	"description": "Match an entire email domain.",
 																	"properties": {
 																		"email_domain": {
@@ -808,6 +831,142 @@
 																		"saml"
 																	],
 																	"title": "SAML group",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a specific Access Service Token",
+																	"properties": {
+																		"service_token": {
+																			"properties": {
+																				"token_id": {
+																					"description": "The ID of a Service Token.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"token_id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"service_token"
+																	],
+																	"title": "Service Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches any valid Access Service Token",
+																	"properties": {
+																		"any_valid_service_token": {
+																			"description": "An empty object which matches on all service tokens.",
+																			"example": {},
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"any_valid_service_token"
+																	],
+																	"title": "Any Valid Service Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																	"properties": {
+																		"external_evaluation": {
+																			"properties": {
+																				"evaluate_url": {
+																					"description": "The API endpoint containing your business logic.",
+																					"example": "https://eval.example.com",
+																					"type": "string"
+																				},
+																				"keys_url": {
+																					"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																					"example": "https://eval.example.com/keys",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"evaluate_url",
+																				"keys_url"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"external_evaluation"
+																	],
+																	"title": "External Evaluation",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a specific country",
+																	"properties": {
+																		"geo": {
+																			"properties": {
+																				"country_code": {
+																					"description": "The country code that should be matched.",
+																					"example": "US",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"country_code"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"geo"
+																	],
+																	"title": "Country",
+																	"type": "object"
+																},
+																{
+																	"description": "Enforce different MFA options",
+																	"properties": {
+																		"auth_method": {
+																			"properties": {
+																				"auth_method": {
+																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																					"example": "mfa",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"auth_method"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"auth_method"
+																	],
+																	"title": "Authentication method",
+																	"type": "object"
+																},
+																{
+																	"description": "Enforces a device posture rule has run successfully",
+																	"properties": {
+																		"device_posture": {
+																			"properties": {
+																				"integration_uid": {
+																					"description": "The ID of a device posture integration.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"integration_uid"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"device_posture"
+																	],
+																	"title": "Device Posture",
 																	"type": "object"
 																}
 															],
@@ -847,6 +1006,29 @@
 																	"type": "object"
 																},
 																{
+																	"description": "Matches an email address from a list.",
+																	"properties": {
+																		"email_list": {
+																			"properties": {
+																				"id": {
+																					"description": "The ID of a previously created email list.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"email_list"
+																	],
+																	"title": "Email list",
+																	"type": "object"
+																},
+																{
 																	"description": "Match an entire email domain.",
 																	"properties": {
 																		"email_domain": {
@@ -1113,6 +1295,142 @@
 																		"saml"
 																	],
 																	"title": "SAML group",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a specific Access Service Token",
+																	"properties": {
+																		"service_token": {
+																			"properties": {
+																				"token_id": {
+																					"description": "The ID of a Service Token.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"token_id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"service_token"
+																	],
+																	"title": "Service Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches any valid Access Service Token",
+																	"properties": {
+																		"any_valid_service_token": {
+																			"description": "An empty object which matches on all service tokens.",
+																			"example": {},
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"any_valid_service_token"
+																	],
+																	"title": "Any Valid Service Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																	"properties": {
+																		"external_evaluation": {
+																			"properties": {
+																				"evaluate_url": {
+																					"description": "The API endpoint containing your business logic.",
+																					"example": "https://eval.example.com",
+																					"type": "string"
+																				},
+																				"keys_url": {
+																					"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																					"example": "https://eval.example.com/keys",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"evaluate_url",
+																				"keys_url"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"external_evaluation"
+																	],
+																	"title": "External Evaluation",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a specific country",
+																	"properties": {
+																		"geo": {
+																			"properties": {
+																				"country_code": {
+																					"description": "The country code that should be matched.",
+																					"example": "US",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"country_code"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"geo"
+																	],
+																	"title": "Country",
+																	"type": "object"
+																},
+																{
+																	"description": "Enforce different MFA options",
+																	"properties": {
+																		"auth_method": {
+																			"properties": {
+																				"auth_method": {
+																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																					"example": "mfa",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"auth_method"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"auth_method"
+																	],
+																	"title": "Authentication method",
+																	"type": "object"
+																},
+																{
+																	"description": "Enforces a device posture rule has run successfully",
+																	"properties": {
+																		"device_posture": {
+																			"properties": {
+																				"integration_uid": {
+																					"description": "The ID of a device posture integration.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"integration_uid"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"device_posture"
+																	],
+																	"title": "Device Posture",
 																	"type": "object"
 																}
 															],
@@ -1154,6 +1472,29 @@
 																	"type": "object"
 																},
 																{
+																	"description": "Matches an email address from a list.",
+																	"properties": {
+																		"email_list": {
+																			"properties": {
+																				"id": {
+																					"description": "The ID of a previously created email list.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"email_list"
+																	],
+																	"title": "Email list",
+																	"type": "object"
+																},
+																{
 																	"description": "Match an entire email domain.",
 																	"properties": {
 																		"email_domain": {
@@ -1420,6 +1761,142 @@
 																		"saml"
 																	],
 																	"title": "SAML group",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a specific Access Service Token",
+																	"properties": {
+																		"service_token": {
+																			"properties": {
+																				"token_id": {
+																					"description": "The ID of a Service Token.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"token_id"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"service_token"
+																	],
+																	"title": "Service Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches any valid Access Service Token",
+																	"properties": {
+																		"any_valid_service_token": {
+																			"description": "An empty object which matches on all service tokens.",
+																			"example": {},
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"any_valid_service_token"
+																	],
+																	"title": "Any Valid Service Token",
+																	"type": "object"
+																},
+																{
+																	"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																	"properties": {
+																		"external_evaluation": {
+																			"properties": {
+																				"evaluate_url": {
+																					"description": "The API endpoint containing your business logic.",
+																					"example": "https://eval.example.com",
+																					"type": "string"
+																				},
+																				"keys_url": {
+																					"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																					"example": "https://eval.example.com/keys",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"evaluate_url",
+																				"keys_url"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"external_evaluation"
+																	],
+																	"title": "External Evaluation",
+																	"type": "object"
+																},
+																{
+																	"description": "Matches a specific country",
+																	"properties": {
+																		"geo": {
+																			"properties": {
+																				"country_code": {
+																					"description": "The country code that should be matched.",
+																					"example": "US",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"country_code"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"geo"
+																	],
+																	"title": "Country",
+																	"type": "object"
+																},
+																{
+																	"description": "Enforce different MFA options",
+																	"properties": {
+																		"auth_method": {
+																			"properties": {
+																				"auth_method": {
+																					"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																					"example": "mfa",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"auth_method"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"auth_method"
+																	],
+																	"title": "Authentication method",
+																	"type": "object"
+																},
+																{
+																	"description": "Enforces a device posture rule has run successfully",
+																	"properties": {
+																		"device_posture": {
+																			"properties": {
+																				"integration_uid": {
+																					"description": "The ID of a device posture integration.",
+																					"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"integration_uid"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"device_posture"
+																	],
+																	"title": "Device Posture",
 																	"type": "object"
 																}
 															],
@@ -1607,6 +2084,29 @@
 																			"type": "object"
 																		},
 																		{
+																			"description": "Matches an email address from a list.",
+																			"properties": {
+																				"email_list": {
+																					"properties": {
+																						"id": {
+																							"description": "The ID of a previously created email list.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"email_list"
+																			],
+																			"title": "Email list",
+																			"type": "object"
+																		},
+																		{
 																			"description": "Match an entire email domain.",
 																			"properties": {
 																				"email_domain": {
@@ -1873,6 +2373,142 @@
 																				"saml"
 																			],
 																			"title": "SAML group",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches a specific Access Service Token",
+																			"properties": {
+																				"service_token": {
+																					"properties": {
+																						"token_id": {
+																							"description": "The ID of a Service Token.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"token_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"service_token"
+																			],
+																			"title": "Service Token",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches any valid Access Service Token",
+																			"properties": {
+																				"any_valid_service_token": {
+																					"description": "An empty object which matches on all service tokens.",
+																					"example": {},
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"any_valid_service_token"
+																			],
+																			"title": "Any Valid Service Token",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																			"properties": {
+																				"external_evaluation": {
+																					"properties": {
+																						"evaluate_url": {
+																							"description": "The API endpoint containing your business logic.",
+																							"example": "https://eval.example.com",
+																							"type": "string"
+																						},
+																						"keys_url": {
+																							"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																							"example": "https://eval.example.com/keys",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"evaluate_url",
+																						"keys_url"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"external_evaluation"
+																			],
+																			"title": "External Evaluation",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches a specific country",
+																			"properties": {
+																				"geo": {
+																					"properties": {
+																						"country_code": {
+																							"description": "The country code that should be matched.",
+																							"example": "US",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"country_code"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"geo"
+																			],
+																			"title": "Country",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Enforce different MFA options",
+																			"properties": {
+																				"auth_method": {
+																					"properties": {
+																						"auth_method": {
+																							"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																							"example": "mfa",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"auth_method"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"auth_method"
+																			],
+																			"title": "Authentication method",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Enforces a device posture rule has run successfully",
+																			"properties": {
+																				"device_posture": {
+																					"properties": {
+																						"integration_uid": {
+																							"description": "The ID of a device posture integration.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"integration_uid"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"device_posture"
+																			],
+																			"title": "Device Posture",
 																			"type": "object"
 																		}
 																	],
@@ -1912,6 +2548,29 @@
 																			"type": "object"
 																		},
 																		{
+																			"description": "Matches an email address from a list.",
+																			"properties": {
+																				"email_list": {
+																					"properties": {
+																						"id": {
+																							"description": "The ID of a previously created email list.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"email_list"
+																			],
+																			"title": "Email list",
+																			"type": "object"
+																		},
+																		{
 																			"description": "Match an entire email domain.",
 																			"properties": {
 																				"email_domain": {
@@ -2178,6 +2837,142 @@
 																				"saml"
 																			],
 																			"title": "SAML group",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches a specific Access Service Token",
+																			"properties": {
+																				"service_token": {
+																					"properties": {
+																						"token_id": {
+																							"description": "The ID of a Service Token.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"token_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"service_token"
+																			],
+																			"title": "Service Token",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches any valid Access Service Token",
+																			"properties": {
+																				"any_valid_service_token": {
+																					"description": "An empty object which matches on all service tokens.",
+																					"example": {},
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"any_valid_service_token"
+																			],
+																			"title": "Any Valid Service Token",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																			"properties": {
+																				"external_evaluation": {
+																					"properties": {
+																						"evaluate_url": {
+																							"description": "The API endpoint containing your business logic.",
+																							"example": "https://eval.example.com",
+																							"type": "string"
+																						},
+																						"keys_url": {
+																							"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																							"example": "https://eval.example.com/keys",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"evaluate_url",
+																						"keys_url"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"external_evaluation"
+																			],
+																			"title": "External Evaluation",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches a specific country",
+																			"properties": {
+																				"geo": {
+																					"properties": {
+																						"country_code": {
+																							"description": "The country code that should be matched.",
+																							"example": "US",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"country_code"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"geo"
+																			],
+																			"title": "Country",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Enforce different MFA options",
+																			"properties": {
+																				"auth_method": {
+																					"properties": {
+																						"auth_method": {
+																							"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																							"example": "mfa",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"auth_method"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"auth_method"
+																			],
+																			"title": "Authentication method",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Enforces a device posture rule has run successfully",
+																			"properties": {
+																				"device_posture": {
+																					"properties": {
+																						"integration_uid": {
+																							"description": "The ID of a device posture integration.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"integration_uid"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"device_posture"
+																			],
+																			"title": "Device Posture",
 																			"type": "object"
 																		}
 																	],
@@ -2219,6 +3014,29 @@
 																			"type": "object"
 																		},
 																		{
+																			"description": "Matches an email address from a list.",
+																			"properties": {
+																				"email_list": {
+																					"properties": {
+																						"id": {
+																							"description": "The ID of a previously created email list.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"email_list"
+																			],
+																			"title": "Email list",
+																			"type": "object"
+																		},
+																		{
 																			"description": "Match an entire email domain.",
 																			"properties": {
 																				"email_domain": {
@@ -2485,6 +3303,142 @@
 																				"saml"
 																			],
 																			"title": "SAML group",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches a specific Access Service Token",
+																			"properties": {
+																				"service_token": {
+																					"properties": {
+																						"token_id": {
+																							"description": "The ID of a Service Token.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"token_id"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"service_token"
+																			],
+																			"title": "Service Token",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches any valid Access Service Token",
+																			"properties": {
+																				"any_valid_service_token": {
+																					"description": "An empty object which matches on all service tokens.",
+																					"example": {},
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"any_valid_service_token"
+																			],
+																			"title": "Any Valid Service Token",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																			"properties": {
+																				"external_evaluation": {
+																					"properties": {
+																						"evaluate_url": {
+																							"description": "The API endpoint containing your business logic.",
+																							"example": "https://eval.example.com",
+																							"type": "string"
+																						},
+																						"keys_url": {
+																							"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																							"example": "https://eval.example.com/keys",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"evaluate_url",
+																						"keys_url"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"external_evaluation"
+																			],
+																			"title": "External Evaluation",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Matches a specific country",
+																			"properties": {
+																				"geo": {
+																					"properties": {
+																						"country_code": {
+																							"description": "The country code that should be matched.",
+																							"example": "US",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"country_code"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"geo"
+																			],
+																			"title": "Country",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Enforce different MFA options",
+																			"properties": {
+																				"auth_method": {
+																					"properties": {
+																						"auth_method": {
+																							"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																							"example": "mfa",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"auth_method"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"auth_method"
+																			],
+																			"title": "Authentication method",
+																			"type": "object"
+																		},
+																		{
+																			"description": "Enforces a device posture rule has run successfully",
+																			"properties": {
+																				"device_posture": {
+																					"properties": {
+																						"integration_uid": {
+																							"description": "The ID of a device posture integration.",
+																							"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"integration_uid"
+																					],
+																					"type": "object"
+																				}
+																			},
+																			"required": [
+																				"device_posture"
+																			],
+																			"title": "Device Posture",
 																			"type": "object"
 																		}
 																	],
@@ -2773,6 +3727,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -3039,6 +4016,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -3078,6 +4191,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -3344,6 +4480,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -3385,6 +4657,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -3651,6 +4946,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -3815,6 +5246,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -4081,6 +5535,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -4120,6 +5710,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -4386,6 +5999,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -4427,6 +6176,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -4693,6 +6465,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -4866,6 +6774,29 @@
 											"type": "object"
 										},
 										{
+											"description": "Matches an email address from a list.",
+											"properties": {
+												"email_list": {
+													"properties": {
+														"id": {
+															"description": "The ID of a previously created email list.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"email_list"
+											],
+											"title": "Email list",
+											"type": "object"
+										},
+										{
 											"description": "Match an entire email domain.",
 											"properties": {
 												"email_domain": {
@@ -5132,6 +7063,142 @@
 												"saml"
 											],
 											"title": "SAML group",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific Access Service Token",
+											"properties": {
+												"service_token": {
+													"properties": {
+														"token_id": {
+															"description": "The ID of a Service Token.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"token_id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"service_token"
+											],
+											"title": "Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches any valid Access Service Token",
+											"properties": {
+												"any_valid_service_token": {
+													"description": "An empty object which matches on all service tokens.",
+													"example": {},
+													"type": "object"
+												}
+											},
+											"required": [
+												"any_valid_service_token"
+											],
+											"title": "Any Valid Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+											"properties": {
+												"external_evaluation": {
+													"properties": {
+														"evaluate_url": {
+															"description": "The API endpoint containing your business logic.",
+															"example": "https://eval.example.com",
+															"type": "string"
+														},
+														"keys_url": {
+															"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+															"example": "https://eval.example.com/keys",
+															"type": "string"
+														}
+													},
+													"required": [
+														"evaluate_url",
+														"keys_url"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"external_evaluation"
+											],
+											"title": "External Evaluation",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific country",
+											"properties": {
+												"geo": {
+													"properties": {
+														"country_code": {
+															"description": "The country code that should be matched.",
+															"example": "US",
+															"type": "string"
+														}
+													},
+													"required": [
+														"country_code"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"geo"
+											],
+											"title": "Country",
+											"type": "object"
+										},
+										{
+											"description": "Enforce different MFA options",
+											"properties": {
+												"auth_method": {
+													"properties": {
+														"auth_method": {
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"example": "mfa",
+															"type": "string"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"auth_method"
+											],
+											"title": "Authentication method",
+											"type": "object"
+										},
+										{
+											"description": "Enforces a device posture rule has run successfully",
+											"properties": {
+												"device_posture": {
+													"properties": {
+														"integration_uid": {
+															"description": "The ID of a device posture integration.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"integration_uid"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"device_posture"
+											],
+											"title": "Device Posture",
 											"type": "object"
 										}
 									],
@@ -5168,6 +7235,29 @@
 											"type": "object"
 										},
 										{
+											"description": "Matches an email address from a list.",
+											"properties": {
+												"email_list": {
+													"properties": {
+														"id": {
+															"description": "The ID of a previously created email list.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"email_list"
+											],
+											"title": "Email list",
+											"type": "object"
+										},
+										{
 											"description": "Match an entire email domain.",
 											"properties": {
 												"email_domain": {
@@ -5434,6 +7524,142 @@
 												"saml"
 											],
 											"title": "SAML group",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific Access Service Token",
+											"properties": {
+												"service_token": {
+													"properties": {
+														"token_id": {
+															"description": "The ID of a Service Token.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"token_id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"service_token"
+											],
+											"title": "Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches any valid Access Service Token",
+											"properties": {
+												"any_valid_service_token": {
+													"description": "An empty object which matches on all service tokens.",
+													"example": {},
+													"type": "object"
+												}
+											},
+											"required": [
+												"any_valid_service_token"
+											],
+											"title": "Any Valid Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+											"properties": {
+												"external_evaluation": {
+													"properties": {
+														"evaluate_url": {
+															"description": "The API endpoint containing your business logic.",
+															"example": "https://eval.example.com",
+															"type": "string"
+														},
+														"keys_url": {
+															"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+															"example": "https://eval.example.com/keys",
+															"type": "string"
+														}
+													},
+													"required": [
+														"evaluate_url",
+														"keys_url"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"external_evaluation"
+											],
+											"title": "External Evaluation",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific country",
+											"properties": {
+												"geo": {
+													"properties": {
+														"country_code": {
+															"description": "The country code that should be matched.",
+															"example": "US",
+															"type": "string"
+														}
+													},
+													"required": [
+														"country_code"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"geo"
+											],
+											"title": "Country",
+											"type": "object"
+										},
+										{
+											"description": "Enforce different MFA options",
+											"properties": {
+												"auth_method": {
+													"properties": {
+														"auth_method": {
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"example": "mfa",
+															"type": "string"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"auth_method"
+											],
+											"title": "Authentication method",
+											"type": "object"
+										},
+										{
+											"description": "Enforces a device posture rule has run successfully",
+											"properties": {
+												"device_posture": {
+													"properties": {
+														"integration_uid": {
+															"description": "The ID of a device posture integration.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"integration_uid"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"device_posture"
+											],
+											"title": "Device Posture",
 											"type": "object"
 										}
 									],
@@ -5475,6 +7701,29 @@
 											"type": "object"
 										},
 										{
+											"description": "Matches an email address from a list.",
+											"properties": {
+												"email_list": {
+													"properties": {
+														"id": {
+															"description": "The ID of a previously created email list.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"email_list"
+											],
+											"title": "Email list",
+											"type": "object"
+										},
+										{
 											"description": "Match an entire email domain.",
 											"properties": {
 												"email_domain": {
@@ -5741,6 +7990,142 @@
 												"saml"
 											],
 											"title": "SAML group",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific Access Service Token",
+											"properties": {
+												"service_token": {
+													"properties": {
+														"token_id": {
+															"description": "The ID of a Service Token.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"token_id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"service_token"
+											],
+											"title": "Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches any valid Access Service Token",
+											"properties": {
+												"any_valid_service_token": {
+													"description": "An empty object which matches on all service tokens.",
+													"example": {},
+													"type": "object"
+												}
+											},
+											"required": [
+												"any_valid_service_token"
+											],
+											"title": "Any Valid Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+											"properties": {
+												"external_evaluation": {
+													"properties": {
+														"evaluate_url": {
+															"description": "The API endpoint containing your business logic.",
+															"example": "https://eval.example.com",
+															"type": "string"
+														},
+														"keys_url": {
+															"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+															"example": "https://eval.example.com/keys",
+															"type": "string"
+														}
+													},
+													"required": [
+														"evaluate_url",
+														"keys_url"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"external_evaluation"
+											],
+											"title": "External Evaluation",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific country",
+											"properties": {
+												"geo": {
+													"properties": {
+														"country_code": {
+															"description": "The country code that should be matched.",
+															"example": "US",
+															"type": "string"
+														}
+													},
+													"required": [
+														"country_code"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"geo"
+											],
+											"title": "Country",
+											"type": "object"
+										},
+										{
+											"description": "Enforce different MFA options",
+											"properties": {
+												"auth_method": {
+													"properties": {
+														"auth_method": {
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"example": "mfa",
+															"type": "string"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"auth_method"
+											],
+											"title": "Authentication method",
+											"type": "object"
+										},
+										{
+											"description": "Enforces a device posture rule has run successfully",
+											"properties": {
+												"device_posture": {
+													"properties": {
+														"integration_uid": {
+															"description": "The ID of a device posture integration.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"integration_uid"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"device_posture"
+											],
+											"title": "Device Posture",
 											"type": "object"
 										}
 									],
@@ -5897,6 +8282,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -6163,6 +8571,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -6202,6 +8746,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -6468,6 +9035,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -6509,6 +9212,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -6775,6 +9501,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -6939,6 +9801,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -7205,6 +10090,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -7244,6 +10265,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -7510,6 +10554,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -7551,6 +10731,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -7817,6 +11020,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -7998,6 +11337,29 @@
 											"type": "object"
 										},
 										{
+											"description": "Matches an email address from a list.",
+											"properties": {
+												"email_list": {
+													"properties": {
+														"id": {
+															"description": "The ID of a previously created email list.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"email_list"
+											],
+											"title": "Email list",
+											"type": "object"
+										},
+										{
 											"description": "Match an entire email domain.",
 											"properties": {
 												"email_domain": {
@@ -8264,6 +11626,142 @@
 												"saml"
 											],
 											"title": "SAML group",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific Access Service Token",
+											"properties": {
+												"service_token": {
+													"properties": {
+														"token_id": {
+															"description": "The ID of a Service Token.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"token_id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"service_token"
+											],
+											"title": "Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches any valid Access Service Token",
+											"properties": {
+												"any_valid_service_token": {
+													"description": "An empty object which matches on all service tokens.",
+													"example": {},
+													"type": "object"
+												}
+											},
+											"required": [
+												"any_valid_service_token"
+											],
+											"title": "Any Valid Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+											"properties": {
+												"external_evaluation": {
+													"properties": {
+														"evaluate_url": {
+															"description": "The API endpoint containing your business logic.",
+															"example": "https://eval.example.com",
+															"type": "string"
+														},
+														"keys_url": {
+															"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+															"example": "https://eval.example.com/keys",
+															"type": "string"
+														}
+													},
+													"required": [
+														"evaluate_url",
+														"keys_url"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"external_evaluation"
+											],
+											"title": "External Evaluation",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific country",
+											"properties": {
+												"geo": {
+													"properties": {
+														"country_code": {
+															"description": "The country code that should be matched.",
+															"example": "US",
+															"type": "string"
+														}
+													},
+													"required": [
+														"country_code"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"geo"
+											],
+											"title": "Country",
+											"type": "object"
+										},
+										{
+											"description": "Enforce different MFA options",
+											"properties": {
+												"auth_method": {
+													"properties": {
+														"auth_method": {
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"example": "mfa",
+															"type": "string"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"auth_method"
+											],
+											"title": "Authentication method",
+											"type": "object"
+										},
+										{
+											"description": "Enforces a device posture rule has run successfully",
+											"properties": {
+												"device_posture": {
+													"properties": {
+														"integration_uid": {
+															"description": "The ID of a device posture integration.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"integration_uid"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"device_posture"
+											],
+											"title": "Device Posture",
 											"type": "object"
 										}
 									],
@@ -8300,6 +11798,29 @@
 											"type": "object"
 										},
 										{
+											"description": "Matches an email address from a list.",
+											"properties": {
+												"email_list": {
+													"properties": {
+														"id": {
+															"description": "The ID of a previously created email list.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"email_list"
+											],
+											"title": "Email list",
+											"type": "object"
+										},
+										{
 											"description": "Match an entire email domain.",
 											"properties": {
 												"email_domain": {
@@ -8566,6 +12087,142 @@
 												"saml"
 											],
 											"title": "SAML group",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific Access Service Token",
+											"properties": {
+												"service_token": {
+													"properties": {
+														"token_id": {
+															"description": "The ID of a Service Token.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"token_id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"service_token"
+											],
+											"title": "Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches any valid Access Service Token",
+											"properties": {
+												"any_valid_service_token": {
+													"description": "An empty object which matches on all service tokens.",
+													"example": {},
+													"type": "object"
+												}
+											},
+											"required": [
+												"any_valid_service_token"
+											],
+											"title": "Any Valid Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+											"properties": {
+												"external_evaluation": {
+													"properties": {
+														"evaluate_url": {
+															"description": "The API endpoint containing your business logic.",
+															"example": "https://eval.example.com",
+															"type": "string"
+														},
+														"keys_url": {
+															"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+															"example": "https://eval.example.com/keys",
+															"type": "string"
+														}
+													},
+													"required": [
+														"evaluate_url",
+														"keys_url"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"external_evaluation"
+											],
+											"title": "External Evaluation",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific country",
+											"properties": {
+												"geo": {
+													"properties": {
+														"country_code": {
+															"description": "The country code that should be matched.",
+															"example": "US",
+															"type": "string"
+														}
+													},
+													"required": [
+														"country_code"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"geo"
+											],
+											"title": "Country",
+											"type": "object"
+										},
+										{
+											"description": "Enforce different MFA options",
+											"properties": {
+												"auth_method": {
+													"properties": {
+														"auth_method": {
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"example": "mfa",
+															"type": "string"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"auth_method"
+											],
+											"title": "Authentication method",
+											"type": "object"
+										},
+										{
+											"description": "Enforces a device posture rule has run successfully",
+											"properties": {
+												"device_posture": {
+													"properties": {
+														"integration_uid": {
+															"description": "The ID of a device posture integration.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"integration_uid"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"device_posture"
+											],
+											"title": "Device Posture",
 											"type": "object"
 										}
 									],
@@ -8607,6 +12264,29 @@
 											"type": "object"
 										},
 										{
+											"description": "Matches an email address from a list.",
+											"properties": {
+												"email_list": {
+													"properties": {
+														"id": {
+															"description": "The ID of a previously created email list.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"email_list"
+											],
+											"title": "Email list",
+											"type": "object"
+										},
+										{
 											"description": "Match an entire email domain.",
 											"properties": {
 												"email_domain": {
@@ -8873,6 +12553,142 @@
 												"saml"
 											],
 											"title": "SAML group",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific Access Service Token",
+											"properties": {
+												"service_token": {
+													"properties": {
+														"token_id": {
+															"description": "The ID of a Service Token.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"token_id"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"service_token"
+											],
+											"title": "Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Matches any valid Access Service Token",
+											"properties": {
+												"any_valid_service_token": {
+													"description": "An empty object which matches on all service tokens.",
+													"example": {},
+													"type": "object"
+												}
+											},
+											"required": [
+												"any_valid_service_token"
+											],
+											"title": "Any Valid Service Token",
+											"type": "object"
+										},
+										{
+											"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+											"properties": {
+												"external_evaluation": {
+													"properties": {
+														"evaluate_url": {
+															"description": "The API endpoint containing your business logic.",
+															"example": "https://eval.example.com",
+															"type": "string"
+														},
+														"keys_url": {
+															"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+															"example": "https://eval.example.com/keys",
+															"type": "string"
+														}
+													},
+													"required": [
+														"evaluate_url",
+														"keys_url"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"external_evaluation"
+											],
+											"title": "External Evaluation",
+											"type": "object"
+										},
+										{
+											"description": "Matches a specific country",
+											"properties": {
+												"geo": {
+													"properties": {
+														"country_code": {
+															"description": "The country code that should be matched.",
+															"example": "US",
+															"type": "string"
+														}
+													},
+													"required": [
+														"country_code"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"geo"
+											],
+											"title": "Country",
+											"type": "object"
+										},
+										{
+											"description": "Enforce different MFA options",
+											"properties": {
+												"auth_method": {
+													"properties": {
+														"auth_method": {
+															"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+															"example": "mfa",
+															"type": "string"
+														}
+													},
+													"required": [
+														"auth_method"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"auth_method"
+											],
+											"title": "Authentication method",
+											"type": "object"
+										},
+										{
+											"description": "Enforces a device posture rule has run successfully",
+											"properties": {
+												"device_posture": {
+													"properties": {
+														"integration_uid": {
+															"description": "The ID of a device posture integration.",
+															"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+															"type": "string"
+														}
+													},
+													"required": [
+														"integration_uid"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"device_posture"
+											],
+											"title": "Device Posture",
 											"type": "object"
 										}
 									],
@@ -9029,6 +12845,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -9295,6 +13134,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -9334,6 +13309,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -9600,6 +13598,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -9641,6 +13775,29 @@
 																"type": "object"
 															},
 															{
+																"description": "Matches an email address from a list.",
+																"properties": {
+																	"email_list": {
+																		"properties": {
+																			"id": {
+																				"description": "The ID of a previously created email list.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"email_list"
+																],
+																"title": "Email list",
+																"type": "object"
+															},
+															{
 																"description": "Match an entire email domain.",
 																"properties": {
 																	"email_domain": {
@@ -9907,6 +14064,142 @@
 																	"saml"
 																],
 																"title": "SAML group",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific Access Service Token",
+																"properties": {
+																	"service_token": {
+																		"properties": {
+																			"token_id": {
+																				"description": "The ID of a Service Token.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"token_id"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"service_token"
+																],
+																"title": "Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Matches any valid Access Service Token",
+																"properties": {
+																	"any_valid_service_token": {
+																		"description": "An empty object which matches on all service tokens.",
+																		"example": {},
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"any_valid_service_token"
+																],
+																"title": "Any Valid Service Token",
+																"type": "object"
+															},
+															{
+																"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																"properties": {
+																	"external_evaluation": {
+																		"properties": {
+																			"evaluate_url": {
+																				"description": "The API endpoint containing your business logic.",
+																				"example": "https://eval.example.com",
+																				"type": "string"
+																			},
+																			"keys_url": {
+																				"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																				"example": "https://eval.example.com/keys",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"evaluate_url",
+																			"keys_url"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"external_evaluation"
+																],
+																"title": "External Evaluation",
+																"type": "object"
+															},
+															{
+																"description": "Matches a specific country",
+																"properties": {
+																	"geo": {
+																		"properties": {
+																			"country_code": {
+																				"description": "The country code that should be matched.",
+																				"example": "US",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"country_code"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"geo"
+																],
+																"title": "Country",
+																"type": "object"
+															},
+															{
+																"description": "Enforce different MFA options",
+																"properties": {
+																	"auth_method": {
+																		"properties": {
+																			"auth_method": {
+																				"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																				"example": "mfa",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"auth_method"
+																],
+																"title": "Authentication method",
+																"type": "object"
+															},
+															{
+																"description": "Enforces a device posture rule has run successfully",
+																"properties": {
+																	"device_posture": {
+																		"properties": {
+																			"integration_uid": {
+																				"description": "The ID of a device posture integration.",
+																				"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"integration_uid"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"device_posture"
+																],
+																"title": "Device Posture",
 																"type": "object"
 															}
 														],
@@ -10071,6 +14364,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -10337,6 +14653,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -10376,6 +14828,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -10642,6 +15117,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
@@ -10683,6 +15294,29 @@
 																		"type": "object"
 																	},
 																	{
+																		"description": "Matches an email address from a list.",
+																		"properties": {
+																			"email_list": {
+																				"properties": {
+																					"id": {
+																						"description": "The ID of a previously created email list.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"email_list"
+																		],
+																		"title": "Email list",
+																		"type": "object"
+																	},
+																	{
 																		"description": "Match an entire email domain.",
 																		"properties": {
 																			"email_domain": {
@@ -10949,6 +15583,142 @@
 																			"saml"
 																		],
 																		"title": "SAML group",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific Access Service Token",
+																		"properties": {
+																			"service_token": {
+																				"properties": {
+																					"token_id": {
+																						"description": "The ID of a Service Token.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"token_id"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"service_token"
+																		],
+																		"title": "Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches any valid Access Service Token",
+																		"properties": {
+																			"any_valid_service_token": {
+																				"description": "An empty object which matches on all service tokens.",
+																				"example": {},
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"any_valid_service_token"
+																		],
+																		"title": "Any Valid Service Token",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Create Allow or Block policies which evaluate the user based on custom criteria.",
+																		"properties": {
+																			"external_evaluation": {
+																				"properties": {
+																					"evaluate_url": {
+																						"description": "The API endpoint containing your business logic.",
+																						"example": "https://eval.example.com",
+																						"type": "string"
+																					},
+																					"keys_url": {
+																						"description": "The API endpoint containing the key that Access uses to verify that the response came from your API.",
+																						"example": "https://eval.example.com/keys",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"evaluate_url",
+																					"keys_url"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"external_evaluation"
+																		],
+																		"title": "External Evaluation",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Matches a specific country",
+																		"properties": {
+																			"geo": {
+																				"properties": {
+																					"country_code": {
+																						"description": "The country code that should be matched.",
+																						"example": "US",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"country_code"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"geo"
+																		],
+																		"title": "Country",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforce different MFA options",
+																		"properties": {
+																			"auth_method": {
+																				"properties": {
+																					"auth_method": {
+																						"description": "The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176.",
+																						"example": "mfa",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"auth_method"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"auth_method"
+																		],
+																		"title": "Authentication method",
+																		"type": "object"
+																	},
+																	{
+																		"description": "Enforces a device posture rule has run successfully",
+																		"properties": {
+																			"device_posture": {
+																				"properties": {
+																					"integration_uid": {
+																						"description": "The ID of a device posture integration.",
+																						"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"integration_uid"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"device_posture"
+																		],
+																		"title": "Device Posture",
 																		"type": "object"
 																	}
 																],
