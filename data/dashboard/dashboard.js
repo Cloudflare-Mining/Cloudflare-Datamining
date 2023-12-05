@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "mfidalgo/LOUI-5019-fix-tcp-allowlist-pagination",
+					branch: "mfidalgo/LOUI-5055-add-tcp-flag-all-traffic",
 					isReleaseCandidate: "true",
-					commit: "2e7a079ec4bfeaad2ab87ff041bd2e5eb207d730",
+					commit: "cec40e05435ab18bc33a34cd99c082971d5c823c",
 					env: "production",
-					builtAt: 1701798824570,
-					dashVersion: "e59d51e9a82efc1e12d2c641be9cd3e2fc6151a6",
+					builtAt: 1701802092530,
+					dashVersion: "079703dcc34cac2e005bcfea0103101397786b18",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
