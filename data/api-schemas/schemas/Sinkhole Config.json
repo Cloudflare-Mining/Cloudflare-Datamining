@@ -1,0 +1,27 @@
+{
+	"GET /live": {
+		"operationId": "sinkhole_config_get_live",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"description": "Success"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "GET Live",
+		"tags": [
+			"Sinkhole Config"
+		]
+	}
+}
