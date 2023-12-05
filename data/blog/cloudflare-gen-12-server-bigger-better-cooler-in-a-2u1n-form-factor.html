@@ -1,5 +1,8 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/es-es/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor-es-es">Español</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
 	<p>Two years ago, Cloudflare undertook a significant upgrade to our compute server hardware as we deployed our cutting-edge <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">11th Generation server fleet</a>, based on AMD EPYC Milan x86 processors. It's nearly time for another refresh to our x86 infrastructure, with deployment planned for 2024. This involves upgrading not only the processor itself, but many of the server's components. It must be able to accommodate the GPUs that drive inference on <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a>, and leverage the latest advances in memory, storage, and security. Every aspect of the server is rigorously evaluated — including the server form factor itself.</p>
 	<p>One crucial variable always in consideration is temperature. The latest generations of x86 processors have yielded significant leaps forward in performance, with the tradeoff of higher power draw and heat output. In this post we will explore this trend, and how it informed our decision to adopt a new physical footprint for our next-generation fleet of servers. </p>
