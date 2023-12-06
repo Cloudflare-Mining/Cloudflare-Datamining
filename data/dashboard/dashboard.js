@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "LOUI-5007-tunnel-healthcheck-alert-hotfix",
+					branch: "janik/LOUI-5040",
 					isReleaseCandidate: "true",
-					commit: "3f9565a4baabc01bedc9fadb0adf6843e6591629",
+					commit: "cc838c02599e87b1c1aba4f11f249a38afb2dc7e",
 					env: "production",
-					builtAt: 1701804966718,
-					dashVersion: "79231f3472439aa313959ab2d867cabc44aad6d9",
+					builtAt: 1701861298014,
+					dashVersion: "afaabad151397f209dfcb8566dee2a67a9da1c4c",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
