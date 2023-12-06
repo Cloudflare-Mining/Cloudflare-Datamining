@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai",
 	"dist-tags": {
-		"latest": "1.0.36"
+		"latest": "1.0.37"
 	},
 	"versions": {
 		"1.0.1": {
@@ -849,6 +849,36 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCOEev2iaOUPLAXMkXwa/ibBgLfNDGOpDdAAq3Ura7ybAIhAKsYzq8Iim1VQw2+uXdnBF7A6SnbKC6mvf91jhLooi1V"
+					}
+				]
+			}
+		},
+		"1.0.37": {
+			"name": "@cloudflare/ai",
+			"version": "1.0.37",
+			"devDependencies": {
+				"@types/mocha": "^10.0.3",
+				"@types/mustache": "^4.2.4",
+				"@types/node": "^20.3.3",
+				"ajv": "^8.12.0",
+				"dotenv": "^16.3.1",
+				"mocha": "^10.2.0",
+				"mustache": "^4.2.0",
+				"prettier": "^2.8.8",
+				"ts-node": "^10.9.1",
+				"tsup": "^7.2.0",
+				"typescript": "^5.1.6"
+			},
+			"dist": {
+				"integrity": "sha512-mR1Lbkr8aDks6LLhhEpXB8SValH+mDKtrxT4idxBlArPnB5fqU2Kpj961AWWW+3JHRPFRC2YPATC+/UgyL2Fxg==",
+				"shasum": "542c7934d30b52b43cd56c69b2e901c99d6ec93e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai/-/ai-1.0.37.tgz",
+				"fileCount": 54,
+				"unpackedSize": 149547,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDjO7Mi6/ZfXjKqvatyb7J97Grl2QozPHZo6pnccsn40QIgGKxDGDPJnJWzGUKK3aJ+2/aipKrNilQ5GG7QTpGyjyE="
 					}
 				]
 			}
