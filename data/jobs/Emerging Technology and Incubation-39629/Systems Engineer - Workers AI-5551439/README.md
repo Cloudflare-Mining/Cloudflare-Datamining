@@ -5,10 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">You will work as part of our core engineering team in London which builds the Cloudflare system running in 160+ cities around the world. Your work will focus on building robust, secure and high performance distributed systems. We are a small engineering team operating at a massive scale, so what you do will have a huge influence. We work in agile teams, so you will be supported by colleagues, and collaborate with other teams around the company.</span></p>
-<p><span style="font-weight: 400;">In the Data ORG, you would be responsible for crafting, building, and scaling one of the biggest global data pipelines to overcome network delays and partitions. Using Go, Kafka, ClickHouse, and PostgreSQL to store and analyse in excess of 25 million events per second (and growing fast).</span></p>
-<p><span style="font-weight: 400;">If you joined us, your first 6 months could look like this: You start with a structured onboarding during which you get up-to-speed with the systems that move data around Cloudflare. You lead a project which uses our firehose of over 25 million events per second to build systems which provide deeper insight into the ways our customers use Cloudflare. You expose these insights to our customers. You share the knowledge gained with your colleagues. You take ownership of these systems, ensuring that they are secure, scalable, robust, and observable. You talk about this work at one of our weekly company talks, put together a post for the company blog, and engage with engineers on other teams who have exciting ideas about a way to take the work further.</span></p>
+<p><strong>About Us</strong></p>
+<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers approximately 25 million Internet properties, for customers ranging from individual bloggers to SMBs to Fortune 500 companies. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare all have web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was named to Entrepreneur Magazine’s Top Company Cultures list and ranked among the World’s Most Innovative Companies by Fast Company.&nbsp;</p>
+<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us! <strong>About the Department</strong></p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp;</p>
+<h4><strong>About The Team</strong></h4>
+<p>The Workers AI team is building a platform and tools that enable our customers to run fast, low-latency inference tasks on pre-trained machine-learning models natively on Cloudflare Workers.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for a systems engineer to help us build and maintain the codebase that powers the Workers AI platform. This is a role for engineers that are familiar with Rust, WebAssembly, TypeScript and basic notions of Machine Learning and GPUs.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Strong experience coding in Rust, WebAssembly and TypeScript.</li>
+	<li>Experience in designing and architecting large-scale distributed systems.</li>
+	<li>Obsession with performance and observability.</li>
+	<li>Intermediate level of Machine Learning and GPU computing.</li>
+	<li>Experience designing and integrating RESTful APIs.</li>
+	<li>An operational mindset - we don't just write code, we also own it in production</li>
+	<li>Excellent debugging and optimization skills.</li>
+	<li>Unit/integration testing experience.</li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li>Knowledge of cross-platform compute API for GPUs like Vulkan or WebGPU.</li>
+	<li>Basic notions or experience with the networking stack.</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<p>Medical/Rx InsuranceDental InsuranceVision InsuranceFlexible Spending AccountsCommuter Spending AccountsFertility &amp; Family Forming BenefitsOn-demand mental health support and Employee Assistance ProgramGlobal Travel Medical Insurance</p>
+<p><strong>Financial Benefits</strong></p>
+<p>Short and Long Term Disability InsuranceLife &amp; Accident Insurance401(k) Retirement Savings PlanEmployee Stock Participation Plan</p>
+<p><strong>Time Off</strong></p>
+<p>Flexible paid time off covering vacation and sick leaveLeave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
