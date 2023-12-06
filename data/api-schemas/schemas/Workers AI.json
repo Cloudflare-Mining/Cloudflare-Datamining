@@ -142,5 +142,125 @@
 			"free": true,
 			"pro": true
 		}
+	},
+	"POST /accounts/{account_identifier}/ai/run/proxy": {
+		"operationId": "workers-ai-post-run-local-proxy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_identifier",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Model response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute Models Called From Wrangler Local",
+		"tags": [
+			"Workers AI"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
 	}
 }
