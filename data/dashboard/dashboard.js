@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "nduarte/hotfix_dummy_release",
+					branch: "cwei/SCTR-664-fix",
 					isReleaseCandidate: "true",
-					commit: "19b1513d5fcf32e87a4b7563defcf080c26f6076",
+					commit: "f9a757ee7df16714d67f49e56de4f01b0d875e82",
 					env: "production",
-					builtAt: 1701889290554,
-					dashVersion: "50b86420ad6603b58249509ea7882021287ecc75",
+					builtAt: 1701892138340,
+					dashVersion: "0bdc833aca10f6c4575973751c5348dd39e1cf67",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
