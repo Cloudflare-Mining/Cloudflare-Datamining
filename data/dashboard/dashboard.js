@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "mfidalgo/LOUI-5055-add-tcp-flag-all-traffic",
+					branch: "LOUI-5007-tunnel-healthcheck-alert-hotfix",
 					isReleaseCandidate: "true",
-					commit: "cec40e05435ab18bc33a34cd99c082971d5c823c",
+					commit: "3f9565a4baabc01bedc9fadb0adf6843e6591629",
 					env: "production",
-					builtAt: 1701802092530,
-					dashVersion: "079703dcc34cac2e005bcfea0103101397786b18",
+					builtAt: 1701804966718,
+					dashVersion: "79231f3472439aa313959ab2d867cabc44aad6d9",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
