@@ -9,7 +9,7 @@
 	},
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
-	beta_banner: "Workers AI is currently in Open Beta and is **not recommended for production data and traffic**, and limits + access are subject to change",
+	beta_banner: "Workers AI is currently in Open Beta and limits & access are subject to change",
 	browse_model_catalog: "Browse Model Catalog",
 	build_your_first_ai_application: "Build your first AI application",
 	binding_workers_ai_to_a_worker: "Binding Workers AI to a Worker",
