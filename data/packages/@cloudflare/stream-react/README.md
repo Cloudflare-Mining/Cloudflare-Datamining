@@ -28,12 +28,12 @@ export const App = () => {
 ```ts
 export type StreamProps = {
   /**
-   * Either the video id or the signed url for the video you’ve uploaded to Cloudflare Stream should be included here.
+   * Either the video UID or the signed token for the video you’ve uploaded to Cloudflare Stream should be included here.
    */
   src: string;
   /**
    * Ref for accessing the underlying Stream player API. Useful for providing imperative access:
-   * https://developers.cloudflare.com/stream/viewing-videos/using-the-player-api
+   * https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/using-the-player-api
    */
   streamRef?: MutableRefObject<StreamPlayerApi | undefined>;
   /**
@@ -63,6 +63,11 @@ export type StreamProps = {
    */
   controls?: boolean;
   /**
+   * Use unique subdomain for iframe source
+   * customer-<CODE>.cloudflarestream.com
+   */
+  customerCode?: string;
+  /**
    * Setting this value seeks the video to a new time. Note that seeking only occurs when a new value is set. If this is problematic for your use-case, consider using the streamRef prop to set the currentTime directly on
    * the stream player which will seek every time the value is set.
    */
@@ -80,6 +85,10 @@ export type StreamProps = {
    * A Boolean attribute; if included the player will automatically seek back to the start upon reaching the end of the video.
    */
   loop?: boolean;
+  /**
+   * A `double` that indicates the rate at which the media is being played back.
+   */
+  playbackRate?: number;
   /**
    * This enumerated attribute is intended to provide a hint to the browser about what the author thinks will lead to the best user experience. You may choose to include this attribute as a boolean attribute without a value, or you may specify the value preload="auto" to preload the beginning of the video. Not including the attribute or using preload="metadata" will just load the metadata needed to start video playback when requested.
    *
@@ -108,6 +117,11 @@ export type StreamProps = {
    */
   volume?: number;
   /**
+   * Will initialize the player with the specified text track enabled. The value should be the BCP-47 language code that was used to [upload the text track](https://developers.cloudflare.com/stream/uploading-videos/adding-captions).
+   * Note: This will _only_ work once during initialization. Beyond that point the user has full control over their text track settings.
+   */
+  defaultTextTrack?: string;
+  /**
    * Sent when playback is aborted; for example, if the media is playing and is restarted from the beginning, this event is sent.
    */
   onAbort?: EventListener;
@@ -128,7 +142,7 @@ export type StreamProps = {
    */
   onEnded?: EventListener;
   /**
-   * Sent when an error occurs. (e.g. the video has not finished encoding yet, or the video fails to load due to an incorrect signed URL)
+   * Sent when an error occurs. (e.g. the video has not finished encoding yet, or the video fails to load due to an invalid signed token)
    */
   onError?: EventListener;
   /**
