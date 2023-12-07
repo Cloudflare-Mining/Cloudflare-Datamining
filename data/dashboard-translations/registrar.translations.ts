@@ -151,7 +151,39 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 			refresh: "Refresh",
 			cancel: "Cancel transfer"
 		},
-		pending_deletion_contact_support: "This domain is currently pending deletion. Please contact support to determine if the domain may be restored."
+		pending_deletion_contact_support: "This domain is currently pending deletion. Please contact support to determine if the domain may be restored.",
+		redemption_period: {
+			title: "Domain in Redemption Period",
+			description: (0, e.d)`The domain expired on ${"expiresOn"} and may no longer be renewed without first restoring it at the Registry. Cloudflare can attempt to restore your domain, however you will be charged a redemption fee of ${"redemptionFee"} in addition to the standard renewal fee. You will only be charged the redemption fee if the restore is successful.<br /><br />If you would like to proceed with the restore and renewal click the Restore button below. You will be given the opportunity to review the charges before proceeding.<br /><br />Click <a href="https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires" rel="noopener noreferrer" target="_blank">here</a> to learn more about the restore process.`,
+			restore_cta: "Restore",
+			modal: {
+				title: "Confirm domain restore for %{domainName}",
+				domain_new_expiration_date: "Domain expiration date after successful restoration: %{expiration}.",
+				billing_line_item_1: "Redemption fee",
+				billing_line_item_2: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
+				billing_line_item_3: "ICANN fee",
+				billing_total_due: "Total due now",
+				tax_disclaimer: "*Your invoice will include any final sales tax, including state and local taxes when applicable."
+			},
+			messages: {
+				success: (0, e.d)`Domain restoration process initiated for ${"domainName"}`,
+				error: (0, e.d)`Failed to initiate domain restoration process for ${"domainName"}. Please try again or contact support for assistance`
+			},
+			in_progress: {
+				title: "Domain Restoration",
+				restore_domain_step_title: "Domain Restore",
+				renew_domain_step_title: "Domain Renewal",
+				cta: "Ok",
+				status_message: {
+					restoration_pending: "Restore request has been submitted. Once the domain has been restored we will attempt to renew it. This process may take several minutes to complete.",
+					restoration_auth_failure: "We were unable to process the payment. Please check your payment method on file and try again.",
+					restoration_failure: "We were unable to restore the domain at this time. Please wait a few minutes and try again. If the error persists please contact support for assistance. Your payment has been voided.",
+					restoration_renew_failure: "We were unable to renew the domain at this time. Please contact support for assistance.",
+					restoration_success: "The domain has been successfully restored. We are now attempting to renew the domain.",
+					restoration_renew_success: "The domain has been sucessfully renewed."
+				}
+			}
+		}
 	},
 	dnssec_card: {
 		domain_locked_error: "The domain is currently locked and the DNSSEC setting cannot be updated."

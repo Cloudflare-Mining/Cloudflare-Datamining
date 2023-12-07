@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "ben/LOUI-3674-lift-IP-lists-name-validation",
+					branch: "REG-4032-domain-restore",
 					isReleaseCandidate: "true",
-					commit: "111bb89e2b6c57500b6edfede53b17949b460ca6",
+					commit: "02f80fd1df6a7e2dd69cd5fc6a3072a59ae26cb9",
 					env: "production",
-					builtAt: 1701946285025,
-					dashVersion: "75e6573eb78f22bff080f4c21089e8c28fb4d0d1",
+					builtAt: 1701972249780,
+					dashVersion: "c02eecb377f5081bb385141a7c15e2f96c684f0b",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
