@@ -61,7 +61,6 @@ async function run() {
 						}
 						branches.push(branch.name);
 					}
-
 				} catch (err) {
 					console.error('Failed to get branches for ' + repo.name);
 					console.error(err);
@@ -74,7 +73,6 @@ async function run() {
 					path.resolve(`../data/github-repos/${filename}/info.json`),
 					JSON.stringify(info, null, '\t'),
 				);
-
 			}));
 		}
 		await Promise.all(getDataAndWriteFiles);

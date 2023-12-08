@@ -14,14 +14,14 @@ await fs.ensureDir(dir);
 
 // colos with mostly stable versions across metals
 const colos = {
-	'canary': 'lis01',
-	'mcp': 'lhr01',
+	canary: 'lis01',
+	mcp: 'lhr01',
 	// 'mcp-canary-candidate-01': 'gru05',
 	// 'mcp-canary-candidate-02': 'dac07',
 	// 'mcp-canary-candidate-03': 'kwi03',
 	// 'mcp-canary-candidate-04': 'han02',
 	// 'mcp-canary-candidate-05': 'poa01',
-	'main': 'dfw01',
+	main: 'dfw01',
 };
 
 const buildVersions = [];

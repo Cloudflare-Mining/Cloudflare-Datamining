@@ -137,8 +137,7 @@ export function beautify(data) {
 			indent_size: 4,
 			indent_char: '\t',
 			indent_with_tabs: true,
-		},
-	);
+		});
 }
 
 export function sleep(ms) {

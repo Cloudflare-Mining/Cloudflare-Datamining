@@ -45,7 +45,6 @@ async function getWarpVersions(platform, type, baseURL) {
 		delete versionInfoJson.app_icon_url;
 		await fs.writeFile(path.resolve(versionDir, 'info.json'), JSON.stringify(versionInfoJson, null, '\t'));
 	}
-
 }
 
 await getWarpVersions('macos', 'release', 'https://install.appcenter.ms/api/v0.1/apps/cloudflare/1.1.1.1-macos-1/distribution_groups/release');

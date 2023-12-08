@@ -51,8 +51,8 @@ async function run() {
 		} = article;
 		await fs.writeJson(path.resolve(articleDir, 'article.json'), info, { spaces: '\t' });
 		await fs.writeFile(path.resolve(articleDir, 'article.html'), jsBeautify.html_beautify(body, {
-			'indent_size': 4,
-			'indent_char': '\t',
+			indent_size: 4,
+			indent_char: '\t',
 		}));
 	}
 

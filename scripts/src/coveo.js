@@ -35,7 +35,7 @@ async function getCoveoResults(source, filterNoLanguage) {
 		organizationId: process.env.COVEO_ORGID,
 	});
 	const response = await fetch(`https://cloudplatform.coveo.com/rest/search/v2?${query.toString()}`, {
-		'headers': {
+		headers: {
 			authorization: `Bearer ${process.env.COVEO_KEY}`,
 		},
 		body: body,
@@ -61,7 +61,7 @@ async function getCoveoResults(source, filterNoLanguage) {
 		const nextBody = new URLSearchParams(body.toString());
 		nextBody.set('firstResult', queried);
 		const nextResponse = await fetch(`https://cloudplatform.coveo.com/rest/search/v2?${query.toString()}`, {
-			'headers': {
+			headers: {
 				authorization: `Bearer ${process.env.COVEO_KEY}`,
 			},
 			body: nextBody,

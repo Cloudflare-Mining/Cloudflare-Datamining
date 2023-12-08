@@ -273,18 +273,18 @@ for (const url of [...blogURLs].sort()) {
 			});
 			if (ldJsonData) {
 				const trimmed = {
-					'author': {
+					author: {
 						name: ldJsonData.author?.name,
 						url: ldJsonData.author?.url,
 						sameAs: ldJsonData.author?.sameAs,
 					},
-					'headline': ldJsonData.headline,
-					'url': ldJsonData.url,
-					'datePublished': ldJsonData.datePublished,
-					'dateModified': ldJsonData.dateModified,
-					'image': ldJsonData.image?.url ?? ldJsonData.image ?? null,
-					'keywords': ldJsonData.keywords,
-					'description': ldJsonData.description,
+					headline: ldJsonData.headline,
+					url: ldJsonData.url,
+					datePublished: ldJsonData.datePublished,
+					dateModified: ldJsonData.dateModified,
+					image: ldJsonData.image?.url ?? ldJsonData.image ?? null,
+					keywords: ldJsonData.keywords,
+					description: ldJsonData.description,
 				};
 				await fs.writeFile(slug + '.json', JSON.stringify(trimmed, null, '\t'));
 				if (!publisher && ldJsonData.publisher) {
@@ -294,8 +294,8 @@ for (const url of [...blogURLs].sort()) {
 		}
 		console.log('write', slug);
 		const beautified = jsBeautify.html_beautify(dom.html(), {
-			'indent_size': 4,
-			'indent_char': '\t',
+			indent_size: 4,
+			indent_char: '\t',
 		});
 		await fs.writeFile(slug + '.html', beautified);
 	}));

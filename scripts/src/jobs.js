@@ -74,8 +74,8 @@ if (departmentsRes.ok) {
 				if (content) {
 					const decoded = decodeHTML(content);
 					const beautified = jsBeautify.html_beautify(decoded, {
-						'indent_size': 4,
-						'indent_char': '\t',
+						indent_size: 4,
+						indent_char: '\t',
 					});
 					await fs.writeFile(path.resolve(jobsDir, 'README.md'), beautified);
 				}

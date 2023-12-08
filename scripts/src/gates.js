@@ -116,7 +116,6 @@ async function run() {
 		const assignments = await getAssignments(gate, gate.zone ?? false);
 		const assignmentsFile = path.resolve(`../data/gates/${gate.name}-assignments.json`);
 		await fs.writeFile(assignmentsFile, JSON.stringify(assignments, null, '\t'));
-
 	}
 
 	console.log('Pushing!');

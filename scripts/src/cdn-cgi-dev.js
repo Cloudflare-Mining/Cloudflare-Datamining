@@ -12,12 +12,12 @@ const dir = path.resolve('../data/cdn-cgi');
 
 // colos with mostly stable versions across metals
 const colos = {
-	'pig': 'pig',
+	pig: 'pig',
 };
 // colos with very unstable versions across metals, so get an aggregate of all versions
 const aggregateColos = {
-	'dog': 'sfo06',
-	'lab': 'sfo07',
+	dog: 'sfo06',
+	lab: 'sfo07',
 };
 
 const buildVersions = {};

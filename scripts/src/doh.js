@@ -29,7 +29,7 @@ async function run() {
 	for (const test of tests) {
 		const dohResponse = await fetch(test.url, {
 			headers: {
-				'accept': 'application/dns-json',
+				accept: 'application/dns-json',
 			},
 		});
 		if (!dohResponse.ok) {

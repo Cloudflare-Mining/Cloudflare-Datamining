@@ -76,8 +76,8 @@ for (const release of pressReleasesResults?.GetPressReleaseListResult ?? []) {
 	await fs.writeFile(path.resolve(releaseDir, '_index.json'), JSON.stringify(restRelease, null, '\t'));
 	if (Body) {
 		const beautified = jsBeautify.html_beautify(Body, {
-			'indent_size': 4,
-			'indent_char': '\t',
+			indent_size: 4,
+			indent_char: '\t',
 		});
 		await fs.writeFile(path.resolve(releaseDir, 'README.html'), beautified);
 	}

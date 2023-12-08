@@ -63,7 +63,7 @@ const reqs = [
 		name: 'services-schedules-put',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}/environments/production/schedules`,
 		method: 'PUT',
-		body: JSON.stringify([{ 'cron': '*/30 * * * *' }]),
+		body: JSON.stringify([{ cron: '*/30 * * * *' }]),
 	},
 	{
 		name: 'services-schedules-get',

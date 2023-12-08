@@ -70,7 +70,6 @@ async function run() {
 
 	const getDataAndWriteFiles = [];
 	for (const packageInfo of rawData) {
-
 		let name = filenamify(packageInfo.name, { replacement: '__' });
 		if (packageInfo.scope) {
 			const nameWithoutScope = filenamify(packageInfo.name.replace(`@${packageInfo.scope}/`, ''));
@@ -148,7 +147,7 @@ async function run() {
 	await Promise.all(getDataAndWriteFiles.map(fn => fn()));
 
 	// scan all packages for links
-	async function* getFiles(dir) {
+	async function *getFiles(dir) {
 		const dirents = await fs.readdir(dir, { withFileTypes: true });
 		for (const dirent of dirents) {
 			const res = path.resolve(dir, dirent.name);

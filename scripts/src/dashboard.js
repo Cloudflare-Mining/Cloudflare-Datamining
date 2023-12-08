@@ -187,7 +187,9 @@ async function writeFile(file, data, rootDir) {
 		filePath = path.resolve(rootDir, fileName);
 	}
 	await fs.ensureDir(path.dirname(filePath));
-	if (Buffer.isBuffer(data) || ArrayBuffer.isView(data)) {
+	if (ArrayBuffer.isView(data) || data?.toString?.() === '[object ArrayBuffer]') {
+		await fs.writeFile(filePath, Buffer.from(data.buffer));
+	} else if (Buffer.isBuffer(data)) {
 		await fs.writeFile(filePath, data);
 	} else if (Array.isArray(data)) {
 		await fs.writeFile(filePath, data.map(code => beautify(code)).join('\n\n'));
@@ -264,8 +266,8 @@ async function writeAssets(files, write) {
 }
 
 const partMapper = {
-	'zoneId': ':zone_id',
-	'accountId': ':account_id',
+	zoneId: ':zone_id',
+	accountId: ':account_id',
 };
 function parseQuasiToRoute(quasi) {
 	// loop through expressions and quasis and order them as appropriate
@@ -433,7 +435,6 @@ async function writeMeta(files, translations) {
 
 	const calleesFile = path.resolve('../data/dashboard/callees.json');
 	await fs.writeFile(calleesFile, JSON.stringify([...callees].sort(), null, '\t'));
-
 }
 
 async function writeSubRoutes(files) {
@@ -634,7 +635,6 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								if (
 									bodyItem.type === 'VariableDeclaration'
 								) {
-
 									// loop over declarations
 									for (const decl of bodyItem.declarations) {
 										if (
@@ -667,7 +667,6 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 											decl.init?.properties?.[0]?.value?.tag?.expressions?.length === 2
 
 										) {
-											const routeString = generate(decl.init.properties[0].value.quasi);
 											const parsed = parseQuasiToRoute(decl.init.properties[0].value.quasi);
 											const page = getPartPage();
 											if (!page) {
@@ -681,9 +680,6 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								}
 							}
 						}
-
-
-
 					}
 				}
 			}
@@ -709,23 +705,23 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 							apiReq.uri = url;
 							break;
 						}
-						case 'uri':{
+						case 'uri': {
 							apiReq.uri = property.value.value?.trim();
 							break;
 						}
-						case 'method':{
+						case 'method': {
 							apiReq.method = property.value.value?.toUpperCase?.();
 							break;
 						}
-						case 'name':{
+						case 'name': {
 							apiReq.name = property.value.value?.trim();
 							break;
 						}
-						case 'id':{
+						case 'id': {
 							apiReq.id = property.value.value?.trim();
 							break;
 						}
-						case 'transKey':{
+						case 'transKey': {
 							apiReq.id = property.value.value?.trim();
 							break;
 						}
@@ -758,7 +754,6 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 					}
 				}
 			}
-
 		});
 		// TODO: maybe do something with `recursiveImports`?
 		// We already have the files these reference, so they're probably not useful
@@ -864,13 +859,11 @@ async function run() {
 				const realNavigation = eval('(function run(){return ' + rawNavigation + '})()');
 				fs.ensureDir(path.dirname(file));
 				await fs.writeFile(file, JSON.stringify(realNavigation, null, '\t'));
-
 			} catch (err) {
 				console.error('Error getting nav', err);
 			}
 			// write raw JS version
 			await writeJS('navigation.js', 'const navigation = ' + rawNavigation);
-
 		}
 	}
 

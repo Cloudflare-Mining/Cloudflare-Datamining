@@ -34,40 +34,55 @@ async function run() {
 	if (!types?.data?.__schema?.types) {
 		throw new Error('Failed to get GraphQL types');
 	}
-	let query = 'query {\n';
-	for (const type of types.data.__schema.types) {
-		query += `  ${type.name}: __type(name:"${type.name}") {\n`
-          + '    fields {\n'
-          + '      name\n'
-          + '      description\n'
-          + '    }\n'
-          + '  }\n';
-
-		result[type.name] = {
-			__description: type.description,
-		};
+	const queries = [];
+	// split into chunks of 50 fields
+	const chunks = types.data.__schema.types.reduce((acc, curr) => {
+		if (acc[acc.length - 1].length >= 50) {
+			acc.push([]);
+		}
+		acc[acc.length - 1].push(curr);
+		return acc;
+	}, [[]]);
+	for (const chunk of chunks) {
+		let query = 'query {\n';
+		for (const type of chunk) {
+			query += `${type.name}: __type(name:"${type.name}") {
+				fields {
+					name
+					description
+				}
+			}\n`;
+			result[type.name] ??= {
+				__description: type.description,
+			};
+		}
+		query += '}';
+		queries.push(query);
+	}
+	const fields = {};
+	for (const query of queries) {
+		const fieldsRes = await fetch('https://api.cloudflare.com/client/v4/graphql', {
+			method: 'POST',
+			headers: {
+				'X-Auth-Email': process.env.CLOUDFLARE_EMAIL,
+				'X-Auth-Key': process.env.CLOUDFLARE_GLOBAL_KEY,
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				query,
+			}),
+		});
+		const fieldsJson = await fieldsRes.json();
+		for (const type of Object.keys(fieldsJson.data)) {
+			fields[type] = fieldsJson.data[type].fields;
+		}
 	}
 
-	query += '}';
-
-	const fieldsRes = await fetch('https://api.cloudflare.com/client/v4/graphql', {
-		method: 'POST',
-		headers: {
-			'X-Auth-Email': process.env.CLOUDFLARE_EMAIL,
-			'X-Auth-Key': process.env.CLOUDFLARE_GLOBAL_KEY,
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			query,
-		}),
-	});
-
-	const fields = await fieldsRes.json();
-
 	for (const type of Object.keys(result)) {
-		const typeFields = fields.data[type].fields;
+		const typeFields = fields?.[type] ?? [];
 
 		for (const field of typeFields) {
+			result[type] ??= {};
 			result[type][field.name] = field.description;
 		}
 	}

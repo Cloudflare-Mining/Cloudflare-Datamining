@@ -98,8 +98,7 @@ for (const js of javascripts) {
 			indent_size: 4,
 			indent_char: '\t',
 			indent_with_tabs: true,
-		},
-	);
+		});
 	await fs.writeFile(file, pretty);
 }
 

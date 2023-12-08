@@ -48,7 +48,6 @@ async function run() {
 					versions[prop.key.name] = prop.value.value;
 				}
 			}
-
 		}
 	});
 	await fs.writeFile(path.resolve(dir, 'beacon.json'), JSON.stringify(versions, null, '\t'));
@@ -64,6 +63,5 @@ async function run() {
 		'Pushed Product: Analytics Data: ' + prefix,
 		'DISCORD_WEBHOOK_PRODUCT_ANALYTICS',
 	);
-
 }
 run();
