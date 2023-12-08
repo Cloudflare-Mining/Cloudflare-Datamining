@@ -95,11 +95,13 @@ export type AbuseUrl = TypeFromCodec<typeof AbuseUrl>;
 
 export const Zone = eg.object({
   id: eg.string,
-  rootZoneId: eg.string,
   name: eg.string,
-  rootZoneName: eg.string,
-  version: eg.number.optional,
-  versioned: eg.boolean,
+  versioning: eg.object({
+    enabled: eg.boolean,
+    isRoot: eg.boolean,
+    version: eg.number,
+    rootZoneId : eg.string,
+  }).optional,
   status: eg.union([
     eg.literal('active'),
     eg.literal('pending'),
