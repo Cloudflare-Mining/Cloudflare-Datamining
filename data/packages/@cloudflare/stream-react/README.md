@@ -14,10 +14,10 @@ yarn add @cloudflare/stream-react
 import { Stream } from "@cloudflare/stream-react";
 
 export const App = () => {
-  const videoIdOrSignedUrl = "YOUR_VIDEO_ID_OR_SIGNED_URL";
+  const videoIdOrSignedToken = "YOUR_VIDEO_ID_OR_SIGNED_TOKEN";
   return (
     <div>
-      <Stream controls src={videoIdOrSignedUrl} />
+      <Stream controls src={videoIdOrSignedToken} />
     </div>
   );
 };

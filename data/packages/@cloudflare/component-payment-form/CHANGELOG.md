@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [4.2.8](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.2.6...@cloudflare/component-payment-form@4.2.8) (2023-10-31)
+## [4.2.9](https://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@4.2.6...@cloudflare/component-payment-form@4.2.9) (2023-12-08)
 
-**Note:** Version bump only for package @cloudflare/component-payment-form
+
+### Bug Fixes
+
+* UI-000 fix stratus publish build ([ecdeb0f](https://stash.cfops.it:7999/fe/stratus/commits/ecdeb0fe669e2065fa5642fb324bb21a92303e64))
 
 
 

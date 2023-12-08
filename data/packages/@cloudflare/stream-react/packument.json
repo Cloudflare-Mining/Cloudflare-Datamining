@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/stream-react",
 	"dist-tags": {
-		"latest": "1.9.0",
+		"latest": "1.9.1",
 		"next": "1.7.0-rc1"
 	},
 	"versions": {
@@ -974,6 +974,54 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIAwHCQYrHnXY83pthaf9gh3k1p7aHUBdBbd16mQKoM8MAiBunKE9rvDzSPn6mOOYezALT3Wybm+ziEU7E5bSb5+7Vw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.9.1": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.9.1",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-Yeftxpgzs69hK3VmVZjhvqIqhyo5PHWLAoZMmbzPiTH0rqkyzMMHxRvyNe7jfBRAGknOiTeeU7TQCdPBDCkuvg==",
+				"shasum": "5f8b2f72ebe741f1b12f5b093419eb4dcadeb7b6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.9.1.tgz",
+				"fileCount": 22,
+				"unpackedSize": 137257,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHyWK6/RQO3PNd4crkdnj8sG5MJ38j3dg7CWZzsg0NFjAiEAv6rXlub0PwT+quA4Nl/n3BG6jxr8gvhnh0zHpF9VusA="
 					}
 				]
 			},
