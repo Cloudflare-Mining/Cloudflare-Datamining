@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 65,
+	"version": "2023.12.3.0",
+	"short_version": "",
+	"size": 113594368,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "de68e2ab618f6557c6722c28e8892d73",
+	"fingerprint": "5f57c00031a58c5d30e5226e64e991c8",
+	"uploaded_at": "2023-12-01T20:30:48.266Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This releases contains bug fixes only, no new functionality has been introduced\r\n \r\n## Notable updates\r\n- Fixed an issue where multicast traffic was being sent down the tunnel when it shouldn't be. Traffic to 224.0.0.0/4 is now always excluded from the tunnel\r\n- Fixed an issue where we would not properly restore DNS servers to the current DHCP value but instead restoring to last DHCP value saved. This caused issues going between multiple different networks (going from home to work or a hotel with a completely different network)\r\n- Fixed an issue for users with domain based split tunnel rules that could prevent access to certain sites due to Windows automatically adding/deleting broadcast routes in related IP ranges. This error resulted in users not being able to visit sites with IP addresses in the ranges impacted by the domain based split tunnel rule\r\n- Fixed an issue where we were incorrectly setting the default local domain fallback server value for entries without an explicit DNS server set\r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"fe29ada4dd4ee29b0bd7d34a50810dad2975b6b1250894718d63bf3414b4a43c"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}

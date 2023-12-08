@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2937,
+	"version": "20231114.3",
+	"short_version": "2023.10.324.1",
+	"size": 69832601,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "ac88c9d988ffe772c83dd4eac13b8bc6",
+	"fingerprint": "d60de44edbdb790793f0d5d0fad27c09",
+	"uploaded_at": "2023-11-14T16:15:48.974Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This releases contains a fairly major refactor of the warp-cli interface. While all existing commands are backwards compatible for at least the next 6 months, please take a moment to look through the new warp-cli and let us know what you think\n \n## Notable updates\n- Added ability to run pcaps from warp-cli to make debugging easier\n- Modified warp-cli commands to be more consistent and readable\n- Fixed an issue where tunnel could become unresponsive a few minutes after coming out of sleep or after changing networks\n- Fixed a small timing windows where the app could prompt the user to upgrade to the latest version even when updated were disallowed by policy. This happened because the GUI was able to start faster than the rest of the processes.\n \n## Known issues\n- No known issues\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

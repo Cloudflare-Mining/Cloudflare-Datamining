@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3182,
+	"version": "2023.11.37.1",
+	"short_version": "",
+	"size": 112992256,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "78e9a73ff4a431b42b6f0709d7c3ad2f",
+	"fingerprint": "0e04ae97a7adea02b21de0d58bd426f6",
+	"uploaded_at": "2023-11-14T22:03:08.191Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This releases contains bug fixes only, no new functionality has been introduced\r\n \r\n## Notable updates\r\n- Fixed an issue where multicast traffic was being sent down the tunnel when it shouldn't be. Traffic to 224.0.0.0/4 is now always excluded from the tunnel\r\n- Fixed an issue where we would not properly restore DNS servers to the current DHCP value but instead restoring to last DHCP value saved. This caused issues going between multiple different networks (going from home to work or a hotel with a completely different network)\r\n- Fixed an issue for users with domain based split tunnel rules that could prevent access to certain sites due to Windows automatically adding/deleting broadcast routes in related IP ranges. This error resulted in users not being able to visit sites with IP addresses in the ranges impacted by the domain based split tunnel rule\r\n- Fixed an issue where we were incorrectly setting the default local domain fallback server value for entries without an explicit DNS server set\r\n \r\n## Known issues\r\n- No known issues\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"84813e241dd4e71f8d2b48ffbb3d8cd44331bf16ec3153a0fb93ff1050383100"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}

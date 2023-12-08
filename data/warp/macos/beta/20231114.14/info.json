@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2939,
+	"version": "20231114.14",
+	"short_version": "2023.11.36.1",
+	"size": 69634828,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "119ab1d9b04173613d867d8adbd4b80d",
+	"fingerprint": "473e1e65c78fd14334b58160af6f31f0",
+	"uploaded_at": "2023-11-14T21:34:24.046Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This releases contains bug fixes only, no new functionality has been introduced\n \n## Notable updates\n- Fixed an issue where we were incorrectly setting the default local domain fallback server value for entries without an explicit DNS server set\n \n## Known issues\n- No known issues\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
