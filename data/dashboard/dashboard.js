@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "emilio/SQC-121",
+					branch: "cwei/SCTR-676-fix",
 					isReleaseCandidate: "true",
-					commit: "1e9b0646ca428d03b203528a318b0b3e27865c05",
+					commit: "5d858ad4e0db9c28dd5bfd3ad6865628b49becaf",
 					env: "production",
-					builtAt: 1701986936115,
-					dashVersion: "f2f5fe67fa8dd6713b5490603eb50d35316b3dd8",
+					builtAt: 1702050676292,
+					dashVersion: "0e6ac4100437c006233986408e5609ddd00a985e",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
