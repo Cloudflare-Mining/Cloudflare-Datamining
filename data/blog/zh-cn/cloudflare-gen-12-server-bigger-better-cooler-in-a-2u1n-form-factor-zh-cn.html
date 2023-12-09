@@ -1,0 +1,53 @@
+<div class="mb2 gray5">8 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p>两年前，当我们部署基于 AMD EPYC Milan x86 处理器的尖端<a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">第 11 代服务器群</a>时，Cloudflare 对我们的计算服务器硬件进行了重大升级。我们的 x86 基础设施即将再次更新，计划于 2024 年进行部署。这不仅涉及升级处理器本身，还涉及许多服务器组件。它必须能够容纳驱动 <a href="https://blog.cloudflare.com/zh-cn/workers-ai-zh-cn">Workers AI</a> 推理的 GPU，并利用内存、存储和安全方面的最新进展。服务器的每个方面都经过严格评估——包括服务器外形尺寸本身。</p>
+	<p>温度始终是需要考虑的一个关键变量。最新一代的 x86 处理器在性能方面取得了重大飞跃，但同时也带来了更高的功耗和热量输出。在本篇文章中，我们将探讨这一趋势，以及我们如何根据这一趋势决定为下一代服务器机群采用新的物理足迹。 </p>
+	<p>为了准备即将到来的更新，我们对 x86 CPU 格局进行了广泛的调查。AMD 最近推出了最新产品：Genoa、Bergamo 和 Genoa-X，具有创新 Zen 4 架构的强大功能。与此同时，Intel 推出了 Sapphire Rapids，作为其第四代 Intel Xeon 可扩展处理器平台的一部分，代号为“Eagle Stream”，展示了自己的进步。当我们考虑如何塑造 Cloudflare 服务器技术的未来以满足客户的需求时，这些选项提供了宝贵的选择。</p>
+	<p>面对多家 x86 CPU 供应商（包括新的 Intel 和 AMD 芯片组），我们面临的一个持续挑战是 CPU 散热设计功耗 (TDP) 逐代快速增加。TDP 的定义是，CPU 在负载下散发的最大热量，设计的冷却系统应当能够驱散该热量。TDP 还描述了 CPU 插槽的最大功耗。下图显示了自 2014 年以来各代硬件服务器的 CPU TDP 趋势：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image4.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1594" height="986"></figure>
+	<p>在 Cloudflare，我们的<a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">第 9 代服务器</a>基于 Intel Skylake 6162，TDP 为 150W；我们的<a href="https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future">第 10 代服务器</a>基于 AMD Rome 7642，TDP 为 240W；我们的<a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">第 11 代服务器</a>基于 AMD Milan 7713，TDP 为 240W。如今，<a href="https://www.amd.com/system/files/documents/epyc-9004-series-processors-data-sheet.pdf" target="_blank">AMD EPYC 9004 系列 SKU 堆栈</a>默认 TDP 高达 360W，最高可配置 400W。<a href="https://ark.intel.com/content/www/us/en/ark/products/codename/126212/products-formerly-sapphire-rapids.html#@Server" target="_blank">Intel Sapphire Rapid SKU 堆栈</a>默认 TDP 高达 350W。这一趋势将持续下去，AMD 和 Intel 的下一代 x86 CPU 产品的 TDP 将高达 500W。</p>
+	<h2 id="%E8%AE%BE%E8%AE%A1%E5%A4%9A%E4%BB%A3%E5%86%B7%E5%8D%B4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88">设计多代冷却解决方案</h2>
+	<p>传统上，Cloudflare 第 10 代服务器和第 11 代服务器采用 1U 外形尺寸，并采用空气冷却来最大限度地提高机架密度。1U 外形尺寸是 1 机架单元高度服务器外形尺寸的缩写，即高度或厚度为 1.75 英寸。然而，要在 1U 外形尺寸中使用空气冷却超过 350 瓦 TDP 的 CPU，需要风扇以 100% 占空比旋转（始终以最大速度运行）。全速运行的单个风扇功耗约为 40W，那么，仅是为风扇供能，每台服务器 7-8 个双转子风扇的典型服务器配置就可达到 280-320W。在峰值负载时，每台服务器的总系统功耗（包括冷却风扇、处理器和其他组件）可能会超过 750 瓦。</p>
+	<p>1U 外形尺寸最多可容纳八个 40mm 双转子风扇，这为其可支持的温度范围设定了上限。我们首先考虑环境室温，我们假设为 40° C（正常条件下的最高预期温度）。在这些条件下，我们确定所有八个风扇都以 100% 占空比运行的风冷服务器可以支持最大 TDP 为 400W 的 CPU。 </p>
+	<p>这就带来了一个挑战，因为下一代 CPU 虽然与当前的 CPU 兼容，但 TDP 却高达 500W。为了面向未来，并让之后的产品尽可能多地重复使用第 12 代设计，我们需要一个可扩展的散热解决方案。此外，Cloudflare 部署服务器的许多主机托管设施都有机架功率限制。由于每个节点的系统总功耗超过 750 瓦，并且考虑到网络设备所利用的空间，我们将会有多达 50% 的机架空间未充分利用。</p>
+	<h3 id="%E6%88%91%E4%BB%AC%E9%81%87%E5%88%B0%E4%BA%86%E9%97%AE%E9%A2%98%EF%BC%81">我们遇到了问题！</h3>
+	<p>对于每一代 CPU，我们确实都有多种 SKU 选项。如果功耗是主要限制，我们可以选择限制 TDP 并使用核心数较少、低功耗的 SKU。为了评估这一点，硬件团队在实验室中针对多个 CPU SKU 运行了综合工作负载基准测试。我们发现，Cloudflare 服务可以继续有效地扩展到 128 个核心或 256 个硬件线程，从而在 TDP 达到或超过 360W 时显着提高性能和总拥有成本 (TCO) 效益。</p>
+	<p>然而，虽然每台服务器的性能指标和 TCO 指标看起来不错，但这只是情况的一部分：服务器在部署时进入服务器机架，而服务器机架具有必须在设计时考虑的约束和限制。两个限制因素是机架功率预算和机架高度。考虑到这两个机架级限制，综合总拥有成本 (TCO) 效益如何随 TDP 变化？我们对最高核心数 CPU 的可配置 TDP 范围进行了性能扫描，发现当 CPU TDP 升至约 340W 以上时，机架级 TCO 效益会停滞不前。 </p>
+	<p>TCO 优势停滞不前，是因为我们达到了机架功率预算限制：当 CPU TDP 增量增加到 340W 以上时，为了保持在机架的功率预算之内，机架中可安装的服务器数量会减少，每台服务器的增量性能增益会因此而被抵消。即使 CPU TDP 功率上限为 340W，我们仍未充分利用机架，仍有 30% 的空间可用。</p>
+	<p>值得庆幸的是，除了功率封顶和牺牲可能的性能增益之外，还有一种替代方法，即将机箱高度增加至 2U 外形尺寸（从 1.75 英寸高度增加到 3.5 英寸高度）。这样做的好处包括： </p>
+	<ul>
+		<li>更大的风扇（最大 80mm），可输送更多空气</li>
+		<li>允许使用更高、更大的散热片，以便更有效地散热</li>
+		<li>机箱内的空气阻抗更小（因为大多数组件的高度都是 1U）</li>
+		<li>提供足够的空间来添加 PCIe 连接的加速器/GPU，包括双插槽外形选项</li>
+	</ul><!--kg-card-begin: html-->
+	<table style="border-collapse: collapse ; border-spacing: 0 ; margin: 0px auto ; table-layout: fixed ; width: 724px" class="tg">
+		<colgroup>
+			<col style="width: 361.88889px">
+			<col style="width: 361.88889px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; font-weight: normal ; overflow: hidden ; padding: 10px 5px ; text-align: center ; vertical-align: top ; word-break: normal"><span style="font-weight: bold ; font-style: normal ; text-decoration: none ; color: #000 ; background-color: transparent">已停用的 1U 设计</span></th>
+				<th style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; font-weight: normal ; overflow: hidden ; padding: 10px 5px ; text-align: center ; vertical-align: top ; word-break: normal"><span style="font-weight: bold ; font-style: normal ; text-decoration: none ; color: #000 ; background-color: transparent">全新 2U 设计</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; overflow: hidden ; padding: 10px 5px ; text-align: left ; vertical-align: top ; word-break: normal"><a href="https://blog.cloudflare.com/content/images/2023/12/old_server_2.jpg" target="new">
+						<img src="https://blog.cloudflare.com/content/images/2023/12/old_server_2.jpg" alt="click to enlarge" width="355" height="205"></a></td>
+				<td style="border-color: inherit ; border-style: solid ; border-width: 1px ; font-family: &quot;arial&quot; , sans-serif ; font-size: 14px ; overflow: hidden ; padding: 10px 5px ; text-align: left ; vertical-align: top ; word-break: normal"><a href="https://blog.cloudflare.com/content/images/2023/12/server_large_2.jpg" target="new">
+						<img src="https://blog.cloudflare.com/content/images/2023/12/server_large_2.jpg" alt="click to enlarge" width="355" height="205"></a></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<p><em></em></p>
+	<center><em><small>点击图像以放大</small></em></center>
+	<p></p>
+	<!--kg-card-end: markdown-->
+	<p>2U 机箱设计并不是什么新鲜事物，实际上出于各种原因，2U 机箱设计在业界非常普遍，其中一个原因是更好的气流可以散出更多的热量，但它的代价是占用更多的空间，限制了机架上可安装的服务器数量。由于我们受到功率限制而不是空间限制，因此这种权衡不会对我们的设计产生负面影响。 </p>
+	<p>Cloudflare 供应商提供的热模拟显示，4 个 60mm 风扇或 4 个 80mm 风扇（每个风扇功率低于 40 瓦）足以冷却系统。与 1U 设计中的 8 个 40mm 风扇相比，理论上可节省至少 150 瓦，这将显着节省运营支出 (OPEX)，提高总拥有成本 (TCO)。改用 2U 外形尺寸还能充分利用我们的机架功率预算和机架空间，并为增加 PCIe 连接的加速器/GPU（包括双插槽外形选项）提供充足的空间。</p>
+	<h2 id="%E6%80%BB%E7%BB%93">总结</h2>
+	<p>这似乎与直觉相反，但我们的观察表明，扩大服务器机箱和利用每个节点的更多空间，实际上增加了机架密度，并比上一代部署提高了整体 TCO 优势，因为这样可以实现更好的散热设计。 我们对此次技术就绪性调查的结果非常满意，目前正在积极验证我们的第 12 代计算服务器，并很快将其投入生产。 请继续关注我们第 12 代设计的更多细节。 <br><br>如果您有意愿帮助建立更好的互联网，请加入我们，<a href="https://www.cloudflare.com/careers/jobs" target="_blank">我们正在招聘</a>！</p>
+</div>
