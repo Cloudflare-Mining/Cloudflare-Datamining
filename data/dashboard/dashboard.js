@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "dan/LOUI-4958-logpush-filters-all-datasets",
+					branch: "csparks/PAGES-3051-frontend-installation-warning",
 					isReleaseCandidate: "true",
-					commit: "0961b4630ab3d68dba44bd8fbb36b8cf0b7ba859",
+					commit: "48787eec8f309cdf083535124b45a642d2ad6224",
 					env: "production",
-					builtAt: 1702292284760,
-					dashVersion: "5dd997460e0b63eee28ee0b085768a4e7b769522",
+					builtAt: 1702310911542,
+					dashVersion: "83a336c9cb36ac3cc6fc0be6d43c267f484daed4",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -8579,6 +8579,7 @@
 					gitConnections: (0, t.BC)`/accounts/${"accountId"}/pages/connections`,
 					gitConnectionsProvider: (0, t.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}`,
 					gitRepos: (0, t.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/repos`,
+					gitRepo: (0, t.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/repos/${"repo"}`,
 					gitBranches: (0, t.BC)`/accounts/${"accountId"}/pages/connections/${"provider"}/${"username"}/repos/${"repo"}/branches`,
 					domainCheck: (0, t.BC)`/accounts/${"accountId"}/pages/domain_check`,
 					getSubdomain: (0, t.BC)`/accounts/${"accountId"}/pages/get_subdomain`,
