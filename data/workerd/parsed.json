@@ -2437,6 +2437,23 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/io/script-version.capnp:ScriptVersion",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {}
+				},
+				{
+					"name": "tag",
+					"annotations": {}
+				},
+				{
+					"name": "message",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/jsg/modules.capnp:Module",
 			"fields": [
 				{
@@ -4201,6 +4218,7 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
 		"workerd/src/workerd/io/outcome.capnp",
+		"workerd/src/workerd/io/script-version.capnp",
 		"workerd/src/workerd/jsg/modules.capnp",
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp",
