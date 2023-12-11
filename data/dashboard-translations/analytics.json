@@ -684,7 +684,7 @@
 	"logpush.filters.send_filtered_logs": "Filtered logs",
 	"logpush.filters.send_filtered_logs.description": "Select if you want to filter which logs are pushed to your storage destination",
 	"logpush.filters.error.invalid_json": "Filter contains invalid JSON",
-	"logpush.filters.error.unparsable": "This filter can not be parsed. Please use the API to configure.",
+	"logpush.filters.error.unparsable": "This filter can not be parsed by the filter builder.",
 	"logpush.filters.error.unsupported_fields": "We do not, currently, support the fields or operators within this filter in the filter builder.",
 	"logpush.help": "Cloudflare Enterprise customers have access to detailed logs of a number of <0>datasets for their domains</0>. These logs are helpful for debugging, identifying configuration adjustments, and creating analytics, especially when combined with other data sources, such as application server logs. You can use Logpush to regularly upload your logs to your cloud provider.",
 	"logpush.help.developer_documentation": "For more comprehensive information, refer to our <0>developer documentation.</0>",

@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "cwei/SCTR-676-fix",
+					branch: "dan/LOUI-4958-logpush-filters-all-datasets",
 					isReleaseCandidate: "true",
-					commit: "5d858ad4e0db9c28dd5bfd3ad6865628b49becaf",
+					commit: "0961b4630ab3d68dba44bd8fbb36b8cf0b7ba859",
 					env: "production",
-					builtAt: 1702050676292,
-					dashVersion: "0e6ac4100437c006233986408e5609ddd00a985e",
+					builtAt: 1702292284760,
+					dashVersion: "5dd997460e0b63eee28ee0b085768a4e7b769522",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
