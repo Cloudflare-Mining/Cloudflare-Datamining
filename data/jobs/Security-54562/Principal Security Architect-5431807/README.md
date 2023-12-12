@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About the role&nbsp;</strong></p>
-<p>As our security architect, you will take ownership of our security architecture&nbsp; program across various Cloudflare information security functions.</p>
+<p>As our Principal Security Architect, you will take ownership of our security architecture&nbsp; program across various Cloudflare information security functions.</p>
 <p>We are looking for someone excited about solving complex security architecture challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; design as well as partnering with other security teams to unify the security architecture strategy and frameworks into one cohesive security roadmap supporting the&nbsp; overall security function objectives.</p>
 <p><strong>What You’ll Do</strong></p>
 <p>Build and lead our security architecture&nbsp; program in the following areas:&nbsp;</p>
