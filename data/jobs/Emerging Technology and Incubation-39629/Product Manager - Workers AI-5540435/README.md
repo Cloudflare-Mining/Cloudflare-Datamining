@@ -5,36 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the team</strong></h4>
-<p><span style="font-weight: 400;">The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</span></p>
-<h4><strong>About the role</strong></h4>
-<p><span style="font-weight: 400;">We are looking for an experienced Data Engineer to join our Lisbon team to scale our data platform and product insights initiatives. You will work with a wide array of data sources to build integrated data pipelines that process billions of records each day and influence our critical business initiatives.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</span></p>
-<p><strong>What you'll do</strong></p>
+<h3><strong>About The Role</strong></h3>
+<p>We announced Workers AI (along with a few other AI products), during our birthday week, in late September of this year. If you’re not familiar with Workers AI, you should check out our <a href="https://blog.cloudflare.com/workers-ai/">launch blog post</a>. We built Workers AI to make ML accessible to all developers regardless of your familiarity with ML. You shouldn’t need a background in data science, building ML models, or deploying pipelines at scale to be able to leverage the power of the latest open source models to deliver beautiful AI experiences to your end users. So what is Workers AI? It’s an AI inference as a service platform, empowering developers to run AI models with just a few lines of code, all powered by our global network of GPUs. It's open and accessible, serverless, privacy-focused, runs near your users, pay-as-you-go, and it's built from the ground up for a best in class developer experience. You’ll be responsible for driving, building, and shipping everything needed to make Cloudflare the best place to run AI inference that “just works” out of the box.</p>
+<h3><strong>What You’ll Do</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Design, implement and support end to end scalable data pipelines for multiple data products&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute in improving an evolving data platform for scalability, observability and reliability</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with product and other data engineering teams to extract, transform and load data from various sources using big data technologies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build rich data sets that drive innovation in data driven insights at scale within the company</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</span></li>
+	<li>Drive the strategy, roadmap &amp; represent your products across the organization</li>
+	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
+	<li>Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</li>
+	<li>Talk to developers (probably the most important)! You’ll need to be crafty and develop a playbook to find the right users to talk to. This might include diving into our BI tools to find specific cohorts that are worth talking to, engaging on our developer discord, or heading straight to Twitter or Hacker news to engage and build relationships with the community.</li>
+	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; Developer Relations, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
+	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
+	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
+	<li>Delve into market research to drive new investments opportunities</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></h3>
+<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 3 years of industry experience in software engineering, data engineering, data science or related field with a track record of extracting, transforming and loading large datasets&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands on programming experience with Python, Go or any JVM based programming language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong command in writing advanced SQL queries</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of data management fundamentals and data storage/computing principles</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of big data technologies such as Spark, BigQuery, Kafka etc.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills</span></li>
+	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
+	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
+	<li>BS/MS in a technology field.&nbsp;</li>
+	<li>Professional product management experience (3-4 years) or previous founder</li>
+	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
+	<li>A desire to sweat the details and ship great developer experiences</li>
+	<li>Experience using developer tools (such as source-control management tools, CLIs, etc)</li>
+	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
+	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</li>
+	<li>Nice to have - background or familiarity with data science or ML/AI. Not a hard requirement, but you must have a burning desire to dive into this space and learn, and make your mark.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with container based deployments such as Docker &amp; Kubernetes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Google Cloud Platform or something similar</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in building RESTful and microservices applications is a plus</span></li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
