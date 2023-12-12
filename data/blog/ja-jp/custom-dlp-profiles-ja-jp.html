@@ -1,0 +1,52 @@
+<div class="mb2 gray5">4 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-4.png" class="kg-image" alt="Announcing Custom DLP profiles" loading="lazy"></figure>
+	<h3 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</h3>
+	<p>機密データはどこに存在しますか？誰がそのデータにアクセスできるのでしょうか？そのデータが不適切に共有または漏えいした場合、知る方法はありますか？このような質問で、多くのIT管理者やセキュリティ管理者が夜も眠れません。<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank">データ損失防止（DLP）</a>の目的は、管理者が機密データに対して望む可視性と制御を確保することです。</p>
+	<p>当社は2022年9月に<a href="https://blog.cloudflare.com/ja-jp/inline-dlp-ga-ja-jp">DLPの一般提供</a>を開始し、Cloudflare Oneのお客様に機密データの保護を強化しました。DLPを使用することで、お客様は企業のトラフィック内の機密データを特定し、データの意図された宛先を評価し、その後、プライバシー要件および主権の要件に基づいて許可された場合は詳細がログに記録され、それに応じてデータを許可またはブロックします。当社は、識別番号（例えば社会保障番号など）や財務情報（例えばクレジットカード番号など）に対する定義済みの検出をお客様に提供することから始めました。それ以来、ほぼすべてのお客様から次のような質問を受けました：</p>
+	<blockquote>「いつ独自の検出を構築できるのでしょうか？」</blockquote>
+	<p>ほとんどの組織では、クレジットカード番号に注意を払っていますが、クレジットカード番号は、簡単に検出可能な標準的なパターンを使用しています。しかし、知的財産や企業秘密のデータパターンは業種や企業によって大きく異なるため、お客様は独自のデータの損失を検知する手段が必要です。これには、内部のプロジェクト名、未発表の製品名、未発表のパートナー名などが含まれます。</p>
+	<p>本日をもって、お客様の組織は、Cloudflare Oneを使用して、これらの機密データを識別するためのカスタム検出を構築できます。その通りです。今日、当社のプラットフォーム全体のポリシー構築で使用されている正規表現アプローチと同じものを使用して、カスタムDLPプロファイルを構築できます。</p>
+	<h3 id="%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法</h3>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank">CloudflareのDLP</a>は、当社の<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank">安全なWebゲートウェイ（SWG）</a>製品である<a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank">Cloudflare Gateway</a>に組み込まれており、企業トラフィックをCloudflare経由でルーティングし、高速で安全なインターネットブラウジングを実現します。トラフィックがCloudflareを通過すると、機密データに関してそのHTTPトラフィックを検査し、DLPポリシーを適用できます。</p>
+	<p>DLPカスタムプロファイルの構築は、Cloudflareに期待されている同じ直感的なアプローチに従います。</p>
+	<p>まず、Zero Trustダッシュボード内で、一度、Gatewayの下にあるDLP Profilesタブに移動します：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>ここには、定義済みまたはカスタムのDLPプロファイルがあります：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-20.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>新しいプロファイルを開始するには、[<strong>プロファイルの作成</strong>]を選択します。名前と説明を入力した後、[<strong>検出エントリの追加</strong>]を選択してカスタム正規表現を追加します。<a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank">正規表現</a>（regex）は、テキスト内の検索パターンを指定する文字列であり、管理者がポリシー構築に必要な柔軟性と粒度を実現するための標準的な方法です。</p>
+	<p>Cloudflare Gatewayは現在、<a href="https://docs.rs/regex/latest/regex/#syntax" target="_blank">Rust正規表現クレート</a>を使用してHTTPポリシーで正規表現をサポートしています。一貫性を保つために、同じクレートを使用してカスタムDLP検出を提供しました。正規表現のサポートに関するドキュメンテーションについては、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank">当社のドキュメンテーション</a>を参照してください。</p>
+	<p>正規表現を使用して、メールアドレスなど、選択したカスタムPII（個人を特定できる情報）検出を構築したり、機密性の高い知的財産のキーワードを検出したりできます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-9.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>選択した名前と正規表現を入力します。DLPプロファイルの各エントリは、企業のトラフィック内でスキャンできる新しい検出対象です。当社の<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank">ドキュメンテーション</a>は、Rust正規表現を作成しテストするためのリソースを提供しています。</p>
+	<p>以下は、単純な電子メールアドレスを検出する正規表現の例です：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image7-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>完了すると、お客様のプロファイルにエントリーが表示されます。テストをより簡単にするために、<strong>Status</strong>フィールドでエントリーのオンとオフを切り替えることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>カスタムプロファイルは、定義済みプロファイルと同様に、HTTPポリシーを使用してトラフィックに適用できます。ここでは、定義済みプロファイルとカスタムプロファイルの両方が同じポリシーで使用され、dlptest.comへの機密性の高いトラフィックをブロックしています：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<h3 id="%E5%BD%93%E7%A4%BE%E3%81%AEdlp%E3%83%AD%E3%83%BC%E3%83%89%E3%83%9E%E3%83%83%E3%83%97">当社のDLPロードマップ</h3>
+	<p>これはDLPの旅の始まりに過ぎず、今後数四半期で製品を飛躍的に成長させることを目指しています。第4四半期には、当社は以下を実現しました：</p>
+	<ul>
+		<li>拡張され事前定義されたDLPプロファイル</li>
+		<li>カスタムDLPプロファイル</li>
+		<li>PDFスキャンのサポート</li>
+		<li>ファイル名ロギングのアップグレード</li>
+	</ul>
+	<p>次の四半期にかけて、当社は以下を含む多くの機能を追加予定です：</p>
+	<ul>
+		<li>Cloudflare CASBによる保存データのスキャン</li>
+		<li>最小DLP一致数</li>
+		<li>Microsoft Sensitivity Labelのサポート</li>
+		<li>Exact Data Match（EDM）</li>
+		<li>コンテキスト分析</li>
+		<li>光学式文字認識（OCR）</li>
+		<li>さらに多くの定義済みDLP検出</li>
+		<li>DLPアナリティクス</li>
+		<li>他にもたくさんあります！</li>
+	</ul>
+	<p>これらの各機能は、新しいデータの可視化および制御ソリューションを提供し、当社はこれらの機能をまもなくお客様にお届けできることを嬉しく思います。</p>
+	<h3 id="%E9%96%8B%E5%A7%8B%E6%96%B9%E6%B3%95">開始方法</h3>
+	<p>DLPはCloudflare Oneの一部であり、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust</a><a href="https://blog.cloudflare.com/custom-dlp-profiles/edit">サービスとしてのネットワーク</a>プラットフォームです。これにより、ユーザーは企業のリソースに接続できます。当社の<a href="https://blog.cloudflare.com/ja-jp/inline-dlp-ga-ja-jp">GAブログのアナウンス</a>では、Cloudflare Oneを使用して、トラフィックをDLPにオンボードする方法について詳しく説明しています。</p>
+	<p>Cloudflare One経由でDLPにアクセスするには、<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank">コンサルテーションを受けるか</a>、アカウントマネージャーにご連絡ください。</p>
+</div>
