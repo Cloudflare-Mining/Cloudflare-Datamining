@@ -84,6 +84,12 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		notification_toggle_collapse: "Hide information",
 		notification_expanded_information: "The registry for .example domain will be unavailable from January 1st 01:00 UTC through 05:00 UTC due to routine maintenance. During this window registrations, transfers, renewals, and updates to .example domains may be unavailable."
 	},
+	error: {
+		title: "Error",
+		description_domain: (0, e.d)`There was an error fetching domain data for ${"domainName"}.`,
+		description: "There was an error fetching data.",
+		button: "Retry"
+	},
 	domain_page: {
 		title: (0, e.d)`Manage ${"domainName"}`,
 		back: "Back to Manage Domains",
@@ -186,6 +192,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		}
 	},
 	dnssec_card: {
+		dnssec_request_error: "DNSSEC setting is currently unavailable.",
 		domain_locked_error: "The domain is currently locked and the DNSSEC setting cannot be updated."
 	},
 	add_years: {
