@@ -40,7 +40,7 @@
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Bay Area-based hires: Estimated annual salary of $260,000 - $380,000.</li>
+	<li>For Bay Area-based hires: Estimated annual salary of $260,000 - $320,000.</li>
 </ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
