@@ -5,10 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>Senior Workday Functional Analyst</p>
-<p>About the department<br>Cloudflare’s Enterprise Applications Team builds and runs Enterprise systems to enable<br>Cloudflare internal teams to operate efficiently and enable our customers and partners to do<br>business with us. Enterprise Applications Team is part of the CIO organization. Within the<br>Enterprise Applications Team is a technical team whose main responsibility is to manage our<br>Workday platform instance.<br>This team is responsible for the performance and maintenance of the company&amp;#39;s Human<br>Resources Information System (HRIS) associated with the collection, retrieval, accessibility, and<br>usage of employee information for the Human Resources department planning and related<br>activities. The team documents and analyzes the company&amp;#39;s HR data system&amp;#39;s needs and<br>develops solutions to support the department. They also collaborate with other departments<br>relative to the interface of HR systems with other critical enterprise systems (i.e. compensation,<br>payroll, time and attendance, benefits, finance, etc.).<br>About the role<br>As a Senior Workday Functional Analyst, you are expected to be involved in the following:<br> Lead workstreams for module deployments in Workday HCM (such as Benefits,<br>Absence, Time Tracking, Recruiting, Talent and Performance, Advanced Comp, etc.)<br> Lead and or participate in optimization projects to help business users realize the full<br>potential of Workday<br> Serve as an advisor to other Workday post-production engagements in accordance with<br>your areas of expertise<br> Build consensus around business processes and design<br> Communication of Workday capabilities and limitations<br> Configuration of Workday application in multiple modules<br> Consistent and ongoing interaction with client subject matter experts<br> Collaborate/ Consult with on and offshore resources<br>Examples of desirable skills, knowledge and experience<br> Bachelor&amp;#39;s Degree or higher in technology-related field or relevant experience in<br>implementing Business systems<br> 6 years of Project or Production Support experience with SaaS Human Resource<br>Information System<br> 4 years of Workday HCM configuration and business process experience in two or more<br>of the following: Recruiting, Core HCM, Security, Reporting, Benefits Administration,<br>Payroll, Time Tracking, or Absence or Learning<br> 2 years of Workday Configurable Security and Custom Report Design and Development<br> Experience serving as a workstream lead on HCM implementations or optimization<br>engagements, from design to deployment<br> Superior communication skills, both written and verbal<br> Experience with Excel, Word, Visio and Power point<br> Attention to detail and strong work ethic<br> Experienced in working with both internal and system integrator teams for development</p>
-<p> Experience with Jira and Google Suite</p>
-<p>Preferred qualifications<br> Workday PRO certified in HCM Core, Security, Advance Compensation, Benefits<br>Administration, Time Tracking or Payroll<br> Consulting experience within the Human Resources Information Systems space</p>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team, specifically responsible for Turnstile and Challenges Pages, works in close collaboration with a dedicated Product Manager and other engineering teams to develop cutting-edge Bot detection solutions. Have a look at some of our <a href="https://blog.cloudflare.com/tag/turnstile/">articles mentioning Turnstile</a>!</p>
+<h4>&nbsp;</h4>
+<p><strong>What You'll Do:</strong></p>
+<p>As a Software Engineer in our team, you'll play a key role in expanding our Turnstile and Challenges products. Your responsibilities will include:</p>
+<ul>
+	<li>Enhancing bot and human detection capabilities while maintaining a focus on privacy, security, and usability.</li>
+	<li>Full-stack development - from Edge process configuration to client-side logic.</li>
+	<li>Building scalable, secure, and privacy-conscious software to accommodate a growing user base with diverse requirements.</li>
+</ul>
+<h4>&nbsp;</h4>
+<p><strong>About You:</strong></p>
+<p>We're looking for an engineer with:</p>
+<ul>
+	<li>Proficiency in Rust and TypeScript.</li>
+	<li>A security-focused mindset, essential for a product like Turnstile.</li>
+	<li>A natural sense of curiosity and a self-driven attitude.</li>
+</ul>
+<h4>&nbsp;</h4>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Experience with ClickHouse, PostgreSQL, Docker, Salt, Lua, Go, and Unix systems will be highly regarded.</li>
+	<ul>
+		<li>You do not <strong>need</strong> to have experience with any of these technologies!</li>
+	</ul>
+	<li>Previous experience with counter abuse, fraud detection and mitigation.</li>
+</ul>
+<h4>&nbsp;</h4>
+<p><strong>Working in Our Team:</strong></p>
+<p>You'll be integral to making our product more robust, secure, and stable. Our product runs in all corners of the web, on any imaginable browser, requiring continuous testing and adaptability. We value innovation and problem-solving skills - we encourage you to bring forward problems you identify along with your best solutions. Our team syncs are centered around addressing these challenges, focusing on short and long-term solutions for maximum business value.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
