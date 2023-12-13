@@ -2,11 +2,11 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image14-1.png" class="kg-image" alt="Unbounded memory usage by TCP for receive buffers, and how we fixed it" loading="lazy" width="1999" height="1125"></figure>
 	<p>At Cloudflare, we are constantly monitoring and optimizing the performance and resource utilization of our systems. Recently, we noticed that some of our TCP sessions were allocating more memory than expected.</p>
-	<p>The Linux kernel allows <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank">TCP sessions</a> that match certain characteristics to ignore memory allocation limits set by autotuning and allocate excessive amounts of memory, all the way up to net.ipv4.tcp_rmem max (the per-session limit). On Cloudflare’s production network, there are often many such TCP sessions on a server, causing the total amount of allocated TCP memory to reach net.ipv4.tcp_mem thresholds (the server-wide limit). When that happens, the kernel imposes memory use constraints on all TCP sessions, not just the ones causing the problem. Those constraints have a negative impact on throughput and latency for the user. Internally within the kernel, the problematic sessions trigger TCP collapse processing, “OFO” pruning (dropping of packets already received and sitting in the out-of-order queue), and the dropping of newly arriving packets.</p>
+	<p>The Linux kernel allows <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">TCP sessions</a> that match certain characteristics to ignore memory allocation limits set by autotuning and allocate excessive amounts of memory, all the way up to net.ipv4.tcp_rmem max (the per-session limit). On Cloudflare’s production network, there are often many such TCP sessions on a server, causing the total amount of allocated TCP memory to reach net.ipv4.tcp_mem thresholds (the server-wide limit). When that happens, the kernel imposes memory use constraints on all TCP sessions, not just the ones causing the problem. Those constraints have a negative impact on throughput and latency for the user. Internally within the kernel, the problematic sessions trigger TCP collapse processing, “OFO” pruning (dropping of packets already received and sitting in the out-of-order queue), and the dropping of newly arriving packets.</p>
 	<p>This blog post describes in detail the root cause of the problem and shows the test results of a solution.</p>
 	<h2 id="tcp-receive-buffers-are-excessively-big-for-some-sessions">TCP receive buffers are excessively big for some sessions</h2>
 	<p>Our journey began when we started noticing a lot of TCP sessions on some servers with large amounts of memory allocated for receive buffers. &nbsp;Receive buffers are used by Linux to hold packets that have arrived from the network but have not yet been read by the local process.</p>
-	<p>Digging into the details, we observed that most of those TCP sessions had a <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank">latency</a> (RTT) of roughly 20ms. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank">RTT is the round trip time</a> between the endpoints, measured in milliseconds. At that latency, standard <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product" target="_blank">BDP</a> calculations tell us that a window size of 2.5 MB can accommodate up to 1 Gbps of throughput. We then counted the number of TCP sessions with an upper memory limit set by autotuning (skmem_rb) greater than 5 MB, which is double our calculated window size. The relationship between the window size and skmem_rb is described in more detail <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">here</a>. &nbsp;There were 558 such TCP sessions on one of our servers. Most of those sessions looked similar to this:</p>
+	<p>Digging into the details, we observed that most of those TCP sessions had a <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> (RTT) of roughly 20ms. <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt">RTT is the round trip time</a> between the endpoints, measured in milliseconds. At that latency, standard <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">BDP</a> calculations tell us that a window size of 2.5 MB can accommodate up to 1 Gbps of throughput. We then counted the number of TCP sessions with an upper memory limit set by autotuning (skmem_rb) greater than 5 MB, which is double our calculated window size. The relationship between the window size and skmem_rb is described in more detail <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">here</a>. &nbsp;There were 558 such TCP sessions on one of our servers. Most of those sessions looked similar to this:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/Screenshot-2023-05-25-at-15.28.57.png" class="kg-image" alt="" loading="lazy" width="1582" height="734"></figure>
 	<p>The key fields to focus on above are:</p>
 	<ul>
@@ -22,7 +22,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download-17.png" class="kg-image" alt="" loading="lazy" width="800" height="500"></figure>
 	<p>This graph is showing us that the limit being set by autotuning is being ignored, because every time skmem_r exceeds skmem_rb, skmem_rb is simply being raised to match it. So something is wrong with how skmem_rb is being handled. This explains the high memory usage. The question now is why.</p>
 	<h2 id="the-reproducer">The reproducer</h2>
-	<p>At this point, we had only observed this problem in our production environment. Because we couldn’t predict which TCP sessions would fall into this dysfunctional state, and because we wanted to see the session information for these dysfunctional sessions from the beginning of those sessions, we needed to collect a lot of TCP session data for all TCP sessions. This is challenging in a production environment running at the scale of <a href="https://www.cloudflare.com/network" target="_blank">Cloudflare’s network</a>. We needed to be able to reproduce this in a controlled lab environment. To that end, we gathered more details about what distinguishes these problematic TCP sessions from others, and ran a large number of experiments in our lab environment to reproduce the problem.</p>
+	<p>At this point, we had only observed this problem in our production environment. Because we couldn’t predict which TCP sessions would fall into this dysfunctional state, and because we wanted to see the session information for these dysfunctional sessions from the beginning of those sessions, we needed to collect a lot of TCP session data for all TCP sessions. This is challenging in a production environment running at the scale of <a href="https://www.cloudflare.com/network">Cloudflare’s network</a>. We needed to be able to reproduce this in a controlled lab environment. To that end, we gathered more details about what distinguishes these problematic TCP sessions from others, and ran a large number of experiments in our lab environment to reproduce the problem.</p>
 	<p>After <em>a lot </em>of attempts, we finally got it.</p>
 	<p>We were left with some pretty dirty lab machines by the time we got to this point, meaning that a lot of settings had been changed. We didn’t believe that all of them were related to the problem, but we didn’t know which ones were and which were not. So we went through a further series of tests to get us to a minimal set up to reproduce the problem. It turned out that a number of factors that we originally thought were important (such as latency) were not important.</p>
 	<p>The minimal set up turned out to be surprisingly simple:</p>
@@ -118,13 +118,13 @@ while True:
 	<p>sk_rcvbuf is being increased inappropriately. Somewhere. Let’s review the code to narrow down the possibilities.</p>
 	<p>sk_rcvbuf only gets updated in three places (that are relevant to this issue):</p>
 	<ul>
-		<li><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L572" target="_blank">tcp_clamp_window</a></li>
-		<li><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L701" target="_blank">tcp_rcv_space_adjust</a></li>
-		<li><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp.c#L1845" target="_blank">tcp_set_rcvlowat</a></li>
+		<li><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L572">tcp_clamp_window</a></li>
+		<li><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L701">tcp_rcv_space_adjust</a></li>
+		<li><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp.c#L1845">tcp_set_rcvlowat</a></li>
 	</ul>
 	<p>Actually, we are not calling tcp_set_rcvlowat, which eliminates that one. Next we used bpftrace scripts to figure out if it’s in tcp_clamp_window or tcp_rcv_space_adjust. &nbsp; After bpftracing, the answer is: It’s tcp_clamp_window.</p>
 	<h2 id="summarizing-what-we-know-so-far-part-i">Summarizing what we know so far, <br>part I</h2>
-	<p><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L4770" target="_blank">tcp_try_rmem_schedule</a> is being called as usual.</p>
+	<p><a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/tcp_input.c#L4770">tcp_try_rmem_schedule</a> is being called as usual.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download--5--6.png" class="kg-image" alt="" loading="lazy" width="554" height="255"></figure>
 	<p>Sometimes rmem_alloc &gt; sk_rcvbuf. When that happens, prune is called, which calls tcp_clamp_window. tcp_clamp_window <em>increases</em> sk_rcvbuf to match rmem_alloc. That is unexpected.</p>
 	<p>The key question is: Why is rmem_alloc &gt; sk_rcvbuf?</p>
@@ -132,7 +132,7 @@ while True:
 	<p>More kernel code review ensued, reviewing all the places where rmem_alloc is increased, and looking to see where rmem_alloc could be exceeding sk_rcvbuf. After more bpftracing, watching netstats, etc., the answer is: TCP coalescing.</p>
 	<h2 id="tcp-coalescing">TCP coalescing</h2>
 	<p>Coalescing is where the kernel will combine packets as they are being received.</p>
-	<p>Note that this is not <a href="https://lwn.net/Articles/358910" target="_blank">Generic Receive Offload</a> (GRO). &nbsp;This is specific to TCP for packets on the INPUT path. Coalesce is a L4 feature that appends user payload from an incoming packet to an already existing packet, if possible. This saves memory (header space).</p>
+	<p>Note that this is not <a href="https://lwn.net/Articles/358910">Generic Receive Offload</a> (GRO). &nbsp;This is specific to TCP for packets on the INPUT path. Coalesce is a L4 feature that appends user payload from an incoming packet to an already existing packet, if possible. This saves memory (header space).</p>
 	<p>tcp_rcv_established calls tcp_queue_rcv, which calls tcp_try_coalesce. If the incoming packet can be coalesced, then it will be, and rmem_alloc is raised to reflect that. Here’s the important part: rmem_alloc can and does go above sk_rcvbuf because of the logic in that routine.</p>
 	<h2 id="summarizing-what-we-know-so-far-part-ii">Summarizing what we know so far, <br>part II</h2>
 	<ol>
@@ -145,7 +145,7 @@ while True:
 	<p>Why is rmem_alloc even close to sk_rcvbuf?</p>
 	<h2 id="why-is-rmemalloc-close-to-skrcvbuf">Why is rmem_alloc close to sk_rcvbuf?</h2>
 	<p>Sending a ZeroWindow (a packet advertising a window size of zero) is how a TCP receiver tells a TCP sender to stop sending when the receive window is full. This is the mechanism that should keep rmem_alloc well below sk_rcvbuf.</p>
-	<p>During our tests, we happened to notice that the SNMP metric <a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/proc.c#L270" target="_blank">TCPWantZeroWindowAdv</a> was increasing. The receiver was not sending ZeroWindows when it should have been. &nbsp;So our attention fell on the window calculation logic, and we arrived at the root cause of all of our problems.</p>
+	<p>During our tests, we happened to notice that the SNMP metric <a href="https://elixir.bootlin.com/linux/v6.1.14/source/net/ipv4/proc.c#L270">TCPWantZeroWindowAdv</a> was increasing. The receiver was not sending ZeroWindows when it should have been. &nbsp;So our attention fell on the window calculation logic, and we arrived at the root cause of all of our problems.</p>
 	<h2 id="the-root-cause">The root cause</h2>
 	<p>The problem has to do with how the receive window size is calculated. This is the value in the TCP header that the receiver sends to the sender. Together with the ACK value, it communicates to the sender what the right edge of the window is.</p>
 	<p>The way TCP’s sliding window works is described in Stevens, “TCP/IP Illustrated, Volume 1”, section 20.3. &nbsp;Visually, the receive window looks like this:</p>
@@ -172,7 +172,7 @@ while True:
 		<li>Shrinking the window. This is when the right edge of the window moves to the left.</li>
 	</ul>
 	<p>Opening and shrinking is not the same thing as the receive window size in the TCP header getting larger or smaller. The right edge is defined as the ACK number plus the receive window size. Shrinking only occurs when that right edge moves to the left (i.e. gets reduced).</p>
-	<p><a href="https://www.rfc-editor.org/rfc/rfc7323" target="_blank">RFC 7323</a> describes <a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4" target="_blank">window retraction</a>. Retracting the window is the same as shrinking the window.</p>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc7323">RFC 7323</a> describes <a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4">window retraction</a>. Retracting the window is the same as shrinking the window.</p>
 	<h2 id="discussion-regarding-solutions">Discussion Regarding Solutions</h2>
 	<p>There are only three options to consider:</p>
 	<ol>
@@ -190,19 +190,19 @@ while True:
 	<p>We need to stop doing option #1. &nbsp;We could either drop packets (option #2) when sk_rcvbuf is reached. &nbsp;This avoids excessive memory usage, but is still functionally incorrect for a window full situation. &nbsp;Or we could shrink the window (option #3).</p>
 	<h2 id="shrinking-the-window">Shrinking the window</h2>
 	<p>It turns out that this issue has already been addressed in the RFC’s.</p>
-	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4" target="_blank">RFC 7323</a> says:</p>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#section-2.4">RFC 7323</a> says:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download--7--1.png" class="kg-image" alt="" loading="lazy" width="605" height="251"></figure>
 	<p>There are two elements here that are important.</p>
 	<ul>
 		<li>“there are instances when a retracted window can be offered”</li>
 		<li>“Implementations MUST ensure that they handle a shrinking window”</li>
 	</ul>
-	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#appendix-F" target="_blank">Appendix F</a> of that RFC describes our situation, adding:</p>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc7323#appendix-F">Appendix F</a> of that RFC describes our situation, adding:</p>
 	<ul>
 		<li>“<em>This is a general problem and can happen any time the sender does a write, which is smaller than the window scale factor.</em>”</li>
 	</ul>
 	<h2 id="kernel-patch">Kernel patch</h2>
-	<p>The Linux kernel patch we wrote to enable TCP window shrinking has been merged upstream and will be in kernel version 6.5 and later. &nbsp;The commit can be found <a href="https://github.com/torvalds/linux/commit/b650d953cd391595e536153ce30b4aab385643ac" target="_blank">here</a>.</p>
+	<p>The Linux kernel patch we wrote to enable TCP window shrinking has been merged upstream and will be in kernel version 6.5 and later. &nbsp;The commit can be found <a href="https://github.com/torvalds/linux/commit/b650d953cd391595e536153ce30b4aab385643ac">here</a>.</p>
 	<h2 id="rerunning-the-test-above-with-kernel-patch">Rerunning the test above with kernel patch</h2>
 	<p>Here is the test we showed above, but this time using the kernel patch:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download--8--1.png" class="kg-image" alt="" loading="lazy" width="800" height="900"></figure>
@@ -257,7 +257,7 @@ while True:
 	<h3 id="tcprcvcollapsed">TCPRcvCollapsed</h3>
 	<p>Recall that TCPRcvCollapsed is the number of packets per second that are merged together in the queue in order to reduce memory usage (by eliminating header metadata). &nbsp;This occurs when memory limits are reached.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download--18-.png" class="kg-image" alt="" loading="lazy" width="762" height="687"></figure>
-	<p>The patch was enabled on most servers on 05/01 at 22:00. These graphs show the results from one of our data centers. The upper graph shows that the patch has eliminated all collapse processing. The lower graph shows the amount of time spent in collapse processing (each line in the lower graph is a single server). This is important because it can impact Cloudflare’s responsiveness in processing <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank">HTTP requests</a>. &nbsp;The result of the patch is that all latency due to TCP collapse processing has been eliminated.</p>
+	<p>The patch was enabled on most servers on 05/01 at 22:00. These graphs show the results from one of our data centers. The upper graph shows that the patch has eliminated all collapse processing. The lower graph shows the amount of time spent in collapse processing (each line in the lower graph is a single server). This is important because it can impact Cloudflare’s responsiveness in processing <a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP requests</a>. &nbsp;The result of the patch is that all latency due to TCP collapse processing has been eliminated.</p>
 	<h3 id="memory">Memory</h3>
 	<p>Because the memory limits set by autotuning are now being enforced, the total amount of memory allocated is reduced.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/download--19-.png" class="kg-image" alt="" loading="lazy" width="1040" height="475"></figure>

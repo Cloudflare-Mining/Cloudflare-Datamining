@@ -1,13 +1,12 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1">
-	<!--kg-card-begin: markdown-->
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Recently, a new brute force attack method for WordPress instances was identified by Sucuri. This latest technique allows attackers to try a large number of WordPress username and password login combinations in a single HTTP request.</p>
 	<p>The vulnerability can easily be abused by a simple script to try a significant number of username and password combinations with a relatively small number of HTTP requests. The following diagram shows a 4-fold increase in login attempts to HTTP requests, but this can trivially be expanded to a thousand logins.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/10/wordpress-xmlrpc-brute-force-amplification.png" alt="WordPress XML-RPC Brute Force Amplification Attack" loading="lazy"></p>
 	<p>This form of brute force attack is harder to detect, since you won’t necessarily see a flood of requests. Fortunately, all CloudFlare paid customers have the option to enable a Web Application Firewall ruleset to stop this new attack method.</p>
 	<h3 id="whatisxmlrpc">What is XML-RPC?</h3>
 	<p>To understand the vulnerability, it’s important to understand the basics of the XML remote procedure protocol (XML-RPC).</p>
-	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API" target="_blank">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
+	<p>XML-RPC uses XML encoding over HTTP to provide a remote procedure call protocol. It’s commonly used to execute various <a href="https://codex.wordpress.org/XML-RPC_WordPress_API">functions in a WordPress instance</a> for APIs and other automated tasks. Requests that modify, manipulate, or view data using XML-RPC require user credentials with sufficient permissions.</p>
 	<p>Here is an example that requests a list of the user’s blogs:</p>
 	<pre><code>&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
 &lt;methodCall&gt;

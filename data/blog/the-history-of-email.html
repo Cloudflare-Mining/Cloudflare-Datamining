@@ -1,6 +1,5 @@
 <div class="mb2 gray5">12 min read</div>
-<div class="post-content lh-copy gray1">
-	<!--kg-card-begin: markdown-->
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p class="attribution">
 		This was adapted from a post which originally appeared on the Eager blog. Eager has now become the new <a href="https://www.cloudflare.com/apps" target="_blank">Cloudflare Apps</a>.</p>
 	<blockquote class="pull-quote-centered" style="padding-bottom: 0">
@@ -11,7 +10,7 @@
 			— Text of the first email ever sent, 1971
 		</p>
 	</blockquote>
-	<p>The ARPANET (a precursor to the Internet) was created “to help maintain U.S. technological superiority and guard against unforeseen technological advances by potential adversaries,” in other words, to avert the next Sputnik. Its purpose was to allow scientists to share the products of their work and to make it more likely that the work of any one team could potentially be somewhat usable by others. One thing which was not considered particularly valuable was allowing these scientists to communicate using this network. People were already perfectly capable of communicating by phone, letter, and in-person meeting. The purpose of a computer was to do <a href="http://www.kurzweilai.net/memorandum-for-members-and-affiliates-of-the-intergalactic-computer-network" target="_blank">massive computation</a>, to <a href="http://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank">augment our memories</a> and <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881" target="_blank">empower our minds</a>.</p>
+	<p>The ARPANET (a precursor to the Internet) was created “to help maintain U.S. technological superiority and guard against unforeseen technological advances by potential adversaries,” in other words, to avert the next Sputnik. Its purpose was to allow scientists to share the products of their work and to make it more likely that the work of any one team could potentially be somewhat usable by others. One thing which was not considered particularly valuable was allowing these scientists to communicate using this network. People were already perfectly capable of communicating by phone, letter, and in-person meeting. The purpose of a computer was to do <a href="http://www.kurzweilai.net/memorandum-for-members-and-affiliates-of-the-intergalactic-computer-network">massive computation</a>, to <a href="http://groups.csail.mit.edu/medg/people/psz/Licklider.html">augment our memories</a> and <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881">empower our minds</a>.</p>
 	<p>Surely we didn’t need a computer, this behemoth of technology and innovation, just to talk to each other.</p>
 	<figure class="standard">
 		<div class="figcontent">
@@ -52,7 +51,7 @@ Hi, wanna grab lunch?
 				— Frank Heart, director of the ARPANET infrastructure team
 			</p>
 		</blockquote>
-		<p>An early alternative to Unix called <a href="https://en.wikipedia.org/wiki/TOPS-20" target="_blank">Tenex</a> took this capability one step further. Tenex included the ability to send a message to another user by writing onto the end of a file which only they could read. This is conceptually very simple, you could implement it yourself by creating a file in everyones home directory which only they can read:</p>
+		<p>An early alternative to Unix called <a href="https://en.wikipedia.org/wiki/TOPS-20">Tenex</a> took this capability one step further. Tenex included the ability to send a message to another user by writing onto the end of a file which only they could read. This is conceptually very simple, you could implement it yourself by creating a file in everyones home directory which only they can read:</p>
 		<pre><code>mkdir ~/messages
 chmod 0442 ~/messages
 </code></pre>
@@ -62,13 +61,13 @@ chmod 0442 ~/messages
 		<p>This is, of course, not a great system because anyone could delete your messages! I trust the Tenex implementation (called <code>SNDMSG</code>) was a bit more secure.</p>
 		<h3 id="arpanet">ARPANET</h3>
 		<p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
-		<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310" target="_blank">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
+		<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
 		<pre><code>SNDMSG zack@cloudflare
 </code></pre>
 		<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
 		<h3 id="ftp">FTP</h3>
 		<p>The CPYNET format did not have much of a life outside of Tenex unfortunately. It was necessary to create a standard method of communication which every system could understand. Fortunately, this was also the goal of another similar protocol, FTP. FTP (the File Transfer Protocol) sought to create a single way by which different machines could transfer files over the ARPANET.</p>
-		<p>FTP <a href="https://tools.ietf.org/html/rfc114" target="_blank">originally</a> didn’t include support for email. Around the time it was <a href="http://www.rfc-editor.org/rfc/rfc385.txt" target="_blank">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
+		<p>FTP <a href="https://tools.ietf.org/html/rfc114">originally</a> didn’t include support for email. Around the time it was <a href="http://www.rfc-editor.org/rfc/rfc385.txt">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
 		<pre><code>$ ftp
 &lt; open bbn
 
@@ -83,9 +82,9 @@ chmod 0442 ~/messages
 
 &gt; 250 Mail stored
 </code></pre>
-		<p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772" target="_blank">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821" target="_blank">1982</a>.</p>
+		<p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821">1982</a>.</p>
 		<h3 id="mailboxes">Mailboxes</h3>
-		<p>The format for defining how a message should be transmitted (and often how it would be stored on disk) was first <a href="https://tools.ietf.org/html/rfc733" target="_blank">standardized</a> in 1977:</p>
+		<p>The format for defining how a message should be transmitted (and often how it would be stored on disk) was first <a href="https://tools.ietf.org/html/rfc733">standardized</a> in 1977:</p>
 		<pre><code>Date     :  27 Aug 1976 0932-PDT
 From     :  Ken Davis &lt;KDavis at Other-Host&gt;
 Subject  :  Re: The Syntax in the RFC
@@ -95,7 +94,7 @@ To       :  George Jones &lt;Group at Host&gt;,
 There’s no way this is ever going anywhere...
 </code></pre>
 		<p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
-		<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox" target="_blank">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
+		<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
 		<pre><code>From MAILER-DAEMON Fri Jul  8 12:08:34 1974
 From: Author &lt;author@example.com&gt;
 To: Recipient &lt;recipient@example.com&gt;
@@ -123,8 +122,8 @@ This is the body.
 &gt;From (should be escaped).
 There are 3 lines.
 </code></pre>
-		<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt" target="_blank">diversity</a> of clients available, but a few are of historical note.</p>
-		<p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm" target="_blank">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
+		<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt">diversity</a> of clients available, but a few are of historical note.</p>
+		<p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
 		<p>RD was the first client to give us the ability to sort messages, save messages, and delete them. There was one key thing missing though: any integration between receiving a message and sending one. RD was strictly for consuming emails you had received, to reply to a message it was necessary to compose an entirely new message in SNDMSG or another tool.</p>
 		<p>That innovation came from MSG, which itself was an improvement on a client with the hilarious name BANANARD. MSG added the ability to reply to a message, in the words of Dave Crocker:</p>
 		<blockquote>
@@ -132,13 +131,13 @@ There are 3 lines.
 				My subjective sense was that propagation of MSG resulted in an exponential explosion of email use, over roughly a 6-month period. The simplistic explanation is that people could now close the Shannon-Weaver communication loop with a single, simple command, rather than having to formulate each new message. In other words, email moved from the sending of independent messages into having a conversation.
 			</p>
 		</blockquote>
-		<p>Email wasn’t just allowing people to talk more easily, it was changing how they talk. In <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt" target="_blank">the words</a> of C. R. Linklider and Albert Vezza in 1978:</p>
+		<p>Email wasn’t just allowing people to talk more easily, it was changing how they talk. In <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt">the words</a> of C. R. Linklider and Albert Vezza in 1978:</p>
 		<blockquote>
 			<p>
 				One of the advantages of the message systems over letter mail was that, in an ARPANET message, one could write tersely and type imperfectly, even to an older person in a superior position and even to a person one did not know very well, and the recipient took no offense... Among the advantages of the network message services over the telephone were the fact that one could proceed immediately to the point without having to engage in small talk first, that the message services produced a preservable record, and that the sender and receiver did not have to be available at the same time.
 			</p>
 		</blockquote>
-		<p>The most popular client from this era was called <a href="https://en.wikipedia.org/wiki/MH_Message_Handling_System" target="_blank">MH</a> and was composed of several command line utilities for doing various actions with and to your email.</p>
+		<p>The most popular client from this era was called <a href="https://en.wikipedia.org/wiki/MH_Message_Handling_System">MH</a> and was composed of several command line utilities for doing various actions with and to your email.</p>
 		<pre><code>$ mh
 
 % show
@@ -172,7 +171,7 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 % edit vi
 </code></pre>
 		<p>You could then edit your reply in vim which is actually pretty cool.</p>
-		<p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book" target="_blank">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>
+		<p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>
 		<h3 id="pineelmmutt">Pine, Elm &amp; Mutt</h3>
 		<blockquote>
 			<p>
@@ -191,8 +190,8 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 				</div>
 			</figcaption>
 		</figure>
-		<p>This was followed by more graphical <a href="https://en.wikipedia.org/wiki/Text-based_user_interface" target="_blank">TUI</a> clients like <a href="https://web.archive.org/web/19970126101209/http://www.cs.hmc.edu/~me/mutt/index.html" target="_blank">Mutt</a> and <a href="https://groups.google.com/forum/#!msg/comp.mail.misc/kqKQojTDVBM/kvYgyYbwfKoJ" target="_blank">Pine</a>.</p>
-		<p>In the words of the University of Washington’s <a href="http://www.washington.edu/pine/overview/project-history.html" target="_blank">Pine team</a>:</p>
+		<p>This was followed by more graphical <a href="https://en.wikipedia.org/wiki/Text-based_user_interface">TUI</a> clients like <a href="https://web.archive.org/web/19970126101209/http://www.cs.hmc.edu/~me/mutt/index.html">Mutt</a> and <a href="https://groups.google.com/forum/#!msg/comp.mail.misc/kqKQojTDVBM/kvYgyYbwfKoJ">Pine</a>.</p>
+		<p>In the words of the University of Washington’s <a href="http://www.washington.edu/pine/overview/project-history.html">Pine team</a>:</p>
 		<blockquote>
 			<p>
 				Our goal was to provide a mailer that naive users could use without fear of making mistakes. We wanted to cater to users who were less interested in learning the mechanics of using electronic mail than in doing their jobs; users who perhaps had some computer anxiety. We felt the way to do this was to have a system that didn’t do surprising things and provided immediate feedback on each operation; a mailer that had a limited set of carefully-selected functions.
@@ -219,12 +218,12 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 				since my spelling is used several billion times a minute more than theirs.
 			</p>
 			<p>
-				— Phillip Hallam-Baker on his spelling of ’Referer’ <a href="https://groups.google.com/forum/#!original/alt.folklore.computers/7X75In21_54/JgV9Rw04f-EJ" target="_blank"><code>2000</code></a>
+				— Phillip Hallam-Baker on his spelling of ’Referer’ <a href="https://groups.google.com/forum/#!original/alt.folklore.computers/7X75In21_54/JgV9Rw04f-EJ"><code>2000</code></a>
 			</p>
 		</blockquote>
-		<p>The first webmail client was created by Phillip Hallam-Baker at CERN in <a href="https://groups.google.com/forum/#!topic/comp.archives/vpWqUAmg8xU" target="_blank">1994</a>. Its creation was early enough in the history of the web that it led to the identification of the need for the <code>Content-Length</code> header in POST requests.</p>
+		<p>The first webmail client was created by Phillip Hallam-Baker at CERN in <a href="https://groups.google.com/forum/#!topic/comp.archives/vpWqUAmg8xU">1994</a>. Its creation was early enough in the history of the web that it led to the identification of the need for the <code>Content-Length</code> header in POST requests.</p>
 		<p>Hotmail was released in 1996. The name was chosen because it included the letters HTML to emphasize it being ‘on the web’ (it was original stylized as ‘HoTMaiL’). When it was launched users were limited to 2MB of storage (at the time a 1.6GB hard drive was $399).</p>
-		<p>Hotmail was originally implemented using FreeBSD, but in a decision I’m sure every engineer regretted, it was moved to Windows 2000 after the service was bought by Microsoft. In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password ‘<a href="http://archive.wired.com/science/discoveries/news/1999/08/21503" target="_blank">eh</a>’. It took until 2001 for ‘hackers’ to realize you could access other people’s messages by swap usernames in the URL and guessing at a valid message number.</p>
+		<p>Hotmail was originally implemented using FreeBSD, but in a decision I’m sure every engineer regretted, it was moved to Windows 2000 after the service was bought by Microsoft. In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password ‘<a href="http://archive.wired.com/science/discoveries/news/1999/08/21503">eh</a>’. It took until 2001 for ‘hackers’ to realize you could access other people’s messages by swap usernames in the URL and guessing at a valid message number.</p>
 		<p><img src="https://blog.cloudflare.com/content/images/2017/08/posts-history-of-email-images-gmail.jpg" alt="Gmail" loading="lazy"></p>
 		<p>Gmail was famously created in 2004 as a ‘20% project’ of Paul Buchheit. Originally it wasn’t particularly believed in as a product within Google. They had to launch using a few hundred Pentium III computers no one else wanted, and it took three years before they had the resources to accept users without an invitation. It was notable both for being much closer to a desktop application (using AJAX) and for the unprecedented offer of 1GB of mail storage.</p>
 		<h3 id="thefuture">The Future</h3>
@@ -236,7 +235,7 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 				</div>
 			</figcaption>
 		</figure>
-		<p>At this point email is a ubiquitous enough communication standard that it’s very possible postal mail as an everyday idea will die before I do. One thing which has not survived well is any attempt to replace email with a more complex messaging tool like <a href="https://en.wikipedia.org/wiki/Apache_Wave" target="_blank">Google Wave</a>. With the rise of more targeted communication tools like Slack, Facebook, and Snapchat though, you never know.</p>
+		<p>At this point email is a ubiquitous enough communication standard that it’s very possible postal mail as an everyday idea will die before I do. One thing which has not survived well is any attempt to replace email with a more complex messaging tool like <a href="https://en.wikipedia.org/wiki/Apache_Wave">Google Wave</a>. With the rise of more targeted communication tools like Slack, Facebook, and Snapchat though, you never know.</p>
 		<p>There is, of course, a cost to that. The ancestors of the Internet were kind enough to give us a communication standard which is free, transparent, and standardized. It would be a shame to see the tech communication landscape move further and further into the world of locked gardens and proprietary schemas.</p>
 		<p>We’ll leave you with two quotes:</p>
 		<blockquote>
@@ -269,14 +268,14 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 				of future generations?
 			</p>
 			<p>
-				— Gary Feldman, <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt" target="_blank"><code class="date">1981</code></a>
+				— Gary Feldman, <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt"><code class="date">1981</code></a>
 			</p>
 		</blockquote>
 		<ul class="closing-cards">
 			<li class="closing-card">
 				<p>Use Cloudflare Apps to build tools which can be installed by millions of sites.</p>
-				<p><a href="https://www.cloudflare.com/apps/developer/docs/getting-started" target="_blank">Build an app →</a></p>
-				<p>If you're in San Francisco, London or Austin: <a href="https://boards.greenhouse.io/cloudflare/jobs/850951" target="_blank">work with us</a>.</p>
+				<p><a href="https://www.cloudflare.com/apps/developer/docs/getting-started">Build an app →</a></p>
+				<p>If you're in San Francisco, London or Austin: <a href="https://boards.greenhouse.io/cloudflare/jobs/850951">work with us</a>.</p>
 			</li>
 			<li id="mc_embed_signup" class="closing-card">
 				<form action="//cloudflare.us5.list-manage.com/subscribe/post?u=d80d4d74266c0c044b0bcd7ca&amp;id=cb12c756a6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
@@ -512,5 +511,4 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 			}
 		</style><!--kg-card-end: markdown-->
 	</small>
-</div><small>
-</small>
+</div>

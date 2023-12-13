@@ -1,17 +1,16 @@
 <div class="mb2 gray5">4 min read</div>
-<div class="post-content lh-copy gray1">
-	<!--kg-card-begin: markdown-->
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><small>This is a guest post by Kinsta about their use of our platform.</small></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image2-18.png" class="kg-image" alt="How Kinsta used Workers and Workers KV to improve cache hit rates by 56%" loading="lazy" width="1801" height="1012"></figure>
-	<p>At <a href="https://kinsta.com" target="_blank">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
+	<p>At <a href="https://kinsta.com">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
 	<p>While making that happen, we’ve learned a thing or two about using Cloudflare Workers and Workers KV to provide optimized caching rules for static and dynamic content.</p>
 	<p>In early 2023, we doubled down on Cloudflare cache wrangling, making caches more responsive to client-side configuration changes while also shifting the heavy lifting behind broadcasting feature updates away from our admins on the backend and into Cloudflare Workers. A key result was a dramatic increase in the share of customer data successfully cached, increasing 56.3% between October 2022 and March 2023.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image5-10.png" class="kg-image" alt="" loading="lazy" width="1053" height="160"></figure>
 	<p>Cloudflare Workers and Workers KV allow us to programmatically customize every request and response with minimal effort and lower latency. We no longer need to deploy changes to hundreds of thousands of containers when we want to implement new features; we can replicate or implement the feature with Workers and deploy it everywhere with a few commands and clicks, saving us days of work and maintenance.</p>
 	<h3 id="request-routing-with-workers-kv-and-workers">Request routing with Workers KV and Workers</h3>
 	<p>Every Kinsta-hosted domain is a key, and its value contains at least the core settings, like the origin's IP and port, and a unique random ID. With this data easily available in Workers KV, we can use Workers to analyze, manipulate, and route requests to their expected backend. We also use Workers KV to store customer optimization options like Polish, Image Resizing, and Auto Minify.</p>
-	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties" target="_blank">Request property</a>. Here's an example:</p><!--kg-card-begin: markdown-->
+	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties">Request property</a>. Here's an example:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// Assign KV values to variables
 const { customBackend } = kvdata.kinstaConf;
 
@@ -61,11 +60,11 @@ cf.resolveOverride = customBackend;
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>(Optionally, you could use<a href="https://flareutils.pages.dev/betterkv" target="_blank"> FlareUtils' BetterKV</a>.)</p>
+	<p>(Optionally, you could use<a href="https://flareutils.pages.dev/betterkv"> FlareUtils' BetterKV</a>.)</p>
 	<p>At Kinsta, we implemented a 30-second cache TTL for Workers KV data, decreasing read operations by about 80%.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/06/image4-14.png" class="kg-image" alt="" loading="lazy" width="875" height="363">
 		<figcaption>Read operations</figcaption>
 	</figure>
 	<h3 id="learn-more">Learn more</h3>
-	<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/en-gb/products/workers-kv" target="_blank">homepage</a>.</p>
+	<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/en-gb/products/workers-kv">homepage</a>.</p>
 </div>

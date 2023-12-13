@@ -1,6 +1,5 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1">
-	<!--kg-card-begin: markdown-->
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/es-es/building-many-private-virtual-networks-through-cloudflare-zero-trust-es-es">Español</a>, <a href="https://blog.cloudflare.com/zh-cn/building-many-private-virtual-networks-through-cloudflare-zero-trust-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/building-many-private-virtual-networks-through-cloudflare-zero-trust-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/building-many-private-virtual-networks-through-cloudflare-zero-trust-ko-kr">한국어</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<p>We built Cloudflare’s Zero Trust platform to help companies rely on our network to connect their private networks securely, while improving performance and reducing operational burden. With it, you could build a single virtual private network, where all your connected private networks had to be uniquely identifiable.</p>
@@ -14,7 +13,7 @@
 	<h3 id="the-problem-of-overlapping-networks">The problem of overlapping networks</h3>
 	<p>In the image above, the user can access any private service as if they were physically located within the network of that private service. For example, this means typing <em>jira.intra </em>in the browser or SSH-ing to a private IP <em><code>10.1.2.3</code></em> will work seamlessly despite neither of those private services being exposed to the Internet.</p>
 	<p>However, this has a big assumption in place: those underlying private IPs are assumed to be unique in the private networks connected to Cloudflare in the customer’s account.</p>
-	<p>Suppose now that your Team has two (or more) data centers that use the same IP space — usually referred to as a <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">CIDR</a> — such as <code>10.1.0.0/16</code>. Maybe one is the current primary and the other is the secondary, replicating one another. In such an example situation, there would exist a machine in each of those two data centers, both with the same IP, <em><code>10.1.2.3</code></em>.</p>
+	<p>Suppose now that your Team has two (or more) data centers that use the same IP space — usually referred to as a <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">CIDR</a> — such as <code>10.1.0.0/16</code>. Maybe one is the current primary and the other is the secondary, replicating one another. In such an example situation, there would exist a machine in each of those two data centers, both with the same IP, <em><code>10.1.2.3</code></em>.</p>
 	<p>Until today, you could not set up that via Cloudflare. You would connect data center 1 with a Cloudflare Tunnel responsible for traffic to <code>10.1.0.0/16</code>. You would then do the same in data center 2, but receive an error forbidding you to create an ambiguous IP route:</p>
 	<pre><code>$ cloudflared tunnel route ip add 10.1.0.0/16 dc-2-tunnel
 
@@ -56,5 +55,5 @@ Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0
 	<p>If you do not have overlapping IPs in your private infrastructure, no action will be required.</p>
 	<h2 id="what-s-next">What’s next</h2>
 	<p>This is just the beginning of our support for distinct virtual networks at Cloudflare. As you may have seen, last week we announced the ability to create, deploy, and manage Cloudflare Tunnels directly from the Zero Trust dashboard. Today, virtual networks are only supported through the cloudflared CLI, but we are looking to integrate virtual network management into the dashboard as well. </p>
-	<p>Our next step will be to make Cloudflare Gateway aware of these virtual networks so that <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank">Zero Trust policies</a> can be applied to these overlapping IP ranges. Once Gateway is aware of these virtual networks, we will also surface this concept with Network Logging for auditability and troubleshooting moving forward.</p>
+	<p>Our next step will be to make Cloudflare Gateway aware of these virtual networks so that <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust policies</a> can be applied to these overlapping IP ranges. Once Gateway is aware of these virtual networks, we will also surface this concept with Network Logging for auditability and troubleshooting moving forward.</p>
 </div>

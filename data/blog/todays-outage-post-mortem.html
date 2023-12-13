@@ -1,6 +1,5 @@
 <div class="mb2 gray5">2 min read</div>
-<div class="post-content lh-copy gray1">
-	<!--kg-card-begin: markdown-->
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>CloudFlare had an outage across much of our network today. The outage began at 20:19 (GMT). It affected approximately 75% of traffic to CloudFlare's network. The length of time for the outage varied depending on region, but the maximum period of downtime was approximately 15 minutes. I wanted to quickly get information out about what happened, why it happened, and what we're doing to ensure it never happens again.</p>
 	<h3 id="routesroutersandrouting">Routes, Routers and Routing</h3>
 	<p>To understand the problem, you need to understand a bit about how Internet routing works. The Internet is a massively interconnected network. Networks send packets to each other across routes. These routes are set for each network by routers. A route defines the path for packets to take to get to a particular IP address. One network will announce that it is responsible for a particular set of IP addresses. That fact is then shared to upstream routers so if they see a packet bound for a particular IP they can send it in the correct direction.</p>
