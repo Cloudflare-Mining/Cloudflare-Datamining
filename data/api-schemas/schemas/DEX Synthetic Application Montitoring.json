@@ -612,10 +612,8 @@
 												},
 												"required": [
 													"colo",
-													"deviceName",
 													"deviceId",
 													"mode",
-													"personEmail",
 													"platform",
 													"status",
 													"timestamp",
@@ -2127,13 +2125,6 @@
 													"type": "string"
 												}
 											},
-											"required": [
-												"kind",
-												"name",
-												"host",
-												"interval",
-												"method"
-											],
 											"type": "object"
 										}
 									}
@@ -3890,7 +3881,6 @@
 											"properties": {
 												"deviceName": {
 													"description": "name of the device associated with this network path response",
-													"nullable": true,
 													"type": "string"
 												},
 												"hops": {
@@ -3985,9 +3975,6 @@
 											},
 											"required": [
 												"resultId",
-												"testId",
-												"testName",
-												"deviceName",
 												"time_start",
 												"hops"
 											],
@@ -5020,7 +5007,6 @@
 										"result": {
 											"properties": {
 												"deviceName": {
-													"nullable": true,
 													"type": "string"
 												},
 												"id": {
@@ -5122,12 +5108,7 @@
 												}
 											},
 											"required": [
-												"id",
-												"kind",
-												"name",
-												"deviceName",
-												"url",
-												"interval"
+												"id"
 											],
 											"type": "object"
 										}
