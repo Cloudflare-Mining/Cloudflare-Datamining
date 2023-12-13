@@ -1,9 +1,9 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>On the WWW team, we’re responsible for Cloudflare’s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
+	<p>On the WWW team, weâ€™re responsible for Cloudflareâ€™s REST APIs, account management services and the dashboard experience. We take security and <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI compliance</a> seriously, which means we move quickly to stay up to date with regulations and relevant laws.</p>
 	<p>A <a href="https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api">recent compliance project</a> had a requirement of detecting certain end user request data at the edge, and reacting to it both in API responses as well as visually in the dashboard. We realized that this was an excellent opportunity to dogfood Cloudflare Workers.</p>
 	<h3 id="deployingworkerstowwwcloudflarecomandapicloudflarecom">Deploying workers to www.cloudflare.com and api.cloudflare.com</h3>
-	<p>In this blog post, we’ll break down the problem we solved using a single worker that we shipped to multiple hosts, share the annotated source code of our worker, and share some best practices and tips and tricks we discovered along the way.</p>
+	<p>In this blog post, weâ€™ll break down the problem we solved using a single worker that we shipped to multiple hosts, share the annotated source code of our worker, and share some best practices and tips and tricks we discovered along the way.</p>
 	<p>Since being deployed, <strong>our worker has served over 400 million requests</strong> for both calls to api.cloudflare.com and the www.cloudflare.com dashboard.</p>
 	<h3 id="thetask">The task</h3>
 	<p>First, we needed to detect when a client was connecting to our services using an outdated TLS protocol. Next, we wanted to pass this information deeper into our application stack so that we could act upon it and conditionally decorate our responses with notices providing a heads up about the imminent changes.</p>

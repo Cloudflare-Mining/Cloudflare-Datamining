@@ -3,7 +3,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Flowtrackd-network-namespaces-fix-1.png" class="kg-image" alt="A story about AF_XDP, network namespaces and a cookie" loading="lazy"></figure>
 	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html">network namespace</a> aware.</p>
 	<p>This blogpost describes the debugging journey to find the bug, as well as a fix.</p>
-	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customer’s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
+	<p><a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> is a volumetric denial of service defense mechanism that sits in the <a href="https://www.cloudflare.com/magic-transit">Magic Transit</a> customerâ€™s data path and protects the network from complex randomized TCP floods. It does so by challenging TCP connection establishments and by verifying that TCP packets make sense in an ongoing flow.</p>
 	<p>It uses the Linux kernel <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html">AF_XDP</a> feature to transfer packets from a network device in kernel space to a memory buffer in user space without going through the network stack. We use most of the helper functions of the <a href="https://github.com/libbpf/libbpf/tree/v0.8.0">C libbpf</a> with the <a href="https://github.com/libbpf/libbpf-sys">Rust bindings</a> to interact with AF_XDP.</p>
 	<p>In our setup, both the ingress and the egress network interfaces are in different network namespaces. When a packet is determined to be valid (after a challenge or under some thresholds), it is forwarded to the second network interface.</p>
 	<p>For the rest of this post the network setup will be the following:</p>
@@ -73,7 +73,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image9-4.png" class="kg-image" alt="shared UMEM use case documentation" loading="lazy"></figure>
 	<p>Hopefully for us a helper function in libbpf does it all for us: <code>xsk_socket__create_shared()</code></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image10-2.png" class="kg-image" alt="xsk_socket__create_shared() function documentation" loading="lazy"></figure>
-	<p>The final setup is the following: Xsks are created for each queue of the devices in their respective network namespaces. flowtrackd then handles the descriptors like a puppeteer while applying our DoS mitigation logic on the packets that they reference with one exception… (notice the red crosses on the diagram):</p>
+	<p>The final setup is the following: Xsks are created for each queue of the devices in their respective network namespaces. flowtrackd then handles the descriptors like a puppeteer while applying our DoS mitigation logic on the packets that they reference with one exceptionâ€¦ (notice the red crosses on the diagram):</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed1.png" class="kg-image" alt="overview of flowtrackd interactions with Xsks in namespaces" loading="lazy"></figure>
 	<h2 id="what-invalid-argument-">What "Invalid argument" ??!</h2>
 	<p>We were happily near the end of the rewrite when, suddenly, after porting our integration tests in the CI, flowtrackd crashed!</p>
@@ -89,7 +89,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 	<p>This is what the code to create an Xsk looks like:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-6.png" class="kg-image" alt="Rust Xsk creation code snippet" loading="lazy"></figure>
 	<p>The call to the libbpf function <a href="https://github.com/libbpf/libbpf/blob/v0.8.0/src/xsk.c#L994"><code>xsk_socket__create_shared()</code></a> didn't return 0.</p>
-	<p>The <a href="https://www.mankier.com/3/libxdp">libxdp manual page</a> doesn't help us here…</p>
+	<p>The <a href="https://www.mankier.com/3/libxdp">libxdp manual page</a> doesn't help us hereâ€¦</p>
 	<p>Which argument is "invalid"? And why is this error not showing up when we run flowtrackd locally but only in the CI?</p>
 	<p>We can try to reproduce locally with a similar network setup script used in the CI:</p><!--kg-card-begin: markdown-->
 	<pre><code>#!/bin/bash
@@ -516,7 +516,7 @@ make -j$(nproc) bzImage
 	<ul>
 		<li>Do a quick hack to ensure that the interface indexes are not the same (as done in the integration tests).</li>
 		<li>Explain our use case to the libbpf maintainers and see how the API for the <code>xsk_socket__create_shared()</code> function should change. It could be possible to pass an opaque "cookie" as a parameter at the socket creation and pass it to the functions that access the socket contexts.</li>
-		<li>Take our chances and look for Linux patches that contain the words “netns” and “cookie”</li>
+		<li>Take our chances and look for Linux patches that contain the words â€œnetnsâ€ and â€œcookieâ€</li>
 	</ul>
 	<p>Well, well, well: <a href="https://lore.kernel.org/bpf/c47d2346982693a9cf9da0e12690453aded4c788.1585323121.git.daniel@iogearbox.net">[PATCH bpf-next 3/7] bpf: add netns cookie and enable it for bpf cgroup hooks</a></p>
 	<p>This is almost what we need! This patch adds a kernel function named <code>bpf_get_netns_cookie()</code> that would get us the network namespace cookie linked to a socket:</p>
@@ -545,10 +545,10 @@ make -j$(nproc) bzImage
 	<p>flowtrackd didn't crash and is behaving as expected. It works!</p>
 	<h2 id="conclusion">Conclusion</h2>
 	<h3 id="situation">Situation</h3>
-	<p>Creating AF_XDP sockets with the XDP_SHARED_UMEM flag set fails when the two devices’ ifindex (and the queue_id) are the same. This can happen with devices in different network namespaces.</p>
+	<p>Creating AF_XDP sockets with the XDP_SHARED_UMEM flag set fails when the two devicesâ€™ ifindex (and the queue_id) are the same. This can happen with devices in different network namespaces.</p>
 	<p>In the shared UMEM mode, each Xsk is expected to have a dedicated fill and completion queue. Context data about those queues are set by libbpf in a linked-list stored by the UMEM object. The comparison performed to pick the right context in the linked-list only takes into account the device ifindex and the queue_id which can be the same when devices are in different network namespaces.</p>
 	<h3 id="resolution">Resolution</h3>
 	<p>We retrieve the <code>netns_cookie</code> associated with the socket at its creation and add it in the comparison operation.</p>
 	<p>The <a href="https://github.com/xdp-project/xdp-tools/pull/205">fix</a> has been submitted and merged in libxdp which is where the AF_XDP parts of libbpf now <a href="https://github.com/libbpf/libbpf/wiki/Libbpf:-the-road-to-v1.0#xskch-is-moving-into-libxdp">live</a>.</p>
-	<p>We’ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1">libbpf-sys Rust crate</a> accordingly.</p>
+	<p>Weâ€™ve also <a href="https://github.com/libbpf/libbpf/releases/tag/v0.8.1">backported the fix</a> in libbpf and updated the <a href="https://github.com/libbpf/libbpf-sys/releases/tag/0.8.2%2Bv0.8.1">libbpf-sys Rust crate</a> accordingly.</p>
 </div>

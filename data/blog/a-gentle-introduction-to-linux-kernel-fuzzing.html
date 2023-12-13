@@ -1,6 +1,6 @@
 <div class="mb2 gray5">9 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>For some time I’ve wanted to play with coverage-guided <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing</a>. Fuzzing is a powerful testing technique where an automated program feeds semi-random inputs to a tested program. The intention is to find such inputs that trigger bugs. Fuzzing is especially useful in finding memory corruption bugs in C or C++ programs.</p>
+	<p>For some time Iâ€™ve wanted to play with coverage-guided <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing</a>. Fuzzing is a powerful testing technique where an automated program feeds semi-random inputs to a tested program. The intention is to find such inputs that trigger bugs. Fuzzing is especially useful in finding memory corruption bugs in C or C++ programs.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/07/4152779709_d1ea8dd3b4_z.jpg" alt="4152779709_d1ea8dd3b4_z" loading="lazy"></p>
 	<center><a href="https://www.flickr.com/photos/patrick_s/4152779709">Image</a> by <a href="https://www.flickr.com/photos/patrick_s">Patrick Shannon</a> CC BY 2.0</center><br>
 	<p>Normally it's recommended to pick a well known, but little explored, library that is heavy on parsing. Historically things like libjpeg, libpng and libyaml were perfect targets. Nowadays it's harder to find a good target - everything seems to have been fuzzed to death already. That's a good thing! I guess the software is getting better! Instead of choosing a userspace target I decided to have a go at the Linux Kernel netlink machinery.</p>
@@ -11,7 +11,7 @@
 	<p>The technique we are going to use is formally called "coverage-guided fuzzing". There's a lot of prior literature:</p>
 	<ul>
 		<li><a href="https://blog.trailofbits.com/2017/02/16/the-smart-fuzzer-revolution">The Smart Fuzzer Revolution</a> by Dan Guido, and <a href="https://lwn.net/Articles/677764">LWN article</a> about it</li>
-		<li><a href="https://j00ru.vexillium.org/talks/blackhat-eu-effective-file-format-fuzzing-thoughts-techniques-and-results">Effective file format fuzzing</a> by Mateusz “j00ru” Jurczyk</li>
+		<li><a href="https://j00ru.vexillium.org/talks/blackhat-eu-effective-file-format-fuzzing-thoughts-techniques-and-results">Effective file format fuzzing</a> by Mateusz â€œj00ruâ€ Jurczyk</li>
 		<li><a href="http://honggfuzz.com">honggfuzz</a> by Robert Swiecki, is a modern, feature-rich coverage-guided fuzzer</li>
 		<li><a href="https://google.github.io/clusterfuzz">ClusterFuzz</a></li>
 		<li><a href="https://github.com/google/fuzzer-test-suite">Fuzzer Test Suite</a></li>
@@ -21,7 +21,7 @@
 		<li><a href="https://github.com/google/syzkaller/blob/master/docs/syzbot.md">syzkaller (aka syzbot)</a> by Dmitry Vyukov, is a very powerful CI-style continuously running kernel fuzzer, which found hundreds of issues already. It's an awesome machine - it will even report the bugs automatically!</li>
 		<li><a href="https://github.com/kernelslacker/trinity">Trinity fuzzer</a></li>
 	</ul>
-	<p>We'll use <a href="http://lcamtuf.coredump.cx/afl">the AFL</a>, everyone's favorite fuzzer. AFL was written by <a href="http://lcamtuf.coredump.cx">Michał Zalewski</a>. It's well known for its ease of use, speed and very good mutation logic. It's a perfect choice for people starting their journey into fuzzing!</p>
+	<p>We'll use <a href="http://lcamtuf.coredump.cx/afl">the AFL</a>, everyone's favorite fuzzer. AFL was written by <a href="http://lcamtuf.coredump.cx">MichaÅ‚ Zalewski</a>. It's well known for its ease of use, speed and very good mutation logic. It's a perfect choice for people starting their journey into fuzzing!</p>
 	<p>If you want to read more about AFL, the documentation is in couple of files:</p>
 	<ul>
 		<li><a href="http://lcamtuf.coredump.cx/afl/historical_notes.txt">Historical notes</a></li>
@@ -154,7 +154,7 @@ while(1) {
 	<p>But hold on. We forgot about preparing input corpus data for our fuzzer!</p>
 	<h2 id="buildingtheinputcorpus">Building the input corpus</h2>
 	<p>Every fuzzer takes a carefully crafted test cases as input, to bootstrap the first mutations. The test cases should be short, and cover as large part of code as possible. Sadly - I know nothing about netlink. How about we don't prepare the input corpus...</p>
-	<p>Instead we can ask AFL to "figure out" what inputs make sense. This is what <a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html">Michał did back in 2014 with JPEGs</a> and it worked for him. With this in mind, here is our input corpus:</p>
+	<p>Instead we can ask AFL to "figure out" what inputs make sense. This is what <a href="https://lcamtuf.blogspot.com/2014/11/pulling-jpegs-out-of-thin-air.html">MichaÅ‚ did back in 2014 with JPEGs</a> and it worked for him. With this in mind, here is our input corpus:</p>
 	<pre><code class="language-sh">mkdir inp
 echo "hello world" &gt; inp/01.txt
 </code></pre>

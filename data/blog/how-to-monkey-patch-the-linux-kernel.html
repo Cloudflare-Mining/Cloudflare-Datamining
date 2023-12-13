@@ -52,7 +52,7 @@ probe end {
 	<p>Starting from the sample script that remaps 'm' to 'b', it seemed obvious how to proceed. I saved the script to a file and did:</p>
 	<pre><code>sudo stap -g keyhack.stp
 </code></pre>
-	<p>But… nothing happened. My 'm' key still typed 'm'.</p>
+	<p>Butâ€¦ nothing happened. My 'm' key still typed 'm'.</p>
 	<p>To debug, I added some <code>printf()</code> statements (which conveniently print to the terminal where <code>stap</code> runs). But, it appeared the keyboard events were indeed being captured. So why did 'm' still type 'm'?</p>
 	<p>It turns out, no one was listening. The <code>kbd_event</code> function is part of the text-mode terminal support. Sure enough, if I switched virtual terminals over to a text terminal, the key was being remapped. But Wayland uses a totally different code path to receive key events -- the <code>/dev/input</code> devices. These devices are implemented by the <code>evdev</code> module.</p>
 	<p>Looking through <a href="http://elixir.free-electrons.com/linux/v4.13/source/drivers/input/evdev.c">evdev.c</a>, at first <code>evdev_event()</code> looks tempting as a probe point: it has almost the same signature as <code>kbd_event()</code>. Unfortunately, this function is not usually called by the driver; rather, the multi-event version, <code>evdev_events()</code>, usually is. But that version takes an array, which seems more tedious to deal with.</p>

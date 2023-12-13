@@ -1,6 +1,6 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed-ja-jp">日本語</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed-ja-jp">æ—¥æœ¬èªž</a>.</small></em></p>
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-social.png" alt="Edge computing for everyone." loading="lazy"></p>
 	<p>Exactly one year ago today, Cloudflare gave me a mission: Make it so people can run code on Cloudflare's edge. At the time, we didn't yet know what that would mean. Would it be container-based? A new Turing-incomplete domain-specific language? Lua? "Functions"? There were lots of ideas.</p>
@@ -16,7 +16,7 @@
 	<p>We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn't run in "us-west-4" or "South Central Asia (Mumbai)", it runs <em>everywhere</em>.</p>
 	<p>More concretely, it should run where it is most needed. When responding to a user in New Zealand, your code should run in New Zealand. When crunching data in your database, your code should run on the machines that store the data. When interacting with a third-party API, your code should run wherever that API is hosted. When human explorers reach Mars, they aren't going to be happy waiting a half an hour for your app to respond -- your code needs to be running on Mars.</p>
 	<p>Cloudflare Workers are our first step towards this vision. When you deploy a Worker, it is deployed to Cloudflare's entire edge network of over a hundred locations worldwide in under 30 seconds. Each request for your domain will be handled by your Worker at a Cloudflare location close to the end user, with no need for you to think about individual locations. The more locations we bring online, the more your code just "runs everywhere."</p>
-	<p>Well, OK… it won't run on Mars. Yet. You out there, Elon?</p>
+	<p>Well, OKâ€¦ it won't run on Mars. Yet. You out there, Elon?</p>
 	<h3 id="whatsaworker">What's a Worker?</h3>
 	<p>Cloudflare Workers derive their name from Web Workers, and more specifically Service Workers, the W3C standard API for scripts that run in the background in a web browser and intercept HTTP requests. Cloudflare Workers are written against the same standard API, but run on Cloudflare's servers, not in a browser.</p>
 	<p>Here are the tools you get to work with:</p>

@@ -35,14 +35,14 @@
 			</tr>
 			<tr class="even">
 				<th>Issue</th>
-				<td>8 µops/cycle</td>
-				<td>8 µops/cycle</td>
+				<td>8 Âµops/cycle</td>
+				<td>8 Âµops/cycle</td>
 				<td>8 instructions/cycle</td>
 			</tr>
 			<tr class="even">
 				<th>Dispatch</th>
-				<td>4 µops/cycle</td>
-				<td>5 µops/cycle</td>
+				<td>4 Âµops/cycle</td>
+				<td>5 Âµops/cycle</td>
 				<td>4 instructions/cycle</td>
 			</tr>
 			<tr class="even">
@@ -88,18 +88,18 @@
 	</table>
 	<p>Overall on paper Falkor looks very competitive. In theory a Falkor core can process 8 instructions/cycle, same as Skylake or Broadwell, and it has higher base frequency at a lower TDP rating.</p>
 	<h3 id="ecosystemreadiness">Ecosystem readiness</h3>
-	<p>Up until now, a major obstacle to the deployment of ARM servers was lack, or weak, support by the majority of the software vendors. In the past two years, ARM’s enablement efforts have paid off, as most Linux distros, as well as most popular libraries support the 64-bit ARM architecture. Driver availability, however, is unclear at that point.</p>
+	<p>Up until now, a major obstacle to the deployment of ARM servers was lack, or weak, support by the majority of the software vendors. In the past two years, ARMâ€™s enablement efforts have paid off, as most Linux distros, as well as most popular libraries support the 64-bit ARM architecture. Driver availability, however, is unclear at that point.</p>
 	<p>At Cloudflare we run a complex software stack that consists of many integrated services, and running each of them efficiently is top priority.</p>
 	<p>On the edge we have the NGINX server software, that does support ARMv8. NGINX is written in C, and it also uses several libraries written in C, such as zlib and BoringSSL, therefore solid C compiler support is very important.</p>
 	<p>In addition our flavor of NGINX is highly integrated with the <a href="https://github.com/openresty/lua-nginx-module">lua-nginx-module</a>, and we rely a lot on <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">LuaJIT</a>.</p>
 	<p>Finally a lot of our services, such as our DNS server, <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go/#sts=RRDNS">RRDNS</a>, are written in Go.</p>
 	<p>The good news is that both gcc and clang not only support ARMv8 in general, but have optimization profiles for the Falkor core.</p>
 	<p>Go has official support for ARMv8 as well, and they improve the arm64 backend constantly.</p>
-	<p>As for LuaJIT, the stable version, 2.0.5 does not support ARMv8, but the beta version, 2.1.0 does. Let’s hope it gets out of beta soon.</p>
+	<p>As for LuaJIT, the stable version, 2.0.5 does not support ARMv8, but the beta version, 2.1.0 does. Letâ€™s hope it gets out of beta soon.</p>
 	<h3 id="benchmarks">Benchmarks</h3>
 	<h4 id="openssl">OpenSSL</h4>
 	<p>The first benchmark I wanted to perform, was OpenSSL version 1.1.1 (development version), using the bundled <code>openssl speed</code> tool. Although we recently switched to BoringSSL, I still prefer OpenSSL for benchmarking, because it has almost equally well optimized assembly code paths for both ARMv8 and the latest Intel processors.</p>
-	<p>In my opinion handcrafted assembly is the best measure of a CPU’s potential, as it bypasses the compiler bias.</p>
+	<p>In my opinion handcrafted assembly is the best measure of a CPUâ€™s potential, as it bypasses the compiler bias.</p>
 	<h4 id="publickeycryptography">Public key cryptography</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/pub_key_1_core-2.png" alt="alt" loading="lazy"></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/pub_key_all_core-2.png" alt="alt" loading="lazy"></p>
@@ -116,7 +116,7 @@
 	<p>The bottom line for symmetric crypto is that although Skylake has the lead, Broadwell and Falkor both have good enough performance for any real life scenario, especially considering the fact that on our edge, RSA consumes more CPU time than all of the other crypto algorithms combined.</p>
 	<h3 id="compression">Compression</h3>
 	<p>The next benchmark I wanted to see was compression. This is for two reasons. First, it is a very important workload on the edge, as having better compression saves bandwidth, and helps deliver content faster to the client. Second, it is a very demanding workload, with a high rate of branch mispredictions.</p>
-	<p>Obviously the first benchmark would be the popular zlib library. At Cloudflare we use an <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">improved version of the library</a>, optimized for 64-bit Intel processors, and although it is written mostly in C, it does use some Intel specific intrinsics. Comparing this optimized version to the generic zlib library wouldn’t be fair. Not to worry, with little effort I <a href="https://github.com/cloudflare/zlib/tree/vlad/aarch64">adapted the library</a> to work very well on the ARMv8 architecture, with the use of NEON and CRC32 intrinsics. In the process it is twice as fast as the generic library for some files.</p>
+	<p>Obviously the first benchmark would be the popular zlib library. At Cloudflare we use an <a href="https://blog.cloudflare.com/cloudflare-fights-cancer">improved version of the library</a>, optimized for 64-bit Intel processors, and although it is written mostly in C, it does use some Intel specific intrinsics. Comparing this optimized version to the generic zlib library wouldnâ€™t be fair. Not to worry, with little effort I <a href="https://github.com/cloudflare/zlib/tree/vlad/aarch64">adapted the library</a> to work very well on the ARMv8 architecture, with the use of NEON and CRC32 intrinsics. In the process it is twice as fast as the generic library for some files.</p>
 	<p>The second benchmark is the emerging brotli library, it is written in C, and allows for a level playing field for all platforms.</p>
 	<p>All the benchmarks are performed on the HTML of <a href="https://blog.cloudflare.com">blog.cloudflare.com</a>, in memory, similar to the way NGINX performs streaming compression. The size of the specific version of the HTML file is 29,329 bytes, making it a good representative of the type of files we usually compress. The parallel benchmark compresses multiple files in parallel, as opposed to compressing a single file on many threads, also similar to the way NGINX works.</p>
 	<h4 id="gzip">gzip</h4>
@@ -145,7 +145,7 @@
 	<p>Next in Go performance is gzip. Here again we have a reference point to pretty well optimized code, and we can compare it to Go. In the case of the gzip library, there are no Intel specific optimizations in place.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/go_gzip_1_core.png" alt="alt" loading="lazy"></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/go_gzip_all_core.png" alt="alt" loading="lazy"></p>
-	<p>Gzip performance is pretty good. The single core Falkor performance is way below both Intel processors, but at the system level it manages to outperform Broadwell, and lags behind Skylake. Since we already know that Falkor outperforms both when C is used, it can only mean that Go’s backend for ARMv8 is still pretty immature compared to gcc.</p>
+	<p>Gzip performance is pretty good. The single core Falkor performance is way below both Intel processors, but at the system level it manages to outperform Broadwell, and lags behind Skylake. Since we already know that Falkor outperforms both when C is used, it can only mean that Goâ€™s backend for ARMv8 is still pretty immature compared to gcc.</p>
 	<h4 id="goregexp">Go regexp</h4>
 	<p>Regexp is widely used in a variety of tasks, so its performance is quite important too. I ran the builtin benchmarks on 32KB strings.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/go_regexp_easy_1_core.png" alt="alt" loading="lazy"></p>
@@ -175,7 +175,7 @@
 	<p>As the client for this test, I used the <a href="https://github.com/rakyll/hey">hey</a> program, running from 3 Broadwell servers.</p>
 	<p>Concurrently with the test, we took power readings from the respective BMC units of each server.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/nginx.png" alt="alt" loading="lazy"></p>
-	<p>With the NGINX workload Falkor handled almost the same amount of requests as the Skylake server, and both significantly outperform Broadwell. The power readings, taken from the BMC show that it did so while consuming less than half the power of other processors. That means Falkor managed to get 214 requests/watt vs the Skylake’s 99 requests/watt and Broadwell’s 77.</p>
+	<p>With the NGINX workload Falkor handled almost the same amount of requests as the Skylake server, and both significantly outperform Broadwell. The power readings, taken from the BMC show that it did so while consuming less than half the power of other processors. That means Falkor managed to get 214 requests/watt vs the Skylakeâ€™s 99 requests/watt and Broadwellâ€™s 77.</p>
 	<p>I was a bit surprised to see Skylake and Broadwell consume about the same amount of power, given both are manufactured with the same process, and Skylake has more cores.</p>
 	<p>The low power consumption of Falkor is not surprising, Qualcomm processors are known for their great power efficiency, which has allowed them to be a dominant player in the mobile phone CPU market.</p>
 	<h2 id="conclusion">Conclusion</h2>

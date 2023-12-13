@@ -15,7 +15,7 @@
 	<h3 id="problem-definition">Problem definition</h3>
 	<p>In summary, the previous solution had its drawbacks, including:</p>
 	<ul>
-		<li><strong>High tail latency</strong>: during the peak time, a portion of requests experienced increased &nbsp;latency caused by CPU contention on the Unix socket and Lua garbage collector.</li>
+		<li><strong>High tail latency</strong>: during the peak time, a portion of requests experienced increased Â&nbsp;latency caused by CPU contention on the Unix socket and Lua garbage collector.</li>
 		<li><strong>Suboptimal resource utilization: </strong>CPU and RAM utilization was not optimized to the full potential, leaving less resources for other services running on the server.</li>
 		<li><strong>Machine learning features availability</strong>: decreased due to memcached timeouts, which resulted in a higher likelihood of false positives or false negatives for a subset of the requests.</li>
 		<li><strong>Scalability constraints</strong>: as we added more machine learning features, we approached the scalability limit of our infrastructure.</li>
@@ -100,7 +100,7 @@
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPC method</span></th>
-				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Avg duration, μs</span></th>
+				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Avg duration, Î¼s</span></th>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Avg throughput, msg/s</span></th>
 			</tr>
 		</thead>
@@ -273,12 +273,12 @@
 	<pre><code class="language-rust">impl Synchronizer {
     /// Write a given `entity` into the next available memory mapped file.
     pub fn write&lt;T&gt;(&amp;mut self, entity: &amp;T, grace_duration: Duration) -&gt; Result&lt;(usize, bool), SynchronizerError&gt; {
-        …
+        â€¦
     }
 
     /// Reads and returns `entity` struct from mapped memory wrapped in `ReadResult`
     pub fn read&lt;T&gt;(&amp;mut self) -&gt; Result&lt;ReadResult&lt;T&gt;, SynchronizerError&gt; {
-        …
+        â€¦
     }
 }
 
@@ -297,7 +297,7 @@ pub struct FeaturesMetadata {
 	<!--kg-card-end: markdown-->
 	<p>A read operation through the <strong><code>Synchronizer</code></strong> performs zero-copy deserialization and returns a "guarded" <strong><code>Result</code></strong> encapsulating a reference to the Rust struct using <a href="https://rust-unofficial.github.io/patterns/patterns/behavioural/RAII.html">RAII design pattern</a>. This operation also increments the atomic counter of active readers using the struct. Once the <strong><code>Result</code></strong> is out of scope, the <strong><code>Synchronizer</code></strong> decrements the number of readers.</p>
 	<p>The synchronization mechanism used in <strong><code>mmap-sync</code></strong> is not only "lock-free" but also "wait-free". This ensures an upper bound on the number of steps an operation will take before it completes, thus providing a performance guarantee.</p>
-	<p>The data is stored in shared mapped memory, which allows the <strong><code>Synchronizer</code></strong> to “write” to it and “read” from it concurrently. This design makes <strong><code>mmap-sync</code></strong> a highly efficient and flexible tool for managing shared, concurrent data access.</p>
+	<p>The data is stored in shared mapped memory, which allows the <strong><code>Synchronizer</code></strong> to â€œwriteâ€ to it and â€œreadâ€ from it concurrently. This design makes <strong><code>mmap-sync</code></strong> a highly efficient and flexible tool for managing shared, concurrent data access.</p>
 	<p>Now, with an understanding of the underlying mechanics of <strong><code>mmap-sync</code></strong>, let's explore how this package plays a key role in the broader context of our Bot Management platform, particularly within the newly developed components: the <strong><code>bliss</code></strong> service and library.</p>
 	<h2 id="system-design-overhaul">System design overhaul</h2>
 	<p>Transitioning from a Lua-based module that made memcached requests over Unix socket to Gagarin in Go to fetch machine learning features, our new design represents a significant evolution. This change pivots around the introduction of <strong><code>mmap-sync</code></strong>, our newly developed Rust package, laying the groundwork for a substantial performance upgrade. This development led to a comprehensive system redesign and introduced two new components that form the backbone of our <em>Bots Liquidation Intelligent Security System</em> - or <strong>BLISS</strong>, in short: the bliss service and the bliss library.</p>
@@ -400,8 +400,8 @@ go tool pprof -http=: ./target/criterion/process_benchmark/process/profile/profi
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Latency metric</span></th>
-				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Before (μs)</span></th>
-				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">After (μs)</span></th>
+				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Before (Î¼s)</span></th>
+				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">After (Î¼s)</span></th>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Change</span></th>
 			</tr>
 		</thead>
@@ -427,7 +427,7 @@ go tool pprof -http=: ./target/criterion/process_benchmark/process/profile/profi
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p><br></p>
-	<p>To truly grasp this impact, consider this: with Cloudflare’s average rate of 46 million requests per second, a saving of <strong>523 microseconds</strong> per request equates to saving over 24,000 days or <strong>65 years</strong> of processing time every single day!</p>
+	<p>To truly grasp this impact, consider this: with Cloudflareâ€™s average rate of 46 million requests per second, a saving of <strong>523 microseconds</strong> per request equates to saving over 24,000 days or <strong>65 years</strong> of processing time every single day!</p>
 	<p>In addition to latency improvements, we also reaped other benefits from the rollout:</p>
 	<ul>
 		<li><strong>Enhanced feature availability</strong>: thanks to eliminating Unix socket timeouts, machine learning feature availability is now a robust 100%, resulting in fewer false positives and negatives in detections.</li>
@@ -438,5 +438,5 @@ go tool pprof -http=: ./target/criterion/process_benchmark/process/profile/profi
 	<h2 id="conclusion">Conclusion</h2>
 	<p>In the wake of our redesign, we've constructed a powerful and efficient system that truly embodies the essence of 'bliss'. Harnessing the advantages of memory-mapped files, wait-free synchronization, allocation-free operations, and zero-copy deserialization, we've established a robust infrastructure that maintains peak performance while achieving remarkable reductions in latency. As we navigate towards the future, we're committed to leveraging this platform to further improve our Security machine learning products and cultivate innovative features. Additionally, we're excited to share parts of this technology through an open-sourced Rust package <a href="https://github.com/cloudflare/mmap-sync"><strong><code>mmap-sync</code></strong></a>.</p>
 	<p>As we leap into the future, we are building upon our platform's impressive capabilities, exploring new avenues to amplify the power of machine learning. We are deploying a new machine learning model built on BLISS with select customers. If you are a Bot Management subscriber and want to test the new model, please reach out to your account team.</p>
-	<p>Separately, we are on the lookout for more Cloudflare customers who want to run their own machine learning models at the edge today. If you’re a developer considering making the switch to Workers for your application, sign up for our <a href="https://blog.cloudflare.com/introducing-constellation">Constellation AI closed beta</a>. If you’re a Bot Management customer and looking to run an already trained, lightweight model at the edge, <a href="https://www.cloudflare.com/lp/byo-machine-learning-model">we would love to hear from you</a>. Let's embark on this path to bliss together.</p>
+	<p>Separately, we are on the lookout for more Cloudflare customers who want to run their own machine learning models at the edge today. If youâ€™re a developer considering making the switch to Workers for your application, sign up for our <a href="https://blog.cloudflare.com/introducing-constellation">Constellation AI closed beta</a>. If youâ€™re a Bot Management customer and looking to run an already trained, lightweight model at the edge, <a href="https://www.cloudflare.com/lp/byo-machine-learning-model">we would love to hear from you</a>. Let's embark on this path to bliss together.</p>
 </div>

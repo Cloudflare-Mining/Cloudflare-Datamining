@@ -215,7 +215,7 @@ async function stockRequest(stock) {
 }
 
 </code></pre>
-	<p>We build an object representing our reply. We're also careful to handle any errors should we get a bad response back from the API: be it a non-HTTP 200 response, or a non-JSON response body. When relying on a third-party service/API, any assumptions you make about the format or correctness of a response that could cause an exception to be thrown if broken—such as calling <code>resp.json()</code> on HTML body—must be accounted for.</p>
+	<p>We build an object representing our reply. We're also careful to handle any errors should we get a bad response back from the API: be it a non-HTTP 200 response, or a non-JSON response body. When relying on a third-party service/API, any assumptions you make about the format or correctness of a response that could cause an exception to be thrown if brokenâ€”such as calling <code>resp.json()</code> on HTML bodyâ€”must be accounted for.</p>
 	<p>Additionally, note that subrequests will respect the SSL Mode you have for your entire zone. Thus, if the SSL mode is set to flexible, Cloudflare will try to connect to the API over port 80 and over HTTP, and the request will fail (you will see a 525 error).</p>
 	<h3 id="respondingtoslack">Responding to Slack</h3>
 	<p>Slack expects responses in <a href="https://api.slack.com/slash-commands#responding_to_a_command">two possible formats</a>: a plain text string, or a simple JSON structure. Thus, we need to take our reply and build a response for Slack.</p>
@@ -269,16 +269,16 @@ let SLACK_TOKEN = "PUTYOURTOKENHERE"
 </code></pre>
 	<p>Before hooking our bot up to Slack, we can test to make sure it responds correctly. We can emulate a request from Slack by making a POST request with token and message text via <code>curl</code> -</p>
 	<pre><code class="language-sh"># Replace with the hostname/route your Worker is running on
-➜  ~  curl -X POST -F "token=SLACKTOKENGOESHERE" -F "text=MSFT" "https://bots.example.com/stockbot/stock"
+âžœ  ~  curl -X POST -F "token=SLACKTOKENGOESHERE" -F "text=MSFT" "https://bots.example.com/stockbot/stock"
 {"response_type":"in_channel","text":"Current price (MSFT): ? USD $101.7300","attachments":[]}
 </code></pre>
 	<p>A correct response should net us the expected reply. If we intentionally send an invalid token instead, our bot should reply accordingly:</p>
-	<pre><code class="language-sh">➜  ~  curl -X POST https://bots.example.com/stockbot/stock
+	<pre><code class="language-sh">âžœ  ~  curl -X POST https://bots.example.com/stockbot/stock
  -F "token=OBVIOUSLYINCORRECTTOKEN" -F "text=MSFT"
 {"message":"invalid Slack verification token","status":403}%
 </code></pre>
 	<p>... or an invalid symbol:</p>
-	<pre><code class="language-sh">➜  ~  curl -X POST https://bots.example.com/stockbot/stock -F "token=SLACKTOKENGOESHERE" -F "text=BADSYMBOL"
+	<pre><code class="language-sh">âžœ  ~  curl -X POST https://bots.example.com/stockbot/stock -F "token=SLACKTOKENGOESHERE" -F "text=BADSYMBOL"
 {"message":"Sorry, I had an issue retrieving anything for that symbol: Error: could not fetch the selected symbol: Error: bad status code from Alpha Vantage: HTTP 404","status":200}%
 </code></pre>
 	<p>If you're running into issues, make sure your token is correct (case-sensitive), and that the stock you're after exists on Alpha Vantage. Beyond that however, we can now install the app to our Workspace (Slack will ask you to authorize the bot):</p>
@@ -291,6 +291,6 @@ let SLACK_TOKEN = "PUTYOURTOKENHERE"
 	<h4 id="thankyou">Thank you</h4>
 	<p>Thank you to <a href="https://github.com/elithrar">Matt Silverlock</a> for his contribution to this post, and Cloudflare.</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">â€œRecipe Exchangeâ€</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
 	<!--kg-card-end: markdown-->
 </div>

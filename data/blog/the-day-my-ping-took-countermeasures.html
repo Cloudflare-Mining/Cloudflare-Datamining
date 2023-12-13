@@ -195,7 +195,7 @@ PING 1.1 (1.0.0.1) 0(28) bytes of data.
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>In such a case ping just skips the RTT from the output. Smart!</p>
-	<p>Right... this opens two completely new subjects. While ping was written back when everyone was friendly, today’s Internet can have rogue actors. What if we spoofed responses to confuse ping. Can we: cut the payload to prevent ping from producing RTT, and spoof the timestamp and fool the RTT measurements?</p>
+	<p>Right... this opens two completely new subjects. While ping was written back when everyone was friendly, todayâ€™s Internet can have rogue actors. What if we spoofed responses to confuse ping. Can we: cut the payload to prevent ping from producing RTT, and spoof the timestamp and fool the RTT measurements?</p>
 	<p>Both things work! The truncated case will look like this to the sender:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ping 139.162.188.91
 PING 139.162.188.91 (139.162.188.91) 56(84) bytes of data.

@@ -7,7 +7,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/11/240px-KL_CoreMemory.jpg" alt="240px-KL_CoreMemory" loading="lazy"><br>
 		<small>Source: <a href="https://en.wikipedia.org/wiki/File:KL_CoreMemory.jpg">BY-SA/3.0 by Konstantin Lanzet</a></small>
 	</p>
-	<p>I promptly concluded I had absolutely no idea on how these things could ever work. I wondered if the rings rotate (they don't), and why each ring has three wires woven through it (and I still don’t understand exactly how these work). More importantly, I realized I have very little understanding on how the modern computer memory - dynamic RAM - works!</p>
+	<p>I promptly concluded I had absolutely no idea on how these things could ever work. I wondered if the rings rotate (they don't), and why each ring has three wires woven through it (and I still donâ€™t understand exactly how these work). More importantly, I realized I have very little understanding on how the modern computer memory - dynamic RAM - works!</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/11/cpumemory.8.png" alt="cpumemory.8" loading="lazy"><br>
 		<small>Source: <a href="https://lwn.net/Articles/250967">Ulrich Drepper's series about memory</a></small>
 	</p>
@@ -26,7 +26,7 @@ Ranks                                      2
 		<li><a href="https://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html">A DRAM Refresh Tutorial, from the University of Utah</a></li>
 		<li>And an awesome documentation of 1 gigabit cell from micron: <a href="https://www.micron.com/~/media/documents/products/technical-note/dram/tn4609.pdf">TN-46-09 Designing for 1Gb DDR SDRAM</a></li>
 	</ul>
-	<p>Each bit stored in dynamic memory must be refreshed, typically every 64ms (called Static Refresh). This is a rather costly operation. To avoid one major stall every 64ms, this process is divided into 8192 smaller refresh operations. In each operation, the computer’s memory controller sends refresh commands to the DRAM chips. After receiving the instruction a chip will refresh 1/8192 of its cells. Doing the math - 64ms / 8192 = 7812.5 ns or 7.81 μs. This means:</p>
+	<p>Each bit stored in dynamic memory must be refreshed, typically every 64ms (called Static Refresh). This is a rather costly operation. To avoid one major stall every 64ms, this process is divided into 8192 smaller refresh operations. In each operation, the computerâ€™s memory controller sends refresh commands to the DRAM chips. After receiving the instruction a chip will refresh 1/8192 of its cells. Doing the math - 64ms / 8192 = 7812.5 ns or 7.81 Î¼s. This means:</p>
 	<ul>
 		<li>A refresh command is issued every 7812.5 ns. This is called tREFI.</li>
 		<li>It takes some time for the chip to perform the refresh and recover so it can perform normal read and write operations again. This time, called tRFC is either 75ns or 120ns (as per the mentioned Micron datasheet).</li>

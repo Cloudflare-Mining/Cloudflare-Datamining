@@ -1,12 +1,12 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/load-balancing.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We’re excited to announce the full integration of Cloudflare Spectrum with Load Balancing. Combining Spectrum with Load Balancing enables traffic management of TCP connections utilising the same battle tested Load Balancer our customers already use for billions of HTTP requests every day.</p>
-	<p>Customers can configure load balancers with TCP health checks, failover, and steering policies to dictate where traffic should flow. This is live in the Cloudflare dashboard and API — give it a shot!</p>
+	<p>Weâ€™re excited to announce the full integration of Cloudflare Spectrum with Load Balancing. Combining Spectrum with Load Balancing enables traffic management of TCP connections utilising the same battle tested Load Balancer our customers already use for billions of HTTP requests every day.</p>
+	<p>Customers can configure load balancers with TCP health checks, failover, and steering policies to dictate where traffic should flow. This is live in the Cloudflare dashboard and API â€” give it a shot!</p>
 	<h3 id="tcp-health-checks">TCP Health Checks</h3>
-	<p>You can now configure <a href="https://www.cloudflare.com/load-balancing">Cloudflare’s Load Balancer</a> health checks to probe any TCP port for an accepted connection. This is in addition to the existing HTTP and HTTPS options.</p>
-	<p>Health checks are an optional feature within Cloudflare’s Load Balancing product. Without health checks, the Cloudflare Load Balancer will distribute traffic to all origins in the first pool. While this is in itself useful, adding a health check to a Load Balancer provides additional functionality.</p>
-	<p>With a health check configured for a pool in a Load Balancer, Cloudflare will automatically distribute traffic within a pool to any origins that are marked up by the health check. Unhealthy origins will be dropped automatically. This allows for intelligent failover both within a pool and amongst pools. Health checks can be configured from multiple regions (and even all of Cloudflare’s PoPs as an Enterprise customer) to detect local and global connectivity issues from your origins.</p>
+	<p>You can now configure <a href="https://www.cloudflare.com/load-balancing">Cloudflareâ€™s Load Balancer</a> health checks to probe any TCP port for an accepted connection. This is in addition to the existing HTTP and HTTPS options.</p>
+	<p>Health checks are an optional feature within Cloudflareâ€™s Load Balancing product. Without health checks, the Cloudflare Load Balancer will distribute traffic to all origins in the first pool. While this is in itself useful, adding a health check to a Load Balancer provides additional functionality.</p>
+	<p>With a health check configured for a pool in a Load Balancer, Cloudflare will automatically distribute traffic within a pool to any origins that are marked up by the health check. Unhealthy origins will be dropped automatically. This allows for intelligent failover both within a pool and amongst pools. Health checks can be configured from multiple regions (and even all of Cloudflareâ€™s PoPs as an Enterprise customer) to detect local and global connectivity issues from your origins.</p>
 	<p>In this example, we will configure a TCP health check for an application running on port 2408 with a refresh rate of every 30 seconds via either the dashboard or our API.</p>
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Load-Balancing-Manage-Monitors.png" class="kg-image" alt="" loading="lazy">
@@ -38,12 +38,12 @@
 		<li><strong>Geo Steering</strong><br><a href="https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions">Geo Steering</a> allows you to specify pools for a given Region or PoP (ENT only). In this configuration, Cloudflare will direct traffic from specified Cloudflare locations to configured pools. You may configure multiple pools, and the load balancer will use them in failover order. If this steering mode is selected and there is no configuration for a region or pool, the load balancer will use the default failover order.</li>
 	</ul>
 	<h3 id="build-scalable-tcp-applications">Build Scalable TCP Applications</h3>
-	<p>Once your load balancer is configured, it’s available for use as an origin with your Spectrum application:</p>
+	<p>Once your load balancer is configured, itâ€™s available for use as an origin with your Spectrum application:</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Load-balancing-Edit-Application.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Configuring a Spectrum application with Load Balancing</figcaption>
 	</figure>
 	<p></p>
-	<p>Combining Spectrum’s ability to proxy TCP applications, our Load Balancer’s full feature set, and Cloudflare’s global network allows our customers to build performant, reliable, and secure network applications with minimal effort.</p>
-	<p>We’ve seen customers combine Spectrum and Load Balancing to build scalable gaming platforms, make their live streaming infrastructure more robust, push the envelope with interesting cryptocurrency use cases, and lots more. What will you build?</p>
+	<p>Combining Spectrumâ€™s ability to proxy TCP applications, our Load Balancerâ€™s full feature set, and Cloudflareâ€™s global network allows our customers to build performant, reliable, and secure network applications with minimal effort.</p>
+	<p>Weâ€™ve seen customers combine Spectrum and Load Balancing to build scalable gaming platforms, make their live streaming infrastructure more robust, push the envelope with interesting cryptocurrency use cases, and lots more. What will you build?</p>
 	<p>Spectrum with Load Balancing is available to all current Spectrum and Load Balancing users. Want access to Spectrum? <a href="https://cloudflare.com/products/cloudflare-spectrum">Get in touch with our team</a>. Spectrum is available for applications on the Enterprise plan.</p>
 </div>

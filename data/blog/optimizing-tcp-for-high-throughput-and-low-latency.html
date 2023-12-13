@@ -10,7 +10,7 @@
 	<p>Since then, we have added new products, such as Magic WAN, WARP, Spectrum, Gateway, and others. These represent new types of use cases and traffic flows.</p>
 	<p>For example, imagine you're a typical Magic WAN customer. You have connected all of your worldwide offices together using the Cloudflare global network. While Time to First Byte still matters, Magic WAN office-to-office traffic also needs good throughput. For example, a lot of traffic over these corporate connections will be file sharing using protocols such as SMB. These are <a href="https://en.wikipedia.org/wiki/Elephant_flow">elephant flows</a> over <a href="https://datatracker.ietf.org/doc/html/rfc1072">long fat networks</a>. Throughput is the metric every eyeball watches as they are downloading files.</p>
 	<p>We need to continue to provide world-class low latency while simultaneously providing high throughput over high-latency connections.</p>
-	<p>Before we begin, let’s introduce the players in our game.</p>
+	<p>Before we begin, letâ€™s introduce the players in our game.</p>
 	<p><strong>TCP receive window </strong>is the maximum number of unacknowledged user payload bytes the sender should transmit (bytes-in-flight) at any point in time. The size of the receive window can and does go up and down during the course of a TCP session. It is a mechanism whereby the receiver can tell the sender to stop sending if the sent packets cannot be successfully received because the receive buffers are full. It is this receive window that often limits throughput over high-latency networks.</p>
 	<p><strong>net.ipv4.tcp_adv_win_scale</strong> is a (non-intuitive) number used to account for the overhead needed by Linux to process packets. The receive window is specified in terms of user payload bytes. Linux needs additional memory beyond that to track other data associated with packets it is processing.</p>
 	<p>The value of the receive window changes during the lifetime of a TCP session, depending on a number of factors. The maximum value that the receive window can be is limited by the amount of free memory available in the receive buffer, according to this table:</p><!--kg-card-begin: markdown-->
@@ -28,15 +28,15 @@
 			</tr>
 			<tr>
 				<td style="text-align:center">3</td>
-				<td style="text-align:center">⅞ * available memory in receive buffer</td>
+				<td style="text-align:center">â…ž * available memory in receive buffer</td>
 			</tr>
 			<tr>
 				<td style="text-align:center">2</td>
-				<td style="text-align:center">¾ * available memory in receive buffer</td>
+				<td style="text-align:center">Â¾ * available memory in receive buffer</td>
 			</tr>
 			<tr>
 				<td style="text-align:center">1</td>
-				<td style="text-align:center">½ * available memory in receive buffer</td>
+				<td style="text-align:center">Â½ * available memory in receive buffer</td>
 			</tr>
 			<tr>
 				<td style="text-align:center">0</td>
@@ -44,15 +44,15 @@
 			</tr>
 			<tr>
 				<td style="text-align:center">-1</td>
-				<td style="text-align:center">½ * available memory in receive buffer</td>
+				<td style="text-align:center">Â½ * available memory in receive buffer</td>
 			</tr>
 			<tr>
 				<td style="text-align:center">-2</td>
-				<td style="text-align:center">¼ * available memory in receive buffer</td>
+				<td style="text-align:center">Â¼ * available memory in receive buffer</td>
 			</tr>
 			<tr>
 				<td style="text-align:center">-3</td>
-				<td style="text-align:center">⅛ * available memory in receive buffer</td>
+				<td style="text-align:center">â…› * available memory in receive buffer</td>
 			</tr>
 		</tbody>
 	</table>
@@ -64,7 +64,7 @@
 	<p>Linux autotuning is logic in the Linux kernel that adjusts the buffer size limits and the receive window based on actual packet processing. It takes into consideration a number of things including TCP session RTT, L7 read rates, and the amount of available host memory.</p>
 	<p>Autotuning can sometimes seem mysterious, but it is actually fairly straightforward.</p>
 	<p>The central idea is that Linux can track the rate at which the local application is reading data off of the receive queue. It also knows the session RTT. Because Linux knows these things, it can automatically increase the buffers and receive window until it reaches the point at which the application layer or network bottleneck links are the constraint on throughput (and not host buffer settings). At the same time, autotuning prevents slow local readers from having excessively large receive queues. The way autotuning does that is by limiting the receive window and its corresponding receive buffer to an appropriate size for each socket.</p>
-	<p>The values set by autotuning can be seen via the Linux “<code>ss</code>” command from the <code>iproute</code> package (e.g. “<code>ss -tmi</code>”). &nbsp;The relevant output fields from that command are:</p>
+	<p>The values set by autotuning can be seen via the Linux â€œ<code>ss</code>â€ command from the <code>iproute</code> package (e.g. â€œ<code>ss -tmi</code>â€). Â&nbsp;The relevant output fields from that command are:</p>
 	<p><strong>Recv-Q</strong> is the number of user payload bytes not yet read by the local application.</p>
 	<p><strong>rcv_ssthresh</strong> is the window clamp, a.k.a. the maximum receive window size. This value is not known to the sender. The sender receives only the current window size, via the TCP header field. A closely-related field in the kernel, tp-&gt;window_clamp, is the maximum window size allowable based on the amount of available memory. rcv_ssthresh is the receiver-side slow-start threshold value.</p>
 	<p><strong>skmem_r</strong> is the actual amount of memory that is allocated, which includes not only user payload (Recv-Q) but also additional memory needed by Linux to process the packet (packet metadata). This is known within the kernel as sk_rmem_alloc.</p>
@@ -72,22 +72,22 @@
 	<p><strong>skmem_rb</strong> is the maximum amount of memory that could be allocated by the socket for the receive buffer. This is higher than rcv_ssthresh to account for memory needed for packet processing that is not packet data. Autotuning can increase this value (up to tcp_rmem max) based on how fast the L7 application is able to read data from the socket and the RTT of the session. This is known within the kernel as sk_rcvbuf.</p>
 	<p><strong>rcv_space</strong> is the high water mark of the rate of the local application reading from the receive buffer during any RTT. This is used internally within the kernel to adjust sk_rcvbuf.</p>
 	<p>Earlier we mentioned a setting called tcp_rmem. <strong>net.ipv4.tcp_rmem</strong> consists of three values, but in this document we are always referring to the third value (except where noted). It is a global setting that specifies the maximum amount of memory that any TCP receive buffer can allocate, i.e. the maximum permissible value that autotuning can use for sk_rcvbuf. This is essentially just a failsafe for autotuning, and under normal circumstances should play only a minor role in TCP memory management.</p>
-	<p>It’s worth mentioning that receive buffer memory is not preallocated. Memory is allocated based on actual packets arriving and sitting in the receive queue. It’s also important to realize that filling up a receive queue is not one of the criteria that autotuning uses to increase sk_rcvbuf. Indeed, preventing this type of excessive buffering (<a href="https://en.wikipedia.org/wiki/Bufferbloat">bufferbloat</a>) is one of the benefits of autotuning.</p>
-	<h2 id="what-s-the-problem">What’s the problem?</h2>
+	<p>Itâ€™s worth mentioning that receive buffer memory is not preallocated. Memory is allocated based on actual packets arriving and sitting in the receive queue. Itâ€™s also important to realize that filling up a receive queue is not one of the criteria that autotuning uses to increase sk_rcvbuf. Indeed, preventing this type of excessive buffering (<a href="https://en.wikipedia.org/wiki/Bufferbloat">bufferbloat</a>) is one of the benefits of autotuning.</p>
+	<h2 id="what-s-the-problem">Whatâ€™s the problem?</h2>
 	<p>The problem is that we must have a large TCP receive window for high <a href="https://en.wikipedia.org/wiki/Bandwidth-delay_product">BDP</a> sessions. This is directly at odds with the latency spike problem mentioned above.</p>
 	<p>Something has to give. The laws of physics (speed of light in glass, etc.) dictate that we must use large window sizes. There is no way to get around that. So we are forced to solve the latency spikes differently.</p>
 	<h2 id="a-brief-recap-of-the-latency-spike-problem">A brief recap of the latency spike problem</h2>
-	<p>Sometimes a TCP session will fill up its receive buffers. When that happens, the Linux kernel will attempt to reduce the amount of memory the receive queue is using by performing what amounts to a “defragmentation” of memory. This is called collapsing the queue. Collapsing the queue takes time, which is what drives up HTTP request latency.</p>
+	<p>Sometimes a TCP session will fill up its receive buffers. When that happens, the Linux kernel will attempt to reduce the amount of memory the receive queue is using by performing what amounts to a â€œdefragmentationâ€ of memory. This is called collapsing the queue. Collapsing the queue takes time, which is what drives up HTTP request latency.</p>
 	<p>We do not want to spend time collapsing TCP queues.</p>
 	<p>Why do receive queues fill up to the point where they hit the maximum memory limit? The usual situation is when the local application starts out reading data from the receive queue at one rate (triggering autotuning to raise the max receive window), followed by the local application slowing down its reading from the receive queue. This is valid behavior, and we need to handle it correctly.</p>
 	<h2 id="selecting-sysctl-values">Selecting sysctl values</h2>
-	<p>Before exploring solutions, let’s first decide what we need as the maximum TCP window size.</p>
+	<p>Before exploring solutions, letâ€™s first decide what we need as the maximum TCP window size.</p>
 	<p>As we have seen above in the discussion about BDP, the window size is determined based upon the RTT and desired throughput of the connection.</p>
 	<p>Because Linux autotuning will adjust correctly for sessions with lower RTTs and bottleneck links with lower throughput, all we need to be concerned about are the maximums.</p>
 	<p>For latency, we have chosen 300 ms as the maximum expected latency, as that is the measured latency between our Zurich and Sydney facilities. It seems reasonable enough as a worst-case latency under normal circumstances.</p>
-	<p>For throughput, although we have very fast and modern hardware on the Cloudflare global network, we don’t expect a single TCP session to saturate the hardware. We have arbitrarily chosen 3500 mbps as the highest supported throughput for our highest latency TCP sessions.</p>
+	<p>For throughput, although we have very fast and modern hardware on the Cloudflare global network, we donâ€™t expect a single TCP session to saturate the hardware. We have arbitrarily chosen 3500 mbps as the highest supported throughput for our highest latency TCP sessions.</p>
 	<p>The calculation for those numbers results in a BDP of 131MB, which we round to the more aesthetic value of 128 MiB.</p>
-	<p>Recall that allocation of TCP memory includes metadata overhead in addition to packet data. The ratio of actual amount of memory allocated to user payload size varies, depending on NIC driver settings, packet size, and other factors. For full-sized packets on some of our hardware, we have measured average allocations up to 3 times the packet data size. In order to reduce the frequency of TCP collapse on our servers, we set tcp_adv_win_scale to -2. From the table above, we know that the max window size will be ¼ of the max buffer space.</p>
+	<p>Recall that allocation of TCP memory includes metadata overhead in addition to packet data. The ratio of actual amount of memory allocated to user payload size varies, depending on NIC driver settings, packet size, and other factors. For full-sized packets on some of our hardware, we have measured average allocations up to 3 times the packet data size. In order to reduce the frequency of TCP collapse on our servers, we set tcp_adv_win_scale to -2. From the table above, we know that the max window size will be Â¼ of the max buffer space.</p>
 	<p>We end up with the following sysctl values:</p><!--kg-card-begin: markdown-->
 	<pre><code>net.ipv4.tcp_rmem = 8192 262144 536870912
 net.ipv4.tcp_wmem = 4096 16384 536870912
@@ -97,18 +97,18 @@ net.ipv4.tcp_adv_win_scale = -2
 	<p>A tcp_rmem of 512MiB and tcp_adv_win_scale of -2 results in a maximum window size that autotuning can set of 128 MiB, our desired value.</p>
 	<h2 id="disabling-tcp-collapse">Disabling TCP collapse</h2>
 	<p>Patient: Doctor, it hurts when we collapse the TCP receive queue.</p>
-	<p>Doctor: Then don’t do that!</p>
-	<p>Generally speaking, when a packet arrives at a buffer when the buffer is full, the packet gets dropped. In the case of these receive buffers, Linux tries to “save the packet” when the buffer is full by collapsing the receive queue. Frequently this is successful, but it is not guaranteed to be, and it takes time.</p>
-	<p>There are no problems created by immediately just dropping the packet instead of trying to save it. The receive queue is full anyway, so the local receiver application still has data to read. The sender’s congestion control will notice the drop and/or ZeroWindow and will respond appropriately. Everything will continue working as designed.</p>
+	<p>Doctor: Then donâ€™t do that!</p>
+	<p>Generally speaking, when a packet arrives at a buffer when the buffer is full, the packet gets dropped. In the case of these receive buffers, Linux tries to â€œsave the packetâ€ when the buffer is full by collapsing the receive queue. Frequently this is successful, but it is not guaranteed to be, and it takes time.</p>
+	<p>There are no problems created by immediately just dropping the packet instead of trying to save it. The receive queue is full anyway, so the local receiver application still has data to read. The senderâ€™s congestion control will notice the drop and/or ZeroWindow and will respond appropriately. Everything will continue working as designed.</p>
 	<p>At present, there is no setting provided by Linux to disable the TCP collapse. We developed an in-house patch to the kernel to disable the TCP collapse logic.</p>
-	<h2 id="kernel-patch-attempt-1">Kernel patch – Attempt #1</h2>
+	<h2 id="kernel-patch-attempt-1">Kernel patch â€“ Attempt #1</h2>
 	<p>The kernel patch for our first attempt was straightforward. At the top of tcp_try_rmem_schedule(), if the memory allocation fails, we simply return (after pred_flag = 0 and tcp_sack_reset()), thus completely skipping the tcp_collapse and related logic.</p>
-	<p>It didn’t work.</p>
+	<p>It didnâ€™t work.</p>
 	<p>Although we eliminated the latency spikes while using large buffer limits, we did not observe the throughput we expected.</p>
 	<p>One of the realizations we made as we investigated the situation was that standard network benchmarking tools such as iperf3 and similar do not expose the problem we are trying to solve. iperf3 does not fill the receive queue. Linux autotuning does not open the TCP window large enough. Autotuning is working perfectly for our well-behaved benchmarking program.</p>
 	<p>We need application-layer software that is slightly less well-behaved, one that exercises the autotuning logic under test. So we wrote one.</p>
 	<h2 id="a-new-benchmarking-tool">A new benchmarking tool</h2>
-	<p>Anomalies were seen during our “Attempt #1” that negatively impacted throughput. The anomalies were seen only under certain specific conditions, and we realized we needed a better benchmarking tool to detect and measure the performance impact of those anomalies.</p>
+	<p>Anomalies were seen during our â€œAttempt #1â€ that negatively impacted throughput. The anomalies were seen only under certain specific conditions, and we realized we needed a better benchmarking tool to detect and measure the performance impact of those anomalies.</p>
 	<p>This tool has turned into an invaluable resource during the development of this patch and raised confidence in our solution.</p>
 	<p>It consists of two Python programs. The reader opens a TCP session to the daemon, at which point the daemon starts sending user payload as fast as it can, and never stops sending.</p>
 	<p>The reader, on the other hand, starts and stops reading in a way to open up the TCP receive window wide open and then repeatedly causes the buffers to fill up completely. More specifically, the reader implemented this logic:</p><!--kg-card-begin: markdown-->
@@ -133,7 +133,7 @@ net.ipv4.tcp_adv_win_scale = -2
 	<!--kg-card-end: markdown-->
 	<p>This has the effect of highlighting any issues in the handling of packets when the buffers repeatedly hit the limit.</p>
 	<h2 id="revisiting-default-linux-behavior">Revisiting default Linux behavior</h2>
-	<p>Taking a step back, let’s look at the default Linux behavior. The following is kernel v5.15.16.</p>
+	<p>Taking a step back, letâ€™s look at the default Linux behavior. The following is kernel v5.15.16.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.12.11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The Linux kernel is effective at freeing up space in order to make room for incoming packets when the receive buffer memory limit is hit. As documented previously, the cost for saving these packets (i.e. not dropping them) is latency.</p>
 	<p>However, the latency spikes, in <em>milliseconds</em>, for tcp_try_rmem_schedule(), are:</p>
@@ -177,24 +177,24 @@ net.ipv4.tcp_adv_win_scale = -2
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>These are the latency spikes we cannot have on the Cloudflare global network.</p>
-	<h2 id="kernel-patch-attempt-2">Kernel patch – Attempt #2</h2>
-	<p>So the “something” that was not working in Attempt #1 was that the receive queue memory limit was hit early on as the flow was just ramping up (when the values for sk_rmem_alloc and sk_rcvbuf were small, ~800KB). This occurred at about the two second mark for 137p4 test (about 2.25 seconds for 170p2).</p>
+	<h2 id="kernel-patch-attempt-2">Kernel patch â€“ Attempt #2</h2>
+	<p>So the â€œsomethingâ€ that was not working in Attempt #1 was that the receive queue memory limit was hit early on as the flow was just ramping up (when the values for sk_rmem_alloc and sk_rcvbuf were small, ~800KB). This occurred at about the two second mark for 137p4 test (about 2.25 seconds for 170p2).</p>
 	<p>In hindsight, we should have noticed that tcp_prune_queue() actually raises sk_rcvbuf when it can. So we modified the patch in response to that, added a guard to allow the collapse to execute when sk_rmem_alloc is less than the threshold value.</p>
 	<p><code>net.ipv4.tcp_collapse_max_bytes = 6291456</code></p>
 	<p>The next section discusses how we arrived at this value for tcp_collapse_max_bytes.</p>
 	<p>The patch is available <a href="https://github.com/cloudflare/linux/blob/master/patches/0014-add-a-sysctl-to-enable-disable-tcp_collapse-logic.patch">here</a>.</p>
 	<p>The results with the new patch are as follows:</p>
-	<p>oscil – 300ms tests</p>
+	<p>oscil â€“ 300ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.35.26.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>oscil – 20ms tests</p>
+	<p>oscil â€“ 20ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.35.38.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>oscil – 0ms tests</p>
+	<p>oscil â€“ 0ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.36.44.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>iperf3 – 300 ms tests</p>
+	<p>iperf3 â€“ 300 ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.38.17.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>iperf3 – 20 ms tests</p>
+	<p>iperf3 â€“ 20 ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.39.07.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>iperf3 – 0ms tests</p>
+	<p>iperf3 â€“ 0ms tests</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-29-at-19.39.19.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>All tests are successful.</p>
 	<h2 id="setting-tcp_collapse_max_bytes">Setting tcp_collapse_max_bytes</h2>
@@ -203,7 +203,7 @@ net.ipv4.tcp_adv_win_scale = -2
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Using 6 MiB should result in a maximum latency of no more than 2 ms.</p>
 	<h2 id="cloudflare-production-network-results">Cloudflare production network results</h2>
-	<h3 id="current-production-settings-old-">Current production settings (“Old”)</h3><!--kg-card-begin: markdown-->
+	<h3 id="current-production-settings-old-">Current production settings (â€œOldâ€)</h3><!--kg-card-begin: markdown-->
 	<pre><code>net.ipv4.tcp_rmem = 8192 2097152 16777216
 net.ipv4.tcp_wmem = 4096 16384 33554432
 net.ipv4.tcp_adv_win_scale = -2
@@ -212,7 +212,7 @@ net.ipv4.tcp_notsent_lowat = 4294967295
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>tcp_collapse_max_bytes of 0 means that the custom feature is disabled and that the vanilla kernel logic is used for TCP collapse processing.</p>
-	<h3 id="new-settings-under-test-new-">New settings under test (“New”)</h3><!--kg-card-begin: markdown-->
+	<h3 id="new-settings-under-test-new-">New settings under test (â€œNewâ€)</h3><!--kg-card-begin: markdown-->
 	<pre><code>net.ipv4.tcp_rmem = 8192 262144 536870912
 net.ipv4.tcp_wmem = 4096 16384 536870912
 net.ipv4.tcp_adv_win_scale = -2
@@ -283,6 +283,6 @@ net.ipv4.tcp_notsent_lowat = 131072
 	<p>...<br>
 		<em>We protect <a href="https://www.cloudflare.com/network-services">entire corporate networks</a>, help customers build <a href="https://workers.cloudflare.com">Internet-scale applications efficiently</a>, accelerate any <a href="https://www.cloudflare.com/performance/accelerate-internet-applications">website or Internet application</a>, ward off <a href="https://www.cloudflare.com/ddos">DDoS attacks</a>, keep <a href="https://www.cloudflare.com/application-security">hackers at bay</a>, and can help you on <a href="https://www.cloudflare.com/products/zero-trust">your journey to Zero Trust</a>.</em>
 	</p>
-	<p><em>Visit <a href="https://1.1.1.1">1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start <a href="https://www.cloudflare.com/learning/what-is-cloudflare">here</a>. If you’re looking for a new career direction, check out <a href="https://cloudflare.com/careers">our open positions</a>.</em></p>
+	<p><em>Visit <a href="https://1.1.1.1">1.1.1.1</a> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start <a href="https://www.cloudflare.com/learning/what-is-cloudflare">here</a>. If youâ€™re looking for a new career direction, check out <a href="https://cloudflare.com/careers">our open positions</a>.</em></p>
 	<!--kg-card-end: markdown-->
 </div>

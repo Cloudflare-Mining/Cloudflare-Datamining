@@ -12,7 +12,7 @@
 	<p>In our quiz questions, we will either:</p>
 	<ol>
 		<li>let the OS automatically select the the local IP and/or port for the socket, or</li>
-		<li>we will explicitly assign the local address with <a href="https://man7.org/linux/man-pages/man2/bind.2.html"><code>bind()</code></a> before <a href="https://man7.org/linux/man-pages/man2/connect.2.html"><code>connect()</code></a>’ing the socket; a method also known as <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">bind-before-connect</a>.</li>
+		<li>we will explicitly assign the local address with <a href="https://man7.org/linux/man-pages/man2/bind.2.html"><code>bind()</code></a> before <a href="https://man7.org/linux/man-pages/man2/connect.2.html"><code>connect()</code></a>â€™ing the socket; a method also known as <a href="https://idea.popcount.org/2014-04-03-bind-before-connect">bind-before-connect</a>.</li>
 	</ol>
 	<p>Because we will be examining corner cases in the bind() logic, we need a way to exhaust available local addresses, that is (IP, port) pairs. We could just create lots of sockets, but it will be easier to <a href="https://www.kernel.org/doc/html/latest/networking/ip-sysctl.html#ip-variables">tweak the system configuration</a> and pretend that there is just one ephemeral local port, which the OS can assign to sockets:</p>
 	<p><code>sysctl -w net.ipv4.ip_local_port_range='60000 60000'</code></p>
@@ -127,7 +127,7 @@ s2.getsockname(), s2.getpeername()
 	<!--kg-card-end: markdown-->
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_2.py">Answer #2</a></p>
 	<h3 id="quiz-3">Quiz #3</h3>
-	<p>This quiz question is just like &nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p><!--kg-card-begin: markdown-->
+	<p>This quiz question is just like Â&nbsp;the one above. We just changed the ordering. First, we connect a socket from an explicitly specified local address. Then we ask the system to select a local address for us. Obviously, such an ordering change should not make any difference, right?</p><!--kg-card-begin: markdown-->
 	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
 s1.bind(('127.1.1.1', 0))
 s1.connect(('127.9.9.9', 1234))
@@ -205,7 +205,7 @@ s2.getsockname(), s2.getpeername()
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h3 id="quiz-4">Quiz #4</h3>
-	<p>Let’s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p><!--kg-card-begin: markdown-->
+	<p>Letâ€™s start from the basics. We <code>connect()</code> to two distinct remote addresses. This is a warm up ?</p><!--kg-card-begin: markdown-->
 	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
 s1.connect(('127.8.8.8', 1234))
 s1.getsockname(), s1.getpeername()
@@ -245,7 +245,7 @@ s2.getsockname(), s2.getpeername()
 	<!--kg-card-end: markdown-->
 	<p>GOTO <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/quiz_6.py">Answer #6</a></p>
 	<h3 id="quiz-7">Quiz #7</h3>
-	<p>Just when you thought it couldn’t get any weirder, we add <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEADDR"><code>SO_REUSEADDR</code></a> into the mix.</p>
+	<p>Just when you thought it couldnâ€™t get any weirder, we add <a href="https://manpages.debian.org/unstable/manpages/socket.7.en.html#SO_REUSEADDR"><code>SO_REUSEADDR</code></a> into the mix.</p>
 	<p>First, we ask the OS to allocate a local address for us. Then we explicitly bind to the same local address, which we know the OS must have assigned to the first socket. We enable local address reuse for both sockets. Is this allowed?</p><!--kg-card-begin: markdown-->
 	<pre><code>s1 = socket(AF_INET, SOCK_STREAM)
 s1.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
@@ -450,7 +450,7 @@ s2.getsockname(), s2.getpeername()
 	<table class="tg">
 		<thead>
 			<tr>
-				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Can I … when …</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Can I â€¦ when â€¦</span></th>
 				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fastreuse = -1</span></th>
 				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fastreuse = 0</span></th>
 				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fastreuse = +1</span></th>
@@ -459,33 +459,33 @@ s2.getsockname(), s2.getpeername()
 		<tbody>
 			<tr>
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bind() to the same port (ephemeral or specified)</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> IFF local IP is unique ①</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">← </span><a href="https://en.wiktionary.org/wiki/idem#Pronoun"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">idem</span></a></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">← idem</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> IFF local IP is unique â‘&nbsp;</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">â† </span><a href="https://en.wiktionary.org/wiki/idem#Pronoun"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">idem</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">â† idem</span></td>
 			</tr>
 			<tr>
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bind() to the specific port with SO_REUSEADDR</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> IFF local IP is unique OR conflicting socket uses SO_REUSEADDR ①</span></td>
-				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">← idem</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> ②</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> IFF local IP is unique OR conflicting socket uses SO_REUSEADDR â‘&nbsp;</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">â† idem</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> â‘¡</span></td>
 			</tr>
 			<tr>
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">connect() from the same ephemeral port to the same remote (IP, port)</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> IFF local IP unique ③</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> ③</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> ③</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> IFF local IP unique â‘¢</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> â‘¢</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> â‘¢</span></td>
 			</tr>
 			<tr>
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">connect() from the same ephemeral port to a unique remote (IP, port)</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> ③</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> ③</span></td>
-				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> ③</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">yes</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> â‘¢</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> â‘¢</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> â‘¢</span></td>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>① Determined by <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L214"><code>inet_csk_bind_conflict()</code></a> called from <code>inet_csk_get_port()</code> (specific port bind) or <code>inet_csk_get_port()</code> → <code>inet_csk_find_open_port()</code> (ephemeral port bind).</p>
-	<p>② Because <code>inet_csk_get_port()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L531">skips conflict check</a> for <code>fastreuse == 1 buckets</code>.</p>
-	<p>③ Because <code>inet_hash_connect()</code> → <code>__inet_hash_connect()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L1062">skips buckets</a> with <code>fastreuse != -1</code>.</p>
+	<p>â‘&nbsp; Determined by <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L214"><code>inet_csk_bind_conflict()</code></a> called from <code>inet_csk_get_port()</code> (specific port bind) or <code>inet_csk_get_port()</code> â†’ <code>inet_csk_find_open_port()</code> (ephemeral port bind).</p>
+	<p>â‘¡ Because <code>inet_csk_get_port()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L531">skips conflict check</a> for <code>fastreuse == 1 buckets</code>.</p>
+	<p>â‘¢ Because <code>inet_hash_connect()</code> â†’ <code>__inet_hash_connect()</code> <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_hashtables.c#L1062">skips buckets</a> with <code>fastreuse != -1</code>.</p>
 	<p>While it all looks rather complicated at first sight, we can distill the table above into a few statements that hold true, and are a bit easier to digest:</p>
 	<ul>
 		<li><code>bind()</code>, or early local address allocation, always succeeds if there is no local IP address conflict with any existing socket,</li>
@@ -493,7 +493,7 @@ s2.getsockname(), s2.getpeername()
 		<li><code>connect()</code> only succeeds if there is no local and remote address conflict,</li>
 		<li><code>SO_REUSEADDR</code> socket option allows local address sharing, if all conflicting sockets also use it (and none of them is in the listening state).</li>
 	</ul>
-	<h3 id="this-is-crazy-i-don-t-believe-you-">This is crazy. I don’t believe you.</h3>
+	<h3 id="this-is-crazy-i-don-t-believe-you-">This is crazy. I donâ€™t believe you.</h3>
 	<p>Fortunately, you don't have to. With <a href="https://drgn.readthedocs.io/en/latest/index.html">drgn</a>, the programmable debugger, we can examine the bind bucket state on a live kernel:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-Python">#!/usr/bin/env drgn
 
@@ -607,7 +607,7 @@ TCP-PORT  FASTREUSE  #OWNERS
 		<li>doesn't have the <code>SO_REUSEADDR</code> option enabled.</li>
 	</ol>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Untitled--1-.png" class="kg-image" alt="image" loading="lazy"></figure>
-	<p>And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431"><code>inet_csk_get_port → inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py">a few more tests</a>.</p>
+	<p>And while we could have figured it all out by carefully reading the code in <a href="https://elixir.bootlin.com/linux/v6.2/source/net/ipv4/inet_connection_sock.c#L431"><code>inet_csk_get_port â†’ inet_csk_update_fastreuse</code></a>, it certainly doesn't hurt to confirm our understanding with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2023-03-quantum-state-of-tcp-port/test_fastreuse_states.py">a few more tests</a>.</p>
 	<p>Now that we have the full picture, this begs the question...</p>
 	<h3 id="why-are-you-telling-me-all-this">Why are you telling me all this?</h3>
 	<p>Firstly, so that the next time <code>bind()</code> syscall rejects your request with <code>EADDRINUSE</code>, or <code>connect()</code> refuses to cooperate by throwing the <code>EADDRNOTAVAIL</code> error, you will know what is happening, or at least have the tools to find out.</p>

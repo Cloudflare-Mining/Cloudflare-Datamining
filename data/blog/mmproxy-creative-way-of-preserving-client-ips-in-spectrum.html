@@ -13,7 +13,7 @@
 	<p>A second method was developed by Akamai: the client IP is saved inside a custom option in the TCP header in the SYN packet. Early implementations of this method weren't conforming to any standards, e.g. using <a href="https://support.radware.com/app/answers/answer_view/a_id/16143/~/client-ip-visibility-from-akamai-servers-appshape%2B%2B-script-sample">option field 28</a>, but recently <a href="https://tools.ietf.org/html/rfc7974">RFC7974</a> was ratified for this option. We don't support this method for a number of reasons:</p>
 	<ul>
 		<li>
-			<p>The space in TCP headers is very limited. It's insufficient to store the full 128 bits of client IPv6 addresses, especially with 15%+ of Cloudflare’s traffic being IPv6.</p>
+			<p>The space in TCP headers is very limited. It's insufficient to store the full 128 bits of client IPv6 addresses, especially with 15%+ of Cloudflareâ€™s traffic being IPv6.</p>
 		</li>
 		<li>
 			<p>No software or hardware supports the RFC7974 yet.</p>
@@ -29,12 +29,12 @@
 </code></pre>
 	<p>As you can see, the PROXY protocol is rather trivial to implement, and is generally sufficient for most use cases. However, it requires application support. The PROXY protocol (v1) is supported by Cloudflare Spectrum, and we highly encourage using it over other methods of keeping client source IP addresses.</p>
 	<h3 id="mmproxytotherescue">Mmproxy to the rescue</h3>
-	<p>But sometimes adding PROXY protocol support to the application isn't an option. This can be the case when the application isn’t open source, or when it's hard to edit. A good example is "sshd" - it doesn't support PROXY protocol and adding the support would be far from trivial. For such applications it may just be impossible to use any application level load balancer whatsoever. This is very unfortunate.</p>
+	<p>But sometimes adding PROXY protocol support to the application isn't an option. This can be the case when the application isnâ€™t open source, or when it's hard to edit. A good example is "sshd" - it doesn't support PROXY protocol and adding the support would be far from trivial. For such applications it may just be impossible to use any application level load balancer whatsoever. This is very unfortunate.</p>
 	<p>Fortunately we think we found a workaround.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.28-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.28-PM-1" loading="lazy"></p>
 	<p>Allow me to present <code>mmproxy</code>, a PROXY protocol gateway. <code>mmproxy</code> listens for remote connections coming from an application level load balancer, like Spectrum. It then reads a PROXY protocol header, opens a localhost connection to the target application, and duly proxies data in and out.</p>
-	<p>Such a proxy wouldn't be too useful if not for one feature—the localhost connection from <code>mmproxy</code> to the target application is sent with a real client source IP.</p>
-	<p>That's right, <code>mmproxy</code> spoofs the client IP address. From the application’s point of view, this spoofed connection, coming through Spectrum and <code>mmproxy</code>, is indistinguishable from a real one, connecting directly to the application.</p>
+	<p>Such a proxy wouldn't be too useful if not for one featureâ€”the localhost connection from <code>mmproxy</code> to the target application is sent with a real client source IP.</p>
+	<p>That's right, <code>mmproxy</code> spoofs the client IP address. From the applicationâ€™s point of view, this spoofed connection, coming through Spectrum and <code>mmproxy</code>, is indistinguishable from a real one, connecting directly to the application.</p>
 	<p>This technique requires some Linux routing trickery. The <code>mmproxy</code> daemon will walk you through the necessary details, but there are the important bits:</p>
 	<ul>
 		<li><code>mmproxy</code> works only on Linux.</li>
@@ -94,7 +94,7 @@ ip -6 route add local ::/0 dev lo table 100     # [+] VERIFIED
 	<p>On startup, <code>mmproxy</code> performs a number of self checks. Since we prepared the necessary routing and firewall rules, its self check passes with a "VERIFIED" mark. It's important to confirm these pass.</p>
 	<p>We're almost ready to go! The last step is to create a Spectrum application that sends PROXY protocol traffic to <code>mmproxy</code>, port 2222. Here is an example configuration<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn2" id="fnref2">[2]</a></sup>:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-4.06.17-PM.png" alt="Screen-Shot-2018-04-15-at-4.06.17-PM" loading="lazy"></p>
-	<p>With Spectrum we are forwarding TCP/22 on domain "ssh.example.org", to our origin at 192.0.2.1, port 2222. We’ve enabled the PROXY protocol toggle.</p>
+	<p>With Spectrum we are forwarding TCP/22 on domain "ssh.example.org", to our origin at 192.0.2.1, port 2222. Weâ€™ve enabled the PROXY protocol toggle.</p>
 	<h3 id="mmproxyinaction">mmproxy in action</h3>
 	<p>Now we can see if it works. My testing VPS has IP address 79.1.2.3. Let's see if the whole setup behaves:</p>
 	<pre><code>vps$ nc ssh.example.org 22
@@ -109,7 +109,7 @@ SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.1
 Apr 15 14:39:09 ubuntu sshd[7703]: Did not receive identification
         string from 79.1.2.3
 </code></pre>
-	<p>Hurray! All works! sshd recorded the real client IP address, and with <code>mmproxy</code>’s help we never saw that it's actually traffic flowing through Cloudflare Spectrum.</p>
+	<p>Hurray! All works! sshd recorded the real client IP address, and with <code>mmproxy</code>â€™s help we never saw that it's actually traffic flowing through Cloudflare Spectrum.</p>
 	<h3 id="underthehood">Under the hood</h3>
 	<p>Under the hood <code>mmproxy</code> relies on two hacks.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.44-PM-1.png" alt="Screen-Shot-2018-04-15-at-12.26.44-PM-1" loading="lazy"></p>
@@ -129,10 +129,10 @@ Apr 15 14:39:09 ubuntu sshd[7703]: Did not receive identification
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>In addition to supporting standard <code>X-Forwarded-For</code> HTTP header, Cloudflare supports custom a <code>CF-Connecting-IP</code> header. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>In addition to supporting standard <code>X-Forwarded-For</code> HTTP header, Cloudflare supports custom a <code>CF-Connecting-IP</code> header. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">â†©ï¸Ž</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>Spectrum is available for Enterprise plan domains and can be enabled by your account manager. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
+				<p>Spectrum is available for Enterprise plan domains and can be enabled by your account manager. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">â†©ï¸Ž</a></p>
 			</li>
 		</ol>
 	</section>

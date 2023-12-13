@@ -8,7 +8,7 @@
 	</figure>
 	<p></p>
 	<p>Of course, the web being the web that we all love, there are also endless parodies of Lorem Ipsum. You can generate <a href="https://www.shopify.com/partners/blog/79940998-15-funny-lorem-ipsum-generators-to-shake-up-your-design-mockups">Hodor Ipsum, Cat Ipsum and Hipster Ipsum</a>. I have a new, undisputed favourite: Bob Ross Ipsum. </p>
-	<p>Not growing up in the U.S., I hadn't come across the lovable, calm, serene and beautiful human that is Bob Ross. If you haven't spent 30 mins watching him <a href="https://www.youtube.com/watch?v=pw5ETGiiBRg">paint a landscape</a>, you should do that now. He built a following as host of the TV show “<em>The Joy of Painting</em>” which ran on the U.S. PBS channel from 1983-1994. He became famous for his relaxed approach to painting and his catch phrases like “Happy Little Trees”</p>
+	<p>Not growing up in the U.S., I hadn't come across the lovable, calm, serene and beautiful human that is Bob Ross. If you haven't spent 30 mins watching him <a href="https://www.youtube.com/watch?v=pw5ETGiiBRg">paint a landscape</a>, you should do that now. He built a following as host of the TV show â€œ<em>The Joy of Painting</em>â€ which ran on the U.S. PBS channel from 1983-1994. He became famous for his relaxed approach to painting and his catch phrases like â€œHappy Little Treesâ€</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/image.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -24,10 +24,10 @@
 	<p>OK Step 1, stand on the shoulders of giants. Has anyone open sourced a Bob Ross Lorem Ipsum Generator?</p><!--kg-card-begin: markdown-->
 	<pre><code>$npm search "bob ross"
 NAME                      | DESCRIPTION          | AUTHOR          | DATE       | VERSION  | KEYWORDS       
-postcss-bob-ross-palette  | Bring a little Bob…  | =jonathantneal  | 2015-12-01 | 1.0.1    | postcss css pos
-bob-ross                  | Bob Ross Color…      | =azz            | 2017-02-14 | 1.0.0    | Bob Ross Color 
-hubot-ross                | A hubot script to…   | =tcrammond      | 2015-03-31 | 1.0.1    | hubot hubot scr
-bob-ross-lipsum           | Phrases from Bob…    | =forresto       | 2016-01-15 | 1.1.1    | lorem ipsum
+postcss-bob-ross-palette  | Bring a little Bobâ€¦  | =jonathantneal  | 2015-12-01 | 1.0.1    | postcss css pos
+bob-ross                  | Bob Ross Colorâ€¦      | =azz            | 2017-02-14 | 1.0.0    | Bob Ross Color 
+hubot-ross                | A hubot script toâ€¦   | =tcrammond      | 2015-03-31 | 1.0.1    | hubot hubot scr
+bob-ross-lipsum           | Phrases from Bobâ€¦    | =forresto       | 2016-01-15 | 1.1.1    | lorem ipsum
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Of course they have! And the code is delightfully simple:</p><!--kg-card-begin: markdown-->
@@ -68,7 +68,7 @@ var phrases = [...elided for clarity...]
 	<p></p>
 	<p>So it takes about 90 secs to build a basic Worker serving dynamically generated text from the Edge. It blows me away just how productive you can be with Cloudflare Workers. With a few clicks, we have code deployed to 150+ data centers and within 10ms of 90% of the world's Internet population. And it's <em><u><a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">fast</a>.</u></em></p>
 	<p>The more I use it, the more it reminds of Heroku, and how ease-of-deployment and the developer experience really drove adoption of that platform. </p>
-	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on &nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum">Github</a>.</p><!--kg-card-begin: markdown-->
+	<p>OK, so generating dynamic text is OK for an MVP, it would be nice if we at least had a UI and some options. You can use <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">Webpack to bundle resources</a> in your Workers, but I wanted this app to be as simple as possible, so I created a basic HTML page to capture some options, included my HTML as a string, and served it from the root of my Worker. The full code listing is on Â&nbsp;<a href="https://github.com/stevenpack/bob-ross-lipsum">Github</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">const ui = '...basic html page...';
 
 async function handleRequest(request) {
@@ -96,5 +96,5 @@ async function handleRequest(request) {
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/bob-ross-worker-full.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482">I’m hiring in Austin and San Francisco</a></p>
+	<p>Want to join a rocketship? <a href="https://boards.greenhouse.io/cloudflare/jobs/589482?gh_jid=589482">Iâ€™m hiring in Austin and San Francisco</a></p>
 </div>

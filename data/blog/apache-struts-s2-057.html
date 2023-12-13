@@ -16,11 +16,11 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Which means if you can find a way to make Apache Struts execute a user supplied OGNL expression, you've found an RCE vulnerability. Security researchers have found a significant number of vulnerabilities where this was the root cause.</p>
-	<h3 id="what-s-different-this-time">What’s different this time?</h3>
+	<h3 id="what-s-different-this-time">Whatâ€™s different this time?</h3>
 	<p>The major difference between the various OGNL related Struts vulnerabilities is where the payload can be supplied.</p>
-	<p>For example <a href="https://cwiki.apache.org/confluence/display/WW/S2-003">S2-003</a>, <a href="https://cwiki.apache.org/confluence/display/WW/S2-005">S2-005</a> and <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> allowed OGNL expressions to be included in HTTP Parameters. In <a href="https://cwiki.apache.org/confluence/display/WW/S2-045">S2-045</a>, expressions could be supplied via the ‘Content-Type’ header. &nbsp;And <a href="https://cwiki.apache.org/confluence/display/WW/S2-048">S2-048</a> worked by inserting OGNL expressions anywhere they might be used incorrectly with the ActionMessage class (most likely via an HTTP parameter).</p>
-	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">S2-057</a>, the payload is supplied via an action’s “namespace”. Semmel do a great job of explaining the exact conditions for this in their disclosure<a href="https://semmle.com/news/apache-struts-CVE-2018-11776"> post</a>.</p>
-	<p>An example is to omit the "namespace" parameter from the &nbsp;redirectAction result type.</p><!--kg-card-begin: markdown-->
+	<p>For example <a href="https://cwiki.apache.org/confluence/display/WW/S2-003">S2-003</a>, <a href="https://cwiki.apache.org/confluence/display/WW/S2-005">S2-005</a> and <a href="https://cwiki.apache.org/confluence/display/WW/S2-009">S2-009</a> allowed OGNL expressions to be included in HTTP Parameters. In <a href="https://cwiki.apache.org/confluence/display/WW/S2-045">S2-045</a>, expressions could be supplied via the â€˜Content-Typeâ€™ header. Â&nbsp;And <a href="https://cwiki.apache.org/confluence/display/WW/S2-048">S2-048</a> worked by inserting OGNL expressions anywhere they might be used incorrectly with the ActionMessage class (most likely via an HTTP parameter).</p>
+	<p>With <a href="https://cwiki.apache.org/confluence/display/WW/S2-057">S2-057</a>, the payload is supplied via an actionâ€™s â€œnamespaceâ€. Semmel do a great job of explaining the exact conditions for this in their disclosure<a href="https://semmle.com/news/apache-struts-CVE-2018-11776"> post</a>.</p>
+	<p>An example is to omit the "namespace" parameter from the Â&nbsp;redirectAction result type.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;package name="public" extends="struts-default"&gt;
     &lt;action name="login" class="..."&gt;
         &lt;!-- Redirect to another namespace --&gt;
@@ -37,17 +37,17 @@
 	<pre><code>vulnerablesite.com/struts2-blank/my-current-name-space/HelloWorld.action</code></pre>
 	<p>If the client inserts an OGNL expression instead, it will be executed.</p>
 	<pre><code>vulnerablesite.com/struts2-blank/${#_memberAccess["allowStaticMethodAccess"]=true,@java.lang.Runtime@getRuntime().exec('calc')}/HelloWorld.action</code></pre>
-	<h3 id="cloudflare-s-got-your-covered">Cloudflare’s got your covered</h3>
+	<h3 id="cloudflare-s-got-your-covered">Cloudflareâ€™s got your covered</h3>
 	<p>Cloudflare has rules to protect against this particular vulnerability, and many other Struts vulnerabilities. These have been configured as Block by default, so no customer action is needed, assuming the Cloudflare Specials rule set is enabled in your WAF configuration.</p>
-	<p>For customers on our Pro, Business and Enterprise plans, you can do this by going to the “Firewall” tab:</p>
+	<p>For customers on our Pro, Business and Enterprise plans, you can do this by going to the â€œFirewallâ€ tab:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/MUanKxcbMSlqE35y-3-QYk4_Jd2hoRfKoO0vtbgCMTUpnP4yyqFYHQpNWdTrh90jpjjK6PvPPlgH05MQ89B-1V2ghr1jlFPtjtQA_lb65Vy4UZsjTkhfFdSH5iU4ZZMPrE_w-lYc" class="kg-image" alt="" loading="lazy"></figure>
 	<p> </p>
-	<p>Clicking “Web Application Firewall” and setting the toggle to “On”:</p>
+	<p>Clicking â€œWeb Application Firewallâ€ and setting the toggle to â€œOnâ€:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/R5Mqe9ITeQ7UuT6P3JSEqDgAoclFIG7wgn-7UI4GX7D1-qfCJytK336CuE0nmgYP1Z_qvL1-x5Wcsv1A_drFUobArittn14YpXKLK0KX9V0EavIK3U1Wc148voYnSNC4cLOpMaNT" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Then finally ensuring the “Cloudflare Specials” rule set is set to “On” as well:</p>
+	<p>Then finally ensuring the â€œCloudflare Specialsâ€ rule set is set to â€œOnâ€ as well:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/xuQ1zTBNxtmsY6W29wWc5N5tocST8Ias7OjmisgIGJjl9GgHSiFfZqndkTTMWhiZj8YMJtfChnfZXgFl_nXVbZEhZWB72qcaoktYqkeFy0czBb0nWOnpy-LibXHZ-uPKSGAZMdzC" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -69,5 +69,5 @@
 		<li>id</li>
 		<li>Ping and nslookup commands to contact external servers</li>
 	</ul>
-	<p>If you have any further questions about how our WAF works, or whether you have the right protections in place, please don’t hesitate to reach out to our Support teams.</p>
+	<p>If you have any further questions about how our WAF works, or whether you have the right protections in place, please donâ€™t hesitate to reach out to our Support teams.</p>
 </div>

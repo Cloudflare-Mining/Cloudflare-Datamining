@@ -1,26 +1,26 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/snippets-announcement-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/snippets-announcement-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/snippets-announcement-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/snippets-announcement-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/snippets-announcement-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/snippets-announcement-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/snippets-announcement-pt-br">Português</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/snippets-announcement-zh-cn">ç®€ä½“ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/zh-tw/snippets-announcement-zh-tw">ç¹é«”ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/ja-jp/snippets-announcement-ja-jp">æ—¥æœ¬èªž</a>, <a href="https://blog.cloudflare.com/de-de/snippets-announcement-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/snippets-announcement-fr-fr">FranÃ§ais</a>, <a href="https://blog.cloudflare.com/es-es/snippets-announcement-es-es">EspaÃ±ol</a> and <a href="https://blog.cloudflare.com/pt-br/snippets-announcement-pt-br">PortuguÃªs</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-28.png" class="kg-image" alt="The most programmable Supercloud with Cloudflare Snippets" loading="lazy"></figure>
 	<h2 id="your-traffic-how-you-like-it">Your traffic, how you like it</h2>
-	<p>Cloudflare is used by a highly diverse customer base. We offer simple-to-use products for everything from setting HTTP headers to rewriting the URI path and performing URL redirects. Sometimes customers need more than the out-of-the-box functionality, not just adding an HTTP header - but performing some advanced calculation to create the output. Today they would need to create a feature request and wait for it to be shipped, write a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>, or keep this modification ‘on origin’ - on their own infrastructure.</p>
+	<p>Cloudflare is used by a highly diverse customer base. We offer simple-to-use products for everything from setting HTTP headers to rewriting the URI path and performing URL redirects. Sometimes customers need more than the out-of-the-box functionality, not just adding an HTTP header - but performing some advanced calculation to create the output. Today they would need to create a feature request and wait for it to be shipped, write a <a href="https://workers.cloudflare.com">Cloudflare Worker</a>, or keep this modification â€˜on originâ€™ - on their own infrastructure.</p>
 	<p>To simplify this, we are delighted to announce Cloudflare Snippets. Snippets are a new way to perform traffic modifications that users either cannot do via our productised offerings, or want to do programmatically. The best part? The vast majority of customers will pay<em> nothing extra</em> for using Snippets.</p>
-	<p>Users now have a choice. Perform the action via a rule. Or, if more functionality is needed, write a Snippet. &nbsp;Neither will mean waiting. Neither will incur additional cost (although a high fair usage cap will apply). Snippets unblocks users to do what they want, when they want. All on Cloudflare.</p>
+	<p>Users now have a choice. Perform the action via a rule. Or, if more functionality is needed, write a Snippet. Â&nbsp;Neither will mean waiting. Neither will incur additional cost (although a high fair usage cap will apply). Snippets unblocks users to do what they want, when they want. All on Cloudflare.</p>
 	<p>Snippets will support the import of code written in various languages, such as JavaScript (modern), VCL (legacy) and Apache .htaccess files (legacy). This allows customers to migrate legacy operational code onto our platform - whilst also consolidating their JavaScript operations.</p>
 	<p>Please use the sign-up form to join the waitlist for Snippets if you are interested in testing. We hope to begin admitting users into the closed beta early 2023.</p>
 	<h2 id="why-build-snippets">Why build Snippets?</h2>
 	<p>Over the past 18 months we have released a number of new rules products such as <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge">Transform Rules,</a> <a href="https://blog.cloudflare.com/introducing-cache-rules">Cache Rules</a>, <a href="https://blog.cloudflare.com/origin-rules">Origin Rules</a>, <a href="https://blog.cloudflare.com/configuration-rules">Config Rules</a> and <a href="https://blog.cloudflare.com/dynamic-redirect-rules">Redirect Rules</a>. These new products give more control to customers on how we process their traffic as it flows through our global network. The feedback on these products so far has been overwhelmingly positive. However, our customers still occasionally need the ability to do more than the out-of-the-box functionality allows.</p>
-	<p>There are always some use cases where a product doesn’t provide the functionality that a customer needs for their specific situation. &nbsp;For example, whilst thousands of our customers are now using Transform Rules to solve their HTTP header modification use cases, there remains a small number of use cases that are not possible, such as setting dynamic expiry times with cookies or hashing tokens with a key.</p>
+	<p>There are always some use cases where a product doesnâ€™t provide the functionality that a customer needs for their specific situation. Â&nbsp;For example, whilst thousands of our customers are now using Transform Rules to solve their HTTP header modification use cases, there remains a small number of use cases that are not possible, such as setting dynamic expiry times with cookies or hashing tokens with a key.</p>
 	<p>This is where Cloudflare Snippets help. Customers will no longer need to use the full Cloudflare Workers platform to implement these relatively simple use cases. Nor will they need to wait for us to build their feature requests. Instead, they will be able to run a Snippet of JavaScript.</p>
 	<h2 id="migrating-legacy-code-to-snippets">Migrating legacy code to Snippets</h2>
 	<p><a href="https://varnish-cache.org/docs/trunk/users-guide/vcl.html">Varnish Control Language</a> (VCL) is only used within the context of Varnish. Launched around 16 years ago, it has historically been used to configure traffic and routing for <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">Content Delivery Networks</a> as it was extensible to a wide range of use cases.</p>
 	<p>There are still a good number of businesses out there using VCL to perform routing and traffic modification actions. Whilst other providers are deprecating support for VCL, we want to make sure those of you comfortable using it are still supported.</p>
-	<p>Snippets won't run pure VCL. Instead, we will convert VCL into easy to maintain rules or Snippets. To achieve this we’re building a simple-to-use, self-serve VCL converter that analyzes uploaded VCL code and auto-generates suggested Snippets, and if we can find a match, also generates suggested rules for products such as Transform Rules or Cache Rules.</p>
-	<p>This topic was initially handled via <a href="https://blog.cloudflare.com/announcing-turpentine">Project Turpentine</a>, a suite of tools used by Cloudflare employees to parse a customer’s VCL into a suggested JavaScript configuration. This JavaScript could then be loaded into a Worker, or series of Workers.</p>
+	<p>Snippets won't run pure VCL. Instead, we will convert VCL into easy to maintain rules or Snippets. To achieve this weâ€™re building a simple-to-use, self-serve VCL converter that analyzes uploaded VCL code and auto-generates suggested Snippets, and if we can find a match, also generates suggested rules for products such as Transform Rules or Cache Rules.</p>
+	<p>This topic was initially handled via <a href="https://blog.cloudflare.com/announcing-turpentine">Project Turpentine</a>, a suite of tools used by Cloudflare employees to parse a customerâ€™s VCL into a suggested JavaScript configuration. This JavaScript could then be loaded into a Worker, or series of Workers.</p>
 	<p>Snippets takes the idea and principles of Turpentine further. Much further. By building a parser directly in the dashboard it puts the power directly into the hands of users and gives them a choice. You can tell us to migrate everything we can into Rules with the remaining code migrated into Snippets, or, you can choose to tell us to migrate everything into discrete Snippets. It's your call.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-55.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We’ll give Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess">htaccess</a> and NGINX <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full">configuration files</a> the same treatment. The goal being users simply upload the files from their websites Apache or NGINX configuration, and we generate suggested Snippets and/or rules.</p>
+	<p>Weâ€™ll give Apache <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Apache_Configuration_htaccess">htaccess</a> and NGINX <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full">configuration files</a> the same treatment. The goal being users simply upload the files from their websites Apache or NGINX configuration, and we generate suggested Snippets and/or rules.</p>
 	<p>The days of having to use legacy code for operational tasks are coming to an end. Snippets allow users to migrate these workloads to Cloudflare, and let them focus on the bigger problems of the business vs maintaining legacy systems.</p>
 	<h2 id="the-difference-between-snippets-and-workers">The difference between Snippets and Workers</h2>
 	<p>Most readers will already be familiar with Cloudflare Workers, our powerful developer platform which allows businesses to run and build entire products and solutions on Cloudflare's global network. Snippets is also built on this platform, but has a few key differences.</p>
@@ -104,33 +104,33 @@
 			</tr>
 			<tr>
 				<td>Terraform Support</td>
-				<td>✅</td>
-				<td>✅</td>
+				<td>âœ…</td>
+				<td>âœ…</td>
 			</tr>
 			<tr>
 				<td>Wrangler Support</td>
 				<td></td>
-				<td>✅</td>
+				<td>âœ…</td>
 			</tr>
 			<tr>
 				<td>Cron Triggers</td>
 				<td></td>
-				<td>✅</td>
+				<td>âœ…</td>
 			</tr>
 			<tr>
 				<td>Key Value Store</td>
 				<td></td>
-				<td>✅</td>
+				<td>âœ…</td>
 			</tr>
 			<tr>
 				<td>Durable Objects</td>
 				<td></td>
-				<td>✅</td>
+				<td>âœ…</td>
 			</tr>
 			<tr>
 				<td>R2 Integration</td>
 				<td></td>
-				<td>✅</td>
+				<td>âœ…</td>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
@@ -138,17 +138,17 @@
 	<p>Snippets will allow customers to migrate their existing workloads to Cloudflare. They will also open up a number of new possible use cases for customers. We have highlighted three common examples below, however there are many more to choose from.</p>
 	<h3 id="example-1-sending-suspect-bots-to-a-honeypot">Example 1: Sending suspect bots to a honeypot</h3>
 	<p>When creating Snippets customers will be able to access Cloudflare <a href="https://developers.cloudflare.com/workers/runtime-apis/request">features</a> available in the Workers runtime, such as the bot score field. This enables customers to forward an HTTP request to a honeypot or use the RegExp Javascript function to change the URL construct being sent back to the end user when traffic is assigned a bot score below a certain threshold, e.g. <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#:~:text=A%20bot%20score%20is%20a,request%20came%20from%20a%20human.">29 and lower</a>.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">…
+	<pre><code class="language-javascript">â€¦
 if (request.cf.botManagement.score &lt; 30) {
 const honeypot = "https://example.com/";
 return await fetch(honeypot, request);
-…
+â€¦
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="example-2-cookie-modification">Example 2: Cookie modification</h3>
 	<p>Another common use case we foresee Snippets addressing is cookie modification. Usage can range from simply setting an expiry in five minutes by using <code>getTime</code> and <code>setTime</code> JavaScript functions to setting a dynamic cookie based on user request attributes for A/B testing purposes.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">…
+	<pre><code class="language-javascript">â€¦
 {
 let res = await fetch(request);
 res = new Response(res.body, res);
@@ -159,19 +159,19 @@ res.headers.append(
       "Set-Cookie",
 `testGroup=${group}; Expires=${expiry}; path=/`
     );
-…
+â€¦
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="example-3-uri-query-management">Example 3: URI query management</h3>
-	<p>Customers can also deploy Cloudflare Snippets to do complex operations such as splicing the URI query value to selectively remove or inject additional parameters. Query string manipulation is typically done using Transform Rules. However, with Transform Rules the <code>set/</code> action is effectively a <code>replace</code> action. This action when applied to the URI query string will remove the entire value if there is one and set it to what the user specifies, thus overwriting it. This is a problem for customers who wish to selectively inject specific query parameters for matching traffic. For example, &nbsp;setting an additional query, e.g. <code>?utm_campaign=facebook</code> when common social media platforms are detected in the user agent. With Snippets, customers will be able to do this selective removal and insertion using a simple piece of JavaScript, e.g.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">…
+	<p>Customers can also deploy Cloudflare Snippets to do complex operations such as splicing the URI query value to selectively remove or inject additional parameters. Query string manipulation is typically done using Transform Rules. However, with Transform Rules the <code>set/</code> action is effectively a <code>replace</code> action. This action when applied to the URI query string will remove the entire value if there is one and set it to what the user specifies, thus overwriting it. This is a problem for customers who wish to selectively inject specific query parameters for matching traffic. For example, Â&nbsp;setting an additional query, e.g. <code>?utm_campaign=facebook</code> when common social media platforms are detected in the user agent. With Snippets, customers will be able to do this selective removal and insertion using a simple piece of JavaScript, e.g.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">â€¦
 if (userAgent.includes("Facebook")) {
       const url = new URL(request.url);
       const params = new URLSearchParams(url.search);
       params.set("utm_campaign", "facebook");
       url.search = params.toString();
       const transformedRequest = new Request(url, request)
-…
+â€¦
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -179,8 +179,8 @@ if (userAgent.includes("Facebook")) {
 	<h2 id="will-you-stop-adding-actions-to-rulesets">Will you stop adding actions to rulesets?</h2>
 	<p>The simple answer is no! We will continue to build out our no-code actions within the ruleset engine, developing new products to solve customer needs.</p>
 	<p>It may sound obvious - but a core component to feature improvement is talking to customers. Talking to Snippet users will help us understand what real life use cases Snippets help solve and highlight feature gaps we have in our product suite. We can then review if it makes sense to productise that use case, or leave it requiring Snippets.</p>
-	<p>We also understand that not everyone is a software developer. We are therefore exploring how we can make Snippets accessible to all by creating selectable templates available in a library that can be copied and modified by customers, with minimum coding knowledge required. With Snippets, powerful won’t mean difficult.</p>
+	<p>We also understand that not everyone is a software developer. We are therefore exploring how we can make Snippets accessible to all by creating selectable templates available in a library that can be copied and modified by customers, with minimum coding knowledge required. With Snippets, powerful wonâ€™t mean difficult.</p>
 	<h2 id="accessing-cloudflare-snippets">Accessing Cloudflare Snippets</h2>
-	<p>Snippets are currently under development — you can sign up <a href="https://www.cloudflare.com/lp/cloudflare-snippets">here</a> to join the waitlist for access.</p>
+	<p>Snippets are currently under development â€” you can sign up <a href="https://www.cloudflare.com/lp/cloudflare-snippets">here</a> to join the waitlist for access.</p>
 	<p>We hope to begin admitting users into the closed beta in early 2023, with an open beta to follow.</p>
 </div>

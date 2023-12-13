@@ -12,14 +12,14 @@
 		<li>Avoid building a custom login flow into the app itself</li>
 		<li>Use mutual TLS (mTLS) authentication so that only requests from my iPhone are allowed</li>
 	</ul>
-	<p><strong>?️ This walkthrough covers how to:</strong></p>
+	<p><strong>?ï¸ This walkthrough covers how to:</strong></p>
 	<ul>
 		<li>Build an Access policy to enforce mutual TLS authentication</li>
 		<li>Use Cloudflare's PKI toolkit to create a Root CA and then generate a client certificate</li>
 		<li>Use OpenSSL to convert that client certificate into a format for iPhone usage</li>
 		<li>Place that client certificate on my iPhone</li>
 	</ul>
-	<p><strong>⏲️Time to complete: ~45 minutes</strong></p>
+	<p><strong>â²ï¸Time to complete: ~45 minutes</strong></p>
 	<h2 id="cloudflare-access">Cloudflare Access</h2>
 	<p><a href="https://teams.cloudflare.com/access/index.html">Cloudflare Access</a> is a bouncer that checks ID at the door. Any and every door.</p>
 	<p>Old models of security built on private networks operate like a guard at the front door of a large apartment building, except this apartment building does not have locks on any of the individual units. If you can walk through the front door, you could walk into any home. By default, private networks assume that a user on that network is trusted until proven malicious - you're free to roam the building until someone reports you. None of us want to live in that complex.</p>
@@ -79,11 +79,11 @@
 	<p>With that in place, I can go ahead and create the Root CA. I'll run the following command in my terminal from within the <code>root</code> folder.</p>
 	<pre><code class="language-bash">$ cfssl genkey -initca ca-csr.json | cfssljson -bare ca
 </code></pre>
-	<p>The “Root CA” here is really a composition of three files, all of which are created by that command. <code>cfssl</code> generates a private key, a certificate signing request, and the certificate itself. The output should resemble this screenshot:</p>
+	<p>The â€œRoot CAâ€ here is really a composition of three files, all of which are created by that command. <code>cfssl</code> generates a private key, a certificate signing request, and the certificate itself. The output should resemble this screenshot:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/root-output-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>I need to guard the private key like it's the only thing that matters. In real production deployments, most organizations will create an intermediate certificate and sign client certificates with that intermediate. This allows administrators to keep the root locked down even further, they only need to handle it when creating new intermediates (and those intermediates can be quickly revoked). For this test, I'm just going to use a root to create the client certificates.</p>
 	<p>Now that I have the Root CA, I can upload the certificate in PEM format to Cloudflare Access. Cloudflare can then use that certificate to authenticate incoming requests for a valid client certificate.</p>
-	<p>In the Cloudflare Access dashboard, I'll use the card titled “Mutual TLS Root Certificates”. I can click “Add A New Certificate” and then paste the content of the <code>ca.pem</code> file directly into it.</p>
+	<p>In the Cloudflare Access dashboard, I'll use the card titled â€œMutual TLS Root Certificatesâ€. I can click â€œAdd A New Certificateâ€ and then paste the content of the <code>ca.pem</code> file directly into it.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/ca-upload-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>I need to associate this certificate with a fully qualified domain name (FQDN). In this case, I'm going to use the certificate to authenticate requests for <code>money.samrhea.com</code>, so I'll just input that subdomain, but I could associate this cert with multiple FQDNs if needed.</p>
 	<p>Once saved, the Access dashboard will list the new Root CA.</p>
@@ -93,8 +93,8 @@
 	<p>In the Cloudflare dashboard, I'll select the zone <code>samrhea.com</code> and navigate to the Access tab. Once there, I can click <code>Create Access Policy</code> in the <code>Access Policies</code> card. That card will launch an editor where I can build out the rule(s) for reaching this subdomain.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/access-policy.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In the example above, the policy will be applied to just the subdomain <code>money.samrhea.com</code>. I could make it more granular with path-based rules, but I'll keep it simple for now.</p>
-	<p>In the <code>Policies</code> section, I'm going to create a rule to allow client certificates signed by the Root CA I generated to reach the application. In this case, I'll pick “Non Identity” from the <code>Decision</code> drop-down. I'll then choose “Valid Certificate” under the <code>Include</code> details.</p>
-	<p>This will allow any valid certificate signed by the “Money App Test” CA I uploaded earlier. I could also build a rule using Common Names, but I'll stick with valid cert for now. I'll hit <code>Save</code> and finish the certificate deployment.</p>
+	<p>In the <code>Policies</code> section, I'm going to create a rule to allow client certificates signed by the Root CA I generated to reach the application. In this case, I'll pick â€œNon Identityâ€ from the <code>Decision</code> drop-down. I'll then choose â€œValid Certificateâ€ under the <code>Include</code> details.</p>
+	<p>This will allow any valid certificate signed by the â€œMoney App Testâ€ CA I uploaded earlier. I could also build a rule using Common Names, but I'll stick with valid cert for now. I'll hit <code>Save</code> and finish the certificate deployment.</p>
 	<h2 id="issuing-client-certs-and-converting-to-pkcs-12">Issuing client certs and converting to PKCS #12</h2>
 	<p>So far, I have a Root CA and an Access policy that enforces mTLS with client certs issued by that Root CA. I've stationed a bouncer outside of my app and told them to only trust ID cards issued by The State of Texas. Now I need to issue a license in the form of a client certificate.</p>
 	<p>To avoid confusion, I'm going to create a new folder in the same directory as the <code>root</code> folder, this one called <code>client</code>. Inside of this directory, I'll create a new file: <code>client-csr.json</code> with the following <code>.json</code> blob:</p>
@@ -131,14 +131,14 @@
 	<p>OpenSSL is a popular toolkit for TLS and SSL protocols that can solve a wide variety of certificate use cases. In my example, I just need it for one command:</p>
 	<pre><code class="language-bash">$ openssl pkcs12 -export -out sam-iphone.p12 -inkey iphone-client-key.pem -in iphone-client.pem -certfile ../root/ca.pem
 </code></pre>
-	<p>The command above takes the key and certificate generated previously and converts them into a single <code>.p12</code> file. I'll also be prompted to create an “Export Password”. I'll use something that I can remember, because I'm going to need it in the next section.</p>
+	<p>The command above takes the key and certificate generated previously and converts them into a single <code>.p12</code> file. I'll also be prompted to create an â€œExport Passwordâ€. I'll use something that I can remember, because I'm going to need it in the next section.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/convert-twelve.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="authenticating-from-my-iphone">Authenticating from my iPhone</h2>
 	<p>I now need to get the <code>.p12</code> file on my iPhone. In corporate environments, organizations distribute client certificates via mobile device management (MDM) programs or other tools. I'm just doing this for a personal test project, so I'm going to use AirDrop.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/airdrop.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Once my iPhone receives the file, I'll be prompted to select a device where the certificate will be installed as a device profile.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/choose-device-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>I'll then be prompted to enter my device password and the password set in the “Export” step above. Once complete, I can view the certificate under <code>Profiles</code> in <code>Settings</code>.</p>
+	<p>I'll then be prompted to enter my device password and the password set in the â€œExportâ€ step above. Once complete, I can view the certificate under <code>Profiles</code> in <code>Settings</code>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/cert-view-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Now, when I visit <code>money.samrhea.com</code> for the first time from my phone, I'll be prompted to use the profile created.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/cert-prompt-1.png" class="kg-image" alt="" loading="lazy"></figure>

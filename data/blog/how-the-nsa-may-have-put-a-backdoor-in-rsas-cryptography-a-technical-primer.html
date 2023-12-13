@@ -55,16 +55,16 @@
 	<p>Suppose we choose P2 to be P1 dotted with itself s times, where s is secret number. Then P1 and P2 are related but it is hard to prove how since finding s requires solving the elliptic curve discrete logarithm problem.</p>
 	<p>Given an initial state n, let's look at what the output becomes and what the state gets updated to.</p>
 	<p>The output is the x-coordinate of:<br>
-		Q = P1 ◦ P1 ◦ … ◦ P1 (n times)</p>
+		Q = P1 â—¦ P1 â—¦ â€¦ â—¦ P1 (n times)</p>
 	<p>Then we get that the state S gets updated to:<br>
-		P2 ◦ P2 ◦ … ◦ P2 (n times)</p>
+		P2 â—¦ P2 â—¦ â€¦ â—¦ P2 (n times)</p>
 	<p>But P2 is just P1 dotted with itself s times, so the state is really<br>
-		(P1 ◦ P1 ◦ … ◦ P1 (s times)) ◦ … ◦ (P1 ◦ P1 ◦ … ◦ P1 (s times)) (n times)<br>
-		P1 ◦ P1 ◦ … ◦ P1 (s ◦ n times)<br>
+		(P1 â—¦ P1 â—¦ â€¦ â—¦ P1 (s times)) â—¦ â€¦ â—¦ (P1 â—¦ P1 â—¦ â€¦ â—¦ P1 (s times)) (n times)<br>
+		P1 â—¦ P1 â—¦ â€¦ â—¦ P1 (s â—¦ n times)<br>
 		or re-arranged<br>
-		(P1 ◦ P1 ◦ … ◦ P1 (n times)) ◦ … ◦ (P1 ◦ P1 ◦ … ◦ P1 (n times)) (s times)</p>
+		(P1 â—¦ P1 â—¦ â€¦ â—¦ P1 (n times)) â—¦ â€¦ â—¦ (P1 â—¦ P1 â—¦ â€¦ â—¦ P1 (n times)) (s times)</p>
 	<p>Seeing that P1 dotted with itself n times is the output Q, we can write this as:<br>
-		Q ◦ Q ◦ … ◦ Q (s times)</p>
+		Q â—¦ Q â—¦ â€¦ â—¦ Q (s times)</p>
 	<p>And since we know s and the output (and therefore Q), we can calculate the next internal state of the algorithm. The state is revealed and all subsequent bytes can be predicted. In just one round! Since given P1 and P2, finding s requires solving the discrete logarithm problem, you get to be the only one who knows this mathematical backdoor.</p>
 	<p>This can be described in the terms of the billiards game from the last section. Remember the output of one turn of the game is the location of P1 after n shots and generator's secret number comes from the location of P2 after n shots. Knowing the value s is like knowing how many shots it takes to go from P1 to P2. This lets the observer cheat at the game. If you know where P1 lands after n shots, you can shoot s times from that location to get the location of P2 after n shots. This gives you the generator's secret number and allows you to predict the next turn of the game.</p>
 	<h3 id="backtotherealworld">Back to the real world</h3>

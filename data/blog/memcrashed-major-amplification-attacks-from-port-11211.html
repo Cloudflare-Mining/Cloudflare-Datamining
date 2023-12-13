@@ -48,31 +48,31 @@ IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
 	<p>The vulnerable memcached servers are all around the globe, with higher concentration in North America and Europe. Here is a map of the source IPs we've seen in each of our 120+ points of presence:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/02/memcached-map2.png" alt="memcached-map2" loading="lazy"></p>
 	<p>Interestingly our datacenters in EWR, HAM and HKG see disproportionally large numbers of attacking IPs. This is because most of the vulnerable servers are located in major hosting providers. The AS numbers of the IPs that we've seen:</p>
-	<pre><code>┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
-│ 578 │ AS16276 │ OVH                                          │
-│ 468 │ AS14061 │ DIGITALOCEAN-ASN - DigitalOcean, LLC         │
-│ 231 │ AS7684  │ SAKURA-A SAKURA Internet Inc.                │
-│ 199 │ AS9370  │ SAKURA-B SAKURA Internet Inc.                │
-│ 165 │ AS12876 │ AS12876                                      │
-│ 119 │ AS9371  │ SAKURA-C SAKURA Internet Inc.                │
-│ 104 │ AS16509 │ AMAZON-02 - Amazon.com, Inc.                 │
-│ 102 │ AS24940 │ HETZNER-AS                                   │
-│  81 │ AS26496 │ AS-26496-GO-DADDY-COM-LLC - GoDaddy.com, LLC │
-│  74 │ AS36351 │ SOFTLAYER - SoftLayer Technologies Inc.      │
-│  65 │ AS20473 │ AS-CHOOPA - Choopa, LLC                      │
-│  49 │ AS49981 │ WORLDSTREAM                                  │
-│  48 │ AS51167 │ CONTABO                                      │
-│  48 │ AS33070 │ RMH-14 - Rackspace Hosting                   │
-│  45 │ AS19994 │ RACKSPACE - Rackspace Hosting                │
-│  44 │ AS60781 │ LEASEWEB-NL-AMS-01 Netherlands               │
-│  42 │ AS45899 │ VNPT-AS-VN VNPT Corp                         │
-│  41 │ AS2510  │ INFOWEB FUJITSU LIMITED                      │
-│  40 │ AS7506  │ INTERQ GMO Internet,Inc                      │
-│  35 │ AS62567 │ DIGITALOCEAN-ASN-NY2 - DigitalOcean, LLC     │
-│  31 │ AS8100  │ ASN-QUADRANET-GLOBAL - QuadraNet, Inc        │
-│  30 │ AS14618 │ AMAZON-AES - Amazon.com, Inc.                │
-│  30 │ AS31034 │ ARUBA-ASN                                    │
-└─────┴─────────┴──────────────────────────────────────────────┘
+	<pre><code>â”Œâ”€ipsâ”€â”¬â”€srcASNâ”€â”€â”¬â”€ASNameâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ 578 â”‚ AS16276 â”‚ OVH                                          â”‚
+â”‚ 468 â”‚ AS14061 â”‚ DIGITALOCEAN-ASN - DigitalOcean, LLC         â”‚
+â”‚ 231 â”‚ AS7684  â”‚ SAKURA-A SAKURA Internet Inc.                â”‚
+â”‚ 199 â”‚ AS9370  â”‚ SAKURA-B SAKURA Internet Inc.                â”‚
+â”‚ 165 â”‚ AS12876 â”‚ AS12876                                      â”‚
+â”‚ 119 â”‚ AS9371  â”‚ SAKURA-C SAKURA Internet Inc.                â”‚
+â”‚ 104 â”‚ AS16509 â”‚ AMAZON-02 - Amazon.com, Inc.                 â”‚
+â”‚ 102 â”‚ AS24940 â”‚ HETZNER-AS                                   â”‚
+â”‚  81 â”‚ AS26496 â”‚ AS-26496-GO-DADDY-COM-LLC - GoDaddy.com, LLC â”‚
+â”‚  74 â”‚ AS36351 â”‚ SOFTLAYER - SoftLayer Technologies Inc.      â”‚
+â”‚  65 â”‚ AS20473 â”‚ AS-CHOOPA - Choopa, LLC                      â”‚
+â”‚  49 â”‚ AS49981 â”‚ WORLDSTREAM                                  â”‚
+â”‚  48 â”‚ AS51167 â”‚ CONTABO                                      â”‚
+â”‚  48 â”‚ AS33070 â”‚ RMH-14 - Rackspace Hosting                   â”‚
+â”‚  45 â”‚ AS19994 â”‚ RACKSPACE - Rackspace Hosting                â”‚
+â”‚  44 â”‚ AS60781 â”‚ LEASEWEB-NL-AMS-01 Netherlands               â”‚
+â”‚  42 â”‚ AS45899 â”‚ VNPT-AS-VN VNPT Corp                         â”‚
+â”‚  41 â”‚ AS2510  â”‚ INFOWEB FUJITSU LIMITED                      â”‚
+â”‚  40 â”‚ AS7506  â”‚ INTERQ GMO Internet,Inc                      â”‚
+â”‚  35 â”‚ AS62567 â”‚ DIGITALOCEAN-ASN-NY2 - DigitalOcean, LLC     â”‚
+â”‚  31 â”‚ AS8100  â”‚ ASN-QUADRANET-GLOBAL - QuadraNet, Inc        â”‚
+â”‚  30 â”‚ AS14618 â”‚ AMAZON-AES - Amazon.com, Inc.                â”‚
+â”‚  30 â”‚ AS31034 â”‚ ARUBA-ASN                                    â”‚
+â””â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 </code></pre>
 	<p>Most of the memcached servers we've seen were coming from AS16276 - OVH, AS14061 - Digital Ocean and AS7684 - Sakura.</p>
 	<p>In total we've seen only 5,729 unique source IPs of memcached servers. We're expecting to see much larger attacks in future, as <a href="https://www.shodan.io">Shodan</a> reports 88,000 open memcached servers:</p>

@@ -1,13 +1,13 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Since our last newsletter, dozens of developers like you have reached out with ideas for new kinds of apps that weren’t yet possible. These are some of my favorite conversations because they help us find out which features should be prioritized. With your guidance, we’ve spent this month meticulously converting our supply of Halloween candy into those ideas. Let’s dive in and see what’s new!</p>
+	<p>Since our last newsletter, dozens of developers like you have reached out with ideas for new kinds of apps that werenâ€™t yet possible. These are some of my favorite conversations because they help us find out which features should be prioritized. With your guidance, weâ€™ve spent this month meticulously converting our supply of Halloween candy into those ideas. Letâ€™s dive in and see whatâ€™s new!</p>
 	<h3 id="paidappproductenhancements">? Paid App Product Enhancements</h3>
-	<p>We’ve made it easier to upsell premium features with product specific options. Customers can try out exclusive features before making a purchase, on any site, even without Cloudflare account! Here’s an example of Lead Box using <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#limiting-radio-options-to-a-set-of-products">product specific radio buttons</a>:</p>
+	<p>Weâ€™ve made it easier to upsell premium features with product specific options. Customers can try out exclusive features before making a purchase, on any site, even without Cloudflare account! Hereâ€™s an example of Lead Box using <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#limiting-radio-options-to-a-set-of-products">product specific radio buttons</a>:</p>
 	<figure class="content-box light" data-image="1">
 		<img src="https://blog.cloudflare.com/content/images/2017/11/Screen-Shot-2017-11-22-at-5.31.19-AM.png" alt="">
 		<figcaption>Previewing premium features in <a href="https://www.cloudflare.com/apps/lead-box/install" target="_blank">Lead Box</a></figcaption>
 	</figure>
-	<p>In this example, a customer can choose to see the newsletter option after choosing&nbsp;the "Pro" plan.&nbsp;Developers can now update the <a href="https://www.cloudflare.com/apps/developer/docs/install-json/preview">Live Preview</a> in response to this choice. We’ve added new <code>"_product"</code> keyword for this event.&nbsp;Here’s a snippet on how Lead Box handles a customer <a href="https://github.com/cloudflare-apps/lead-box/blob/68a914ab58e526aa62572e2e16b9cb631f4cdfff/install.json#L14-L29">changing products</a> without refreshing the page:</p>
+	<p>In this example, a customer can choose to see the newsletter option after choosingÂ&nbsp;the "Pro" plan.Â&nbsp;Developers can now update the <a href="https://www.cloudflare.com/apps/developer/docs/install-json/preview">Live Preview</a> in response to this choice. Weâ€™ve added new <code>"_product"</code> keyword for this event.Â&nbsp;Hereâ€™s a snippet on how Lead Box handles a customer <a href="https://github.com/cloudflare-apps/lead-box/blob/68a914ab58e526aa62572e2e16b9cb631f4cdfff/install.json#L14-L29">changing products</a> without refreshing the page:</p>
 	<pre><code class="language-javascript">{
   "preview": {
     "handlers": [
@@ -45,9 +45,9 @@ window.INSTALL_SCOPE = {
 		<img src="https://blog.cloudflare.com/content/images/2017/11/previous-comments-1.png" alt="">
 		<figcaption>Revealing older comments.</figcaption>
 	</figure>
-	<p>Comments for previous releases are initially hidden to emphasize the most recent feedback. As customers send in new feedback, previous ratings will have less of an impact on your app’s sentiment. Apps that score well with customers will gradually increase your visibility in the public listing as well!</p>
+	<p>Comments for previous releases are initially hidden to emphasize the most recent feedback.â€‚As customers send in new feedback, previous ratings will have less of an impact on your appâ€™s sentiment. Apps that score well with customers will gradually increase your visibility in the public listing as well!</p>
 	<h3 id="manangingdnsviaapps">? Mananging DNS via Apps</h3>
-	<p>We’ve saved the best for last! App developers can now manage a customer’s DNS records. The simplest way to define a DNS record is directly in your app’s <code>install.json</code> file. This for example, would allow a customer to create a CNAME to send traffic to your domain, and insert a <code>A</code> record on their root domain:</p>
+	<p>Weâ€™ve saved the best for last! App developers can now manage a customerâ€™s DNS records. The simplest way to define a DNS record is directly in your appâ€™s <code>install.json</code> file. This for example, would allow a customer to create a CNAME to send traffic to your domain, and insert a <code>A</code> record on their root domain:</p>
 	<pre><code class="language-javascript">{
   "resources": [/*...*/],
   "hooks": [/*...*/],
@@ -76,22 +76,22 @@ window.INSTALL_SCOPE = {
 	<p>The customer can then confirm your changes after before completing their installation.</p>
 	<figure class="content-box light" data-image="3">
 		<img src="https://blog.cloudflare.com/content/images/2017/11/DNS.png" alt="">
-		<figcaption>Requesting permission to access a customer’s email address and DNS entries.</figcaption>
+		<figcaption>Requesting permission to access a customerâ€™s email address and DNS entries.</figcaption>
 	</figure>
-	<p>DNS records make it possible to add new records to a customer’s account for your email services, blogging platforms, customer management systems, <a href="https://www.cloudflare.com/apps/developer/docs/dns">and much, much more</a>!</p>
-	<h4 id="otherplatformimprovements">⚙ Other Platform Improvements</h4>
-	<p>We’ve made hundreds of changes since our last newsletter, some more visible than others. Here’s a quick recap of some our favorites:</p>
+	<p>DNS records make it possible to add new records to a customerâ€™s account for your email services, blogging platforms, customer management systems, <a href="https://www.cloudflare.com/apps/developer/docs/dns">and much, much more</a>!</p>
+	<h4 id="otherplatformimprovements">âš™ Other Platform Improvements</h4>
+	<p>Weâ€™ve made hundreds of changes since our last newsletter, some more visible than others. Hereâ€™s a quick recap of some our favorites:</p>
 	<ul>
 		<li>New Cloudflare customers are onboarded with apps after registration</li>
-		<li>Updated docs on <a href="https://www.cloudflare.com/apps/developer/docs/webhooks#item-add-event">“item add” event</a></li>
+		<li>Updated docs on <a href="https://www.cloudflare.com/apps/developer/docs/webhooks#item-add-event">â€œitem addâ€ event</a></li>
 		<li>Developers can now optionally link to their public GitHub repository</li>
 		<li>A new input type: Numbers <a href="https://www.cloudflare.com/apps/developer/docs/install-json/options#number-with-unit">with units</a>!</li>
 	</ul>
 	<h2 id="thankyou">Thank you ?</h2>
 	<p>In the spirit of Thanksgiving, we raise a gravy boat to everyone who made this winter a little warmer. To the all the Cloudflarians and developers who sent in feedback, we say <strong>thank you!</strong></p>
-	<p>Reach out at <a href="https://twitter.com/CloudflareApps">@CloudflareApps</a> and let us know what you’d like to see next!!!</p>
-	<p>Until next time! ⛄️️</p>
-	<p>— Teffen</p>
+	<p>Reach out at <a href="https://twitter.com/CloudflareApps">@CloudflareApps</a> and let us know what youâ€™d like to see next!!!</p>
+	<p>Until next time! â›„ï¸ï¸</p>
+	<p>â€” Teffen</p>
 	<footer class="content-footer">
 		<div class="email-pitch">
 			Powerful tools built by world-class developers, delivered by Cloudflare, easily added to your website.
@@ -104,9 +104,9 @@ window.INSTALL_SCOPE = {
 			<div class="content-primary">
 				<div class="content-headline">Up to $100k in Cloud Credits</div>
 				<div class="content-description">
-					Cloudflare Apps makes it easy to get what you build installed, but building a great app also requires great infrastructure. We’ve partnered with Google to offer app developers like you up to $100,000 in free Google Cloud credits to support the apps you build.
+					Cloudflare Apps makes it easy to get what you build installed, but building a great app also requires great infrastructure. Weâ€™ve partnered with Google to offer app developers like you up to $100,000 in free Google Cloud credits to support the apps you build.
 				</div>
-				<p><a class="btn btn-primary" href="https://www.cloudflare.com/apps/developer/offers/google" target="_blank">Check it out ›</a></p>
+				<p><a class="btn btn-primary" href="https://www.cloudflare.com/apps/developer/offers/google" target="_blank">Check it out â€º</a></p>
 			</div>
 		</div>
 	</footer>

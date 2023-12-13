@@ -32,7 +32,7 @@
 	<p>Implementations not using a counter/sequence-based AES-GCM nonce were found to be indeed vulnerable by the "<a href="https://github.com/nonce-disrespect/nonce-disrespect">Nonce-Disrespecting Adversaries</a>" paper.</p>
 	<h4 id="tls13">TLS 1.3</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/10/Nonces-1.3-black-1.png" alt="1.3" loading="lazy"></p>
-	<p>TLS 1.3 finally took advantage of the sequential nature of TLS records and removed the free-form explicit IVs. It uses instead a combination of a fixed per-connection IV (derived at the same time as the key) and the sequence number, XORed—not concatenated.</p>
+	<p>TLS 1.3 finally took advantage of the sequential nature of TLS records and removed the free-form explicit IVs. It uses instead a combination of a fixed per-connection IV (derived at the same time as the key) and the sequence number, XORedâ€”not concatenated.</p>
 	<p>This way the entire nonce length is random-looking, nonces can never be reused as the sequence number monotonically increases, and there is no network overhead.</p>
 	<h4 id="chacha20poly1305">ChaCha20-Poly1305</h4>
 	<p>The <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305 ciphersuite</a> uses the same "fixed IV XORed with the sequence number" scheme of TLS 1.3 even when used in TLS 1.2</p>

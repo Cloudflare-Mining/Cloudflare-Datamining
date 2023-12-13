@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image5-1.png" class="kg-image" alt="Cloudflare Email Security now works with CrowdStrike Falcon LogScale" loading="lazy" width="1999" height="1125"></figure>
-	<p>We are excited to announce an extended partnership between CrowdStrike and Cloudflare to bring together <a href="https://www.cloudflare.com/zero-trust/products/email-security">Cloudflare Email Security</a> and CrowdStrike Falcon® LogScale. With this integration, joint customers who have both Falcon LogScale and Cloudflare Email Security can now send detection data to be ingested and displayed within their Falcon LogScale dashboard.</p>
+	<p>We are excited to announce an extended partnership between CrowdStrike and Cloudflare to bring together <a href="https://www.cloudflare.com/zero-trust/products/email-security">Cloudflare Email Security</a> and CrowdStrike FalconÂ® LogScale. With this integration, joint customers who have both Falcon LogScale and Cloudflare Email Security can now send detection data to be ingested and displayed within their Falcon LogScale dashboard.</p>
 	<h3 id="what-is-crowdstrike-falcon-logscale">What is CrowdStrike Falcon LogScale?</h3>
 	<p>CrowdStrike Falcon LogScale enables organizations to ingest, aggregate and analyze massive volumes of streaming log data from a wide array of sources at petabyte scale. It offers search and visualization capabilities, enabling users to easily query and explore their log data to gain valuable insights and identify security threats or anomalies.</p>
 	<p>Falcon LogScale helps customers by providing:</p>
@@ -14,9 +14,9 @@
 	<p>Customers who have both Cloudflare Email Security and CrowdStrike Falcon LogScale can now send detection data to Falcon LogScale. Within Falcon LogScale, this detection information can be visualized and queried.</p>
 	<p>To set up Cloudflare Email Security detections to flow into Falcon LogScale, navigate to the Settings section and choose the Marketplace tab in the lefthand toolbar, as shown in the screenshot below.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image2.png" class="kg-image" alt="" loading="lazy" width="1999" height="852"></figure>
-	<p>After installing the package, an ingest token needs to be generated. Navigate to the “Ingest Tokens” tab under Settings and create one.</p>
+	<p>After installing the package, an ingest token needs to be generated. Navigate to the â€œIngest Tokensâ€ tab under Settings and create one.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image4-1.png" class="kg-image" alt="" loading="lazy" width="1088" height="487"></figure>
-	<p>Copy the ingest token to save it for later. From here, customers can navigate to the Cloudflare Email Security dashboard, go to the Settings section, select the Alert Webhooks tab and choose “+ New Webhook”. Then click the SIEM option, choose Other from the dropdown, and input the following information:</p>
+	<p>Copy the ingest token to save it for later. From here, customers can navigate to the Cloudflare Email Security dashboard, go to the Settings section, select the Alert Webhooks tab and choose â€œ+ New Webhookâ€. Then click the SIEM option, choose Other from the dropdown, and input the following information:</p>
 	<p><strong>Auth Token: </strong>Bearer [INGEST TOKEN]<br><strong>Target: </strong>https://cloud.community.humio.com/api/v1/ingest/hec/raw</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/Screenshot-2023-09-08-at-10.31.26.png" class="kg-image" alt="" loading="lazy" width="1598" height="1006"></figure>
 	<p>Customers can choose which events to send to Falcon LogScale by selecting the expanded option. In the screenshot above, the user has chosen to only send malicious and suspicious detections.</p>
@@ -25,6 +25,6 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-2.png" class="kg-image" alt="" loading="lazy" width="1999" height="754"></figure>
 	<p>As you can see, we have included visualizations and queries to get teams up and running quickly, but it is meant to be a starting point for customers to build on. Customers can write their own queries and use them to create their own widgets. From there, they can create their own rendition of this dashboard to fit their needs.</p>
 	<p>More information about setting up this integration can be found here: <a href="https://library.humio.com/integrations/integrations-cloudflare-package-area1.html">https://library.humio.com/integrations/integrations-cloudflare-package-area1.html</a></p>
-	<h3 id="what%E2%80%99s-next">What’s next</h3>
+	<h3 id="what%E2%80%99s-next">Whatâ€™s next</h3>
 	<p>We are currently looking to expand the integration of Cloudflare products with Falcon LogScale. Our plan is to extend the integration to the remaining components of the Zero Trust Suite, enabling the relaying of logs and detection data to Falcon LogScale. This will allow customers to visualize and analyze data from these products, similar to the existing Cloudflare Email Security integration. If you are interested and would like to learn more, please reach out to your Cloudflare account contact.</p>
 </div>

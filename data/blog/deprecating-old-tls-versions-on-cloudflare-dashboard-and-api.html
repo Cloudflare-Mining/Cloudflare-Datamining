@@ -6,7 +6,7 @@
 	<h3 id="background">Background</h3>
 	<p>Transport Layer Security (TLS) is the protocol used on the web today to encrypt HTTPS connections. Version 1.0 was standardized <a href="https://www.ietf.org/rfc/rfc2246.txt">almost 20 years ago</a> as the successor to <a href="https://tools.ietf.org/html/rfc6101">SSL 3.0</a>, but is universally considered insecure due to being vulnerable to attacks such as <a href="https://blog.qualys.com/ssllabs/2013/09/10/is-beast-still-a-threat">BEAST</a> and <a href="https://blog.qualys.com/ssllabs/2014/12/08/poodle-bites-tls">POODLE</a>.<sup class="footnote-ref"><a href="https://blog.cloudflare.com/#fn1" id="fnref1">[1]</a></sup> Version 1.1 <a href="https://www.ietf.org/rfc/rfc4346.txt">followed in 2006</a> and mitigated BEAST, but adoption was minimal as some major browsers opted to make the <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=422232#c2">jump directly to TLS 1.2</a> (codified <a href="https://www.ietf.org/rfc/rfc5246.txt">in 2008</a>).</p>
 	<p>In addition to the documented vulnerabilities, standards bodies such as the Payment Cards Industry Security Standards Council (PCI SSC) and the National Institute of Standards and Technology (NIST) recommend disabling TLS 1.0 and 1.1. Specifically, <a href="https://blog.pcisecuritystandards.org/migrating-from-ssl-and-early-tls">PCI requires</a> that sites use a minimum of TLS 1.1, with TLS 1.2 recommended, and <a href="https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/draft">NIST requires</a> at least TLS 1.2.</p>
-	<p>Fortunately, almost all (&gt;96%) the traffic we see on api.cloudflare.com is already using TLS 1.2 or greater, so most users will not need to make any changes. However, if you’re using one of the user agents or operating systems <a href="https://blog.cloudflare.com/#problematicuseragents">listed below</a>, you may need to upgrade. To check which version your browser or API client is using, make a request to <a href="https://version.tls.fun">https://version.tls.fun</a>.</p>
+	<p>Fortunately, almost all (&gt;96%) the traffic we see on api.cloudflare.com is already using TLS 1.2 or greater, so most users will not need to make any changes. However, if youâ€™re using one of the user agents or operating systems <a href="https://blog.cloudflare.com/#problematicuseragents">listed below</a>, you may need to upgrade. To check which version your browser or API client is using, make a request to <a href="https://version.tls.fun">https://version.tls.fun</a>.</p>
 	<h3 id="problematicuseragents">Problematic user agents</h3>
 	<p>Below are the user agents with the highest frequency of TLS 1.0 or 1.1 requests to api.cloudflare.com. If you recognize your API client in this list, please take steps to upgrade as soon as possible.</p>
 	<h5 id="curlrunningonoutdatedoperatingsystems">curl running on outdated operating systems</h5>
@@ -111,10 +111,10 @@
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>There is a client-side mitigation to BEAST but it's not universally deployed. Additionally, TLS POODLE only affects some implementations. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
+				<p>There is a client-side mitigation to BEAST but it's not universally deployed. Additionally, TLS POODLE only affects some implementations. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">â†©ï¸Ž</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>Operating systems matter as some browsers, such as IE and Edge, rely on the crypto stack that is bundled with the underlying OS for SSL/TLS support. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
+				<p>Operating systems matter as some browsers, such as IE and Edge, rely on the crypto stack that is bundled with the underlying OS for SSL/TLS support. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">â†©ï¸Ž</a></p>
 			</li>
 		</ol>
 	</section>

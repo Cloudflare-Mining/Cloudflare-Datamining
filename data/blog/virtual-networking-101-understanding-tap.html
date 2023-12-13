@@ -1,7 +1,7 @@
 <div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-5.png" class="kg-image" alt="Tap devices - the missing manual" loading="lazy" width="1999" height="1125"></figure>
-	<p>It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight “Micro-VM”s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy — the documentation is messy and spread across the Internet.</p>
+	<p>It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight â€œMicro-VMâ€s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy â€” the documentation is messy and spread across the Internet.</p>
 	<p>Here are the notes that I wish someone had passed me when I started out on this journey! </p>
 	<p>A tap device is a virtual <strong>network interface</strong> that looks like an ethernet network card. Instead of having real wires plugged into it, it exposes a nice handy file descriptor to an application willing to send/receive packets. Historically tap devices were mostly used to implement VPN clients. The machine would route traffic towards a <strong>tap interface</strong>, and a VPN client application would pick them up and process accordingly. For example this is what our Cloudflare WARP Linux client does. Here's how it looks on my laptop:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip link list
@@ -14,13 +14,13 @@ CloudflareWARP: tun multi_queue
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>More recently tap devices started to be used by <a href="https://www.cloudflare.com/learning/cloud/what-is-a-virtual-machine">virtual machines</a> to enable networking. The VMM (like Qemu, Firecracker, or gVisor) would open the application side of a tap and pass all the packets to the guest VM. The tap network interface would be left for the host kernel to deal with. Typically, a host would behave like a router and firewall, forward or NAT all the packets. This design is somewhat surprising - it's almost reversing the original use case for tap. In the VPN days tap was a traffic destination. With a VM behind, tap looks like a traffic source.</p>
-	<p>A Linux tap device is a <strong>mean creature</strong>. It looks trivial — a virtual network interface, with a file descriptor behind it. However, it's <strong>surprisingly hard</strong> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
+	<p>A Linux tap device is a <strong>mean creature</strong>. It looks trivial â€” a virtual network interface, with a file descriptor behind it. However, it's <strong>surprisingly hard</strong> to get it to perform well. The Linux networking stack is optimized for packets handled by a physical network card, not a userspace application. However, over the years the Linux tap interface grew in features and nowadays, it's possible to get good performance out of it. Later I'll explain how to use the Linux tap API in a modern way.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-05-at-2.42.49-PM.png" class="kg-image" alt="" loading="lazy" width="2482" height="1340">
 		<figcaption>Source: DALL-E</figcaption>
 	</figure>
 	<h2 id="to-tun-or-to-tap">To tun or to tap?</h2>
 	<p>The interface is <a href="https://docs.kernel.org/networking/tuntap.html">called "the universal tun/tap"</a> in the kernel. The "tun" variant, accessible via the IFF_TUN flag, looks like a point-to-point link. There are no L2 Ethernet headers. Since most modern networks are Ethernet, this is a bit less intuitive to set up for a novice user. Most importantly, projects like Firecracker and gVisor do expect L2 headers.</p>
-	<p>"Tap", with the IFF_TAP flag, is the one which has Ethernet headers, and has been getting all the attention lately. If you are like me and always forget which one is which, you can use this &nbsp;AI-generated rhyme (check out <a href="https://blog.cloudflare.com/writing-poems-using-llama-2-on-workers-ai">WorkersAI/LLama</a>) to help to remember:</p>
+	<p>"Tap", with the IFF_TAP flag, is the one which has Ethernet headers, and has been getting all the attention lately. If you are like me and always forget which one is which, you can use this Â&nbsp;AI-generated rhyme (check out <a href="https://blog.cloudflare.com/writing-poems-using-llama-2-on-workers-ai">WorkersAI/LLama</a>) to help to remember:</p>
 	<p><em>Tap is like a switch,</em><br><em>Ethernet headers it'll hitch.</em><br><em>Tun is like a tunnel,</em><br><em>VPN connections it'll funnel.</em><br><em>Ethernet headers it won't hold,</em><br><em>Tap uses, tun does not, we're told.</em></p>
 	<h2 id="listing-devices">Listing devices</h2>
 	<p>Tun/tap devices are natively supported by iproute2 tooling. Typically, one creates a device with <strong>ip tuntap add</strong> and lists it with <strong>ip tuntap list</strong>:</p>
@@ -127,7 +127,7 @@ $ ip -s link show dev tap0
        	266   	3  	0  	66   	0   	0
 </code></pre>
 	<p>In "ip link" statistics the column "<strong>TX dropped</strong>" indicates the tap application was too slow and the queue space exhausted.</p>
-	<p>In the other direction - interface RX queue - &nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861">discussion for details</a>.</p>
+	<p>In the other direction - interface RX queue - Â&nbsp;from application towards the host, the queue size limit is measured in bytes and controlled by the TUNSETSNDBUF ioctl. The <a href="https://elixir.bootlin.com/qemu/v8.1.1/source/net/tap-linux.c#L120">qemu comment discusses</a> this setting, however it's not easy to cause this queue to overflow. See this <a href="https://bugzilla.redhat.com/show_bug.cgi?id=508861">discussion for details</a>.</p>
 	<h2 id="vnethdr-size">vnethdr size</h2>
 	<p>After the device is opened, a typical scenario is to set up VNET_HDR size and offloads. Typically the VNETHDRSZ should be set to 12:</p>
 	<pre><code class="language-C++">    len = 12;
@@ -440,7 +440,7 @@ rx-udp-gro-forwarding: off
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h2 id="single-queue-speed">Single queue speed</h2>
-	<p>Tap devices are quite weird — they aren't network sockets, nor true files. Their semantics are closest to pipes, and unfortunately the API reflects that. To receive or send a packet from a tap device, the application must do a read() or write() syscall, one packet at a time.</p>
+	<p>Tap devices are quite weird â€” they aren't network sockets, nor true files. Their semantics are closest to pipes, and unfortunately the API reflects that. To receive or send a packet from a tap device, the application must do a read() or write() syscall, one packet at a time.</p>
 	<p>One might think that some sort of syscall batching would help. Sockets have sendmmsg()/recvmmsg(), but that doesn't work on tap file descriptors. The typical alternatives enabling batching are: an old <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">io_submit AIO interface</a>, or modern io_uring. Io_uring added tap support quite recently. However, it turns out syscall batching doesn't really offer that much of an improvement. Maybe in the range of 10%.</p>
 	<p>The Linux kernel is just not capable of forwarding millions of packets per second for a single flow or on a single CPU. The best possible solution is to scale vertically for elephant flows with TSO/USO (packet trains) offloads, and scale horizontally for multiple concurrent flows with multi queue.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image5-1.png" class="kg-image" alt="" loading="lazy" width="799" height="493"></figure>
@@ -456,7 +456,7 @@ tc filter add dev tap0 parent 1: protocol ip prio 1 u32 \
         match ip dst 192.168.0.3 \
         action skbedit queue_mapping 0
 </code></pre>
-	<p><strong>tc</strong> is fragile and thus it's not a solution I would recommend. A better way is to customize the queue selection algorithm with a TUNSETSTEERINGEBPF eBPF program. In that case, the flow tracking code is not employed anymore. By smartly using such a steering eBPF program, it's possible to keep the flow processing local to one CPU — useful for best performance.</p>
+	<p><strong>tc</strong> is fragile and thus it's not a solution I would recommend. A better way is to customize the queue selection algorithm with a TUNSETSTEERINGEBPF eBPF program. In that case, the flow tracking code is not employed anymore. By smartly using such a steering eBPF program, it's possible to keep the flow processing local to one CPU â€” useful for best performance.</p>
 	<h2 id="summary">Summary</h2>
 	<p>Now you know everything I wish I had known when I was setting out on this journey!</p>
 	<p>To get the best performance, I recommend:</p>

@@ -93,7 +93,7 @@ $2y$10$LIWMJJgX.Ti9DYrYiaotHuqi34eZ2axl8/i1Cd68GYsYAG02Icwve:hello123
 	<p>Using a Hex Editor, I added the headers to ensure the encrypted files were correctly rendered as BMP files. This resulted in the files you saw in the challenge above.</p>
 	<h5 id="reversingtheencryption">Reversing the Encryption</h5>
 	<p>The critical mistake above is that the encryption key and the nonce are identical. Both ciphertexts were generated from identical nonces using identical keys (unsalted before they were hashed).</p>
-	<p>Additionally, we are using the AES in CTR mode, which vulnerable to the “two-time pad” attack.</p>
+	<p>Additionally, we are using the AES in CTR mode, which vulnerable to the â€œtwo-time padâ€ attack.</p>
 	<p>We firstly run an XOR operation on the two files:</p>
 	<pre><code class="language-sh">$ git clone https://github.com/scangeo/xor-files.git
 $ cd xor-files/source

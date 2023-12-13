@@ -1,9 +1,9 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-october-30-2023-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-october-30-2023-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-incident-on-october-30-2023-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-october-30-2023-ko-kr">한국어</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-incident-on-october-30-2023-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-october-30-2023-fr-fr">Français</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-october-30-2023-es-es">Español</a>.</small></p>
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-october-30-2023-zh-cn">ç®€ä½“ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-october-30-2023-zh-tw">ç¹é«”ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-incident-on-october-30-2023-ja-jp">æ—¥æœ¬èªž</a> and <a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-october-30-2023-ko-kr">í•œêµ­ì–´</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-incident-on-october-30-2023-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-october-30-2023-fr-fr">FranÃ§ais</a> and <a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-october-30-2023-es-es">EspaÃ±ol</a>.</small></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Vulnerabilitiy-1.png" class="kg-image" alt="" loading="lazy" width="2401" height="1350"></figure>
-	<p>Multiple Cloudflare services were unavailable for 37 minutes on October 30, 2023. This was due to the misconfiguration of a deployment tool used by Workers KV. This was a frustrating incident, made more difficult by Cloudflare’s reliance on our own suite of products. We are deeply sorry for the impact it had on customers. What follows is a discussion of what went wrong, how the incident was resolved, and the work we are undertaking to ensure it does not happen again. </p>
+	<p>Multiple Cloudflare services were unavailable for 37 minutes on October 30, 2023. This was due to the misconfiguration of a deployment tool used by Workers KV. This was a frustrating incident, made more difficult by Cloudflareâ€™s reliance on our own suite of products. We are deeply sorry for the impact it had on customers. What follows is a discussion of what went wrong, how the incident was resolved, and the work we are undertaking to ensure it does not happen again. </p>
 	<p>Workers KV is our globally distributed key-value store. It is used by both customers and Cloudflare teams alike to manage configuration data, routing lookups, static asset bundles, authentication tokens, and other data that needs low-latency access.</p>
 	<p>During this incident, KV returned what it believed was a valid HTTP 401 (Unauthorized) status code instead of the requested key-value pair(s) due to a bug in a new deployment tool used by KV.</p>
 	<p>These errors manifested differently for each product depending on how KV is used by each service, with their impact detailed below.</p>
@@ -182,7 +182,7 @@
 			</tr>
 			<tr>
 				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 19:54 UTC</span></td>
-				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Rollback via progressive deployment API attempted, traffic starts to fail at scale. </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— IMPACT START —</span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Rollback via progressive deployment API attempted, traffic starts to fail at scale. </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">â€” IMPACT START â€”</span></td>
 			</tr>
 			<tr>
 				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:15 UTC</span></td>
@@ -194,7 +194,7 @@
 			</tr>
 			<tr>
 				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">2023-10-30 20:31 UTC</span></td>
-				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Impact resolved </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— IMPACT END — </span></td>
+				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Impact resolved </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">â€” IMPACT END â€” </span></td>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
@@ -212,7 +212,7 @@
 	<p>These tools include the dashboard which was used to revert the change, and the authentication mechanism to access our continuous integration (CI) system. As Workers KV was down, so too were these services. Automatic rollbacks via our CI system had been successfully tested previously, but the authentication issues (Access relies on KV) due to the incident made accessing the necessary secrets to roll back the deploy impossible.</p>
 	<p>The fix ultimately was a manual change of the production build path to a previous and known good state. This path was known to have been deployed and was the previous production build before the attempted deployment.</p>
 	<h3 id="next-steps">Next steps</h3>
-	<p>As more teams at Cloudflare have built on Workers, we have "organically" ended up in a place where Workers KV now underpins a tremendous amount of our products and services. This incident has continued to reinforce the need for us to revisit how we can reduce the blast radius of critical dependencies, which includes improving the sophistication of our deployment tooling, its ease-of-use for our internal teams, and product-level controls for these dependencies. We’re prioritizing these efforts to ensure that there is not a repeat of this incident.</p>
+	<p>As more teams at Cloudflare have built on Workers, we have "organically" ended up in a place where Workers KV now underpins a tremendous amount of our products and services. This incident has continued to reinforce the need for us to revisit how we can reduce the blast radius of critical dependencies, which includes improving the sophistication of our deployment tooling, its ease-of-use for our internal teams, and product-level controls for these dependencies. Weâ€™re prioritizing these efforts to ensure that there is not a repeat of this incident.</p>
 	<p>This also reinforces the need for Cloudflare to improve the tooling, and the safety of said tooling, around progressive deployments of Workers applications internally and for customers.</p>
 	<p>This includes (but is not limited) to the below list of key follow-up actions (in no specific order) this quarter:</p>
 	<ol>
@@ -222,5 +222,5 @@
 		<li>Harden the progressive deployment tooling to operate in a way that is designed for multi-tenancy. The current design assumes a single-tenant model.</li>
 		<li>Add additional validation to progressive deployment scripts to verify that the deployment matches the app environment (production, staging, etc.).</li>
 	</ol>
-	<p>Again, we’re extremely sorry this incident occurred, and take the impact of this incident on our customers extremely seriously.</p>
+	<p>Again, weâ€™re extremely sorry this incident occurred, and take the impact of this incident on our customers extremely seriously.</p>
 </div>

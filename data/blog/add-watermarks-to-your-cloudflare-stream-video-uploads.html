@@ -1,15 +1,15 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image4-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Since the launch of Cloudflare Stream, our customers have been asking for a programmatic way to add watermarks to their videos. We built the Watermarks API to support a wide range of use cases: from customers who simply want to tell Stream “<em>can you put this watermark image to the top right of my video?</em>” to customers with more detailed asks such as “<em>can you put this watermark image in a way it doesn’t take up more than 10% of the original video and with 20% opacity?” </em>All that and more is now available at no additional cost through the Watermarks API.</p>
+	<p>Since the launch of Cloudflare Stream, our customers have been asking for a programmatic way to add watermarks to their videos. We built the Watermarks API to support a wide range of use cases: from customers who simply want to tell Stream â€œ<em>can you put this watermark image to the top right of my video?</em>â€ to customers with more detailed asks such as â€œ<em>can you put this watermark image in a way it doesnâ€™t take up more than 10% of the original video and with 20% opacity?â€ </em>All that and more is now available at no additional cost through the Watermarks API.</p>
 	<h2 id="what-is-cloudflare-stream">What is Cloudflare Stream?</h2>
 	<p>Cloudflare Stream provides out-of-the-box video infrastructure so developers can bring their app ideas to market faster. While building a video streaming app, developers must ask themselves questions like</p>
 	<ul>
-		<li>“<em>Where do we store the videos affordably?</em>”</li>
-		<li>“<em>How do we encode the videos to support users with varying Internet speeds?</em>”</li>
-		<li>“<em>How do we maintain our video pipeline in the long term?”</em></li>
+		<li>â€œ<em>Where do we store the videos affordably?</em>â€</li>
+		<li>â€œ<em>How do we encode the videos to support users with varying Internet speeds?</em>â€</li>
+		<li>â€œ<em>How do we maintain our video pipeline in the long term?â€</em></li>
 	</ul>
-	<p>Cloudflare Stream is a single product that handles video encoding, storage, delivery and presentation (with the Stream Player.) Stream lets developers launch their ideas faster while having the confidence the video infrastructure will scale with their app’s growth.</p>
+	<p>Cloudflare Stream is a single product that handles video encoding, storage, delivery and presentation (with the Stream Player.) Stream lets developers launch their ideas faster while having the confidence the video infrastructure will scale with their appâ€™s growth.</p>
 	<h2 id="how-the-watermark-api-works">How the Watermark API works</h2>
 	<p>The Watermark API lets you add a watermark to a video at the time of uploading. It consists of two new features to the Stream API:</p>
 	<ul>
@@ -57,7 +57,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="step-2-apply-the-watermark">Step 2: Apply the Watermark</h3>
-	<p>We’ve created the watermark and are ready to use it. Below is a screengrab from the Built For This commercial. It contains no watermark:</p>
+	<p>Weâ€™ve created the watermark and are ready to use it. Below is a screengrab from the Built For This commercial. It contains no watermark:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/image1-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We are going to upload the commercial and request Stream to add the logo from the previous step as a watermark:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl --request POST \
@@ -74,10 +74,10 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="step-3-your-video-now-with-a-watermark-">Step 3: Your video, now with a watermark!</h3>
-	<p>You’re done! You can watch the video with a watermark:</p><!--kg-card-begin: html-->
+	<p>Youâ€™re done! You can watch the video with a watermark:</p><!--kg-card-begin: html-->
 	<stream src="fcfa5c97795ba90251cbbae1880a0e18" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=fcfa5c97795ba90251cbbae1880a0e18"></script><!--kg-card-end: html--><!--kg-card-begin: html--><br><!--kg-card-end: html-->
-	<h2 id="what-s-next">What’s next</h2>
+	<h2 id="what-s-next">Whatâ€™s next</h2>
 	<p>Read the detailed <a href="https://developers.cloudflare.com/stream/watermarks">Watermark API docs</a> covering different use cases.</p>
 	<p>In future iterations, we plan to add support for animated watermarks. Additionally, we want to add Watermark support to the Stream Dashboard so you have a UI to manage and add watermarks.</p>
 </div>

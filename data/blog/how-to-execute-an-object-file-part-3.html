@@ -1,7 +1,7 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<h2 id="dealingwithexternallibraries">Dealing with external libraries</h2>
-	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">the code from part 2</a>. Let's add another function to our toy object file:</p>
+	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies â€” that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">the code from part 2</a>. Let's add another function to our toy object file:</p>
 	<p><em>obj.c</em>:</p>
 	<pre><code class="language-C">#include &lt;stdio.h&gt;
  
@@ -134,7 +134,7 @@ static void count_external_symbols(void)
 ...
 </code></pre>
 	<p>This function is very similar to our <code>do_text_relocations</code> function. Only instead of actually performing relocations it just counts the number of external symbol references.</p>
-	<p>Next we need to decide the actual size in bytes for our jumptable. <code>num_ext_symbols</code> has the number of external symbol references in the object file, but how many bytes per symbol to allocate? To figure this out we need to design our jumptable format. As we established above, in its simple form our jumptable should be just a collection of unconditional CPU jump instructions — one for each external symbol. However, unfortunately modern x64 CPU architecture <a href="https://www.felixcloutier.com/x86/jmp">does not provide a jump instruction</a>, where an address pointer can be a direct operand. Instead, the jump address needs to be stored in memory somewhere "close" — that is within 32-bit offset — and the offset is the actual operand. So, for each external symbol we need to store the jump address (64 bits or 8 bytes on a 64-bit CPU system) and the actual jump instruction with an offset operand (<a href="https://www.felixcloutier.com/x86/jmp">6 bytes for x64 architecture</a>). We can represent an entry in our jumptable with the following C structure:</p>
+	<p>Next we need to decide the actual size in bytes for our jumptable. <code>num_ext_symbols</code> has the number of external symbol references in the object file, but how many bytes per symbol to allocate? To figure this out we need to design our jumptable format. As we established above, in its simple form our jumptable should be just a collection of unconditional CPU jump instructions â€” one for each external symbol. However, unfortunately modern x64 CPU architecture <a href="https://www.felixcloutier.com/x86/jmp">does not provide a jump instruction</a>, where an address pointer can be a direct operand. Instead, the jump address needs to be stored in memory somewhere "close" â€” that is within 32-bit offset â€” and the offset is the actual operand. So, for each external symbol we need to store the jump address (64 bits or 8 bytes on a 64-bit CPU system) and the actual jump instruction with an offset operand (<a href="https://www.felixcloutier.com/x86/jmp">6 bytes for x64 architecture</a>). We can represent an entry in our jumptable with the following C structure:</p>
 	<p><em>loader.c</em>:</p>
 	<pre><code class="language-C">...
  
@@ -216,7 +216,7 @@ static void parse_obj(void)
 }
 ...
 </code></pre>
-	<p>At this stage we have our jumptable allocated and usable — all is left to do is to populate it properly. We’ll do this by improving the <code>do_text_relocations</code> implementation to handle the case of external symbols. The <code>No runtime base address for section</code> error from the beginning of this post is actually caused by this line in <code>do_text_relocations</code>:</p>
+	<p>At this stage we have our jumptable allocated and usable â€” all is left to do is to populate it properly. Weâ€™ll do this by improving the <code>do_text_relocations</code> implementation to handle the case of external symbols. The <code>No runtime base address for section</code> error from the beginning of this post is actually caused by this line in <code>do_text_relocations</code>:</p>
 	<p><em>loader.c</em>:</p>
 	<pre><code class="language-C">...
  
@@ -305,7 +305,7 @@ Executing say_hello...
 my_puts executed
 Hello, world!
 </code></pre>
-	<p>Hooray! We not only fixed our <code>loader</code> to handle external references in object files — we have also learned how to "hook" any such external function call and divert the code to a custom implementation, which might be useful in some cases, like malware research.</p>
+	<p>Hooray! We not only fixed our <code>loader</code> to handle external references in object files â€” we have also learned how to "hook" any such external function call and divert the code to a custom implementation, which might be useful in some cases, like malware research.</p>
 	<p>As in the previous posts, the complete source code from this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/3">available on GitHub</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>

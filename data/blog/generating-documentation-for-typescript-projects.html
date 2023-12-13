@@ -1,10 +1,10 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.</p>
+	<p>Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, Iâ€™ll explore how to use TypeScript to generate documentation from source code alone.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/11/511102367_1ce398ad1d_o.png" alt="" loading="lazy"><br>
 		<small><a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp">image</a> by <a href="https://www.flickr.com/photos/davidjoyner">David Joyner</a></small>
 	</p>
-	<p><a href="https://www.typescriptlang.org">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
+	<p><a href="https://www.typescriptlang.org">TypeScript</a> is JavaScript with optional types. Hereâ€™s a simple example:</p>
 	<pre><code class="language-javascript">// Sends some data to some analytics endpoint
 function sendAnalyticsJS(data) {
   if (typeof data.type !== 'string') {
@@ -19,7 +19,7 @@ function sendAnalyticsJS(data) {
 //    The `type` property is required
 sendAnalyticsJS({ foo: 'bar' })
 </code></pre>
-	<p>The JavaScript code will result in a run-time error. This is fine if the developer catches it early, but it would be better if the developer were warned as the bug was introduced. Here’s the same code written using TypeScript:</p>
+	<p>The JavaScript code will result in a run-time error. This is fine if the developer catches it early, but it would be better if the developer were warned as the bug was introduced. Hereâ€™s the same code written using TypeScript:</p>
 	<pre><code class="language-javascript">// Describe the shape of the data parameter
 interface IAnalyticsData {
   // Type is required
@@ -29,7 +29,7 @@ interface IAnalyticsData {
 }
 
 
-// We don’t particularly need the data.type check here since
+// We donâ€™t particularly need the data.type check here since
 // the compiler will stamp out the majority of those cases.
 function sendAnalytics(data: IAnalyticsData) {
   if (typeof data.type !== 'string') {
@@ -47,7 +47,7 @@ function sendAnalytics(data: IAnalyticsData) {
 sendAnalytics({ foo: 'bar' })
 </code></pre>
 	<p>These annotations are all optional and the more you add, the more the compiler can help you. Compiling the TypeScript version results in code equivalent to the first example. The only difference is that the developer is warned about an error while writing the code.</p>
-	<p>With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, “JavaScript that scales.”</p>
+	<p>With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, â€œJavaScript that scales.â€</p>
 	<p><img src="http://storage.j0.hn/code-peek.gif" alt="Typescript + VSCode" loading="lazy"></p>
 	<p>Using TypeScript means you can:</p>
 	<ul>
@@ -55,13 +55,13 @@ sendAnalytics({ foo: 'bar' })
 		<li>Enjoy useful auto-completion</li>
 		<li>Use good refactoring tools</li>
 		<li>Navigate your codebase via the ontology that describes it (by that, I mean jumping to class and interface definitions, modules, etc. from individual instances/references)</li>
-		<li>And most importantly to this post, generate documentation that’s tightly coupled to your codebase.</li>
+		<li>And most importantly to this post, generate documentation thatâ€™s tightly coupled to your codebase.</li>
 	</ul>
 	<p><img src="http://storage.j0.hn/amp-viewer-docs-2.png" alt="AMP Viewer Docs 1" loading="lazy"></p>
 	<p><em>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</em></p>
 	<h3 id="whynotjsdoc">Why not JSDoc?</h3>
 	<p><img src="http://storage.j0.hn/jsdoc-example-1.png" alt="JSDoc Example 1" loading="lazy"></p>
-	<p>The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Here’s a side-by-side comparison between JSDoc and TypeScript:</p>
+	<p>The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Hereâ€™s a side-by-side comparison between JSDoc and TypeScript:</p>
 	<p><strong>JSDoc</strong></p>
 	<pre><code class="language-javascript">/**
  * A class representing a point
@@ -164,51 +164,51 @@ class Point {
 }
 </code></pre>
 	<p>The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class">JSDoc documentation</a> and adapted for use with TypeScript.</p>
-	<p>The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
-	<p>The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
+	<p>The annotations for TypeScript are much more compact, theyâ€™re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
+	<p>The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we wonâ€™t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
 	<h3 id="usingtypedoc">Using TypeDoc</h3>
-	<p>At Cloudflare, we use a tool called <a href="http://typedoc.org">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
-	<p>If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
+	<p>At Cloudflare, we use a tool called <a href="http://typedoc.org">TypeDoc</a> to help build documentation. Itâ€™s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
+	<p>If youâ€™re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
 	<pre><code class="language-bash">npm install --save-dev https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build
 </code></pre>
 	<p>Otherwise, for prior versions of TypeScript, you can install straight from NPM:</p>
 	<pre><code class="language-bash">npm install --save-dev typedoc
 </code></pre>
 	<p>From within your project directory, run the following command:</p>
-	<pre><code class="language-bash"># Change the --out flag to wherever you’d like the output to be stored
+	<pre><code class="language-bash"># Change the --out flag to wherever youâ€™d like the output to be stored
 ./node_modules/.bin/typedoc --out dist/docs --mode modules .
 </code></pre>
 	<p>You should see a bunch of HTML documents generated. One for each class and module.</p>
 	<pre><code>dist/docs
-├── assets
-│   ├── css
-│   │   ├── main.css
-│   │   └── main.css.map
-│   ├── images
-│   │   ├── icons.png
-│   │   ├── icons@2x.png
-│   │   ├── widgets.png
-│   │   └── widgets@2x.png
-│   └── js
-│       ├── main.js
-│       └── search.js
-├── classes
-│   ├── _src_my_class.html
-│   └── ...
-├── globals.html
-├── index.html
-├── interfaces
-│   ├── _src.my_interface.html
-└── modules
-    ├── _src_my_module_.html
-    └── ...
+â”œâ”€â”€ assets
+â”‚   â”œâ”€â”€ css
+â”‚   â”‚   â”œâ”€â”€ main.css
+â”‚   â”‚   â””â”€â”€ main.css.map
+â”‚   â”œâ”€â”€ images
+â”‚   â”‚   â”œâ”€â”€ icons.png
+â”‚   â”‚   â”œâ”€â”€ icons@2x.png
+â”‚   â”‚   â”œâ”€â”€ widgets.png
+â”‚   â”‚   â””â”€â”€ widgets@2x.png
+â”‚   â””â”€â”€ js
+â”‚       â”œâ”€â”€ main.js
+â”‚       â””â”€â”€ search.js
+â”œâ”€â”€ classes
+â”‚   â”œâ”€â”€ _src_my_class.html
+â”‚   â””â”€â”€ ...
+â”œâ”€â”€ globals.html
+â”œâ”€â”€ index.html
+â”œâ”€â”€ interfaces
+â”‚   â”œâ”€â”€ _src.my_interface.html
+â””â”€â”€ modules
+    â”œâ”€â”€ _src_my_module_.html
+    â””â”€â”€ ...
 </code></pre>
-	<p>I wanted to build something akin to <a href="https://lodash.com/docs">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
+	<p>I wanted to build something akin to <a href="https://lodash.com/docs">Lodashâ€™s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDocâ€™s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
 	<pre><code class="language-bash">./node_modules/.bin/typedoc --json dist/docs.json --mode modules
 </code></pre>
-	<p><em>Note: In order to use the --json flag, you’ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">tsconfig.json</a> for your TypeScript project.</em></p>
+	<p><em>Note: In order to use the --json flag, youâ€™ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html">tsconfig.json</a> for your TypeScript project.</em></p>
 	<p><img src="http://storage.j0.hn/ts-docs-post-screen-1.png" alt="AMP Viewer JSON Docs" loading="lazy"></p>
-	<p>With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
+	<p>With this high-level, structured description of our code base, we can render any HTML weâ€™d like with a few scripts and a templating language like <a href="http://handlebarsjs.com">Handlebars</a>. Hereâ€™s a simple script to render a list of code base modules:</p>
 	<pre><code class="language-javascript">const fs = require('fs')
 const hbs = require('handlebars')
 const project = require('./dist/docs.json')
@@ -242,10 +242,10 @@ fs.writeFileSync('dist/docs.html', result)
 </code></pre>
 	<p>While this means that there is a lot of work up front to create a template that suits the needs of this particular code base, I hope to use the same infrastructure for TypeScript projects at Cloudflare moving forward.</p>
 	<h3 id="morethanapireference">More Than API Reference</h3>
-	<p>TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose you’re writing a getting-started.md file. You might say something like this:</p>
+	<p>TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose youâ€™re writing a getting-started.md file. You might say something like this:</p>
 	<pre><code>To get started, call the `viewer.init()` method.
 </code></pre>
-	<p>Since we’re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
+	<p>Since weâ€™re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
 	<pre><code class="language-handlebars">{{!-- Pull the AMPViewer class into scope --}}
 {{#Class "AMPViewer"}}
 {{!-- Pull the init member from AMPViewer into scope --}}
@@ -258,10 +258,10 @@ To get started, call the
 {{/Member}}
 {{/Class}}
 </code></pre>
-	<p>While the above looks arcane, it’s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the function’s signature and the getSourceUrl helper to link to this method in the source code.</p>
+	<p>While the above looks arcane, itâ€™s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the functionâ€™s signature and the getSourceUrl helper to link to this method in the source code.</p>
 	<p>If the source code changes, our docs update too.</p>
 	<h3 id="opensourceandbeyond">Open Source and Beyond</h3>
-	<p>Over next couple of months, we’ll be open sourcing the tools we’ve created to generate our documentation. We’ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
-	<p>If you’re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>
+	<p>Over next couple of months, weâ€™ll be open sourcing the tools weâ€™ve created to generate our documentation. Weâ€™ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
+	<p>If youâ€™re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -5,10 +5,10 @@
 	<blockquote>
 		<p>This article assumes basic knowledge of Kubernetes. If you're not familiar with Kubernetes, visit <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics">https://kubernetes.io/docs/tutorials/kubernetes-basics/</a> to learn the basics.</p>
 	</blockquote>
-	<p>Minikube is a tool which allows you to run a Kubernetes cluster locally. It’s not only a great way to experiment with Kubernetes, but also a great way to try out deploying services using a reverse tunnel.</p>
-	<p>At Cloudflare, we've created a product called <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> which allows you to host services through a tunnel using Cloudflare as your edge. Tunnels provide a way to expose your services to the internet by creating a connection to Cloudflare's edge and routing your traffic over it. Since your service is creating its own outbound connection to the edge, you don’t have to open ports, configure a firewall, or even have a public IP address for your service. All traffic flows through Cloudflare, blocking attacks and intrusion attempts before they ever make it to you, completely securing your origin.</p>
+	<p>Minikube is a tool which allows you to run a Kubernetes cluster locally. Itâ€™s not only a great way to experiment with Kubernetes, but also a great way to try out deploying services using a reverse tunnel.</p>
+	<p>At Cloudflare, we've created a product called <a href="https://www.cloudflare.com/products/argo-tunnel">Argo Tunnel</a> which allows you to host services through a tunnel using Cloudflare as your edge. Tunnels provide a way to expose your services to the internet by creating a connection to Cloudflare's edge and routing your traffic over it. Since your service is creating its own outbound connection to the edge, you donâ€™t have to open ports, configure a firewall, or even have a public IP address for your service. All traffic flows through Cloudflare, blocking attacks and intrusion attempts before they ever make it to you, completely securing your origin.</p>
 	<p>Deploying your service to more locations around the world is as simple as spinning up more containers. Anything which uses the Ingress Controller will receive your traffic, wherever the container is running in the world or on the Internet. Tunnels make it simpler to have robust security even while deploying across multiple regions or cloud providers.</p>
-	<p>Usually Minikube applications need to be ported over to a production Kubernetes setup to be deployed, but with Argo Tunnel, you can easily deploy a locally-running yet publicly-available Minikube instance making it a great way to try out both Kubernetes and Argo Tunnel. In this example, we’ll create a simple microservice that returns data when given a key, deploy it into Minikube, and start up the Argo Tunnel machinery to get it exposed to the Internet.</p>
+	<p>Usually Minikube applications need to be ported over to a production Kubernetes setup to be deployed, but with Argo Tunnel, you can easily deploy a locally-running yet publicly-available Minikube instance making it a great way to try out both Kubernetes and Argo Tunnel. In this example, weâ€™ll create a simple microservice that returns data when given a key, deploy it into Minikube, and start up the Argo Tunnel machinery to get it exposed to the Internet.</p>
 	<h3 id="gettingstartedwithanapplicationapi">Getting Started with an Application API</h3>
 	<p>We'll start by by creating a web service in Python using <a href="http://flask.pocoo.org">Flask</a>. We'll write a simple application to represent a small piece of an API in just a few lines of code. The complete application, secret_token.py is simply:</p>
 	<pre><code class="language-python">from flask import Flask, jsonify, abort  
@@ -28,7 +28,7 @@ def token(key):
 </code></pre>
 	<p>This tiny service will simply respond to a GET request with some secret data, given a key.</p>
 	<h3 id="usingdocker">Using Docker</h3>
-	<p>We’ll take the next step toward deployment and package our application into a portable Docker image with a Dockerfile:</p>
+	<p>Weâ€™ll take the next step toward deployment and package our application into a portable Docker image with a Dockerfile:</p>
 	<pre><code class="language-docker">FROM  python:alpine3.7  
 RUN  pip install flask gunicorn
 COPY  secret_token.py .
@@ -39,19 +39,19 @@ CMD  gunicorn -b 0.0.0.0:8000 secret_token:app
 	<blockquote>
 		<p>If you don't have Minikube installed, install it here: <a href="https://kubernetes.io/docs/tasks/tools/install-minikube">https://kubernetes.io/docs/tasks/tools/install-minikube/</a></p>
 	</blockquote>
-	<p>Usually, we would build the Docker image with our Docker daemon and push it to a repository where the cluster can access it. With Minikube, however, that’s a round-trip we don’t need. We can share the Minikube Docker daemon with the Docker build process and avoid pushing to a cloud repository:</p>
+	<p>Usually, we would build the Docker image with our Docker daemon and push it to a repository where the cluster can access it. With Minikube, however, thatâ€™s a round-trip we donâ€™t need. We can share the Minikube Docker daemon with the Docker build process and avoid pushing to a cloud repository:</p>
 	<pre><code class="language-bash">$ eval $(minikube docker-env)  
 $ docker build -t myrepo/secret_token .
 </code></pre>
 	<p>The image is now present on the Minikube VM where Kubernetes is running.</p>
-	<p>In a production Kubernetes system, we might spend a good deal of time going over the details of the deployment and service manifests, but kubectl run provides a simple way to get the basic app up and running. We add the image-pull-policy flag to make sure that Kubernetes doesn’t first try to pull the image remotely from Docker Hub.</p>
+	<p>In a production Kubernetes system, we might spend a good deal of time going over the details of the deployment and service manifests, but kubectl run provides a simple way to get the basic app up and running. We add the image-pull-policy flag to make sure that Kubernetes doesnâ€™t first try to pull the image remotely from Docker Hub.</p>
 	<pre><code class="language-bash">$ kubectl run token --image myrepo/secret_token --expose --port 8000 --image-pull-policy=IfNotPresent --replicas=3
 </code></pre>
 	<p>We now have a Kubernetes deployment running with our 3 replicas of containers built from our image, and a service associated with it that exposes port <code>8000</code>. Save the two manifests locally into files:</p>
 	<pre><code class="language-bash">kubectl get deployment token --export -o yaml &gt; deployment.yaml  
 kubectl get svc token --export -o yaml &gt; service.yaml
 </code></pre>
-	<p>We’ll be able to edit these files to make changes to our cluster configuration.</p>
+	<p>Weâ€™ll be able to edit these files to make changes to our cluster configuration.</p>
 	<p>For local testing, let's change that service so that it exposes a NodePort -- this will proxy the service to a port on the Minikube VM. Replace the spec in the service.yaml file with:</p>
 	<pre><code class="language-yaml">spec:  
 	ports:  
@@ -72,9 +72,9 @@ kubectl get svc token --export -o yaml &gt; service.yaml
 $ export MINIKUBE_IP=$(minikube ip)
 $ curl http://$MINIKUBE_IP:32080/api/v1/token/b01323031589
 </code></pre>
-	<h3 id="usingcloudflaresargotunnel">Using Cloudflare’s Argo Tunnel</h3>
+	<h3 id="usingcloudflaresargotunnel">Using Cloudflareâ€™s Argo Tunnel</h3>
 	<p>The NodePort setup is fine for testing the application locally, but if we want to share this service with others or better simulate how it will work in the real world, we need to expose it to the internet. In most cases, this means running in a cloud environment and dealing with load balancer configuration or setting up an NGINX ingress controller and dealing with network rules and routing. The Cloudflare Argo Tunnel Ingress Controller allows us to route almost anything to a Cloudflare domain, including services running inside of Minikube.</p>
-	<p>In the Kubernetes cluster, an <code>ingress</code> is an object that describes how we want our service exposed on the internet and an <code>ingress-controller</code> is the process that actually exposes it. To install the Cloudflare Ingress Controller, you’ll need to have a Cloudflare domain and an Argo Tunnel certificate, configured with the <code>cloudflared</code> application.</p>
+	<p>In the Kubernetes cluster, an <code>ingress</code> is an object that describes how we want our service exposed on the internet and an <code>ingress-controller</code> is the process that actually exposes it. To install the Cloudflare Ingress Controller, youâ€™ll need to have a Cloudflare domain and an Argo Tunnel certificate, configured with the <code>cloudflared</code> application.</p>
 	<p><code>kubectl run</code> was fine for quickly installing the test application, but for more complex installations, <a href="https://helm.sh">helm</a> is a great tool, and is used to package the Cloudflare agent. Once you have the helm client installed, a simple <code>helm init</code> will configure Minikube to work with it. The chart for the ingress controller is found at the <a href="https://github.com/StackPointCloud/trusted-charts/tree/master/stable/cloudflare-warp-ingress&amp;sa=D&amp;ust=1529959945974000">trusted-charts public repository</a> and can be installed directly from there.</p>
 	<h4 id="cloudflaredconfiguration">Cloudflared Configuration</h4>
 	<p><code>Cloudflared</code> is the end of the tunnel that runs on your machine and proxies traffic to and from your origin server through the tunnel. If you don't have it installed already, the <code>cloudflared</code> application complete quickstart instructions can be found at <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fargo-tunnel%2Fquickstart%2Fquickstart%2F&amp;sa=D&amp;ust=1529959945975000">https://developers.cloudflare.com/argo-tunnel/quickstart/quickstart/</a></p>
@@ -139,7 +139,7 @@ token-766cd8dd4c-p2phg 					1/1 	Running 	   0 	 2m
 	"token": "3OX9+p39QLIvE6+x/YK4DxWWCFi/D+c7g99c14oNB8g="  
 }
 </code></pre>
-	<p>Now this small piece of an api is available publicly on the internet for testing. Obviously you don’t want to serve public traffic into a minikube instance, but it’s certainly handy for sharing preliminary work across development teams.</p>
+	<p>Now this small piece of an api is available publicly on the internet for testing. Obviously you donâ€™t want to serve public traffic into a minikube instance, but itâ€™s certainly handy for sharing preliminary work across development teams.</p>
 	<p>The Cloudflare <a href="https://blog.cloudflare.com/%5Bhttps://dash.cloudflare.com/%5D(https://dash.cloudflare.com/&amp;sa=D&amp;ust=1529959945990000)">dashboard</a> under the analytics tab will show some general statistics about the requests to your zone.</p>
 	<p><strong><img src="https://lh6.googleusercontent.com/iYi4oSudiLr7BM0dixgS8RcgM0TdaqhReVDOxYklJw5cvBjZ486pS58WUabkMEWnRaFMN9AC3rYhbviIiXpVLxdPcp4DXv2iTF37_lpHRMW2h3n6NkjGjt83EYgLT61oQPjAHsHJ" alt="" loading="lazy"></strong></p>
 	<h3 id="routingandrelationships">Routing and relationships</h3>

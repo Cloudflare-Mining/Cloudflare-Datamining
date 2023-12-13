@@ -53,7 +53,7 @@ Converted to hex:
 01.b5.cf.07.b501 &gt; x.x.x.x.35: fe4a+
 </code></pre>
 	<p>It's probably not obvious at first glance (unless you're a hex-level hacker), but fe4a is the one's complement of 01b5. So the DNS ID field was simply the one's complement of the first two bytes of the source IP.</p>
-	<p>Finally, Marek gave me a pcap, and I had one more relationship to find. The ID value in the IPv4 header was also related to the random source IP address—in fact, it was just the first two bytes of the IP address.</p>
+	<p>Finally, Marek gave me a pcap, and I had one more relationship to find. The ID value in the IPv4 header was also related to the random source IP addressâ€”in fact, it was just the first two bytes of the IP address.</p>
 	<h3 id="mystery">Mystery</h3>
 	<p>One mystery remains (and there's a CloudFlare T-shirt for person with the most convincing explanation): How are the random source IPs being generated?</p>
 	<p>The answer might be boring (i.e. it might just be reading bytes from /dev/random), but given the author's love of relationships between fields, perhaps there's something else going on. We've seen IP addresses get reused which leads us to think that there's something to discover here.</p>

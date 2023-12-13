@@ -7,7 +7,7 @@
 	<p>One symptom of a data breach is data (such as passwords or PII) that should never leave internal systems making its way through an HTTP response into the public Internet. Since Cloudflare Workers sits between your infrastructure and the public for any endpoints exposed to the Internet, Workers can be used as a way of alerting you of canary data leaving.</p>
 	<p>In the following example, we will be inspecting the content of each response, checking to see if our canary data has leaked out, and if so, returning a static response and calling the PagerDuty API to notify of a potential breach.</p>
 	<h3 id="detectingdataloss">Detecting Data Loss</h3>
-	<p>In this example, we’ll be looking for a particular string in the body of the response. This string can be canary data in your database (in our example, the secret is “SHHHTHISISASECRET”, and we are matching on a very specific string).</p>
+	<p>In this example, weâ€™ll be looking for a particular string in the body of the response. This string can be canary data in your database (in our example, the secret is â€œSHHHTHISISASECRETâ€, and we are matching on a very specific string).</p>
 	<p>To get the body of the content, we use<br>
 		<code>javascript let body = await response.text() </code><br>
 		This pulls the body of the response into the body variable. Note, that since this method consumes the body of the response, we will have to construct a new Response object prior to returning it. If you are expecting JSON, you may also call <code>response.json()</code>. Since we cannot read the body of images and other non-text formats, we check the Content-Type of the response prior to trying to parse the body.
@@ -27,7 +27,7 @@
 	<p>In the example, we create a static response:</p>
 	<pre><code class="language-javascript">response = new Response('&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})
 </code></pre>
-	<p>To make sure that the browser can parse and display it properly, we also add the Content-Type header with the value “text/html”. Assuming the origin responded with something it should not have responded with, we will replace the response headers so as not to reflect back any additional information.</p>
+	<p>To make sure that the browser can parse and display it properly, we also add the Content-Type header with the value â€œtext/htmlâ€. Assuming the origin responded with something it should not have responded with, we will replace the response headers so as not to reflect back any additional information.</p>
 	<h4 id="ratelimitingtheresponse">Rate limiting the response</h4>
 	<p>In the example above, we are looking for a string that clearly should never be leaked. However, in some cases, it may be possible that you are looking to detect data that is valid for your application to respond with, but you still want to rate limit the number of times it is being accessed.</p>
 	<p>Cloudflare Rate Limiting allows you to create Rate Limiting rules based on response headers and response status codes.</p>
@@ -37,11 +37,11 @@
 	<pre><code class="language-javascript">response = new Response(body, {status: response.status, headers: new Headers({'X-Rate-Limiting': true}})
 </code></pre>
 	<h3 id="triggeringpagerduty">Triggering PagerDuty</h3>
-	<p>As our method of alerting on these incidents, we’ll be making an API call to PagerDuty.</p>
+	<p>As our method of alerting on these incidents, weâ€™ll be making an API call to PagerDuty.</p>
 	<p>To start, you will have to set up a Service to receive alerts and incidents on. In the Integration setting, make sure you select the API since that will allow us to make HTTP requests directly from the Worker.</p>
-	<p>You will additionally need to set up an API key (under Configuration → API Access) to allow the Worker to create Incident events and trigger alerts.</p>
+	<p>You will additionally need to set up an API key (under Configuration â†’ API Access) to allow the Worker to create Incident events and trigger alerts.</p>
 	<p>When making the API call, we will use event.waitUntil(). This serves two purposes:<br>
-		We don’t necessarily want to block the response that is returned to the client, and make it wait until we complete the request to PagerDuty (this is important for the performance of critical tasks).<br>
+		We donâ€™t necessarily want to block the response that is returned to the client, and make it wait until we complete the request to PagerDuty (this is important for the performance of critical tasks).<br>
 		Outstanding asynchronous tasks are canceled as soon as a worker finishes sending its main response body back to the client. event.waitUntil() helps ensure that the call the PagerDuty is complete even after the response is sent to the client.</p>
 	<pre><code class="language-javascript">async function createPagerDutyIncident(event) {
  let body = `{

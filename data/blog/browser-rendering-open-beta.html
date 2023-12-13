@@ -18,7 +18,7 @@
 	<p>Under the hood, the Browser Rendering API gives you access to a WebSocket endpoint that speaks the <a href="https://chromedevtools.github.io/devtools-protocol">DevTools Protocol</a>. DevTools is what allows us to instrument a Chromium instance running in our global network, and it's the same protocol that Chrome uses on your computer when you inspect a page.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image2-35.png" class="kg-image" alt="" loading="lazy" width="1726" height="938"></figure>
 	<p>With enough dedication, you can, in fact, implement your own DevTools client and talk the protocol directly. But that'd be crazy; almost no one does that.</p>
-	<p>So…</p>
+	<p>Soâ€¦</p>
 	<h3 id="puppeteer">Puppeteer</h3>
 	<p><a href="https://pptr.dev">Puppeteer</a> is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. It's widely used for things like creating screenshots, crawling pages, and testing web applications.</p>
 	<p>Puppeteer typically <a href="https://pptr.dev/api/puppeteer.puppeteer.connect">connects</a> to a local Chrome or Chromium browser using the DevTools port.</p>
@@ -39,13 +39,13 @@
 	<h3 id="an-example-application-taking-screenshots">An example application: taking screenshots</h3>
 	<p>Taking screenshots from web pages is one of the typical cases for browser automation.</p>
 	<p>Let's create a Worker that uses the Browser Rendering API to do just that. This is a perfect example of how to set up everything and get an application running in minutes, it will give you a good overview of the steps involved and the basics of the Puppeteer API, and then you can move from here to other more sophisticated use-cases.</p>
-	<p>Step one, start a project, install Wrangler and Cloudflare’s fork of Puppeteer:</p><!--kg-card-begin: markdown-->
+	<p>Step one, start a project, install Wrangler and Cloudflareâ€™s fork of Puppeteer:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">npm init -f
 npm install wrangler -save-dev
 npm install @cloudflare/puppeteer -save-dev
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Step two, let’s create the simplest possible wrangler.toml configuration file with the Browser Rendering API binding:</p><!--kg-card-begin: markdown-->
+	<p>Step two, letâ€™s create the simplest possible wrangler.toml configuration file with the Browser Rendering API binding:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-yaml">name = "browser-worker"
 main = "src/index.ts"
 compatibility_date = "2023-03-14"
@@ -84,7 +84,7 @@ export default {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>That's it, no more steps. This Worker instantiates a browser using Puppeteer, opens a new page, navigates to whatever you put in the "url" parameter, takes a screenshot of the page, closes the browser, and responds with the JPEG image of the screenshot. It can't get any easier to get started with the Browser Rendering API.</p>
-	<p>Run <code>npx wrangler dev –remote</code> to test it and <code>npx wrangler publish</code> when you’re done.</p>
+	<p>Run <code>npx wrangler dev â€“remote</code> to test it and <code>npx wrangler publish</code> when youâ€™re done.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/05/image4-21.png" class="kg-image" alt="" loading="lazy" width="1999" height="1655"></figure>
 	<p>You can explore the <a href="https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md">entire Puppeteer API</a> and implement other functionality and logic from here. And, because it's Workers, you can add other <a href="https://developers.cloudflare.com">developer products</a> to your code. You might need a <a href="https://developers.cloudflare.com/d1">relational database</a>, or a <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/#kv">KV store</a> to cache your screenshots, or an <a href="https://developers.cloudflare.com/r2">R2 bucket</a> to archive your crawled pages and assets, or maybe use a <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/#durable-objects">Durable Object</a> to keep your browser instance alive and share it with multiple requests, or <a href="https://developers.cloudflare.com/queues">queues</a> to handle your jobs asynchronous, we have all of this and <a href="https://developers.cloudflare.com">more</a>.</p>
 	<p>You can also find this and other examples of how to use Browser Rendering in the <a href="https://developers.cloudflare.com/browser-rendering">Developer Documentation</a>.</p>

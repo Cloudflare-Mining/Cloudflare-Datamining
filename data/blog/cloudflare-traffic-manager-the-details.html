@@ -14,7 +14,7 @@
 	<h3 id="flexibleconfiguration">Flexible Configuration</h3>
 	<p>Traffic Manager is designed to be flexible, and we want to share some of the many supported use cases.</p>
 	<p>We had three primary scenarios in mind: load balancing, failover, and geo-steering. Underpinning these choices is our health checking functionality, which allows you to define what a healthy origin means to you. We can probe your origin web servers from every Cloudflare data center (or selected regions) over HTTP(S), check for status codes you define as healthy, parse the response body for specific text, and timeout as you see fit. We'll also send you email notifications as we detect availability changes, so you're able to pin down exactly when we saw that server fail.</p>
-	<p>Round robin configuration (“active-active”) load balancing, where load is distributed across all healthy servers. When a server is identified as unavailable through health checks, we'll seamlessly avoid routing traffic to it until it's available again.</p>
+	<p>Round robin configuration (â€œactive-activeâ€) load balancing, where load is distributed across all healthy servers. When a server is identified as unavailable through health checks, we'll seamlessly avoid routing traffic to it until it's available again.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/09/load-balancing.png" alt="Load Balancing" loading="lazy"></p>
 	<p>Failover configuration ("primary-secondary"), where we route traffic to a specific server or pool of servers, and failover completely to a secondary server or pool when the primary is identified as unavailable. Being able to failover between your own datacenter, AWS regions, or even across major cloud providers are all supported (and easy to configure).</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/09/failover.png" alt="Failover" loading="lazy"></p>
@@ -25,7 +25,7 @@
 	<h3 id="howwereusingit">How We're Using It</h3>
 	<p>In fact, we're currently combining the above ourselves: the new Cloudflare website combines both failover and geo-steering configurations so we can serve one half of the world from Europe, and the other half from the US.</p>
 	<p>We've associated each origin web server with their respective regions, and Traffic Manager then automatically directs neighboring regions to those origins without further configuration - e.g. users in Africa are steered to our EU origin, and similarly, users in Asia Pacific and South America are automatically geo-steered to our US origin.</p>
-	<p>When we add more origins globally, it will be a minor configuration change—with no interruption to traffic—to make that happen.</p>
+	<p>When we add more origins globally, it will be a minor configuration changeâ€”with no interruption to trafficâ€”to make that happen.</p>
 	<p>When our EU origin is taken out of production for maintenance or marked unhealthy, users on that side of the world are automatically steered to the healthy US origin, without us having to interfere manually.</p>
 	<p>Our own website is critical to our business, and we know our customers feel the same way about their own web properties. We trust Traffic Manager to keep our website available despite what the Internet might throw at us!</p>
 	<h3 id="earlyaccess">Early Access</h3>

@@ -118,7 +118,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 	<p>As you make changes to your script or Terraform config, you can run <code>terraform apply</code> again and Terraform will figure out what's changed and deploy any updates.</p>
 	<h3 id="importingyourexistingworkers">Importing your existing workers</h3>
 	<p>If you're already using Cloudflare Workers but want to start managing them via Terraform, you'll need to let Terraform know about your existing configuration so it knows how to apply changes going forward.</p>
-	<p>First you’ll need to create your <code>.tf</code> file and add <code>cloudflare_worker_script</code> and <code>cloudflare_worker_route</code> resources for all of your existing scripts and routes.</p>
+	<p>First youâ€™ll need to create your <code>.tf</code> file and add <code>cloudflare_worker_script</code> and <code>cloudflare_worker_route</code> resources for all of your existing scripts and routes.</p>
 	<p>Next you'll need to individually run the appropriate <code>terraform import ...</code> command for each script and route resource. The import command takes two arguments:</p>
 	<ul>
 		<li>the identifier of the resource that you defined in your <code>.tf</code> file (ex: <code>cloudflare_worker_script.main_script</code> or <code>cloudflare_worker_route.catch_all_route</code>)</li>

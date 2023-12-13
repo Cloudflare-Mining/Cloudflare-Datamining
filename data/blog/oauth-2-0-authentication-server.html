@@ -1,6 +1,6 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
+	<p>Letâ€™s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
 	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
 	<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified">article</a>.</p>
 	<p>The steps of the OAuth 2.0 workflow are as follows:</p>
@@ -11,14 +11,14 @@
 		<li>The auth server gives the consumer the access token.</li>
 		<li>The consumer service can now use the access token to get resources on behalf of the user.</li>
 	</ol>
-	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
+	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as â€œtokenâ€ herein. My <a href="https://github.com/victoriabernard92/OAuth-Server">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
 	<h3 id="setup">Setup</h3>
 	<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
 	<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" loading="lazy"></p>
 	<p>To put and get items from storage using KV Storage syntax:</p>
 	<pre><code class="language-javascript">// @ts-ignore 
-CODES.get(“user@ex.com”) 
+CODES.get(â€œuser@ex.comâ€) 
 </code></pre>
 	<p>We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
 	<p>To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>
@@ -83,7 +83,7 @@ export async function giveLoginPageResponse(request: Request) {
 }
 </code></pre>
 	<h4 id="2redirectbacktoconsumer">2. Redirect back to consumer</h4>
-	<p>At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
+	<p>At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the userâ€™s browser to the consumerâ€™s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
 	<pre><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
  ...
  if (url.pathname.includes("/code"))

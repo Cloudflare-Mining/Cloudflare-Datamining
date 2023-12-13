@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>It’s been over 1,000 days since the <a href="http://www.worldipv6day.org/faq">Internet Society’s World IPv6 Day</a> and a lot of positive things have happened in that world of IPv6 content delivery. At CloudFlare we have not been sitting still either. Providing IPv6 access is core to our services and each and every customer has full IPv4 and IPv6 services available when their website is CloudFlare enabled.</p>
+	<p>Itâ€™s been over 1,000 days since the <a href="http://www.worldipv6day.org/faq">Internet Societyâ€™s World IPv6 Day</a> and a lot of positive things have happened in that world of IPv6 content delivery. At CloudFlare we have not been sitting still either. Providing IPv6 access is core to our services and each and every customer has full IPv4 and IPv6 services available when their website is CloudFlare enabled.</p>
 	<p>Starting three months ago <a href="https://blog.cloudflare.com/i-joined-cloudflare-on-monday-along-with-5-000-others">CloudFlare moved to make IPv6 enabled</a> the default setting for all new accounts and for existing accounts that had simply sat on the default settings mode. This resulted in an uptick in the IPv6 traffic stats from our network and <a href="http://www.internetsociety.org/deploy360/blog/2014/04/cloudflare-enabling-ipv6-for-all-customers">was noticed globally</a>. Our support issues have been near zero; which makes sense as the previous three years has been a fantastic proving ground for IPv6 networking.</p>
 	<p>IPv6 is here today and it works.</p>
 	<p>But it's still not widely used. It's time for that to change.</p>
@@ -23,8 +23,8 @@ IPv6 (128 bits)
 |####|####|####|####|####|####|####|####|
 +----+----+----+----+----+----+----+----+
 </pre>
-	<p>When a developer uses a string (or character) area to store the IP address there’s a string length issue.</p>
-	<p>In IPv4, the maximum length could be represented by the IP address <code>255.255.255.255</code> (which is 15 bytes long). For IPv6 the address could be <code>FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF</code> (which is 39 bytes long). Some programming languages and databases can be string length agnostic; however most aren’t.</p>
+	<p>When a developer uses a string (or character) area to store the IP address thereâ€™s a string length issue.</p>
+	<p>In IPv4, the maximum length could be represented by the IP address <code>255.255.255.255</code> (which is 15 bytes long). For IPv6 the address could be <code>FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF</code> (which is 39 bytes long). Some programming languages and databases can be string length agnostic; however most arenâ€™t.</p>
 	<h3 id="pseudoipv4tothetemporaryrescue">Pseudo IPv4 to the (Temporary) Rescue</h3>
 	<p>As a stopgap measure CloudFlare has introduced a <a href="https://blog.cloudflare.com/eliminating-the-last-reasons-to-not-enable-ipv6">pseudo IPv4</a> address that is mapped from the real IPv6 address and can be used in place of the IPv6. It's not a perfect solution and software and databases are going to have to be upgraded to support IPv6, but in the meantime this pseudo IPv4 address can be used where an IPv4 format address is expected.</p>
 	<h3 id="goingforward">Going forward</h3>

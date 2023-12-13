@@ -15,10 +15,10 @@
 	<!--kg-card-end: markdown-->
 	<p>That command will create a proxy to forward traffic to the hostname through port 3389. You can then create <a href="https://developers.cloudflare.com/access/setting-up-access/configuring-access-policies">rules</a> about who can reach this hostname in the Access tab of the Cloudflare dashboard.</p>
 	<h3 id="connecting-over-rdp">Connecting over RDP</h3>
-	<p>To reach a desktop behind Cloudflare Access, you’ll need the same <code>cloudflared</code> tool. First, install <code>cloudflared</code> on your device with the instructions <a href="https://developers.cloudflare.com/access/rdp/connect-rdp">here</a>. You can then initiate an RDP connection with the following command:</p><!--kg-card-begin: markdown-->
+	<p>To reach a desktop behind Cloudflare Access, youâ€™ll need the same <code>cloudflared</code> tool. First, install <code>cloudflared</code> on your device with the instructions <a href="https://developers.cloudflare.com/access/rdp/connect-rdp">here</a>. You can then initiate an RDP connection with the following command:</p><!--kg-card-begin: markdown-->
 	<p><code>$ cloudflared access rdp --hostname rdp.example.com --url rdp://localhost:3389</code></p>
 	<!--kg-card-end: markdown-->
-	<p>Running that command will initiate an RDP connection through a proxy to reach the hostname of the machine you configured with Argo Tunnel. <code>cloudflared</code> will open a browser window where you can login with your team’s identity provider credentials. Once logged in, Access will return a token scoped to your user and the target application and store it on your device. You can then configure your RDP client to point to localhost:3389 and reach the protected desktop.</p>
-	<h3 id="what-s-next">What’s next?</h3>
+	<p>Running that command will initiate an RDP connection through a proxy to reach the hostname of the machine you configured with Argo Tunnel. <code>cloudflared</code> will open a browser window where you can login with your teamâ€™s identity provider credentials. Once logged in, Access will return a token scoped to your user and the target application and store it on your device. You can then configure your RDP client to point to localhost:3389 and reach the protected desktop.</p>
+	<h3 id="what-s-next">Whatâ€™s next?</h3>
 	<p>Starting today, all Access customers can start using RDP over Access by following this <a href="https://developers.cloudflare.com/access/rdp">guide</a>. Every Cloudflare plan includes five free Access seats; follow the link <a href="https://developers.cloudflare.com/access/about">here</a> to get started.</p>
 </div>

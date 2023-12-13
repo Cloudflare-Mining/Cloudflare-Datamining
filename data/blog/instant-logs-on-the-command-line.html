@@ -8,7 +8,7 @@
 		<li><a href="https://github.com/vi/websocat">Websocat</a> - to connect to WebSockets.</li>
 		<li><a href="https://github.com/rcoh/angle-grinder">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</li>
 	</ul>
-	<h2 id="creating-an-instant-log-s-session">Creating an Instant Log’s Session</h2>
+	<h2 id="creating-an-instant-log-s-session">Creating an Instant Logâ€™s Session</h2>
 	<p>For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
 	<ul>
 		<li>Your Zone Tag / ID</li>
@@ -51,9 +51,9 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h2 id="the-scenario">The Scenario</h2>
-	<p>Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
+	<p>Now that you are able to create a new Instant Logs session letâ€™s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
 	<h3 id="specifying-fields">Specifying Fields</h3>
-	<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
+	<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>â€‹â€‹FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
 	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests">on our developer docs</a>.</p>
 	<h3 id="choosing-a-sample-rate">Choosing a Sample Rate</h3>
 	<p>Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>

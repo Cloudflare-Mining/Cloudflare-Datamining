@@ -1,6 +1,6 @@
 <div class="mb2 gray5">15 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/technology-behind-radar2-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/technology-behind-radar2-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/technology-behind-radar2-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/technology-behind-radar2-pt-br">Português</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/technology-behind-radar2-zh-cn">ç®€ä½“ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/zh-tw/technology-behind-radar2-zh-tw">ç¹é«”ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/ja-jp/technology-behind-radar2-ja-jp">æ—¥æœ¬èªž</a>, <a href="https://blog.cloudflare.com/de-de/technology-behind-radar2-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/technology-behind-radar2-fr-fr">FranÃ§ais</a>, <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2-es-es">EspaÃ±ol</a> and <a href="https://blog.cloudflare.com/pt-br/technology-behind-radar2-pt-br">PortuguÃªs</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image11-1.png" class="kg-image" alt="How we built it: the technology behind Cloudflare Radar 2.0" loading="lazy"></figure>
 	<p><a href="https://blog.cloudflare.com/radar2">Radar 2.0</a> was built on the learnings of Radar 1.0 and was launched last month during Cloudflare's Birthday Week as a complete product revamp. We wanted to make it easier for our users to find insights and navigate our data, and overall provide a better and faster user experience.</p>
@@ -31,9 +31,9 @@
 	<h2 id="remix-and-server-side-rendering">Remix and Server-side Rendering</h2>
 	<p>We use Remix with Cloudflare Pages on Radar 2.0.</p>
 	<p><a href="https://remix.run">Remix</a> follows a server/client model and works under the premise that you can't control the user's network, so web apps must reduce the amount of Javascript, CSS, and JSON they send through the wire. To do this, they move some of the logic to the server.</p>
-	<p>In this case, the client browser will get pre-rendered DOM components and the result of pre-fetched API calls with just the right amount of JSON, Javascript, and CSS code, rightfully adjusted to the UI needs. Here’s the <a href="https://remix.run/docs/en/v1/pages/technical-explanation">technical explanation</a> with more detail.</p>
+	<p>In this case, the client browser will get pre-rendered DOM components and the result of pre-fetched API calls with just the right amount of JSON, Javascript, and CSS code, rightfully adjusted to the UI needs. Hereâ€™s the <a href="https://remix.run/docs/en/v1/pages/technical-explanation">technical explanation</a> with more detail.</p>
 	<p>Typically, Remix would need a Node.js server to do all of this, but guess what: <a href="https://developers.cloudflare.com/pages/framework-guides/remix">It can also run</a> on Cloudflare Workers and Pages.</p>
-	<p>Here’s the code to get the Remix server running on Workers, using Cloudflare Pages:</p><!--kg-card-begin: markdown-->
+	<p>Hereâ€™s the code to get the Remix server running on Workers, using Cloudflare Pages:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import { createPagesFunctionHandler } from "@remix-run/cloudflare-pages";
 import * as build from "@remix-run/dev/server-build";
 
@@ -68,8 +68,8 @@ const handler: ExportedHandler&lt;Env&gt; = {
 };
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In Remix, <a href="https://remix.run/docs/en/v1/guides/api-routes">routes</a> handle changes when a user interacts with the app and changes it (clicking on a menu option, for example). A Remix route can have a <a href="https://remix.run/docs/en/v1/guides/data-loading"><em>loader</em></a>, an <a href="https://remix.run/docs/en/v1/guides/data-writes"><em>action</em></a> and a <a href="https://remix.run/docs/en/v1/api/conventions#root-layout-route"><em>default</em></a> export. The <em>loader</em> handles API calls for fetching data (GET method). The <em>action</em> handles submissions to the server (POST, PUT, PATCH, DELETE methods) and returns the response. The <em>default</em> export handles the UI code in React that’s returned for that route. A route without a <em>default</em> export returns only data.<br><br>Because Remix runs both on the server and the client, it can get smart and know what can be pre-fetched and computed server-side and what must go through the network connection, optimizing everything for performance and responsiveness.</p>
-	<p>Here’s an example of a Radar route, simplified for readability, for the <a href="https://radar.cloudflare.com/outage-center">Outage Center</a> page.</p><!--kg-card-begin: markdown-->
+	<p>In Remix, <a href="https://remix.run/docs/en/v1/guides/api-routes">routes</a> handle changes when a user interacts with the app and changes it (clicking on a menu option, for example). A Remix route can have a <a href="https://remix.run/docs/en/v1/guides/data-loading"><em>loader</em></a>, an <a href="https://remix.run/docs/en/v1/guides/data-writes"><em>action</em></a> and a <a href="https://remix.run/docs/en/v1/api/conventions#root-layout-route"><em>default</em></a> export. The <em>loader</em> handles API calls for fetching data (GET method). The <em>action</em> handles submissions to the server (POST, PUT, PATCH, DELETE methods) and returns the response. The <em>default</em> export handles the UI code in React thatâ€™s returned for that route. A route without a <em>default</em> export returns only data.<br><br>Because Remix runs both on the server and the client, it can get smart and know what can be pre-fetched and computed server-side and what must go through the network connection, optimizing everything for performance and responsiveness.</p>
+	<p>Hereâ€™s an example of a Radar route, simplified for readability, for the <a href="https://radar.cloudflare.com/outage-center">Outage Center</a> page.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import type { MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { type LoaderArgs } from "@remix-run/server-runtime";
@@ -108,12 +108,12 @@ export default function Outages() {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>And here’s what it produces:</p>
+	<p>And hereâ€™s what it produces:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image18.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Remix and SSR can also help you with your <a href="https://developer.chrome.com/docs/lighthouse/overview">Lighthouse</a> scores and SEO. It can drastically improve metrics like <a href="https://web.dev/cls">Cumulative Layout Shift</a>, <a href="https://web.dev/fcp">First Contentful Paint</a> and <a href="https://web.dev/lcp">Largest Contentful Paint</a> by reducing the number of fetches and information traveling from the server to the browser and pre-rendering the DOM.</p>
 	<p>Another project porting their app to Remix is <a href="https://cloudflare.tv">Cloudflare TV</a>. This is how their metrics looked before and after the changes.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Radar’s Desktop Lighthouse score is now nearly 100% on Performance, Accessibility, Best Practices, and SEO.</p>
+	<p>Radarâ€™s Desktop Lighthouse score is now nearly 100% on Performance, Accessibility, Best Practices, and SEO.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image14.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Another Cloudflare product that we use extensively on Radar 2.0 is <a href="https://www.cloudflare.com/en-gb/website-optimization">Speed</a>. In particular, we want to mention the <a href="https://blog.cloudflare.com/early-hints">Early Hints</a> feature. Early Hints is a new web <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103">standard</a> that defines a new HTTP 103 header the server can use to inform the browser which assets will likely be needed to render the web page while it's still being requested, resulting in dramatic load times improvements.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-42.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -132,23 +132,23 @@ export default function Outages() {
 	<p>Using a worker in front of our core API allows us to easily add and separate microservices, and also adds notable features like:</p>
 	<ul>
 		<li>Cloudflare's <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">Cache API</a> allows finer control over what to cache and for how long and supports POST requests and customizable cache control headers, which we use.</li>
-		<li>Stale responses using <a href="https://developers.cloudflare.com/r2">R2</a>. When the backend API cannot serve a request for some reason, and there’s a stale response cached, it’ll be served directly from R2, giving end users a better experience.</li>
+		<li>Stale responses using <a href="https://developers.cloudflare.com/r2">R2</a>. When the backend API cannot serve a request for some reason, and thereâ€™s a stale response cached, itâ€™ll be served directly from R2, giving end users a better experience.</li>
 		<li><a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> and <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> output formats. The CSV format is convenient and makes it easier for data scientists, analysts, and others to use the API and consume our API data directly from other tools.</li>
 	</ul>
 	<h3 id="open-sourcing-our-openapi-3-schema-generator-and-validator">Open sourcing our OpenAPI 3 schema generator and validator</h3>
-	<p>One last feature on the frontend API is <a href="https://spec.openapis.org/oas/latest.html">OpenAPI 3</a> support. We automatically generate an OpenAPI schema and validate user input with it. This is done through a custom library that we built on top of <a href="https://github.com/kwhitley/itty-router">itty-router</a>, which we also use. Today we’re open sourcing this work.</p>
+	<p>One last feature on the frontend API is <a href="https://spec.openapis.org/oas/latest.html">OpenAPI 3</a> support. We automatically generate an OpenAPI schema and validate user input with it. This is done through a custom library that we built on top of <a href="https://github.com/kwhitley/itty-router">itty-router</a>, which we also use. Today weâ€™re open sourcing this work.</p>
 	<p><a href="https://github.com/cloudflare/itty-router-openapi">itty-router-openapi</a> provides an easy and compact OpenAPI 3 schema generator and validator for Cloudflare Workers. Check our <a href="https://github.com/cloudflare/itty-router-openapi">GitHub repository</a> for more information and details on how to use it.</p>
-	<h3 id="developer-s-documentation">Developer’s Documentation</h3>
-	<p>Today we’re also launching our developer’s <a href="https://developers.cloudflare.com/radar">documentation pages for the Radar API</a> where you can find more information about our data license, basic concepts, how to get started and the available API methods. Cloudflare Radar's API is free, allowing academics, data sleuths and other web enthusiasts to investigate Internet usage across the globe, based on data from our global network.</p>
+	<h3 id="developer-s-documentation">Developerâ€™s Documentation</h3>
+	<p>Today weâ€™re also launching our developerâ€™s <a href="https://developers.cloudflare.com/radar">documentation pages for the Radar API</a> where you can find more information about our data license, basic concepts, how to get started and the available API methods. Cloudflare Radar's API is free, allowing academics, data sleuths and other web enthusiasts to investigate Internet usage across the globe, based on data from our global network.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>To facilitate using our API, we also put together a <a href="https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb">Colab Notebook template</a> that you can play with, copy and expand to your use case.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="the-radar-app">The Radar App</h2>
 	<p>The Radar App is the code that runs in your browser. We've talked about Remix, but what else do we use?</p>
 	<p>Radar relies on a lot of <strong>data visualizations</strong>. Things like charts and maps are essential to us. We decided to build our reusable library of visualization components on top of two other frameworks: <a href="https://airbnb.io/visx">visx</a>, a "collection of expressive, low-level visualization primitives for React," <a href="https://d3js.org">D3</a>, a powerful JavaScript library for manipulating the DOM based on data, and <a href="https://maplibre.org">MapLibre</a>, an open-source map visualization stack.</p>
-	<p>Here’s one of our visualization components in action. We call it the “PewPew map”.</p>
+	<p>Hereâ€™s one of our visualization components in action. We call it the â€œPewPew mapâ€.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-12.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>And here’s the Remix React code for it, whenever we need to use it in a page:</p><!--kg-card-begin: markdown-->
+	<p>And hereâ€™s the Remix React code for it, whenever we need to use it in a page:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">&lt;Card.Section
     title={t("card.attacks.title")}
     description={t("card.attacks.description")}
@@ -177,7 +177,7 @@ export default function Outages() {
 	<h3 id="svgs">SVGs</h3>
 	<p>Another change we made to Radar was switching our images and graphical assets to <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a>. SVGs are great because they're essentially a declarative graphics language. They're XML text files with vectorial information. And so, they can be easily manipulated, transformed, stored, or indexed, and of course, they can be rendered at any size, producing beautiful, crisp results on any device and resolution.</p>
 	<p>SVGs are also extremely small and efficient in size compared to bitmap formats and support <a href="https://www.w3.org/TR/SVGTiny12/i18n.html">internationalization</a>, making them easier to translate to other languages (localization), thus providing better <a href="https://www.a11yproject.com">accessibility</a>.</p>
-	<p>Here’s an example of a Radar Bubble Chart, inspected, where you can see the SVG code and the &lt;text/&gt; strings embedded.</p>
+	<p>Hereâ€™s an example of a Radar Bubble Chart, inspected, where you can see the SVG code and the &lt;text/&gt; strings embedded.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image17.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="cosmos">Cosmos</h3>
 	<p><a href="https://reactcosmos.org">React Cosmos</a> is a "sandbox for developing and testing UI components in isolation." We wanted to use Cosmos with Radar 2.0 because it's the perfect project for it:</p>
@@ -187,7 +187,7 @@ export default function Outages() {
 		<li>We have a multidisciplinary team; everyone can send a pull request and add or change code in the frontend.</li>
 	</ol>
 	<p>Cosmos acts as a component library where you can see our palette of ready-to-use visualizations and widgets, from simple buttons to complex charts, and you play with their options in real-time and see what happens. Anyone can do it, not only designers or engineers but also other project stakeholders. This effectively improves team communications and makes contributing and iterating quickly.</p>
-	<p>Here’s a screenshot of our Cosmos in action:</p>
+	<p>Hereâ€™s a screenshot of our Cosmos in action:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-57.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="continuous-integration-and-development">Continuous integration and development</h2>
 	<p>Continuous integration is important for any team doing modern software. Cloudflare Pages provides multiple options to work with CI tools using direct uploads, out of the box. The team has put up <a href="https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration">documentation and examples</a> on how to do that with GitHub Actions, CircleCI, and Travis, but you can use others.</p>
@@ -205,7 +205,7 @@ export default function Outages() {
 	<p>Anyone can follow a thread for a specific branch in the chat and get notified on new changes when they happen.</p>
 	<p>Blazing-fast builds, preview links and notifications are game-changers. An engineer can go from an idea or a quick fix to showing the result on a link to a product manager or another team member. Anyone can quickly click the link to see the changes on a fully working end-to-end version of Radar.</p>
 	<h2 id="accessibility-and-localization">Accessibility and localization</h2>
-	<p>Cloudflare is committed to web accessibility. Recently we announced how we upgraded Cloudflare’s Dashboard to <a href="https://blog.cloudflare.com/project-a11y">adhere to industry accessibility standards</a>, but this premise is valid for all our properties. The same is true for localization. In 2020, we <a href="https://blog.cloudflare.com/internationalizing-the-cloudflare-dashboard">internationalized</a> our Dashboard and added support for new languages and locales.</p>
+	<p>Cloudflare is committed to web accessibility. Recently we announced how we upgraded Cloudflareâ€™s Dashboard to <a href="https://blog.cloudflare.com/project-a11y">adhere to industry accessibility standards</a>, but this premise is valid for all our properties. The same is true for localization. In 2020, we <a href="https://blog.cloudflare.com/internationalizing-the-cloudflare-dashboard">internationalized</a> our Dashboard and added support for new languages and locales.</p>
 	<p>Accessibility and localization go hand in hand and are both important, but they are also different. The <a href="https://www.w3.org/TR/WCAG21">Web Content Accessibility Guidelines</a> define many best practices around accessibility, including using <a href="https://color.cloudflare.design">color</a> and contrast, tags, SVGs, shortcuts, gestures, and many others. The <a href="https://www.a11yproject.com">A11Y project page</a> is an excellent resource for learning more.</p>
 	<p>Localization, though, also known as <a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">L10n</a>, is more of a technical requirement when you start a new project. It's about making sure you choose the right set of libraries and frameworks that will make it easier to add new translations without engineering dependencies or code rewrites.</p>
 	<p>We wanted Radar to perform well on both fronts. Our design system takes Cloudflare's design and brand <a href="https://cloudflare.design">guidelines</a> seriously and adds as many A11Y good practices as possible, and the app is fully aware of localization strings across its pages and UI components.</p>

@@ -8,14 +8,14 @@
 	<p><img alt="" src="https://blog.cloudflare.com/content/images/image07.jpg"><noscript><img alt="" src="http://blog.cloudflare.com/content/images/image07.jpg"></noscript><br>
 		<small>Whitfield Diffie and Martin Hellman</small>
 	</p>
-	<p>Modern cryptography is founded on the idea that the key that you use to encrypt your data can be made public while the key that is used to to decrypt your data can be kept private. As such, these systems are known as public key cryptographic systems. The first, and still most widely used of these systems, is known as RSA — named after the initials of the three men who first publicly described the algorithm: Ron Rivest, Adi Shamir and Leonard Adleman.</p>
-	<p>What you need for a public key cryptographic system to work is a set of algorithms that is easy to process in one direction, but difficult to undo. In the case of RSA, the easy algorithm multiplies two prime numbers. If multiplication is the easy algorithm, its difficult pair algorithm is factoring the product of the multiplication into its two component primes. Algorithms that have this characteristic — easy in one direction, hard the other — are known as <a href="https://en.wikipedia.org/wiki/Trapdoor_function">Trap door Functions</a>. Finding a good Trapdoor Function is critical to making a secure public key cryptographic system. Simplistically: the bigger the spread between the difficulty of going one direction in a Trapdoor Function and going the other, the more secure a cryptographic system based on it will be.</p>
+	<p>Modern cryptography is founded on the idea that the key that you use to encrypt your data can be made public while the key that is used to to decrypt your data can be kept private. As such, these systems are known as public key cryptographic systems. The first, and still most widely used of these systems, is known as RSA â€” named after the initials of the three men who first publicly described the algorithm: Ron Rivest, Adi Shamir and Leonard Adleman.</p>
+	<p>What you need for a public key cryptographic system to work is a set of algorithms that is easy to process in one direction, but difficult to undo. In the case of RSA, the easy algorithm multiplies two prime numbers. If multiplication is the easy algorithm, its difficult pair algorithm is factoring the product of the multiplication into its two component primes. Algorithms that have this characteristic â€” easy in one direction, hard the other â€” are known as <a href="https://en.wikipedia.org/wiki/Trapdoor_function">Trap door Functions</a>. Finding a good Trapdoor Function is critical to making a secure public key cryptographic system. Simplistically: the bigger the spread between the difficulty of going one direction in a Trapdoor Function and going the other, the more secure a cryptographic system based on it will be.</p>
 	<h3 id="atoyrsaalgorithm">A toy RSA algorithm</h3>
 	<p>The RSA algorithm is the most popular and best understood public key cryptography system. Its security relies on the fact that factoring is slow and multiplication is fast. What follows is a quick walk-through of what a small RSA system looks like and how it works.</p>
 	<p>In general, a public key encryption system has two components, a public key and a private key. Encryption works by taking a message and applying a mathematical operation to it to get a random-looking number. Decryption takes the random looking number and applies a different operation to get back to the original number. Encryption with the public key can only be undone by decrypting with the private key.</p>
 	<p>Computers don't do well with arbitrarily large numbers. We can make sure that the numbers we are dealing with do not get too large by choosing a maximum number and only dealing with numbers less than the maximum. We can treat the numbers like the numbers on an analog clock. Any calculation that results in a number larger than the maximum gets wrapped around to a number in the valid range.</p>
 	<p>In RSA, this maximum value (call it <em>max</em>) is obtained by multiplying two random prime numbers. The public and private keys are two specially chosen numbers that are greater than zero and less than the maximum value, call them <em>pub</em> and <em>priv</em>. To encrypt a number you multiply it by itself <em>pub</em> times, making sure to wrap around when you hit the maximum. To decrypt a message, you multiply it by itself <em>priv</em> times and you get back to the original number. It sounds surprising, but it actually works. This property was a big breakthrough when it was discovered.</p>
-	<p>To create a RSA key pair, first randomly pick the two prime numbers to obtain the maximum <em>(max)</em>. Then pick a number to be the public key <em>pub</em>. As long as you know the two prime numbers, you can compute a corresponding private key <em>priv</em> from this public key. This is how factoring relates to breaking RSA — factoring the maximum number into its component primes allows you to compute someone's private key from the public key and decrypt their private messages.</p>
+	<p>To create a RSA key pair, first randomly pick the two prime numbers to obtain the maximum <em>(max)</em>. Then pick a number to be the public key <em>pub</em>. As long as you know the two prime numbers, you can compute a corresponding private key <em>priv</em> from this public key. This is how factoring relates to breaking RSA â€” factoring the maximum number into its component primes allows you to compute someone's private key from the public key and decrypt their private messages.</p>
 	<p>Let's make this more concrete with an example. Take the prime numbers 13 and 7, their product gives us our maximum value of 91. Let's take our public encryption key to be the number 5. Then using the fact that we know 7 and 13 are the factors of 91 and applying an algorithm called the <a href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm">Extended Euclidean Algorithm</a>, we get that the private key is the number 29.</p>
 	<p>These parameters (<em>max</em>: 91, <em>pub</em>: 5; <em>priv</em>: 29) define a fully functional RSA system. You can take a number and multiply it by itself 5 times to encrypt it, then take that number and multiply it by itself 29 times and you get the original number back.</p>
 	<p>Let's use these values to encrypt the message "CLOUD".</p>
@@ -23,20 +23,20 @@
 	<p><img alt="" src="https://blog.cloudflare.com/content/images/image05.png"><noscript><img alt="" src="http://blog.cloudflare.com/content/images/image05.png"></noscript></p>
 	<p>Under this encoding, CLOUD is 67, 76, 79, 85, 68. Each of these digits are smaller than our maximum of 91, so we can encrypt them individually. Let's start with the first letter.</p>
 	<p>We have to multiply it by itself 5 times to get the encrypted value.</p>
-	<p>67×67 = 4489 = 30 *</p>
+	<p>67Ã—67 = 4489 = 30 *</p>
 	<p><small><em>*Since 4489 is larger than max, we have to wrap it around. We do that by dividing by 91 and taking the remainder.</em></small></p>
-	<p>4489 = 91×49 + 30</p>
-	<p>30×67 = 2010 = 8</p>
-	<p>8×67 = 536 = 81</p>
-	<p>81×67 = 5427 = 58</p>
+	<p>4489 = 91Ã—49 + 30</p>
+	<p>30Ã—67 = 2010 = 8</p>
+	<p>8Ã—67 = 536 = 81</p>
+	<p>81Ã—67 = 5427 = 58</p>
 	<p>This means the encrypted version of 67 is 58.</p>
 	<p>Repeating the process for each of the letters we get that the encrypted message CLOUD becomes:</p>
 	<p>58, 20, 53, 50, 87</p>
 	<p>To decrypt this scrambled message, we take each number and multiply it by itself 29 times:</p>
-	<p>58×58 = 3364 = 88 (remember, we wrap around when the number is greater than <em>max</em>)&gt;</p>
-	<p>88×58 = 5104 = 8</p>
-	<p>…</p>
-	<p>9×58 = 522 = 67</p>
+	<p>58Ã—58 = 3364 = 88 (remember, we wrap around when the number is greater than <em>max</em>)&gt;</p>
+	<p>88Ã—58 = 5104 = 8</p>
+	<p>â€¦</p>
+	<p>9Ã—58 = 522 = 67</p>
 	<p>Voila, we're back to 67. This works with the rest of the digits, resulting in the original message.</p>
 	<p>The takeaway is that you can take a number, multiply it by itself a number of times to get a random-looking number, then multiply that number by itself a secret number of times to get back to the original number.</p>
 	<h3 id="notaperfecttrapdoor">Not a perfect Trapdoor</h3>
@@ -51,7 +51,7 @@
 	</p>
 	<h3 id="ellipticcurvesbuildingblocksofabettertrapdoor">Elliptic curves: Building blocks of a better Trapdoor</h3>
 	<p>After the introduction of RSA and Diffie-Hellman, researchers explored other mathematics-based cryptographic solutions looking for other algorithms beyond factoring that would serve as good Trapdoor Functions. In 1985, cryptographic algorithms were proposed based on an esoteric branch of mathematics called elliptic curves.</p>
-	<p>But what exactly is an elliptic curve and how does the underlying Trapdoor Function work? Unfortunately, unlike factoring — something we all had to do for the first time in middle school — most people aren't as familiar with the math around elliptic curves. The math isn't as simple, nor is explaining it, but I'm going to give it a go over the next few sections. (If your eyes start to glaze over, you can skip way down to the section: What does it all mean.)</p>
+	<p>But what exactly is an elliptic curve and how does the underlying Trapdoor Function work? Unfortunately, unlike factoring â€” something we all had to do for the first time in middle school â€” most people aren't as familiar with the math around elliptic curves. The math isn't as simple, nor is explaining it, but I'm going to give it a go over the next few sections. (If your eyes start to glaze over, you can skip way down to the section: What does it all mean.)</p>
 	<p>An elliptic curve is the set of points that satisfy a specific mathematical equation. The equation for an elliptic curve looks something like this:</p>
 	<p>y<sup>2</sup> = x<sup>3</sup> + ax + b</p>
 	<p>That graphs to something that looks a bit like the Lululemon logo tipped on its side:</p>

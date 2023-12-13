@@ -3,7 +3,7 @@
 	<p>Recently we stumbled upon the holy grail for reverse proxies - a TCP socket splicing API. This caught our attention because, as you may know, we run a global network of reverse proxy services. Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel's SOCKMAP infrastructure can be reused for this purpose. SOCKMAP is a very promising API and is likely to cause a tectonic shift in the architecture of data-heavy applications like software proxies.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2019/02/31958194737_e06ecd6fcc_o.jpg" alt="31958194737_e06ecd6fcc_o" loading="lazy"></p>
 	<center><small><a href="https://www.flickr.com/photos/mustadmarine/31958194737">Image</a> by <a href="https://www.flickr.com/photos/mustadmarine">Mustad Marine</a> public domain</small></center>
-	<p>But let’s rewind a bit.</p>
+	<p>But letâ€™s rewind a bit.</p>
 	<h3 id="birthingpainsofl7proxies">Birthing pains of L7 proxies</h3>
 	<p>Transmitting large amounts of data from userspace is inefficient. Linux provides a couple of specialized syscalls that aim to address this problem. For example, the <code>sendfile(2)</code> syscall (<a href="https://yarchive.net/comp/linux/splice.html">which Linus doesn't like</a>) can be used to speed up transferring large files from disk to a socket. Then there is <code>splice(2)</code> which traditional proxies use to forward data between two TCP sockets. Finally, <code>vmsplice</code> can be used to stick memory buffer into a pipe without copying, but is very hard to use correctly.</p>
 	<p>Sadly, <code>sendfile</code>, <code>splice</code> and <code>vmsplice</code> are very specialized, synchronous and solve only one part of the problem - they avoid copying the data to userspace. They leave other efficiency issues unaddressed.</p>
@@ -56,9 +56,9 @@
 		<li>Reverse caching HTTP proxies, like Varnish or NGINX.</li>
 		<li>Load balancers, like HAProxy, Pen or Relayd.</li>
 	</ul>
-	<p>Over the years there <a href="https://www.haproxy.org/download/1.3/doc/tcp-splicing.txt">have</a> been <a href="http://wwwconference.org/proceedings/www2002/refereed/627/index.html">many</a> <a href="https://lwn.net/Articles/200902">attempts</a> to reduce the cost of dumb data forwarding between TCP sockets on Linux. This issue is generally called “TCP splicing”, “L7 splicing”, or “Socket splicing”.</p>
-	<p>Let’s compare the usual ways of doing TCP splicing. To simplify the problem, instead of writing a rich Layer 7 TCP proxy, we'll write a trivial TCP echo server.</p>
-	<p>It's not a joke. An echo server can illustrate TCP socket splicing well. You know - "echo" basically splices the socket… with itself!</p>
+	<p>Over the years there <a href="https://www.haproxy.org/download/1.3/doc/tcp-splicing.txt">have</a> been <a href="http://wwwconference.org/proceedings/www2002/refereed/627/index.html">many</a> <a href="https://lwn.net/Articles/200902">attempts</a> to reduce the cost of dumb data forwarding between TCP sockets on Linux. This issue is generally called â€œTCP splicingâ€, â€œL7 splicingâ€, or â€œSocket splicingâ€.</p>
+	<p>Letâ€™s compare the usual ways of doing TCP splicing. To simplify the problem, instead of writing a rich Layer 7 TCP proxy, we'll write a trivial TCP echo server.</p>
+	<p>It's not a joke. An echo server can illustrate TCP socket splicing well. You know - "echo" basically splices the socketâ€¦ with itself!</p>
 	<h3 id="naivereadwriteloop">Naive: read write loop</h3>
 	<p>The naive TCP echo server would look like:</p>
 	<pre><code>while data:

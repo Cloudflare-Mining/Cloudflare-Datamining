@@ -1,6 +1,6 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
-	<p>Today, we’re excited to announce Workers KV is entering general availability and is ready for production use!</p>
+	<p>Today, weâ€™re excited to announce Workers KV is entering general availability and is ready for production use!</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="what-is-workers-kv">What is Workers KV?</h3>
 	<p><a href="https://www.cloudflare.com/products/workers-kv">Workers KV</a> is a highly distributed, eventually consistent, key-value store that spans Cloudflare's global edge. It allows you to store billions of key-value pairs and read them with ultra-low latency anywhere in the world. Now you can build entire applications with the performance of a CDN static cache.</p>
@@ -26,7 +26,7 @@ async function handleOneRedirect(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <strong><strong>billions</strong></strong> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change — yikes! That’s why we built Workers KV.</p><!--kg-card-begin: markdown-->
+	<p>Customers quickly came to us with use cases that required a way to store persistent data. Following our example above, it's easy to handle a single redirect, but what if you want to handle <strong><strong>billions</strong></strong> of them? You would have to hard-code them into your Workers script, fit it all in under 1 MB, and re-deploy it every time you wanted to make a change â€” yikes! Thatâ€™s why we built Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
 // now that's more like it!
 addEventListener("fetch", event =&gt; {
@@ -52,7 +52,7 @@ async function handleBillionsOfRedirects(request) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>With only a few changes from our previous example, we scaled from one redirect to billions − that's just a taste of what you can build with Workers KV.</p>
+	<p>With only a few changes from our previous example, we scaled from one redirect to billions âˆ’ that's just a taste of what you can build with Workers KV.</p>
 	<h3 id="how-does-it-work">How does it work?</h3>
 	<p>Distributed data stores are often modeled using the <a href="https://en.wikipedia.org/wiki/CAP_theorem">CAP Theorem</a>, which states that distributed systems can only pick between <strong><strong>2 out of the 3</strong> </strong>following guarantees:</p>
 	<ul>
@@ -75,12 +75,12 @@ async function handleBillionsOfRedirects(request) {
 		<li>Matthew tells Michelle their sushi plans, Michelle agrees.</li>
 		<li>Lee, not knowing the plans, tells Michelle they're actually having pizza.</li>
 	</ul>
-	<p>An hour later, Michelle and Lee are waiting at the pizza parlor while Matthew is sitting alone at the sushi restaurant — what went wrong? We can chalk this up to eventual consistency, because after waiting for a few minutes, Matthew looks at his updated calendar and <em><em>eventually</em></em> finds the new truth, they're going out for pizza instead.</p>
+	<p>An hour later, Michelle and Lee are waiting at the pizza parlor while Matthew is sitting alone at the sushi restaurant â€” what went wrong? We can chalk this up to eventual consistency, because after waiting for a few minutes, Matthew looks at his updated calendar and <em><em>eventually</em></em> finds the new truth, they're going out for pizza instead.</p>
 	<p>While it may take minutes in real-life, Workers KV is much faster. It can achieve global consistency in less than 60 seconds. Additionally, when a Worker writes to a key, then <em><em>immediately</em></em> reads that same key, it can expect the values to be consistent if both operations came from the same location.</p>
 	<h3 id="when-should-i-use-it">When should I use it?</h3>
 	<p>Now that you understand the benefits and tradeoffs of using eventual consistency, how do you determine if it's the right storage solution for your application? Simply put, if you want global availability with ultra-fast reads, Workers KV is right for you.</p>
 	<p>However, if your application is<strong><strong> frequently</strong></strong> writing to the <strong><strong>same</strong></strong> key, there is an additional consideration. We call it "the Matthew question": Are you okay with the Matthews of the world <em><em>occasionally</em></em> going to the wrong restaurant?</p>
-	<p>You can imagine use cases (like our redirect Worker example) where this doesn't make any material difference. But if you decide to keep track of a user’s bank account balance, you would not want the possibility of two balances existing at once, since they could purchase something with money they’ve already spent.</p>
+	<p>You can imagine use cases (like our redirect Worker example) where this doesn't make any material difference. But if you decide to keep track of a userâ€™s bank account balance, you would not want the possibility of two balances existing at once, since they could purchase something with money theyâ€™ve already spent.</p>
 	<h3 id="what-can-i-build-with-it">What can I build with it?</h3>
 	<p>Here are a few examples of applications that have been built with KV:</p>
 	<ul>
@@ -91,7 +91,7 @@ async function handleBillionsOfRedirects(request) {
 		<li>Step functions - sync state data between multiple APIs functions.</li>
 		<li>Edge file store - host large amounts of small files.</li>
 	</ul>
-	<p>We’ve highlighted several of those use cases in our previous <a href="https://blog.cloudflare.com/building-with-workers-kv">blog post</a>. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-do list with Workers KV</a>.</p>
+	<p>Weâ€™ve highlighted several of those use cases in our previous <a href="https://blog.cloudflare.com/building-with-workers-kv">blog post</a>. We also have some more in-depth code walkthroughs, including a recently published blog post on how to build an online <a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">To-do list with Workers KV</a>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://i.imgur.com/GQ4hrfQ.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="what-s-new-since-beta">What's new since beta?</h3>
 	<p>By far, our most common request was to make it easier to write data to Workers KV. That's why we're releasing three new ways to make that experience even better:</p>
@@ -224,7 +224,7 @@ async function handleRequest(request) {
 	<p>We've increased our size limit on values from <code>64 kB</code> to <code>2 MB</code>. This is quite useful if you need to store buffer-based or file data in Workers KV.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-kc-file-size-update@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Consider this scenario: you want to let your users upload their favorite GIF to their profile without having to store these GIFs as binaries in your database or managing <em><em>another</em></em> cloud storage bucket.</p>
-	<p>Workers KV is a great fit for this use case! You can create a Workers KV namespace for your users’ GIFs that is fast and reliable wherever your customers are located.</p>
+	<p>Workers KV is a great fit for this use case! You can create a Workers KV namespace for your usersâ€™ GIFs that is fast and reliable wherever your customers are located.</p>
 	<p>In this example, users upload a link to their favorite GIF, then a Worker downloads it and stores it to Workers KV.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
   var url = event.request.url
@@ -262,7 +262,7 @@ async function getGif(username) {
 	<!--kg-card-end: markdown-->
 	<p>Lastly, we want to thank all of our beta customers. It was your valuable feedback that led us to develop these changes to Workers KV. Make sure to stay in touch with us, we're always looking ahead for what's next and we love hearing from you!</p>
 	<h3 id="pricing">Pricing</h3>
-	<p>We’re also ready to announce our GA pricing. If you're one of our Enterprise customers, your pricing obviously remains unchanged.</p>
+	<p>Weâ€™re also ready to announce our GA pricing. If you're one of our Enterprise customers, your pricing obviously remains unchanged.</p>
 	<ul>
 		<li>$0.50 / GB of data stored, 1 GB included</li>
 		<li>$0.50 / million reads, 10 million included</li>
@@ -270,7 +270,7 @@ async function getGif(username) {
 	</ul>
 	<p>During the beta period, we learned customers don't want to just read values at our edge, they want to write values from our edge too. Since there is high demand for these edge operations, which are more costly, we have started charging non-read operations per month.</p>
 	<h3 id="limits">Limits</h3>
-	<p>As mentioned earlier, we increased our value size limit from <code>64 kB</code> to <code>2 MB</code>. We've also removed our cap on the number of keys per namespace — it's now unlimited. Here are our GA limits:</p>
+	<p>As mentioned earlier, we increased our value size limit from <code>64 kB</code> to <code>2 MB</code>. We've also removed our cap on the number of keys per namespace â€” it's now unlimited. Here are our GA limits:</p>
 	<ul>
 		<li>Up to 20 namespaces per account, each with unlimited keys</li>
 		<li>Keys of up to 512 bytes and values of up to 2 MB</li>

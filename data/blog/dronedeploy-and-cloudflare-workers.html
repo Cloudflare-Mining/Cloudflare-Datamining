@@ -9,16 +9,16 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image6.png" alt="image6" loading="lazy"><br>
 		<small>Using plant health algorithms applied to drone-generated maps, growers can pinpoint crop stress in their fields and stomp out pests, disease, or irrigation issues.</small>
 	</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image1.png" alt="image1" loading="lazy"><small>With Thermal Live Map, it’s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</small></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image1.png" alt="image1" loading="lazy"><small>With Thermal Live Map, itâ€™s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</small></p>
 	<p>You can then upload the images to the cloud and make high res maps and 3D models. With these you can perform deeper analysis (such as volumes, distances, plant health, etc), share and collaborate with coworkers, or move the maps and models into applications like CAD or Agriculture Management Platforms.</p>
-	<p>Check out how we were able to draw a flight path over Cloudflare’s HQ. The drone flew around the building and captured imagery that we turned into a map and 3D model.</p>
+	<p>Check out how we were able to draw a flight path over Cloudflareâ€™s HQ. The drone flew around the building and captured imagery that we turned into a map and 3D model.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-21-at-10.08.50-AM.png" alt="Screen-Shot-2018-06-21-at-10.08.50-AM" loading="lazy"></p>
 	<h4 id="sohowisdronedeployusingworkersandwhyisitimportanttodronedeploy">So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
-	<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
-	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
+	<p>Itâ€™s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
+	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeployâ€™s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
 	<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
 	<blockquote>
-		<p><em>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</em></p>
+		<p><em>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work weâ€™ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</em></p>
 	</blockquote>
 	<p>Let's peel back the layers and understand how they use Workers.</p>
 	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io">here</a>. So the general flow requires the Worker to:</p>
@@ -90,12 +90,12 @@ function getJwt(request) {
 	<br>
 	<pre><code class="language-javascript">/**
  * Parse and decode a JWT.
- * A JWT is three, base64 encoded, strings concatenated with ‘.’:
+ * A JWT is three, base64 encoded, strings concatenated with â€˜.â€™:
  *   a header, a payload, and the signature.
- * The signature is “URL safe”, in that ‘/+’ characters have been replaced by ‘_-’
+ * The signature is â€œURL safeâ€, in that â€˜/+â€™ characters have been replaced by â€˜_-â€™
  * 
  * Steps:
- * 1. Split the token at the ‘.’ character
+ * 1. Split the token at the â€˜.â€™ character
  * 2. Base64 decode the individual parts
  * 3. Retain the raw Bas64 encoded strings to verify the signature
  */
@@ -168,17 +168,17 @@ function createMessage(url, headers) {
   const verb = 'GET'
   return [
     verb,
-    ‘’,  // GET requests don’t have Content-MD5 or Content-Type headers, so use empty strings
-    ‘’,
-    headers.get(‘Date’),
+    â€˜â€™,  // GET requests donâ€™t have Content-MD5 or Content-Type headers, so use empty strings
+    â€˜â€™,
+    headers.get(â€˜Dateâ€™),
     url.pathname
   ].join('\n')
 }
 </code></pre>
 	<p>So the upside is clear - Authentication at the Edge provides flexibility, and scale but also means that DroneDeploy is not locked into an architecture that would prevent their ability to choose the best-in-class capabilities they need from GCP, AWS and more.</p>
 	<h4 id="sowheretofromhere">So where to from here?</h4>
-	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
+	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflareâ€™s cache in addition to other features Cloudflare has to offer. Weâ€™ll update the blog at that time.</p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em><br></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">â€œRecipe Exchangeâ€</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em><br></p>
 	<!--kg-card-end: markdown-->
 </div>

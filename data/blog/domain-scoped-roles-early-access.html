@@ -1,17 +1,17 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/domain-scoped-roles-early-access-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/domain-scoped-roles-early-access-ja-jp">日本語</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/domain-scoped-roles-early-access-zh-cn">ç®€ä½“ä¸­æ–‡</a> and <a href="https://blog.cloudflare.com/ja-jp/domain-scoped-roles-early-access-ja-jp">æ—¥æœ¬èªž</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-30.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Today, Cloudflare is making it easier for enterprise account owners to manage their team’s access to Cloudflare by allowing user access to be scoped to sets of domains. Ensuring users have exactly the access they need and no more is critical, and Domain Scoped Roles provide a significant step forward. Additionally, with the introduction of Domain Groups, account owners can grant users access to domains by group instead of individually. Domains can be added or removed from these groups to automatically update the access of those who have access to the group. This reduces toil in managing user access.</p>
-	<p>One of the most common uses we have seen for Domain Scoped Roles is to limit access to production domains to a small set of team members, while still allowing development and pre-production domains to be open to the rest of the team. That way, someone can’t make changes to a production domain unless they are given access.</p>
+	<p>Today, Cloudflare is making it easier for enterprise account owners to manage their teamâ€™s access to Cloudflare by allowing user access to be scoped to sets of domains. Ensuring users have exactly the access they need and no more is critical, and Domain Scoped Roles provide a significant step forward. Additionally, with the introduction of Domain Groups, account owners can grant users access to domains by group instead of individually. Domains can be added or removed from these groups to automatically update the access of those who have access to the group. This reduces toil in managing user access.</p>
+	<p>One of the most common uses we have seen for Domain Scoped Roles is to limit access to production domains to a small set of team members, while still allowing development and pre-production domains to be open to the rest of the team. That way, someone canâ€™t make changes to a production domain unless they are given access.</p>
 	<h3 id="how-to-use-domain-scoped-roles">How to use Domain Scoped Roles</h3>
 	<p>If you are an enterprise customer please talk with your CSM to get you and your team enrolled. Note that you must have Super Administrator privileges to be able to modify account memberships.</p>
 	<p>Once the beta has been enabled for you, here is how to start using it:</p><!--kg-card-begin: markdown-->
 	<ul>
 		<li>Log in to <a href="https://dash.cloudflare.com">dash.cloudflare.com</a>, select your account, and navigate to the <a href="https://dash.cloudflare.com/?account=members">members page</a>.
 			<ul>
-				<li>From here, you can either invite a new member with a Domain Scoped Role or modify an existing user’s permissions. In this case, we will invite a new user.</li>
+				<li>From here, you can either invite a new member with a Domain Scoped Role or modify an existing userâ€™s permissions. In this case, we will invite a new user.</li>
 			</ul>
 		</li>
 	</ul>
@@ -23,7 +23,7 @@
 				<li>Which users to invite.</li>
 				<li>The scope of which resource they will have access to:
 					<ul>
-						<li>Selecting “All Domains” will allow you to select legacy roles.</li>
+						<li>Selecting â€œAll Domainsâ€ will allow you to select legacy roles.</li>
 					</ul>
 				</li>
 				<li>The role(s) which will decide what permissions are granted.</li>
@@ -42,10 +42,10 @@
 	<h4 id="domain-group-creation-screen">Domain Group Creation Screen</h4>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-13.png" class="kg-image" alt="Domain Group creation screen showing two domains selected." loading="lazy"></figure>
 	<h4 id="domain-group-selection-during-member-invite">Domain Group selection during member invite</h4>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-4.png" class="kg-image" alt="Member invite screen showing the scope of a user’s access being limited to a domain group named, “Test Domains”." loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-4.png" class="kg-image" alt="Member invite screen showing the scope of a userâ€™s access being limited to a domain group named, â€œTest Domainsâ€." loading="lazy"></figure>
 	<h3 id="introducing-bach">Introducing Bach</h3>
-	<p>Domain Scoped Roles is possible because of a new permission system called Bach. Bach provides a policy based system for defining authorization to Cloudflare’s control plane. Authorization defines what someone can do in a system. Bach has been powering API Tokens, but going forward all authorization will use Bach. This gives customers the ability to define more granular permissions and resource scoping. Resources can be any object a user interacts with whether that be accounts, zones, worker environments, or DNS records to name a few.. Whereas before Cloudflare’s <a href="https://blog.cloudflare.com/domain-scoped-roles-early-access/edit">RBAC system</a> relied on assigning a set of roles in which each role defined broad permissions that applied to an entire account, Bach’s policies allow for deeper permission grants that can be scoped to sets of resources.</p>
-	<p>Let’s take a look at the legacy system and how it compares to what Bach supports. Typically, user’s permissions are defined by the ‘roles’ that they are assigned to. These included: ‘Super Administrator’, ‘Administrator’, ‘Cloudflare for Teams’, and ‘Cloudflare Workers Admin’ to name a few. In the legacy system, each of these maps to an explicit set of simple permissions like ‘workers:read’, ‘workers:edit’ or ‘zones:edit’. When requests get made either via the Cloudflare API or the Cloudflare dashboard, Cloudflare’s API Gateway would check to see if, for the endpoint requested, an actor had the correct permissions to perform the action. In order to change a zone setting, the actor would need to have the ‘zone:edit’ permission – which could be granted from one of many roles. Below is what a user with only ‘DNS’ permissions is granted in the legacy system:</p>
+	<p>Domain Scoped Roles is possible because of a new permission system called Bach. Bach provides a policy based system for defining authorization to Cloudflareâ€™s control plane. Authorization defines what someone can do in a system. Bach has been powering API Tokens, but going forward all authorization will use Bach. This gives customers the ability to define more granular permissions and resource scoping. Resources can be any object a user interacts with whether that be accounts, zones, worker environments, or DNS records to name a few.. Whereas before Cloudflareâ€™s <a href="https://blog.cloudflare.com/domain-scoped-roles-early-access/edit">RBAC system</a> relied on assigning a set of roles in which each role defined broad permissions that applied to an entire account, Bachâ€™s policies allow for deeper permission grants that can be scoped to sets of resources.</p>
+	<p>Letâ€™s take a look at the legacy system and how it compares to what Bach supports. Typically, userâ€™s permissions are defined by the â€˜rolesâ€™ that they are assigned to. These included: â€˜Super Administratorâ€™, â€˜Administratorâ€™, â€˜Cloudflare for Teamsâ€™, and â€˜Cloudflare Workers Adminâ€™ to name a few. In the legacy system, each of these maps to an explicit set of simple permissions like â€˜workers:readâ€™, â€˜workers:editâ€™ or â€˜zones:editâ€™. When requests get made either via the Cloudflare API or the Cloudflare dashboard, Cloudflareâ€™s API Gateway would check to see if, for the endpoint requested, an actor had the correct permissions to perform the action. In order to change a zone setting, the actor would need to have the â€˜zone:editâ€™ permission â€“ which could be granted from one of many roles. Below is what a user with only â€˜DNSâ€™ permissions is granted in the legacy system:</p>
 	<h4 id="legacy-dns-user-role-permissions">Legacy DNS User Role Permissions</h4><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
@@ -58,39 +58,39 @@
 		<tbody>
 			<tr>
 				<td>dns_records</td>
-				<td>✔</td>
-				<td>✔</td>
+				<td>âœ”</td>
+				<td>âœ”</td>
 			</tr>
 			<tr>
 				<td>legal</td>
 				<td></td>
-				<td>✔</td>
+				<td>âœ”</td>
 			</tr>
 			<tr>
 				<td>account</td>
 				<td></td>
-				<td>✔</td>
+				<td>âœ”</td>
 			</tr>
 			<tr>
 				<td>subscription</td>
 				<td></td>
-				<td>✔</td>
+				<td>âœ”</td>
 			</tr>
 			<tr>
 				<td>zone</td>
 				<td></td>
-				<td>✔</td>
+				<td>âœ”</td>
 			</tr>
 			<tr>
 				<td>zone_settings</td>
 				<td></td>
-				<td>✔</td>
+				<td>âœ”</td>
 			</tr>
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>While straightforward, this had many drawbacks. First, this meant the inability to define limits on the resources the permissions applied to, whether that be a set of resources or attributes of resources. Second, permissions for a given ‘resource’ were simply read or edit, where edit included creating and deleting. These don’t fully capture the needs that may exist – for example, limiting deletions while allowing edits.</p>
-	<p>With Bach we have an expanded capability to define granular permissions for authorization. An example policy defining the aforementioned ‘DNS’ member’s access would look like this:</p>
+	<p>While straightforward, this had many drawbacks. First, this meant the inability to define limits on the resources the permissions applied to, whether that be a set of resources or attributes of resources. Second, permissions for a given â€˜resourceâ€™ were simply read or edit, where edit included creating and deleting. These donâ€™t fully capture the needs that may exist â€“ for example, limiting deletions while allowing edits.</p>
+	<p>With Bach we have an expanded capability to define granular permissions for authorization. An example policy defining the aforementioned â€˜DNSâ€™ memberâ€™s access would look like this:</p>
 	<h3 id="bach-dns-user-role-policy">Bach DNS User Role Policy</h3>
 	<p>(slightly modified for readability)</p>
 	<pre><code class="language-yaml">#Legacy DNS Role - applies to all zones
@@ -168,7 +168,7 @@
         - key: "*"
     access: allow
 </code></pre>
-	<p>You can see a greater granularity in the permissions that are defined. In both cases, the user can perform the same actions, but the granularity means we are more explicit about what can be done. Here for DNS records (under com.cloudflare.api.account.zone.dns-record) there are explicit create, read, update, delete and list permissions. In the resource group section, we can see that the scope section defines an account. Any objects like domains in that account will match to the “*” value under ‘objects’. This means that these permissions apply throughout the entire account. Now, let’s modify this user’s permissions to be scoped to a single domain and see how the policy changes.</p>
+	<p>You can see a greater granularity in the permissions that are defined. In both cases, the user can perform the same actions, but the granularity means we are more explicit about what can be done. Here for DNS records (under com.cloudflare.api.account.zone.dns-record) there are explicit create, read, update, delete and list permissions. In the resource group section, we can see that the scope section defines an account. Any objects like domains in that account will match to the â€œ*â€ value under â€˜objectsâ€™. This means that these permissions apply throughout the entire account. Now, letâ€™s modify this userâ€™s permissions to be scoped to a single domain and see how the policy changes.</p>
 	<h3 id="bach-dns-user-role-with-domain-scoping-policy">Bach DNS User Role with Domain Scoping Policy</h3>
 	<p>(slightly modified for readability)</p>
 	<pre><code class="language-yaml"># Zone Scoped DNS role - scoped to 1 zone
@@ -203,8 +203,8 @@ policies:
       - key: com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f
   access: allow
 </code></pre>
-	<p>Once we scope the user’s permissions to only include one explicit zone, we see two main differences. First, there is a large reduction in permissions. This is because we do not grant the user access to read or list many account level resources that the legacy account scoped roles grant. The only account level permissions granted are <em>account.read</em>, <em>subscriptions.read</em>, and <em>subscriptions.list</em>. These permissions are necessary for a user to be able to use the dashboard. &nbsp;When viewing the account in the dashboard the only account level product that will be shown is domains. Other products like Cloudflare Workers, Zero Trust, etc will be hidden. </p>
+	<p>Once we scope the userâ€™s permissions to only include one explicit zone, we see two main differences. First, there is a large reduction in permissions. This is because we do not grant the user access to read or list many account level resources that the legacy account scoped roles grant. The only account level permissions granted are <em>account.read</em>, <em>subscriptions.read</em>, and <em>subscriptions.list</em>. These permissions are necessary for a user to be able to use the dashboard. Â&nbsp;When viewing the account in the dashboard the only account level product that will be shown is domains. Other products like Cloudflare Workers, Zero Trust, etc will be hidden. </p>
 	<p>Second, in the resource groups scope section, we see an explicit mention of a zone (line X: <code>com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</code>). This means that the zone permissions outlined in the policy only apply to that specific zone. Any attempt to access other features of that zone or to modify DNS for any other zones will be rejected by Cloudflare.</p>
-	<h2 id="what-s-next">What’s next</h2>
-	<p>If you are an enterprise customer and interested in getting started with Domain Scoped Roles, please contact your CSM to get enabled for the Early Access period. This announcement represents a significant milestone in our migration to Bach, an authorization system built for Coudflare’s scale. This will allow us to expand these same capabilities to more products in the future and to create an authorization system that puts customers more in control of their team’s access across all of Cloudflare’s services. Stay tuned as we are just getting started!</p>
+	<h2 id="what-s-next">Whatâ€™s next</h2>
+	<p>If you are an enterprise customer and interested in getting started with Domain Scoped Roles, please contact your CSM to get enabled for the Early Access period. This announcement represents a significant milestone in our migration to Bach, an authorization system built for Coudflareâ€™s scale. This will allow us to expand these same capabilities to more products in the future and to create an authorization system that puts customers more in control of their teamâ€™s access across all of Cloudflareâ€™s services. Stay tuned as we are just getting started!</p>
 </div>

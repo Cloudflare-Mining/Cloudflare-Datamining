@@ -6,10 +6,10 @@
 	<h2 id="fundamental-questions-for-storing-and-serving-images">Fundamental questions for storing and serving images</h2>
 	<p>Any time you are building infrastructure for image storage and processing, there are four fundamental questions you must answer:</p>
 	<ol>
-		<li>“Where do we store images?”</li>
-		<li>“How do we secure, resize, and optimize the images for different use cases?”</li>
-		<li>“How do we serve the images to our users reliably?”</li>
-		<li>“How do we do all of these things at scale while having predictable and affordable pricing, especially during spikes?”</li>
+		<li>â€œWhere do we store images?â€</li>
+		<li>â€œHow do we secure, resize, and optimize the images for different use cases?â€</li>
+		<li>â€œHow do we serve the images to our users reliably?â€</li>
+		<li>â€œHow do we do all of these things at scale while having predictable and affordable pricing, especially during spikes?â€</li>
 	</ol>
 	<p>Cloudflare Images has a straightforward set of APIs and simple pricing structure that answers all of these pesky questions. We built Images so your team can spend less energy maintaining infrastructure and more time focusing on what makes your product truly special.</p>
 	<h2 id="current-state-of-image-infrastructure">Current state of image infrastructure</h2>
@@ -19,7 +19,7 @@
 	<h2 id="why-cloudflare-images">Why Cloudflare Images</h2>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-27.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="eliminate-egress-cost-and-storage-bucket-hell">Eliminate egress cost and storage bucket hell</h3>
-	<p>Each time you upload an image to Cloudflare Images, you receive an <em>:image_id</em>. There are no buckets and folders to manage the originals and the variants. And because of Images built-in support for resizing and delivery, there is no egress cost. If you have internal metadata that you’d like to associate with a picture, you can set the <em>meta</em> field for every upload to any arbitrary JSON value.</p>
+	<p>Each time you upload an image to Cloudflare Images, you receive an <em>:image_id</em>. There are no buckets and folders to manage the originals and the variants. And because of Images built-in support for resizing and delivery, there is no egress cost. If you have internal metadata that youâ€™d like to associate with a picture, you can set the <em>meta</em> field for every upload to any arbitrary JSON value.</p>
 	<h3 id="simple-apis-catered-to-your-needs">Simple APIs catered to your needs</h3>
 	<p>When talking to customers we saw two main patterns of how customers would like to deliver images:</p>
 	<ol>
@@ -30,7 +30,7 @@
 	<h3 id="resize-and-secure-your-pictures-with-variants">Resize and secure your pictures with Variants</h3>
 	<p>Cloudflare Images supports Variants. When you create a variant, you can define properties including variant name, width, height, and whether the variant should be publicly accessible. You can then associate an image with one or more variants using the UI or the API.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-33.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Let’s say you are storing user profile pictures. You could define a variant called “<em>profile-thumbnail</em>” and configure that variant to serve images of a fixed width and height. Once you have a variant, you can associate the profile pictures with the <em>profile-thumbnail</em> variant. Whenever you need to display a profile picture in your app, you simply call <a href="https://imagedelivery.net/profile-thumbnail/:image_uid">https://imagedelivery.net/profile-thumbnail/:image_uid</a> or <a href="https://imagedelivery.net/profile-thumbnail/:account_hash/:filename">https://imagedelivery.net/profile-thumbnail/:account_hash/:filename</a>.</p>
+	<p>Letâ€™s say you are storing user profile pictures. You could define a variant called â€œ<em>profile-thumbnail</em>â€ and configure that variant to serve images of a fixed width and height. Once you have a variant, you can associate the profile pictures with the <em>profile-thumbnail</em> variant. Whenever you need to display a profile picture in your app, you simply call <a href="https://imagedelivery.net/profile-thumbnail/:image_uid">https://imagedelivery.net/profile-thumbnail/:image_uid</a> or <a href="https://imagedelivery.net/profile-thumbnail/:account_hash/:filename">https://imagedelivery.net/profile-thumbnail/:account_hash/:filename</a>.</p>
 	<p>Variants also offer access control. You might only want logged-in users to view the larger version of the profile pictures. You could create another variant called <em>large-profile-picture</em> and make it require a signed URL token. When a user tries to access the large profile picture with a URL such as <a href="https://imagedelivery.net/large-profile-picture/:image_uid">https://imagedelivery.net/large-profile-picture/:image_uid</a>, the request will fail because there is no valid token provided.</p>
 	<p>An indirect upside of using variants is that your organization has a single source of truth for the different ways you are using images across your apps. Different teams can create variants for their use cases, enabling you to audit the security and optimization settings for different types of pictures from one central place. We learned that as our customers' products grow in complexity, separate teams may be responsible for handling various aspects of the product. For example, one team may be responsible for user profile pictures and the different variants associated with it. Another team may be responsible for creator uploads and maintaining different variations that are available to the public and to paid members. Over time, organizations can lose track of this logic with no single source of truth. With variants, this logic is clearly laid out and can serve as the source of truth for all the ways you are securing and optimizing different types of image uploads in your product.</p>
 	<p>There is no additional cost for using variants. Every picture uploaded to Images can be associated with up to five variants. You will be able to associate an image with a variant using the UI or the API.</p>
@@ -41,5 +41,5 @@
 	<p>To use Cloudflare Images, you will pay a fixed monthly fee for every 100,000 images stored in Cloudflare Images (up to 10MB per image). And at the end of each month, you pay for the number of images served. There are no additional costs for resizing, egress, or optimized routing.</p>
 	<h2 id="request-an-invite">Request an Invite</h2>
 	<p>If you want to be part of Cloudflare Images beta, <a href="https://docs.google.com/forms/d/1x1caSSYQn10dRjxNLJlG-MdHgLnUa2mnR6iUpa2ahxI">request an invite</a>. We will start inviting a limited set of users to try out Cloudflare Images in the coming weeks. Pricing and developer docs for Images will be posted at the time we start sending invites.</p>
-	<p>We can’t wait to see what you build using Cloudflare Images!</p>
+	<p>We canâ€™t wait to see what you build using Cloudflare Images!</p>
 </div>

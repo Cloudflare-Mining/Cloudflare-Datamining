@@ -11,21 +11,21 @@
 		<figcaption>Slow connected device making lots of requests</figcaption>
 	</figure>
 	<p>If you want users to start interacting with your web applications faster, you must make data requests when rendering the HTML. While static generation can avoid these runtime requests by making them at build time, it is not able to provide dynamic customized content. To give users both a customized and fast experience you can server-side render the HTML.</p>
-	<p>By using server-side rendering, you can optimize access to resources making use of Cloudflare’s high-bandwidth connectivity and the ability to cache data nearby, minimizing the time spent on the device waiting for data.</p>
+	<p>By using server-side rendering, you can optimize access to resources making use of Cloudflareâ€™s high-bandwidth connectivity and the ability to cache data nearby, minimizing the time spent on the device waiting for data.</p>
 	<p>Furthermore, by running the server-side rendering in a Pages Function you get the benefit that both the client (browser) and server (Cloudflare Worker) are both executing similar JavaScript runtimes. This means that you can write isomorphic code that works on both the frontend and backend, avoiding duplication of business and data access logic. Many of the modern full-stack frameworks even provide for code to begin execution on the server and then continue running on the client.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-38.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Fast connected Worker making lots of requests</figcaption>
 	</figure>
 	<h2 id="use-a-full-stack-framework">Use a full-stack framework</h2>
 	<p>Writing your own library to do server-side rendering is no simple task. But luckily many frontend frameworks support server-side rendering, and Cloudflare Pages offers the perfect deployment platform for them. Each framework has its own take on server-side rendering, but most can be integrated effortlessly with Pages Functions. In fact, many frameworks come with starter kits and libraries that make deploying to Pages trivial.</p>
-	<p>We have previously blogged about deploying <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack/#what-else-can-you-do">SvelteKit</a>, <a href="https://blog.cloudflare.com/remix-on-cloudflare-pages">Remix</a> and <a href="https://blog.cloudflare.com/next-on-pages">Next.js</a> to Cloudflare Pages, but there are many more <a href="https://developers.cloudflare.com/pages/framework-guides">integrations already available</a>. Let’s take a look at a few of the other popular ones:</p>
+	<p>We have previously blogged about deploying <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack/#what-else-can-you-do">SvelteKit</a>, <a href="https://blog.cloudflare.com/remix-on-cloudflare-pages">Remix</a> and <a href="https://blog.cloudflare.com/next-on-pages">Next.js</a> to Cloudflare Pages, but there are many more <a href="https://developers.cloudflare.com/pages/framework-guides">integrations already available</a>. Letâ€™s take a look at a few of the other popular ones:</p>
 	<h3 id="qwikcity">QwikCity</h3>
 	<p>The full-stack framework that uses the Qwik frontend framework is called QwikCity. You can read the full quick-start documentation for running Qwik on Pages <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site">here</a>.</p>
 	<p>Create a new project by running the following command in your terminal:</p><!--kg-card-begin: markdown-->
 	<pre><code>npm create qwik@latest
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>You will be prompted to select a name - choose qwik-app - and a starter project - choose “Basic App (QwikCity)”. Now add the Cloudflare Pages adaptor by running the following in your terminal:</p><!--kg-card-begin: markdown-->
+	<p>You will be prompted to select a name - choose qwik-app - and a starter project - choose â€œBasic App (QwikCity)â€. Now add the Cloudflare Pages adaptor by running the following in your terminal:</p><!--kg-card-begin: markdown-->
 	<pre><code>cd qwik-app
 npm run qwik add cloudflare-pages
 </code></pre>
@@ -58,7 +58,7 @@ npx astro add cloudflare
 npx wrangler pages dev ./dist
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The client and server-side code will be compiled and then Wrangler will start up a dev session. Press <code>b</code> to open a browser and see the server-side rendered site. <a href="https://docs.astro.build/en/guides/integrations-guide/cloudflare">Check out Astro’s docs</a> to read more about configuring your Astro project when deploying it to Cloudflare Pages.</p>
+	<p>The client and server-side code will be compiled and then Wrangler will start up a dev session. Press <code>b</code> to open a browser and see the server-side rendered site. <a href="https://docs.astro.build/en/guides/integrations-guide/cloudflare">Check out Astroâ€™s docs</a> to read more about configuring your Astro project when deploying it to Cloudflare Pages.</p>
 	<h3 id="solidstart">SolidStart</h3>
 	<p>The full-stack framework that uses the SolidJS frontend framework is called SolidStart. Support for running SolidStart on Cloudflare Pages is provided by the <a href="https://github.com/solidjs/solid-start/tree/main/packages/start-cloudflare-pages">start-cloudflare-pages</a> Vite adapter.</p>
 	<p>Create a new SolidStart project by running the following command in your terminal:</p><!--kg-card-begin: markdown-->
@@ -67,7 +67,7 @@ cd my-app
 npm init solid
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>You will be prompted to choose a template - choose “todomvc”. You are then prompted whether to add Server Side Rendering and TypeScript - choose “yes” for both. Now install the <code>solid-start-cloudflare-pages</code> adaptor.</p><!--kg-card-begin: markdown-->
+	<p>You will be prompted to choose a template - choose â€œtodomvcâ€. You are then prompted whether to add Server Side Rendering and TypeScript - choose â€œyesâ€ for both. Now install the <code>solid-start-cloudflare-pages</code> adaptor.</p><!--kg-card-begin: markdown-->
 	<pre><code>npm install --save-dev solid-start-cloudflare-pages
 </code></pre>
 	<!--kg-card-end: markdown-->

@@ -45,7 +45,7 @@ p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,f
 	<p>Finally, we are going to disable the Intel Turbo Boost feature on the machine:</p>
 	<pre><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
 </code></pre>
-	<p>While Turbo Boost is nice and increases throughput by at least 20%, it also drastically worsens the standard deviation in our tests. With turbo enabled we had ±1.5% deviation in our numbers. With Turbo off this falls down to manageable 0.25%.</p>
+	<p>While Turbo Boost is nice and increases throughput by at least 20%, it also drastically worsens the standard deviation in our tests. With turbo enabled we had Â±1.5% deviation in our numbers. With Turbo off this falls down to manageable 0.25%.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" alt="layers" loading="lazy"></p>
 	<h4 id="step1droppingpacketsinapplication">Step 1. Dropping packets in application</h4>
 	<p>Let's start with the idea of delivering packets to an application and ignoring them in userspace code. For the test setup, let's make sure our iptables don't affect the performance:</p>
@@ -137,7 +137,7 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
 	<p>This is quite a significant jump in performance, I don't fully understand it. Either our routing layer is unusually complex or there is a bug in our server configuration.</p>
 	<p>In any case - "raw" iptables table is definitely way faster.</p>
 	<h4 id="step6nftablesdropbeforeconntrack">Step 6. nftables DROP before CONNTRACK</h4>
-	<p>Iptables is considered passé these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
+	<p>Iptables is considered passÃ© these days. The new kid in town is nftables. See this <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c">video for a technical explanation why</a> nftables is superior. Nftables promises to be faster than gray haired iptables for many reasons, among them is a rumor that retpolines (aka: no speculation for indirect jumps) hurt iptables quite badly.</p>
 	<p>Since this article is not about comparing the nftables vs iptables speed, let's try only the fastest drop I could came up with:</p>
 	<pre><code>nft add table netdev filter
 nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }

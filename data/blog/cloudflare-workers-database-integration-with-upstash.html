@@ -1,7 +1,7 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/1.png" class="kg-image" alt="Cloudflare Workers database integration with Upstash" loading="lazy" width="1600" height="898"></figure>
-	<p>During <a href="https://www.cloudflare.com/developer-week">Developer Week</a> we announced <a href="https://blog.cloudflare.com/announcing-database-integrations">Database Integrations on Workers</a> &nbsp;a new and seamless way to connect with some of the most popular databases. You select the provider, authorize through an OAuth2 flow and automatically get the right configuration stored as encrypted environment variables to your Worker.</p>
+	<p>During <a href="https://www.cloudflare.com/developer-week">Developer Week</a> we announced <a href="https://blog.cloudflare.com/announcing-database-integrations">Database Integrations on Workers</a> Â&nbsp;a new and seamless way to connect with some of the most popular databases. You select the provider, authorize through an OAuth2 flow and automatically get the right configuration stored as encrypted environment variables to your Worker.</p>
 	<p>Today we are thrilled to announce that we have been working with Upstash to expand our integrations catalog. We are now offering three new integrations: Upstash Redis, Upstash Kafka and Upstash QStash. These integrations allow our customers to unlock new capabilities on Workers. Providing them with a broader range of options to meet their specific requirements.</p>
 	<h3 id="add-the-integration">Add the integration</h3>
 	<p>We are going to show the setup process using the Upstash Redis integration.</p>
@@ -9,17 +9,17 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/2.png" class="kg-image" alt="Workers Integration tab showing all Integrations" loading="lazy" width="1600" height="969"></figure>
 	<p>After selecting the Upstash Redis integration we will get the following page.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/3.png" class="kg-image" alt="Upstash Integration flow showing all steps to complete this Integration" loading="lazy" width="1484" height="1600"></figure>
-	<p>First, you need to review and grant permissions, so the Integration can add secrets to your Worker. Second, we need to connect to Upstash using the OAuth2 flow. Third, select the Redis database we want to use. Then, the Integration will fetch the right information to generate the credentials. Finally, click “Add Integration” and it's done! We can now use the credentials as environment variables on our Worker.</p>
+	<p>First, you need to review and grant permissions, so the Integration can add secrets to your Worker. Second, we need to connect to Upstash using the OAuth2 flow. Third, select the Redis database we want to use. Then, the Integration will fetch the right information to generate the credentials. Finally, click â€œAdd Integrationâ€ and it's done! We can now use the credentials as environment variables on our Worker.</p>
 	<h3 id="implementation-example">Implementation example</h3>
-	<p>On this occasion we are going to use the <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/http-request-headers/#cf-ipcountry">CF-IPCountry</a> &nbsp;header to conditionally return a custom greeting message to visitors from Paraguay, United States, Great Britain and Netherlands. While returning a generic message to visitors from other countries.</p>
-	<p>To begin we are going to load the custom greeting messages using Upstash’s online CLI tool.</p>
-	<pre><code class="language-bash">➜ set PY "Mba'ẽichapa 🇵🇾"
+	<p>On this occasion we are going to use the <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/http-request-headers/#cf-ipcountry">CF-IPCountry</a> Â&nbsp;header to conditionally return a custom greeting message to visitors from Paraguay, United States, Great Britain and Netherlands. While returning a generic message to visitors from other countries.</p>
+	<p>To begin we are going to load the custom greeting messages using Upstashâ€™s online CLI tool.</p>
+	<pre><code class="language-bash">âžœ set PY "Mba'áº½ichapa ðŸ‡µðŸ‡¾"
 OK
-➜ set US "How are you? 🇺🇸"
+âžœ set US "How are you? ðŸ‡ºðŸ‡¸"
 OK
-➜ set GB "How do you do? 🇬🇧"
+âžœ set GB "How do you do? ðŸ‡¬ðŸ‡§"
 OK
-➜ set NL "Hoe gaat het met u? 🇳🇱"
+âžœ set NL "Hoe gaat het met u? ðŸ‡³ðŸ‡±"
 OK</code></pre>
 	<p>We also need to install <code>@upstash/redis</code> package on our Worker before we upload the following code. </p>
 	<pre><code class="language-javascript">import { Redis } from '@upstash/redis/cloudflare'
@@ -34,7 +34,7 @@ export default {
         return new Response(localizedMessage);
       }
     }
-    return new Response("👋👋 Hello there! 👋👋");
+    return new Response("ðŸ‘‹ðŸ‘‹ Hello there! ðŸ‘‹ðŸ‘‹");
   },
 };
 </code></pre>

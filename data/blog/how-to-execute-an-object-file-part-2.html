@@ -59,7 +59,7 @@ Disassembly of section .text:
 	<blockquote>
 		<p>Call near, relative, displacement relative to next instruction.</p>
 	</blockquote>
-	<p>According to the <a href="https://www.felixcloutier.com/x86/call">description</a>, this variant of the <code>callq</code> instruction consists of 5 bytes: the <code>0xe8</code> prefix and a 4-byte (32 bit) argument. This is where "relative" comes from: the argument should contain the “distance” between the function we want to call and the current position — because the way how x86 works this distance is calculated from the next instruction and not our current <code>callq</code> instruction. <a href="https://man7.org/linux/man-pages/man1/objdump.1.html">objdump</a> conveniently outputs each machine instruction's offset in the output above, so we can easily calculate the needed argument. For example, for the first <code>callq</code> instruction (<code>1f: e8 00 00 00 00</code>) the next instruction is at offset <code>0x24</code>. We know we should be calling the <code>add5</code> function, which starts at offset <code>0x0</code> (beginning of our <code>.text</code> section). So the relative offset is <code>0x0 - 0x24 = -0x24</code>. Notice, we have a negative argument, because the <code>add5</code> function is located before our calling instruction, so we would be instructing the CPU to "jump backwards" from its current position. Lastly, we have to remember that negative numbers — at least on x86 systems — are presented by their <a href="https://en.wikipedia.org/wiki/Two%27s_complement">two's complements</a>, so a 4-byte (32 bit) representation of <code>-0x24</code> would be <code>0xffffffdc</code>. In the same way we can calculate the <code>callq</code> argument for the second <code>add5</code> call: <code>0x0 - 0x31 = -0x31</code>, two's complement - <code>0xffffffcf</code>:</p>
+	<p>According to the <a href="https://www.felixcloutier.com/x86/call">description</a>, this variant of the <code>callq</code> instruction consists of 5 bytes: the <code>0xe8</code> prefix and a 4-byte (32 bit) argument. This is where "relative" comes from: the argument should contain the â€œdistanceâ€ between the function we want to call and the current position â€” because the way how x86 works this distance is calculated from the next instruction and not our current <code>callq</code> instruction. <a href="https://man7.org/linux/man-pages/man1/objdump.1.html">objdump</a> conveniently outputs each machine instruction's offset in the output above, so we can easily calculate the needed argument. For example, for the first <code>callq</code> instruction (<code>1f: e8 00 00 00 00</code>) the next instruction is at offset <code>0x24</code>. We know we should be calling the <code>add5</code> function, which starts at offset <code>0x0</code> (beginning of our <code>.text</code> section). So the relative offset is <code>0x0 - 0x24 = -0x24</code>. Notice, we have a negative argument, because the <code>add5</code> function is located before our calling instruction, so we would be instructing the CPU to "jump backwards" from its current position. Lastly, we have to remember that negative numbers â€” at least on x86 systems â€” are presented by their <a href="https://en.wikipedia.org/wiki/Two%27s_complement">two's complements</a>, so a 4-byte (32 bit) representation of <code>-0x24</code> would be <code>0xffffffdc</code>. In the same way we can calculate the <code>callq</code> argument for the second <code>add5</code> call: <code>0x0 - 0x31 = -0x31</code>, two's complement - <code>0xffffffcf</code>:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2021/03/relative-calls.png" alt="relative-calls" loading="lazy"></p>
 	<p>It seems the compiler does not generate the right <code>callq</code> arguments for us. We've calculated the expected arguments to be <code>0xffffffdc</code> and <code>0xffffffcf</code>, but the compiler has just left <code>0x00000000</code> in both places. Let's check first if our expectations are correct by patching our loaded <code>.text</code> copy before trying to execute it:</p>
 	<p><em>loader.c</em>:</p>
@@ -93,7 +93,7 @@ add10(42) = 52
 </code></pre>
 	<p>Clearly our monkey-patching helped: <code>add10</code> executes fine now and produces the correct output. This means our expected <code>callq</code> arguments, which we calculated, are correct. So why did the compiler emit wrong <code>callq</code> arguments?</p>
 	<h3 id="relocations">Relocations</h3>
-	<p>The problem with our toy object file is that both functions are declared with external linkage — the default setting for all functions and global variables in C. And, although both functions are declared in the same file, the compiler is not sure where the <code>add5</code> code will end up in the target binary. So the compiler avoids making any assumptions and doesn’t calculate the relative offset argument of the <code>callq</code> instructions. Let's verify this by removing our monkey patching and declaring the <code>add5</code> function as <code>static</code>:</p>
+	<p>The problem with our toy object file is that both functions are declared with external linkage â€” the default setting for all functions and global variables in C. And, although both functions are declared in the same file, the compiler is not sure where the <code>add5</code> code will end up in the target binary. So the compiler avoids making any assumptions and doesnâ€™t calculate the relative offset argument of the <code>callq</code> instructions. Let's verify this by removing our monkey patching and declaring the <code>add5</code> function as <code>static</code>:</p>
 	<p><em>loader.c</em>:</p>
 	<pre><code class="language-cpp">...
  
@@ -166,7 +166,7 @@ add5(42) = 47
 Executing add10...
 add10(42) = 42
 </code></pre>
-	<p>As we have established above, the compiler did not compute proper <code>callq</code> arguments for us because it didn't have enough information. But later stages (namely the linker) will have that information, so instead the compiler leaves some clues on how to fix those arguments. These clues — or instructions for the later stages — are called <strong>relocations</strong>. We can inspect them with our friend, the <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf</a> utility. Let's examine <code>obj.o</code> sections table again:</p>
+	<p>As we have established above, the compiler did not compute proper <code>callq</code> arguments for us because it didn't have enough information. But later stages (namely the linker) will have that information, so instead the compiler leaves some clues on how to fix those arguments. These clues â€” or instructions for the later stages â€” are called <strong>relocations</strong>. We can inspect them with our friend, the <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf</a> utility. Let's examine <code>obj.o</code> sections table again:</p>
 	<pre><code class="language-bash">$ readelf --sections obj.o
 There are 12 section headers, starting at offset 0x2b0:
  
@@ -216,21 +216,21 @@ Relocation section '.rela.eh_frame' at offset 0x220 contains 2 entries:
 000000000020  000200000002 R_X86_64_PC32     0000000000000000 .text + 0
 000000000040  000200000002 R_X86_64_PC32     0000000000000000 .text + f
 </code></pre>
-	<p>Let's ignore the relocations from the <code>.rela.eh_frame</code> section because they are out of scope of this post. Instead, let’s try to understand the relocations from the <code>.rela.text</code>:</p>
+	<p>Let's ignore the relocations from the <code>.rela.eh_frame</code> section because they are out of scope of this post. Instead, letâ€™s try to understand the relocations from the <code>.rela.text</code>:</p>
 	<ul>
 		<li><code>Offset</code> column tells us exactly where in the target section (<code>.text</code> in this case) the fix/adjustment is needed. Note that these offsets are exactly the same as in our self-calculated monkey-patching above.</li>
-		<li><code>Info</code> is a combined value: the upper 32 bits — only 16 bits are shown in the output above — represent the index of the symbol in the symbol table, with respect to which the relocation is performed. In our example it is <code>8</code> and if we run <code>readelf --symbols obj.o</code> we will see that it points to an entry corresponding to the <code>add5</code> function. The lower 32 bits (<code>4</code> in our case) is a relocation type (see <code>Type</code> below).</li>
+		<li><code>Info</code> is a combined value: the upper 32 bits â€” only 16 bits are shown in the output above â€” represent the index of the symbol in the symbol table, with respect to which the relocation is performed. In our example it is <code>8</code> and if we run <code>readelf --symbols obj.o</code> we will see that it points to an entry corresponding to the <code>add5</code> function. The lower 32 bits (<code>4</code> in our case) is a relocation type (see <code>Type</code> below).</li>
 		<li><code>Type</code> describes the relocation type. This is a pseudo-column: <code>readelf</code> actually generates it from the lower 32 bits of the <code>Info</code> field. Different relocation types have different formulas we need to apply to perform the relocation.</li>
-		<li><code>Sym. Value</code> may mean different things depending on the relocation type, but most of the time it is the symbol offset with respect to which we perform the relocation. The offset is calculated from the beginning of that symbol’s section.</li>
+		<li><code>Sym. Value</code> may mean different things depending on the relocation type, but most of the time it is the symbol offset with respect to which we perform the relocation. The offset is calculated from the beginning of that symbolâ€™s section.</li>
 		<li><code>Addend</code> is a constant we may need to use in the relocation formula. Depending on the relocation type, <a href="https://man7.org/linux/man-pages/man1/readelf.1.html">readelf</a> actually adds the decoded symbol name to the output, so the column name is <code>Sym. Name + Addend</code> above but the actual field stores the addend only.</li>
 	</ul>
-	<p>In a nutshell, these entries tell us that we need to patch the <code>.text</code> section at offsets <code>0x20</code> and <code>0x2d</code>. To calculate what to put there, we need to apply the formula for the <code>R_X86_64_PLT32</code> relocation type. Searching online, we can find different ELF specifications — like <a href="https://refspecs.linuxfoundation.org/elf/x86_64-abi-0.95.pdf">this one</a> — which will tell us how to implement the <code>R_X86_64_PLT32</code> relocation. The specification mentions that the result of this relocation is <code>word32</code> — which is what we expect because <code>callq</code> arguments are 32 bit in our case — and the formula we need to apply is <code>L + A - P</code>, where:</p>
+	<p>In a nutshell, these entries tell us that we need to patch the <code>.text</code> section at offsets <code>0x20</code> and <code>0x2d</code>. To calculate what to put there, we need to apply the formula for the <code>R_X86_64_PLT32</code> relocation type. Searching online, we can find different ELF specifications â€” like <a href="https://refspecs.linuxfoundation.org/elf/x86_64-abi-0.95.pdf">this one</a> â€” which will tell us how to implement the <code>R_X86_64_PLT32</code> relocation. The specification mentions that the result of this relocation is <code>word32</code> â€” which is what we expect because <code>callq</code> arguments are 32 bit in our case â€” and the formula we need to apply is <code>L + A - P</code>, where:</p>
 	<ul>
 		<li><code>L</code> is the address of the symbol, with respect to which the relocation is performed (<code>add5</code> in our case)</li>
 		<li><code>A</code> is the constant addend (<code>4</code> in our case)</li>
 		<li><code>P</code> is the address/offset, where we store the result of the relocation</li>
 	</ul>
-	<p>When the relocation formula references some symbol addresses or offsets, we should use the actual — runtime in our case — addresses in the calculations. For example, we will be using <code>text_runtime_base + 0x2d</code> as <code>P</code> for the second relocation and not just <code>0x2d</code>. So let's try to implement this relocation logic in our object loader:</p>
+	<p>When the relocation formula references some symbol addresses or offsets, we should use the actual â€” runtime in our case â€” addresses in the calculations. For example, we will be using <code>text_runtime_base + 0x2d</code> as <code>P</code> for the second relocation and not just <code>0x2d</code>. So let's try to implement this relocation logic in our object loader:</p>
 	<p><em>loader.c</em>:</p>
 	<pre><code class="language-cpp">...
  
@@ -419,7 +419,7 @@ Symbol table '.symtab' contains 15 entries:
 	<p>Entries <code>3</code> and <code>5</code> don't have any names attached, but they reference something in sections with index <code>3</code> and <code>5</code> respectively. In the output of the section table above, we can see that the section with index <code>3</code> is <code>.data</code> and the section with index <code>5</code> is <code>.rodata</code>. For a refresher on the most common sections in an ELF file check out our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">previous post</a>. To import our newly added code and make it work, we also need to map <code>.data</code> and <code>.rodata</code> sections in addition to the <code>.text</code> section and process these <code>R_X86_64_PC32</code> relocations.</p>
 	<p>There is one caveat though. If we check <a href="https://refspecs.linuxfoundation.org/elf/x86_64-abi-0.95.pdf">the specification</a>, we'll see that <code>R_X86_64_PC32</code> relocation produces a 32-bit output similar to the <code>R_X86_64_PLT32</code> relocation. This means that the "distance" in memory between the patched position in <code>.text</code> and the referenced symbol has to be small enough to fit into a 32-bit value (1 bit for the positive/negative sign and 31 bits for the actual data, so less than 2147483647 bytes). Our <code>loader</code> program uses <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap system call</a> to allocate memory for the object section copies, but <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap</a> may allocate the mapping almost anywhere in the process address space. If we modify the <code>loader</code> program to call <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap</a> for each section separately, we may end up having <code>.rodata</code> or <code>.data</code> section mapped too far away from the <code>.text</code> section and will not be able to process the <code>R_X86_64_PC32</code> relocations. In other words, we need to ensure that <code>.data</code> and <code>.rodata</code> sections are located relatively close to the <code>.text</code> section at runtime:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2021/03/runtime-diff.png" alt="runtime-diff" loading="lazy"></p>
-	<p>One way to achieve that would be to allocate the memory we need for all the sections with one <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap call</a>. Then, we’d break it in chunks and assign proper access permissions to each chunk. Let's modify our <code>loader</code> program to do just that:</p>
+	<p>One way to achieve that would be to allocate the memory we need for all the sections with one <a href="https://man7.org/linux/man-pages/man2/mmap.2.html">mmap call</a>. Then, weâ€™d break it in chunks and assign proper access permissions to each chunk. Let's modify our <code>loader</code> program to do just that:</p>
 	<p><em>loader.c</em>:</p>
 	<pre><code class="language-cpp">...
  
@@ -576,7 +576,7 @@ add5(42) = 47
 Executing add10...
 add10(42) = 52
 Executing get_hello...
-get_hello() = ]�UH��
+get_hello() = ]ï¿½UHï¿½ï¿½
 Executing get_var...
 get_var() = 1213580125
 Executing set_var(42)...
@@ -584,7 +584,7 @@ Segmentation fault
 </code></pre>
 	<p>Uh-oh! We forgot to implement the new <code>R_X86_64_PC32</code> relocation type. The <a href="https://refspecs.linuxfoundation.org/elf/x86_64-abi-0.95.pdf">relocation formula</a> here is <code>S + A - P</code>. We already know about <code>A</code> and <code>P</code>. As for <code>S</code> (quoting from <a href="https://refspecs.linuxfoundation.org/elf/x86_64-abi-0.95.pdf">the spec</a>):</p>
 	<blockquote>
-		<p>“the value of the symbol whose index resides in the relocation entry"</p>
+		<p>â€œthe value of the symbol whose index resides in the relocation entry"</p>
 	</blockquote>
 	<p>In our case, it is essentially the same as <code>L</code> for <code>R_X86_64_PLT32</code>. We can just reuse the implementation and remove the debug output in the process:</p>
 	<p><em>loader.c</em>:</p>
@@ -649,7 +649,7 @@ Executing set_var(42)...
 Executing get_var again...
 get_var() = 42
 </code></pre>
-	<p>This time we can successfully import functions that reference static constant data and global variables. We can even manipulate the object file’s internal state through the defined accessor interface. As before, the complete source code for this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">available on GitHub</a>.</p>
+	<p>This time we can successfully import functions that reference static constant data and global variables. We can even manipulate the object fileâ€™s internal state through the defined accessor interface. As before, the complete source code for this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2">available on GitHub</a>.</p>
 	<p>In the next post, we will look into importing and executing object code with references to external libraries. Stay tuned!</p>
 	<!--kg-card-end: markdown-->
 </div>

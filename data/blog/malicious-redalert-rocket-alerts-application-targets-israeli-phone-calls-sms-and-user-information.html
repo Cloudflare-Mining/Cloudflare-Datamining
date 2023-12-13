@@ -1,8 +1,8 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--15-.png" class="kg-image" alt="" loading="lazy" width="1600" height="895"></figure>
-	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
-	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally. </p>
+	<p>On October 13, 2023, Cloudflareâ€™s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1). Â&nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. Â&nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
+	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, â€œRed Alert: Israelâ€ by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a â€œnuclear bomb is comingâ€. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally. </p>
 	<p>In the last two days, a new malicious website (<em>hxxps://redalerts[.]me</em>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<em>hxxps://redalert[.]me </em>) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
 	<p>The malicious website hosted links to both the iOS and the Android version of the RedAlert app. But while the link to the Apple App Store referred to the legitimate version of the RedAlert app by Elad Nava, the link supposedly referring to the Android version hosted on the Play Store directly downloads a malicious APK file. This attack demonstrates the danger of sideloading applications directly from the Internet as opposed to installing applications from the approved app store.</p>
 	<p>The malicious RedAlert version imitates the legitimate rocket alert application but simultaneously collects sensitive user data. Additional permissions requested by the malicious app include access to contacts, call logs, SMS, account information, as well as an overview of all installed apps.</p>
@@ -28,7 +28,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/pasted-image-0--14-.png" class="kg-image" alt="" loading="lazy" width="1530" height="442">
 		<figcaption><em>The attacker starts their malicious code within the legitimate RedAlert code com.red.alert.activities: Main.java</em></figcaption>
 	</figure>
-	<p>The service is run to gather data from victims’ phones and upload it to the actor’s secure server. The data is extensive and includes:</p>
+	<p>The service is run to gather data from victimsâ€™ phones and upload it to the actorâ€™s secure server. The data is extensive and includes:</p>
 	<ul>
 		<li>SIM information, including IMEI and IMSI numbers, network type, country, voicemail number, PIN status, and more</li>
 		<li>Full Contact list</li>
@@ -38,7 +38,7 @@
 		<li>Logged-in email and app accounts</li>
 		<li>List of installed applications</li>
 	</ul>
-	<p>The actor’s code for gathering this information is illustrated below.</p>
+	<p>The actorâ€™s code for gathering this information is illustrated below.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.32.27-PM.png" class="kg-image" alt="" loading="lazy" width="1842" height="1326">
 		<figcaption><em>com.company.allinclusive.AI: AIMain.java contains the data the attacker will capture form the target</em></figcaption>
 	</figure>
@@ -50,7 +50,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.30.20-PM.png" class="kg-image" alt="" loading="lazy" width="2262" height="1058">
 		<figcaption><em>com.company.allinclusive.AI: UploadFileAsync.java</em></figcaption>
 	</figure>
-	<p>Data is uploaded through a <em>Connector</em> class, written by the actor. The <em>Connector</em> is responsible for encrypting the stolen data and uploading it to the HTTP server. In this sample, files are encrypted with AES in CBC mode with PKCS5 Padding. The keys are randomly generated and appended to the packaged data, however the keys are encrypted with RSA using a public key bundled in the malicious app. Because of this, anybody who is able to intercept the stolen data will be unable to decrypt it without the actor’s private key.</p>
+	<p>Data is uploaded through a <em>Connector</em> class, written by the actor. The <em>Connector</em> is responsible for encrypting the stolen data and uploading it to the HTTP server. In this sample, files are encrypted with AES in CBC mode with PKCS5 Padding. The keys are randomly generated and appended to the packaged data, however the keys are encrypted with RSA using a public key bundled in the malicious app. Because of this, anybody who is able to intercept the stolen data will be unable to decrypt it without the actorâ€™s private key.</p>
 	<p>The encrypted files have names that look like <em>&lt;ID&gt;_&lt;DATE&gt;.final</em>, which contain:</p>
 	<ul>
 		<li><em><em><em>&lt;ID&gt;_&lt;DATE&gt;.enc</em> (encrypted data)</em></em></li>
@@ -70,7 +70,7 @@
 		<figcaption><em>com.company.allinclusive.AI.anti.emulator: FindEmulator.java checks for common emulators</em></figcaption>
 	</figure>
 	<h3 id="anti-test">Anti-Test</h3>
-	<p>The application has utilities to identify whether a test user (“monkey”) is using the application:</p>
+	<p>The application has utilities to identify whether a test user (â€œmonkeyâ€) is using the application:</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/Screenshot-2023-10-13-at-3.28.48-PM.png" class="kg-image" alt="" loading="lazy" width="2010" height="778">
 		<figcaption><em>com.company.allinclusive.AI.anti.monkey: FindMonkey.java</em></figcaption>
 	</figure>
@@ -142,5 +142,5 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<hr>
-	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.<em>Visit </em><a href="https://1.1.1.1"><em>1.1.1.1</em></a><em> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start </em><a href="https://www.cloudflare.com/learning/what-is-cloudflare"><em>here</em></a><em>. If you’re looking for a new career direction, check out </em><a href="https://cloudflare.com/careers"><em>our open positions</em></a><em>.</em></p>
+	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline">hotline</a> to speak with someone immediately.<em>Visit </em><a href="https://1.1.1.1"><em>1.1.1.1</em></a><em> from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start </em><a href="https://www.cloudflare.com/learning/what-is-cloudflare"><em>here</em></a><em>. If youâ€™re looking for a new career direction, check out </em><a href="https://cloudflare.com/careers"><em>our open positions</em></a><em>.</em></p>
 </div>

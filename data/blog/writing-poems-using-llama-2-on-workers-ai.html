@@ -1,8 +1,8 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-30.png" class="kg-image" alt="Writing poems using LLama 2 on Workers AI" loading="lazy" width="1800" height="1013"></figure>
-	<p>Matthew and Michelle, co-founders of Cloudflare, published their <a href="https://blog.cloudflare.com/cloudflares-annual-founders-letter-2023">annual founders’ letter today</a>. The letter ends with a poem written by an AI running using Workers AI on Cloudflare’s global network.</p>
-	<p>Here’s the code that wrote the poem. It uses <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> and the Meta <a href="https://ai.meta.com/llama">Llama 2 model with 7B parameters and 8-bit integers</a>. Just 14 lines of code running on the Cloudflare global network, and you’ve got your very own <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> to chat with.</p><!--kg-card-begin: markdown-->
+	<p>Matthew and Michelle, co-founders of Cloudflare, published their <a href="https://blog.cloudflare.com/cloudflares-annual-founders-letter-2023">annual foundersâ€™ letter today</a>. The letter ends with a poem written by an AI running using Workers AI on Cloudflareâ€™s global network.</p>
+	<p>Hereâ€™s the code that wrote the poem. It uses <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> and the Meta <a href="https://ai.meta.com/llama">Llama 2 model with 7B parameters and 8-bit integers</a>. Just 14 lines of code running on the Cloudflare global network, and youâ€™ve got your very own <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence">AI</a> to chat with.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">import { Ai } from "@cloudflare/ai";
 
 export default {
@@ -19,7 +19,7 @@ export interface Env {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>That was deployed on Workers AI and all I had to do was ask for poems. Here’s my terminal output (with just the domain name changed).</p><!--kg-card-begin: markdown-->
+	<p>That was deployed on Workers AI and all I had to do was ask for poems. Hereâ€™s my terminal output (with just the domain name changed).</p><!--kg-card-begin: markdown-->
 	<pre><code>% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
 that talks about the connectivity cloud"}' | jq -r .response
 </code></pre>
@@ -53,6 +53,6 @@ captivity cloud in the style of Lord Byron"}' | jq -r .response
 	<p><code>But then there's the captivity cloud, a darker hue,</code><br><code>Where privacy and security are hard to pursue,</code><br><code>A prison of sorts, where freedom's light is lost,</code><br><code>And data's secrets are forever crossed.</code></p>
 	<p><code>Yet still, we cling to the captivity cloud,</code><br><code>For in its depths, we find a measure of proof,</code><br><code>That though the connectivity cloud may be bright,</code><br><code>The captivity cloud holds a certain allure in sight.</code></p>
 	<p><code>So let us embrace both, the light and the dark,</code><br><code>For in their union, we find a digital spark,</code><br><code>That illuminates the path to a brighter day,</code><br><code>Where knowledge and privacy reign in a digital way.</code></p>
-	<p>What are you going to build on Workers AI? It’s ready and waiting. We’ll help you go from idea to deployed in minutes. </p>
+	<p>What are you going to build on Workers AI? Itâ€™s ready and waiting. Weâ€™ll help you go from idea to deployed in minutes. </p>
 	<p>If you want to know exactly how to deploy something like this <a href="https://blog.cloudflare.com/workers-ai">read the Workers AI announcement blog</a>.</p>
 </div>

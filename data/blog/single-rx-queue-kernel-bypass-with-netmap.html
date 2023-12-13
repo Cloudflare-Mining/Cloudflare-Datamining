@@ -7,20 +7,20 @@
 	<h3 id="ourneeds">Our needs</h3>
 	<p>At CloudFlare we are constantly dealing with large packet floods. Our network constantly receives a large volume of packets, often coming from many, simultaneous attacks. In fact, it is entirely possible that the server which just served you this blog post is dealing with a many-million packets per second flood <em>right now</em>.</p>
 	<p>Since the Linux Kernel can't really handle a large volume of packets, we need to work around it. During packet floods we offload selected network flows (belonging to a flood) to a user space application. This application filters the packets at very high speed. Most of the packets are dropped, as they belong to a flood. The small number of "valid" packets are injected back to the kernel and handled in the same way as usual traffic.</p>
-	<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
-	<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we don’t have this functionality on our servers with Intel IXGBE NIC’s.</p>
+	<p>Itâ€™s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
+	<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we donâ€™t have this functionality on our servers with Intel IXGBE NICâ€™s.</p>
 	<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap">Netmap</a> comes in.</p>
 	<h4 id="netmap">Netmap</h4>
-	<p>Over the last few months we’ve been thinking hard about how to achieve bypass for selected flows (aka: bifurcated driver) on non-Solarflare network cards.</p>
-	<p>We’ve considered PF_RING, DPDK and other custom solutions, but sadly all of them take over the whole network card. Eventually we decided that the best way would be to patch Netmap with the functionality we need.</p>
+	<p>Over the last few months weâ€™ve been thinking hard about how to achieve bypass for selected flows (aka: bifurcated driver) on non-Solarflare network cards.</p>
+	<p>Weâ€™ve considered PF_RING, DPDK and other custom solutions, but sadly all of them take over the whole network card. Eventually we decided that the best way would be to patch Netmap with the functionality we need.</p>
 	<p>We chose Netmap because:</p>
 	<ul>
-		<li>It’s fully open source and released under a BSD license.</li>
+		<li>Itâ€™s fully open source and released under a BSD license.</li>
 		<li>It has a great NIC-agnostic API.</li>
-		<li>It’s very fast: can reach line rate easily.</li>
+		<li>Itâ€™s very fast: can reach line rate easily.</li>
 		<li>The project is well maintained and reasonably mature.</li>
 		<li>The code is very high quality.</li>
-		<li>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. It’s easy to add support for new hardware.</li>
+		<li>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. Itâ€™s easy to add support for new hardware.</li>
 	</ul>
 	<h3 id="introducingthesinglerxqueuemode">Introducing the single RX queue mode</h3>
 	<p>Usually, when a network card goes into the Netmap mode, all the RX queues get disconnected from the kernel and are available to the Netmap applications.</p>
@@ -122,7 +122,7 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4
 	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html">the initial hack</a> we based our work on.</p>
 	<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
 	<h4 id="finalwords">Final words</h4>
-	<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
+	<p>At CloudFlare our application stack is based on open source software. Weâ€™re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
 	<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io">here</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>
