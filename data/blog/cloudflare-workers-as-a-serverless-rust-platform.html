@@ -23,7 +23,7 @@ cargo generate --git https://github.com/rustwasm/wasm-pack-template
 
 ?  Project Name: bob-ross-lorem-ipsum-rust
 ?   Creating project called `bob-ross-lorem-ipsum-rust`...
-âœ¨   Done! New project created /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/api-rust/bob-ross-lorem-ipsum-rust
+✨   Done! New project created /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/api-rust/bob-ross-lorem-ipsum-rust
 </code></pre>
 	<p>The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
 	<pre><code>...
@@ -55,20 +55,20 @@ pub fn greet() {
   [4/9] ?  Compiling to WASM...
   [5/9] ?  Creating a pkg directory...
   [6/9] ?  Writing a package.json...
-  âš&nbsp;ï¸   [WARN]: Field 'description' is missing from Cargo.toml. It is not necessary, but recommended
-  âš&nbsp;ï¸   [WARN]: Field 'repository' is missing from Cargo.toml. It is not necessary, but recommended
-  âš&nbsp;ï¸   [WARN]: Field 'license' is missing from Cargo.toml. It is not necessary, but recommended
+  ⚠️   [WARN]: Field 'description' is missing from Cargo.toml. It is not necessary, but recommended
+  ⚠️   [WARN]: Field 'repository' is missing from Cargo.toml. It is not necessary, but recommended
+  ⚠️   [WARN]: Field 'license' is missing from Cargo.toml. It is not necessary, but recommended
   [7/9] ?  Copying over your README...
-  [8/9] â¬‡ï¸  Installing wasm-bindgen...
-  [9/9] ?â€â™€ï¸  Running WASM-bindgen...
-  âœ¨   Done in 2 minutes
+  [8/9] ⬇️  Installing wasm-bindgen...
+  [9/9] ?‍♀️  Running WASM-bindgen...
+  ✨   Done in 2 minutes
 | ?   Your wasm pkg is ready to publish at "/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross
 </code></pre>
 	<p>Subsequent builds will be faster. We eventually want to ship that .wasm file to a Worker, but I'd like to keep things local and test in a browser first.</p>
 	<p>There's an <a href="https://www.npmjs.com/package/create-wasm-app">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
 	<pre><code>$ npm init wasm-app www
 npx: installed 1 in 2.533s
-? Rust + ? Wasm = â¤
+? Rust + ? Wasm = ❤
 </code></pre>
 	<p>Install the dependencies with <code>npm install</code> and then <code>npm start</code> to fire up the webpack bundled web server to serve your page</p>
 	<pre><code>$ npm start
@@ -76,7 +76,7 @@ npx: installed 1 in 2.533s
 &gt; create-wasm-app@0.1.0 start /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross-lorem-ipsum-rust/www
 &gt; webpack-dev-server
 
-â„¹ ï½¢wdsï½£: Project is running at http://localhost:8080/
+ℹ ｢wds｣: Project is running at http://localhost:8080/
 </code></pre>
 	<p>Open your web browser at <a href="http://localhost:8080">http://localhost:8080</a> and you should see your first WASM generated content!</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-hello-world.png" alt="Rust WASM Hello World" loading="lazy"></p>

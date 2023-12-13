@@ -10,9 +10,9 @@
 	<p>Our first naive attempt was to run the following in a loop:</p>
 	<pre><code>while true; do dig some.existing.internal.host &gt; /tmp/dig.txt || break; done
 </code></pre>
-	<p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for â€œno such hostâ€ and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
+	<p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
 	<h3 id="intotherabbithole">Into the rabbit hole</h3>
-	<p>We used to run <a href="https://www.unbound.net">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Hereâ€™s what our load testing program looked like at first:</p>
+	<p>We used to run <a href="https://www.unbound.net">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Here’s what our load testing program looked like at first:</p>
 	<pre><code>package main
 
 import (
@@ -44,22 +44,22 @@ func main() {
 	}
 }
 </code></pre>
-	<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; thatâ€™s it. Packaging this into a <a href="https://www.docker.com">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
+	<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
 	<p><a href="https://blog.cloudflare.com/content/images/2016/12/image01.png"><img src="https://blog.cloudflare.com/content/images/2016/12/image01.png" alt="" loading="lazy"></a></p>
 	<p>We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
 	<p><a href="https://blog.cloudflare.com/content/images/2016/12/image00.png"><img src="https://blog.cloudflare.com/content/images/2016/12/image00.png" alt="" loading="lazy"></a></p>
 	<p>To see if some particular DNS recursor had gone crazy, we stopped all load generators on regular machines and started the load generation tool on the recursors themselves. There were no errors in a few hours, which suggested that Unbound was perfectly healthy.</p>
-	<p>We started to suspect that packet loss was the issue, but why would â€œno such hostâ€ occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didnâ€™t come back at all.</p>
+	<p>We started to suspect that packet loss was the issue, but why would “no such host” occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didn’t come back at all.</p>
 	<h3 id="themissing">The Missing</h3>
-	<p>To test the hypothesis that losing packets can lead to a â€œno such hostâ€ error, we first tried blocking outgoing traffic on port 53:</p>
+	<p>To test the hypothesis that losing packets can lead to a “no such host” error, we first tried blocking outgoing traffic on port 53:</p>
 	<pre><code>sudo iptables -A OUTPUT -p udp --dport 53 -j DROP
 </code></pre>
-	<p>In this case, dig and similar tools just time out, but donâ€™t return â€œno such hostâ€:</p>
+	<p>In this case, dig and similar tools just time out, but don’t return “no such host”:</p>
 	<pre><code>; &lt;&lt;&gt;&gt; DiG 9.9.5-9+deb8u3-Debian &lt;&lt;&gt;&gt; cloudflare.com
 ;; global options: +cmd
 ;; connection timed out; no servers could be reached
 </code></pre>
-	<p>Go is a bit smarter and tells you more about whatâ€™s going on, but doesn't return â€œno such hostâ€ either:</p>
+	<p>Go is a bit smarter and tells you more about what’s going on, but doesn't return “no such host” either:</p>
 	<pre><code>error: lookup cloudflare.com on 10.1.0.9:53: write udp 10.1.14.20:47442-&gt;10.1.0.9:53: write: operation not permitted
 </code></pre>
 	<p>Since the Linux kernel tells the sender that it dropped packets, we had to point the nameserver to some black hole in the network that does nothing with packets to mimic packet loss. Still no luck:</p>
@@ -75,7 +75,7 @@ if err != nil {
     log.Printf("success after %.4fs", e)
 }
 </code></pre>
-	<p>To be honest, we started by timing errors and added success timing later. Errors were happening after 10s, comparatively many successful responses were coming after 5s. It does look like packet loss, but still does not tell us why â€œno such hostâ€ happens.</p>
+	<p>To be honest, we started by timing errors and added success timing later. Errors were happening after 10s, comparatively many successful responses were coming after 5s. It does look like packet loss, but still does not tell us why “no such host” happens.</p>
 	<p>Since now we were in a place when we knew which hosts were more likely to be affected by this, we ran the following two commands in parallel in two <code>screen</code> sessions:</p>
 	<pre><code>while true; do dig cloudflare.com &gt; /tmp/dig.log || break; done; date; sudo killall tcpdump
 sudo tcpdump -w /state/wtf.cap port 53
@@ -85,15 +85,15 @@ sudo tcpdump -w /state/wtf.cap port 53
 05.00s A cloudflare.com
 10.00s A cloudflare.com.in.our.internal.domain
 </code></pre>
-	<p>Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we donâ€™t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
+	<p>Two queries time out without any answer, but the third one gets lucky and succeeds. Naturally, we don’t have cloudflare.com in our internal domain, so Unbound rightfully gives NXDOMAIN in reply, 10s after the lookup was initiated.</p>
 	<h3 id="bingo">Bingo</h3>
-	<p>Letâ€™s look at /etc/resolv.conf to understand more:</p>
+	<p>Let’s look at /etc/resolv.conf to understand more:</p>
 	<pre><code>nameserver 10.1.0.9
 search in.our.internal.domain
 </code></pre>
 	<p>Using the search keyword allows us to use short hostnames instead of FQDN, making <code>myhost</code> transparently equivalent to <code>myhost.in.our.internal.domain</code>.</p>
-	<p>For the DNS resolver it means the following: for any DNS query ask the nameserver 10.1.0.9, if this fails, append <code>.in.our.internal.domain</code> to the query and retry. It doesnâ€™t matter what failure occurs for the original DNS query. Usually it is NXDOMAIN, but in our case itâ€™s a read timeout due to packet loss.</p>
-	<p>The following events seemed to have to occur for a â€œno such hostâ€ error to appear:</p>
+	<p>For the DNS resolver it means the following: for any DNS query ask the nameserver 10.1.0.9, if this fails, append <code>.in.our.internal.domain</code> to the query and retry. It doesn’t matter what failure occurs for the original DNS query. Usually it is NXDOMAIN, but in our case it’s a read timeout due to packet loss.</p>
+	<p>The following events seemed to have to occur for a “no such host” error to appear:</p>
 	<ol>
 		<li>The original DNS request has to be lost</li>
 		<li>The retry that is sent after 5 seconds has to be lost</li>
@@ -138,7 +138,7 @@ func main() {
 	<p>Finally, we found what was going on and had a way of reliably replicating that behaviour.</p>
 	<h3 id="solutions">Solutions</h3>
 	<p>Let's think about how we can improve our client to better handle these transient network issues, making it more resilient. The man page for resolv.conf tells you that you have two knobs: the <code>timeout</code> and <code>retries</code> options. The default values are 5 and 2 respectively.</p>
-	<p>Unless you keep your DNS server very busy, it is very unlikely that it would take it more than 1 second to reply. In fact, if you happen to have a network device on the Moon, you can expect it to reply in 3 seconds. If your nameserver lives in the next rack and is reachable over a high-speed network, you can safely assume that if there is no reply after 1 second, your DNS server did not get your query. If you want to have less weird â€œno such domainâ€ errors that make you scratch your head, you might as well increase retries. The more times you retry with transient packet loss, the less chance of failure. The more often you retry, the higher chances to finish faster.</p>
+	<p>Unless you keep your DNS server very busy, it is very unlikely that it would take it more than 1 second to reply. In fact, if you happen to have a network device on the Moon, you can expect it to reply in 3 seconds. If your nameserver lives in the next rack and is reachable over a high-speed network, you can safely assume that if there is no reply after 1 second, your DNS server did not get your query. If you want to have less weird “no such domain” errors that make you scratch your head, you might as well increase retries. The more times you retry with transient packet loss, the less chance of failure. The more often you retry, the higher chances to finish faster.</p>
 	<p>Imagine that you have truly random 1% packet loss.</p>
 	<ul>
 		<li>2 retries, 5s timeout: max 10s wait before error, 0.001% chance of failure</li>

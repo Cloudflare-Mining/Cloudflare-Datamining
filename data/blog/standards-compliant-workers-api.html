@@ -237,7 +237,7 @@ dictionary EventInit {
   const bytes = new Uint8Array([
     207, 240, 232, 226, 229, 242, 44, 32, 236, 232, 240, 33,
   ]);
-  console.log(win1251decoder.decode(bytes)); // ÐŸÑ€Ð¸Ð²ÐµÑ‚, Ð¼Ð¸Ñ€!
+  console.log(win1251decoder.decode(bytes)); // Привет, мир!
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>In addition to supporting the full range of encodings defined by the standard, Workers also now provides implementations of the <code>TextEncoderStream</code> and <code>TextDecoderStream</code>, which provide <code>TransformStream</code> implementations that apply encoding and decoding to streaming data:</p><!--kg-card-begin: markdown-->
@@ -250,7 +250,7 @@ dictionary EventInit {
  
   const reader = readable.getReader();
   const res = await reader.read();
-  console.log(res.value); // ÐŸÑ€Ð¸Ð²ÐµÑ‚, Ð¼Ð¸Ñ€!
+  console.log(res.value); // Привет, мир!
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Using the encoding streams requires the use of the <code>transformstream_enable_standard_constructor</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility flag</a>.</p>

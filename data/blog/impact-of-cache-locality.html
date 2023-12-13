@@ -1,7 +1,7 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Wednesday@2x.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>In the past, we didn't have the opportunity to evaluate as many CPUs as we do today. The hardware ecosystem was simple â€“ Intel had consistently delivered industry leading processors. Other vendors could not compete with them on both performance and cost. Recently it all changed: AMD has been challenging the status quo with their 2nd Gen EPYC processors.</p>
+	<p>In the past, we didn't have the opportunity to evaluate as many CPUs as we do today. The hardware ecosystem was simple – Intel had consistently delivered industry leading processors. Other vendors could not compete with them on both performance and cost. Recently it all changed: AMD has been challenging the status quo with their 2nd Gen EPYC processors.</p>
 	<p>This is not the first time that Intel has been challenged; previously <a href="https://blog.cloudflare.com/arm-takes-wing">there was Qualcomm</a>, and we worked with AMD and considered their 1st Gen EPYC processors and based on the original Zen architecture, but ultimately, <a href="https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers">Intel prevailed</a>. AMD did not give up and unveiled their 2nd Gen EPYC processors codenamed Rome based on the latest Zen 2 architecture.</p>
 	<figure class="kg-card kg-embed-card">
 		<blockquote class="twitter-tweet">
@@ -9,7 +9,7 @@
 		</blockquote>
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
-	<p>This made many improvements over its predecessors. Improvements include a die shrink from 14nm to 7nm, a doubling of the top end core count from 32 to 64, and a larger L3 cache size. Letâ€™s emphasize again on the size of that L3 cache, which is 32 MiB L3 cache per Core Complex Die (CCD).</p>
+	<p>This made many improvements over its predecessors. Improvements include a die shrink from 14nm to 7nm, a doubling of the top end core count from 32 to 64, and a larger L3 cache size. Let’s emphasize again on the size of that L3 cache, which is 32 MiB L3 cache per Core Complex Die (CCD).</p>
 	<p>This time around, we have taken steps to understand our workloads at the hardware level through the use of hardware performance counters and profiling tools. Using these specialized CPU registers and profilers, we collected data on the AMD 2nd Gen EPYC and Intel Skylake-based Xeon processors in a lab environment, then validated our observations in production against other generations of servers from the past.</p>
 	<h2 id="simulated-environment">Simulated Environment</h2>
 	<p>CPU Specifications</p>
@@ -32,9 +32,9 @@
 		<figcaption><em>AMD 2nd Gen EPYC 7642 - Created with 8x CCDs plus an I/O die in the center</em></figcaption>
 	</figure>
 	<h3 id="methodology">Methodology</h3>
-	<p>Our production traffic shares many characteristics of a sustained workload which typically does not induce large variation in operating frequencies nor enter periods of idle time. We picked out a simulated traffic pattern that closely resembled our production traffic behavior which was the Cached 10KiB png via HTTPS. We were interested in assessing the CPUâ€™s maximum throughput or requests per second (RPS), one of our key metrics. With that being said, we did not disable Intel Turbo Boost or AMD Precision Boost, nor matched the frequencies clock-for-clock while measuring for requests per second, instructions retired per second (IPS), L3 cache miss rate, and sustained operating frequency.</p>
+	<p>Our production traffic shares many characteristics of a sustained workload which typically does not induce large variation in operating frequencies nor enter periods of idle time. We picked out a simulated traffic pattern that closely resembled our production traffic behavior which was the Cached 10KiB png via HTTPS. We were interested in assessing the CPU’s maximum throughput or requests per second (RPS), one of our key metrics. With that being said, we did not disable Intel Turbo Boost or AMD Precision Boost, nor matched the frequencies clock-for-clock while measuring for requests per second, instructions retired per second (IPS), L3 cache miss rate, and sustained operating frequency.</p>
 	<h3 id="results">Results</h3>
-	<p>The 1P AMD 2nd Gen EPYC 7642 powered server took the lead and processed 50% more requests per second compared to our Gen 9â€™s 2P Intel Xeon Platinum 6162 server.</p>
+	<p>The 1P AMD 2nd Gen EPYC 7642 powered server took the lead and processed 50% more requests per second compared to our Gen 9’s 2P Intel Xeon Platinum 6162 server.</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/bg1akuH5YPbhMUGrZ9EGFTjdpVyHd5UKdhdCCFE6pbVli_zJ91Fc8RN37qWujzaKQczUJ5qxw64UrV_cGS-mvzGQMmLstid4SiaYSggPvRDWknWMp-kUJnnoNCb8JBkRoDkVbyQC" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We are running a sustained workload, so we should end up with a sustained operating frequency that is higher than base clock. The AMD EPYC 7642 operating frequency or the number cycles that the processor had at its disposal was approximately 20% greater than the Intel Xeon Platinum 6162, so frequency alone was not enough to explain the 50% gain in requests per second.</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/ym963p-QVuLp3sk_d3mlEoKgjmL3uaY-H0oITLKyx_DxD4XgwbJ_U1pq0fIdLLV-PB953QLV6_LUpmnLlbsF04owsHpMoGDy9SGnqAPkUbe0Gew2lZDQJ_siknRLakMtTKEkwYH5" class="kg-image" alt="" loading="lazy"></figure>

@@ -1,17 +1,17 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p>While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflareâ€™s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers without having to build complex back-end systems.</p>
+	<p>While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflare’s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers without having to build complex back-end systems.</p>
 	<p>Cloudflare will check these tokens at the edge before any request is relayed to an origin or served from cache. If the token is not valid the request is blocked. Since Cloudflare handles all the token validation, the origin server does not need to have complex authentication logic. In addition, a malicious user who attempts to forge tokens will be blocked from ever reaching the origin.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/12/6089266689_ea391d6a6d_o.jpg" alt="Cloudflare Private Content" loading="lazy"><br>
 		<a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/zeevveez/6089266689">image</a> by <a href="https://www.flickr.com/photos/zeevveez">zeevveez</a>
 	</p>
 	<p>Leveraging our edge network of <a href="https://www.cloudflare.com/network">over 100 data centers</a>, customers can use token authentication to perform access control checks on content and APIs, as well as allowing Cloudflare to cache private content and only serve it to users with a valid token tied specifically to that cached asset.</p>
 	<p>Performing access control on the edge has many benefits. Brute force attempts and other attacks on private assets don't ever reach an origin server, preventing origin CPU and bandwidth from being wasted on malicious requests.</p>
-	<p>By performing authentication on the edge it's possible to cache protected content, giving users faster access to private content because thereâ€™s no round trip to the origin for authentication. At the same time web application owners are assured that only valid, authenticated users have access to the cache content.</p>
+	<p>By performing authentication on the edge it's possible to cache protected content, giving users faster access to private content because there’s no round trip to the origin for authentication. At the same time web application owners are assured that only valid, authenticated users have access to the cache content.</p>
 	<p>By validating that an API request is from a valid client, Cloudflare is able to eliminate forged requests coming from bots, attackers or non-authenticated users.</p>
 	<h3 id="contentaccesscontrol">Content Access Control</h3>
 	<p>Many Internet applications are not built with access control features for assets, especially static assets like images, PDFs, zip files, apps, eBooks, and other downloadable content. Building an access control layer for these can be difficult and expensive.</p>
-	<p>Weâ€™ve worked with many customers to solve problems such as:</p>
+	<p>We’ve worked with many customers to solve problems such as:</p>
 	<ul>
 		<li>A website provides downloadable static content to registered users; however, users tend to share/publish links to that content on social media platforms;</li>
 		<li>A website provides downloadable static content, but crawlers and scrapers are constantly trying to find/leech/look for available links;</li>
@@ -20,10 +20,10 @@
 		<li>Access to specific resources hosted outside of the main application needs to be limited and restricted.</li>
 	</ul>
 	<h3 id="apiprotection">API Protection</h3>
-	<p>Today most applications are client software that connect to HTTP based APIs on the Internet. Protecting those APIs from malicious use is important as itâ€™s possible to write client software, such as bots, that talks directly to the APIs bypassing the original application. This can lead to abuse and unwanted load on API servers.</p>
-	<p>Cloudflareâ€™s token authentication can be used to validate that an API request is coming from a valid user, client or a mobile device on the edge. Cloudflare will filter out non-authenticated or forged requests and not pass them on to the origin API server.</p>
-	<p>Along with Cloudflareâ€™s <a href="https://www.cloudflare.com/rate-limiting">Rate Limiting</a> and <a href="https://www.cloudflare.com/waf">WAF</a>, a mobile application with an Internet API can be protected at the edge, far from the origin API server.</p>
-	<h3 id="cloudflarestokenauthenticationsolution">Cloudflareâ€™s Token Authentication Solution</h3>
+	<p>Today most applications are client software that connect to HTTP based APIs on the Internet. Protecting those APIs from malicious use is important as it’s possible to write client software, such as bots, that talks directly to the APIs bypassing the original application. This can lead to abuse and unwanted load on API servers.</p>
+	<p>Cloudflare’s token authentication can be used to validate that an API request is coming from a valid user, client or a mobile device on the edge. Cloudflare will filter out non-authenticated or forged requests and not pass them on to the origin API server.</p>
+	<p>Along with Cloudflare’s <a href="https://www.cloudflare.com/rate-limiting">Rate Limiting</a> and <a href="https://www.cloudflare.com/waf">WAF</a>, a mobile application with an Internet API can be protected at the edge, far from the origin API server.</p>
+	<h3 id="cloudflarestokenauthenticationsolution">Cloudflare’s Token Authentication Solution</h3>
 	<p>Token Authentication leverages tokens to verify that a user has access to a specific resource. The token can be sent as a URL parameter or in an HTTP header.</p>
 	<p>The token is an <a href="https://en.wikipedia.org/wiki/Hash-based_message_authentication_code">HMAC</a> generated from the following:</p>
 	<ul>

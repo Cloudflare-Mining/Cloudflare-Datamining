@@ -1,8 +1,8 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image6.png" class="kg-image" alt="Announcing the public launch of Cloudflare's bug bounty program" loading="lazy"></figure>
-	<p>Today we are launching Cloudflareâ€™s paid public bug bounty program. We believe bug bounties are a vital part of every security teamâ€™s toolbox and have been working hard on improving and expanding our private bug bounty program over the last few years. The first iteration of our bug bounty was a pure vulnerability disclosure program without cash bounties. In 2018, we added a private bounty program and are now taking the next step to a public program.</p>
-	<p>Starting today, anyone can report vulnerabilities related to any Cloudflare product to our <a href="https://hackerone.com/cloudflare">public bug bounty program</a>, hosted on HackerOneâ€™s platform.</p>
+	<p>Today we are launching Cloudflare’s paid public bug bounty program. We believe bug bounties are a vital part of every security team’s toolbox and have been working hard on improving and expanding our private bug bounty program over the last few years. The first iteration of our bug bounty was a pure vulnerability disclosure program without cash bounties. In 2018, we added a private bounty program and are now taking the next step to a public program.</p>
+	<p>Starting today, anyone can report vulnerabilities related to any Cloudflare product to our <a href="https://hackerone.com/cloudflare">public bug bounty program</a>, hosted on HackerOne’s platform.</p>
 	<p>Let's walk through our journey so far.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="step-1-starting-a-vulnerability-disclosure-program">Step 1: starting a vulnerability disclosure program</h3>
@@ -14,7 +14,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Leaving researchers to their own devices, and failing to invest in helping them understand how our product worked, led to a poor signal-to-noise ratio. At the time of writing, 1,197 reports have been submitted to our vulnerability disclosure program. Of those, only 158 resulted in points going to the researcher for a valid report. With only 13% of reports being valid, we needed to invest in improving the signal-to-noise ratio by helping our researchers before we could expand our program.</p>
 	<h3 id="rewards-t-shirts">Rewards: T-shirts?</h3>
-	<p>Early on, we rewarded researchers with a unique â€œCloudflare bug hunterâ€ T-shirt after we validated a vulnerability report. We thought it was a nice gesture at a low cost for people who found security bugs. In practice, when we factored in shipping issues, passing through customs, and wrong sizes, it was a nightmare. Shipping turned out to be such a challenge that we sometimes resorted to hand delivering T-shirts to researchers when attending conferences. It was nice to meet the researchers in person, but not a scalable solution!</p>
+	<p>Early on, we rewarded researchers with a unique “Cloudflare bug hunter” T-shirt after we validated a vulnerability report. We thought it was a nice gesture at a low cost for people who found security bugs. In practice, when we factored in shipping issues, passing through customs, and wrong sizes, it was a nightmare. Shipping turned out to be such a challenge that we sometimes resorted to hand delivering T-shirts to researchers when attending conferences. It was nice to meet the researchers in person, but not a scalable solution!</p>
 	<h3 id="step-2-private-bounty-program">Step 2: private bounty program</h3>
 	<p>We have always felt that rewarding good security research deserved more than a T-shirt. We also believed that financially supporting researchers would incentivize higher quality reports and deeper security research.</p>
 	<figure class="kg-card kg-embed-card">
@@ -32,7 +32,7 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/02/image4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Each ticket is assigned to an Engineering Owner and Security Owner who share the responsibility for remediating the vulnerability. Early on in the process, a service-level agreement (SLA) and remediation timeline are determined by the severity of the issue. If the bug is determined to be of critical severity, it's all hands on deck to fix the issue.</p>
 	<p>After initial assignment and SLA determination, the open tickets are reviewed weekly by both Engineering and Security to ensure that problems are being addressed in line with the SLA.</p>
-	<p>Weâ€™ve been working hard to improve the researcher experience. Weâ€™ve seen that immediately paying researchers led to a huge improvement in satisfaction compared to waiting weeks or months for a T-shirt. Likewise, it was even more frustrating for security researchers to work hard on an issue and then find out it was out of scope. To address this we constantly update our scope section as we get more out-of-scope reports. Our policy page is now much clearer. We also have treasure maps for some products pointing at major risk areas, and even put together a test site where researchers can test theories.</p>
+	<p>We’ve been working hard to improve the researcher experience. We’ve seen that immediately paying researchers led to a huge improvement in satisfaction compared to waiting weeks or months for a T-shirt. Likewise, it was even more frustrating for security researchers to work hard on an issue and then find out it was out of scope. To address this we constantly update our scope section as we get more out-of-scope reports. Our policy page is now much clearer. We also have treasure maps for some products pointing at major risk areas, and even put together a test site where researchers can test theories.</p>
 	<p>Ultimately, the success of our private bug bounty came down to the researchers who put in the effort to look for issues. Cloudflare thanks all 419 researchers who have participated in our bug bounty program so far, with a special shout out to the top 10 researchers in the program:<br></p>
 	<ul>
 		<li>zeroxyele</li>
@@ -46,7 +46,7 @@
 		<li>ninetynine</li>
 		<li>albinowax<br></li>
 	</ul>
-	<p>Hereâ€™s how our total bounty amounts grew as we improved our program:</p><!--kg-card-begin: markdown-->
+	<p>Here’s how our total bounty amounts grew as we improved our program:</p><!--kg-card-begin: markdown-->
 	<p>2018 - \$4,500<br>
 		2019 - \$25,425<br>
 		2020 - \$78,877<br>
@@ -80,9 +80,9 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<h3 id="lesson-learned-making-it-easier-for-researchers-with-cloudflare-s-testing-sandbox">Lesson learned: making it easier for researchers with Cloudflareâ€™s testing sandbox</h3>
+	<h3 id="lesson-learned-making-it-easier-for-researchers-with-cloudflare-s-testing-sandbox">Lesson learned: making it easier for researchers with Cloudflare’s testing sandbox</h3>
 	<p>Because of how our services work, you need to have our products deployed in a test environment in order to explore their capabilities and limitations. And many of those products offer features that are not free to use. So, to make vulnerability research more accessible, we created <a href="https://cumulusfire.net">CumulusFire</a> to showcase Cloudflare features that typically require a paid level of service. We created this site for two reasons: to provide a standardized playground where researchers can test their exploits, and to make it easier for our teams to reproduce them while triaging.</p>
-	<p>CumulusFire has already helped us address the constant trickle of reports in which researchers would configure their origin server in an obviously insecure way, beyond default or expected settings, and then report that Cloudflareâ€™s WAF does not block an attack. By policy, we will now only consider WAF bypasses a vulnerability if it is reproducible on CumulusFire.</p>
+	<p>CumulusFire has already helped us address the constant trickle of reports in which researchers would configure their origin server in an obviously insecure way, beyond default or expected settings, and then report that Cloudflare’s WAF does not block an attack. By policy, we will now only consider WAF bypasses a vulnerability if it is reproducible on CumulusFire.</p>
 	<p>As we expand our public program we will add additional services to the testing playground. Since we love dogfooding our own products, the entire sandbox is built on Cloudflare Workers.</p>
 	<h3 id="next-steps">Next steps</h3>
 	<p>Just as we grew our private program, we will continue to evolve our public bug bounty program to provide the best experience for researchers. We aim to add more documentation, testing platforms and a way to interact with our security teams so that researchers can be confident that their submissions represent valid security issues.</p>

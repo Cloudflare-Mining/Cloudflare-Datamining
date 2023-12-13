@@ -1,14 +1,14 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/Scheduling-system-with-Workers-and-Durable-Objects.png" class="kg-image" alt="Building a scheduling system with Workers and Durable Objects" loading="lazy"></figure>
-	<p>We rely on technology to help us on a daily basis â€“ if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening. </p>
+	<p>We rely on technology to help us on a daily basis – if you are not good at keeping track of time, your calendar can remind you when it's time to prepare for your next meeting. If you made a reservation at a really nice restaurant, you don't want to miss it! You appreciate the app to remind you a day before your plans the next evening. </p>
 	<p>However, who tells the application when it's the right time to send you a notification? For this, we generally rely on scheduled events. And when you are relying on them, you really want to make sure that they occur. Turns out, this can get difficult. The scheduler and storage backend need to be designed with scale in mind - otherwise you may hit limitations quickly.</p>
 	<p>Workers, Durable Objects, and Alarms are actually a perfect match for this type of workload. Thanks to the distributed architecture of Durable Objects and their storage, they are a reliable and scalable option. Each Durable Object has access to its own isolated storage and alarm scheduler, both being automatically replicated and failover in case of failures. </p>
 	<p>There are many use cases where having a reliable scheduler can come in handy: running a webhook service, sending emails to your customers a week after they sign up to keep them engaged, sending invoices reminders, and more!</p>
 	<p>Today, we're going to show you how to build a scalable service that will schedule HTTP requests on a specific schedule or as one-off at a specific time as a way to guide you through any use case that requires scheduled events.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/Scheduling-system-with-Workers-and-Durable-Objects---Diagram.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="quick-intro-into-the-application-stack">Quick intro into the application stack</h3>
-	<p>Before we dive in, here are some of the tools weâ€™re going to be using today:</p>
+	<p>Before we dive in, here are some of the tools we’re going to be using today:</p>
 	<ul>
 		<li><a href="https://developers.cloudflare.com/workers/wrangler/get-started/#install">Wrangler</a> - CLI tool to develop and publish Workers</li>
 		<li><a href="https://developers.cloudflare.com/workers">Cloudflare Workers</a> - runtime</li>
@@ -21,7 +21,7 @@
 		<li>Storage - keeping the request metadata, such as URL, body, or headers.</li>
 		<li>Alarm - a timer (trigger) to wake Durable Object up.</li>
 	</ul>
-	<p>While we will focus on building the application, the Cloudflare global network will take care of the rest â€“ storing and replicating our data, and making sure to wake our Durable Objects up when the time's right. Letâ€™s build it!</p>
+	<p>While we will focus on building the application, the Cloudflare global network will take care of the rest – storing and replicating our data, and making sure to wake our Durable Objects up when the time's right. Let’s build it!</p>
 	<h3 id="initialize-new-workers-project">Initialize new Workers project</h3>
 	<p>Get started by generating a completely new Workers project using the <code>wrangler init</code> command, which makes creating new projects quick &amp; easy.</p>
 	<p><strong>wrangler init -y durable-objects-requests-scheduler</strong></p>
@@ -134,12 +134,12 @@ export default {
     },
 }
 </code></pre>
-	<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry â€“ using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects">Workers storage options</a>.</p>
+	<p>It's good to mention that the script above does not implement any listing of scheduled or processed webhooks. Depending on how the scheduling system would be integrated, you can save each created Durable Object ID to your existing backend, or write your own registry – using one of the <a href="https://developers.cloudflare.com/workers/get-started/storage-objects">Workers storage options</a>.</p>
 	<h3 id="starting-a-local-development-server-and-testing-our-application">Starting a local development server and testing our application</h3>
-	<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action â€“ which will work even without an Internet connection!</p>
+	<p>We are almost done! Before we publish our scheduler system to the Cloudflare edge, let's start Wrangler in a completely local mode to run a couple of tests against it and to see it in action – which will work even without an Internet connection!</p>
 	<pre><code class="language-bash">wrangler dev --local</code></pre>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning â€“ required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
+	<p>The development server is listening on localhost:8787, which we will use for scheduling our first request. The JSON request payload should match the TypeScript schema we defined in the beginning – required URL, and optional <code>triggerEverySeconds</code> number or <code>triggerAt</code> unix timestamp. When only the required URL is passed, the request will be dispatched right away.</p>
 	<p>An example of request payload that will send a GET request to <a href="https://example.com">https://example.com</a> every 30 seconds.</p>
 	<pre><code class="language-JSON">{
 	"url":  "https://example.com",
@@ -169,5 +169,5 @@ export default {
 		<li><a href="https://developers.cloudflare.com/workers/examples">https://developers.cloudflare.com/workers/examples/</a></li>
 		<li><a href="https://github.com/cloudflare/templates">https://github.com/cloudflare/templates</a></li>
 	</ul>
-	<p>â€ƒâ€ƒ</p>
+	<p>  </p>
 </div>

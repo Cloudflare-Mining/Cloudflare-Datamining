@@ -1,9 +1,9 @@
 <div class="mb2 gray5">15 min read</div>
 <div class="post-content lh-copy gray1">
-	<p>In the <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">previous post</a> we described the Firewall Rules architecture and how the different components are integrated together. We also mentioned that we created a configurable Rust library for writing and executing <a href="https://www.wireshark.org">Wireshark</a>Â®-like filters in different parts of our stack written in Go, Lua, C, C++ and JavaScript Workers.</p>
-	<blockquote>With a mixed set of requirements of performance, memory safety, low memory use, and the capability to be part of other products that weâ€™re working on like Spectrum, Rust stood out as the strongest option.</blockquote>
+	<p>In the <a href="https://blog.cloudflare.com/how-we-made-firewall-rules">previous post</a> we described the Firewall Rules architecture and how the different components are integrated together. We also mentioned that we created a configurable Rust library for writing and executing <a href="https://www.wireshark.org">Wireshark</a>®-like filters in different parts of our stack written in Go, Lua, C, C++ and JavaScript Workers.</p>
+	<blockquote>With a mixed set of requirements of performance, memory safety, low memory use, and the capability to be part of other products that we’re working on like Spectrum, Rust stood out as the strongest option.</blockquote>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Langs.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>We have now open-sourced this library under our Github account: <a href="https://github.com/cloudflare/wirefilter">https://github.com/cloudflare/wirefilter</a>. This post will dive into its design, explain why we didnâ€™t use a parser generator and how our execution engine balances security, runtime performance and compilation cost for the generated filters.</p>
+	<p>We have now open-sourced this library under our Github account: <a href="https://github.com/cloudflare/wirefilter">https://github.com/cloudflare/wirefilter</a>. This post will dive into its design, explain why we didn’t use a parser generator and how our execution engine balances security, runtime performance and compilation cost for the generated filters.</p>
 	<h3 id="parsing-wireshark-syntax">Parsing Wireshark syntax</h3>
 	<p>When building a custom Domain Specific Language (DSL), the first thing we need to be able to do is parse it. This should result in an intermediate representation (usually called an Abstract Syntax Tree) that can be inspected, traversed, analysed and, potentially, serialised.</p>
 	<p>There are different ways to perform such conversion, such as:</p>
@@ -13,7 +13,7 @@
 		<li>Fully automated generators which, provided with a grammar, can generate a fully working parser for you (examples are <a href="https://github.com/kevinmehall/rust-peg">peg</a>, <a href="https://github.com/pest-parser/pest">pest</a>, <a href="https://github.com/lalrpop/lalrpop">LALRPOP</a>, etc.).</li>
 	</ol>
 	<h4 id="wireshark-syntax">Wireshark syntax</h4>
-	<p>But before trying to figure out which approach would work best for us, letâ€™s take a look at some of the simple <a href="https://wiki.wireshark.org/DisplayFilters">official Wireshark examples</a>, to understand what weâ€™re dealing with:</p>
+	<p>But before trying to figure out which approach would work best for us, let’s take a look at some of the simple <a href="https://wiki.wireshark.org/DisplayFilters">official Wireshark examples</a>, to understand what we’re dealing with:</p>
 	<ul>
 		<li><code>ip.len le 1500</code></li>
 		<li><code>udp contains 81:60:03</code></li>
@@ -23,15 +23,15 @@
 		<li><code>ip.addr == 192.168.0.1</code></li>
 		<li><code>ipv6.addr == ::1</code></li>
 	</ul>
-	<p>You can see that the right hand side of a comparison can be a number, an IPv4 / IPv6 address, a set of bytes or a string. They are used interchangeably, without any special notion of a type, which is fine given that they are easily distinguishableâ€¦ or are they?</p>
-	<p>Letâ€™s take a look at some <a href="https://en.wikipedia.org/wiki/IPv6#Address_representation">IPv6 forms</a> on Wikipedia:</p>
+	<p>You can see that the right hand side of a comparison can be a number, an IPv4 / IPv6 address, a set of bytes or a string. They are used interchangeably, without any special notion of a type, which is fine given that they are easily distinguishable… or are they?</p>
+	<p>Let’s take a look at some <a href="https://en.wikipedia.org/wiki/IPv6#Address_representation">IPv6 forms</a> on Wikipedia:</p>
 	<ul>
 		<li><code>2001:0db8:0000:0000:0000:ff00:0042:8329</code></li>
 		<li><code>2001:db8:0:0:0:ff00:42:8329</code></li>
 		<li><code>2001:db8::ff00:42:8329</code></li>
 	</ul>
-	<p>So IPv6 can be written as a set of up to 8 colon-separated hexadecimal numbers, each containing up to 4 digits with leading zeros omitted for convenience. This appears suspiciously similar to the syntax for byte sequences. Indeed, if we try writing out a sequence like <code>2f:31:32:33:34:35:36:37</code>, itâ€™s simultaneously a valid IPv6 and a byte sequence in terms of Wireshark syntax.</p>
-	<p>There is no way of telling what this sequence actually represents without looking at the type of the field itâ€™s being compared with, and if you try using this sequence in Wireshark, youâ€™ll notice that it does just that:</p>
+	<p>So IPv6 can be written as a set of up to 8 colon-separated hexadecimal numbers, each containing up to 4 digits with leading zeros omitted for convenience. This appears suspiciously similar to the syntax for byte sequences. Indeed, if we try writing out a sequence like <code>2f:31:32:33:34:35:36:37</code>, it’s simultaneously a valid IPv6 and a byte sequence in terms of Wireshark syntax.</p>
+	<p>There is no way of telling what this sequence actually represents without looking at the type of the field it’s being compared with, and if you try using this sequence in Wireshark, you’ll notice that it does just that:</p>
 	<ul>
 		<li><code>ipv6.addr == 2f:31:32:33:34:35:36:37</code>: right hand side is parsed and used as an IPv6 address</li>
 		<li><code>http.request.uri == 2f:31:32:33:34:35:36:37</code>: right hand side is parsed and used as a byte sequence (will match a URL <code>"/1234567"</code>)</li>
@@ -44,9 +44,9 @@
 	<p>We could also do the same with ethernet address, defined as a separate type in Wireshark, but, for simplicity, we represent it as a regular byte sequence in our implementation, so there is no ambiguity here.</p>
 	<h4 id="choosing-a-parsing-approach">Choosing a parsing approach</h4>
 	<p>This is an interesting syntax design decision. It means that we need to store a mapping between field names and types ahead of time - a Scheme, as we call it - and use it for contextual parsing. This restriction also immediately rules out many if not most parser generators.</p>
-	<p>We could still use one of the more sophisticated ones (like LALRPOP) that allow replacing the default regex-based lexer with your own custom code, but at that point weâ€™re so close to having a full parser for our DSL that the complexity outweighs any benefits of using a black-box parser generator.</p>
+	<p>We could still use one of the more sophisticated ones (like LALRPOP) that allow replacing the default regex-based lexer with your own custom code, but at that point we’re so close to having a full parser for our DSL that the complexity outweighs any benefits of using a black-box parser generator.</p>
 	<p>Instead, we went with a manual parsing approach. While (for a good reason) this might sound scary in unsafe languages like C / C++, in Rust all strings are bounds checked by default. Rust also provides a rich string manipulation API, which we can use to build more complex helpers, eventually ending up with a full parser.</p>
-	<p>This approach is, in fact, pretty similar to parser combinators in that the parser doesnâ€™t have to keep state and only passes the unprocessed part of the input down to smaller, narrower scoped functions. Just as in parser combinators, the absence of mutable state also allows to easily test and maintain each of the parsers for different parts of the syntax independently of the others.</p>
+	<p>This approach is, in fact, pretty similar to parser combinators in that the parser doesn’t have to keep state and only passes the unprocessed part of the input down to smaller, narrower scoped functions. Just as in parser combinators, the absence of mutable state also allows to easily test and maintain each of the parsers for different parts of the syntax independently of the others.</p>
 	<p>Compared with popular parser combinator libraries in Rust, one of the differences is that our parsers are not standalone functions but rather types that implement common traits:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">pub trait Lex&lt;'i&gt;: Sized {
    fn lex(input: &amp;'i str) -&gt; LexResult&lt;'i, Self&gt;;
@@ -103,7 +103,7 @@ let input = expect(input, ")")?;
 	<p>If we look at the data structures involved, we can see that the scheme is always well-defined in advance, and all our runtime values in the execution engine are expected to eventually match it, even if the order or a precise set of fields is not guaranteed:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/fieldaccess.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>So what if we ditch the second map altogether and instead use a fixed-size array of values? Array indexing should be much cheaper than looking up in a map, so it might be well worth the effort.</p>
-	<p>How can we do it? We already know the number of items (thanks to the predefined scheme) so we can use that for the size of the backing storage, and, in order to simulate <code>HashMap</code> â€œholesâ€ for unset values, we can wrap each item an <code>Option&lt;...&gt;</code>:</p><!--kg-card-begin: markdown-->
+	<p>How can we do it? We already know the number of items (thanks to the predefined scheme) so we can use that for the size of the backing storage, and, in order to simulate <code>HashMap</code> “holes” for unset values, we can wrap each item an <code>Option&lt;...&gt;</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">pub struct ExecutionContext&lt;'e&gt; {
     scheme: &amp;'e Scheme,
     values: Box&lt;[Option&lt;LhsValue&lt;'e&gt;&gt;]&gt;,
@@ -148,23 +148,23 @@ test parsing  ... bench:     192,037 ns/iter (+/- 21,538)</code></pre>
 test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 	<p>This change also improved the usability of our API, as any type errors are now detected and reported much earlier, when the values are just being set on the context, and not delayed until filter execution.</p>
 	<h4 id="-not-jit-compilation">[not] JIT compilation</h4>
-	<p>Of course, as with any respectable DSL, one of the other ideas we had from the beginning was â€œ...at some point weâ€™ll add native compilation to make everything super-fast, itâ€™s just a matter of time...â€.</p>
+	<p>Of course, as with any respectable DSL, one of the other ideas we had from the beginning was “...at some point we’ll add native compilation to make everything super-fast, it’s just a matter of time...”.</p>
 	<p>In practice, however, native compilation is a complicated matter, but not due to lack of tools.</p>
 	<p>First of all, there is question of storage for the native code. We could compile each filter statically into some sort of a library and publish to a key-value store, but that would not be easy to maintain:</p>
 	<ul>
-		<li>We would have to compile each filter to several platforms (x86-64, ARM, WASM, â€¦).</li>
+		<li>We would have to compile each filter to several platforms (x86-64, ARM, WASM, …).</li>
 		<li>The overhead of native library formats would significantly outweigh the useful executable size, as most filters tend to be small.</li>
-		<li>Each time weâ€™d like to change our execution logic, whether to optimise it or to fix a bug, we would have to recompile and republish all the previously stored filters.</li>
-		<li>Finally, even if/though weâ€™re sure of the reliability of the chosen store, executing dynamically retrieved native code on the edge as-is is not something that can be taken lightly.</li>
+		<li>Each time we’d like to change our execution logic, whether to optimise it or to fix a bug, we would have to recompile and republish all the previously stored filters.</li>
+		<li>Finally, even if/though we’re sure of the reliability of the chosen store, executing dynamically retrieved native code on the edge as-is is not something that can be taken lightly.</li>
 	</ul>
 	<p>The usual flexible alternative that addresses most of these issues is Just-in-Time (JIT) compilation.</p>
 	<p>When you compile code directly on the target machine, you get to re-verify the input (still expressed as a restricted DSL), you can compile it just for the current platform in-place, and you never need to republish the actual rules.</p>
 	<p>Looks like a perfect fit? Not quite. As with any technology, there are tradeoffs, and you only get to choose those that make more sense for your use cases. JIT compilation is no exception.</p>
-	<p>First of all, even though youâ€™re not loading untrusted code over the network, you still need to generate it into the memory, mark that memory as executable and trust that it will always contain valid code and not garbage or something worse. Depending on your choice of libraries and complexity of the DSL, you might be willing to trust it or put heavy sandboxing around, but, either way, itâ€™s a risk that one must explicitly be willing to take.</p>
+	<p>First of all, even though you’re not loading untrusted code over the network, you still need to generate it into the memory, mark that memory as executable and trust that it will always contain valid code and not garbage or something worse. Depending on your choice of libraries and complexity of the DSL, you might be willing to trust it or put heavy sandboxing around, but, either way, it’s a risk that one must explicitly be willing to take.</p>
 	<p>Another issue is the cost of compilation itself. Usually, when measuring the speed of native code vs interpretation, the cost of compilation is not taken into the account because it happens out of the process.</p>
-	<p>With JIT compilers though, itâ€™s different as youâ€™re now compiling things the moment theyâ€™re used and cache the native code only for a limited time. Turns out, generating native code can be rather expensive, so you must be absolutely sure that the compilation cost doesnâ€™t offset any benefits you might gain from the native execution speedup.</p>
-	<p>Iâ€™ve talked a bit more about this at <a href="https://www.meetup.com/rust-atx">Rust Austin meetup</a> and, I believe, this topic deserves a separate blog post so wonâ€™t go into much more details here, but feel free to check out the slides: <a href="https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust">https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust</a>. Oh, and if youâ€™re in Austin, you should pop into our office for the next meetup!</p>
-	<p>Letâ€™s get back to our original question: is there anything else we can do to get the best balance between security, runtime performance and compilation cost? Turns out, there is.</p>
+	<p>With JIT compilers though, it’s different as you’re now compiling things the moment they’re used and cache the native code only for a limited time. Turns out, generating native code can be rather expensive, so you must be absolutely sure that the compilation cost doesn’t offset any benefits you might gain from the native execution speedup.</p>
+	<p>I’ve talked a bit more about this at <a href="https://www.meetup.com/rust-atx">Rust Austin meetup</a> and, I believe, this topic deserves a separate blog post so won’t go into much more details here, but feel free to check out the slides: <a href="https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust">https://www.slideshare.net/RReverser/building-fast-interpreters-in-rust</a>. Oh, and if you’re in Austin, you should pop into our office for the next meetup!</p>
+	<p>Let’s get back to our original question: is there anything else we can do to get the best balance between security, runtime performance and compilation cost? Turns out, there is.</p>
 	<h4 id="dynamic-dispatch-and-closures-to-the-rescue">Dynamic dispatch and closures to the rescue </h4>
 	<p>Introducing <code>Fn</code> trait!</p>
 	<p>In Rust, the <code>Fn</code> trait and friends (<code>FnMut</code>, <code>FnOnce</code>) are automatically implemented on eligible functions and closures. In case of a simple <code>Fn</code> case the restriction is that they must not modify their captured environment and can only borrow from it.</p>
@@ -177,7 +177,7 @@ test parsing  ... bench:     197,574 ns/iter (+/- 16,568)</code></pre>
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Such behaviour (called static dispatch) is the default in Rust and is preferable for performance reasons.</p>
-	<p>However, if we donâ€™t know all the possible types at compile-time, Rust allows us to opt-in for a dynamic dispatch instead:</p><!--kg-card-begin: markdown-->
+	<p>However, if we don’t know all the possible types at compile-time, Rust allows us to opt-in for a dynamic dispatch instead:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">fn just_call(me: &amp;dyn Fn(), maybe: bool) {
   if maybe {
     me()
@@ -208,7 +208,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
 	<!--kg-card-end: markdown-->
 	<p>The closure (an <code>Fn</code> box) will also automatically include the environment data it needs for the execution.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/box.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This means that we can optimise the runtime data representation as part of the â€œcompileâ€ process without changing the AST or the parser. For example, when we wanted to optimise IP range checks by splitting them for different IP types, we could do that without having to modify any existing structures:</p><!--kg-card-begin: markdown-->
+	<p>This means that we can optimise the runtime data representation as part of the “compile” process without changing the AST or the parser. For example, when we wanted to optimise IP range checks by splitting them for different IP types, we could do that without having to modify any existing structures:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">RhsValues::Ip(ranges) =&gt; {
    let mut v4 = Vec::new();
    let mut v6 = Vec::new();
@@ -230,7 +230,7 @@ impl&lt;'s&gt; CompiledExpr&lt;'s&gt; {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Moreover, boxed closures can be part of that captured environment, too. This means that we can convert each simple comparison into a closure, and then combine it with other closures, and keep going until we end up with a single top-level closure that can be invoked as a regular function to evaluate the entire filter expression.</p>
-	<p>Itâ€™s <s>turtles</s> closures all the way down:</p><!--kg-card-begin: markdown-->
+	<p>It’s <s>turtles</s> closures all the way down:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">let items = items
    .into_iter()
    .map(|item| item.compile())
@@ -252,10 +252,10 @@ match op {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Whatâ€™s nice about this approach is:</p>
+	<p>What’s nice about this approach is:</p>
 	<ul>
 		<li>Our execution is no longer tied to the AST, and we can be as flexible with optimising the implementation and data representation as we want without affecting the parser-related parts of code or output format.</li>
-		<li>Even though we initially â€œcompileâ€ each node to a single closure, in future we can pretty easily specialise certain combinations of expressions into their own closures and so improve execution speed for common cases. All that would be required is a separate <code>match</code> branch returning a closure optimised for just that case.</li>
+		<li>Even though we initially “compile” each node to a single closure, in future we can pretty easily specialise certain combinations of expressions into their own closures and so improve execution speed for common cases. All that would be required is a separate <code>match</code> branch returning a closure optimised for just that case.</li>
 		<li>Compilation is very cheap compared to real code generation. While it might seem that allocating many small objects (one <code>Box</code>ed closure per expression) is not very efficient and that it would be better to replace it with some sort of a memory pool, in practice we saw a negligible performance impact.</li>
 		<li>No native code is generated at runtime, which means that we execute only code that was statically verified by Rust at compile-time and compiled down to a static function. All that we do at the runtime is call existing functions with different values.</li>
 		<li>Execution turns out to be faster too. This initially came as a surprise, because dynamic dispatch is widely believed to be costly and we were worried that it would get slightly worse than AST interpretation. However, it showed an immediate ~10-15% runtime improvement in benchmarks and on real examples.</li>
@@ -267,7 +267,7 @@ match op {
 	<p>Why would we be interested in that? Apart from the parts of the stack where our rules would run, and the API that publishes them, we also have users who like to write their own rules. To do that, they use a UI editor that allows either writing raw expressions in Wireshark syntax or as a WYSIWYG builder.</p>
 	<p>We thought it would be great to expose the parser - the same one as we use on the backend - to the frontend JavaScript for a consistent real-time editing experience. And, honestly, we were just looking for an excuse to play with WASM support in Rust.</p>
 	<p>WebAssembly could be targeted via regular C FFI, but in that case you would need to manually provide all the glue for the JavaScript side to hold and convert strings, arrays and objects forth and back.</p>
-	<p>In Rust, this is all handled by <a href="https://github.com/rustwasm/wasm-bindgen">wasm-bindgen</a>. While it provides various attributes and methods for direct conversions, the simplest way to get started is to activate the â€œserdeâ€ feature which will automatically convert types using <code>JSON.parse</code>, <code>JSON.stringify</code> and <code><a href="https://docs.serde.rs/serde_json">serde_json</a></code> under the hood.</p>
+	<p>In Rust, this is all handled by <a href="https://github.com/rustwasm/wasm-bindgen">wasm-bindgen</a>. While it provides various attributes and methods for direct conversions, the simplest way to get started is to activate the “serde” feature which will automatically convert types using <code>JSON.parse</code>, <code>JSON.stringify</code> and <code><a href="https://docs.serde.rs/serde_json">serde_json</a></code> under the hood.</p>
 	<p>In our case, creating a wrapper for the parser with only 20 lines of code was enough to get started and have all the WASM code + JavaScript glue required:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-rust">#[wasm_bindgen]
 pub struct Scheme(wirefilter::Scheme);
@@ -291,8 +291,8 @@ impl Scheme {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>And by using a higher-level tool called <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>, we also got automated npm package generation and publishing, for free.</p>
-	<p>This is not used in the production UI yet because we still need to figure out some details for unsupported browsers, but itâ€™s great to have all the tooling and packages ready with minimal efforts. Extending and reusing the same package, it should be even possible to run filters in Cloudflare Workers too (which <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">also support WebAssembly</a>).</p>
+	<p>This is not used in the production UI yet because we still need to figure out some details for unsupported browsers, but it’s great to have all the tooling and packages ready with minimal efforts. Extending and reusing the same package, it should be even possible to run filters in Cloudflare Workers too (which <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">also support WebAssembly</a>).</p>
 	<h3 id="the-future">The future</h3>
-	<p>The code in the current state is already doing its job well in production and weâ€™re happy to share it with the open-source Rust community.</p>
+	<p>The code in the current state is already doing its job well in production and we’re happy to share it with the open-source Rust community.</p>
 	<p>This is definitely not the end of the road though - we have many more fields to add, features to implement and planned optimisations to explore. If you find this sort of work interesting and would like to help us by working on firewalls, parsers or just any Rust projects at scale, give us a shout!</p>
 </div>

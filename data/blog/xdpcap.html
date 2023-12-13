@@ -1,10 +1,10 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<p>Our servers process a lot of network packets, be it legitimate traffic or <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras">large</a> <a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">denial of service</a> <a href="https://blog.cloudflare.com/reflections-on-reflections">attacks</a>. To do so efficiently, weâ€™ve embraced <a href="http://docs.cilium.io/en/latest/bpf">eXpress Data Path (XDP)</a>, a Linux kernel technology that provides a high performance mechanism for low level packet processing. Weâ€™re using it to <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">drop DoS attack packets with L4Drop</a>, and also in our new layer 4 load balancer. But thereâ€™s a downside to XDP: because it processes packets before the normal Linux network stack sees them, packets redirected or dropped are invisible to regular debugging tools such as <a href="https://www.tcpdump.org">tcpdump</a>.</p>
+	<p>Our servers process a lot of network packets, be it legitimate traffic or <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras">large</a> <a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks">denial of service</a> <a href="https://blog.cloudflare.com/reflections-on-reflections">attacks</a>. To do so efficiently, we’ve embraced <a href="http://docs.cilium.io/en/latest/bpf">eXpress Data Path (XDP)</a>, a Linux kernel technology that provides a high performance mechanism for low level packet processing. We’re using it to <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">drop DoS attack packets with L4Drop</a>, and also in our new layer 4 load balancer. But there’s a downside to XDP: because it processes packets before the normal Linux network stack sees them, packets redirected or dropped are invisible to regular debugging tools such as <a href="https://www.tcpdump.org">tcpdump</a>.</p>
 	<p>To address this, we built a tcpdump replacement for XDP, xdpcap. We are open sourcing this tool: the <a href="https://github.com/cloudflare/xdpcap">code and documentation are available on GitHub</a>.</p>
 	<p>xdpcap uses our classic BPF (cBPF) to eBPF or C compiler, cbpfc, which we are also open sourcing: the <a href="https://github.com/cloudflare/cbpfc">code and documentation are available on GitHub</a>.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/White_tailed_eagle_raftsund_square_crop.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a> <a href="https://commons.wikimedia.org/wiki/File:White_tailed_eagle_raftsund_square_crop.jpg">image</a> by <a href="http://www.christophmueller.org">Christoph MÃ¼ller</a></figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a> <a href="https://commons.wikimedia.org/wiki/File:White_tailed_eagle_raftsund_square_crop.jpg">image</a> by <a href="http://www.christophmueller.org">Christoph Müller</a></figcaption>
 	</figure>
 	<p>Tcpdump provides an easy way to dump specific packets of interest. For example, to capture all IPv4 DNS packets, one could:</p>
 	<pre><code>$ tcpdump ip and udp port 53
@@ -66,13 +66,13 @@ reading from file -, link-type EN10MB (Ethernet)
 		<li>Guards to check the length of the packet before we load data from it. These are required by the kernel verifier.</li>
 	</ul>
 	<p>The epilogue can use the result of the filter to perform different actions on the input packet.</p>
-	<p>As mentioned earlier, weâ€™re open sourcing cbpfc; <a href="https://github.com/cloudflare/cbpfc">the code and documentation are available on GitHub</a>. It can be used to compile cBPF to C, or directly to eBPF, and the generated code is accepted by the kernel verifier.</p>
+	<p>As mentioned earlier, we’re open sourcing cbpfc; <a href="https://github.com/cloudflare/cbpfc">the code and documentation are available on GitHub</a>. It can be used to compile cBPF to C, or directly to eBPF, and the generated code is accepted by the kernel verifier.</p>
 	<h3 id="instrument">Instrument</h3>
 	<p>Tcpdump can start and stop capturing packets at any time, without requiring coordination from applications. This rules out modifying existing XDP programs to directly run the generated eBPF filter; the programs would have to be modified each time xdpcap is run. Instead, programs should expose a hook that can be used by xdpcap to attach filters at runtime.</p>
-	<p>xdpcapâ€™s hook support is built around eBPF tail-calls. XDP programs can yield control to other programs using the tail-call helper. Control is never handed back to the calling program, the return code of the subsequent program is used. For example, consider two XDP programs, foo and bar, with foo attached to the network interface. Foo can tail-call into bar:</p>
+	<p>xdpcap’s hook support is built around eBPF tail-calls. XDP programs can yield control to other programs using the tail-call helper. Control is never handed back to the calling program, the return code of the subsequent program is used. For example, consider two XDP programs, foo and bar, with foo attached to the network interface. Foo can tail-call into bar:</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Flow of XDP program foo tail-calling into program bar</p>
-	<p>The program to tail-call into is configured at runtime, using a special eBPF program array map. eBPF programs tail-call into a specific index of the map, the value of which is set by userspace. From our example above, fooâ€™s tail-call map holds a single entry:</p><!--kg-card-begin: markdown-->
+	<p>The program to tail-call into is configured at runtime, using a special eBPF program array map. eBPF programs tail-call into a specific index of the map, the value of which is set by userspace. From our example above, foo’s tail-call map holds a single entry:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -153,8 +153,8 @@ reading from file -, link-type EN10MB (Ethernet)
 	<p>Another eBPF helper, <code>perf_event_output</code>, allows an XDP program to generate a perf event containing, amongst some metadata, the packet. As xdpcap generates one filter per XDP action, the filter program can include the action taken in the metadata. A userspace program can create a perf event ring buffer to receive events into, obtaining both the action and the packet.</p>
 	<hr>
 	<ol>
-		<li>This is true of the original cBPF, but Linux implements a number of extensions, one of which allows the length of the input packet to be retrieved. <a href="https://blog.cloudflare.com/xdpcap/#fnref1">â†©ï¸Ž</a></li>
-		<li>This example uses registers <code>r6</code> and <code>r7</code>, but cbpfc can be configured to use any registers. <a href="https://blog.cloudflare.com/xdpcap/#fnref2">â†©ï¸Ž</a></li>
+		<li>This is true of the original cBPF, but Linux implements a number of extensions, one of which allows the length of the input packet to be retrieved. <a href="https://blog.cloudflare.com/xdpcap/#fnref1">↩︎</a></li>
+		<li>This example uses registers <code>r6</code> and <code>r7</code>, but cbpfc can be configured to use any registers. <a href="https://blog.cloudflare.com/xdpcap/#fnref2">↩︎</a></li>
 	</ol>
 	<p></p>
 </div>

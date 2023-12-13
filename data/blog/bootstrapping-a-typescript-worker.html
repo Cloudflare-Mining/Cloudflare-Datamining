@@ -77,11 +77,11 @@ Ran all test suites.
 	<h3 id="helloworldwithworkers">Hello, World with Workers</h3>
 	<p>A hello world implementation in Typescript might look something like this:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/typescript-hello-world.png" alt="Hello world first attempt" loading="lazy"></p>
-	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a> provides an implementation for node, so letâ€™s install that.</p>
+	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a> provides an implementation for node, so let’s install that.</p>
 	<pre><code class="language-bash">npm install node-fetch
 npm install @types/node-fetch
 </code></pre>
-	<p>That made Webstorm happier. Itâ€™s been able to locate the type definitions.</p>
+	<p>That made Webstorm happier. It’s been able to locate the type definitions.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/typescript-hello-world2.png" alt="Hello world with type defs" loading="lazy"></p>
 	<p>Now let's write a test. Create a new file <strong>tests</strong>/worker-spec.ts:</p>
 	<pre><code class="language-typescript">import { Request } from "node-fetch";
@@ -113,7 +113,7 @@ Time:        1.213s, estimated 2s
 	<p>Run it again:</p>
 	<pre><code class="language-bash">jest
  PASS  __tests__/worker-spec.ts
-  âœ“ Should say hello (8ms)
+  ✓ Should say hello (8ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
@@ -570,6 +570,6 @@ Hello, world!
 		<li>Profit</li>
 	</ul>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">â€œRecipe Exchangeâ€</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
 	<!--kg-card-end: markdown-->
 </div>

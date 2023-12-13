@@ -10,7 +10,7 @@
 	<p>Today, things didn't go as planned.</p>
 	<h3 id="gatebot">Gatebot</h3>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/05/gatebot-parts.png" alt="gatebot-parts" loading="lazy"></p>
-	<p>Cloudflareâ€™s network is large, handles many different types of traffic and mitigates different types of known and not-yet-seen attacks. The Gatebot pipelineâ€‚manages this complexity in three separate stages:</p>
+	<p>Cloudflare’s network is large, handles many different types of traffic and mitigates different types of known and not-yet-seen attacks. The Gatebot pipeline manages this complexity in three separate stages:</p>
 	<ul>
 		<li><em>attack detection</em> - collects live traffic measurements across the globe and detects attacks</li>
 		<li><em>reactive automation</em> - chooses appropriate mitigations</li>
@@ -36,16 +36,16 @@
 	<p>Clearly, the code above is a huge oversimplification of all that goes into attack mitigation, but making an early decision about whether the attacked IP serves DNS traffic or not is important. It's that check that went wrong today. If the IP does serve DNS traffic then attack mitigation is handled differently from IPs that never serve DNS.</p>
 	<h3 id="cloudflareisgrowingsomustgatebot">Cloudflare is growing, so must Gatebot</h3>
 	<p>Gatebot was created in early 2015. Three years may not sound like much time, but since then we've grown dramatically and added layers of services to our software stack. Many of the internal integration points that we rely on today didn't exist then.</p>
-	<p>One of them is what we call the <em>Provision API</em>. When Gatebot sees an IP address, it needs to be able to figure out whether or not itâ€™s one of Cloudflareâ€™s addresses. <em>Provision API</em> is a simple RESTful API used to provide this kind of information.</p>
+	<p>One of them is what we call the <em>Provision API</em>. When Gatebot sees an IP address, it needs to be able to figure out whether or not it’s one of Cloudflare’s addresses. <em>Provision API</em> is a simple RESTful API used to provide this kind of information.</p>
 	<p>This is a relatively new API, and prior to its existence, Gatebot had to figure out which IP addresses were Cloudflare addresses by reading a list of networks from a hard-coded file. In the code snippet above, the <em>ANYCAST_IPS</em> variable is populated using this file.</p>
 	<h3 id="thingswentwrong">Things went wrong</h3>
 	<p>Today, in an effort to reclaim some technical debt, we deployed new code that introduced Gatebot to <em>Provision API</em>.</p>
-	<p>What we did not account for, and what <em>Provision API</em> didnâ€™t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
+	<p>What we did not account for, and what <em>Provision API</em> didn’t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
 	<p>As you might be able to guess by now, we didn't implement this manual exception while we were doing the integration work. Remember, the whole idea of the fix was to remove the hardcoded gotchas!</p>
 	<h3 id="impact">Impact</h3>
 	<p>The effect was that, after pushing the new code release, our systems interpreted the resolver traffic as an attack. The automatic systems deployed DNS mitigations for our DNS resolver IP ranges for 17 minutes, between 17:58 and 18:13 May 31st UTC. This caused 1.1.1.1 DNS resolver to be globally inaccessible.</p>
 	<h3 id="lessonslearned">Lessons Learned</h3>
-	<p>While Gatebot, the DDoS mitigation system, has great power, we failed to test the changes thoroughly. We are using todayâ€™s incident to improve our internal systems.</p>
-	<p>Our team is incredibly proud of 1.1.1.1 and Gatebot, but today we fell short. We want to apologize to all of our customers. We will use todayâ€™s incident to improve. The next time we mitigate 1.1.1.1 traffic, we will make sure there is a legitimate attack hitting us.</p>
+	<p>While Gatebot, the DDoS mitigation system, has great power, we failed to test the changes thoroughly. We are using today’s incident to improve our internal systems.</p>
+	<p>Our team is incredibly proud of 1.1.1.1 and Gatebot, but today we fell short. We want to apologize to all of our customers. We will use today’s incident to improve. The next time we mitigate 1.1.1.1 traffic, we will make sure there is a legitimate attack hitting us.</p>
 	<!--kg-card-end: markdown-->
 </div>

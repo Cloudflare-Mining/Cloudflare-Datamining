@@ -7,7 +7,7 @@
 	<h3 id="context">Context</h3>
 	<p>You may wonder why she wanted to inspect the TTL packet field (formally known as "IP Time To Live (TTL)" in IPv4, or "Hop Count" in IPv6)? The reason is simple - she wanted to ensure that the connections are routed outside of our datacenter. The "Hop Distance" - the difference between the TTL value set by the originating machine and the TTL value in the packet received at its destination - shows how many routers the packet crossed. If a packet crossed two or more routers, we know it indeed came from outside of our datacenter.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-29-at-10.52.49-AM-1.png" alt="Screen-Shot-2018-03-29-at-10.52.49-AM-1" loading="lazy"></p>
-	<p>It's uncommon to look at TTL values (except for their intended purpose of mitigating routing loops by checking when the TTL reaches zero). The normal way to deal with the problem we had would be to blocklist IP ranges of our servers. But itâ€™s not that simple in our setup. Our IP numbering configuration is rather baroque, with plenty of Anycast, Unicast and Reserved IP ranges. Some belong to us, some don't. We wanted to avoid having to maintain a hard-coded blocklist of IP ranges.</p>
+	<p>It's uncommon to look at TTL values (except for their intended purpose of mitigating routing loops by checking when the TTL reaches zero). The normal way to deal with the problem we had would be to blocklist IP ranges of our servers. But it’s not that simple in our setup. Our IP numbering configuration is rather baroque, with plenty of Anycast, Unicast and Reserved IP ranges. Some belong to us, some don't. We wanted to avoid having to maintain a hard-coded blocklist of IP ranges.</p>
 	<p>The gist of the idea is: we want to note the TTL value from a returned SYN+ACK packet. Having this number we can estimate the Hop Distance - number of routers on the path. If the Hop Distance is:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-29-at-10.50.38-AM.png" alt="Screen-Shot-2018-03-29-at-10.50.38-AM" loading="lazy"></p>
 	<ul>
@@ -24,7 +24,7 @@
 	<p>For our use case, we want to see if the Hop Distance was two or more - this would ensure the connection was routed outside the datacenter.</p>
 	<h3 id="notsoeasy">Not so easy</h3>
 	<p>It's easy to read TTL values from a userspace application, right? No. It turns out it's almost impossible. Here are the theoretical options we considered early on:</p>
-	<p>A) Run a libpcap/tcpdump-like raw socket, and catch the SYN+ACK's manually. We ruled out this design quickly - it requires elevated privileges. Also, raw sockets are pretty fragile: they can suffer packet loss if the userspace application canâ€™t keep up.</p>
+	<p>A) Run a libpcap/tcpdump-like raw socket, and catch the SYN+ACK's manually. We ruled out this design quickly - it requires elevated privileges. Also, raw sockets are pretty fragile: they can suffer packet loss if the userspace application can’t keep up.</p>
 	<p>B) Use the IP_RECVTTL socket option. IP_RECVTTL requests a "cmsg" data to be attached to control/ancillary data in a <code>recvmsg()</code> syscall. This is a good choice for UDP connections, but this socket option is not supported by TCP SOCK_STREAM sockets.</p>
 	<p>Extracting the TTL is not so easy.</p>
 	<h3 id="so_attach_filtertoruletheworld">SO_ATTACH_FILTER to rule the world!</h3>
@@ -36,12 +36,12 @@
 	<pre><code>SO_ATTACH_FILTER (since Linux 2.2), SO_ATTACH_BPF (since Linux 3.19)
     Attach a classic BPF (SO_ATTACH_FILTER) or an extended BPF
     (SO_ATTACH_BPF) program to the socket for use as a filter of
-    incoming packets.  A packet will be dropped if the filter proâ€
+    incoming packets.  A packet will be dropped if the filter pro‐
     gram returns zero.  If the filter program returns a nonzero
     value which is less than the packet's data length, the packet
     will be truncated to the length returned.  If the value
     returned by the filter is greater than or equal to the
-    packet's data length, the packet is allowed to proceed unmodiâ€
+    packet's data length, the packet is allowed to proceed unmodi‐
     fied.
 </code></pre>
 	<p>You probably take advantage of SO_ATTACH_FILTER already: This is how tcpdump/wireshark does filtering when you're dumping packets off the wire.</p>
@@ -90,7 +90,7 @@
 
 bpfProgram, err := ebpf.NewProgram(ebpf.SocketFilter, &amp;ebpfInss, "GPL", 0)
 </code></pre>
-	<p>Writing eBPF by hand is rather controversial. Most people use <code>clang</code> (from version 3.7 onwards) to compile a code written in a C dialect into an eBPF bytecode. The resulting bytecode is saved in an ELF file, which can be loaded by most eBPF libraries. This ELF file also includes description of maps, so you donâ€™t need to set them manually.</p>
+	<p>Writing eBPF by hand is rather controversial. Most people use <code>clang</code> (from version 3.7 onwards) to compile a code written in a C dialect into an eBPF bytecode. The resulting bytecode is saved in an ELF file, which can be loaded by most eBPF libraries. This ELF file also includes description of maps, so you don’t need to set them manually.</p>
 	<p>I personally don't see the point in adding an ELF/clang dependency for simple SO_ATTACH_BPF snippets. Don't be afraid of the raw bytecode!</p>
 	<h3 id="bpfcallingconvention">BPF calling convention</h3>
 	<p>Before we go further we should highlight couple of things about the eBPF environment. The official kernel documentation isn't too friendly:</p>

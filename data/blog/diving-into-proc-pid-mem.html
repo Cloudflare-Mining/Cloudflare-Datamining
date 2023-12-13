@@ -74,7 +74,7 @@
 	<h2 id="howitworksingvisor">How it works in gVisor</h2>
 	<p>Luckily, gVisor already implemented <code>ptrace_may_access</code> as <code>kernel.task.CanTrace</code>, so one can avoid reimplementing all the ptrace access logic. However, <a href="https://cs.opensource.google/gvisor/gvisor/+/master:pkg/sentry/kernel/ptrace.go;l=105;bpv=0;bpt=1">the implementation in gVisor</a> is less complicated due to the lack of support for <code>PTRACE_MODE_FSCREDS</code> (which is <a href="https://gvisor.dev/issue/260">still an open issue</a>).</p>
 	<p>When a new file descriptor is <code>open()</code>ed, the <code>GetFile</code> method of the virtual Inode is invoked, therefore this is where the access check naturally happens. After a successful access check, the <a href="https://pkg.go.dev/gvisor.dev/gvisor/pkg/sentry/fs#File">method returns a <code>fs.File</code></a>. The <code>fs.File</code> implements all the file operations you would expect such as <code>Read()</code> and <code>Write()</code>. gVisor also provides tons of primitives for quickly building a working file structure so that one does not have to reimplement a generic <code>lseek()</code> for example.</p>
-	<p>In case a task invokes a <code>Read()</code> call onto the <code>fs.File</code>, the <code>Read</code> method retrieves the memory manager of the fileâ€™s Task.<br>
+	<p>In case a task invokes a <code>Read()</code> call onto the <code>fs.File</code>, the <code>Read</code> method retrieves the memory manager of the file’s Task.<br>
 		<a href="https://pkg.go.dev/gvisor.dev/gvisor/pkg/sentry/mm#MemoryManager">Accessing the task's memory manager</a> is a breeze with comfortable <code>CopyIn</code> and <code>CopyOut</code> methods, with interfaces similar to <code>io.Writer</code> and <code>io.Reader</code>.
 	</p>
 	<p>After implementing all of this, we finally got a useful stack trace.</p>
@@ -88,7 +88,7 @@
     @     0x55d6f718c0fa  _start
 </code></pre>
 	<h2 id="conclusion">Conclusion</h2>
-	<p>A comprehensive victory! The <code>/proc/&lt;pid&gt;/mem</code> file is an important mechanism that gives insight into contents of process memory. It is essential to stack unwinders to do their work in case of complicated and unforeseeable failures. Because the process memory contains highly-sensitive information, data access to the file is determined by a complex set of poorly documented rules. With a bit of effort, you can emulate <code>/proc/[PID]/mem</code> inside gVisorâ€™s sandbox, where the process only has access to the subset of procfs that has been implemented by the gVisor authors and, as a result, you can have access to an easily readable stack trace in case of a crash.</p>
+	<p>A comprehensive victory! The <code>/proc/&lt;pid&gt;/mem</code> file is an important mechanism that gives insight into contents of process memory. It is essential to stack unwinders to do their work in case of complicated and unforeseeable failures. Because the process memory contains highly-sensitive information, data access to the file is determined by a complex set of poorly documented rules. With a bit of effort, you can emulate <code>/proc/[PID]/mem</code> inside gVisor’s sandbox, where the process only has access to the subset of procfs that has been implemented by the gVisor authors and, as a result, you can have access to an easily readable stack trace in case of a crash.</p>
 	<p><a href="https://github.com/google/gvisor/pull/4060">Now I can't wait to get the PR merged into gVisor.</a></p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -7,14 +7,14 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/Default-Precedence.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>If two or more rules match a request, but have different actions, the above precedence will take effect. However, what happens if you've got a bad actor who needs to be blocked from your API, and you have other specific allow or challenge rules already created for their originating ASN or a perhaps one of your URLs? Once a Firewall Rule is matched, it will not continue processing other rule, unless you are using the Log action. Without a method of overriding the default precedence, you cannot easily achieve what's needed.</p>
-	<p>Today, weâ€™re launching the ability for customers to change the ordering of their rules. The team at Cloudflare had a very long discussion about whether priority was the right solution, i.e. using an arbitrary number between 1 and 2,147,483,647 (int32) or whether customers should have a sequential list, and be able to drag and drop rules similarly to how Page Rules operates today.</p>
+	<p>Today, we’re launching the ability for customers to change the ordering of their rules. The team at Cloudflare had a very long discussion about whether priority was the right solution, i.e. using an arbitrary number between 1 and 2,147,483,647 (int32) or whether customers should have a sequential list, and be able to drag and drop rules similarly to how Page Rules operates today.</p>
 	<p>After testing potential solutions with our users and learning about the wide range of use cases it was clear that we needed to offer customers the ability to choose.</p>
 	<p>In the Firewall Rules user interface, you should now have an additional button on the top right, shown here:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/cloudflare-order-options.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<h3 id="priority-numbering">Priority Numbering</h3>
-	<p>For customers managing a large number of rules, or predominantly using the API or <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Terraform</a> for configuration, priority numbering is a great solution. Within Firewall Rules, as explained above, the default precedence is the final â€œconflict resolverâ€, providing a very useful way of grouping rules.</p>
+	<p>For customers managing a large number of rules, or predominantly using the API or <a href="https://www.terraform.io/docs/providers/cloudflare/index.html">Terraform</a> for configuration, priority numbering is a great solution. Within Firewall Rules, as explained above, the default precedence is the final “conflict resolver”, providing a very useful way of grouping rules.</p>
 	<p>For example, one of the engineers behind Firewall Rules uses Priority to organise their rules into specific groups, e.g.</p>
 	<pre><code>5000-9999 - Trusted IP addresses
 10000-19999 - Blocking Rules for Bad Crawlers

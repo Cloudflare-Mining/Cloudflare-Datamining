@@ -19,7 +19,7 @@
 	<p>In addition, because there are less memory chips on each module, single-rank modules produce less heat and are less likely to fail.</p>
 	<h2 id="memory-depth-and-width">Memory depth and width</h2>
 	<p>The capacity of each memory chip, or device, is defined as memory depth x memory width. Memory width refers to the width of the data bus, i.e. the number of DQ lines of each memory chip.</p>
-	<p>The width of memory chips are standard, they are either x4, x8 or x16. From here, we can calculate how many memory chips are in a 64-bit wide single rank memory. For example, with x4 memory chips, we will need 16 pieces (64 Ã· 4 = 16); and with x8 memory chips, we will only need 8 of them.</p>
+	<p>The width of memory chips are standard, they are either x4, x8 or x16. From here, we can calculate how many memory chips are in a 64-bit wide single rank memory. For example, with x4 memory chips, we will need 16 pieces (64 ÷ 4 = 16); and with x8 memory chips, we will only need 8 of them.</p>
 	<p>Let's look at the following two high-level block diagrams of 1Gbx8 and 2Gbx4 memory chips. The total memory capacity for both of them is 8Gb. Figure 2 describes the 1Gb x8 configuration, and Figure 3 describes the 2Gbx4 configuration. With DDR4, both x4 and x8 devices have 4 groups of 4 banks. x16 devices have 2 groups of 4 banks.</p>
 	<p>We can think of each memory chip as a library. Within that library, there are four bank groups, which are the four floors of the library. On each floor, there are four shelves, each shelf is similar to one of the banks. And we can locate each one of the memory cells by its row and column addresses, just like the library book call numbers. Within each bank, the row address MUX activates a line in the memory array through the Row address latch and decoder, based on the given row address. This line is also called the word line. When a word line is activated, the data on the word line is loaded on to the sense amplifiers. Subsequently, the column decoder accesses the data on the sense amplifier based on the given column address.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy">
@@ -49,7 +49,7 @@
 	<p><strong>Total Memory Capacity</strong> = 2Gb* 4 = 8Gb</p>
 	<h2 id="memory-module-capacity">Memory module capacity</h2>
 	<p>Memory rank and memory width determine how many memory devices are needed on each memory module.</p>
-	<p>A 64-bit DDR4 module with ECC support has a total of 72 bits for the data bus. Of the 72 bits, 8 bits are used for ECC. It would require a total of 18 x4 memory devices for a single rank module. Each memory device would supply 4 bits, and the total number of bits with 18 devices is 72 bits. Â&nbsp;For a dual rank module, we would need to double the amount of memory devices to 36.</p>
+	<p>A 64-bit DDR4 module with ECC support has a total of 72 bits for the data bus. Of the 72 bits, 8 bits are used for ECC. It would require a total of 18 x4 memory devices for a single rank module. Each memory device would supply 4 bits, and the total number of bits with 18 devices is 72 bits. &nbsp;For a dual rank module, we would need to double the amount of memory devices to 36.</p>
 	<p>If each x4 memory device has a memory capacity of 8Gb, a single rank module with 16 + 2 (ECC) devices would have 16GB module capacity.</p>
 	<p>8Gb * 16 = 128Gb = 16GB</p>
 	<p>And a dual rank ECC module with 36 8Gb (2Gb x 4) devices would have 32GB module capacity.</p>
@@ -430,7 +430,7 @@
 	<p>The bandwidth performance difference in the All reads test case is not very significant, only 0.21%.</p>
 	<p>As the amount of writes increase, from 25% (3:1 reads-writes) to 50% (1:1 reads-writes), the bandwidth performance differences between test case A and test case B increase from 1.13% to 2.93%.</p>
 	<h2 id="lmbench-results">LMBench Results</h2>
-	<p>LMBench is another synthetic benchmarking tool often used to study bandwidth performances of memory. Â&nbsp;Our LMBench bw_mem tests results are comparable to the results obtained from the MLC benchmark test.</p><!--kg-card-begin: html-->
+	<p>LMBench is another synthetic benchmarking tool often used to study bandwidth performances of memory. &nbsp;Our LMBench bw_mem tests results are comparable to the results obtained from the MLC benchmark test.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;

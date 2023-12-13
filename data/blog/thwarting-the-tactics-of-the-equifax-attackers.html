@@ -41,7 +41,7 @@ root@struts-demo:~$
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/Struts-1.png" alt="" loading="lazy"></p>
 	<h3 id="sqlinjection">SQL Injection</h3>
 	<p>SQL Injection (SQLi) is an attempt to inject nefarious queries into a GET or POST dynamic variable, which is used to query a database. Cloudflare, on a day to day basis will see over 2.3m SQLi attempts on our network. Most commonly, we see SQLi attacks against Wordpress sites, as it is one of the biggest web applications used on Cloudflare today. Wordpress is used by some of the world's giants, like Sony Music, all the way down to "mom &amp; pop" businesses. The challenge with being the leader in the space, is you then become a hot target. Looking at the CVE list as we near the close of 2017, there have been 41 vulnerabilities found in multiple versions of Wordpress which would force people to upgrade to the latest versions. To protect our customers, and buy them time to upgrade, Cloudflare works with a number of vendors to address vulnerabilities and then virtual-patching using our WAF to <a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection">prevent these vulnerabilities being exploited</a>.</p>
-	<p>The way a SQL injection works is by "breaking out" or malforming a query when a web application is needing data from a database. As an example, a Forgotten Password page has a single email input field, which will be used to validate whether the username exists, and if so, sends the user a â€œForgotten Passwordâ€ link. Below is a straightforward SQL query example, which could be used in a web application:</p>
+	<p>The way a SQL injection works is by "breaking out" or malforming a query when a web application is needing data from a database. As an example, a Forgotten Password page has a single email input field, which will be used to validate whether the username exists, and if so, sends the user a “Forgotten Password” link. Below is a straightforward SQL query example, which could be used in a web application:</p>
 	<pre><code>SELECT user, password FROM users WHERE user = 'john@smith';
 </code></pre>
 	<p>Which results in:</p>
@@ -51,14 +51,14 @@ root@struts-demo:~$
 | john@smith | $2y$10$h9XJRX.EBnGFrWQlnt... |
 +------------+------------------------------+
 </code></pre>
-	<p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to takeover another userâ€™s account, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
-	<pre><code>dontcare@bla.comâ€™;UPDATE users SET user = â€˜mr@robotâ€™ WHERE user = â€˜john@smithâ€™;
+	<p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to takeover another user’s account, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
+	<pre><code>dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
 </code></pre>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/emaileg.png" alt="" loading="lazy"><br>
 		Due to the lack of validation, the query which the web application sends to the database will be:</p>
-	<pre><code>SELECT user, password FROM users WHERE user = 'dontcare@bla.comâ€™;UPDATE users SET user = â€˜mr@robotâ€™ WHERE user = â€˜john@smithâ€™;
+	<pre><code>SELECT user, password FROM users WHERE user = 'dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
 </code></pre>
-	<p>Now this has been updated, the attacker can now request a password reset using his own email address, gaining him access to the victimâ€™s account.</p>
+	<p>Now this has been updated, the attacker can now request a password reset using his own email address, gaining him access to the victim’s account.</p>
 	<pre><code>+----------+------------------------------+
 |  user   |           password           |
 +----------+------------------------------+

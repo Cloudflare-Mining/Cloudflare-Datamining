@@ -1,6 +1,6 @@
 <div class="mb2 gray5">21 min read</div>
 <div class="post-content lh-copy gray1">
-	<p><a href="https://dash.cloudflare.com/sign-up">Cloudflareâ€™s dashboard</a> now supports four new languages (and multiple locales): Spanish (with country-specific locales: Chile, Ecuador, Mexico, Peru, and Spain), Brazilian Portuguese, Korean, and Traditional Chinese. Our customers are global and diverse, so in helping build a better Internet for everyone, it is imperative that we bring our products and services to customers in their native language.</p>
+	<p><a href="https://dash.cloudflare.com/sign-up">Cloudflare’s dashboard</a> now supports four new languages (and multiple locales): Spanish (with country-specific locales: Chile, Ecuador, Mexico, Peru, and Spain), Brazilian Portuguese, Korean, and Traditional Chinese. Our customers are global and diverse, so in helping build a better Internet for everyone, it is imperative that we bring our products and services to customers in their native language.</p>
 	<p>Since last year Cloudflare has been hard at work internationalizing our dashboard. At the end of 2019, we launched our first language other than US English: German. At the end of March 2020, we released three additional languages: French, Japanese, and Simplified Chinese. If you want to start using the dashboard in any of these languages, you can change your language preference in the top right of the Cloudflare dashboard. The preference selected will be saved and used across all sessions.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In this blog post, I want to help those unfamiliar with internationalization and localization to better understand how it works. I also would like to tell the story of how we made internationalizing and localizing our application a standard and repeatable process along with sharing a few tips that may help you as you do the same.</p>
@@ -27,7 +27,7 @@
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The <code>&lt;Trans&gt;</code> component shown above is the fundamental i18n building block in our application. In this scheme, translated strings are kept in large dictionaries keyed by a translation id. We call these dictionaries â€œtranslation catalogsâ€, and there are a set of translation catalogs for each language that we support.</p>
+	<p>The <code>&lt;Trans&gt;</code> component shown above is the fundamental i18n building block in our application. In this scheme, translated strings are kept in large dictionaries keyed by a translation id. We call these dictionaries “translation catalogs”, and there are a set of translation catalogs for each language that we support.</p>
 	<p>At runtime, the <code>&lt;Trans&gt;</code> component looks up the translation in the correct catalog for the provided key and then inserts this translation into the page (via the DOM). All of an application's static text can be externalized with simple transformations like these.</p>
 	<p>However, when dynamic data needs to be intermixed with static text, the solution becomes a little more complicated. Consider the following seemingly straightforward example which is riddled with i18n landmines:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;You've selected { totalSelected } Page Rules.&lt;/span&gt;
@@ -47,21 +47,21 @@
  
 // Japanese catalog.json
 {
- "selected.prefix": "é¸æŠžã—ã¾ã—ãŸ",
- "pageRules": "ãƒšãƒ¼ã‚¸ ãƒ«ãƒ¼ãƒ«",
+ "selected.prefix": "選択しました",
+ "pageRules": "ページ ルール",
  // ...
 }
  
 // German catalog.json
 {
- "selected.prefix": "Sie haben ausgewÃ¤hlt",
+ "selected.prefix": "Sie haben ausgewählt",
  "pageRules": "Page Rules",
  // ...
 }
  
 // Portuguese (Brazil) catalog.json
 {
- "selected.prefix": "VocÃª selecionou",
+ "selected.prefix": "Você selecionou",
  "pageRules": "Page Rules",
  // ...
 }
@@ -69,8 +69,8 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This gets the job done and may even seem like an elegant solution. After all, both the <code>selected.prefix</code> and <code>pageRules.suffix</code> strings seem like they are destined to be reused. Unfortunately, chopping sentences up and then concatenating translated bits back together like this turns out to be the single largest pitfall when externalizing strings for internationalization.</p>
-	<p>The problem is that when translated, the various words that make up a sentence can be <a href="https://en.wikipedia.org/wiki/Inflection">morphed in different ways</a> based on context (singular vs plural contexts, due to word gender, subject/verb agreement, etc). This varies significantly from language to language, as does <a href="https://en.wikipedia.org/wiki/Word_order">word order</a>. For example in English, the sentence â€œWe like themâ€ follows a subject-verb-object order, while other languages might follow subject-object-verb (We them like), verb-subject-object (Like we them), or even other orderings. Because of these nuanced differences between languages, concatenating translated phrases into a sentence will almost always lead to localization errors.</p>
-	<p>The code example above contains actual translations we got back from our translation teams when we supplied them with â€œYouâ€™ve selectedâ€ and â€œPage Rulesâ€ as separate strings. Hereâ€™s how this sentence would look when rendered in the different languages:</p><!--kg-card-begin: markdown-->
+	<p>The problem is that when translated, the various words that make up a sentence can be <a href="https://en.wikipedia.org/wiki/Inflection">morphed in different ways</a> based on context (singular vs plural contexts, due to word gender, subject/verb agreement, etc). This varies significantly from language to language, as does <a href="https://en.wikipedia.org/wiki/Word_order">word order</a>. For example in English, the sentence “We like them” follows a subject-verb-object order, while other languages might follow subject-object-verb (We them like), verb-subject-object (Like we them), or even other orderings. Because of these nuanced differences between languages, concatenating translated phrases into a sentence will almost always lead to localization errors.</p>
+	<p>The code example above contains actual translations we got back from our translation teams when we supplied them with “You’ve selected” and “Page Rules” as separate strings. Here’s how this sentence would look when rendered in the different languages:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -81,20 +81,20 @@
 		<tbody>
 			<tr>
 				<td>Japanese</td>
-				<td>é¸æŠžã—ã¾ã—ãŸ { totalSelected } ãƒšãƒ¼ã‚¸ ãƒ«ãƒ¼ãƒ«ã€‚</td>
+				<td>選択しました { totalSelected } ページ ルール。</td>
 			</tr>
 			<tr>
 				<td>German</td>
-				<td>Sie haben ausgewÃ¤hlt { totalSelected } Page Rules</td>
+				<td>Sie haben ausgewählt { totalSelected } Page Rules</td>
 			</tr>
 			<tr>
 				<td>Portuguese (Brazil)</td>
-				<td>VocÃª selecionou { totalSelected } Page Rules.</td>
+				<td>Você selecionou { totalSelected } Page Rules.</td>
 			</tr>
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>To compare, we also gave them the sentence as a single string using a placeholder for the variable, and hereâ€™s the result:</p><!--kg-card-begin: markdown-->
+	<p>To compare, we also gave them the sentence as a single string using a placeholder for the variable, and here’s the result:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -105,20 +105,20 @@
 		<tbody>
 			<tr>
 				<td>Japanese</td>
-				<td>%{ totalSelected } ä»¶ã®ãƒšãƒ¼ã‚¸ ãƒ«ãƒ¼ãƒ«ã‚’é¸æŠžã—ã¾ã—ãŸã€‚</td>
+				<td>%{ totalSelected } 件のページ ルールを選択しました。</td>
 			</tr>
 			<tr>
 				<td>German</td>
-				<td>Sie haben %{ totalSelected } Page Rules ausgewÃ¤hlt.</td>
+				<td>Sie haben %{ totalSelected } Page Rules ausgewählt.</td>
 			</tr>
 			<tr>
 				<td>Portuguese (Brazil)</td>
-				<td>VocÃª selecionou %{ totalSelected } Page Rules.</td>
+				<td>Você selecionou %{ totalSelected } Page Rules.</td>
 			</tr>
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>As you can see, the translations differ for Japanese and German. Weâ€™ve got a localization bug on our hands.</p>
+	<p>As you can see, the translations differ for Japanese and German. We’ve got a localization bug on our hands.</p>
 	<p>So, In order to guarantee that translators will be able to convey the true meaning of your text with fidelity, it's important to keep each sentence intact as a single externalized string. Our <code>&lt;Trans&gt;</code> component allows for easy injection of values into template strings which allows us to do exactly that:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ count: totalSelected }} /&gt;
@@ -132,25 +132,25 @@
 
 // Japanese catalog.json
 {
-  "pageRules.selected": "%{ count } ä»¶ã®ãƒšãƒ¼ã‚¸ ãƒ«ãƒ¼ãƒ«ã‚’é¸æŠžã—ã¾ã—ãŸã€‚",
+  "pageRules.selected": "%{ count } 件のページ ルールを選択しました。",
   // ...
 }
 
 // German catalog.json
 {
-  "pageRules.selected": "Sie haben %{ count } Page Rules ausgewÃ¤hlt.",
+  "pageRules.selected": "Sie haben %{ count } Page Rules ausgewählt.",
   // ...
 }
 
 // Portuguese(Brazil) catalog.json
 {
-  "pageRules.selected": "VocÃª selecionou %{ count } Page Rules.",
+  "pageRules.selected": "Você selecionou %{ count } Page Rules.",
   // ...
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This allows translators to have the full context of the sentence, ensuring that all words will be translated with the correct inflection.</p>
-	<p>You may have noticed another potential issue. What happens in this example when <code>totalSelected</code> is just 1? With the above code, the user would see â€œYou've selected 1 Page Rules for deletionâ€. We need to conditionally pluralize the sentence based on the value of our dynamic data. This turns out to be a fairly common use case, and our <code>&lt;Trans&gt;</code> component handles this automatically via the <code>smart_count</code> feature:</p><!--kg-card-begin: markdown-->
+	<p>You may have noticed another potential issue. What happens in this example when <code>totalSelected</code> is just 1? With the above code, the user would see “You've selected 1 Page Rules for deletion”. We need to conditionally pluralize the sentence based on the value of our dynamic data. This turns out to be a fairly common use case, and our <code>&lt;Trans&gt;</code> component handles this automatically via the <code>smart_count</code> feature:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-jsx">&lt;span&gt;
   &lt;Trans id="pageRules.selectedForDeletion" values={{ smart_count: totalSelected }} /&gt;
 &lt;/span&gt;
@@ -162,17 +162,17 @@
 
 // Japanese catalog.json
 {
-  "pageRules.selected": "%{ smart_count } ä»¶ã®ãƒšãƒ¼ã‚¸ ãƒ«ãƒ¼ãƒ«ã‚’é¸æŠžã—ã¾ã—ãŸã€‚ |||| %{ smart_count } ä»¶ã®ãƒšãƒ¼ã‚¸ ãƒ«ãƒ¼ãƒ«ã‚’é¸æŠžã—ã¾ã—ãŸã€‚",
+  "pageRules.selected": "%{ smart_count } 件のページ ルールを選択しました。 |||| %{ smart_count } 件のページ ルールを選択しました。",
 }
 
 // German catalog.json
 {
-  "pageRules.selected": "Sie haben %{ smart_count } Page Rule ausgewÃ¤hlt. |||| Sie haben %{ smart_count } Page Rules ausgewÃ¤hlt.",
+  "pageRules.selected": "Sie haben %{ smart_count } Page Rule ausgewählt. |||| Sie haben %{ smart_count } Page Rules ausgewählt.",
 }
 
 // Portuguese (Brazil) catalog.json
 {
-  "pageRules.selected": "VocÃª selecionou %{ smart_count } Page Rule. |||| VocÃª selecionou %{ smart_count } Page Rules.",
+  "pageRules.selected": "Você selecionou %{ smart_count } Page Rule. |||| Você selecionou %{ smart_count } Page Rules.",
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -203,23 +203,23 @@
 
 // es-ES
 &lt;VerificationReminder&gt;
-  No olvide &lt;Link to="/profile"&gt;verificar la direcciÃ³n de correo electrÃ³nico.&lt;/Link&gt;
+  No olvide &lt;Link to="/profile"&gt;verificar la dirección de correo electrónico.&lt;/Link&gt;
 &lt;/VerificationReminder&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="safety-third-">Safety third!</h3>
 	<p>The functionality outlined above was enough for us to externalize our strings. However, it did at times result in bulky, repetitive code that was easy to mess up. A couple of pitfalls quickly became apparent.</p>
 	<p>The first was that small hardcoded strings were now easier to hide in plain sight, and because they weren't glaringly obvious to a developer until the rest of the page had been translated, the feedback loop in finding these was often days or weeks. A common solution to surfacing these issues is introducing a pseudolocalization mode into your application during development which will transform all properly internationalized strings by replacing each character with a similar looking unicode character.</p>
-	<p>For example <code>You've selected 3 Page Rules.</code> might be transformed to <code>ÃÃ´Ãº'Æ²Ã¨ Æ¨Ã¨â„“Ã¨Ã§Æ­Ã¨Î´ 3 ÃžÃ¡Ï±Ã¨ RÃºâ„“Ã¨Æ¨</code>.</p>
-	<p>Another handy feature at your disposal in a pseudolocalization mode is the ability to shrink or lengthen all strings by a fixed amount in order to plan for content width differences. Here's the same pseudolocalized sentence increased in length by 50%: <code>ÃÃ´Ãº'Æ²Ã¨ Æ¨Ã¨â„“Ã¨Ã§Æ­Ã¨Î´ 3 ÃžÃ¡Ï±Ã¨ RÃºâ„“Ã¨Æ¨. â„“Ã´Å™Ã¨â‚¥ Ã¯Æ¥Æ¨Ãºâ‚¥ Î´Ã´.</code> This is useful in helping both engineers as well as designers spot places where content length could potentially be an issue. We first recognized this problem when rolling out support for German, which at times tends to have somewhat longer words than English.</p>
+	<p>For example <code>You've selected 3 Page Rules.</code> might be transformed to <code>Ýôú'Ʋè ƨèℓèçƭèδ 3 Þáϱè Rúℓèƨ</code>.</p>
+	<p>Another handy feature at your disposal in a pseudolocalization mode is the ability to shrink or lengthen all strings by a fixed amount in order to plan for content width differences. Here's the same pseudolocalized sentence increased in length by 50%: <code>Ýôú'Ʋè ƨèℓèçƭèδ 3 Þáϱè Rúℓèƨ. ℓôřè₥ ïƥƨú₥ δô.</code> This is useful in helping both engineers as well as designers spot places where content length could potentially be an issue. We first recognized this problem when rolling out support for German, which at times tends to have somewhat longer words than English.</p>
 	<p>This meant that in a lot of places the text in page elements would overflow, such as in this "Add" button:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image4-7.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>There aren't a lot of easy fixes for these types of problems that don't compromise the user experience.</p>
 	<p>For best results, variable content width needs to be baked into the design itself. Since fixing these bugs often means sending it back upstream to request a new design, the process tends to be time consuming. If you haven't given much thought to content design in general, an internationalization effort can be a good time to start. Having standards and consistency around the copy used for various elements in your app can not only cut down on the number of words that need translating, but also eliminate the need to think through the content length pitfalls of using a novel phrase.</p>
-	<p>The other pitfall we ran into was that the translation ids â€” especially long and repetitive ones â€” are highly susceptible to typos.</p>
+	<p>The other pitfall we ran into was that the translation ids — especially long and repetitive ones — are highly susceptible to typos.</p>
 	<p>Pop quiz, which of these translation keys will break our app: <code>traffic.load_balancing.analytics.filters.origin_health_title</code> or <code>traffic.load_balancing.analytics.filters.origin_heath_title</code>? </p>
 	<p>Nestled among hundreds of other lines of changes, these are hard to spot in code review. Most apps have a fallback so missing translations don't result in a page breaking error. As a result a bug like this might go unnoticed entirely if it's hidden well enough (in say, a help text flyout).</p>
-	<p>Fortunately, with a growing percentage of our codebase in TypeScript, we were able to leverage the type-checker to give developers feedback as they wrote the code. Hereâ€™s an example where our code editor is helpfully showing us a red underline to indicate that the id property is invalid (due to the missing â€œlâ€):</p>
+	<p>Fortunately, with a growing percentage of our codebase in TypeScript, we were able to leverage the type-checker to give developers feedback as they wrote the code. Here’s an example where our code editor is helpfully showing us a red underline to indicate that the id property is invalid (due to the missing “l”):</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/image5-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Not only did it make the problems more obvious, but it also meant that violations would cause builds to fail, preventing bad code from entering the codebase.</p>
 	<h3 id="scaling-locale-files">Scaling locale files</h3>
@@ -228,7 +228,7 @@
 	<p>In addition to per-feature catalogs, we have a common catalog file to hold strings that are re-used throughout the application. It allows us to keep ids short ( <code>common.delete</code> vs <code>some_page.some_tab.some_feature.thing.delete</code> ) and lowers the likelihood of duplication since developers habitually check the common catalog before adding new strings.</p>
 	<h3 id="libraries">Libraries</h3>
 	<p>So far we've talked at length about our <code>&lt;Trans&gt;</code> component and what it can do. Now, let's talk about how it's built.</p>
-	<p>Perhaps unsurprisingly, we didn't want to reinvent the wheel and come up with a base i18n library from scratch. Due to prior efforts to internationalize the legacy parts of our application written in Backbone, we were already using Airbnb's <a href="https://airbnb.io/polyglot.js">Polyglot library</a>, a "tiny I18n helper library written in JavaScript" which, among other things, "provides a simple solution for interpolation and pluralization, based off of Airbnbâ€™s experience adding I18n functionality to its Backbone.js and Node apps".</p>
+	<p>Perhaps unsurprisingly, we didn't want to reinvent the wheel and come up with a base i18n library from scratch. Due to prior efforts to internationalize the legacy parts of our application written in Backbone, we were already using Airbnb's <a href="https://airbnb.io/polyglot.js">Polyglot library</a>, a "tiny I18n helper library written in JavaScript" which, among other things, "provides a simple solution for interpolation and pluralization, based off of Airbnb’s experience adding I18n functionality to its Backbone.js and Node apps".</p>
 	<p>We took a look at a few of the most popular libraries that had been purpose-built for internationalizing React applications, but ultimately decided to stick with Polyglot. We created our <code>&lt;Trans&gt;</code> component to bridge the gap to React. We chose this direction for a few reasons:</p>
 	<ul>
 		<li>We didn't want to re-internationalize the legacy code in our application in order to migrate to a new i18n support library.</li>
@@ -251,7 +251,7 @@
 
 // locales/de_DE.json
 {
-  "Hmm... We couldn't find any matching websites.": "Hmm... Wir konnten keine Ã¼bereinstimmenden Websites finden."
+  "Hmm... We couldn't find any matching websites.": "Hmm... Wir konnten keine übereinstimmenden Websites finden."
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -304,7 +304,7 @@
 			<tr>
 				<td>French (France)</td>
 				<td>fr-FR</td>
-				<td>300â€¯000,03</td>
+				<td>300 000,03</td>
 			</tr>
 			<tr>
 				<td>Hindi (India)</td>
@@ -480,7 +480,7 @@
 			<tr>
 				<td>Korean (South Korea)</td>
 				<td>ko-KR</td>
-				<td>ì˜¤í›„ 2:02:37</td>
+				<td>오후 2:02:37</td>
 			</tr>
 			<tr>
 				<td>Portuguese (Brazil)</td>
@@ -513,7 +513,7 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	<!--kg-card-end: markdown-->
 	<p>Fortunately, browser support for Intl has come quite a long way in recent years, with all modern browsers having full support.</p>
 	<p>Some modern JavaScript engines like V8 have even moved away from self-hosted JavaScript implementations of these libraries in favor of C++ based builtins, <a href="https://v8.dev/blog/intl">resulting in significant speedup</a>.</p>
-	<p>Support for older browsers can be somewhat lacking however. Here's a <a href="https://intl-formatting.jculvey.workers.dev">simple demo site</a> ( <a href="https://github.com/jculvey/intl-formatting-worker">source code</a>) thatâ€™s built with <a href="https://workers.cloudflare.com">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev"> </a>that shows how dates, times, and numbers are rendered in a hand-full of locales.</p>
+	<p>Support for older browsers can be somewhat lacking however. Here's a <a href="https://intl-formatting.jculvey.workers.dev">simple demo site</a> ( <a href="https://github.com/jculvey/intl-formatting-worker">source code</a>) that’s built with <a href="https://workers.cloudflare.com">Cloudflare Workers</a><a href="https://intl-formatting.jculvey.workers.dev"> </a>that shows how dates, times, and numbers are rendered in a hand-full of locales.</p>
 	<p>Some combinations of old browsers and OS's will yield less than ideal results. For example, here's how the same dates and times from above are rendered on Windows 8 with IE 10:</p><!--kg-card-begin: html-->
 	<table>
 		<tbody>
@@ -525,11 +525,11 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 	</table><!--kg-card-end: html-->
 	<p>If you need to support older browsers, this can be solved with a polyfill.</p>
 	<h3 id="translating">Translating</h3>
-	<p>With all strings externalized, and all injected data being carefully formatted to locale specific standards, the bulk of the engineering work is complete. At this point, we can now claim that weâ€™ve <strong>internationalized</strong> our application, since weâ€™ve adapted it in a way that makes it easy to localize.</p>
-	<p>Next comes the process of <strong>localization</strong> where we actually create varying content based on the userâ€™s language and cultural norms.</p>
+	<p>With all strings externalized, and all injected data being carefully formatted to locale specific standards, the bulk of the engineering work is complete. At this point, we can now claim that we’ve <strong>internationalized</strong> our application, since we’ve adapted it in a way that makes it easy to localize.</p>
+	<p>Next comes the process of <strong>localization</strong> where we actually create varying content based on the user’s language and cultural norms.</p>
 	<p>This is no small feat. Like we mentioned before, the strings in our application added together are the size of a small novel. It takes a significant amount of coordination and human expertise to create a translated copy that both captures the information with fidelity and speaks to the user in a familiar way.</p>
 	<p>There are many ways to handle the translation work: leveraging multi-lingual staff members, contracting the work out to individual translators, agencies, or even going all in and hiring teams of in-house translators. Whatever the case may be, there needs to be a smooth process for both workflow signalling and moving assets between the translation and development teams.</p>
-	<p>A healthy i18n program will provide developers with black-box interface with the process â€” they put new strings in a translation catalog file and commit the change, and without any more effort on their part, the feature code they wrote is available in production for all supported locales a few days later. Similarly, in a well run process translators will remain blissfully unaware of the particulars of the development process and application architecture. They receive files that easily load in their tools and clearly indicate what translation work needs to be done.</p>
+	<p>A healthy i18n program will provide developers with black-box interface with the process — they put new strings in a translation catalog file and commit the change, and without any more effort on their part, the feature code they wrote is available in production for all supported locales a few days later. Similarly, in a well run process translators will remain blissfully unaware of the particulars of the development process and application architecture. They receive files that easily load in their tools and clearly indicate what translation work needs to be done.</p>
 	<p>So, how does it actually work in practice?</p>
 	<p>We have a set of automated scripts that can be run on-demand by the localization team to package up a snapshot of our localization catalogs for all supported languages. During this process, a few things happen:</p>
 	<ul>
@@ -547,29 +547,29 @@ var formatted = number.toLocaleString('hi-IN'); // 3,00,000.03
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Here, we have strings that are duplicated verbatim, as well as sub-strings that are copied. Translation services are billed by the word â€” you donâ€™t want to pay for something twice and run the risk of a consistency issue arising. To this end, having a well-maintained Translation Memory will ensure that these strings are taken care of in the pre-translation steps before translators even see the file.</p>
-	<p>Once the translation job is marked as ready, it can take translation teams anywhere from hours to weeks to complete return translated copies depending on a number of factors such as the size of the job, the availability of translators, and the contract terms. The concerns of this phase could constitute another blog article of similar length: sourcing the right translation team, controlling costs, ensuring quality and consistency, making sure the companyâ€™s brand is properly conveyed, etc. Since the focus of this article is largely technical, weâ€™ll gloss over the details here, but make no mistake -- getting this part wrong will tank your entire effort, even if youâ€™ve achieved your technical objectives.</p>
+	<p>Here, we have strings that are duplicated verbatim, as well as sub-strings that are copied. Translation services are billed by the word — you don’t want to pay for something twice and run the risk of a consistency issue arising. To this end, having a well-maintained Translation Memory will ensure that these strings are taken care of in the pre-translation steps before translators even see the file.</p>
+	<p>Once the translation job is marked as ready, it can take translation teams anywhere from hours to weeks to complete return translated copies depending on a number of factors such as the size of the job, the availability of translators, and the contract terms. The concerns of this phase could constitute another blog article of similar length: sourcing the right translation team, controlling costs, ensuring quality and consistency, making sure the company’s brand is properly conveyed, etc. Since the focus of this article is largely technical, we’ll gloss over the details here, but make no mistake -- getting this part wrong will tank your entire effort, even if you’ve achieved your technical objectives.</p>
 	<p>After translation teams signal that new files are ready for pickup, the assets are pulled from the server and unpacked into their correct locations in the application code. We then run a suite of automated checks to make sure that all files are valid and free of any formatting issues.</p>
-	<p>An optional (but highly recommended) step takes place at this stage â€” in-context review. A team of translation reviewers then look at the translated output in context to make sure everything looks perfect in its finalized state. Having support staff that are both highly proficient with the product and fluent in the target language are especially useful in this effort. Shoutout to all our team members from around the company that have taken the time and effort to do this. To make this possible for outside contractors, we prepare special preview versions of our app that allow them to test with development mode locales enabled.</p>
+	<p>An optional (but highly recommended) step takes place at this stage — in-context review. A team of translation reviewers then look at the translated output in context to make sure everything looks perfect in its finalized state. Having support staff that are both highly proficient with the product and fluent in the target language are especially useful in this effort. Shoutout to all our team members from around the company that have taken the time and effort to do this. To make this possible for outside contractors, we prepare special preview versions of our app that allow them to test with development mode locales enabled.</p>
 	<p>And there you have it, everything it takes to deliver a localized version of your application to your users all around the world.</p>
 	<h3 id="continual-localization">Continual Localization</h3>
-	<p>It would be great to stop here, but what weâ€™ve discussed up until this point is the effort required to do it once. As we all know, code changes. New strings will be gradually added, modified, and deleted over the course of tiâ€ƒme as new features are launched and tweaked.</p>
+	<p>It would be great to stop here, but what we’ve discussed up until this point is the effort required to do it once. As we all know, code changes. New strings will be gradually added, modified, and deleted over the course of ti me as new features are launched and tweaked.</p>
 	<p>Since translation is a highly human process that often involves effort from people in different corners of the world, there is a lower bound to the timeframe in which turnover is possible. Since our release cadence (daily) is often faster than this turnover rate (2-5 days), it means that developers making changes to features have to make a choice: slow down to match this cadence, or ship slightly ahead of the localization schedule without full coverage.</p>
-	<p>In order to ensure that features shipping ahead of translations donâ€™t cause application-breaking errors, we fallback to our base locale (en_US) if a string doesnâ€™t exist for the configured language.</p>
+	<p>In order to ensure that features shipping ahead of translations don’t cause application-breaking errors, we fallback to our base locale (en_US) if a string doesn’t exist for the configured language.</p>
 	<p>Some applications have a slightly different fallback behavior: displaying raw translation keys (perhaps you've seen <em>some.funny.dot.delimited.string</em> in an app you're using). There's a tradeoff between velocity and correctness here, and we chose to optimize for velocity and minimal overhead. In some apps correctness is important enough to slow down cadence for i18n. In our case it wasn't.</p>
 	<h3 id="finishing-touches">Finishing Touches</h3>
 	<p>There are a few more things we can do to optimize the user experience in our newly localized application. </p>
-	<p>First, we want to make sure there isnâ€™t any performance degradation. If our application made the user fetch all of its translated strings before rendering the page, this would surely happen. So, in order to keep everything running smoothly, the translation catalogs are fetched asynchronously and only as the application needs them to render some content on the page. This is easy to accomplish nowadays with the code splitting features available in module bundlers that support dynamic import statements such as <a href="https://parceljs.org/code_splitting.html">Parcel</a> or <a href="https://webpack.js.org/guides/code-splitting">Webpack</a>.</p>
+	<p>First, we want to make sure there isn’t any performance degradation. If our application made the user fetch all of its translated strings before rendering the page, this would surely happen. So, in order to keep everything running smoothly, the translation catalogs are fetched asynchronously and only as the application needs them to render some content on the page. This is easy to accomplish nowadays with the code splitting features available in module bundlers that support dynamic import statements such as <a href="https://parceljs.org/code_splitting.html">Parcel</a> or <a href="https://webpack.js.org/guides/code-splitting">Webpack</a>.</p>
 	<p>We also want to eliminate any friction the user might experience with needing to constantly select their desired language when visiting different Cloudflare properties. To this end, we made sure that any language preference a user selects on our <a href="https://www.cloudflare.com/fr-fr">marketing site</a> or our <a href="https://support.cloudflare.com/hc/fr-fr">support site</a> persists as they navigate to and from our <a href="https://dash.cloudflare.com/login?lang=fr-fr">dashboard</a> (all links are in French to belabor the point).</p>
-	<h3 id="what-s-next">Whatâ€™s next?</h3>
-	<p>Itâ€™s been an exciting journey, and weâ€™ve learned a lot from the process. Itâ€™s difficult (perhaps impossible) to call an i18n project truly complete. Â&nbsp;Expanding into new languages will surface slippery bugs and expose new challenges. Budget pressure will challenge you to find ways of cutting costs and increasing efficiency. In addition, you will discover ways in which you can enhance the localized experience even more for users.</p>
-	<p>Thereâ€™s a long list of things weâ€™d like to improve upon, but here are some of the highlights:</p>
+	<h3 id="what-s-next">What’s next?</h3>
+	<p>It’s been an exciting journey, and we’ve learned a lot from the process. It’s difficult (perhaps impossible) to call an i18n project truly complete. &nbsp;Expanding into new languages will surface slippery bugs and expose new challenges. Budget pressure will challenge you to find ways of cutting costs and increasing efficiency. In addition, you will discover ways in which you can enhance the localized experience even more for users.</p>
+	<p>There’s a long list of things we’d like to improve upon, but here are some of the highlights:</p>
 	<ul>
-		<li>Collation. String comparison is language sensitive, and as such, the code youâ€™ve written to lexicographically sort lists and tables of data in your app is probably doing the wrong thing for some of your users. This is especially apparent in languages that use logographic writing systems (such as Chinese or Japanese) as opposed to languages that use alphabets (like English or Spanish).</li>
+		<li>Collation. String comparison is language sensitive, and as such, the code you’ve written to lexicographically sort lists and tables of data in your app is probably doing the wrong thing for some of your users. This is especially apparent in languages that use logographic writing systems (such as Chinese or Japanese) as opposed to languages that use alphabets (like English or Spanish).</li>
 		<li>Support for <a href="https://en.wikipedia.org/wiki/Right-to-left">right-to-left languages</a> like Arabic and Hebrew.</li>
 		<li>Localizing API responses is harder than localizing static copy in your user interface, as it takes a coordinated effort between teams. In the age of microservices, finding a solution that works well across the myriad of tech stacks that power each service can be very challenging.</li>
-		<li>Localizing maps. Weâ€™ll be working on making sure all content in our map-based visualizations is translated.</li>
+		<li>Localizing maps. We’ll be working on making sure all content in our map-based visualizations is translated.</li>
 		<li>Machine translation has come a long way in recent years, but not far enough to churn our translations unsupervised. We would however like to experiment more with using machine translation as a first pass that translation reviewers then edit for correctness and tone.</li>
 	</ul>
-	<p>I hope you have enjoyed this overview of how Cloudflare internationalized and localized our dashboard. Â&nbsp;Check out <a href="https://www.cloudflare.com/careers/jobs">our careers page</a> for more information on full-time positions and internship roles across the globe.</p>
+	<p>I hope you have enjoyed this overview of how Cloudflare internationalized and localized our dashboard. &nbsp;Check out <a href="https://www.cloudflare.com/careers/jobs">our careers page</a> for more information on full-time positions and internship roles across the globe.</p>
 </div>

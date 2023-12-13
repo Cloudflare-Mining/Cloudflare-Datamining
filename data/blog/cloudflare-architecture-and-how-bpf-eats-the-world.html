@@ -42,7 +42,7 @@
 	<p>During this project we encountered a number of eBPF/XDP limitations. One of them was the lack of concurrency primitives. It was very hard to implement things like race-free token buckets. Later we found that <a href="http://vger.kernel.org/lpc-bpf2018.html#session-9">Facebook engineer Julia Kartseva</a> had the same issues. In February this problem has been addressed with the introduction of <code>bpf_spin_lock</code> helper.</p>
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-26.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>While our modern volumetric DoS defenses are done in XDP layer, we still rely on <code>iptables</code> for application layer 7 mitigations. Here, a higher level firewallâ€™s features are useful: connlimit, hashlimits and ipsets. We also use the <code>xt_bpf</code> iptables module to run cBPF in iptables to match on packet payloads. We talked about this in the past:</p>
+	<p>While our modern volumetric DoS defenses are done in XDP layer, we still rely on <code>iptables</code> for application layer 7 mitigations. Here, a higher level firewall’s features are useful: connlimit, hashlimits and ipsets. We also use the <code>xt_bpf</code> iptables module to run cBPF in iptables to match on packet payloads. We talked about this in the past:</p>
 	<ul>
 		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible">Lessons from defending the indefensible</a> (PPT)</li>
 		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools">Introducing the BPF tools</a></li>

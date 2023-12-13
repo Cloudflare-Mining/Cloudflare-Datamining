@@ -6,14 +6,14 @@
 	<h2 id="why-terraform">Why Terraform</h2>
 	<p>Unsurprisingly, we find Cloudflare's products to be pretty useful for securing and enhancing the performance of services we deploy internally. We use <a href="https://www.cloudflare.com/dns">DNS</a>, <a href="https://www.cloudflare.com/waf">WAF</a>, <a href="https://www.cloudflare.com/products/zero-trust">Zero Trust</a>, <a href="https://www.cloudflare.com/products/zero-trust/email-security">Email Security</a>, <a href="https://www.cloudflare.com/developer-platform-hub">Workers</a>, and all manner of <a href="https://www.cloudflare.com/whats-new">experimental new features</a> throughout the company. This <a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dog-fooding</a> allows us to battle-harden the services we provide to users and feed our desired features back to the product teams all while running the backend of Cloudflare. But, as Cloudflare grew, so did the complexity and importance of our configuration.</p>
 	<p>When we were a much smaller company, we only had a handful of accounts with designated administrators making changes on behalf of their colleagues. However, over time this handful of accounts grew into hundreds with each managed by separate teams. Independent accounts are useful in that they allow service-owners to make modifications that can't impact others, but it comes with overhead.</p>
-	<p>We faced the challenge of ensuring consistent security policies, up-to-date account memberships, and change visibility. While our Â&nbsp;accounts were still administered by kind human stewards, we had numerous instances of account members not being removed after they transferred to a different team. While this never became a security incident, it demonstrated the shortcomings of manually provisioning account memberships. In the case of a production service migration, the administrator executing the change would often hop on a video call and ask for others to triple-check an IP address, ruleset, or access policy update. It was an era of looking through the audit logs to see what broke a service.</p>
+	<p>We faced the challenge of ensuring consistent security policies, up-to-date account memberships, and change visibility. While our &nbsp;accounts were still administered by kind human stewards, we had numerous instances of account members not being removed after they transferred to a different team. While this never became a security incident, it demonstrated the shortcomings of manually provisioning account memberships. In the case of a production service migration, the administrator executing the change would often hop on a video call and ask for others to triple-check an IP address, ruleset, or access policy update. It was an era of looking through the audit logs to see what broke a service.</p>
 	<p>We wanted to make it easier for developers and users to make the changes they wanted without having to reach out to an administrator. Defining our configuration in code using Terraform has allowed us to keep tabs on the complexity of configuration while improving visibility and change management practices. By dogfooding the Cloudflare Terraform provider, we've been able to ensure:</p>
 	<ul>
 		<li>Modifications to accounts are peer reviewed by the team that owns an account.</li>
 		<li>Each change is tied to a user, commit, and a ticket explaining the rationale for the change.</li>
 		<li>API Tokens are tied to service accounts rather than individual human users, meaning they survive team changes and offboarding. </li>
 		<li>Account configuration can be audited by anyone at the company for current state, accuracy, and security without needing to add everyone as a member of every account.</li>
-		<li>Large changes, such as <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">enforcing hard keys</a> can be done rapidlyâ€“ even in a single pull request.</li>
+		<li>Large changes, such as <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">enforcing hard keys</a> can be done rapidly– even in a single pull request.</li>
 		<li>Configuration can be easily copied and reused across accounts to promote best practices and speed up development.</li>
 		<li>We can use and iterate on our awesome provider and provide a better experience to other users (shoutout in particular to <a href="https://github.com/jacobbednarz">Jacob</a>!).</li>
 	</ul>
@@ -32,13 +32,13 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-59.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Easily one of my favorite new features</figcaption>
 	</figure>
-	<p>With this button, we're able to politely prevent manual changes to your Cloudflare accountâ€™s Zero Trust configuration without removing permissions from the set of users who can fix settings manually in a break-glass emergency scenario. <a href="https://api.cloudflare.com/#zero-trust-organization-update-your-zero-trust-organization">Check out how you can enable this setting in your Zero Trust organization</a>.</p>
+	<p>With this button, we're able to politely prevent manual changes to your Cloudflare account’s Zero Trust configuration without removing permissions from the set of users who can fix settings manually in a break-glass emergency scenario. <a href="https://api.cloudflare.com/#zero-trust-organization-update-your-zero-trust-organization">Check out how you can enable this setting in your Zero Trust organization</a>.</p>
 	<h2 id="slick-snippets-and-terraforming-recommendations">Slick Snippets and Terraforming Recommendations</h2>
 	<p>As our Terraform repository has matured, we've refined how we define Cloudflare resources in code. By finding a sweet spot between code reuse and readability, we've been able to minimize operational overhead and generally let users get their work done. Here's a couple of useful snippets that have been particularly valuable to us.</p>
 	<h3 id="account-membership">Account Membership</h3>
 	<p>This allows for defining a fairly straightforward mapping of user emails to account privileges without code duplication or complex modules. We pull the list of human-friendly names of <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/account_roles">account roles</a> from the API to show <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member">user</a> permission assignments at a glance. Note: <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_member#status">status</a> is a new argument that allows for accounts to be added without sending an email to the user; perfect for when an organization is using SSO. (Thanks <a href="https://github.com/patrobinson">patrobinson</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1654">feature request</a> and <a href="https://github.com/markblackman">mblackman</a> for the <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1920">PR</a>!)</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-hcl">variables.tf
-â€”-
+—-
 data "cloudflare_account_roles" "my_account" {
 	account_id = var.account_id
 }
@@ -51,7 +51,7 @@ locals {
 }
 
 members.tf
-â€”-
+—-
 locals {
   users = {
     emerson = {
@@ -85,7 +85,7 @@ resource "cloudflare_account_member" "account_member" {
 	<h3 id="defining-auto-refreshing-access-service-tokens">Defining Auto-Refreshing Access Service Tokens</h3>
 	<p>The <a href="https://github.com/cloudflare/terraform-provider-cloudflare/issues/1866">GitHub issue</a> and <a href="https://github.com/cloudflare/terraform-provider-cloudflare/pull/1872">provider change</a> that enabled automatic Access service token refreshes actually came from a need inside Cloudflare. Here's how we ended up implementing it. We begin by defining a set of services that need to connect to our hostnames that are protected by Access. Each of these <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_service_token">tokens</a> are created and stored in a secret key value store. Next, we reference those access tokens by ID in the target <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy">Access policies</a>. Once this has run, the service owner or the service itself can retrieve the credentials from the data store. (Note: we're using Vault here, but any storage provider could be used in its place).</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-hcl">tokens.tf
-â€”
+—
 locals {
   service_tokens = toset([
     "customer-service",     # TICKET-120
@@ -114,7 +114,7 @@ client_secret = cloudflare_access_service_token.token["${each.key}"].client_secr
 }
 
 super_cool_hostname.tf
-â€”
+—
 resource "cloudflare_access_application" "super_cool_hostname" {
   account_id             	            = var.account_id
   name                   	            = "Super Cool Hostname"

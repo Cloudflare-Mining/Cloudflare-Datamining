@@ -1,6 +1,6 @@
 <div class="mb2 gray5">18 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-cn">ç®€ä½“ä¸­æ–‡</a> and <a href="https://blog.cloudflare.com/zh-tw/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-tw">ç¹é«”ä¸­æ–‡</a>.</small></p>
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/welcome-to-wildebeest-the-fediverse-on-cloudflare-zh-tw">繁體中文</a>.</small></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/Wildebeest.png" class="kg-image" alt="Welcome to Wildebeest: the Fediverse on Cloudflare" loading="lazy"></figure>
 	<p><a href="https://en.wikipedia.org/wiki/Fediverse">The Fediverse</a> has been a hot topic of discussion lately, with thousands, if not <a href="https://bitcoinhackers.org/@mastodonusercount">millions</a>, of new users creating accounts on platforms like <a href="https://joinmastodon.org">Mastodon</a> to either move entirely to "the other side" or experiment and learn about this new social network.</p>
@@ -33,9 +33,9 @@
 	<p>Let's get into the details and get technical now.</p>
 	<h3 id="cloudflare-pages">Cloudflare Pages</h3>
 	<p>At the core, Wildebeest is a <a href="https://pages.cloudflare.com">Cloudflare Pages</a> project running its code using <a href="https://developers.cloudflare.com/pages/platform/functions">Pages Functions</a>. Cloudflare Pages provides an excellent foundation for building and deploying your application and serving your bundled assets, Functions gives you full access to the Workers ecosystem, where you can run any code.</p>
-	<p>Functions has a built-in <a href="https://developers.cloudflare.com/pages/platform/functions/routing">file-based router</a>. The <a href="https://github.com/cloudflare/wildebeest/tree/main/functions">/functions</a> directory structure, which is uploaded by Wildebeestâ€™s continuous deployment builds, defines your application routes and what files and code will process each HTTP endpoint request. This routing technique is similar to what other frameworks like Next.js <a href="https://nextjs.org/docs/routing/introduction">use</a>.</p>
+	<p>Functions has a built-in <a href="https://developers.cloudflare.com/pages/platform/functions/routing">file-based router</a>. The <a href="https://github.com/cloudflare/wildebeest/tree/main/functions">/functions</a> directory structure, which is uploaded by Wildebeest’s continuous deployment builds, defines your application routes and what files and code will process each HTTP endpoint request. This routing technique is similar to what other frameworks like Next.js <a href="https://nextjs.org/docs/routing/introduction">use</a>.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/2b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>For example, Mastodonâ€™s <a href="https://docs.joinmastodon.org/methods/timelines/#public">/api/v1/timelines/public</a> API endpoint is handled by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v1/timelines/public.ts">/functions/api/v1/timelines/public.ts</a> with the onRequest method. </p>
+	<p>For example, Mastodon’s <a href="https://docs.joinmastodon.org/methods/timelines/#public">/api/v1/timelines/public</a> API endpoint is handled by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v1/timelines/public.ts">/functions/api/v1/timelines/public.ts</a> with the onRequest method. </p>
 	<pre><code class="language-js">export onRequest = async ({ request, env }) =&gt; {
 	const { searchParams } = new URL(request.url)
 	const domain = new URL(request.url).hostname
@@ -44,9 +44,9 @@
 }
 
 export async function handleRequest(
-    â€¦
+    …
 ): Promise&lt;Response&gt; {
-    â€¦
+    …
 }
 
 </code></pre>
@@ -71,22 +71,22 @@ describe('Mastodon APIs', () =&gt; {
 	<p>As with any other regular Worker, Functions also lets you set up <a href="https://developers.cloudflare.com/pages/platform/functions/bindings">bindings</a> to interact with other Cloudflare products and features like <a href="https://developers.cloudflare.com/workers/runtime-apis/kv">KV</a>, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-reference">R2</a>, <a href="https://developers.cloudflare.com/d1">D1</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects">Durable Objects</a>, and more. The list keeps growing.</p>
 	<p>We use Functions to implement a large portion of the official <a href="https://docs.joinmastodon.org/api">Mastodon API</a> specification, making Wildebeest compatible with the existing ecosystem of other servers and client applications, and also to run our own read-only web frontend under the same project codebase.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/3b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Wildebeestâ€™s web frontend uses <a href="https://qwik.builder.io">Qwik</a>, a general-purpose web framework that is optimized for speed, uses modern concepts like the JSX JavaScript syntax extension and supports server-side-rendering (SSR) and static site generation (SSG).</p>
+	<p>Wildebeest’s web frontend uses <a href="https://qwik.builder.io">Qwik</a>, a general-purpose web framework that is optimized for speed, uses modern concepts like the JSX JavaScript syntax extension and supports server-side-rendering (SSR) and static site generation (SSG).</p>
 	<p>Qwik provides a <a href="https://qwik.builder.io/integrations/deployments/cloudflare-pages">Cloudflare Pages Adaptor</a> out of the box, so we use that (check our <a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-qwik-site">framework guide</a> to know more about how to deploy a Qwik site on Cloudflare Pages). For styling we use the <a href="https://tailwindcss.com">Tailwind CSS</a> framework, which Qwik supports natively.</p>
-	<p>Our frontend website code and static assets can be found under the <a href="https://github.com/cloudflare/wildebeest/tree/main/frontend">/frontend</a> directory. The application is handled by the <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/%5B%5Bpath%5D%5D.ts">/functions/[[path]].js</a> dynamic route, which basically catches all the non-API requests, and then <a href="https://github.com/cloudflare/wildebeest/blob/main/frontend/src/entry.cloudflare-pages.tsx">invokes</a> Qwikâ€™s own internal router, <a href="https://qwik.builder.io/qwikcity/routing/overview">Qwik City</a>, which takes over everything else after that.</p>
+	<p>Our frontend website code and static assets can be found under the <a href="https://github.com/cloudflare/wildebeest/tree/main/frontend">/frontend</a> directory. The application is handled by the <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/%5B%5Bpath%5D%5D.ts">/functions/[[path]].js</a> dynamic route, which basically catches all the non-API requests, and then <a href="https://github.com/cloudflare/wildebeest/blob/main/frontend/src/entry.cloudflare-pages.tsx">invokes</a> Qwik’s own internal router, <a href="https://qwik.builder.io/qwikcity/routing/overview">Qwik City</a>, which takes over everything else after that.</p>
 	<p>The power and versatility of Pages and Functions routes make it possible to run both the backend APIs and a server-side-rendered dynamic client, effectively a full-stack app, under the same project.</p>
 	<p>Let's dig even deeper now, and understand how the server interacts with the other components in our architecture.</p>
 	<h3 id="d1">D1</h3>
-	<p>Wildebeest uses <a href="https://developers.cloudflare.com/d1">D1</a>, Cloudflareâ€™s first SQL database for the Workers platform built on top of SQLite, now open to everyone in <a href="https://blog.cloudflare.com/d1-open-alpha">alpha</a>, to store and query data. Hereâ€™s our schema:</p>
+	<p>Wildebeest uses <a href="https://developers.cloudflare.com/d1">D1</a>, Cloudflare’s first SQL database for the Workers platform built on top of SQLite, now open to everyone in <a href="https://blog.cloudflare.com/d1-open-alpha">alpha</a>, to store and query data. Here’s our schema:</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/4b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>The schema will probably change in the future, as we add more features. Thatâ€™s fine, D1 supports <a href="https://developers.cloudflare.com/d1/platform/migrations">migrations</a> which are great when you need to update your database schema without losing your data. With each new Wildebeest version, we can create a <a href="https://github.com/cloudflare/wildebeest/blob/main/migrations/0001_add-unique-following.sql">new migration</a> file if it requires database schema changes.</p>
+	<p>The schema will probably change in the future, as we add more features. That’s fine, D1 supports <a href="https://developers.cloudflare.com/d1/platform/migrations">migrations</a> which are great when you need to update your database schema without losing your data. With each new Wildebeest version, we can create a <a href="https://github.com/cloudflare/wildebeest/blob/main/migrations/0001_add-unique-following.sql">new migration</a> file if it requires database schema changes.</p>
 	<pre><code class="language-SQL">-- Migration number: 0001 	 2023-01-16T13:09:04.033Z
 
 CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_actor_id);
 
 </code></pre>
 	<p>D1 exposes a powerful <a href="https://developers.cloudflare.com/d1/platform/client-api">client API</a> that developers can use to manipulate and query data from Worker scripts, or in our case, Pages Functions.</p>
-	<p>Hereâ€™s a simplified example of how we interact with D1 when you start following someone on the Fediverse:</p>
+	<p>Here’s a simplified example of how we interact with D1 when you start following someone on the Fediverse:</p>
 	<pre><code class="language-js">export async function addFollowing(db, actor, target, targetAcct): Promise&lt;UUID&gt; {
 	const query = `INSERT OR IGNORE INTO actor_following (id, actor_id, target_actor_id, state, target_actor_acct) VALUES (?, ?, ?, ?, ?)`
 	const out = await db
@@ -97,8 +97,8 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 }
 
 </code></pre>
-	<p>Cloudflareâ€™s culture of dogfooding and building on top of our own products means that we sometimes experience their shortcomings before our users. We did face a few challenges using D1, which is built on SQLite, to store our data. Here are two examples. </p>
-	<p><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> uses <a href="https://www.rfc-editor.org/rfc/rfc4122.txt">UUIDs</a> to identify objects and reference them in URIs extensively. These objects need to be stored in the database. Other databases like PostgreSQL provide built-in functions to <a href="https://www.postgresql.org/docs/current/functions-uuid.html">generate unique identifiers</a>. SQLite and D1 don't have that, yet, itâ€™s in our roadmap.</p>
+	<p>Cloudflare’s culture of dogfooding and building on top of our own products means that we sometimes experience their shortcomings before our users. We did face a few challenges using D1, which is built on SQLite, to store our data. Here are two examples. </p>
+	<p><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> uses <a href="https://www.rfc-editor.org/rfc/rfc4122.txt">UUIDs</a> to identify objects and reference them in URIs extensively. These objects need to be stored in the database. Other databases like PostgreSQL provide built-in functions to <a href="https://www.postgresql.org/docs/current/functions-uuid.html">generate unique identifiers</a>. SQLite and D1 don't have that, yet, it’s in our roadmap.</p>
 	<p>Worry not though, the Workers runtime supports <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto">Web Crypto</a>, so we use crypto.randomUUID() to get our unique identifiers. Check the <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/activitypub/actors/inbox.ts">/backend/src/activitypub/actors/inbox.ts</a>:</p>
 	<pre><code class="language-js">export async function addObjectInInbox(db, actor, obj) {
 	const id = crypto.randomUUID()
@@ -142,12 +142,12 @@ CREATE UNIQUE INDEX unique_actor_following ON actor_following (actor_id, target_
 	<p>Cloudflare Images is also available from the dashboard. You can use it to browse or manage your catalog quickly. </p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/5b.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="queues">Queues</h3>
-	<p>The <a href="https://www.w3.org/TR/activitypub">ActivityPub</a> protocol is chatty by design. Depending on the size of your social graph, there might be a lot of back-and-forth HTTP traffic. We canâ€™t have the clients blocked waiting for hundreds of Fediverse message deliveries every time someone posts something.</p>
+	<p>The <a href="https://www.w3.org/TR/activitypub">ActivityPub</a> protocol is chatty by design. Depending on the size of your social graph, there might be a lot of back-and-forth HTTP traffic. We can’t have the clients blocked waiting for hundreds of Fediverse message deliveries every time someone posts something.</p>
 	<p>We needed a way to work asynchronously and launch background jobs to offload data processing away from the main app and keep the clients snappy. The official Mastodon server has a similar strategy using <a href="https://docs.joinmastodon.org/admin/scaling/#sidekiq">Sidekiq</a> to do background processing.</p>
 	<p>Fortunately, we don't need to worry about any of this complexity either. <a href="https://developers.cloudflare.com/queues">Cloudflare Queues</a> allows developers to send and receive messages with guaranteed delivery, and offload work from your Workers' requests, effectively providing you with asynchronous batch job capabilities.</p>
 	<p>To put it simply, you have a queue topic identifier, which is basically a buffered list that scales automatically, then you have one or more producers that, well, produce structured messages, JSON objects in our case, and put them in the queue (you define their schema), and finally you have one or more consumers that subscribes that queue, receive its messages and process them, at their own speed.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/6b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Hereâ€™s the <a href="https://developers.cloudflare.com/queues/learning/how-queues-works">How Queues works</a> page for more information.</p>
+	<p>Here’s the <a href="https://developers.cloudflare.com/queues/learning/how-queues-works">How Queues works</a> page for more information.</p>
 	<p>In our case, the main application produces queue jobs whenever any incoming API call requires long, expensive operations. For example, when someone posts, sorry, <em>toots</em> something, we need to broadcast that to their followers' inboxes, potentially triggering many requests to remote servers. <a href="https://github.com/cloudflare/wildebeest/blob/main/backend/src/activitypub/deliver.ts">Here we are</a> queueing a job for that, thus freeing the APIs to keep responding:</p>
 	<pre><code class="language-js">export async function deliverFollowers(
 	db: D1Database,
@@ -195,7 +195,7 @@ const actor = await actors.getPersonById(db, actorId)
 	<pre><code class="language-js">export default {
 	async queue(batch, env, ctx) {
 		for (const message of batch.messages) {
-			â€¦
+			…
 
 			switch (message.body.type) {
 				case MessageType.Inbox: {
@@ -210,12 +210,12 @@ const actor = await actors.getPersonById(db, actorId)
 		}
 	},
 }</code></pre>
-	<p>If you want to get your hands dirty with Queues, hereâ€™s a simple example on <a href="https://developers.cloudflare.com/queues/examples/send-errors-to-r2">Using Queues to store data in R2</a>.</p>
+	<p>If you want to get your hands dirty with Queues, here’s a simple example on <a href="https://developers.cloudflare.com/queues/examples/send-errors-to-r2">Using Queues to store data in R2</a>.</p>
 	<h3 id="caching-and-durable-objects">Caching and Durable Objects</h3>
 	<p>Caching repetitive operations is yet another strategy for improving performance in complex applications that require data processing. A famous Netscape developer, Phil Karlton, once said: "There are only two hard things in Computer Science: <strong>cache invalidation</strong> and naming things."</p>
 	<p>Cloudflare obviously knows a lot about caching since <a href="https://developers.cloudflare.com/cache">it's a core feature</a> of our global CDN. We also provide <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">Workers KV</a> to our customers, a global, low-latency, key-value data store that anyone can use to cache data objects in our data centers and build fast websites and applications.</p>
 	<p>However, KV achieves its performance by being eventually consistent. While this is fine for many applications and use cases, it's not ideal for others.</p>
-	<p>The ActivityPub protocol is highly transactional and can't afford eventual consistency. Here's an example: generating complete timelines is expensive, so we cache that operation. However, when you post something, we need to invalidate that cache before we reply to the client. Otherwise, the new post won't be in the timeline and the client can fail with an error because it doesnâ€™t see it. This actually happened to us with one of the most popular clients.</p>
+	<p>The ActivityPub protocol is highly transactional and can't afford eventual consistency. Here's an example: generating complete timelines is expensive, so we cache that operation. However, when you post something, we need to invalidate that cache before we reply to the client. Otherwise, the new post won't be in the timeline and the client can fail with an error because it doesn’t see it. This actually happened to us with one of the most popular clients.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/7b.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We needed to get clever. The team discussed a few options. Fortunately, our API catalog has plenty of options. Meet <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects">Durable Objects</a>.</p>
 	<p>Durable Objects are single-instance Workers that provide a transactional storage API. They're ideal when you need central coordination, strong consistency, and state persistence. You can use Durable Objects in cases like handling the state of <a href="https://developers.cloudflare.com/workers/learning/using-websockets/#durable-objects-and-websocket-state">multiple WebSocket</a> connections, coordinating and routing messages in a <a href="https://github.com/cloudflare/workers-chat-demo">chatroom</a>, or even <a href="https://blog.cloudflare.com/doom-multiplayer-workers">running a multiplayer game like Doom</a>.</p>
@@ -242,7 +242,7 @@ const actor = await actors.getPersonById(db, actorId)
 	<h3 id="zero-trust-access">Zero Trust Access</h3>
 	<p>The official Mastodon server <a href="https://docs.joinmastodon.org/user/signup">handles user registrations</a>, typically using email, before you can choose your local username and start using the service. Handling user registration and authentication can be daunting and time-consuming if we were to build it from scratch though. </p>
 	<p>Furthermore, people don't want to create new credentials for every new service they want to use and instead want more convenient OAuth-like authorization and authentication methods so that they can reuse their existing Apple, Google, or GitHub accounts.</p>
-	<p>We wanted to simplify things using Cloudflareâ€™s built-in features. Needless to say, we have a product that handles user onboarding, authentication, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management">access policies</a> to any application behind Cloudflare; it's called <a href="https://developers.cloudflare.com/cloudflare-one">Zero Trust</a>. So we put Wildebeest behind it.</p>
+	<p>We wanted to simplify things using Cloudflare’s built-in features. Needless to say, we have a product that handles user onboarding, authentication, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/policy-management">access policies</a> to any application behind Cloudflare; it's called <a href="https://developers.cloudflare.com/cloudflare-one">Zero Trust</a>. So we put Wildebeest behind it.</p>
 	<p>Zero Trust Access can either do one-time PIN (<a href="https://en.wikipedia.org/wiki/One-time_password">OTP</a>) authentication using email or single-sign-on (SSO) with many identity providers (examples: Google, Facebook, GitHub, LinkedIn), including any generic one supporting <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/generic-saml">SAML 2.0</a>.</p>
 	<p>When you start using Wildebeest with a client, you don't need to register at all. Instead, you go straight to log in, which will redirect you to the Access page and handle the authentication according to the policy that you, the owner of your instance, configured.</p>
 	<p>The policy defines who can authenticate, and how.</p>
@@ -260,7 +260,7 @@ const actor = await actors.getPersonById(db, actorId)
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/Screenshot-2023-02-08-at-11.13.05-AM-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The Deploy with Workers button is a specially crafted link that auto-generates a workflow page where the user gets asked some questions, and Cloudflare handles authorizing GitHub to deploy to Workers, automatically forks the Wildebeest repository into the user's account, and then configures and deploys the project using a <a href="https://github.com/marketplace/actions/deploy-to-cloudflare-workers-with-wrangler">GitHub Actions</a> workflow.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/10b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>A GitHub Actions <a href="https://docs.github.com/en/actions/using-workflows/about-workflows">workflow</a> is a YAML file that declares what to do in every step. Hereâ€™s the <a href="https://github.com/cloudflare/wildebeest/blob/main/.github/workflows/deploy.yml">Wildebeest workflow</a> (simplified):</p>
+	<p>A GitHub Actions <a href="https://docs.github.com/en/actions/using-workflows/about-workflows">workflow</a> is a YAML file that declares what to do in every step. Here’s the <a href="https://github.com/cloudflare/wildebeest/blob/main/.github/workflows/deploy.yml">Wildebeest workflow</a> (simplified):</p>
 	<pre><code class="language-YAML">name: Deploy
 on:
   push:
@@ -299,7 +299,7 @@ jobs:
 	<h4 id="updating-wildebeest">Updating Wildebeest</h4>
 	<p>This workflow runs automatically every time the main branch changes, so updating the Wildebeest is as easy as synchronizing the upstream official repository with the fork. You don't even need to use git commands for that; GitHub provides a convenient Sync button in the UI that you can simply click. </p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/11b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>What's more? Updates are incremental and non-destructive. When the GitHub Actions workflow redeploys Wildebeest, we only make the necessary changes to your configuration and nothing else. You don't lose your data; we don't need to delete your existing configurations. Hereâ€™s how we achieved this:</p>
+	<p>What's more? Updates are incremental and non-destructive. When the GitHub Actions workflow redeploys Wildebeest, we only make the necessary changes to your configuration and nothing else. You don't lose your data; we don't need to delete your existing configurations. Here’s how we achieved this:</p>
 	<p>We use <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs">Terraform</a>, a declarative configuration language and tool that interacts with our APIs and can query and configure your Cloudflare features. Here's the trick, whenever we apply a new configuration, we keep a copy of the Terraform state for Wildebeest in a <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">Cloudflare KV</a> key. When a new deployment is triggered, we get that state from the KV copy, calculate the differences, then change only what's necessary.</p>
 	<p>Data loss is not a problem either because, as you read above, D1 supports <a href="https://developers.cloudflare.com/d1/platform/migrations">migrations</a>. If we need to add a new column to a table or a new table, we don't need to destroy the database and create it again; we just apply the necessary SQL to that change.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/12b.png" class="kg-image" alt="" loading="lazy"></figure>
@@ -312,7 +312,7 @@ jobs:
 	<h4 id="activitypub">ActivityPub</h4>
 	<p><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> is a decentralized social networking protocol and has been around as a W3C recommendation since at least 2018. It defines client APIs for creating and manipulating content and server-to-server APIs for content exchange and notifications, also known as federation. ActivityPub uses <a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams</a>, an even older W3C protocol, for its vocabulary. </p>
 	<p>The concepts of <a href="https://www.w3.org/TR/activitypub/#actors">Actors</a> (profiles), messages or <a href="https://www.w3.org/TR/activitypub/#obj">Objects</a> (the toots), <a href="https://www.w3.org/TR/activitypub/#inbox">inbox</a> (where you receive toots from people you follow), and <a href="https://www.w3.org/TR/activitypub/#outbox">outbox</a> (where you send your toots to the people you follow), to name a few of many other actions and activities, are all defined on the ActivityPub specification.</p>
-	<p>Hereâ€™s our folder with the <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/activitypub">ActivityPub implementation</a>.</p>
+	<p>Here’s our folder with the <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/activitypub">ActivityPub implementation</a>.</p>
 	<pre><code class="language-js">import type { APObject } from 'wildebeest/backend/src/activitypub/objects'
 import type { Actor } from 'wildebeest/backend/src/activitypub/actors'
 
@@ -344,10 +344,10 @@ export async function addObjectInInbox(db, actor, obj) {
 
 </code></pre>
 	<p>Now we know how to interact with <code>@user@example.com</code>, using the <code>https://example.com/ap/users/user endpoint</code>.</p>
-	<p>Hereâ€™s our WebFinger <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/.well-known/webfinger.ts">response</a>:</p>
+	<p>Here’s our WebFinger <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/.well-known/webfinger.ts">response</a>:</p>
 	<pre><code class="language-js">export async function handleRequest(request, db): Promise&lt;Response&gt; {
-	â€¦
-	const jsonLink = /* â€¦ link to actor */
+	…
+	const jsonLink = /* … link to actor */
 
 	const res: WebFingerResponse = {
 		subject: `acct:...`,
@@ -364,7 +364,7 @@ export async function addObjectInInbox(db, actor, obj) {
 }</code></pre>
 	<h4 id="mastodon-api">Mastodon API</h4>
 	<p>Finally, things like setting your server information, profile information, generating timelines, notifications, and searches, are all Mastodon-specific APIs. The Mastodon open-source project defines a catalog of REST APIs, and you can find all the documentation for them on <a href="https://docs.joinmastodon.org/api">their website</a>.</p>
-	<p>Our Mastodon API implementation can be found <a href="https://github.com/cloudflare/wildebeest/tree/main/functions/api">here</a> (REST endpoints) and <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/mastodon">here</a> (backend primitives). Hereâ€™s an example of Mastodonâ€™s server information <a href="https://docs.joinmastodon.org/methods/instance/#v2">/api/v2/instance</a> implemented by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v2/instance.ts">Wildebeest</a>:</p>
+	<p>Our Mastodon API implementation can be found <a href="https://github.com/cloudflare/wildebeest/tree/main/functions/api">here</a> (REST endpoints) and <a href="https://github.com/cloudflare/wildebeest/tree/main/backend/src/mastodon">here</a> (backend primitives). Here’s an example of Mastodon’s server information <a href="https://docs.joinmastodon.org/methods/instance/#v2">/api/v2/instance</a> implemented by <a href="https://github.com/cloudflare/wildebeest/blob/main/functions/api/v2/instance.ts">Wildebeest</a>:</p>
 	<pre><code class="language-js">export async function handleRequest(domain, db, env) {
 
 	const res: InstanceConfigV2 = {
@@ -399,7 +399,7 @@ export async function addObjectInInbox(db, actor, obj) {
 		<li><a href="https://cloudflare.social/@radar">@radar@cloudflare.social</a> - Cloudflare Radar</li>
 	</ul>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/14b.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Wildebeest is compatible with most client apps; we are confirmed to work with the official Mastodon <a href="https://play.google.com/store/apps/details?id=org.joinmastodon.android">Android</a> and <a href="https://apps.apple.com/us/app/mastodon-for-iphone/id1571998974">iOS</a> apps, <a href="https://pinafore.social">Pinafore</a>, <a href="https://mastodon.social/@JPEGuin/109315609418460036">Mammoth</a>, and <a href="https://tooot.app">tooot</a>, and looking into others like <a href="https://tapbots.com/ivory">Ivory</a>. If your favorite isnâ€™t working, please submit an <a href="https://github.com/cloudflare/wildebeest/issues">issue here</a>, weâ€™ll do our best to help support it.</p>
+	<p>Wildebeest is compatible with most client apps; we are confirmed to work with the official Mastodon <a href="https://play.google.com/store/apps/details?id=org.joinmastodon.android">Android</a> and <a href="https://apps.apple.com/us/app/mastodon-for-iphone/id1571998974">iOS</a> apps, <a href="https://pinafore.social">Pinafore</a>, <a href="https://mastodon.social/@JPEGuin/109315609418460036">Mammoth</a>, and <a href="https://tooot.app">tooot</a>, and looking into others like <a href="https://tapbots.com/ivory">Ivory</a>. If your favorite isn’t working, please submit an <a href="https://github.com/cloudflare/wildebeest/issues">issue here</a>, we’ll do our best to help support it.</p>
 	<h3 id="final-words">Final words</h3>
 	<p>Wildebeest was built entirely on top of our <a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">Supercloud</a> stack. It was one of the most complete and complex projects we have created that uses various Cloudflare products and features.</p>
 	<p>We hope this write-up inspires you to not only try deploying Wildebeest and joining the Fediverse, but also building your next application, however demanding it is, on top of Cloudflare.</p>

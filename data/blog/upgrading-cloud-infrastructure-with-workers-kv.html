@@ -9,14 +9,14 @@
 		<li>Calendar integrations i.e. Google Calendar</li>
 		<li>SMS confirmations</li>
 	</ol>
-	<p>Despite their limited number, these are vitally important. We did a lot of testing but it was clear weâ€™d only really know if everything was working once we had production traffic. How could we migrate traffic?</p>
+	<p>Despite their limited number, these are vitally important. We did a lot of testing but it was clear we’d only really know if everything was working once we had production traffic. How could we migrate traffic?</p>
 	<h3 id="option-1">Option 1</h3>
 	<p>Change the CNAME to point to the new hosting infrastructure. This is high risk. DNS takes time to propagate so, if we needed to roll back, it would take time. We would also be shifting over everything at once.</p>
 	<h3 id="option-2">Option 2</h3>
 	<p>Use a traffic manager to shift a percentage of traffic using Cloudflare Load Balancing. We could start at, say, 5% traffic to the new infrastructure and, assuming everything appears to be ok, slowly increase the traffic.</p>
-	<p>In our case the vast majority of our traffic goes to our calendar integration endpoints. The other endpoints were unlikely to receive traffic, especially if started with just 5% of traffic. This wasnâ€™t the best option.</p>
+	<p>In our case the vast majority of our traffic goes to our calendar integration endpoints. The other endpoints were unlikely to receive traffic, especially if started with just 5% of traffic. This wasn’t the best option.</p>
 	<h3 id="enter-option-3-cloudflare-workers-and-workers-kv">Enter Option 3: Cloudflare Workers and Workers KV</h3>
-	<p>I remember thinking: wouldnâ€™t it be great if we could migrate traffic one endpoint at a time? We have about 20. We could start at the low risk endpoints and progressively move our way up.</p>
+	<p>I remember thinking: wouldn’t it be great if we could migrate traffic one endpoint at a time? We have about 20. We could start at the low risk endpoints and progressively move our way up.</p>
 	<p>We were able to write a Cloudflare Worker script that:</p>
 	<ul>
 		<li>Detected the path i.e. <em>/webhooks/paypal</em></li>
@@ -141,22 +141,22 @@ async function handleRequest(event) {
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000">Debugging Tips</a>. I followed the section â€œMake subrequests to your debug serverâ€ and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
+	<p>Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
 	<p>Another problem that came up was a plethora of 403s. This was highly visible in the Workers &gt; Status Code graph (the green).</p>
 	<p></p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasnâ€™t an issue with my Worker or the new infrastructure!</p>
-	<p>We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didnâ€™t even hit our infrastructure in the first place.</p>
+	<p>Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>
+	<p>We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didn’t even hit our infrastructure in the first place.</p>
 	<h3 id="where-to-from-here">Where to From Here?</h3>
-	<p>As I write this weâ€™ve transitioned all traffic. All endpoints are enabled. Once weâ€™re ready to decommission the old infrastructure we will:</p>
+	<p>As I write this we’ve transitioned all traffic. All endpoints are enabled. Once we’re ready to decommission the old infrastructure we will:</p>
 	<ul>
 		<li>Change the CNAME to point to the new infrastructure</li>
 		<li>Disable the worker</li>
 		<li>Celebrate!</li>
 	</ul>
-	<p>Weâ€™ll then move onto our new web application, such as our API or main web app. Weâ€™re likely to use one of two options:</p>
+	<p>We’ll then move onto our new web application, such as our API or main web app. We’re likely to use one of two options:</p>
 	<ol>
 		<li>Use the traffic manager to migrate a percentage of traffic</li>
 		<li>Migrate traffic on a per-customer basis. It would be similar to above except we would store a setting per-customer (KV would store a setting per customer and we know the customer by the request header, which would have the customer ID). We could, for example, start with internal test accounts, then our beta users and, at the very end, migrate our VIPs.</li>

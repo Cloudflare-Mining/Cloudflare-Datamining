@@ -21,34 +21,34 @@
 	<p>On top of that, we used Terraform modules, to keep sets of common configuration across zone groups into a single place.<br>
 		Terraform modules repository</p>
 	<pre><code>modules/
-â”‚    â”œâ”€â”€ firewall/
-â”‚        â”œâ”€â”€ main.tf
-â”‚        â”œâ”€â”€ variables.tf
-â”‚    â”œâ”€â”€ zone_settings/
-â”‚        â”œâ”€â”€ main.tf
-â”‚        â”œâ”€â”€ variables.tf
-â”‚    â””â”€â”€ [...]  
-â””â”€â”€
+│    ├── firewall/
+│        ├── main.tf
+│        ├── variables.tf
+│    ├── zone_settings/
+│        ├── main.tf
+│        ├── variables.tf
+│    └── [...]  
+└──
 </code></pre>
 	<p>Terragrunt modules repository</p>
 	<pre><code>environments/
-â”‚    â”œâ”€â”€ [...]
-â”‚    â”œâ”€â”€ dev/
-â”‚    â”œâ”€â”€ qa/
-â”‚    â”œâ”€â”€ demo/
-â”‚        â”œâ”€â”€ zone-8/ (production)
-â”‚            â””â”€â”€ terragrunt.hcl
-â”‚        â”œâ”€â”€ zone-9/ (staging)
-â”‚            â””â”€â”€ terragrunt.hcl
-â”‚        â”œâ”€â”€ config.tfvars
-â”‚        â”œâ”€â”€ main.tf
-â”‚        â””â”€â”€ variables.tf
-â”‚    â”œâ”€â”€ config.tfvars
-â”‚    â”œâ”€â”€ secrets.tfvars
-â”‚    â”œâ”€â”€ main.tf
-â”‚    â”œâ”€â”€ variables.tf
-â”‚    â””â”€â”€ terragrunt.hcl
-â””â”€â”€
+│    ├── [...]
+│    ├── dev/
+│    ├── qa/
+│    ├── demo/
+│        ├── zone-8/ (production)
+│            └── terragrunt.hcl
+│        ├── zone-9/ (staging)
+│            └── terragrunt.hcl
+│        ├── config.tfvars
+│        ├── main.tf
+│        └── variables.tf
+│    ├── config.tfvars
+│    ├── secrets.tfvars
+│    ├── main.tf
+│    ├── variables.tf
+│    └── terragrunt.hcl
+└──
 </code></pre>
 	<p>The Terragrunt modules tree gives flexibility, since we are able to apply configuration on a zone, group zone, or organisation level (which is inline with Cloudflare configuration capabilities - i.e.: custom error pages can also be configured on the organisation level).</p>
 	<h3 id="resourcetypes">Resource types</h3>
@@ -177,7 +177,7 @@ users = {
 </code></pre>
 	<p>modules/rate_limit/main.tf</p>
 	<pre><code>locals {
- [â€¦]
+ […]
 }
 data "cloudflare_zones" "zone" {
   filter {

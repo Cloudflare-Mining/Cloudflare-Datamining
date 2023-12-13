@@ -5,23 +5,23 @@
 	<!--kg-card-end: markdown-->
 	<p>When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte, and discuss whether this is the measurement you are really looking for.</p>
 	<h3 id="timing-with-curl">Timing with cURL</h3>
-	<p><a href="https://curl.haxx.se">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Letâ€™s take an example website www.zasag.mn (the Mongolian government), and measure how long a request to its home page takes:</p>
+	<p><a href="https://curl.haxx.se">cURL</a> is an excellent tool for debugging web requests, and it includes the ability to take timing measurements. Let’s take an example website www.zasag.mn (the Mongolian government), and measure how long a request to its home page takes:</p>
 	<p>First configure the output format for cURL in <code>~/.curlrc</code>:</p>
 	<pre><code>$ cat .curlrc
 -w "dnslookup: %{time_namelookup} | connect: %{time_connect} | appconnect: %{time_appconnect} | pretransfer: %{time_pretransfer} | starttransfer: %{time_starttransfer} | total: %{time_total} | size: %{size_download}\n"</code></pre>
-	<p>Now connect to the site dropping the output (<code>-o /dev/null</code>) since weâ€™re only interested in the timing:</p>
+	<p>Now connect to the site dropping the output (<code>-o /dev/null</code>) since we’re only interested in the timing:</p>
 	<pre><code>$ curl -so /dev/null https://www.zasag.mn
 dnslookup: 1.510 | connect: 1.757 | appconnect: 2.256 | pretransfer: 2.259 | 
 starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
-	<p>These timings are in seconds. Depending on your version of cURL, you may get more decimal places than this example. 3 seconds is a long time, and remember this is only for the HTML from the home page - it doesnâ€™t include any JavaScript, images, etc.</p>
+	<p>These timings are in seconds. Depending on your version of cURL, you may get more decimal places than this example. 3 seconds is a long time, and remember this is only for the HTML from the home page - it doesn’t include any JavaScript, images, etc.</p>
 	<p>The diagram below shows what each of those timings refer to against a typical HTTP over TLS 1.2 connection (TLS 1.3 setup <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a">needs one less round trip</a>):</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-16-at-14.51.29-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<ul>
 		<li><strong>time_namelookup</strong> in this example takes a long time. To exclude DNS resolver performance from the figures, you can resolve the IP for cURL: <code>--resolve www.zasag.mn:443:218.100.84.167</code>. It may also be worth looking for a <a href="https://www.dnsperf.com/#!dns-resolvers">faster</a> <a href="https://1.1.1.1">resolver</a> :).</li>
-		<li><strong>time_connect</strong> is the TCP three-way handshake from the clientâ€™s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://en.wikipedia.org/wiki/Round-trip_delay_time">round-trip time</a> (RTT) to the server. In this example, RTT looks to be about 200 ms.</li>
-		<li><strong>time_appconnect</strong> here is TLS setup. The client is then ready to send itâ€™s HTTP GET request.</li>
+		<li><strong>time_connect</strong> is the TCP three-way handshake from the client’s perspective. It ends just after the client sends the ACK - it doesn't include the time taken for that ACK to reach the server. It should be close to the <a href="https://en.wikipedia.org/wiki/Round-trip_delay_time">round-trip time</a> (RTT) to the server. In this example, RTT looks to be about 200 ms.</li>
+		<li><strong>time_appconnect</strong> here is TLS setup. The client is then ready to send it’s HTTP GET request.</li>
 		<li><strong>time_starttransfer</strong> is just before cURL reads the first byte from the network (it hasn't actually read it yet). <code>time_starttransfer - time_appconnect</code> is practically the same as Time To First Byte (TTFB) from this client - 250 ms in this example case. This includes the round trip over the network, so you might get a better guess of how long the server spent on the request by calculating <code>TTFB - (time_connect - time_namelookup)</code>, so in this case, the server spent only a few milliseconds responding, the rest of the time was the network.</li>
 		<li><strong>time_total</strong> is just after the client has sent the FIN connection tear down.</li>
 	</ul>
@@ -30,7 +30,7 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-08-04-at-12.07.37--1-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Again, hereâ€™s how this maps onto a typical HTTP over TLS 1.2 connection, also showing the Resource Timing attribute names:</p>
+	<p>Again, here’s how this maps onto a typical HTTP over TLS 1.2 connection, also showing the Resource Timing attribute names:</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-16-at-14.52.48.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
@@ -41,5 +41,5 @@ starttransfer: 2.506 | total: 3.001 | size: 53107</code></pre>
 		<li>Similarly to cURL, if we subtract the TCP handshake time from TTFB, we can guess the amount of time the server really spent processing (again, we don't have an exact RTT timing, so this is a approximation).</li>
 	</ul>
 	<h3 id="what-are-we-looking-for-again">What are we looking for again?</h3>
-	<p>These measurements, including TTFB, can be helpful in diagnosing problems, and might help you to delve into a specific problem, but do they actually tell you about how well a website is performing? Ultimately, if you are looking to measure the experience of users, the time it takes for the first byte of some HTML to return isnâ€™t effective. A web page might contain hundreds of images, it might have JavaScript and styles that need to load before you can interact. To reflect real user experience, you need to time how long until the web page becomes useful, and to take those measurements from representative sample of where your users are accessing the site from. And that's a topic for another day :)</p>
+	<p>These measurements, including TTFB, can be helpful in diagnosing problems, and might help you to delve into a specific problem, but do they actually tell you about how well a website is performing? Ultimately, if you are looking to measure the experience of users, the time it takes for the first byte of some HTML to return isn’t effective. A web page might contain hundreds of images, it might have JavaScript and styles that need to load before you can interact. To reflect real user experience, you need to time how long until the web page becomes useful, and to take those measurements from representative sample of where your users are accessing the site from. And that's a topic for another day :)</p>
 </div>

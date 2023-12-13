@@ -1,14 +1,14 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Some time ago we discovered that certain very slow downloads were getting abruptly terminated and began investigating whether that was a client (i.e. web browser) or server (i.e. us) problem.</p>
-	<p>Some users were unable to download a binary file a few megabytes in length. The story was simpleâ€”the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
+	<p>Some users were unable to download a binary file a few megabytes in length. The story was simple—the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
 	<p>Describing the problem was simple, reproducing the problem was easy with a single <code>curl</code> command, but fixing it took surprising amount of effort.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/03/6784957048_4661ea7dfc_z.jpg" alt="" loading="lazy"><br>
 		<small><a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048">image</a> by <a href="https://www.flickr.com/photos/jonicdao">jojo nicdao</a></small>
 	</p>
 	<p>In this article I'll describe the symptoms we saw, how we reproduced it and how we fixed it. Hopefully, by sharing our experiences we will save others from the tedious debugging we went through.</p>
 	<h3 id="failingdownloads">Failing downloads</h3>
-	<p>Two things caught our attention in the bug report. First, only users on mobile phones were experiencing the problem. Second, the asset causing issuesâ€”a binary fileâ€”was pretty large, at around 30MB.</p>
+	<p>Two things caught our attention in the bug report. First, only users on mobile phones were experiencing the problem. Second, the asset causing issues—a binary file—was pretty large, at around 30MB.</p>
 	<p>After a fruitful session with <code>tcpdump</code> one of our engineers was able to prepare a test case that reproduced the problem. As so often happens, once you know what you are looking for reproducing a problem is easy. In this case setting up a large file on a test domain and using the <code>--limit-rate</code> option to <code>curl</code> was enough:</p>
 	<pre><code>$ curl -v http://example.com/large.bin --limit-rate 10k &gt; /dev/null
 * Closing connection #0
@@ -28,7 +28,7 @@ curl: (56) Recv failure: Connection reset by peer
 * Closing connection #0
 curl: (56) Recv failure: Connection reset by peer
 </code></pre>
-	<p>This proved the problem was not specific to our setupâ€”it was a broader NGINX issue!</p>
+	<p>This proved the problem was not specific to our setup—it was a broader NGINX issue!</p>
 	<p>After some further poking we found two culprits. First, we were using the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#reset_timedout_connection"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
 	<pre><code>04:20:22 setsockopt(5, SOL_SOCKET, SO_LINGER, {onoff=1, linger=0}, 8) = 0
 04:20:22 close(5) = 0
@@ -47,7 +47,7 @@ curl: (56) Recv failure: Connection reset by peer
 04:54:05 sendfile(5, 9, [0], 51773484) = 5325752
 04:55:05 close(5) = 0
 </code></pre>
-	<p>In the config we ordered NGINX to use <code>sendfile</code> to transmit the data. The call to <code>sendfile</code> succeeds and pushes 5MB of data to the send buffer. This value is interestingâ€”it's about the amount of space we have in our default write buffer setting:</p>
+	<p>In the config we ordered NGINX to use <code>sendfile</code> to transmit the data. The call to <code>sendfile</code> succeeds and pushes 5MB of data to the send buffer. This value is interesting—it's about the amount of space we have in our default write buffer setting:</p>
 	<pre><code>$ sysctl net.ipv4.tcp_wmem
 net.ipv4.tcp_wmem = 4096 5242880 33554432
 </code></pre>
@@ -113,7 +113,7 @@ net.ipv4.tcp_wmem = 4096 5242880 33554432
 	<h3 id="summary">Summary</h3>
 	<p>The Linux networking stack is very complex. While it usually works really well, sometimes it gives us a surprise. Even very experienced programmers don't fully understand all the corner cases. During debugging we learned that setting timeouts in the "write" path of the code requires special attention. You can't just treat the "write" timeouts in the same way as "read" timeouts.</p>
 	<p>It was a surprise to me that the semantics of a socket being "writeable" are not symmetrical to the "readable" state.</p>
-	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally differentâ€”NGINX send timeouts.</p>
+	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>
 	<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team">consider applying</a>!</p>
 	<!--kg-card-end: markdown-->
 </div>

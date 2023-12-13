@@ -23,11 +23,11 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image11-1.png" class="kg-image" alt="DoH vs DNS (SERVAIL only)" loading="lazy"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-13.png" class="kg-image" alt="DoH vs DNS vs DoT (SERVFAIL only)" loading="lazy"></figure>
 	<p>So, we got hammered with lots of requests and errors, causing traffic spikes to our 1.1.1.1 resolver and causing an unexpected load in the edge network and systems. How did we perform during this stressful period?</p>
-	<p>Quite well. 1.1.1.1 kept its cool and continued serving the vast majority of requests around the <a href="https://www.dnsperf.com/#!dns-resolvers">famous 10ms mark</a>. An insignificant fraction of p95 and p99 percentiles saw increased response times, probably due to timeouts trying to reach Facebookâ€™s nameservers.</p>
+	<p>Quite well. 1.1.1.1 kept its cool and continued serving the vast majority of requests around the <a href="https://www.dnsperf.com/#!dns-resolvers">famous 10ms mark</a>. An insignificant fraction of p95 and p99 percentiles saw increased response times, probably due to timeouts trying to reach Facebook’s nameservers.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-11.png" class="kg-image" alt="Response time quantiles" loading="lazy"></figure>
 	<p>Another interesting perspective is the distribution of the ratio between SERVFAIL and good DNS answers, by country. In theory, the higher this ratio is, the more the country uses Facebook. Here's the map with the countries that suffered the most:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image18.png" class="kg-image" alt="During the Facebook outage October 2021: ratio between SERVFAIL/good answers per country" loading="lazy"></figure>
-	<p>Hereâ€™s the top twelve country list, ordered by those that apparently use Facebook, WhatsApp and Instagram the most:</p><!--kg-card-begin: markdown-->
+	<p>Here’s the top twelve country list, ordered by those that apparently use Facebook, WhatsApp and Instagram the most:</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -97,7 +97,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image9-6.png" class="kg-image" alt="DNS queries to Messaging Services" loading="lazy"></figure>
 	<p>Nothing like a little gaming time when Instagram is down, we guess, when looking at traffic to sites like Steam, Xbox, Minecraft and others.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image8-10.png" class="kg-image" alt="DNS queries to Gaming Sites" loading="lazy"></figure>
-	<p>And yes, people want to know whatâ€™s going on and fall back on news sites like CNN, New York Times, The Guardian, Wall Street Journal, Washington Post, Huffington Post, BBC, and others:</p>
+	<p>And yes, people want to know what’s going on and fall back on news sites like CNN, New York Times, The Guardian, Wall Street Journal, Washington Post, Huffington Post, BBC, and others:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-12.png" class="kg-image" alt="DNS queries to News Sites" loading="lazy"></figure>
 	<h3 id="attacks">Attacks</h3>
 	<p>One could speculate that the Internet was under attack from malicious hackers. Our Firewall doesn't agree; nothing out of the ordinary stands out.</p>
@@ -105,10 +105,10 @@
 	<h3 id="network-error-logs">Network Error Logs</h3>
 	<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Network_Error_Logging">Network Error Logging</a>, NEL for short, is an experimental technology supported in Chrome. A website can issue a Report-To header and ask the browser to send reports about network problems, like bad requests or DNS issues, to a specific endpoint.</p>
 	<p>Cloudflare uses NEL data to quickly help triage end-user connectivity issues when end-users reach our network. You can learn more about this feature in our <a href="https://support.cloudflare.com/hc/en-us/articles/360050691831-Understanding-Network-Error-Logging">help center</a>.</p>
-	<p>If Facebook is down and their DNS isn't responding, Chrome will start reporting NEL events every time one of the pages in our zones fails to load Facebook comments, posts, ads, or authentication buttons. This chart shows it clearly.<strong>â€‹â€‹</strong></p>
+	<p>If Facebook is down and their DNS isn't responding, Chrome will start reporting NEL events every time one of the pages in our zones fails to load Facebook comments, posts, ads, or authentication buttons. This chart shows it clearly.<strong>​​</strong></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-8.png" class="kg-image" alt="NEL (Network Error Logs)" loading="lazy"></figure>
 	<h3 id="warp">WARP</h3>
-	<p>Cloudflare announced <a href="https://1.1.1.1">WARP</a> in 2019, and called it "<a href="https://blog.cloudflare.com/1111-warp-better-vpn">A VPN for People Who Don't Know What V.P.N. Stands For</a>" and offered it for free to its customers. Today WARP is used by millions of people worldwide to securely and privately access the Internet on their desktop and mobile devices. Here's what we saw during the outage by looking at traffic volume between WARP and Facebookâ€™s network:</p>
+	<p>Cloudflare announced <a href="https://1.1.1.1">WARP</a> in 2019, and called it "<a href="https://blog.cloudflare.com/1111-warp-better-vpn">A VPN for People Who Don't Know What V.P.N. Stands For</a>" and offered it for free to its customers. Today WARP is used by millions of people worldwide to securely and privately access the Internet on their desktop and mobile devices. Here's what we saw during the outage by looking at traffic volume between WARP and Facebook’s network:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/WARP-graph-Facebook-outage-Oct-2021.png" class="kg-image" alt="WARP usage to Facebook ASN during the outage" loading="lazy"></figure>
 	<p>You can see how the steep drop in Facebook ASN traffic coincides with the start of the incident and how it compares to the same period the day before.</p>
 	<h3 id="our-own-traffic">Our own traffic</h3>
@@ -130,7 +130,7 @@
 	<p>Now let's look at the Largest Contentful Paint. <a href="https://web.dev/lcp">LCP</a> marks the point in the page load timeline when the page's main content has likely loaded. The faster the LCP is, the better the end-user experience.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image15.png" class="kg-image" alt="Largest Contentful Paint quantiles" loading="lazy"></figure>
 	<p>Again, the page load experience got visibly degraded.</p>
-	<p>The outcome seems clear. The sites that use Facebook scripts in their pages took 1.5x more time to load their pages during the outage, with some of them taking more than 2x the usual time. Facebook's outage dragged the performance of Â&nbsp;some other sites down.</p>
+	<p>The outcome seems clear. The sites that use Facebook scripts in their pages took 1.5x more time to load their pages during the outage, with some of them taking more than 2x the usual time. Facebook's outage dragged the performance of &nbsp;some other sites down.</p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>When Facebook, Instagram, and WhatsApp went down, the Web felt it. Some websites got slower or lost traffic, other services and platforms got unexpected load, and people lost the ability to communicate or do business normally.</p>
 </div>

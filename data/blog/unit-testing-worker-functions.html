@@ -1,12 +1,12 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="post-content lh-copy gray1">
-	<p>If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. Weâ€™re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. Â&nbsp;</p>
-	<p>More specifically, if your Worker includes a number of functions, itâ€™s important to ensure each function does what itâ€™s intended to do in addition to ensuring the output of the entire Worker returns as expected.</p>
-	<p>In this post, weâ€™re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker">Cloudworker</a>, created by the Dollar Shave Club engineering team. </p>
-	<p>Dollar Shave Club is a Cloudflare customer, and they created Cloudworker, a mock for the Workers runtime, for testing purposes. Weâ€™re really grateful to them for this. They were kind enough to <a href="https://blog.cloudflare.com/cloudworker-a-local-cloudflare-worker-runner">post on our blog</a> about it.</p>
+	<p>If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. &nbsp;</p>
+	<p>More specifically, if your Worker includes a number of functions, it’s important to ensure each function does what it’s intended to do in addition to ensuring the output of the entire Worker returns as expected.</p>
+	<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker">Cloudworker</a>, created by the Dollar Shave Club engineering team. </p>
+	<p>Dollar Shave Club is a Cloudflare customer, and they created Cloudworker, a mock for the Workers runtime, for testing purposes. We’re really grateful to them for this. They were kind enough to <a href="https://blog.cloudflare.com/cloudworker-a-local-cloudflare-worker-runner">post on our blog</a> about it.</p>
 	<p>This post will demonstrate how to abstract away Cloudworker, and test Workers with the same syntax you write them in. </p>
 	<h3 id="example-script">Example Script</h3>
-	<p>Before we get into configuring Cloudworker, letâ€™s introduce the simple script we are going to test against in our example. As you can see this script contains two functions, both of which contribute to the response to the client.</p>
+	<p>Before we get into configuring Cloudworker, let’s introduce the simple script we are going to test against in our example. As you can see this script contains two functions, both of which contribute to the response to the client.</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
  event.respondWith(handleRequest(event.request))
@@ -25,7 +25,7 @@ async function handleRequest(request) {
 	<p></p>
 	<p>This script will be active for the route <code>worker.example.com</code>.</p>
 	<h3 id="directory-set-up">Directory Set Up</h3>
-	<p>After Iâ€™ve created a new npm ( <code>npm init</code> ) project in a new directory, I placed my <code>worker.js</code> file inside, containing the above, and created the folder <code>test</code> which contains <code>worker-test.js</code>. The structure is laid out below.</p>
+	<p>After I’ve created a new npm ( <code>npm init</code> ) project in a new directory, I placed my <code>worker.js</code> file inside, containing the above, and created the folder <code>test</code> which contains <code>worker-test.js</code>. The structure is laid out below.</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">.
 ----- worker.js
@@ -45,12 +45,12 @@ async function handleRequest(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>Now we can finally write some tests! Luckily, <code>mocha</code> has <code>async/await</code> support which is going to make this very simple. Â&nbsp;The idea is straightforward: Cloudworker allows you to place a Worker in development in front of an HTTP request and inspect the response.</p>
+	<p>Now we can finally write some tests! Luckily, <code>mocha</code> has <code>async/await</code> support which is going to make this very simple. &nbsp;The idea is straightforward: Cloudworker allows you to place a Worker in development in front of an HTTP request and inspect the response.</p>
 	<h3 id="writing-tests-">Writing Tests!</h3>
-	<p>Before any test logic, weâ€™ll place two lines at the top of the test file ( <code>worker-test.js</code> ). The first line assigns all property values from Cloudworker and our Worker script to the global context before every <code>async function()</code> is run in mocha. The second line requires <code>assert</code>, which is commonly used to compare an expected output to a mocked output.</p>
+	<p>Before any test logic, we’ll place two lines at the top of the test file ( <code>worker-test.js</code> ). The first line assigns all property values from Cloudworker and our Worker script to the global context before every <code>async function()</code> is run in mocha. The second line requires <code>assert</code>, which is commonly used to compare an expected output to a mocked output.</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">before(async function () {
-   Object.assign(global, new (require('@dollarshaveclub/cloudworker'))(require('fs').readFileSync('worker.js', â€˜utf8â€™)).context);
+   Object.assign(global, new (require('@dollarshaveclub/cloudworker'))(require('fs').readFileSync('worker.js', ‘utf8’)).context);
 });
 
 // You will replace worker.js with the relative path to your worker

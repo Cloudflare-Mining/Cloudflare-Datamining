@@ -171,7 +171,7 @@ ESTAB 0      0      host:2     host:1  timer:(keepalive,2.992ms,0)
 00:12.094 IP host.2 &gt; host.1: Flags [.] # second probe
 00:23.102 IP host.2 &gt; host.1: Flags [R.] # timer for third probe fired, socket aborted due to TCP_USER_TIMEOUT
 </pre>
-	<p>Weâ€™ve shown how TCP_USER_TIMEOUT interacts with keepalives for small and medium values. The last case is when TCP_USER_TIMEOUT is extraordinarily large. Say we set it to 30s:</p>
+	<p>We’ve shown how TCP_USER_TIMEOUT interacts with keepalives for small and medium values. The last case is when TCP_USER_TIMEOUT is extraordinarily large. Say we set it to 30s:</p>
 	<pre style="font-size:70%">00:01.027 IP host.2 &gt; host.1: Flags [.], ack 1 # first probe
 00:12.195 IP host.2 &gt; host.1: Flags [.], ack 1 # second probe
 00:23.207 IP host.2 &gt; host.1: Flags [.], ack 1 # third probe

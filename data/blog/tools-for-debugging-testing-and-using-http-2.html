@@ -27,11 +27,11 @@
 </code></pre>
 	<p>Once installed you can check the HTTP/2 status of a web on the command-line:</p>
 	<pre><code>$ is-http2 www.cloudflare.com
-âœ“ HTTP/2 supported by www.cloudflare.com
+✓ HTTP/2 supported by www.cloudflare.com
 Supported protocols: h2 spdy/3.1 http/1.1
 
 $ is-http2 www.amazon.com
-Ã— HTTP/2 not supported by www.amazon.com
+× HTTP/2 not supported by www.amazon.com
 Supported protocols: http/1.1
 </code></pre>
 	<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see www.cloudflare.com supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>

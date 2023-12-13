@@ -207,8 +207,8 @@ function process(request) {
 	<pre><code>$ mocha -g "AddCommand"
   AddCommand
     add
-      âœ“ requires all args
-      âœ“ returns success for all args
+      ✓ requires all args
+      ✓ returns success for all args
   2 passing (19ms)
 </code></pre>
 	<p>So far so good. But adding commands to our ownerbot isn't going to be so useful unless we can query them.</p>
@@ -255,10 +255,10 @@ function process(request) {
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

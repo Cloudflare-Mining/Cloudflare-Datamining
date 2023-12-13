@@ -4,7 +4,7 @@
 	<p>Cloudflare Workers is our serverless platform that runs your code in 250+ cities worldwide.</p>
 	<p>On the Workers team, we have a policy:</p>
 	<blockquote><em>A change to the Workers Runtime must never break an application that is live in production.</em></blockquote>
-	<p>It seems obvious enough, but this policy has deep consequences. What if our API has a bug, and some deployed Workers accidentally depend on that bug? Then, seemingly, we can't fix the bug! That soundsâ€¦ bad?</p>
+	<p>It seems obvious enough, but this policy has deep consequences. What if our API has a bug, and some deployed Workers accidentally depend on that bug? Then, seemingly, we can't fix the bug! That sounds… bad?</p>
 	<p>This post will dig deeper into our policy, explaining why Workers is different from traditional server stacks in this respect, and how we're now making backwards-incompatible changes possible by introducing "compatibility dates".</p>
 	<p><strong>TL;DR:</strong> Developers may now opt into backwards-incompatible fixes by setting a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates">compatibility date</a>.</p>
 	<h2 id="serverless-demands-strict-compatibility">Serverless demands strict compatibility</h2>

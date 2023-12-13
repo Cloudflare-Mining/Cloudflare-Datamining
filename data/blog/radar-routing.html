@@ -3,11 +3,11 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/New-Routing-Page-in-Radar-1.png" class="kg-image" alt="Routing information now on Cloudflare Radar" loading="lazy" width="1801" height="1019"></figure>
 	<p>Routing is one of the most critical operations of the Internet. Routing decides how and where the Internet traffic should flow from the source to the destination, and can be categorized into two major types: intra-domain routing and inter-domain routing. Intra-domain routing handles making decisions on how individual packets should be routed among the servers and routers within an organization/network. When traffic reaches the edge of a network, the inter-domain routing kicks in to decide what the next hop is and forward the traffic along to the corresponding networks. <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp">Border Gateway Protocol</a> (BGP) is the de facto inter-domain routing protocol used on the Internet.</p>
 	<p>Today, we are introducing another section on Cloudflare Radar: the <a href="https://radar.cloudflare.com/routing">Routing</a> page, which focuses on monitoring the BGP messages exchanged to extract and present insights on the IP prefixes, individual networks, countries, and the Internet overall. The new routing data allows users to quickly examine routing status of the Internet, examine secure routing protocol deployment for a country, identify routing anomalies, validate IP block reachability and much more from globally distributed vantage points.</p>
-	<p>Itâ€™s a detailed view of how the Internet itself holds together.</p>
+	<p>It’s a detailed view of how the Internet itself holds together.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image6-4.png" class="kg-image" alt="" loading="lazy" width="1999" height="1232"></figure>
 	<h2 id="collecting-routing-statistics">Collecting routing statistics</h2>
 	<p>The Internet consists of tens of thousands of interconnected organizations. Each organization manages its own internal networking infrastructure autonomously, and is referred to as an autonomous system (AS). ASes establish connectivity among each other and exchange routing information via BGP messages to form the current Internet.</p>
-	<p>When we open the Radar Routing page the â€œRouting Statisticsâ€ block provides a quick glance on the sizes and status of an autonomous system (AS), a country, or the Internet overall. The routing statistics component contains the following count information:</p>
+	<p>When we open the Radar Routing page the “Routing Statistics” block provides a quick glance on the sizes and status of an autonomous system (AS), a country, or the Internet overall. The routing statistics component contains the following count information:</p>
 	<ul>
 		<li>The number of ASes on the Internet or registered from a given country;</li>
 		<li>The number of distinct prefixes and the routes toward them observed on the global routing table, worldwide, by country, or by AS;</li>
@@ -25,8 +25,8 @@
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image8.png" class="kg-image" alt="" loading="lazy" width="1270" height="609"></figure>
 	<p>The Routing page will be the permanent home for all things BGP and routing data in the future; we will gradually introduce more anomaly detections and improve our pipeline to provide more security insights.</p>
 	<h2 id="examining-routing-assets-and-connectivity">Examining routing assets and connectivity</h2>
-	<p>Apart from examining the overall routing statistics and anomalies, we also gather information on the routing assets (IP prefixes for a network and networks for a country) and networksâ€™ connectivity.</p>
-	<p>Tens of thousands autonomous systems (ASes) connect to each other to form the current Internet. The ASes differ in size and operate in different geolocations. Generally, larger networks are more well-connected and considered â€œupstreamâ€ and smaller networks are less connected and considered â€œdownstreamâ€ on the Internet. Below is an example connectivity diagram showing how two smaller networks may connect to each other. AS1 announces its IP prefixes to its upstream providers and propagates upwards until it reaches the large networks AS3 and <code>AS4</code>, and then the route propagates downstream to smaller networks until it reaches AS6.</p>
+	<p>Apart from examining the overall routing statistics and anomalies, we also gather information on the routing assets (IP prefixes for a network and networks for a country) and networks’ connectivity.</p>
+	<p>Tens of thousands autonomous systems (ASes) connect to each other to form the current Internet. The ASes differ in size and operate in different geolocations. Generally, larger networks are more well-connected and considered “upstream” and smaller networks are less connected and considered “downstream” on the Internet. Below is an example connectivity diagram showing how two smaller networks may connect to each other. AS1 announces its IP prefixes to its upstream providers and propagates upwards until it reaches the large networks AS3 and <code>AS4</code>, and then the route propagates downstream to smaller networks until it reaches AS6.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image4-5.png" class="kg-image" alt="" loading="lazy" width="1666" height="681"></figure>
 	<p>In the routing page, we examine what IP prefixes any given AS originates, as well as the interconnections among ASes. We show the full list of IP prefixes originated for any given AS, including the breakdown lists by RPKI validation status. We also show the detected connectivity among other ASes categorized into upstream, downstream and peering connections. Users can easily search for any ASes upstream, downstream, or peers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-4.png" class="kg-image" alt="" loading="lazy" width="1315" height="899"></figure>
@@ -124,7 +124,7 @@
 	</table><!--kg-card-end: html-->
 	<h3 id="example-1-lookup-origin-as-for-a-given-prefix-with-curl">Example 1: lookup origin AS for a given prefix with cURL</h3>
 	<p>The Cloudflare Radar <a href="https://developers.cloudflare.com/api/operations/radar-get-bgp-pfx2as">prefix-to-origin mapping API</a> returns the matching prefix-origin pairs observed on the global routing tables, allowing users to quickly examine the networks that originate a given prefix or listing all the prefixes a network originates.</p>
-	<p>In this example, we ask of â€œwhich network(s) originated the prefix 1.1.1.0/24?â€ using the following cURL command:</p><!--kg-card-begin: markdown-->
+	<p>In this example, we ask of “which network(s) originated the prefix 1.1.1.0/24?” using the following cURL command:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-curl">curl --request GET \
   --url "https://api.cloudflare.com/client/v4/radar/bgp/routes/pfx2as?prefix=1.1.1.0/24" \
   --header 'Content-Type: application/json' \
@@ -156,23 +156,23 @@
 	<h3 id="example-2-integrate-radar-api-into-command-line-tool">Example 2: integrate Radar API into command-line tool</h3>
 	<p><a href="https://github.com/bgpkit/monocle">BGPKIT monocle</a> is an open-source command-line application that provides multiple utility functions like searching BGP messages on public archives, network lookup by name, RPKI validation status for a given IP prefix, etc.</p>
 	<p>By <a href="https://github.com/bgpkit/monocle/pull/50">integrating Cloudflare Radar APIs into monocle</a>, users can now quickly lookup routing statistics or prefix-to-origin mapping by running <code>monocle radar stats [QUERY]</code> and <code>monocle radar pfx2as</code> commands.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-monocle">âžœ  monocle radar stats   
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ scope       â”‚ origins â”‚ prefixes â”‚ rpki_valid      â”‚ rpki_invalid  â”‚ rpki_unknown    â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ global      â”‚ 81769   â”‚ 1204488  â”‚ 551831 (45.38%) â”‚ 15652 (1.29%) â”‚ 648462 (53.33%) â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ global ipv4 â”‚ 74990   â”‚ 1001973  â”‚ 448170 (44.35%) â”‚ 11879 (1.18%) â”‚ 550540 (54.48%) â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ global ipv6 â”‚ 31971   â”‚ 202515   â”‚ 103661 (50.48%) â”‚ 3773 (1.84%)  â”‚ 97922 (47.68%)  â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+	<pre><code class="language-monocle">➜  monocle radar stats   
+┌─────────────┬─────────┬──────────┬─────────────────┬───────────────┬─────────────────┐
+│ scope       │ origins │ prefixes │ rpki_valid      │ rpki_invalid  │ rpki_unknown    │
+├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤
+│ global      │ 81769   │ 1204488  │ 551831 (45.38%) │ 15652 (1.29%) │ 648462 (53.33%) │
+├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤
+│ global ipv4 │ 74990   │ 1001973  │ 448170 (44.35%) │ 11879 (1.18%) │ 550540 (54.48%) │
+├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤
+│ global ipv6 │ 31971   │ 202515   │ 103661 (50.48%) │ 3773 (1.84%)  │ 97922 (47.68%)  │
+└─────────────┴─────────┴──────────┴─────────────────┴───────────────┴─────────────────┘
 
-âžœ  monocle radar pfx2as 1.1.1.0/24
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ prefix     â”‚ origin  â”‚ rpki  â”‚ visibility    â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ 1.1.1.0/24 â”‚ as13335 â”‚ valid â”‚ high (98.78%) â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+➜  monocle radar pfx2as 1.1.1.0/24
+┌────────────┬─────────┬───────┬───────────────┐
+│ prefix     │ origin  │ rpki  │ visibility    │
+├────────────┼─────────┼───────┼───────────────┤
+│ 1.1.1.0/24 │ as13335 │ valid │ high (98.78%) │
+└────────────┴─────────┴───────┴───────────────┘
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Visit <a href="https://radar.cloudflare.com">Cloudflare Radar</a> for additional insights around (Internet disruptions, routing issues, Internet traffic trends, attacks, Internet quality, etc.). Follow us on social media at <a href="https://twitter.com/CloudflareRadar">@CloudflareRadar</a> (Twitter), <a href="https://cloudflare.social/@radar">cloudflare.social/@radar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com">radar.cloudflare.com</a> (Bluesky), or contact us via <a href="mailto:radar@cloudflare.com">e-mail</a>.</p>

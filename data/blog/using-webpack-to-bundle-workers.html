@@ -9,10 +9,10 @@ addEventListener('fetch', event =&gt; {
   event.respondWith(fetch(event.request))
 })
 </code></pre>
-	<p>The code above is simple and sweet: when a request comes into one of Cloudflareâ€™s data centers, passthrough to the origin server. There is <em>absolutely no need</em> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, youâ€™ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">JavaScriptâ€™s fancy new module system</a>. However, in doing so, youâ€™ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
-	<p>Throughout this post, weâ€™ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org">Webpack</a>.</p>
+	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <em>absolutely no need</em> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
+	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org">Webpack</a>.</p>
 	<h3 id="webpack">Webpack</h3>
-	<p>Letâ€™s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
+	<p>Let’s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
 	<h4 id="appjs">app.js</h4>
 	<pre><code class="language-javascript">// Import the CoolSocks class from dresser.js
 import { CoolSocks } from './dresser'
@@ -20,7 +20,7 @@ import { FancyShoes } from './closet'
 </code></pre>
 	<p>Then you can tell webpack to follow all of those import statements to produce a single file. This is useful because Service Workers running on Cloudflare need to be a single file as well.</p>
 	<h3 id="showmethecode">Show me the code</h3>
-	<p>Remember when I said something about predicting weather? Letâ€™s build a worker with TypeScript that responds with the current weather.</p>
+	<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
 	<p>Make sure to have <a href="https://nodejs.org">NodeJS</a> installed.</p>
 	<pre><code class="language-bash"># Make a new project directory
 mkdir weather-worker
@@ -95,9 +95,9 @@ module.exports = {
   },
 }
 </code></pre>
-	<p>For newcomers, this file will seem incredibly cryptic. All I can say is just to accept it as magic for now. Youâ€™ll eventually understand whatâ€™s going on.</p>
+	<p>For newcomers, this file will seem incredibly cryptic. All I can say is just to accept it as magic for now. You’ll eventually understand what’s going on.</p>
 	<blockquote>
-		<p>A note about <code>devtool: 'cheap-module-eval-source-map'</code>. Specifying this type of sourcemap is fast, lightweight, and results in stacktraces much more representative of your source code. Theyâ€™re not exact (yet!), but weâ€™re getting there.</p>
+		<p>A note about <code>devtool: 'cheap-module-eval-source-map'</code>. Specifying this type of sourcemap is fast, lightweight, and results in stacktraces much more representative of your source code. They’re not exact (yet!), but we’re getting there.</p>
 	</blockquote>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-20-at-5.46.48-PM.png" alt="Fiddle Error" loading="lazy"></p>
 	<p><em>Cloudflare fiddle devtools uses source maps to point you to the correct source file. Click through to see the problematic line.</em></p>
@@ -161,14 +161,14 @@ export async function fetchWeather(location: string, unit = 'f') {
 GET /weather/austin
 GET /weather/toronto
 </code></pre>
-	<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldnâ€™t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
+	<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldn’t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
 	<h3 id="loadingnodemodules">Loading node modules</h3>
-	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, weâ€™re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> module.</p>
+	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> module.</p>
 	<p>Install and save the module:</p>
 	<pre><code class="language-bash">npm install -S path-to-regexp
 </code></pre>
-	<p>The path-to-regexp module converts the url path pattern <code>/weather/:city</code> to a regular expression. Using that regular expression, we can extract the variable <code>city</code> out of a pathname string. For instance, in the string â€˜/weather/torontoâ€™, the city variable is â€˜torontoâ€™. However, for the string â€˜/users/123â€™, there is no match at all.</p>
-	<p>Letâ€™s modify our <code>src/index.ts</code> file to include this new routing logic.</p>
+	<p>The path-to-regexp module converts the url path pattern <code>/weather/:city</code> to a regular expression. Using that regular expression, we can extract the variable <code>city</code> out of a pathname string. For instance, in the string ‘/weather/toronto’, the city variable is ‘toronto’. However, for the string ‘/users/123’, there is no match at all.</p>
+	<p>Let’s modify our <code>src/index.ts</code> file to include this new routing logic.</p>
 	<h4 id="srcindexts">src/index.ts</h4>
 	<pre><code class="language-typescript">import * as pathToRegExp from 'path-to-regexp'
 import { fetchWeather } from './fetch-weather'
@@ -217,9 +217,9 @@ async function handleWeatherRequest(params: TWeatherRequestParams) {
 </code></pre>
 	<p>You should see the weather for Austin, TX displayed. Congrats!</p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>Webpack is an incredibly robust and configurable piece of technology. Itâ€™s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, itâ€™s a perfect fit for bundling Cloudflare Service Workers.</p>
+	<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
 	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers">github.com/jrf0110/weather-workers</a></p>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">â€œRecipe Exchangeâ€</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
 	<!--kg-card-end: markdown-->
 </div>

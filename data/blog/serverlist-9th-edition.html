@@ -5,14 +5,12 @@
 		<script src="https://app-ab13.marketo.com/js/forms2/js/forms2.min.js"></script>
 		<form id="mktoForm_1654"></form>
 		<script>
-			MktoForms2.loadForm("https://app-ab13.marketo.com", "713-XSC-918", 1654, Â
-				function(form) Â {
-					Â Â form.onSuccess(function() Â {
-						Â Â Â Â mktoForm_1654.innerHTMLÂ = Â "ThankÂ you!Â YourÂ emailÂ hasÂ beenÂ addedÂ toÂ ourÂ list."
-						Â Â Â Â returnÂ false
-						Â Â
-					})
-				});
+			MktoForms2.loadForm("https://app-ab13.marketo.com", "713-XSC-918", 1654, function(form) {
+				form.onSuccess(function() {
+					mktoForm_1654.innerHTML = "Thank you! Your email has been added to our list."
+					return false
+				})
+			});
 		</script>
 		<a class="privacy-link" href="https://www.cloudflare.com/privacypolicy">Your privacy is important to us</a>
 	</div>

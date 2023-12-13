@@ -6,13 +6,13 @@
 	<p></p><!--kg-card-begin: markdown-->
 	<p>It is unlikely we can tell you anything new about the extended Berkeley Packet Filter, eBPF for short, if you've read all the great <a href="http://man7.org/linux/man-pages/man2/bpf.2.html">man pages</a>, <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt">docs</a>, <a href="https://cilium.readthedocs.io/en/latest/bpf">guides</a>, and some of our <a href="https://blog.cloudflare.com/epbf_sockets_hop_distance">blogs</a> out there.</p>
 	<p>But we can tell you a war story, and who doesn't like those? This one is about how eBPF lost its ability to count for a while<a href="https://blog.cloudflare.com/#f1"><sup>1</sup></a>.</p>
-	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe thisâ€¦ tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04">Marek Majkowski</a> after what I heard was a long night:</p>
+	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04">Marek Majkowski</a> after what I heard was a long night:</p>
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/ebpf_bug_email_netdev.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p><!--kg-card-begin: markdown-->
 	<p>Marek's findings were quite shocking - if you subtract two 64-bit timestamps in eBPF, the result is garbage. But only when running as an unprivileged user. From root all works fine. Huh.</p>
-	<p>If you've seen Marek's <a href="https://speakerdeck.com/majek04/linux-at-cloudflare">presentation</a> from the Netdev 0x13 conference, you know that we are using BPF socket filters as one of the defenses against simple, volumetric DoS attacks. So potentially getting your packet count wrong could be a Bad Thingâ„¢, and affect legitimate traffic.</p>
+	<p>If you've seen Marek's <a href="https://speakerdeck.com/majek04/linux-at-cloudflare">presentation</a> from the Netdev 0x13 conference, you know that we are using BPF socket filters as one of the defenses against simple, volumetric DoS attacks. So potentially getting your packet count wrong could be a Bad Thing™, and affect legitimate traffic.</p>
 	<p>Let's try to reproduce this bug with a simplified <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L63">eBPF socket filter</a> that subtracts two 64-bit unsigned integers passed to it from <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93">user-space</a> though a BPF map. The input for our BPF program comes from a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L44">BPF array map</a>, so that the values we operate on are not known at build time. This allows for easy experimentation and prevents the compiler from optimizing out the operations.</p>
 	<p>Starting small, eBPF, what is 2 - 1? View the code <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93">on our GitHub</a>.</p>
 	<pre><code>$ ./run-bpf 2 1
@@ -39,9 +39,9 @@ diff           4294967295 0x00000000ffffffff
 	<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
 	<p>Any sane programmer would expect 64-bit subtraction to be expressed as <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.s#L47">a single eBPF instruction</a></p>
 	<pre><code>$ llvm-objdump -S -no-show-raw-insn -section=socket1 bpf/filter.o
-â€¦
+…
       20:       1f 76 00 00 00 00 00 00         r6 -= r7
-â€¦
+…
 </code></pre>
 	<p>However, that's not what the kernel actually runs. Apparently after the rewrite the subtraction becomes a complex, multi-step operation.</p>
 	<p>To see what the kernel is actually running we can use little known <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/bpf/bpftool?h=v5.0">bpftool utility</a>. First, we need to load our BPF</p>
@@ -50,14 +50,14 @@ diff           4294967295 0x00000000ffffffff
 </code></pre>
 	<p>Then list all BPF programs loaded into the kernel with <code>bpftool prog list</code></p>
 	<pre><code>$ sudo bpftool prog list
-â€¦
+…
 5951: socket_filter  name filter_alu64  tag 11186be60c0d0c0f  gpl
         loaded_at 2019-04-05T13:01:24+0200  uid 1000
         xlated 424B  jited 262B  memlock 4096B  map_ids 28786
 </code></pre>
 	<p>The most recently loaded <code>socket_filter</code> must be our program (<code>filter_alu64</code>). Now we now know its id is 5951 and we can list its bytecode with</p>
 	<pre><code>$ sudo bpftool prog dump xlated id 5951
-â€¦
+…
   33: (79) r7 = *(u64 *)(r0 +0)
   34: (b4) (u32) r11 = (u32) -1
   35: (1f) r11 -= r6
@@ -67,7 +67,7 @@ diff           4294967295 0x00000000ffffffff
   39: (5f) r6 &amp;= r11
   40: (1f) r6 -= r7
   41: (7b) *(u64 *)(r10 -16) = r6
-â€¦
+…
 </code></pre>
 	<p>bpftool can also display the JITed code with: <code>bpftool prog dump jited id 5951</code>.</p>
 	<p>As you see, subtraction is replaced with a series of opcodes. That is unless you are root. When running from root all is good</p>
@@ -76,11 +76,11 @@ diff           4294967295 0x00000000ffffffff
 $ sudo bpftool prog list | grep socket_filter
 659: socket_filter  name filter_alu64  tag 9e7ffb08218476f3  gpl
 $ sudo bpftool prog dump xlated id 659
-â€¦
+…
   31: (79) r7 = *(u64 *)(r0 +0)
   32: (1f) r6 -= r7
   33: (7b) *(u64 *)(r10 -16) = r6
-â€¦
+…
 </code></pre>
 	<p>If you've spent any time using eBPF, you must have experienced first hand the dreaded eBPF verifier. It's a merciless judge of all eBPF code that will reject any programs that it deems not worthy of running in kernel-space.</p>
 	<p>What perhaps nobody has told you before, and what might come as a surprise, is that the very same verifier will actually also <a href="https://elixir.bootlin.com/linux/v4.20.13/source/kernel/bpf/verifier.c#L6421">rewrite and patch up your eBPF code</a> as needed to make it safe.</p>
@@ -91,7 +91,7 @@ $ sudo bpftool prog dump xlated id 659
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/bpf_commit.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p><!--kg-card-begin: markdown-->
-	<p>Wait a minuteâ€¦ What pointer arithmetic? We are just trying to subtract two scalar values. How come the mitigation kicks in?</p>
+	<p>Wait a minute… What pointer arithmetic? We are just trying to subtract two scalar values. How come the mitigation kicks in?</p>
 	<p>It shouldn't. It's a bug. The eBPF verifier keeps track of what kind of values the ALU is operating on, and in this corner case the state was ignored.</p>
 	<p>Why running BPF as root is fine, you ask? If your program has <code>CAP_SYS_ADMIN</code> privileges, side-channel mitigations <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L7218">don't</a> <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L3109">apply</a>. As root you already have access to kernel address space, so nothing new can leak through BPF.</p>
 	<p>After our report, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3612af783cf52c74a031a2f11b82247b2599d3cd">the fix</a> has quickly landed in v5.0 kernel and got backported to stable kernels 4.20.15 and 4.19.28. Kudos to Daniel Borkmann for getting the fix out fast. However, kernel upgrades are hard and in the meantime we were left with code running in production that was not doing what it was supposed to.</p>
@@ -108,7 +108,7 @@ u32 sub32(u32 x, u32 y)
 }
 $ clang -O2 -target bpf -Xclang -target-feature -Xclang +alu32 -c sub32.c
 $ llvm-objdump -S -no-show-raw-insn sub32.o
-â€¦
+…
 sub32:
        0:       bc 10 00 00 00 00 00 00         w0 = w1
        1:       1c 20 00 00 00 00 00 00         w0 -= w2
@@ -135,7 +135,7 @@ sub32:
 	<p>This code compiles as expected on normal architectures, like x86-64 or ARM64, but BPF Clang target plays by its own rules:</p>
 	<pre><code>$ clang -O2 -target bpf -Xclang -target-feature -Xclang +alu32 -c sub64.c -o - \
   | llvm-objdump -S -
-â€¦  
+…  
       13:       1f 40 00 00 00 00 00 00         r0 -= r4
       14:       1f 30 00 00 00 00 00 00         r0 -= r3
       15:       1f 21 00 00 00 00 00 00         r1 -= r2
@@ -211,7 +211,7 @@ diff           4294967295 0x00000000ffffffff
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/poison_bottles-2.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg">image</a> by ANKAWÃœ</figcaption>
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg">image</a> by ANKAWÜ</figcaption>
 	</figure>
 	<p></p><!--kg-card-begin: markdown-->
 	<p>So there you have it - from C, to IR, and back to C to hack around a bug in eBPF verifier and be able to subtract 64-bit integers again. Usually you won't have to dive into LLVM IR or assembly to make use of eBPF. But it does help to know a little about it when things don't work as expected.</p>

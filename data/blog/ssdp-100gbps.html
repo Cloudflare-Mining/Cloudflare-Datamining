@@ -28,7 +28,7 @@
    9103 IT
    ...
 </code></pre>
-	<p>The reflector IP distribution across ASNs is typical. It pretty much follows the worldâ€™s largest residential ISPs:</p>
+	<p>The reflector IP distribution across ASNs is typical. It pretty much follows the world’s largest residential ISPs:</p>
 	<pre><code>$ cat ips-nf-asn.txt |uniq|cut -f 2|sort|uniq -c|sort -nr|head
  318405 4837   # CN China Unicom
   84781 4134   # CN China Telecom
@@ -49,7 +49,7 @@
 	<p><a href="http://www.upnp-hacks.org/upnp.html">UPnP</a> is poorly standardised, but here's a snippet from <a href="https://web.archive.org/web/20151107123618/http://upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v2.0.pdf">the spec</a> about the <code>M-SEARCH</code> frame - the main method for discovery:</p>
 	<p><em>When a control point is added to the network, the UPnP discovery protocol allows that control point to search for devices of interest on the network. It does this by multicasting on the reserved address and port (239.255.255.250:1900) a search message with a pattern, or target, equal to a type or identifier for a device or service.</em></p>
 	<p>Responses to <code>M-SEARCH</code> frame:</p>
-	<p><em>To be found by a network search, a device shall send a unicast UDP response to the source IP address and port that sent the request to the multicast address. Devices respond if the ST header field of the <code>M-SEARCH</code> request is â€œssdp:allâ€, â€œupnp:rootdeviceâ€, â€œuuid:â€ followed by a UUID that exactly matches the one advertised by the device, or if the <code>M-SEARCH</code> request matches a device type or service type supported by the device.</em></p>
+	<p><em>To be found by a network search, a device shall send a unicast UDP response to the source IP address and port that sent the request to the multicast address. Devices respond if the ST header field of the <code>M-SEARCH</code> request is “ssdp:all”, “upnp:rootdevice”, “uuid:” followed by a UUID that exactly matches the one advertised by the device, or if the <code>M-SEARCH</code> request matches a device type or service type supported by the device.</em></p>
 	<p>This works in practice. For example, my Chrome browser regularly asks for a Smart TV I guess:</p>
 	<pre><code>$ sudo tcpdump -ni eth0 udp and port 1900 -A
 IP 192.168.1.124.53044 &gt; 239.255.255.250.1900: UDP, length 175

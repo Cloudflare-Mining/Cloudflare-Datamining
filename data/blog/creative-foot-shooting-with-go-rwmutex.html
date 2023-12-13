@@ -19,7 +19,7 @@
 	<p>The table changes often, so a background goroutine periodically reloads it from our distributed key-value store, acquires the lock (<code>f.IPTable.Lock()</code>), updates it and releases the lock (<code>f.IPTable.Unlock()</code>). This happens every 5 minutes.</p>
 	<p>Everything worked in tests, including multiple and concurrent requests.</p>
 	<p>Today we deployed to an off-production test machine and everything worked. For a few minutes. Then RRDNS stopped answering queries for the beta domains served by the new code.</p>
-	<p>What. <em>That worked on my laptop</em>â„¢.</p>
+	<p>What. <em>That worked on my laptop</em>™.</p>
 	<p>Here's the IPTable consumer function. You can probably spot the bug.</p>
 	<pre><code class="language-go">func (f *V2Filter) getCFAddr(...) (result []dns.RR) {
 	f.IPTable.RLock()

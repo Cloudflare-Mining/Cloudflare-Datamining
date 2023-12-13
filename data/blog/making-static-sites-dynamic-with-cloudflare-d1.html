@@ -1,15 +1,15 @@
 <div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-static-sites-dynamic-with-cloudflare-d1-zh-cn">ç®€ä½“ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/zh-tw/making-static-sites-dynamic-with-cloudflare-d1-zh-tw">ç¹é«”ä¸­æ–‡</a>, <a href="https://blog.cloudflare.com/ja-jp/making-static-sites-dynamic-with-cloudflare-d1-ja-jp">æ—¥æœ¬èªž</a>, <a href="https://blog.cloudflare.com/de-de/making-static-sites-dynamic-with-cloudflare-d1-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/making-static-sites-dynamic-with-cloudflare-d1-fr-fr">FranÃ§ais</a>, <a href="https://blog.cloudflare.com/es-es/making-static-sites-dynamic-with-cloudflare-d1-es-es">EspaÃ±ol</a> and <a href="https://blog.cloudflare.com/pt-br/making-static-sites-dynamic-with-cloudflare-d1-pt-br">PortuguÃªs</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-static-sites-dynamic-with-cloudflare-d1-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/making-static-sites-dynamic-with-cloudflare-d1-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/making-static-sites-dynamic-with-cloudflare-d1-ja-jp">日本語</a>, <a href="https://blog.cloudflare.com/de-de/making-static-sites-dynamic-with-cloudflare-d1-de-de">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/making-static-sites-dynamic-with-cloudflare-d1-fr-fr">Français</a>, <a href="https://blog.cloudflare.com/es-es/making-static-sites-dynamic-with-cloudflare-d1-es-es">Español</a> and <a href="https://blog.cloudflare.com/pt-br/making-static-sites-dynamic-with-cloudflare-d1-pt-br">Português</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1" loading="lazy"></figure>
 	<h3 id="introduction">Introduction</h3>
 	<p>There are many ways to store data in your applications. For example, in Cloudflare Workers applications, we have Workers KV for key-value storage and Durable Objects for real-time, coordinated storage without compromising on consistency. Outside the Cloudflare ecosystem, you can also plug in other tools like NoSQL and graph databases.</p>
 	<p>But sometimes, you want SQL. Indexes allow us to retrieve data quickly. Joins enable us to describe complex relationships between different tables. SQL declaratively describes how our application's data is validated, created, and performantly queried.</p>
-	<p><a href="https://blog.cloudflare.com/d1-open-alpha">D1 was released today in open alpha</a>, and to celebrate, I want to share my experience building apps with D1: specifically, how to get started, and why Iâ€™m excited about D1 joining the long list of tools you can use to build apps on Cloudflare.</p>
+	<p><a href="https://blog.cloudflare.com/d1-open-alpha">D1 was released today in open alpha</a>, and to celebrate, I want to share my experience building apps with D1: specifically, how to get started, and why I’m excited about D1 joining the long list of tools you can use to build apps on Cloudflare.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>D1 is remarkable because it's an instant value-add to applications without needing new tools or stepping out of the Cloudflare ecosystem. Using wrangler, we can do local development on our Workers applications, and with the addition of D1 in wrangler, we can now develop proper stateful applications locally as well. Then, when it's time to deploy the application, wrangler allows us to both access and execute commands to your D1 database, as well as your API itself.</p>
-	<h3 id="what-we-re-building">What weâ€™re building</h3>
+	<h3 id="what-we-re-building">What we’re building</h3>
 	<p>In this blog post, I'll show you how to use D1 to add comments to a static blog site. To do this, we'll construct a new D1 database and build a simple JSON API that allows the creation and retrieval of comments.</p>
 	<p>As I mentioned, separating D1 from the app itself - an API and database that remains separate from the static site - allows us to abstract the static and dynamic pieces of our website from each other. It also makes it easier to deploy our application: we will deploy the frontend to Cloudflare Pages, and the D1-powered API to Cloudflare Workers.</p>
 	<h3 id="building-a-new-application">Building a new application</h3>
@@ -18,11 +18,11 @@
 $ wrangler init
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>In this example, weâ€™ll use Hono, an Express.js-style framework, to rapidly build our API. To use Hono in this project, install it using NPM:</p><!--kg-card-begin: markdown-->
+	<p>In this example, we’ll use Hono, an Express.js-style framework, to rapidly build our API. To use Hono in this project, install it using NPM:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ npm install hono
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Then, in <code>src/index.ts</code>, weâ€™ll initialize a new Hono app, and define a few endpoints - GET /API/posts/:slug/comments, and POST /get/api/:slug/comments.</p><!--kg-card-begin: markdown-->
+	<p>Then, in <code>src/index.ts</code>, we’ll initialize a new Hono app, and define a few endpoints - GET /API/posts/:slug/comments, and POST /get/api/:slug/comments.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 
@@ -43,7 +43,7 @@ export default app
 	<pre><code class="language-sh">$ wrangler d1 create d1-example
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>With our created database, we can take the database name ID and associate it with a <strong>binding</strong> inside of wrangler.toml, wrangler's configuration file. Bindings allow us to access Cloudflare resources, like D1 databases, KV namespaces, and R2 buckets, using a simple variable name in our code. Below, weâ€™ll create the binding <code>DB</code> and use it to represent our new database:</p><!--kg-card-begin: markdown-->
+	<p>With our created database, we can take the database name ID and associate it with a <strong>binding</strong> inside of wrangler.toml, wrangler's configuration file. Bindings allow us to access Cloudflare resources, like D1 databases, KV namespaces, and R2 buckets, using a simple variable name in our code. Below, we’ll create the binding <code>DB</code> and use it to represent our new database:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-toml">[[ d1_databases ]]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "d1-example"
@@ -55,11 +55,11 @@ database_id = "4e1c28a9-90e4-41da-8b4b-6cf36e5abb29"
 	<p>First, you can issue direct SQL commands using <code>wrangler d1 execute</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">$ wrangler d1 execute d1-example --command "SELECT name FROM sqlite_schema WHERE type ='table'"
 Executing on d1-example:
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚ name â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚ sqlite_sequence â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+┌─────────────────┐
+│ name │
+├─────────────────┤
+│ sqlite_sequence │
+└─────────────────┘
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>You can also pass a SQL file - perfect for initial data seeding in a single command. Create <code>src/schema.sql</code>, which will create a new <code>comments</code> table for our project:</p><!--kg-card-begin: markdown-->

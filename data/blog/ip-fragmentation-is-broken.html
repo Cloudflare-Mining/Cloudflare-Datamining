@@ -62,7 +62,7 @@ octets without further fragmentation. [...]
 	<p>Each of these layers between a client and server can cause a Path MTU problem. Allow me to illustrate this with four scenarios.</p>
 	<h4 id="1clientserverdficmp">1. Client -&gt; Server DF+ / ICMP</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/08/client-dfp.png" alt="" loading="lazy"></p>
-	<p>In the first scenario, a client uploads some data to the server using TCP so the DF flag is set on all of the packets. If the client fails to predict an appropriate MTU, an intermediate router will drop the big packets and send an ICMP â€œPacket too bigâ€ notification back to the client. These ICMP packets might get dropped by misconfigured customer NAT devices or ISP middle boxes.</p>
+	<p>In the first scenario, a client uploads some data to the server using TCP so the DF flag is set on all of the packets. If the client fails to predict an appropriate MTU, an intermediate router will drop the big packets and send an ICMP “Packet too big” notification back to the client. These ICMP packets might get dropped by misconfigured customer NAT devices or ISP middle boxes.</p>
 	<p>According to the <a href="https://www.nlnetlabs.nl/downloads/publications/pmtu-black-holes-msc-thesis.pdf">paper by Maikel de Boer and Jeffrey Bosma</a> from 2012 around 5% of IPv4 and 1% of IPv6 hosts block inbound ICMP packets.</p>
 	<p>My experience confirms this. ICMP messages are indeed often dropped for perceived security advantages, but this is relatively easy to fix. A bigger issue is with certain mobile ISPs with weird middle boxes. These often completely ignore ICMP and perform very aggressive connection rewriting. For example Orange Polska not only ignores inbound "Packet too big" ICMP messages, but also rewrites the connection state and <a href="http://lartc.org/howto/lartc.cookbook.mtu-mss.html">clamps the MSS</a> to a non-negotiable 1344 bytes.</p>
 	<h4 id="2clientserverdffragmentation">2. Client -&gt; Server DF- / fragmentation</h4>
@@ -71,7 +71,7 @@ octets without further fragmentation. [...]
 	<p>We can emulate this by launching <code>ping</code> with a large payload size:</p>
 	<pre><code class="language-.bash">$ ping -s 2048 facebook.com
 </code></pre>
-	<p>This particular <code>ping</code> will fail with payloads bigger than 1472 bytes. Any larger size will get fragmented and wonâ€™t get delivered properly. There are multiple reasons why servers might mishandle fragments, but one of a popular problems is the use of ECMP load balancing. Due to the ECMP hashing, the first datagram containing a protocol header is likely to be load-balanced to a different server than the rest of the fragments, preventing the reassembly.</p>
+	<p>This particular <code>ping</code> will fail with payloads bigger than 1472 bytes. Any larger size will get fragmented and won’t get delivered properly. There are multiple reasons why servers might mishandle fragments, but one of a popular problems is the use of ECMP load balancing. Due to the ECMP hashing, the first datagram containing a protocol header is likely to be load-balanced to a different server than the rest of the fragments, preventing the reassembly.</p>
 	<p>For a more detailed discussion of this issue, see:</p>
 	<ul>
 		<li>Our <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">previous write up on ECMP</a>.</li>
@@ -80,10 +80,10 @@ octets without further fragmentation. [...]
 	<p>Furthermore, server and router misconfiguration is a significant issue. According to <a href="https://tools.ietf.org/html/rfc7872">RFC7852</a> between 30% and 55% of servers drop IPv6 datagrams containing fragmentation header.</p>
 	<h4 id="3serverclientdficmp">3. Server -&gt; Client DF+ / ICMP</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/08/server-dfp.png" alt="" loading="lazy"></p>
-	<p>The next scenario is about a client downloading some data over TCP. When the server fails to predict the correct MTU, it should receive an ICMP â€œPacket too bigâ€ message. Easy, right?</p>
-	<p>Sadly, it's not, again due to ECMP routing. The ICMP message will most likely get delivered to the wrong server - the 5-tuple hash of ICMP packet will not match the 5-tuple hash of the problematic connection. We <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">wrote about this in the past</a>, and developed a simple userspace daemon to solve it. It works by broadcasting the inbound ICMP â€œPacket too bigâ€ notification to all the ECMP servers, hoping that the one with the problematic connection will see it.</p>
+	<p>The next scenario is about a client downloading some data over TCP. When the server fails to predict the correct MTU, it should receive an ICMP “Packet too big” message. Easy, right?</p>
+	<p>Sadly, it's not, again due to ECMP routing. The ICMP message will most likely get delivered to the wrong server - the 5-tuple hash of ICMP packet will not match the 5-tuple hash of the problematic connection. We <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice">wrote about this in the past</a>, and developed a simple userspace daemon to solve it. It works by broadcasting the inbound ICMP “Packet too big” notification to all the ECMP servers, hoping that the one with the problematic connection will see it.</p>
 	<p>Additionally due to Anycast routing, the ICMP might be delivered to the wrong datacenter altogether! Internet routing is often asymmetric and the best path from an intermediate router might direct the ICMP packets to the wrong place.</p>
-	<p>Missing ICMP â€œPacket too bigâ€ notifications can result in connections stalling and timing out. This is often called a <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery#Problems_with_PMTUD">PMTU blackhole</a>. To aid this pessimistic case Linux implements a workaround - MTU Probing <a href="http://www.ietf.org/rfc/rfc4821.txt">RFC4821</a>. MTU Probing tries to automatically identify packets dropped due to the wrong MTU, and uses heuristics to tune it. This feature is controlled via a sysctl:</p>
+	<p>Missing ICMP “Packet too big” notifications can result in connections stalling and timing out. This is often called a <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery#Problems_with_PMTUD">PMTU blackhole</a>. To aid this pessimistic case Linux implements a workaround - MTU Probing <a href="http://www.ietf.org/rfc/rfc4821.txt">RFC4821</a>. MTU Probing tries to automatically identify packets dropped due to the wrong MTU, and uses heuristics to tune it. This feature is controlled via a sysctl:</p>
 	<pre><code class="language-.bash">$ echo 1 &gt; /proc/sys/net/ipv4/tcp_mtu_probing
 </code></pre>
 	<p>But MTU probing is not without its own issues. First, it tends to miscategorize congestion-related packet loss as MTU issues. Long running connections tend to end up with a reduced MTU. Secondly, Linux does not implement MTU Probing for IPv6.</p>
@@ -146,19 +146,19 @@ curl -v -s http://icmpcheckv6.popcount.org/frag -o /dev/null
 	<section class="footnotes">
 		<ol class="footnotes-list">
 			<li id="fn1" class="footnote-item">
-				<p>In IPv6 the "forward" fragmentation works slightly differently than in IPv4. The intermediate routers are prohibited from fragmenting the packets, but the source can still do it. This is often confusing - a host might be asked to fragment a packet that it transmitted in the past. This makes little sense for stateless protocols like DNS. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>In IPv6 the "forward" fragmentation works slightly differently than in IPv4. The intermediate routers are prohibited from fragmenting the packets, but the source can still do it. This is often confusing - a host might be asked to fragment a packet that it transmitted in the past. This makes little sense for stateless protocols like DNS. <a href="https://blog.cloudflare.com/#fnref1" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn2" class="footnote-item">
-				<p>On a side note, there also exists a "minimum transmission unit"! In commonly used Ethernet framing, each transmitted datagram must have at least 64 bytes on Layer 2. This translates to 22 bytes on UDP and 10 bytes on TCP layer. Multiple implementations used to leak uninitialized memory on shorter packets! <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>On a side note, there also exists a "minimum transmission unit"! In commonly used Ethernet framing, each transmitted datagram must have at least 64 bytes on Layer 2. This translates to 22 bytes on UDP and 10 bytes on TCP layer. Multiple implementations used to leak uninitialized memory on shorter packets! <a href="https://blog.cloudflare.com/#fnref2" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn3" class="footnote-item">
-				<p>Strictly speaking in IPv4 the ICMP packet is named "Destination Unreachable, Fragmentation Needed and Don't Fragment was Set". But I find the IPv6 ICMP error description "Packet too big" much clearer. <a href="https://blog.cloudflare.com/#fnref3" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>Strictly speaking in IPv4 the ICMP packet is named "Destination Unreachable, Fragmentation Needed and Don't Fragment was Set". But I find the IPv6 ICMP error description "Packet too big" much clearer. <a href="https://blog.cloudflare.com/#fnref3" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn4" class="footnote-item">
-				<p>As a hint, TCP stack also include a maximum allowed "MSS" value in SYN packets (MSS is basically an MTU value reduced by size of IP and TCP headers). This allows the hosts to know what is the MTU on <em>their</em> links. Notice: this doesn't say what is the MTU on the dozens internet links between the two hosts! <a href="https://blog.cloudflare.com/#fnref4" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>As a hint, TCP stack also include a maximum allowed "MSS" value in SYN packets (MSS is basically an MTU value reduced by size of IP and TCP headers). This allows the hosts to know what is the MTU on <em>their</em> links. Notice: this doesn't say what is the MTU on the dozens internet links between the two hosts! <a href="https://blog.cloudflare.com/#fnref4" class="footnote-backref">↩︎</a></p>
 			</li>
 			<li id="fn5" class="footnote-item">
-				<p>Let's err on the safe side. A better MTU is 1492, to accommodate for DSL and PPPoE connections. <a href="https://blog.cloudflare.com/#fnref5" class="footnote-backref">â†©ï¸Ž</a></p>
+				<p>Let's err on the safe side. A better MTU is 1492, to accommodate for DSL and PPPoE connections. <a href="https://blog.cloudflare.com/#fnref5" class="footnote-backref">↩︎</a></p>
 			</li>
 		</ol>
 	</section>

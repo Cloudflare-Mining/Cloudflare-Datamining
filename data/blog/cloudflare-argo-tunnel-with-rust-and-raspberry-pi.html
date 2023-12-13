@@ -14,7 +14,7 @@
 	<h3 id="therig">The Rig</h3>
 	<p>I'll assume you already have a Raspberry Pi with Raspbian on it.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/rig.JPG" alt="My rig" loading="lazy"></p>
-	<p>Plug the Pi into your router. It should now have an IP address. Look that up in your routerâ€™s admin UI:</p>
+	<p>Plug the Pi into your router. It should now have an IP address. Look that up in your router’s admin UI:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/devices.png" alt="Attached devices" loading="lazy"></p>
 	<p>OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
 	<pre><code>$ ssh 192.168.8.26 -l pi
@@ -62,7 +62,7 @@ Resolving bin.equinox.io (bin.equinox.io)... 54.243.137.45, 107.22.233.132, 50.1
 Connecting to bin.equinox.io (bin.equinox.io)|54.243.137.45|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 5293773 (5.0M) [application/octet-stream]
-Saving to: â€˜cloudflared-stable-linux-arm.tgzâ€™
+Saving to: ‘cloudflared-stable-linux-arm.tgz’
 ...
 </code></pre>
 	<p>Untar it</p>
@@ -76,7 +76,7 @@ $ cd argo-tunnel
 cloudflared version 2018.3.0 (built 2018-03-02-1820 UTC)
 </code></pre>
 	<p>Looks OK. Now, we're hoping that the agent will magically connect from the Pi out to the nearest Cloudflare POP. We obviously want that to be secure. Furthermore, we're expecting that when a request comes inbound, it magically gets routed through Cloudflare's network and back to my Raspberry Pi.</p>
-	<p>Seems unlikely, but letâ€™s have faith. Here is my mental model of what's happening:</p>
+	<p>Seems unlikely, but let’s have faith. Here is my mental model of what's happening:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/Argo-Tunnel-Diagram.png" alt="My mental model of Argo Tunnel" loading="lazy"></p>
 	<p>So let's create that secure tunnel. I guess we need some sort of certificate or credentials...</p>
 	<pre><code>$ ./cloudflared login
@@ -145,7 +145,7 @@ $ cd gotham/examples/hello_world
 $ cargo build
 </code></pre>
 	<p><strong>Pro tip:</strong> if cargo is not found, run <code>source $HOME/.cargo/env</code>. It will be automatic in future sessions.</p>
-	<p>As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giantsâ€”eventually you'll have the example built.</p>
+	<p>As cargo does its magic, you can think to yourself about how it's a great package manager, how there really are a lot of dependencies and how OSS really is standing on the shoulders of giants of giants of giants of giants—eventually you'll have the example built.</p>
 	<pre><code>...
 Compiling gotham_examples_hello_world v0.0.0 (file:///home/pi/argo-tunnel/gotham/examples/hello_world)
     Finished dev [unoptimized + debuginfo] target(s) in 502.83 secs
@@ -165,7 +165,7 @@ $ nano src/main.rs
 	<p>Replace the hello world string:</p>
 	<p><code>Some((String::from("Hello World!").into_bytes(), mime::TEXT_PLAIN)),</code></p>
 	<p>with some Unicode and a content-type hint so the browser know how to render it:</p>
-	<p><code>Some((String::from("&lt;html&gt;&lt;head&gt;&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&lt;/head&gt;&lt;body&gt;&lt;marquee&gt;Pá—£á—§â€¢â€¢â€¢Má—£N&lt;/marquee&gt;&lt;/body&gt;&lt;/html&gt;").into_bytes(), mime::TEXT_HTML)),</code></p>
+	<p><code>Some((String::from("&lt;html&gt;&lt;head&gt;&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&lt;/head&gt;&lt;body&gt;&lt;marquee&gt;Pᗣᗧ•••MᗣN&lt;/marquee&gt;&lt;/body&gt;&lt;/html&gt;").into_bytes(), mime::TEXT_HTML)),</code></p>
 	<p>Build and run</p>
 	<pre><code>$ cargo build
 ...

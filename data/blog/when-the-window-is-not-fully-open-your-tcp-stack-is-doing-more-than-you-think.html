@@ -1,6 +1,6 @@
 <div class="mb2 gray5">13 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think-zh-cn">ç®€ä½“ä¸­æ–‡</a> and <a href="https://blog.cloudflare.com/zh-tw/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think-zh-tw">ç¹é«”ä¸­æ–‡</a>.</small></em></p>
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think-zh-tw">繁體中文</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
 	<p>Over the years I've been lurking around the Linux kernel and have investigated the TCP code many times. But when recently we were working on <a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">Optimizing TCP for high WAN throughput while preserving low latency</a>, I realized I have gaps in my knowledge about how Linux manages TCP receive buffers and windows. As I dug deeper I found the subject complex and certainly non-obvious.</p>
 	<p>In this blog post I'll share my journey deep into the Linux networking stack, trying to understand the memory and window management of the receiving side of a TCP connection. Specifically, looking for answers to seemingly trivial questions:</p>
@@ -35,8 +35,8 @@ while true:
 	<!--kg-card-end: markdown-->
 	<p>We're interested in basic questions:</p>
 	<ul>
-		<li>How much data can fit in the serverâ€™s receive buffer? It turns out it's not exactly the same as the default read buffer size on Linux; we'll get there.</li>
-		<li>Assuming infinite bandwidth, what is the minimal time Â&nbsp;- measured in RTT - for the client to fill the receive buffer?</li>
+		<li>How much data can fit in the server’s receive buffer? It turns out it's not exactly the same as the default read buffer size on Linux; we'll get there.</li>
+		<li>Assuming infinite bandwidth, what is the minimal time &nbsp;- measured in RTT - for the client to fill the receive buffer?</li>
 	</ul>
 	<h3 id="a-bit-of-theory">A bit of theory</h3>
 	<p>Let's start by establishing some common nomenclature. I'll follow the wording used by the <a href="https://man7.org/linux/man-pages/man8/ss.8.html"><code>ss</code> Linux tool from the <code>iproute2</code> package</a>.</p>
@@ -52,7 +52,7 @@ net.core.wmem_max = 212992
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p><a href="https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency">The aforementioned blog post</a> discusses why manual buffer size management is problematic - relying on autotuning is generally preferable.</p>
-	<p>Hereâ€™s a diagram showing how <strong>skmem_rb</strong> budget is being divided:</p>
+	<p>Here’s a diagram showing how <strong>skmem_rb</strong> budget is being divided:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-17.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In any given moment, we can think of the budget as being divided into four parts:</p>
 	<ul>
@@ -145,7 +145,7 @@ TcpExtTCPRcvQDrop    13    0.0
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image8-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In this run, the <strong>skmem_rb</strong> is set to 2MiB. As opposed to previous runs, the buffer budget is large and the receive window doesn't start with 50% of the skmem_rb! Instead it starts from 64KiB and grows linearly. It takes a while for Linux to ramp up the receive window to full size - ~800KiB in this case. The window is clamped by <strong>rcv_ssthresh</strong>. This variable starts at 64KiB and then grows at a rate of two full-MSS packets per each packet which has a "good" ratio of total size (truesize) to payload size.</p>
 	<p><a href="https://lore.kernel.org/lkml/CANn89i+mhqGaM2tuhgEmEPbbNu_59GGMhBMha4jnnzFE=UBNYg@mail.gmail.com">Eric Dumazet writes</a> about this behavior:</p>
-	<blockquote>Stack is conservative about RWIN increase, it wants to receive packets to have an idea of the skb-&gt;len/skb-&gt;truesize ratio to convert a memory budget to Â&nbsp;RWIN.<br>Some drivers have to allocate 16K buffers (or even 32K buffers) just to hold one segment (of less than 1500 bytes of payload), while others are able to pack memory more efficiently.</blockquote>
+	<blockquote>Stack is conservative about RWIN increase, it wants to receive packets to have an idea of the skb-&gt;len/skb-&gt;truesize ratio to convert a memory budget to &nbsp;RWIN.<br>Some drivers have to allocate 16K buffers (or even 32K buffers) just to hold one segment (of less than 1500 bytes of payload), while others are able to pack memory more efficiently.</blockquote>
 	<p>This behavior of slow window opening is fixed, and not configurable in vanilla kernel.<a href="https://lore.kernel.org/netdev/20220721151041.1215017-1-marek@cloudflare.com/#r"> We prepared a kernel patch that allows to start up with higher rcv_ssthresh</a> based on per-route option <code>initrwnd</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ip route change local 127.0.0.0/8 dev lo initrwnd 1000
 </code></pre>

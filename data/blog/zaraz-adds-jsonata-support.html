@@ -8,7 +8,7 @@
 	<p>However, feedback from our users highlighted the need for a middle-ground solution. Sometimes, the data manipulation required is minor, and employing a Cloudflare Worker might feel like overkill. It is in response to this feedback that we decided to integrate with <a href="https://jsonata.org">JSONata</a>.</p>
 	<h3 id="what-is-jsonata">What is JSONata?</h3>
 	<p>JSONata calls itself a JSON query and transformation language. While some developers may already be familiar with jq, the command-line JSON processor, JSONata offers similar features with a syntax that we believe is more intuitive and easier to understand. Since JSONata is a JavaScript library, it was very easy to integrate into Cloudflare Zaraz.</p>
-	<p>Letâ€™s say we have JSON document like the following:</p><!--kg-card-begin: markdown-->
+	<p>Let’s say we have JSON document like the following:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-JavaScript">{
   "name": "Jane Smith",
   "address": {
@@ -31,7 +31,7 @@ address.city // London
 pets[type="parrot"].name // ["Alfie", "Milo"]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The JSONata documentation includes many examples for what you do with it, and thereâ€™s even <a href="https://try.jsonata.org">a playground</a> where you can try your JSONata queries live.</p>
+	<p>The JSONata documentation includes many examples for what you do with it, and there’s even <a href="https://try.jsonata.org">a playground</a> where you can try your JSONata queries live.</p>
 	<h3 id="using-jsonata-with-zaraz">Using JSONata with Zaraz</h3>
 	<p>JSONata has been tightly integrated with Cloudflare Zaraz, allowing you to leverage its capabilities in the fields of all Actions, Triggers, and Variables. Before diving into writing your JSONata expressions, it's essential to understand the JSON document you'll be working with.</p>
 	<p>Similar to Worker Variables or the HTTP Request tool, JSONata has access to the Zaraz Context. This object contains information from your <code>zaraz.track()</code> and <code>zaraz.ecommerce()</code> calls, as well as automatically gathered data by Zaraz, such as the current page URL, cookies, page title, user-agent string, and more. You can find the complete reference for this object in <a href="https://developers.cloudflare.com/zaraz/reference/context">the Zaraz documentation</a>.</p>

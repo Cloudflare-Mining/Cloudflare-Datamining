@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/anchor2-2-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale. While we have blogged about how we address security threats from <a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model">application</a> to <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">memory</a>, the attacks on hardware, as well as firmware, have increased substantially. The data cataloged in the <a href="https://nvd.nist.gov">National Vulnerability Database (NVD)</a> has shown the frequency of hardware and firmware-level vulnerabilities rising year after year. </p>
-	<p>Technologies like <a href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot">secure boot</a>, common in desktops and laptops, have been ported over to the server industry as a method to combat firmware-level attacks and protect a deviceâ€™s boot integrity. These technologies require that you create a trust â€˜anchorâ€™, an authoritative entity for which trust is assumed and not derived. A common trust anchor is the system <a href="https://en.wikipedia.org/wiki/BIOS">Basic Input/Output System (BIOS)</a> or the <a href="https://www.uefi.org">Unified Extensible Firmware Interface (UEFI</a>) firmware.</p>
+	<p>Technologies like <a href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot">secure boot</a>, common in desktops and laptops, have been ported over to the server industry as a method to combat firmware-level attacks and protect a device’s boot integrity. These technologies require that you create a trust ‘anchor’, an authoritative entity for which trust is assumed and not derived. A common trust anchor is the system <a href="https://en.wikipedia.org/wiki/BIOS">Basic Input/Output System (BIOS)</a> or the <a href="https://www.uefi.org">Unified Extensible Firmware Interface (UEFI</a>) firmware.</p>
 	<p>While this ensures that the device boots only signed firmware and operating system bootloaders, does it protect the entire boot process? What protects the BIOS/UEFI firmware from attacks?</p>
 	<h2 id="the-boot-process">The Boot Process</h2>
 	<p>Before we discuss how we secure our boot process, we will first go over how we boot our machines.</p>
@@ -28,10 +28,10 @@
 	<p>This upward trend, coupled with <a href="https://arstechnica.com/information-technology/2020/10/custom-made-uefi-bootkit-found-lurking-in-the-wild">recent malware findings in UEFI</a>, shows that trusting firmware is becoming increasingly problematic.</p>
 	<p>By tainting the UEFI firmware image, you poison the entire boot trust chain. The ability to trust firmware integrity is important beyond secure boot. For example, if you can't trust the firmware not to be compromised, you can't trust things like <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/tpm/trusted-platform-module-overview">trusted platform module (TPM) measurements</a> to be accurate, because the firmware is itself responsible for doing these measurements (e.g a TPM is not an on-path security mechanism, but instead it requires firmware to interact and cooperate with). Firmware may be crafted to extend measurements that are accepted by a remote attestor, but that don't represent what's being locally loaded. This could cause firmware to have a questionable measured boot and remote attestation procedure.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image11.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>If we canâ€™t trust firmware, then hardware becomes our last line of defense.</p>
+	<p>If we can’t trust firmware, then hardware becomes our last line of defense.</p>
 	<h2 id="hardware-root-of-trust">Hardware Root of Trust</h2>
 	<p>Early this year, we made a series of blog posts on <a href="https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers">why we chose AMD EPYC processors</a> for our Gen X servers. With security in mind, we started <a href="https://blog.cloudflare.com/securing-memory-at-epyc-scale">turning on</a> features that were available to us and set forth the plan of using AMD silicon as a Hardware Root of Trust (HRoT). </p>
-	<p><a href="https://www.amd.com/system/files/2017-06/Trusting-in-the-CPU.pdf">Platform Secure Boot</a> (PSB) is AMDâ€™s implementation of hardware-rooted boot integrity. Why is it better than UEFI firmware-based root of trust? Because it is intended to assert, by a root of trust anchored in the hardware, the integrity and authenticity of the System ROM image before it can execute. It does so by performing the following actions:</p>
+	<p><a href="https://www.amd.com/system/files/2017-06/Trusting-in-the-CPU.pdf">Platform Secure Boot</a> (PSB) is AMD’s implementation of hardware-rooted boot integrity. Why is it better than UEFI firmware-based root of trust? Because it is intended to assert, by a root of trust anchored in the hardware, the integrity and authenticity of the System ROM image before it can execute. It does so by performing the following actions:</p>
 	<ul>
 		<li>Authenticates the first block of BIOS/UEFI prior to releasing x86 CPUs from reset.</li>
 		<li>Authenticates the System Read-Only Memory (ROM) contents on each boot, not just during updates.</li>
@@ -56,13 +56,13 @@
 		<li>The system continues initialization through each bootloader stage.</li>
 		<li>If each stage passes, then the UEFI image is loaded and the x86 cores are released.</li>
 	</ol>
-	<p>Now that we know the booting steps, letâ€™s build an image.</p>
+	<p>Now that we know the booting steps, let’s build an image.</p>
 	<h2 id="build-process">Build Process</h2>
 	<h3 id="public-key-infrastructure"><br>Public Key Infrastructure</h3>
 	<p>Before the image gets built, a public key infrastructure (PKI) is created to generate the key pairs involved for signing and validating signatures:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Our original device manufacturer (ODM), as a trust extension, creates a key pair (public and private) that is used to sign the first segment of the BIOS (private key) and validates that segment on boot (public key).</p>
-	<p>On AMDâ€™s side, they have a key pair that is used to sign (the AMD root signing private key) and certify the public key created by the ODM. This is validated by AMDâ€™s root signing public key, which is stored as a hash value (<a href="https://tools.ietf.org/html/rfc5756">RSASSA-PSS</a>: SHA-384 with 4096-bit key is used as the hashing algorithm for both message and mask generation) in <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI-ROM</a>.</p>
+	<p>On AMD’s side, they have a key pair that is used to sign (the AMD root signing private key) and certify the public key created by the ODM. This is validated by AMD’s root signing public key, which is stored as a hash value (<a href="https://tools.ietf.org/html/rfc5756">RSASSA-PSS</a>: SHA-384 with 4096-bit key is used as the hashing algorithm for both message and mask generation) in <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI-ROM</a>.</p>
 	<p>Private keys (both AMD and ODM) are stored in <a href="https://en.wikipedia.org/wiki/Hardware_security_module">hardware security modules</a>.</p>
 	<p>Because of the way the PKI mechanisms are built, the system cannot be compromised if only one of the keys is leaked. This is an important piece of the trust hierarchy that is used for image signing.</p>
 	<h3 id="certificate-signing-request">Certificate Signing Request</h3>
@@ -83,7 +83,7 @@
 		<li><code>DISABLE_BIOS_KEY_ANTI_ROLLBACK</code>: Fuse bit that controls whether BIOS key anti-rollback feature is enabled.</li>
 	</ul>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Remember these values, as weâ€™ll show how we use them in a bit. Any of the <code>DISABLE</code> values are optional, but recommended based on your security posture/comfort level. </p>
+	<p>Remember these values, as we’ll show how we use them in a bit. Any of the <code>DISABLE</code> values are optional, but recommended based on your security posture/comfort level. </p>
 	<p>AMD, upon processing the CSR, provides the public part of the BIOS signing key signed and certified by the AMD signing root key as a RSA Public Key Token file (<code>.stkn</code>) format.</p>
 	<h2 id="putting-it-all-together">Putting It All Together</h2>
 	<p>The following is a step-by-step illustration of how signed UEFI firmware is built:</p>
@@ -106,7 +106,7 @@
 	</ul>
 	<p>If validation is successful, the BIOS RTM signature is validated using the ODM BIOS signing key, PSB-specific registers (<code>MP0_C2P_MSG_37</code> and <code>MP0_C2P_MSG_38</code>) are updated with the PSB status and fuse values, and the x86 cores are released</p>
 	<p>If validation fails, the registers above are updated with the PSB error status and fuse values, and the x86 cores stay in a locked state.</p>
-	<h2 id="let-s-boot-">Letâ€™s Boot!</h2>
+	<h2 id="let-s-boot-">Let’s Boot!</h2>
 	<p>With a signed image in hand, we are ready to enable PSB on a machine. We chose to deploy this on a few machines that had an updated, unsigned<a href="https://ami.com/en/support/bios-uefi-firmware-support"> AMI UEFI</a> firmware image, in this case version <code>2.16</code>. We use a couple of different firmware <a href="https://github.com/Zibri/afulnx/releases">update</a> <a href="https://downloadcenter.intel.com/download/29977?v=t">tools</a>, so, after a quick script, we ran an update to change the firmware version from <code>2.16</code> to <code>2.18C</code> (the signed image):</p>
 	<pre><code>. $sudo ./UpdateAll.sh
 Bin file name is ****.218C
@@ -141,13 +141,13 @@ Process completed.
 	<p><br>After a successful install, we validated that the image was correct via the <a href="https://man7.org/linux/man-pages/man5/sysfs.5.html">sysfs</a> information provided in the <a href="https://linux.die.net/man/8/dmidecode">dmidecode</a> output:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image12.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="testing">Testing</h3>
-	<p>With a signed image installed, we wanted to test that it worked, meaning: what if an unauthorized user installed their own firmware image? We did this by downgrading the image back to an unsigned image, <code>2.16</code>. In theory, the machine shouldnâ€™t boot as the x86 cores should stay in a locked state. After downgrading, we rebooted and got the following:</p>
+	<p>With a signed image installed, we wanted to test that it worked, meaning: what if an unauthorized user installed their own firmware image? We did this by downgrading the image back to an unsigned image, <code>2.16</code>. In theory, the machine shouldn’t boot as the x86 cores should stay in a locked state. After downgrading, we rebooted and got the following:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image13-1.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This isnâ€™t a powered down machine, but the result of booting with an unsigned image.</p>
+	<p>This isn’t a powered down machine, but the result of booting with an unsigned image.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image9.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Flashing back to a signed image is done by running the same flashing utility through the BMC, so we werenâ€™t bricked. Nonetheless, the results were successful.</p>
+	<p>Flashing back to a signed image is done by running the same flashing utility through the BMC, so we weren’t bricked. Nonetheless, the results were successful.</p>
 	<h2 id="naming-convention">Naming Convention</h2>
-	<p>Our standard UEFI firmware images are alphanumeric, making it difficult to distinguish (by name) the difference between a signed and unsigned image (<code>v2.16A</code> vs <code>v2.18C</code>), for example. There isnâ€™t a remote attestation capability (yet) to probe the PSB status registers or to store these values by means of a signature (e.g. <a href="https://linux.die.net/man/8/tpm_quote_tools">TPM quote</a>). As we transitioned to PSB, we wanted to make this easier to determine by adding a specific suffix: <code>-sig</code> Â&nbsp;that we could query in userspace. This would allow us to query this information via <a href="https://prometheus.io">Prometheus</a>. Changing the file name alone wouldnâ€™t do it, so we had to make the following changes to reflect a new naming convention for signed images:</p>
+	<p>Our standard UEFI firmware images are alphanumeric, making it difficult to distinguish (by name) the difference between a signed and unsigned image (<code>v2.16A</code> vs <code>v2.18C</code>), for example. There isn’t a remote attestation capability (yet) to probe the PSB status registers or to store these values by means of a signature (e.g. <a href="https://linux.die.net/man/8/tpm_quote_tools">TPM quote</a>). As we transitioned to PSB, we wanted to make this easier to determine by adding a specific suffix: <code>-sig</code> &nbsp;that we could query in userspace. This would allow us to query this information via <a href="https://prometheus.io">Prometheus</a>. Changing the file name alone wouldn’t do it, so we had to make the following changes to reflect a new naming convention for signed images:</p>
 	<ul>
 		<li>Update filename</li>
 		<li>Update BIOS version for setup menu</li>
@@ -172,6 +172,6 @@ BIOS Information
 	ROM Size: 16 MB</code></pre>
 	<h2 id="conclusion">Conclusion</h2>
 	<p>Finding weaknesses in firmware is a challenge that many attackers have taken on. Attacks that physically manipulate the firmware used for performing hardware initialization during the booting process can invalidate many of the common secure boot features that are considered industry standard. By implementing a hardware root of trust that is used for code signing critical boot entities, your hardware becomes a 'first line of defense' in ensuring that your server hardware and software integrity can derive trust through cryptographic means.</p>
-	<h2 id="what-s-next">Whatâ€™s Next?</h2>
-	<p>While this post discussed our current, AMD-based hardware platform, how will this affect our future hardware generations? One of the benefits of working with diverse vendors like AMD and <a href="https://amperecomputing.com">Ampere</a> (ARM) is that we can ensure they are baking in our desired platform security by default (which weâ€™ll speak about in a future post), making our hardware security outlook that much brighter ?.</p>
+	<h2 id="what-s-next">What’s Next?</h2>
+	<p>While this post discussed our current, AMD-based hardware platform, how will this affect our future hardware generations? One of the benefits of working with diverse vendors like AMD and <a href="https://amperecomputing.com">Ampere</a> (ARM) is that we can ensure they are baking in our desired platform security by default (which we’ll speak about in a future post), making our hardware security outlook that much brighter ?.</p>
 </div>

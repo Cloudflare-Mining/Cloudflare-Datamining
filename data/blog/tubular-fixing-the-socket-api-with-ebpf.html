@@ -1,9 +1,9 @@
 <div class="mb2 gray5">13 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/tubular-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>As we develop new products, we often push our operating system - Linux - beyond what is commonly possible. A common theme has been relying on <a href="https://ebpf.io/what-is-ebpf">eBPF</a> to build technology that would otherwise have required modifying the kernel. For example, weâ€™ve built <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">DDoS mitigation</a> and a <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">load balancer</a> and use it to <a href="https://blog.cloudflare.com/introducing-ebpf_exporter">monitor our fleet of servers</a>.</p>
-	<p>This software usually consists of a small-ish eBPF program written in C, executed in the context of the kernel, and a larger user space component that loads the eBPF into the kernel and manages its lifecycle. Weâ€™ve found that the ratio of eBPF code to userspace code differs by an order of magnitude or more. We want to shed some light on the issues that a developer has to tackle when dealing with eBPF and present our solutions for building rock-solid production ready applications which contain eBPF.</p>
-	<p>For this purpose we are open sourcing the production tooling weâ€™ve built for the <a href="https://www.kernel.org/doc/html/latest/bpf/prog_sk_lookup.html">sk_lookup hook</a> we contributed to the Linux kernel, called <strong>tubular</strong>. It exists because <a href="https://blog.cloudflare.com/its-crowded-in-here">weâ€™ve outgrown the BSD sockets API</a>. To deliver some products we need features that are just not possible using the standard API.</p>
+	<p>As we develop new products, we often push our operating system - Linux - beyond what is commonly possible. A common theme has been relying on <a href="https://ebpf.io/what-is-ebpf">eBPF</a> to build technology that would otherwise have required modifying the kernel. For example, we’ve built <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">DDoS mitigation</a> and a <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer">load balancer</a> and use it to <a href="https://blog.cloudflare.com/introducing-ebpf_exporter">monitor our fleet of servers</a>.</p>
+	<p>This software usually consists of a small-ish eBPF program written in C, executed in the context of the kernel, and a larger user space component that loads the eBPF into the kernel and manages its lifecycle. We’ve found that the ratio of eBPF code to userspace code differs by an order of magnitude or more. We want to shed some light on the issues that a developer has to tackle when dealing with eBPF and present our solutions for building rock-solid production ready applications which contain eBPF.</p>
+	<p>For this purpose we are open sourcing the production tooling we’ve built for the <a href="https://www.kernel.org/doc/html/latest/bpf/prog_sk_lookup.html">sk_lookup hook</a> we contributed to the Linux kernel, called <strong>tubular</strong>. It exists because <a href="https://blog.cloudflare.com/its-crowded-in-here">we’ve outgrown the BSD sockets API</a>. To deliver some products we need features that are just not possible using the standard API.</p>
 	<ul>
 		<li>Our services are available on millions of IPs.</li>
 		<li>Multiple services using the same port on different addresses have to coexist, e.g. <a href="https://1.1.1.1">1.1.1.1</a> resolver and our authoritative DNS.</li>
@@ -17,7 +17,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Failure to do so will drop or misdirect connections hundreds of times per second. So it has to be incredibly robust during day to day operations. We had the following goals for tubular:</p>
 	<ul>
-		<li><strong>Releases must be unattended and happen online. </strong>tubular runs on thousands of machines, so we canâ€™t babysit the process or take servers out of production.</li>
+		<li><strong>Releases must be unattended and happen online. </strong>tubular runs on thousands of machines, so we can’t babysit the process or take servers out of production.</li>
 		<li><strong>Releases must fail safely.</strong> A failure in the process must leave the previous version of tubular running, otherwise we may drop connections.</li>
 		<li><strong>Reduce the impact of (userspace) crashes.</strong> When the inevitable bug comes along we want to minimise the blast radius.</li>
 	</ul>
@@ -28,7 +28,7 @@
 	<p>Bindings and sockets are "glued" together via arbitrary strings called labels. Conceptually, a binding assigns a label to some traffic. The label is then used to find the correct socket.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed--2-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="adding-bindings">Adding bindings</h3>
-	<p>To create a binding that steers port 80 (aka HTTP) traffic destined for 127.0.0.1 to the label â€œfooâ€ we use <code>tubectl bind</code>:</p><!--kg-card-begin: markdown-->
+	<p>To create a binding that steers port 80 (aka HTTP) traffic destined for 127.0.0.1 to the label “foo” we use <code>tubectl bind</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo tubectl bind "foo" tcp 127.0.0.1 80
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -41,7 +41,7 @@
 2: tcp 127.0.0.0/24 80 -&gt; "bar"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The first binding says that HTTP traffic to localhost should go to â€œfooâ€, while the second asserts that HTTP traffic in the localhost subnet should go to â€œbarâ€. This creates a contradiction, which binding should we choose? tubular resolves this by defining precedence rules for bindings:</p>
+	<p>The first binding says that HTTP traffic to localhost should go to “foo”, while the second asserts that HTTP traffic in the localhost subnet should go to “bar”. This creates a contradiction, which binding should we choose? tubular resolves this by defining precedence rules for bindings:</p>
 	<ol>
 		<li>A prefix with a longer mask is more specific, e.g. 127.0.0.1/32 wins over 127.0.0.0/24.</li>
 		<li>A port is more specific than the port wildcard, e.g. port 80 wins over "all ports" (0).</li>
@@ -80,14 +80,14 @@ ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080
 	<h2 id="storing-state-in-ebpf-maps">Storing state in eBPF maps</h2>
 	<p>As mentioned previously, tubular relies on the kernel to store state, using<a href="https://prototype-kernel.readthedocs.io/en/latest/bpf/ebpf_maps.html"> BPF key / value data structures also known as maps</a>. Using the <a href="https://www.kernel.org/doc/html/latest/userspace-api/ebpf/syscall.html">BPF_OBJ_PIN syscall</a> we can persist them in /sys/fs/bpf:</p><!--kg-card-begin: markdown-->
 	<pre><code>/sys/fs/bpf/4026532024_dispatcher
-â”œâ”€â”€ bindings
-â”œâ”€â”€ destination_metrics
-â”œâ”€â”€ destinations
-â”œâ”€â”€ sockets
-â””â”€â”€ ...
+├── bindings
+├── destination_metrics
+├── destinations
+├── sockets
+└── ...
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The way the state is structured differs from how the command line interface presents it to users. Labels like â€œfooâ€ are convenient for humans, but they are of variable length. Dealing with variable length data in BPF is cumbersome and slow, so the BPF program never references labels at all. Instead, the user space code allocates numeric IDs, which are then used in the BPF. Each ID represents a (<code>label</code>, <code>domain</code>, <code>protocol</code>) tuple, internally called <code>destination</code>.</p>
+	<p>The way the state is structured differs from how the command line interface presents it to users. Labels like “foo” are convenient for humans, but they are of variable length. Dealing with variable length data in BPF is cumbersome and slow, so the BPF program never references labels at all. Instead, the user space code allocates numeric IDs, which are then used in the BPF. Each ID represents a (<code>label</code>, <code>domain</code>, <code>protocol</code>) tuple, internally called <code>destination</code>.</p>
 	<p>For example, adding a binding for "foo" <code>tcp 127.0.0.1</code> ... allocates an ID for ("<code>foo</code>", <code>AF_INET</code>, <code>TCP</code>). Including domain and protocol in the destination allows simpler data structures in the BPF. Each allocation also tracks how many bindings reference a destination so that we can recycle unused IDs. This data is persisted into the destinations hash table, which is keyed by (Label, Domain, Protocol) and contains (ID, Count). Metrics for each destination are tracked in destination_metrics in the form of per-CPU counters.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/unnamed--1--5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><code>bindings</code> is a<a href="https://en.wikipedia.org/wiki/Trie"> longest prefix match (LPM) trie</a> which stores a mapping from (<code>protocol</code>, <code>port</code>, <code>prefix</code>) to (<code>ID</code>, <code>prefix length</code>). The ID is used as a key to the sockets map which contains pointers to kernel socket structures. IDs are allocated in a way that makes them suitable as an array index, which allows using the simpler BPF sockmap (an array) instead of a socket hash table. The prefix length is duplicated in the value to work around shortcomings in the BPF API.</p>
@@ -98,13 +98,13 @@ ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080
 2: tcp 127.0.0.0/24 80 -&gt; "bar"
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The first binding should be matched before the second one. We need to encode this in the BPF somehow. One idea is to generate some code that executes the bindings in order of specificity, a technique weâ€™ve used to great effect in <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">l4drop</a>:</p><!--kg-card-begin: markdown-->
+	<p>The first binding should be matched before the second one. We need to encode this in the BPF somehow. One idea is to generate some code that executes the bindings in order of specificity, a technique we’ve used to great effect in <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations">l4drop</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>1: if (mask(ip, 32) == 127.0.0.1) return "foo"
 2: if (mask(ip, 24) == 127.0.0.0) return "bar"
 ...
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>This has the downside that the program gets longer the more bindings are added, which slows down execution. It's also difficult to introspect and debug such long programs. Instead, we use a specialised BPF longest prefix match (LPM) map to do the hard work. This allows inspecting the contents from user space to figure out which bindings are active, which is very difficult if we had compiled bindings into BPF. The LPM map uses a trie behind the scenes, so <a href="https://en.wikipedia.org/wiki/Trie#Searching">lookup has complexity proportional to the length of the key</a> instead of linear complexity for the â€œnaiveâ€ solution.</p>
+	<p>This has the downside that the program gets longer the more bindings are added, which slows down execution. It's also difficult to introspect and debug such long programs. Instead, we use a specialised BPF longest prefix match (LPM) map to do the hard work. This allows inspecting the contents from user space to figure out which bindings are active, which is very difficult if we had compiled bindings into BPF. The LPM map uses a trie behind the scenes, so <a href="https://en.wikipedia.org/wiki/Trie#Searching">lookup has complexity proportional to the length of the key</a> instead of linear complexity for the “naive” solution.</p>
 	<p>However, using a map requires a trick for encoding the precedence of bindings into a key that we can look up. Here is a simplified version of this encoding, which ignores IPv6 and uses labels instead of IDs. To insert the binding <code>tcp 127.0.0.0/24 80</code> into a trie we first convert the IP address into a number.</p><!--kg-card-begin: markdown-->
 	<pre><code>127.0.0.0    = 0x7f 00 00 00
 </code></pre>
@@ -113,7 +113,7 @@ ExecStartPost=tubectl register-pid $MAINPID foo tcp 127.0.0.1 8080
 	<pre><code>127.0.0.0/24 = 0x7f 00 00 ??
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>where â€œ?â€ means that the value is not specified. We choose the number 0x01 to represent TCP and prepend it and the port number (80 decimal is 0x50 hex) to create the full key:</p><!--kg-card-begin: markdown-->
+	<p>where “?” means that the value is not specified. We choose the number 0x01 to represent TCP and prepend it and the port number (80 decimal is 0x50 hex) to create the full key:</p><!--kg-card-begin: markdown-->
 	<pre><code>tcp 127.0.0.0/24 80 = 0x01 50 7f 00 00 ??
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -137,7 +137,7 @@ result: "foo"
 y = byte matches
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The trie returns â€œfooâ€ since its key shares the longest prefix with the input. Note that we stop comparing keys once we reach unspecified â€œ?â€ bytes, but conceptually â€œbarâ€ is still a valid result. The distinction becomes clear when looking up the binding for a TCP packet to 127.0.0.255:80.</p><!--kg-card-begin: markdown-->
+	<p>The trie returns “foo” since its key shares the longest prefix with the input. Note that we stop comparing keys once we reach unspecified “?” bytes, but conceptually “bar” is still a valid result. The distinction becomes clear when looking up the binding for a TCP packet to 127.0.0.255:80.</p><!--kg-card-begin: markdown-->
 	<pre><code>input:  0x01 50 7f 00 00 ff   TCP packet to 127.0.0.255:80
 ---------------------------
 LPM trie:
@@ -199,9 +199,9 @@ Listening on 127.0.0.1:8080
 	<h2 id="safe-releases">Safe releases</h2>
 	<p>tubular is distributed as a single binary, but really consists of two pieces of code with widely differing lifetimes. The BPF program is loaded into the kernel once and then may be active for weeks or months, until it is explicitly replaced. In fact, a reference to the program (and link, see below) is persisted into /sys/fs/bpf:</p><!--kg-card-begin: markdown-->
 	<pre><code>/sys/fs/bpf/4026532024_dispatcher
-â”œâ”€â”€ link
-â”œâ”€â”€ program
-â””â”€â”€ ...
+├── link
+├── program
+└── ...
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The user space code is executed for seconds at a time and is replaced whenever the binary on disk changes. This means that user space has to be able to deal with an "old" BPF program in the kernel somehow. The simplest way to achieve this is to compare what is loaded into the kernel with the BPF shipped as part of tubectl. If the two don't match we return an error:</p><!--kg-card-begin: markdown-->
@@ -220,22 +220,22 @@ Error: bind: can't open dispatcher: loaded program #158 has differing tag: "938c
 Upgraded dispatcher to 2022.1.0-dev, program ID #159
 $ sudo bpftool prog list id 159
 159: sk_lookup  name dispatcher  tag e007bfbbf37171f0
-â€¦
+…
 $ sudo tubectl bind foo tcp 127.0.0.1 80
 bound foo#tcp:[127.0.0.1/32]:80
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Behind the scenes the upgrade procedure is slightly more complicated, since we have to update the pinned program reference in addition to the link. We pin the new program into /sys/fs/bpf:</p><!--kg-card-begin: markdown-->
 	<pre><code>/sys/fs/bpf/4026532024_dispatcher
-â”œâ”€â”€ link
-â”œâ”€â”€ program
-â”œâ”€â”€ program-upgrade
-â””â”€â”€ ...
+├── link
+├── program
+├── program-upgrade
+└── ...
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Once the link is updated we <a href="https://www.man7.org/linux/man-pages/man2/rename.2.html">atomically rename</a> program-upgrade to replace program. In the future we may be able to <a href="https://lkml.kernel.org/netdev/20211028094724.59043-5-lmb@cloudflare.com/t">use RENAME_EXCHANGE</a> to make upgrades even safer.</p>
 	<h2 id="preventing-state-corruption">Preventing state corruption</h2>
-	<p>So far weâ€™ve completely neglected the fact that multiple invocations of <code>tubectl</code> could modify the state in /sys/fs/bpf at the same time. Itâ€™s very hard to reason about what would happen in this case, so in general itâ€™s best to prevent this from ever occurring. A common solution to this is <a href="https://gavv.github.io/articles/file-locks/#differing-features">advisory file locks</a>. Unfortunately it seems like BPF maps don't support locking.</p><!--kg-card-begin: markdown-->
+	<p>So far we’ve completely neglected the fact that multiple invocations of <code>tubectl</code> could modify the state in /sys/fs/bpf at the same time. It’s very hard to reason about what would happen in this case, so in general it’s best to prevent this from ever occurring. A common solution to this is <a href="https://gavv.github.io/articles/file-locks/#differing-features">advisory file locks</a>. Unfortunately it seems like BPF maps don't support locking.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo flock /sys/fs/bpf/4026532024_dispatcher/bindings echo works!
 flock: cannot open lock file /sys/fs/bpf/4026532024_dispatcher/bindings: Input/output error
 </code></pre>
@@ -247,6 +247,6 @@ works!
 	<!--kg-card-end: markdown-->
 	<p>Each <code>tubectl</code> invocation likewise invokes <a href="https://www.man7.org/linux/man-pages//man2/flock.2.html"><code>flock()</code></a>, thereby guaranteeing that only ever a single process is making changes.</p>
 	<h2 id="conclusion">Conclusion</h2>
-	<p>tubular is in production at Cloudflare today and has simplified the deployment of <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> and our <a href="https://www.cloudflare.com/dns">authoritative DNS</a>. It allowed us to leave behind limitations of the BSD socket API. However, its most powerful feature is that <a href="https://research.cloudflare.com/publications/Fayed2021">the addresses a service is available on can be changed on the fly</a>. In fact, we have built tooling that automates this process across our global network. Need to listen on another million IPs on thousands of machines? No problem, itâ€™s just an HTTP POST away.</p>
+	<p>tubular is in production at Cloudflare today and has simplified the deployment of <a href="https://www.cloudflare.com/products/cloudflare-spectrum">Spectrum</a> and our <a href="https://www.cloudflare.com/dns">authoritative DNS</a>. It allowed us to leave behind limitations of the BSD socket API. However, its most powerful feature is that <a href="https://research.cloudflare.com/publications/Fayed2021">the addresses a service is available on can be changed on the fly</a>. In fact, we have built tooling that automates this process across our global network. Need to listen on another million IPs on thousands of machines? No problem, it’s just an HTTP POST away.</p>
 	<p><em>Interested in working on tubular and our L4 load balancer </em><a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer"><em>unimog</em></a><em>? We are </em><a href="https://boards.greenhouse.io/cloudflare/jobs/3232234?gh_jid=3232234"><em>hiring in our European offices</em></a><em>.</em></p>
 </div>

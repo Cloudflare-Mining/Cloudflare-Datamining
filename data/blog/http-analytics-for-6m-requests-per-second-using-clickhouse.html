@@ -23,10 +23,10 @@
 		<li><strong>Kafka consumers</strong> - each of 106 partitions had dedicated Go consumer (a.k.a. Zoneagg consumer), which read logs and produced aggregates per partition per zone per minute and then wrote them into Postgres.<br>
 			<strong>Postgres database</strong> - single instance PostgreSQL database (a.k.a. RollupDB), accepted aggregates from Zoneagg consumers and wrote them into temporary tables per partition per minute. It then rolled-up the aggregates into further aggregates with aggregation cron. More specifically:
 			<ul>
-				<li>Aggregates per partition, minute, zone â†’ aggregates data per minute, zone</li>
-				<li>Aggregates per minute, zone â†’ aggregates data per hour, zone</li>
-				<li>Aggregates per hour, zone â†’ aggregates data per day, zone</li>
-				<li>Aggregates per day, zone â†’ aggregates data per month, zone</li>
+				<li>Aggregates per partition, minute, zone → aggregates data per minute, zone</li>
+				<li>Aggregates per minute, zone → aggregates data per hour, zone</li>
+				<li>Aggregates per hour, zone → aggregates data per day, zone</li>
+				<li>Aggregates per day, zone → aggregates data per month, zone</li>
 			</ul>
 		</li>
 		<li><strong>Citus Cluster</strong> - consisted of Citus main and 11 Citus workers with x2 replication factor (a.k.a. Zoneagg Citus cluster), the storage behind Zone Analytics API and our BI internal tools. It had replication cron, which did remote copy of tables from Postgres instance into Citus worker shards.</li>
@@ -48,17 +48,17 @@
 	<p>Our colleagues on our DNS team had already built and productionized DNS analytics pipeline atop ClickHouse. They wrote about it in <a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second">"How Cloudflare analyzes 1M DNS queries per second"</a> blog post. So, we decided to take a deeper look at ClickHouse.</p>
 	<h3 id="clickhouse">ClickHouse</h3>
 	<blockquote>
-		<p>"ClickHouse Ð½Ðµ Ñ‚Ð¾Ñ€Ð¼Ð¾Ð·Ð¸Ñ‚."<br>
+		<p>"ClickHouse не тормозит."<br>
 			Translation from Russian: ClickHouse doesn't have brakes (or isn't slow)<br>
-			Â© ClickHouse core developers</p>
+			© ClickHouse core developers</p>
 	</blockquote>
 	<p>When exploring additional candidates for replacing some of the key infrastructure of our old pipeline, we realized that using a column oriented database might be well suited to our analytics workloads. We wanted to identify a column oriented database that was horizontally scalable and fault tolerant to help us deliver good uptime guarantees, and extremely performant and space efficient such that it could handle our scale. We quickly realized that ClickHouse could satisfy these criteria, and then some.</p>
 	<p><a href="https://clickhouse.yandex">ClickHouse</a> is an open source column-oriented database management system capable of real time generation of analytical data reports using SQL queries. It is blazing fast, linearly scalable, hardware efficient, fault tolerant, feature rich, highly reliable, simple and handy. ClickHouse core developers provide great help on solving issues, merging and maintaining our PRs into ClickHouse. For example, engineers from Cloudflare have contributed a whole bunch of code back upstream:</p>
 	<ul>
-		<li>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk">topK</a> by <a href="https://github.com/vavrusa">Marek VavruÅ¡a</a></li>
-		<li>IP prefix dictionary by Marek VavruÅ¡a</li>
-		<li>SummingMergeTree engine optimizations by Marek VavruÅ¡a</li>
-		<li><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka">Kafka table Engine</a> by Marek VavruÅ¡a. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</li>
+		<li>Aggregate function <a href="https://clickhouse.com/docs/en/sql-reference/aggregate-functions/reference/topk">topK</a> by <a href="https://github.com/vavrusa">Marek Vavruša</a></li>
+		<li>IP prefix dictionary by Marek Vavruša</li>
+		<li>SummingMergeTree engine optimizations by Marek Vavruša</li>
+		<li><a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/kafka">Kafka table Engine</a> by Marek Vavruša. We're thinking to replace Kafka Go consumers with this engine when it will be stable enough and ingest from Kafka into ClickHouse directly.</li>
 		<li>Aggregate function <a href="https://clickhouse.yandex/docs/en/single/index.html#summapkey-value">sumMap</a> by <a href="https://github.com/bocharov">Alex Bocharov</a>. Without this function it would be impossible to build our new Zone Analytics API.</li>
 		<li><a href="https://github.com/yandex/ClickHouse/pull/1636">Mark cache fix</a> by Alex Bocharov</li>
 		<li><a href="https://github.com/yandex/ClickHouse/pull/1844">uniqHLL12 function fix</a> for big cardinalities by Alex Bocharov. The description of the issue and its fix should be an interesting reading.<br>
@@ -160,7 +160,7 @@
 	<p>While default index granularity might be excellent choice for most of use cases, in our case we decided to choose the following index granularities:</p>
 	<ul>
 		<li>For the main non-aggregated requests table we chose an index granularity of 16384. For this table, the number of rows read in a query is typically on the order of millions to billions. In this case, a large index granularity does not make a huge difference on query performance.</li>
-		<li>For the aggregated requests_* stables, we chose an index granularity of 32. A low index granularity makes sense when we only need to scan and return a few rows. It made a huge difference in API performance - query latency decreased by 50% and throughput increased by ~3 times when we changed index granularity 8192 â†’ 32.</li>
+		<li>For the aggregated requests_* stables, we chose an index granularity of 32. A low index granularity makes sense when we only need to scan and return a few rows. It made a huge difference in API performance - query latency decreased by 50% and throughput increased by ~3 times when we changed index granularity 8192 → 32.</li>
 	</ul>
 	<p>Not relevant to performance, but we also disabled the min_execution_speed setting, so queries scanning just a few rows won't return exception because of "slow speed" of scanning rows per second.</p>
 	<p>On the aggregation/merge side, we've made some ClickHouse optimizations as well, like <a href="https://github.com/yandex/ClickHouse/pull/1330">increasing SummingMergeTree maps merge speed</a> by x7 times, which we contributed back into ClickHouse for everyone's benefit.</p>
@@ -178,7 +178,7 @@
 	<p>As you can see the architecture of new pipeline is much simpler and fault-tolerant. It provides Analytics for all our 7M+ customers' domains totalling more than 2.5 billion monthly unique visitors and over 1.5 trillion monthly page views.</p>
 	<p>On average we process 6M HTTP requests per second, with peaks of upto 8M requests per second.<br>
 		<a href="https://blog.cloudflare.com/content/images/2018/03/HTTP-Logfwdr-throughput.png"><img alt="Alt" src="https://blog.cloudflare.com/content/images/2018/03/HTTP-Logfwdr-throughput.png"></a><br>
-		Average log message size in <a href="https://capnproto.org">Capâ€™n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.
+		Average log message size in <a href="https://capnproto.org">Cap’n Proto</a> format used to be ~1630B, but thanks to amazing job on Kafka compression by our Platform Operations Team, it decreased significantly. Please see <a href="https://blog.cloudflare.com/squeezing-the-firehose">"Squeezing the firehose: getting the most from Kafka compression"</a> blog post with deeper dive into those optimisations.
 	</p>
 	<h4 id="benefitsofnewpipeline">Benefits of new pipeline</h4>
 	<ul>
@@ -252,7 +252,7 @@
 	<p>Another option we're exploring is to provide syntax similar to <a href="https://api.cloudflare.com/#dns-analytics-properties">DNS Analytics API</a> with filters and dimensions.</p>
 	<p>We're excited to hear your feedback and know more about your analytics use case. It can help us a lot to build new products!</p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>All this could not be possible without hard work across multiple teams! First of all thanks to other Data team engineers for their tremendous efforts to make this all happen. Platform Operations Team made significant contributions to this project, especially Ivan Babrou and Daniel Dao. Contributions from Marek VavruÅ¡a in DNS Team were also very helpful.</p>
+	<p>All this could not be possible without hard work across multiple teams! First of all thanks to other Data team engineers for their tremendous efforts to make this all happen. Platform Operations Team made significant contributions to this project, especially Ivan Babrou and Daniel Dao. Contributions from Marek Vavruša in DNS Team were also very helpful.</p>
 	<p>Finally, Data team at Cloudflare is a small team, so if you're interested in building and operating distributed services, you stand to have some great problems to work on. Check out the <a href="https://boards.greenhouse.io/cloudflare/jobs/613800">Distributed Systems Engineer - Data</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/688056">Data Infrastructure Engineer</a> roles in London, UK and San Francisco, US, and let us know what you think.</p>
 	<!--kg-card-end: markdown-->
 </div>

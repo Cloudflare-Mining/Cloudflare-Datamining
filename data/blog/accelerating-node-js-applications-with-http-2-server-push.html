@@ -49,7 +49,7 @@ server.listen(port, hostname, function () {
 });
 </code></pre>
 	<p>See the <a href="https://www.npmjs.com/package/netjet">netjet documentation</a> for more information on the supported options.</p>
-	<h2 id="seeingwhatspushed">Seeing whatâ€™s pushed</h2>
+	<h2 id="seeingwhatspushed">Seeing what’s pushed</h2>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/08/2016-08-02_10-49-33.png" alt="" loading="lazy"></p>
 	<p>Chrome's Developer Tools makes it easy to verify that your site is using Server Push. The Network tab shows pushed assets with "Push" included as part of the initiator.</p>
 	<p>Unfortunately, Firefox's Developers Tools don't yet directly expose if the resource pushed. You can, however, check for the <code>cf-h2-pushed</code> header in the page's response headers, which contains a list of resources that CloudFlare offered browsers over Server Push.</p>

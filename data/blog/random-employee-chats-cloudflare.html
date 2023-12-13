@@ -1,7 +1,7 @@
 <div class="mb2 gray5">5 min read</div>
 <div class="post-content lh-copy gray1">
 	<p>Due to the COVID-19 pandemic, most Cloudflare offices closed in March 2020, and employees began working from home. Having online meetings presented its own challenges, but preserving the benefits of casual encounters in physical offices was something we struggled with. Those informal interactions, like teams talking next to the coffee machine, help form the social glue that holds companies together.</p>
-	<p>In an attempt to recreate that experience, David Wragg, an engineer at Cloudflare, introduced â€œRandom Engineer Chatsâ€ (Weâ€™re calling them â€œRandom Employee Chatsâ€ here since this can be applied to any team). The idea is that participants are randomly paired, and the pairs then schedule a 30-minute video call. Thereâ€™s no fixed agenda for these conversations, but the participants might learn what is going on in other teams, gain new perspectives on their own work by discussing it, or meet new people.</p>
+	<p>In an attempt to recreate that experience, David Wragg, an engineer at Cloudflare, introduced “Random Engineer Chats” (We’re calling them “Random Employee Chats” here since this can be applied to any team). The idea is that participants are randomly paired, and the pairs then schedule a 30-minute video call. There’s no fixed agenda for these conversations, but the participants might learn what is going on in other teams, gain new perspectives on their own work by discussing it, or meet new people.</p>
 	<p>The first iteration of Random Employee Chats used a shared spreadsheet to coordinate the process. People would sign up by adding themselves to the spreadsheet, and once a week, David would randomly form pairs from the list and send out emails with the results. Then, each pair would schedule a call at their convenience. This process was the minimum viable implementation of the idea, but it meant that the process relied on a single person.</p>
 	<h3 id="moving-to-cloudflare-workers">Moving to Cloudflare Workers</h3>
 	<p>We wanted to automate these repetitive manual tasks, and naturally, we wanted to use <a href="https://workers.cloudflare.com">Cloudflare Workers</a> to do it. This is a great example of a complete application that runs entirely in Cloudflare Workers on the edge with no backend or origin server.</p>
@@ -31,7 +31,7 @@ value: {"name":"Sven Sauleau","picture":"picture.jpg","email":"example@cloudflar
 type = "webpack"
 account_id = "..."
 webpack_config = "webpack.config.js"
-â€¦
+…
 
 kv_namespaces = [...]
 
@@ -39,11 +39,11 @@ kv_namespaces = [...]
 crons = ["0 8 * * 2"]
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The pairing script is the most intricate part of the application, so letâ€™s run through its code. First, we list the users that are currently registered. This is done using the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#listing-by-prefix">list</a> function in Workers KV extracting keys with the prefix <code>register:</code>.</p><!--kg-card-begin: markdown-->
+	<p>The pairing script is the most intricate part of the application, so let’s run through its code. First, we list the users that are currently registered. This is done using the <a href="https://developers.cloudflare.com/workers/runtime-apis/kv#listing-by-prefix">list</a> function in Workers KV extracting keys with the prefix <code>register:</code>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">const list = await KV_NAMESPACE.list({ prefix: "register:" });
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>If we donâ€™t have an even number of participants, we remove one person from the list (David!).</p>
+	<p>If we don’t have an even number of participants, we remove one person from the list (David!).</p>
 	<p>Then, we create all possible pairs and attach a weight to them.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-js">async function createWeightedPairs() {
   const pairs = [];
@@ -57,7 +57,7 @@ crons = ["0 8 * * 2"]
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>For example, suppose four people have registered (Tom, Edie, Ivie and Ada), thatâ€™s 6 possible pairs (<a href="https://www.wolframalpha.com/input/?i=4+choose+2">4 choose 2</a>). We might end up with the following pairs and their associated weights:</p><!--kg-card-begin: markdown-->
+	<p>For example, suppose four people have registered (Tom, Edie, Ivie and Ada), that’s 6 possible pairs (<a href="https://www.wolframalpha.com/input/?i=4+choose+2">4 choose 2</a>). We might end up with the following pairs and their associated weights:</p><!--kg-card-begin: markdown-->
 	<pre><code>(Tom, Edie, 1)
 (Tom, Ivie, 0)
 (Tom, Ada, 1)
@@ -80,7 +80,7 @@ crons = ["0 8 * * 2"]
 	<p>The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-20.png" class="kg-image" alt="The people form a complete graph with people as nodes and the edges weighted by the number of times the two people connected by the edge have met." loading="lazy"></figure>
 	<p>Next, we run a weighted matching algorithm, in our case the <a href="https://en.wikipedia.org/wiki/Blossom_algorithm">Blossom algorithm</a>, which will find a maximum matching on the graph (a set of edges that maximize the number of pairs of people connected with each person appearing exactly once). As we use the weighted form of the Blossom algorithm we also minimize the path weights. This has the effect of finding the optimal set of pairs minimizing the number of times people have met previously.</p>
-	<p>In the case above the algorithm suggests the optimal pairs are Â&nbsp;(Tom, Ivie) and (Edie, Ada). In this case, those pairs have never met before.</p>
+	<p>In the case above the algorithm suggests the optimal pairs are &nbsp;(Tom, Ivie) and (Edie, Ada). In this case, those pairs have never met before.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-18.png" class="kg-image" alt="In this case, those pairs have never met before." loading="lazy"></figure>
 	<p>The pairs are recorded in Workers KV with their updated matching count to refine the weights at future sessions:</p><!--kg-card-begin: markdown-->
 	<pre><code>key: paired:ID

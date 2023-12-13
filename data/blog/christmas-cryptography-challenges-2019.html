@@ -59,7 +59,7 @@
 	<p>Whilst this may seem like a somewhat incredulous position for a developer to end up in - searching GitHub, I was even able to find implementations that used the default secret (<em>base32secret3232</em>) for all users wanting to authenticate to a website. This means that any other user's One Time Password is valid for any other account, and the secret could likely be breached fairly easily (as it isn't randomly generated).</p>
 	<h3 id="rpki-2">RPKI</h3>
 	<p>Cloudflare can only generate ROAs based on their prefixes. The IPv6 prefixes are listed here: https://cloudflare.com/ips-v6.</p>
-	<p>Using any RPKI validated prefix list (<a href="https://rpki.cloudflare.com/rpki.json">https://rpki.cloudflare.com/rpki.json</a>, or using the GUI of the RIPEâ€™s RPKI Validator), test out our IPv6 prefixes. Some of them will appear coming from Reserved ASNs for Private Use:</p>
+	<p>Using any RPKI validated prefix list (<a href="https://rpki.cloudflare.com/rpki.json">https://rpki.cloudflare.com/rpki.json</a>, or using the GUI of the RIPE’s RPKI Validator), test out our IPv6 prefixes. Some of them will appear coming from Reserved ASNs for Private Use:</p>
 	<ul>
 		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:1 - <strong>B</strong></li>
 		<li>2803:f800:cfcf:cfcf:cfcf:cfcf:cfcf:2 - <strong>R</strong></li>

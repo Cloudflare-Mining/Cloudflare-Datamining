@@ -3,7 +3,7 @@
 	<h2 id="how-does-secondary-dns-work">How Does Secondary DNS Work?</h2>
 	<p>If you already understand how Secondary DNS works, please feel free to skip this section. It does not provide any Cloudflare-specific information.</p>
 	<p>Secondary DNS has many use cases across the Internet; however, traditionally, it was used as a synchronized backup for when the primary DNS server was unable to respond to queries. A more modern approach involves focusing on redundancy across many different nameservers, which in many cases broadcast the same anycasted IP address.</p>
-	<p>Secondary DNS involves the unidirectional transfer of DNS zones from the primary to the Secondary DNS server(s). One primary can have any number of Secondary DNS servers that it must communicate with in order to keep track of any zone updates. A zone update is considered a change in the contents of a Â&nbsp;zone, which ultimately leads to a Start of Authority (SOA) serial number increase. The zoneâ€™s SOA serial is one of the key elements of Secondary DNS; it is how primary and secondary servers synchronize zones. Below is an example of what an SOA record might look like during a dig query.</p><!--kg-card-begin: markdown-->
+	<p>Secondary DNS involves the unidirectional transfer of DNS zones from the primary to the Secondary DNS server(s). One primary can have any number of Secondary DNS servers that it must communicate with in order to keep track of any zone updates. A zone update is considered a change in the contents of a &nbsp;zone, which ultimately leads to a Start of Authority (SOA) serial number increase. The zone’s SOA serial is one of the key elements of Secondary DNS; it is how primary and secondary servers synchronize zones. Below is an example of what an SOA record might look like during a dig query.</p><!--kg-card-begin: markdown-->
 	<pre><code>example.com	3600	IN	SOA	ashley.ns.cloudflare.com. dns.cloudflare.com. 
 2034097105  // Serial
 10000 // Refresh
@@ -20,12 +20,12 @@
 		<li>Expire - The maximum number of seconds that a Secondary DNS server can serve stale information, in the event the primary cannot be contacted.</li>
 		<li>Minimum TTL - Per <a href="https://tools.ietf.org/html/rfc2308">RFC 2308</a>, the number of seconds that a DNS negative response should be cached for.</li>
 	</ol>
-	<p>Using the above information, the Secondary DNS server stores an SOA record for each of the zones it is tracking. When the serial increases, it knows that the zone must have changed, and that a zone transfer must be initiated. Â&nbsp;</p>
+	<p>Using the above information, the Secondary DNS server stores an SOA record for each of the zones it is tracking. When the serial increases, it knows that the zone must have changed, and that a zone transfer must be initiated. &nbsp;</p>
 	<h2 id="serial-tracking">Serial Tracking</h2>
 	<p>Serial increases can be detected in the following ways:</p>
 	<ol>
 		<li>The fastest way for the Secondary DNS server to keep track of a serial change is to have the primary server NOTIFY them any time a zone has changed using the DNS protocol as specified in <a href="https://www.ietf.org/rfc/rfc1996.txt">RFC 1996</a>, Secondary DNS servers will instantly be able to initiate a zone transfer.</li>
-		<li>Another way is for the Secondary DNS server to simply poll the primary every â€œRefreshâ€ seconds. This isnâ€™t as fast as the NOTIFY approach, but it is a good fallback in case the notifies have failed.</li>
+		<li>Another way is for the Secondary DNS server to simply poll the primary every “Refresh” seconds. This isn’t as fast as the NOTIFY approach, but it is a good fallback in case the notifies have failed.</li>
 	</ol>
 	<p>One of the issues with the basic NOTIFY protocol is that anyone on the Internet could potentially notify the Secondary DNS server of a zone update. If an initial SOA query is not performed by the Secondary DNS server before initiating a zone transfer, this is an easy way to perform an <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack">amplification attack</a>. There is two common ways to prevent anyone on the Internet from being able to NOTIFY Secondary DNS servers:</p>
 	<ol>
@@ -62,7 +62,7 @@
 	</ol>
 	<p>Each of these microservices communicates with the others through <a href="https://kafka.apache.org">Kafka</a>.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image8-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 1: Secondary DNS Microservice Architecture<span class="-mobiledoc-kit__atom">â€Œâ€Œ</span></figcaption>
+		<figcaption>Figure 1: Secondary DNS Microservice Architecture<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
 	<p>Once the zone transferer completes the AXFR/IXFR, it then passes the zone through to our zone builder, and finally gets pushed out to our edge at each of our <a href="https://www.cloudflare.com/en-gb/network">200 locations.</a></p>
 	<p>Although this current architecture worked great in the beginning, it left us open to many vulnerabilities and scalability issues down the road. As our Secondary DNS product became more popular, it was important that we proactively scaled and reduced the technical debt as much as possible. As with many companies in the industry, Cloudflare has recently migrated all of our core data center services to <a href="https://kubernetes.io/docs/concepts/overview/what-is-kubernetes">Kubernetes</a>, moving away from individually managed apps and Marathon clusters.</p>
@@ -114,7 +114,7 @@
 		<li><strong>Spectrum &lt;-&gt; k8s routing decisions based of L4 protocol</strong>:</li>
 		<li>This is because k8s only supports one of TCP/UDP/SCTP per service of type load balancer. Once again, spectrum has no issues proxying this correctly.</li>
 	</ol>
-	<p>One of the problems with using a L4 proxy in between services is that source IP addresses get changed to the source IP address of the proxy (Spectrum in this case). Not knowing the source IP address means we have no idea who sent the NOTIFY message, opening us up to attack vectors. Fortunately, Spectrumâ€™s <a href="https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol">proxy protocol </a>feature is capable of adding custom headers to TCP/UDP packets which contain source IP/Port information.</p>
+	<p>One of the problems with using a L4 proxy in between services is that source IP addresses get changed to the source IP address of the proxy (Spectrum in this case). Not knowing the source IP address means we have no idea who sent the NOTIFY message, opening us up to attack vectors. Fortunately, Spectrum’s <a href="https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol">proxy protocol </a>feature is capable of adding custom headers to TCP/UDP packets which contain source IP/Port information.</p>
 	<p>As we are using <a href="https://github.com/miekg/dns">miekg/dns </a>for our Notify Listener, adding proxy headers to the DNS NOTIFY messages would cause failures in validation at the DNS server level. Alternatively, we were able to implement custom <a href="https://github.com/miekg/dns/blob/master/server.go#L156-L162">read and write decorators</a> that do the following:</p>
 	<ol>
 		<li><strong>Reader: </strong>Extract source address information on inbound NOTIFY messages. Place extracted information into new DNS records located in the additional section of the message.</li>
@@ -122,9 +122,9 @@
 	</ol>
 	<p>There is no way to spoof these records, because the server only permits two extra records, one of which is the optional TSIG. Any other records will be overwritten.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image4-6.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 4: Proxying Records Between Notifier and Spectrum<span class="-mobiledoc-kit__atom">â€Œâ€Œ</span></figcaption>
+		<figcaption>Figure 4: Proxying Records Between Notifier and Spectrum<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
-	<p>This custom decorator approach abstracts the proxying away from the Notify Listener through the use of the DNS protocol. Â&nbsp;</p>
+	<p>This custom decorator approach abstracts the proxying away from the Notify Listener through the use of the DNS protocol. &nbsp;</p>
 	<p>Although knowing the source IP will block a significant amount of bad traffic, since NOTIFY messages can use both UDP and TCP, it is prone to <a href="https://blog.cloudflare.com/the-root-cause-of-large-ddos-ip-spoofing">IP spoofing</a>. To ensure that the primary servers do not get spammed, we have made the following additions to the Zone Transferer:</p>
 	<ol>
 		<li>Always ensure that the SOA has actually been updated before initiating a zone transfer.</li>
@@ -134,10 +134,10 @@
 	<h3 id="zone-transferer-scheduling">Zone Transferer Scheduling</h3>
 	<p>As shown in figure 1, there are several ways of sending Kafka messages to the Zone Transferer in order to initiate a zone transfer. There is no benefit in having a large backlog of zone transfers for the same zone. Once a zone has been transferred, assuming no more changes, it does not need to be transferred again. This means that we should only have at most one transfer ongoing, and one scheduled transfer at the same time, for any zone.</p>
 	<p>If we want to limit our number of scheduled messages to one per zone, this involves ignoring Kafka messages that get sent to the Zone Transferer. This is not as simple as ignoring specific messages in any random order. One of the benefits of Kafka is that it holds on to messages until the user actually decides to acknowledge them, by committing that messages offset. Since Kafka is just a queue of messages, it has no concept of order other than first in first out (FIFO). If a user is capable of reading from the Kafka topic concurrently, it is entirely possible that a message in the middle of the queue be committed before a message at the end of the queue. </p>
-	<p>Most of the time this isnâ€™t an issue, because we know that one of the concurrent readers has read the message from the end of the queue and is processing it. There is one Kubernetes-related catch to this issue, though: pods are ephemeral. The kube master doesnâ€™t care what your concurrent reader is doing, it will kill the pod and itâ€™s up to your application to handle it.</p>
+	<p>Most of the time this isn’t an issue, because we know that one of the concurrent readers has read the message from the end of the queue and is processing it. There is one Kubernetes-related catch to this issue, though: pods are ephemeral. The kube master doesn’t care what your concurrent reader is doing, it will kill the pod and it’s up to your application to handle it.</p>
 	<p>Consider the following problem:</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image2-2.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 5: Kafka Partition<span class="-mobiledoc-kit__atom">â€Œâ€Œ</span></figcaption>
+		<figcaption>Figure 5: Kafka Partition<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
 	<ol>
 		<li>Read offset 1. Start transferring zone 1.</li>
@@ -155,7 +155,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image9-2.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>Figure 6: Kafka Algorithm to Solve Message Loss</figcaption>
 	</figure>
-	<p>This solution is essentially soft committing Kafka messages, until we can confidently say that all other messages have been acknowledged. Itâ€™s important to note that this only truly works in a distributed manner if the Kafka messages are keyed by zone id, this will ensure the same zone will always be processed by the same Kafka consumer.</p>
+	<p>This solution is essentially soft committing Kafka messages, until we can confidently say that all other messages have been acknowledged. It’s important to note that this only truly works in a distributed manner if the Kafka messages are keyed by zone id, this will ensure the same zone will always be processed by the same Kafka consumer.</p>
 	<h2 id="life-of-a-secondary-dns-request">Life of a Secondary DNS Request</h2>
 	<p>Although Cloudflare has a <a href="https://www.cloudflare.com/en-gb/network">large global network</a>, as shown above, the zone transferring process does not take place at each of the edge datacenter locations (which would surely overwhelm many primary servers), but rather in our core data centers. In this case, how do we propagate to our edge in seconds? After transferring the zone, there are a couple more steps that need to be taken before the change can be seen at the edge.</p>
 	<ol>
@@ -163,10 +163,10 @@
 		<li>Authoritative Server - This reads from Quicksilver and serves the built zone. </li>
 	</ol>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/image3-6.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Figure 7: End to End Secondary DNS<span class="-mobiledoc-kit__atom">â€Œâ€Œ</span></figcaption>
+		<figcaption>Figure 7: End to End Secondary DNS<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
 	<h2 id="what-about-performance">What About Performance?</h2>
-	<p>At the time of writing this post, according to <a href="http://dnsperf.com">dnsperf.com</a>, Cloudflare leads in global performance for both <a href="https://www.dnsperf.com">Authoritative</a> and <a href="https://www.dnsperf.com/#!dns-resolvers">Resolver</a> DNS. Here, Secondary DNS falls under the authoritative DNS category here. Letâ€™s break down the performance of each of the different parts of the Secondary DNS pipeline, from the primary server updating its records, to them being present at the Cloudflare edge.</p>
+	<p>At the time of writing this post, according to <a href="http://dnsperf.com">dnsperf.com</a>, Cloudflare leads in global performance for both <a href="https://www.dnsperf.com">Authoritative</a> and <a href="https://www.dnsperf.com/#!dns-resolvers">Resolver</a> DNS. Here, Secondary DNS falls under the authoritative DNS category here. Let’s break down the performance of each of the different parts of the Secondary DNS pipeline, from the primary server updating its records, to them being present at the Cloudflare edge.</p>
 	<ol>
 		<li>Primary Server to Notify Listener - Our most accurate measurement is only precise to the second, but we know UDP/TCP communication is likely much faster than that.</li>
 		<li>NOTIFY to Zone Transferer - This is negligible</li>
@@ -190,5 +190,5 @@
 	<p>An additional test was performed manually to get a real world estimate, the test had the following attributes:</p>
 	<p>Primary server: NS1<br>Number of records changed: 1<br>Start test timer event: Change record on NS1<br>Stop test timer event: Observe record change at Cloudflare edge using dig<br>Recorded timer value: 6 seconds</p>
 	<h2 id="conclusion">Conclusion</h2>
-	<p>Cloudflare serves 15.8 trillion DNS queries per month, operating within 100ms of 99% of the Internet-connected population. The goal of Cloudflare operated Secondary DNS is to allow our customers with custom DNS solutions, be it on-premise or some other DNS provider, to be able to take advantage of Cloudflare's DNS performance and more recently, through <a href="https://blog.cloudflare.com/orange-clouding-with-secondary-dns">Secondary Override</a>, our proxying and security capabilities too. Secondary DNS is currently available on the Enterprise plan, if youâ€™d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-How-do-I-setup-and-manage-Secondary-DNS-">support article</a>.</p>
+	<p>Cloudflare serves 15.8 trillion DNS queries per month, operating within 100ms of 99% of the Internet-connected population. The goal of Cloudflare operated Secondary DNS is to allow our customers with custom DNS solutions, be it on-premise or some other DNS provider, to be able to take advantage of Cloudflare's DNS performance and more recently, through <a href="https://blog.cloudflare.com/orange-clouding-with-secondary-dns">Secondary Override</a>, our proxying and security capabilities too. Secondary DNS is currently available on the Enterprise plan, if you’d like to take advantage of it, please let your account team know. For additional documentation on Secondary DNS, please refer to our <a href="https://support.cloudflare.com/hc/en-us/articles/360001356152-How-do-I-setup-and-manage-Secondary-DNS-">support article</a>.</p>
 </div>
