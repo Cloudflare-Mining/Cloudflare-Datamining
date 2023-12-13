@@ -229,14 +229,6 @@
 			"filter_options": []
 		}
 	],
-	"Origin Monitoring": [
-		{
-			"display_name": "Passive Origin Monitoring",
-			"type": "real_origin_monitoring",
-			"description": "Cloudflare is unable to reach your origin",
-			"filter_options": []
-		}
-	],
 	"Pages": [
 		{
 			"display_name": "Pages Alerts",
@@ -401,6 +393,14 @@
 			"display_name": "Zone-level Authenticated Origin Pulls Certificate Expiration Alert",
 			"type": "zone_aop_custom_certificate_expiration_type",
 			"description": "Expiration notices for custom uploaded zone-level Authenticated Origin Pulls certificates",
+			"filter_options": []
+		}
+	],
+	"Traffic Monitoring": [
+		{
+			"display_name": "Passive Origin Monitoring",
+			"type": "real_origin_monitoring",
+			"description": "Cloudflare is unable to reach your origin",
 			"filter_options": []
 		}
 	],
