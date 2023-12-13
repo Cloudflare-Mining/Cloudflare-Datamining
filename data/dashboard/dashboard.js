@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "rozenmd/CUSTESC-35395",
+					branch: "hotfix-Dec.13.2023-1702490243",
 					isReleaseCandidate: "true",
-					commit: "bfe5edfa784633cc50eec2b2cf22da84b7126d5e",
+					commit: "8943c4981bb54b0061b8395ded68b034f246369c",
 					env: "production",
-					builtAt: 1702417889558,
-					dashVersion: "2e9d586bd57a2a7dd63afe35b6f914e10efd0619",
+					builtAt: 1702490624417,
+					dashVersion: "5690e7c32d90986efe5fb72e511e60f5726753a5",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
