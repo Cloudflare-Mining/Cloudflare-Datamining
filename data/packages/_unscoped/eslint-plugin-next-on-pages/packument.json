@@ -1,7 +1,7 @@
 {
 	"name": "eslint-plugin-next-on-pages",
 	"dist-tags": {
-		"beta": "0.0.0-0c2c2fa",
+		"beta": "0.0.0-37260e2",
 		"latest": "1.8.2"
 	},
 	"versions": {
@@ -5583,6 +5583,114 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIC9/JiNCuO8mE2nv2Fxe7hqbZM3O94Nza3+S/JDvh0d5AiBx2l7t29wfRcZgtQJhZBEUWF8cfvM0EKcN4JL0jJlxsw=="
+					}
+				]
+			}
+		},
+		"0.0.0-227f9cb": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "0.0.0-227f9cb",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-JXgKffYhcft+8GsFbPO/4BBlZx35ICJpUSzWr5XXxny/jtAaBUWCtIRFq2QzxiXL77d3/o7yj7afZs4KxW9Fyw==",
+				"shasum": "0fe7248fa13a6c029f442d9d02e9b8dfdb96b7c5",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-0.0.0-227f9cb.tgz",
+				"fileCount": 4,
+				"unpackedSize": 32104,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCxSpZNC1HfxIVcFcn1qnYnnexXjzXCXiIgDRV34hfqPQIgL2IA3cn4aictVIJaAsj/E1xsVOPlvdcEXqM6acE9QOw="
+					}
+				]
+			}
+		},
+		"0.0.0-72426c2": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "0.0.0-72426c2",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-EaFOuIFXgk+JLYr4H92C9uOgJSEKZJNRXDnVU+GJkXrTATF74qP+P2jw1cLTDLxms5dIv9xziyUKCSlajaJTOw==",
+				"shasum": "52f2b8f1996fd93f23d716df0b9710ade264c9f5",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-0.0.0-72426c2.tgz",
+				"fileCount": 4,
+				"unpackedSize": 32335,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDY026f1mzEdp8P6TcP/KTNkftG50MxWJdliYnU1ugKJAiEAyTw0jpKLyCHjrP2Rw9W24G4XlPfLAXsc7EWUr59ELX0="
+					}
+				]
+			}
+		},
+		"0.0.0-37260e2": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "0.0.0-37260e2",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-lcPQdS6uLHQaDDe2mDJUB+1k9Og551zuRCgj42jiThcAZqPzjdjCuFV2JbptJ0/JDzW8yxVKP6IsmCDR+pjuUw==",
+				"shasum": "521000cda7497e84092e9f4655e0d3660143fd11",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-0.0.0-37260e2.tgz",
+				"fileCount": 4,
+				"unpackedSize": 32335,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEsP2tqdjZkpjsO0OxOC3x8awOiEwykqmhyMkmI5Uu9aAiA1ND5qx3hFfwqAVVvIlFGeM3BmIvxpYwYkWxNFkdIYQA=="
 					}
 				]
 			}
