@@ -32,6 +32,7 @@
 	<li>Good working knowledge of US GAAP required</li>
 	<li>Advanced/ working proficiency with English mandatory both written and verbal.</li>
 </ul>
+<p><span style="text-decoration: underline;"><em><strong>***Please submit resume in English only.&nbsp;</strong></em></span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
