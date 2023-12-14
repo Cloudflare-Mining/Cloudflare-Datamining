@@ -5,38 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-weight: 400;"><strong>About the Department</strong></span></p>
-<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
-<h4><strong>Description</strong></h4>
-<p><span style="font-weight: 400;">Network Security Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</span></p>
-<p><span style="font-weight: 400;">Network Security Engineers </span>analyse threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. They will also provide attack reporting beyond Cloudflare’s self-service reports.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is redefining how enterprise IT works, establishing its own category, growing a billion dollar business +40% annually and our regional marketing teams are at the forefront of this growth. Our Asia Pacific Marketing team is hiring and we’re looking for senior leaders who are growth-obsessed problem solvers, data-informed decision makers, fearless innovators and relentless builders. We’re on a mission to Help Build a Better Internet, and demonstrate the massive benefits that has for customers and partners alike. Our connectivity cloud brings together cybersecurity, networking, application and developer platforms to deliver greater outcomes for customers in all industries and segments.</p>
+<p>&nbsp;</p>
+<p>Right now we’re looking for an experienced, enthusiastic &amp; highly motivated Senior Partner Marketing Manager to lead Cloudflare’s partner strategy and execution across Asia Pacific, Japan, and China. You will be laser focused on growing partner revenue, building a partner community and integrating partner marketing into the overall regional strategic growth initiatives. You have a passion for working with partners, are obsessed with data as a basis for planning and optimizing; you are detail oriented and very familiar with the cybersecurity marketplace.&nbsp;</p>
+<p><strong>Here’s what you will do:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor and react to alerts to identify attacks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage and configure security monitoring tools.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: </span><span style="font-weight: 400;">filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting.</span></li>
-</ul>
-<p><strong>Key skill sets</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Modern internet protocols like UDP, TCP, etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of iptables&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Cloudflare Security Products &amp; Features</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical Support experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Great communication skills with high-value VIP customers under attack</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Command line / Bash shell</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Security skills and certifications: CISSP, GCIA GCIH, GCFA, GCFE, etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Data analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">PCAP analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Calm under pressure</span></li>
+	<li>Build and own the execution of the overall Channel Marketing Strategy for APJC with a goal to build partner sourced pipeline, partner thought leadership and community and increase channel revenue&nbsp;</li>
+	<li>Manage the Channel MDF program for APJC. This includes MDF in alignment with the Sales and Channel Strategy, owner of the end to end partner submission process, reporting and review of ROI on MDF usage</li>
+	<li>Work with your global marketing counterparts to localise marketing content for channel consumption and/or channel co-sell or co-branding. This may include digital campaigns through to partner program and plays that support building partner sourced pipeline&nbsp;</li>
+	<li>Own the measurement of campaign impact through SFDC reporting, evaluate event/campaign ROI, and present on recommendations for improvement</li>
+	<li>Own the development and execution of local channel incentive programs that build pipeline, channel engagement and community</li>
+	<li>Own channel partner marketing relationships, building rapport and trust across a select group of focused partners.&nbsp;</li>
+	<li>Where required provide onsite event staff/support where there are no channel marketing resources available</li>
+	<li>Key stakeholders to collaborate with include (but not limited to) Cloudflare Partners, GEO Head of Channels, Global Partner Program team, Global Partner Marketing and Channel Account Managers</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and qualifications</strong></p>
+<ul>
+	<li>Experience working with channel partners in a marketing or program management capacity</li>
+	<li>Familiar with different types of partners and routes to market</li>
+	<li>Self-motivated, able to work autonomously and communicate effectively.</li>
+	<li>Project management/organizational skills and the ability to successfully manage multiple initiatives at once</li>
+	<li>Strong interpersonal skills and the ability to coordinate across multiple departments</li>
+	<li>Results oriented with experience using qualitative and quantitative metrics with a focus on revenue,conversion, sales and other marketing goals</li>
+	<li>Experience with an enterprise software, SaaS or security company</li>
+	<li>Salesforce &amp; Marketo experience</li>
+	<li>Ability to travel</li>
+	<li>Familiarity with digital campaigns is a plus</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
