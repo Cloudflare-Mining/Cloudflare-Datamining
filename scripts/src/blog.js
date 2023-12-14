@@ -119,6 +119,26 @@ const fetchURL = async function(url, waitFor, slug) {
 	};
 };
 
+// try fetching normally
+try {
+	const sitemap = await fetch('https://blog.cloudflare.com/sitemap-posts.xml');
+	if (!sitemap || !sitemap.ok) {
+		throw new Error('Failed to fetch sitemap');
+	}
+	const xml = await sitemap.text();
+	const sitemapXml = parser.parse(xml);
+	for (const url of sitemapXml.urlset.url) {
+		let loc = url.loc;
+		if (loc.startsWith('http://')) {
+			loc = loc.replace('http://', 'https://');
+		}
+		blogURLs.add(loc);
+	}
+} catch {
+	console.warn('Failed to fetch sitemap normally');
+}
+
+// fetch with puppeteer
 const sitemap = await fetchURL('https://blog.cloudflare.com/sitemap-posts.xml');
 if (!sitemap || !sitemap.body) {
 	throw new Error('Failed to fetch sitemap');
