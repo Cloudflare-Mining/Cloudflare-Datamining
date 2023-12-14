@@ -5,9 +5,9 @@
 	<p>经过六年的努力和 <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 篇博客文章</a>的酝酿，我们今天<a href="https://blog.cloudflare.com/post-quantum-to-origins">正式发布</a>对我们客户、服务和内部系统的后量子加密支持，详情如下。支持的产品包括 <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a> （源连接）、1.1.1.1、R2、Argo Smart Routing、Snippets 等等。 </p>
 	<p>这对互联网来说是一个里程碑。我们目前还不知道量子计算机何时会强大到足以破解现今的加密技术，但是现在升级到后量子加密的好处是显而易见的。由于 Cloudflare、Google、Mozilla、美国国家标准与技术研究院、互联网工程任务组以及众多学术机构取得的进展，<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">快速连接和面向未来</a>的安全性在今天才成为可能。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/09/image1-40.png" class="kg-image" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" width="1999" height="522"></figure>
-	<p>正式发布意味着什么？2022 年 10 月，我们为通过 Cloudflare 服务的<a href="https://blog.cloudflare.com/post-quantum-for-all">所有网站和 API</a> 启用 <a href="https://blog.cloudflare.com/post-quantum-for-all"><em>X25519+Kyber</em></a> 测试版。然而，一个巴掌拍不响：只有浏览器也支持后量子加密，才能确保连接的安全。2023 年 8 月起，<a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank">Chrome</a>逐渐默认启用 <em>X25519+Kyber</em>。</p>
+	<p>正式发布意味着什么？2022 年 10 月，我们为通过 Cloudflare 服务的<a href="https://blog.cloudflare.com/post-quantum-for-all">所有网站和 API</a> 启用 <a href="https://blog.cloudflare.com/post-quantum-for-all"><em>X25519+Kyber</em></a> 测试版。然而，一个巴掌拍不响：只有浏览器也支持后量子加密，才能确保连接的安全。2023 年 8 月起，<a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html">Chrome</a>逐渐默认启用 <em>X25519+Kyber</em>。</p>
 	<p>用户的请求通过 Cloudflare 的网络进行路由（2）。我们已经升级了许多这些内部连接以使用后量子加密，并预计到 2024 年底将完成所有内部连接的升级。这使得连接（3）成为我们与<em>源服务器</em>之间的最后一环。</p>
-	<p>我们很高兴能<strong>正式推出对大部分入站和出站连接的 X25519+Kyber 支持</strong>，适用于<em>源服务器</em>和 <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> fetch()。</p><!--kg-card-begin: html-->
+	<p>我们很高兴能<strong>正式推出对大部分入站和出站连接的 X25519+Kyber 支持</strong>，适用于<em>源服务器</em>和 <a href="https://workers.cloudflare.com">Cloudflare Workers</a> fetch()。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
 			border-collapse: collapse;
@@ -222,7 +222,7 @@
 	<p>正如我们在 3 月所<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">提到的</a>：</p>
 	<p><em>“曾经的实验性前沿已经变成了现代社会的基础结构。它运行在我们最关键的基础设施中，例如电力系统、医院、机场和银行。我们将最珍贵的记忆托付给它。我们把秘密托付给它。这就是为什么互联网需要默认是私密的。它需要默认是安全的。”</em></p>
 	<p>我们对后量子加密技术的研究是基于这样一个论点，即量子计算机可以破解传统密码学，产生类似于“千年虫”的问题。我们知道未来会出现一个问题，可能会给用户、企业甚至国家带来灾难性的后果。这一次的区别在于，我们不知道这种计算范式的突破将会在何年何月发生。更糟糕的是，今天捕获的任何流量在未来可能会被解密。我们今天就需要为应对这种威胁做好准备。</p>
-	<p>我们很高兴每个人都能在他们的系统中采用后量子加密技术。要了解我们部署后量子加密和第三方客户端/服务器支持的最新进展， 请访问 <a href="https://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> 并关注本博客。</p><!--kg-card-begin: markdown-->
-	<p><sup>1</sup>我们正在使用 Kyber （NIST 选择的后量子密钥协商算法）的一个<a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank">初步版本</a>。Kyber 尚未最终定稿。我们预计最终标准将在 2024 年以 ML-KEM 的名称发布，届时我们将迅速采用该标准，并停止支持 X25519Kyber768Draft00。</p>
+	<p>我们很高兴每个人都能在他们的系统中采用后量子加密技术。要了解我们部署后量子加密和第三方客户端/服务器支持的最新进展， 请访问 <a href="https://pq.cloudflareresearch.com">pq.cloudflareresearch.com</a> 并关注本博客。</p><!--kg-card-begin: markdown-->
+	<p><sup>1</sup>我们正在使用 Kyber （NIST 选择的后量子密钥协商算法）的一个<a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00">初步版本</a>。Kyber 尚未最终定稿。我们预计最终标准将在 2024 年以 ML-KEM 的名称发布，届时我们将迅速采用该标准，并停止支持 X25519Kyber768Draft00。</p>
 	<!--kg-card-end: markdown-->
 </div>

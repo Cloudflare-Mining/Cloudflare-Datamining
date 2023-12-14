@@ -1,16 +1,17 @@
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/HTML-rewrriter-beta@2x-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/HTML-rewrriter-beta@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>今天，我们很高兴地发布HTMLRewriter beta——一种流HTML解析器，它有一个易于使用的基于JavaScript API的DOM操作选择器，可以在Cloudflare Workers运行时使用。</p>
-	<p>这里向对此不熟的人们做一个简单的介绍，<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>是一个轻量级的无服务器平台，允许开发人员利用Cloudflare的网络来扩展现有的应用程序或创建全新的应用程序，而无需配置或维护基础设施。</p>
+	<p>这里向对此不熟的人们做一个简单的介绍，<a href="https://workers.cloudflare.com">Cloudflare Workers</a>是一个轻量级的无服务器平台，允许开发人员利用Cloudflare的网络来扩展现有的应用程序或创建全新的应用程序，而无需配置或维护基础设施。</p>
 	<h2 id="-">从静态站点到动态应用程序</h2>
-	<p>星期五，我们发布了<a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>：一个内置在<a href="https://github.com/cloudflare/wrangler" target="_blank"> Wrangler</a> CLI工具中的静态站点部署工作流。现在，配合HTML Rewriter API，您就可以在您的静态HTML上执行DOM转换，就在Cloudflare边缘网络上。</p>
+	<p>星期五，我们发布了<a href="https://workers.cloudflare.com/sites">Workers Sites</a>：一个内置在<a href="https://github.com/cloudflare/wrangler"> Wrangler</a> CLI工具中的静态站点部署工作流。现在，配合HTML Rewriter API，您就可以在您的静态HTML上执行DOM转换，就在Cloudflare边缘网络上。</p>
 	<p>在此之前，您可以通过将响应的整个主体摄取到Worker中来完成此任务，但是，该方法容易引入一些问题。首先，解析一个大文件必然会遇到内存或CPU限制。此外，它还将影响TTFB，因为主体无法被流式处理，并且浏览器无法进行任何推测性分析来加载后续资源。</p>
-	<p>HTMLRewriter是让你的应用程序完全活在边缘所缺的一块拼图——万事具备，只欠东风。您可以将Cloudflare Workers上的<a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function/" target="_blank">API构建</a>为一个无服务器的函数，将前端的静态元素托管在<a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>上，并使用HTMLRewriter API动态地将它们绑定在一起。</p>
+	<p>HTMLRewriter是让你的应用程序完全活在边缘所缺的一块拼图——万事具备，只欠东风。您可以将Cloudflare Workers上的<a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function">API构建</a>为一个无服务器的函数，将前端的静态元素托管在<a href="https://workers.cloudflare.com/sites">Workers Sites</a>上，并使用HTMLRewriter API动态地将它们绑定在一起。</p>
 	<h2 id="-jamstack">输入JAMStack</h2>
 	<p>你也许在想：“等等！”JavaScript，无服务器API……这听起来有点耳熟。我们来此说应该也很熟悉。</p>
 	<figure class="kg-card kg-embed-card kg-card-hascaption">
 		<blockquote class="twitter-tweet">
-			<p lang="und" dir="ltr"> <a href="https://t.co/1yWAxV6KMK" target="_blank">pic.twitter.com/1yWAxV6KMK</a></p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177615137588568065?ref_src=twsrc%5Etfw" target="_blank">September 27, 2019</a>
+			<p lang="und" dir="ltr"> <a href="https://t.co/1yWAxV6KMK">pic.twitter.com/1yWAxV6KMK</a></p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177615137588568065?ref_src=twsrc%5Etfw">September 27, 2019</a>
 		</blockquote>
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		<figcaption>这是JAMStack吗</figcaption>
@@ -33,15 +34,15 @@ async function handleRequest(req) {
   return REWRITER.transform(res);
 }</code></pre>
 	<p>在上面的示例中，我们创建了一个新的HTMLRewriter实例，并使用选择器来查找a和img元素的所有实例，并分别对href和src属性调用rewriteURL函数。</p>
-	<p><strong>国际化和本地化教程</strong>：如果你想更进一步，我们有<a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website/" target="_blank">完整的教程</a>，介绍了如何使用HTMLRewriter让您的应用程序对i18n（国际化）友好。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/i18n-htmlrewriter.jpg" class="kg-image"></figure>
+	<p><strong>国际化和本地化教程</strong>：如果你想更进一步，我们有<a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website">完整的教程</a>，介绍了如何使用HTMLRewriter让您的应用程序对i18n（国际化）友好。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/i18n-htmlrewriter.jpg" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<h2 id="--2">入门</h2>
-	<p>如果您已经在使用Cloudflare Workers，您可以通过查阅我们的<a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter/" target="_blank">文档</a>（不需要注册或任何其他要求！）来简单地开始使用HTMLRewriter。如果您是Cloudflare Workers的新手，建议您点击<a href="https://workers.cloudflare.com/sign-up" target="_blank">这里</a>开始注册。</p>
+	<p>如果您已经在使用Cloudflare Workers，您可以通过查阅我们的<a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter">文档</a>（不需要注册或任何其他要求！）来简单地开始使用HTMLRewriter。如果您是Cloudflare Workers的新手，建议您点击<a href="https://workers.cloudflare.com/sign-up">这里</a>开始注册。</p>
 	<p>如果您对HTMLRewriter如何工作的细节感兴趣，并且想了解更多关于解析DOM的知识，请继续关注我们。我们很高兴能在以后的文章中与您分享这些细节。</p>
 	<p>最后一件事，您不受限于Workers Sites。由于Cloudflare Workers可以在任意应用程序的前端作为代理部署，因此您可以使用HTMLRewriter作为扩展现有站点的简便方法，并可以轻松地添加动态元素，而无需考虑后端。</p>
 	<h2 id="--3">我们很乐意收到您的来信！</h2>
-	<p>我们一直在反复努力根据客户的反馈来改进我们的产品！请就您的体验<a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link" target="_blank">填写我们的调查问卷</a>，来帮助我们做得更好。</p>
+	<p>我们一直在反复努力根据客户的反馈来改进我们的产品！请就您的体验<a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link">填写我们的调查问卷</a>，来帮助我们做得更好。</p>
 	<hr>
-	<p><em>您是否使用Workers构建了一些有趣的东西呢？请</em><a href="https://twitter.com/CloudflareDev/" target="_blank"><em>@CloudflareDev</em></a><em>告知我们！</em></p>
+	<p><em>您是否使用Workers构建了一些有趣的东西呢？请</em><a href="https://twitter.com/CloudflareDev"><em>@CloudflareDev</em></a><em>告知我们！</em></p>
 </div>

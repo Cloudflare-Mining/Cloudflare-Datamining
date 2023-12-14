@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image8-2.png" class="kg-image" alt="All the way up to 11: Serve Brotli from origin and Introducing Compression Rules" loading="lazy" width="1999" height="1125"></figure>
 	<p>Speed Week 期间，我们已经讨论了优化性能的重要性。压缩可减小在互联网上传输的文件大小，发挥着至关重要的作用。压缩文件越少，下载速度越快，网站加载速度越快，用户体验更佳。</p>
-	<p>以家庭清洁产品为例。据<a href="https://ellenmacarthurfoundation.org/circular-examples/replenish" target="_blank">估计</a>，“一瓶典型的清洁剂中有 90% 的水，实际有价值的成分不到 10%。” 从典型的 500 毫升瓶装家庭清洁剂的的 90％，其重量从 600 克减少到 60 克。这样做意味着只需要发送一个 60 克的包裹，并附上重新添加水的说明。将这种削减扩大到加仑，很快就会为企业带来巨大的运输节省，更不用说对环境的影响了。 </p>
+	<p>以家庭清洁产品为例。据<a href="https://ellenmacarthurfoundation.org/circular-examples/replenish">估计</a>，“一瓶典型的清洁剂中有 90% 的水，实际有价值的成分不到 10%。” 从典型的 500 毫升瓶装家庭清洁剂的的 90％，其重量从 600 克减少到 60 克。这样做意味着只需要发送一个 60 克的包裹，并附上重新添加水的说明。将这种削减扩大到加仑，很快就会为企业带来巨大的运输节省，更不用说对环境的影响了。 </p>
 	<p>这就是压缩的工作原理。发送方将文件压缩到最小可能的大小，然后发送较小的文件并提供有关接收后如何处理它的说明。通过减小发送的文件大小，压缩确保发送文件所需的带宽量大大减少。如果文件存储于<a href="https://blog.cloudflare.com/aws-egregious-egress">例如 AWS 的昂贵云服务提供商</a>，减小发送的文件大小可以直接等同于节省带宽的显著成本节约。</p>
 	<p>较小的文件大小尤其有利于互联网连接有限的终端用户，例如在蜂窝网络上的移动设备或在网络速度较慢地区的用户。 </p>
 	<p>Cloudflare一直支持 Gzip 压缩。Gzip 是一种广泛使用的压缩算法，自 1992 年以来一直存在，为所有 Cloudflare 用户提供文件压缩。然而，Google 在 2013 年推出了 Brotli，它支持更高的压缩级别，并且整体性能更好。从 Gzip 切换到 Brotli 会使网页文件更小、加载时间更快。我们自 2017 年起就支持在 Cloudflare 和客户端浏览器之间使用 Brotli。今天，我们宣布支持端到端 Brotli 压缩：支持从源服务器到客户端的最高级别 Brotli 压缩。 </p>
@@ -12,12 +12,12 @@
 	<p>自 2017 年以来，Cloudflare 针对所有可压缩的资产，根据最终用户的“accept-encoding”标头，使用最大 4 级 Brotli 压缩。然而，一个问题是 Cloudflare 仅从源请求 Gzip 压缩，即使源支持 Brotli。此外，Cloudflare 总是解压从源接收到的内容，然后将其压缩发送到最终用户，导致额外的处理时间。因此，客户无法充分利用 Brotli 压缩所提供的好处。<br></p>
 	<p><strong>旧世界</strong></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_1.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
-	<p>现在，由于 Cloudflare 完全支持端到端的 Brotli 压缩，客户将开始看到我们更新的“accept-encoding”标头到达他们的源。一旦可用，客户可以直接将高度压缩(最高的 11 级)的 Brotli 文件传输、缓存和提供给我们。这将有助于减少<a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank">延迟</a>和带宽消耗。如果最终用户设备不支持 Brotli 压缩，我们将自动解压文件，以解压缩格式或 Gzip 压缩文件的形式提供，具体取决于 Accept-Encoding 标头。 </p>
+	<p>现在，由于 Cloudflare 完全支持端到端的 Brotli 压缩，客户将开始看到我们更新的“accept-encoding”标头到达他们的源。一旦可用，客户可以直接将高度压缩(最高的 11 级)的 Brotli 文件传输、缓存和提供给我们。这将有助于减少<a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">延迟</a>和带宽消耗。如果最终用户设备不支持 Brotli 压缩，我们将自动解压文件，以解压缩格式或 Gzip 压缩文件的形式提供，具体取决于 Accept-Encoding 标头。 </p>
 	<p><strong>完全端到端 Brotli 压缩支持</strong></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_2.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
 	<p><strong>最终用户不支持 Brotli 压缩</strong></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_3.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
-	<p>客户可以通过参考适当的在线资料在其源上实现 Brotli 压缩。例如，使用 NGINX 的客户可以按照这个<a href="https://github.com/google/ngx_brotli#installation" target="_blank">教程</a>按如下方式在其`<code>nginx.conf</code>` 配置文件中设置 11 级压缩：</p><!--kg-card-begin: markdown-->
+	<p>客户可以通过参考适当的在线资料在其源上实现 Brotli 压缩。例如，使用 NGINX 的客户可以按照这个<a href="https://github.com/google/ngx_brotli#installation">教程</a>按如下方式在其`<code>nginx.conf</code>` 配置文件中设置 11 级压缩：</p><!--kg-card-begin: markdown-->
 	<pre><code>brotli on;
 brotli_comp_level 11;
 brotli_static on;
@@ -126,22 +126,22 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;
 	<p>对于不接受 Brotli 压缩的浏览器，我们将继续解压缩并发送 Gzip 响应或未压缩的响应。</p>
 	<h3 id="%E5%AE%9E%E6%96%BD">实施</h3>
 	<p>要实现来自源的 Brotli 压缩，初始步骤涉及构建一个解压缩模块，该模块可以集成到 Cloudflare 软件堆栈中。它允许我们将从源接收到的压缩字节高效转换为原始、未压缩文件。这一步骤非常关键，因为许多<a href="https://blog.cloudflare.com/rust-nginx-module">功能</a> (例如 Email Obfuscation 和 Cloudflare Workers)都依赖于访问响应正文以应用自定义设置。</p>
-	<p>我们将解压器集成到 Cloudflare 核心<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank">反向 Web 代理</a>中。这种集成确保所有 Cloudflare 产品和功能都可以轻松地访问 Brotli 解压缩。这也使我们的 Cloudflare Workers 团队能够直接将 Brotli 纳入 Cloudflare Workers 中，使我们的 Workers 客户能够与以 Brotli 返回的响应交互，或者直接传递给最终用户而不进行修改。</p>
+	<p>我们将解压器集成到 Cloudflare 核心<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">反向 Web 代理</a>中。这种集成确保所有 Cloudflare 产品和功能都可以轻松地访问 Brotli 解压缩。这也使我们的 Cloudflare Workers 团队能够直接将 Brotli 纳入 Cloudflare Workers 中，使我们的 Workers 客户能够与以 Brotli 返回的响应交互，或者直接传递给最终用户而不进行修改。</p>
 	<h3 id="%E6%8E%A8%E5%87%BA%E5%8E%8B%E7%BC%A9%E8%A7%84%E5%88%99-%E2%80%94%E2%80%94-%E7%B2%BE%E7%BB%86%E5%8C%96%E6%8E%A7%E5%88%B6%E5%88%B0%E6%9C%80%E7%BB%88%E7%94%A8%E6%88%B7%E7%9A%84%E5%8E%8B%E7%BC%A9">推出压缩规则 —— 精细化控制到最终用户的压缩</h3>
-	<p>默认情况下，Cloudflare 根据文件的 Content-Type 标头压缩<a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress" target="_blank">某些内容类型</a>。今天，我们还宣布面向 Enterprise 客户的压缩规则，以允许您进一步控制 Cloudflare 将如何压缩和压缩什么内容。</p>
+	<p>默认情况下，Cloudflare 根据文件的 Content-Type 标头压缩<a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress">某些内容类型</a>。今天，我们还宣布面向 Enterprise 客户的压缩规则，以允许您进一步控制 Cloudflare 将如何压缩和压缩什么内容。</p>
 	<p>今天，我们还宣布推出面向 Enterprise 客户的压缩规则。通过压缩规则，您可以获得对 Cloudflare 压缩能力的增强控制，使您能够自定义 Cloudflare 压缩哪些内容以及如何压缩，以优化网站的性能。</p>
 	<p>例如，通过使用 Cloudflare 针对 .ktx 文件的压缩规则，客户可以优化在 WebGL 应用程序中纹理的交付，从而增强整体用户体验。启用压缩可以最大限度地减少带宽使用，并确保 WebGL 应用程序快速流畅地加载，即使处理大型、详细纹理时也不例外。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="1100"></figure>
 	<p>客户也可以禁用压缩或指定有关我们如何压缩的偏好。另一个例子可能是，基础设施公司只想支持其物联网设备的 Gzip 压缩，但允许所有其他主机名使用 Brotli 压缩。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy" width="1470" height="1114"></figure>
-	<p>压缩规则使用我们其他<a href="https://developers.cloudflare.com/rules" target="_blank">规则</a>产品所使用的过滤器，并增加了媒体类型和扩展类型字段。这允许用户可以轻松指定要压缩的内容。</p>
+	<p>压缩规则使用我们其他<a href="https://developers.cloudflare.com/rules">规则</a>产品所使用的过滤器，并增加了媒体类型和扩展类型字段。这允许用户可以轻松指定要压缩的内容。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="406"></figure>
 	<h3 id="%E5%BC%83%E7%94%A8-brotli-%E5%88%87%E6%8D%A2">弃用 Brotli 切换</h3>
-	<p>自 2016 年以来，一些<a href="https://caniuse.com/brotli" target="_blank"> Web 浏览器</a>长期支持 Brotli，而 Cloudflare 自 2017 年开始支持 Brotli。与所有新的 Web 技术一样，当时 Brotli 是未知的，我们通过 API 和用户界面向客户提供了选择性启用或禁用 Brotli 的能力。</p>
+	<p>自 2016 年以来，一些<a href="https://caniuse.com/brotli"> Web 浏览器</a>长期支持 Brotli，而 Cloudflare 自 2017 年开始支持 Brotli。与所有新的 Web 技术一样，当时 Brotli 是未知的，我们通过 API 和用户界面向客户提供了选择性启用或禁用 Brotli 的能力。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy" width="1600" height="339"></figure>
 	<p>如今，Brotli 已经演变并得到了所有浏览器的支持，我们计划在未来几个月默认在所有区域启用 Brotli。这与我们当前支持的 Gzip 行为相同，并从我们的仪表板中删除了切换。如果浏览器不支持 Brotli，则 Cloudflare 将继续支持其接受的编码类型，例如 Gzip 或不压缩，企业客户仍将能够使用压缩规则，以精细化控制我们如何向其用户压缩数据。</p>
 	<h3 id="web-%E5%8E%8B%E7%BC%A9%E7%9A%84%E6%9C%AA%E6%9D%A5">Web 压缩的未来</h3>
-	<p>我们已经看到 Brotli 作为新的 Web 压缩技术得到了广泛的采用，并具备优秀的性能。展望未来，我们正在密切关注趋势和新的压缩算法，例如 <a href="https://www.rfc-editor.org/rfc/rfc8478" target="_blank">zstd</a>，作为可能的下一代压缩算法。</p>
+	<p>我们已经看到 Brotli 作为新的 Web 压缩技术得到了广泛的采用，并具备优秀的性能。展望未来，我们正在密切关注趋势和新的压缩算法，例如 <a href="https://www.rfc-editor.org/rfc/rfc8478">zstd</a>，作为可能的下一代压缩算法。</p>
 	<p>与此同时，我们正在寻求直接改进 Brotli 的方法。我们特别关注的一个发展是与 Brotli 共享字典。无论何时压缩资源，都要使用“字典”来帮助提高压缩效率。一个简单的类比是在 iPhone 消息中输入 OMW。iPhone 会使用自己的内部词典自动将其翻译成 On My Way。 </p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -213,8 +213,8 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;
 	<p></p>
 	<p></p>
 	<p>这个内部字典将3 个字符转换成 9 个字符(包括空格)。内部字典节省了 6 个字符，这为用户提供性能上的好处。 </p>
-	<p>默认情况下，<a href="https://www.rfc-editor.org/rfc/rfc7932#page-28" target="_blank">Brotli RFC</a> 定义了一个客户端和原始服务器都使用的静态字典。静态字典被设计成通用的，适用于所有人。优化字典的大小，使其不会太大，同时能够产生最佳的压缩结果。然而，如果一个源可为某个特定网站生成一个定制字典呢？例如，Cloudflare 专用词典将允许我们压缩在网站上反复出现的单词和短语，例如 “Cloudflare”。定制的词典将被设计成尽可能地压缩这些内容，而使用相同词典的浏览器将能够把这些内容翻译回来。 </p>
-	<p>Web Incubator CG 的一份<a href="https://github.com/wicG/compression-dictionary-transport" target="_blank">新提案</a>旨在做到这一点，允许您指定自己的字典，以便浏览器用来对网站做进一步的优化压缩。我们很高兴能为这个提案做出贡献，并计划不久后发表我们的研究。</p>
+	<p>默认情况下，<a href="https://www.rfc-editor.org/rfc/rfc7932#page-28">Brotli RFC</a> 定义了一个客户端和原始服务器都使用的静态字典。静态字典被设计成通用的，适用于所有人。优化字典的大小，使其不会太大，同时能够产生最佳的压缩结果。然而，如果一个源可为某个特定网站生成一个定制字典呢？例如，Cloudflare 专用词典将允许我们压缩在网站上反复出现的单词和短语，例如 “Cloudflare”。定制的词典将被设计成尽可能地压缩这些内容，而使用相同词典的浏览器将能够把这些内容翻译回来。 </p>
+	<p>Web Incubator CG 的一份<a href="https://github.com/wicG/compression-dictionary-transport">新提案</a>旨在做到这一点，允许您指定自己的字典，以便浏览器用来对网站做进一步的优化压缩。我们很高兴能为这个提案做出贡献，并计划不久后发表我们的研究。</p>
 	<h3 id="%E9%A9%AC%E4%B8%8A%E8%AF%95%E8%AF%95%E5%90%A7">马上试试吧</h3>
 	<p>压缩规则现已可用！端到端 Brotli 压缩将在未来几周内推出。允许您提高性能，减少带宽，并精细地控制 Cloudflare 如何处理到最终用户的压缩。<br></p>
 </div>

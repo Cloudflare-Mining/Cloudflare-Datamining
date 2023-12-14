@@ -3,16 +3,16 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-14.png" class="kg-image" alt="Building privacy into Internet standards and how to make your app more private today" loading="lazy"></figure>
 	<p>もしあなたがプライバシーを重視するアプリケーションやサービスをインターネット上で運営している場合、ユーザーのプライバシーを確実に保護するための選択肢は限られています。ログやデータ収集を最小限にすることはできますが、それでもネットワークレベルでは、すべてのHTTPリクエストは<em>どこから</em>か来る必要があります。HTTPリクエストによって生成される情報、たとえばユーザーのIPアドレスやTLSフィンガープリントは、特にアプリケーションデータと組み合わせると機密となり得ます。</p>
 	<p>ユーザーのプライバシーを守るためには、クライアントのデバイスからアプリケーションのロジックを実行するサーバーへのHTTPリクエストの送信方法を変更する必要があります。Privacy Gatewayは、暗号化されたHTTPリクエストとレスポンスを、クライアントとアプリケーションサーバーの間で中継するサービスです。Privacy Gatewayを用いることで、Cloudflareはリクエストの送信元を把握することはできますが、その内容はわかりません。また、アプリケーションはリクエストの内容はわかりますが、その送信元はわかりません。<strong>Cloudflareもアプリケーションサーバーも全貌を把握することはできず、</strong>エンドユーザーのプライバシーを向上させます。</p>
-	<p>最近、女性の健康に関する業界を主導するアプリを提供する<a href="https://flo.health" target="_blank">Flo Health Inc</a>は、<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">匿名化モード</a>を導入することを目的としてPrivacy Gatewayをデプロイしました。Privacy Gatewayをデプロイすることで、匿名化モードユーザーのリクエストデータは、アプリユーザーとFloの間で暗号化され、Floから利用者のIPアドレス、Cloudflareからリクエストデータの内容を見ることができなくなりました。</p>
+	<p>最近、女性の健康に関する業界を主導するアプリを提供する<a href="https://flo.health">Flo Health Inc</a>は、<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode">匿名化モード</a>を導入することを目的としてPrivacy Gatewayをデプロイしました。Privacy Gatewayをデプロイすることで、匿名化モードユーザーのリクエストデータは、アプリユーザーとFloの間で暗号化され、Floから利用者のIPアドレス、Cloudflareからリクエストデータの内容を見ることができなくなりました。</p>
 	<p>Privacy Gatewayを導入することで、他にもいくつかのプライバシーを重視したアプリケーションの展開が可能になります。</p>
 	<ul>
 		<li>ブラウザの開発者は、プライバシーを尊重した方法でユーザーのテレメトリデータを遠隔で収集することができます。例えば、データから個人の識別情報（IPアドレス）となる可能性のある情報を削除しながら、どのような拡張機能がインストールされているか、ユーザーがどのようなデフォルトを変更したかなどのデータを収集できます。</li>
 		<li>ユーザーは、ヘルスケアサイトにアクセスして新型コロナへの暴露を報告する際に、自分のIPアドレスや位置を追跡される心配がありません。</li>
-		<li>DNSリゾルバーは、DNSクエリを、誰がリクエストしたのか、どのWebサイトを訪問しているのかを関連付けずに提供することができます。これは、<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS</a>で私たちが実装したパターンです。<br>Privacy Gatewayは、<a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank">新たなIETF標準であるOblivious HTTP（OHTTP）</a>に基づいており、標準の<a href="https://datatracker.ietf.org/doc/html/rfc9180" target="_blank">ハイブリッドパブリックキー暗号化</a>で構築されています。</li>
+		<li>DNSリゾルバーは、DNSクエリを、誰がリクエストしたのか、どのWebサイトを訪問しているのかを関連付けずに提供することができます。これは、<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS</a>で私たちが実装したパターンです。<br>Privacy Gatewayは、<a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp">新たなIETF標準であるOblivious HTTP（OHTTP）</a>に基づいており、標準の<a href="https://datatracker.ietf.org/doc/html/rfc9180">ハイブリッドパブリックキー暗号化</a>で構築されています。</li>
 	</ul>
 	<h2 id="%E3%81%9D%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF%E3%81%AF%EF%BC%9F">その仕組みは？</h2>
 	<p>Oblivious HTTP標準の主な革新点は、基本的なプロキシサービスを超えて、これらのメッセージが<em>アプリケーションサーバーへの</em>送信の際に暗号化されるということです。Privacy Gatewayは、各メッセージの送信元と送信先以外のアプリケーションデータについて何も知ることができません。</p>
-	<p>Privacy Gatewayは、アプリケーションの開発者やプラットフォーム、特にプライバシーを強く要求する人々が、「<a href="https://en.wikipedia.org/wiki/Mix_network" target="_blank">Mixnet</a>」で、ネットワーク上のメッセージの送信元と宛先を難読化するアプローチに酷似したものを構築できるようにします。そのために、Privacy Gatewayは3つの主要なコンポーネントから構成されています。</p>
+	<p>Privacy Gatewayは、アプリケーションの開発者やプラットフォーム、特にプライバシーを強く要求する人々が、「<a href="https://en.wikipedia.org/wiki/Mix_network">Mixnet</a>」で、ネットワーク上のメッセージの送信元と宛先を難読化するアプローチに酷似したものを構築できるようにします。そのために、Privacy Gatewayは3つの主要なコンポーネントから構成されています。</p>
 	<ol>
 		<li><strong>クライアント：</strong>ユーザーのデバイス、またはPrivacy Gatewayにリクエストを転送するように設定されているクライアント。</li>
 		<li><strong>Privacy Gateway：</strong>Cloudflareが運営するサービス。クライアントとゲートウェイ間のリクエストを中継し、中のコンテンツを見ることができないように設計されています。</li>
@@ -24,10 +24,10 @@
 	</figure>
 	<p>もう少し詳しく説明すると、データの流れは次のようになります。</p>
 	<ol>
-		<li>クライアントは、<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1" target="_blank">HTTPリクエスト</a>をアプリケーションサーバーのパブリックキーでカプセル化し、HTTPS接続でPrivacy Gatewayに送信します。</li>
+		<li>クライアントは、<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1">HTTPリクエスト</a>をアプリケーションサーバーのパブリックキーでカプセル化し、HTTPS接続でPrivacy Gatewayに送信します。</li>
 		<li>Privacy Gatewayは、リクエストをサーバーに転送する際に、独自に構築したアプリケーションサーバーとの個別のHTTPS接続を使用します。</li>
 		<li>アプリケーションサーバーはリクエストをカプセル化し、レスポンスを生成できるターゲットサーバに転送します。</li>
-		<li>アプリケーションサーバーは、<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank">カプセル化されたレスポンス</a>をPrivacy Gatewayに返し、その結果をクライアントに転送します。<br>プロトコルで指定されているように、クライアントからサーバーへのリクエストは、パブリックキー暗号化の最新の標準であるHPKEを使用して暗号化されます。詳しくは<a href="https://blog.cloudflare.com/hybrid-public-key-encryption">こちら</a>をご覧ください。OHTTPのHPKEの使用が安全であることを保証するために、私たちはさらに対策を講じ、<a href="https://blog.cloudflare.com/stronger-than-a-promise-proving-oblivious-http-privacy-properties">プロトコルの正式な分析</a>を実施しています。今後数週間のうちに、より深い分析結果を発表する予定です。</li>
+		<li>アプリケーションサーバーは、<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2">カプセル化されたレスポンス</a>をPrivacy Gatewayに返し、その結果をクライアントに転送します。<br>プロトコルで指定されているように、クライアントからサーバーへのリクエストは、パブリックキー暗号化の最新の標準であるHPKEを使用して暗号化されます。詳しくは<a href="https://blog.cloudflare.com/hybrid-public-key-encryption">こちら</a>をご覧ください。OHTTPのHPKEの使用が安全であることを保証するために、私たちはさらに対策を講じ、<a href="https://blog.cloudflare.com/stronger-than-a-promise-proving-oblivious-http-privacy-properties">プロトコルの正式な分析</a>を実施しています。今後数週間のうちに、より深い分析結果を発表する予定です。</li>
 	</ol>
 	<h2 id="privacy-gateway%E3%81%8C%E3%82%A8%E3%83%B3%E3%83%89%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC%E3%82%92%E5%90%91%E4%B8%8A%E3%81%95%E3%81%9B%E3%82%8B%E4%BB%95%E7%B5%84%E3%81%BF">Privacy Gatewayがエンドユーザーのプライバシーを向上させる仕組み</h2>
 	<p>このインタラクションは2種類のプライバシーを提供し、私たちは非公式に<em>リクエストプライバシー</em>および<em>クライアントプライバシー</em>と呼んでいます。</p>
@@ -73,7 +73,7 @@
 		<li>リクエストのカプセル化のためのパブリックキーを発行する</li>
 		<li>カプセル化されたクライアントリクエストを復号化し、結果のリクエストを処理し、対応するレスポンスを暗号化する</li>
 	</ol>
-	<p><a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#name-key-configuration" target="_blank">カプセル化パブリックキー</a>は、「鍵構成」と呼ばれ、鍵識別子（サーバーがローテーションのために一度に複数の鍵をサポートできるように）、暗号化および復号化のための暗号アルゴリズム識別子、パブリックキーからなります。</p><!--kg-card-begin: markdown-->
+	<p><a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#name-key-configuration">カプセル化パブリックキー</a>は、「鍵構成」と呼ばれ、鍵識別子（サーバーがローテーションのために一度に複数の鍵をサポートできるように）、暗号化および復号化のための暗号アルゴリズム識別子、パブリックキーからなります。</p><!--kg-card-begin: markdown-->
 	<pre><code>HPKE Symmetric Algorithms {
   HPKE KDF ID (16),
   HPKE AEAD ID (16),
@@ -88,7 +88,7 @@ OHTTP Key Config {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>クライアントはパブリックキーがリクエストの作成のために必要で、その方法はたくさんあります。サーバーがパブリックキーを修正し、それを自分のアプリケーションに焼き付けることもできますが、その場合、キーをローテーションさせるためのソフトウェアのアップデートが必要になります。あるいは、クライアントが他の方法でパブリックキーを取得することも可能です。詳細については、<a href="https://datatracker.ietf.org/doc/html/draft-wood-key-consistency" target="_blank">この文書</a>を参照してください。まず、シンプルな方法として、APIを使用してサーバーから直接パブリックキーを取得することができます。以下は、私たちの<a href="https://github.com/cloudflare/app-relay-gateway-go/blob/main/gateway.go#L116-L134" target="_blank">オープンソースのOHTTPサーバーが提供する</a>APIのスニペットです。</p><!--kg-card-begin: markdown-->
+	<p>クライアントはパブリックキーがリクエストの作成のために必要で、その方法はたくさんあります。サーバーがパブリックキーを修正し、それを自分のアプリケーションに焼き付けることもできますが、その場合、キーをローテーションさせるためのソフトウェアのアップデートが必要になります。あるいは、クライアントが他の方法でパブリックキーを取得することも可能です。詳細については、<a href="https://datatracker.ietf.org/doc/html/draft-wood-key-consistency">この文書</a>を参照してください。まず、シンプルな方法として、APIを使用してサーバーから直接パブリックキーを取得することができます。以下は、私たちの<a href="https://github.com/cloudflare/app-relay-gateway-go/blob/main/gateway.go#L116-L134">オープンソースのOHTTPサーバーが提供する</a>APIのスニペットです。</p><!--kg-card-begin: markdown-->
 	<pre><code>func (s *GatewayResource) configHandler(w http.ResponseWriter, r *http.Request) {
 	config, err := s.Gateway.Config(s.keyID)
 	if err != nil {
@@ -100,13 +100,13 @@ OHTTP Key Config {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>パブリックキーの生成と配布が解決されると、次にサーバーはクライアントからのカプセル化されたリクエストを処理する必要があります。各リクエストに対して、サーバーはリクエストを復号化し、平文を解決可能な対応するHTTPリクエストに変換し、その結果のレスポンスを暗号化してクライアントに返す必要があります。</p>
-	<p>オープンソースのOHTTPライブラリは通常、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L455" target="_blank">リクエストの復号化</a>および<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L502-L541" target="_blank">レスポンスの暗号化</a>の関数を提供し、<a href="https://datatracker.ietf.org/doc/html/rfc9292" target="_blank">バイナリHTTP</a>からの平文変換は、HTTPリクエストと別に処理されます。例えば、オープンソースのサーバーでは、Go HTTPリクエストがメモリ上でどのように表現されるかに応じて、この変換を別のライブラリに委ねます。特に、平文リクエストから<a href="https://pkg.go.dev/net/http#Request" target="_blank">Go HTTPリクエスト</a>に変換する関数は、次のシグネチャを持つ関数で行われます。</p><!--kg-card-begin: markdown-->
+	<p>オープンソースのOHTTPライブラリは通常、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L455">リクエストの復号化</a>および<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L502-L541">レスポンスの暗号化</a>の関数を提供し、<a href="https://datatracker.ietf.org/doc/html/rfc9292">バイナリHTTP</a>からの平文変換は、HTTPリクエストと別に処理されます。例えば、オープンソースのサーバーでは、Go HTTPリクエストがメモリ上でどのように表現されるかに応じて、この変換を別のライブラリに委ねます。特に、平文リクエストから<a href="https://pkg.go.dev/net/http#Request">Go HTTPリクエスト</a>に変換する関数は、次のシグネチャを持つ関数で行われます。</p><!--kg-card-begin: markdown-->
 	<pre><code>func UnmarshalBinaryRequest(data []byte) (*http.Request, error) {
 	...
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>逆に、<a href="https://pkg.go.dev/net/http#Response" target="_blank">Go HTTPレスポンス</a>を平文のバイナリHTTPレスポンスメッセージに変換するには、以下のシグネチャを持つ関数を使用します。</p><!--kg-card-begin: markdown-->
+	<p>逆に、<a href="https://pkg.go.dev/net/http#Response">Go HTTPレスポンス</a>を平文のバイナリHTTPレスポンスメッセージに変換するには、以下のシグネチャを持つ関数を使用します。</p><!--kg-card-begin: markdown-->
 	<pre><code>type BinaryResponse http.Response
 
 func (r *BinaryResponse) Marshal() ([]byte, error) {
@@ -114,7 +114,7 @@ func (r *BinaryResponse) Marshal() ([]byte, error) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>OHTTPサーバーを実装するために使用できるオープンソースライブラリはいくつかありますが、私たちはそのすべてをオープンソースサーバー実装としてパッケージ化しました。<a href="https://github.com/cloudflare/app-relay-gateway-go" target="_blank">こちらから入手できます</a>。このパッケージには、ビルド、テスト、デプロイの手順が記載されているので、簡単に始めることができます。</p>
+	<p>OHTTPサーバーを実装するために使用できるオープンソースライブラリはいくつかありますが、私たちはそのすべてをオープンソースサーバー実装としてパッケージ化しました。<a href="https://github.com/cloudflare/app-relay-gateway-go">こちらから入手できます</a>。このパッケージには、ビルド、テスト、デプロイの手順が記載されているので、簡単に始めることができます。</p>
 	<h3 id="%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E7%B5%B1%E5%90%88">クライアント統合</h3>
 	<p>当然ながら、OHTTPのクライアント側の動作は、サーバーの動作を反映したものです。特に、クライアントは以下を行う必要があります。</p>
 	<ol>
@@ -125,7 +125,7 @@ func (r *BinaryResponse) Marshal() ([]byte, error) {
 	<pre><code>$ curl https://server.example/ohttp-configs &gt; config.bin
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p><a href="https://github.com/chris-wood/ohttp-go/blob/main/bhttp.go#L66" target="_blank">エンコード</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L321" target="_blank">暗号化</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L373" target="_blank">復号化</a>、およびデコードは、利用できる場合はOHTTPライブラリで処理するのが最適です。これらの関数が利用できれば、クライアントサポートの構築はかなり簡単です。上記でリンクしたライブラリ関数を使用したGo クライアントの簡単な例を以下に示します。</p><!--kg-card-begin: markdown-->
+	<p><a href="https://github.com/chris-wood/ohttp-go/blob/main/bhttp.go#L66">エンコード</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L321">暗号化</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L373">復号化</a>、およびデコードは、利用できる場合はOHTTPライブラリで処理するのが最適です。これらの関数が利用できれば、クライアントサポートの構築はかなり簡単です。上記でリンクしたライブラリ関数を使用したGo クライアントの簡単な例を以下に示します。</p><!--kg-card-begin: markdown-->
 	<pre><code>configEnc := ... // encoded public key
 config, err := ohttp.UnmarshalPublicConfig(configEnc)
 if err != nil {
@@ -179,7 +179,7 @@ if err != nil {
 fmt.Println(response)
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>このようなスタンドアロン型のクライアントは、既存のアプリケーションをお持ちの方にとってはあまり便利ではないかもしれません。そこで、既存のアプリケーションとの統合を支援するために、iOSやmacOSアプリと互換性のある<a href="https://github.com/cloudflare/app-relay-client-library" target="_blank">OHTTPのサンプルライブラリ</a>を作成しました。また、クライアント側、サーバー側、またはその両方において、統合を容易にするための言語やプラットフォームのサポートが必要な場合は、当社までご連絡ください。</p>
+	<p>このようなスタンドアロン型のクライアントは、既存のアプリケーションをお持ちの方にとってはあまり便利ではないかもしれません。そこで、既存のアプリケーションとの統合を支援するために、iOSやmacOSアプリと互換性のある<a href="https://github.com/cloudflare/app-relay-client-library">OHTTPのサンプルライブラリ</a>を作成しました。また、クライアント側、サーバー側、またはその両方において、統合を容易にするための言語やプラットフォームのサポートが必要な場合は、当社までご連絡ください。</p>
 	<h2 id="%E3%81%94%E9%96%A2%E5%BF%83%E3%81%8C%E3%81%8A%E3%81%82%E3%82%8A%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F">ご関心がおありですか？</h2>
-	<p>Privacy Gatewayは現在、早期アクセス期間中で、プライバシーを重視する企業やパートナーに限定して提供されています。ご興味のあるお客様は、<a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank">お問い合わせください</a>。</p>
+	<p>Privacy Gatewayは現在、早期アクセス期間中で、プライバシーを重視する企業やパートナーに限定して提供されています。ご興味のあるお客様は、<a href="https://www.cloudflare.com/lp/privacy-edge">お問い合わせください</a>。</p>
 </div>

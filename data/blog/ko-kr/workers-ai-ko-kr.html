@@ -50,7 +50,7 @@
 	<h2 id="%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%84%A4%EA%B3%84">개발자를 위한 설계</h2>
 	<p>개발자 경험은 Cloudflare에서 매우 중요합니다. 사실 본문의 대부분이 이에 대한 내용입니다. 제품은 바로 사용할 수 있어야 합니다. 별다른 조치 없이 사용할 수 있는 인기 모델을 제공해야 합니다. Cloudflare나 다른 플랫폼을 통해 구축 및 배포하더라도 모든 개발자는 이에 구애받지 않고 액세스할 수 있어야 합니다. 하지만 그 이상의 무언가가 필요합니다. 경험에는 마찰이 없어야 하며, 시작부터 프로덕션까지 걸리는 시간이 짧아야 합니다. 그리고 그 과정이 즐거워야 합니다.</p>
 	<p>사용이 얼마나 쉬운지 보여드리기 위해 또 다른 예시를 살펴보죠! Meta가 오픈 소스로 제공하는 인기 있는 대규모 언어 모델인 Llama 2를 Worker에서 실행해 보겠습니다.</p>
-	<p>기본적인 단계(Cloudflare 계정, Node, NPM 등)를 이미 끝냈다고 가정하지만, 만약 끝내지 않았다면<a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">이 가이드</a>를 활용해 환경을 올바르게 설정하세요!</p>
+	<p>기본적인 단계(Cloudflare 계정, Node, NPM 등)를 이미 끝냈다고 가정하지만, 만약 끝내지 않았다면<a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup">이 가이드</a>를 활용해 환경을 올바르게 설정하세요!</p>
 	<h3 id="1-workers-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1">1. Workers 프로젝트 생성</h3>
 	<p>다음을 실행하여 workers-ai라는 새 프로젝트를 생성합니다.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npm create cloudflare@latest
@@ -75,7 +75,7 @@
 binding = "AI" #available in your worker via env.AI
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Workers AI와 Pages 함수를 연결할 수도 있습니다. 더 자세한 정보는 <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">함수 바인딩</a>을 참조하세요.</p>
+	<p>Workers AI와 Pages 함수를 연결할 수도 있습니다. 더 자세한 정보는 <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai">함수 바인딩</a>을 참조하세요.</p>
 	<h3 id="3-workers-ai-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%84%A4%EC%B9%98">3. Workers AI 클라이언트 라이브러리 설치</h3><!--kg-card-begin: markdown-->
 	<pre><code>npm install @cloudflare/ai
 </code></pre>
@@ -139,7 +139,7 @@ export default {
 	<ul>
 		<li>@cf/meta/llama-2-7b-chat-int8: 전 세계적으로 50reqs/min</li>
 	</ul>
-	<p>제한에 대한 전체 개요는 Cloudflare <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">문서</a>에서 확인하세요.</p>
+	<p>제한에 대한 전체 개요는 Cloudflare <a href="https://developers.cloudflare.com/workers-ai/platform/limits">문서</a>에서 확인하세요.</p>
 	<h4 id="%EC%9A%94%EA%B8%88%EC%A0%9C"><strong>요금제</strong></h4>
 	<p>오늘 Cloudflare에서 출시한 서비스는 앞으로 출시할 제품의 맛보기입니다(더 이상 지체할 수 없었습니다). 하지만 완벽한 Workers AI 버전을 선보일 날을 바라고 있습니다.</p>
 	<p>Cloudflare는 애플리케이션을 구축하려고 할 때 비용이 얼마나 들지 알고 싶어 하신다는 사실을 알고 있습니다. 특히나 AI 비용은 눈덩이처럼 급격히 늘어나기 쉬우니까요. 그렇기에 여러분에게 Workers AI의 예상 가격을 알려드리겠습니다.</p>
@@ -155,7 +155,7 @@ export default {
 	<h3 id="%EB%A1%9C%EB%93%9C%EB%A7%B5%EC%97%90%EB%8A%94-%EB%AC%B4%EC%97%87%EC%9D%B4-%EC%9E%88%EC%9D%84%EA%B9%8C%EC%9A%94">로드맵에는 무엇이 있을까요?</h3>
 	<p>Workers AI는 이제 첫걸음을 떼었습니다. 그리고 훌륭한 제품을 만드는 데는 피드백이 필요합니다. 로드맵에는 기대되는 요소가 많습니다.</p>
 	<h4 id="%EB%8D%94-%EB%A7%8E%EC%9D%80-%EB%AA%A8%EB%8D%B8"><strong>더 많은 모델</strong></h4>
-	<p>Cloudflare는 작동하는 고정 모델 세트와 함께 본 서비스를 출시하지만 피드백에 따라 새 모델을 계속해서 추가할 계획입니다. Workers AI에 추가되길 원하는 특정 모델이 있다면 Cloudflare <a href="https://discord.cloudflare.com" target="_blank">Discord</a>에 방문하여 알려주세요!</p>
+	<p>Cloudflare는 작동하는 고정 모델 세트와 함께 본 서비스를 출시하지만 피드백에 따라 새 모델을 계속해서 추가할 계획입니다. Workers AI에 추가되길 원하는 특정 모델이 있다면 Cloudflare <a href="https://discord.cloudflare.com">Discord</a>에 방문하여 알려주세요!</p>
 	<p>이 외에도 <a href="https://blog.cloudflare.com/best-place-region-earth-inference">Cloudflare는 Hugging Face와의 파트너십</a>을 맺었습니다. 곧 Workers AI에서 바로 Hugging Face 카탈로그의 하위 세트에 액세스하고 이를 실행할 수 있게 될 것입니다.</p>
 	<h4 id="%EB%B6%84%EC%84%9D-%EB%B0%8F-%EA%B4%80%EC%B0%B0-%EA%B0%80%EB%8A%A5%EC%84%B1"><strong>분석 및 관찰 가능성</strong></h4>
 	<p>지금까지 Cloudflare는 단 한 가지, 즉, 개발자가 단 몇 줄의 코드만으로도 강력한 AI 모델을 매우 쉽게 실행할 수 있도록 만드는 목표에 크게 집중했습니다. 하지만 이는 전체적으로 봤을 때 일부에 불과합니다. 앞으로 Cloudflare는 분석 및 관찰 가능성 기능을 개발하여 사용량, 성능, 모델별 지출에 대한 인사이트와 더불어 탐색을 원한다면 로그를 분석할 수 있는 기능까지 제공할 예정입니다.</p>
@@ -165,5 +165,5 @@ export default {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
 	<p><strong>2024년 말까지는 거의 모든 곳에 증축을 완료할 계획입니다.</strong></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
-	<p><strong>증축을 선보일 수 있어 기쁜 마음입니다.</strong> <a href="https://developers.cloudflare.com/workers-ai" target="_blank">Cloudflare 문서</a>로 시작하세요.영감이 필요하거나, 개발 중인 서비스를 공유하고 싶거나, 질문을 하고 싶다면 <a href="https://discord.com/invite/cloudflaredev" target="_blank">Developer Discord</a>를 방문하세요.</p>
+	<p><strong>증축을 선보일 수 있어 기쁜 마음입니다.</strong> <a href="https://developers.cloudflare.com/workers-ai">Cloudflare 문서</a>로 시작하세요.영감이 필요하거나, 개발 중인 서비스를 공유하고 싶거나, 질문을 하고 싶다면 <a href="https://discord.com/invite/cloudflaredev">Developer Discord</a>를 방문하세요.</p>
 </div>

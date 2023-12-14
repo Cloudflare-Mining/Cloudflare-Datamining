@@ -50,7 +50,7 @@
 	<h2 id="geschaffen-f%C3%BCr-entwicklungsteams">Geschaffen für Entwicklungsteams</h2>
 	<p>Die Erfahrung der Entwickler ist uns sehr wichtig. Ein Großteil dieses Beitrags beschäftigt sich mit diesem Thema. Wir wollen Dinge anbieten, die sofort einsatzbereit sind, und beliebte Modelle bereitstellen, die einfach funktionieren. Unser Ziel ist es, für alle zugänglich zu sein – unabhängig davon, ob die Entwicklung und Implementierung bei Cloudflare oder anderswo erfolgt. Aber es geht noch um mehr als das: Der Weg bis zur Produktionsreife sollte schnell zurückgelegt werden können und sich angenehm gestalten.</p>
 	<p>Wir wollen anhand eines weiteren Beispiels zeigen, wie leicht die Benutzung ist. Wir werden Llama 2, ein beliebtes, quellofenes Large Language Model von Meta, in einem Worker betreiben.</p>
-	<p>Wir gehen davon aus, dass Sie bereits über einige der Grundlagen verfügen (Cloudflare-Konto, Node, NPM usw.). Sollte das nicht der Fall sein, hilft Ihnen <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">diese Anleitung</a> bei der Einrichtung weiter.</p>
+	<p>Wir gehen davon aus, dass Sie bereits über einige der Grundlagen verfügen (Cloudflare-Konto, Node, NPM usw.). Sollte das nicht der Fall sein, hilft Ihnen <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup">diese Anleitung</a> bei der Einrichtung weiter.</p>
 	<h3 id="1-workers-projekt-erstellen">1. Workers-Projekt erstellen</h3>
 	<p>Erstellen Sie ein neues Projekt namens workers-ai, indem Sie Folgendes ausführen:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npm create cloudflare@latest
@@ -75,7 +75,7 @@
 binding = "AI" #available in your worker via env.AI
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Sie können Workers AI auch an eine Pages-Funktion binden. Weitere Informationen dazu finden Sie unter „<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">Functions Bindings</a>“.</p>
+	<p>Sie können Workers AI auch an eine Pages-Funktion binden. Weitere Informationen dazu finden Sie unter „<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai">Functions Bindings</a>“.</p>
 	<h3 id="3-die-workers-ai-client-bibliothek-installieren">3. Die Workers AI Client-Bibliothek installieren</h3><!--kg-card-begin: markdown-->
 	<pre><code>npm install @cloudflare/ai
 </code></pre>
@@ -139,7 +139,7 @@ export default {
 	<ul>
 		<li>@cf/meta/llama-2-7b-chat-int8: 50 reqs/min weltweit</li>
 	</ul>
-	<p>In der <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">Dokumentation</a> finden Sie eine vollständige Übersicht über unsere Begrenzungen.</p>
+	<p>In der <a href="https://developers.cloudflare.com/workers-ai/platform/limits">Dokumentation</a> finden Sie eine vollständige Übersicht über unsere Begrenzungen.</p>
 	<h3 id="tarifoptionen">Tarifoptionen</h3>
 	<p>Heute haben wir nur eine kleine Vorschau veröffentlicht, um Ihnen einen Vorgeschmack auf das kommende Produkt zu geben (wir konnten einfach nicht widerstehen). Doch wir freuen uns schon darauf, Ihnen die Vollversion von Workers AI bereitzustellen.</p>
 	<p>Uns ist klar, dass Sie vor der Entwicklung eines Produkts immer wissen möchten, was dabei für Kosten auf Sie zukommen – umso mehr, als diese bei KI sehr leicht aus dem Ruder laufen können. Deshalb möchten wir Ihnen die zukünftigen Preise für Workers AI bereits jetzt offenlegen.</p>
@@ -155,7 +155,7 @@ export default {
 	<h3 id="was-steht-als-n%C3%A4chstes-an">Was steht als Nächstes an?</h3>
 	<p>Workers AI steckt noch in den Kinderschuhen. Wir brauchen Ihr Feedback, um die Lösung weiter zu optimieren. Und wir haben noch Spannendes vor.</p>
 	<h3 id="mehr-modelle-bitte">Mehr Modelle, bitte</h3>
-	<p>Wir starten mit einer soliden Auswahl von Modellen, die einfach funktionieren. Aber wir werden auch noch weitere Modelle auf Grundlage Ihres Feedbacks einführen. Wenn Sie sich ein bestimmtes Modell für Workers AI wünschen, können Sie uns das gern über unseren <a href="https://discord.cloudflare.com" target="_blank">Discord</a>-Kanal wissen lassen.</p>
+	<p>Wir starten mit einer soliden Auswahl von Modellen, die einfach funktionieren. Aber wir werden auch noch weitere Modelle auf Grundlage Ihres Feedbacks einführen. Wenn Sie sich ein bestimmtes Modell für Workers AI wünschen, können Sie uns das gern über unseren <a href="https://discord.cloudflare.com">Discord</a>-Kanal wissen lassen.</p>
 	<p>Außerdem kündigen wir eine <a href="https://blog.cloudflare.com/best-place-region-earth-inference">Partnerschaft mit Hugging Face</a> an. Schon bald werden Sie auf einen Teil des Hugging Face-Katalogs zugreifen und diesen direkt von Workers AI aus nutzen können.</p>
 	<h3 id="analysen-und-beobachtbarkeit">Analysen und Beobachtbarkeit</h3>
 	<p>Bis zu diesem Punkt lag unser Fokus vor allem darauf, es Entwicklungsteams wirklich leicht zu machen, leistungsstarke KI-Modelle mit nur wenigen Codezeilen auszuführen. Aber das ist nur ein Teil der Geschichte. Als Nächstes werden wir an Analyse- und Beobachtungsfunktionen arbeiten, um Ihnen Einblicke in Ihre Nutzung, Performance und Ausgaben auf Modellbasis zu geben und Ihnen einen Blick in Ihre Protokolle zu ermöglichen: Für denn Fall, dass Sie etwas genauer nachforschen möchten.</p>
@@ -165,6 +165,6 @@ export default {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
 	<p><strong>Fast vollständige Abdeckung bis Ende 2024 vorgesehen</strong></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
-	<p><strong>Wir freuen uns schon auf die von Ihnen entwickelten Produkte. </strong>Schauen Sie sich für den Einstieg <a href="https://developers.cloudflare.com/workers-ai" target="_blank">Dokumentation</a> an.</p>
-	<p>Wenn Sie Anregungen brauchen, uns Ihr Projekt vorstellen möchten oder eine Frage haben, besuchen Sie gern unseren <a href="https://discord.com/invite/cloudflaredev" target="_blank">Discord-Kanal für Entwickler und Entwicklerinnen</a>.</p>
+	<p><strong>Wir freuen uns schon auf die von Ihnen entwickelten Produkte. </strong>Schauen Sie sich für den Einstieg <a href="https://developers.cloudflare.com/workers-ai">Dokumentation</a> an.</p>
+	<p>Wenn Sie Anregungen brauchen, uns Ihr Projekt vorstellen möchten oder eine Frage haben, besuchen Sie gern unseren <a href="https://discord.com/invite/cloudflaredev">Discord-Kanal für Entwickler und Entwicklerinnen</a>.</p>
 </div>

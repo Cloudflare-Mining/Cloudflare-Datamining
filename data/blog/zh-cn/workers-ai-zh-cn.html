@@ -50,7 +50,7 @@
 	<h2 id="%E4%B8%93%E4%B8%BA%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E8%AE%BE%E8%AE%A1">专为开发人员设计</h2>
 	<p>开发人员对我们来说非常重要。实际上，本文大部分内容都是讨论开发人员体验。确保它能够开箱即用。提供能够立即使用的热门模型。所有开发人员都能使用，无论是通过 Cloudflare 还是其他平台进行构建和部署。但不仅如此 —— 开发人员体验应该是无摩擦的，快速从零开始到生产，而且全程感觉良好。</p>
 	<p>让我们通过另一个例子来展示它是多么容易使用吧。我们将在一个 Worker 中运行Llama 2，这是一个由 Meta 开源的流行大语言模型。</p>
-	<p>我们假设您已经完成了一些基本的准备工作（Cloudflare账户、Node、NPM等），否则，<a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">这个指南</a>将帮助您正确设置。</p>
+	<p>我们假设您已经完成了一些基本的准备工作（Cloudflare账户、Node、NPM等），否则，<a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup">这个指南</a>将帮助您正确设置。</p>
 	<h3 id="1-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-workers-%E9%A1%B9%E7%9B%AE">1. 创建一个 Workers 项目</h3>
 	<p>运行以下命令创建一个名为 workers-ai 的新项目：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npm create cloudflare@latest
@@ -75,7 +75,7 @@
 binding = "AI" #available in your worker via env.AI
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>您还可以将 Workers AI 绑定到 Pages Function。有关更多信息，请参考 <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">Functions Bindings</a>。</p>
+	<p>您还可以将 Workers AI 绑定到 Pages Function。有关更多信息，请参考 <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai">Functions Bindings</a>。</p>
 	<h3 id="3-%E5%AE%89%E8%A3%85-workers-ai-%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BA%93">3. 安装 Workers AI 客户端库</h3><!--kg-card-begin: markdown-->
 	<pre><code>npm install @cloudflare/ai
 </code></pre>
@@ -139,7 +139,7 @@ export default {
 	<ul>
 		<li>@cf/meta/llama-2-7b-chat-int8： 50 请求/分钟，全球范围</li>
 	</ul>
-	<p>有关限制的概述，请查看<a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">文档</a>。</p>
+	<p>有关限制的概述，请查看<a href="https://developers.cloudflare.com/workers-ai/platform/limits">文档</a>。</p>
 	<h4 id="%E5%AE%9A%E4%BB%B7"><strong>定价</strong></h4>
 	<p>今天发布的只是一个小小的预览，让您对即将推出的新产品有初步了解（我们根本无法克制），但我们期待将全功能版本的 Workers AI 交到您的手中。</p>
 	<p>我们意识到，在您开始构建某个项目时，您想要了解的是：这将花费我多少钱？尤其是在 AI 成本很容易失控的情况下。因此，我们想与您分享即将发布的 Workers AI 定价信息。</p>
@@ -155,7 +155,7 @@ export default {
 	<h3 id="%E8%B7%AF%E7%BA%BF%E5%9B%BE%E6%9C%89%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9%EF%BC%9F">路线图有什么内容？</h3>
 	<p>Workers AI 才刚刚起步，我们希望得到您的反馈，以帮助我们使它变得更好。话虽如此，我们的路线图上有一些令人兴奋的事情。</p>
 	<h4 id="%E8%83%BD%E5%90%A6%E6%8F%90%E4%BE%9B%E6%9B%B4%E5%A4%9A%E6%A8%A1%E5%9E%8B%EF%BC%9F"><strong>能否提供更多模型？</strong></h4>
-	<p>我们推出了一套直接可用的模型，但我们将根据您的反馈继续推出新的模型。如果您希望在 Workers AI 上看到特定的模型，请加入我们的 <a href="https://discord.cloudflare.com" target="_blank">Discord</a> 并告诉我们！</p>
+	<p>我们推出了一套直接可用的模型，但我们将根据您的反馈继续推出新的模型。如果您希望在 Workers AI 上看到特定的模型，请加入我们的 <a href="https://discord.cloudflare.com">Discord</a> 并告诉我们！</p>
 	<p>除此之外，我们还宣布与 <a href="https://blog.cloudflare.com/best-place-region-earth-inference">Hugging Face 的合作伙伴关系</a>，很快您将能够直接从 Workers AI 访问和运行 Hugging Face 目录的一个子集。</p>
 	<h4 id="%E5%88%86%E6%9E%90-%E5%8F%AF%E8%A7%82%E5%AF%9F%E6%80%A7"><strong>分析 + 可观察性</strong></h4>
 	<p>到目前为止，我们都是高度专注于一件事 —— 让任何开发者能够用几行代码轻松运行强大的 AI 模型。但这只是故事的一部分。接下来，我们将致力于开发一些分析和可观察性功能，以便为您提供有关每个模型的使用情况、性能和费用的洞察，此外，如果您希望进行一些探索，还可以查看日志。</p>
@@ -165,6 +165,6 @@ export default {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
 	<p><strong>并在 2024 年底前基本覆盖每一个地方</strong></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
-	<p><strong>我们非常期待看到您开始构建</strong> —— 欢迎查看<a href="https://developers.cloudflare.com/workers-ai" target="_blank">我们的文档</a>以开始使用。</p>
-	<p>如果您需要灵感、想分享你正在构建的东西，或者有任何问题，欢迎加入我们<a href="https://discord.com/invite/cloudflaredev" target="_blank">开发人员 Discord</a>。</p>
+	<p><strong>我们非常期待看到您开始构建</strong> —— 欢迎查看<a href="https://developers.cloudflare.com/workers-ai">我们的文档</a>以开始使用。</p>
+	<p>如果您需要灵感、想分享你正在构建的东西，或者有任何问题，欢迎加入我们<a href="https://discord.com/invite/cloudflaredev">开发人员 Discord</a>。</p>
 </div>

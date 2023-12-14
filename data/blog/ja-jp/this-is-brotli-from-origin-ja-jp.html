@@ -2,7 +2,7 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image8-2.png" class="kg-image" alt="All the way up to 11: Serve Brotli from origin and Introducing Compression Rules" loading="lazy" width="1999" height="1125"></figure>
 	<p>CloudflareはSpeed Weekを通じて、パフォーマンスを最適化することの重要性について述べてきました。圧縮は、インターネット上で送信されるファイルサイズを小さくすることで、重要な役割を果たしています。ファイルサイズが小さくなると、ダウンロードが速くなり、Webサイトの読み込みが速くなり、ユーザーエクスペリエンスが向上します。</p>
-	<p>家庭用洗剤を実世界の例として挙げてみましょう。この洗剤は「一般的な洗剤のボトルは、90％が水で、実際の貴重な成分は10％以下である」<a href="https://ellenmacarthurfoundation.org/circular-examples/replenish" target="_blank">と推定されます</a>。一般的な500mlの家庭用洗剤の90％を取り除くと、重量は600gから60gに減ります。この削減は、使用者の受け取り時に水分を補給する指示とともに60gの小包だけを送付することを可能にします。ガロンに換算すると、この重量削減はビジネスにとって莫大な送料節約に直結し、環境への影響は言うまでもありません。</p>
+	<p>家庭用洗剤を実世界の例として挙げてみましょう。この洗剤は「一般的な洗剤のボトルは、90％が水で、実際の貴重な成分は10％以下である」<a href="https://ellenmacarthurfoundation.org/circular-examples/replenish">と推定されます</a>。一般的な500mlの家庭用洗剤の90％を取り除くと、重量は600gから60gに減ります。この削減は、使用者の受け取り時に水分を補給する指示とともに60gの小包だけを送付することを可能にします。ガロンに換算すると、この重量削減はビジネスにとって莫大な送料節約に直結し、環境への影響は言うまでもありません。</p>
 	<p>これが圧縮の仕組みです。送信者は、ファイルを可能な限り小さなサイズに圧縮し、受信時にそれをどのように扱うかを指示して、より小さなファイルを送信します。送信するファイルサイズを小さくすることで、インターネット上でファイルを送信するのに必要な帯域幅が大幅に削減されます。ファイルが <a href="https://blog.cloudflare.com/aws-egregious-egress">AWS</a>のような高価なクラウドプロバイダーに保存されている場合、送信されるファイルのサイズを小さくすることは、帯域幅における大幅なコスト削減につながります。</p>
 	<p>また、ファイルサイズが小さいことは、携帯通信ネットワーク上のモバイルデバイスやネットワーク速度が遅い地域のユーザーなど、インターネット接続が制限されているエンドユーザーにとって特に有益です。 </p>
 	<p>Cloudflareは常にGzip形式の圧縮をサポートしてきました。Gzipは1992年から広く使われている圧縮アルゴリズムで、すべてのCloudflareユーザーにファイル圧縮を提供します。しかし、2013年にGoogleは、より高い圧縮レベルをサポートし、全体的なパフォーマンスを向上させるBrotliを導入しました。gzipからBrotliに切り替えると、ファイルサイズが小さくなり、Webページのロード時間が速くなります。Cloudflareとクライアントブラウザ間の接続においては、2017年からBrotliをサポートしています。本日、 Web コンテンツのエンドツーエンドでのBrotliのサポートを発表します。Brotli圧縮のサポートは、可能な限り高いレベルで、配信元サーバーからクライアントまで対応します。 </p>
@@ -12,12 +12,12 @@
 	<p>2017年以降、Cloudflare、エンドユーザーの「accept-encoding」ヘッダーに基づき、圧縮可能なすべてのアセットに対して最大圧縮率としてBrotliレベル4を使用しています。しかし、Cloudflare、オリジンがBrotliをサポートしていたとしても、オリジンからGzip圧縮しか要求されない場合があったり、さらに、Cloudflare、オリジンから受信したコンテンツを圧縮してエンドユーザーに送信する前に必ず解凍するため、処理時間が増えたりするという問題がありました。その結果、顧客はBrotli圧縮が提供するメリットを十分に活用することができませんでした。</p>
 	<p><strong>以前の世界</strong></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_1.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
-	<p>CloudflareはBrotliをエンドツーエンドで完全にサポートするようになったため、お客様は更新されたaccept-encodingヘッダーがオリジンに到着するのを確認できるようになります。利用可能になると、お客様は、最大レベルの11まで、大きく圧縮されたBrotliファイルを直接転送、キャッシュ、提供することができます。これは、<a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank">遅延</a>と帯域幅の消費を削減するのに役立ちます。エンドユーザーデバイスがBrotli圧縮をサポートしない場合、当社は自動的にファイルを解凍し、Accept-Encodingヘッダーに応じて、解凍された形式またはGzip圧縮されたファイルとして提供します。 </p>
+	<p>CloudflareはBrotliをエンドツーエンドで完全にサポートするようになったため、お客様は更新されたaccept-encodingヘッダーがオリジンに到着するのを確認できるようになります。利用可能になると、お客様は、最大レベルの11まで、大きく圧縮されたBrotliファイルを直接転送、キャッシュ、提供することができます。これは、<a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">遅延</a>と帯域幅の消費を削減するのに役立ちます。エンドユーザーデバイスがBrotli圧縮をサポートしない場合、当社は自動的にファイルを解凍し、Accept-Encodingヘッダーに応じて、解凍された形式またはGzip圧縮されたファイルとして提供します。 </p>
 	<p><strong>完全なエンドツーエンドのBrotli圧縮のサポート</strong></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_2.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
 	<p><strong>エンドユーザー側でBrotli圧縮をサポートしていない場合</strong></p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/06/Flow_how-CF-compresses_3.png" class="kg-image" alt="" loading="lazy" width="1600" height="373"></figure>
-	<p>お客様は、適切なオンライン資料を参照して、オリジンでBrotli圧縮を実装できます。例えば、NGINXを使用しているお客様は、以下の<a href="https://github.com/google/ngx_brotli#installation" target="_blank">チュートリアル</a>に従ってBrotliを実装し、`<code>nginx.conf</code>`設定ファイル内で以下のように圧縮をレベル11に設定することができます。</p><!--kg-card-begin: markdown-->
+	<p>お客様は、適切なオンライン資料を参照して、オリジンでBrotli圧縮を実装できます。例えば、NGINXを使用しているお客様は、以下の<a href="https://github.com/google/ngx_brotli#installation">チュートリアル</a>に従ってBrotliを実装し、`<code>nginx.conf</code>`設定ファイル内で以下のように圧縮をレベル11に設定することができます。</p><!--kg-card-begin: markdown-->
 	<pre><code>brotli on;
 brotli_comp_level 11;
 brotli_static on;
@@ -126,22 +126,22 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;
 	<p>Brotli圧縮を受け入れないブラウザに対しては、引き続き解凍してGzip圧縮または非圧縮の応答を送信します。</p>
 	<h3 id="%E5%AE%9F%E8%A3%85">実装</h3>
 	<p>オリジンからBrotliを実装するための最初のステップでは、 Cloudflare ソフトウェアスタックに統合可能な解凍モジュールを構築しました。これにより、オリジンから受け取った圧縮ビットを効率的に元の非圧縮ファイルに変換することができます。このステップは、Email Obfuscationや Cloudflare Workers Customersのような多くの<a href="https://blog.cloudflare.com/rust-nginx-module">機能</a>は、カスタマイズを適用するためにレスポンスのボディにアクセスすることに依存しているため、非常に重要でした。</p>
-	<p>私たちは、解凍プログラムをCloudflareのコア<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank">リバースWebプロキシ</a>に統合しました。この統合により、Cloudflareのすべての製品と機能がBrotli解凍に簡単にアクセスできるようになりました。これにより、当社のCloudflare Workersチームは、BrotliをCloudflare Workersに直接組み込むことができ、当社のWorkersを利用中のお客様は、Brotliで返された応答と対話したり、そのままエンドユーザーに渡すことができるようになりました。</p>
+	<p>私たちは、解凍プログラムをCloudflareのコア<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy">リバースWebプロキシ</a>に統合しました。この統合により、Cloudflareのすべての製品と機能がBrotli解凍に簡単にアクセスできるようになりました。これにより、当社のCloudflare Workersチームは、BrotliをCloudflare Workersに直接組み込むことができ、当社のWorkersを利用中のお客様は、Brotliで返された応答と対話したり、そのままエンドユーザーに渡すことができるようになりました。</p>
 	<h3 id="%E5%9C%A7%E7%B8%AE%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E5%B0%8E%E5%85%A5%E3%82%A8%E3%83%B3%E3%83%89%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%B8%E3%81%AE%E5%9C%A7%E7%B8%AE%E3%81%AE%E3%81%8D%E3%82%81%E7%B4%B0%E3%81%8B%E3%81%AA%E5%88%B6%E5%BE%A1">圧縮ルールの導入 - エンドユーザーへの圧縮のきめ細かな制御</h3>
-	<p>デフォルトでCloudflareは、<a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress" target="_blank">特定のコンテンツの種類</a>を圧縮します。本日、Enterpriseのお客様向けにCompression Rulesも発表し、Cloudflareの圧縮方法と圧縮対象をさらに制御できるようになりました。</p>
+	<p>デフォルトでCloudflareは、<a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress">特定のコンテンツの種類</a>を圧縮します。本日、Enterpriseのお客様向けにCompression Rulesも発表し、Cloudflareの圧縮方法と圧縮対象をさらに制御できるようになりました。</p>
 	<p>本日、Enterpriseのお客様向けにCompression Rulesを発表いたします。Compression Rulesでは、Cloudflareの圧縮機能の制御が強化され、どのコンテンツをCloudflareがどのように圧縮するかをカスタマイズして、Webサイトのパフォーマンスを最適化できます。</p>
 	<p>例えば、 .ktxファイル用にCloudflareのCompression Rulesを利用することで、WebGLアプリでのテクスチャ配信を最適化し、全体的なユーザーエクスペリエンスを向上させることができます。圧縮を有効にすることで、帯域幅の使用量を最小限に抑え、大きくて詳細なテクスチャを扱う場合でも、webGLアプリのロードが迅速かつスムーズになります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="1100"></figure>
 	<p>また、圧縮を無効にしたり、圧縮方法を指定することもできます。別の例として、インフラストラクチャ企業が、 IoTデバイスでのみGzipをサポートしたいが、他のすべてのホスト名にはBrotli圧縮を許可したい場合があります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy" width="1470" height="1114"></figure>
-	<p>圧縮ルールは、他の<a href="https://developers.cloudflare.com/rules" target="_blank">ルール</a>製品がメディアタイプとエクステンションタイプのフィールドを追加した上で構築されているフィルターを使用します。これにより、圧縮したいコンテンツを簡単に指定できます。</p>
+	<p>圧縮ルールは、他の<a href="https://developers.cloudflare.com/rules">ルール</a>製品がメディアタイプとエクステンションタイプのフィールドを追加した上で構築されているフィルターを使用します。これにより、圧縮したいコンテンツを簡単に指定できます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy" width="1600" height="406"></figure>
 	<h3 id="brotli%E3%83%88%E3%82%B0%E3%83%AB%E3%81%AE%E5%BB%83%E6%AD%A2">Brotliトグルの廃止</h3>
-	<p>Brotliは、2016年以降、いくつかの<a href="https://caniuse.com/brotli" target="_blank">Web ブラウザ</a>で長い間サポートされてきており、Cloudflareは2017年にBrotliのサポートを開始しました。すべての新しいWebテクノロジーと同様に、Brotliは未知であり、私たちはAPIと私たちのUIを介して選択的にBrotliを有効または無効にできるようにしました。</p>
+	<p>Brotliは、2016年以降、いくつかの<a href="https://caniuse.com/brotli">Web ブラウザ</a>で長い間サポートされてきており、Cloudflareは2017年にBrotliのサポートを開始しました。すべての新しいWebテクノロジーと同様に、Brotliは未知であり、私たちはAPIと私たちのUIを介して選択的にBrotliを有効または無効にできるようにしました。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/pasted-image-0--4-.png" class="kg-image" alt="" loading="lazy" width="1600" height="339"></figure>
 	<p>Brotliが進化し、すべてのブラウザでサポートされるようになったため、今後数ヶ月のうちに、すべてのゾーンでBrotliをデフォルトで有効にする予定です。現在サポートしているGzipの動作をミラーリングし、ダッシュボードからトグルを削除します。ブラウザがBrotliをサポートしない場合、CloudflareはGzipや非圧縮などのエンコーディングタイプを引き続きサポートします。また、Enterpriseをご利用中のお客様は、圧縮ルールを使用して、ユーザーに対するデータの圧縮方法をきめ細かく制御することができます。</p>
 	<h3 id="web%E5%9C%A7%E7%B8%AE%E3%81%AE%E6%9C%AA%E6%9D%A5">Web圧縮の未来</h3>
-	<p>私たちは、 Webの新しい圧縮技術として、Brotliが大いに採用され、素晴らしいパフォーマンスを発揮していることを目の当たりにしてきました。今後、私たちは、<a href="https://www.rfc-editor.org/rfc/rfc8478" target="_blank">zstd</a>のような新しい圧縮アルゴリズムの動向を次世代の圧縮アルゴリズムとして注視しています。</p>
+	<p>私たちは、 Webの新しい圧縮技術として、Brotliが大いに採用され、素晴らしいパフォーマンスを発揮していることを目の当たりにしてきました。今後、私たちは、<a href="https://www.rfc-editor.org/rfc/rfc8478">zstd</a>のような新しい圧縮アルゴリズムの動向を次世代の圧縮アルゴリズムとして注視しています。</p>
 	<p>同時に、Brotliで改善できる点に鋭意取り組んでいます。特に力を入れている開発のひとつが、Brotliの辞書共有です。この機能は、アセットを圧縮する際に「辞書」を使用して、圧縮をより効率的に行うことを可能にします。簡単に例えるなら、iPhoneのメッセージにOMWと入力するようなものです。iPhoneは内蔵辞書を使って自動的にOMWを「On My Way（今向かっています）」に翻訳します。 </p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -212,8 +212,8 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;
 	</table><!--kg-card-end: html-->
 	<p><br></p>
 	<p>この内部辞書は、3つの文字を9つの文字（スペースを含む）に変換したもので、内蔵辞書には6文字が保存されており、ユーザーのパフォーマンス上のメリットを提供します。 </p>
-	<p>デフォルトでは、<a href="https://www.rfc-editor.org/rfc/rfc7932#page-28" target="_blank">Brotli RFC</a>は、クライアントとオリジンサーバーの両方が使用する静的辞書を定義しています。この静的辞書は、汎用的で誰にでも適用できるように設計されており、辞書のサイズを大きすぎないように最適化することで、最良の圧縮結果を生成することができます。しかし、オリジンが特定のWebサイトに合わせた特注の辞書を生成できるとしたらどうでしょうか。例えば、Cloudflareに特化した辞書があれば、「Cloudflare」のようなサイト上に繰り返し現れる単語やフレーズを圧縮することができます。特注の辞書は、これを可能な限り大きく圧縮するように設計され、同じ辞書を使用するブラウザはこれを翻訳して返すことができます。 </p>
-	<p>Web Incubator CGによる<a href="https://github.com/wicG/compression-dictionary-transport" target="_blank">新しい提案</a>はまさにそれを目指しており、Webサイトが圧縮をさらに最適化できるように、ブラウザが使用できる独自の辞書を指定できるようにします。私たちはこの提案に貢献し、近々研究結果を公表する予定です。</p>
+	<p>デフォルトでは、<a href="https://www.rfc-editor.org/rfc/rfc7932#page-28">Brotli RFC</a>は、クライアントとオリジンサーバーの両方が使用する静的辞書を定義しています。この静的辞書は、汎用的で誰にでも適用できるように設計されており、辞書のサイズを大きすぎないように最適化することで、最良の圧縮結果を生成することができます。しかし、オリジンが特定のWebサイトに合わせた特注の辞書を生成できるとしたらどうでしょうか。例えば、Cloudflareに特化した辞書があれば、「Cloudflare」のようなサイト上に繰り返し現れる単語やフレーズを圧縮することができます。特注の辞書は、これを可能な限り大きく圧縮するように設計され、同じ辞書を使用するブラウザはこれを翻訳して返すことができます。 </p>
+	<p>Web Incubator CGによる<a href="https://github.com/wicG/compression-dictionary-transport">新しい提案</a>はまさにそれを目指しており、Webサイトが圧縮をさらに最適化できるように、ブラウザが使用できる独自の辞書を指定できるようにします。私たちはこの提案に貢献し、近々研究結果を公表する予定です。</p>
 	<h3 id="%E4%BB%8A%E3%81%99%E3%81%90%E3%81%8A%E8%A9%A6%E3%81%97%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%81">今すぐお試しください！</h3>
 	<p>Compression Rulesは現在入手可能です！エンドツーエンドのBrotliは今後数週間の間に発表が予定されています。パフォーマンスを向上させ、帯域幅を削減し、Cloudflareがエンドユーザーに対してどのように圧縮を処理するかを細かく制御することができます。</p>
 </div>

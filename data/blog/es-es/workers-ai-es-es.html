@@ -50,7 +50,7 @@
 	<h2 id="una-soluci%C3%B3n-dise%C3%B1ada-para-desarrolladores">Una solución diseñada para desarrolladores</h2>
 	<p>La experiencia de los desarrolladores es muy importante para nosotros. De hecho, la mayor parte de este artículo trata precisamente de eso, de asegurarnos de que funciona sin configuración, con modelos conocidos que funcionan sin más, y de que sea accesible para todos los desarrolladores, tanto si crean e implementan con Cloudflare como si lo hacen en otro lugar. Pero no solo eso. La experiencia no debe dar problemas, el paso a producción debe ser rápido y fácil.</p>
 	<p>Veamos otro ejemplo para demostrar lo fácil que es utilizarlo. Ejecutaremos Llama 2, un popular modelo de lenguaje de código abierto de Meta, en un worker.</p>
-	<p>Suponemos que ya has completado la información básica (cuenta de Cloudflare, Node, NPM, etc.), pero si no es así, <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup" target="_blank">esta guía</a> te ayudará con la configuración.</p>
+	<p>Suponemos que ya has completado la información básica (cuenta de Cloudflare, Node, NPM, etc.), pero si no es así, <a href="https://developers.cloudflare.com/workers-ai/get-started/local-dev-setup">esta guía</a> te ayudará con la configuración.</p>
 	<h3 id="1-crea-un-proyecto-workers">1. Crea un proyecto Workers</h3>
 	<p>Crea un nuevo proyecto llamado workers-ai ejecutando:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npm create cloudflare@latest
@@ -75,7 +75,7 @@
 binding = "AI" #available in your worker via env.AI
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>También puedes enlazar Workers AI a una función de Pages. Para más información, consulta <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai" target="_blank">Functions Bindings</a>.</p>
+	<p>También puedes enlazar Workers AI a una función de Pages. Para más información, consulta <a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#ai">Functions Bindings</a>.</p>
 	<h3 id="3-instala-la-biblioteca-cliente-workers-ai">3. Instala la biblioteca cliente Workers AI</h3><!--kg-card-begin: markdown-->
 	<pre><code>npm install @cloudflare/ai
 </code></pre>
@@ -139,7 +139,7 @@ export default {
 	<ul>
 		<li>@cf/meta/llama-2-7b-chat-int8: 50 solicitudes por minuto a nivel global</li>
 	</ul>
-	<p>Consulta nuestros <a href="https://developers.cloudflare.com/workers-ai/platform/limits" target="_blank">documentos</a> para conocer nuestros límites.</p>
+	<p>Consulta nuestros <a href="https://developers.cloudflare.com/workers-ai/platform/limits">documentos</a> para conocer nuestros límites.</p>
 	<h4 id="precio"><strong>Precio</strong></h4>
 	<p>Lo que hemos publicado hoy es solo un pequeño avance para darte una idea de lo que te espera (simplemente no podíamos contenernos), pero estamos deseando que pruebes la versión completa de Workers AI.</p>
 	<p>Somos conscientes de que cuando estás a punto de crear algo, quieres saber: ¿cuánto me va a costar? Sobre todo teniendo en cuenta que los costes de la IA se nos van de las manos. Por eso, queríamos informarte de los próximos precios de Workers AI.</p>
@@ -155,7 +155,7 @@ export default {
 	<h3 id="%C2%BFcu%C3%A1l-es-el-plan-de-desarrollo">¿Cuál es el plan de desarrollo?</h3>
 	<p>Workers AI no ha hecho más que empezar, y queremos que nos ayudes a que sea una herramienta de gran utilidad. Dicho esto, nuestra hoja de ruta incluye muchos elementos interesantes.</p>
 	<h4 id="m%C3%A1s-modelos-por-favor"><strong>Más modelos, por favor</strong></h4>
-	<p>Este lanzamiento incluye un conjunto sólido de modelos que funcionan, pero seguiremos implementando nuevos modelos en función de tus comentarios. Si hay algún modelo en particular que te gustaría integrar en Workers AI, entra en<a href="https://discord.cloudflare.com" target="_blank"> Discord</a> y cuéntanoslo.</p>
+	<p>Este lanzamiento incluye un conjunto sólido de modelos que funcionan, pero seguiremos implementando nuevos modelos en función de tus comentarios. Si hay algún modelo en particular que te gustaría integrar en Workers AI, entra en<a href="https://discord.cloudflare.com"> Discord</a> y cuéntanoslo.</p>
 	<p>Además, también hemos anunciado la <a href="https://blog.cloudflare.com/best-place-region-earth-inference">asociación con Hugging Face</a>, y pronto podrás acceder y ejecutar un subconjunto del catálogo de Hugging Face directamente desde Workers AI.</p>
 	<h4 id="an%C3%A1lisis-y-observabilidad"><strong>Análisis y observabilidad</strong></h4>
 	<p>Hasta ahora, nos hemos centrado mucho en facilitar a cualquier desarrollador la ejecución de modelos de IA con solo unas líneas de código. Pero eso no es todo. Próximamente, trabajaremos en algunas funciones de análisis y de observabilidad para ofrecerte información sobre tu uso, rendimiento, gasto por modelo, además de la posibilidad de acceder a tus registros si te interesa investigar.</p>
@@ -165,5 +165,5 @@ export default {
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/image3-28.png" class="kg-image" alt="" loading="lazy" width="1801" height="1013"></figure>
 	<p><strong>Y llegaremos a todas partes a finales de 2024</strong></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/09/unnamed-3.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
-	<p><strong>Nos hace mucha ilusión ver tus desarrollos:</strong> consulta <a href="https://developers.cloudflare.com/workers-ai" target="_blank">nuestros documentos</a> para empezar.Si necesitas inspiración, quieres compartir el proyecto que estés desarrollando o tienes alguna duda entra en <a href="https://discord.com/invite/cloudflaredev" target="_blank">Discord</a>.</p>
+	<p><strong>Nos hace mucha ilusión ver tus desarrollos:</strong> consulta <a href="https://developers.cloudflare.com/workers-ai">nuestros documentos</a> para empezar.Si necesitas inspiración, quieres compartir el proyecto que estés desarrollando o tienes alguna duda entra en <a href="https://discord.com/invite/cloudflaredev">Discord</a>.</p>
 </div>

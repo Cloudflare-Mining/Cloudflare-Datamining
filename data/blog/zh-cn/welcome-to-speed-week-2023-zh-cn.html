@@ -1,7 +1,7 @@
 <div class="mb2 gray5">13 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image2-3.png" class="kg-image" alt="Welcome to Speed Week 2023" loading="lazy" width="1999" height="1125"></figure>
-	<p>“快”的标准在不断变化。短短 100 年间，我们从地球一侧旅行到另一侧所需的<a href="https://www.independent.co.uk/travel/news-and-advice/uk-australia-flight-time-travel-100-years-change-london-perth-direct-a8268311.html" target="_blank">时间</a>从 28 天缩短到 17 个小时。我们为一种引起全球大流行的病毒研制出疫苗仅花了<a href="https://wellcome.org/news/quick-safe-covid-vaccine-development" target="_blank">一年</a> —— 仅为典型时间的 10%。人工智能将完成软件开发任务所需的时间缩短了 <a href="https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness" target="_blank">55%</a>。指标——以及超越现有水平的需求驱动着我们的社会前进。 </p>
+	<p>“快”的标准在不断变化。短短 100 年间，我们从地球一侧旅行到另一侧所需的<a href="https://www.independent.co.uk/travel/news-and-advice/uk-australia-flight-time-travel-100-years-change-london-perth-direct-a8268311.html">时间</a>从 28 天缩短到 17 个小时。我们为一种引起全球大流行的病毒研制出疫苗仅花了<a href="https://wellcome.org/news/quick-safe-covid-vaccine-development">一年</a> —— 仅为典型时间的 10%。人工智能将完成软件开发任务所需的时间缩短了 <a href="https://github.blog/2022-09-07-research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness">55%</a>。指标——以及超越现有水平的需求驱动着我们的社会前进。 </p>
 	<p>Cloudflare 的专注并不在过去的指标上。我们的目标不是成为“更快的马”。相反，驱动我们的是诸如此类的问题：“它对用户而言究竟是怎样的？”，“这实际上如何加速了互联网？”，以及“这如何使客户更快？”。 </p>
 	<p>这个创新周，我们将帮助用户衡量重要的指标。我们将讨论一系列主题，包括我们如何在 Zero Trust 领域是最快的，拥有最快的网络，深入探讨缓存清除，以及为什么全局清除延迟并没有人们所认为那么理想。我们还将讨论为什么“首字节时间”通常不是一个很好的指标。以及取而代之，您应该关心什么指标。</p>
 	<p>与此同时，我们也将发布一系列超棒的全新产品和功能，旨在为您和您的客户提速。从 API 加速和端到端 Brotli 11 压缩，到一键将页面加载时间缩短 30％。还有全新的应用程序性能主页。</p>
@@ -11,7 +11,7 @@
 	<h3 id="%E6%9B%B4%E9%AB%98%E5%83%8F%E7%B4%A0%EF%BC%9F">更高像素？</h3>
 	<p>在现实世界中，很容易就能找到一些受到高度追捧但可能没有涉及您所真正关注问题的指标。 </p>
 	<p>如果您每年都阅读那些公告，可能会认为智能手机已经演变成带有应用和天线的相机。手机厂商宣布的每一个新型号都会提到，最新型号的摄像头比上一代增加了多少百万像素。 </p>
-	<p>仅像素本身并不能保证更好的图像质量。影响相机性能的因素包括传感器尺寸、镜头质量、图像处理算法以及低光性能。这种观点已经被广泛接受超过<a href="https://www.scientificamerican.com/article/camera-megapixels-why-more-isnt-alw-2012-05" target="_blank">10 年</a>，那么，为什么手机厂商继续将其作为卖点宣传，为什么用户觉得它重要呢？</p>
+	<p>仅像素本身并不能保证更好的图像质量。影响相机性能的因素包括传感器尺寸、镜头质量、图像处理算法以及低光性能。这种观点已经被广泛接受超过<a href="https://www.scientificamerican.com/article/camera-megapixels-why-more-isnt-alw-2012-05">10 年</a>，那么，为什么手机厂商继续将其作为卖点宣传，为什么用户觉得它重要呢？</p>
 	<p>同样地，互联网服务提供商的营销资料会让您相信“带宽为王”。 </p>
 	<p>然而，已经有明确的证据表明，带宽并不是速度的唯一指标。就在两个月前，我们发布了一篇<a href="https://blog.cloudflare.com/making-home-internet-faster">博客文章</a>，指出“使家庭互联网更快与速度几乎毫无关系”，结论是 “尽管带宽起到一定作用，但连接的延迟——真正的互联网“速度”——更为重要<em><strong>”</strong></em>。文章参考了两位 MIT 研究人员最近的一篇论文，其支持以上观点，表明当带宽达到 20 Mbps 左右时，增加带宽并不能大幅提高网页加载速度。 </p>
 	<p>同样，广告宣传并被客户普遍接受的比较标准是不正确的。更多带宽并不等于更快的网速。</p>
@@ -20,12 +20,12 @@
 	<p>类似于智能手机和 ISP 领域，Cloudflare 所在领域的用户常常使用对他们并不重要的指标来将我们与竞争对手进行比较。</p>
 	<p>大型企业使用软件，根据每个地区尽可能最低的“首字节时间”(TTFB)得分，选择性地在内容分发网络(CDN)之间转移流量。这意味着，如果 Cloudflare 突然将其在非洲地区的 TTFB 减少一半，我们可能看到该地区来自这些企业客户的流量大幅增加，但这可能并不会改善网站访问者的实际体验。</p>
 	<p>TTFB 常被用作衡量 Web 服务器响应请求速度的指标，常见的 Web 测试服务也会报告这个指标。理论上，TTFB 越快，Web 服务器性能越好。然而，<a href="https://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles">多年前</a>我们就已经知道，TTFB 本身并不能公正地反映实际性能。 </p>
-	<p>接收第一个字节并不能确定良好的最终用户体验，因为大多数页面在初始文档请求之后会加载其他阻塞渲染的资源。TTFB 不考虑 HTTP/2 和 HTTP/3 多路复用的好处，即允许浏览器并行加载文件。该指标也不考虑其他功能，例如 <a href="https://developers.cloudflare.com/cache/advanced-configuration/early-hints" target="_blank">Early Hints</a>、<a href="https://www.cloudflare.com/en-gb/products/zaraz" target="_blank">Zaraz</a>、 <a href="https://developers.cloudflare.com/fundamentals/speed/rocket-loader" target="_blank">Rocket Loader</a> 、<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">HTTP/2 </a>和即将推出的 HTTP/3 Prioritization(消除渲染阻塞）。</p>
-	<p>正如 Sitespect <a href="https://www.sitespect.com/ttfb-is-not-the-best-indicator-of-site-speed" target="_blank">去年</a>写道，“<em>TTFB 是衡量 Web 服务器能够快速响应请求并在各个网络层之间传输请求到用户浏览器所需时间的指标。它是内容交付速度的一个指标，但它不是衡量终端用户在能够开始与您的网站进行交互之前实际等待多长时间的指标。TTFB 完全忽略了网络层之后发生的所有事情：加载、下载资源、渲染等。换言之，TTFB 不是以用户为中心的度量标准，而是网络度量标准。</em>”</p>
+	<p>接收第一个字节并不能确定良好的最终用户体验，因为大多数页面在初始文档请求之后会加载其他阻塞渲染的资源。TTFB 不考虑 HTTP/2 和 HTTP/3 多路复用的好处，即允许浏览器并行加载文件。该指标也不考虑其他功能，例如 <a href="https://developers.cloudflare.com/cache/advanced-configuration/early-hints">Early Hints</a>、<a href="https://www.cloudflare.com/en-gb/products/zaraz">Zaraz</a>、 <a href="https://developers.cloudflare.com/fundamentals/speed/rocket-loader">Rocket Loader</a> 、<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">HTTP/2 </a>和即将推出的 HTTP/3 Prioritization(消除渲染阻塞）。</p>
+	<p>正如 Sitespect <a href="https://www.sitespect.com/ttfb-is-not-the-best-indicator-of-site-speed">去年</a>写道，“<em>TTFB 是衡量 Web 服务器能够快速响应请求并在各个网络层之间传输请求到用户浏览器所需时间的指标。它是内容交付速度的一个指标，但它不是衡量终端用户在能够开始与您的网站进行交互之前实际等待多长时间的指标。TTFB 完全忽略了网络层之后发生的所有事情：加载、下载资源、渲染等。换言之，TTFB 不是以用户为中心的度量标准，而是网络度量标准。</em>”</p>
 	<p>Cloudflare 全力支持以<strong>实时用户监控 (RUM)</strong>作为未来的网站性能标准。我们正在对此进行大力投资，包括观察角度和优化角度。本周，我们将发布一系列新产品，旨在帮助用户了解其最终用户(即网站访问者)的实际体验，并提供有关如何改善体验的建议。 </p>
 	<p>如果您不熟悉 RUM，我们通常针对三个主要指标对网站进行优化，即所谓“核心 Web 指标(Core Web Vitals)”。这一组关键指标被认为是衡量网站性能好坏与否最佳、最准确的指标。这些关键指标包括<em>最大内容绘制时间(Largest Contentful Paint，LCP)、首次输入延迟(First Input Delay，FID)和累计布局位移(Cumulative Layout Shift，CLS)。</em></p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/06/image1-3.png" class="kg-image" alt="" loading="lazy" width="1280" height="735">
-		<figcaption>图片来源: <a href="https://addyosmani.com/blog/web-vitals-extension" target="_blank">https://addyosmani.com/blog/web-vitals-extension/</a></figcaption>
+		<figcaption>图片来源: <a href="https://addyosmani.com/blog/web-vitals-extension">https://addyosmani.com/blog/web-vitals-extension/</a></figcaption>
 	</figure>
 	<p>LCP 衡量加载性能，通常是加载在浏览器中可见的最大图像或文本块所需的时间。FID 衡量交互性能。例如，从用户点击或轻触按钮，到浏览器响应并开始执行操作之间的时间。最后，CLS 衡量视觉稳定性。CLS 的一个好或坏的例子是，当您用手机访问一个网站时，点击一个链接，页面在最后一秒移动，这意味着您点击了您不想点击的东西。那将是较低的 CLS 分数，因为它造成了糟糕的用户体验。</p>
 	<p>查看这些指标可以让我们了解最终用户在网站上获得的真实体验(RUM)，而不是最近的 Cloudflare 数据中心多快开始返回数据(TTFB)。 </p>
@@ -34,7 +34,7 @@
 	<p>我们还将推出一款全新的产品，它将成为 Cloudflare 应用程序性能的新家。新产品将用实时用户监控数据来增强全球各地合成测试的结果，为管理员就网站<em>在真实世界中</em>的性能表现提供最佳理解。本产品将面向所有计划级别提供。</p>
 	<h3 id="%E6%88%91%E4%BB%AC%E6%98%AF%E6%9C%80%E5%BF%AB%E7%9A%84%EF%BC%8C%E8%80%8C%E4%B8%94%E5%8F%AF%E4%BB%A5%E8%AF%81%E6%98%8E">我们是最快的，而且可以证明</h3>
 	<p>Cloudflare 速度快已经不是秘密。 </p>
-	<p>然而，我们有多快，以及在多少领域快，对一般读者而言可能并不明显。最快的<a href="https://blog.cloudflare.com/network-performance-update-developer-week">计算</a>。最快的 <a href="https://www.dnsperf.com/#!dns-providers" target="_blank">DNS</a>。最快的<a href="https://blog.cloudflare.com/network-performance-update-developer-week">网络</a>。最快的 <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">Zero Trust 网络访问(ZTNA)</a>。最快的安全 Web 网关(SWG)。最快的<a href="https://blog.cloudflare.com/r2-is-faster-than-s3">对象存储</a>。我们正在寻找在经验上不是最快的领域，并希望证明我们是第一。</p>
+	<p>然而，我们有多快，以及在多少领域快，对一般读者而言可能并不明显。最快的<a href="https://blog.cloudflare.com/network-performance-update-developer-week">计算</a>。最快的 <a href="https://www.dnsperf.com/#!dns-providers">DNS</a>。最快的<a href="https://blog.cloudflare.com/network-performance-update-developer-week">网络</a>。最快的 <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">Zero Trust 网络访问(ZTNA)</a>。最快的安全 Web 网关(SWG)。最快的<a href="https://blog.cloudflare.com/r2-is-faster-than-s3">对象存储</a>。我们正在寻找在经验上不是最快的领域，并希望证明我们是第一。</p>
 	<p>我们还在寻找方法，将客户尽快从传统供应商和应用程序迁移到 Cloudflare。这些传统供应商使用混乱的术语和艰涩难懂的功能，将客户锁定在次优产品上，导致它们不敢轻易转移。我们正在帮助这些客户逃离这种困境。 <a href="https://blog.cloudflare.com/r2-super-slurper-ga">Super Slurper</a> 帮助客户从 S3 迁移出来，Turpentine 帮助将传统 VCL 设施迁移到 Cloudflare，<a href="https://blog.cloudflare.com/descaler-program">Descaler 项目</a>帮助客户在几小时内从 Zscaler 迁移到 Cloudflare。我们正在构建各种工具和产品，以帮助那些想要转移到最快的网络但被锁定的客户。</p>
 	<p>Speed Week 期间，我们将介绍关于这些项目的最新情况，以及我们如何不懈努力，使希望迁移到 Cloudflare 并将其业务放置在最快网络上的客户尽可能快速、简便地完成这个过程。</p>
 	<h3 id="%E5%9C%A8%E4%BB%BB%E4%BD%95%E4%BA%A7%E5%93%81%E9%A2%86%E5%9F%9F%EF%BC%8C%E6%80%A7%E8%83%BD%E9%83%BD%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84">在任何产品领域，性能都是最重要的</h3>

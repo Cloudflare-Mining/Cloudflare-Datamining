@@ -1,11 +1,11 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image4-3.png" class="kg-image" alt="Smart Hints make code-free performance simple" loading="lazy" width="1200" height="675"></figure>
-	<p>今天，我们很高兴地宣布我们正在借助 Cloudflare 网络的强大能力将 Early Hints 和<a href="https://web.dev/fetch-priority" target="_blank">Fetch Priorities</a>自动化。大约<a href="https://blog.cloudflare.com/early-hints-performance">一年前，</a> 我们推出了 <a href="https://blog.cloudflare.com/early-hints">Early Hints</a>。Early Hints 是一种方法，Web 服务器可以在准备完整响应的同时异步向浏览器发送指示。这将主动告知浏览器如何更快地为访问者加载网页，而不是被动地等待完整的网页响应。</p>
+	<p>今天，我们很高兴地宣布我们正在借助 Cloudflare 网络的强大能力将 Early Hints 和<a href="https://web.dev/fetch-priority">Fetch Priorities</a>自动化。大约<a href="https://blog.cloudflare.com/early-hints-performance">一年前，</a> 我们推出了 <a href="https://blog.cloudflare.com/early-hints">Early Hints</a>。Early Hints 是一种方法，Web 服务器可以在准备完整响应的同时异步向浏览器发送指示。这将主动告知浏览器如何更快地为访问者加载网页，而不是被动地等待完整的网页响应。</p>
 	<p>在最初的实验室试验中，我们观察到页面加载速度改进了 30% 以上。自那时起，我们已经使用该产品，代表 150000 个网站发送了大约二万亿个提示。</p>
 	<p>为了在网站上有效使用 Early Hints，必须对 HTTP 链接标头或 HTML 链接元素进行配置，以指定应预先加载哪些资产，或应预先连接哪些第三方服务器。要作出这些决定，需要了解您的网站与浏览器的交互方式，并确定要提示的渲染阻塞资产，而无需实施<a href="https://blog.cloudflare.com/early-hints-performance/#:~:text=It%E2%80%99s%20quite%20possible,mobile%20connection%20settings.">占用网络带宽的</a>优先级策略来处理非关键资源（即，不能简单地对所有资源都采用 Early Hint，并期望获得理想的效果）。</p>
 	<p>对于那些具备相关知识并能够在源站点（或通过Worker）配置 Early Hints 的用户而言，一切都可以顺利进行。然而，对于那些无法访问源服务器（例如 SaaS 平台），或不确定要预先加载/优先处理哪些最优资产，或者只是选择专注于构建其自己的应用程序的用户来说，则面临着问题：“<em>作为中介服务器，Cloudflare 难道不应该知道对我的网站或性能进行优先级排序的最佳方法吗</em>？”</p>
-	<p>答案是<strong>肯定的</strong>，这也是为什么我们开始热烈讨论 Smart Hints 如何确定具有最高优先级的 Web 资源，而无需开发人员进行任何配置的原因。如果您有兴趣帮助我们测试此功能，可以在<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent" target="_blank">此处</a>注册，我们将在今年晚些时候与您联系，并提供有关如何帮助我们测试 Smart Hints 的更多说明。</p>
+	<p>答案是<strong>肯定的</strong>，这也是为什么我们开始热烈讨论 Smart Hints 如何确定具有最高优先级的 Web 资源，而无需开发人员进行任何配置的原因。如果您有兴趣帮助我们测试此功能，可以在<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent">此处</a>注册，我们将在今年晚些时候与您联系，并提供有关如何帮助我们测试 Smart Hints 的更多说明。</p>
 	<h3 id="%E8%83%8C%E6%99%AF">背景</h3>
 	<p>当访问网页时，浏览器实际上会向服务器请求大量独立资源。这些资源包括图像、文本和视频等可见元素，以及支持网站分析、功能等的幕后逻辑（JavaScript 等）。浏览器加载这些资源的顺序，在决定用户查看页面并与之交互的速度方面起着至关重要的作用。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/image3-2.png" class="kg-image" alt="" loading="lazy" width="1443" height="873"></figure>
@@ -14,7 +14,7 @@
 	<!--kg-card-end: markdown-->
 	<p>样式表对于浏览器的加载速度非常重要，因为浏览器会等待样式表加载完成后才能知晓如何向访问者显示内容。脚本则十分有趣，而脚本的有趣之处在于，其可以根据提供给浏览器的指示以不同的方式运行。如果脚本缺乏具体指示（例如 defer/async/inline），则可能成为“阻塞”资源。当浏览器遇到阻塞脚本资源时，它会暂停处理网页，并等待直到脚本已完全加载并完全执行。这确保脚本的功能可供访问者使用。然而，这种阻塞行为可能导致延迟向用户显示内容，因为浏览器需要等待脚本完成，才能继续进行下一步。</p>
 	<p>在浏览器到达文档的 <code>&lt;body&gt;</code> 部分之前，访问者看不到任何内容。这就是为什么尽可能优化 <code>&lt;head&gt;</code> 部分的加载过程至关重要。通过尽可能减少加载样式表和阻塞脚本所花费的时间，浏览器可以更快地渲染页面内容，让访问者可以更快看到网页并与之交互。</p>
-	<p>实现最佳 Web 性能是一个复杂的挑战。尽管浏览器通常负责确定加载构建网页所需不同资源的顺序，但最近发布了许多工具（<a href="https://blog.cloudflare.com/early-hints-performance">Early Hints</a>、<a href="https://web.dev/fetch-priority" target="_blank">Fetch Priority</a>、<a href="https://www.cloudflare.com/learning/performance/what-is-lazy-loading" target="_blank">Lazy-Loading</a>、<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">H2</a> Priorities），以帮助开发人员为浏览器指定唯一的资源优先级，从而改善网站加载性能。尽管用于指定资源优先顺序的这些工具和方法富有成效，但其需要实施和测试，以确保其正确执行。</p>
+	<p>实现最佳 Web 性能是一个复杂的挑战。尽管浏览器通常负责确定加载构建网页所需不同资源的顺序，但最近发布了许多工具（<a href="https://blog.cloudflare.com/early-hints-performance">Early Hints</a>、<a href="https://web.dev/fetch-priority">Fetch Priority</a>、<a href="https://www.cloudflare.com/learning/performance/what-is-lazy-loading">Lazy-Loading</a>、<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">H2</a> Priorities），以帮助开发人员为浏览器指定唯一的资源优先级，从而改善网站加载性能。尽管用于指定资源优先顺序的这些工具和方法富有成效，但其需要实施和测试，以确保其正确执行。</p>
 	<h3 id="%E4%BC%98%E5%85%88%E7%BA%A7%E5%B7%A5%E5%85%B7">优先级工具</h3>
 	<p>作为改善网站性能的工具，Early Hints 和 Fetch Priorities 这两种方法已广受欢迎。这些工具向浏览器提供信息，告知其应如何按正确顺序加载资源，以改善关键资源的性能。 </p>
 	<p><em>Early Hints</em></p>
@@ -26,7 +26,7 @@
 	<p>优化资源加载领域的另一个强大工具是 Fetch Priorities，之前被称为 Priority Hints。</p>
 	<p>在分析网页时，Web 浏览器通常会优先提取脚本和样式表等资源，以优化下载顺序并有效使用带宽。分配给这些资源的优先级由浏览器根据资源类型、在网页中的位置以及其在 HTML 响应中的位置等因素决定。例如，对访问者可见的区域中的图片应具有较高的优先级，而 <code>&lt;head&gt;</code> 部分中早期加载的基本脚本可能会被分配极高的优先级。尽管浏览器通常会有效处理优先级分配事宜，但需要注意的是，这并非对所有场景而言都是最佳方案。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/06/Fetch-Priorities.png" class="kg-image" alt="" loading="lazy" width="2070" height="1155"></figure>
-	<p>利用 <a href="https://web.dev/fetch-priority" target="_blank">Fetch Priorities</a>。开发人员可以对资源加载拥有额外的控制权，并向网页上的不同资源分配较高/较低的优先级，从而帮助优化网页的整体性能。</p>
+	<p>利用 <a href="https://web.dev/fetch-priority">Fetch Priorities</a>。开发人员可以对资源加载拥有额外的控制权，并向网页上的不同资源分配较高/较低的优先级，从而帮助优化网页的整体性能。</p>
 	<p>尽管 Early Hints 和 Fetch Priorities 对于优化网页性能都非常有用，但它们通常需要对 HTML 资源的访问权限，以更改其优先级，同时还要了解如何对其他资源进行最佳优先级排序。虽然这些工具的协同使用可以让开发人员实施愈加复杂的性能策略，但随着网页的变化，也需要进行大量的测试、配置和管理。Smart Hints 通过使用我们的 RUM 数据信标和启发更好地实施优先级策略，而无需开发人员执行任何操作，从而简化对这些工具的管理。</p>
 	<h3 id="%E6%88%91%E4%BB%AC%E5%B0%86%E5%A6%82%E4%BD%95%E5%AF%B9%E8%B5%84%E4%BA%A7%E8%BF%9B%E8%A1%8C%E4%BC%98%E5%85%88%E7%BA%A7%E6%8E%92%E5%BA%8F%EF%BC%9F">我们将如何对资产进行优先级排序？</h3>
 	<p>Cloudflare 的 Smart Hints 将利用 Early Hints 的能力和 Fetch Priority 功能，通过使用互联网上网站的大量 RUM 数据来优化资源交付；我们将实时动态地优化资源的优先级。Smart Hints 将基于具体响应动态确定适当的提示和优先级。 </p>
@@ -37,7 +37,7 @@
 	<p>通过 Smart Hints，Cloudflare 可以彻底改变交付网站和应用程序的方式，提供更快、更顺畅、更愉悦的浏览体验。通过为给定客户端推断正确的优先级，Cloudflare 将帮助客户找到最适合其网站性能的优先级，同时最大限度地减少优化不断变化的网页所需的时间。</p>
 	<h3 id="%E6%88%91%E5%A6%82%E4%BD%95%E5%B8%AE%E5%8A%A9-cloudflare-%E5%AE%9E%E7%8E%B0%E6%AD%A4%E7%9B%AE%E6%A0%87%EF%BC%9F">我如何帮助 Cloudflare 实现此目标？ </h3>
 	<p>在更广泛地推出此工具之前，我们将对系统执行大规模的测试，以确保能够为各类内容作出最佳的性能决策。 </p>
-	<p>在未来的几个月里，我们将建立测试小组，并与之合作，以确保每位用户都能获得良好的 Smart Hints 使用体验。如果您想要在此过程中提供帮助，请在<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent" target="_blank">此处</a>（位于仪表板的 <strong>Speed Tab</strong> 中）注册以加入封闭测试，我们将在准备好启用该功能以及提供反馈的方式时与您联系。</p>
+	<p>在未来的几个月里，我们将建立测试小组，并与之合作，以确保每位用户都能获得良好的 Smart Hints 使用体验。如果您想要在此过程中提供帮助，请在<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fspeed%2Foptimization%2Fcontent">此处</a>（位于仪表板的 <strong>Speed Tab</strong> 中）注册以加入封闭测试，我们将在准备好启用该功能以及提供反馈的方式时与您联系。</p>
 	<h3 id="%E6%80%BB%E7%BB%93">总结</h3>
 	<p>我们期望与我们的社群合作，共同打造并优化这种无代码/配置体验，让每位用户的页面加载都得到巨大的提升。</p><!--kg-card-begin: markdown-->
 	<p><small><sup>1</sup>是的，脚本和样式表也可以放在<code>&lt;body&gt;</code>部分中，但其主要是放在 <code>&lt;head&gt;</code> 中。</small></p>

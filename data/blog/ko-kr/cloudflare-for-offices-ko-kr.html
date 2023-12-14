@@ -32,14 +32,14 @@
 	<p>향상되는 것은 제로 트러스트만이 아닙니다. Cloudflare의 서버리스 플랫폼인 Workers는 요청을 생성한 사용자와 가장 가까운 데이터 센터의 엣지에서 실행됩니다. 다른 글에서도 살펴보았듯, <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">그 속도는 빠릅니다</a>. 점점 더 많은 비즈니스 및 응용 프로그램 로직이 Workers로 이동함에 따라 그 이익은 최종 사용자에게 돌아가게 됩니다.</p>
 	<p>대체 어느 정도까지 빨라지는지 궁금하지 않으신가요?</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/09/image1.jpeg" class="kg-image" alt="Salesforce Tower overlooking San Francisco in the evening." loading="lazy">
-		<figcaption>사진:<a href="https://unsplash.com/@dnevozhai?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank"> Denys Nevozhai</a>, <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">&nbsp;Unsplash</a></figcaption>
+		<figcaption>사진:<a href="https://unsplash.com/@dnevozhai?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"> Denys Nevozhai</a>, <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">&nbsp;Unsplash</a></figcaption>
 	</figure>
 	<p>예를 들어 구현이 예정되어 있는 샌프란시스코 소재의 Salesforce Tower를 살펴봅시다. 건물의 높이는 326미터에 달합니다. 광 신호가 건물 꼭대기에서 지하까지 연결된 단일 모드 광섬유 케이블을 따라 이동을 완료하는 데 걸리는 시간은 6μs(6 마이크로초) 미만입니다. 실제 고객이 Cloudflare의 네트워크를 사용할 때는 천 분의 1초도 걸리지 않습니다.</p>
 	<p>엣지는 성능 면에서 로컬 컴퓨팅과 <a href="https://blog.cloudflare.com/the-network-is-the-computer">구별할 수 없을 정도</a>가 되었습니다.</p>
 	<h3 id="--3">목적에 맞게 구축</h3>
 	<p>저희는 그동안 Cloudflare가 <a href="https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server">하드웨어를 설계</a>하는 방법에 대해 여러 번 다루었습니다. 그러나 Cloudflare 하드웨어를 데이터 센터 외부와 사무실 지하에 배치하는 과정은 새로운 종류의 도전이었습니다. 냉각, 에너지 효율 및 탄력성을 설계에 훨씬 많이 반영해야 했습니다. 마찬가지로, 이들은 전 세계의 사무실에 배치될 예정이므로 비용 효율적이어야 했습니다. 마지막으로 보안과 관련하여 유의해야 할 사항은, 데이터 센터 내부에서와 같은 수준의 액세스 컨트롤을 일반 건물에서 기대할 수는 없다는 것입니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3.jpg" class="kg-image" alt="" loading="lazy"></figure>
-	<p>이 지점에서 하드웨어를 직접 설계하고 소유했을 때의 고유한 이점이 부각됩니다. 그 덕분에 Cloudflare는 이러한 기기들이 얼마나 탄력적이어야 하는지부터 운영 예정 위치에 따른 적절한 보안 수준에 이르기까지 고객의 환경에 필요한 요소를 정확하게 구축할 수 있습니다. 사실 저희는 Cloudflare for Offices의 출시를 예상한 상태에서 지난 5년 동안 하드웨어 보안 작업을 해왔습니다. 현재 스위칭부터 시작하고 있으며, 빠른 시일 내에 <a href="https://workers.cloudflare.com" target="_blank">컴퓨팅</a> 및 <a href="https://blog.cloudflare.com/ko-kr/introducing-r2-object-storage-ko-kr">스토리지</a> 기능을 추가할 계획입니다. 자세한 사항은 계속 지켜봐 주십시오.</p>
+	<p>이 지점에서 하드웨어를 직접 설계하고 소유했을 때의 고유한 이점이 부각됩니다. 그 덕분에 Cloudflare는 이러한 기기들이 얼마나 탄력적이어야 하는지부터 운영 예정 위치에 따른 적절한 보안 수준에 이르기까지 고객의 환경에 필요한 요소를 정확하게 구축할 수 있습니다. 사실 저희는 Cloudflare for Offices의 출시를 예상한 상태에서 지난 5년 동안 하드웨어 보안 작업을 해왔습니다. 현재 스위칭부터 시작하고 있으며, 빠른 시일 내에 <a href="https://workers.cloudflare.com">컴퓨팅</a> 및 <a href="https://blog.cloudflare.com/ko-kr/introducing-r2-object-storage-ko-kr">스토리지</a> 기능을 추가할 계획입니다. 자세한 사항은 계속 지켜봐 주십시오.</p>
 	<h3 id="--4">혁신에 참여하세요</h3>
-	<p>유연성, 성능 및 보안 관련 향상에 비용 절감 효과까지 갖춘 Cloudflare를 문앞까지 가져오려는 대규모 사무실 건물의 조직(입주자), 다세대(또는 복합 거주) 부동산의 소유자/운영자, 또는 코워킹 스페이스라면, <a href="https://www.cloudflare.com/ko-kr/cloudflare-for-offices" target="_blank">Cloudflare에 연락</a>해주시기 바랍니다.</p>
+	<p>유연성, 성능 및 보안 관련 향상에 비용 절감 효과까지 갖춘 Cloudflare를 문앞까지 가져오려는 대규모 사무실 건물의 조직(입주자), 다세대(또는 복합 거주) 부동산의 소유자/운영자, 또는 코워킹 스페이스라면, <a href="https://www.cloudflare.com/ko-kr/cloudflare-for-offices">Cloudflare에 연락</a>해주시기 바랍니다.</p>
 </div>

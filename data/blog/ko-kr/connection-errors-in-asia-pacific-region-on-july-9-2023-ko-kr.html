@@ -8,7 +8,7 @@
 	<p>Cloudflare의 네트워크를 통해 도메인의 트래픽을 프록시하기 위한 Cloudflare 데이터 센터의 관점에서 도메인 네임 시스템(DNS)과 관련된 두 가지 구성 요소가 있습니다. 바로 외부 DNS 확인과 업스트림 또는 원본 DNS 확인입니다.</p>
 	<p>이를 이해하기 위해 Cloudflare의 네트워크를 통해 프록시되는 도메인 이름인 <code>blog.cloudflare.com</code>을 살펴보고, 이 도메인 이름이 <code>origin.example</code>을 원본 서버로 사용하도록 구성되어 있다고 가정해 보겠습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="124"></figure>
-	<p>여기서 외부 DNS 확인은 웹 방문자를 대신하여 <code>1.1.1.1</code> 또는 <code>8.8.8.8</code> 같은 공용 확인자가 보낸 <code>blog.cloudflare.com</code>에 대한 DNS 쿼리가 Cloudflare Anycast IP 주소 집합을 반환하는 부분입니다. 이렇게 하면 웹 방문자의 브라우저가 웹 사이트를 불러오기 위해 HTTPS 요청을 보낼 위치를 알 수 있습니다. 브라우저는 내부적으로 다음과 같은 DNS 쿼리를 수행합니다.(다음 내용은<a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank"> DNS 루트 영역</a>을 나타냄)</p><!--kg-card-begin: markdown-->
+	<p>여기서 외부 DNS 확인은 웹 방문자를 대신하여 <code>1.1.1.1</code> 또는 <code>8.8.8.8</code> 같은 공용 확인자가 보낸 <code>blog.cloudflare.com</code>에 대한 DNS 쿼리가 Cloudflare Anycast IP 주소 집합을 반환하는 부분입니다. 이렇게 하면 웹 방문자의 브라우저가 웹 사이트를 불러오기 위해 HTTPS 요청을 보낼 위치를 알 수 있습니다. 브라우저는 내부적으로 다음과 같은 DNS 쿼리를 수행합니다.(다음 내용은<a href="https://en.wikipedia.org/wiki/DNS_root_zone"> DNS 루트 영역</a>을 나타냄)</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig blog.cloudflare.com. +short
 104.18.28.7
 104.18.29.7
@@ -46,8 +46,8 @@
 	<h3 id="%EC%98%A4%EB%A5%98%EC%97%90-%EB%8C%80%ED%95%9C-%EA%B8%B0%EC%88%A0%EC%A0%81-%EC%84%A4%EB%AA%85-%EB%B0%8F-%EB%B0%9C%EC%83%9D%ED%95%9C-%EB%B0%A9%EC%8B%9D">오류에 대한 기술적 설명 및 발생한 방식</h3>
 	<p>앞서 언급했듯이 이 사고의 근본적인 원인은 .net 및 .com 영역에 대한 만료된 DNSSEC 서명이었습니다. 만료된 DNSSEC 서명으로 인해 DNS 응답이 유효하지 않았던 것으로 해석됩니다. 사용자가 이 오류를 관찰한 두 가지 주요 시나리오가 있습니다.</p>
 	<ol>
-		<li><a href="https://developers.cloudflare.com/ko-kr/dns/cname-flattening" target="_blank">CNAME 플래트닝</a>으로 외부 DNS 확인. 이는 권한 있는 네임서버가 CNAME 레코드 자체가 아닌 CNAME 레코드 대상이 확인하는 IP 주소를 반환하려고 시도하는 경우입니다.</li>
-		<li>원본 DNS 확인을 위한 CNAME 대상 조회. 이 방법은 HTTPS 요청이 Cloudflare Anycast IP 주소로 전송될 때 가장 일반적으로 사용되며, 요청을 전달할 IP 주소를 결정해야 합니다. <a href="https://developers.cloudflare.com/ko-kr/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank">Cloudflare 작동 방식</a>을 참조하십시오.</li>
+		<li><a href="https://developers.cloudflare.com/ko-kr/dns/cname-flattening">CNAME 플래트닝</a>으로 외부 DNS 확인. 이는 권한 있는 네임서버가 CNAME 레코드 자체가 아닌 CNAME 레코드 대상이 확인하는 IP 주소를 반환하려고 시도하는 경우입니다.</li>
+		<li>원본 DNS 확인을 위한 CNAME 대상 조회. 이 방법은 HTTPS 요청이 Cloudflare Anycast IP 주소로 전송될 때 가장 일반적으로 사용되며, 요청을 전달할 IP 주소를 결정해야 합니다. <a href="https://developers.cloudflare.com/ko-kr/fundamentals/get-started/concepts/how-cloudflare-works">Cloudflare 작동 방식</a>을 참조하십시오.</li>
 	</ol>
 	<p>두 경우 모두 DNS 쿼리는 백그라운드에서 호스트 이름의 확인 대상을 조회하기 위해 사내 재귀 DNS 확인자를 거칩니다. 이 확인자의 목적은 쿼리를 캐시하고, 향후 쿼리를 최적화하고, DNSSEC 유효성 검사를 제공하는 것입니다. 이 확인자의 쿼리가 어떤 이유로든 실패하면, 권한 있는 DNS 시스템이 위에 설명한 두 가지 시나리오를 수행할 수 없습니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-1.png" class="kg-image" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." loading="lazy" width="1999" height="935"></figure>
@@ -61,7 +61,7 @@
 	<h3 id="%EA%B2%B0%EB%A1%A0">결론</h3>
 	<p>이번 사고는 DNS 장애가 얼마나 큰 영향을 미치는지, 그리고 이 기술이 인터넷에 얼마나 중요한지를 <a href="https://blog.cloudflare.com/ko-kr/october-2021-facebook-outage-ko-kr">다시 한 번</a> 보여줍니다. 향후 이와 같은 문제가 다시 발생할 경우 보다 효율적이고 신속하게 문제를 감지하고 해결할 수 있도록 시스템을 개선할 수 있는 방안을 검토하겠습니다.</p>
 	<p>Cloudflare는 이 문제의 원인이 아니며, Cloudflare만 이 문제의 영향을 받은 것은 아니라고 확신하지만, 이번 사고로 인해 고객과 인터넷 자산에 액세스할 수 없었던 모든 사용자에게 혼란을 드린 점에 대해 죄송하게 생각합니다.</p>
-	<p><strong>업데이트:</strong> 7/11(화) 22:24:21 UTC 2023<em>, </em>Verisign은<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank"> 공지사항</a>으로 자세한 내용을 제공합니다.</p>
+	<p><strong>업데이트:</strong> 7/11(화) 22:24:21 UTC 2023<em>, </em>Verisign은<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html"> 공지사항</a>으로 자세한 내용을 제공합니다.</p>
 	<blockquote><em>지난주 싱가포르에 있는 DNS 확인 사이트 중 하나를 한 공급자에서 다른 공급자로 마이그레이션하는 과정에서 예기치 않게 관리 액세스 권한 및 사이트에 변경 사항과 DNS 업데이트를 제공할 수 있는 기능이 손실되었습니다. 표준 절차에 따라 해당 사이트로 연결되는 모든 경유 링크를 비활성화했습니다. 안타깝게도 피어링 라우터가 계속 활성화되어 있었는데, 연결이 원활하지 않아 팀에서 바로 알아차리지 못했습니다.</em></blockquote>
 	<blockquote><em>이로 인해 주말 동안 사이트의 DNSSEC 서명이 만료되기 시작하면서 해당 지역의 일부 인터넷 사용자가 몇 가지 .com 및 .net 도메인에 접속하는 데 영향을 미칠 수 있는 문제가 발생했습니다. 이 문제는 사이트의 피어링 라우터 전원을 꺼서 Anycast 경로 알림을 철회하고 트래픽을 다른 사이트로 라우팅하여 해결되었습니다.</em></blockquote>
 	<blockquote><em>당사는 프로세스와 절차를 업데이트하고 있으며 향후 이러한 문제가 재발하지 않도록 노력하겠습니다.</em></blockquote>

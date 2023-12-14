@@ -8,7 +8,7 @@
 	<p>从 Cloudflare 数据中心的角度来看，为了通过 Cloudflare 网络代理一个域名的流量，域名系统 (DNS) 涉及两个组成部分：外部 DNS 解析和上游或源 DNS 解析。</p>
 	<p>为了弄清楚这一点，让我们看一下域名 <code>blog.cloudflare.com</code> — 这是通过 Cloudflare 的网络进行代理的域名，假设它已配置为将 <code>origin.example</code> 作为源服务器：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="124"></figure>
-	<p>在此，外部 DNS 解析这一部分是指由 <code>1.1.1.1</code> 或 <code>8.8.8.8</code> 等公共解析器代表 Web 访问者发送的对 <code>blog.cloudflare.com</code> 的 DNS 查询返回一组 Cloudflare Anycast IP 地址。这可确保 Web 访问者的浏览器知道向何处发送 HTTPS 请求以加载网站。其中浏览器执行的 DNS 查询如下（尾部的点表示<a href="https://en.wikipedia.org/wiki/DNS_root_zone" target="_blank"> DNS 根区</a>）：</p><!--kg-card-begin: markdown-->
+	<p>在此，外部 DNS 解析这一部分是指由 <code>1.1.1.1</code> 或 <code>8.8.8.8</code> 等公共解析器代表 Web 访问者发送的对 <code>blog.cloudflare.com</code> 的 DNS 查询返回一组 Cloudflare Anycast IP 地址。这可确保 Web 访问者的浏览器知道向何处发送 HTTPS 请求以加载网站。其中浏览器执行的 DNS 查询如下（尾部的点表示<a href="https://en.wikipedia.org/wiki/DNS_root_zone"> DNS 根区</a>）：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig blog.cloudflare.com. +short
 104.18.28.7
 104.18.29.7
@@ -46,8 +46,8 @@
 	<h3 id="%E8%BF%99%E4%B8%AA%E9%94%99%E8%AF%AF%E7%9A%84%E6%8A%80%E6%9C%AF%E6%8F%8F%E8%BF%B0%E5%8F%8A%E5%85%B6%E5%A6%82%E4%BD%95%E5%8F%91%E7%94%9F">这个错误的技术描述及其如何发生</h3>
 	<p>如前言所述，该事件的根本原因是 .net 和.com 区域的 DNSSEC 签名过期。过期的 DNSSEC 签名将导致 DNS 响应被解释为无效。用户发现到该错误主要有两种情况：</p>
 	<ol>
-		<li><a href="https://developers.cloudflare.com/zh-cn/dns/cname-flattening" target="_blank">CNAME 拉平</a>用于外部 DNS 解析。这是当我们的权威性域名服务器尝试返回 CNAME 记录目标解析到的 IP 地址，而不是 CNAME 记录本身。</li>
-		<li>CNAME 目标查询用于源 DNS 解析。当 HTTPS 请求被发送到一个 Cloudflare Anycast IP 地址，并且我们需要确定将请求转发到哪个 IP 地址时，这是最常用的方法。参见<a href="https://developers.cloudflare.com/zh-cn/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank"> Cloudflare 如何工作</a>了解更多详情。</li>
+		<li><a href="https://developers.cloudflare.com/zh-cn/dns/cname-flattening">CNAME 拉平</a>用于外部 DNS 解析。这是当我们的权威性域名服务器尝试返回 CNAME 记录目标解析到的 IP 地址，而不是 CNAME 记录本身。</li>
+		<li>CNAME 目标查询用于源 DNS 解析。当 HTTPS 请求被发送到一个 Cloudflare Anycast IP 地址，并且我们需要确定将请求转发到哪个 IP 地址时，这是最常用的方法。参见<a href="https://developers.cloudflare.com/zh-cn/fundamentals/get-started/concepts/how-cloudflare-works"> Cloudflare 如何工作</a>了解更多详情。</li>
 	</ol>
 	<p>在这两种情况下，DNS 查询都要经过内部递归 DNS 解析器，以查询主机名的解析结果。该解析器的目的是缓存查询、优化未来查询并提供 DNSSEC 验证。如果该解析器的查询因任何原因失败，我们的权威 DNS 系统将无法执行上述两种情况。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-1.png" class="kg-image" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." loading="lazy" width="1999" height="935"></figure>
@@ -61,7 +61,7 @@
 	<h3 id="%E6%80%BB%E7%BB%93">总结</h3>
 	<p>此次事件<a href="https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage-zh-cn">再次表明</a> DNS 故障的影响有多大，以及这项技术对互联网的重要性。我们将研究如何改进我们的系统，以便在今后再次发生类似问题时能更有效、更快速地检测和解决问题。</p>
 	<p>虽然 Cloudflare 并非造成这一问题的原因，而且我们确信受此影响的并非只有我们一家公司，但对在此事件中给我们的客户和所有无法访问互联网资产的用户造成的影响，我们仍然表示歉意。</p>
-	<p><strong>更新：</strong>2023 年 7月 11 日协调世界时 22:24:21<em>，</em>威瑞信发布了<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank">公告</a>，提供了更多详细信息：</p>
+	<p><strong>更新：</strong>2023 年 7月 11 日协调世界时 22:24:21<em>，</em>威瑞信发布了<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html">公告</a>，提供了更多详细信息：</p>
 	<blockquote><em>上周，我们在新加坡的一个 DNS 解析站点从一个提供商迁移到另一个提供商的过程中，我们意外地失去了管理访问权限以及向该站点提供变更和 DNS 更新的能力。按照我们的标准程序，我们禁用了受影响网站的所有中转链接。不幸的是，一个对等互连路由器仍然处于活动状态，由于那里缺乏连通性，我们的团队无法立即察觉。</em></blockquote>
 	<blockquote><em>上周末，这个问题可能影响了该地区一些互联网用户无法访问一些.com 和 .net 域，因为该站点上 DNSSEC 的签名开始过期。该问题通过关闭网站的对等互连路由器电源得到解决，导致 Anycast 路由公告撤销，流量被引导至其他网站。</em></blockquote>
 	<blockquote><em>我们正在更新我们的流程和程序，并将努力防止今后再次发生此类问题。</em></blockquote>

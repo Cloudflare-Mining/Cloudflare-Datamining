@@ -8,7 +8,7 @@
 	<p>同样，流量突然下降也可能意味着很多事情。也许现在是周五下午，所有员工都已下班，不再访问公司网站。又或者，您网站的链接被破坏了，现在潜在客户无法访问您的网站。流量低的每一分钟都可能使您损失潜在的收入，因此您会想要尽快了解情况并进行调查。</p>
 	<h3 id="%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%BD%95%E6%97%B6%E5%8F%91%E5%87%BA%E6%8F%90%E9%86%92%EF%BC%9F">如何判断何时发出提醒？ </h3>
 	<p>计算时间序列数据集的异常是很困难的。最简单的方法是使用基本阈值。然而，正如我们<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring">之前在博客中提到</a>的，当试图确定事情何时真正出错时，简单的阈值并不是很准确。边缘情况太多，它们无法有效运作。</p>
-	<p>计算 HTTP 错误中的异常情况相对容易。我们知道，一般来说，错误数量应该非常低，因此任何峰值都是不好的，都是值得警惕的。这就是为什么我们使用<a href="https://sre.google/workbook/alerting-on-slos" target="_blank">服务级别目标 (SLO)</a> 来计算 <a href="https://developers.cloudflare.com/notifications/notification-available/#traffic-monitoring" target="_blank">HTTP 错误率通知</a>的异常情况。</p>
+	<p>计算 HTTP 错误中的异常情况相对容易。我们知道，一般来说，错误数量应该非常低，因此任何峰值都是不好的，都是值得警惕的。这就是为什么我们使用<a href="https://sre.google/workbook/alerting-on-slos">服务级别目标 (SLO)</a> 来计算 <a href="https://developers.cloudflare.com/notifications/notification-available/#traffic-monitoring">HTTP 错误率通知</a>的异常情况。</p>
 	<p>然而，分析总体 HTTP 流量的行为与 <a href="https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story">Cloudflare Security Events</a> 更相似：有一些根据历史趋势计算的一般事件基线。与该基线的任何偏差都是值得警惕的。由于这些相似之处，我们决定，对于流量异常通知，也采用之前用于安全事件通知的相同计算方式：<a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack">Z 值 (z-score)</a>。这涉及到将当前值与平均值进行比较。当前值与平均值之间有多少个标准差，即为 Z 值。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/10/image4-6.png" class="kg-image" alt="" loading="lazy" width="1292" height="898">
 		<figcaption><em>HTTP 流量与 Z 值的关系图。蓝色为 HTTP 流量，紫色为流量的正 Z 值边界，绿色为流量的负 Z 值边界。</em></figcaption>

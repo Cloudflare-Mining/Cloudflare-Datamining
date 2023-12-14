@@ -15,7 +15,7 @@
 	<p>我们今天的发布仅仅只是 Cloudflare AI 领域旅程的开始，就像六年前的 Workers 所做的那样。虽然我们鼓励您深入了解我们今天发布的每一个公告（您不会失望的！），但我们也想借此机会退后一步，为您提供一些我们对于 AI 的更广泛的愿景，以及这些公告如何与这些愿景相适配。</p>
 	<h3 id="%E6%8E%A8%E7%90%86%EF%BC%9Aai-%E5%B7%A5%E4%BD%9C%E8%B4%9F%E8%BD%BD%E7%9A%84%E6%9C%AA%E6%9D%A5">推理：AI 工作负载的未来</h3>
 	<p>AI 涉及两个主要过程：训练和推理。</p>
-	<p>训练生成式 AI 模型是一个长期运行（有时长达数月）的计算密集型过程，最终会产生一个模型。因此，训练工作负载最适合在传统的集中式云位置中运行。鉴于最近在获得对 GPU 的长期访问方面面临的挑战，导致公司转向多云，我们讨论了 R2 可以提供基本服务的方式，以消除从任何计算云访问训练数据的<a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank">出口费用</a>。但这不是我们今天要讨论的内容。</p>
+	<p>训练生成式 AI 模型是一个长期运行（有时长达数月）的计算密集型过程，最终会产生一个模型。因此，训练工作负载最适合在传统的集中式云位置中运行。鉴于最近在获得对 GPU 的长期访问方面面临的挑战，导致公司转向多云，我们讨论了 R2 可以提供基本服务的方式，以消除从任何计算云访问训练数据的<a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees">出口费用</a>。但这不是我们今天要讨论的内容。</p>
 	<p>虽然训练需要大量的前期资源，但更普遍的 AI 相关计算任务是推理。如果您最近向 ChatGPT 提出过问题、要求其生成了图像或翻译了一些文本，那么您就已经执行了推理任务。由于每次调用都需要进行推理（而不仅仅是一次），我们预计推理将成为与 AI 相关的主要工作负载。</p>
 	<p>如果说训练最适合集中式云，那么推理的最佳场所是哪里？</p>
 	<h3 id="%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%8E%A8%E7%90%86%E7%9A%84%E2%80%9C%E6%9C%80%E4%BD%B3%E5%9C%BA%E6%89%80%E2%80%9D">网络——推理的“最佳场所”</h3>
@@ -28,10 +28,10 @@
 	<h3 id="workers-ai-%E7%94%A8%E4%BA%8E%E6%97%A0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E7%90%86">Workers AI 用于无服务器推理</h3>
 	<p>在我们宣布推出 <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> 的同时，我们将推出第一个真正的无服务器 GPU 云，其与 Region Earth 完美匹配。无需机器学习专业知识，也不用翻遍 GPU。只需选择我们提供的型号之一即可开始。</p>
 	<p>我们在设计 Workers AI 时花了很多心思，让部署模型的体验尽可能顺畅。</p>
-	<p>如果您在 2023 年部署任何模型，其中一个模型很可能就是 <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank">LLM</a>。</p>
+	<p>如果您在 2023 年部署任何模型，其中一个模型很可能就是 <a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model">LLM</a>。</p>
 	<h3 id="vectorize-%E7%94%A8%E4%BA%8E%E5%AD%98%E5%82%A8%E7%9F%A2%E9%87%8F%EF%BC%81">Vectorize 用于存储矢量！</h3>
 	<p>要构建端到端的 AI 聊天机器人，还需要一种方法来为用户提供 UI、解析要传递给用户的信息语料库（例如产品目录）、使用模型将其转换为嵌入式信息，并将其存储在某个地方。到目前为止，我们提供了前面两项所需的产品，但后者（存储嵌入）需要一个独特的解决方案：矢量数据库。</p>
-	<p>正如我们宣布 Workers 时一样，我们不久后也宣布了 Workers KV——如果无法访问状态，您对计算几乎无能为力。AI 也是如此，要构建有意义的 AI 用例，您需要为 AI 提供对状态的访问权限。这就是<a href="https://www.cloudflare.com/learning/ai/what-is-vector-database" target="_blank">矢量数据库</a>发挥作用的地方，也是为什么今天我们同步推出我们自己的矢量数据库 Vectorize。</p>
+	<p>正如我们宣布 Workers 时一样，我们不久后也宣布了 Workers KV——如果无法访问状态，您对计算几乎无能为力。AI 也是如此，要构建有意义的 AI 用例，您需要为 AI 提供对状态的访问权限。这就是<a href="https://www.cloudflare.com/learning/ai/what-is-vector-database">矢量数据库</a>发挥作用的地方，也是为什么今天我们同步推出我们自己的矢量数据库 Vectorize。</p>
 	<h3 id="ai-gateway-%E7%94%A8%E4%BA%8E-ai-%E9%83%A8%E7%BD%B2%E7%9A%84%E7%BC%93%E5%AD%98%E3%80%81%E9%80%9F%E7%8E%87%E9%99%90%E5%88%B6%E5%92%8C%E5%8F%AF%E8%A7%81%E6%80%A7">AI Gateway 用于 AI 部署的缓存、速率限制和可见性</h3>
 	<p>在 Cloudflare，当我们着手改进某项事物时，第一步始终是衡量它——如果无法衡量，更遑论改进？当我们听说客户在努力控制 AI 部署成本时，我们就在想我们该如何解决这个问题——衡量它，然后改进它。</p>
 	<p>我们的 AI Gateway 可帮助您做到这两点！</p>

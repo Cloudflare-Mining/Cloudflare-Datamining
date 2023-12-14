@@ -8,7 +8,7 @@
 	<p>Cloudflareのネットワークを介してドメインのトラフィックをプロキシするために、 Cloudflareデータセンターの観点からDomain Name System（DNS）に関しては、2つのコンポーネントが関係します：外部DNS解決および上流またはオリジンDNS解決。</p>
 	<p>これを理解するために、ドメイン名<code>blog.cloudflare.com</code>を見てみましょう。—そのドメイン名がCloudflare'sのネットワークを介してプロキシされています—オリジンサーバーとして<code>origin.example</code>を使用するように設定されていると仮定しましょう：</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image5-1.png" class="kg-image" alt="" loading="lazy" width="1999" height="124"></figure>
-	<p>ここで、外部DNS解決は、Web訪問者の代わりに<code>1.1.1.1</code>や<code>8.8.8.8</code>などのパブリックリゾルバーによって送信された<code>blog.cloudflare.com</code>へのDNSクエリーが一連のCloudflare Anycast IPアドレスを返す部分です。これにより、Web訪問者のブラウザは、HTTPSリクエストの送信先を確実に認識して、Webサイトを読み込みます。内部で、ブラウザはこのようなDNSクエリーを実行します。（末尾のドットは<a href="https://ja.wikipedia.org/wiki/DNS_root_zone" target="_blank">DNSルートゾーン</a>を示します）:</p><!--kg-card-begin: markdown-->
+	<p>ここで、外部DNS解決は、Web訪問者の代わりに<code>1.1.1.1</code>や<code>8.8.8.8</code>などのパブリックリゾルバーによって送信された<code>blog.cloudflare.com</code>へのDNSクエリーが一連のCloudflare Anycast IPアドレスを返す部分です。これにより、Web訪問者のブラウザは、HTTPSリクエストの送信先を確実に認識して、Webサイトを読み込みます。内部で、ブラウザはこのようなDNSクエリーを実行します。（末尾のドットは<a href="https://ja.wikipedia.org/wiki/DNS_root_zone">DNSルートゾーン</a>を示します）:</p><!--kg-card-begin: markdown-->
 	<pre><code>$ dig blog.cloudflare.com. +short
 104.18.28.7
 104.18.29.7
@@ -46,8 +46,8 @@
 	<h3 id="%E9%9A%9C%E5%AE%B3%E3%81%AE%E6%8A%80%E8%A1%93%E7%9A%84%E8%AA%AC%E6%98%8E%E3%81%A8%E7%99%BA%E7%94%9F%E5%8E%9F%E5%9B%A0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">障害の技術的説明と発生原因について</h3>
 	<p>冒頭で述べたように、このインシデントの根本的な原因は、.netおよび.comゾーンのDNSSEC署名の期限切れでした。期限切れのDNSSEC署名は、DNS応答が無効として解釈されます。このエラーがユーザーによって観測されたメインシナリオは2つあります：</p>
 	<ol>
-		<li>外部DNSの解決のための<a href="https://developers.cloudflare.com/ja-jp/dns/cname-flattening" target="_blank">CNAMEのフラット化</a>。これは、権威ネームサーバーがCNAMEレコード自体ではなく、CNAMEレコードターゲットが解決するIPアドレスを返そうとする場合です。</li>
-		<li>オリジンDNS解決のCNAMEターゲットを検索。これは、HTTPSリクエストがCloudflareエニーキャストIPアドレスに送信され、リクエストをどのIPアドレスに転送するかを決定する必要がある場合によく使用されます。詳細は、<a href="https://developers.cloudflare.com/ja-jp/fundamentals/get-started/concepts/how-cloudflare-works" target="_blank"> Cloudflareの仕組み</a>を参照してください。</li>
+		<li>外部DNSの解決のための<a href="https://developers.cloudflare.com/ja-jp/dns/cname-flattening">CNAMEのフラット化</a>。これは、権威ネームサーバーがCNAMEレコード自体ではなく、CNAMEレコードターゲットが解決するIPアドレスを返そうとする場合です。</li>
+		<li>オリジンDNS解決のCNAMEターゲットを検索。これは、HTTPSリクエストがCloudflareエニーキャストIPアドレスに送信され、リクエストをどのIPアドレスに転送するかを決定する必要がある場合によく使用されます。詳細は、<a href="https://developers.cloudflare.com/ja-jp/fundamentals/get-started/concepts/how-cloudflare-works"> Cloudflareの仕組み</a>を参照してください。</li>
 	</ol>
 	<p>どちらの場合も、水面下で、DNSクエリーは、ホスト名の解決先を調べるために社内の再帰的DNSリゾルバを経由します。このリゾルバの目的は、クエリーをキャッシュし、今後のクエリーを最適化し、 DNSSEC検証を提供することです。このリゾルバからのクエリーが何らかの理由で失敗すると、権威のあるDNSシステムは、上記の概略の2つのシナリオを実行できなくなります。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image3-1.png" class="kg-image" alt="If the query from this resolver fails for whatever reason, our authoritative DNS system will not be able to perform the two scenarios outlined above." loading="lazy" width="1999" height="935"></figure>
@@ -61,7 +61,7 @@
 	<h3 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h3>
 	<p>このインシデントは<a href="https://blog.cloudflare.com/ja-jp/october-2021-facebook-outage-ja-jp">再度</a>DNS障害がいかに大きな影響を与えるか、そしてこの技術がインターネットにとっていかに重要であるかを示しています。今後、このような問題が再び発生した場合、より効率的かつ迅速にこのような問題を検出し、解決するために、当社のシステムをどのように改善できるかを調査します。</p>
 	<p>この問題の原因は、Cloudflareにあるわけではなく、この影響を受けたのは当社だけではないことは確かですが、このインシデント中にインターネットプロパティにアクセスできなかったお客様、そしてすべてのユーザーの皆様に混乱を招いたことをお詫び申し上げます。</p>
-	<p><strong>更新：</strong>2023年7月11日（火）22:24:21 UTCに、<em> </em>Verisignは<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html" target="_blank">アナウンス</a>を投稿し、詳細を提供しています：</p>
+	<p><strong>更新：</strong>2023年7月11日（火）22:24:21 UTCに、<em> </em>Verisignは<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2023-July/022174.html">アナウンス</a>を投稿し、詳細を提供しています：</p>
 	<blockquote><em>先週、シンガポールにあるDNS解決サイトのひとつを、あるプロバイダーから別のプロバイダーに移行中、当社は予期せず管理アクセスが失われ、変更やDNS更新をサイトに配信することができなくなりました。Standard手順に従い、影響を受けたサイトへのすべてのトランジットリンクを無効にしました。残念なことに、ピアリングルーターがアクティブなままでしたが、そこに接続がなかったため、当社のチームにはすぐにはわかりませんでした。</em></blockquote>
 	<blockquote><em>週末にかけて、これにより、問題が発生し、サイト上のDNSSEC署名の有効期限が切れ始めたため、この地域の一部のインターネットユーザーが一部の.comおよび.netドメインにアクセスする能力に影響を与えた可能性があります。この問題は、サイトのピアリングルーターの電源を切ることで解決し、エニーキャストのルートアナウンスが取り消され、トラフィックが他のサイトに移動されました。</em></blockquote>
 	<blockquote><em>当社はプロセスと手順を更新し、今後このような問題が再発しないよう取り組んでいきます。</em></blockquote>
