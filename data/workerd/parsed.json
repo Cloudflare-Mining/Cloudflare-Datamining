@@ -2433,6 +2433,13 @@
 						"compatEnableDate": "2023-11-08",
 						"compatEnableFlag": "vectorize_query_metadata_optional"
 					}
+				},
+				{
+					"name": "unsafeModule",
+					"annotations": {
+						"compatEnableFlag": "unsafe_module",
+						"experimental": "true"
+					}
 				}
 			]
 		},
