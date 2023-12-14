@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "sshah-simpson/WP-704-increase-query-window-workers-analytics",
+					branch: "AIG-44-hotfix",
 					isReleaseCandidate: "true",
-					commit: "c10068724c7003a0a8283b2c14b7d06bd98d71ed",
+					commit: "4d0858b37afe4517606794e3dbd75ef3130ee9d8",
 					env: "production",
-					builtAt: 1702572974288,
-					dashVersion: "83d87c77c5b38ca0b96154447a52b783ffdc4039",
+					builtAt: 1702578019732,
+					dashVersion: "6d4e7b4b46dd7012401d4f46904c1b8b47ea523a",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
