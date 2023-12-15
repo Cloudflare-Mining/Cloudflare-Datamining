@@ -616,10 +616,10 @@ const navigation = {
 		hasPermission: T => {
 			const K = (0, i.nA)(T);
 			if ((0, p.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !K) return !1;
-			const re = !!((0, D.l8)(T) || (0, i.DQ)(T)),
+			const se = !!((0, D.l8)(T) || (0, i.DQ)(T)),
 				ee = !!(0, i.ZB)(T, "spectrum", "enabled"),
 				G = !!(0, i.Ns)(K);
-			return ee || re || !G
+			return ee || se || !G
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -962,5 +962,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: q.G
+	support: J.G
 }
