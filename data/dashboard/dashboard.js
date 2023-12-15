@@ -954,12 +954,12 @@
 			};
 			try {
 				n.g.build = fn({}, {
-					branch: "tamas/CUSTESC-36268-fix-zone-versioning-compare",
+					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "fe2228b84fd03e72d970b2036f8564855e0e285f",
+					commit: "27239ba458071195cba382c85504d326709930e3",
 					env: "production",
-					builtAt: 1702635699913,
-					dashVersion: "a7cd5702a8bba621a2b34f441076806e8b6c1c4f",
+					builtAt: 1702659510239,
+					dashVersion: "3de6ae702bdead37c357ba02b1e1dd9bbe657016",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
