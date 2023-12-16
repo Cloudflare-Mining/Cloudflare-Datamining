@@ -85,6 +85,10 @@
 								"description": "cities in %{CountryCount}+ countries, including mainland China"
 							},
 							{
+								"title": "%{NetworkInterconnects}",
+								"description": "networks directly connect to Cloudflare, including every major ISP, cloud provider, and enterprise"
+							},
+							{
 								"title": "%{NetworkCapacityV2}",
 								"description": "global network edge capacity, consisting of transit connections, peering and private network interconnects\n"
 							},
@@ -99,6 +103,10 @@
 							"contentfulId": "2O04nulSdNrRpJR9fs9OKv",
 							"contentTypeId": "dataCollection",
 							"items": [
+								{
+									"cityName": "Honolulu, US*",
+									"region": "North America"
+								},
 								{
 									"cityName": "Bogota, CO",
 									"region": "Latin America & the Caribbean"
@@ -153,6 +161,10 @@
 								},
 								{
 									"cityName": "Tbilisi, GE",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Johor Bahru, MY",
 									"region": "Asia"
 								},
 								{
@@ -749,6 +761,10 @@
 								},
 								{
 									"cityName": "Doha, QA",
+									"region": "Middle East"
+								},
+								{
+									"cityName": "Kuwait City, KW",
 									"region": "Middle East"
 								},
 								{
@@ -1305,6 +1321,10 @@
 							"type": "Cloudflare PoP",
 							"items": [
 								{
+									"cityName": "Honolulu, US*",
+									"region": "North America"
+								},
+								{
 									"cityName": "Bogota, CO",
 									"region": "Latin America & the Caribbean"
 								},
@@ -1358,6 +1378,10 @@
 								},
 								{
 									"cityName": "Tbilisi, GE",
+									"region": "Asia"
+								},
+								{
+									"cityName": "Johor Bahru, MY",
 									"region": "Asia"
 								},
 								{
@@ -1954,6 +1978,10 @@
 								},
 								{
 									"cityName": "Doha, QA",
+									"region": "Middle East"
+								},
+								{
+									"cityName": "Kuwait City, KW",
 									"region": "Middle East"
 								},
 								{
@@ -2832,6 +2860,42 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "6055aWYef8cWQ4MDQ556S4",
+								"title": "Security without tradeoffs",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": null,
+								"description": "We do not just secure the network — we secure the whole company. And we use our own security products. We ensure [TLS](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) encryption for all data in transit and maintain strict physical security standards. We lead the industry in enforcing security hygiene and protecting the fundamental layers of the Internet such as [DNS](https://www.cloudflare.com/learning/dns/dns-over-tls/) and [BGP](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/).",
+								"learnMoreUrl": "https://blog.cloudflare.com/dogfooding-from-home/",
+								"learnMoreText": "Learn more",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock Orange",
+									"title": "Security lock Orange",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4knCjnvTXGI67Tjt2pgWOB/5e9703961ea866cd33e94411f5105c7c/security-lock.svg"
+										},
+										"description": "Padlock icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "743G8ki2DtW3qO0IIUKV3I",
 								"title": "Privacy first",
 								"makeTitleLink": null,
@@ -3583,6 +3647,51 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3gggwl17pW4t6MNksVHQio",
+						"title": "See what our network can do for your business",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "large",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "687bOyUCr5LLMOaEbXbx5A",
+							"elementName": "Network Page: Enablement Sign Up",
+							"standardText": null,
+							"text": "Sign up",
+							"url": "https://dash.cloudflare.com/sign-up/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4HvM1QfbK3sZk6C7Nst7IK",
+							"elementName": "Network Page: Enablement => Contact Sales",
+							"standardText": null,
+							"text": "Contact sales",
+							"url": "https://www.cloudflare.com/plans/enterprise/contact/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
