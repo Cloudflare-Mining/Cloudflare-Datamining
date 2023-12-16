@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS",
+	"app_display_name": "Cloudflare WARP macOS Beta",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 2989,
+	"version": "20231216.5",
+	"short_version": "2023.12.292.1",
+	"size": 70335499,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "8e1cda87399634bf8d4da269812ed3c4",
+	"fingerprint": "2000c6e1124717ee424e7cacc0e8fbf8",
+	"uploaded_at": "2023-12-16T03:40:27.993Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "\nThis release contains exciting new features and bug fixes for both DEX and notifications. Please take time over the next few weeks to play with the new functionality and let us know what you think on both the community forum and through your account teams.\n \n## Notable updates\n- Added ability for Client to display Gateway NETWORK and HTTP block notifications to the user (feature to be available in dash in the coming week).\n- Added ability for administrators to specify multiple configurations in MDM files that users can toggle between. This allows users to more easily switch between production and test environments or China customers to switch between their override endpoints within the UI.\n- Improved existing re-auth notifications to be more visible and time sensitive.\n- Fixed an issue where DEX tests would run before the client was fully connected.\n- Fixed minor UI issue for customers in Include Split tunnel mode where the client would incorrectly state \"Your internet is protected\" instead of only DNS and Included routes are protected.\n- Fixed an issue where the GUI app would be unresponsive to clicks after waking up from sleep.\n- Fixed an issue where the re-authenticate button was not completely visible in the GUI.\n \n## Known issues\n- The new `display_name` MDM parameter that is part of the multiple configurations feature is not correctly working. For this release the name visible in the UI will be the organization value. A future beta release will correct this; it is safe to include this parameter in updated MDM files now.\n \nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+	"distribution_groups": [
+		{
+			"id": "8d228a4a-99fe-426c-ad9f-623db9d82323",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
