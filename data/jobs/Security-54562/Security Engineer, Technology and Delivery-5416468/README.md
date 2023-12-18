@@ -5,34 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About The Role</strong></h3>
-<p>We announced Workers AI (along with a few other AI products), during our birthday week, in late September of this year. If you’re not familiar with Workers AI, you should check out our <a href="https://blog.cloudflare.com/workers-ai/">launch blog post</a>. We built Workers AI to make ML accessible to all developers regardless of your familiarity with ML. You shouldn’t need a background in data science, building ML models, or deploying pipelines at scale to be able to leverage the power of the latest open source models to deliver beautiful AI experiences to your end users. So what is Workers AI? It’s an AI inference as a service platform, empowering developers to run AI models with just a few lines of code, all powered by our global network of GPUs. It's open and accessible, serverless, privacy-focused, runs near your users, pay-as-you-go, and it's built from the ground up for a best in class developer experience. You’ll be responsible for driving, building, and shipping everything needed to make Cloudflare the best place to run AI inference that “just works” out of the box.</p>
-<h3><strong>What You’ll Do</strong></h3>
+<p><strong>About the Department</strong></p>
+<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Technology team works closely with the teams responsible for running and maintaining our global infrastructure and enterprise. Our mission is to secure the foundations of all Cloudflare production and enterprise systems.</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for an experienced security practitioner to help us in our mission to build a better internet. As part of our team, you will be expected to:</p>
 <ul>
-	<li>Drive the strategy, roadmap &amp; represent your products across the organization</li>
-	<li>Lead projects from ideation through launch, and continuing through ongoing maintenance and support</li>
-	<li>Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</li>
-	<li>Talk to developers (probably the most important)! You’ll need to be crafty and develop a playbook to find the right users to talk to. This might include diving into our BI tools to find specific cohorts that are worth talking to, engaging on our developer discord, or heading straight to Twitter or Hacker news to engage and build relationships with the community.</li>
-	<li>Partner with other departments such as Product Marketing, Marketing, Community &amp; Developer Relations, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</li>
-	<li>Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</li>
-	<li>Represent the company externally as needed, including meetings with customers and prospects and analysis</li>
-	<li>Delve into market research to drive new investments opportunities</li>
+	<li>Work with our engineering, IT, and infrastructure teams to secure the entire Cloudflare global network and enterprise</li>
+	<li>Deploy and manage security tools that help address security risk at a global scale</li>
+	<li>Collaborate with the full Cloudflare security team to improve detections and response capabilities to any potential security threats</li>
+	<li>Ensure our global infrastructure is secure from all attacks, ranging from “script kiddies” to nation states.</li>
 </ul>
-<h3><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></h3>
-<p>You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</p>
+<p><strong>Desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
-	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
-	<li>BS/MS in a technology field.&nbsp;</li>
-	<li>Professional product management experience (3-4 years) or previous founder</li>
-	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
-	<li>A desire to sweat the details and ship great developer experiences</li>
-	<li>Experience using developer tools (such as source-control management tools, CLIs, etc)</li>
-	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
-	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</li>
-	<li>Nice to have - background or familiarity with data science or ML/AI. Not a hard requirement, but you must have a burning desire to dive into this space and learn, and make your mark.</li>
+	<li>Extended detection and response technology for all platforms and architectures</li>
+	<li>Automation experience with tools like Salt, Ansible, and/or Terraform</li>
+	<li>Experience working with corporate Information Technology platforms and systems</li>
+	<li>Experience with SaaS security (Google Workspace, Salesforce, Workday, Atlassian, etc.)</li>
+	<li>Advanced security practices for Linux, MacOS, Windows systems</li>
+	<li>Experience with public cloud security best practices (GCP, Azure, etc.)</li>
+	<li>Ability to communicate complex security requirements into controls for engineering, product, infrastructure, and IT teams</li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Awesome skills and experience to have, but not required:</strong></p>
+<ul>
+	<li>Strong Linux system experience from user-space to kernel-space</li>
+	<li>Securing the software supply chain from workstation to deployment</li>
+	<li>Networking fundamentals such as TCP/IP, secure design and segmentation</li>
+	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
+</ul>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
