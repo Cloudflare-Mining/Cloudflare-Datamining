@@ -792,6 +792,24 @@
 																},
 																"type": "object"
 															},
+															"notification_settings": {
+																"description": "Configure a notification to display on the user's device when this rule is matched.",
+																"properties": {
+																	"enabled": {
+																		"description": "set notification on",
+																		"type": "boolean"
+																	},
+																	"msg": {
+																		"description": "Customize the message shown in the notification.",
+																		"type": "string"
+																	},
+																	"support_url": {
+																		"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
 															"override_host": {
 																"description": "Override matching DNS queries with a hostname.",
 																"example": "example.com",
@@ -822,7 +840,7 @@
 																"type": "object"
 															},
 															"resolve_dns_through_cloudflare": {
-																"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 																"example": true,
 																"type": "boolean"
 															},
@@ -830,7 +848,7 @@
 																"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 																"properties": {
 																	"action": {
-																		"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																		"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																		"enum": [
 																			"pass_through",
 																			"block",
@@ -1341,6 +1359,24 @@
 																		},
 																		"type": "object"
 																	},
+																	"notification_settings": {
+																		"description": "Configure a notification to display on the user's device when this rule is matched.",
+																		"properties": {
+																			"enabled": {
+																				"description": "set notification on",
+																				"type": "boolean"
+																			},
+																			"msg": {
+																				"description": "Customize the message shown in the notification.",
+																				"type": "string"
+																			},
+																			"support_url": {
+																				"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
 																	"override_host": {
 																		"description": "Override matching DNS queries with a hostname.",
 																		"example": "example.com",
@@ -1371,7 +1407,7 @@
 																		"type": "object"
 																	},
 																	"resolve_dns_through_cloudflare": {
-																		"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																		"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 																		"example": true,
 																		"type": "boolean"
 																	},
@@ -1379,7 +1415,7 @@
 																		"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 																		"properties": {
 																			"action": {
-																				"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																				"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																				"enum": [
 																					"pass_through",
 																					"block",
@@ -1990,6 +2026,24 @@
 															},
 															"type": "object"
 														},
+														"notification_settings": {
+															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"properties": {
+																"enabled": {
+																	"description": "set notification on",
+																	"type": "boolean"
+																},
+																"msg": {
+																	"description": "Customize the message shown in the notification.",
+																	"type": "string"
+																},
+																"support_url": {
+																	"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
@@ -2020,7 +2074,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -2028,7 +2082,7 @@
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 															"properties": {
 																"action": {
-																	"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																	"enum": [
 																		"pass_through",
 																		"block",
@@ -2516,6 +2570,24 @@
 																	},
 																	"type": "object"
 																},
+																"notification_settings": {
+																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"properties": {
+																		"enabled": {
+																			"description": "set notification on",
+																			"type": "boolean"
+																		},
+																		"msg": {
+																			"description": "Customize the message shown in the notification.",
+																			"type": "string"
+																		},
+																		"support_url": {
+																			"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
@@ -2546,7 +2618,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -2554,7 +2626,7 @@
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 																	"properties": {
 																		"action": {
-																			"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																			"enum": [
 																				"pass_through",
 																				"block",
@@ -3034,6 +3106,24 @@
 										},
 										"type": "object"
 									},
+									"notification_settings": {
+										"description": "Configure a notification to display on the user's device when this rule is matched.",
+										"properties": {
+											"enabled": {
+												"description": "set notification on",
+												"type": "boolean"
+											},
+											"msg": {
+												"description": "Customize the message shown in the notification.",
+												"type": "string"
+											},
+											"support_url": {
+												"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
 									"override_host": {
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
@@ -3064,7 +3154,7 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
-										"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 										"example": true,
 										"type": "boolean"
 									},
@@ -3072,7 +3162,7 @@
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 										"properties": {
 											"action": {
-												"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+												"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 												"enum": [
 													"pass_through",
 													"block",
@@ -3552,6 +3642,24 @@
 															},
 															"type": "object"
 														},
+														"notification_settings": {
+															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"properties": {
+																"enabled": {
+																	"description": "set notification on",
+																	"type": "boolean"
+																},
+																"msg": {
+																	"description": "Customize the message shown in the notification.",
+																	"type": "string"
+																},
+																"support_url": {
+																	"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
@@ -3582,7 +3690,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -3590,7 +3698,7 @@
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 															"properties": {
 																"action": {
-																	"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																	"enum": [
 																		"pass_through",
 																		"block",
@@ -4078,6 +4186,24 @@
 																	},
 																	"type": "object"
 																},
+																"notification_settings": {
+																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"properties": {
+																		"enabled": {
+																			"description": "set notification on",
+																			"type": "boolean"
+																		},
+																		"msg": {
+																			"description": "Customize the message shown in the notification.",
+																			"type": "string"
+																		},
+																		"support_url": {
+																			"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
@@ -4108,7 +4234,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -4116,7 +4242,7 @@
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 																	"properties": {
 																		"action": {
-																			"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																			"enum": [
 																				"pass_through",
 																				"block",
@@ -4607,6 +4733,24 @@
 										},
 										"type": "object"
 									},
+									"notification_settings": {
+										"description": "Configure a notification to display on the user's device when this rule is matched.",
+										"properties": {
+											"enabled": {
+												"description": "set notification on",
+												"type": "boolean"
+											},
+											"msg": {
+												"description": "Customize the message shown in the notification.",
+												"type": "string"
+											},
+											"support_url": {
+												"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
 									"override_host": {
 										"description": "Override matching DNS queries with a hostname.",
 										"example": "example.com",
@@ -4637,7 +4781,7 @@
 										"type": "object"
 									},
 									"resolve_dns_through_cloudflare": {
-										"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+										"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 										"example": true,
 										"type": "boolean"
 									},
@@ -4645,7 +4789,7 @@
 										"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 										"properties": {
 											"action": {
-												"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+												"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 												"enum": [
 													"pass_through",
 													"block",
@@ -5125,6 +5269,24 @@
 															},
 															"type": "object"
 														},
+														"notification_settings": {
+															"description": "Configure a notification to display on the user's device when this rule is matched.",
+															"properties": {
+																"enabled": {
+																	"description": "set notification on",
+																	"type": "boolean"
+																},
+																"msg": {
+																	"description": "Customize the message shown in the notification.",
+																	"type": "string"
+																},
+																"support_url": {
+																	"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
 														"override_host": {
 															"description": "Override matching DNS queries with a hostname.",
 															"example": "example.com",
@@ -5155,7 +5317,7 @@
 															"type": "object"
 														},
 														"resolve_dns_through_cloudflare": {
-															"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+															"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -5163,7 +5325,7 @@
 															"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 															"properties": {
 																"action": {
-																	"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																	"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																	"enum": [
 																		"pass_through",
 																		"block",
@@ -5651,6 +5813,24 @@
 																	},
 																	"type": "object"
 																},
+																"notification_settings": {
+																	"description": "Configure a notification to display on the user's device when this rule is matched.",
+																	"properties": {
+																		"enabled": {
+																			"description": "set notification on",
+																			"type": "boolean"
+																		},
+																		"msg": {
+																			"description": "Customize the message shown in the notification.",
+																			"type": "string"
+																		},
+																		"support_url": {
+																			"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
 																"override_host": {
 																	"description": "Override matching DNS queries with a hostname.",
 																	"example": "example.com",
@@ -5681,7 +5861,7 @@
 																	"type": "object"
 																},
 																"resolve_dns_through_cloudflare": {
-																	"description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
+																	"description": "Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when dns_resolvers are specified.",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -5689,7 +5869,7 @@
 																	"description": "Configure behavior when an upstream cert is invalid or an SSL error occurs.",
 																	"properties": {
 																		"action": {
-																			"description": "The action to perform upon seeing an untrusted certificate. The default action is an error with HTTP code 526.",
+																			"description": "The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.",
 																			"enum": [
 																				"pass_through",
 																				"block",
