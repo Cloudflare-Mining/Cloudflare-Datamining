@@ -485,7 +485,6 @@ const navigation = {
 		title: "account.bulk_redirects.title",
 		url: "/bulk-redirects",
 		iconType: "filter",
-		labels: ["beta"],
 		hasPermission: T => (0, a.iY)(T)
 	}],
 	zone: [{
