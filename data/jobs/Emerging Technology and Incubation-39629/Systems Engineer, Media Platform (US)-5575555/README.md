@@ -5,55 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p>Cloudflare’s Americas Marketing Team is searching for a Head of US Public Sector Marketing to partner with our sales leaders, campaign, and product marketing organizations to design &amp; drive high-impact pipeline generation programs leading to closed-won bookings. The Director, US Public Sector Marketing will lead a growing team aligned to sales, utilizing data and historical performance to inform quarterly plans &amp; strategies. This key leader will be responsible for coordinating and managing a comprehensive marketing approach for US Public Sector, including Field &amp; Account-Based Marketing, thought leadership, web, content, social media, and more.</p>
-<p><strong>Responsibilities</strong></p>
+<h3><strong>About the team</strong></h3>
+<p>We love the Internet and media is a huge part of it. We’re working hard on building tools that change the possibilities of what Creators can do with video and images on the web. We make advanced video technologies such as adaptive bitrate, multi-codec, low latency across devices available to every developer. We enable Creators to unleash creativity on the web.</p>
+<p>Media Platform is part of Cloudflare's Emerging Technology and Incubation organization. This is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>We are a hybrid team with offices in Austin, Washington, NY and San Francisco, and many members working remotely.</p>
+<h3><strong>What you'll do</strong></h3>
 <ul>
-	<li>Team leadership: proven experience as a manager, building team performance and culture in a high-growth environment</li>
-	<li>Planning &amp; execution: demonstrable skill working with teams to build &amp; execute quarterly and yearly plans including budget management and projection of results</li>
-	<li>Performance monitoring &amp; management: proven track record using enterprise analytics to monitor and optimize program performance, including investment rationalization, based on past performance and results</li>
-	<li>Sales alignment &amp; partnership: experience working in partnership with sales leaders, including BDR leadership, to enable sellers with account engagement programs leading to opportunity discovery and pipeline generation.</li>
-	<li>Opportunity &amp; Market Development: responsible for coordinating with business development and strategic capture teams for market presence and customer engagement</li>
+	<li>Help build and manage a complex software system that ingests, processes and delivers petabytes of video.</li>
+	<li>Maintain a focus on customer experience and product quality while scaling a young product.</li>
+	<li>Collaborate with engineers across the whole stack and teams across Cloudflare, and contribute at many layers of the architecture.</li>
+	<li>Own your work from early discussions to the day it ships.</li>
+	<li>Work closely with product leaders and get to know customers big and small.</li>
 </ul>
-<p><strong>Your Qualifications</strong></p>
+<h3><strong>About you</strong></h3>
 <ul>
-	<li>Minimum 10 years in US public sector marketing role in $1B+ BtoB technology organization in cybersecurity or networking; minimum 5 years as a manager</li>
-	<li>Direct experience in Federal, State &amp; Local, and Education market segments, including field programs, Federal cybersecurity events, paid &amp; earned media, web-site strategy, campaign planning &amp; management, and event marketing.</li>
-	<li>Knowledge of predominant public-sector focused resellers, distributors, and systems integrators.</li>
-	<li>Public Sector experience with global scope is a plus (e.g. applying US based programs and best-practices to other countries, as well as collaborating with geo teams, campaigns and product marketing on a global strategy and approach)</li>
-	<li>Proven results achieving quantifiable contribution metrics such as qualified leads, pipeline, closed business</li>
-	<li>Hands on experience with predominant sales and marketing systems such as Salesforce, analytics platforms, and ABM platforms such as 6sense or Demandbase.</li>
-	<li>Able to be effective working across organizational boundaries and building relationships to accomplish objectives</li>
-	<li>Thorough knowledge and understanding of enterprise lead-management processes and marketing attribution approaches</li>
-	<li>Experience designing and building field-focused marketing programs across digital, first &amp; third party events, and partner ecosystem including resellers, tech partners, and GSIs</li>
-	<li>BA/BS in Marketing, Business, Communications, Engineering or other related fields</li>
-</ul>
-<p><strong>Base plus Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>We primarily work in Golang and TypeScript. We recommend you have worked in one of these languages before, preferably professionally</li>
+	<li>You are naturally curious and willing to take a step to learn something you don’t have experience in.</li>
+	<li>You enjoy getting things done and have a bias for action: you're a builder and a creator.</li>
+	<li>You are comfortable with large scale distributed systems, and may have experience working in low-latency or real-time environments, although this is not a requirement.</li>
+	<li>You lead. We are a growing team, and you will have a huge role shaping the product from the ground up.</li>
+	<li>You have solid engineering fundamentals (formal computer science education a plus).</li>
+	<li>You may have experience with media on the internet (for example with Media Source Extensions API on browsers, FFmpeg, livestreaming tools) but this is not a requirement.</li>
+	<li>You would like to join a team that is honest and open with each other and holds each other to the highest standard. We celebrate each other's achievements and support each other when we make mistakes.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
