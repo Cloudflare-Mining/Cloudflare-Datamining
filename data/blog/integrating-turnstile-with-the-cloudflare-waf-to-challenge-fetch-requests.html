@@ -88,9 +88,9 @@ turnstileLoad = function () {
   window.fetch = async function (...args) {
       let response = await originalFetch(...args);
 
-      //If the original request was challenged...
+      // If the original request was challenged...
       if (response.headers.has('cf-mitigated') &amp;&amp; response.headers.get('cf-mitigated') === 'challenge') {
-          //The request has been challenged...
+          // The request has been challenged...
           overlay.style.display = 'block';
 
           await new Promise((resolve, reject) =&gt; {
@@ -102,11 +102,11 @@ turnstileLoad = function () {
                   },
                   'callback': function (token, preClearanceObtained) {
                       if (preClearanceObtained) {
-                          //The visitor successfully solved the challenge on the page. 
+                          // The visitor successfully solved the challenge on the page. 
                           overlay.style.display = 'none';
                           resolve();
                       } else {
-                          reject(e);
+                          reject(new Error('Unable to obtain pre-clearance'));
                       }
                   },
               });
