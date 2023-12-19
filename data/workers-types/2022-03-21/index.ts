@@ -394,7 +394,7 @@ export interface DurableObject {
   ): void | Promise<void>;
   webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
 }
-export interface DurableObjectStub extends Fetcher {
+export interface DurableObjectStub extends WorkerRpc {
   readonly id: DurableObjectId;
   readonly name?: string;
 }
@@ -1432,6 +1432,7 @@ export type R2Objects = {
       truncated: false;
     }
 );
+export declare abstract class WorkerRpc extends Fetcher {}
 export declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
@@ -1706,6 +1707,11 @@ export interface QueuingStrategyInit {
    */
   highWaterMark: number;
 }
+export interface ScriptVersion {
+  id?: string;
+  tag?: string;
+  message?: string;
+}
 export declare abstract class TailEvent extends ExtendableEvent {
   readonly events: TraceItem[];
   readonly traces: TraceItem[];
@@ -1727,6 +1733,7 @@ export interface TraceItem {
   readonly exceptions: TraceException[];
   readonly diagnosticsChannelEvents: TraceDiagnosticChannelEvent[];
   readonly scriptName: string | null;
+  readonly scriptVersion?: ScriptVersion;
   readonly dispatchNamespace?: string;
   readonly scriptTags?: string[];
   readonly outcome: string;
@@ -2159,6 +2166,21 @@ export interface gpuGPUCommandEncoder {
     destination: gpuGPUImageCopyBuffer,
     copySize: Iterable<number> | gpuGPUExtent3DDict
   ): void;
+  copyBufferToTexture(
+    source: gpuGPUImageCopyBuffer,
+    destination: gpuGPUImageCopyTexture,
+    copySize: Iterable<number> | gpuGPUExtent3DDict
+  ): void;
+  copyTextureToTexture(
+    source: gpuGPUImageCopyTexture,
+    destination: gpuGPUImageCopyTexture,
+    copySize: Iterable<number> | gpuGPUExtent3DDict
+  ): void;
+  clearBuffer(
+    buffer: gpuGPUBuffer,
+    offset?: number | bigint,
+    size?: number | bigint
+  ): void;
 }
 export interface gpuGPUCommandEncoderDescriptor {
   label?: string;
@@ -2179,16 +2201,16 @@ export interface gpuGPUComputePassEncoder {
 }
 export interface gpuGPUComputePassDescriptor {
   label?: string;
-  timestampWrites?: gpuGPUComputePassTimestampWrite[];
+  timestampWrites?: gpuGPUComputePassTimestampWrites;
 }
 export interface gpuGPUQuerySet {}
 export interface gpuGPUQuerySetDescriptor {
   label?: string;
 }
-export interface gpuGPUComputePassTimestampWrite {
+export interface gpuGPUComputePassTimestampWrites {
   querySet: gpuGPUQuerySet;
-  queryIndex: number;
-  location: string;
+  beginningOfPassWriteIndex?: number;
+  endOfPassWriteIndex?: number;
 }
 export interface gpuGPUCommandBufferDescriptor {
   label?: string;
@@ -2418,7 +2440,7 @@ export interface gpuGPURenderPassDescriptor {
   colorAttachments: gpuGPURenderPassColorAttachment[];
   depthStencilAttachment?: gpuGPURenderPassDepthStencilAttachment;
   occlusionQuerySet?: gpuGPUQuerySet;
-  timestampWrites?: gpuGPURenderPassTimestampWrite[];
+  timestampWrites?: gpuGPURenderPassTimestampWrites;
   maxDrawCount?: number | bigint;
 }
 export interface gpuGPURenderPassColorAttachment {
@@ -2446,10 +2468,10 @@ export interface gpuGPURenderPassDepthStencilAttachment {
   stencilStoreOp?: string;
   stencilReadOnly?: boolean;
 }
-export interface gpuGPURenderPassTimestampWrite {
+export interface gpuGPURenderPassTimestampWrites {
   querySet: gpuGPUQuerySet;
-  queryIndex: number;
-  location: string;
+  beginningOfPassWriteIndex?: number;
+  endOfPassWriteIndex?: number;
 }
 export interface gpuGPUImageCopyTexture {
   texture: gpuGPUTexture;
@@ -3657,19 +3679,40 @@ export interface JsonWebKeyWithKid extends JsonWebKey {
 // Licensed under the Apache 2.0 license found in the LICENSE file or at:
 //     https://opensource.org/licenses/Apache-2.0
 /**
+ * Data types supported for holding vector metadata.
+ */
+export type VectorizeVectorMetadataValue = string | number | boolean | string[];
+/**
  * Additional information to associate with a vector.
  */
 export type VectorizeVectorMetadata =
-  | string
-  | number
-  | boolean
-  | string[]
-  | Record<string, string | number | boolean | string[]>;
+  | VectorizeVectorMetadataValue
+  | Record<string, VectorizeVectorMetadataValue>;
 export type VectorFloatArray = Float32Array | Float64Array;
 export interface VectorizeError {
   code?: number;
   error: string;
 }
+/**
+ * Comparison logic/operation to use for metadata filtering.
+ *
+ * This list is expected to grow as support for more operations are released.
+ */
+export type VectorizeVectorMetadataFilterOp = "$eq" | "$ne";
+/**
+ * Filter criteria for vector metadata used to limit the retrieved query result set.
+ */
+export type VectorizeVectorMetadataFilter = {
+  [field: string]:
+    | Exclude<VectorizeVectorMetadataValue, string[]>
+    | null
+    | {
+        [Op in VectorizeVectorMetadataFilterOp]?: Exclude<
+          VectorizeVectorMetadataValue,
+          string[]
+        > | null;
+      };
+};
 /**
  * Supported distance metrics for an index.
  * Distance metrics determine how other "similar" vectors are determined.
@@ -3680,6 +3723,7 @@ export interface VectorizeQueryOptions {
   namespace?: string;
   returnValues?: boolean;
   returnMetadata?: boolean;
+  filter?: VectorizeVectorMetadataFilter;
 }
 /**
  * Information about the configuration of an index.
