@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai",
 	"dist-tags": {
-		"latest": "1.0.41"
+		"latest": "1.0.46"
 	},
 	"versions": {
 		"1.0.1": {
@@ -999,6 +999,66 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCgfb75NbCu5aXw7OuIuKbms9UHG4x1YSVnryO3AvNYkwIhAJ8r42r/ZSU2C4npFbPCRaja1ZLFHfGTexLNK7MDUmkv"
+					}
+				]
+			}
+		},
+		"1.0.43": {
+			"name": "@cloudflare/ai",
+			"version": "1.0.43",
+			"devDependencies": {
+				"@types/mocha": "^10.0.3",
+				"@types/mustache": "^4.2.4",
+				"@types/node": "^20.3.3",
+				"ajv": "^8.12.0",
+				"dotenv": "^16.3.1",
+				"mocha": "^10.2.0",
+				"mustache": "^4.2.0",
+				"prettier": "^2.8.8",
+				"ts-node": "^10.9.1",
+				"tsup": "^7.2.0",
+				"typescript": "^5.1.6"
+			},
+			"dist": {
+				"integrity": "sha512-6a+2kg+Q42ez5jRmcHgrt8FAKFVNACScH3ei+zKpmNKSFWbQnq8OKuzGRMBn8vjt9W20i/9LHNrCenaAxG2iRQ==",
+				"shasum": "d83a92c7edc70e8df94f91467ea85120f83475b0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai/-/ai-1.0.43.tgz",
+				"fileCount": 54,
+				"unpackedSize": 165760,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDkuzu6HAN7qG0an2MzKFgD3/3QktFU0fFvcekyVlHPowIgbwqGdhJjGVwP7aDLF+hHgWrjfQF3TEheoLFVuUseyec="
+					}
+				]
+			}
+		},
+		"1.0.46": {
+			"name": "@cloudflare/ai",
+			"version": "1.0.46",
+			"devDependencies": {
+				"@types/mocha": "^10.0.3",
+				"@types/mustache": "^4.2.4",
+				"@types/node": "^20.3.3",
+				"ajv": "^8.12.0",
+				"dotenv": "^16.3.1",
+				"mocha": "^10.2.0",
+				"mustache": "^4.2.0",
+				"prettier": "^2.8.8",
+				"ts-node": "^10.9.1",
+				"tsup": "^7.2.0",
+				"typescript": "^5.1.6"
+			},
+			"dist": {
+				"integrity": "sha512-znOckzDm43l1kUTYaIis4QQMu0tuj2L13s13t6bgHLdUrfdp5cCHfKK68vkg5yfgWC6fk5Femv9P2203xQhuZg==",
+				"shasum": "11a622369b6391cd13fdb8f3fc33d2649937fd96",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai/-/ai-1.0.46.tgz",
+				"fileCount": 54,
+				"unpackedSize": 165670,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH35A6hatkaUxc11nCPKkRkSVM0KtIrdofdAN9+2moCyAiByp6SHG11jIe9YJkNqQwsnNCbxR4zenA2scE116V8Bxw=="
 					}
 				]
 			}
