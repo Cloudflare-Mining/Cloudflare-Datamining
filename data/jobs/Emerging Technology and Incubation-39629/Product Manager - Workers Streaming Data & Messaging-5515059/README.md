@@ -42,10 +42,6 @@
 	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
 	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with using Cloudflare Workers or other serverless runtimes are considered a significant bonus.</li>
 </ul>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For Colorado-based hires and Washington hires: Estimated annual salary of $168,000 - $206,000.<br>For New York City-based and California (excluding Bay Area): Estimated annual salary of $187,000 - $229,000.<br>For Bay Area-based hires: Estimated annual salary of $196,000 - $224,000</li>
-</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
