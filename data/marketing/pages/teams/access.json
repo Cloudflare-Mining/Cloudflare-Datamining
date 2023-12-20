@@ -3631,48 +3631,6 @@
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "3uadFYBbJQyik7DAXehGbd",
-						"title": "Yesterday's approach",
-						"copy": "In the traditional 'castle-and-moat' model, organizations put applications behind on-premise hardware, and then forced users through a remote acccess appliance (like a VPN) to secure their traffic. \n\nThe default trust granted by VPNs invite attackers to move laterally and spread harm across your network. Plus, backhauling traffic through VPN clients leads to sluggish performance and in turn, less productive users.\n\nAs attackers become more sophisticated, apps and data move to the cloud, and hybrid work becomes the norm, these risks become too great to ignore.",
-						"toggleText": null,
-						"button": [],
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": [],
-						"subheadline": "Default trust, lateral movement",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5FhRfeI3zs1WWtIreSmj53/3cca9ef621d56d7a910a9e8e39ac4626/Lateral_Movement_VPN.png"
-							},
-							"description": "https://blog.cloudflare.com/how-to-augment-or-replace-your-vpn/"
-						},
-						"imageAssetFile": null,
-						"featureList": [],
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "extra-large",
-						"imageTextAlignment": null,
-						"togglesTo": []
-					},
-					{
 						"contentfulId": "3Ex4Q6xYoJkbM9aMrr1N6g",
 						"title": "Modern approach",
 						"copy": "Instead of a VPN, users connect to corporate resources through a client or a web browser. As requests are routed and accelerated through Cloudflare's edge, they are evaluated against Zero Trust rules incorporating signals from your identity providers, devices, and other context. \n\nWhere RDP software, SMB file viewers, and other thick client programs used to require a VPN for private network connectivity, organizations can now privately route any TCP and UDP traffic through Cloudflare's network where that traffic is accelerated, verified, and filtered in a single pass for optimal performance and security. ",
