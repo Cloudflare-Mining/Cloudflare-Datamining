@@ -52,6 +52,7 @@ declare const _default: {
     folder: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     forward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     funnel: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    garbage: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     gateway: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     gear: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'git-branch': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

@@ -50,6 +50,7 @@ import Flowchart from './Flowchart';
 import Folder from './Folder';
 import Forward from './Forward';
 import Funnel from './Funnel';
+import Garbage from './Garbage';
 import Gateway from './Gateway';
 import Gear from './Gear';
 import GitBranch from './GitBranch';
@@ -201,6 +202,7 @@ export default {
   folder: Folder,
   forward: Forward,
   funnel: Funnel,
+  garbage: Garbage,
   gateway: Gateway,
   gear: Gear,
   'git-branch': GitBranch,
