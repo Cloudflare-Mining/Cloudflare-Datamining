@@ -37,7 +37,11 @@ const ignoreContent = [
 // load from coveo
 try {
 	const coveoBlog = await fs.readJson(path.resolve('../data/coveo/blog.json'));
-	for (const url of coveoBlog) {
+	for (const rawUrl of coveoBlog) {
+		let url = rawUrl;
+		if (!url.endsWith('/')) {
+			url = url + '/';
+		}
 		blogURLs.add(url.replace('http://', 'https://'));
 	}
 } catch {}
@@ -48,7 +52,11 @@ if (rss.ok) {
 	const xml = await rss.text();
 	const json = parser.parse(xml);
 	for (const item of json?.rss?.channel?.item ?? []) {
-		blogURLs.add(item.link);
+		let url = item.link;
+		if (!url.endsWith('/')) {
+			url = url + '/';
+		}
+		blogURLs.add(url.replace('http://', 'https://'));
 	}
 }
 
@@ -132,6 +140,9 @@ try {
 		if (loc.startsWith('http://')) {
 			loc = loc.replace('http://', 'https://');
 		}
+		if (!loc.endsWith('/')) {
+			loc = loc + '/';
+		}
 		blogURLs.add(loc);
 	}
 } catch {
@@ -149,6 +160,9 @@ for (const element of sitemapXml?.html?.head?.body?.div?.table?.tbody?.tr ?? [])
 		let url = element.td[0].a;
 		if (url.startsWith('http://')) {
 			url = url.replace('http://', 'https://');
+		}
+		if (!url.endsWith('/')) {
+			url = url + '/';
 		}
 		blogURLs.add(url);
 	}
