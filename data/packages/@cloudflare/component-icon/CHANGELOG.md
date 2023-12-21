@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.1.0
+
+### Minor Changes
+
+- 784a0c4011: add gargbage icon
+
 ## 12.0.0
 
 ### Major Changes

@@ -1,5 +1,14 @@
 # Change Log
 
+## 8.0.1
+
+### Patch Changes
+
+- Updated dependencies [784a0c4011]
+  - @cloudflare/component-icon@12.1.0
+  - @cloudflare/component-arrow-swivel@8.0.1
+  - @cloudflare/component-button@8.0.1
+
 ## 8.0.0
 
 ### Patch Changes
