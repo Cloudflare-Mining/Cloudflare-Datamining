@@ -1410,6 +1410,1417 @@
 			]
 		}
 	},
+	"GET /zones/{zone_identifier}/settings/zaraz/v2/default": {
+		"description": "Gets default Zaraz configuration for a zone.",
+		"operationId": "get-zones-zone_identifier-zaraz-default",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_identifier",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"description": "Zaraz configuration",
+													"example": {
+														"consent": {
+															"cookieName": "zaraz-consent",
+															"customIntroDisclaimerDismissed": true,
+															"enabled": false
+														},
+														"dataLayer": true,
+														"debugKey": "my-debug-key",
+														"settings": {
+															"autoInjectScript": true,
+															"ecommerce": true,
+															"initPath": "/i"
+														},
+														"tools": {
+															"aJvt": {
+																"component": "facebook-pixel",
+																"defaultFields": {
+																	"testKey": "TEST123456"
+																},
+																"enabled": true,
+																"name": "Facebook Pixel",
+																"neoEvents": [
+																	{
+																		"actionType": "pageview",
+																		"blockingTriggers": [],
+																		"data": {
+																			"__zaraz_setting_name": "Page view",
+																			"ev": "PageView"
+																		},
+																		"firingTriggers": [
+																			"Pageview"
+																		]
+																	}
+																],
+																"permissions": [
+																	"access_client_kv"
+																],
+																"settings": {
+																	"accessToken": "ABcdEFg",
+																	"ecommerce": true,
+																	"property": "12345"
+																},
+																"type": "component"
+															}
+														},
+														"triggers": {
+															"ktBn": {
+																"Pageview": {
+																	"clientRules": [],
+																	"description": "All page loads",
+																	"excludeRules": [],
+																	"loadRules": [
+																		{
+																			"match": "{{ client.__zarazTrack }}",
+																			"op": "EQUALS",
+																			"value": "Pageview"
+																		}
+																	],
+																	"name": "Pageview",
+																	"system": "pageload"
+																}
+															}
+														},
+														"variables": {
+															"Autd": {
+																"name": "ip",
+																"type": "string",
+																"value": "{{ system.device.ip }}"
+															}
+														},
+														"zarazVersion": 43
+													},
+													"properties": {
+														"consent": {
+															"description": "Consent management configuration.",
+															"properties": {
+																"buttonTextTranslations": {
+																	"properties": {
+																		"accept_all": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Object where keys are language codes",
+																			"type": "object"
+																		},
+																		"confirm_my_choices": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Object where keys are language codes",
+																			"type": "object"
+																		},
+																		"reject_all": {
+																			"additionalProperties": {
+																				"type": "string"
+																			},
+																			"description": "Object where keys are language codes",
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"accept_all",
+																		"reject_all",
+																		"confirm_my_choices"
+																	],
+																	"type": "object"
+																},
+																"companyEmail": {
+																	"type": "string"
+																},
+																"companyName": {
+																	"type": "string"
+																},
+																"companyStreetAddress": {
+																	"type": "string"
+																},
+																"consentModalIntroHTML": {
+																	"type": "string"
+																},
+																"consentModalIntroHTMLWithTranslations": {
+																	"additionalProperties": {
+																		"type": "string"
+																	},
+																	"description": "Object where keys are language codes",
+																	"type": "object"
+																},
+																"cookieName": {
+																	"type": "string"
+																},
+																"customCSS": {
+																	"type": "string"
+																},
+																"customIntroDisclaimerDismissed": {
+																	"type": "boolean"
+																},
+																"defaultLanguage": {
+																	"type": "string"
+																},
+																"enabled": {
+																	"type": "boolean"
+																},
+																"hideModal": {
+																	"type": "boolean"
+																},
+																"purposes": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"type": "string"
+																			},
+																			"name": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"description"
+																		],
+																		"type": "object"
+																	},
+																	"description": "Object where keys are purpose alpha-numeric IDs",
+																	"type": "object"
+																},
+																"purposesWithTranslations": {
+																	"additionalProperties": {
+																		"properties": {
+																			"description": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "Object where keys are language codes",
+																				"type": "object"
+																			},
+																			"name": {
+																				"additionalProperties": {
+																					"type": "string"
+																				},
+																				"description": "Object where keys are language codes",
+																				"type": "object"
+																			},
+																			"order": {
+																				"type": "integer"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"description",
+																			"order"
+																		],
+																		"type": "object"
+																	},
+																	"description": "Object where keys are purpose alpha-numeric IDs",
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled"
+															],
+															"type": "object"
+														},
+														"dataLayer": {
+															"description": "Data layer compatibility mode enabled.",
+															"type": "boolean"
+														},
+														"debugKey": {
+															"description": "The key for Zaraz debug mode.",
+															"type": "string"
+														},
+														"historyChange": {
+															"description": "Single Page Application support enabled.",
+															"type": "boolean"
+														},
+														"settings": {
+															"description": "General Zaraz settings.",
+															"properties": {
+																"autoInjectScript": {
+																	"description": "Automatic injection of Zaraz scripts enabled.",
+																	"type": "boolean"
+																},
+																"contextEnricher": {
+																	"description": "Details of the worker that receives and edits Zaraz Context object.",
+																	"properties": {
+																		"escapedWorkerName": {
+																			"type": "string"
+																		},
+																		"workerTag": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"escapedWorkerName",
+																		"workerTag"
+																	],
+																	"type": "object"
+																},
+																"cookieDomain": {
+																	"description": "The domain Zaraz will use for writing and reading its cookies.",
+																	"type": "string"
+																},
+																"ecommerce": {
+																	"description": "Ecommerce API enabled.",
+																	"type": "boolean"
+																},
+																"eventsApiPath": {
+																	"description": "Custom endpoint for server-side track events.",
+																	"type": "string"
+																},
+																"hideExternalReferer": {
+																	"description": "Hiding external referrer URL enabled.",
+																	"type": "boolean"
+																},
+																"hideIPAddress": {
+																	"description": "Trimming IP address enabled.",
+																	"type": "boolean"
+																},
+																"hideQueryParams": {
+																	"description": "Removing URL query params enabled.",
+																	"type": "boolean"
+																},
+																"hideUserAgent": {
+																	"description": "Removing sensitive data from User Aagent string enabled.",
+																	"type": "boolean"
+																},
+																"initPath": {
+																	"description": "Custom endpoint for Zaraz init script.",
+																	"type": "string"
+																},
+																"injectIframes": {
+																	"description": "Injection of Zaraz scripts into iframes enabled.",
+																	"type": "boolean"
+																},
+																"mcRootPath": {
+																	"description": "Custom path for Managed Components server functionalities.",
+																	"type": "string"
+																},
+																"scriptPath": {
+																	"description": "Custom endpoint for Zaraz main script.",
+																	"type": "string"
+																},
+																"trackPath": {
+																	"description": "Custom endpoint for Zaraz tracking requests.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"autoInjectScript"
+															],
+															"type": "object"
+														},
+														"triggers": {
+															"additionalProperties": {
+																"properties": {
+																	"description": {
+																		"description": "Trigger description.",
+																		"type": "string"
+																	},
+																	"excludeRules": {
+																		"description": "Rules defining when the trigger is not fired.",
+																		"items": {
+																			"anyOf": [
+																				{
+																					"properties": {
+																						"id": {
+																							"type": "string"
+																						},
+																						"match": {
+																							"type": "string"
+																						},
+																						"op": {
+																							"enum": [
+																								"CONTAINS",
+																								"EQUALS",
+																								"STARTS_WITH",
+																								"ENDS_WITH",
+																								"MATCH_REGEX",
+																								"NOT_MATCH_REGEX",
+																								"GREATER_THAN",
+																								"GREATER_THAN_OR_EQUAL",
+																								"LESS_THAN",
+																								"LESS_THAN_OR_EQUAL"
+																							],
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"match",
+																						"op",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"clickListener"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"selector": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"enum": [
+																										"xpath",
+																										"css"
+																									],
+																									"type": "string"
+																								},
+																								"waitForTags": {
+																									"minimum": 0,
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"type",
+																								"selector",
+																								"waitForTags"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"timer"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"interval": {
+																									"minimum": 50,
+																									"type": "integer"
+																								},
+																								"limit": {
+																									"minimum": 0,
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"interval",
+																								"limit"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"formSubmission"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"selector": {
+																									"type": "string"
+																								},
+																								"validate": {
+																									"type": "boolean"
+																								}
+																							},
+																							"required": [
+																								"selector",
+																								"validate"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"variableMatch"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"match": {
+																									"type": "string"
+																								},
+																								"variable": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"variable",
+																								"match"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"scrollDepth"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"positions": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"positions"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"elementVisibility"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"selector": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"selector"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"loadRules": {
+																		"description": "Rules defining when the trigger is fired.",
+																		"items": {
+																			"anyOf": [
+																				{
+																					"properties": {
+																						"id": {
+																							"type": "string"
+																						},
+																						"match": {
+																							"type": "string"
+																						},
+																						"op": {
+																							"enum": [
+																								"CONTAINS",
+																								"EQUALS",
+																								"STARTS_WITH",
+																								"ENDS_WITH",
+																								"MATCH_REGEX",
+																								"NOT_MATCH_REGEX",
+																								"GREATER_THAN",
+																								"GREATER_THAN_OR_EQUAL",
+																								"LESS_THAN",
+																								"LESS_THAN_OR_EQUAL"
+																							],
+																							"type": "string"
+																						},
+																						"value": {
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"match",
+																						"op",
+																						"value"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"clickListener"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"selector": {
+																									"type": "string"
+																								},
+																								"type": {
+																									"enum": [
+																										"xpath",
+																										"css"
+																									],
+																									"type": "string"
+																								},
+																								"waitForTags": {
+																									"minimum": 0,
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"type",
+																								"selector",
+																								"waitForTags"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"timer"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"interval": {
+																									"minimum": 50,
+																									"type": "integer"
+																								},
+																								"limit": {
+																									"minimum": 0,
+																									"type": "integer"
+																								}
+																							},
+																							"required": [
+																								"interval",
+																								"limit"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"formSubmission"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"selector": {
+																									"type": "string"
+																								},
+																								"validate": {
+																									"type": "boolean"
+																								}
+																							},
+																							"required": [
+																								"selector",
+																								"validate"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"variableMatch"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"match": {
+																									"type": "string"
+																								},
+																								"variable": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"variable",
+																								"match"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"scrollDepth"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"positions": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"positions"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				},
+																				{
+																					"properties": {
+																						"action": {
+																							"enum": [
+																								"elementVisibility"
+																							],
+																							"type": "string"
+																						},
+																						"id": {
+																							"type": "string"
+																						},
+																						"settings": {
+																							"properties": {
+																								"selector": {
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"selector"
+																							],
+																							"type": "object"
+																						}
+																					},
+																					"required": [
+																						"id",
+																						"action",
+																						"settings"
+																					],
+																					"type": "object"
+																				}
+																			]
+																		},
+																		"type": "array"
+																	},
+																	"name": {
+																		"description": "Trigger name.",
+																		"type": "string"
+																	},
+																	"system": {
+																		"enum": [
+																			"pageload"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"loadRules",
+																	"excludeRules"
+																],
+																"type": "object"
+															},
+															"description": "Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration.",
+															"type": "object"
+														},
+														"variables": {
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"string",
+																					"secret"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"name": {
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"worker"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"properties": {
+																					"escapedWorkerName": {
+																						"type": "string"
+																					},
+																					"workerTag": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"escapedWorkerName",
+																					"workerTag"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"name",
+																			"type",
+																			"value"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"description": "Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included.",
+															"type": "object"
+														},
+														"zarazVersion": {
+															"description": "Zaraz internal version of the config.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"tools",
+														"triggers",
+														"variables",
+														"settings",
+														"dataLayer",
+														"debugKey",
+														"zarazVersion"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"tools": {
+															"additionalProperties": {
+																"anyOf": [
+																	{
+																		"allOf": [
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"blockingTriggers": {
+																								"description": "List of blocking trigger IDs",
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"defaultFields": {
+																								"additionalProperties": {
+																									"anyOf": [
+																										{
+																											"type": "string"
+																										},
+																										{
+																											"type": "boolean"
+																										}
+																									]
+																								},
+																								"description": "Default fields for tool's actions",
+																								"type": "object"
+																							},
+																							"defaultPurpose": {
+																								"description": "Default consent purpose ID",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"description": "Whether tool is enabled",
+																								"type": "boolean"
+																							},
+																							"name": {
+																								"description": "Tool's name defined by the user",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"enabled",
+																							"blockingTriggers",
+																							"name",
+																							"defaultFields"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"component": {
+																								"description": "Tool's internal name",
+																								"type": "string"
+																							},
+																							"neoEvents": {
+																								"description": "List of actions configured on a tool",
+																								"items": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							},
+																							"permissions": {
+																								"description": "List of permissions granted to the component",
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"settings": {
+																								"additionalProperties": {
+																									"anyOf": [
+																										{
+																											"type": "string"
+																										},
+																										{
+																											"type": "boolean"
+																										}
+																									]
+																								},
+																								"description": "Tool's settings",
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"component",
+																							"settings",
+																							"permissions",
+																							"neoEvents"
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"component"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"type"
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"allOf": [
+																			{
+																				"allOf": [
+																					{
+																						"properties": {
+																							"blockingTriggers": {
+																								"description": "List of blocking trigger IDs",
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"defaultFields": {
+																								"additionalProperties": {
+																									"anyOf": [
+																										{
+																											"type": "string"
+																										},
+																										{
+																											"type": "boolean"
+																										}
+																									]
+																								},
+																								"description": "Default fields for tool's actions",
+																								"type": "object"
+																							},
+																							"defaultPurpose": {
+																								"description": "Default consent purpose ID",
+																								"type": "string"
+																							},
+																							"enabled": {
+																								"description": "Whether tool is enabled",
+																								"type": "boolean"
+																							},
+																							"name": {
+																								"description": "Tool's name defined by the user",
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"enabled",
+																							"blockingTriggers",
+																							"name",
+																							"defaultFields"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"properties": {
+																							"component": {
+																								"description": "Tool's internal name",
+																								"type": "string"
+																							},
+																							"neoEvents": {
+																								"description": "List of actions configured on a tool",
+																								"items": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"type": "array"
+																							},
+																							"permissions": {
+																								"description": "List of permissions granted to the component",
+																								"items": {
+																									"type": "string"
+																								},
+																								"type": "array"
+																							},
+																							"settings": {
+																								"additionalProperties": {
+																									"anyOf": [
+																										{
+																											"type": "string"
+																										},
+																										{
+																											"type": "boolean"
+																										}
+																									]
+																								},
+																								"description": "Tool's settings",
+																								"type": "object"
+																							}
+																						},
+																						"required": [
+																							"component",
+																							"settings",
+																							"permissions",
+																							"neoEvents"
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"properties": {
+																					"type": {
+																						"enum": [
+																							"custom-mc"
+																						],
+																						"type": "string"
+																					},
+																					"worker": {
+																						"description": "Cloudflare worker that acts as a managed component",
+																						"properties": {
+																							"escapedWorkerName": {
+																								"type": "string"
+																							},
+																							"workerTag": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"workerTag",
+																							"escapedWorkerName"
+																						],
+																						"type": "object"
+																					}
+																				},
+																				"required": [
+																					"worker",
+																					"type"
+																				]
+																			}
+																		]
+																	}
+																]
+															},
+															"description": "Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object.",
+															"type": "object"
+														}
+													}
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Zaraz default configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Zaraz default configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get default Zaraz configuration",
+		"tags": [
+			"Zaraz"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zaraz:read"
+			]
+		}
+	},
 	"GET /zones/{zone_identifier}/settings/zaraz/v2/export": {
 		"description": "Exports full current published Zaraz configuration for a zone, secret variables included.",
 		"operationId": "get-zones-zone_identifier-zaraz-export",
