@@ -182,7 +182,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		hasPermission: T => !!(0, a.AB)(T),
-		tabs: C.DW
+		tabs: z.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -218,7 +218,7 @@ const navigation = {
 		url: "/network-security/magic_firewall",
 		iconType: "magic-firewall",
 		hasPermission: T => !!(0, a.zJ)(T),
-		tabs: C.$$
+		tabs: z.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -227,7 +227,7 @@ const navigation = {
 			const K = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
 			return !!(0, a.Tk)(T) || K
 		},
-		tabs: C.Dn
+		tabs: z.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -593,7 +593,7 @@ const navigation = {
 			title: "navigation.zone.email.routing",
 			navigationType: "global-settings",
 			url: "/email/routing",
-			tabs: z.hg,
+			tabs: C.hg,
 			hasPermission: T => (0, a.iY)(T) && !(0, p.yD)(T) && (0, a.$n)(T, "dns_records", "dns-record")
 		}, {
 			title: "navigation.zone.email.dmarc-reports",
