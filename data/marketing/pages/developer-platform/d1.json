@@ -282,131 +282,6 @@
 						"togglesTo": []
 					},
 					{
-						"contentfulId": "3tVzXUjV6DcIZYCPa6PyUA",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Additional Features ",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4JPrmlpY4usiv9cPR6Lz9z",
-								"title": "Read replication",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "With D1, we take configuration off your hands, and take advantage of Cloudflare's global network. D1 will create read-only clones of your data, close to where your users are, and constantly keep them up-to-date with changes.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1f0iDYaTaOexv9owSIBMWR/cda620b331c9019608f4f837c2df5380/server-3_outline.png"
-									},
-									"description": ""
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "40qRDQ5bYAiRRuy2tWufm8",
-								"title": "Batching",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "D1's API includes batching: anywhere you can send a single SQL statement you can also provide an array of them, meaning you only need a single HTTP round-trip to perform multiple operations.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5rgAX5Pezx1EHevEZ8b9vc/67012f637f6d9f7741c8d6aeb7fcfbfb/server-origin.svg"
-									},
-									"description": ""
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4ucIp564qZXAeNcNyMEb0D",
-								"title": "Embedded compute",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "Define a portion of your Worker code that runs directly next to the database, giving you total control and maximum performance.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4ugq45RoIF8Tbbt3QlP5Yk/6aa7c9d9aa38d0f77b426a6bb27645a2/code-api.svg"
-									},
-									"description": null
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "16t1HWZ9UTlSyUzapF4yiL",
-								"title": "Backups and redundancy",
-								"makeTitleLink": false,
-								"titleUrl": null,
-								"titleSize": "medium",
-								"description": "D1 will automatically save snapshots of your database to Cloudflare's cloud storage service, R2, at regular intervals, with a one-click restoration process",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"removeCardBorder": false,
-								"icon": {
-									"file": {
-										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/66nPgCA13atuwQfQkFQ1tH/144b0e197f96957a72c1f68bba00287c/optimization-scale.svg"
-									},
-									"description": ""
-								},
-								"iconAssetFile": null,
-								"imageOverlaySuperheader": null,
-								"imageOverlayText": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
 						"contentTypeId": "bladeTable",
 						"contentfulId": "3TtVd65KvQvx0ZAnAGXomu",
 						"locale": "en-US",
@@ -416,7 +291,7 @@
 						"displayHeader": null,
 						"showFilter": null,
 						"sectionTitle": null,
-						"title": "Cloudflare D1 Database - pricing ",
+						"title": "Pricing ",
 						"copy": null,
 						"htmlId": null,
 						"columnHeaders": [
@@ -455,7 +330,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "zGJX39fCI1oOfZfemntn1",
-										"cellText": "5M/Day - Resets Daily",
+										"cellText": "5 million / Day",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -464,7 +339,7 @@
 									},
 									{
 										"contentfulId": "6kSn6MCHpafoVmLqxmL8qa",
-										"cellText": "25B/month      +$0.001 per million reads",
+										"cellText": "First 25B / month included + $0.001 / million rows",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -487,7 +362,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "461dkTx7mhRFjsjAE08lWd",
-										"cellText": "100K/day  -  Resets daily",
+										"cellText": "100K / day",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -496,7 +371,7 @@
 									},
 									{
 										"contentfulId": "FJBW1Qomb5magCNvJHi03",
-										"cellText": "50M/month    +$1.00 per million writes",
+										"cellText": "First 50M / month included + $1.00 / million rows",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -519,7 +394,7 @@
 								"cellsInRow": [
 									{
 										"contentfulId": "6EfAtq3uVw9gBogoVw6w0I",
-										"cellText": "1GB included",
+										"cellText": "5GB (total)",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -528,7 +403,7 @@
 									},
 									{
 										"contentfulId": "6jgDcKCY7USGpFLmdenNET",
-										"cellText": "5GB included +$0.75 per GB",
+										"cellText": "First 5GB included + $0.75 / GB per month",
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
@@ -543,7 +418,7 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "5JTvIgcmbNzCTSLCof4y7I",
-						"title": "Discuss D1 on the Developers Discord",
+						"title": "Learn more about D1 Pricing",
 						"titleSize": "medium",
 						"backgroundColor": "image-background",
 						"buttonText": null,
@@ -562,7 +437,7 @@
 							"elementName": "Cloudflare D1 Database - button",
 							"standardText": "Learn More",
 							"text": null,
-							"url": "https://discord.cloudflare.com",
+							"url": "https://developers.cloudflare.com/d1/platform/pricing/",
 							"loggedInUrl": null,
 							"buttonModal": null,
 							"openInNewTab": true,
