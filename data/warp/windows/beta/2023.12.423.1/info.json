@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows",
+	"app_display_name": "Cloudflare WARP Windows Beta",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 3295,
+	"version": "2023.12.423.1",
+	"short_version": "",
+	"size": 113913856,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "0e658fa999d0dae1ddb130dce0139055",
+	"fingerprint": "e748bf8cf2e1bad091da96b915f546cf",
+	"uploaded_at": "2024-01-03T18:21:22.653Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains exciting new features. Please take time over the next few weeks to play with the new functionality and let us know what you think on both the community forum and through your account teams.\r\n \r\n## Notable updates\r\n- Added ability for administrators to allow their end users to temporarily obtain access to local network resources in the event their home IP space overlaps with traffic normally routed through the WARP tunnel.\r\n- The last beta added the ability for Client to display Gateway NETWORK and HTTP block notifications to the user. Added the ability to configure this feature in dash; the end-to-end solution is now available.\r\n- Fixed an issue introduced in previous beta where organization name was case sensitive (it should not be)\r\n \r\n \r\n \r\n## Known issues\r\n- The new `display_name` MDM parameter that is part of the multiple configurations feature is not correctly working. For this release the name visible in the UI will be the organization value. A future beta release will correct this; it is safe to include this parameter in updated MDM files now.\r\n- Access local networks is visible in a disabled state when it should be hidden\r\n \r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"cd13fdcad0a2eabcfc4e4a2e421c0d3f647dfbdac10867e6ff2c656d4a14eeb4"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+	"distribution_groups": [
+		{
+			"id": "d5dd5a80-bdb1-4274-83f7-13e9e392e07f",
+			"name": "Beta",
+			"origin": "appcenter",
+			"display_name": "Beta",
+			"is_public": true
+		}
+	]
+}
