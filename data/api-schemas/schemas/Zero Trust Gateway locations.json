@@ -526,9 +526,17 @@
 													"networks": {
 														"description": "A list of network ranges that requests from this location would originate from.",
 														"items": {
-															"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-															"example": "192.0.2.1/32",
-															"type": "string"
+															"properties": {
+																"network": {
+																	"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																	"example": "192.0.2.1/32",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"network"
+															],
+															"type": "object"
 														},
 														"type": "array"
 													},
@@ -714,9 +722,17 @@
 															"networks": {
 																"description": "A list of network ranges that requests from this location would originate from.",
 																"items": {
-																	"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-																	"example": "192.0.2.1/32",
-																	"type": "string"
+																	"properties": {
+																		"network": {
+																			"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																			"example": "192.0.2.1/32",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"network"
+																	],
+																	"type": "object"
 																},
 																"type": "array"
 															},
@@ -999,9 +1015,17 @@
 												"networks": {
 													"description": "A list of network ranges that requests from this location would originate from.",
 													"items": {
-														"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-														"example": "192.0.2.1/32",
-														"type": "string"
+														"properties": {
+															"network": {
+																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																"example": "192.0.2.1/32",
+																"type": "string"
+															}
+														},
+														"required": [
+															"network"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -1164,9 +1188,17 @@
 														"networks": {
 															"description": "A list of network ranges that requests from this location would originate from.",
 															"items": {
-																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-																"example": "192.0.2.1/32",
-																"type": "string"
+																"properties": {
+																	"network": {
+																		"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																		"example": "192.0.2.1/32",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"network"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														},
@@ -1321,9 +1353,17 @@
 							"networks": {
 								"description": "A list of network ranges that requests from this location would originate from.",
 								"items": {
-									"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-									"example": "192.0.2.1/32",
-									"type": "string"
+									"properties": {
+										"network": {
+											"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+											"example": "192.0.2.1/32",
+											"type": "string"
+										}
+									},
+									"required": [
+										"network"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -1477,9 +1517,17 @@
 												"networks": {
 													"description": "A list of network ranges that requests from this location would originate from.",
 													"items": {
-														"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-														"example": "192.0.2.1/32",
-														"type": "string"
+														"properties": {
+															"network": {
+																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																"example": "192.0.2.1/32",
+																"type": "string"
+															}
+														},
+														"required": [
+															"network"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -1642,9 +1690,17 @@
 														"networks": {
 															"description": "A list of network ranges that requests from this location would originate from.",
 															"items": {
-																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-																"example": "192.0.2.1/32",
-																"type": "string"
+																"properties": {
+																	"network": {
+																		"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																		"example": "192.0.2.1/32",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"network"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														},
@@ -1807,9 +1863,17 @@
 							"networks": {
 								"description": "A list of network ranges that requests from this location would originate from.",
 								"items": {
-									"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-									"example": "192.0.2.1/32",
-									"type": "string"
+									"properties": {
+										"network": {
+											"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+											"example": "192.0.2.1/32",
+											"type": "string"
+										}
+									},
+									"required": [
+										"network"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							}
@@ -1963,9 +2027,17 @@
 												"networks": {
 													"description": "A list of network ranges that requests from this location would originate from.",
 													"items": {
-														"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-														"example": "192.0.2.1/32",
-														"type": "string"
+														"properties": {
+															"network": {
+																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																"example": "192.0.2.1/32",
+																"type": "string"
+															}
+														},
+														"required": [
+															"network"
+														],
+														"type": "object"
 													},
 													"type": "array"
 												},
@@ -2128,9 +2200,17 @@
 														"networks": {
 															"description": "A list of network ranges that requests from this location would originate from.",
 															"items": {
-																"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
-																"example": "192.0.2.1/32",
-																"type": "string"
+																"properties": {
+																	"network": {
+																		"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.",
+																		"example": "192.0.2.1/32",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"network"
+																],
+																"type": "object"
 															},
 															"type": "array"
 														},
