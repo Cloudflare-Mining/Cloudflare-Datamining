@@ -37,7 +37,18 @@
 				"topNavButtonText": "Get started",
 				"topNavButtonUrl": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=r2_basic",
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare R2 vs AWS S3 | Review Pricing & Features",
+					"metaDescription": "With zero egress fees, Cloudflare R2 beats out Amazon S3 as the most cost-effective object storage solution. Compare R2 pricing and features to S3. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6pK2l7tMcwa16zgTRDauSt/632a08567e4230fc09a732ebdcdefd8f/r2_pg.svg"
+						},
+						"description": ""
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "5sfy0lFRunNgkrnElG4nKu",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -548,6 +559,28 @@
 													"monthlyPricingCta": null,
 													"annualPricingCta": null
 												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "4PTH79sRYCnZJFHXJnzPX6",
+												"textValue": "2,000 per month",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
 											}
 										]
 									},
@@ -556,7 +589,65 @@
 										"contentTypeId": "planElementFeatures",
 										"name": "Class B Operations (GET)",
 										"description": null,
-										"planValues": []
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6zC9RU5u7govbqvOdm2Knb",
+												"textValue": "10 Million per month",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": "Get started for free",
+														"contentTypeId": "button",
+														"contentfulId": "vhALLIDy2bkxjIrObLfRf",
+														"elementName": "R2 vs S3 Comparison - R2 Sign Up",
+														"standardText": null,
+														"text": "Get started for free",
+														"url": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=r2_basic",
+														"loggedInUrl": "https://dash.cloudflare.com/?to=/:account/billing/checkout&add=r2_basic",
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "6FdyCdT0A7uCHJMxjZn87U",
+												"textValue": "20,000 per month",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
 									},
 									{
 										"contentfulId": "6r7VfapwBmaclH7ljWmK8n",
@@ -598,6 +689,28 @@
 													"monthlyPricingCta": null,
 													"annualPricingCta": null
 												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1FvEgjtCa7MEw7gKPHZFUS",
+												"textValue": "100 GB",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
 											}
 										]
 									}
@@ -614,6 +727,41 @@
 										"name": "Storage / Month",
 										"description": null,
 										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7xtiNcYQHyMqEustdlkClQ",
+												"textValue": "$0.015 per GB",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": "Get started for free",
+														"contentTypeId": "button",
+														"contentfulId": "vhALLIDy2bkxjIrObLfRf",
+														"elementName": "R2 vs S3 Comparison - R2 Sign Up",
+														"standardText": null,
+														"text": "Get started for free",
+														"url": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=r2_basic",
+														"loggedInUrl": "https://dash.cloudflare.com/?to=/:account/billing/checkout&add=r2_basic",
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
 											{
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "1DMMxVjIPuFdMWOLfXrZXM",
@@ -743,6 +891,93 @@
 													"monthlyPricingCta": null,
 													"annualPricingCta": null
 												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "3TF8DEQU5fWrT4toppHNeB",
+												"textValue": "$0.0004 per 1,000",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "1AA87uoBoghuYuQq0Jv9ru",
+										"contentTypeId": "planElementFeatures",
+										"name": "Egress Fees",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "18FQzfj4T28I4faCVlReZ6",
+												"textValue": "FREE",
+												"plan": {
+													"contentfulId": "5XAaszeVndmH4SDpEskMK",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "R2 vs S3 - Free Tier  - Cloudflare - Element Plan ",
+													"name": "Cloudflare R2",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": "       ",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonTextLoggedIn": "Get started for free",
+														"contentTypeId": "button",
+														"contentfulId": "vhALLIDy2bkxjIrObLfRf",
+														"elementName": "R2 vs S3 Comparison - R2 Sign Up",
+														"standardText": null,
+														"text": "Get started for free",
+														"url": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=r2_basic",
+														"loggedInUrl": "https://dash.cloudflare.com/?to=/:account/billing/checkout&add=r2_basic",
+														"buttonModal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "aStKykr01h03TnyuQOT61",
+												"textValue": "Starts at $0.09 per GB",
+												"plan": {
+													"contentfulId": "66TAyowgjpPOaaErq8Usor",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Free Tier | Storage | Amazon S3",
+													"name": "Amazon S3",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
 											}
 										]
 									}
@@ -755,6 +990,38 @@
 						"contentfulId": "2MN8DuwqNRbwdvaQ1y4bTE",
 						"htmlContent": "<br>\n<IMG style= \"float: left; margin: 18.25px 10px 0px 0px;\" src=\"https://paygo-webflow-lps.builtforthis.workers.dev/images/627166964dba1c2aa8c2d5b5_performance-cloud-speed.png\" width=\"23\" />\n<p style=\"text-align: left;\"><span style=\"font-size: 12px; font-weight: normal; line-height: 9px;\"><span style=\"color: #000000;\">This comparison table is provided for informational purposes only. Prices are limited to the public fees as of 5/24/2023, and do not include taxes and any other fees. Amazon S3 price and egress fees are based on the tiered rates for S3 Standard in the US East region and data transfer fees from Amazon S3 to Internet as published on <a href=\"https://aws.amazon.com/s3/pricing/\" target=\"blank\">https://aws.amazon.com/s3/pricing/</a></span><br /><br /></span></p>\n",
 						"htmlId": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "2NTWRuOB0La6zNTG0ruwOd",
+						"title": "See how much you can save with R2",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": "redwoodEnablementInlineVersion",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "4a3B9NEUNMxRhBrzYyEhwK",
+							"elementName": "Calculate your savings calculator.cloudflare btn",
+							"standardText": null,
+							"text": "Calculate your savings",
+							"url": "https://r2-calculator.cloudflare.com/",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					},
 					{
 						"contentfulId": "5fSmFrgLok85IB44fjJLgX",
@@ -969,6 +1236,38 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "WTmuGb5bLZfeBKLCXeH7X",
+						"title": "Ready for object storage without egress fees?",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": "redwoodEnablementInlineVersion",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "7wRTgGUDmF9UYOsY31mPgT",
+							"elementName": "Start saving with R2 btn",
+							"standardText": null,
+							"text": "Start saving with R2",
+							"url": "https://dash.cloudflare.com/sign-up?to=/:account/billing/checkout&add=r2_basic",
+							"loggedInUrl": null,
+							"buttonModal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
 					}
 				],
 				"noindex": false,
