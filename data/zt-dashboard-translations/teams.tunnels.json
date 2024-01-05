@@ -97,7 +97,7 @@
 	"loading_message": "Loading...",
 	"lost_token": "Refresh token",
 	"lost_token_description": "You may need to generate a new token for security reasons.",
-	"lost_token_notification": "This action will invalidate the previous token and disable all connectors that run with it.",
+	"lost_token_notification": "This action will invalidate the previous token. Note that this will prevent new connections made with the old token, but it won't close existing connections.",
 	"name_column": "Tunnel name",
 	"name_your_tunnel": "Name your tunnel",
 	"name_your_tunnel_description": "Use a descriptive name based on the network you want to connect. We recommend creating only one tunnel for each network.",
