@@ -5,31 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>As the Global Vice President of Channel Sales &amp; Partnerships, you will be responsible for expanding our channel partner relationships to drive revenue growth and expand market reach globally.&nbsp;&nbsp;</p>
+<p><strong>The Team</strong></p>
+<p><span style="font-weight: 400;">We are looking to hire an experienced Security Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for identifying and managing security risk across Cloudflare’s production environment and critical business functions.</span></p>
+<p><span style="font-weight: 400;">At Cloudflare, risk management lays the foundation for protecting Cloudflare and our customers. The Risk team identifies risk throughout the company and prioritizes mitigation efforts to drive Security team priorities. We do not believe in tick-box security, so for us risk management is a pathway to doing things right.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored.&nbsp;</span></p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Develop and implement a comprehensive channel sales and partners strategy to achieve multi-billion dollar revenue targets and expand market presence globally</li>
-	<li>Partner with regional GMs and product leaders to create and drive new strategic channel go-to-market plans to meet company growth and market share goals.</li>
-	<li>Build a world class partner go to market organization that drives sell through and sell with strategies for distribution, resale implementation of our solutions</li>
-	<li>Recruit, develop, and drive business with key industry and market leading distributors, resellers, Global SIs, regional integrators, and managed service providers.</li>
-	<li>Lead implementation of systems, programs and tooling to support channel partners with means to competently represent, support and implement our solutions and efficiently conduct business with Cloudflare.&nbsp;</li>
-	<li>Develop short and long-term market strategy and forecasts through analysis and interpretation of results and communicate partner activities, execution and productivity with the senior management teams.</li>
-	<li>Maintain strong reporting and accountability against numbers, driving to exceed targets, while developing and managing motivating incentive tools.</li>
-	<li>Work cross functionally with product, finance, people team and operations to secure the necessary support, resourcing and operational capabilities for highly effective channel sales programs and delivery&nbsp;</li>
-	<li>Leverage strong channel relationships, consistently collecting and providing feedback on partner and channel customer needs, market trends, and opportunities for continuous process, product, and solution improvement.&nbsp;</li>
-	<li>Recruit, inspire, lead, mentor, motivate and instill operational rigor into the channel organization, to capitalize on the market opportunity for Cloudflare.</li>
+	<li>Conduct risk assessments across the organization&nbsp;</li>
+	<li>Complete controls testing to ensure that Cloudflare’s controls are operating effectively</li>
+	<li>Recommend risk treatment plans and drive the remediation of risk findings&nbsp;</li>
+	<li>Work with GRC team to continuously improve Cloudflare’s security controls</li>
+	<li>Provide guidance on control health checks to Security Automation team</li>
+	<li>Support quarterly risk reviews with security and technical leadership</li>
+	<li>Maintain our Security Risk Management Program documentation and Cloudflare’s risk register</li>
+	<li>Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, or other global Cloudflare locations.</li>
 </ul>
-<p>To be effective in this role, the Vice President of Channel Sales will have the following key pivotal experiences and expertise:</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>High Growth at Scale – </strong>Track record of leading channel organizations through rapid growth from $1B to $3B and beyond. Develops processes and strategies that enable the channel organization to scale with the business.</li>
-	<li><strong>Go-to-Market Complexity –</strong> Responsibility for a complex, platform/multi-product sales motion across distributors, resellers, Global SIs, regional integrators, and managed service providers selling into a multi-segment (SMB to Enterprise) customer base.</li>
-	<li><strong>Operational Rigor – </strong>Experience implementing complex strategy and operational improvements. Takes a data driven and efficiency-oriented approach to sales operations. Measurable success in improving sales enablement, hiring practices, productivity, sales strategy and programs.</li>
-	<li><strong>Strategic Builder</strong> - this executive will be a team builder, team player, and a leader. To be effective in this role, you will have the personal drive and enthusiasm to successfully navigate a growing company in an evolving marketplace.</li>
-	<li><strong>Infrastructure SaaS –&nbsp;</strong>Experience within a cloud-native, highly technical infrastructure SaaS business, and track record of managing a predictable and repeatable recurring revenue business model.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level experience typically gained in 5-8 years working in Security Governance, Risk, and Compliance&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience conducting and managing security risk assessments</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience recommending mitigating controls and driving risk remediation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience reporting on risks and program operations to management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of security risk and control frameworks such as PCI DSS, ISO 27001, NIST SP 800-53, and NIST SP 800-30</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding cloud security architectures, technologies, and security controls&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical and interpersonal skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter with the ability to work independently with a sense of curiosity</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $425,000 - $500,000</li>
-	<li>For New York City, Washington, and California based hires: Estimated annual salary of $475,000 - $550,000.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:128000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">112,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:156000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))">125,000</span>.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A stock plan (RSU) will also be added to total compensation</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
