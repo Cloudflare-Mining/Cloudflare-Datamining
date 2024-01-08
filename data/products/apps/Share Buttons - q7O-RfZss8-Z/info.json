@@ -149,6 +149,213 @@
 	],
 	"versions": [
 		{
+			"tag": "v1.0.0",
+			"appId": "q7O-RfZss8-Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"counts": {
+							"default": "none",
+							"description": "Select style of share counter.",
+							"enum": [
+								"one",
+								"each",
+								"both",
+								"none"
+							],
+							"enumNames": {
+								"both": "Individual & Total",
+								"each": "Individual",
+								"none": "None",
+								"one": "Total"
+							},
+							"order": 3,
+							"title": "Share Counter Type",
+							"type": "string"
+						},
+						"desktopPosition": {
+							"default": "left",
+							"description": "Select position of share buttons to show on a desktop.",
+							"enum": [
+								"left",
+								"right",
+								"hide"
+							],
+							"enumNames": {
+								"hide": "Hide",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Desktop Position",
+							"type": "string"
+						},
+						"mobileButtonSize": {
+							"default": "large",
+							"description": "Select the size for share buttons displayed on a mobile devices.",
+							"enum": [
+								"large",
+								"medium",
+								"small"
+							],
+							"enumNames": {
+								"large": "Large",
+								"medium": "Medium",
+								"small": "Small"
+							},
+							"title": "Mobile Button Size",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "bottom",
+							"description": "Select position of share buttons to show on a mobile device.",
+							"enum": [
+								"top",
+								"bottom",
+								"hide"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"hide": "Hide",
+								"top": "Top"
+							},
+							"order": 2,
+							"title": "Mobile Position",
+							"type": "string"
+						},
+						"numPreferredServices": {
+							"default": 5,
+							"description": "Select number (between 1 to 10) of preferred services to display. The services that are displayed for the share buttons are different for each individual user that visits your site. This is based on the user’s past sharing history and the services that are most popular.",
+							"maximum": 10,
+							"minimum": 1,
+							"order": 4,
+							"title": "Number of Service",
+							"type": "integer"
+						},
+						"style": {
+							"default": "modern",
+							"description": "Select style of share buttons.",
+							"enum": [
+								"modern",
+								"bordered"
+							],
+							"enumNames": {
+								"bordered": "Modern(Bordered)",
+								"modern": "Modern"
+							},
+							"title": "Style",
+							"type": "string"
+						},
+						"theme": {
+							"default": "transparent",
+							"description": "Select the theme for share buttons (background and contrasting color).",
+							"enum": [
+								"transparent",
+								"light",
+								"dark",
+								"grey"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"grey": "Grey",
+								"light": "Light",
+								"transparent": "Transparent"
+							},
+							"order": 10,
+							"title": "Theme",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/raaUy4XlhuS-",
+			"metadata": {
+				"code": {
+					"sourceTag": "raaUy4XlhuS-",
+					"uploadedOn": "2017-05-23T13:17:12.558582178Z"
+				}
+			},
+			"created": "2017-05-18T19:07:18.427405Z",
+			"proposedApp": {
+				"id": "q7O-RfZss8-Z",
+				"title": "Share Buttons",
+				"shortDescription": "Get your content shared online with AddThis Share Buttons.",
+				"longDescription": "The Share Buttons app from AddThis is the easiest way to add sidebar share buttons to your Cloudflare page and get your content distributed to over 200 social media channels, auto-personalized for your website visitors.",
+				"instructions": "",
+				"alias": "addthis-share-buttons",
+				"orgId": "ebe098464489e72043e44fc41ad20e57",
+				"icon": "//images.cloudflareapps.com/JDFZEmxiTCegAIWJUtx3_Cloudflare_icon_white_bg.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/coK9lZzpTxGRWvVYbWIM_Screen Shot 2017-05-23 at 9.12.26 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/b5YvXn7vRRW7VryUTPJB_Cloudflare_tile_image.png",
+				"featuredAppImage": "",
+				"author": "AddThis",
+				"tagline": "",
+				"website": "https://www.addthis.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"getting-started-apps",
+					"social-media",
+					"marketing",
+					"add-on",
+					"e-commerce",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BurY9kI7mIz5"
+				},
+				"created": "2017-05-18T19:07:17.983042Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "ebe098464489e72043e44fc41ad20e57",
+				"requestedAt": "2017-05-23T13:17:14.283307011Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-28T03:17:58.44999148Z"
+			}
+		},
+		{
 			"tag": "1.0.0",
 			"appId": "q7O-RfZss8-Z",
 			"definition": {
@@ -362,213 +569,6 @@
 				"canceledAt": null,
 				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
 				"reviewedAt": "2017-06-06T17:46:52.252526535Z"
-			}
-		},
-		{
-			"tag": "v1.0.0",
-			"appId": "q7O-RfZss8-Z",
-			"definition": {
-				"resources": {
-					"body": [
-						{
-							"type": "script",
-							"src": "./source/app.js"
-						}
-					]
-				},
-				"options": {
-					"properties": {
-						"counts": {
-							"default": "none",
-							"description": "Select style of share counter.",
-							"enum": [
-								"one",
-								"each",
-								"both",
-								"none"
-							],
-							"enumNames": {
-								"both": "Individual & Total",
-								"each": "Individual",
-								"none": "None",
-								"one": "Total"
-							},
-							"order": 3,
-							"title": "Share Counter Type",
-							"type": "string"
-						},
-						"desktopPosition": {
-							"default": "left",
-							"description": "Select position of share buttons to show on a desktop.",
-							"enum": [
-								"left",
-								"right",
-								"hide"
-							],
-							"enumNames": {
-								"hide": "Hide",
-								"left": "Left",
-								"right": "Right"
-							},
-							"order": 1,
-							"title": "Desktop Position",
-							"type": "string"
-						},
-						"mobileButtonSize": {
-							"default": "large",
-							"description": "Select the size for share buttons displayed on a mobile devices.",
-							"enum": [
-								"large",
-								"medium",
-								"small"
-							],
-							"enumNames": {
-								"large": "Large",
-								"medium": "Medium",
-								"small": "Small"
-							},
-							"title": "Mobile Button Size",
-							"type": "string"
-						},
-						"mobilePosition": {
-							"default": "bottom",
-							"description": "Select position of share buttons to show on a mobile device.",
-							"enum": [
-								"top",
-								"bottom",
-								"hide"
-							],
-							"enumNames": {
-								"bottom": "Bottom",
-								"hide": "Hide",
-								"top": "Top"
-							},
-							"order": 2,
-							"title": "Mobile Position",
-							"type": "string"
-						},
-						"numPreferredServices": {
-							"default": 5,
-							"description": "Select number (between 1 to 10) of preferred services to display. The services that are displayed for the share buttons are different for each individual user that visits your site. This is based on the user’s past sharing history and the services that are most popular.",
-							"maximum": 10,
-							"minimum": 1,
-							"order": 4,
-							"title": "Number of Service",
-							"type": "integer"
-						},
-						"style": {
-							"default": "modern",
-							"description": "Select style of share buttons.",
-							"enum": [
-								"modern",
-								"bordered"
-							],
-							"enumNames": {
-								"bordered": "Modern(Bordered)",
-								"modern": "Modern"
-							},
-							"title": "Style",
-							"type": "string"
-						},
-						"theme": {
-							"default": "transparent",
-							"description": "Select the theme for share buttons (background and contrasting color).",
-							"enum": [
-								"transparent",
-								"light",
-								"dark",
-								"grey"
-							],
-							"enumNames": {
-								"dark": "Dark",
-								"grey": "Grey",
-								"light": "Light",
-								"transparent": "Transparent"
-							},
-							"order": 10,
-							"title": "Theme",
-							"type": "string"
-						}
-					}
-				},
-				"preview": {
-					"handlers": [
-						{
-							"options": [
-								"*"
-							],
-							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
-							"reload": null
-						}
-					]
-				}
-			},
-			"manual": true,
-			"releaseNotes": "",
-			"source": "",
-			"creatorUserId": "",
-			"installable": false,
-			"files": [],
-			"hasCode": true,
-			"fileHandle": "local/raaUy4XlhuS-",
-			"metadata": {
-				"code": {
-					"sourceTag": "raaUy4XlhuS-",
-					"uploadedOn": "2017-05-23T13:17:12.558582178Z"
-				}
-			},
-			"created": "2017-05-18T19:07:18.427405Z",
-			"proposedApp": {
-				"id": "q7O-RfZss8-Z",
-				"title": "Share Buttons",
-				"shortDescription": "Get your content shared online with AddThis Share Buttons.",
-				"longDescription": "The Share Buttons app from AddThis is the easiest way to add sidebar share buttons to your Cloudflare page and get your content distributed to over 200 social media channels, auto-personalized for your website visitors.",
-				"instructions": "",
-				"alias": "addthis-share-buttons",
-				"orgId": "ebe098464489e72043e44fc41ad20e57",
-				"icon": "//images.cloudflareapps.com/JDFZEmxiTCegAIWJUtx3_Cloudflare_icon_white_bg.png",
-				"screenshots": [
-					"//images.cloudflareapps.com/coK9lZzpTxGRWvVYbWIM_Screen Shot 2017-05-23 at 9.12.26 AM.png"
-				],
-				"tileImage": "//images.cloudflareapps.com/b5YvXn7vRRW7VryUTPJB_Cloudflare_tile_image.png",
-				"featuredAppImage": "",
-				"author": "AddThis",
-				"tagline": "",
-				"website": "https://www.addthis.com",
-				"sourceURL": "",
-				"termsOfServiceURL": "",
-				"privacyPolicyURL": "",
-				"color": "",
-				"source": "",
-				"adminVisible": true,
-				"userVisible": true,
-				"installable": false,
-				"codeVersion": "",
-				"infoVersion": "",
-				"points": 0,
-				"supportEmail": "",
-				"products": [],
-				"categoryIds": [
-					"getting-started-apps",
-					"social-media",
-					"marketing",
-					"add-on",
-					"e-commerce",
-					"design"
-				],
-				"agreements": {},
-				"metadata": {
-					"importedFromVersion": "BurY9kI7mIz5"
-				},
-				"created": "2017-05-18T19:07:17.983042Z"
-			},
-			"moderationStatus": "rejected",
-			"moderationMetadata": {
-				"requestedByUserId": "ebe098464489e72043e44fc41ad20e57",
-				"requestedAt": "2017-05-23T13:17:14.283307011Z",
-				"canceledAt": null,
-				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
-				"reviewedAt": "2017-05-28T03:17:58.44999148Z"
 			}
 		},
 		{
