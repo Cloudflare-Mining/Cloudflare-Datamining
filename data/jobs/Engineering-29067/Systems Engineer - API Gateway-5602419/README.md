@@ -5,61 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p>An engineering role at Cloudflare provides an opportunity to address some big challenges, at scale.&nbsp; We believe that with our talented team, we can solve some of the biggest security, reliability and performance problems facing the Internet. Just how big?&nbsp;&nbsp;</p>
+<h4><strong><em>About the team</em></strong></h4>
+<p><em>You'll be part of a engineering team focused on building products that secure and manage our customers’ API traffic. We are a group of experienced engineers and data scientists passionate about building new and scalable features for Cloudflare’s API Gateway.</em></p>
+<h4><strong><em>What you'll do</em></strong></h4>
+<p><em>You will build software systems that secure, monitor, and manage our customers’ API endpoints. Scale will be always on your mind: our systems will run on thousands of machines all over the globe, processing trillions of requests per month. Additionally, you’ll be tackling real-world security problems by leveraging the massive amounts of data and insights from Cloudflare’s entire network. Helping build Cloudflare’s API Gateway will enable you to make a real and substantial impact on the global API and security landscape.&nbsp;</em></p>
+<p><em>Our tech stack includes Go, Rust, Kafka, Kubernetes, ClickHouse, PostgreSQL, Lua, Python, Jupyter notebooks.</em></p>
+<p><strong><em>Examples of desirable skills, knowledge and experience</em></strong></p>
 <ul>
-	<li>We have in excess of 15 Terabits of network transit capacity</li>
-	<li>We operate 250 Points-of-presence around the world</li>
-	<li>We serve more traffic than <em>Twitter, Amazon, Apple, Instagram, Bing, &amp; Wikipedia </em>combined</li>
-	<li>Anytime we push code, it immediately affects over 200 million internet users</li>
-	<li>Every day, up to 20,000 new customers sign-up for Cloudflare service</li>
-	<li>Every week, the average Internet user touches us more than 500 times</li>
+	<li><em>4+ years experience designing, implementing, integrating, and optimizing distributed data processing pipelines</em></li>
+	<li><em>Experience writing high-quality data processing code in Go, Rust or other high-performance languages</em></li>
+	<li><em>Experience building and administering alerting and monitoring systems around data processing pipelines</em></li>
+	<li><em>Strong systems-level debugging</em></li>
 </ul>
-<p>We are looking for talented Software Engineers to build and develop the platform which makes Cloudflare customers place their trust in us.&nbsp; Our Software Engineers come from a variety of technical backgrounds and have built up their knowledge working in different environments. But the common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence.&nbsp; Our Infrastructure Engineering team focuses on the automation to scale our infrastructure.</p>
-<p>Our team is well-funded and focused on building an extraordinary company.&nbsp; This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.&nbsp; You will build tools to constantly improve our scale and speed of deployment.&nbsp; You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale.&nbsp;&nbsp;&nbsp;</p>
-<p>Cloudflare Software Engineers focus on automating our infrastructure installations and decommissions at scale.&nbsp; We enable our Data Centre Engineering teams by allowing them to install new data centers, replace servers and networking in existing data centers as quickly and efficiently as possible while not impacting existing infrastructure and customer services.&nbsp; While our focus is on automating all infrastructure requirements, there is an element of ongoing operational support of Data Center Engineers and other teams.&nbsp; We also review upcoming hardware changes and update automation and configuration management to cater to these advances.</p>
-<p>Many of our Software Engineers have had the opportunity to work at multiple offices on interim and long-term project assignments. The ideal Software Engineering candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of Linux and Hardware.&nbsp; We require strong coding ability in Bash, Python or Go. We prefer to hire experienced candidates; however raw skill trumps experience and we welcome strong junior applicants.</p>
-<p><strong>Requisite Skills</strong></p>
+<p><strong><em>Bonus Points</em></strong></p>
 <ul>
-	<li>Intermediate level software development skills in Python and Go</li>
-	<li>Linux systems administration experience</li>
-	<li>5 years of relevant Development experience</li>
-	<li>Strong skills in network services, including Rest APIs and HTTP</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>5 years of relevant work experience</li>
-	<li>Strong tooling and automations development experience</li>
-	<li>Network fundamentals DHCP, ARP, subnetting, routing, firewalls, IPv6</li>
-	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
-	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
-	<li>SQL databases (Postgres or MySQL)</li>
-	<li>Time series databases (OpenTSDB, Graphite, Prometheus)</li>
-	<li>The ability to understand service and device metrics and visualize them using Grafana</li>
-	<li>Key/Value stores (Redis, KyotoTycoon, Cassandra, LevelDB)</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience programming in C, C++, Rust or Go</li>
-	<li>Experience with continuous / rapid release engineering</li>
-	<li>Experience developing systems that are highly available and redundant across regions</li>
-	<li>High-bandwidth transit Internetworking and routing experience</li>
-	<li>Performance analysis and debugging with tools like perf, sar, strace, dtrace</li>
-	<li>Experience with the Linux kernel and Linux software packaging</li>
-	<li>Internetworking and BGP</li>
-</ul>
-<p><strong>Some tools that we use</strong></p>
-<ul>
-	<li>Apache Airflow&nbsp;</li>
-	<li>Salt</li>
-	<li>Netbox</li>
-	<li>Docker</li>
-	<li>Kubernetes</li>
-	<li>Nginx</li>
-	<li>Python</li>
-	<li>PostgreSQL</li>
-	<li>Redis</li>
-	<li>Prometheus</li>
+	<li><em>Affinity with the API Gateway or API Security space</em></li>
+	<li><em>Prior experience in (Web) Security or HTTP protocols is a huge plus</em></li>
+	<li><em>Knowledge and experience with productionizing machine learning and statistical models is valuable</em></li>
+	<li><em>Knowledge and experience with columnar databases such as Clickhouse</em></li>
+	<li><em>Experience building REST APIs for analytics services</em></li>
+	<li><em>Experience with cluster and configuration management systems such as Docker, Salt and Kubernetes</em></li>
+	<li><em>Familiarity writing and optimizing advanced SQL queries</em></li>
+	<li><em>Familiarity with Python and Jupyter Notebooks.</em></li>
+	<li><em>Good Linux/UNIX systems knowledge</em><br><br><br></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
