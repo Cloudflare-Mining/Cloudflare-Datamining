@@ -21,8 +21,10 @@
 	"is_template": false,
 	"default_branch": "master",
 	"branches": [
+		"VULN-40256",
 		"feature/fixed-length-proto",
 		"fix/buffering",
+		"fix/producer_index_out_of_range",
 		"master"
 	]
 }
