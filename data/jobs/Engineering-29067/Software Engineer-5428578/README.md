@@ -5,39 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>We are seeking a dynamic and experienced <strong><em>Senior Technical Product Manager</em></strong> to drive digital personalization at Cloudflare. In this position, you will play a pivotal role in the Marketing Technology team to lead the strategy, architecture, and execution of technical solutions to deliver personalized experiences across our digital platforms (ie web personalization).. You will bring your knowledge, experience and skills to leverage Adobe Target and Adobe Experience Cloud for delivering desired business outcomes through targeted content and experiences.&nbsp; Join a high impact team to unlock key capabilities to help the team scale successfully.&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p><strong>About The Team</strong></p>
+<p>We build security products for our customers and work mostly in Go and Rust. One of our challenges is designing architecture that can withstand a huge scale of 50 million peak requests per second. Our flagship products are Managed Rules, Firewall Rules, Rate Limiting and Analytics.&nbsp;</p>
+<p>Software engineers will work with our Product Managers and Security Analysts to define managed protection products which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analysing data passing through our network. We also build systems to help customers understand this data themselves.</p>
+<p><strong>What you'll do</strong></p>
+<p>Working in the security portfolio, that includes the Firewall and Managed Rules, you will take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Develop a comprehensive strategy for web personalization, aligned with business goals and user needs&nbsp;</li>
-	<li>Analyze user data and behavior to identify patterns and preferences, guiding the creation of personalized experiences</li>
-	<li>Develop a strategic roadmap outlining features, enhancements, and timelines for implementing personalized experiences</li>
-	<li>Collaborate with cross-functional teams including UX/UI, engineering, marketing, and sales to implement and optimize personalization strategies</li>
-	<li>Define and prioritize features that enable effective web personalization</li>
-	<li>Drive end-to-end product development, from conceptualization to launch</li>
-	<li>Understand technical aspects of web personalization tools (ie Adobe Target, Adobe Experience Platform) to guide solution architecture and technical design</li>
-	<li>Work closely with web designers, content creators, and developers to implement personalization features&nbsp;</li>
-	<li>Perform detailed business validation during acceptance testing of personalized experiences</li>
-	<li>Effectively communicate product roadmap, releases, and coordinate with stakeholders for successful launch of personalized experiences</li>
-	<li>Monitor KPIs to confirm the delivery of targeted business outcomes</li>
-	<li>Enable the planning and execution of A/B tests to measure the effectiveness of personalized content and iterate based on results</li>
-	<li>Utilize data analytics and user insights to make informed decisions, optimize personalization algorithms, and improve user engagement</li>
+	<li>Prior commercial software development experience</li>
+	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
+	<li>Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
+	<li>Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</li>
+	<li>Can analyse and communicate complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver</li>
+	<li>Driving communication and consensus across teams</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
 </ul>
-<p><strong>Qualifications:</strong></p>
+<p><strong>Bonus Points</strong></p>
+<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
 <ul>
-	<li>Demonstrated experience of 7+ years in technical product management</li>
-	<li>Strong experience in architecting/configuring Adobe Target and implementing technical solutions to deliver web-based personalization</li>
-	<li>2+ years of experience using web analytical tools like Adobe Analytics, Google Analytics, or other web analytics software</li>
-	<li>Highly passionate individual and a team player, with the ability to wear a MarTech ‘scientist’ hat when working with code and data</li>
-	<li>Familiarity with solution development using JavaScript, HTML, CSS, jQuery, Data layers</li>
-	<li>Strong understanding of web analytics, user behavior analysis, and segmentation strategies.</li>
-	<li>Experience partnering with engineering, BI and IT to continuously improve data gathering techniques across all digital touch points and offline sources and help build rich customer profiles</li>
-	<li>Experience supporting marketing business stakeholders with personalization campaign set-up, management and troubleshooting</li>
-	<li>Experience working with engineering teams and guiding solution architecture</li>
-	<li>Ability to prioritize and work in a very fast-paced environment</li>
-	<li>Strong business acumen, combined with a customer-centric approach in identifying, developing, and enabling use cases that truly personalize the digital experience for customers and prospects</li>
-	<li>Excellent analytical skills with the ability to derive actionable insights from data.</li>
-	<li>Strong communication skills with the ability to take complex technical solutions and communicate them in clear verbal and written form to marketing leadership.</li>
+	<li>Deep knowledge of web servers and web protocols</li>
+	<li>Distributed systems</li>
+	<li>Logging pipelines</li>
+	<li>Production API design</li>
+	<li>Web security issues and industry standards</li>
 </ul>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
