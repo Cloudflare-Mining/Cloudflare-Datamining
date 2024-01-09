@@ -2835,7 +2835,8 @@
 																		"description": "Components of a SRV record.",
 																		"properties": {
 																			"name": {
-																				"description": "A valid hostname.",
+																				"deprecated": true,
+																				"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																				"example": "example.com",
 																				"format": "hostname",
 																				"type": "string"
@@ -2855,12 +2856,14 @@
 																				"type": "number"
 																			},
 																			"proto": {
-																				"description": "A valid protocol.",
+																				"deprecated": true,
+																				"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																				"example": "_tcp",
 																				"type": "string"
 																			},
 																			"service": {
-																				"description": "A service type, prefixed with an underscore.",
+																				"deprecated": true,
+																				"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																				"example": "_sip",
 																				"type": "string"
 																			},
@@ -2881,10 +2884,9 @@
 																		"type": "object"
 																	},
 																	"name": {
-																		"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																		"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																		"example": "_sip._tcp.example.com",
 																		"maxLength": 255,
-																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"type": {
@@ -3002,6 +3004,7 @@
 														],
 														"required": [
 															"type",
+															"name",
 															"data"
 														],
 														"title": "SRV Record"
@@ -6168,7 +6171,8 @@
 																				"description": "Components of a SRV record.",
 																				"properties": {
 																					"name": {
-																						"description": "A valid hostname.",
+																						"deprecated": true,
+																						"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																						"example": "example.com",
 																						"format": "hostname",
 																						"type": "string"
@@ -6188,12 +6192,14 @@
 																						"type": "number"
 																					},
 																					"proto": {
-																						"description": "A valid protocol.",
+																						"deprecated": true,
+																						"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																						"example": "_tcp",
 																						"type": "string"
 																					},
 																					"service": {
-																						"description": "A service type, prefixed with an underscore.",
+																						"deprecated": true,
+																						"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																						"example": "_sip",
 																						"type": "string"
 																					},
@@ -6214,10 +6220,9 @@
 																				"type": "object"
 																			},
 																			"name": {
-																				"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																				"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																				"example": "_sip._tcp.example.com",
 																				"maxLength": 255,
-																				"readOnly": true,
 																				"type": "string"
 																			},
 																			"type": {
@@ -6335,6 +6340,7 @@
 																],
 																"required": [
 																	"type",
+																	"name",
 																	"data"
 																],
 																"title": "SRV Record"
@@ -9616,7 +9622,8 @@
 																	"description": "Components of a SRV record.",
 																	"properties": {
 																		"name": {
-																			"description": "A valid hostname.",
+																			"deprecated": true,
+																			"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																			"example": "example.com",
 																			"format": "hostname",
 																			"type": "string"
@@ -9636,12 +9643,14 @@
 																			"type": "number"
 																		},
 																		"proto": {
-																			"description": "A valid protocol.",
+																			"deprecated": true,
+																			"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																			"example": "_tcp",
 																			"type": "string"
 																		},
 																		"service": {
-																			"description": "A service type, prefixed with an underscore.",
+																			"deprecated": true,
+																			"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																			"example": "_sip",
 																			"type": "string"
 																		},
@@ -9662,10 +9671,9 @@
 																	"type": "object"
 																},
 																"name": {
-																	"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																	"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																	"example": "_sip._tcp.example.com",
 																	"maxLength": 255,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"type": {
@@ -9783,6 +9791,7 @@
 													],
 													"required": [
 														"type",
+														"name",
 														"data"
 													],
 													"title": "SRV Record"
@@ -12926,7 +12935,8 @@
 																			"description": "Components of a SRV record.",
 																			"properties": {
 																				"name": {
-																					"description": "A valid hostname.",
+																					"deprecated": true,
+																					"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																					"example": "example.com",
 																					"format": "hostname",
 																					"type": "string"
@@ -12946,12 +12956,14 @@
 																					"type": "number"
 																				},
 																				"proto": {
-																					"description": "A valid protocol.",
+																					"deprecated": true,
+																					"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																					"example": "_tcp",
 																					"type": "string"
 																				},
 																				"service": {
-																					"description": "A service type, prefixed with an underscore.",
+																					"deprecated": true,
+																					"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																					"example": "_sip",
 																					"type": "string"
 																				},
@@ -12972,10 +12984,9 @@
 																			"type": "object"
 																		},
 																		"name": {
-																			"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																			"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																			"example": "_sip._tcp.example.com",
 																			"maxLength": 255,
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"type": {
@@ -13093,6 +13104,7 @@
 															],
 															"required": [
 																"type",
+																"name",
 																"data"
 															],
 															"title": "SRV Record"
@@ -16417,7 +16429,8 @@
 												"description": "Components of a SRV record.",
 												"properties": {
 													"name": {
-														"description": "A valid hostname.",
+														"deprecated": true,
+														"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 														"example": "example.com",
 														"format": "hostname",
 														"type": "string"
@@ -16437,12 +16450,14 @@
 														"type": "number"
 													},
 													"proto": {
-														"description": "A valid protocol.",
+														"deprecated": true,
+														"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 														"example": "_tcp",
 														"type": "string"
 													},
 													"service": {
-														"description": "A service type, prefixed with an underscore.",
+														"deprecated": true,
+														"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 														"example": "_sip",
 														"type": "string"
 													},
@@ -16463,10 +16478,9 @@
 												"type": "object"
 											},
 											"name": {
-												"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+												"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 												"example": "_sip._tcp.example.com",
 												"maxLength": 255,
-												"readOnly": true,
 												"type": "string"
 											},
 											"type": {
@@ -16584,6 +16598,7 @@
 								],
 								"required": [
 									"type",
+									"name",
 									"data"
 								],
 								"title": "SRV Record"
@@ -19721,7 +19736,8 @@
 																	"description": "Components of a SRV record.",
 																	"properties": {
 																		"name": {
-																			"description": "A valid hostname.",
+																			"deprecated": true,
+																			"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																			"example": "example.com",
 																			"format": "hostname",
 																			"type": "string"
@@ -19741,12 +19757,14 @@
 																			"type": "number"
 																		},
 																		"proto": {
-																			"description": "A valid protocol.",
+																			"deprecated": true,
+																			"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																			"example": "_tcp",
 																			"type": "string"
 																		},
 																		"service": {
-																			"description": "A service type, prefixed with an underscore.",
+																			"deprecated": true,
+																			"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																			"example": "_sip",
 																			"type": "string"
 																		},
@@ -19767,10 +19785,9 @@
 																	"type": "object"
 																},
 																"name": {
-																	"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																	"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																	"example": "_sip._tcp.example.com",
 																	"maxLength": 255,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"type": {
@@ -19888,6 +19905,7 @@
 													],
 													"required": [
 														"type",
+														"name",
 														"data"
 													],
 													"title": "SRV Record"
@@ -23031,7 +23049,8 @@
 																			"description": "Components of a SRV record.",
 																			"properties": {
 																				"name": {
-																					"description": "A valid hostname.",
+																					"deprecated": true,
+																					"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																					"example": "example.com",
 																					"format": "hostname",
 																					"type": "string"
@@ -23051,12 +23070,14 @@
 																					"type": "number"
 																				},
 																				"proto": {
-																					"description": "A valid protocol.",
+																					"deprecated": true,
+																					"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																					"example": "_tcp",
 																					"type": "string"
 																				},
 																				"service": {
-																					"description": "A service type, prefixed with an underscore.",
+																					"deprecated": true,
+																					"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																					"example": "_sip",
 																					"type": "string"
 																				},
@@ -23077,10 +23098,9 @@
 																			"type": "object"
 																		},
 																		"name": {
-																			"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																			"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																			"example": "_sip._tcp.example.com",
 																			"maxLength": 255,
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"type": {
@@ -23198,6 +23218,7 @@
 															],
 															"required": [
 																"type",
+																"name",
 																"data"
 															],
 															"title": "SRV Record"
@@ -26367,7 +26388,8 @@
 												"description": "Components of a SRV record.",
 												"properties": {
 													"name": {
-														"description": "A valid hostname.",
+														"deprecated": true,
+														"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 														"example": "example.com",
 														"format": "hostname",
 														"type": "string"
@@ -26387,12 +26409,14 @@
 														"type": "number"
 													},
 													"proto": {
-														"description": "A valid protocol.",
+														"deprecated": true,
+														"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 														"example": "_tcp",
 														"type": "string"
 													},
 													"service": {
-														"description": "A service type, prefixed with an underscore.",
+														"deprecated": true,
+														"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 														"example": "_sip",
 														"type": "string"
 													},
@@ -26413,10 +26437,9 @@
 												"type": "object"
 											},
 											"name": {
-												"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+												"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 												"example": "_sip._tcp.example.com",
 												"maxLength": 255,
-												"readOnly": true,
 												"type": "string"
 											},
 											"type": {
@@ -26534,6 +26557,7 @@
 								],
 								"required": [
 									"type",
+									"name",
 									"data"
 								],
 								"title": "SRV Record"
@@ -29671,7 +29695,8 @@
 																	"description": "Components of a SRV record.",
 																	"properties": {
 																		"name": {
-																			"description": "A valid hostname.",
+																			"deprecated": true,
+																			"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																			"example": "example.com",
 																			"format": "hostname",
 																			"type": "string"
@@ -29691,12 +29716,14 @@
 																			"type": "number"
 																		},
 																		"proto": {
-																			"description": "A valid protocol.",
+																			"deprecated": true,
+																			"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																			"example": "_tcp",
 																			"type": "string"
 																		},
 																		"service": {
-																			"description": "A service type, prefixed with an underscore.",
+																			"deprecated": true,
+																			"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																			"example": "_sip",
 																			"type": "string"
 																		},
@@ -29717,10 +29744,9 @@
 																	"type": "object"
 																},
 																"name": {
-																	"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																	"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																	"example": "_sip._tcp.example.com",
 																	"maxLength": 255,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"type": {
@@ -29838,6 +29864,7 @@
 													],
 													"required": [
 														"type",
+														"name",
 														"data"
 													],
 													"title": "SRV Record"
@@ -32981,7 +33008,8 @@
 																			"description": "Components of a SRV record.",
 																			"properties": {
 																				"name": {
-																					"description": "A valid hostname.",
+																					"deprecated": true,
+																					"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																					"example": "example.com",
 																					"format": "hostname",
 																					"type": "string"
@@ -33001,12 +33029,14 @@
 																					"type": "number"
 																				},
 																				"proto": {
-																					"description": "A valid protocol.",
+																					"deprecated": true,
+																					"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																					"example": "_tcp",
 																					"type": "string"
 																				},
 																				"service": {
-																					"description": "A service type, prefixed with an underscore.",
+																					"deprecated": true,
+																					"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																					"example": "_sip",
 																					"type": "string"
 																				},
@@ -33027,10 +33057,9 @@
 																			"type": "object"
 																		},
 																		"name": {
-																			"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																			"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																			"example": "_sip._tcp.example.com",
 																			"maxLength": 255,
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"type": {
@@ -33148,6 +33177,7 @@
 															],
 															"required": [
 																"type",
+																"name",
 																"data"
 															],
 															"title": "SRV Record"
@@ -37207,7 +37237,8 @@
 												"description": "Components of a SRV record.",
 												"properties": {
 													"name": {
-														"description": "A valid hostname.",
+														"deprecated": true,
+														"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 														"example": "example.com",
 														"format": "hostname",
 														"type": "string"
@@ -37227,12 +37258,14 @@
 														"type": "number"
 													},
 													"proto": {
-														"description": "A valid protocol.",
+														"deprecated": true,
+														"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 														"example": "_tcp",
 														"type": "string"
 													},
 													"service": {
-														"description": "A service type, prefixed with an underscore.",
+														"deprecated": true,
+														"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 														"example": "_sip",
 														"type": "string"
 													},
@@ -37253,10 +37286,9 @@
 												"type": "object"
 											},
 											"name": {
-												"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+												"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 												"example": "_sip._tcp.example.com",
 												"maxLength": 255,
-												"readOnly": true,
 												"type": "string"
 											},
 											"type": {
@@ -37374,6 +37406,7 @@
 								],
 								"required": [
 									"type",
+									"name",
 									"data"
 								],
 								"title": "SRV Record"
@@ -40511,7 +40544,8 @@
 																	"description": "Components of a SRV record.",
 																	"properties": {
 																		"name": {
-																			"description": "A valid hostname.",
+																			"deprecated": true,
+																			"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																			"example": "example.com",
 																			"format": "hostname",
 																			"type": "string"
@@ -40531,12 +40565,14 @@
 																			"type": "number"
 																		},
 																		"proto": {
-																			"description": "A valid protocol.",
+																			"deprecated": true,
+																			"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																			"example": "_tcp",
 																			"type": "string"
 																		},
 																		"service": {
-																			"description": "A service type, prefixed with an underscore.",
+																			"deprecated": true,
+																			"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																			"example": "_sip",
 																			"type": "string"
 																		},
@@ -40557,10 +40593,9 @@
 																	"type": "object"
 																},
 																"name": {
-																	"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																	"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																	"example": "_sip._tcp.example.com",
 																	"maxLength": 255,
-																	"readOnly": true,
 																	"type": "string"
 																},
 																"type": {
@@ -40678,6 +40713,7 @@
 													],
 													"required": [
 														"type",
+														"name",
 														"data"
 													],
 													"title": "SRV Record"
@@ -43821,7 +43857,8 @@
 																			"description": "Components of a SRV record.",
 																			"properties": {
 																				"name": {
-																					"description": "A valid hostname.",
+																					"deprecated": true,
+																					"description": "A valid hostname. Deprecated in favor of the regular 'name' outside the data map. This data map field represents the remainder of the full 'name' after the service and protocol.",
 																					"example": "example.com",
 																					"format": "hostname",
 																					"type": "string"
@@ -43841,12 +43878,14 @@
 																					"type": "number"
 																				},
 																				"proto": {
-																					"description": "A valid protocol.",
+																					"deprecated": true,
+																					"description": "A valid protocol, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the second label of that 'name'.",
 																					"example": "_tcp",
 																					"type": "string"
 																				},
 																				"service": {
-																					"description": "A service type, prefixed with an underscore.",
+																					"deprecated": true,
+																					"description": "A service type, prefixed with an underscore. Deprecated in favor of the regular 'name' outside the data map. This data map field normally represents the first label of that 'name'.",
 																					"example": "_sip",
 																					"type": "string"
 																				},
@@ -43867,10 +43906,9 @@
 																			"type": "object"
 																		},
 																		"name": {
-																			"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values.",
+																			"description": "DNS record name (or @ for the zone apex) in Punycode. For SRV records, the first label is normally a service and the second a protocol name, each starting with an underscore.",
 																			"example": "_sip._tcp.example.com",
 																			"maxLength": 255,
-																			"readOnly": true,
 																			"type": "string"
 																		},
 																		"type": {
@@ -43988,6 +44026,7 @@
 															],
 															"required": [
 																"type",
+																"name",
 																"data"
 															],
 															"title": "SRV Record"
