@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- 1ea53093e1: Add extra options (Hide XY Grid, Hide XY Axis, Category value formater)
+
 ## 5.0.6
 
 ## 5.0.5

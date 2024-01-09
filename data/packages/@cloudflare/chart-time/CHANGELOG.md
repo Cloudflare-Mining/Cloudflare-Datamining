@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- 26e1ad8e83: Add extra options (Hide XY Grid, Hide XY Axis)
+
 ## 5.0.6
 
 ## 5.0.5
