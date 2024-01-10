@@ -9,7 +9,7 @@
 		<li>Secondary DNS with a hidden primary - The nameserver records at the registrar point towards the secondary servers only, essentially treating them as the primary nameservers.</li>
 	</ol>
 	<h3 id="what-is-secondary-dns-override">What is secondary DNS Override?</h3>
-	<p>Secondary DNS Override builds on the Secondary DNS with a hidden primary model by allowing our customers to not only serve records as they tell us to, but also enable them to proxy any A/AAAA/CNAME records through <a href="https://www.cloudflare.com/en-gb/network">Cloudflare's network</a>. This is similar to how Cloudflare as a primary DNS provider currently works. </p>
+	<p>Secondary DNS Override builds on the Secondary DNS with a hidden primary model by allowing our customers to not only serve records as they tell us to, but also enable them to proxy any A/AAAA/CNAME records through <a href="https://www.cloudflare.com/network">Cloudflare's network</a>. This is similar to how Cloudflare as a primary DNS provider currently works. </p>
 	<p>Consider the following example:</p>
 	<p>example.com Cloudflare IP - 192.0.2.0<br>example.com origin IP - 203.0.113.0</p>
 	<p>In order to take advantage of Cloudflare's security and performance services, we need to make sure that the origin IP stays hidden from the Internet. </p>
