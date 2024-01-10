@@ -224,8 +224,8 @@ const navigation = {
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		hasPermission: T => {
-			const K = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
-			return !!(0, a.Tk)(T) || K
+			const F = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
+			return !!(0, a.Tk)(T) || F
 		},
 		tabs: C.Dn
 	}, {
@@ -251,8 +251,8 @@ const navigation = {
 		title: "navigation.account.zero_trust",
 		url: () => {
 			const T = (0, o.e1)(),
-				K = "https://one.dash.cloudflare.com";
-			return T ? `${K}/${T}/` : K
+				F = "https://one.dash.cloudflare.com";
+			return T ? `${F}/${T}/` : F
 		},
 		iconType: "cloudflare-zero-trust",
 		labels: T => (0, n.z1)("zt-sidebar")(T) ? [] : ["external-link"],
@@ -339,8 +339,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: T => {
-				const K = (0, d.tJ)(T);
-				return !(0, m.ky)(K, [l.uD.UnboundEnterpriseTrial])
+				const F = (0, d.tJ)(T);
+				return !(0, m.ky)(F, [l.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -524,16 +524,16 @@ const navigation = {
 			url: "/analytics/originReachability",
 			navigationType: "global-settings",
 			hasPermission: T => {
-				const K = (0, i.nA)(T);
-				return K ? !!(!(0, p.yD)(T) && !!(0, i.ZB)(T, "origin_reachability_dash", "dash_view") && (0, i.tU)(K, "enterprise") && !!(0, v.Ek)(T, "httpRequestsAdaptiveGroups")) : !1
+				const F = (0, i.nA)(T);
+				return F ? !!(!(0, p.yD)(T) && !!(0, i.ZB)(T, "origin_reachability_dash", "dash_view") && (0, i.tU)(F, "enterprise") && !!(0, v.Ek)(T, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			navigationType: "global-settings",
 			hasPermission: T => {
-				const K = (0, i.nA)(T);
-				return K ? !!(!(0, p.yD)(T) && !!(0, i.ZB)(T, "edge_reachability_dash", "dash_view") && (0, i.tU)(K, "enterprise") && !!(0, v.Ek)(T, "nelReportsAdaptiveGroups")) : !1
+				const F = (0, i.nA)(T);
+				return F ? !!(!(0, p.yD)(T) && !!(0, i.ZB)(T, "edge_reachability_dash", "dash_view") && (0, i.tU)(F, "enterprise") && !!(0, v.Ek)(T, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -617,12 +617,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: T => {
-			const K = (0, i.nA)(T);
-			if ((0, p.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !K) return !1;
+			const F = (0, i.nA)(T);
+			if ((0, p.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !F) return !1;
 			const se = !!((0, D.l8)(T) || (0, i.DQ)(T)),
-				ee = !!(0, i.ZB)(T, "spectrum", "enabled"),
-				G = !!(0, i.Ns)(K);
-			return ee || se || !G
+				te = !!(0, i.ZB)(T, "spectrum", "enabled"),
+				G = !!(0, i.Ns)(F);
+			return te || se || !G
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -704,8 +704,8 @@ const navigation = {
 			labels: ["new"],
 			navigationType: "global-settings",
 			hasPermission: T => {
-				const K = (0, i.nA)(T);
-				return K ? !!(0, i.ZB)(T, "firewall", "api_shield_tab") && (0, i.tU)(K, "business") && (0, a.$n)(T, "waf", "firewall.rule") : !1
+				const F = (0, i.nA)(T);
+				return F ? !!(0, i.ZB)(T, "firewall", "api_shield_tab") && (0, i.tU)(F, "business") && (0, a.$n)(T, "waf", "firewall.rule") : !1
 			},
 			tabs: M.Dw
 		}, {
@@ -932,8 +932,8 @@ const navigation = {
 		iconType: "web3",
 		labels: ["new"],
 		hasPermission: T => {
-			const K = (0, r.uF)(T);
-			return ((K == null ? void 0 : K.roles) || []).includes("Trust and Safety") ? !1 : !(0, p.yD)(T)
+			const F = (0, r.uF)(T);
+			return ((F == null ? void 0 : F.roles) || []).includes("Trust and Safety") ? !1 : !(0, p.yD)(T)
 		}
 	}],
 	zeroTrust: [{
@@ -965,5 +965,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: J.G
+	support: X.G
 }
