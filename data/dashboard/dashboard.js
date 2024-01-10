@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "e9c2a791dd30404818355c27ad2f002b94b3f64c",
+					commit: "984257ec81657dba0f83297ad23857d4e3418fb9",
 					env: "production",
-					builtAt: 1704830600881,
-					dashVersion: "a55d720118ed714f9be29594637eeca2cb481740",
+					builtAt: 1704880053756,
+					dashVersion: "9a9aa164f4e73accc8b465351e224ab1902bcf2b",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -9066,7 +9066,6 @@
 					kvNamespace: (0, t.BC)`/${"accountId"}/workers/kv/namespaces/${"namespaceId"}`,
 					d1Database: (0, t.BC)`/${"accountId"}/workers/d1/databases/${"databaseId"}`,
 					editServiceScript: (0, t.BC)`/${"accountId"}/workers/services/edit/${"serviceId"}/${"environmentName"}`,
-					durableObjectsRoot: (0, t.BC)`/${"accountId"}/workers/durable-objects`,
 					durableObjectDetails: (0, t.BC)`/${"accountId"}/workers/durable-objects/view/${"namespaceId"}`,
 					durableObjectDetailsSettings: (0, t.BC)`/${"accountId"}/workers/durable-objects/view/${"namespaceId"}/settings`,
 					manageSubscriptions: (0, t.BC)`/${"accountId"}/billing/subscriptions`,

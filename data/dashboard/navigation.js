@@ -312,6 +312,10 @@ const navigation = {
 			title: "navigation.account.workers.kv",
 			url: "/workers/kv/namespaces"
 		}, {
+			title: "navigation.account.workers.durable_objects",
+			url: "/workers/durable-objects",
+			hasPermission: T => !!(0, n.z1)("durable-objects-ui")(T)
+		}, {
 			title: "navigation.account.workers.queues",
 			url: "/workers/queues",
 			labels: ["beta"],
