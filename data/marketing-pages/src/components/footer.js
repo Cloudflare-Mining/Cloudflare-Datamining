@@ -63,7 +63,7 @@ const Footer = () => (
     </div>
 
     <div className="Footer--legal">
-      © 2022 Cloudflare, Inc. · <a className="Link Link-without-underline" href="https://www.cloudflare.com/privacypolicy/">Privacy</a> · <a className="Link Link-without-underline" href="https://www.cloudflare.com/website-terms/">Terms</a> · <a role="button" id="ot-sdk-btn" className="Link Link-without-underline ot-sdk-show-settings">Cookie Settings</a>
+      © 2024 Cloudflare, Inc. · <a className="Link Link-without-underline" href="https://www.cloudflare.com/privacypolicy/">Privacy</a> · <a className="Link Link-without-underline" href="https://www.cloudflare.com/website-terms/">Terms</a> · <a role="button" id="ot-sdk-btn" className="Link Link-without-underline ot-sdk-show-settings">Cookie Settings</a>
     </div>
   </footer>
 )
