@@ -564,6 +564,18 @@
 		}
 	},
 	{
+		"id": "ctm.allow_origin_steering",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 1248,
+			"key": "ctm.allow_origin_steering",
+			"name": "CTM Allow Origin Steering"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ctm.allow_pop_pools",
 		"feature": {
 			"feature_set": "ctm",
@@ -582,6 +594,18 @@
 			"id": 22,
 			"key": "ctm.allow_region_pools",
 			"name": "CTM Allow Region Pools"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.allow_traffic_steering",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 1247,
+			"key": "ctm.allow_traffic_steering",
+			"name": "CTM Allow Traffic Steering"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1236,6 +1260,18 @@
 		}
 	},
 	{
+		"id": "images.transformations_enabled",
+		"feature": {
+			"feature_set": "stream",
+			"id": 1238,
+			"key": "images.transformations_enabled",
+			"name": "Images - Transformations"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "intel.api_domain_history_limit",
 		"feature": {
 			"feature_set": "intel",
@@ -1836,6 +1872,18 @@
 		}
 	},
 	{
+		"id": "riskscoring.riskscoring_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1246,
+			"key": "riskscoring.riskscoring_enabled",
+			"name": "Risk Scoring - Risk Scoring Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.adv_geoip_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -2184,6 +2232,18 @@
 		}
 	},
 	{
+		"id": "rulesets.max_magic_transit_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1243,
+			"key": "rulesets.max_magic_transit_rules_per_ruleset",
+			"name": "Rulesets - Max Magic Transit Rules Per Ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.max_owned_custom_rulesets",
 		"feature": {
 			"feature_set": "rulesets",
@@ -2334,6 +2394,18 @@
 			"id": 561,
 			"key": "secondary.create_zone",
 			"name": "Secondary DNS Domain Creation"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "snippets.snippets_enabled",
+		"feature": {
+			"feature_set": "snippets",
+			"id": 1207,
+			"key": "snippets.snippets_enabled",
+			"name": "Snippets - Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -2730,6 +2802,18 @@
 			"id": 666,
 			"key": "swg.always_on_browser_isolation_enabled",
 			"name": "Secure Web Gateway - Always-On Browser Isolation Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.dns_resolver_rules_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1242,
+			"key": "swg.dns_resolver_rules_enabled",
+			"name": "Secure Web Gateway - Resolver Rules Enabled"
 		},
 		"allocation": {
 			"type": "bool"

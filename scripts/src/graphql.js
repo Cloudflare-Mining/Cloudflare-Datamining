@@ -50,6 +50,8 @@ async function run() {
 				fields {
 					name
 					description
+					isDeprecated
+					deprecationReason
 				}
 			}\n`;
 			result[type.name] ??= {
@@ -83,6 +85,14 @@ async function run() {
 
 		for (const field of typeFields) {
 			result[type] ??= {};
+			if (field.isDeprecated) {
+				if (field.deprecationReason) {
+					result[type][field.name] = `<small>DEPRECATED (${field.deprecationReason}):</small> ${field.description}`;
+					continue;
+				}
+				result[type][field.name] = `<small>DEPRECATED:</small> ${field.description}`;
+				continue;
+			}
 			result[type][field.name] = field.description;
 		}
 	}
