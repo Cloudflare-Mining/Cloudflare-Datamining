@@ -22,7 +22,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level experience typically gained in 5-8 years working in Security Governance, Risk, and Compliance&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience typically gained in 4-8 years working in Security Governance, Risk, and Compliance&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience conducting and managing security risk assessments</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience recommending mitigating controls and driving risk remediation</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience reporting on risks and program operations to management</span></li>
