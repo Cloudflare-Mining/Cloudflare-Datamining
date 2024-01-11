@@ -1,6 +1,6 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="http://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect" loading="lazy"></figure>
 	<p>Zscalerは15年間、セキュリティ・サービスの実績を積み重ねてきました。Cloudflareの歴史は13年で、Zero Trustの提供は4年というところです。しかし、この記事では、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust"> Zero Trust</a>、<a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse"> SSE</a> 、<a href="https://www.cloudflare.com/learning/access-management/what-is-sase"> SASE</a> の全体において、Cloudflare Oneの機能はZscaler Zero Trust Exchangeを上回っているというお話をしたいと思います。</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -465,7 +465,7 @@
 	<p><strong>Cloudflare Oneの優位性：</strong>当社では多くの時間をかけてテストを行い、次のように明らかな結果を得ることができました。エンドユーザーの視点からすると、Cloudflare Oneのパフォーマンスは群を抜いており、Zscalerを凌駕しています。高帯域幅のアプリケーションを実行している2つのデバイス間のスループットについてテストを実施しました。これらのデバイスはパブリッククラウドのネットワーク内の異なるVPCにありましたが、オンプレミスのプライベートネットワーク内の異なるサブネットに配置することも可能でした。各VPCはCloudflareのAnycast IPトンネルをCloudflareのネットワークへのオンランプとして使用するように設定されており、これにより両方のデバイスがCloudflare Oneを介して安全に接続できるようになりました。そして、双方向で記録されたスループット結果は6Gbpsで、これはZscalerなどが設定した制限を大幅に上回る容量です。このように、お客様の組織において、新たに採用した広帯域のアプリケーションが、採用したZero Trustプラットフォームによって制約を受ける心配がなくなりました。</p>
 	<h4 id="3-">3）その他のインターネットとの接続性向上</h4>
 	<p>Zscalerは「インターネットへの最速のオンランプ」を謳い文句にしています。しかし、これはある種のまやかしで、オンランプは諸問題の一部分に過ぎないのです。オンランプの先に高速で効果的な接続機能がなければ、Zscalerは単なるSSEプラットフォームに過ぎず、SASEとは言えません。Zscalerはプラットフォームのネットワーキング部分にフォーカスしていない、ということです。</p>
-	<p><strong>Cloudflare Oneの優位性：</strong>10,500を超える相互接続ピアがあり、圧倒的な数字となっています。当社ではZscalerのようにネットワークエッジで顧客を引き渡すことはありません。Cloudflareの仮想バックボーンをトランジットに使用できます。Cloudflareネットワークは1日あたり3兆件以上のリクエストをルーティングし、Argo Smart Routing にリアルタイムの輻輳を検出し、 最速かつ最も信頼性の高いネットワークパスを介して<a href="https://blog.cloudflare.com/ja-jp/argo-for-packets-generally-available-ja-jp">IPパケットをルーティング</a>するための固有バンテージ・ポイントを提供します。</p>
+	<p><strong>Cloudflare Oneの優位性：</strong>10,500を超える相互接続ピアがあり、圧倒的な数字となっています。当社ではZscalerのようにネットワークエッジで顧客を引き渡すことはありません。Cloudflareの仮想バックボーンをトランジットに使用できます。Cloudflareネットワークは1日あたり3兆件以上のリクエストをルーティングし、Argo Smart Routing にリアルタイムの輻輳を検出し、 最速かつ最も信頼性の高いネットワークパスを介して<a href="http://blog.cloudflare.com/ja-jp/argo-for-packets-generally-available-ja-jp">IPパケットをルーティング</a>するための固有バンテージ・ポイントを提供します。</p>
 	<p>機能性の重要性について触れたので、ここで本記事を締めくくりたいと思います。すべてのピアリングや、全体における実績のある優位性は、提供サービスを考慮しなければ、それほど重要なことではないでしょう。Zscalerは、SWGやZTNAなどのサービスを提供することで地域のDCハブの必要性を排除できるとしています。しかし、Webアプリケーション・ファイアウォール、ロードバランシング、権威DNS、DDoS保護などを使用して、クラウドアプリケーションやオンプレミスサーバーをエンドツーエンド（インターネットに公開されている場合はインバウンドトラフィックも含む）で保護するという組織のニーズにまったく対応していません。</p>
 	<p>この4年間で、導入の簡便性、ネットワーク回復力、革新的な速度など、提供するサービスの完全性において当社はZscalerを上回りました。<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler">詳細はこちらをご覧ください。</a>私たちと一緒に次の4年、さらにその先を見据えていきませんか。</p>
 </div>

@@ -1,11 +1,11 @@
 <div class="mb2 gray5">4 min read</div>
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/07/image1-35-7.png" class="kg-image" alt="" loading="lazy" width="1200" height="675"></figure>
+	<figure class="kg-card kg-image-card"><img src="http://blog.cloudflare.com/content/images/2023/07/image1-35-7.png" class="kg-image" alt="" loading="lazy" width="1200" height="675"></figure>
 	<p>ドメインを新しいレジストラに移管することは日々行うことではありません。また、プロセスの手順を間違えるとダウンタイムや中断を招く可能性があります。そこで、今回のSpeed Weekでドメイン移管チェックリストをご用意しました。私たちは、誰もが自分のドメインを、手順を見落としたり疑問を抱くことなくCloudflare Registrarに迅速に移管できるようにしたいと考えています。</p>
 	<h2 id="%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%A7%BB%E7%AE%A1%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88">ドメイン移管チェックリスト</h2>
 	<h3 id="%E9%81%A9%E6%A0%BC%E6%80%A7%E3%81%AE%E7%A2%BA%E8%AA%8D">適格性の確認</h3>
 	<ul>
-		<li><strong>Cloudflareのネームサーバーの利用を考えていることを確認します：</strong>当社のレジストラは<a href="https://blog.cloudflare.com/cloudflare-registrar">Cloudflareの他の製品をご利用の方向けに構築されています</a>。そのため、Cloudflareで登録されたドメインは、当社のネームサーバー以外を利用することはできません。<em>お客様のドメインがCloudflare以外のネームサーバーを必要とする場合、当社はお客様に適したレジストラではありません。</em></li>
+		<li><strong>Cloudflareのネームサーバーの利用を考えていることを確認します：</strong>当社のレジストラは<a href="http://blog.cloudflare.com/cloudflare-registrar">Cloudflareの他の製品をご利用の方向けに構築されています</a>。そのため、Cloudflareで登録されたドメインは、当社のネームサーバー以外を利用することはできません。<em>お客様のドメインがCloudflare以外のネームサーバーを必要とする場合、当社はお客様に適したレジストラではありません。</em></li>
 		<li><strong>Cloudflareがお客様のドメインのTLDをサポートしていることを確認します：</strong>当社が<a href="https://www.cloudflare.com/tld-policies">現在サポートしているTLDの全リストはこちら</a>からご覧いただけます。<em>注：2023年7月中旬までに.devと.appのサポートを予定しています。</em></li>
 		<li><strong>お客様のドメインがプレミアムドメインまたは国際化ドメイン名（IDN）でないことを確認します：</strong>現在、Cloudflareはプレミアムドメインや国際化ドメイン名（Unicode）をサポートしていません。</li>
 		<li><strong>ドメインが過去60日以内に登録または移管されていないことを確認します：</strong>ICANNの規則では、ドメインが過去60日以内に登録または移管されている場合、そのドメインを移管することは禁止されています。</li>
@@ -24,7 +24,7 @@
 		<li><strong>Cloudflareアカウントに有効なクレジットカードを追加します：</strong>まだCloudflareダッシュボードの請求プロフィールに支払い方法を追加していない場合、ドメインを追加する際に追加するよう求められます。</li>
 		<li><strong>CloudflareのDNSレコードを見直します：</strong>ドメイン追加後、<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#review-dns-records">Cloudflareが自動的に設定したDNSレコード</a>と現在のレジストラで使用しているレコードと照合し、漏れがないことを確認します。</li>
 		<li><strong>DNSのネームサーバーをCloudflareに変更します：</strong>ドメインを移管するには<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup">ネームサーバーをCloudflareに設定</a>する必要があります。</li>
-		<li>（<strong>オプション）Cloudflare Email Routingを設定します：</strong><a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">メール転送機能</a>を使用している場合、<a href="https://blog.cloudflare.com/migrating-to-cloudflare-email-routing">こちらのガイドに従い、Cloudflare Email Routingに移行</a>します。</li>
+		<li>（<strong>オプション）Cloudflare Email Routingを設定します：</strong><a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing">メール転送機能</a>を使用している場合、<a href="http://blog.cloudflare.com/migrating-to-cloudflare-email-routing">こちらのガイドに従い、Cloudflare Email Routingに移行</a>します。</li>
 		<li><strong>DNSの変更が反映されるまで待機します：</strong>レジストラによるネームサーバーの更新処理は24時間かかることがあります。 Cloudflareがこれらの変更が反映されたことを確認すると、お客様宛にメールが届きます。このプロセスが完了するまで、ドメインの移管作業を続行することはできません。</li>
 	</ul>
 	<h3 id="%E7%A7%BB%E7%AE%A1%E6%89%8B%E7%B6%9A%E3%81%8D%E3%81%AE%E9%96%8B%E5%A7%8B%E3%81%A8%E7%A2%BA%E8%AA%8D">移管手続きの開始と確認</h3>
@@ -41,6 +41,6 @@
 	<h3 id="%E7%A7%BB%E7%AE%A1%E5%BE%8C">移管後</h3>
 	<ul>
 		<li><strong>サイトとメールのテストを実施します：</strong>移管完了後、サイトが正常に機能していることをテストします。問題が発生した場合や質問がある場合、いつでも<a href="https://community.cloudflare.com">コミュニティフォーラム</a> または <a href="https://discord.cloudflare.com">Discordサーバー</a>から私たちまでお問い合わせください。</li>
-		<li><strong>何か新しいものを構築します：</strong>おそらくこれは、購入したもののまだ何も立ち上げていないドメインでしょう。ドメインを移管した今、このドメインで何か新しいものを構築して立ち上げる絶好のチャンスです。<a href="https://developers.cloudflare.com/pages/get-started/c3">C3を使用してお好みのフロントエンドフレームワークで構築した新しいプロジェクトを立ち上げたり</a>、<a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity">Cloudflare PagesでNuxt.jsとSanity.ioを使用してブログを構築</a>したり、<a href="https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers">Cloudflare Workersを使用して始めてのChatGPTプラグインを構築</a>してみましょう。</li>
+		<li><strong>何か新しいものを構築します：</strong>おそらくこれは、購入したもののまだ何も立ち上げていないドメインでしょう。ドメインを移管した今、このドメインで何か新しいものを構築して立ち上げる絶好のチャンスです。<a href="https://developers.cloudflare.com/pages/get-started/c3">C3を使用してお好みのフロントエンドフレームワークで構築した新しいプロジェクトを立ち上げたり</a>、<a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity">Cloudflare PagesでNuxt.jsとSanity.ioを使用してブログを構築</a>したり、<a href="http://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers">Cloudflare Workersを使用して始めてのChatGPTプラグインを構築</a>してみましょう。</li>
 	</ul>
 </div>

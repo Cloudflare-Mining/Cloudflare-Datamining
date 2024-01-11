@@ -1,6 +1,6 @@
 <div class="mb2 gray5">15 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
-	<p><em>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out <a href="https://blog.cloudflare.com/squeezing-the-firehose">another blog post on compression</a>, where we optimized throughput 4.5x for both disks and network.</em></p>
+	<p><em>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out <a href="http://blog.cloudflare.com/squeezing-the-firehose">another blog post on compression</a>, where we optimized throughput 4.5x for both disks and network.</em></p>
 	<p><img src="https://images.unsplash.com/photo-1511971523672-53e6411f62b9?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=79649c78f5bbe2b0beb5504eb08471b8" alt="" loading="lazy"><br>
 		<small>Photo by <a href="https://unsplash.com/@alex_povolyashko?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Alex Povolyashko</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit">Unsplash</a></small>
 	</p>
@@ -10,10 +10,10 @@
 	<p>Thankfully, we were able to roll back the <code>http</code> cluster upgrade relatively easily, due to heavy versioning of both the OS and the higher level software stack. If there's one takeaway from this blog post, it's to take advantage of consistent versioning.</p>
 	<h3 id="highleveldifferences">High level differences</h3>
 	<p>We upgraded one Kafka <code>http</code> node, and it did not go as planned:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/1.png"><img src="https://blog.cloudflare.com/content/images/2018/04/1.png" alt="1" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/1.png"><img src="http://blog.cloudflare.com/content/images/2018/04/1.png" alt="1" loading="lazy"></a></p>
 	<p>Having 5x CPU usage was definitely an unexpected outcome. For control datapoints, we compared to a node where no upgrade happened, and an intermediary node that received a software stack upgrade, but not an OS upgrade. Neither of these two nodes experienced the same CPU saturation issues, even though their setups were practically identical.</p>
 	<p>For debugging CPU saturation issues, we call on <code>perf</code> to fish out details:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/2-3.png"><img src="https://blog.cloudflare.com/content/images/2018/04/2-3.png" alt="2-3" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/2-3.png"><img src="http://blog.cloudflare.com/content/images/2018/04/2-3.png" alt="2-3" loading="lazy"></a></p>
 	<p><em>The command used was: <code>perf top -F 99</code>.</em></p>
 	<h3 id="rcustalls">RCU stalls</h3>
 	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html">read-copy update (RCU)</a> stalls:</p>
@@ -122,30 +122,30 @@ Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpat
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/9.png"><img src="https://blog.cloudflare.com/content/images/2018/04/9.png" alt="9" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/9.png"><img src="http://blog.cloudflare.com/content/images/2018/04/9.png" alt="9" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/10.png"><img src="https://blog.cloudflare.com/content/images/2018/04/10.png" alt="10" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/10.png"><img src="http://blog.cloudflare.com/content/images/2018/04/10.png" alt="10" loading="lazy"></a></p>
 	<p>At first it looked like Jessie was doing <code>writev</code> instead of <code>sendfile</code>, but the full flamegraphs revealed that Strech was executing <code>sendfile</code> a lot slower.</p>
 	<p>If you highlight <code>sendfile</code>:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/11.png"><img src="https://blog.cloudflare.com/content/images/2018/04/11.png" alt="11" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/11.png"><img src="http://blog.cloudflare.com/content/images/2018/04/11.png" alt="11" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/12.png"><img src="https://blog.cloudflare.com/content/images/2018/04/12.png" alt="12" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/12.png"><img src="http://blog.cloudflare.com/content/images/2018/04/12.png" alt="12" loading="lazy"></a></p>
 	<p>And zoomed in:</p>
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/13.png"><img src="https://blog.cloudflare.com/content/images/2018/04/13.png" alt="13" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/13.png"><img src="http://blog.cloudflare.com/content/images/2018/04/13.png" alt="13" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/14.png"><img src="https://blog.cloudflare.com/content/images/2018/04/14.png" alt="14" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/14.png"><img src="http://blog.cloudflare.com/content/images/2018/04/14.png" alt="14" loading="lazy"></a></p>
 	<p>These two look very different.</p>
 	<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
 	<p>We'll dive into the differences in the next section.</p>
@@ -288,11 +288,11 @@ lock_timer_base                        140085
 	<ul>
 		<li>Jessie</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/15.png"><img src="https://blog.cloudflare.com/content/images/2018/04/15.png" alt="15" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/15.png"><img src="http://blog.cloudflare.com/content/images/2018/04/15.png" alt="15" loading="lazy"></a></p>
 	<ul>
 		<li>Stretch</li>
 	</ul>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/16.png"><img src="https://blog.cloudflare.com/content/images/2018/04/16.png" alt="16" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/16.png"><img src="http://blog.cloudflare.com/content/images/2018/04/16.png" alt="16" loading="lazy"></a></p>
 	<p>We then traced the functions that were different:</p>
 	<ul>
 		<li>Jessie</li>
@@ -573,16 +573,16 @@ udp-fragmentation-offload: on
         tx-tcp-ecn-segmentation: on
 </code></pre>
 	<p>The last missing piece we found was that offload changes are applied only during connection initiation, so we restarted Kafka, and we immediately saw a performance improvement (green line):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/17.png"><img src="https://blog.cloudflare.com/content/images/2018/04/17.png" alt="17" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/17.png"><img src="http://blog.cloudflare.com/content/images/2018/04/17.png" alt="17" loading="lazy"></a></p>
 	<p>Not enabling offload features when possible seems like a pretty bad regression, so we filed a ticket for <code>systemd</code>:</p>
 	<ul>
 		<li><a href="https://github.com/systemd/systemd/issues/6629">https://github.com/systemd/systemd/issues/6629</a></li>
 	</ul>
 	<p>In the meantime, we work around our upstream issue by enabling offload features automatically on boot if they are disabled on VLAN interfaces.</p>
 	<p>Having a fix enabled, we rebooted our <code>logs</code> Kafka cluster to upgrade to the latest kernel, and our 5 day CPU usage history yielded positive results:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/18.png"><img src="https://blog.cloudflare.com/content/images/2018/04/18.png" alt="18" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/18.png"><img src="http://blog.cloudflare.com/content/images/2018/04/18.png" alt="18" loading="lazy"></a></p>
 	<p>The DNS cluster also yielded positive results, with just 2 nodes rebooted (purple line going down):</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2018/04/19.png"><img src="https://blog.cloudflare.com/content/images/2018/04/19.png" alt="19" loading="lazy"></a></p>
+	<p><a href="http://blog.cloudflare.com/content/images/2018/04/19.png"><img src="http://blog.cloudflare.com/content/images/2018/04/19.png" alt="19" loading="lazy"></a></p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>It was an error on our part to hit performance degradation without a good regression framework in place to catch the issue. Luckily, due to our heavy use of version control, we managed to bisect the issue rather quickly, and had a temp rollback in place while root causing the problem.</p>
 	<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
