@@ -7,16 +7,15 @@
 </div>
 <p><strong>About the Department</strong></p>
 <p>As a Product Manager at Cloudflare, you are responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare sit at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</p>
-<h4><strong>About the Role</strong></h4>
+<h4>About the Role</h4>
 <p>We are hiring a PM to help build products that enable customers to transform their corporate network.</p>
 <p>Cloudflare provides a full stack of networking-as-a-service products that allow customers to build and operate secure, reliable, and fast networks without purchasing traditional network hardware. Cloudflare’s network underpins mission-critical infrastructure, always-on applications, small businesses, and everything in between. Our customers rely on the performance, security, reliability, and visibility provided by our network to power their business.&nbsp;</p>
-<p>We’re looking for a PM to define and execute on the vision to replace “next generation” network firewalls with a modern, network-as-a-service offering leveraging the full power and threat data of the Cloudflare network. Traditional network firewalls, and their virtualized equivalents, all suffer from the same scale, cost, and administration challenges of other network hardware that Cloudflare replaces. It’s time to build a better solution and reinvent the market.</p>
-<p>As Product Manager for Magic Firewall, your job will be to:</p>
+<p>We’re looking for a PM to own the vision and execution for Magic WAN, Cloudflare’s modern alternative to legacy private connectivity and SD-WAN. Users and applications have moved outside of the corporate perimeter and the Internet has become the new WAN, but current solutions haven’t kept up with these changes. It’s time to build a better solution and reinvent the market.</p>
+<p>As Product Manager for Magic WAN, your job will be to:</p>
 <ul>
-	<li>Ensure customers are able to easily analyze and secure network traffic to and from any network location—whether on the Internet or across the corporate environment.</li>
-	<li>Build innovative solutions to customers’ network security problems that leverage the unique strengths of Cloudflare: a massive, highly interconnected network spanning the world, threat intelligence distilled from an unparalleled vantage point on the Internet, and a high-velocity engineering organization that ships early and often.</li>
-	<li>Harness cutting edge machine learning (ML) and big data analysis techniques to build solutions that detect and mitigate network security threats with minimal customer involvement.</li>
-	<li>Think through how to make a great, easy-to-use product that customers love, and drive the full product life cycle from core user needs discovery through to pricing and packaging. Ship continuous software and process improvements to support your products’ sustained growth.&nbsp;</li>
+	<li>Ensure customers are able to easily connect any source or destination for their private network – from remote users to branch offices to cloud networks.</li>
+	<li>Build innovative solutions to customers’ networking problems that leverage the unique strengths of Cloudflare: a massive, highly interconnected network spanning the world, intelligence distilled from an unparalleled vantage point on the Internet, and a high-velocity engineering organization that ships early and often.</li>
+	<li>Think through how to make a great, easy-to-use product that customers love, and drive the full product life cycle from core user needs discovery through to pricing and packaging. Ship continuous software and process improvements to support your products’ sustained growth.</li>
 </ul>
 <p><strong>What You’ll Do</strong></p>
 <p>As a member of the growing team of product managers your responsibilities include:</p>
@@ -32,7 +31,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <p>You are entrepreneurial-minded and thrive in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get consensus, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details. You have several years of experience working with enterprise, SaaS, or security technologies. You have a passion for building SaaS products and want to solve the problems of performance, security, and reliability of the Internet.&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Minimum 2 years of product management or equivalent experience with demonstrated ability to discover opportunities, and then define and deliver products.</li>
+	<li>Minimum 4 years of product management or equivalent experience with demonstrated ability to discover opportunities, and then define and deliver products.</li>
 	<li>Exceptional communication, presentation, organizational, and analytical skills.</li>
 	<li>Demonstrated ability to lead, drive consensus, and deliver in a matrix organization with multiple stakeholders.</li>
 	<li>Must be able to define and manage complex process and/or product issues of a broad scope using independent judgment.</li>
