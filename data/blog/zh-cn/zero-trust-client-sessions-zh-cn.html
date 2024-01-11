@@ -6,7 +6,7 @@
 	<h3 id="-">用会话保护流量</h3>
 	<p>我们打造了基于 Zero Trust 客户端的会话，旨在增强 Cloudflare Zero Trust 网络访问（ZTNA）的安全性。Zero Trust 客户端是运行在用户机器上的软件，将该机器要发送到互联网的所有流量转发到 Cloudflare。其中包括发送到内部 IP 地址和主机名（通常包含敏感的业务应用程序）的流量。这些敏感的应用程序过去是通过 VPN 来访问的。不同于 VPN，Cloudflare 的 ZTNA 允许管理员就谁能访问特定资源设置精细化的策略。唯一不足之处是，一旦用户的机器使用 Zero Trust 客户端接入，就维持一个永远开启的会话。这使遗失/被盗的笔记本电脑、共享工作站和个人设备面临更大的风险。我们打造基于 Zero Trust 客户端的会话就是为了解决这个问题。</p>
 	<p>基于 Zero Trust 客户端的会话要求用户通过其身份提供商重新验证，才能访问特定资源。只有用户试图访问受保护的资源时，验证弹窗才会被触发。这可以防止在可能根本不必要的情况下弹窗。管理员可根据资源指定希望用户重新验证的频率。之所以能这样做，是因为用户上一次成功的验证已被保存，并根据配置会话的任何 ZTNA 策略进行评估。</p>
-	<figure class="kg-card kg-image-card"><img src="http://blog.cloudflare.com/content/images/2022/03/image1-76.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-76.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="--1">我们在测试期间学到的东西</h3>
 	<p>基于 Zero Trust 客户端的会话测试期间，我们与客户和 Cloudflare 自己的安全团队紧密配合，以确定能立即改进的领域。我们在正式发布前确定了两个重大的改进领域：弹窗（有可能造成干扰）和基于浏览器的验证（并非总是可能）。我们发现了一些新的策略，可以在不过分干扰的情况下恰当地触发身份验证弹窗。将来，用户将能控制何时收到验证通知。另一个改进领域是，在某些机器和操作系统上，基于浏览器的验证并非始终可行。我们计划增加一个选项，从 Zero Trust 客户端本身直接进行验证。</p>
 	<h3 id="--2">下一步</h3>
