@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>**This position is based in&nbsp;<span style="text-decoration: underline;">Mexico and is applicable only to Mexican Citizens</span>**</strong></p>
+<p><strong>Available Locations:</strong> Remote Mexico</p>
 <p><strong>About the Team</strong></p>
 <p>The Corporate Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. As an analyst on this highly strategic &amp; visible team this individual will drive partnership with Cloudflare’s G&amp;A organizations.&nbsp;The ideal candidate possesses excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and is passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth.</p>
 <p><strong>What you'll do</strong></p>
@@ -33,6 +33,7 @@
 	<li>Advanced/ working proficiency with English mandatory both written and verbal.</li>
 </ul>
 <p><span style="text-decoration: underline;"><em><strong>***Please submit resume in English only.&nbsp;</strong></em></span></p>
+<p><span style="text-decoration: underline;"><em><strong>**This position is based in&nbsp;Mexico and is applicable only to Mexican Citizens**</strong></em></span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

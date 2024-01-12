@@ -32,7 +32,7 @@
 	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
 	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</li>
 </ul>
-<p>&nbsp;</p>
+<p><span style="font-weight: 400;"><strong>Available Locations</strong>: London, Remote UK, Lisbon, and Remote Portugal</span></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

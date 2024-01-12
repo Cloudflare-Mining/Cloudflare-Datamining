@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4>Available Locations: Remote US</h4>
 <h4>About the Role</h4>
 <ul>
 	<li>Support the design and execution of a holistic Employee Listening measurement strategy, including design and administration of lifecycle and ad hoc surveys and integration of insights across the talent lifecycle.</li>

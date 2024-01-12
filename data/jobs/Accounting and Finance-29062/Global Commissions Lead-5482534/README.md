@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>**This position is based in <span style="text-decoration: underline;">Mexico City, Mexico and is applicable only to Mexican Citizens</span>**</strong></h4>
+<h4>Available Locations: Remote Mexico</h4>
 <h4>About the role</h4>
 <p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy.</p>
 <h4>What you'll do</h4>
@@ -31,7 +31,9 @@
 	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
 	<li>Bi-lingual Spanish and English required, written and verbal.</li>
 </ul>
-<p>&nbsp;</p>
+<p></p>
+<h4><strong>**This position is based in <span style="text-decoration: underline;">Mexico City, Mexico and is applicable only to Mexican Citizens</span>**</strong></h4>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

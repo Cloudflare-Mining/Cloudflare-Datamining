@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>**This position is based in <span style="text-decoration: underline;">Mexico and is applicable ONLY to Mexican Citizens</span>**</strong></h4>
+<h4>Available Locations: Remote Mexico</h4>
 <p><strong>About the Team</strong></p>
 <p>The GTM Finance team is responsible for top-down planning, budgeting, forecasting, analysis that supports our go-to-market strategy and execution. We are looking for an individual with strong analytical horsepower to join the team to provide analytics and decision-making support to Cloudflare’s GTM Leadership Team. The ideal candidate is passionate about problem solving and insight discovery, as well as building high quality repeatable processes that scale with our rapid growth.</p>
 <p><strong>What you'll do</strong></p>
@@ -36,7 +36,9 @@
 		</ul>
 	</li>
 </ul>
-<p>&nbsp;</p>
+<p></p>
+<h4><strong>**This position is based in <span style="text-decoration: underline;">Mexico and is applicable ONLY to Mexican Citizens</span>**</strong></h4>
+<p></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
