@@ -67,6 +67,7 @@ const browser = await puppeteer.launch({
 		width: 1920,
 		height: 1080,
 	},
+	headless: 'new',
 });
 const fetchURL = async function(url, waitFor, slug) {
 	const page = await browser.newPage();

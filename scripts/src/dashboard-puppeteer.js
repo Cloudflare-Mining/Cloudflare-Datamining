@@ -28,7 +28,7 @@ async function run() {
 				height: 1080,
 			},
 			executablePath: executablePath(),
-			headless: true,
+			headless: 'new',
 		});
 		const page = await browser.newPage();
 		await page.setUserAgent(userAgent);
