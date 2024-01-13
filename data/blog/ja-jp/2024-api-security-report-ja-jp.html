@@ -1,0 +1,89 @@
+<div class="mb2 gray5">10 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/01/Artboard-1-1.png" class="kg-image" alt="Introducing Cloudflare’s 2024 API security and management report" loading="lazy" width="1465" height="845"></figure>
+	<p>皆様は、CloudflareをWebの20%近くに関わる企業としてご存じかもしれません。しかし、Webサイトと静的コンテンツに関わり、保護することは、当社が行っていることのほんの一部にすぎません。実際、当社のネットワーク上の動的トラフィックの半分以上は、Webページではなく、API（Application Programming Interface）トラフィックで構成されています。このブログでは、<a href="https://www.cloudflare.com/2024-api-security-management-report">2024年APIセキュリティレポート</a>を紹介し、その補足として、私たちがどのようにお客様を保護しているのか、そしてそれがAPIセキュリティの将来にとってどのような意味を持つのかを詳しくご紹介します。他の業界APIレポートとは異なり、Cloudflareのレポートはユーザー調査に基づいておらず、代わりに実際のトラフィックデータに基づいて作成されています。</p>
+	<p>今年のレポートで最も重要なポイントは、<em>APIトラフィックを正しく特定できていると思っていても、</em>多くの企業は正確なAPIインベントリを持っていないということです。Cloudflareは、次の<a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">2つのアプローチ</a>を用いて、企業が公開されているすべてのAPIを発見できるよう支援します。まず、お客様は当社のAPIディスカバリーツールを設定し、既知のAPIトラフィックに存在する識別トークンを監視します。次に、機械学習モデルを使用して、これらの既知のAPI呼び出しをスキャンするだけでなく、<em>すべて</em>のHTTPリクエストをスキャンし、不明なAPIトラフィックを特定します。これらのアプローチの違いは顕著です。<strong>機械学習ベースの発見によって、</strong>自己申告のアプローチよりも30.7％多くのAPIエンドポイントを発見し、APIのほぼ3分の1が<a href="https://www.cloudflare.com/learning/security/api/what-is-shadow-api">「シャドーAPI」</a>であり、適切にインベントリ化され、セキュア化されていない可能性があることを示唆しています。</p>
+	<p>APIセキュリティレポート初版のハイライトをご覧ください。<a href="https://www.cloudflare.com/2024-api-security-management-report">レポートの全文</a>では、2024年の予測とともに、私たちが目にし、防いでいる脅威に関する最新の統計が掲載されています。私たちは、組織におけるAPIセキュリティ重視の欠如が、複雑性の増大とコントロールの喪失につながり、生成AIへのアクセスの増加がAPIリスクの増大につながると予測しています。また、2024年にはAPIビジネスロジック攻撃の増加も予測しています。最後に、上記のすべてのリスクは、APIセキュリティに関するガバナンスの強化を必要とします。</p>
+	<h3 id="%E9%9A%A0%E3%82%8C%E3%81%9F%E6%94%BB%E6%92%83%E5%AF%BE%E8%B1%A1%E9%A0%98%E5%9F%9F">隠れた攻撃対象領域</h3>
+	<p>WebページとAPIはどう違うのか？APIは、アプリケーションがバックグラウンドでデータを取得したり、他のアプリケーションに作業を要求したりするための、迅速かつ容易な方法です。例えば、気象予報士でなくても誰でも気象情報アプリを書くことができます。つまり、開発者はページやモバイルアプリケーションの構造を書き、ユーザーの位置情報を使用して気象情報APIに予報を問い合わせることができるのです。重要なことに、ほとんどのエンドユーザーは、データがアプリの所有者ではなく、気象情報APIから提供されたものであることを知らないということです。</p>
+	<p>APIはインターネットの重要な「配管」である一方、悪用されやすいものでもあります。OptusではAPIの認証と認可に欠陥があったため、1,000万のユーザーレコードを<a href="https://www.bleepingcomputer.com/news/security/optus-hacker-apologizes-and-allegedly-deletes-all-stolen-data">脅威アクターが販売する</a>という事態につながり、政府はこれらのAPI攻撃<a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-208a">について警告しています</a>。組織内の開発者は、より効率的に機能するために、自分たちのアプリケーションで使用されるインターネットに面したAPIを作成することがよくありますが、これらの新しいパブリックインターフェイスを保護するのはセキュリティチームの責任である。APIを文書化し、セキュリティチームの注意を喚起するプロセスが明確でない場合、APIはシャドーAPIとなり、本番稼動しているが、組織の知らないところで稼動していることになります。このように、セキュリティ上の課題が顕在化し始めます。</p>
+	<p>この問題を解決するために、Cloudflareは<a href="https://developers.cloudflare.com/api-shield/security/api-discovery">API Discovery</a>をリリースしました。最新のリリースを<a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">紹介した</a>とき、正確なAPIインベントリを持っている組織がいかに少ないかに触れました。セキュリティチームは、インベントリを構築するために「電子メールで問い合わせる」アプローチを採用せざるを得ないときがあります、そうすると、APIが変更された次のアプリケーションのリリース時には、レスポンスがすぐに古くなってしまいます。より良い方法は、新しいリリースに合わせて、コードベースの変更によってAPIの変更を追跡することです。しかし、これには、能動的に保守されているコードのみをインベントリ化するという欠点があります。レガシーアプリケーションは、本番稼働のトラフィックを受信したにもかかわらず、新しいリリースを見ない可能性があります。</p>
+	<p>API管理に対するCloudflareのアプローチは、機械学習ベースのAPIディスカバリーとネットワークトラフィック検査の組み合わせを使用して、包括的で正確なAPIインベントリを作成することを含んでいます。これは、顧客がインターネットに面したエンドポイントを管理し、APIの健全性を監視できる<a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a>製品に不可欠です。API Gatewayはまた、顧客がセッション識別子（通常はヘッダーまたはクッキー）を使用してAPIトラフィックを識別することを可能にし、これはディスカバリプロセスのためにAPIトラフィックを特定するのに役立ちます。</p>
+	<p>すでに述べたように、私たちの分析は、知識豊富な顧客でさえAPIトラフィックのかなりの部分を見落としていることが多いことを明らかにしています。セッションベースのAPIディスカバリー（APIセッションを使用してトラフィックを特定する）と機械学習ベースのAPIディスカバリー（<em>すべて</em>の受信トラフィック分析する）を比較すると、後者の方が平均で30.7％多くのエンドポイントを発見できることがわかりました。広範なトラフィック分析なしでは、APIインベントリの約3分の1を見逃している可能性があります。</p>
+	<p>Cloudflareの顧客でない場合でも、APIインベントリの構築を始めることができます。APIは通常<a href="https://spec.openapis.org/oas/latest.html">OpenAPI</a>と呼ばれる標準化されたフォーマットでカタログ化されており、多くの開発ツールはOpenAPIフォーマットのスキーマファイルを構築できます。もしこの形式のファイルがある場合は、これらのスキーマを収集することでAPIインベントリの構築を始めることができます。`<code>my_schema.json</code>`という名前のOpenAPI v3フォーマットのファイルがあると仮定して、スキーマファイルからエンドポイントを取り出す方法の例を次に示します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">import json
+import csv
+from io import StringIO
+
+# Load the OpenAPI schema from a file
+with open("my_schema.json", "r") as file:
+    schema = json.load(file)
+
+# Prepare CSV output
+output = StringIO()
+writer = csv.writer(output)
+
+# Write CSV header
+writer.writerow(["Server", "Path", "Method"])
+
+# Extract and write data to CSV
+servers = schema.get("servers", [])
+for server in servers:
+    url = server['url']
+    for path, methods in schema['paths'].items():
+        for method in methods.keys():
+            writer.writerow([url, path, method])
+
+# Get and print CSV string
+csv_output = output.getvalue().strip()
+print(csv_output)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>アプリケーションの開発プロセスの最初からOpenAPIスキーマを生成し、APIインベントリを追跡していない限り、本番アプリケーションのAPIインベントリ全体でいくつかのエンドポイントを見逃している可能性があります。</p>
+	<h3 id="%E6%AD%A3%E7%A2%BA%E3%81%AA%E3%83%AC%E3%83%BC%E3%83%88%E5%88%B6%E9%99%90%E3%81%A7%E6%94%BB%E6%92%83%E3%81%AE%E5%8F%AF%E8%83%BD%E6%80%A7%E3%82%92%E6%9C%80%E5%B0%8F%E5%8C%96">正確なレート制限で攻撃の可能性を最小化</h3>
+	<p>悪用を阻止するとなると、ほとんどの実務者はまず<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">レート制限</a>を思い浮かべるでしょう。<strong>APIに制限を導入することは、悪用を抑制し、オリジンの偶発的な過負荷を防ぐための貴重なツールです。</strong>しかし、正しいレート制限のアプローチを選択したかどうか、どうすればわかるのだでしょうか？アプローチは様々ですが、一般的には選択されたエラーコードと制限値そのものの根拠に行き着きます。</p>
+	<p>APIによっては、HTTP 403（forbidden）で応答するようにレート制限エラーを設定するものもあれば、HTTP 429（too many reuqests）で応答するものもあります。HTTP 403の使用は有用に思えますが、他のセキュリティツールも403コードで応答している場合に問題が生じます。攻撃を受けているとき、どのツールがどのようなエラーやブロックを引き起こしているのかを読み解くのは難しくなります。</p>
+	<p>あるいは、HTTP 429をレート制限に利用すれば、攻撃者はレート制限されたことを即座に知ることができ、検知されることなく制限の真下で「サーフィン」することができてしまいます。バックエンドが生き残るようにリクエストを制限するだけなら問題ありませんが、攻撃者に手の内を知られてしまう可能性があります。さらに、攻撃者はより多くのAPIクライアントに攻撃を「拡大」することで、レート制限以上のリクエストを効果的に行うことができます。</p>
+	<p>どちらのアプローチにも、長所と短所がありますが、4xxと5xxのエラーメッセージのうち、HTTP 429で応答するAPIが圧倒的に多いことが明らかになっています（約52％）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Untitled.png" class="kg-image" alt="" loading="lazy" width="1600" height="885"></figure>
+	<p>レスポンスコードだけでなく、レート制限ルール自体のロジックはどうでしょうか？IPアドレスにリクエスト制限を実装することは魅力的かもしれませんが、<strong>ベストプラクティスとしてセッションIDに制限を設定し、セッションIDが利用できないときだけIPアドレス（またはIP + JA3フィンガープリント）にフォールバックすることをお勧めします</strong>。IPではなくユーザーセッションにレート制限を設定することで、実際のユーザーを確実に特定し、共有IP空間に起因する誤検出を最小限に抑えることができます。Cloudflareの<a href="https://www.cloudflare.com/application-services/products/rate-limiting">Advanced Rate Limiting</a>およびAPI Gatewayの<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection">volumetric abuse protection</a>は、各APIエンドポイントのセッショントラフィックをプロファイリングし、エンドポイントごとのレート制限を設定するワンクリックのソリューションを提供することで、これらの制限を簡単に実施できます。</p>
+	<p>レート制限の値を見つけるために、Cloudflare API Gatewayはお客様に代わってセッションリクエスト統計を計算します。お客様が設定したAPIセッション識別子によって識別される、お客様のAPIへの<em>全</em>セッションにわたるセッションごとのリクエストの分布を見て、制限値を設けることを提案します。次に、この分布のp50、p90、p99について、<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#observe-rate-limits">統計的なp値（トラフィックの異なるコホートのリクエスト率を表す）を計算</a>し、分布の分散を使用して、APIインベントリ内のすべてのエンドポイントについて推奨されるしきい値を導き出します。これは重要な違いであり、p値を単独で使用しない理由であります。推奨と共に、API Gatewayは推奨に対する信頼性をユーザーに通知します。一般的に、より多くのAPIセッションを収集することができればできるほど、より自信を持って推奨を行うことができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Screenshot-2024-01-04-at-12.50.45-1.png" class="kg-image" alt="" loading="lazy" width="2082" height="1116"></figure>
+	<p>レート制限の有効化は、'create rule'リンクをクリックするのと同じくらい簡単です。API Gatewayは自動的にセッションIDを高度なレート制限ルール作成ページに取り込み、ルールがピンポイントの精度で攻撃を防御し、従来の広すぎる制限と比較して誤検出を最小限に抑えます。</p>
+	<h3 id="api%E3%82%82%E3%81%BE%E3%81%9F%E3%80%81web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E6%94%BB%E6%92%83%E3%81%AE%E8%A2%AB%E5%AE%B3%E3%82%92%E5%8F%97%E3%81%91%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82">APIもまた、Webアプリケーション攻撃の被害を受けています。</h3>
+	<p>APIは<a href="https://www.cloudflare.com/learning/security/threats/sql-injection">SQLインジェクション</a>のような通常のOWASPトップ10スタイルの攻撃を免れることはできません。API呼び出しの本文は、Webページのフォーム入力やURL引数のように、データベース入力として見つかる可能性もあります。これらのスタイルの攻撃を防御するために、APIトラフィックを保護する<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Webアプリケーションファイアウォール（WAF）</a>を確実に導入することが重要です。</p>
+	<p>実際、CloudflareのWAF管理ルールを調べたところ、インジェクション攻撃は、API上で実行されるのがCloudflareにより観測された2番目に多い脅威ベクトルでした。最も一般的な脅威はHTTP Anomalyであった。 HTTPの異常の例としては、不正なメソッド名、ヘッダーのNULLバイト文字、非標準ポート、POSTリクエストでのコンテンツ長ゼロなどがある。 以下は、APIに対するその他の脅威の統計情報です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Untitled--1---1-.png" class="kg-image" alt="" loading="lazy" width="1600" height="822"></figure>
+	<p>この表には、認証と認可の不備が含まれていません。認証と認可の不備は、APIに情報を要求するリクエストを送信するエンティティが、実際にそのデータを要求する許可を持っているかどうかをAPIがチェックできない場合に発生します。これはまた、攻撃がクレデンシャルを偽造し、より制限されたパーミッションを持つ既存の（有効な）クレデンシャルに、より制限の少ないパーミッションを挿入しようとするときにも起こり得ます。OWASPは、これらの攻撃をいくつかの異なる方法で分類していますが、主な分類は、BOLA（Broken Object Level Authorization）攻撃とBFLA（Broken Function Level Authorization）攻撃です。</p>
+	<p>BOLA/BFLA攻撃が成功する根本的な原因は、オリジンAPIがデータベースレコードの適切な所有権を、それらのレコードを要求するIDに対してチェックしていないことにあります。このような特定の攻撃を追跡することは、パーミッション構造が単に存在しないか、不十分であるか、または不適切に実装されている可能性があるため、困難な場合があります。鶏と卵の問題がお分かりでしょうか？適切なパーミッション構造を知っていれば、このような攻撃を阻止するのは簡単ですが、もし私たちや顧客が適切なパーミッション構造を知っているか、その実施を保証できるのであれば、そもそも攻撃は成功しません。今後のAPI Gatewayの機能発表にご期待ください。BOLA/BFLA攻撃をハイライトして阻止するセキュリティポリシーを提案するため、APIトラフィックの規範に関する私たちの知識を利用します。 </p>
+	<p>ここでは、細分化された許可ポリシーを使用できない場合でも、APIに存在するかもしれない認証の抜け穴をふさぐ4つの方法を紹介します。</p>
+	<ol>
+		<li>まず、ビジネス上承認された例外を除き、一般にアクセス可能な各APIに認証を強制します。mTLSやJSON Webトークンのような技術に注目してください。</li>
+		<li>サーバーへのAPI呼び出しの速度を制限し、潜在的な攻撃者の動きを鈍化させます。</li>
+		<li>異常な量の機密データの流出をブロックします。</li>
+		<li>攻撃者が正当なAPI呼び出しのシーケンスをスキップするのをブロックします。</li>
+	</ol>
+	<h3 id="api%E3%81%AF%E3%82%82%E3%81%86%E6%A9%9F%E6%A2%B0%E4%B8%BB%E5%B0%8E%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E3%80%81%E9%A9%9A%E3%81%8F%E3%81%BB%E3%81%A9%E4%BA%BA%E9%96%93%E4%B8%BB%E5%B0%8E%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B">APIはもう機械主導ではなく、驚くほど人間主導になっている</h3>
+	<p>もしあなたが、習慣的にオンラインに接続する人が少なかったスマートフォン以前の時代からテクノロジーに携わっているのであれば、APIは一晩で終わるバッチジョブプロセスのような、機械対機械のコミュニケーションにしか使われないと考えたくなるかもしれません。しかし、真実はこれ以上ないほど異なります。これまで述べてきたように、多くのWebおよびモバイルアプリケーションはAPIによって動いています。APIは、認証からトランザクション、メディアファイルの提供まで、あらゆることを容易にしています。人々がこれらのアプリケーションを使用するにつれ、APIのトラフィック量も増加します。 </p>
+	<p>このことは、人々が友人や家族の周りに集まり、実際に会って交流する時間が増え、オンライン上で交流する時間が減る休暇中に観察されるAPIトラフィックパターンを見ることで説明できます。以下のWorldwide APIトラフィックグラフに、一般的な祝日やプロモーションを注釈で追加しています。ブラックフライデーとサイバーマンデーの頃、人々がオンラインで買い物をするとき、トラフィックが+10%レベルでピークに達しますが、その後、クリスマスや年末年始のお祭り騒ぎでトラフィックが減少することに注目してください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Untitled--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="647"></figure>
+	<p>このパターン、は通常のHTTPトラフィックで観察されるものと<a href="https://blog.cloudflare.com/cyber-week-analyzing-internet-traffic-and-e-commerce-trends">酷似しています</a>。APIがもはや単なる自動化されたプロセスの領域ではなく、人間の行動や社会的トレンドと複雑に関連していることは明らかです。</p>
+	<h3 id="%E6%8E%A8%E5%A5%A8%E4%BA%8B%E9%A0%85">推奨事項</h3>
+	<p>全体的なAPIセキュリティに特効薬はありません。最良の効果を得るために、CloudflareはAPIのセキュリティ態勢を強化する4つの戦略を推奨しています。</p>
+	<ol>
+		<li>APIの開発、可視化、パフォーマンス、セキュリティを、最新のAPIインベントリを維持できる統合されたコントロールプレーンと組み合わせる。</li>
+		<li>機械学習技術を活用したセキュリティツールを使用して、人的リソースを解放し、コスト削減を図る。</li>
+		<li>APIに正のセキュリティモデルを採用する（ポジティブなセキュリティモデルと負のセキュリティモデルについての説明は下記を参照）。</li>
+		<li>組織のAPI成熟度レベルを測定し、時間をかけて改善する（API成熟度レベルの説明も下記を参照）。</li>
+	</ol>
+	<p>セキュリティモデルの「正」「負」とはどういう意味か？負のモデルでは、セキュリティツールは既知の攻撃の兆候を探し、それらの攻撃を阻止するために行動を起こします。正のモデルでは、セキュリティツールは既知の良いリクエストを探し、そのリクエストだけを通し、それ以外はブロックします。APIは多くの場合、最高レベルのセキュリティを確保するために、正のセキュリティモデルが意味を持つような構造になっています。また、負のモデル的な意味でWAFを使用し、正のモデル的な意味でAPIスキーマ検証を使用するなど、セキュリティモデルを組み合わせることも可能です。</p>
+	<p>ここでは、組織のAPIセキュリティ成熟度を経時的に測定する簡単な方法を紹介します。APIセキュリティに取り組み始めて間もない組織は、どんなに不完全であっても、最初のAPIインベントリを作成することから始めましょう。より成熟した組織は、APIインベントリの正確さと自動更新に努めます。最も成熟した組織は、APIスキーマの強化、有効な認証、不正使用の兆候がないかどうかの動作チェックを実施し、正のセキュリティモデルでAPIのセキュリティチェックを積極的に実施します。</p>
+	<h3 id="%E4%BA%88%E6%B8%AC">予測</h3>
+	<p>最後に、2024年以降の予測トップ4を発表します。</p>
+	<p><strong>コントロールの喪失と複雑性の増大：</strong>APIセキュリティおよび管理の分野の実務者を対象に調査を行ったところ、73％がセキュリティ要件が生産性とイノベーションの妨げになっていると回答しました。ますます広がるアプリケーションと不正確なインベントリと相まって、APIのリスクと複雑さは増大するでしょう。</p>
+	<p><strong>AIへのアクセスが容易になり、APIリスクが増加：</strong>生成AIの台頭は、AIモデルのAPIが攻撃されやすいだけでなく、開発者がバグのあるAIで書かれたコードを出荷するなど、潜在的なリスクをもたします。Forresterは、適切な防御策がない場合、2024年に「少なくとも3件のデータ漏洩が、安全でないAIが生成したコードのせいだと公に非難されるだろう」と予測しています。</p>
+	<p><strong>ビジネスロジックに基づく詐欺攻撃の増加：</strong>プロの詐欺師は、ビジネスと同じように業務を遂行し、他の企業と同じようにコストがかかります。私たちは、攻撃者がAPIに対して効率的に詐欺ボットを実行するようになることを予想しています。</p>
+	<p><strong>ガバナンスの拡大：</strong>APIセキュリティに直接対応する<a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI DSS</a>の初版は2024年3月に発効します。監査部門と業界固有の要件を確認し、発効後の要件に備えましょう。</p>
+	<p>レポートの全文にご興味がある方は、<a href="https://www.cloudflare.com/2024-api-security-management-report">こちら</a>から「2024年APIセキュリティレポート」をダウンロードすることができます。</p>
+	<p><em>Cloudflare API Gatewayは当社のAPIセキュリティソリューションで、すべてのEnterpriseプランのお客様がご利用いただけます。まだAPI Gatewayをご契約でない場合は、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">こちらをクリック</a>してCloudflareのダッシュボードでAPI Discoveryの初期結果を表示し、トライアルを開始してください。API Gatewayを使用してトラフィックを保護する方法については、<a href="https://developers.cloudflare.com/api-shield">こちらをクリック</a>して開発ドキュメントを、<a href="https://developers.cloudflare.com/api-shield/get-started">こちらをクリック</a>してスタートガイドをご覧いただくことができます。</em></p>
+</div>

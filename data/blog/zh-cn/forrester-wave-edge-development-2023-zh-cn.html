@@ -1,0 +1,33 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<p>Forrester 将 Cloudflare 评为 2023 年第四季度 “Forrester Wave™：边缘开发平台”的领导者，在当前产品类别中得分最高。<br><br>根据首席分析师 Devin Dickerson 的<a href="https://www.cloudflare.com/lp/forrester-wave-edge-development-q4-2023">报告</a>，“Cloudflare 的边缘开发平台为企业提供了创建全栈分布式应用程序所需的构建块，使开发人员无需成为 CAP 定理的专家即可利用全球分布式计算、存储和可编程安全网络。”</p>
+	<p>超过 100 万名开发人员正在使用开发人员平台产品构建应用程序，其中包括 <a href="https://workers.cloudflare.com">Workers</a>、<a href="https://pages.cloudflare.com">Pages</a>、<a href="https://developers.cloudflare.com/r2">R2</a>、<a href="https://developers.cloudflare.com/kv">KV</a>、<a href="https://developers.cloudflare.com/queues">Queues</a>、<a href="https://developers.cloudflare.com/durable-objects">Durable Objects</a>、<a href="https://developers.cloudflare.com/d1">D1</a>、<a href="https://developers.cloudflare.com/stream">Stream</a>、<a href="https://developers.cloudflare.com/images">Images</a>等。开发人员可以使用 Cloudflare 的全套计算、存储和开发人员服务，轻松部署高度分布式全栈应用程序。</p>
+	<h3 id="workers-%E4%BD%BFcloudflare-%E7%9A%84%E7%BD%91%E7%BB%9C%E5%8F%AF%E7%BC%96%E7%A8%8B">Workers 使Cloudflare 的网络可编程</h3>
+	<blockquote><strong>“该平台的一个关键优势是与 Cloudflare 的可编程全球 CDN 的互操作性以及利用智能工作负载放置的部署模型。”– The Forrester Wave™：边缘开发平台，2023 年第四季度</strong></blockquote>
+	<p>Workers 在 <a href="https://www.cloudflare.com/network">Cloudflare 的全球网络</a>上运行，提供 <a href="https://developers.cloudflare.com/workers/runtime-apis/cache">API</a> 来直接读取和写入本地缓存，并直接在 Worker 接收的<a href="https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties">请求对象</a>上公开来自 Cloudflare CDN 的上下文。</p>
+	<p>与 Cloudflare 网络的紧密集成使开发人员能够构建、保护和连接全球分布式应用程序，而无需部署到特定区域。<a href="https://developers.cloudflare.com/workers/configuration/smart-placement">Smart Placement</a> 可优化 Workers，以在产生最快整体性能的位置运行，可能是距离数据最近的位置，或者是距离用户最近的位置。<a href="https://developers.cloudflare.com/hyperdrive/learning/how-hyperdrive-works">Hyperdrive</a> 自动集中数据库连接，允许在世界各地运行的 Workers 在查询 PostgreSQL 数据库时重用它们，从而避免扩展挑战，导致难以在无服务器架构中使用传统数据库。<a href="https://developers.cloudflare.com/workers/configuration/cron-triggers">Cron Triggers</a> 允许长达 15 分钟的 CPU 时间，允许计算密集型后台工作。</p>
+	<p>Cloudflare 超越了边缘计算——它是无处不在的计算。我们利用自己的网络使您的应用程序发挥最佳性能，该网络由真实世界的数据塑造并根据访问模式和编程范例进行定制。</p>
+	<h3 id="%E6%97%A0%E9%9C%80%E6%88%90%E4%B8%BA%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%93%E5%AE%B6%E5%8D%B3%E5%8F%AF%E9%83%A8%E7%BD%B2%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F">无需成为分布式系统专家即可部署分布式系统</h3>
+	<blockquote><strong><em>“推荐客户一致强调了上线的简便性，没有任何背景的开发人员可以在几分钟内在全球范围内交付工作负载，并在一周内生产出高质量的应用程序。” – The Forrester Wave™：边缘开发平台，2023 年第四季度</em></strong></blockquote>
+	<p>Workers 使任何开发人员都能够部署全球分布式应用程序，而无需成为分布式系统专家或配置云基础设施的专家。</p>
+	<ul>
+		<li>当您部署Worker 时，Cloudflare 会在幕后将其分发到全球范围内。但<br>对您来说，它是可以在<a href="https://developers.cloudflare.com/workers/observability/local-development-and-testing">本地运行和测试</a>的单个应用程序，使用与您的 Workers 在生产中运行的相同<a href="https://github.com/cloudflare/workerd">开源 JavaScript 运行时</a>。</li>
+		<li>当您部署 <a href="https://developers.cloudflare.com/durable-objects">Durable Object</a> 来协调实时状态时，您就构建了一个分布式应用程序，但不必学习 RPC 协议和扩展基础设施，而是使用前端开发人员都知道且每天依赖的 Web 标准 API 在 JavaScript 中编写了整个应用程序。</li>
+		<li>- 使用 <a href="https://developers.cloudflare.com/queues">Cloudflare Queues</a> 对消息进行排队和批量处理，只需在现有 Worker 中添加几行 JavaScript 即可。</li>
+		<li>- 当您使用 <a href="https://pages.cloudflare.com">Cloudflare Pages</a> 创建 Web 应用程序时，只需连接到 GitHub 存储库，您就可以使用预览 URL 设置完整的连续构建和部署管道。</li>
+	</ul>
+	<p>以前只编写前端代码的开发人员现在可以构建后端，使他们的应用程序具有实时性和反应性。因为等待基础设施专家提供资源而僵持不前的团队可以立即进行原型设计，而无需等到下周。编写和部署 Worker 令人熟悉且易于理解，这使得工程团队能够更快地行动，并且开销更少。</p>
+	<p>为什么团队能够如此迅速地开始？</p>
+	<ol>
+		<li>Workers 使用前端开发人员和构建 Web 应用程序的任何人每天都在使用的 <a href="https://developers.cloudflare.com/workers/runtime-apis">Web 标准 API</a>。Cloudflare 是 Web 互操作运行时社区小组 (<a href="https://wintercg.org">WinterCG</a>) 的创始成员，致力于<a href="https://blog.cloudflare.com/socket-api-works-javascript-runtimes-wintercg-polyfill-connect">运行时之间的互操作性</a>。</li>
+		<li>开发人员每天使用的工具都是我们平台的原生工具。我们为所有 API 发布 <a href="https://www.npmjs.com/package/@cloudflare/workers-types">TypeScript</a> 类型，并支持在通过 Wrangler CLI 或通过 &nbsp; &nbsp; Cloudflare 仪表板（该仪表板本身由流行的 &nbsp; &nbsp; VSCode 编辑器<a href="https://blog.cloudflare.com/improved-quick-edit">提供支持</a>）中的代码编辑器创作和部署时编译 TypeScript。</li>
+		<li>支持开发人员喜欢用来构建的开源<a href="https://developers.cloudflare.com/pages/framework-guides">框架</a>。Workers 运行时<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs">原生提供</a>了越来越多的来自 Node.js 的 API，允许现有的开源库在 Workers 上运行。越来越多开发人员依赖的新开源项目从设计之初就能在所有 WinterCG 运行时中运行。每天都有更多的 JavaScript 生态系统在 Workers 上运行。</li>
+	</ol>
+	<h3 id="%E5%88%A9%E7%94%A8-gpu%E3%80%81llm-%E7%AD%89%E6%8A%80%E6%9C%AF%E8%BF%9B%E5%86%9B%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E9%A2%86%E5%9F%9F">利用 GPU、LLM 等技术进军人工智能领域</h3>
+	<blockquote><strong><em>“其宏伟愿景拒绝将未来的足迹限制在边缘，他们目的明确地在路线图上构建出各项功能，这表明它将越来越有能力在工作负载方面与公共云超级扩展器一较高下。”– The Forrester Wave™：边缘开发平台，2023 年第四季度</em></strong></blockquote>
+	<p>我们正在为大规模生产应用程序构建一个完整的计算平台。由于每个公司和每个开发人员现在都在构建或试验 AI，Cloudflare 已<a href="https://blog.cloudflare.com/workers-ai">将 GPU 集成为我们开发人员平台的一部分</a>。我们让 AI 的入门变得和交付全球工作负载一样简单。11 月中旬，我们实现了在全球 <a href="https://blog.cloudflare.com/workers-ai-update-stable-diffusion-code-llama-workers-ai-in-100-cities">100 多个城市</a>运行 Workers AI Inference 的目标，到 2024 年底，Workers AI 将在 Cloudflare 开展业务的几乎每个城市运行。</p>
+	<p><a href="https://developers.cloudflare.com/workers-ai">Workers AI</a> 允许开发人员使用最新的开源 AI 模型构建应用程序，而无需配置任何基础设施或为昂贵的未使用容量付费。我们正在对此进行扩展，以支持<a href="https://blog.cloudflare.com/partnering-with-hugging-face-deploying-ai-easier-affordable">直接从 Hugging Face 到 Workers AI 部署模型</a>，以获得更广泛的 AI 模型集。与在特定数据中心配置具有 GPU 的虚拟机不同，我们构建此功能是为了将整个网络视为一个巨大的计算资源，在正确的时间在正确的位置运行模型来满足开发人员的需求。</p>
+	<p>除了模型推理之外，我们还加倍支持 Web 标准 API，并在 Workers 平台内提供 <a href="https://blog.cloudflare.com/webgpu-in-workers">WebGPU</a>API。虽然我们因为被认可为领先边缘平台而感到自豪，但我们不仅如此，我们还是一个用于开发全栈应用程序的平台，甚至是那些需要在一年前还很少使用或需要的计算能力的应用程序。</p>
+	<p>我们很高兴向您展示后续将推出的内容，包括跨Cloudflare 产品<a href="https://blog.cloudflare.com/secrets-store">管理机密的新方法</a>、改进的可观察性以及用于发布更改的更好工具。每天，我们都会看到在我们的平台上构建了更先进的应用程序，我们致力于将其与工具相匹配，以服务于对任务最关键的工作负载——我们自己也使用这些工具来在我们的平台中构建我们自己的产品。</p>
+	<p>点击<a href="https://www.cloudflare.com/lp/forrester-wave-edge-development-q4-2023">此处</a>下载报告。</p>
+</div>

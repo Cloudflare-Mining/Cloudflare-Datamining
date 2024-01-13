@@ -1,0 +1,89 @@
+<div class="mb2 gray5">23 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/01/Artboard-1-1.png" class="kg-image" alt="Introducing Cloudflare’s 2024 API security and management report" loading="lazy" width="1465" height="845"></figure>
+	<p>Cloudflare는 웹의 약 20%를 구동하는 회사로 알고 계실 것입니다. 하지만 웹 사이트와 정적 콘텐츠를 전송하고 보호하는 것은 Cloudflare가 하는 일의 일부에 불과합니다. 실제로 Cloudflare 네트워크에서 발생하는 동적 트래픽의 절반 이상은 웹 페이지가 아니라 기술을 작동시키는 배관이라 할 수 있는 API(애플리케이션 프로그래밍 인터페이스) 트래픽으로 구성됩니다. 이 블로그에서는 <a href="https://www.cloudflare.com/2024-api-security-management-report">2024년 API 보안 보고서</a>를 소개하며, 이 보고서의 보충 자료로 Dropbox가 고객을 어떻게 보호하고 있는지, 그리고 이것이 API 보안의 미래에 어떤 의미가 있는지 자세히 설명합니다. 다른 업계의 API 보고서와 달리 이 보고서는 사용자 설문조사가 아닌 실제 트래픽 데이터를 기반으로 작성되었습니다.</p>
+	<p>올해 보고서에서 한 가지 시사점이 있다면, 많은 조직이 <em>API 트래픽을 정확하게 식별할 수 있다고 믿으면서도</em> 정확한 API 인벤토리가 부족하다는 점입니다. Cloudflare는<a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning"> 두 가지 접근 방식</a>을 사용하여 조직이 공개 API 모두를 검색할 수 있도록 돕습니다. 먼저, 고객은 알려진 API 트래픽에 존재하는 토큰을 모니터링하고 식별하도록 당사 API 검색 도구를 구성합니다. 그런 다음 머신 러닝 모델을 사용하여 이러한 알려진 API 호출뿐만 <em>모든</em> HTTP 요청을 스캔하여 고려되지 않았을지도 모를 API 트래픽까지 식별합니다. 이러한 접근 방식 간에는 현저한 차이가 존재합니다. <strong>당사는 머신 러닝 기반 검색을 통해 자체 보고 방식보다 30.7% 더 많은 API 엔드포인트를 발견했으며,</strong> 이는 API의 약 1/3이 "<a href="https://www.cloudflare.com/learning/security/api/what-is-shadow-api">섀도우 API</a>"로서 제대로 인벤토리화 및 보안이 이루어지지 않았을 수 있음을 시사합니다.</p>
+	<p>첫 번째 API 보안 보고서의 추가 정보와 주요 내용을 읽어보세요. <a href="https://www.cloudflare.com/2024-api-security-management-report">보고서 전문</a>에서는 2024년에 대한 예측과 함께 Dropbox가 발견하고 예방한 위협에 대한 업데이트된 통계를 확인할 수 있습니다. 조직에서 API 보안에 집중하지 않으면 복잡성이 증가하고 통제력을 상실하게 되며, 생성형 AI에 대한 액세스가 증가함에 따라 API 위험이 증가할 것으로 예상됩니다. 또한 2024년에는 API 비즈니스 로직 공격이 증가할 것으로 예상됩니다. 마지막으로, 위의 모든 위험으로 인해 API 보안에 대한 거버넌스를 강화해야 할 것입니다.</p>
+	<h3 id="%EC%88%A8%EA%B2%A8%EC%A7%84-%EA%B3%B5%EA%B2%A9%EB%A9%B4">숨겨진 공격면</h3>
+	<p>웹 페이지와 API는 어떻게 다른가요? API는 애플리케이션이 백그라운드에서 데이터를 검색하거나 다른 애플리케이션에서 작업을 수행하도록 요청할 수 있는 빠르고 쉬운 방법입니다. 예를 들어, 기상학자가 아니더라도 누구나 날씨 애플리케이션을 만들 수 있습니다. 개발자는 페이지 또는 모바일 애플리케이션의 구조를 작성하고 사용자의 위치를 사용하여 날씨 API에 일기 예보를 요청할 수 있습니다. 중요한 것은 대부분의 최종 사용자가 데이터가 앱 소유자가 아닌 날씨 API에서 제공되었다는 사실을 모른다는 점입니다.</p>
+	<p>API는 인터넷의 중요한 배관 역할을 하지만 악용될 가능성도 높습니다. Optus의 API 인증 및 권한 부여 결함으로 인해 <a href="https://www.bleepingcomputer.com/news/security/optus-hacker-apologizes-and-allegedly-deletes-all-stolen-data">위협 행위자가 1,000만 명의 사용자 기록을 판매</a>할 수 있게 되었고, 정부 기관은 이러한 API 공격에 대해 이미 <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-208a">경고했습니다</a>. 조직의 개발자는 종종 자체 애플리케이션이 더 효율적으로 작동하도록 인터넷에 연결되는 API를 만들지만, 이러한 새로운 공용 인터페이스를 보호하는 것은 보안 팀의 몫입니다. API를 문서화하고 보안팀의 주의를 환기시키는 프로세스가 명확하지 않으면 섀도 API가 되어 운영 환경에서 작동하고 있는데도 조직이 알아채지 못하는 상태가 될 수 있습니다. 그리고 바로 여기에서부터 보안 문제가 발생하기 시작합니다.</p>
+	<p>고객이 이 문제를 해결할 수 있도록 당사는 <a href="https://developers.cloudflare.com/api-shield/security/api-discovery">API 검색</a> 기능을 선보였습니다. 최신 릴리스를 <a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">소개</a>할 때 정확한 API 인벤토리를 보유한 조직이 거의 없다고 언급했었습니다. 보안팀은 때때로 인벤토리를 구축하기 위해 "이메일을 보내서 물어보는" 접근 방식을 채택할 수밖에 없는데, 이렇게 하면 다음 애플리케이션 릴리스에서 API가 변경될 때에는 그 답변이 이미 낡은 답변이 되어 버립니다. 이보다 더 나은 방법은 코드 베이스 변경을 통해 API 변경 사항을 추적하여 새 릴리스에 발맞추는 것입니다. 하지만 이 방법도 여전히 활발하게 유지 관리되는 코드만 인벤토리에 포함된다는 단점이 있습니다. 레거시 애플리케이션은 프로덕션 트래픽을 수신하고 있는데도 새 릴리스의 적용을 받지 못할 수 있습니다.</p>
+	<p>Cloudflare의 API 관리 접근 방식은 머신 러닝 기반 API 검색과 네트워크 트래픽 검사를 혼합하여 포괄적이고 정확한 API 인벤토리를 생성하는 것입니다. 이는 고객이 인터넷에 연결된 엔드포인트를 관리하고 API 상태를 모니터링할 수 있는 당사 <a href="https://www.cloudflare.com/application-services/products/api-gateway">API Gateway</a> 제품에게 필수적인 일입니다. 또한 API Gateway를 통해 고객은 세션 식별자(일반적으로 헤더 또는 쿠키)를 사용하여 API 트래픽을 식별할 수 있으며, 이는 검색 프로세스를 위해 API 트래픽을 구체적으로 식별하는 데 도움이 됩니다.</p>
+	<p>앞서 언급한 바와 같이, 분석 결과 지식이 풍부한 고객조차도 API 트래픽의 상당 부분을 간과하는 경우가 많다는 사실이 밝혀졌습니다. 세션 기반 API 검색(API 세션을 사용하여 트래픽을 정확히 찾아내는 방식)과 머신 러닝 기반 API 검색(들어오는 <em>모든</em>트래픽을 분석하는 방식)을 비교한 결과, 후자가 평균 30.7% 더 많은 엔드포인트를 발견하는 것으로 나타났습니다! 광범위한 트래픽 분석이 없다면 API 인벤토리의 거의 3분의 1을 놓치고 있을 수 있다는 의미입니다.</p>
+	<p>Cloudflare 고객이 아니더라도 API 인벤토리 구축을 시작할 수 있습니다. API는 일반적으로 <a href="https://spec.openapis.org/oas/latest.html">OpenAPI</a>라는 표준화된 형식으로 카탈로그화되며, 많은 개발 도구에서 OpenAPI 형식의 스키마 파일을 빌드할 수 있습니다. 해당 형식의 파일이 있는 경우 이러한 스키마를 수집하여 API 인벤토리 구축을 직접 시작할 수 있습니다. 다음은 '<code>my_schema.json</code>'이라는 이름의 OpenAPI v3 형식의 파일이 있다고 가정하여 스키마 파일에서 엔드포인트를 가져오는 방법의 예시입니다.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">import json
+import csv
+from io import StringIO
+
+# Load the OpenAPI schema from a file
+with open("my_schema.json", "r") as file:
+    schema = json.load(file)
+
+# Prepare CSV output
+output = StringIO()
+writer = csv.writer(output)
+
+# Write CSV header
+writer.writerow(["Server", "Path", "Method"])
+
+# Extract and write data to CSV
+servers = schema.get("servers", [])
+for server in servers:
+    url = server['url']
+    for path, methods in schema['paths'].items():
+        for method in methods.keys():
+            writer.writerow([url, path, method])
+
+# Get and print CSV string
+csv_output = output.getvalue().strip()
+print(csv_output)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>애플리케이션 개발 프로세스 초기부터 OpenAPI 스키마를 생성하고 API 인벤토리를 추적하지 않았다면 프로덕션 애플리케이션 API 인벤토리에서 일부 엔드포인트를 놓치고 있을 가능성이 높습니다.</p>
+	<h3 id="%EC%A0%95%ED%99%95%ED%95%9C-%EC%86%8D%EB%8F%84-%EC%A0%9C%ED%95%9C%EC%9C%BC%EB%A1%9C-%EA%B3%B5%EA%B2%A9-%EA%B0%80%EB%8A%A5%EC%84%B1-%EC%B5%9C%EC%86%8C%ED%99%94">정확한 속도 제한으로 공격 가능성 최소화</h3>
+	<p>남용을 막기 위해 대부분의 실무자들은 가장 먼저 <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting">레이트 리미팅</a>을 떠올립니다. <strong>API에 제한을 구현하는 것은 남용을 억제하고 우발적인 오리진 과부하를 방지하는 데 유용한 도구입니다.</strong> 하지만 올바른 레이트 리미팅 접근 방식을 선택했는지 어떻게 알 수 있을까요? 접근 방식은 다양할 수 있지만 일반적으로는 선택한 오류 코드와 제한 값 자체의 기준에 따라 결정됩니다.</p>
+	<p>일부 API의 경우 실무자가 HTTP 403(금지됨)으로 응답하도록 레이트 리미팅 오류를 구성하는 반면, 다른 API는 HTTP 429(요청이 너무 많음)로 응답하도록 구성합니다. 다른 보안 도구들도 403 코드로 응답한다는 사실을 깨닫기 전까지는 HTTP 403을 사용하는 것이 무해한 것처럼 보입니다. 하지만 공격을 받으면 어떤 도구가 어떤 오류/차단의 원인이 되는지 파악하기 어려울 수 있습니다.</p>
+	<p>또는 레이트 리미트를 위해 HTTP 429를 사용하면 공격자는 레이트가 리미트되었다는 사실을 즉시 알 수 있으므로 그 리미트 아래에서 '서핑'을 하면서 탐지되지 않을 수 있습니다. 백엔드의 생존을 보장하기 위해 요청만 제한하는 경우에는 괜찮을 수 있지만, 공격자에게 카드를 넘겨줄 수 있는 것입니다. 또한 공격자는 더 많은 API 클라이언트로 '확장'하여 효과적으로 레이트 리미트를 초과하여 요청할 수도 있습니다.</p>
+	<p>두 접근 방식 모두 장단점이 있지만, 대부분의 API(약 52%)가 4xx 및 5xx 오류 메시지 중 HTTP 429로 응답하는 것으로 나타났습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Untitled.png" class="kg-image" alt="" loading="lazy" width="1600" height="885"></figure>
+	<p>응답 코드뿐만 아니라 레이트 리미팅 규칙 자체의 로직은 어떨까요? IP 주소에 요청 제한을 구현하고 싶은 유혹이 있을 수 있지만 <strong>세션 ID를 기준으로 제한을 설정하고 세션 ID를 사용할 수 없는 경우에만 IP 주소(또는 IP + JA3 핑거프린트)로 되돌아가는 것이 가장 좋습니다</strong>. IP 대신 사용자 세션에 레이트 리미팅을 설정하면 실제 사용자를 안정적으로 식별하고 공유 IP 공간으로 인한 오탐을 최소화할 수 있습니다. Cloudflare의 <a href="https://www.cloudflare.com/application-services/products/rate-limiting">고급 레이트 리미팅</a>과 API Gateway의 <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection">볼류메트릭 남용 보호</a> 기능은 각 API 엔드포인트에서 세션 트래픽을 프로파일링하고 원클릭 솔루션으로 엔드포인트별 레이트 리미팅을 설정하여 이러한 제한을 쉽게 적용할 수 있게 해줍니다.</p>
+	<p>레이트 리미팅 값을 찾기 위해 Cloudflare API Gateway는 세션 요청 통계를 계산합니다. 당사는 고객이 구성한 API 세션 식별자에 의해 식별된, API에 대한 <em>모든</em> 세션의 세션당 요청 분포를 살펴보고 리미팅 값을 제안합니다. 그런 다음 이 분포에서 p50, p90, p99에 대해 다양한 트래픽 코호트의 요청 레이트를 설명하는 <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#observe-rate-limits">통계적 p-레벨을 계산</a>하고, 분포의 분산을 이용하여 API 인벤토리의 모든 단일 엔드포인트에 대한 권장 임계값을 제시합니다. 권장 사항이 p-레벨과 일치하지 않을 수도 있는데, 이것 자체가 중요한 차이점으로 p-레벨만 사용해서는 안 되는 이유이기도 합니다. 이 권장 사항과 함께 API Gateway는 사용자에게 그 신뢰도 또한 알려줍니다. 일반적으로 수집할 수 있는 API 세션이 많을수록 권장 사항의 신뢰도도 높아집니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Screenshot-2024-01-04-at-12.50.45-1.png" class="kg-image" alt="" loading="lazy" width="2082" height="1116"></figure>
+	<p>'규칙 만들기' 링크를 클릭하기만 하면 API Gateway가 세션 식별자를 자동으로 고급 레이트 리미팅 규칙 만들기 페이지로 이동하여, 기존의 지나치게 광범위한 리미트에 비해 공격을 방어하고 오탐을 최소화할 수 있는 정확한 규칙을 만들 수 있습니다.</p>
+	<h3 id="api%EB%8F%84-%EC%9B%B9-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B3%B5%EA%B2%A9%EC%9D%98-%ED%9D%AC%EC%83%9D%EC%96%91%EC%9D%B4-%EB%90%A9%EB%8B%88%EB%8B%A4">API도 웹 애플리케이션 공격의 희생양이 됩니다</h3>
+	<p>API는 <a href="https://www.cloudflare.com/learning/security/threats/sql-injection">SQL 삽입</a>과 같은 일반적인 OWASP 상위 10가지 스타일의 공격으로부터 안전하지 않습니다. API 호출 본문도 웹 페이지 양식 입력이나 URL 인자와 마찬가지로 데이터베이스 입력으로 악용될 수 있습니다. 이러한 스타일의 공격을 방어하려면 <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">웹 애플리케이션 방화벽(WAF)</a>이 API 트래픽도 보호하는지 확인하는 것이 중요합니다. </p>
+	<p>실제로 Cloudflare의 WAF 관리 규칙을 살펴본 결과, 삽입 공격은 Cloudflare가 API에서 두 번째로 많이 발견한 위협 벡터였습니다. 가장 흔한 위협은 HTTP 이상 공격이었습니다. HTTP 이상의 예로는 잘못된 메서드 이름, 헤더의 0바이트 문자, 비표준 포트 또는 POST 요청의 콘텐츠 길이가 0인 경우 등이 있습니다. 다음은 API를 대상으로 발생한 다른 주요 위협에 대한 통계입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Untitled--1---1-.png" class="kg-image" alt="" loading="lazy" width="1600" height="822"></figure>
+	<p>차트에서 인증 및 권한 부여가 실패한 경우입니다. 인증 및 권한 부여 실패는 API에 정보 요청을 보내는 주체가 실제로 해당 데이터를 요청할 수 있는 권한이 있는지 여부를 확인하지 못할 때 발생합니다. 또한 공격자가 자격 증명을 위조하여 덜 제한된 권한을 더 제한된 권한을 가진 기존(유효한) 자격 증명에 삽입하려고 시도할 때 발생할 수도 있습니다. OWASP는 이러한 공격을 몇 가지 서로 다른 방식으로 분류하지만, 주요 범주는 손상된 개체 수준 권한 부여(BOLA) 공격과 손상된 기능 수준 인증(BFLA) 공격입니다.</p>
+	<p>BOLA/BFLA 공격 성공의 근본 원인은 오리진 API가 데이터베이스 레코드의 소유권을 해당 레코드를 요청하는 ID에 대해 제대로 확인하지 않기 때문입니다. 권한 구조가 단순히 없거나, 부정확하거나, 부적절하게 구현되어 있을 수 있기 때문에 이러한 특정 공격을 추적하는 것은 어려울 수 있습니다. 여기서 닭과 달걀의 문제가 보이시나요? 적절한 권한 구조를 알고 있다면 이러한 공격을 쉽게 막을 수 있겠지만, 당사나 고객이 적절한 권한 구조를 알고 있거나 그 시행을 보장할 수 있다면 공격은 애초에 성공적으로 개시되지도 못할 것입니다. 향후 출시될 API Gateway 기능을 기대해 주세요. 이 기능에서는 API 트래픽 규범에 대한 지식을 활용하여 BOLA/BFLA 공격을 발견하고 차단하는 보안 정책을 자동으로 제안할 예정입니다. </p>
+	<p>다음은 세분화된 권한 부여 정책이 없더라도 API에 존재할 수 있는 인증 허점을 차단하는 네 가지 방법입니다.</p>
+	<ol>
+		<li>먼저, 비즈니스에서 승인한 예외가 없는 한 공개적으로 액세스할 수 있는 각 API에 인증을 적용합니다. mTLS 및 JSON 웹 토큰과 같은 기술을 살펴보세요.</li>
+		<li>서버에 대한 API 요청 속도를 제한하여 잠재적인 공격자의 속도를 늦춥니다.</li>
+		<li>중요한 데이터가 비정상적인 양으로 유출되는 것을 차단합니다.</li>
+		<li>공격자가 정당한 API 요청 시퀀스를 건너뛰지 못하게 차단합니다.</li>
+	</ol>
+	<h3 id="api%EB%8A%94-%EB%86%80%EB%9E%8D%EA%B2%8C%EB%8F%84-%EB%8D%94-%EC%9D%B4%EC%83%81-%EA%B8%B0%EA%B3%84%EA%B0%80-%EC%95%84%EB%8B%8C-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EC%A3%BC%EB%8F%84%ED%95%A9%EB%8B%88%EB%8B%A4">API는 놀랍게도 더 이상 기계가 아닌 사람이 주도합니다</h3>
+	<p>습관적으로 온라인에 접속하는 사람이 적었던 스마트폰 이전 시대부터 기술을 사용해 왔다면 API를 하룻밤의 배치 작업 프로세스와 같은 기계 간 통신에만 사용하는 것으로 생각하기 쉽습니다. 그러나 진실은 이것과 완전히 다릅니다. 앞서 설명한 것처럼 많은 웹 및 모바일 애플리케이션은 인증부터 트랜잭션, 미디어 파일 제공에 이르기까지 모든 것을 지원하는 API를 기반으로 합니다. 사람들이 이러한 애플리케이션을 사용함에 따라 API 트래픽도 그에 따라 증가합니다. </p>
+	<p>사람들이 친구나 가족들과 함께 모여 오프라인에서 더 많은 시간을 보내고 온라인에서는 더 적은 시간을 보내는 휴일 동안 관찰되는 API 트래픽 패턴을 살펴보면 이를 이해할 수 있습니다. 다음과 같은 전 세계 API 트래픽 그래프에 일반적인 공휴일과 프로모션을 주석으로 달아보았습니다. 사람들이 온라인 쇼핑을 하는 블랙 프라이데이와 사이버 먼데이에 트래픽이 +10% 수준으로 최고조에 달하지만, 크리스마스와 새해가 되면 트래픽이 감소하는 것을 볼 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Untitled--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="647"></figure>
+	<p>이 패턴은 일반적인 HTTP 트래픽에서 관찰되는 패턴과 <a href="https://blog.cloudflare.com/cyber-week-analyzing-internet-traffic-and-e-commerce-trends">매우 유사합니다</a>. API는 더 이상 자동화된 프로세스의 영역이 아니라 인간의 행동 및 사회적 트렌드와 복잡하게 연결되어 있다는 것을 알 수 있습니다.</p>
+	<h3 id="%EA%B6%8C%EC%9E%A5-%EC%82%AC%ED%95%AD">권장 사항</h3>
+	<p>총체적인 API 보안을 위한 만병통치약은 없습니다. 최상의 효과를 위해 Cloudflare는 API 보안 태세를 강화하기 위한 네 가지 전략을 권장합니다.</p>
+	<ol>
+		<li>API 애플리케이션 개발, 가시성, 성능, 보안을 최신 API 인벤토리를 유지할 수 있는 통합 제어 영역과 결합하세요.</li>
+		<li>머신 러닝 기술을 활용하는 보안 도구를 사용하여 인력을 확보하고 비용을 절감하세요.</li>
+		<li>API에 포지티브 보안 모델을 채택하세요(포지티브 및 네거티브 보안 모델에 대한 설명은 아래 참조).</li>
+		<li>시간이 지남에 따라 조직의 API 성숙도 수준을 측정하고 개선하세요(API 성숙도 수준에 대한 설명은 아래 참조).</li>
+	</ol>
+	<p>'포지티브' 또는 '네거티브' 보안 모델이란 무엇을 의미하나요? 네거티브 모델에서는 보안 도구가 알려진 공격 징후를 찾아 공격을 차단하기 위한 조치를 취합니다. 포지티브 모델에서는 보안 도구가 알려진 정상 요청을 찾아서 그 요청만 허용하고 나머지는 모두 차단합니다. API는 매우 구조화되어 있어 최고 수준의 보안을 위해 포지티브 보안 모델이 적합한 경우가 많습니다. 또한 네거티브 모델 의미에서 WAF를 사용하고 포지티브 모델 의미에서 API 스키마 유효성 검사를 사용하는 등 보안 모델을 결합할 수도 있습니다.</p>
+	<p>다음은 시간이 지남에 따라 조직의 API 보안 성숙도를 빠르게 측정할 수 있는 방법입니다. 초보 조직은 아무리 불완전하더라도 첫 번째 API 인벤토리를 수집하는 것부터 시작합니다. 성숙한 조직일수록 API 인벤토리의 정확성과 자동 업데이트를 위해 노력할 것입니다. 가장 성숙한 조직은 API에 대한 포지티브 보안 모델에서 보안 검사를 적극적으로 시행하여 API 스키마, 유효한 인증을 시행하고 동작을 확인하여 남용 징후가 있는지 파악합니다.</p>
+	<h3 id="%EC%98%88%EC%B8%A1">예측</h3>
+	<p>마지막으로 2024년 이후의 상위 4가지 예측 사항을 소개합니다.</p>
+	<p><strong>통제력 상실 및 복잡성 증가:</strong> API 보안 및 관리 분야의 실무자를 대상으로 설문조사를 실시한 결과, 73%가 보안 요구사항이 생산성과 혁신을 방해한다고 응답했습니다. 점점 더 늘어나는 애플리케이션 및 부정확한 인벤토리와 함께 API 위험과 복잡성은 증가할 것입니다.</p>
+	<p><strong>AI에 대한 더 쉬운 접근으로 인한 API 위험 증가:</strong> 생성형 AI의 증가로 인해 AI 모델의 API가 공격에 취약해질 뿐만 아니라 개발자가 버그가 있는 AI 작성 코드를 배포하는 등의 잠재적인 위험에 노출될 수 있습니다. Forrester에서 예측한 바에 따르면, 적절한 보호 조치가 없을 경우 2024년에 "최소 세 건의 데이터 유출 사건에서, 생성된 코드 자체의 보안 결함이나 AI 제안 종속성의 취약점으로 인해 안전하지 않은 AI 생성 코드가 공개적으로 비판을 받을 것"입니다.</p>
+	<p><strong>비즈니스 로직 기반 사기 공격의 증가:</strong> 전문 사기꾼은 비즈니스와 마찬가지로 오퍼레이션을 운영하며 다른 기업과 마찬가지로 비용이 발생합니다. 공격자들은 이전보다 훨씬 더 효율적으로 API를 대상으로 사기 봇을 실행할 것으로 예상됩니다. </p>
+	<p><strong>증가하는 거버넌스:</strong> API 보안을 직접적으로 다루는 <a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance">PCI DSS</a>의 첫 번째 버전이 2024년 3월 발효됩니다. 감사 부서와 함께 업계의 특정 요건을 검토하여 발효되는 요건을 준수할 수 있도록 미리 준비해야 합니다.</p>
+	<p>보고서 전문이 궁금하다면 <a href="https://www.cloudflare.com/2024-api-security-management-report">여기</a>에서 2024 API 보안 보고서를 다운로드할 수 있습니다. 여기에는 권장 사항에 대한 자세한 내용도 포함되어 있습니다.</p>
+	<p><em>Cloudflare API Gateway는 당사의 API 보안 솔루션이며, 모든 Enterprise 고객이 사용할 수 있습니다. API Gateway를 구독하지 않은 경우, <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield">여기를 클릭</a>하여 초기 API 검색 결과를 확인하고 Cloudflare 대시보드에서 평가판을 시작하세요. API Gateway를 사용하여 트래픽을 보호하는 방법을 알아보려면 <a href="https://developers.cloudflare.com/api-shield">여기를 클릭</a>하여 개발자 문서를 확인하고 <a href="https://developers.cloudflare.com/api-shield/get-started">여기</a>를 클릭하여 시작하기 가이드를 확인하세요.</em></p>
+</div>
