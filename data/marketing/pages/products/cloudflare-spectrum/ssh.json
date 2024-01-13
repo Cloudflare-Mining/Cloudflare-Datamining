@@ -153,6 +153,48 @@
 						"togglesTo": []
 					},
 					{
+						"contentfulId": "2BWOk1i8gBx21tJOde6AIw",
+						"title": "Having to Ctrl + C your slow terminal connection?",
+						"copy": "How many times have you had to terminate and reinitiate your terminal connection because it was too slow?\n\nNetwork latency and high load on the SSH server contribute to poor performance of SSH client sessions. \n\nLatency is directly related to the distance between a server and a client in communication. As the distance grows, latency increases. In addition, network congestion, inefficient service provider routing policies, and poor peering practices of residential ISPs contribute to suboptimal end-user experiences for real-time applications such as SSH.",
+						"toggleText": null,
+						"button": [],
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": [],
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3apj6yJSjWQ9DMVqvje89a/377e78c8fd2c6c8d879afb56663f08fc/illustration_cloudflare-for-teams_fast-connections_svg.svg"
+							},
+							"description": "A series of arrows depicting low lag and fast responses"
+						},
+						"imageAssetFile": null,
+						"featureList": [],
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": []
+					},
+					{
 						"contentfulId": "6eMYoUzJXjIjPnSgFIMEv0",
 						"title": "Supercharge your SSH connections over a faster, more reliable network",
 						"copy": "__Cloudflare Spectrum dramatically reduces network latency associated with long-distance client-server connections and other network issues.__ \n\nUsing TCP optimizations, Cloudflare decreases the connection time for sessions and helps reduce latency. TCP connections terminate at the Cloudflare data center closest to the end user, making SSH connections faster and more reliable.\n\nCloudflare's network also learns from the traffic to millions of Internet properties, enabling machine learning-based intelligent routing around real-time network congestion to deliver a measurable improvement in latency. This routes SSH connection traffic on Cloudflare's network much faster than on the 'best-effort' Internet.",
