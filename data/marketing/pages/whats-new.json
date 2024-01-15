@@ -398,6 +398,22 @@
 					"useCase": "performance"
 				},
 				{
+					"contentType": "blog",
+					"date": "2023-01-12",
+					"description": "Cloudflare announced four new integrations between Microsoft Entra ID and Cloudflare Zero Trust that reduce risk proactively. These integrated offerings increase automation, allowing security teams to focus on threats versus implementation and maintenance. ",
+					"id": "4385423e-8717-509c-91ba-f7553085020c",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/expanding-our-collaboration-with-microsoft-proactive-and-automated-zero-trust-security/",
+					"relatedContentCollateral": "https://www.cloudflare.com/press-releases/2023/cloudflare-expands-relationship-with-microsoft-zero-trust/",
+					"relatedContentCollateralLabel": "Read the press release",
+					"relatedContentProductPage": null,
+					"relatedContentProductPageLabel": null,
+					"relatedProduct": "Zero Trust",
+					"title": "Expanding our Microsoft collaboration: Proactive and automated Zero Trust security for customers",
+					"locale": "en-US",
+					"useCase": "security"
+				},
+				{
 					"contentType": "feature",
 					"date": "2023-01-12",
 					"description": "Learn about the open beta for Microsoft 365 domain onboarding via the Microsoft Graph API. We know that domains onboarded via API offer quicker deployment times and more flexibility. This onboarding method is one of many so that Cloudflare Area 1 customers can now deploy domains how they see fit.",
@@ -458,22 +474,6 @@
 					"relatedContentProductPageLabel": null,
 					"relatedProduct": null,
 					"title": "Announcing SCIM support for Cloudflare Access & Gateway",
-					"locale": "en-US",
-					"useCase": "security"
-				},
-				{
-					"contentType": "blog",
-					"date": "2023-01-12",
-					"description": "Cloudflare announced four new integrations between Microsoft Entra ID and Cloudflare Zero Trust that reduce risk proactively. These integrated offerings increase automation, allowing security teams to focus on threats versus implementation and maintenance. ",
-					"id": "4385423e-8717-509c-91ba-f7553085020c",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/expanding-our-collaboration-with-microsoft-proactive-and-automated-zero-trust-security/",
-					"relatedContentCollateral": "https://www.cloudflare.com/press-releases/2023/cloudflare-expands-relationship-with-microsoft-zero-trust/",
-					"relatedContentCollateralLabel": "Read the press release",
-					"relatedContentProductPage": null,
-					"relatedContentProductPageLabel": null,
-					"relatedProduct": "Zero Trust",
-					"title": "Expanding our Microsoft collaboration: Proactive and automated Zero Trust security for customers",
 					"locale": "en-US",
 					"useCase": "security"
 				},
@@ -2430,6 +2430,22 @@
 					"useCase": "security"
 				},
 				{
+					"contentType": "feature",
+					"date": "2021-03-23",
+					"description": "Cloudflare for Teams customers can configure  policies that rely on device security signals provided by their endpoint security vendor to allow or deny connections to their applications. This includes signals and attributes like version of the operating system, date of the last patch, disk encryption status, inventory of installed applications, status of anti-malware or endpoint security provider, and date of the last malware scan.\n\nCloudflare for Teams customers can now integrate device posture signals from Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID.",
+					"id": "f4efd221-9c4e-588c-8e2b-c80385151d98",
+					"pageUrl": null,
+					"relatedContentBlogPost": "https://blog.cloudflare.com/endpoint-partnerships/",
+					"relatedContentCollateral": null,
+					"relatedContentCollateralLabel": null,
+					"relatedContentProductPage": "https://www.cloudflare.com/endpoint-partners/",
+					"relatedContentProductPageLabel": null,
+					"relatedProduct": "Cloudflare Zero Trust",
+					"title": "New device security integrations: Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID",
+					"locale": "en-US",
+					"useCase": "security"
+				},
+				{
 					"contentType": "blog",
 					"date": "2021-03-23",
 					"description": "Cloudflare's Secure Web Gateway solution (Gateway) protects users as they navigate the Internet. When users download or upload a file to an origin on the Internet, that file could potentially contain malicious code that may cause their device to perform undesired behavior.\n\nTo prevent this, Cloudflare Gateway allows admins to enable Anti-Virus (AV) scanning of files that are uploaded or downloaded by users as the file passes through Gateway.\n\nAV scanning of files requires organizations to enable Proxy mode under Settings > Network > Layer 7 Firewall.",
@@ -2458,22 +2474,6 @@
 					"relatedContentProductPageLabel": "Explore device posture attributes",
 					"relatedProduct": "Cloudflare Zero Trust",
 					"title": "Zero Trust: New integrations with VMware Carbon Black, CrowdStrike, and SentinelOne",
-					"locale": "en-US",
-					"useCase": "security"
-				},
-				{
-					"contentType": "feature",
-					"date": "2021-03-23",
-					"description": "Cloudflare for Teams customers can configure  policies that rely on device security signals provided by their endpoint security vendor to allow or deny connections to their applications. This includes signals and attributes like version of the operating system, date of the last patch, disk encryption status, inventory of installed applications, status of anti-malware or endpoint security provider, and date of the last malware scan.\n\nCloudflare for Teams customers can now integrate device posture signals from Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID.",
-					"id": "f4efd221-9c4e-588c-8e2b-c80385151d98",
-					"pageUrl": null,
-					"relatedContentBlogPost": "https://blog.cloudflare.com/endpoint-partnerships/",
-					"relatedContentCollateral": null,
-					"relatedContentCollateralLabel": null,
-					"relatedContentProductPage": "https://www.cloudflare.com/endpoint-partners/",
-					"relatedContentProductPageLabel": null,
-					"relatedProduct": "Cloudflare Zero Trust",
-					"title": "New device security integrations: Carbon Black, Sentinel One, Crowdstrike and Microsoft Entra ID",
 					"locale": "en-US",
 					"useCase": "security"
 				},
