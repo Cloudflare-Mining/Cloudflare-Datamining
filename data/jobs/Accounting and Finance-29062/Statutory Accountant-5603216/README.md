@@ -5,9 +5,6 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list, and ranked among the World's 10 Most Innovative Enterprise Companies by Fast Company.</p>
-<p>We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!</p>
 <p><strong>Job Summary and Mission</strong></p>
 <p>We are seeking a highly skilled and motivated accounting specialist to help support the Statutory Team. The Statutory Accountant will be responsible for preparing journal entries to support timely financial statements close and ensuring all activity recorded in line with Local GAAP. Assisting in the preparation of annual statutory filings, including core financial statements, supporting schedules and footnote disclosures. This position will also support the monthly general ledger closing process, as well as any other support that is necessary within the Finance Department.&nbsp;</p>
 <p><strong>Responsibilities and essential job functions include but are not limited to the following:</strong></p>
@@ -22,7 +19,7 @@
 <p>&nbsp;</p>
 <p><strong>Qualifications/Required Knowledge</strong></p>
 <ul>
-	<li>Minimum 8 years of relevant experience</li>
+	<li>Minimum 5 years of relevant experience</li>
 	<li>Mix of Statutory Accounts preparation and audit experience</li>
 	<li>Ability to manage multiple priorities to meet established time lines</li>
 	<li>Must possess excellent computer skills and have the ability to work with the accounting software package</li>
