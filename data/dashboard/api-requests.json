@@ -720,6 +720,16 @@
 		"id": "zone-settings-change-tls-client-auth-setting"
 	},
 	{
+		"uri": "/zones/:zone_identifier/settings/transformations",
+		"method": "GET",
+		"id": "image_resize.card.api.transformations.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/transformations",
+		"method": "PATCH",
+		"id": "image_resize.card.api.transformations.title.patch"
+	},
+	{
 		"uri": "/zones/:zone_identifier/settings/true_client_ip_header",
 		"method": "GET",
 		"id": "zone-settings-get-true-client-ip-setting"
