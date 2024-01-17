@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"latest": "3.20231218.2",
 		"beta": "0.20230908.0",
-		"latest-2": "2.14.1"
+		"latest-2": "2.14.2"
 	},
 	"versions": {
 		"0.1.0": {
@@ -4834,6 +4834,62 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQD7MpS3KA2UVv99IJTSdWHQK1iMVM87p5Q/GPerl9WsGgIhANBhmcbl4q9iD/cOpkw2mbMds0djbN+pCLrZ75Y6SWnL"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "miniflare",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/cache": "2.14.2",
+				"@miniflare/cli-parser": "2.14.2",
+				"@miniflare/core": "2.14.2",
+				"@miniflare/durable-objects": "2.14.2",
+				"@miniflare/html-rewriter": "2.14.2",
+				"@miniflare/http-server": "2.14.2",
+				"@miniflare/kv": "2.14.2",
+				"@miniflare/d1": "2.14.2",
+				"@miniflare/queues": "2.14.2",
+				"@miniflare/r2": "2.14.2",
+				"@miniflare/runner-vm": "2.14.2",
+				"@miniflare/scheduler": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/sites": "2.14.2",
+				"@miniflare/storage-file": "2.14.2",
+				"@miniflare/storage-memory": "2.14.2",
+				"@miniflare/web-sockets": "2.14.2",
+				"kleur": "^4.1.4",
+				"semiver": "^1.1.0",
+				"source-map-support": "^0.5.20",
+				"undici": "5.28.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2",
+				"@types/source-map-support": "^0.5.4",
+				"open": "^8.4.0"
+			},
+			"peerDependencies": {
+				"@miniflare/storage-redis": "2.14.2",
+				"cron-schedule": "^3.0.4",
+				"ioredis": "^4.27.9"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"integrity": "sha512-s2gruuOFT0o3cmQW+EX3k2EaLe1iHZ4OVXRmcNLj5ivrxxRHcK4Hy0LMd6bUOVDcT5KSKs7ylBkHqzp0zmUKCg==",
+				"shasum": "e0b0fdb7805c57cb15f7c8a24a7ad3b3d117944c",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-2.14.2.tgz",
+				"fileCount": 8,
+				"unpackedSize": 56918,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDpUyNKw/lPqhtFTNXW71+DNWafnC2zN5owWa2w5eJ7MgIhALWz6CsadxpGFj3NuAcYbyEGwGka3F/qu3XA++PZA+CO"
 					}
 				]
 			},
