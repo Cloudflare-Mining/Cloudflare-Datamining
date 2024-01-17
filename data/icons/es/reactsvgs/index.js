@@ -109,6 +109,7 @@ import Script from './Script';
 import Search from './Search';
 import SecurityBots from './SecurityBots';
 import SecurityWaf from './SecurityWaf';
+import ServerOrigin from './ServerOrigin';
 import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
@@ -261,6 +262,7 @@ export default {
   search: Search,
   'security-bots': SecurityBots,
   'security-waf': SecurityWaf,
+  'server-origin': ServerOrigin,
   shield: Shield,
   spectrum: Spectrum,
   speech: Speech,

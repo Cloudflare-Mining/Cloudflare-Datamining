@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.1.1
+
+### Patch Changes
+
+- 2197e93171: Add server-origin icon
+
 ## 12.1.0
 
 ### Minor Changes

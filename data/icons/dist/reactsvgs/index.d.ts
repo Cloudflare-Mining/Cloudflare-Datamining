@@ -111,6 +111,7 @@ declare const _default: {
     search: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-bots': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'security-waf': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'server-origin': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     shield: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     spectrum: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     speech: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
