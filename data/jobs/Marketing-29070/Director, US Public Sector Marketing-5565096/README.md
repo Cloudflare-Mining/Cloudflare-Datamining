@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Location - Washington DC or within a 50 mile Radius.&nbsp;</strong></p>
 <p><strong>About the Role</strong></p>
 <p>Cloudflare’s Americas Marketing Team is searching for a Head of US Public Sector Marketing to partner with our sales leaders, campaign, and product marketing organizations to design &amp; drive high-impact pipeline generation programs leading to closed-won bookings. The Director, US Public Sector Marketing will lead a growing team aligned to sales, utilizing data and historical performance to inform quarterly plans &amp; strategies. This key leader will be responsible for coordinating and managing a comprehensive marketing approach for US Public Sector, including Field &amp; Account-Based Marketing, thought leadership, web, content, social media, and more.</p>
 <p><strong>Responsibilities</strong></p>

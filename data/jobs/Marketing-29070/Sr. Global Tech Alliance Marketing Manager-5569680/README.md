@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations - Remote US or Austin, TX</strong></p>
 <p><strong>About the Role</strong></p>
 <p>As the Sr. Global Strategic Alliance Marketing Manager will be responsible for managing marketing initiatives, campaigns and content creation with regard to Cloudflare’s wide-ranging, highly strategic and quickly expanding set of Tech Alliances partners.&nbsp; You will apply your deep, cross-functional marketing skill set and expertise in cloud stack technologies to grow global engagement, pipeline and revenue with this set of key partners.&nbsp; A highly visible role across the company, you will work closely with senior stakeholders from Partner Sales, Regional Sales, Operations, Product Management, Product Marketing and other organizations to deliver compelling content, engaging partner experiences and high-performing lead-generation campaigns.</p>
 <p><strong>Responsibilities</strong></p>

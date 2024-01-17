@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Location: Singapore</strong></p>
 <p><strong>Our Mission</strong></p>
 <p>The Security Response Team’s mission is to systematically respond to security threats safeguarding Cloudflare. We operate 24/7 across the globe to respond to security incidents, continuously improve our response capabilities, lead digital investigations and enhance our overall security posture. Our “Cloudflare on Cloudflare”, data and automation first philosophy makes us a cohesive team with high impact.&nbsp;</p>
 <p><strong>The Role</strong></p>

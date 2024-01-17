@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: Mexico and Lisbon Remote</strong></p>
 <p><strong>About Us</strong></p>
 <p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today, Cloudflare runs one of the world’s largest distributed networks that powers more than 39 million requests per second. We connect, protect and accelerate web applications, websites, APIs, corporate networks and employees globally.</p>
 <p>We have millions of customers ranging from Fortune 500 companies and nonprofits to small businesses and budding entrepreneurs. We are working to create a faster, more secure, more reliable and more private experience for anyone online. Given the scale at which we operate, this is a big task. Our team is hard at work shaping the future of the Internet by solving some of its toughest challenges. Come join us!</p>

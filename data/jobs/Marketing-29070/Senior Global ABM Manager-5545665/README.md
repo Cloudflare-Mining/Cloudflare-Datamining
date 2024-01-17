@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations - Remote US</strong></p>
 <p><strong>Job Description</strong></p>
 <p>We seek a seasoned leader for our Global Account-Based Marketing (ABM) initiatives. This pivotal role will help drive customer awareness, engagement, and revenue growth in key accounts around the world.</p>
 <p>As the Senior Global ABM Manager, you will establish our Global ABM Center of Excellent (CoE).&nbsp; This function will shape comprehensive ABM strategies to engage high-value accounts and establish the roadmap for maturity of global ABM programs.&nbsp; You will manage the growth of the program through initiatives including account selection, best practices, measurement, and scalable campaign creation, while tracking and reporting on the success of ABM initiatives across stakeholders and executives. You will collaborate closely with cross-functional teams, including Field Marketing &amp; Field ABM, Marketing Operations, Sales, BI and Product, to align ABM efforts with overall business objectives.&nbsp;</p>

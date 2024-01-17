@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Location - US Remote</strong></p>
 <p>Cloudflare is seeking a Pricing Operations Manager to bring our packaging and pricing to life through our systems and processes.</p>
 <p>You will be responsible for our growing suite of offerings.&nbsp; You will collaborate cross-functionally with Pricing, Product, Sales Operations and Systems/IT to bring our strategies to life through our systems (SFDC, SFDC CPQ, Stripe, Netsuite). &nbsp; A successful candidate will have a proven track record partnering with IT, Finance and Sales Operations to create streamlined processes and an effective collection of SKUs.&nbsp; This is an individual contributor role, reporting to the Pricing Operations Sr. Manager.</p>
 <p>Job Responsibilities</p>
