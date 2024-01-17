@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations:</strong> Austin, US &amp; Remote, US</p>
 <p><strong>About the team</strong></p>
 <p>Cloudflare wants to give customers deeper insights into how their network operates.&nbsp; We are building products that help visualize your network across all Cloudflare One products including Magic and Zero Trust. We are building new products to give customers deeper visibility into how their network is performing, provide insights into network threats, and give actionable recommendations to improve the security, performance, and reliability of their networks.</p>
 <p>We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>

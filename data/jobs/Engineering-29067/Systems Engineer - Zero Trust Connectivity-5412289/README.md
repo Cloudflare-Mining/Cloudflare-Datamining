@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>Austin, US &amp; Remote - US</p>
 <p><strong>About the team</strong></p>
 <p>The Zero Trust Connectivity team builds the hub that connects Cloudflare One and Zero Trust products such as Magic WAN, WARP, Cloudflare Tunnels and Gateway. Powering this hub is a set of Rust-based services operating on every one of the data-centers that Cloudflare runs. These services route all of Cloudflare One traffic end to end. By leveraging Cloudflare’s incredible infrastructure and programming languages such as Rust, this critical service is safe, performant and secure.</p>
 <p>We are a team of engineers who obsess over building reliable services which leverage Cloudflare’s unique architecture and global network footprint.</p>
