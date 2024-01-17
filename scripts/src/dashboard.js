@@ -186,14 +186,22 @@ async function writeFile(file, data, rootDir) {
 		console.log(`Using filename: ${fileName}`);
 		filePath = path.resolve(rootDir, fileName);
 	}
+	if (!data) {
+		console.warn('No data for file', file);
+		return;
+	}
 	await fs.ensureDir(path.dirname(filePath));
-	if (ArrayBuffer.isView(data) || data?.toString?.() === '[object ArrayBuffer]') {
-		await fs.writeFile(filePath, Buffer.from(data.buffer));
+	if ((ArrayBuffer.isView(data) || data?.toString?.() === '[object ArrayBuffer]')) {
+		if (data.buffer) {
+			await fs.writeFile(filePath, Buffer.from(data.buffer));
+		} else {
+			await fs.writeFile(filePath, Buffer.from(data));
+		}
 	} else if (Buffer.isBuffer(data)) {
 		await fs.writeFile(filePath, data);
 	} else if (Array.isArray(data)) {
 		await fs.writeFile(filePath, data.map(code => beautify(code)).join('\n\n'));
-	} else {
+	} else if (data !== undefined) {
 		await fs.writeFile(filePath, data);
 	}
 }
@@ -853,12 +861,55 @@ async function run() {
 			console.log('Found navigation');
 			const rawNavigation = wantedChunks.navigation.code.slice(navigation.start, navigation.end);
 			try {
-				// write serialised version
+				const rawNavigationAST = parse(`const navigation = ${rawNavigation}`, {
+					sourceType: 'script',
+					ecmaVersion: 2020,
+				});
+				// clean up references to other vals
+				// this will lose a bit of data, but we'll still get most of it
+				full(rawNavigationAST, (node) => {
+					// hasPermission function checks contain a lot of references to other things
+					if (node.type === 'Property' && node.key.name === 'hasPermission') {
+						node.value = {
+							type: 'Literal',
+							value: null,
+						};
+					}
+
+					// tabs reference external things
+					if (
+						(node.type === 'Property' && node.key.name === 'tabs')
+						&& (node.value.type === 'CallExpression' || node.value.type === 'MemberExpression' || node.value.type === 'Identifier')
+					) {
+						node.value = {
+							type: 'ArrayExpression',
+							elements: [],
+						};
+					}
+
+					// "support" and maybe other things reference external things
+					if (
+						node.type === 'Property'
+						&& node.key.type === 'Identifier'
+						&& node.value.type === 'MemberExpression'
+						&& node.value.object.type === 'Identifier'
+						&& node.value.property.type === 'Identifier'
+					) {
+						node.value = {
+							type: 'Literal',
+							value: null,
+						};
+					}
+				});
+				const generated = generate(rawNavigationAST, {
+					indent: '\t',
+				});
 				const file = path.resolve('../data/dashboard/navigation.json');
-				// eslint-disable-next-line no-eval
-				const realNavigation = eval('(function run(){return ' + rawNavigation + '})()');
 				fs.ensureDir(path.dirname(file));
-				await fs.writeFile(file, JSON.stringify(realNavigation, null, '\t'));
+				// eslint-disable-next-line no-eval
+				const navOutput = eval(`(function run(){${generated}; return navigation;})()`);
+				// write serialised version
+				await fs.writeFile(file, JSON.stringify(navOutput, null, '\t'));
 			} catch (err) {
 				console.error('Error getting nav', err);
 			}
