@@ -154,7 +154,7 @@
 					{
 						"contentfulId": "FpXM9Nmz4jgRS01Eiruxw",
 						"title": "Overview",
-						"copy": "Generative AI requires massive amounts of computing power and relies on graphics processing units (GPUs) to quickly and efficiently process enormous amounts of data to train the large language models (LLMs) that are at the core of their offerings. With the sudden acceleration of generative AI companies coming on the market, these companies are now facing a scarcity of processing power from their cloud providers. \n\nIn addition, as new GPU chips optimized for AI workloads are released, AI startups want the flexibility to use the best technology available and not be locked into a single ecosystem. Cloudflare R2 Storage solves both these challenges by providing zero-cost egress – making it simple to migrate large volumes of data across clouds and easily use best-in-class technology.",
+						"copy": "Generative AI relies on powerful GPUs for efficient parallel processing. Cloudflare Workers AI lets users deploy machine learning models on serverless GPUs within Cloudflare's global network. As Generative AI startups training AI models face compute capacity shortages from cloud providers, Cloudflare introduces flexibility by using R2 as an object store for training data. This allows customers to choose the best GPU cloud provider based on capacity, cost, and performance without data transfer fees.",
 						"toggleText": null,
 						"button": [],
 						"learnMoreUrl": null,
@@ -219,7 +219,7 @@
 						"sectionPadding": null,
 						"backgroundColor": "light-blue",
 						"title": "Our Partners",
-						"copy": "Cloudflare supports generative AI companies, including those using R2 Storage as part of the infrastructure for their training models. These partnerships ensure that the innovation around AI-specialized and distributed GPUs works the way it was intended, eliminating vendor lock-in and making training generative AI models accessible and affordable.",
+						"copy": "Cloudflare partners with leading companies in the generative AI and ML ecosystem, including those offering popular foundation models, integrating with R2 object storage for data sets used in training, Vectorize for vector embeddings and AI Gateway for caching, rate limiting, and analytics. These partnerships ensure that the customers have the ability to easily build and deploy AI applications using their tools of choice in the simplest and cost efficient manner.",
 						"logoList": [
 							{
 								"file": {
