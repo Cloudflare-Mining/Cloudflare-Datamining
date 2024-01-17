@@ -2,7 +2,7 @@
 	"name": "@miniflare/watcher",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -988,6 +988,32 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIBQyPhCeVvpaBfu2uFHHjCOsbE/FUI4kESVuvPvq4hwoAiA/+psnm6olvfOcTc98eRLgUCAsSplPi9ZP5J+kRNyKPA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/watcher",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/shared": "2.14.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-/TL0np4uYDl+6MdseDApZmDdlJ6Y7AY5iDY0TvUQJG9nyBoCjX6w0Zn4SiKDwO6660rPtSqZ5c7HzbPhGb5vsA==",
+				"shasum": "619f2f6dff630eddf9f690b611cc9669fdedb900",
+				"tarball": "https://registry.npmjs.org/@miniflare/watcher/-/watcher-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15417,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG+KMDDxphFjAYXwbxpTpBBHcRxPTOy0wYZlfdejbgchAiB+gHwZDW79wogzeeonFoDdZKp1Mrm2xBOkb3gGfG2HXQ=="
 					}
 				]
 			},

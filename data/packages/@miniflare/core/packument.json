@@ -2,7 +2,7 @@
 	"name": "@miniflare/core",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1517,6 +1517,47 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIGUtyVciS2Dg/JRIZcqXA6qaZwqldw6/ji4VWwcnyq91AiA4z9HawPQzfVMXbo7S+8Qj2ySzTTbqUyDAXLxFbmXBwQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/core",
+			"version": "2.14.2",
+			"dependencies": {
+				"@iarna/toml": "^2.2.5",
+				"@miniflare/queues": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/watcher": "2.14.2",
+				"busboy": "^1.6.0",
+				"dotenv": "^10.0.0",
+				"kleur": "^4.1.4",
+				"set-cookie-parser": "^2.4.8",
+				"undici": "5.28.2",
+				"urlpattern-polyfill": "^4.0.3"
+			},
+			"devDependencies": {
+				"@miniflare/durable-objects": "2.14.2",
+				"@miniflare/shared-test": "2.14.2",
+				"@miniflare/watcher": "2.14.2",
+				"@miniflare/web-sockets": "2.14.2",
+				"@types/busboy": "^1.5.0",
+				"@types/set-cookie-parser": "^2.4.1",
+				"dequal": "^2.0.2"
+			},
+			"dist": {
+				"integrity": "sha512-n/smm5ZTg7ilGM4fxO7Gxhbe573oc8Za06M3b2fO+lPWqF6NJcEKdCC+sJntVFbn3Cbbd2G1ChISmugPfmlCkQ==",
+				"shasum": "6a08738cf2f72ea60f3b92c5ce3fb974dbaf6122",
+				"tarball": "https://registry.npmjs.org/@miniflare/core/-/core-2.14.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 228052,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQClzQoLQ5KqkM5mRZdYO0eYYuyiKnS5UuX8P+2ciV/O9gIhAIafxEMTOinffxw+EwjRCZUCiO9oU3Py31cfbkvF/SEB"
 					}
 				]
 			},

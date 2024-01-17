@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-file",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1025,6 +1025,33 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQCSV+12dfs2/kXNh6hQV3ZzMQS0KR40NmfLR0zp78EPLQIgG+dj1jRAdQ4dfTw5+B8xBRGzv9GMpLRuQeRNxizkb4A="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/storage-file",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/storage-memory": "2.14.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-tn8rqMBeTtN+ICHQAMKQ0quHGYIkcyDK0qKW+Ic14gdfGDZx45BqXExQM9wTVqKtwAt85zp5eKVUYQCFfUx46Q==",
+				"shasum": "d180b9f1a32f92497ac5993b008e9eddfba938e6",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-file/-/storage-file-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15317,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBK6twPjbqxCuITWUn33vKcee0sjmaneCI6nAPZ6GRBlAiBzdhqrcErbso2atEk0/49SvXHLTNekTfBKFbbrDwBCmA=="
 					}
 				]
 			},

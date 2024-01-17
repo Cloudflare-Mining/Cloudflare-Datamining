@@ -2,7 +2,7 @@
 	"name": "@miniflare/kv",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -988,6 +988,32 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCgSb710r0XjVT+lmDlRm9qdztrreIGi37XSDrwZIPIlQIhANQ0dvp8lfPcOE0RsJAnFRX392Gd+4iauMzQctTAlpli"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/kv",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/shared": "2.14.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-3rs4cJOGACT/U7NH7j4KD29ugXRYUiM0aGkvOEdFQtChXLsYClJljXpezTfJJxBwZjdS4F2UFTixtFcHp74UfA==",
+				"shasum": "cbca1feb23338106b7c7a815bd4d38e08e6476b0",
+				"tarball": "https://registry.npmjs.org/@miniflare/kv/-/kv-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 21723,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDzRXooYu2KAPnVzvgge2HcMbxkbsgVUcpE2LUp6ysJuAiBqjEhsZ+1tq4Ey1oxuB263wsd6mnyUOLCt4SBSftbPZA=="
 					}
 				]
 			},

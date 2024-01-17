@@ -2,7 +2,7 @@
 	"name": "@miniflare/shared",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1069,6 +1069,36 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIHJX3c5sBuDOgwBU2OTMMgaGzi04KtzhctekBEhaPBviAiAD5AnjByQ51/eVv0xX+EkYcruuuDT9JuIsEF4m5K1XLA=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/shared",
+			"version": "2.14.2",
+			"dependencies": {
+				"@types/better-sqlite3": "^7.6.0",
+				"kleur": "^4.1.4",
+				"npx-import": "^1.1.4",
+				"picomatch": "^2.3.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2",
+				"@types/picomatch": "^2.3.0"
+			},
+			"dist": {
+				"integrity": "sha512-dDnYIztz10zDQjaFJ8Gy9UaaBWZkw3NyhFdpX6tAeyPA/2lGvkftc42MYmNi8s5ljqkZAtKgWAJnSf2K75NCJw==",
+				"shasum": "ee49f2989a18b30747415dd1f90da7ae851fea90",
+				"tarball": "https://registry.npmjs.org/@miniflare/shared/-/shared-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 68462,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBAMntrBt9suzhnwNo3bFDi9OclFYGwg2WxFUARK0BE9AiBBRZORhjVb+lZGWawjIIdi2SqBQgNHI4z1eJdGeIinww=="
 					}
 				]
 			},

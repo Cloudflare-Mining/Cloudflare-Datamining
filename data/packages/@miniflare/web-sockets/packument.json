@@ -2,7 +2,7 @@
 	"name": "@miniflare/web-sockets",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1136,6 +1136,36 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIBkyfPG4WfwI/cRKkcWrxhM+En8tAKuRJdLJMNmyIHhHAiEAy4rZu3Hspgile8TZRaIYxS+taxvmaa/BA8UhTP/l0l0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/web-sockets",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/core": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"undici": "5.28.2",
+				"ws": "^8.2.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2",
+				"@types/ws": "^8.2.0"
+			},
+			"dist": {
+				"integrity": "sha512-kpbVlznPuxNQahssQvZiNPQo/iPme7qV3WMQeg6TYNCkYD7n6vEqeFZ5E/eQgB59xCanpvw4Ci8y/+SdMK6BUg==",
+				"shasum": "8a7a1eead842aa96e0632382d0807c141a29037b",
+				"tarball": "https://registry.npmjs.org/@miniflare/web-sockets/-/web-sockets-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 25494,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGbFZ2fqh798NTsZNxt68JHCgrsBnOrjAj9c/0rn9W3+AiEApRYw2GCLMI0rMWfm7AG/NcP/cfmaNdtL9kULnY2Nd7U="
 					}
 				]
 			},

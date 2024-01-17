@@ -1,7 +1,7 @@
 {
 	"name": "@miniflare/shared-test-environment",
 	"dist-tags": {
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -482,6 +482,41 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQDsFCRAhxsYwnXtYxFiKZocZhZbm7mfSQljtLJKxp6JpQIgRcV6muF2YuAKDmJK050HAtxBSVD76IrEBv4jIzuHyzE="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/shared-test-environment",
+			"version": "2.14.2",
+			"dependencies": {
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@miniflare/cache": "2.14.2",
+				"@miniflare/core": "2.14.2",
+				"@miniflare/d1": "2.14.2",
+				"@miniflare/durable-objects": "2.14.2",
+				"@miniflare/html-rewriter": "2.14.2",
+				"@miniflare/kv": "2.14.2",
+				"@miniflare/queues": "2.14.2",
+				"@miniflare/r2": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/sites": "2.14.2",
+				"@miniflare/storage-memory": "2.14.2",
+				"@miniflare/web-sockets": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-97y/95EzDC86jM2bKYacKk4n59miFC+WXueRdW5TeVzBw2UTL2Alvy36AZuyMUgBqxZdJSv88/q0jHTw7LvyMA==",
+				"shasum": "a0a3a37c6d0c0fb94ab7e9bd56c8748651ff6091",
+				"tarball": "https://registry.npmjs.org/@miniflare/shared-test-environment/-/shared-test-environment-2.14.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 25296,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDV7i2MZjn0tMZiQ9q49rgbh9Am3ew3IESqEqsf6TczzAiEAnHoIiJUh6IaOPMhb6+RFqhJkzT1BM6OpmDbVpHyj6z8="
 					}
 				]
 			},

@@ -1,7 +1,7 @@
 {
 	"name": "@miniflare/r2",
 	"dist-tags": {
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -588,6 +588,34 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIFFfnKnRO9cq4xKuut89LSMfYxNCiNHxgSCnlSLGyAF8AiBFUZVGVNw8Tsmi/+r/f7LNUTMm1m6f29uxtIgB4YHyTw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/r2",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/core": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"undici": "5.28.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-uuc7dx6OqSQT8i0F2rsigfizXmInssRvvJAjoi1ltaNZNJCHH9l1PwHfaNc/XAuDjYmiCjtHDaPdRvZU9g9F3g==",
+				"shasum": "7d970045c680c74859aa491180fdd6dfa187d39d",
+				"tarball": "https://registry.npmjs.org/@miniflare/r2/-/r2-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 73023,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDDKmC4aR2y6vbDSaM3Cqwt0c0S42ng17UlzeSQm1XaaQIgAy5Qj4EQ9yjnquJ+ACcOk9WDKXRzfruuiY4qOy8fdZM="
 					}
 				]
 			},

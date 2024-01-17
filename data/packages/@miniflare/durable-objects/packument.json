@@ -2,7 +2,7 @@
 	"name": "@miniflare/durable-objects",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1155,6 +1155,37 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQD4y5CrateSzL0St8vKyKpj7/wbuDLCXRLFVZdYjaWLDgIgUp2KAh9biVCeOe7U4uzYGA0E56zTdNo+cxRyQDh+mJ4="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/durable-objects",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/core": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/storage-memory": "2.14.2",
+				"undici": "5.28.2"
+			},
+			"devDependencies": {
+				"@miniflare/cache": "2.14.2",
+				"@miniflare/runner-vm": "2.14.2",
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-BfK+ZkJABoi7gd/O6WbpsO4GrgW+0dmOBWJDlNBxQ7GIpa+w3n9+SNnrYUxKzWlPSvz+TfTTk381B1z/Z87lPw==",
+				"shasum": "f94c86d0124e3476c67622add009a38c7f779552",
+				"tarball": "https://registry.npmjs.org/@miniflare/durable-objects/-/durable-objects-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 79022,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBD5QQAW8ASSILrWxr/t/Kdb/uj/Np2KKEMb9yiE6GfXAiBoikthV1NsovUfiOp0RqaQPzogYcQrre9YfJXpg+ZQqw=="
 					}
 				]
 			},

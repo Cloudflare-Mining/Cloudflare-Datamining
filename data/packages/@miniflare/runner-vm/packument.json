@@ -2,7 +2,7 @@
 	"name": "@miniflare/runner-vm",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -988,6 +988,32 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQDzp2aBBWdE+IHGPfsupd0IXTUUzX9BBtXyJ/sxetvvvgIhANvsCIAbyNjBRcgJOssDOD/bjyZ9QCIdjp8UrjIWslJ3"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/runner-vm",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/shared": "2.14.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2"
+			},
+			"dist": {
+				"integrity": "sha512-WlyxAQ+bv/9Pm/xnbpgAg7RNX4pz/q3flytUoo4z4OrRmNEuXrbMUsJZnH8dziqzrZ2gCLkYIEzeaTmSQKp5Jg==",
+				"shasum": "b108ee6ecdbdb84aaad94419b3be148df4cb3f18",
+				"tarball": "https://registry.npmjs.org/@miniflare/runner-vm/-/runner-vm-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 21953,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCaAfIEAhvWn403fDLg86ZK+xMw75+IfqeLS2D/9DXEzwIgeCbE3fZyI/1KZ+rilTwhjIBHx48lX6AsE52xgDQh2Ic="
 					}
 				]
 			},

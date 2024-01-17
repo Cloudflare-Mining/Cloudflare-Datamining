@@ -2,7 +2,7 @@
 	"name": "@miniflare/cli-parser",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1136,6 +1136,36 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQD4UoO/MkZzUYLc6GWCSZwbqUgbzVIpHEPN4NS4ivpCSwIgQKmfEMOIuOAeD0qAGR4f+EFQDIhVI+FmzONcc+FvtZ0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/cli-parser",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/shared": "2.14.2",
+				"kleur": "^4.1.4"
+			},
+			"devDependencies": {
+				"@miniflare/core": "2.14.2",
+				"@miniflare/shared-test": "2.14.2",
+				"@types/mri": "^1.1.1",
+				"mri": "^1.1.6"
+			},
+			"dist": {
+				"integrity": "sha512-CzC7OnPWuMWSJrmnn0PUToMFDkMEnsFFE+ybA+Gqpgcdb/gaLz+yP0/Hagb5YN4JMxh5SBG7NCktsjZKaO94ig==",
+				"shasum": "8d9468e0b7a2f7d461995c9f2ed155afc49d2ee4",
+				"tarball": "https://registry.npmjs.org/@miniflare/cli-parser/-/cli-parser-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 23462,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHd/+7asaRIRod6fV+7680vSfwR0r83T0fPD5a5s/aEtAiA2oZYEK0VrWWBUzquBcA0fmVcj5blsmAdOu7yfegSzRA=="
 					}
 				]
 			},

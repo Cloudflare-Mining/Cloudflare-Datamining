@@ -1,7 +1,7 @@
 {
 	"name": "vitest-environment-miniflare",
 	"dist-tags": {
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -527,6 +527,42 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQDcHTelBAjSAZFI+2dIpE8rSW7/skf2ayQ1o5+crn6DUgIgYPAchWAjpgZtZgPgG3D4IjxXimDDAndlUE8zBDcbuX0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "vitest-environment-miniflare",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/runner-vm": "2.14.2",
+				"@miniflare/queues": "2.14.2",
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/shared-test-environment": "2.14.2",
+				"undici": "5.28.2"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2",
+				"miniflare": "2.14.2",
+				"react-dom": "^18.1.0",
+				"vitest": "^0.34.3"
+			},
+			"peerDependencies": {
+				"vitest": ">=0.23.0"
+			},
+			"dist": {
+				"integrity": "sha512-9bVoJ59m8RtW+KxXoQBTm+2ljZDTuN/yxth3VlIJV4oOpjLo7ambK+exWJmoU+2lcSf0WAC/610a3gJuAJJDTg==",
+				"shasum": "3e5c49bf976ffa4f61d25b0f7be0475f29a31745",
+				"tarball": "https://registry.npmjs.org/vitest-environment-miniflare/-/vitest-environment-miniflare-2.14.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 7928,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCWjrThpefd5mtQGtLr5kI/jazZdVt7v75xh2avBedCbwIhAPtYl+EC2RCLGGg4+lM591iDzH672q1xRq3QVsIrpMEL"
 					}
 				]
 			},

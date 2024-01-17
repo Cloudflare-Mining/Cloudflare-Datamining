@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-redis",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.14.1",
+		"latest": "2.14.2",
 		"d1": "2.8.2-d1.0",
 		"latest-2": "2.14.1"
 	},
@@ -1099,6 +1099,35 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQCRLwh86U8UTwpH98Jxrx8ZT7js/85YVjJ6SOZzbSKmnAIgSc5CbfAvoRjlWeQiz0vXlA0qoLXlxCyUBK9ykhVxnFw="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"2.14.2": {
+			"name": "@miniflare/storage-redis",
+			"version": "2.14.2",
+			"dependencies": {
+				"@miniflare/shared": "2.14.2",
+				"@miniflare/storage-memory": "2.14.2",
+				"ioredis": "^4.27.9"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.14.2",
+				"@types/ioredis": "^4.27.2"
+			},
+			"dist": {
+				"integrity": "sha512-wxx4NxapIVfXhxbe8JB50pbbpc0+2Bnr+HWNUyYHb63/8gc1QZIje6eIVv45o7LAtz2TJktBdG5rr3RaZQa+IA==",
+				"shasum": "e898cc1aa9a2cefc1543f53c0ff489e9a4fcf57b",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-redis/-/storage-redis-2.14.2.tgz",
+				"fileCount": 5,
+				"unpackedSize": 18287,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCMXAjMODHx4vx30XNexXOV7pE2q0F5afUuqD7qe1HkBAIhAJro4C8j+NHQf/RxZc+txWuvfkdOlGXr+BD7sSQbSZlE"
 					}
 				]
 			},
