@@ -448,6 +448,9 @@ declare interface DurableObjectState {
   setWebSocketAutoResponse(maybeReqResp?: WebSocketRequestResponsePair): void;
   getWebSocketAutoResponse(): WebSocketRequestResponsePair | null;
   getWebSocketAutoResponseTimestamp(ws: WebSocket): Date | null;
+  setHibernatableWebSocketEventTimeout(timeoutMs?: number): void;
+  getHibernatableWebSocketEventTimeout(): number | null;
+  getTags(ws: WebSocket): string[];
   abort(reason?: string): void;
 }
 declare interface DurableObjectTransaction {
@@ -1977,9 +1980,13 @@ declare class WebSocket extends EventTarget<WebSocketEventMap> {
   serializeAttachment(attachment: any): void;
   deserializeAttachment(): any | null;
   static readonly READY_STATE_CONNECTING: number;
+  static readonly CONNECTING: number;
   static readonly READY_STATE_OPEN: number;
+  static readonly OPEN: number;
   static readonly READY_STATE_CLOSING: number;
+  static readonly CLOSING: number;
   static readonly READY_STATE_CLOSED: number;
+  static readonly CLOSED: number;
   get readyState(): number;
   get url(): string | null;
   get protocol(): string | null;
@@ -2012,6 +2019,7 @@ declare interface Socket {
   get readable(): ReadableStream;
   get writable(): WritableStream;
   get closed(): Promise<void>;
+  get opened(): Promise<SocketInfo>;
   close(): Promise<void>;
   startTls(options?: TlsOptions): Socket;
 }
@@ -2025,6 +2033,10 @@ declare interface SocketAddress {
 }
 declare interface TlsOptions {
   expectedServerHostname?: string;
+}
+declare interface SocketInfo {
+  remoteAddress?: string;
+  localAddress?: string;
 }
 declare interface gpuGPU {
   requestAdapter(
