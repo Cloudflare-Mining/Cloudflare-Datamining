@@ -3632,6 +3632,7 @@
 		"environmentName": "The name of the script environment",
 		"scriptName": "The name of the script",
 		"scriptTag": "The unique tag of the script",
+		"scriptVersion": "The version of the Worker",
 		"status": "Status of the worker invocation",
 		"usageModel": "Usage model of the worker invocation"
 	},
@@ -3764,6 +3765,7 @@
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"environmentName": "The name of the script environment",
 		"scriptName": "The name of the script",
+		"scriptVersion": "The version of the Worker",
 		"usageModel": "Usage model of the worker invocation"
 	},
 	"AccountWorkersSubrequestsAdaptiveGroupsFilter_InputObject": {
@@ -3977,6 +3979,7 @@
 		"datetimeFiveMinutes": "Request timestamp, truncated to multiple of 5 minutes",
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
+		"jurisdiction": "Jurisdiction of the R2 bucket, or 'default' if unrestricted",
 		"operationClass": "Billable class of storage operation"
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroupsFilter_InputObject": {
@@ -4041,7 +4044,8 @@
 		"datetimeFifteenMinutes": "Storage sample timestamp, truncated to multiple of 15 minutes",
 		"datetimeFiveMinutes": "Storage sample timestamp, truncated to multiple of 5 minutes",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
-		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
+		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute",
+		"jurisdiction": "Jurisdiction of the R2 bucket, or 'default' if unrestricted"
 	},
 	"ZoneCacheReserveStorageAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -4191,6 +4195,11 @@
 		"responseSizeBucket": "Size of the DNS response in bytes (in multiples of 16)",
 		"responseStale": "Whether a stale DNS response was served from cache",
 		"timestamp": "Time at which the query was received",
+		"timestampFifteenMinutes": "Time at which the query was received, truncated to multiple of 15 minutes",
+		"timestampFiveMinutes": "Time at which the query was received, truncated to multiple of 5 minutes",
+		"timestampHalfOfHour": "Time at which the query was received, truncated to multiple of 30 minutes",
+		"timestampHour": "Time at which the query was received, truncated to the hour",
+		"timestampMinute": "Time at which the query was received, truncated to the minute",
 		"upstream": "Upstream server that the query was forwarded to"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsFilter_InputObject": {
