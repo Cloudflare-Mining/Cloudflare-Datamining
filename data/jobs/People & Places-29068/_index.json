@@ -8,46 +8,6 @@
 			"children": [],
 			"jobs": [
 				{
-					"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/4943806?gh_jid=4943806",
-					"data_compliance": [
-						{
-							"type": "gdpr",
-							"requires_consent": false,
-							"requires_processing_consent": false,
-							"requires_retention_consent": false,
-							"retention_period": null
-						}
-					],
-					"internal_job_id": 2506616,
-					"location": {
-						"name": "Remote US"
-					},
-					"metadata": [
-						{
-							"id": 164993,
-							"name": "Cross-post department",
-							"value": null,
-							"value_type": "single_select"
-						},
-						{
-							"id": 825338,
-							"name": "Cost Center",
-							"value": "6500 - Human Resources",
-							"value_type": "single_select"
-						},
-						{
-							"id": 8654220,
-							"name": "Job Posting Location",
-							"value": [],
-							"value_type": "multi_select"
-						}
-					],
-					"id": 4943806,
-					"updated_at": "2024-01-17T10:57:39-05:00",
-					"requisition_id": null,
-					"title": "Senior People Team Business Partner- GTM"
-				},
-				{
 					"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5425169?gh_jid=5425169",
 					"data_compliance": [
 						{
@@ -88,6 +48,48 @@
 					"updated_at": "2024-01-17T10:57:39-05:00",
 					"requisition_id": "TBH#14045",
 					"title": "Head of People Team, Business Partners, EMEA"
+				},
+				{
+					"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/4943806?gh_jid=4943806",
+					"data_compliance": [
+						{
+							"type": "gdpr",
+							"requires_consent": false,
+							"requires_processing_consent": false,
+							"requires_retention_consent": false,
+							"retention_period": null
+						}
+					],
+					"internal_job_id": 2506616,
+					"location": {
+						"name": "Remote US"
+					},
+					"metadata": [
+						{
+							"id": 164993,
+							"name": "Cross-post department",
+							"value": null,
+							"value_type": "single_select"
+						},
+						{
+							"id": 825338,
+							"name": "Cost Center",
+							"value": "6500 - Human Resources",
+							"value_type": "single_select"
+						},
+						{
+							"id": 8654220,
+							"name": "Job Posting Location",
+							"value": [
+								"US"
+							],
+							"value_type": "multi_select"
+						}
+					],
+					"id": 4943806,
+					"updated_at": "2024-01-18T11:12:30-05:00",
+					"requisition_id": null,
+					"title": "Senior People Team Business Partner- GTM"
 				}
 			]
 		},
@@ -127,12 +129,15 @@
 						{
 							"id": 8654220,
 							"name": "Job Posting Location",
-							"value": [],
+							"value": [
+								"UK",
+								"US"
+							],
 							"value_type": "multi_select"
 						}
 					],
 					"id": 5552893,
-					"updated_at": "2024-01-17T10:57:39-05:00",
+					"updated_at": "2024-01-18T11:17:15-05:00",
 					"requisition_id": "TBH#14779",
 					"title": "Senior Recruiting Systems Analyst"
 				},
@@ -167,57 +172,17 @@
 						{
 							"id": 8654220,
 							"name": "Job Posting Location",
-							"value": [],
-							"value_type": "multi_select"
-						}
-					],
-					"id": 5552896,
-					"updated_at": "2024-01-17T10:57:39-05:00",
-					"requisition_id": "TBH#14779",
-					"title": "Senior Recruiting Systems Analyst"
-				},
-				{
-					"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5553189?gh_jid=5553189",
-					"data_compliance": [
-						{
-							"type": "gdpr",
-							"requires_consent": false,
-							"requires_processing_consent": false,
-							"requires_retention_consent": false,
-							"retention_period": null
-						}
-					],
-					"internal_job_id": 2739742,
-					"location": {
-						"name": "Mexico City, MX"
-					},
-					"metadata": [
-						{
-							"id": 164993,
-							"name": "Cross-post department",
-							"value": null,
-							"value_type": "single_select"
-						},
-						{
-							"id": 825338,
-							"name": "Cost Center",
-							"value": "6510 - Recruiting",
-							"value_type": "single_select"
-						},
-						{
-							"id": 8654220,
-							"name": "Job Posting Location",
 							"value": [
-								"Mexico",
-								"Mexico City, Mexico"
+								"UK",
+								"US"
 							],
 							"value_type": "multi_select"
 						}
 					],
-					"id": 5553189,
-					"updated_at": "2024-01-17T10:57:39-05:00",
-					"requisition_id": null,
-					"title": "Senior Recruiter "
+					"id": 5552896,
+					"updated_at": "2024-01-18T11:17:15-05:00",
+					"requisition_id": "TBH#14779",
+					"title": "Senior Recruiting Systems Analyst"
 				}
 			]
 		},

@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>Hybrid -<strong> </strong><span class="collapsed-field-text">Austin, US, Champaign, US, San Francisco, US, Washington DC, US</span> or Remote - US</p>
 <p><strong>About the Role</strong></p>
 <p>Cloudflare’s network protects critical infrastructure, powers always-on applications, and defends employees targeted by cyber attacks. We operate at massive scale — usage of this network generates petabytes of logs per day. The mission of the Data team is to make sense of this data, provide insights for customers, and help us build better products.</p>
 <p>Cloudflare’s data is mission-critical to our customers. They rely on the data provided by our network to understand threats to their business, and opportunities to make their operations faster, more reliable, and more secure. For example:</p>

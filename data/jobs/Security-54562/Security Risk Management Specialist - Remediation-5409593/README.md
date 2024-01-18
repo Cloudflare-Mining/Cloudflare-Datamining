@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>US Remote, Austin Texas</p>
 <p><strong>The Team</strong></p>
 <p>We are looking to hire an experienced Security Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for identifying and managing security risk across Cloudflare’s production environment and critical business functions.</p>
 <p>At Cloudflare, risk management lays the foundation for protecting Cloudflare and our customers. The Risk team identifies risk throughout the company and prioritizes mitigation efforts to drive Security team priorities. We do not believe in tick-box security, so for us risk management is a pathway to doing things right.&nbsp;</p>
