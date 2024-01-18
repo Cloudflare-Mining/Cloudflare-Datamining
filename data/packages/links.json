@@ -362,6 +362,7 @@
 	"https://api.cloudflare.com/client/v4/accounts/$(ACCOUNT_ID)/workers/scripts/$(WORKER_VERSION)",
 	"https://api.cloudflare.com/client/v4/accounts/$(WWW_ACCOUNT_ID)/workers/scripts/$(WORKER_VERSION)",
 	"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT_NAME",
+	"https://api.cloudflare.com/client/v4/accounts/%3Caccount-tag%3E/cloudchamber",
 	"https://api.cloudflare.com/client/v4/accounts/%3Caccount_id%3E/%60",
 	"https://api.cloudflare.com/client/v4/ips",
 	"https://api.cloudflare.com/client/v4/zones/$%7BzoneId%7D/workers/filters%60,",
