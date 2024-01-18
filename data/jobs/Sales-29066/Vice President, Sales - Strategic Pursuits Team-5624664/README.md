@@ -5,51 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Location - US Remote</strong></p>
-<p>Cloudflare is seeking a Pricing Operations Manager to bring our packaging and pricing to life through our systems and processes.</p>
-<p>You will be responsible for our growing suite of offerings.&nbsp; You will collaborate cross-functionally with Pricing, Product, Sales Operations and Systems/IT to bring our strategies to life through our systems (SFDC, SFDC CPQ, Stripe, Netsuite). &nbsp; A successful candidate will have a proven track record partnering with IT, Finance and Sales Operations to create streamlined processes and an effective collection of SKUs.&nbsp;</p>
-<p><strong>This is an individual contributor role, reporting to the Pricing Operations Sr. Manager.</strong></p>
-<p>Job Responsibilities</p>
+<p><strong>Position Overview:</strong></p>
+<p>We are seeking a global sales executive to create and lead our global Strategic Pursuits Team (SPT). This is a unique opportunity to build a high visibility team that will engage major customers to develop scale strategic opportunities, and establish Cloudflare as their key cloud technology provider.&nbsp; This team will act as a Center of Excellence that is overlay to our field to develop plans with major account owners while elevating our Enterprise sales capabilities across major deal sourcing, consultative selling, structuring, negotiation, closing, and onboarding.&nbsp;&nbsp;</p>
+<p>In this new role, you will be responsible for building and leading regional teams managing the end-to-end deal cycle for strategic, large, complex deals. You will focus on identifying and driving key categories of opportunity, gaining access to senior executives, earning trust with customers by creating actionable strategies, developing and shaping opportunities, and leading deal engagements through negotiations and closure. This role will align with C-level executives, IT teams, and multiple lines of business in prospect / customer businesses to identify and achieve business outcomes, increase the enterprise wide adoption of Cloudflare services, and enable strategic relationships. You will work collaboratively to drive results by partnering with Cloudflare executives, regional GMs and account teams, product leadership and supporting teams to empower our customers while building a major deals capability across Cloudflare.&nbsp; Success will be making strategic&nbsp;</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Drive pricing process innovation to knock down operational barriers and drive operational efficiency to accelerate growth&nbsp;</li>
-	<li>Drive improvement, simplification, and automation across the team by building scalable work processes and eliminating inefficiencies</li>
-	<li>Ensure operational readiness for orderability, coordinating with cross-functional partners to enable readiness to sell, deliver, and support new products</li>
-	<li>Represent Pricing in go-to-market launches, ensuring pricing requirements are prioritized and successfully implemented</li>
-	<li>Build productive relationships and feedback loops with partners including Product, Sales/Partner, Sales Operations, IT, Deal Desk, Legal, and Finance teams</li>
-	<li>Document pricing implementation requirements, process flow diagrams, and use cases across CPQ and Pricing workflows</li>
-	<li>Participate in implementation and enhancement projects for Configuration, Pricing and Quoting (CPQ), including user acceptance testing to validate development meets business requirements</li>
-	<li>Serve as a trusted advisor on pricing, product configurations, orderability and go-to-market processes</li>
-	<li>Execute, document and support all pricing related work for price changes. Support Finance in maintaining SOX compliant processes and documentation</li>
-	<li>Maintain strong controls in our procedures, support compliance requests, identify challenges and propose remediation plans</li>
-	<li>Effectively collaborate with business partners to set objectives and timelines to executing price updates and to remediate processes that cause update errors</li>
-	<li>Communicate project status, milestones, and dependencies to cross functional stakeholders</li>
-	<li>Maintain the security and confidentiality of information</li>
-	<li>Translate ideas and concepts into practical applications and generate new ideas that add value</li>
+	<li>Develop and execute a global large deal pursuits strategy focused on securing eight and nine-figure strategic deals.</li>
+	<li>Build and scale a world class strategic deals pursuit organization that sustains efficient, high long-term growth.</li>
+	<li>Create and drive new strategic go-to-market plans to meet company growth and market share goals.</li>
+	<li>Lead and inspire a high-performing global pursuits team to achieve revenue targets and exceed customer expectations.</li>
+	<li>Collaborate closely with executive leadership to align sales initiatives with overall business objectives.</li>
+	<li>Understand customer pain points and business challenges, positioning Cloudflare's solutions as integral to their success.</li>
+	<li>Provide thought leadership and consultative guidance to clients, ensuring a deep understanding of their needs.</li>
+	<li>Oversee the end-to-end sales process, from prospecting and qualification to negotiation and contract closure.</li>
+	<li>Ensure timely and accurate forecasting, reporting, and communication of sales metrics to executive leadership.</li>
+	<li>Partner with GTM organization including regional GMs, strategic and enterprise sales teams and post sales organization.</li>
+	<li>Collaborate with product, engineering, marketing, and technical teams to ensure alignment of customer needs with Cloudflare's product roadmap.</li>
+	<li>Work closely with legal, finance, and other internal stakeholders to navigate complex deal structures and negotiations.</li>
+	<li>Work closely with functions and other executives across the organization to establish and develop a strong and collaborative partnership to ensure continued success.</li>
+	<li>Recruit, inspire, lead, mentor, motivate and instill operational rigor into the sales organization, to capitalize on the market opportunity for Cloudflare.</li>
+	<li>Create loyalty and followership among the current team. Help drive the mission/vision of Cloudflare to the sales force and broader organization.</li>
 </ul>
-<p>Qualifications</p>
+<p><strong>To be effective in this role, you will have the following key pivotal experiences and expertise:</strong></p>
 <ul>
-	<li>5 years of related work experience is required</li>
-	<li>Bachelor’s Degree or equivalent work experience</li>
-	<li>Experience with SaaS and subscription products as well as an understanding of best practices for enterprise B2B selling models</li>
-	<li>Prefer familiarity with Pricing / Quote to Cash processes for different route to markets, including eCommerce, Direct, and Partner/Reseller/Distributors as well as how they can be supported in systems (end to end) conceptually</li>
-	<li>Understanding of best practices with off the shelf enterprise CPQ/Quoting system and how they can help scale business with speed</li>
-	<li>Experience with and understanding of best practices with Salesforce.com, SFDC CPQ (including object data structure) and Jira preferred</li>
-	<li>Thrive and excel working within a fast pace, active environment and can handle the ever-changing needs of many internal and external customers globally</li>
-	<li>Strong organizational and interpersonal skills as well as written and verbal communication skills</li>
-	<li>Excellent attention to detail and a high degree of professionalism</li>
-	<li>Ability to manage and prioritize multiple responsibilities</li>
-	<li>Willingness to work towards solutions; internally motivated</li>
-	<li>Learn fast and adapt to process/system changes quickly</li>
-	<li>Must be able to work both independently and as a team</li>
-	<li>Proficient in Google Suite including Docs and Slides</li>
+	<li>15+ years of experience in enterprise SaaS sales, with a proven track record of securing repeatable eight-figure deals.</li>
+	<li>Experience leading and managing high-performing sales teams in a global setting.</li>
+	<li>Excellent communication, negotiation, and presentation skills.</li>
+	<li>Ability to thrive in a fast-paced, dynamic environment and adapt to changing market conditions.</li>
+	<li>High Growth at Scale<strong> – </strong>Track record of leading sales organizations through rapid growth. Develops processes and strategies that enable exponential revenue growth</li>
+	<li>Operational Rigor<strong> – </strong>Experience implementing complex strategy and operational improvements. Takes a data driven and efficiency-oriented approach to sales operations. Measurable success in improving sales enablement, hiring practices, productivity, sales strategy and programs.</li>
+	<li>Strategic Builder - this executive will be a team builder, team player, and a leader. To be effective in this role, you will have the personal drive and enthusiasm to successfully navigate a growing company in an evolving marketplace.</li>
+	<li>Infrastructure SaaS<strong> – </strong>Experience within a cloud-native, highly technical infrastructure SaaS business, and track record of managing a predictable and repeatable recurring revenue business model.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>For Colorado-based hires: Estimated annual salary of $124,000 - $152,000.</li>
-	<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $132,000 - $162,000.</li>
-	<li>For Bay Area-based hires: Estimated annual salary of $140,000 - $171,000.</li>
+	<li>For Colorado, New York City, Washington, and California based hires: Estimated annual salary of $425,000 - $600,000.</li>
 </ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
@@ -77,7 +70,6 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
