@@ -5,33 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: Mexico</strong></p>
+<p><strong>About the Department:</strong></p>
+<p>The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
+<p><strong>About the Role:</strong></p>
+<p>This role is strategically focused on service delivery and operational excellence for Cloudflare’s Managed Service Providers (MSPs) and Distribution Partners. In this player/coach role, you will guide Channel partners through their Cloudflare journey with your strong leadership, technical, and business acumen as well as lead, mentor, and develop a team to deliver technical services coverage to MSP and Distribution partners. This role/team helps our partners build and scale different service offerings to ensure our end-customers receive an amazing Cloudflare experience.&nbsp;</p>
+<p>You’ll be pivotal in streamlining and ongoing satisfaction with Cloudflare services provided by channel partners. Your position involves high-level engagements and discussions with C-suite executives at partner organizations, focusing on post sales partner success. You'll be responsible for ensuring the smooth onboarding of new partners, providing ongoing post-sales support, and maintaining high partner satisfaction. Your technical knowledge of Cloudflare’s solution, industry expertise, familiarity with go to market models and ability to manage large cross-functional projects will allow you to act as a trusted advisor for your partners alongside Cloudflare’s Partner Success Managers, Channel &amp; Alliance Managers and Solutions Engineers.</p>
+<p>To aid your team, you will work closely with every team at Cloudflare, from Sales and Product, through to Engineering and Customer Support. Your goal of partner and customer success should drive you through the entire organization as you seek out and advise your team on how to provide scalable technical services coverage for partner needs.</p>
+<p>Reporting to the Head of Partner Services, you will own the performance and development of the team with accountability for Team Development, Operational Diligence, and partner with the Revenue organization to drive positive outcomes in developing technical partner practices.</p>
+<p><strong>Specifically, we are looking for you to:</strong></p>
+<ul>
+	<li>Actively engage with MSPs and distribution partners, guiding them through their journey with Cloudflare, focusing on post-sales and onboarding processes.</li>
+	<li>Develop and manage a tailored support framework for MSPs and distributor partners, ensuring they receive the assistance needed for efficient Cloudflare solution deployment and management.</li>
+	<li>Oversee the creation of specialized resources and tools designed to enhance partner capabilities in service delivery and customer support.</li>
+	<li>Utilize your strong communication skills and technical understanding to develop strong relationships with partners.</li>
+	<li>Lead your team with clarity and empathy, creating a culture of innovation, safety, and creativity.</li>
+	<li>Clearly articulate and implement your team’s vision and strategy, promoting collaboration and operational excellence.</li>
+	<li>Oversee and report on various initiatives and projects, focusing on enhancing partner capabilities and development within the post-sales landscape.</li>
+	<li>Concentrate on mentoring and developing your team, ensuring they possess both the functional and technical skills necessary for effective partner support.</li>
+	<li>Champion the development of technical services practices for partners, collaborating with colleagues to create enriching partner experiences.</li>
+	<li>Establish a continuous feedback loop with partners to identify areas for improvement in post-sales support, leading initiatives to enhance partner satisfaction and success.</li>
+	<li>Ability to troubleshoot and resolve technical issues related to Cloudflare services.</li>
+	<li>Strong grasp of networking concepts, including DNS, CDN, and web security.</li>
+	<li>Understanding of cybersecurity principles and practices.</li>
+	<li>Experience with API management and integration, essential for automating and customizing service platforms.</li>
+	<li>Experience with cloud-native solutions, architectures, and services, especially those relevant to scalable and secure internet operations.</li>
+</ul>
+<p>We know that the ideal candidate may not have all of the above skills on Day 1 and we’re committed to developing and investing in the right person for the role.</p>
+<h4><br><br></h4>
 <p>&nbsp;</p>
-<p><strong>Available locations: Lisbon, Portugal | Mexico city, Mexico | Mexico Remote</strong></p>
-<p><strong>Job Summary and Mission</strong></p>
-<p>We are seeking a highly skilled and motivated accounting specialist to help support the Statutory Team. The Statutory Accountant will be responsible for preparing journal entries to support timely financial statements close and ensuring all activity recorded in line with Local GAAP. Assisting in the preparation of annual statutory filings, including core financial statements, supporting schedules and footnote disclosures. This position will also support the monthly general ledger closing process, as well as any other support that is necessary within the Finance Department.&nbsp;</p>
-<p><strong>Responsibilities and essential job functions include but are not limited to the following:</strong></p>
-<ul>
-	<li>Assists in the preparation of monthly financial reports and GL postings</li>
-	<li>Prepares various account reconciliations, schedules, exhibits and summaries to support the general ledger balances</li>
-	<li>Prepares reconciliations between US GAAP and Local GAAP&nbsp;</li>
-	<li>Participate in the interim and annual audits for the Company</li>
-	<li>Provides support to all areas of the Accounting Department as needed</li>
-	<li>Performs other analysis and special projects as assigned</li>
-</ul>
-<p><strong>Qualifications/Required Knowledge</strong></p>
-<ul>
-	<li>Minimum 5 years of relevant experience</li>
-	<li>Mix of Statutory Accounts preparation and audit experience</li>
-	<li>Ability to manage multiple priorities to meet established time lines</li>
-	<li>Must possess excellent computer skills and have the ability to work with the accounting software package</li>
-	<li>Excel skills including working knowledge of pivot tables, VLOOKUP’s, formulas, etc.</li>
-	<li>Must possess excellent written and verbal communication skills and have the ability to interact with peers and senior management.</li>
-	<li>Ability to work independently</li>
-	<li>Degree in Accounting</li>
-	<li>Strong problem-solving skills, ability to develop, organize and complete large-scale projects, passion for continuous process improvements</li>
-	<li>Strong technical skills including proficiency in NetSuite</li>
-	<li>Decision-making, problem-solving, and analytical skills</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
