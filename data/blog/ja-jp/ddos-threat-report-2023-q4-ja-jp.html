@@ -1,0 +1,155 @@
+<div class="mb2 gray5">18 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/01/image14-5.png" class="kg-image" alt="" loading="lazy" width="1999" height="1125"></figure>
+	<p>CloudflareのDDoS脅威レポート第16版へようこそ。本版では、2023年第4四半期および最終四半期のDDoS動向と主要な調査結果について、年間を通じた主要動向のレビューとともにお届けします。</p>
+	<h2 id="ddos%E6%94%BB%E6%92%83%E3%81%A8%E3%81%AF%EF%BC%9F">DDoS攻撃とは？</h2>
+	<p>DDoS攻撃（<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack">分散型サービス妨害攻撃</a>）とは、Webサイトやオンラインサービスを混乱させることを目的としたサイバー攻撃の一種で、処理能力を超えるトラフィックで圧倒することでユーザーが利用不能になります。DDoS攻撃は、道路を渋滞させ、ドライバーが目的地にたどり着けなくする車の渋滞に似ています。</p>
+	<p>このレポートで取り上げるDDoS攻撃には、主に3つのタイプがあります。1つ目は<a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTPリクエスト</a>集中型DDoS攻撃で、HTTPサーバーを処理能力を超えるリクエストで圧倒し、サービス妨害イベントを引き起こすことを狙います。2つ目は<a href="https://www.cloudflare.com/learning/network-layer/what-is-a-packet">IPパケット</a>集中型のDDoS攻撃で、ルーターやファイアウォール、サーバーなどのインラインアプライアンスを、処理能力を超えるパケットで圧倒することを狙います。3つ目は、ビット集中型の攻撃で、インターネット・リンクを飽和させ、詰まらせることを目的とし、前述の「グリッドロック」（渋滞）を引き起こします。このレポートでは、この3つのタイプの攻撃に関するさまざまなテクニックと洞察を紹介します。</p>
+	<p>また、このレポートの前の版は<a href="https://blog.cloudflare.com/tag/ddos-reports">こちら</a>または当社のインタラクティブハブである<a href="https://radar.cloudflare.com/reports?q=DDoS">Cloudflare Radar</a>でご覧いただけます。Cloudflare Radarは、世界のインターネットトラフィック、攻撃、テクノロジーのトレンドと洞察を紹介し、特定の国、業界、サービスプロバイダーの洞察を掘り下げるための検索・フィルタリング機能を備えています。また、Cloudflare Radarは<a href="https://developers.cloudflare.com/radar">無料のAPI</a>も提供しており、学者、データ調査者、その他Webの愛好家が世界中のインターネット利用状況を調査することができます。</p>
+	<p>本レポートの作成方法については、「<a href="https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports">メソドロジー</a>」を参照してください。</p>
+	<h2 id="%E4%B8%BB%E3%81%AA%E8%AA%BF%E6%9F%BB%E7%B5%90%E6%9E%9C">主な調査結果</h2>
+	<ol>
+		<li>第4四半期には、ネットワーク層のDDoS攻撃が前年同期比で117%増加し、ブラックフライデーとホリデーシーズン前後には、小売、出荷、広報のWebサイトを標的としたDDoS攻撃が全体的に増加しました。</li>
+		<li>第4四半期には、総選挙を控え、中国との緊張が伝えられる中、台湾を標的としたDDoS攻撃トラフィックが前年比3,370%増となりました。イスラエルとハマスの軍事衝突が続く中、イスラエルのWebサイトを標的としたDDoS攻撃トラフィックの割合は前四半期比で27%増加し、パレスチナのWebサイトを標的としたDDoS攻撃トラフィックの割合は前四半期比で1,126%増加しました。</li>
+		<li>第4四半期には、第28回国連気候変動会議（COP28）が開催されたこともあり、環境サービスWebサイトを標的にしたDDoS攻撃トラフィックが前年比61,839％という驚異的な急増を見せました。</li>
+	</ol>
+	<p>これらの主要な調査結果の詳細な分析と、現在のサイバーセキュリティの課題に対する理解を再定義するその他の洞察については、こちらをお読みください！</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/image1.png" class="kg-image" alt="" loading="lazy" width="1134" height="600">
+		<figcaption>DDoS攻撃の図解</figcaption>
+	</figure>
+	<h2 id="%E8%B6%85%E5%B8%AF%E5%9F%9F%E5%B9%85%E6%B6%88%E8%B2%BB%E5%9E%8Bhttp-ddos%E6%94%BB%E6%92%83">超帯域幅消費型HTTP DDoS攻撃</h2>
+	<p>2023年は未開の領域の年でした。DDoS攻撃は、その規模と巧妙さにおいて、新たな高みに達しました。Cloudflareを含むより広範なインターネットコミュニティは、かつてない速度で何千もの超帯域幅消費型DDoS攻撃を行う、執拗かつ意図的に仕組まれたキャンペーンに直面しました。</p>
+	<p>これらの攻撃は非常に複雑で、<a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack">HTTP/2の脆弱性</a>を悪用していました。Cloudflareはこの脆弱性の影響を軽減するために専用の技術を開発し、業界の他の企業と協力して責任を持って公開しました。</p>
+	<p>このDDoSキャンペーンの一環として、当社のシステムは第3四半期に、1秒当たり2億100万リクエスト（rps）という過去最大の攻撃を軽減しました。これは、これまでの2022年の記録である2,600万RPSの約8倍に相当します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0.png" class="kg-image" alt="" loading="lazy" width="1255" height="755">
+		<figcaption>Cloudflareが確認した最大のHTTP DDoS攻撃（年別）</figcaption>
+	</figure>
+	<h2 id="%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%B1%A4ddos%E6%94%BB%E6%92%83%E3%81%AE%E5%A2%97%E5%8A%A0">ネットワーク層DDoS攻撃の増加</h2>
+	<p>超帯域幅消費型キャンペーンが沈静化した後、HTTP DDoS攻撃が予想外に減少しました。2023年全体では、当社の自動化された防御は、26兆リクエストを超えるHTTP DDoS攻撃を520万回以上軽減しました。これは、毎時平均594件のHTTP DDoS攻撃と30億件の軽減リクエストに相当します。</p>
+	<p>このような天文学的な数字にもかかわらず、HTTP DDoS攻撃リクエストの量は2022年と比べて20％減少しました。この減少は年間だけでなく、2023年第4四半期にも見られ、HTTP DDoS攻撃リクエスト数は前年比で7％、前四半期比で18％減少しました。</p>
+	<p>ネットワーク層では、まったく異なる傾向が見られました。当社の自動化された防御は、2023年に870万件のネットワーク層DDoS攻撃を軽減しました。これは2022年と比較して85％の増加です。</p>
+	<p>2023年第4四半期、Cloudflareの自動化された防御は、80ペタバイトを超えるネットワーク層の攻撃を軽減しました。当社のシステムは、平均して毎時996件のネットワーク層DDoS攻撃、27テラバイトを自動軽減しました。2023年第4四半期のネットワーク層DDoS攻撃数は前年比175％増、前四半期比25％増となりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/HTTP-and-Network-layer-DDoS-attacks-by-quarter-1.png" class="kg-image" alt="" loading="lazy" width="1600" height="840">
+		<figcaption>HTTPおよびネットワーク層のDDoS攻撃（四半期別）</figcaption>
+	</figure>
+	<h3 id="cop28%E6%9C%9F%E9%96%93%E4%B8%AD%E3%81%A8%E3%81%9D%E3%81%AE%E5%89%8D%E5%BE%8C%E3%81%ABddos%E6%94%BB%E6%92%83%E3%81%8C%E5%A2%97%E5%8A%A0">COP28期間中とその前後にDDoS攻撃が増加</h3>
+	<p>2023年最終四半期、サイバー脅威の状況は大きく変化しました。当初、HTTP DDoS攻撃リクエストの量では暗号通貨セクターが主導的な役割を果たしていましたがが、新たな標的が主要な被害者として現れました。環境サービス業界では、HTTP DDoS攻撃がかつてないほど急増し、HTTPトラフィック全体の半分を占めています。これは前年比618倍という驚異的な増加であり、サイバー脅威の状況における不穏な傾向を浮き彫りにしています。</p>
+	<p>このサイバー攻撃の急増は、2023年11月30日から12月12日まで開催されたCOP28と重なりました。この会議は、多くの人が<a href="https://unfccc.int/news/cop28-agreement-signals-beginning-of-the-end-of-the-fossil-fuel-era">化石燃料時代の「終わりの始まり」</a>を告げる重要なイベントでした。COP28までの期間、環境サービスWebサイトを標的としたHTTP攻撃が顕著に急増したことが観察されましたが、このパターンはこのイベントだけに限定されたものではありませんでした。</p>
+	<p>過去のデータを振り返ってみると、特にCOP26やCOP27の際、また他の国連環境関連の決議や発表の際に同じようなパターンが見られます。これらのイベントにはそれぞれ、環境サービスWebサイトを狙ったサイバー攻撃の増加が伴っていました。</p>
+	<p>2023年2月と3月にかけて、国連の<a href="https://www.unep.org/news-and-stories/story/un-resolution-billed-turning-point-climate-justice">気候正義に関する</a>決議や国連環境プログラムの<a href="https://www.unep.org/news-and-stories/press-release/largest-river-and-wetland-restoration-initiative-history-launched-un">淡水チャレンジの</a>開始といった重要な環境イベントがあり、環境Webサイトの注目度が高まった可能性があり、これが、これらのサイトに対する攻撃の増加と関連している可能性があります​​​​。</p>
+	<p>このように繰り返されるパターンは、環境問題とサイバーセキュリティの接点が増えつつあることを示しています。サイバーセキュリティは、デジタル時代の攻撃者にとってますます焦点となっています。</p>
+	<h2 id="ddos%E6%94%BB%E6%92%83%E3%81%A8%E9%89%84%E3%81%AE%E5%89%A3">DDoS攻撃と鉄の剣</h2>
+	<p>DDoS攻撃の引き金は国連決議だけではない。サイバー攻撃、特にDDoS攻撃は、長い間、戦争や混乱を引き起こす手段となってきました。私たちは、ウクライナとロシアの戦争でDDoS攻撃活動の増加を目の当たりにし、そして今、イスラエルとハマスの戦争でも同様の状態を目撃しています。私たちは、<a href="https://blog.cloudflare.com/cyber-attacks-in-the-israel-hamas-war">イスラエル・ハマス戦争におけるサイバー攻撃</a>のレポートにおいてサイバー活動を初めて報告しており、第4四半期を通じてその活動を監視し続けました。</p>
+	<p>「鉄の剣」作戦は、<a href="https://en.wikipedia.org/wiki/2023_Hamas-led_attack_on_Israel">10月7日にハマスによる攻撃</a>を受け、<a href="https://en.wikipedia.org/wiki/2023_Israel%E2%80%93Hamas_war#Israeli_response">イスラエルがハマスに対して行った軍事攻撃</a>です。この武力紛争が続いている間、私たちは双方を標的にしたDDoS攻撃を観察し続けています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy" width="1587" height="908">
+		<figcaption>イスラエルとパレスチナのWebサイトを標的としたDDoS攻撃（業界別）</figcaption>
+	</figure>
+	<p>各地域のトラフィックと比較すると、第4四半期にHTTP DDoS攻撃で2番目に攻撃を受けたのはパレスチナ地域でした。パレスチナのWebサイトに対するHTTPリクエストの10%以上がDDoS攻撃であり、合計13億件のDDoSリクエストが前四半期比で1,126%増加しました。これらのDDoS攻撃の90％は、パレスチナの金融機関のWebサイトを標的にしています。別の8%は、情報技術とインターネットプラットフォームを標的としていました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy" width="1600" height="689">
+		<figcaption>パレスチナの攻撃対象業界上位</figcaption>
+	</figure>
+	<p>同様に、当社のシステムは、イスラエルのWebサイトを標的とした22億を超えるHTTP DDoSリクエストを自動的に軽減しました。22億件という数は、前四半期や前年と比較すると減少していますが、イスラエル向けのトラフィック全体に占める割合は大きくなっています。この数値は前四半期比では27％増だが、前年比では92％減です。攻撃トラフィックの多さにもかかわらず、イスラエルは自国のトラフィックに対して77番目に多く攻撃された地域でした。また、パレスチナ自治区が42番目だったのに対し、攻撃の総量は33番目に多くなりました。</p>
+	<p>イスラエルのWebサイトが攻撃を受けたうち、新聞およびメディアが主な標的で、イスラエル向けのHTTP DDoS攻撃のほぼ40％が攻撃対象のトラフィックでした。攻撃対象業界2位は、コンピューター・ソフトウェア業界でした。次いで、3位に銀行・金融機関・保険（BFSI）業界が位置しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy" width="1600" height="910">
+		<figcaption>イスラエルの攻撃対象業界上位</figcaption>
+	</figure>
+	<p>ネットワーク層でも同じ傾向が見られます。パレスチナのネットワークは、470テラバイトの攻撃トラフィックの標的にされ、パレスチナのネットワークに対する全トラフィックの68％以上を占めています。この数字は、パレスチナ自治区に向かうすべてのトラフィックと比較して、ネットワーク層のDDoS攻撃によって、中国に次いでパレスチナ自治区が世界で2番目に多く攻撃された地域であることを示しています。トラフィックの絶対量では3位でした。この470テラバイトは、Cloudflareが軽減したDDoSトラフィック全体の約1％に相当します。</p>
+	<p>しかし、イスラエルのネットワークは、わずか2.4テラバイトの攻撃トラフィックの標的にされただけで、正規化した場合にネットワーク層のDDoS攻撃で8位に位置づけました。この2.4テラバイトは、イスラエルのネットワークに向かう全トラフィックのほぼ10％を占めています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--5-.png" class="kg-image" alt="" loading="lazy" width="1600" height="936">
+		<figcaption>攻撃国上位</figcaption>
+	</figure>
+	<p>裏を返せば、イスラエルを拠点とするデータセンターで受信された全バイトの3％がネットワーク層のDDoS攻撃だったことが示されました。パレスチナを拠点とするデータセンターでは、この数字はかなり高く、全バイトの約17％となっています。</p>
+	<p>アプリケーション層では、パレスチナのIPアドレスから発信されたHTTPリクエストの4％がDDoS攻撃であり、イスラエルのIPアドレスから発信されたHTTPリクエストのほぼ2％もDDoS攻撃であることが分かりました。</p>
+	<h2 id="ddos%E6%94%BB%E6%92%83%E3%81%AE%E4%B8%BB%E3%81%AA%E7%99%BA%E7%94%9F%E6%BA%90">DDoS攻撃の主な発生源</h2>
+	<p>2022年第3四半期には、中国がHTTP DDoS攻撃トラフィックの最大の発生源でした。しかし、2022年第4四半期以降、米国がHTTP DDoS攻撃の最大の発生源として第1位となり、5四半期連続でその好ましくない地位を維持しています。同様に、米国のデータセンターは、ネットワーク層のDDoS攻撃トラフィックを最も多く受診しています。これは、前攻撃バイト数の38%超です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/imageLikeEmbed.png" class="kg-image" alt="" loading="lazy" title="Chart" width="1200" height="742">
+		<figcaption>中国と米国を発生源とするHTTP DDoS攻撃（四半期別）</figcaption>
+	</figure>
+	<p>中国と米国は、世界のHTTP DDoS攻撃トラフィックの4分の1強を占めています。次いでブラジル、ドイツ、インドネシア、アルゼンチンが25％を占めています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--6-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
+		<figcaption>HTTP DDoS攻撃の主な発信元</figcaption>
+	</figure>
+	<p>このような大きな数値は通常、大きな市場に対応しています。このため、各国の発信トラフィックを比較することで、各国から発信される攻撃トラフィックも正規化しています。これを行うと、小さな島国や市場の小さい国から不釣り合いな量の攻撃トラフィックが発生することがよくあります。第4四半期には、セントヘレナの発信トラフィックの40%がHTTP DDoS攻撃であり、トップとなりました。「<a href="https://en.wikipedia.org/wiki/Saint_Helena">僻地の火山・熱帯地帯の島</a>」に続いて、2位はリビア、3位は<a href="https://en.wikipedia.org/wiki/Eswatini">スワジランド</a>（エスワティニとしても知られる）でした。4位と5位にはアルゼンチンとエジプトが続いています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--7-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
+		<figcaption>各国のトラフィックに関するHTTP DDoS攻撃の上位発生源</figcaption>
+	</figure>
+	<p>ネットワーク層ではジンバブエが1位となりました。ジンバブエを拠点とするデータセンターで受信したトラフィックのほぼ80％が悪意のあるものでした。それに次いで、2位はパラグアイ、3位はマダガスカルでした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--8-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
+		<figcaption>各国のトラフィックに関するネットワーク層DDoS攻撃の発生源上位</figcaption>
+	</figure>
+	<h2 id="%E6%9C%80%E3%82%82%E6%94%BB%E6%92%83%E3%81%95%E3%82%8C%E3%81%9F%E6%A5%AD%E7%95%8C">最も攻撃された業界</h2>
+	<p>攻撃トラフィック量では、第4四半期に最も攻撃された業界は暗号通貨業界でした。3,300億回を超えるHTTPリクエストが暗号通貨業界を標的としました。この数字は、当四半期のHTTP DDoSトラフィック全体の4％以上を占めています。攻撃対象業界の2位は、ゲーミング&amp;ギャンブルでした。これらの業界は、多くのトラフィックや攻撃を引き付けていることで知られています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--9-.png" class="kg-image" alt="" loading="lazy" width="1600" height="901">
+		<figcaption>HTTP DDoS攻撃の標的業界上位</figcaption>
+	</figure>
+	<p>ネットワーク層では、情報技術およびインターネット業界が最も攻撃を受け、ネットワーク層のDDoS攻撃トラフィックの45％以上がこの業界を狙ったものでした。銀行・金融サービス・保険（BFSI）、ゲーミング&amp;ギャンブル、電気通信業界がそれに続きました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--10-.png" class="kg-image" alt="" loading="lazy" width="1600" height="901">
+		<figcaption>ネットワーク層DDoS攻撃の標的業界上位</figcaption>
+	</figure>
+	<p>視点を変えるために、ここでも攻撃トラフィックを特定の業界の総トラフィックで正規化しました。そうすることで、私たちは違った見方をすることができるようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/Top-Attacked-Industry-by-Region-Q4-2023.png" class="kg-image" alt="" loading="lazy" width="1600" height="1335">
+		<figcaption>HTTP DDoS攻撃の攻撃業界上位（地域別）</figcaption>
+	</figure>
+	<p>本レポートの冒頭で、環境サービス業界が自社のトラフィックに比して最も攻撃を受けたことを述べました。2位は包装・貨物配送業界で、興味深いことに、ブラックフライデーや冬のホリデーシーズンのオンラインショッピングとのタイムリーな相関関係が見られます。購入したギフトや商品は、どうにかして目的地に届ける必要がありますが、攻撃者たちはそれを妨害しようとしたようです。同様に、小売企業に対するDDoS攻撃も前年比で23％増加が見られました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--11-.png" class="kg-image" alt="" loading="lazy" width="1600" height="906">
+		<figcaption>各業界のトラフィックに関して、HTTP DDoS攻撃の標的となった業界上位</figcaption>
+	</figure>
+	<p>ネットワーク層では、広報・通信が最も標的とされた業種で、トラフィックの36％が悪意あるものでした。このタイミングも非常に興味深いものでした。広報・通信会社は通常、大衆の認識と通信を管理することに関連しています。業務に支障をきたすと、即座に広範囲に風評被害が及ぶ可能性があり、第4四半期のホリデーシーズンにはさらに深刻になります。今四半期は、年末年始の休暇、年度末の総括、新年度の準備のため、PRや通信活動が増加することが多く、重要な業務期間となっています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--12-.png" class="kg-image" alt="" loading="lazy" width="1600" height="906">
+		<figcaption>Top industries targeted by Network-layer DDoS attacks with respect to each industry’s traffic</figcaption>
+	</figure>
+	<h2 id="%E6%9C%80%E3%82%82%E6%94%BB%E6%92%83%E3%81%95%E3%82%8C%E3%81%9F%E5%9B%BD%E3%81%A8%E5%9C%B0%E5%9F%9F">最も攻撃された国と地域</h2>
+	<p>第4四半期はシンガポールがHTTP DDoS攻撃の主な標的となりました。全世界のDDoSトラフィックの4％にあたる3,170億以上のHTTPリクエストがシンガポールのWebサイトを狙ったものでした。米国が2位、カナダが3位と僅差で続きました。台湾は、<a href="https://www.bbc.co.uk/news/world-asia-67770782">総選挙を控え、中国との緊張が高まる中</a>、攻撃対象地域の4位となりました。第4四半期の台湾向け攻撃は、前年比で847％、前四半期比で2,858％増加しました。この増加は絶対値だけにとどまりません。正規化すると、全台湾向けトラフィックに対する台湾を標的としたHTTP DDoS攻撃トラフィックの割合も大幅に増加し、前四半期比で624%、前年比で3,370%増加しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--13-.png" class="kg-image" alt="" loading="lazy" width="1600" height="942">
+		<figcaption>各国のトラフィックに関するネットワーク層DDoS攻撃の発生源上位</figcaption>
+	</figure>
+	<p>中国はHTTP DDoS攻撃では9位に位置づけていますが、ネットワーク層攻撃では1位となっています。Cloudflareが全世界で軽減したネットワーク層のDDoSトラフィックの45%は中国向けでした。他の国々は、ほとんど無視できるほど中国への攻撃が顕在化しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--14-.png" class="kg-image" alt="Top targeted countries by Network-layer DDoS attacks" loading="lazy" width="1600" height="936">
+		<figcaption>ネットワーク層DDoS攻撃標的国上位</figcaption>
+	</figure>
+	<p>データを正規化すると、イラク、パレスチナ自治区、モロッコが、総受信トラフィックに関して最も攻撃された地域となります。興味深いのは、シンガポールが4位に入っていることです。つまり、シンガポールはHTTP DDoS攻撃トラフィックの最大量に直面しているだけでなく、そのトラフィックはシンガポール行きのトラフィック全体のかなりの量を占めていました。対照的に、米国は（上記のアプリケーション層のグラフによれば）量的には2番目に多く攻撃されたことが示されましたが、米国向けのトラフィック全体に関しては50番目でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--15-.png" class="kg-image" alt="Top targeted countries by HTTP DDoS attacks with respect to each country’s traffic" loading="lazy" width="1600" height="936">
+		<figcaption>各国のトラフィックに関して、HTTPによるDDoS攻撃の標的国上位</figcaption>
+	</figure>
+	<p>シンガポールと類似していますが、間違いなくもっと劇的なのは、中国がネットワーク層のDDoS攻撃トラフィックならびに中国向けの全トラフィックに関しても最も攻撃されている国であることです。中国向けトラフィックのほぼ86%は、ネットワーク層のDDoS攻撃としてCloudflareによって軽減されました。次いで、パレスチナ自治区、ブラジル、ノルウェー、そしてまたもやシンガポールが攻撃トラフィックで大きな割合を示しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--16-.png" class="kg-image" alt="Top targeted countries by Network-layer DDoS attacks with respect to each country’s traffic" loading="lazy" width="1600" height="936">
+		<figcaption>各国のトラフィックに対するネットワーク層DDoS攻撃の標的国上位</figcaption>
+	</figure>
+	<h2 id="%E6%94%BB%E6%92%83%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%81%A8%E5%B1%9E%E6%80%A7">攻撃ベクトルと属性</h2>
+	<p>DDoS攻撃の大半は、Cloudflareの規模に比べれば短時間で小規模なものです。しかし、保護されていないWebサイトやネットワークは、適切な自動化されたインライン保護がなければ、短時間の小規模な攻撃によって混乱に見舞われる可能性があり、組織が積極的に堅牢なセキュリティ体制を採用する必要性を強調しています。</p>
+	<p>2023年第4四半期には、攻撃の91％が10分以内に終了し、97％がピーク時に毎秒500メガビット（mbps）を下回り、88％が毎秒5万パケット（pps）を超えることはありませんでした。</p>
+	<p>ネットワーク層のDDoS攻撃の100回に2回は1時間以上続き、毎秒1ギガビット（gbps）を超えました。毎秒100万パケットを超える攻撃は100回に1回でした。さらに、毎秒1億パケットを超えるネットワーク層のDDoS攻撃は、前四半期比で15％増加しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/DDoS-attacks-stats-2023-Q4_a.png" class="kg-image" alt="" loading="lazy" width="1600" height="900">
+		<figcaption>知っておくべきDDoS攻撃の統計情報</figcaption>
+	</figure>
+	<p>このような大規模な攻撃のひとつが、ピーク時に毎秒1億6,000万パケットを記録したMiraiボットネット攻撃でしたが、1秒あたりのパケット数は、これまでで最大ではありませんでした。過去最大は<a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically">毎秒7億54,00万パケット</a>でした。この攻撃は2020年に発生したもので、それ以上のものはまだ観察されたことがありません。</p>
+	<p>しかし、この最近の攻撃は、そのビット/秒の速度においてユニークでした。これは、当社が第4四半期に見た中で最大のネットワーク層DDoS攻撃でした。ピークは毎秒1.9テラビットで、<a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet">Miraiボットネット</a>が発生源でした。この攻撃はマルチベクトル攻撃で、複数の攻撃手法を組み合わせています。その中には、UDPフラグメントフラッド、UDP/Echoフラッド、SYNフラッド、ACKフラッド、TCPマルフォームドフラッグなどが含まれていました。</p>
+	<p>この攻撃は欧州の有名なクラウドプロバイダーを標的としており、<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing">なりすまし</a>と思われる18,000以上のユニークなIPアドレスから送信されていました。この攻撃はCloudflareの防御機能によって自動的に検出され、軽減されました。</p>
+	<p>このことは、最大規模の攻撃であっても、あっという間に終わってしまうことを物語っています。私たちが過去に経験した大規模な攻撃は数秒以内に終了しており、インラインの自動防御システムの必要性を強調しています。また、まだまれではありますが、テラビット級の攻撃が目立つようになってきています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--17-.png" class="kg-image" alt="1.9 Terabit per second Mirai DDoS attacks" loading="lazy" width="1273" height="687">
+		<figcaption>毎秒1.9テラビットのMirai DDoS攻撃</figcaption>
+	</figure>
+	<p>Mirai変種ボットネットの使用は依然として非常に一般的です。第4四半期では、全攻撃のほぼ3％がMiraiから発生しています。しかし、すべての攻撃手法の中で、攻撃者はDNSベースの攻撃を依然として好んでいます。DNSフラッドとDNSアンプ攻撃を合わせると、第4四半期の全攻撃のほぼ53%を占めています。2番目に<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack">SYNフラッド</a>、3番目に<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack">UDPフラッド</a>が続いています。ここでは、2つのDNS攻撃タイプを取り上げます。UDPフラッドとSYNフラッドについては、ラーニングセンターのハイパーリンクをご覧ください。</p>
+	<h3 id="dns%E3%83%95%E3%83%A9%E3%83%83%E3%83%89%E3%81%A8%E3%82%A2%E3%83%B3%E3%83%97%E6%94%BB%E6%92%83">DNSフラッドとアンプ攻撃</h3>
+	<p>DNSフラッドとDNSアンプ攻撃はどちらも<a href="https://www.cloudflare.com/learning/dns/what-is-dns">ドメイン名システム（DNS）</a>を悪用しますが、その動作は異なります。DNSはインターネットの電話帳のようなもので、"www.cloudfare.com"のような人間にとって使いやすいドメイン名を、コンピューターがネットワーク上でお互いを識別するために使用する数値のIPアドレスに変換します。</p>
+	<p>簡単に言えば、DNSベースのDDoS攻撃は、実際にサーバーを「ダウン」させることなく、コンピュータとサーバーがお互いを識別し、停止や中断を引き起こすために使用される方法です。たとえば、サーバーは稼働していても、DNSサーバーがダウンしていることがあります。そのため、クライアントは接続できず、「障害」を経験することになります。</p>
+	<p><strong>DNSフラッド</strong>攻撃は、圧倒的な数のDNSクエリーをDNSサーバーに浴びせます。これは通常、<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet">DDoSボットネット</a>を使用して行われます。膨大な量のクエリがDNSサーバーを圧倒し、正当なクエリへの応答が困難または不可能になります。その結果、前述のようなサービスの中断、遅延、あるいはWebサイトや標的となったDNSサーバーに依存するサービスにアクセスしようとする人たちの停止につながる可能性があります。</p>
+	<p>一方、<strong>DNSアンプ</strong>攻撃では、DNSサーバーになりすましたIPアドレス（被害者のアドレス）で小さなクエリーを送信します。ここでのトリックは、DNSレスポンスがリクエストよりもかなり大きいことです。次に、サーバーはこの大きなレスポンスを被害者のIPアドレスに送信します。オープンDNSリゾルバーを悪用することで、攻撃者は被害者に送信されるトラフィック量を増幅させ、より大きな影響を与えることができます。このタイプの攻撃は、被害者を混乱させるだけでなく、ネットワーク全体を輻輳させる可能性もあります。</p>
+	<p>いずれの場合も、攻撃はネットワーク運用におけるDNSの重要な役割を悪用しています。通常、軽減策には、悪用に対するDNSサーバーの保護、トラフィックを管理するためのレート制限の実装、悪意のあるリクエストを特定しブロックするためのDNSトラフィックのフィルタリングなどが含まれます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--18--1.png" class="kg-image" alt="Top attack vectors" loading="lazy" width="1600" height="934">
+		<figcaption>攻撃ベクトルのトップ</figcaption>
+	</figure>
+	<p>当社が追跡している新たな脅威のうち、ACK-RSTフラッドは前四半期比1,161％増、CLDAPフラッドは同515％増、SPSSフラッドは同243％増を記録しました。このような攻撃と、それがどのように混乱を引き起こすのかを見ていきましょう。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/pasted-image-0--19-.png" class="kg-image" alt="Top emerging attack vectors" loading="lazy" width="1600" height="934">
+		<figcaption>Top emerging attack vectors</figcaption>
+	</figure>
+	<h3 id="ack-rst%E3%83%95%E3%83%A9%E3%83%83%E3%83%89">ACK-RSTフラッド</h3>
+	<p>ACK-RSTフラッドは、多数のACKおよびRSTパケットを被害者に送信することで<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip">伝送制御プロトコル（TCP）</a>を悪用します。これにより、被害者がこれらのパケットを処理し応答する能力が圧倒され、サービスの中断につながります。ACKパケットやRSTパケットの1つ1つが被害者のシステムからのレスポンスを促し、そのリソースを消費するため、この攻撃は効果的です。ACK-RSTフラッドは、正規のトラフィックを模倣しているため、フィルタリングが困難な場合が多く、検知と軽減を困難にします。</p>
+	<h3 id="cldap%E3%83%95%E3%83%A9%E3%83%83%E3%83%89">CLDAPフラッド</h3>
+	<p>CLDAP（Connectionless Lightweight Directory Access Protocol）は、LDAPLDAP（Lightweight Directory Access Protocol）の亜種です。これは、IPネットワーク上で動作するディレクトリサービスの照会と変更に使用されます。CLDAPはコネクションレスで、TCPの代わりにUDPを使用するため、高速だが信頼性が低くなります。UDPを使用するため、ハンドシェイクの要件がなく、攻撃者がIPアドレスを詐称できるため、攻撃者はこれをリフレクションベクトルとして悪用できます。これらの攻撃では、小さなクエリーがなりすました送信元IPアドレス（被害者のIP）で送信されるため、サーバーは被害者に大きなレスポンスを送信し、被害者を圧倒します。対策には、異常なCLDAPトラフィックのフィルタリングと監視が含まれます。</p>
+	<h3 id="spss%E3%83%95%E3%83%A9%E3%83%83%E3%83%89">SPSSフラッド</h3>
+	<p>SPSS（Source Port Service Sweep）プロトコルを悪用したフラッドは、多数のランダムまたは偽装されたソースポートから、標的となるシステムやネットワーク上のさまざまな宛先ポートにパケットを送信するネットワーク攻撃手法です。この攻撃の目的は2つあります。1つ目は、被害者の処理能力を圧倒し、サービスの中断やネットワークの停止を引き起こすこと、2つ目は、オープンポートをスキャンし、脆弱なサービスを特定することです。フラッドは大量のパケットを送信することで実現され、被害者のネットワークリソースを飽和させ、ファイアウォールや侵入検知システムの能力を使い果たします。このような攻撃を軽減するためには、インラインの自動検知機能を活用することが不可欠です。</p>
+	<h2 id="cloudflare%E3%81%AF%E6%94%BB%E6%92%83%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%97%E3%80%81%E8%A6%8F%E6%A8%A1%E3%80%81%E6%8C%81%E7%B6%9A%E6%99%82%E9%96%93%E3%81%AB%E3%81%8B%E3%81%8B%E3%82%8F%E3%82%89%E3%81%9A%E3%80%81%E3%81%8A%E5%AE%A2%E6%A7%98%E3%82%92%E6%94%AF%E6%8F%B4%E3%81%84%E3%81%9F%E3%81%97%E3%81%BE%E3%81%99">Cloudflareは攻撃のタイプ、規模、持続時間にかかわらず、お客様を支援いたします</h2>
+	<p>Cloudflareの使命は、より良いインターネットの構築を支援することです。より良いインターネットとは、安全で、パフォーマンスが高く、誰もが利用できるインターネットであると私たちは考えています。攻撃のタイプ、攻撃規模、攻撃時間、攻撃の背後にある動機にかかわらず、Cloudflareの防御は強固です。<a href="https://blog.cloudflare.com/unmetered-mitigation">2017年に非従量課金型のDDoS攻撃対策</a>のパイオニアとなって以来、私たちはエンタープライズグレードのDDoS攻撃対策をすべての組織で同様に、そしてもちろんパフォーマンスを損なうことなく無料で提供することを約束し、守り続けてきました。これは、当社<a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">独自のテクノロジー</a>と堅牢なネットワークアーキテクチャによって実現されています。</p>
+	<p>セキュリティはプロセスであり、単一の製品やスイッチの切り替えではないことを覚えておくことが重要です。私たちは、自動化されたDDoS攻撃対策システムの上に、<a href="https://developers.cloudflare.com/waf">ファイアウォール</a>、<a href="https://developers.cloudflare.com/bots">ボット検知</a>、<a href="https://developers.cloudflare.com/api-shield">API保護</a>、<a href="https://developers.cloudflare.com/cache">キャッシング</a>などの包括的なバンドル機能を提供し、お客様の防御を強化します。当社の多層的なアプローチは、お客様のセキュリティ体制を最適化し、潜在的な影響を最小限に抑えます。また、DDoS攻撃に対する防御を最適化するのに役立つ<a href="https://developers.cloudflare.com/ddos-protection/best-practices/respond-to-ddos-attacks">推奨事項のリスト</a>をまとめましたので、ステップバイステップのウィザードに従って<a href="https://developers.cloudflare.com/learning-paths/application-security">アプリケーションを保護</a>し、<a href="https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks">DDoS攻撃を防ぐ</a>ことができます。また、DDoS攻撃やインターネット上のその他の攻撃に対する、使いやすく業界最高の保護機能をご利用になりたい場合は、<a href="https://www.cloudflare.com/plans">Cloudflare.com</a>から無料でご登録いただけます！攻撃を受けている場合は、登録するか、<a href="https://www.cloudflare.com/under-attack-hotline">こちら</a>に記載されているサイバー緊急ホットライン番号に電話すると、迅速な対応が受けられます。</p>
+</div>
