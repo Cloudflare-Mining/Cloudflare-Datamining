@@ -452,7 +452,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	delivery_zones_page_title: "Zone",
 	delivery_zones_page_description: "Enable transformations to optimize and manipulate images that are stored outside of Images. Transformed images are served from one of your zones on Cloudflare.",
 	disable_for_website: "Disable for zone",
-	cancel_resizing_after_bundle_error: (0, e.d)`You successfully purchased a Cloudflare Images bundle but we were not able to cancel your existing Image Resizing subscription. Your upgrade is incomplete. Please contact deanna@cloudflare.com.</br></br><0>Navigate to images</0>`,
+	cancel_resizing_after_bundle_error: (0, e.d)`You successfully purchased a Cloudflare Images bundle but we were not able to cancel your existing Image Resizing subscription. Your upgrade is incomplete. Please contact deannalam@cloudflare.com.</br></br><0>Navigate to images</0>`,
 	enable_for_website: "Enable for zone",
 	no_storage_card: {
 		title: "Your current Cloudflare Images plan doesn\u2019t include any storage.",
