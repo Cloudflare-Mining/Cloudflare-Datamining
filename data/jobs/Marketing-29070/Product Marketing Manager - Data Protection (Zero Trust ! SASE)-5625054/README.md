@@ -5,33 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p>The Infrastructure department at Cloudflare handles all our data centers and network interconnections around the world, from research and development of our servers, to planning network capacity expansions, to getting our equipment anywhere in the world that it’s needed, to executing new deployments and data center expansions.</p>
-<p>The Infrastructure Planning &amp; Capacity Engineering team is part of Cloudflare’s global Infrastructure (INF) team. The team is the central decision making center responsible to scale Cloudflare's Infrastructure, Edge and Core. The team delivers the required speed and plan accuracy to scale seamlessly and efficiently by alleviating all potential bottlenecks.</p>
-<h4>What you'll do</h4>
+<h4>Available Locations: Remote US, Austin, TX or San Francisco, CA</h4>
+<p><strong>About the department</strong></p>
+<p>Cloudflare is looking for an experienced product marketer to join our Zero Trust SASE product marketing team. This is a high-impact, results-oriented role, where you will work directly with Sales, Product Management, and Marketing to take new products to market and develop messaging and campaigns that drive acquisition and expansion.</p>
+<p><strong>What you'll do</strong></p>
+<p>We are looking for a Product Marketing Manager with a thorough understanding of cloud-based data protection products (e.g. CASB, DLP, SSPM/DSPM), compliance frameworks (e.g. GDPR, HIPAA, PCI), and security paradigms &amp; platforms (e.g. Zero Trust, SSE/SASE). As a Product Marketing Manager, you will be responsible for driving the growth and success of expanding Cloudflare’s security opportunities to include solving data protection use cases (e.g. compliance) by working closely with cross-functional teams and developing effective marketing strategies.&nbsp;</p>
+<p>Successful candidates will have a passion for helping any organization more easily keep users and data safe across increasingly distributed hybrid work and multi-cloud environments. You will have a drive to understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives. You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Identify bottlenecks and recommend optimizations for service owners to improve capacity utilization of applications</li>
-	<li>Identify and institute new planning verticals</li>
-	<li>Develop simulation models and tools which analyze multi level constraints (data center space and power, budget, lead time constraints)</li>
-	<li>Collaborate with application owners and product managers to understand capacity requirements, software optimization initiatives, and generate short/long term capacity demand forecasts</li>
-	<li>Data Modeling/Business Intelligence</li>
-	<li>Identify, design, and implement internal process improvements: automating manual processes, optimizing data delivery, re-designing capacity planning infrastructure for greater scalability</li>
-	<li>Design, develop and scale user friendly systems, reports and dashboards which support capacity planning</li>
-	<li>Create monitoring and reporting tools for capacity related analysis</li>
-	<li>Build ROI models which help leadership teams prioritize and manage risk across new product initiatives, reliability/efficiency projects and existing applications/features</li>
+	<li>Develop and execute go-to-market strategies for Cloudflare's Zero Trust SASE platform.</li>
+	<li>Create compelling messaging and positioning that differentiates Cloudflare's data protection and compliance capabilities in the market.</li>
+	<li>Develop content for marketing campaigns, including presentations, product briefs, solution/use case briefs, whitepapers, and case studies.</li>
+	<li>Collaborate with the demand generation team to create and execute campaigns that drive leads and pipeline.</li>
+	<li>Drive sales enablement through product training, sales tools, and competitive intelligence.</li>
+	<li>Conduct market research and gather insights to inform product positioning, messaging, and roadmap decisions.</li>
+	<li>Analyze market trends, customer feedback, and competitive landscape to identify areas for product differentiation and growth.</li>
+	<li>Work with product management and sales teams to define and prioritize product features and roadmap.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Strong expertise in Microsoft Excel</li>
-	<li>PL/SQL server development experience</li>
-	<li>Experience with object-oriented/object function scripting languages: Python, Java, C++, Scala</li>
-	<li>Degree in Operations Research, Statistics, Applied Mathematics, Computer Science, Engineering, MIS or closely related field</li>
-	<li>Minimum 3 years relevant work experience as a Capacity Planner, Supply Chain Analyst, Business Analyst, BI Engineer or Data Scientist</li>
-	<li>Demonstrated ability and experience to influence, develop productive working relationships, and lead technical teams and key stakeholders from different business functions</li>
-	<li>A diverse technical acumen--actively contribute to technical discussions, proactively identify challenges and risks, working closely with engineers and product manager on addressing challenges, and form mitigation plans</li>
-	<li>Excellent interpersonal, presentation and communication skills. Effective problem-solving skills</li>
-	<li>Exercise technical judgment to keep goals for programs, projects and products attainable within a given timeline</li>
+	<li>Bachelor's degree in marketing, business, or related field; MBA preferred.</li>
+	<li>4+ years of experience in product marketing, preferably at companies that sold or managed CASB, DLP, or other data security offerings to enterprise-sized organizations.</li>
+	<li>Thorough understanding of cloud-based data protection and compliance frameworks, including key trends, technologies, and competitive landscape.</li>
+	<li>Proven ability to develop and execute go-to-market strategies for cloud-based products with a strong security focus.</li>
+	<li>Strong written and verbal communication skills, with the ability to develop compelling messaging and content that resonates with customers.</li>
+	<li>Analytical mindset with experience in market research, data analysis, and customer segmentation.</li>
+	<li>Strong project management skills with the ability to manage multiple projects and priorities simultaneously.</li>
+	<li>Ability to work collaboratively with cross-functional teams, including product management, sales, and engineering.</li>
 </ul>
+<p>If you are a self-starter who thrives in a fast-paced, innovative environment and has a passion for cloud-based data protection, we encourage you to apply for this exciting Product Marketing Manager opportunity at Cloudflare.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

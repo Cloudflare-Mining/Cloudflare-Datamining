@@ -5,33 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p>The Infrastructure department at Cloudflare handles all our data centers and network interconnections around the world, from research and development of our servers, to planning network capacity expansions, to getting our equipment anywhere in the world that it’s needed, to executing new deployments and data center expansions.</p>
-<p>The Infrastructure Planning &amp; Capacity Engineering team is part of Cloudflare’s global Infrastructure (INF) team. The team is the central decision making center responsible to scale Cloudflare's Infrastructure, Edge and Core. The team delivers the required speed and plan accuracy to scale seamlessly and efficiently by alleviating all potential bottlenecks.</p>
-<h4>What you'll do</h4>
+<p><strong>Available Locations: London, UK</strong></p>
+<p><strong>About the team</strong></p>
+<p>Cloudflare’s mission is to help build a better internet and the Trust &amp; Safety Engineering (TSENG) team lives at the core of that effort. The team empowers customers with products and services to combat abuse, enables deeper coordination with our external industry anti-abuse partners, and ensures that teams in the company can respond to the quickly changing legal landscape of the internet with scalable tools and services. This includes services that have a direct impact on efforts to stop the spread of CSAM (child sexual abuse material) across the internet. Read more about our CSAM Scanning tool<a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/"> here</a>.</p>
+<p><strong>About the Role</strong></p>
+<p>Engineers on the Trust &amp; Safety Engineering team are responsible for the entire software development lifecycle for our products and services which include both internal and customer-facing software. Whether closing gaps in our abuse processing pipeline, extending our Trust &amp; Safety platform or road mapping the future of Trust &amp; Safety solutions, software engineers on the Trust &amp; Safety Engineering team are critical to Cloudflare’s ability to help make the internet a better place.&nbsp;</p>
+<p>This role will be based out of our London office.</p>
+<p><strong>What you'll do</strong></p>
+<p>While the majority of our services are now written in Golang, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Airflow, Temporal and PostgresSQL. We are looking for great engineers regardless of experience with any of these specific technologies.</p>
+<p><strong>Responsibilities include</strong></p>
 <ul>
-	<li>Identify bottlenecks and recommend optimizations for service owners to improve capacity utilization of applications</li>
-	<li>Identify and institute new planning verticals</li>
-	<li>Develop simulation models and tools which analyze multi level constraints (data center space and power, budget, lead time constraints)</li>
-	<li>Collaborate with application owners and product managers to understand capacity requirements, software optimization initiatives, and generate short/long term capacity demand forecasts</li>
-	<li>Data Modeling/Business Intelligence</li>
-	<li>Identify, design, and implement internal process improvements: automating manual processes, optimizing data delivery, re-designing capacity planning infrastructure for greater scalability</li>
-	<li>Design, develop and scale user friendly systems, reports and dashboards which support capacity planning</li>
-	<li>Create monitoring and reporting tools for capacity related analysis</li>
-	<li>Build ROI models which help leadership teams prioritize and manage risk across new product initiatives, reliability/efficiency projects and existing applications/features</li>
+	<li>Designing, building, running and scaling tools and services that support Trust and Safety efforts</li>
+	<li>Analyzing and communicating complex technical requirements and concepts, able to identify the highest priority areas and carve a path to deliver</li>
+	<li>Collaborating with T&amp;S, legal and product teams to understand goals and develop robust and scalable solutions.</li>
+	<li>Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance and anti-abuse services</li>
+	<li>Ongoing monitoring and maintenance of production services, including participation in on call rotations</li>
+	<li>Working closely with Cloudflare's Trust and Safety team to help make the internet a safer place</li>
+	<li>Mentoring and guiding developers in the Trust and Safety Engineering team to help build collective knowledge and technical expertise</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Desirable skills and experience</strong></p>
 <ul>
-	<li>Strong expertise in Microsoft Excel</li>
-	<li>PL/SQL server development experience</li>
-	<li>Experience with object-oriented/object function scripting languages: Python, Java, C++, Scala</li>
-	<li>Degree in Operations Research, Statistics, Applied Mathematics, Computer Science, Engineering, MIS or closely related field</li>
-	<li>Minimum 3 years relevant work experience as a Capacity Planner, Supply Chain Analyst, Business Analyst, BI Engineer or Data Scientist</li>
-	<li>Demonstrated ability and experience to influence, develop productive working relationships, and lead technical teams and key stakeholders from different business functions</li>
-	<li>A diverse technical acumen--actively contribute to technical discussions, proactively identify challenges and risks, working closely with engineers and product manager on addressing challenges, and form mitigation plans</li>
-	<li>Excellent interpersonal, presentation and communication skills. Effective problem-solving skills</li>
-	<li>Exercise technical judgment to keep goals for programs, projects and products attainable within a given timeline</li>
+	<li>Minimum 5 years of experience building large-scale software applications, preferably distributed systems</li>
+	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Prior experience working with Go or Rust</li>
+	<li>Excellent debugging and optimization skills</li>
+	<li>Expertise in writing well tested code</li>
+	<li>Interest in opportunities to be a technical mentor for teammates</li>
 </ul>
+<p><strong>Bonus</strong></p>
+<p>(Relevant but not required - we love to learn on the job!)</p>
+<ul>
+	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
+	<li>Expertise in web security issues and industry standards for access control</li>
+	<li>Experience with Kafka</li>
+	<li>Experience building web applications using React</li>
+	<li>Experience with Kubernetes</li>
+	<li>Experience with Redis</li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

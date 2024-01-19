@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4><strong>Available Locations: Lisbon</strong></h4>
 <h4><strong>About the department</strong></h4>
 <h4>Cloudflare’s P2P department is housed within the Finance team, but our reach is global, supporting thousands of purchases across our global offices per quarter. We use an integrated platform for purchase-order based Procurement, and a contract management and collaboration tool for negotiated, signed contracts. We interact daily with stakeholders from Finance, Commercial Legal, Privacy, Security, and IT to get critical purchases over the line. The majority of our purchases involve technology and internet infrastructure, so we ensure we are familiar with industry trends and challenges needed by our internal customers. Our team is responsible for setting policies, defining new processes, and ensuring that the Procurement function aligns to Cloudflare’s long-term strategic vision and goals. We are a small and growing team, presenting lots of opportunity for professional growth and visibility across multiple divisions.</h4>
 <h4><strong>What you'll do</strong></h4>
