@@ -1617,7 +1617,7 @@
 	"account.ddos.advanced_tcp_protection.prefixes.prefix_form.prefix_table.label.excluded": "Excluded",
 	"account.ddos.advanced_tcp_protection.prefixes.prefix_status.none_included": "None included",
 	"account.ddos.advanced_tcp_protection.prefixes.prefix_status.prefix_count_included": "%{prefixes} included",
-	"account.ddos.advanced_tcp_protection.prefixes.warning_modal_text": "Enrolling prefixes in Advanced TCP Protection will increase your vulnerability. Switch your rules to Monitoring mode before proceeding.",
+	"account.ddos.advanced_tcp_protection.prefixes.warning_modal_text": "Make sure your current Advanced TCP Protection configuration takes into account the traffic levels on the prefixes you are adding. If you are applying mitigation actions to incoming traffic, consider switching your rules to Monitoring mode before proceeding.",
 	"account.ddos.advanced_tcp_protection.prefixes.warning_modal_text.remove_all": "You are about to remove all prefixes from Advanced TCP Protection. Press &quot;Save&quot; to continue.",
 	"account.ddos.advanced_tcp_protection.prefixes.manage_prefixes": "Manage prefixes",
 	"account.ddos.advanced_tcp_protection.prefixes.add_prefixes": "Add prefix",
