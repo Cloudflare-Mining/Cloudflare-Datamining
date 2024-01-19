@@ -5,7 +5,33 @@
 		"data": {
 			"page": {
 				"pageName": "Developer Platform: Product Hub (combined)",
-				"localeList": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "Translated for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "Translated for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
+				},
 				"relativePath": "developer-platform/products",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
@@ -275,7 +301,21 @@
 								"openLinkInNewTab": null,
 								"removeCardBorder": null,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "efd45c7a-1ca1-5b55-b5ae-7f697427546b",
+									"altText": "Cloudflare R2 distributed storage",
+									"title": "R2 Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/20XuCGpQeiIcEBqL8eYZhq/41b6bb30b987d56e97de94cbbf51dcdb/cloud-upload.svg"
+										},
+										"description": "Cloud upload icon"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageOverlaySuperheader": null,
 								"imageOverlayText": null,
 								"imageAssetFile": null,
@@ -444,6 +484,42 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "13L47iHnlEcnN5V2vVDrLt",
+								"title": "Pages (JAMstack)",
+								"makeTitleLink": null,
+								"titleUrl": null,
+								"titleSize": "medium",
+								"description": "Create full-stack applications that are instantly deployed to the Cloudflare global network. Deployment requires minimal configuration with many decisions made automatically allowing you to innovate faster.",
+								"learnMoreUrl": "developer-platform/pages/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"removeCardBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ff54a79c-6e83-5f9a-8f7d-d5e7cde2830b",
+									"altText": "Cloudflare pages ",
+									"title": "Cloudflare pages ",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7rIXjlpJ2OZi1vJ2uZw5Xv/69410abc83b0ca971b5452a6dd641e5b/cloudflare-pages.svg"
+										},
+										"description": "Cloudflare pages orange"
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageOverlaySuperheader": null,
+								"imageOverlayText": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4bqX461H8SEOerO0DJdLyZ",
@@ -855,7 +931,21 @@
 			"locale": "en-US",
 			"pathname": "/developer-platform/products/",
 			"contentfulId": "2kXG1kUekGaMzWX9zmJw2k",
-			"allowedHrefLangs": null,
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"ru-RU",
+				"zh-Hans-CN",
+				"pl-PL"
+			],
 			"hasPsaBanner": false,
 			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
