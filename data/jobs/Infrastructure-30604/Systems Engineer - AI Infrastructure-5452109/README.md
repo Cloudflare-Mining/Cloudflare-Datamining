@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p class="p1"><strong><span class="collapsed-field-text">Available Locations:&nbsp;</span></strong><span class="collapsed-field-text">Hybrid - </span><span class="collapsed-field-text">Austin, Champaign, Washington DC, Lisbon, London or Remote - US</span></p>
 <h4 class="p1"><strong>About the role</strong></h4>
 <p class="p1">We're rekindling efforts to leverage acceleration and machine learning at Cloudflare in 2023, and the HW systems team is looking to hire senior technical engineers with a strong understanding of deep learning, ML end-to-end workloads and frameworks, and experience with hardware accelerator and processor architectures (GPUs, CPUs w/AI features, ASICs). This is an exciting opportunity with real world impact, where you'll get to build and deploy hardware accelerators on our data center platform.&nbsp;</p>
 <h4 class="p1"><strong>Responsibilities&nbsp;</strong></h4>

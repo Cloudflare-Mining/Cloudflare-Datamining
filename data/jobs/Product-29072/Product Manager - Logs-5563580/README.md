@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>Hybrid -<strong> </strong><span class="collapsed-field-text">Austin, Champaign, San Francisco, Washington DC</span>&nbsp;or Remote - US</p>
 <h4>About the role</h4>
 <p>As the Product Manager for Logs, your primary goal is to enhance the utility and functionality of Cloudflare Logs — ensuring that they deliver actionable insights about both Cloudflare's services and the customer's own infrastructure.</p>
 <p>You will have immediate responsibility for the Logpush product, which helps customers push raw logs to their destination of choice. You’ll be responsible for bringing our new storage and search offering, Logs Explorer, from beta to GA — growing customers, usage and revenue. You’ll also be responsible for Instant Logs, which helps users get real-time insight into their traffic. While your main goal is to serve Cloudflare’s end-users, you’ll also work with other product teams at Cloudflare to onboard new datasets and make sure these products have strong adoption internally.</p>
