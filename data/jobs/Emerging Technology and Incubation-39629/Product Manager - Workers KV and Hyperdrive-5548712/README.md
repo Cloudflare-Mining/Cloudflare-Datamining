@@ -43,7 +43,7 @@
 	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
 	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with using Cloudflare Workers or other serverless runtimes are considered a significant bonus.</li>
 </ul>
-<p><strong>Available Locations:&nbsp;</strong>Portugal, UK, Netherlands, and Germany</p>
+<p><strong>Available Locations:&nbsp;</strong>Lisbon or Remote Portugal, London or Remote UK, Amsterdam or Remote Netherlands, and Munich or Remote Germany</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

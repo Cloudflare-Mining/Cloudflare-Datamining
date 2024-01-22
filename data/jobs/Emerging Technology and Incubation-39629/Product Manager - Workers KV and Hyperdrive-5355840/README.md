@@ -43,8 +43,7 @@
 	<li>A love for talking to developers at organizations both large and small on a daily basis so that you can build and ship products that solve real problems.</li>
 	<li>Scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with using Cloudflare Workers or other serverless runtimes are considered a significant bonus.</li>
 </ul>
-<p><strong>Available Locations:</strong></p>
-<p>Remote US</p>
+<p><strong>Available Locations: </strong>Remote US or Austin,TX</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <p><strong>Equity</strong></p>

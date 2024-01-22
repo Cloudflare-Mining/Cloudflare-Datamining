@@ -31,6 +31,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting, and debugging large-scale distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience participating in an on-call rotation.</span></li>
 </ul>
+<p><strong>Available Locations: </strong>Amsterdam or Remote Netherlands, Paris or Remote France, Munich or Remote Germany, London or Remote UK, and Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
