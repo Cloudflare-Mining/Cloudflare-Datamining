@@ -16,7 +16,7 @@
 	<li>BA/BS in Computer Science or equivalent experience<br>● Minimum 3 years professional experience as a developer/engineer<br>● Knowledge of Golang or desire to learn it<br>● Solid understanding of RESTful APIs and service security<br>● Working knowledge of SQL and relational databases such as PostgreSQL or MySQL<br>● Experience with modern Unix/Linux development and runtime environment</li>
 </ul>
 <p><strong>Bonus</strong><br>● Experience implementing secure and highly-available distributed systems/microservices<br>● Familiarity with event driven architecture<br>● Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)<br>● Strong interpersonal and communication skills with a bias towards action</p>
-<p>&nbsp;</p>
+<p><strong>Available Locations</strong>: Lisbon or Remote Portugal</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
