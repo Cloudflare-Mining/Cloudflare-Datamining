@@ -5,7 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
+<h4>Available Locations: <strong>Remote - US</strong></h4>
+<h4><br><br>About the department</h4>
 <p><span style="font-weight: 400;">As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</span></p>
 <h4>What you'll do</h4>
 <p><span style="font-weight: 400;">We are looking for a Network Engineer to join our team. Cloudflare is building one of the largest, most resilient networks that spans over 300 cities spread across all regions and we plan to continue our expansion at a rapid pace. This position will be responsible for the technical operations, engineering and architecture of the Cloudflare network, including the planning, installation and management of the hardware and software as well as the day to day operations of the network. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</span></p>

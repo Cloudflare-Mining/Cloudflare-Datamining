@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4>Location: Remote, US</h4>
 <h4>About the department</h4>
 <p>Cloudflare’s Engineering Team builds and runs the software that handles a large number of HTTP requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
 <h4>What you'll do</h4>

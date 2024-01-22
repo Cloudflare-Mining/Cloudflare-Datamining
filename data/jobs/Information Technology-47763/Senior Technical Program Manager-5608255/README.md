@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<h4>Location: Remote, US</h4>
 <h4>About the department</h4>
 <p>Cloudflare’s IT/Enterprise Engineering, Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering, enabling Cloudflare internal teams to operate at their most efficient level. The team establishes end-to-end governance principles and frameworks, leads business partnering, and drives program planning, execution, and demand capacity management.</p>
 <h4>What you'll do</h4>
