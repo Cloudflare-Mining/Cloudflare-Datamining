@@ -5,7 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the Department</strong></h3>
+<p><strong>Available Locations:</strong> Remote France, Remote Germany, Remote Netherlands, Remote Portugal, Remote UK, Remote US, Paris, France, Munich, Germany, Amsterdam, Netherlands, London, United Kingdom, Lisbon, Portugal&nbsp;</p>
+<p><strong>About the Department</strong></p>
 <p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
 <p>The Platform Configuration Team within the Production Engineering organization is responsible for ensuring that we can provision and manage our infrastructure in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
 <p>The Platform Configuration Team has a unique role in Cloudflare in that we get visibility into many different aspects of how Cloudflare’s systems work.&nbsp; This is an incredible opportunity to work on Cloudflare’s next generation of configuration management systems.</p>
