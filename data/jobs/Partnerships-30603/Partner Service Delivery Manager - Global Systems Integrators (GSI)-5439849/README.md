@@ -5,12 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Available Locations: </strong>Remote - US or Hybrid from any of these Cloudflare Offices: Austin, TX, Champaign, IL, San Francisco, CA, Washington, D.C.</p>
 <p><strong>About the Department</strong></p>
 <p>The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
-<p>&nbsp;</p>
 <p><strong>About the Role</strong></p>
 <p>In this specialized role, you'll focus on service delivery and operational success for partnerships with Global Systems Integrators (GSIs). You will work on intricate, multi-tiered projects, engage in high-level strategic discussions with C-suite executives at partner organizations, and assist GSIs in architecting and deploying service offerings based on Cloudflare technologies.</p>
-<p>&nbsp;</p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
 	<li>Strategic Alignment: Collaborate with GSIs to develop and execute joint business/technical plans that align with Cloudflare's strategic objectives.</li>
@@ -20,7 +19,6 @@
 	<li>Performance Metrics: Develop, manage, and track key performance indicators to measure and improve the effectiveness of GSI partnerships.</li>
 	<li>Global Oversight: Provide governance and oversight on global projects, ensuring that deliverables are met on time and within scope.</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Requirements</strong></p>
 <ul>
 	<li>Consulting Background: Significant experience in a consulting environment, ideally within a GSI, is required.</li>
