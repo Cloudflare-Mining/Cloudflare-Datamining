@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/dns_records/{identifier}": {
+	"DELETE /zones/{zone_id}/dns_records/{dns_record_id}": {
 		"operationId": "dns-records-for-a-zone-delete-dns-record",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_record_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -191,13 +191,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/dns_records": {
+	"GET /zones/{zone_id}/dns_records": {
 		"description": "List, search, sort, and filter a zones' DNS records.",
 		"operationId": "dns-records-for-a-zone-list-dns-records",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7258,12 +7258,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/dns_records/{identifier}": {
+	"GET /zones/{zone_id}/dns_records/{dns_record_id}": {
 		"operationId": "dns-records-for-a-zone-dns-record-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_record_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7275,7 +7275,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14020,13 +14020,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/dns_records/export": {
+	"GET /zones/{zone_id}/dns_records/export": {
 		"description": "You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
 		"operationId": "dns-records-for-a-zone-export-dns-records",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14164,12 +14164,12 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/dns_records/{identifier}": {
+	"PATCH /zones/{zone_id}/dns_records/{dns_record_id}": {
 		"operationId": "dns-records-for-a-zone-patch-dns-record",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_record_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14181,7 +14181,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -24134,13 +24134,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/dns_records": {
+	"POST /zones/{zone_id}/dns_records": {
 		"description": "Create a new DNS record for a zone.\n\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
 		"operationId": "dns-records-for-a-zone-create-dns-record",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -34093,13 +34093,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/dns_records/import": {
+	"POST /zones/{zone_id}/dns_records/import": {
 		"description": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present.\n\nSee [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
 		"operationId": "dns-records-for-a-zone-import-dns-records",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -34542,13 +34542,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/dns_records/scan": {
+	"POST /zones/{zone_id}/dns_records/scan": {
 		"description": "Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet.",
 		"operationId": "dns-records-for-a-zone-scan-dns-records",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -34971,13 +34971,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/dns_records/{identifier}": {
+	"PUT /zones/{zone_id}/dns_records/{dns_record_id}": {
 		"description": "Update an existing DNS record.\n\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
 		"operationId": "dns-records-for-a-zone-update-dns-record",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_record_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -34989,7 +34989,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
