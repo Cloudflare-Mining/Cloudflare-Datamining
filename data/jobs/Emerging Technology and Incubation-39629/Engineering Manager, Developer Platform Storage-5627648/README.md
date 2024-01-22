@@ -5,52 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Remote US or Austin, Texas&nbsp;</strong></p>
-<p><strong>About the role&nbsp;</strong></p>
-<p>As our Principal Security Architect, you will take ownership of our security architecture&nbsp; program across various Cloudflare information security functions.</p>
-<p>We are looking for someone excited about solving complex security architecture challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; design as well as partnering with other security teams to unify the security architecture strategy and frameworks into one cohesive security roadmap supporting the&nbsp; overall security function objectives.</p>
-<p><strong>What You’ll Do</strong></p>
-<p>Build and lead our security architecture&nbsp; program in the following areas:&nbsp;</p>
+<h4>Position Location: Austin, TX</h4>
+<h4 id="EngineeringManagerDeveloperPlatformStorageAustin,TX-AbouttheDepartment"><strong>About the Department</strong></h4>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h4 id="EngineeringManagerDeveloperPlatformStorageAustin,TX-Whatyou'lldo"><strong>What you'll do</strong></h4>
+<p>We are looking for an Engineering Manager to join our team. You will lead a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience delivering scalable distributed systems. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</p>
+<h4 id="EngineeringManagerDeveloperPlatformStorageAustin,TX-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h4>
 <ul>
-	<li>Security governance and strategy:</li>
-	<ul>
-		<li>Support security teams strategies and roadmaps</li>
-		<li>Develop, maintain and promote security policies and standards</li>
-	</ul>
-	<li>Provide domain expertise in security architecture</li>
-	<ul>
-		<li>Establish scalable architecture framework and processes</li>
-		<li>Support and develop threat modeling processes.</li>
-		<li>Influence and mature engineering areas within all security team domains</li>
-		<li>Establish security architecture reviews processes</li>
-		<li>Establishes metrics and monitoring to report the effectiveness and efficiency of the Security Architecture function</li>
-	</ul>
-	<li>Regulatory Adherence and Risk:</li>
-	<ul>
-		<li>Ensure security architecture strategy aligns and supports the security certification program.</li>
-		<li>Align the security architecture strategy with the security controls program</li>
-		<li>Support the delivery of the continuous compliance program</li>
-		<li>Design security solutions with measurable security performance and assurance in mind.</li>
-		<li>Assess risks and recommend mitigation strategies.</li>
-	</ul>
-	<li>Mentorship and Culture Development:</li>
-	<ul>
-		<li>Take the lead in guiding our security team while cultivating a culture of heightened security awareness and technical acumen.</li>
-	</ul>
+	<li>Experience leading a team</li>
+	<li>Comfortable managing backend and frontend teams</li>
+	<li>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems</li>
+	<li>Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
+	<li>Demonstrate a track record of managing a team including hiring, on-boarding, and professional development. You inspire your team to reach higher. You’re as good as explaining “why” as you are “how”</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>Comfortable managing teams/projects with tight deadlines and short release cycles</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h4 id="EngineeringManagerDeveloperPlatformStorageAustin,TX-BonusPoints">Bonus Points</h4>
 <ul>
-	<li>Network Security, SSDLC, cloud Security, MDM, IAM, cryptography.</li>
-	<li>Conceptual Skills, Decision Making, Informing Others, Functional and Technical Skills, Dependability</li>
-	<li>Information security policies and standards, security controls frameworks</li>
-	<li>Ability to effectively prioritize and manage a large number of projects simultaneously</li>
-	<li>Mentoring, coaching and line managing others to become the best they can be.</li>
-	<li>Equally adept at strategy formulation and tactical execution</li>
-	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</li>
-	<li>Ability to influence and motivate people across a broad variety of job functions</li>
-	<li>Experience communicating security architecture&nbsp; to the executive leadership&nbsp;</li>
-	<li>Experience in or desire to work with multiple time zones</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems&nbsp; &nbsp;</li>
+	<li>Experience working on a major browser engine</li>
+	<li>C++ based applications</li>
+	<li>Deep Linux/UNIX systems knowledge</li>
+	<li>Managing contributions to large open-source projects</li>
 </ul>
+<h3>&nbsp;</h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
