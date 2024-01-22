@@ -2447,6 +2447,14 @@
 						"compatEnableFlag": "js_rpc",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "noImportScripts",
+					"annotations": {
+						"compatDisableFlag": "global_importscripts",
+						"compatEnableDate": "2024-03-04",
+						"compatEnableFlag": "no_global_importscripts"
+					}
 				}
 			]
 		},
