@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/r2/buckets/{bucket_name}": {
+	"DELETE /accounts/{account_id}/r2/buckets/{bucket_id}": {
 		"description": "Deletes an existing R2 bucket.",
 		"operationId": "r2-delete-bucket",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "bucket_name",
+				"name": "bucket_id",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket",
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -158,13 +158,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/r2/buckets": {
+	"GET /accounts/{account_id}/r2/buckets": {
 		"description": "Lists all R2 buckets on your account",
 		"operationId": "r2-list-buckets",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -430,13 +430,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/r2/buckets/{bucket_name}": {
+	"GET /accounts/{account_id}/r2/buckets/{bucket_id}": {
 		"description": "Gets metadata for an existing R2 bucket.",
 		"operationId": "r2-get-bucket",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
@@ -447,7 +447,7 @@
 			},
 			{
 				"in": "path",
-				"name": "bucket_name",
+				"name": "bucket_id",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket",
@@ -627,13 +627,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/r2/buckets": {
+	"POST /accounts/{account_id}/r2/buckets": {
 		"description": "Creates a new R2 bucket.",
 		"operationId": "r2-create-bucket",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account ID",
