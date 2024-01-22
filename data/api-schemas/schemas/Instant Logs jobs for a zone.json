@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/logpush/edge": {
+	"GET /zones/{zone_id}/logpush/edge": {
 		"description": "Lists Instant Logs jobs for a zone.",
 		"operationId": "get-zones-zone_identifier-logpush-edge-jobs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -380,13 +380,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/logpush/edge": {
+	"POST /zones/{zone_id}/logpush/edge": {
 		"description": "Creates a new Instant Logs job for a zone.",
 		"operationId": "post-zones-zone_identifier-logpush-edge-jobs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

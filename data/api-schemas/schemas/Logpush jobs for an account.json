@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/logpush/jobs/{job_identifier}": {
+	"DELETE /accounts/{account_id}/logpush/jobs/{job_id}": {
 		"description": "Deletes a Logpush job.",
 		"operationId": "delete-accounts-account_identifier-logpush-jobs-job_identifier",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "job_identifier",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"description": "Unique id of the job.",
@@ -15,7 +15,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -334,13 +334,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/logpush/datasets/{dataset}/fields": {
+	"GET /accounts/{account_id}/logpush/datasets/{dataset_id}/fields": {
 		"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
 		"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-fields",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "dataset",
+				"name": "dataset_id",
 				"required": true,
 				"schema": {
 					"description": "Name of the dataset.",
@@ -353,7 +353,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -682,13 +682,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/logpush/datasets/{dataset}/jobs": {
+	"GET /accounts/{account_id}/logpush/datasets/{dataset_id}/jobs": {
 		"description": "Lists Logpush jobs for an account for a dataset.",
 		"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-jobs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "dataset",
+				"name": "dataset_id",
 				"required": true,
 				"schema": {
 					"description": "Name of the dataset.",
@@ -701,7 +701,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -854,7 +854,8 @@
 														"type": "string"
 													},
 													"logpull_options": {
-														"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+														"deprecated": true,
+														"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 														"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 														"format": "uri-reference",
 														"maxLength": 4096,
@@ -868,6 +869,102 @@
 														"nullable": true,
 														"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 														"type": "string"
+													},
+													"output_options": {
+														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+														"nullable": true,
+														"properties": {
+															"CVE-2021-4428": {
+																"default": false,
+																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																"nullable": true,
+																"type": "boolean"
+															},
+															"batch_prefix": {
+																"default": "",
+																"description": "String to be prepended before each batch.",
+																"nullable": true,
+																"type": "string"
+															},
+															"batch_suffix": {
+																"default": "",
+																"description": "String to be appended after each batch.",
+																"nullable": true,
+																"type": "string"
+															},
+															"field_delimiter": {
+																"default": ",",
+																"description": "String to join fields. This field be ignored when `record_template` is set.",
+																"nullable": true,
+																"type": "string"
+															},
+															"field_names": {
+																"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																"example": [
+																	"ClientIP",
+																	"EdgeStartTimestamp",
+																	"RayID"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"output_type": {
+																"default": "ndjson",
+																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																"enum": [
+																	"ndjson",
+																	"csv"
+																],
+																"example": "ndjson",
+																"type": "string"
+															},
+															"record_delimiter": {
+																"default": "",
+																"description": "String to be inserted in-between the records as separator.",
+																"nullable": true,
+																"type": "string"
+															},
+															"record_prefix": {
+																"default": "{",
+																"description": "String to be prepended before each record.",
+																"nullable": true,
+																"type": "string"
+															},
+															"record_suffix": {
+																"default": "}\n",
+																"description": "String to be appended after each record.",
+																"nullable": true,
+																"type": "string"
+															},
+															"record_template": {
+																"default": "",
+																"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																"nullable": true,
+																"type": "string"
+															},
+															"sample_rate": {
+																"default": 1,
+																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																"format": "float",
+																"maximum": 1,
+																"minimum": 0,
+																"nullable": true,
+																"type": "number"
+															},
+															"timestamp_format": {
+																"default": "unixnano",
+																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																"enum": [
+																	"unixnano",
+																	"unix",
+																	"rfc3339"
+																],
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"type": "object"
@@ -1025,7 +1122,8 @@
 																"type": "string"
 															},
 															"logpull_options": {
-																"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+																"deprecated": true,
+																"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 																"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 																"format": "uri-reference",
 																"maxLength": 4096,
@@ -1039,6 +1137,102 @@
 																"nullable": true,
 																"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 																"type": "string"
+															},
+															"output_options": {
+																"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+																"nullable": true,
+																"properties": {
+																	"CVE-2021-4428": {
+																		"default": false,
+																		"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																		"nullable": true,
+																		"type": "boolean"
+																	},
+																	"batch_prefix": {
+																		"default": "",
+																		"description": "String to be prepended before each batch.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"batch_suffix": {
+																		"default": "",
+																		"description": "String to be appended after each batch.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"field_delimiter": {
+																		"default": ",",
+																		"description": "String to join fields. This field be ignored when `record_template` is set.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"field_names": {
+																		"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																		"example": [
+																			"ClientIP",
+																			"EdgeStartTimestamp",
+																			"RayID"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"output_type": {
+																		"default": "ndjson",
+																		"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																		"enum": [
+																			"ndjson",
+																			"csv"
+																		],
+																		"example": "ndjson",
+																		"type": "string"
+																	},
+																	"record_delimiter": {
+																		"default": "",
+																		"description": "String to be inserted in-between the records as separator.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_prefix": {
+																		"default": "{",
+																		"description": "String to be prepended before each record.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_suffix": {
+																		"default": "}\n",
+																		"description": "String to be appended after each record.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_template": {
+																		"default": "",
+																		"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"sample_rate": {
+																		"default": 1,
+																		"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																		"format": "float",
+																		"maximum": 1,
+																		"minimum": 0,
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"timestamp_format": {
+																		"default": "unixnano",
+																		"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																		"enum": [
+																			"unixnano",
+																			"unix",
+																			"rfc3339"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"type": "object"
@@ -1162,13 +1356,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/logpush/jobs": {
+	"GET /accounts/{account_id}/logpush/jobs": {
 		"description": "Lists Logpush jobs for an account.",
 		"operationId": "get-accounts-account_identifier-logpush-jobs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1321,7 +1515,8 @@
 														"type": "string"
 													},
 													"logpull_options": {
-														"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+														"deprecated": true,
+														"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 														"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 														"format": "uri-reference",
 														"maxLength": 4096,
@@ -1335,6 +1530,102 @@
 														"nullable": true,
 														"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 														"type": "string"
+													},
+													"output_options": {
+														"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+														"nullable": true,
+														"properties": {
+															"CVE-2021-4428": {
+																"default": false,
+																"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																"nullable": true,
+																"type": "boolean"
+															},
+															"batch_prefix": {
+																"default": "",
+																"description": "String to be prepended before each batch.",
+																"nullable": true,
+																"type": "string"
+															},
+															"batch_suffix": {
+																"default": "",
+																"description": "String to be appended after each batch.",
+																"nullable": true,
+																"type": "string"
+															},
+															"field_delimiter": {
+																"default": ",",
+																"description": "String to join fields. This field be ignored when `record_template` is set.",
+																"nullable": true,
+																"type": "string"
+															},
+															"field_names": {
+																"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																"example": [
+																	"ClientIP",
+																	"EdgeStartTimestamp",
+																	"RayID"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"output_type": {
+																"default": "ndjson",
+																"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																"enum": [
+																	"ndjson",
+																	"csv"
+																],
+																"example": "ndjson",
+																"type": "string"
+															},
+															"record_delimiter": {
+																"default": "",
+																"description": "String to be inserted in-between the records as separator.",
+																"nullable": true,
+																"type": "string"
+															},
+															"record_prefix": {
+																"default": "{",
+																"description": "String to be prepended before each record.",
+																"nullable": true,
+																"type": "string"
+															},
+															"record_suffix": {
+																"default": "}\n",
+																"description": "String to be appended after each record.",
+																"nullable": true,
+																"type": "string"
+															},
+															"record_template": {
+																"default": "",
+																"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																"nullable": true,
+																"type": "string"
+															},
+															"sample_rate": {
+																"default": 1,
+																"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																"format": "float",
+																"maximum": 1,
+																"minimum": 0,
+																"nullable": true,
+																"type": "number"
+															},
+															"timestamp_format": {
+																"default": "unixnano",
+																"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																"enum": [
+																	"unixnano",
+																	"unix",
+																	"rfc3339"
+																],
+																"type": "string"
+															}
+														},
+														"type": "object"
 													}
 												},
 												"type": "object"
@@ -1492,7 +1783,8 @@
 																"type": "string"
 															},
 															"logpull_options": {
-																"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+																"deprecated": true,
+																"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 																"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 																"format": "uri-reference",
 																"maxLength": 4096,
@@ -1506,6 +1798,102 @@
 																"nullable": true,
 																"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 																"type": "string"
+															},
+															"output_options": {
+																"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+																"nullable": true,
+																"properties": {
+																	"CVE-2021-4428": {
+																		"default": false,
+																		"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																		"nullable": true,
+																		"type": "boolean"
+																	},
+																	"batch_prefix": {
+																		"default": "",
+																		"description": "String to be prepended before each batch.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"batch_suffix": {
+																		"default": "",
+																		"description": "String to be appended after each batch.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"field_delimiter": {
+																		"default": ",",
+																		"description": "String to join fields. This field be ignored when `record_template` is set.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"field_names": {
+																		"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																		"example": [
+																			"ClientIP",
+																			"EdgeStartTimestamp",
+																			"RayID"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	},
+																	"output_type": {
+																		"default": "ndjson",
+																		"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																		"enum": [
+																			"ndjson",
+																			"csv"
+																		],
+																		"example": "ndjson",
+																		"type": "string"
+																	},
+																	"record_delimiter": {
+																		"default": "",
+																		"description": "String to be inserted in-between the records as separator.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_prefix": {
+																		"default": "{",
+																		"description": "String to be prepended before each record.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_suffix": {
+																		"default": "}\n",
+																		"description": "String to be appended after each record.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"record_template": {
+																		"default": "",
+																		"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"sample_rate": {
+																		"default": 1,
+																		"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																		"format": "float",
+																		"maximum": 1,
+																		"minimum": 0,
+																		"nullable": true,
+																		"type": "number"
+																	},
+																	"timestamp_format": {
+																		"default": "unixnano",
+																		"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																		"enum": [
+																			"unixnano",
+																			"unix",
+																			"rfc3339"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															}
 														},
 														"type": "object"
@@ -1629,13 +2017,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/logpush/jobs/{job_identifier}": {
+	"GET /accounts/{account_id}/logpush/jobs/{job_id}": {
 		"description": "Gets the details of a Logpush job.",
 		"operationId": "get-accounts-account_identifier-logpush-jobs-job_identifier",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "job_identifier",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"description": "Unique id of the job.",
@@ -1645,7 +2033,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1816,7 +2204,8 @@
 													"type": "string"
 												},
 												"logpull_options": {
-													"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+													"deprecated": true,
+													"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 													"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 													"format": "uri-reference",
 													"maxLength": 4096,
@@ -1830,6 +2219,102 @@
 													"nullable": true,
 													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 													"type": "string"
+												},
+												"output_options": {
+													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+													"nullable": true,
+													"properties": {
+														"CVE-2021-4428": {
+															"default": false,
+															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+															"nullable": true,
+															"type": "boolean"
+														},
+														"batch_prefix": {
+															"default": "",
+															"description": "String to be prepended before each batch.",
+															"nullable": true,
+															"type": "string"
+														},
+														"batch_suffix": {
+															"default": "",
+															"description": "String to be appended after each batch.",
+															"nullable": true,
+															"type": "string"
+														},
+														"field_delimiter": {
+															"default": ",",
+															"description": "String to join fields. This field be ignored when `record_template` is set.",
+															"nullable": true,
+															"type": "string"
+														},
+														"field_names": {
+															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+															"example": [
+																"ClientIP",
+																"EdgeStartTimestamp",
+																"RayID"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"output_type": {
+															"default": "ndjson",
+															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+															"enum": [
+																"ndjson",
+																"csv"
+															],
+															"example": "ndjson",
+															"type": "string"
+														},
+														"record_delimiter": {
+															"default": "",
+															"description": "String to be inserted in-between the records as separator.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_prefix": {
+															"default": "{",
+															"description": "String to be prepended before each record.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_suffix": {
+															"default": "}\n",
+															"description": "String to be appended after each record.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_template": {
+															"default": "",
+															"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"nullable": true,
+															"type": "string"
+														},
+														"sample_rate": {
+															"default": 1,
+															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"format": "float",
+															"maximum": 1,
+															"minimum": 0,
+															"nullable": true,
+															"type": "number"
+														},
+														"timestamp_format": {
+															"default": "unixnano",
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+															"enum": [
+																"unixnano",
+																"unix",
+																"rfc3339"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -2003,7 +2488,8 @@
 															"type": "string"
 														},
 														"logpull_options": {
-															"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+															"deprecated": true,
+															"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 															"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 															"format": "uri-reference",
 															"maxLength": 4096,
@@ -2017,6 +2503,102 @@
 															"nullable": true,
 															"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 															"type": "string"
+														},
+														"output_options": {
+															"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+															"nullable": true,
+															"properties": {
+																"CVE-2021-4428": {
+																	"default": false,
+																	"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"batch_prefix": {
+																	"default": "",
+																	"description": "String to be prepended before each batch.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"batch_suffix": {
+																	"default": "",
+																	"description": "String to be appended after each batch.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"field_delimiter": {
+																	"default": ",",
+																	"description": "String to join fields. This field be ignored when `record_template` is set.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"field_names": {
+																	"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																	"example": [
+																		"ClientIP",
+																		"EdgeStartTimestamp",
+																		"RayID"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"output_type": {
+																	"default": "ndjson",
+																	"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																	"enum": [
+																		"ndjson",
+																		"csv"
+																	],
+																	"example": "ndjson",
+																	"type": "string"
+																},
+																"record_delimiter": {
+																	"default": "",
+																	"description": "String to be inserted in-between the records as separator.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_prefix": {
+																	"default": "{",
+																	"description": "String to be prepended before each record.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_suffix": {
+																	"default": "}\n",
+																	"description": "String to be appended after each record.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_template": {
+																	"default": "",
+																	"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"sample_rate": {
+																	"default": 1,
+																	"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																	"format": "float",
+																	"maximum": 1,
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"timestamp_format": {
+																	"default": "unixnano",
+																	"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																	"enum": [
+																		"unixnano",
+																		"unix",
+																		"rfc3339"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -2138,13 +2720,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/logpush/jobs": {
+	"POST /accounts/{account_id}/logpush/jobs": {
 		"description": "Creates a new Logpush job for an account.",
 		"operationId": "post-accounts-account_identifier-logpush-jobs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2192,7 +2774,8 @@
 								"type": "string"
 							},
 							"logpull_options": {
-								"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+								"deprecated": true,
+								"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 								"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 								"format": "uri-reference",
 								"maxLength": 4096,
@@ -2206,6 +2789,102 @@
 								"nullable": true,
 								"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 								"type": "string"
+							},
+							"output_options": {
+								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+								"nullable": true,
+								"properties": {
+									"CVE-2021-4428": {
+										"default": false,
+										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+										"nullable": true,
+										"type": "boolean"
+									},
+									"batch_prefix": {
+										"default": "",
+										"description": "String to be prepended before each batch.",
+										"nullable": true,
+										"type": "string"
+									},
+									"batch_suffix": {
+										"default": "",
+										"description": "String to be appended after each batch.",
+										"nullable": true,
+										"type": "string"
+									},
+									"field_delimiter": {
+										"default": ",",
+										"description": "String to join fields. This field be ignored when `record_template` is set.",
+										"nullable": true,
+										"type": "string"
+									},
+									"field_names": {
+										"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+										"example": [
+											"ClientIP",
+											"EdgeStartTimestamp",
+											"RayID"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"output_type": {
+										"default": "ndjson",
+										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+										"enum": [
+											"ndjson",
+											"csv"
+										],
+										"example": "ndjson",
+										"type": "string"
+									},
+									"record_delimiter": {
+										"default": "",
+										"description": "String to be inserted in-between the records as separator.",
+										"nullable": true,
+										"type": "string"
+									},
+									"record_prefix": {
+										"default": "{",
+										"description": "String to be prepended before each record.",
+										"nullable": true,
+										"type": "string"
+									},
+									"record_suffix": {
+										"default": "}\n",
+										"description": "String to be appended after each record.",
+										"nullable": true,
+										"type": "string"
+									},
+									"record_template": {
+										"default": "",
+										"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+										"nullable": true,
+										"type": "string"
+									},
+									"sample_rate": {
+										"default": 1,
+										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+										"format": "float",
+										"maximum": 1,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number"
+									},
+									"timestamp_format": {
+										"default": "unixnano",
+										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+										"enum": [
+											"unixnano",
+											"unix",
+											"rfc3339"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							"ownership_challenge": {
 								"description": "Ownership challenge token to prove destination ownership.",
@@ -2383,7 +3062,8 @@
 													"type": "string"
 												},
 												"logpull_options": {
-													"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+													"deprecated": true,
+													"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 													"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 													"format": "uri-reference",
 													"maxLength": 4096,
@@ -2397,6 +3077,102 @@
 													"nullable": true,
 													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 													"type": "string"
+												},
+												"output_options": {
+													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+													"nullable": true,
+													"properties": {
+														"CVE-2021-4428": {
+															"default": false,
+															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+															"nullable": true,
+															"type": "boolean"
+														},
+														"batch_prefix": {
+															"default": "",
+															"description": "String to be prepended before each batch.",
+															"nullable": true,
+															"type": "string"
+														},
+														"batch_suffix": {
+															"default": "",
+															"description": "String to be appended after each batch.",
+															"nullable": true,
+															"type": "string"
+														},
+														"field_delimiter": {
+															"default": ",",
+															"description": "String to join fields. This field be ignored when `record_template` is set.",
+															"nullable": true,
+															"type": "string"
+														},
+														"field_names": {
+															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+															"example": [
+																"ClientIP",
+																"EdgeStartTimestamp",
+																"RayID"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"output_type": {
+															"default": "ndjson",
+															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+															"enum": [
+																"ndjson",
+																"csv"
+															],
+															"example": "ndjson",
+															"type": "string"
+														},
+														"record_delimiter": {
+															"default": "",
+															"description": "String to be inserted in-between the records as separator.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_prefix": {
+															"default": "{",
+															"description": "String to be prepended before each record.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_suffix": {
+															"default": "}\n",
+															"description": "String to be appended after each record.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_template": {
+															"default": "",
+															"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"nullable": true,
+															"type": "string"
+														},
+														"sample_rate": {
+															"default": 1,
+															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"format": "float",
+															"maximum": 1,
+															"minimum": 0,
+															"nullable": true,
+															"type": "number"
+														},
+														"timestamp_format": {
+															"default": "unixnano",
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+															"enum": [
+																"unixnano",
+																"unix",
+																"rfc3339"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -2570,7 +3346,8 @@
 															"type": "string"
 														},
 														"logpull_options": {
-															"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+															"deprecated": true,
+															"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 															"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 															"format": "uri-reference",
 															"maxLength": 4096,
@@ -2584,6 +3361,102 @@
 															"nullable": true,
 															"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 															"type": "string"
+														},
+														"output_options": {
+															"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+															"nullable": true,
+															"properties": {
+																"CVE-2021-4428": {
+																	"default": false,
+																	"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"batch_prefix": {
+																	"default": "",
+																	"description": "String to be prepended before each batch.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"batch_suffix": {
+																	"default": "",
+																	"description": "String to be appended after each batch.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"field_delimiter": {
+																	"default": ",",
+																	"description": "String to join fields. This field be ignored when `record_template` is set.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"field_names": {
+																	"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																	"example": [
+																		"ClientIP",
+																		"EdgeStartTimestamp",
+																		"RayID"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"output_type": {
+																	"default": "ndjson",
+																	"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																	"enum": [
+																		"ndjson",
+																		"csv"
+																	],
+																	"example": "ndjson",
+																	"type": "string"
+																},
+																"record_delimiter": {
+																	"default": "",
+																	"description": "String to be inserted in-between the records as separator.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_prefix": {
+																	"default": "{",
+																	"description": "String to be prepended before each record.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_suffix": {
+																	"default": "}\n",
+																	"description": "String to be appended after each record.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_template": {
+																	"default": "",
+																	"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"sample_rate": {
+																	"default": 1,
+																	"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																	"format": "float",
+																	"maximum": 1,
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"timestamp_format": {
+																	"default": "unixnano",
+																	"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																	"enum": [
+																		"unixnano",
+																		"unix",
+																		"rfc3339"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														}
 													},
 													"type": "object"
@@ -2705,13 +3578,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/logpush/ownership": {
+	"POST /accounts/{account_id}/logpush/ownership": {
 		"description": "Gets a new ownership challenge sent to your destination.",
 		"operationId": "post-accounts-account_identifier-logpush-ownership",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3071,13 +3944,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/logpush/ownership/validate": {
+	"POST /accounts/{account_id}/logpush/ownership/validate": {
 		"description": "Validates ownership challenge of the destination.",
 		"operationId": "post-accounts-account_identifier-logpush-ownership-validate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3429,13 +4302,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/logpush/validate/destination/exists": {
+	"POST /accounts/{account_id}/logpush/validate/destination/exists": {
 		"description": "Checks if there is an existing job with a destination.",
 		"operationId": "delete-accounts-account_identifier-logpush-validate-destination-exists",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3779,13 +4652,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/logpush/validate/origin": {
+	"POST /accounts/{account_id}/logpush/validate/origin": {
 		"description": "Validates logpull origin with logpull_options.",
 		"operationId": "post-accounts-account_identifier-logpush-validate-origin",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3802,7 +4675,8 @@
 					"schema": {
 						"properties": {
 							"logpull_options": {
-								"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+								"deprecated": true,
+								"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 								"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 								"format": "uri-reference",
 								"maxLength": 4096,
@@ -4138,13 +5012,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/logpush/jobs/{job_identifier}": {
+	"PUT /accounts/{account_id}/logpush/jobs/{job_id}": {
 		"description": "Updates a Logpush job.",
 		"operationId": "put-accounts-account_identifier-logpush-jobs-job_identifier",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "job_identifier",
+				"name": "job_id",
 				"required": true,
 				"schema": {
 					"description": "Unique id of the job.",
@@ -4154,7 +5028,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4194,12 +5068,109 @@
 								"type": "string"
 							},
 							"logpull_options": {
-								"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+								"deprecated": true,
+								"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 								"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 								"format": "uri-reference",
 								"maxLength": 4096,
 								"nullable": true,
 								"type": "string"
+							},
+							"output_options": {
+								"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+								"nullable": true,
+								"properties": {
+									"CVE-2021-4428": {
+										"default": false,
+										"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+										"nullable": true,
+										"type": "boolean"
+									},
+									"batch_prefix": {
+										"default": "",
+										"description": "String to be prepended before each batch.",
+										"nullable": true,
+										"type": "string"
+									},
+									"batch_suffix": {
+										"default": "",
+										"description": "String to be appended after each batch.",
+										"nullable": true,
+										"type": "string"
+									},
+									"field_delimiter": {
+										"default": ",",
+										"description": "String to join fields. This field be ignored when `record_template` is set.",
+										"nullable": true,
+										"type": "string"
+									},
+									"field_names": {
+										"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+										"example": [
+											"ClientIP",
+											"EdgeStartTimestamp",
+											"RayID"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"output_type": {
+										"default": "ndjson",
+										"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+										"enum": [
+											"ndjson",
+											"csv"
+										],
+										"example": "ndjson",
+										"type": "string"
+									},
+									"record_delimiter": {
+										"default": "",
+										"description": "String to be inserted in-between the records as separator.",
+										"nullable": true,
+										"type": "string"
+									},
+									"record_prefix": {
+										"default": "{",
+										"description": "String to be prepended before each record.",
+										"nullable": true,
+										"type": "string"
+									},
+									"record_suffix": {
+										"default": "}\n",
+										"description": "String to be appended after each record.",
+										"nullable": true,
+										"type": "string"
+									},
+									"record_template": {
+										"default": "",
+										"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+										"nullable": true,
+										"type": "string"
+									},
+									"sample_rate": {
+										"default": 1,
+										"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+										"format": "float",
+										"maximum": 1,
+										"minimum": 0,
+										"nullable": true,
+										"type": "number"
+									},
+									"timestamp_format": {
+										"default": "unixnano",
+										"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+										"enum": [
+											"unixnano",
+											"unix",
+											"rfc3339"
+										],
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							"ownership_challenge": {
 								"description": "Ownership challenge token to prove destination ownership.",
@@ -4374,7 +5345,8 @@
 													"type": "string"
 												},
 												"logpull_options": {
-													"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+													"deprecated": true,
+													"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 													"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 													"format": "uri-reference",
 													"maxLength": 4096,
@@ -4388,6 +5360,102 @@
 													"nullable": true,
 													"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 													"type": "string"
+												},
+												"output_options": {
+													"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+													"nullable": true,
+													"properties": {
+														"CVE-2021-4428": {
+															"default": false,
+															"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+															"nullable": true,
+															"type": "boolean"
+														},
+														"batch_prefix": {
+															"default": "",
+															"description": "String to be prepended before each batch.",
+															"nullable": true,
+															"type": "string"
+														},
+														"batch_suffix": {
+															"default": "",
+															"description": "String to be appended after each batch.",
+															"nullable": true,
+															"type": "string"
+														},
+														"field_delimiter": {
+															"default": ",",
+															"description": "String to join fields. This field be ignored when `record_template` is set.",
+															"nullable": true,
+															"type": "string"
+														},
+														"field_names": {
+															"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+															"example": [
+																"ClientIP",
+																"EdgeStartTimestamp",
+																"RayID"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"output_type": {
+															"default": "ndjson",
+															"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+															"enum": [
+																"ndjson",
+																"csv"
+															],
+															"example": "ndjson",
+															"type": "string"
+														},
+														"record_delimiter": {
+															"default": "",
+															"description": "String to be inserted in-between the records as separator.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_prefix": {
+															"default": "{",
+															"description": "String to be prepended before each record.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_suffix": {
+															"default": "}\n",
+															"description": "String to be appended after each record.",
+															"nullable": true,
+															"type": "string"
+														},
+														"record_template": {
+															"default": "",
+															"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+															"nullable": true,
+															"type": "string"
+														},
+														"sample_rate": {
+															"default": 1,
+															"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+															"format": "float",
+															"maximum": 1,
+															"minimum": 0,
+															"nullable": true,
+															"type": "number"
+														},
+														"timestamp_format": {
+															"default": "unixnano",
+															"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+															"enum": [
+																"unixnano",
+																"unix",
+																"rfc3339"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -4561,7 +5629,8 @@
 															"type": "string"
 														},
 														"logpull_options": {
-															"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+															"deprecated": true,
+															"description": "This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
 															"example": "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
 															"format": "uri-reference",
 															"maxLength": 4096,
@@ -4575,6 +5644,102 @@
 															"nullable": true,
 															"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 															"type": "string"
+														},
+														"output_options": {
+															"description": "The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.",
+															"nullable": true,
+															"properties": {
+																"CVE-2021-4428": {
+																	"default": false,
+																	"description": "If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.",
+																	"nullable": true,
+																	"type": "boolean"
+																},
+																"batch_prefix": {
+																	"default": "",
+																	"description": "String to be prepended before each batch.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"batch_suffix": {
+																	"default": "",
+																	"description": "String to be appended after each batch.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"field_delimiter": {
+																	"default": ",",
+																	"description": "String to join fields. This field be ignored when `record_template` is set.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"field_names": {
+																	"description": "List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.",
+																	"example": [
+																		"ClientIP",
+																		"EdgeStartTimestamp",
+																		"RayID"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"output_type": {
+																	"default": "ndjson",
+																	"description": "Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.",
+																	"enum": [
+																		"ndjson",
+																		"csv"
+																	],
+																	"example": "ndjson",
+																	"type": "string"
+																},
+																"record_delimiter": {
+																	"default": "",
+																	"description": "String to be inserted in-between the records as separator.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_prefix": {
+																	"default": "{",
+																	"description": "String to be prepended before each record.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_suffix": {
+																	"default": "}\n",
+																	"description": "String to be appended after each record.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"record_template": {
+																	"default": "",
+																	"description": "String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"sample_rate": {
+																	"default": 1,
+																	"description": "Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.",
+																	"format": "float",
+																	"maximum": 1,
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "number"
+																},
+																"timestamp_format": {
+																	"default": "unixnano",
+																	"description": "String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.",
+																	"enum": [
+																		"unixnano",
+																		"unix",
+																		"rfc3339"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
 														}
 													},
 													"type": "object"
