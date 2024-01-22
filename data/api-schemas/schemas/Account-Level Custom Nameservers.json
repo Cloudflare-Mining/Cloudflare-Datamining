@@ -1,10 +1,10 @@
 {
-	"DELETE /accounts/{identifier}/custom_ns/{ns_name}": {
+	"DELETE /accounts/{account_id}/custom_ns/{custom_ns_id}": {
 		"operationId": "account-level-custom-nameservers-delete-account-custom-nameserver",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "ns_name",
+				"name": "custom_ns_id",
 				"required": true,
 				"schema": {
 					"description": "The FQDN of the name server.",
@@ -15,7 +15,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -168,7 +168,7 @@
 				},
 				"description": "Delete Account Custom Nameserver response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -414,13 +414,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{identifier}/custom_ns": {
+	"GET /accounts/{account_id}/custom_ns": {
 		"description": "List an account's custom nameservers.",
 		"operationId": "account-level-custom-nameservers-list-account-custom-nameservers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -631,7 +631,7 @@
 				},
 				"description": "List Account Custom Nameservers response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -941,12 +941,12 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{identifier}/custom_ns/availability": {
+	"GET /accounts/{account_id}/custom_ns/availability": {
 		"operationId": "account-level-custom-nameservers-get-eligible-zones-for-account-custom-nameservers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1098,7 +1098,7 @@
 				},
 				"description": "Get Eligible Zones for Account Custom Nameservers response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1349,12 +1349,12 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{identifier}/custom_ns": {
+	"POST /accounts/{account_id}/custom_ns": {
 		"operationId": "account-level-custom-nameservers-add-account-custom-nameserver",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1571,7 +1571,7 @@
 				},
 				"description": "Add Account Custom Nameserver response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1858,13 +1858,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{identifier}/custom_ns/verify": {
+	"POST /accounts/{account_id}/custom_ns/verify": {
 		"deprecated": true,
 		"operationId": "account-level-custom-nameservers-verify-account-custom-nameserver-glue-records",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -2081,7 +2081,7 @@
 				},
 				"description": "Verify Account Custom Nameserver Glue Records response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

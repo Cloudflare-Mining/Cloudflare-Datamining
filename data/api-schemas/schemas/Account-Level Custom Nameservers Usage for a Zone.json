@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/custom_ns": {
+	"GET /zones/{zone_id}/custom_ns": {
 		"description": "Get metadata for account-level custom nameservers on a zone.\n",
 		"operationId": "account-level-custom-nameservers-usage-for-a-zone-get-account-custom-nameserver-related-zone-metadata",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -414,13 +414,13 @@
 			"pro": false
 		}
 	},
-	"PUT /zones/{zone_identifier}/custom_ns": {
+	"PUT /zones/{zone_id}/custom_ns": {
 		"description": "Set metadata for account-level custom nameservers on a zone.\n\nIf you would like new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true.\n",
 		"operationId": "account-level-custom-nameservers-usage-for-a-zone-set-account-custom-nameserver-related-zone-metadata",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
