@@ -1,10 +1,10 @@
 {
-	"GET /zones/{zone_identifier}/analytics/latency/colos": {
+	"GET /zones/{zone_id}/analytics/latency/colos": {
 		"operationId": "argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-different-po-ps",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
