@@ -28,12 +28,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -183,6 +177,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Routing rule identifier.",
+															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
 															"items": {
@@ -233,7 +234,8 @@
 															"type": "number"
 														},
 														"tag": {
-															"description": "Routing rule identifier.",
+															"deprecated": true,
+															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
@@ -497,6 +499,13 @@
 																"example": true,
 																"type": "boolean"
 															},
+															"id": {
+																"description": "Routing rule identifier.",
+																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
 															"matchers": {
 																"description": "Matching patterns to forward to your actions.",
 																"items": {
@@ -547,7 +556,8 @@
 																"type": "number"
 															},
 															"tag": {
-																"description": "Routing rule identifier.",
+																"deprecated": true,
+																"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 																"maxLength": 32,
 																"readOnly": true,
@@ -787,6 +797,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Routing rule identifier.",
+															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
 															"items": {
@@ -837,7 +854,8 @@
 															"type": "number"
 														},
 														"tag": {
-															"description": "Routing rule identifier.",
+															"deprecated": true,
+															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
@@ -1043,6 +1061,13 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"id": {
+													"description": "Routing rule identifier.",
+													"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
 												"matchers": {
 													"description": "List of matchers for the catch-all routing rule.",
 													"items": {
@@ -1071,7 +1096,8 @@
 													"type": "string"
 												},
 												"tag": {
-													"description": "Routing rule identifier.",
+													"deprecated": true,
+													"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 													"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 													"maxLength": 32,
 													"readOnly": true,
@@ -1385,6 +1411,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Routing rule identifier.",
+															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
 															"items": {
@@ -1435,7 +1468,8 @@
 															"type": "number"
 														},
 														"tag": {
-															"description": "Routing rule identifier.",
+															"deprecated": true,
+															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
@@ -1764,6 +1798,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Routing rule identifier.",
+															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"matchers": {
 															"description": "Matching patterns to forward to your actions.",
 															"items": {
@@ -1814,7 +1855,8 @@
 															"type": "number"
 														},
 														"tag": {
-															"description": "Routing rule identifier.",
+															"deprecated": true,
+															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 															"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 															"maxLength": 32,
 															"readOnly": true,
@@ -2105,6 +2147,13 @@
 													"example": true,
 													"type": "boolean"
 												},
+												"id": {
+													"description": "Routing rule identifier.",
+													"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												},
 												"matchers": {
 													"description": "List of matchers for the catch-all routing rule.",
 													"items": {
@@ -2133,7 +2182,8 @@
 													"type": "string"
 												},
 												"tag": {
-													"description": "Routing rule identifier.",
+													"deprecated": true,
+													"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
 													"example": "a7e6fb77503c41d8a7f3113c6918f10c",
 													"maxLength": 32,
 													"readOnly": true,

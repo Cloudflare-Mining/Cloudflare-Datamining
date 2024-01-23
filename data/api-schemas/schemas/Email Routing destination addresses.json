@@ -28,12 +28,6 @@
 				}
 			}
 		],
-		"requestBody": {
-			"content": {
-				"application/json": {}
-			},
-			"required": true
-		},
 		"responses": {
 			"200": {
 				"content": {
@@ -153,6 +147,13 @@
 															"maxLength": 90,
 															"type": "string"
 														},
+														"id": {
+															"description": "Destination address identifier.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
 															"example": "2014-01-02T02:20:00Z",
@@ -161,7 +162,8 @@
 															"type": "string"
 														},
 														"tag": {
-															"description": "Destination address identifier.",
+															"deprecated": true,
+															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
@@ -417,6 +419,13 @@
 																"maxLength": 90,
 																"type": "string"
 															},
+															"id": {
+																"description": "Destination address identifier.",
+																"example": "ea95132c15732412d22c1476fa83f27a",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
 															"modified": {
 																"description": "The date and time the destination address was last modified.",
 																"example": "2014-01-02T02:20:00Z",
@@ -425,7 +434,8 @@
 																"type": "string"
 															},
 															"tag": {
-																"description": "Destination address identifier.",
+																"deprecated": true,
+																"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"maxLength": 32,
 																"readOnly": true,
@@ -642,6 +652,13 @@
 															"maxLength": 90,
 															"type": "string"
 														},
+														"id": {
+															"description": "Destination address identifier.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
 															"example": "2014-01-02T02:20:00Z",
@@ -650,7 +667,8 @@
 															"type": "string"
 														},
 														"tag": {
-															"description": "Destination address identifier.",
+															"deprecated": true,
+															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
@@ -857,6 +875,13 @@
 															"maxLength": 90,
 															"type": "string"
 														},
+														"id": {
+															"description": "Destination address identifier.",
+															"example": "ea95132c15732412d22c1476fa83f27a",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"modified": {
 															"description": "The date and time the destination address was last modified.",
 															"example": "2014-01-02T02:20:00Z",
@@ -865,7 +890,8 @@
 															"type": "string"
 														},
 														"tag": {
-															"description": "Destination address identifier.",
+															"deprecated": true,
+															"description": "Destination address tag. (Deprecated, replaced by destination address identifier)",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,

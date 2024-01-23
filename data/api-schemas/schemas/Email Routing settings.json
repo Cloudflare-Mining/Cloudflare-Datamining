@@ -139,6 +139,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Email Routing settings identifier.",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
 															"example": "2014-01-02T02:20:00Z",
@@ -176,7 +183,8 @@
 															"type": "string"
 														},
 														"tag": {
-															"description": "Email Routing settings identifier.",
+															"deprecated": true,
+															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
@@ -607,6 +615,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Email Routing settings identifier.",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
 															"example": "2014-01-02T02:20:00Z",
@@ -644,7 +659,8 @@
 															"type": "string"
 														},
 														"tag": {
-															"description": "Email Routing settings identifier.",
+															"deprecated": true,
+															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
@@ -833,6 +849,13 @@
 															"example": true,
 															"type": "boolean"
 														},
+														"id": {
+															"description": "Email Routing settings identifier.",
+															"example": "75610dab9e69410a82cf7e400a09ecec",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														},
 														"modified": {
 															"description": "The date and time the settings have been modified.",
 															"example": "2014-01-02T02:20:00Z",
@@ -870,7 +893,8 @@
 															"type": "string"
 														},
 														"tag": {
-															"description": "Email Routing settings identifier.",
+															"deprecated": true,
+															"description": "Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)",
 															"example": "75610dab9e69410a82cf7e400a09ecec",
 															"maxLength": 32,
 															"readOnly": true,
