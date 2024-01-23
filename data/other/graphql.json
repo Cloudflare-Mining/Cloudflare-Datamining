@@ -574,6 +574,30 @@
 		"rowsWritten": "The number of rows your queries wrote.",
 		"writeQueries": "The number of write queries."
 	},
+	"AccountD1StorageAdaptiveGroups": {
+		"__description": "Beta. D1 storage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension"
+	},
+	"AccountD1StorageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"databaseId": "The UUID of a D1 database",
+		"date": "D1 storage sample timestamp",
+		"datetimeFifteenMinutes": "D1 storage sample timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "D1 storage sample timestamp, truncated to five minutes",
+		"datetimeHour": "D1 storage sample timestamp, truncated to the hour",
+		"datetimeMinute": "D1 storage sample timestamp, truncated to the minute"
+	},
+	"AccountD1StorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountD1StorageAdaptiveGroupsMax": {
+		"__description": "",
+		"databaseSizeBytes": "The maximum size of the database (measured in bytes) observed over the queried time period."
+	},
+	"AccountD1StorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDosdAttackAnalyticsGroups": {
 		"__description": "Attack analytics metadata for attacks detected by dosd",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
@@ -3123,6 +3147,7 @@
 		"aiInferenceAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
+		"d1StorageAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
 		"dosdNetworkAnalyticsAdaptiveGroups": "",
 		"durableObjectsInvocationsAdaptiveGroups": "",
@@ -5653,6 +5678,7 @@
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
+		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
 		"dosdAttackAnalyticsGroups": "Attack analytics metadata for attacks detected by dosd",
 		"dosdNetworkAnalyticsAdaptiveGroups": "Network analytics data for dosd",
 		"durableObjectsInvocationsAdaptiveGroups": "Durable Objects invocations with adaptive sampling",
