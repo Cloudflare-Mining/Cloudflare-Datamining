@@ -7,6 +7,7 @@
 </div>
 <p><strong>About the Team</strong></p>
 <p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
+<p><strong>Available Locations</strong>: Remote, US</p>
 <p><strong>About the Role</strong></p>
 <p>You'll help design and build&nbsp;<a href="https://blog.cloudflare.com/introducing-workers-durable-objects/">Durable Objects</a>, a new approach to stateful serverless computing.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
