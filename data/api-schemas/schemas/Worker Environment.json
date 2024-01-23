@@ -200,540 +200,624 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"bindings": {
-									"description": "List of bindings attached to this Worker",
-									"items": {
-										"description": "A binding to allow the Worker to communicate with resources",
-										"oneOf": [
-											{
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
 												"properties": {
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"namespace_id": {
-														"description": "Namespace identifier tag.",
-														"example": "0f2ac74b498b48028cb68387c421e279",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"kv_namespace"
-														],
-														"example": "kv_namespace",
+													"message": {
 														"type": "string"
 													}
 												},
 												"required": [
-													"name",
-													"type",
-													"namespace_id"
+													"code",
+													"message"
 												],
-												"type": "object"
+												"type": "object",
+												"uniqueItems": true
 											},
-											{
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
 												"properties": {
-													"environment": {
-														"description": "Optional environment if the Worker utilizes one.",
-														"example": "production",
-														"type": "string"
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
 													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"service": {
-														"description": "Name of Worker to bind to",
-														"example": "my-worker",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"service"
-														],
-														"example": "service",
+													"message": {
 														"type": "string"
 													}
 												},
 												"required": [
-													"name",
-													"type",
-													"service",
-													"environment"
+													"code",
+													"message"
 												],
-												"type": "object"
+												"type": "object",
+												"uniqueItems": true
 											},
-											{
-												"properties": {
-													"class_name": {
-														"description": "The exported class name of the Durable Object",
-														"example": "MyDurableObject",
-														"type": "string"
-													},
-													"environment": {
-														"description": "The environment of the script_name to bind to",
-														"example": "production",
-														"type": "string"
-													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"namespace_id": {
-														"description": "Namespace identifier tag.",
-														"example": "0f2ac74b498b48028cb68387c421e279",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"script_name": {
-														"description": "The script where the Durable Object is defined, if it is external to this Worker",
-														"example": "my-other-worker",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"durable_object_namespace"
-														],
-														"example": "durable_object_namespace",
-														"type": "string"
-													}
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
 												},
-												"required": [
-													"name",
-													"type",
-													"class_name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"bucket_name": {
-														"description": "R2 bucket to bind to",
-														"example": "my-r2-bucket",
-														"type": "string"
-													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"r2_bucket"
-														],
-														"example": "r2_bucket",
-														"type": "string"
-													}
+												{
+													"items": {},
+													"type": "array"
 												},
-												"required": [
-													"name",
-													"type",
-													"bucket_name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"queue_name": {
-														"description": "Name of the Queue to bind to",
-														"example": "my-queue",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"queue"
-														],
-														"example": "queue",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"type",
-													"queue_name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"binding": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"id": {
-														"description": "ID of the D1 database to bind to",
-														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-														"type": "string"
-													},
-													"name": {
-														"description": "The name of the D1 database associated with the 'id' provided.",
-														"example": "prod-database-auth",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"d1"
-														],
-														"example": "d1",
-														"type": "string"
-													}
-												},
-												"required": [
-													"id",
-													"name",
-													"type",
-													"binding"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"namespace": {
-														"description": "Namespace to bind to",
-														"example": "my-namespace",
-														"type": "string"
-													},
-													"outbound": {
-														"description": "Outbound worker",
-														"properties": {
-															"params": {
-																"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters",
-																"items": {
-																	"example": "url",
-																	"type": "string"
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bindings": {
+													"description": "List of bindings attached to this Worker",
+													"items": {
+														"description": "A binding to allow the Worker to communicate with resources",
+														"oneOf": [
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"namespace_id": {
+																		"description": "Namespace identifier tag.",
+																		"example": "0f2ac74b498b48028cb68387c421e279",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"kv_namespace"
+																		],
+																		"example": "kv_namespace",
+																		"type": "string"
+																	}
 																},
-																"type": "array"
+																"required": [
+																	"name",
+																	"type",
+																	"namespace_id"
+																],
+																"type": "object"
 															},
-															"worker": {
-																"description": "Outbound worker",
+															{
 																"properties": {
 																	"environment": {
-																		"description": "Environment of the outbound worker",
+																		"description": "Optional environment if the Worker utilizes one.",
+																		"example": "production",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"service": {
-																		"description": "Name of the outbound worker",
+																		"description": "Name of Worker to bind to",
+																		"example": "my-worker",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"service"
+																		],
+																		"example": "service",
 																		"type": "string"
 																	}
 																},
+																"required": [
+																	"name",
+																	"type",
+																	"service",
+																	"environment"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"class_name": {
+																		"description": "The exported class name of the Durable Object",
+																		"example": "MyDurableObject",
+																		"type": "string"
+																	},
+																	"environment": {
+																		"description": "The environment of the script_name to bind to",
+																		"example": "production",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"namespace_id": {
+																		"description": "Namespace identifier tag.",
+																		"example": "0f2ac74b498b48028cb68387c421e279",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"script_name": {
+																		"description": "The script where the Durable Object is defined, if it is external to this Worker",
+																		"example": "my-other-worker",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"durable_object_namespace"
+																		],
+																		"example": "durable_object_namespace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"class_name"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"bucket_name": {
+																		"description": "R2 bucket to bind to",
+																		"example": "my-r2-bucket",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"r2_bucket"
+																		],
+																		"example": "r2_bucket",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"bucket_name"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"description": "Name of the Queue to bind to",
+																		"example": "my-queue",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"queue"
+																		],
+																		"example": "queue",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"queue_name"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"binding": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the D1 database to bind to",
+																		"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the D1 database associated with the 'id' provided.",
+																		"example": "prod-database-auth",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"d1"
+																		],
+																		"example": "d1",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"type",
+																	"binding"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"namespace": {
+																		"description": "Namespace to bind to",
+																		"example": "my-namespace",
+																		"type": "string"
+																	},
+																	"outbound": {
+																		"description": "Outbound worker",
+																		"properties": {
+																			"params": {
+																				"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters",
+																				"items": {
+																					"example": "url",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"worker": {
+																				"description": "Outbound worker",
+																				"properties": {
+																					"environment": {
+																						"description": "Environment of the outbound worker",
+																						"type": "string"
+																					},
+																					"service": {
+																						"description": "Name of the outbound worker",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"dispatch_namespace"
+																		],
+																		"example": "dispatch_namespace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"namespace"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"certificate_id": {
+																		"description": "ID of the certificate to bind to",
+																		"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"mtls_certificate"
+																		],
+																		"example": "mtls_certificate",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"certificate"
+																],
 																"type": "object"
 															}
-														},
+														],
 														"type": "object"
 													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"dispatch_namespace"
-														],
-														"example": "dispatch_namespace",
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"name",
-													"type",
-													"namespace"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"certificate_id": {
-														"description": "ID of the certificate to bind to",
-														"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+												"compatibility_date": {
+													"description": "Opt your Worker into changes after this date",
+													"example": "2022-04-05",
+													"type": "string"
+												},
+												"compatibility_flags": {
+													"description": "Opt your Worker into specific changes",
+													"items": {
+														"description": "A flag to opt into a specific change",
+														"example": "formdata_parser_supports_files",
 														"type": "string"
 													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"mtls_certificate"
-														],
-														"example": "mtls_certificate",
-														"type": "string"
-													}
+													"type": "array"
 												},
-												"required": [
-													"name",
-													"type",
-													"certificate"
-												],
-												"type": "object"
-											}
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"compatibility_date": {
-									"description": "Opt your Worker into changes after this date",
-									"example": "2022-04-05",
-									"type": "string"
-								},
-								"compatibility_flags": {
-									"description": "Opt your Worker into specific changes",
-									"items": {
-										"description": "A flag to opt into a specific change",
-										"example": "formdata_parser_supports_files",
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"logpush": {
-									"description": "Whether Logpush is turned on for the Worker.",
-									"example": false,
-									"type": "boolean"
-								},
-								"migrations": {
-									"description": "Migrations to apply for Durable Objects associated with this Worker.",
-									"oneOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"new_tag": {
-															"description": "Tag to set as the latest migration tag.",
-															"example": "v2",
-															"type": "string"
-														},
-														"old_tag": {
-															"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
-															"example": "v1",
-															"type": "string"
-														}
-													},
-													"type": "object"
+												"logpush": {
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean"
 												},
-												{
-													"properties": {
-														"deleted_classes": {
-															"description": "A list of classes to delete Durable Object namespaces from.",
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"new_classes": {
-															"description": "A list of classes to create Durable Object namespaces from.",
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"renamed_classes": {
-															"description": "A list of classes with Durable Object namespaces that were renamed.",
-															"items": {
-																"properties": {
-																	"from": {
-																		"type": "string"
-																	},
-																	"to": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"transferred_classes": {
-															"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
-															"items": {
-																"properties": {
-																	"from": {
-																		"type": "string"
-																	},
-																	"from_script": {
-																		"type": "string"
-																	},
-																	"to": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
-														}
-													},
-													"type": "object"
-												}
-											],
-											"description": "A single set of migrations to apply."
-										},
-										{
-											"allOf": [
-												{
-													"properties": {
-														"new_tag": {
-															"description": "Tag to set as the latest migration tag.",
-															"example": "v2",
-															"type": "string"
-														},
-														"old_tag": {
-															"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
-															"example": "v1",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												},
-												{
-													"properties": {
-														"steps": {
-															"description": "Migrations to apply in order.",
-															"items": {
-																"properties": {
-																	"deleted_classes": {
-																		"description": "A list of classes to delete Durable Object namespaces from.",
-																		"items": {
+												"migrations": {
+													"description": "Migrations to apply for Durable Objects associated with this Worker.",
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"new_tag": {
+																			"description": "Tag to set as the latest migration tag.",
+																			"example": "v2",
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"old_tag": {
+																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																			"example": "v1",
+																			"type": "string"
+																		}
 																	},
-																	"new_classes": {
-																		"description": "A list of classes to create Durable Object namespaces from.",
-																		"items": {
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"deleted_classes": {
+																			"description": "A list of classes to delete Durable Object namespaces from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"new_classes": {
+																			"description": "A list of classes to create Durable Object namespaces from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"renamed_classes": {
+																			"description": "A list of classes with Durable Object namespaces that were renamed.",
+																			"items": {
+																				"properties": {
+																					"from": {
+																						"type": "string"
+																					},
+																					"to": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"transferred_classes": {
+																			"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																			"items": {
+																				"properties": {
+																					"from": {
+																						"type": "string"
+																					},
+																					"from_script": {
+																						"type": "string"
+																					},
+																					"to": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																}
+															],
+															"description": "A single set of migrations to apply."
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"new_tag": {
+																			"description": "Tag to set as the latest migration tag.",
+																			"example": "v2",
 																			"type": "string"
 																		},
-																		"type": "array"
+																		"old_tag": {
+																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																			"example": "v1",
+																			"type": "string"
+																		}
 																	},
-																	"renamed_classes": {
-																		"description": "A list of classes with Durable Object namespaces that were renamed.",
-																		"items": {
-																			"properties": {
-																				"from": {
-																					"type": "string"
-																				},
-																				"to": {
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"transferred_classes": {
-																		"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
-																		"items": {
-																			"properties": {
-																				"from": {
-																					"type": "string"
-																				},
-																				"from_script": {
-																					"type": "string"
-																				},
-																				"to": {
-																					"type": "string"
-																				}
-																			},
-																			"type": "object"
-																		},
-																		"type": "array"
-																	}
+																	"type": "object"
 																},
-																"type": "object"
-															},
-															"type": "array"
+																{
+																	"properties": {
+																		"steps": {
+																			"description": "Migrations to apply in order.",
+																			"items": {
+																				"properties": {
+																					"deleted_classes": {
+																						"description": "A list of classes to delete Durable Object namespaces from.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"new_classes": {
+																						"description": "A list of classes to create Durable Object namespaces from.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"renamed_classes": {
+																						"description": "A list of classes with Durable Object namespaces that were renamed.",
+																						"items": {
+																							"properties": {
+																								"from": {
+																									"type": "string"
+																								},
+																								"to": {
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"transferred_classes": {
+																						"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																						"items": {
+																							"properties": {
+																								"from": {
+																									"type": "string"
+																								},
+																								"from_script": {
+																									"type": "string"
+																								},
+																								"to": {
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																}
+															]
+														}
+													]
+												},
+												"placement": {
+													"properties": {
+														"mode": {
+															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+															"enum": [
+																"smart"
+															],
+															"type": "string"
 														}
 													},
 													"type": "object"
+												},
+												"tags": {
+													"description": "Tags to help you manage your Workers",
+													"items": {
+														"description": "Tag to help you manage your Worker",
+														"example": "my-tag",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"tail_consumers": {
+													"description": "List of Workers that will consume logs from the attached Worker.",
+													"items": {
+														"description": "A reference to a script that will consume logs from the attached Worker.",
+														"properties": {
+															"environment": {
+																"description": "Optional environment if the Worker utilizes one.",
+																"example": "production",
+																"type": "string"
+															},
+															"namespace": {
+																"description": "Optional dispatch namespace the script belongs to.",
+																"example": "my-namespace",
+																"type": "string"
+															},
+															"service": {
+																"description": "Name of Worker that is to be the consumer.",
+																"example": "my-log-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"service"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage_model": {
+													"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+													"example": "unbound",
+													"pattern": "^(bundled|unbound)$",
+													"type": "string"
 												}
-											]
-										}
-									]
-								},
-								"placement": {
-									"properties": {
-										"mode": {
-											"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
-											"enum": [
-												"smart"
-											],
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"tags": {
-									"description": "Tags to help you manage your Workers",
-									"items": {
-										"description": "Tag to help you manage your Worker",
-										"example": "my-tag",
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"tail_consumers": {
-									"description": "List of Workers that will consume logs from the attached Worker.",
-									"items": {
-										"description": "A reference to a script that will consume logs from the attached Worker.",
-										"properties": {
-											"environment": {
-												"description": "Optional environment if the Worker utilizes one.",
-												"example": "production",
-												"type": "string"
 											},
-											"namespace": {
-												"description": "Optional dispatch namespace the script belongs to.",
-												"example": "my-namespace",
-												"type": "string"
-											},
-											"service": {
-												"description": "Name of Worker that is to be the consumer.",
-												"example": "my-log-consumer",
-												"type": "string"
-											}
-										},
-										"required": [
-											"service"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"usage_model": {
-									"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
-									"example": "unbound",
-									"pattern": "^(bundled|unbound)$",
-									"type": "string"
+											"type": "object"
+										}
+									}
 								}
-							}
+							]
 						}
 					}
 				},
@@ -882,968 +966,427 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"bindings": {
-								"description": "List of bindings attached to this Worker",
-								"items": {
-									"description": "A binding to allow the Worker to communicate with resources",
-									"oneOf": [
-										{
+						"allOf": [
+							{
+								"properties": {
+									"errors": {
+										"example": [],
+										"items": {
 											"properties": {
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
+												"code": {
+													"minimum": 1000,
+													"type": "integer"
 												},
-												"namespace_id": {
-													"description": "Namespace identifier tag.",
-													"example": "0f2ac74b498b48028cb68387c421e279",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"kv_namespace"
-													],
-													"example": "kv_namespace",
+												"message": {
 													"type": "string"
 												}
 											},
 											"required": [
-												"name",
-												"type",
-												"namespace_id"
+												"code",
+												"message"
 											],
-											"type": "object"
+											"type": "object",
+											"uniqueItems": true
 										},
-										{
+										"type": "array"
+									},
+									"messages": {
+										"example": [],
+										"items": {
 											"properties": {
-												"environment": {
-													"description": "Optional environment if the Worker utilizes one.",
-													"example": "production",
-													"type": "string"
+												"code": {
+													"minimum": 1000,
+													"type": "integer"
 												},
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"service": {
-													"description": "Name of Worker to bind to",
-													"example": "my-worker",
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"service"
-													],
-													"example": "service",
+												"message": {
 													"type": "string"
 												}
 											},
 											"required": [
-												"name",
-												"type",
-												"service",
-												"environment"
+												"code",
+												"message"
 											],
-											"type": "object"
+											"type": "object",
+											"uniqueItems": true
 										},
-										{
-											"properties": {
-												"class_name": {
-													"description": "The exported class name of the Durable Object",
-													"example": "MyDurableObject",
-													"type": "string"
-												},
-												"environment": {
-													"description": "The environment of the script_name to bind to",
-													"example": "production",
-													"type": "string"
-												},
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"namespace_id": {
-													"description": "Namespace identifier tag.",
-													"example": "0f2ac74b498b48028cb68387c421e279",
-													"maxLength": 32,
-													"readOnly": true,
-													"type": "string"
-												},
-												"script_name": {
-													"description": "The script where the Durable Object is defined, if it is external to this Worker",
-													"example": "my-other-worker",
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"durable_object_namespace"
-													],
-													"example": "durable_object_namespace",
-													"type": "string"
-												}
+										"type": "array"
+									},
+									"result": {
+										"anyOf": [
+											{
+												"type": "object"
 											},
-											"required": [
-												"name",
-												"type",
-												"class_name"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"bucket_name": {
-													"description": "R2 bucket to bind to",
-													"example": "my-r2-bucket",
-													"type": "string"
-												},
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"r2_bucket"
-													],
-													"example": "r2_bucket",
-													"type": "string"
-												}
+											{
+												"items": {},
+												"type": "array"
 											},
-											"required": [
-												"name",
-												"type",
-												"bucket_name"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"queue_name": {
-													"description": "Name of the Queue to bind to",
-													"example": "my-queue",
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"queue"
-													],
-													"example": "queue",
-													"type": "string"
-												}
-											},
-											"required": [
-												"name",
-												"type",
-												"queue_name"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"binding": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"id": {
-													"description": "ID of the D1 database to bind to",
-													"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-													"type": "string"
-												},
-												"name": {
-													"description": "The name of the D1 database associated with the 'id' provided.",
-													"example": "prod-database-auth",
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"d1"
-													],
-													"example": "d1",
-													"type": "string"
-												}
-											},
-											"required": [
-												"id",
-												"name",
-												"type",
-												"binding"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"namespace": {
-													"description": "Namespace to bind to",
-													"example": "my-namespace",
-													"type": "string"
-												},
-												"outbound": {
-													"description": "Outbound worker",
-													"properties": {
-														"params": {
-															"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters",
-															"items": {
-																"example": "url",
-																"type": "string"
+											{
+												"type": "string"
+											}
+										]
+									},
+									"success": {
+										"description": "Whether the API call was successful",
+										"enum": [
+											true
+										],
+										"example": true,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"result": {
+										"properties": {
+											"bindings": {
+												"description": "List of bindings attached to this Worker",
+												"items": {
+													"description": "A binding to allow the Worker to communicate with resources",
+													"oneOf": [
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"namespace_id": {
+																	"description": "Namespace identifier tag.",
+																	"example": "0f2ac74b498b48028cb68387c421e279",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"kv_namespace"
+																	],
+																	"example": "kv_namespace",
+																	"type": "string"
+																}
 															},
-															"type": "array"
+															"required": [
+																"name",
+																"type",
+																"namespace_id"
+															],
+															"type": "object"
 														},
-														"worker": {
-															"description": "Outbound worker",
+														{
 															"properties": {
 																"environment": {
-																	"description": "Environment of the outbound worker",
+																	"description": "Optional environment if the Worker utilizes one.",
+																	"example": "production",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
 																	"type": "string"
 																},
 																"service": {
-																	"description": "Name of the outbound worker",
+																	"description": "Name of Worker to bind to",
+																	"example": "my-worker",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"service"
+																	],
+																	"example": "service",
 																	"type": "string"
 																}
 															},
+															"required": [
+																"name",
+																"type",
+																"service",
+																"environment"
+															],
 															"type": "object"
-														}
-													},
-													"type": "object"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"dispatch_namespace"
-													],
-													"example": "dispatch_namespace",
-													"type": "string"
-												}
-											},
-											"required": [
-												"name",
-												"type",
-												"namespace"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"certificate_id": {
-													"description": "ID of the certificate to bind to",
-													"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-													"type": "string"
-												},
-												"name": {
-													"description": "A JavaScript variable name for the binding.",
-													"example": "myBinding",
-													"readOnly": true,
-													"type": "string"
-												},
-												"type": {
-													"description": "The class of resource that the binding provides.",
-													"enum": [
-														"mtls_certificate"
-													],
-													"example": "mtls_certificate",
-													"type": "string"
-												}
-											},
-											"required": [
-												"name",
-												"type",
-												"certificate"
-											],
-											"type": "object"
-										}
-									],
-									"type": "object"
-								},
-								"type": "array"
-							},
-							"compatibility_date": {
-								"description": "Opt your Worker into changes after this date",
-								"example": "2022-04-05",
-								"type": "string"
-							},
-							"compatibility_flags": {
-								"description": "Opt your Worker into specific changes",
-								"items": {
-									"description": "A flag to opt into a specific change",
-									"example": "formdata_parser_supports_files",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"logpush": {
-								"description": "Whether Logpush is turned on for the Worker.",
-								"example": false,
-								"type": "boolean"
-							},
-							"migrations": {
-								"description": "Migrations to apply for Durable Objects associated with this Worker.",
-								"oneOf": [
-									{
-										"allOf": [
-											{
-												"properties": {
-													"new_tag": {
-														"description": "Tag to set as the latest migration tag.",
-														"example": "v2",
-														"type": "string"
-													},
-													"old_tag": {
-														"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
-														"example": "v1",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											{
-												"properties": {
-													"deleted_classes": {
-														"description": "A list of classes to delete Durable Object namespaces from.",
-														"items": {
-															"type": "string"
 														},
-														"type": "array"
-													},
-													"new_classes": {
-														"description": "A list of classes to create Durable Object namespaces from.",
-														"items": {
-															"type": "string"
-														},
-														"type": "array"
-													},
-													"renamed_classes": {
-														"description": "A list of classes with Durable Object namespaces that were renamed.",
-														"items": {
+														{
 															"properties": {
-																"from": {
+																"class_name": {
+																	"description": "The exported class name of the Durable Object",
+																	"example": "MyDurableObject",
 																	"type": "string"
 																},
-																"to": {
+																"environment": {
+																	"description": "The environment of the script_name to bind to",
+																	"example": "production",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"namespace_id": {
+																	"description": "Namespace identifier tag.",
+																	"example": "0f2ac74b498b48028cb68387c421e279",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"script_name": {
+																	"description": "The script where the Durable Object is defined, if it is external to this Worker",
+																	"example": "my-other-worker",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"durable_object_namespace"
+																	],
+																	"example": "durable_object_namespace",
 																	"type": "string"
 																}
 															},
+															"required": [
+																"name",
+																"type",
+																"class_name"
+															],
 															"type": "object"
 														},
-														"type": "array"
-													},
-													"transferred_classes": {
-														"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
-														"items": {
+														{
 															"properties": {
-																"from": {
+																"bucket_name": {
+																	"description": "R2 bucket to bind to",
+																	"example": "my-r2-bucket",
 																	"type": "string"
 																},
-																"from_script": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
 																	"type": "string"
 																},
-																"to": {
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"r2_bucket"
+																	],
+																	"example": "r2_bucket",
 																	"type": "string"
 																}
 															},
+															"required": [
+																"name",
+																"type",
+																"bucket_name"
+															],
 															"type": "object"
 														},
-														"type": "array"
-													}
-												},
-												"type": "object"
-											}
-										],
-										"description": "A single set of migrations to apply."
-									},
-									{
-										"allOf": [
-											{
-												"properties": {
-													"new_tag": {
-														"description": "Tag to set as the latest migration tag.",
-														"example": "v2",
-														"type": "string"
-													},
-													"old_tag": {
-														"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
-														"example": "v1",
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
-											{
-												"properties": {
-													"steps": {
-														"description": "Migrations to apply in order.",
-														"items": {
+														{
 															"properties": {
-																"deleted_classes": {
-																	"description": "A list of classes to delete Durable Object namespaces from.",
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
+																	"type": "string"
 																},
-																"new_classes": {
-																	"description": "A list of classes to create Durable Object namespaces from.",
-																	"items": {
-																		"type": "string"
-																	},
-																	"type": "array"
+																"queue_name": {
+																	"description": "Name of the Queue to bind to",
+																	"example": "my-queue",
+																	"type": "string"
 																},
-																"renamed_classes": {
-																	"description": "A list of classes with Durable Object namespaces that were renamed.",
-																	"items": {
-																		"properties": {
-																			"from": {
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"queue"
+																	],
+																	"example": "queue",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"queue_name"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"binding": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"id": {
+																	"description": "ID of the D1 database to bind to",
+																	"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The name of the D1 database associated with the 'id' provided.",
+																	"example": "prod-database-auth",
+																	"type": "string"
+																},
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"d1"
+																	],
+																	"example": "d1",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"name",
+																"type",
+																"binding"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"namespace": {
+																	"description": "Namespace to bind to",
+																	"example": "my-namespace",
+																	"type": "string"
+																},
+																"outbound": {
+																	"description": "Outbound worker",
+																	"properties": {
+																		"params": {
+																			"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters",
+																			"items": {
+																				"example": "url",
 																				"type": "string"
 																			},
-																			"to": {
-																				"type": "string"
-																			}
+																			"type": "array"
 																		},
-																		"type": "object"
+																		"worker": {
+																			"description": "Outbound worker",
+																			"properties": {
+																				"environment": {
+																					"description": "Environment of the outbound worker",
+																					"type": "string"
+																				},
+																				"service": {
+																					"description": "Name of the outbound worker",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		}
 																	},
-																	"type": "array"
+																	"type": "object"
 																},
-																"transferred_classes": {
-																	"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
-																	"items": {
-																		"properties": {
-																			"from": {
-																				"type": "string"
-																			},
-																			"from_script": {
-																				"type": "string"
-																			},
-																			"to": {
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"type": "array"
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"dispatch_namespace"
+																	],
+																	"example": "dispatch_namespace",
+																	"type": "string"
 																}
 															},
+															"required": [
+																"name",
+																"type",
+																"namespace"
+															],
 															"type": "object"
 														},
-														"type": "array"
-													}
-												},
-												"type": "object"
-											}
-										]
-									}
-								]
-							},
-							"placement": {
-								"properties": {
-									"mode": {
-										"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
-										"enum": [
-											"smart"
-										],
-										"type": "string"
-									}
-								},
-								"type": "object"
-							},
-							"tags": {
-								"description": "Tags to help you manage your Workers",
-								"items": {
-									"description": "Tag to help you manage your Worker",
-									"example": "my-tag",
-									"type": "string"
-								},
-								"type": "array"
-							},
-							"tail_consumers": {
-								"description": "List of Workers that will consume logs from the attached Worker.",
-								"items": {
-									"description": "A reference to a script that will consume logs from the attached Worker.",
-									"properties": {
-										"environment": {
-											"description": "Optional environment if the Worker utilizes one.",
-											"example": "production",
-											"type": "string"
-										},
-										"namespace": {
-											"description": "Optional dispatch namespace the script belongs to.",
-											"example": "my-namespace",
-											"type": "string"
-										},
-										"service": {
-											"description": "Name of Worker that is to be the consumer.",
-											"example": "my-log-consumer",
-											"type": "string"
-										}
-									},
-									"required": [
-										"service"
-									],
-									"type": "object"
-								},
-								"type": "array"
-							},
-							"usage_model": {
-								"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
-								"example": "unbound",
-								"pattern": "^(bundled|unbound)$",
-								"type": "string"
-							}
-						}
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"bindings": {
-									"description": "List of bindings attached to this Worker",
-									"items": {
-										"description": "A binding to allow the Worker to communicate with resources",
-										"oneOf": [
-											{
-												"properties": {
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"namespace_id": {
-														"description": "Namespace identifier tag.",
-														"example": "0f2ac74b498b48028cb68387c421e279",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"kv_namespace"
-														],
-														"example": "kv_namespace",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"type",
-													"namespace_id"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"environment": {
-														"description": "Optional environment if the Worker utilizes one.",
-														"example": "production",
-														"type": "string"
-													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"service": {
-														"description": "Name of Worker to bind to",
-														"example": "my-worker",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"service"
-														],
-														"example": "service",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"type",
-													"service",
-													"environment"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"class_name": {
-														"description": "The exported class name of the Durable Object",
-														"example": "MyDurableObject",
-														"type": "string"
-													},
-													"environment": {
-														"description": "The environment of the script_name to bind to",
-														"example": "production",
-														"type": "string"
-													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"namespace_id": {
-														"description": "Namespace identifier tag.",
-														"example": "0f2ac74b498b48028cb68387c421e279",
-														"maxLength": 32,
-														"readOnly": true,
-														"type": "string"
-													},
-													"script_name": {
-														"description": "The script where the Durable Object is defined, if it is external to this Worker",
-														"example": "my-other-worker",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"durable_object_namespace"
-														],
-														"example": "durable_object_namespace",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"type",
-													"class_name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"bucket_name": {
-														"description": "R2 bucket to bind to",
-														"example": "my-r2-bucket",
-														"type": "string"
-													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"r2_bucket"
-														],
-														"example": "r2_bucket",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"type",
-													"bucket_name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"queue_name": {
-														"description": "Name of the Queue to bind to",
-														"example": "my-queue",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"queue"
-														],
-														"example": "queue",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"type",
-													"queue_name"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"binding": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"id": {
-														"description": "ID of the D1 database to bind to",
-														"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-														"type": "string"
-													},
-													"name": {
-														"description": "The name of the D1 database associated with the 'id' provided.",
-														"example": "prod-database-auth",
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"d1"
-														],
-														"example": "d1",
-														"type": "string"
-													}
-												},
-												"required": [
-													"id",
-													"name",
-													"type",
-													"binding"
-												],
-												"type": "object"
-											},
-											{
-												"properties": {
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"namespace": {
-														"description": "Namespace to bind to",
-														"example": "my-namespace",
-														"type": "string"
-													},
-													"outbound": {
-														"description": "Outbound worker",
-														"properties": {
-															"params": {
-																"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters",
-																"items": {
-																	"example": "url",
+														{
+															"properties": {
+																"certificate_id": {
+																	"description": "ID of the certificate to bind to",
+																	"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
 																	"type": "string"
 																},
-																"type": "array"
-															},
-															"worker": {
-																"description": "Outbound worker",
-																"properties": {
-																	"environment": {
-																		"description": "Environment of the outbound worker",
-																		"type": "string"
-																	},
-																	"service": {
-																		"description": "Name of the outbound worker",
-																		"type": "string"
-																	}
+																"name": {
+																	"description": "A JavaScript variable name for the binding.",
+																	"example": "myBinding",
+																	"readOnly": true,
+																	"type": "string"
 																},
-																"type": "object"
-															}
-														},
-														"type": "object"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"dispatch_namespace"
-														],
-														"example": "dispatch_namespace",
-														"type": "string"
-													}
+																"type": {
+																	"description": "The class of resource that the binding provides.",
+																	"enum": [
+																		"mtls_certificate"
+																	],
+																	"example": "mtls_certificate",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"type",
+																"certificate"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
 												},
-												"required": [
-													"name",
-													"type",
-													"namespace"
-												],
-												"type": "object"
+												"type": "array"
 											},
-											{
-												"properties": {
-													"certificate_id": {
-														"description": "ID of the certificate to bind to",
-														"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
-														"type": "string"
-													},
-													"name": {
-														"description": "A JavaScript variable name for the binding.",
-														"example": "myBinding",
-														"readOnly": true,
-														"type": "string"
-													},
-													"type": {
-														"description": "The class of resource that the binding provides.",
-														"enum": [
-															"mtls_certificate"
-														],
-														"example": "mtls_certificate",
-														"type": "string"
-													}
+											"compatibility_date": {
+												"description": "Opt your Worker into changes after this date",
+												"example": "2022-04-05",
+												"type": "string"
+											},
+											"compatibility_flags": {
+												"description": "Opt your Worker into specific changes",
+												"items": {
+													"description": "A flag to opt into a specific change",
+													"example": "formdata_parser_supports_files",
+													"type": "string"
 												},
-												"required": [
-													"name",
-													"type",
-													"certificate"
-												],
-												"type": "object"
-											}
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"compatibility_date": {
-									"description": "Opt your Worker into changes after this date",
-									"example": "2022-04-05",
-									"type": "string"
-								},
-								"compatibility_flags": {
-									"description": "Opt your Worker into specific changes",
-									"items": {
-										"description": "A flag to opt into a specific change",
-										"example": "formdata_parser_supports_files",
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"logpush": {
-									"description": "Whether Logpush is turned on for the Worker.",
-									"example": false,
-									"type": "boolean"
-								},
-								"migrations": {
-									"description": "Migrations to apply for Durable Objects associated with this Worker.",
-									"oneOf": [
-										{
-											"allOf": [
-												{
-													"properties": {
-														"new_tag": {
-															"description": "Tag to set as the latest migration tag.",
-															"example": "v2",
-															"type": "string"
-														},
-														"old_tag": {
-															"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
-															"example": "v1",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												},
-												{
-													"properties": {
-														"deleted_classes": {
-															"description": "A list of classes to delete Durable Object namespaces from.",
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"new_classes": {
-															"description": "A list of classes to create Durable Object namespaces from.",
-															"items": {
-																"type": "string"
-															},
-															"type": "array"
-														},
-														"renamed_classes": {
-															"description": "A list of classes with Durable Object namespaces that were renamed.",
-															"items": {
+												"type": "array"
+											},
+											"logpush": {
+												"description": "Whether Logpush is turned on for the Worker.",
+												"example": false,
+												"type": "boolean"
+											},
+											"migrations": {
+												"description": "Migrations to apply for Durable Objects associated with this Worker.",
+												"oneOf": [
+													{
+														"allOf": [
+															{
 																"properties": {
-																	"from": {
+																	"new_tag": {
+																		"description": "Tag to set as the latest migration tag.",
+																		"example": "v2",
 																		"type": "string"
 																	},
-																	"to": {
+																	"old_tag": {
+																		"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																		"example": "v1",
 																		"type": "string"
 																	}
 																},
 																"type": "object"
 															},
-															"type": "array"
-														},
-														"transferred_classes": {
-															"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
-															"items": {
-																"properties": {
-																	"from": {
-																		"type": "string"
-																	},
-																	"from_script": {
-																		"type": "string"
-																	},
-																	"to": {
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
-															"type": "array"
-														}
-													},
-													"type": "object"
-												}
-											],
-											"description": "A single set of migrations to apply."
-										},
-										{
-											"allOf": [
-												{
-													"properties": {
-														"new_tag": {
-															"description": "Tag to set as the latest migration tag.",
-															"example": "v2",
-															"type": "string"
-														},
-														"old_tag": {
-															"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
-															"example": "v1",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												},
-												{
-													"properties": {
-														"steps": {
-															"description": "Migrations to apply in order.",
-															"items": {
+															{
 																"properties": {
 																	"deleted_classes": {
 																		"description": "A list of classes to delete Durable Object namespaces from.",
@@ -1894,72 +1437,781 @@
 																	}
 																},
 																"type": "object"
+															}
+														],
+														"description": "A single set of migrations to apply."
+													},
+													{
+														"allOf": [
+															{
+																"properties": {
+																	"new_tag": {
+																		"description": "Tag to set as the latest migration tag.",
+																		"example": "v2",
+																		"type": "string"
+																	},
+																	"old_tag": {
+																		"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																		"example": "v1",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
 															},
-															"type": "array"
+															{
+																"properties": {
+																	"steps": {
+																		"description": "Migrations to apply in order.",
+																		"items": {
+																			"properties": {
+																				"deleted_classes": {
+																					"description": "A list of classes to delete Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"new_classes": {
+																					"description": "A list of classes to create Durable Object namespaces from.",
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
+																				},
+																				"renamed_classes": {
+																					"description": "A list of classes with Durable Object namespaces that were renamed.",
+																					"items": {
+																						"properties": {
+																							"from": {
+																								"type": "string"
+																							},
+																							"to": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"transferred_classes": {
+																					"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																					"items": {
+																						"properties": {
+																							"from": {
+																								"type": "string"
+																							},
+																							"from_script": {
+																								"type": "string"
+																							},
+																							"to": {
+																								"type": "string"
+																							}
+																						},
+																						"type": "object"
+																					},
+																					"type": "array"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															}
+														]
+													}
+												]
+											},
+											"placement": {
+												"properties": {
+													"mode": {
+														"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+														"enum": [
+															"smart"
+														],
+														"type": "string"
+													}
+												},
+												"type": "object"
+											},
+											"tags": {
+												"description": "Tags to help you manage your Workers",
+												"items": {
+													"description": "Tag to help you manage your Worker",
+													"example": "my-tag",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"tail_consumers": {
+												"description": "List of Workers that will consume logs from the attached Worker.",
+												"items": {
+													"description": "A reference to a script that will consume logs from the attached Worker.",
+													"properties": {
+														"environment": {
+															"description": "Optional environment if the Worker utilizes one.",
+															"example": "production",
+															"type": "string"
+														},
+														"namespace": {
+															"description": "Optional dispatch namespace the script belongs to.",
+															"example": "my-namespace",
+															"type": "string"
+														},
+														"service": {
+															"description": "Name of Worker that is to be the consumer.",
+															"example": "my-log-consumer",
+															"type": "string"
 														}
 													},
+													"required": [
+														"service"
+													],
 													"type": "object"
-												}
-											]
-										}
-									]
-								},
-								"placement": {
-									"properties": {
-										"mode": {
-											"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
-											"enum": [
-												"smart"
-											],
-											"type": "string"
-										}
-									},
-									"type": "object"
-								},
-								"tags": {
-									"description": "Tags to help you manage your Workers",
-									"items": {
-										"description": "Tag to help you manage your Worker",
-										"example": "my-tag",
-										"type": "string"
-									},
-									"type": "array"
-								},
-								"tail_consumers": {
-									"description": "List of Workers that will consume logs from the attached Worker.",
-									"items": {
-										"description": "A reference to a script that will consume logs from the attached Worker.",
-										"properties": {
-											"environment": {
-												"description": "Optional environment if the Worker utilizes one.",
-												"example": "production",
-												"type": "string"
+												},
+												"type": "array"
 											},
-											"namespace": {
-												"description": "Optional dispatch namespace the script belongs to.",
-												"example": "my-namespace",
-												"type": "string"
-											},
-											"service": {
-												"description": "Name of Worker that is to be the consumer.",
-												"example": "my-log-consumer",
+											"usage_model": {
+												"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+												"example": "unbound",
+												"pattern": "^(bundled|unbound)$",
 												"type": "string"
 											}
 										},
-										"required": [
-											"service"
-										],
 										"type": "object"
-									},
-									"type": "array"
-								},
-								"usage_model": {
-									"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
-									"example": "unbound",
-									"pattern": "^(bundled|unbound)$",
-									"type": "string"
+									}
 								}
 							}
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bindings": {
+													"description": "List of bindings attached to this Worker",
+													"items": {
+														"description": "A binding to allow the Worker to communicate with resources",
+														"oneOf": [
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"namespace_id": {
+																		"description": "Namespace identifier tag.",
+																		"example": "0f2ac74b498b48028cb68387c421e279",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"kv_namespace"
+																		],
+																		"example": "kv_namespace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"namespace_id"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"environment": {
+																		"description": "Optional environment if the Worker utilizes one.",
+																		"example": "production",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"service": {
+																		"description": "Name of Worker to bind to",
+																		"example": "my-worker",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"service"
+																		],
+																		"example": "service",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"service",
+																	"environment"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"class_name": {
+																		"description": "The exported class name of the Durable Object",
+																		"example": "MyDurableObject",
+																		"type": "string"
+																	},
+																	"environment": {
+																		"description": "The environment of the script_name to bind to",
+																		"example": "production",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"namespace_id": {
+																		"description": "Namespace identifier tag.",
+																		"example": "0f2ac74b498b48028cb68387c421e279",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"script_name": {
+																		"description": "The script where the Durable Object is defined, if it is external to this Worker",
+																		"example": "my-other-worker",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"durable_object_namespace"
+																		],
+																		"example": "durable_object_namespace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"class_name"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"bucket_name": {
+																		"description": "R2 bucket to bind to",
+																		"example": "my-r2-bucket",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"r2_bucket"
+																		],
+																		"example": "r2_bucket",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"bucket_name"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"queue_name": {
+																		"description": "Name of the Queue to bind to",
+																		"example": "my-queue",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"queue"
+																		],
+																		"example": "queue",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"queue_name"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"binding": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "ID of the D1 database to bind to",
+																		"example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the D1 database associated with the 'id' provided.",
+																		"example": "prod-database-auth",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"d1"
+																		],
+																		"example": "d1",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"id",
+																	"name",
+																	"type",
+																	"binding"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"namespace": {
+																		"description": "Namespace to bind to",
+																		"example": "my-namespace",
+																		"type": "string"
+																	},
+																	"outbound": {
+																		"description": "Outbound worker",
+																		"properties": {
+																			"params": {
+																				"description": "Pass information from the Dispatch Worker to the Outbound Worker through the parameters",
+																				"items": {
+																					"example": "url",
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"worker": {
+																				"description": "Outbound worker",
+																				"properties": {
+																					"environment": {
+																						"description": "Environment of the outbound worker",
+																						"type": "string"
+																					},
+																					"service": {
+																						"description": "Name of the outbound worker",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"dispatch_namespace"
+																		],
+																		"example": "dispatch_namespace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"namespace"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"certificate_id": {
+																		"description": "ID of the certificate to bind to",
+																		"example": "efwu2n6s-q69d-2kr9-184j-4913e8h391k6",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A JavaScript variable name for the binding.",
+																		"example": "myBinding",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The class of resource that the binding provides.",
+																		"enum": [
+																			"mtls_certificate"
+																		],
+																		"example": "mtls_certificate",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"certificate"
+																],
+																"type": "object"
+															}
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"compatibility_date": {
+													"description": "Opt your Worker into changes after this date",
+													"example": "2022-04-05",
+													"type": "string"
+												},
+												"compatibility_flags": {
+													"description": "Opt your Worker into specific changes",
+													"items": {
+														"description": "A flag to opt into a specific change",
+														"example": "formdata_parser_supports_files",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"logpush": {
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean"
+												},
+												"migrations": {
+													"description": "Migrations to apply for Durable Objects associated with this Worker.",
+													"oneOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"new_tag": {
+																			"description": "Tag to set as the latest migration tag.",
+																			"example": "v2",
+																			"type": "string"
+																		},
+																		"old_tag": {
+																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																			"example": "v1",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"deleted_classes": {
+																			"description": "A list of classes to delete Durable Object namespaces from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"new_classes": {
+																			"description": "A list of classes to create Durable Object namespaces from.",
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array"
+																		},
+																		"renamed_classes": {
+																			"description": "A list of classes with Durable Object namespaces that were renamed.",
+																			"items": {
+																				"properties": {
+																					"from": {
+																						"type": "string"
+																					},
+																					"to": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"transferred_classes": {
+																			"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																			"items": {
+																				"properties": {
+																					"from": {
+																						"type": "string"
+																					},
+																					"from_script": {
+																						"type": "string"
+																					},
+																					"to": {
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																}
+															],
+															"description": "A single set of migrations to apply."
+														},
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"new_tag": {
+																			"description": "Tag to set as the latest migration tag.",
+																			"example": "v2",
+																			"type": "string"
+																		},
+																		"old_tag": {
+																			"description": "Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.",
+																			"example": "v1",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																{
+																	"properties": {
+																		"steps": {
+																			"description": "Migrations to apply in order.",
+																			"items": {
+																				"properties": {
+																					"deleted_classes": {
+																						"description": "A list of classes to delete Durable Object namespaces from.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"new_classes": {
+																						"description": "A list of classes to create Durable Object namespaces from.",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"renamed_classes": {
+																						"description": "A list of classes with Durable Object namespaces that were renamed.",
+																						"items": {
+																							"properties": {
+																								"from": {
+																									"type": "string"
+																								},
+																								"to": {
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						"type": "array"
+																					},
+																					"transferred_classes": {
+																						"description": "A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.",
+																						"items": {
+																							"properties": {
+																								"from": {
+																									"type": "string"
+																								},
+																								"from_script": {
+																									"type": "string"
+																								},
+																								"to": {
+																									"type": "string"
+																								}
+																							},
+																							"type": "object"
+																						},
+																						"type": "array"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																}
+															]
+														}
+													]
+												},
+												"placement": {
+													"properties": {
+														"mode": {
+															"description": "Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Only `\"smart\"` is currently supported",
+															"enum": [
+																"smart"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"tags": {
+													"description": "Tags to help you manage your Workers",
+													"items": {
+														"description": "Tag to help you manage your Worker",
+														"example": "my-tag",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"tail_consumers": {
+													"description": "List of Workers that will consume logs from the attached Worker.",
+													"items": {
+														"description": "A reference to a script that will consume logs from the attached Worker.",
+														"properties": {
+															"environment": {
+																"description": "Optional environment if the Worker utilizes one.",
+																"example": "production",
+																"type": "string"
+															},
+															"namespace": {
+																"description": "Optional dispatch namespace the script belongs to.",
+																"example": "my-namespace",
+																"type": "string"
+															},
+															"service": {
+																"description": "Name of Worker that is to be the consumer.",
+																"example": "my-log-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"service"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage_model": {
+													"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+													"example": "unbound",
+													"pattern": "^(bundled|unbound)$",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
 						}
 					}
 				},
@@ -2166,84 +2418,201 @@
 				"content": {
 					"application/json": {
 						"schema": {
-							"properties": {
-								"created_on": {
-									"description": "When the script was created.",
-									"example": "2017-01-01T00:00:00Z",
-									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
-								},
-								"etag": {
-									"description": "Hashed script content, can be used in a If-None-Match header when updating.",
-									"example": "ea95132c15732412d22c1476fa83f27a",
-									"readOnly": true,
-									"type": "string"
-								},
-								"id": {
-									"description": "The id of the script in the Workers system. Usually the script name.",
-									"example": "my-workers-script",
-									"readOnly": true,
-									"type": "string"
-								},
-								"logpush": {
-									"description": "Whether Logpush is turned on for the Worker.",
-									"example": false,
-									"type": "boolean"
-								},
-								"modified_on": {
-									"description": "When the script was last modified.",
-									"example": "2017-01-01T00:00:00Z",
-									"format": "date-time",
-									"readOnly": true,
-									"type": "string"
-								},
-								"pipeline_hash": {
-									"description": "Deprecated. Deployment metadata for internal usage.",
-									"example": "ea95132c15732412d22c1476fa83f27a",
-									"readOnly": true,
-									"type": "string"
-								},
-								"placement_mode": {
-									"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
-									"example": "smart",
-									"type": "string"
-								},
-								"tail_consumers": {
-									"description": "List of Workers that will consume logs from the attached Worker.",
-									"items": {
-										"description": "A reference to a script that will consume logs from the attached Worker.",
-										"properties": {
-											"environment": {
-												"description": "Optional environment if the Worker utilizes one.",
-												"example": "production",
-												"type": "string"
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
 											},
-											"namespace": {
-												"description": "Optional dispatch namespace the script belongs to.",
-												"example": "my-namespace",
-												"type": "string"
-											},
-											"service": {
-												"description": "Name of Worker that is to be the consumer.",
-												"example": "my-log-consumer",
-												"type": "string"
-											}
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
 										},
-										"required": [
-											"service"
-										],
-										"type": "object"
-									},
-									"type": "array"
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
 								},
-								"usage_model": {
-									"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
-									"example": "unbound",
-									"pattern": "^(bundled|unbound)$",
-									"type": "string"
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"description": "When the script was created.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"etag": {
+													"description": "Hashed script content, can be used in a If-None-Match header when updating.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "The id of the script in the Workers system. Usually the script name.",
+													"example": "my-workers-script",
+													"readOnly": true,
+													"type": "string"
+												},
+												"logpush": {
+													"description": "Whether Logpush is turned on for the Worker.",
+													"example": false,
+													"type": "boolean"
+												},
+												"modified_on": {
+													"description": "When the script was last modified.",
+													"example": "2017-01-01T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"pipeline_hash": {
+													"description": "Deprecated. Deployment metadata for internal usage.",
+													"example": "ea95132c15732412d22c1476fa83f27a",
+													"readOnly": true,
+													"type": "string"
+												},
+												"placement_mode": {
+													"description": "Specifies the placement mode for the Worker (e.g. 'smart').",
+													"example": "smart",
+													"type": "string"
+												},
+												"tail_consumers": {
+													"description": "List of Workers that will consume logs from the attached Worker.",
+													"items": {
+														"description": "A reference to a script that will consume logs from the attached Worker.",
+														"properties": {
+															"environment": {
+																"description": "Optional environment if the Worker utilizes one.",
+																"example": "production",
+																"type": "string"
+															},
+															"namespace": {
+																"description": "Optional dispatch namespace the script belongs to.",
+																"example": "my-namespace",
+																"type": "string"
+															},
+															"service": {
+																"description": "Name of Worker that is to be the consumer.",
+																"example": "my-log-consumer",
+																"type": "string"
+															}
+														},
+														"required": [
+															"service"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"usage_model": {
+													"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+													"example": "unbound",
+													"pattern": "^(bundled|unbound)$",
+													"type": "string"
+												}
+											}
+										}
+									},
+									"x-cfLinkErrors": {
+										"10001": "Unsupported or unexpected Content Type",
+										"10002": "Unexpected internal server error",
+										"10003": "Missing required URL parameter",
+										"10004": "Malformed URL parameter",
+										"10006": "Unparseable script body",
+										"10007": "Resource not found (similar to HTTP 404)",
+										"10014": "Internal error while attempting authorization checks",
+										"10015": "The current account is not authorized to use workers",
+										"10018": "Attempted to update a script where the e-tag does not match",
+										"10021": "Script content failed validation checks, but was otherwise parseable",
+										"10023": "Unauthorized access attempt",
+										"10027": "Script body was too large",
+										"10075": "Requires a Workers Paid plan"
+									}
 								}
-							}
+							]
 						}
 					}
 				},
