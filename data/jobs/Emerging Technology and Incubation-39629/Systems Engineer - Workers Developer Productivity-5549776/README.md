@@ -7,6 +7,7 @@
 </div>
 <p><strong>About the Role</strong></p>
 <p>Our team’s core mission is to enable developers to do what they do best — build powerful applications.&nbsp; We believe they should be able to do this without having to think or worry about infrastructure, scaling, or performance. While Cloudflare Workers, Cloudflare’s solution to serverless computing, handles the infrastructure part, there’s so much more that goes into enabling developers to do their jobs. Developer experience plays a critical role in the success of developers using our platform, so it is our team’s goal to make our platform easy to understand, accessible, and fun and delightful to use! If this excites you, come join our team of talented engineers that enables developers all around the world to build low-latency planet-scale applications for the Internet and the Web!</p>
+<p><strong>Available Locations:</strong> Austin, Texas</p>
 <p><strong>About the Department</strong></p>
 <p>Our team is part of Cloudflare's Emerging Technology and Incubation (ETI) team where new, bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a successful business, ETI leverages our network to deliver entirely new tools and products to our customers. The Developer Productivity team maintains several tools (Wrangler, Miniflare, Workers Playground, among others) within a larger collection of developer resources for one of ETIs most successful endeavors so far, Cloudflare Workers.&nbsp;</p>
 <p><strong>What you'll do</strong></p>
