@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 57,
+	"version": "20240124.7",
+	"short_version": "2024.1.160.0",
+	"size": 67358686,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "fb8275fa6158888a0323816d95a7e5b2",
+	"fingerprint": "a8feb4c1c54dce0bc35ff8a5474b507b",
+	"uploaded_at": "2024-01-24T18:36:39.621Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains a number of exciting new features and several improvements and bug fixes.\n\n## Notable updates\n- Added the ability for the Client to display Gateway NETWORK and HTTP block notifications to the user.\n- Added the ability for administrators to specify multiple configurations in MDM files that users can toggle between. This allows users to more easily switch between production and test environments or for China users to switch between their override endpoints within the UI.\n- Added the ability for administrators to allow their end users to temporarily obtain access to local network resources in the event their home IP space overlaps with traffic normally routed through the WARP tunnel.\n- Improved existing re-auth notifications to be more visible and time sensitive.\n- Improved the retry mechanisms for DEX test results.\n- Fixed an issue where DEX tests would run before the client was fully connected.\n\n## Known issues\n- Registration may silently fail for users if they had previously used the beta feature 'switch between multiple orgs/configurations' and uninstalled the beta client before installing this GA client. It is recommended that the new GA client be installed over the beta client (without first uninstalling the beta client). If the beta client has already been uninstalled, simply re-install the GA client a second time to clear this issue.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}
