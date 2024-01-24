@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/logs/control/cmb/config": {
+	"DELETE /accounts/{account_id}/logs/control/cmb/config": {
 		"description": "Deletes CMB config.",
 		"operationId": "delete-accounts-account_identifier-logs-control-cmb-config",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -318,13 +318,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/logs/control/cmb/config": {
+	"GET /accounts/{account_id}/logs/control/cmb/config": {
 		"description": "Gets CMB config.",
 		"operationId": "get-accounts-account_identifier-logs-control-cmb-config",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -570,13 +570,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/logs/control/cmb/config": {
+	"POST /accounts/{account_id}/logs/control/cmb/config": {
 		"description": "Updates CMB config.",
 		"operationId": "put-accounts-account_identifier-logs-control-cmb-config",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
