@@ -403,7 +403,7 @@
 							}), new _e, new z.jK.BrowserTracing({
 								routingInstrumentation: Z(V)
 							})],
-							tracesSampleRate: .2,
+							tracesSampleRate: 0,
 							transport: Te,
 							beforeSend: vt => (je.e.setEventId(vt.event_id), vt)
 						});
@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "a866a17589b24f66cc1c141a621e4c2db2a9138e",
+					commit: "9c9cb9abb037358037456625bc913073c027a0cd",
 					env: "production",
-					builtAt: 1706115061727,
-					dashVersion: "57984162f19572694792b132aefafe46f75e95f7",
+					builtAt: 1706116683615,
+					dashVersion: "94788b1ef6a4d078ad0c4d7f87aa77c4eb0d47ce",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
