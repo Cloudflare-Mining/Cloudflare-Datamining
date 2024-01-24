@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/cache/tiered_cache_smart_topology_enable": {
+	"DELETE /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"description": "Remvoves enablement of Smart Tiered Cache",
 		"operationId": "smart-tiered-cache-delete-smart-tiered-cache-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -364,12 +364,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/cache/tiered_cache_smart_topology_enable": {
+	"GET /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"operationId": "smart-tiered-cache-get-smart-tiered-cache-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -722,13 +722,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/cache/tiered_cache_smart_topology_enable": {
+	"PATCH /zones/{zone_id}/cache/tiered_cache_smart_topology_enable": {
 		"description": "Updates enablement of Tiered Cache",
 		"operationId": "smart-tiered-cache-patch-smart-tiered-cache-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

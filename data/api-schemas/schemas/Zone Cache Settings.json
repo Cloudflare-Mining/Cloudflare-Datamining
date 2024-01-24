@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/cache/variants": {
+	"DELETE /zones/{zone_id}/cache/variants": {
 		"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 		"operationId": "zone-cache-settings-delete-variants-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -452,13 +452,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/cache/cache_reserve": {
+	"GET /zones/{zone_id}/cache/cache_reserve": {
 		"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
 		"operationId": "zone-cache-settings-get-cache-reserve-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -968,13 +968,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/cache/cache_reserve_clear": {
+	"GET /zones/{zone_id}/cache/cache_reserve_clear": {
 		"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
 		"operationId": "zone-cache-settings-get-cache-reserve-clear",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1523,13 +1523,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/cache/regional_tiered_cache": {
+	"GET /zones/{zone_id}/cache/regional_tiered_cache": {
 		"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
 		"operationId": "zone-cache-settings-get-regional-tiered-cache-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2066,13 +2066,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/cache/variants": {
+	"GET /zones/{zone_id}/cache/variants": {
 		"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 		"operationId": "zone-cache-settings-get-variants-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2767,13 +2767,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/cache/cache_reserve": {
+	"PATCH /zones/{zone_id}/cache/cache_reserve": {
 		"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
 		"operationId": "zone-cache-settings-change-cache-reserve-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3306,13 +3306,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/cache/regional_tiered_cache": {
+	"PATCH /zones/{zone_id}/cache/regional_tiered_cache": {
 		"description": "Instructs Cloudflare to check a regional hub data center on the way to your upper tier. This can help improve performance for smart and custom tiered cache topologies.",
 		"operationId": "zone-cache-settings-change-regional-tiered-cache-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3872,13 +3872,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/cache/variants": {
+	"PATCH /zones/{zone_id}/cache/variants": {
 		"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 		"operationId": "zone-cache-settings-change-variants-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4703,13 +4703,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/cache/cache_reserve_clear": {
+	"POST /zones/{zone_id}/cache/cache_reserve_clear": {
 		"description": "You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation.",
 		"operationId": "zone-cache-settings-start-cache-reserve-clear",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
