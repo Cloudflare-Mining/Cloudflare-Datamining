@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{identifier}/gateway/app_types": {
+	"GET /accounts/{account_id}/gateway/app_types": {
 		"description": "Fetches all application and application type mappings.",
 		"operationId": "zero-trust-gateway-application-and-application-type-mappings-list-application-and-application-type-mappings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

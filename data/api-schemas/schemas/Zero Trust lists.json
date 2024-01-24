@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/gateway/lists/{uuid}": {
+	"DELETE /accounts/{account_id}/gateway/lists/{list_id}": {
 		"description": "Deletes a Zero Trust list.",
 		"operationId": "zero-trust-lists-delete-zero-trust-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "list_id",
 				"required": true,
 				"schema": {
 					"description": "API Resource UUID tag.",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -354,13 +354,13 @@
 			"Zero Trust lists"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/lists": {
+	"GET /accounts/{account_id}/gateway/lists": {
 		"description": "Fetches all Zero Trust lists for an account.",
 		"operationId": "zero-trust-lists-list-zero-trust-lists",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -834,13 +834,13 @@
 			"Zero Trust lists"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/lists/{uuid}": {
+	"GET /accounts/{account_id}/gateway/lists/{list_id}": {
 		"description": "Fetches a single Zero Trust list.",
 		"operationId": "zero-trust-lists-zero-trust-list-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "list_id",
 				"required": true,
 				"schema": {
 					"description": "API Resource UUID tag.",
@@ -851,7 +851,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1279,13 +1279,13 @@
 			"Zero Trust lists"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/lists/{uuid}/items": {
+	"GET /accounts/{account_id}/gateway/lists/{list_id}/items": {
 		"description": "Fetches all items in a single Zero Trust list.",
 		"operationId": "zero-trust-lists-zero-trust-list-items",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "list_id",
 				"required": true,
 				"schema": {
 					"description": "API Resource UUID tag.",
@@ -1296,7 +1296,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1766,13 +1766,13 @@
 			"Zero Trust lists"
 		]
 	},
-	"PATCH /accounts/{identifier}/gateway/lists/{uuid}": {
+	"PATCH /accounts/{account_id}/gateway/lists/{list_id}": {
 		"description": "Appends or removes an item from a configured Zero Trust list.",
 		"operationId": "zero-trust-lists-patch-zero-trust-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "list_id",
 				"required": true,
 				"schema": {
 					"description": "API Resource UUID tag.",
@@ -1783,7 +1783,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2251,13 +2251,13 @@
 			"Zero Trust lists"
 		]
 	},
-	"POST /accounts/{identifier}/gateway/lists": {
+	"POST /accounts/{account_id}/gateway/lists": {
 		"description": "Creates a new Zero Trust list.",
 		"operationId": "zero-trust-lists-create-zero-trust-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2768,13 +2768,13 @@
 			"Zero Trust lists"
 		]
 	},
-	"PUT /accounts/{identifier}/gateway/lists/{uuid}": {
+	"PUT /accounts/{account_id}/gateway/lists/{list_id}": {
 		"description": "Updates a configured Zero Trust list.",
 		"operationId": "zero-trust-lists-update-zero-trust-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "list_id",
 				"required": true,
 				"schema": {
 					"description": "API Resource UUID tag.",
@@ -2785,7 +2785,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

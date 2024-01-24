@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/gateway/rules/{uuid}": {
+	"DELETE /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"description": "Deletes a Zero Trust Gateway rule.",
 		"operationId": "zero-trust-gateway-rules-delete-zero-trust-gateway-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "The API resource UUID.",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -354,13 +354,13 @@
 			"Zero Trust Gateway rules"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/rules": {
+	"GET /accounts/{account_id}/gateway/rules": {
 		"description": "Fetches the Zero Trust Gateway rules for an account.",
 		"operationId": "zero-trust-gateway-rules-list-zero-trust-gateway-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1598,13 +1598,13 @@
 			"Zero Trust Gateway rules"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/rules/{uuid}": {
+	"GET /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"description": "Fetches a single Zero Trust Gateway rule.",
 		"operationId": "zero-trust-gateway-rules-zero-trust-gateway-rule-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "The API resource UUID.",
@@ -1615,7 +1615,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2807,13 +2807,13 @@
 			"Zero Trust Gateway rules"
 		]
 	},
-	"POST /accounts/{identifier}/gateway/rules": {
+	"POST /accounts/{account_id}/gateway/rules": {
 		"description": "Creates a new Zero Trust Gateway rule.",
 		"operationId": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -4423,13 +4423,13 @@
 			"Zero Trust Gateway rules"
 		]
 	},
-	"PUT /accounts/{identifier}/gateway/rules/{uuid}": {
+	"PUT /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"description": "Updates a configured Zero Trust Gateway rule.",
 		"operationId": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "The API resource UUID.",
@@ -4440,7 +4440,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{identifier}/gateway/audit_ssh_settings": {
+	"GET /accounts/{account_id}/gateway/audit_ssh_settings": {
 		"description": "Get all Zero Trust Audit SSH settings for an account.",
 		"operationId": "zero-trust-get-audit-ssh-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -387,13 +387,13 @@
 			"Zero Trust Audit SSH Settings"
 		]
 	},
-	"PUT /accounts/{identifier}/gateway/audit_ssh_settings": {
+	"PUT /accounts/{account_id}/gateway/audit_ssh_settings": {
 		"description": "Updates Zero Trust Audit SSH settings.",
 		"operationId": "zero-trust-update-audit-ssh-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

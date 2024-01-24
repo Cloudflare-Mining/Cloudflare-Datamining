@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/gateway/locations/{uuid}": {
+	"DELETE /accounts/{account_id}/gateway/locations/{location_id}": {
 		"description": "Deletes a configured Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-delete-zero-trust-gateway-location",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "location_id",
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086"
@@ -13,7 +13,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -351,13 +351,13 @@
 			"Zero Trust Gateway locations"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/locations": {
+	"GET /accounts/{account_id}/gateway/locations": {
 		"description": "Fetches Zero Trust Gateway locations for an account.",
 		"operationId": "zero-trust-gateway-locations-list-zero-trust-gateway-locations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -853,13 +853,13 @@
 			"Zero Trust Gateway locations"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/locations/{uuid}": {
+	"GET /accounts/{account_id}/gateway/locations/{location_id}": {
 		"description": "Fetches a single Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-zero-trust-gateway-location-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "location_id",
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086"
@@ -867,7 +867,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1317,13 +1317,13 @@
 			"Zero Trust Gateway locations"
 		]
 	},
-	"POST /accounts/{identifier}/gateway/locations": {
+	"POST /accounts/{account_id}/gateway/locations": {
 		"description": "Creates a new Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-create-zero-trust-gateway-location",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1819,13 +1819,13 @@
 			"Zero Trust Gateway locations"
 		]
 	},
-	"PUT /accounts/{identifier}/gateway/locations/{uuid}": {
+	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
 		"description": "Updates a configured Zero Trust Gateway location.",
 		"operationId": "zero-trust-gateway-locations-update-zero-trust-gateway-location",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "location_id",
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086"
@@ -1833,7 +1833,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

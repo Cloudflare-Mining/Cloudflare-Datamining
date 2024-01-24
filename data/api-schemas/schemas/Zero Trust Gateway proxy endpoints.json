@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/gateway/proxy_endpoints/{uuid}": {
+	"DELETE /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"description": "Deletes a configured Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-delete-proxy-endpoint",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "proxy_endpoint_id",
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086"
@@ -13,7 +13,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -351,13 +351,13 @@
 			"Zero Trust Gateway proxy endpoints"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/proxy_endpoints": {
+	"GET /accounts/{account_id}/gateway/proxy_endpoints": {
 		"description": "Fetches a single Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-list-proxy-endpoints",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -807,13 +807,13 @@
 			"Zero Trust Gateway proxy endpoints"
 		]
 	},
-	"GET /accounts/{identifier}/gateway/proxy_endpoints/{uuid}": {
+	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"description": "Fetches all Zero Trust Gateway proxy endpoints for an account.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-proxy-endpoint-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "proxy_endpoint_id",
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086"
@@ -821,7 +821,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1225,13 +1225,13 @@
 			"Zero Trust Gateway proxy endpoints"
 		]
 	},
-	"PATCH /accounts/{identifier}/gateway/proxy_endpoints/{uuid}": {
+	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"description": "Updates a configured Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-update-proxy-endpoint",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "proxy_endpoint_id",
 				"required": true,
 				"schema": {
 					"example": "ed35569b41ce4d1facfe683550f54086"
@@ -1239,7 +1239,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1673,13 +1673,13 @@
 			"Zero Trust Gateway proxy endpoints"
 		]
 	},
-	"POST /accounts/{identifier}/gateway/proxy_endpoints": {
+	"POST /accounts/{account_id}/gateway/proxy_endpoints": {
 		"description": "Creates a new Zero Trust Gateway proxy endpoint.",
 		"operationId": "zero-trust-gateway-proxy-endpoints-create-proxy-endpoint",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
