@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/stream/{identifier}": {
+	"DELETE /accounts/{account_id}/stream/{identifier}": {
 		"description": "Deletes a video and its copies from Cloudflare Stream.",
 		"operationId": "stream-videos-delete-video",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -57,13 +57,13 @@
 			"Stream Videos"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream": {
+	"GET /accounts/{account_id}/stream": {
 		"description": "Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters.",
 		"operationId": "stream-videos-list-videos",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -624,7 +624,7 @@
 			"Stream Videos"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/{identifier}": {
+	"GET /accounts/{account_id}/stream/{identifier}": {
 		"description": "Fetches details for a single video.",
 		"operationId": "stream-videos-retrieve-video-details",
 		"parameters": [
@@ -641,7 +641,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -1119,7 +1119,7 @@
 			"Stream Videos"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/{identifier}/embed": {
+	"GET /accounts/{account_id}/stream/{identifier}/embed": {
 		"description": "Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body.",
 		"operationId": "stream-videos-retreieve-embed-code-html",
 		"parameters": [
@@ -1136,7 +1136,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -1260,13 +1260,13 @@
 			"Stream Videos"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/storage-usage": {
+	"GET /accounts/{account_id}/stream/storage-usage": {
 		"description": "Returns information about an account's storage use.",
 		"operationId": "stream-videos-storage-usage",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -1521,7 +1521,7 @@
 			"Stream Videos"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream": {
+	"POST /accounts/{account_id}/stream": {
 		"description": "Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to https://tus.io for protocol details.",
 		"operationId": "stream-videos-initiate-video-uploads-using-tus",
 		"parameters": [
@@ -1569,7 +1569,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -1610,7 +1610,7 @@
 			"Stream Videos"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/{identifier}": {
+	"POST /accounts/{account_id}/stream/{identifier}": {
 		"description": "Edit details for a single video.",
 		"operationId": "stream-videos-update-video-details",
 		"parameters": [
@@ -1627,7 +1627,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -2172,7 +2172,7 @@
 			"Stream Videos"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/{identifier}/token": {
+	"POST /accounts/{account_id}/stream/{identifier}/token": {
 		"description": "Creates a signed URL token for a video. If a body is not provided in the request, a token is created with default values.",
 		"operationId": "stream-videos-create-signed-url-tokens-for-videos",
 		"parameters": [
@@ -2189,7 +2189,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -2521,13 +2521,13 @@
 			"Stream Videos"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/copy": {
+	"POST /accounts/{account_id}/stream/copy": {
 		"description": "Uploads a video to Stream from a provided URL.",
 		"operationId": "stream-videos-upload-videos-from-a-url",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -3098,13 +3098,13 @@
 			"Stream Videos"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/direct_upload": {
+	"POST /accounts/{account_id}/stream/direct_upload": {
 		"description": "Creates a direct upload that allows video uploads without an API key.",
 		"operationId": "stream-videos-upload-videos-via-direct-upload-ur-ls",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",

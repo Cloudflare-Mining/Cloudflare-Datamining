@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/stream/watermarks/{identifier}": {
+	"DELETE /accounts/{account_id}/stream/watermarks/{identifier}": {
 		"description": "Deletes a watermark profile.",
 		"operationId": "stream-watermark-profile-delete-watermark-profiles",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -249,13 +249,13 @@
 			"Stream Watermark Profile"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/watermarks": {
+	"GET /accounts/{account_id}/stream/watermarks": {
 		"description": "Lists all watermark profiles for an account.",
 		"operationId": "stream-watermark-profile-list-watermark-profiles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -533,7 +533,7 @@
 			"Stream Watermark Profile"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/watermarks/{identifier}": {
+	"GET /accounts/{account_id}/stream/watermarks/{identifier}": {
 		"description": "Retrieves details for a single watermark profile.",
 		"operationId": "stream-watermark-profile-watermark-profile-details",
 		"parameters": [
@@ -550,7 +550,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -776,13 +776,13 @@
 			"Stream Watermark Profile"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/watermarks": {
+	"POST /accounts/{account_id}/stream/watermarks": {
 		"description": "Creates watermark profiles using a single `HTTP POST multipart/form-data` request.",
 		"operationId": "stream-watermark-profile-create-watermark-profiles-via-basic-upload",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",

@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/stream/{identifier}/captions/{language}": {
+	"DELETE /accounts/{account_id}/stream/{identifier}/captions/{language}": {
 		"description": "Removes the captions or subtitles from a video.",
 		"operationId": "stream-subtitles/-captions-delete-captions-or-subtitles",
 		"parameters": [
@@ -26,7 +26,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -241,7 +241,7 @@
 			"Stream Subtitles/Captions"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/{identifier}/captions": {
+	"GET /accounts/{account_id}/stream/{identifier}/captions": {
 		"description": "Lists the available captions or subtitles for a specific video.",
 		"operationId": "stream-subtitles/-captions-list-captions-or-subtitles",
 		"parameters": [
@@ -258,7 +258,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -481,7 +481,7 @@
 			"Stream Subtitles/Captions"
 		]
 	},
-	"PUT /accounts/{account_identifier}/stream/{identifier}/captions/{language}": {
+	"PUT /accounts/{account_id}/stream/{identifier}/captions/{language}": {
 		"description": "Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed.",
 		"operationId": "stream-subtitles/-captions-upload-captions-or-subtitles",
 		"parameters": [
@@ -508,7 +508,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

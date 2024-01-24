@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/stream/{identifier}/downloads": {
+	"DELETE /accounts/{account_id}/stream/{identifier}/downloads": {
 		"description": "Delete the downloads for a video.",
 		"operationId": "stream-m-p-4-downloads-delete-downloads",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -244,7 +244,7 @@
 			"Stream MP4 Downloads"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/{identifier}/downloads": {
+	"GET /accounts/{account_id}/stream/{identifier}/downloads": {
 		"description": "Lists the downloads created for a video.",
 		"operationId": "stream-m-p-4-downloads-list-downloads",
 		"parameters": [
@@ -261,7 +261,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -488,7 +488,7 @@
 			"Stream MP4 Downloads"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/{identifier}/downloads": {
+	"POST /accounts/{account_id}/stream/{identifier}/downloads": {
 		"description": "Creates a download for a video when a video is ready to view.",
 		"operationId": "stream-m-p-4-downloads-create-downloads",
 		"parameters": [
@@ -505,7 +505,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"POST /accounts/{account_identifier}/stream/clip": {
+	"POST /accounts/{account_id}/stream/clip": {
 		"description": "Clips a video based on the specified start and end times provided in seconds.",
 		"operationId": "stream-video-clipping-clip-videos-given-a-start-and-end-time",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",

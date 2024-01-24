@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/stream/keys/{identifier}": {
+	"DELETE /accounts/{account_id}/stream/keys/{identifier}": {
 		"description": "Deletes signing keys and revokes all signed URLs generated with the key.",
 		"operationId": "stream-signing-keys-delete-signing-keys",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -251,13 +251,13 @@
 			"Stream Signing Keys"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/keys": {
+	"GET /accounts/{account_id}/stream/keys": {
 		"description": "Lists the video ID and creation date and time when a signing key was created.",
 		"operationId": "stream-signing-keys-list-signing-keys",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -483,13 +483,13 @@
 			"Stream Signing Keys"
 		]
 	},
-	"POST /accounts/{account_identifier}/stream/keys": {
+	"POST /accounts/{account_id}/stream/keys": {
 		"description": "Creates an RSA private key in PEM and JWK formats. Key files are only displayed once after creation. Keys are created, used, and deleted independently of videos, and every key can sign any video.",
 		"operationId": "stream-signing-keys-create-signing-keys",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

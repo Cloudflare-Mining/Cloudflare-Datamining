@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/stream/webhook": {
+	"DELETE /accounts/{account_id}/stream/webhook": {
 		"description": "Deletes a webhook.",
 		"operationId": "stream-webhook-delete-webhooks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -238,13 +238,13 @@
 			"Stream Webhook"
 		]
 	},
-	"GET /accounts/{account_identifier}/stream/webhook": {
+	"GET /accounts/{account_id}/stream/webhook": {
 		"description": "Retrieves a list of webhooks.",
 		"operationId": "stream-webhook-view-webhooks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
@@ -470,13 +470,13 @@
 			"Stream Webhook"
 		]
 	},
-	"PUT /accounts/{account_identifier}/stream/webhook": {
+	"PUT /accounts/{account_id}/stream/webhook": {
 		"description": "Creates a webhook notification.",
 		"operationId": "stream-webhook-create-webhooks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "The account identifier tag.",
