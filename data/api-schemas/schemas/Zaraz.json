@@ -1,5 +1,5 @@
 {
-	"GET /zones/{zone_id}/settings/zaraz/v2/config": {
+	"GET /zones/{zone_id}/settings/zaraz/config": {
 		"description": "Gets latest Zaraz configuration for a zone. It can be preview or published configuration, whichever was the last updated. Secret variables values will not be included.",
 		"operationId": "get-zones-zone_identifier-zaraz-config",
 		"parameters": [
@@ -1410,7 +1410,7 @@
 			]
 		}
 	},
-	"GET /zones/{zone_id}/settings/zaraz/v2/default": {
+	"GET /zones/{zone_id}/settings/zaraz/default": {
 		"description": "Gets default Zaraz configuration for a zone.",
 		"operationId": "get-zones-zone_identifier-zaraz-default",
 		"parameters": [
@@ -2821,7 +2821,7 @@
 			]
 		}
 	},
-	"GET /zones/{zone_id}/settings/zaraz/v2/export": {
+	"GET /zones/{zone_id}/settings/zaraz/export": {
 		"description": "Exports full current published Zaraz configuration for a zone, secret variables included.",
 		"operationId": "get-zones-zone_identifier-zaraz-export",
 		"parameters": [
@@ -4174,7 +4174,7 @@
 			]
 		}
 	},
-	"GET /zones/{zone_id}/settings/zaraz/v2/history": {
+	"GET /zones/{zone_id}/settings/zaraz/history": {
 		"description": "Lists a history of published Zaraz configuration records for a zone.",
 		"operationId": "get-zones-zone_identifier-zaraz-history",
 		"parameters": [
@@ -4479,7 +4479,7 @@
 			]
 		}
 	},
-	"GET /zones/{zone_id}/settings/zaraz/v2/history/configs": {
+	"GET /zones/{zone_id}/settings/zaraz/history/configs": {
 		"description": "Gets a history of published Zaraz configurations by ID(s) for a zone.",
 		"operationId": "get-zones-zone_identifier-zaraz-config-history",
 		"parameters": [
@@ -6033,7 +6033,7 @@
 			]
 		}
 	},
-	"GET /zones/{zone_id}/settings/zaraz/v2/workflow": {
+	"GET /zones/{zone_id}/settings/zaraz/workflow": {
 		"description": "Gets Zaraz workflow for a zone.",
 		"operationId": "get-zones-zone_identifier-zaraz-workflow",
 		"parameters": [
@@ -6243,7 +6243,7 @@
 			]
 		}
 	},
-	"POST /zones/{zone_id}/settings/zaraz/v2/publish": {
+	"POST /zones/{zone_id}/settings/zaraz/publish": {
 		"description": "Publish current Zaraz preview configuration for a zone.",
 		"operationId": "post-zones-zone_identifier-zaraz-publish",
 		"parameters": [
@@ -6460,7 +6460,7 @@
 			]
 		}
 	},
-	"PUT /zones/{zone_id}/settings/zaraz/v2/config": {
+	"PUT /zones/{zone_id}/settings/zaraz/config": {
 		"description": "Updates Zaraz configuration for a zone.",
 		"operationId": "put-zones-zone_identifier-zaraz-config",
 		"parameters": [
@@ -9187,7 +9187,7 @@
 			]
 		}
 	},
-	"PUT /zones/{zone_id}/settings/zaraz/v2/history": {
+	"PUT /zones/{zone_id}/settings/zaraz/history": {
 		"description": "Restores a historical published Zaraz configuration by ID for a zone.",
 		"operationId": "put-zones-zone_identifier-zaraz-history",
 		"parameters": [
@@ -10611,7 +10611,7 @@
 			]
 		}
 	},
-	"PUT /zones/{zone_id}/settings/zaraz/v2/workflow": {
+	"PUT /zones/{zone_id}/settings/zaraz/workflow": {
 		"description": "Updates Zaraz workflow for a zone.",
 		"operationId": "put-zones-zone_identifier-zaraz-workflow",
 		"parameters": [
