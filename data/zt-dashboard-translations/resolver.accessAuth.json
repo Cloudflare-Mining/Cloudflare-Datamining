@@ -95,7 +95,7 @@
 	"idp_add_success": "Successfully added identity provider. Click \"Test\" to confirm.",
 	"idp_azure_ad_policy_sync": "Azure AD Policy Sync",
 	"idp_azure_ad_policy_sync_desc": "Sync AzureAD Authentication Context policies for use in Access application policies. Cloudflare Access must have Authentication Context permissions in AzureAD.",
-	"idp_azure_ad_policy_sync_error": "Error Connecting. Please make sure that you have authenticated the connection ",
+	"idp_azure_ad_policy_sync_error": "Failed to fetch Azure AD Authentication Context. Please make sure you have granted the correct API permissions.",
 	"idp_azure_cloud": "Azure Cloud",
 	"idp_delete_success": "Successfully deleted identity provider.",
 	"idp_finish_setup_body": "If you are the administrator of this identity provider, continue to <0>finish setup</0>.  If you are not the admin, copy the URL below and send to your administrator.",
