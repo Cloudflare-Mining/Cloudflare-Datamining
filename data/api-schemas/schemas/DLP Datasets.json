@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/dlp/datasets/{dataset_id}": {
+	"DELETE /accounts/{account_id}/dlp/datasets/{dataset_id}": {
 		"description": "Delete a dataset.\n\nThis deletes all versions of the dataset.",
 		"operationId": "dlp-datasets-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -92,13 +92,6 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -108,13 +101,13 @@
 			"DLP Datasets"
 		]
 	},
-	"GET /accounts/{account_identifier}/dlp/datasets": {
+	"GET /accounts/{account_id}/dlp/datasets": {
 		"description": "Fetch all datasets with information about available versions.",
 		"operationId": "dlp-datasets-read-all",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -380,13 +373,6 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -396,13 +382,13 @@
 			"DLP Datasets"
 		]
 	},
-	"GET /accounts/{account_identifier}/dlp/datasets/{dataset_id}": {
+	"GET /accounts/{account_id}/dlp/datasets/{dataset_id}": {
 		"description": "Fetch a specific dataset with information about available versions.",
 		"operationId": "dlp-datasets-read",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -674,13 +660,6 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -690,13 +669,13 @@
 			"DLP Datasets"
 		]
 	},
-	"POST /accounts/{account_identifier}/dlp/datasets": {
+	"POST /accounts/{account_id}/dlp/datasets": {
 		"description": "Create a new dataset.",
 		"operationId": "dlp-datasets-create",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1011,13 +990,6 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1027,13 +999,13 @@
 			"DLP Datasets"
 		]
 	},
-	"POST /accounts/{account_identifier}/dlp/datasets/{dataset_id}/upload": {
+	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload": {
 		"description": "Prepare to upload a new version of a dataset.",
 		"operationId": "dlp-datasets-create-version",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1247,13 +1219,6 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1263,13 +1228,13 @@
 			"DLP Datasets"
 		]
 	},
-	"POST /accounts/{account_identifier}/dlp/datasets/{dataset_id}/upload/{version}": {
+	"POST /accounts/{account_id}/dlp/datasets/{dataset_id}/upload/{version}": {
 		"description": "Upload a new version of a dataset.",
 		"operationId": "dlp-datasets-upload-version",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1561,13 +1526,6 @@
 		},
 		"security": [
 			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
-			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -1577,13 +1535,13 @@
 			"DLP Datasets"
 		]
 	},
-	"PUT /accounts/{account_identifier}/dlp/datasets/{dataset_id}": {
+	"PUT /accounts/{account_id}/dlp/datasets/{dataset_id}": {
 		"description": "Update details about a dataset.",
 		"operationId": "dlp-datasets-update",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -1875,13 +1833,6 @@
 			}
 		},
 		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			},
 			{
 				"api_email": [],
 				"api_key": []

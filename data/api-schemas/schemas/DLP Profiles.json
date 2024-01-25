@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/dlp/profiles/custom/{profile_id}": {
+	"DELETE /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"description": "Deletes a DLP custom profile.",
 		"operationId": "dlp-profiles-delete-custom-profile",
 		"parameters": [
@@ -23,7 +23,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -347,13 +347,13 @@
 			"DLP Profiles"
 		]
 	},
-	"GET /accounts/{account_identifier}/dlp/profiles": {
+	"GET /accounts/{account_id}/dlp/profiles": {
 		"description": "Lists all DLP profiles in an account.",
 		"operationId": "dlp-profiles-list-all-profiles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1343,7 +1343,7 @@
 			"DLP Profiles"
 		]
 	},
-	"GET /accounts/{account_identifier}/dlp/profiles/{profile_id}": {
+	"GET /accounts/{account_id}/dlp/profiles/{profile_id}": {
 		"description": "Fetches a DLP profile by ID. Supports both predefined and custom profiles",
 		"operationId": "dlp-profiles-get-dlp-profile",
 		"parameters": [
@@ -1367,7 +1367,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2315,7 +2315,7 @@
 			"DLP Profiles"
 		]
 	},
-	"GET /accounts/{account_identifier}/dlp/profiles/custom/{profile_id}": {
+	"GET /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"description": "Fetches a custom DLP profile.",
 		"operationId": "dlp-profiles-get-custom-profile",
 		"parameters": [
@@ -2339,7 +2339,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2939,7 +2939,7 @@
 			"DLP Profiles"
 		]
 	},
-	"GET /accounts/{account_identifier}/dlp/profiles/predefined/{profile_id}": {
+	"GET /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"description": "Fetches a predefined DLP profile.",
 		"operationId": "dlp-profiles-get-predefined-profile",
 		"parameters": [
@@ -2963,7 +2963,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3459,13 +3459,13 @@
 			"DLP Profiles"
 		]
 	},
-	"POST /accounts/{account_identifier}/dlp/profiles/custom": {
+	"POST /accounts/{account_id}/dlp/profiles/custom": {
 		"description": "Creates a set of DLP custom profiles.",
 		"operationId": "dlp-profiles-create-custom-profiles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4192,7 +4192,7 @@
 			"DLP Profiles"
 		]
 	},
-	"PUT /accounts/{account_identifier}/dlp/profiles/custom/{profile_id}": {
+	"PUT /accounts/{account_id}/dlp/profiles/custom/{profile_id}": {
 		"description": "Updates a DLP custom profile.",
 		"operationId": "dlp-profiles-update-custom-profile",
 		"parameters": [
@@ -4216,7 +4216,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4760,7 +4760,7 @@
 			"DLP Profiles"
 		]
 	},
-	"PUT /accounts/{account_identifier}/dlp/profiles/predefined/{profile_id}": {
+	"PUT /accounts/{account_id}/dlp/profiles/predefined/{profile_id}": {
 		"description": "Updates a DLP predefined profile. Only supports enabling/disabling entries.",
 		"operationId": "dlp-profiles-update-predefined-profile",
 		"parameters": [
@@ -4784,7 +4784,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

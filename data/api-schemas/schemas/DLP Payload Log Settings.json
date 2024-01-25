@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/dlp/payload_log": {
+	"GET /accounts/{account_id}/dlp/payload_log": {
 		"description": "Gets the current DLP payload log settings for this account.",
 		"operationId": "dlp-payload-log-settings-get-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -363,13 +363,13 @@
 			"DLP Payload Log Settings"
 		]
 	},
-	"PUT /accounts/{account_identifier}/dlp/payload_log": {
+	"PUT /accounts/{account_id}/dlp/payload_log": {
 		"description": "Updates the DLP payload log settings for this account.",
 		"operationId": "dlp-payload-log-settings-update-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
