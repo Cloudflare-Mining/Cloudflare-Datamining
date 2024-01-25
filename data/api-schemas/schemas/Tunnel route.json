@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/teamnet/routes/{route_id}": {
+	"DELETE /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"description": "Deletes a private network route from an account.\n",
 		"operationId": "tunnel-route-delete-a-tunnel-route",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -388,7 +388,7 @@
 			"Tunnel route"
 		]
 	},
-	"DELETE /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
+	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"deprecated": true,
 		"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format. If no virtual_network_id is provided it will delete the route from the default vnet. If no tun_type is provided it will fetch the type from the tunnel_id or if that is missing it will assume Cloudflare Tunnel as default. If tunnel_id is provided it will delete the route from that tunnel, otherwise it will delete the route based on the vnet and tun_type.\n",
 		"operationId": "tunnel-route-delete-a-tunnel-route-with-cidr",
@@ -405,7 +405,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -820,13 +820,13 @@
 			"id": "teamnet_routes_with_cidr_deprecation"
 		}
 	},
-	"GET /accounts/{account_identifier}/teamnet/routes": {
+	"GET /accounts/{account_id}/teamnet/routes": {
 		"description": "Lists and filters private network routes in an account.",
 		"operationId": "tunnel-route-list-tunnel-routes",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -1411,7 +1411,7 @@
 			"Tunnel route"
 		]
 	},
-	"GET /accounts/{account_identifier}/teamnet/routes/ip/{ip}": {
+	"GET /accounts/{account_id}/teamnet/routes/ip/{ip}": {
 		"description": "Fetches routes that contain the given IP address.",
 		"operationId": "tunnel-route-get-tunnel-route-by-ip",
 		"parameters": [
@@ -1426,7 +1426,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -1844,7 +1844,7 @@
 			"Tunnel route"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/teamnet/routes/{route_id}": {
+	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"description": "Updates an existing private network route in an account. The fields that are meant to be updated should be provided in the body of the request.",
 		"operationId": "tunnel-route-update-a-tunnel-route",
 		"parameters": [
@@ -1862,7 +1862,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -2273,7 +2273,7 @@
 			"Tunnel route"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
+	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"deprecated": true,
 		"description": "Updates an existing private network route in an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 		"operationId": "tunnel-route-update-a-tunnel-route-with-cidr",
@@ -2290,7 +2290,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -2667,13 +2667,13 @@
 			"id": "teamnet_routes_with_cidr_deprecation"
 		}
 	},
-	"POST /accounts/{account_identifier}/teamnet/routes": {
+	"POST /accounts/{account_id}/teamnet/routes": {
 		"description": "Routes a private network through a Cloudflare Tunnel.",
 		"operationId": "tunnel-route-create-a-tunnel-route",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -3080,7 +3080,7 @@
 			"Tunnel route"
 		]
 	},
-	"POST /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
+	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"deprecated": true,
 		"description": "Routes a private network through a Cloudflare Tunnel. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 		"operationId": "tunnel-route-create-a-tunnel-route-with-cidr",
@@ -3097,7 +3097,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",

@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/tunnels/{tunnel_id}": {
+	"DELETE /accounts/{account_id}/tunnels/{tunnel_id}": {
 		"deprecated": true,
 		"description": "Deletes an Argo Tunnel from an account.",
 		"operationId": "argo-tunnel-delete-an-argo-tunnel",
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -449,7 +449,7 @@
 			"id": "argo_tunnel_deprecation"
 		}
 	},
-	"DELETE /accounts/{account_identifier}/tunnels/{tunnel_id}/connections": {
+	"DELETE /accounts/{account_id}/tunnels/{tunnel_id}/connections": {
 		"deprecated": true,
 		"description": "Removes connections that are in a disconnected or pending reconnect state. We recommend running this command after shutting down a tunnel.",
 		"operationId": "argo-tunnel-clean-up-argo-tunnel-connections",
@@ -468,7 +468,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -783,7 +783,7 @@
 			"id": "argo_tunnel_deprecation"
 		}
 	},
-	"GET /accounts/{account_identifier}/tunnels/{tunnel_id}": {
+	"GET /accounts/{account_id}/tunnels/{tunnel_id}": {
 		"deprecated": true,
 		"description": "Fetches a single Argo Tunnel.",
 		"operationId": "argo-tunnel-get-an-argo-tunnel",
@@ -802,7 +802,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -1223,14 +1223,14 @@
 			"id": "argo_tunnel_deprecation"
 		}
 	},
-	"POST /accounts/{account_identifier}/tunnels": {
+	"POST /accounts/{account_id}/tunnels": {
 		"deprecated": true,
 		"description": "Creates a new Argo Tunnel in an account.",
 		"operationId": "argo-tunnel-create-an-argo-tunnel",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",

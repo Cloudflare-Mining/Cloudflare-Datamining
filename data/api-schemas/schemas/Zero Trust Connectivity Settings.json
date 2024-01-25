@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/zerotrust/connectivity_settings": {
+	"GET /accounts/{account_id}/zerotrust/connectivity_settings": {
 		"description": "Gets the Zero Trust Connectivity Settings for the given account.",
 		"operationId": "zero-trust-accounts-get-connectivity-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -225,13 +225,13 @@
 			"Zero Trust Connectivity Settings"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/zerotrust/connectivity_settings": {
+	"PATCH /accounts/{account_id}/zerotrust/connectivity_settings": {
 		"description": "Updates the Zero Trust Connectivity Settings for the given account.",
 		"operationId": "zero-trust-accounts-patch-connectivity-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",

@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/teamnet/virtual_networks/{vnet_id}": {
+	"DELETE /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"description": "Deletes an existing virtual network.",
 		"operationId": "tunnel-virtual-network-delete-a-virtual-network",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "vnet_id",
+				"name": "virtual_network_id",
 				"required": true,
 				"schema": {
 					"description": "UUID of the virtual network.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -322,13 +322,13 @@
 			"Tunnel Virtual Network"
 		]
 	},
-	"GET /accounts/{account_identifier}/teamnet/virtual_networks": {
+	"GET /accounts/{account_id}/teamnet/virtual_networks": {
 		"description": "Lists and filters virtual networks in an account.",
 		"operationId": "tunnel-virtual-network-list-virtual-networks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -828,13 +828,13 @@
 			"Tunnel Virtual Network"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/teamnet/virtual_networks/{vnet_id}": {
+	"PATCH /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"description": "Updates an existing virtual network.",
 		"operationId": "tunnel-virtual-network-update-a-virtual-network",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "vnet_id",
+				"name": "virtual_network_id",
 				"required": true,
 				"schema": {
 					"description": "UUID of the virtual network.",
@@ -846,7 +846,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -1172,13 +1172,13 @@
 			"Tunnel Virtual Network"
 		]
 	},
-	"POST /accounts/{account_identifier}/teamnet/virtual_networks": {
+	"POST /accounts/{account_id}/teamnet/virtual_networks": {
 		"description": "Adds a new virtual network to an account.",
 		"operationId": "tunnel-virtual-network-create-a-virtual-network",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",

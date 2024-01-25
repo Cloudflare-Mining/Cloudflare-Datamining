@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
+	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"description": "Deletes a Cloudflare Tunnel from an account.",
 		"operationId": "cloudflare-tunnel-delete-a-cloudflare-tunnel",
 		"parameters": [
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -834,13 +834,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"DELETE /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connections": {
+	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"description": "Removes a connection (aka Cloudflare Tunnel Connector) from a Cloudflare Tunnel independently of its current state. If no connector id (client_id) is provided all connectors will be removed. We recommend running this command after rotating tokens.",
 		"operationId": "cloudflare-tunnel-clean-up-cloudflare-tunnel-connections",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -1169,7 +1169,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"DELETE /accounts/{account_identifier}/warp_connector/{tunnel_id}": {
+	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"description": "Deletes a Warp Connector Tunnel from an account.",
 		"operationId": "cloudflare-tunnel-delete-a-warp-connector-tunnel",
 		"parameters": [
@@ -1187,7 +1187,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -2004,13 +2004,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/cfd_tunnel": {
+	"GET /accounts/{account_id}/cfd_tunnel": {
 		"description": "Lists and filters Cloudflare Tunnels in an account.",
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -2993,7 +2993,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
+	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"description": "Fetches a single Cloudflare Tunnel.",
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel",
 		"parameters": [
@@ -3011,7 +3011,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -3818,13 +3818,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connections": {
+	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"description": "Fetches connection details for a Cloudflare Tunnel.",
 		"operationId": "cloudflare-tunnel-list-cloudflare-tunnel-connections",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -4397,13 +4397,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
+	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
 		"description": "Fetches connector and connection details for a Cloudflare Tunnel.",
 		"operationId": "cloudflare-tunnel-get-cloudflare-tunnel-connector",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -4904,7 +4904,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/token": {
+	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
 		"description": "Gets the token used to associate cloudflared with a specific tunnel.",
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-token",
 		"parameters": [
@@ -4922,7 +4922,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -5223,13 +5223,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/tunnels": {
+	"GET /accounts/{account_id}/tunnels": {
 		"description": "Lists and filters all types of Tunnels in an account.",
 		"operationId": "cloudflare-tunnel-list-all-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -6221,13 +6221,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/warp_connector": {
+	"GET /accounts/{account_id}/warp_connector": {
 		"description": "Lists and filters Warp Connector Tunnels in an account.",
 		"operationId": "cloudflare-tunnel-list-warp-connector-tunnels",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -7210,7 +7210,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/warp_connector/{tunnel_id}": {
+	"GET /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"description": "Fetches a single Warp Connector Tunnel.",
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel",
 		"parameters": [
@@ -7228,7 +7228,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -8035,7 +8035,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"GET /accounts/{account_identifier}/warp_connector/{tunnel_id}/token": {
+	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"description": "Gets the token used to associate warp device with a specific Warp Connector tunnel.",
 		"operationId": "cloudflare-tunnel-get-a-warp-connector-tunnel-token",
 		"parameters": [
@@ -8053,7 +8053,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -8354,7 +8354,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
+	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"description": "Updates an existing Cloudflare Tunnel.",
 		"operationId": "cloudflare-tunnel-update-a-cloudflare-tunnel",
 		"parameters": [
@@ -8372,7 +8372,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -9201,7 +9201,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/warp_connector/{tunnel_id}": {
+	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"description": "Updates an existing Warp Connector Tunnel.",
 		"operationId": "cloudflare-tunnel-update-a-warp-connector-tunnel",
 		"parameters": [
@@ -9219,7 +9219,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -10048,13 +10048,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"POST /accounts/{account_identifier}/cfd_tunnel": {
+	"POST /accounts/{account_id}/cfd_tunnel": {
 		"description": "Creates a new Cloudflare Tunnel in an account.",
 		"operationId": "cloudflare-tunnel-create-a-cloudflare-tunnel",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -10896,7 +10896,7 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"POST /accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/management": {
+	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
 		"description": "Gets a management token used to access the management resources (i.e. Streaming Logs) of a tunnel.",
 		"operationId": "cloudflare-tunnel-get-a-cloudflare-tunnel-management-token",
 		"parameters": [
@@ -10914,7 +10914,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
@@ -11241,13 +11241,13 @@
 			"Cloudflare Tunnel"
 		]
 	},
-	"POST /accounts/{account_identifier}/warp_connector": {
+	"POST /accounts/{account_id}/warp_connector": {
 		"description": "Creates a new Warp Connector Tunnel in an account.",
 		"operationId": "cloudflare-tunnel-create-a-warp-connector-tunnel",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Cloudflare account ID",
