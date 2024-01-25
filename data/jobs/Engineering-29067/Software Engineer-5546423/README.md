@@ -5,33 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>London or Remote UK, Lisbon or Remote Portugal, Amsterdam or Remote Netherlands</p>
-<p><strong>About The Team</strong></p>
-<p>We build security products for our customers and work mostly in Go and Rust. One of our challenges is designing architecture that can withstand a huge scale of 50 million peak requests per second. Our flagship products are Managed Rules, Firewall Rules, Rate Limiting and Analytics.&nbsp;</p>
-<p>Software engineers will work with our Product Managers and Security Analysts to define managed protection products which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analysing data passing through our network. We also build systems to help customers understand this data themselves.</p>
-<p><strong>What you'll do</strong></p>
-<p>Working in the security portfolio, that includes the Firewall and Managed Rules, you will take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Cloudflare's Engineering Team is home to some of the industry's top engineers, dedicated to building and scaling innovative software that handles a huge proportion of the Internet. Our team, specifically responsible for Turnstile and Challenges Pages, works in close collaboration with a dedicated Product Manager and other engineering teams to develop cutting-edge Bot detection solutions. Have a look at some of our <a href="https://blog.cloudflare.com/tag/turnstile/">articles mentioning Turnstile</a>!</p>
+<h4>&nbsp;</h4>
+<p><strong>What You'll Do:</strong></p>
+<p>As a Software Engineer in our team, you'll play a key role in expanding our Turnstile and Challenges products. Your responsibilities will include:</p>
 <ul>
-	<li>Prior commercial software development experience</li>
-	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
-	<li>Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
-	<li>Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</li>
-	<li>Can analyse and communicate complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver</li>
-	<li>Driving communication and consensus across teams</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
+	<li>Enhancing bot and human detection capabilities while maintaining a focus on privacy, security, and usability.</li>
+	<li>Full-stack development - from Edge process configuration to client-side logic.</li>
+	<li>Building scalable, secure, and privacy-conscious software to accommodate a growing user base with diverse requirements.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
+<h4>&nbsp;</h4>
+<p><strong>About You:</strong></p>
+<p>We're looking for an engineer with:</p>
 <ul>
-	<li>Deep knowledge of web servers and web protocols</li>
-	<li>Distributed systems</li>
-	<li>Logging pipelines</li>
-	<li>Production API design</li>
-	<li>Web security issues and industry standards</li>
+	<li>Proficiency in Rust and TypeScript.</li>
+	<li>A security-focused mindset, essential for a product like Turnstile.</li>
+	<li>A natural sense of curiosity and a self-driven attitude.</li>
 </ul>
-<h4><br><br></h4>
+<h4>&nbsp;</h4>
+<p><strong>Bonus Points:</strong></p>
+<ul>
+	<li>Experience with ClickHouse, PostgreSQL, Docker, Salt, Lua, Go, and Unix systems will be highly regarded.</li>
+	<ul>
+		<li>You do not <strong>need</strong> to have experience with any of these technologies!</li>
+	</ul>
+	<li>Previous experience with counter abuse, fraud detection and mitigation.</li>
+</ul>
+<h4>&nbsp;</h4>
+<p><strong>Working in Our Team:</strong></p>
+<p>You'll be integral to making our product more robust, secure, and stable. Our product runs in all corners of the web, on any imaginable browser, requiring continuous testing and adaptability. We value innovation and problem-solving skills - we encourage you to bring forward problems you identify along with your best solutions. Our team syncs are centered around addressing these challenges, focusing on short and long-term solutions for maximum business value.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

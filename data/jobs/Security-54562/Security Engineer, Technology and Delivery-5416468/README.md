@@ -5,29 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Ingress, protocols and processing</strong></p>
-<p><strong>Available Locations: UK, Portugal, Germany, France, Netherlands&nbsp;</strong></p>
-<p><strong>Hybrid or Fully Remote&nbsp;</strong></p>
-<p>Cloudflare runs one of the largest web servers in the world, handling tens of millions of requests per second, and processing traffic with millisecond latencies. Our ingress, protocols and processing teams build and operate the software which supports this traffic. This includes accepting traffic over all HTTP protocols, and developing new standards in conjunction with bodies such as the IETF and industry partners. We also build and operate the platforms which select, route and filter this traffic, which other teams in Cloudflare build upon.</p>
-<p>We’re looking for a manager who can lead one or more of the teams in the group, driving consensus and collaboration, and deliver substantial improvements in performance and reliability across the platform.</p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<p>All of the following are relevant to the job, but we do not require candidates to meet all of these criteria.</p>
+<p><strong>Available Locations:</strong> Remote Portugal, Remote UK, London, United Kingdom or Lisbon, Portugal&nbsp;</p>
+<p><strong>About the Department</strong></p>
+<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Technology team works closely with the teams responsible for running and maintaining our global infrastructure and enterprise. Our mission is to secure the foundations of all Cloudflare production and enterprise systems.</p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for an experienced security practitioner to help us in our mission to build a better internet. As part of our team, you will be expected to:</p>
 <ul>
-	<li>Minimum 5 years experience in engineering management</li>
-	<li>Significant experience as a hands-on engineer</li>
-	<li>Experience of operating high performance and large scale software systems</li>
-	<li>Excellent at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</li>
-	<li>Experience of managing multiple concurrent projects with competing priorities</li>
-	<li>Detailed knowledge of HTTP and transport protocols</li>
-	<li>Track record of managing a diverse team including hiring, onboarding, and professional development. You inspire your team to reach higher and to get there by collaborating. You’re as good at explaining “why” as you are “how”.</li>
-	<li>Working with other managers, maintaining clear lines of communication across and upwards in an organisation</li>
-	<li>Customer focussed experience - managing difficult conversations with customers</li>
+	<li>Work with our engineering, IT, and infrastructure teams to secure the entire Cloudflare global network and enterprise</li>
+	<li>Deploy and manage security tools that help address security risk at a global scale</li>
+	<li>Collaborate with the full Cloudflare security team to improve detections and response capabilities to any potential security threats</li>
+	<li>Ensure our global infrastructure is secure from all attacks, ranging from “script kiddies” to nation states.</li>
 </ul>
-<p><strong>Bonus points</strong></p>
+<p><strong>Desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>History of delivering production quality implementations of new internet standards, particularly HTTP or transport protocols.</li>
-	<li>Involvement with IETF or other relevant standards bodies</li>
+	<li>Extended detection and response technology for all platforms and architectures</li>
+	<li>Automation experience with tools like Salt, Ansible, and/or Terraform</li>
+	<li>Experience working with corporate Information Technology platforms and systems</li>
+	<li>Experience with SaaS security (Google Workspace, Salesforce, Workday, Atlassian, etc.)</li>
+	<li>Advanced security practices for Linux, MacOS, Windows systems</li>
+	<li>Experience with public cloud security best practices (GCP, Azure, etc.)</li>
+	<li>Ability to communicate complex security requirements into controls for engineering, product, infrastructure, and IT teams</li>
 </ul>
+<p><strong>Awesome skills and experience to have, but not required:</strong></p>
+<ul>
+	<li>Strong Linux system experience from user-space to kernel-space</li>
+	<li>Securing the software supply chain from workstation to deployment</li>
+	<li>Networking fundamentals such as TCP/IP, secure design and segmentation</li>
+	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
+</ul>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
