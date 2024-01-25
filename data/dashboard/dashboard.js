@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "af3ca36f5db88fff2d12ea43fde83fc10e69ea9e",
+					commit: "771234d2f27ada81586429a68c80ca2fc783f51c",
 					env: "production",
-					builtAt: 1706202228474,
-					dashVersion: "f32f9864d8dbb4d0559ff444c3b6d5a26de5df1e",
+					builtAt: 1706207135228,
+					dashVersion: "d1043510feb08155d316b0107d3c145b6a606b64",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
