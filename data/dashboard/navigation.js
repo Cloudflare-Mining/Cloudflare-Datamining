@@ -930,7 +930,6 @@ const navigation = {
 		url: "/web3",
 		navigationType: "global-settings",
 		iconType: "web3",
-		labels: ["new"],
 		hasPermission: O => {
 			const J = (0, r.uF)(O);
 			return ((J == null ? void 0 : J.roles) || []).includes("Trust and Safety") ? !1 : !(0, p.yD)(O)
