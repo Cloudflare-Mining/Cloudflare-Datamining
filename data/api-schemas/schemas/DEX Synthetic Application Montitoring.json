@@ -1,12 +1,12 @@
 {
-	"GET /accounts/{account_identifier}/dex/colos": {
+	"GET /accounts/{account_id}/dex/colos": {
 		"description": "List Cloudflare colos that account's devices were connected to during a time period, sorted by usage starting from the most used colo. Colos without traffic are also returned and sorted alphabetically.",
 		"operationId": "dex-endpoints-list-colos",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -320,13 +320,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/fleet-status/devices": {
+	"GET /accounts/{account_id}/dex/fleet-status/devices": {
 		"description": "List details for devices using WARP",
 		"operationId": "dex-fleet-status-live-devices",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -843,13 +843,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/fleet-status/live": {
+	"GET /accounts/{account_id}/dex/fleet-status/live": {
 		"description": "List details for live (up to 60 minutes) devices using WARP",
 		"operationId": "dex-fleet-status-live",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1288,13 +1288,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/fleet-status/over-time": {
+	"GET /accounts/{account_id}/dex/fleet-status/over-time": {
 		"description": "List details for devices using WARP, up to 7 days",
 		"operationId": "dex-fleet-status-over-time",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1557,14 +1557,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/http-tests/{test_id}": {
+	"GET /accounts/{account_id}/dex/http-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for an http test for a given time period between 1 hour and 7 days.",
 		"operationId": "dex-endpoints-http-test-details",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -2248,14 +2248,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/http-tests/{test_id}/percentiles": {
+	"GET /accounts/{account_id}/dex/http-tests/{test_id}/percentiles": {
 		"description": "Get percentiles for an http test for a given time period between 1 hour and 7 days.",
 		"operationId": "dex-endpoints-http-test-percentiles",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -2619,14 +2619,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/tests": {
+	"GET /accounts/{account_id}/dex/tests": {
 		"description": "List DEX tests",
 		"operationId": "dex-endpoints-list-tests",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -3475,14 +3475,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/tests/unique-devices": {
+	"GET /accounts/{account_id}/dex/tests/unique-devices": {
 		"description": "Returns unique count of devices that have run synthetic application monitoring tests in the past 7 days.",
 		"operationId": "dex-endpoints-tests-unique-devices",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -3746,14 +3746,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/traceroute-test-results/{test_result_id}/network-path": {
+	"GET /accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path": {
 		"description": "Get a breakdown of hops and performance metrics for a specific traceroute test run",
 		"operationId": "dex-endpoints-traceroute-test-result-network-path",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -4101,14 +4101,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/traceroute-tests/{test_id}": {
+	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for an traceroute test for a given time period between 1 hour and 7 days.",
 		"operationId": "dex-endpoints-traceroute-test-details",
 		"parameters": [
 			{
 				"description": "Unique identifier linked to an account",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -4831,14 +4831,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/traceroute-tests/{test_id}/network-path": {
+	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path": {
 		"description": "Get a breakdown of metrics by hop for individual traceroute test runs",
 		"operationId": "dex-endpoints-traceroute-test-network-path",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -5233,14 +5233,14 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/dex/traceroute-tests/{test_id}/percentiles": {
+	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles": {
 		"description": "Get percentiles for a traceroute test for a given time period between 1 hour and 7 days.",
 		"operationId": "dex-endpoints-traceroute-test-percentiles",
 		"parameters": [
 			{
 				"description": "unique identifier linked to an account in the API request path.",
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
