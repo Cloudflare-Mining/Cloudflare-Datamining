@@ -1479,6 +1479,7 @@ declare interface UnderlyingSource<R = any> {
     controller: ReadableStreamDefaultController<R>
   ) => void | Promise<void>;
   cancel?: (reason: any) => void | Promise<void>;
+  expectedLength?: number | bigint;
 }
 declare interface Transformer<I = any, O = any> {
   readableType?: string;
@@ -1493,6 +1494,7 @@ declare interface Transformer<I = any, O = any> {
   flush?: (
     controller: TransformStreamDefaultController<O>
   ) => void | Promise<void>;
+  expectedLength?: number | bigint;
 }
 declare interface StreamPipeOptions {
   /**
@@ -1728,6 +1730,7 @@ declare interface TraceItem {
         | TraceItemEmailEventInfo
         | TraceItemTailEventInfo
         | TraceItemCustomEventInfo
+        | TraceItemHibernatableWebSocketEventInfo
       )
     | null;
   readonly eventTimestamp: number | null;
@@ -1776,6 +1779,23 @@ declare interface TraceItemFetchEventInfoRequest {
 }
 declare interface TraceItemFetchEventInfoResponse {
   readonly status: number;
+}
+declare interface TraceItemHibernatableWebSocketEventInfo {
+  readonly getWebSocketEvent:
+    | TraceItemHibernatableWebSocketEventInfoMessage
+    | TraceItemHibernatableWebSocketEventInfoClose
+    | TraceItemHibernatableWebSocketEventInfoError;
+}
+declare interface TraceItemHibernatableWebSocketEventInfoMessage {
+  readonly webSocketEventType: string;
+}
+declare interface TraceItemHibernatableWebSocketEventInfoClose {
+  readonly webSocketEventType: string;
+  readonly code: number;
+  readonly wasClean: boolean;
+}
+declare interface TraceItemHibernatableWebSocketEventInfoError {
+  readonly webSocketEventType: string;
 }
 declare interface TraceLog {
   readonly timestamp: number;
@@ -3522,7 +3542,7 @@ declare interface ForwardableEmailMessage extends EmailMessage {
   /**
    * Stream of the email message content.
    */
-  readonly raw: ReadableStream;
+  readonly raw: ReadableStream<Uint8Array>;
   /**
    * An [Headers object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
    */
