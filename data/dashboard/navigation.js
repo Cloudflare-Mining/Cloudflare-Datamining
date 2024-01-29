@@ -105,7 +105,7 @@ const navigation = {
 			title: "navigation.account.logs",
 			url: "/logs",
 			labels: ["new"],
-			hasPermission: T => (0, a.iY)(T) && (0, b.S6)(T) && !!(0, n.z1)("account-logpush")(T)
+			hasPermission: T => (0, a.iY)(T) && (0, D.S6)(T) && !!(0, n.z1)("account-logpush")(T)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -547,7 +547,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: T => (0, b.Xu)(T)
+			hasPermission: T => (0, D.Xu)(T)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
@@ -567,7 +567,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: z.bB,
-		hasPermission: T => !(0, p.yD)(T) && (0, I.m7)(T)
+		hasPermission: T => !(0, p.yD)(T) && (0, b.m7)(T)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -618,7 +618,7 @@ const navigation = {
 		hasPermission: T => {
 			const K = (0, s.nA)(T);
 			if ((0, p.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !K) return !1;
-			const le = !!((0, D.l8)(T) || (0, s.DQ)(T)),
+			const le = !!((0, I.l8)(T) || (0, s.DQ)(T)),
 				ee = !!(0, s.ZB)(T, "spectrum", "enabled"),
 				F = !!(0, s.Ns)(K);
 			return ee || le || !F
@@ -798,7 +798,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			navigationType: "version",
-			hasPermission: T => !!(0, Q.GM)(T) && (0, a.$n)(T, "waf", "page-rule", "read")
+			hasPermission: T => !!(0, Z.GM)(T) && (0, a.$n)(T, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
