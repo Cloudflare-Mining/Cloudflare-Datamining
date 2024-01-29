@@ -7,20 +7,13 @@
 </div>
 <p>Available Location: San Francisco Bay Area</p>
 <ul>
+	<li>Demonstrated experience successfully&nbsp;scaling a tech partnership - preferably&nbsp;in the security space - from inception to $XM in revenue with leading endpoint protection, identity and cloud marketplace vendors</li>
 	<li>Identify key technology partners that should be prioritized to support Cloudflare’s go-to-market efforts</li>
-</ul>
-<ul>
 	<li>Create go-to-market strategy for key technology partners working with sales, channels, product, finance, operations, engineering, legal and marketing</li>
 	<li>Build go to market relationships at the executive level with key technology partners</li>
-</ul>
-<ul>
-	<li>Drive partner sourced and influenced pipeline and revenue with key technology partners through co-sell or meet-in-the-channel motions&nbsp;</li>
+	<li>Drive partner sourced and influenced pipeline and revenue with key technology partners through co-sell or meet-in-the-channel motions</li>
 	<li>Manage internal communication and collaborate closely with cross functional stakeholders to ensure alignment in vision and execution of tech partnership go-to-market</li>
-</ul>
-<ul>
 	<li>Identify new technology partnerships that should be prioritized for recruitment in order to support the go-to-market teams priorities</li>
-</ul>
-<ul>
 	<li>Manage relationships with key technology GTM partners including defining KPIs, tracking and monitoring KPIs, managing and optimizing partner performance in order to drive go-to-market goals</li>
 	<li>Manage partner contract negotiations, build go-to-market plans, identify and deploy incentives to drive pipeline and influence bookings goals</li>
 	<li>Manage journey of technology GTM partnerships including contract negotiation, go-to-market planning, marketing, sales incentives, training &amp; enablement, pipeline generation and sales</li>
