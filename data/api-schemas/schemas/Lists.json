@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/rules/lists/{list_id}": {
+	"DELETE /accounts/{account_id}/rules/lists/{list_id}": {
 		"description": "Deletes a specific list and all its items.",
 		"operationId": "lists-delete-a-list",
 		"parameters": [
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -368,7 +368,7 @@
 			"pro": true
 		}
 	},
-	"DELETE /accounts/{account_identifier}/rules/lists/{list_id}/items": {
+	"DELETE /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"description": "Removes one or more items from a list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](#lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
 		"operationId": "lists-delete-list-items",
 		"parameters": [
@@ -387,7 +387,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -756,13 +756,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rules/lists": {
+	"GET /accounts/{account_id}/rules/lists": {
 		"description": "Fetches all lists in the account.",
 		"operationId": "lists-get-lists",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1234,7 +1234,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rules/lists/{list_id}": {
+	"GET /accounts/{account_id}/rules/lists/{list_id}": {
 		"description": "Fetches the details of a list.",
 		"operationId": "lists-get-a-list",
 		"parameters": [
@@ -1253,7 +1253,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1689,7 +1689,7 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rules/lists/{list_id}/items": {
+	"GET /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"description": "Fetches all the items in the list.",
 		"operationId": "lists-get-list-items",
 		"parameters": [
@@ -1708,7 +1708,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3544,13 +3544,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/rules/lists": {
+	"POST /accounts/{account_id}/rules/lists": {
 		"description": "Creates a new list of the specified type.",
 		"operationId": "lists-create-a-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4025,7 +4025,7 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/rules/lists/{list_id}/items": {
+	"POST /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"description": "Appends new items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](#lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
 		"operationId": "lists-create-list-items",
 		"parameters": [
@@ -4044,7 +4044,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4477,7 +4477,7 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_identifier}/rules/lists/{list_id}": {
+	"PUT /accounts/{account_id}/rules/lists/{list_id}": {
 		"description": "Updates the description of a list.",
 		"operationId": "lists-update-a-list",
 		"parameters": [
@@ -4496,7 +4496,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4950,7 +4950,7 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_identifier}/rules/lists/{list_id}/items": {
+	"PUT /accounts/{account_id}/rules/lists/{list_id}/items": {
 		"description": "Removes all existing items from the list and adds the provided items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](#lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
 		"operationId": "lists-update-all-list-items",
 		"parameters": [
@@ -4969,7 +4969,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
