@@ -639,6 +639,17 @@
 																	],
 																	"type": "object"
 																},
+																"extended_email_matching": {
+																	"description": "Extended e-mail matching settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
 																"fips": {
 																	"description": "FIPS settings.",
 																	"properties": {
@@ -954,6 +965,17 @@
 																			"required": [
 																				"enabled"
 																			],
+																			"type": "object"
+																		},
+																		"extended_email_matching": {
+																			"description": "Extended e-mail matching settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+																					"example": true,
+																					"type": "boolean"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"fips": {
@@ -2060,6 +2082,17 @@
 										],
 										"type": "object"
 									},
+									"extended_email_matching": {
+										"description": "Extended e-mail matching settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"fips": {
 										"description": "FIPS settings.",
 										"properties": {
@@ -2350,6 +2383,17 @@
 																	"required": [
 																		"enabled"
 																	],
+																	"type": "object"
+																},
+																"extended_email_matching": {
+																	"description": "Extended e-mail matching settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																},
 																"fips": {
@@ -2667,6 +2711,17 @@
 																			"required": [
 																				"enabled"
 																			],
+																			"type": "object"
+																		},
+																		"extended_email_matching": {
+																			"description": "Extended e-mail matching settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+																					"example": true,
+																					"type": "boolean"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"fips": {
@@ -3373,6 +3428,17 @@
 										],
 										"type": "object"
 									},
+									"extended_email_matching": {
+										"description": "Extended e-mail matching settings.",
+										"properties": {
+											"enabled": {
+												"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+												"example": true,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
 									"fips": {
 										"description": "FIPS settings.",
 										"properties": {
@@ -3663,6 +3729,17 @@
 																	"required": [
 																		"enabled"
 																	],
+																	"type": "object"
+																},
+																"extended_email_matching": {
+																	"description": "Extended e-mail matching settings.",
+																	"properties": {
+																		"enabled": {
+																			"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+																			"example": true,
+																			"type": "boolean"
+																		}
+																	},
 																	"type": "object"
 																},
 																"fips": {
@@ -3980,6 +4057,17 @@
 																			"required": [
 																				"enabled"
 																			],
+																			"type": "object"
+																		},
+																		"extended_email_matching": {
+																			"description": "Extended e-mail matching settings.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.",
+																					"example": true,
+																					"type": "boolean"
+																				}
+																			},
 																			"type": "object"
 																		},
 																		"fips": {
