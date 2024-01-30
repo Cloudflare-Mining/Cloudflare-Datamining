@@ -356,13 +356,13 @@
 			"D1"
 		]
 	},
-	"GET /accounts/{account_identifier}/d1/database": {
+	"GET /accounts/{account_id}/d1/database": {
 		"description": "Returns a list of D1 databases.",
 		"operationId": "cloudflare-d1-list-databases",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1123,13 +1123,13 @@
 			"D1"
 		]
 	},
-	"POST /accounts/{account_identifier}/d1/database": {
+	"POST /accounts/{account_id}/d1/database": {
 		"description": "Returns the created D1 database.",
 		"operationId": "cloudflare-d1-create-database",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
