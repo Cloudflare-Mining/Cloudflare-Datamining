@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/images/v1/{identifier}": {
+	"DELETE /accounts/{account_id}/images/v1/{image_id}": {
 		"description": "Delete an image on Cloudflare Images. On success, all copies of the image are deleted and purged from cache.",
 		"operationId": "cloudflare-images-delete-image",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "image_id",
 				"required": true,
 				"schema": {
 					"description": "Image unique identifier.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -364,14 +364,14 @@
 			"Cloudflare Images"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v1": {
+	"GET /accounts/{account_id}/images/v1": {
 		"deprecated": true,
 		"description": "List up to 100 images with one request. Use the optional parameters below to get a specific range of images.",
 		"operationId": "cloudflare-images-list-images",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -851,13 +851,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v1/{identifier}": {
+	"GET /accounts/{account_id}/images/v1/{image_id}": {
 		"description": "Fetch details for a single image.",
 		"operationId": "cloudflare-images-image-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "image_id",
 				"required": true,
 				"schema": {
 					"description": "Image unique identifier.",
@@ -869,7 +869,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1350,13 +1350,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v1/{identifier}/blob": {
+	"GET /accounts/{account_id}/images/v1/{image_id}/blob": {
 		"description": "Fetch base image. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.",
 		"operationId": "cloudflare-images-base-image",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "image_id",
 				"required": true,
 				"schema": {
 					"description": "Image unique identifier.",
@@ -1368,7 +1368,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1512,13 +1512,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v1/stats": {
+	"GET /accounts/{account_id}/images/v1/stats": {
 		"description": "Fetch usage statistics details for Cloudflare Images.",
 		"operationId": "cloudflare-images-images-usage-statistics",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1895,13 +1895,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v2": {
+	"GET /accounts/{account_id}/images/v2": {
 		"description": "List up to 10000 images with one request. Use the optional parameters below to get a specific range of images.\nEndpoint returns continuation_token if more images are present.\n",
 		"operationId": "cloudflare-images-list-images-v2",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -2437,13 +2437,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/images/v1/{identifier}": {
+	"PATCH /accounts/{account_id}/images/v1/{image_id}": {
 		"description": "Update image access control. On access control change, all copies of the image are purged from cache.",
 		"operationId": "cloudflare-images-update-image",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "image_id",
 				"required": true,
 				"schema": {
 					"description": "Image unique identifier.",
@@ -2455,7 +2455,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -2957,13 +2957,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"POST /accounts/{account_identifier}/images/v1": {
+	"POST /accounts/{account_id}/images/v1": {
 		"description": "Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.\nAn image can be uploaded by sending an image file or passing an accessible to an API url.\n",
 		"operationId": "cloudflare-images-upload-an-image-via-url",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -3495,13 +3495,13 @@
 			"Cloudflare Images"
 		]
 	},
-	"POST /accounts/{account_identifier}/images/v2/direct_upload": {
+	"POST /accounts/{account_id}/images/v2/direct_upload": {
 		"description": "Direct uploads allow users to upload images without API keys. A common use case are web apps, client-side applications, or mobile devices where users upload content directly to Cloudflare Images. This method creates a draft record for a future image. It returns an upload URL and an image identifier. To verify if the image itself has been uploaded, send an image details request (accounts/:account_identifier/images/v1/:identifier), and check that the `draft: true` property is not present.",
 		"operationId": "cloudflare-images-create-authenticated-direct-upload-url-v-2",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",

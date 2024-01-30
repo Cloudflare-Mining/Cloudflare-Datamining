@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/images/v1/variants/{identifier}": {
+	"DELETE /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"description": "Deleting a variant purges the cache for all images associated with the variant.",
 		"operationId": "cloudflare-images-variants-delete-a-variant",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "variant_id",
 				"required": true,
 				"schema": {
 					"example": "hero",
@@ -15,7 +15,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -362,13 +362,13 @@
 			"Cloudflare Images Variants"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v1/variants": {
+	"GET /accounts/{account_id}/images/v1/variants": {
 		"description": "Lists existing variants.",
 		"operationId": "cloudflare-images-variants-list-variants",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -815,13 +815,13 @@
 			"Cloudflare Images Variants"
 		]
 	},
-	"GET /accounts/{account_identifier}/images/v1/variants/{identifier}": {
+	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"description": "Fetch details for a single variant.",
 		"operationId": "cloudflare-images-variants-variant-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "variant_id",
 				"required": true,
 				"schema": {
 					"example": "hero",
@@ -831,7 +831,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1306,13 +1306,13 @@
 			"Cloudflare Images Variants"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/images/v1/variants/{identifier}": {
+	"PATCH /accounts/{account_id}/images/v1/variants/{variant_id}": {
 		"description": "Updating a variant purges the cache for all images associated with the variant.",
 		"operationId": "cloudflare-images-variants-update-a-variant",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "variant_id",
 				"required": true,
 				"schema": {
 					"example": "hero",
@@ -1322,7 +1322,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
@@ -1864,13 +1864,13 @@
 			"Cloudflare Images Variants"
 		]
 	},
-	"POST /accounts/{account_identifier}/images/v1/variants": {
+	"POST /accounts/{account_id}/images/v1/variants": {
 		"description": "Specify variants that allow you to resize images for different use cases.",
 		"operationId": "cloudflare-images-variants-create-a-variant",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",

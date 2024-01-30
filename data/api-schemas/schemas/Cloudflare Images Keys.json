@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/images/v1/keys": {
+	"GET /accounts/{account_id}/images/v1/keys": {
 		"description": "Lists your signing keys. These can be found on your Cloudflare Images dashboard.",
 		"operationId": "cloudflare-images-keys-list-signing-keys",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Account identifier tag.",
