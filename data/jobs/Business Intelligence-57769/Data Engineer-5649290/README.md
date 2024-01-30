@@ -5,35 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Remote Portugal, Remote UK, London, United Kingdom or Lisbon, Portugal&nbsp;</p>
-<p><strong>About the Department</strong></p>
-<p>The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Security Technology team works closely with the teams responsible for running and maintaining our global infrastructure and enterprise. Our mission is to secure the foundations of all Cloudflare production and enterprise systems.</p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for an experienced security practitioner to help us in our mission to build a better internet. As part of our team, you will be expected to:</p>
+<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only.&nbsp;</strong></p>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Engineer to join our team to scale our data platform and product insights initiatives. You will work with a wide array of data sources to build integrated data pipelines that process billions of records each day and influence our critical business initiatives.&nbsp;</p>
+<p>Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Work with our engineering, IT, and infrastructure teams to secure the entire Cloudflare global network and enterprise</li>
-	<li>Deploy and manage security tools that help address security risk at a global scale</li>
-	<li>Collaborate with the full Cloudflare security team to improve detections and response capabilities to any potential security threats</li>
-	<li>Ensure our global infrastructure is secure from all attacks, ranging from “script kiddies” to nation states.</li>
+	<li>Design, implement and support end to end scalable data pipelines for multiple data products&nbsp;</li>
+	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
+	<li>Contribute in improving an evolving data platform for scalability, observability and reliability</li>
+	<li>Partner with product and other data engineering teams to extract, transform and load data from various sources using big data technologies</li>
+	<li>Build rich data sets that drive innovation in data driven insights at scale within the company</li>
+	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</li>
 </ul>
-<p><strong>Desirable skills, knowledge, and experience</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Extended detection and response technology for all platforms and architectures</li>
-	<li>Automation experience with tools like Salt, Ansible, and/or Terraform</li>
-	<li>Experience working with corporate Information Technology platforms and systems</li>
-	<li>Experience with SaaS security (Google Workspace, Salesforce, Workday, Atlassian, etc.)</li>
-	<li>Advanced security practices for Linux, MacOS, Windows systems</li>
-	<li>Experience with public cloud security best practices (GCP, Azure, etc.)</li>
-	<li>Ability to communicate complex security requirements into controls for engineering, product, infrastructure, and IT teams</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>3+ years of industry experience in software engineering, data engineering, or related fields</li>
+	<li>Strong programming skills with Go, Python or any JVM based programming language</li>
+	<li>Experience in writing advanced SQL queries</li>
+	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
+	<li>Solid understanding of big data technologies such as Spark, BigQuery, Kafka etc.&nbsp;</li>
+	<li>Strong communication skills</li>
 </ul>
-<p><strong>Awesome skills and experience to have, but not required:</strong></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Strong Linux system experience from user-space to kernel-space</li>
-	<li>Securing the software supply chain from workstation to deployment</li>
-	<li>Networking fundamentals such as TCP/IP, secure design and segmentation</li>
-	<li>Cross-functional governance experience with programs like PCI-DSS, FedRAMP</li>
+	<li>Experience with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Experience with Google Cloud Platform or other cloud storage platforms</li>
+	<li>Experience in building RESTful and microservices applications is a plus</li>
 </ul>
-<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
