@@ -5,31 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Product Experience (PX) team</strong></p>
-<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</p>
-<p>If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About the team</strong></p>
+<p>Cloudflare is redefining the way networks are run at scale. Our Network Services product suite puts the connectivity, scale, and performance of Cloudflare’s global network in front of customers’ network infrastructure and private networks, providing a single pane of glass for network connectivity, visibility, and operating network functions like DoS mitigation, Next-Gen Firewall, IDS/IPS, WAN optimization, and more. We are a team of engineers and product managers who obsess over quickly building products that solve real customer problems using innovative technologies and techniques which leverage Cloudflare’s unique architecture and global network footprint.</p>
+<p><strong>About the role</strong></p>
+<p>We are hiring engineers of all experience levels across many of our teams. Some of the things our teams work on include:</p>
 <ul>
-	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
-	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
-	<li>Creation of low and high fidelity user interface designs and prototypes using Figma.</li>
-	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
-	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals.</li>
-	<li>Facilitate design reviews with cross-functional teams.</li>
-	<li>Influence and contribute to the internal design process and team culture</li>
-	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
-	<li>Find ways to grow design's impact, spending time to share design decisions throughout the organisation.</li>
+	<li>A Linux kernel-based networking dataplane which ingests and forwards traffic from some of the largest networks in the world</li>
+	<li>A userspace networking service which acts as a hub between our Network Services and Zero Trust systems, enabling every customer to access every product</li>
+	<li>Network software running on a hardware appliance that provides zero touch connectivity to the Cloudflare network and SD-WAN functions</li>
+	<li>Next-generation firewall functions implemented across Linux netfilter, eBPF, and userspace packet processing</li>
+	<li>Flow and log collection, correlation, and analytics systems to provide customers with unparalleled visibility into their own networks</li>
+	<li>Control plane systems which allow customers to simply express complex network configurations<br><br></li>
 </ul>
+<p>As a Software Engineer on our team, you will work across a wide range of technologies and systems to deliver new features, improve performance, and increase the scalability of our Network Services products. You’ll build, deploy, and operate your team’s systems on top of one of the largest edge networks in the world. You’ll partner with some of the best engineers and product managers to solve big problems that have a meaningful impact in the lives of our customers and users.</p>
+<p>We’re looking for curious, empathetic engineers who are excited to join us in changing the way networking is done!</p>
 <p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li>Deep understanding of human-centered design.</li>
-	<li>8+ years working in professional UX or product design roles.</li>
-	<li>Effective visual, written, and verbal communication skills.</li>
-	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
-	<li>If possible, please submit a 1-2 case studies or portfolio with your applicaion</li>
+	<li>Experience building and shipping large-scale, reliable, highly distributed systems</li>
+	<li>Systems-level programming experience, especially in Rust and/or Go</li>
+	<li>Expertise in L2, L3, and/or L4 networking protocols</li>
+	<li>Experience building on top of Linux kernel networking primitives – netfilter, nftables, eBPF, tc, network namespaces, etc</li>
+	<li>Experience designing and integrating RESTful APIs and backend systems</li>
+	<li>Experience with large-scale distributed data pipelines, from data structuring to efficient querying to data analysis</li>
+	<li>Excellent debugging and optimization skills</li>
+	<li>Attention to detail and ability to solve complex customer problems</li>
+	<li>Own solutions end-to-end and driving the design, development, and deployment process</li>
+	<li>Able to work across teams and level common, sustainable solutions</li>
+	<li>Creative, open-minded, collaborative problem solver</li>
+	<li>Focus on clarity in written and verbal communication</li>
 </ul>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon or Remote Portugal, and London or Remote UK</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
