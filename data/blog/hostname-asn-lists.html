@@ -1,5 +1,7 @@
 <div class="mb2 gray5">5 min read</div>
-<div class="post-content lh-copy gray1">
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/hostname-asn-lists-zh-cn">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/hostname-asn-lists-zh-tw">繁體中文</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image2-1.png" class="kg-image" alt="Introducing hostname and ASN lists to simplify WAF rules creation" loading="lazy" width="1999" height="1125"></figure>
 	<p>If you’re responsible for creating a <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web Application Firewall (WAF)</a> rule, you’ll almost certainly need to reference a large list of potential values that each field can have. And having to manually manage and enter all those fields, for numerous WAF rules, would be a guaranteed headache.</p>
 	<p>That’s why we introduced <a href="https://blog.cloudflare.com/introducing-ip-lists">IP lists</a>. Having a separate list of values that can be referenced, reused, and managed independently of the actual rule makes for a better WAF user experience. You can create a new list, such as <code>$organization_ips</code>, and then use it in a rule like “allow requests where source IP is in <code>$organization_ips</code>”. If you need to add or remove IPs, you do that in the list, without touching each of the rules that reference the list. You can even add a descriptive name to help track its content. It’s easy, clean, and organized.</p>
