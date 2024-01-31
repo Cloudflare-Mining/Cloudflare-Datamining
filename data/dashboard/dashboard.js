@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "4f6b4783fe4ff6bece532abafb1d8d3d347a1d6c",
+					commit: "ca8e82371c9d17194b0e35dbc08b568d20fce845",
 					env: "production",
-					builtAt: 1706646032694,
-					dashVersion: "be6582992fb355fc87278d5591807b421ccd69a3",
+					builtAt: 1706717573139,
+					dashVersion: "282392fa3f2487251da3ce4a8557e84532b893a9",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -1536,32 +1536,36 @@
 				o = n.n(t),
 				i = n("../../../../node_modules/@sentry/react/esm/errorboundary.js"),
 				u = n("../react/app/components/SomethingWrong.jsx"),
-				v = n("../utils/sentry/lastSentEventId.ts");
-			const p = ({
-				sentryTag: a,
-				children: s
+				v = n("../utils/sentry/lastSentEventId.ts"),
+				p = n("../react/utils/zaraz.ts"),
+				a = n("../react/utils/url.ts");
+			const s = ({
+				sentryTag: C,
+				children: e
 			}) => o().createElement(i.SV, {
-				beforeCapture: C => {
-					a && C.setTag("errorBoundary", a)
+				beforeCapture: r => {
+					C && r.setTag("errorBoundary", C), p.tg === null || p.tg === void 0 || p.tg.track("page-error", {
+						page: (0, a.Fl)(window.location.pathname)
+					})
 				},
-				onError: C => {
+				onError: r => {
 					({
 						REDUX_LOGGER: void 0
-					}).TESTING && n.g.logAppError(C)
+					}).TESTING && n.g.logAppError(r)
 				},
 				fallback: ({
-					error: C,
-					eventId: e
+					error: r,
+					eventId: l
 				}) => {
-					const r = v.e.getEventId() || e;
+					const g = v.e.getEventId() || l;
 					return o().createElement(u.Z, {
 						type: "page",
-						error: C,
-						eventId: r
+						error: r,
+						eventId: g
 					})
 				}
-			}, s);
-			T.Z = p
+			}, e);
+			T.Z = s
 		},
 		"../react/app/components/ErrorStatus.tsx": function(Y, T, n) {
 			"use strict";
