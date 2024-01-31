@@ -2,7 +2,7 @@
 	"name": "eslint-plugin-next-on-pages",
 	"dist-tags": {
 		"beta": "0.0.0-0b1af18",
-		"latest": "1.8.5"
+		"latest": "1.8.6"
 	},
 	"versions": {
 		"0.0.0-e6cdfaa": {
@@ -6555,6 +6555,42 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIAVFPkY70cn3xP/HN6I4aI/x+LRCkA9YjjXc2V4NSaltAiEAzZxufkb1EtNRvDRPuPx3AXojQ3WXNuzc9nn54Bj+eMs="
+					}
+				]
+			}
+		},
+		"1.8.6": {
+			"name": "eslint-plugin-next-on-pages",
+			"version": "1.8.6",
+			"dependencies": {
+				"@types/estree-jsx": "^1.0.0",
+				"comment-parser": "^1.3.1"
+			},
+			"devDependencies": {
+				"@types/eslint": "^8.40.2",
+				"@types/estree": "1.0.0",
+				"@types/node": "^18.16.16",
+				"@typescript-eslint/parser": "^5.59.2",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"eslint": "^8.43.0",
+				"prettier": "2.8.2",
+				"pretty-quick": "3.1.3",
+				"rimraf": "4.1.2",
+				"ts-jest": "28.0.7"
+			},
+			"peerDependencies": {
+				"eslint": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-2CtCQEUZWz38bXevrPknUlLEferd7Dm6wqhJ8xRMoq92hzRV1DmfeLvs7vdxOP9YVxs/qz7b6gBu1mLxmYo13Q==",
+				"shasum": "210aae8e1f5fad4395fc45f49de99f07edb149ca",
+				"tarball": "https://registry.npmjs.org/eslint-plugin-next-on-pages/-/eslint-plugin-next-on-pages-1.8.6.tgz",
+				"fileCount": 4,
+				"unpackedSize": 30970,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIE3snr0wCkT3+0or9hUQlI/hvEUvEnu0xYNtjht+AMvtAiASvOkvud55QBrP70h+D5xnUC5V93dq3O2ustFng+pBSw=="
 					}
 				]
 			}
