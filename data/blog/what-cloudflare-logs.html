@@ -10,7 +10,7 @@ Logs" src="http://blog.cloudflare.com/content/images/logs.jpg.scaled500.jpg" tit
 	<p><img alt="What CloudFlare
 Logs" src="https://blog.cloudflare.com/content/images/dev_null.png.scaled500.png" title="What CloudFlare Logs"><noscript><img alt="What CloudFlare
 Logs" src="http://blog.cloudflare.com/content/images/dev_null.png.scaled500.png" title="What CloudFlare Logs"></noscript></p>
-	<p>For our Enterprise customers, we offer an optional feature that allows them to export their raw log files in Apache format. This requires us to store log files for a longer period of time in order to allow them to be downloaded. By default, we store logs for these customers for 3 days.</p>
+	<p>For our <a href="https://www.cloudflare.com/plans/enterprise">Enterprise customers</a>, we offer an optional feature that allows them to export their raw log files in Apache format. This requires us to store log files for a longer period of time in order to allow them to be downloaded. By default, we store logs for these customers for 3 days.</p>
 	<h4 id="crunchingdata">Crunching Data</h4>
 	<p>Since CloudFlare does not keep the raw logs, it is impossible for us to answer questions like: tell me all the visitors who have been to a particular website on CloudFlare's network.</p>
 	<p>However, CloudFlare does generate aggregate data, so we can provide analytics back to customers. We use the aggregated data to populate things like the CloudFlare Analytics page which includes numbers of hits, page views, bandwidth consumed and unique visitors. As logs are received, we run a stream processing engine that extracts this summary data. This data is correlated in each of our edge data centers and then sent to one of our core facilities in order to report through our UI.</p>

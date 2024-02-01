@@ -15,7 +15,7 @@
 	<h2 id="the-fine-print">The fine-print</h2>
 	<p>Cloudflare’s post-quantum cryptography support is a beta service for experimental use only. Enabling post-quantum on your website will subject the website to Cloudflare’s Beta Services terms and will impact other Cloudflare services on the website as described below.</p>
 	<h3 id="no-stability-or-support-guarantees">No stability or support guarantees</h3>
-	<p>Over the coming months, both Kyber and the way it’s integrated into TLS will change for several reasons, including:</p>
+	<p>Over the coming months, both Kyber and the way it’s integrated into <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls">TLS</a> will change for several reasons, including:</p>
 	<ol>
 		<li>Kyber will see small, but backward-incompatible changes in the coming months.</li>
 		<li>We want to be compatible with other early adopters and will change our integration accordingly.</li>
@@ -112,7 +112,7 @@ Used X25519Kyber512Draft00
 	<h3 id="on-the-wire">On the wire</h3>
 	<p>So what does this look like on the wire? With <a href="https://www.wireshark.org">Wireshark</a> we can capture the packet flow. First a non-post quantum HTTP/2 connection with X25519:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-8.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>This is a normal TLS 1.3 handshake: the client sends a ClientHello with an X25519 keyshare, which fits in a single packet. In return, the server sends its own 32 byte X25519 keyshare. It also sends various other messages, such as the certificate chain, which requires two packets in total.</p>
+	<p>This is a normal <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake">TLS 1.3 handshake</a>: the client sends a ClientHello with an X25519 keyshare, which fits in a single packet. In return, the server sends its own 32 byte X25519 keyshare. It also sends various other messages, such as the certificate chain, which requires two packets in total.</p>
 	<p>Let’s check out Kyber:</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>As you can see the ClientHello is a bit bigger, but still fits within a single packet. The response takes three packets now, instead of two, because of the larger server keyshare.</p>

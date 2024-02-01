@@ -6,7 +6,7 @@
 	<img style="max-width:300px;display:inline;" src="https://blog.cloudflare.com/content/images/2019/05/lava_full.jpg" alt="">
 	<p></p><!--kg-card-end: markdown-->
 	<p>On the left you see the photo, scaled to 300 pixels wide. On the right you see the same image delivered in its original high resolution, scaled in a desktop web browser. On a regular-DPI screen, they both look the same, yet the image on the right takes more than <strong>twenty times more data to load. </strong>Even for the best and most conscientious developers resizing every image to handle every possible device geometry consumes valuable time, and it’s exceptionally easy to forget to do this resizing altogether.</p>
-	<p>Today we are launching a new product, Image Resizing, to fix this problem once and for all.</p>
+	<p>Today we are launching a new product, <a href="https://www.cloudflare.com/developer-platform/cloudflare-images">Image Resizing</a>, to fix this problem once and for all.</p>
 	<h3 id="announcing-image-resizing">Announcing Image Resizing</h3>
 	<p>With Image Resizing, Cloudflare adds another important product to its suite of available image optimizations. &nbsp;This product allows customers to perform a rich set of the key actions on images.</p>
 	<ul>
@@ -18,7 +18,7 @@
 	<p>By using a combination of these actions, customers store a single high quality image on their server, and Image Resizing can be leveraged to create specialized variants for each specific use case. &nbsp;Without any additional effort, each variant will also automatically benefit from Cloudflare’s global caching.</p>
 	<h3 id="examples">Examples</h3>
 	<h4 id="ecommerce-thumbnails">Ecommerce Thumbnails</h4>
-	<p>Ecommerce sites typically store a high-quality image of each product. &nbsp;From that image, they need to create different variants depending on how that product will be displayed. &nbsp;One example is creating thumbnails for a catalog view. &nbsp;Using Image Resizing, if the high quality image is located here:</p>
+	<p>Ecommerce sites typically store a high-quality image of each product. &nbsp;From that image, they need to <a href="https://www.cloudflare.com/solutions/ecommerce/optimization">create different variants</a> depending on how that product will be displayed. &nbsp;One example is creating thumbnails for a catalog view. &nbsp;Using Image Resizing, if the high quality image is located here:</p>
 	<p><code>https://example.com/images/shoe123.jpg</code></p>
 	<p>This is how to display a 75x75 pixel thumbnail using Image Resizing:</p>
 	<p><code>&lt;img src="/cdn-cgi/image/width=75,height=75/images/shoe123.jpg"&gt;</code></p>
@@ -29,7 +29,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h4 id="enforce-maximum-size-without-changing-urls">Enforce Maximum Size Without Changing URLs</h4>
-	<p>Image Resizing is also <a href="https://developers.cloudflare.com/images/worker">available</a> from within a Cloudflare Worker. <a href="https://developers.cloudflare.com/workers/about">Workers</a> allow you to write code which runs close to your users all around the world. For example, you might wish to add Image Resizing to your images <strong>while keeping the same URLs</strong>. Your users and client would be able to use the same image URLs as always, but the images will be transparently modified in whatever way you need.</p>
+	<p>Image Resizing is also <a href="https://developers.cloudflare.com/images/worker">available</a> from within a Cloudflare Worker. <a href="https://www.cloudflare.com/developer-platform/workers">Workers</a> allow you to write code which runs close to your users all around the world. For example, you might wish to add Image Resizing to your images <strong>while keeping the same URLs</strong>. Your users and client would be able to use the same image URLs as always, but the images will be transparently modified in whatever way you need.</p>
 	<p>You can install a Worker on a route which matches your image URLs, and resize any images larger than a limit:</p><!--kg-card-begin: markdown-->
 	<pre><code>addEventListener('fetch', event =&gt; {
   event.respondWith(handleRequest(event.request))
@@ -53,7 +53,7 @@ async function handleRequest(request) {
 	<p>Image Resizing is different because it is the first image product at Cloudflare to give developers full control over how their images would be served. You should choose Image Resizing if you are comfortable defining the sizes you wish your images to be served at in advance or within a Cloudflare Worker.</p>
 	<h3 id="next-steps-and-simple-pricing">Next Steps and Simple Pricing</h3>
 	<p>Image Resizing is available today for Business and Enterprise Customers. &nbsp;To enable it, login to the Cloudflare Dashboard and navigate to the Speed Tab. &nbsp;There you’ll find the section for Image Resizing which you can enable with one click.</p>
-	<p>This product is included in the Business and Enterprise plans at no additional cost with generous usage limits. &nbsp;Business Customers have 100k requests per month limit and will be charged $10 for each additional 100k requests per month. &nbsp;Enterprise Customers have a 10M request per month limit with discounted tiers for higher usage. &nbsp;Requests are defined as a hit on a URI that contains Image Resizing or a call to Image Resizing from a Worker.</p>
+	<p>This product is included in the <a href="https://www.cloudflare.com/plans/business">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise">Enterprise</a> plans at no additional cost with generous usage limits. &nbsp;Business Customers have 100k requests per month limit and will be charged $10 for each additional 100k requests per month. &nbsp;Enterprise Customers have a 10M request per month limit with discounted tiers for higher usage. &nbsp;Requests are defined as a hit on a URI that contains Image Resizing or a call to Image Resizing from a Worker.</p>
 	<p>Now that you’ve enabled Image Resizing, it’s time to resize your first image.</p>
 	<ol>
 		<li>Using your existing site, store an image here: <code>https://yoursite.com/images/yourimage.jpg</code></li>

@@ -5,7 +5,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-social.png" alt="Edge computing for everyone." loading="lazy"></p>
 	<p>Exactly one year ago today, Cloudflare gave me a mission: Make it so people can run code on Cloudflare's edge. At the time, we didn't yet know what that would mean. Would it be container-based? A new Turing-incomplete domain-specific language? Lua? "Functions"? There were lots of ideas.</p>
 	<p>Eventually, we settled on what now seems the obvious choice: JavaScript, using the standard Service Workers API, running in a new environment built on V8. Five months ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">gave you a preview</a> of what we were building, and started the beta.</p>
-	<p>Today, with thousands of scripts deployed and many billions of requests served, Cloudflare Workers is now ready for everyone.</p>
+	<p>Today, with thousands of scripts deployed and many billions of requests served, <a href="https://www.cloudflare.com/developer-platform/workers">Cloudflare Workers</a> is now ready for everyone.</p>
 	<div style="padding: 1.5em; background-color: rgb(243, 243, 243); margin: 1em 0;">
 		<p style="font-size: 150%; font-style: italic; margin-bottom: 0.5em">"Moving away from VCL and adopting Cloudflare Workers will allow us to do some creative routing that will let us deliver JavaScript to npm's millions of users even faster than we do now. We will be building our next generation of services on Cloudflare's platform and we get to do it in JavaScript!"</p>
 		<p style="font-size: 120%; text-align: right; font-style: italic; margin-top: 0.5em">— CJ Silverio, CTO, npm, Inc.</p>
@@ -32,14 +32,14 @@
 	<p>The possible uses for Workers are infinite, and we're excited to see what our customers come up with. Here are some ideas we've seen in the beta:</p>
 	<ul>
 		<li>Route different types of requests to different origin servers.</li>
-		<li>Expand HTML templates on the edge, to reduce bandwidth costs at your origin.</li>
-		<li>Apply access control to cached content.</li>
+		<li>Expand HTML templates on the edge, to <a href="https://www.cloudflare.com/learning/cdn/how-cdns-reduce-bandwidth-cost">reduce bandwidth costs</a> at your origin.</li>
+		<li>Apply <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">access control</a> to cached content.</li>
 		<li>Redirect a fraction of users to a staging server.</li>
 		<li>Perform A/B testing between two entirely different back-ends.</li>
-		<li>Build "serverless" applications that rely entirely on web APIs.</li>
+		<li>Build "<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless">serverless</a>" applications that rely entirely on web APIs.</li>
 		<li>Create custom security filters to block unwanted traffic unique to your app.</li>
-		<li>Rewrite requests to improve cache hit rate.</li>
-		<li>Implement custom load balancing and failover logic.</li>
+		<li>Rewrite requests to <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio">improve cache hit rate</a>.</li>
+		<li>Implement custom <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing">load balancing</a> and failover logic.</li>
 		<li>Apply quick fixes to your application without having to update your production servers.</li>
 		<li>Collect analytics without running code in the user's browser.</li>
 		<li>Much more.</li>
@@ -92,7 +92,7 @@ async function handle(request) {
 	<h3 id="itsreallyfast">It's Really Fast</h3>
 	<p>Sometimes people ask us if JavaScript is "slow". Nothing could be further from the truth.</p>
 	<p>Workers uses the V8 JavaScript engine built by Google for Chrome. V8 is not only one of the fastest implementations of JavaScript, but one of the fastest implementations of any dynamically-typed language, period. Due to the immense amount of work that has gone into optimizing V8, it outperforms just about any popular server programming language with the possible exceptions of C/C++, Rust, and Go. (Incidentally, we will support those soon, via WebAssembly.)</p>
-	<p>The bottom line: <strong>A typical Worker script executes in less than one millisecond.</strong> Most users are unable to measure any latency difference when they enable Workers -- except, of course, when their worker actually <em>improves</em> latency by responding directly from the edge.</p>
+	<p>The bottom line: <strong>A typical Worker script executes in less than one millisecond.</strong> Most users are unable to measure any <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency">latency</a> difference when they enable Workers -- except, of course, when their worker actually <em>improves</em> latency by responding directly from the edge.</p>
 	<p>On another speed-related note, Workers deploy fast, too. <strong>Workers deploy globally in under 30 seconds</strong> from the time you save and enable the script.</p>
 	<h3 id="pricing">Pricing</h3>
 	<p>Workers are a paid add-on to Cloudflare. We wanted to keep the pricing as simple as possible, so here's the deal:</p>
