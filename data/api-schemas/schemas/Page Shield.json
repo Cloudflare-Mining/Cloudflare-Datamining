@@ -654,7 +654,7 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the connections\nwith the applied filters in a single page. Additionally, when using this value, the API will not return \nthe categorisation data for the URL and domain of the connections. This feature is best-effort and it may \nonly work for zones with a low number of connections\n",
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the connections\nwith the applied filters in a single page. Additionally, when using this value, the API will not return\nthe categorisation data for the URL and domain of the connections. This feature is best-effort and it may\nonly work for zones with a low number of connections\n",
 					"example": 2,
 					"type": "string"
 				}
@@ -2221,7 +2221,7 @@
 				"in": "query",
 				"name": "page",
 				"schema": {
-					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the scripts\nwith the applied filters in a single page. Additionally, when using this value, the API will not return \nthe script versions or categorisation data for the URL and domain of the scripts. This feature is \nbest-effort and it may only work for zones with a low number of scripts\n",
+					"description": "The current page number of the paginated results.\n\nWe additionally support a special value \"all\". When \"all\" is used, the API will return all the scripts\nwith the applied filters in a single page. Additionally, when using this value, the API will not return\nthe script versions or categorisation data for the URL and domain of the scripts. This feature is\nbest-effort and it may only work for zones with a low number of scripts\n",
 					"example": 2,
 					"type": "string"
 				}
@@ -2287,7 +2287,7 @@
 				"name": "exclude_duplicates",
 				"schema": {
 					"default": true,
-					"description": "When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript \ncontent matches and they share the same url host and zone hostname. In such case, we return the most \nrecent script for the URL host and zone hostname combination.\n",
+					"description": "When true, excludes duplicate scripts. We consider a script duplicate of another if their javascript\ncontent matches and they share the same url host and zone hostname. In such case, we return the most\nrecent script for the URL host and zone hostname combination.\n",
 					"example": true,
 					"type": "boolean"
 				}

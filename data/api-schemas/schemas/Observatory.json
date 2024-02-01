@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/speed_api/pages/{url}/tests": {
+	"DELETE /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"description": "Deletes all tests for a specific webpage from a specific region. Deleted tests are still counted as part of the quota.",
 		"operationId": "speed-delete-tests",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -255,13 +255,13 @@
 			"pro": true
 		}
 	},
-	"DELETE /zones/{zone_identifier}/speed_api/schedule/{url}": {
+	"DELETE /zones/{zone_id}/speed_api/schedule/{url}": {
 		"description": "Deletes a scheduled test for a page.",
 		"operationId": "speed-delete-test-schedule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -511,13 +511,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/speed_api/availabilities": {
+	"GET /zones/{zone_id}/speed_api/availabilities": {
 		"description": "Retrieves quota for all plans, as well as the current zone quota.",
 		"operationId": "speed-get-availabilities",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -839,13 +839,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/speed_api/pages": {
+	"GET /zones/{zone_id}/speed_api/pages": {
 		"description": "Lists all webpages which have been tested.",
 		"operationId": "speed-list-pages",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1367,13 +1367,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/speed_api/pages/{url}/tests": {
+	"GET /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"description": "Test history (list of tests) for a specific webpage.",
 		"operationId": "speed-list-test-history",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1921,13 +1921,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/speed_api/pages/{url}/tests/{test_identifier}": {
+	"GET /zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}": {
 		"description": "Retrieves the result of a specific test.",
 		"operationId": "speed-get-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1949,7 +1949,7 @@
 			},
 			{
 				"in": "path",
-				"name": "test_identifier",
+				"name": "test_id",
 				"required": true,
 				"schema": {
 					"type": "string"
@@ -2405,13 +2405,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/speed_api/pages/{url}/trend": {
+	"GET /zones/{zone_id}/speed_api/pages/{url}/trend": {
 		"description": "Lists the core web vital metrics trend over time for a specific page.",
 		"operationId": "speed-list-page-trend",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2776,13 +2776,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/speed_api/schedule/{url}": {
+	"GET /zones/{zone_id}/speed_api/schedule/{url}": {
 		"description": "Retrieves the test schedule for a page in a specific region.",
 		"operationId": "speed-get-scheduled-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3070,13 +3070,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/speed_api/pages/{url}/tests": {
+	"POST /zones/{zone_id}/speed_api/pages/{url}/tests": {
 		"description": "Starts a test for a specific webpage, in a specific region.",
 		"operationId": "speed-create-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3585,13 +3585,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/speed_api/schedule/{url}": {
+	"POST /zones/{zone_id}/speed_api/schedule/{url}": {
 		"description": "Creates a scheduled test for a page.",
 		"operationId": "speed-create-scheduled-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
