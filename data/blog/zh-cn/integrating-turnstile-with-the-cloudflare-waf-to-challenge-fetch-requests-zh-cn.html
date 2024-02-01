@@ -1,0 +1,133 @@
+<div class="mb2 gray5">9 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image8.png" class="kg-image" alt="Integrating Turnstile with the Cloudflare WAF to challenge fetch requests" loading="lazy" width="1999" height="1126"></figure>
+	<p>两个月前，我们<a href="https://blog.cloudflare.com/turnstile-ga">全面推出</a>了 Cloudflare Turnstile，为世界各地的网站所有者提供了一种简单的方法来抵御机器人，而无需发布验证码。Turnstile 允许任何网站所有者通过简单的代码片段在其网站上嵌入无障碍的 Cloudflare 质询，从而轻松帮助确保只有人类流量才能通过。除了保护网站的前端之外，Turnstile 还使网络管理员能够强化后台运行的浏览器启动 (AJAX) API 调用。这些 API 通常由动态单页 Web 应用程序使用，例如使用 React、Angular、Vue.js 创建的应用程序。</p>
+	<p>今天，我们很高兴地宣布，我们已将 Turnstile 与 <a href="https://www.cloudflare.com/application-services/products/waf">Cloudflare Web 应用程序防火墙 (WAF)</a> 集成。这意味着 Web 管理员可以将 Turnstile 代码片段添加到其网站，然后配置 Cloudflare WAF 来管理这些请求。这可以使用 WAF 规则完全自定义；例如，您可以允许经过 Turnstile 身份验证的用户与应用程序的所有 API 端点进行交互，而无需面临更多质询，或者您可以配置某些敏感端点（例如登录）以始终发出质询。</p>
+	<h3 id="%E8%B4%A8%E8%AF%A2-cloudflare-waf-%E4%B8%AD%E7%9A%84-fetch-%E8%AF%B7%E6%B1%82">质询 Cloudflare WAF 中的 fetch 请求</h3>
+	<p>受 Cloudflare 的 WAF 保护的数百万个网站利用我们的 JS 质询、托管质询和交互式质询来阻止机器人，同时允许人类通过。对于每一个质询，Cloudflare 都会拦截匹配的请求并使用浏览器呈现的 HTML 页面进行响应，用户在其中完成基本任务以证明他们是人类。当用户成功完成质询时，他们会收到 <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform">cf_clearance cookie</a>，该 cookie 告诉 Cloudflare 用户已成功通过质询、质询类型以及完成时间。clearance cookie 不能在用户之间共享，并且仅在 Cloudflare 客户在其安全设置仪表板中设置的时间内有效。</p>
+	<p>此过程运作良好，除非浏览器收到 fetch 请求的质询并且浏览器之前未通过质询。在 fetch 请求或 XML HTTP 请求 (XHR) 中，浏览器期望返回简单文本（JSON 或 XML 格式），并且无法呈现运行质询所需的 HTML。</p>
+	<p>举个例子，我们假设一家比萨店老板在 React 中构建了一个在线订购表单，其中包含一个支付页面，该页面将数据提交到处理支付的 API 端点。当用户查看 Web 表单以添加其信用卡详细信息时，他们可以通过托管质询，但当用户通过发出 fetch 请求提交其信用卡详细信息时，浏览器将不会执行运行质询所需的代码。披萨店老板处理可疑（但可能合法）请求的唯一选择是阻止这些请求，这存在误报的风险，可能导致餐厅失去销售。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Group-3955.png" class="kg-image" alt="" loading="lazy" width="1048" height="515"></figure>
+	<p>这就是 Turnstile 可以提供帮助的地方。Turnstile 允许互联网上的任何人在其网站上的任何位置嵌入 Cloudflare 质询。在今天之前，Turnstile 的输出只是一次性使用的令牌。为了使客户能够对这些 fetch 请求发出质询，Turnstile 现在可以为其嵌入的域发出一个 clearance cookie。客户可以在 fetch 请求之前在 HTML 页面中发出质询，<em>预先允许</em>访问者与支付 API 进行交互。</p>
+	<h3 id="turnstile-pre-clearance-%E6%A8%A1%E5%BC%8F">Turnstile Pre-Clearance 模式</h3>
+	<p>回到我们的披萨店示例，使用 Pre-Clearance 将 Turnstile 与 Cloudflare WAF 集成有三大优势：</p>
+	<ol>
+		<li><strong>改善用户体验</strong>：当访问者输入付款信息时，Turnstile 的内嵌质询可在后台运行。</li>
+		<li><strong>在边缘阻止更多请求</strong>：由于 Turnstile 现在为其嵌入的域发出了一个 clearance cookie，因此披萨店老板可以使用自定义规则为支付 API 的每个请求发出托管质询。这可确保尝试直接针对支付 API 的自动攻击在到达 API 之前就被 Cloudflare 阻止。</li>
+		<li><strong>（可选）保护操作和用户的安全</strong>：无需更改后端代码即可获得 Pre-Clearance 的好处。然而，进一步的 Turnstile 集成将提高集成 API 的安全性。披萨店老板可以调整其付款形式以<a href="https://developers.cloudflare.com/turnstile/get-started/server-side-validation">验证收到的 Turnstile 令牌</a>，确保每次付款尝试均由 Turnstile 单独验证，以保护其付款端点免受会话劫持。</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Pre-clearance.png" class="kg-image" alt="" loading="lazy" width="1059" height="582"></figure>
+	<p>启用 Pre-Clearance 的 Turnstile 小部件仍会发出 Turnstile 令牌，这让客户可以根据端点的重要性，灵活地决定是需要对每个请求进行安全检查，还是每个会话仅进行一次安全检查。Turnstile 小部件发出的 clearance cookie 会自动应用于 Turnstile 小部件嵌入的 Cloudflare 区域，无需进行配置。令牌的有效许可时间仍受区域特定“质询通道”时间控制。</p>
+	<h3 id="%E5%AE%9E%E6%96%BD%E5%85%B7-pre-clearance-%E5%8A%9F%E8%83%BD%E7%9A%84-turnstile">实施具 Pre-Clearance 功能的 Turnstile</h3>
+	<p>让我们通过一个基本的实施来具体说明这一点。在开始之前，我们设置了一个简单的演示应用程序，在 <code>/your-api</code> 端点上模拟前端与后端通信。</p>
+	<p>为此，我们编写了以下代码：</p><!--kg-card-begin: markdown-->
+	<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+   &lt;title&gt;Turnstile Pre-Clearance Demo &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="pre-clearance-demo"&gt;
+    &lt;h2&gt;Pre-clearance Demo&lt;/h2&gt;
+    &lt;button id="fetchBtn"&gt;Fetch Data&lt;/button&gt;
+    &lt;div id="response"&gt;&lt;/div&gt;
+&lt;/main&gt;
+
+
+&lt;script&gt;
+  const button = document.getElementById('fetchBtn');
+  const responseDiv = document.getElementById('response');
+  button.addEventListener('click', async () =&gt; {
+  try {
+    let result = await fetch('/your-api');
+    if (result.ok) {
+      let data = await result.json();
+      responseDiv.textContent = JSON.stringify(data);
+    } else {
+      responseDiv.textContent = 'Error fetching data';
+    }
+  } catch (error) {
+    responseDiv.textContent = 'Network error';
+  }
+});
+&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们创建了一个按钮。单击后，Cloudflare 会向 <code>/your-api</code> 端点发出 <code>fetch()</code> 请求，并在响应容器中显示结果。</p>
+	<p>现在，我们假设我们设置了一个 Cloudflare WAF 规则，通过托管质询来保护 <code>/your-api</code> 端点。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy" width="1237" height="975"></figure>
+	<p>由于这条规则，我们刚刚编写的应用程序将因前面描述的原因而失败（浏览器期望 JSON 响应，但收到 HTML 形式的质询页面）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-18-at-12.00.16.png" class="kg-image" alt="" loading="lazy" width="704" height="132"></figure>
+	<p>如果我们检查“网络”选项卡，我们可以看到对 <code>/your-api</code> 的请求已得到 403 响应。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/image10.png" class="kg-image" alt="" loading="lazy" width="928" height="54"></figure>
+	<p>经检查，Cf-Mitiated 标头显示该响应受到 Cloudflare 防火墙的质询，因为访问者之前尚未解决质询。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/image6.png" class="kg-image" alt="" loading="lazy" width="1658" height="381"></figure>
+	<p>为了在我们的应用程序中解决这个问题，我们在 Pre-Clearance 模式下为我们想要使用的 Turnstile 站点密钥设置了一个 Turnstile 小部件。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image2-4.png" class="kg-image" alt="" loading="lazy" width="858" height="504"></figure>
+	<p>在我们的应用程序中，一旦收到 Cf-Mitiated 响应，我们就会重写 <code>fetch()</code> 函数来调用 Turnstile。</p><!--kg-card-begin: markdown-->
+	<pre><code>&lt;script&gt;
+turnstileLoad = function () {
+  // Save a reference to the original fetch function
+  const originalFetch = window.fetch;
+
+  // A simple modal to contain Cloudflare Turnstile
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.right = '0';
+  overlay.style.bottom = '0';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  overlay.style.border = '1px solid grey';
+  overlay.style.zIndex = '10000';
+  overlay.style.display = 'none';
+  overlay.innerHTML =       '&lt;p style="color: white; text-align: center; margin-top: 50vh;"&gt;One more step before you proceed...&lt;/p&gt;&lt;div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"&gt;&lt;/div&gt;';
+  document.body.appendChild(overlay);
+
+  // Override the native fetch function
+  window.fetch = async function (...args) {
+      let response = await originalFetch(...args);
+
+      // If the original request was challenged...
+      if (response.headers.has('cf-mitigated') &amp;&amp; response.headers.get('cf-mitigated') === 'challenge') {
+          // The request has been challenged...
+          overlay.style.display = 'block';
+
+          await new Promise((resolve, reject) =&gt; {
+              turnstile.render('#turnstile_widget', {
+                  'sitekey': ‘YOUR_TURNSTILE_SITEKEY',
+                  'error-callback': function (e) {
+                      overlay.style.display = 'none';
+                      reject(e);
+                  },
+                  'callback': function (token, preClearanceObtained) {
+                      if (preClearanceObtained) {
+                          // The visitor successfully solved the challenge on the page. 
+                          overlay.style.display = 'none';
+                          resolve();
+                      } else {
+                          reject(new Error('Unable to obtain pre-clearance'));
+                      }
+                  },
+              });
+          });
+
+          // Replay the original fetch request, this time it will have the cf_clearance Cookie
+          response = await originalFetch(...args);
+      }
+      return response;
+  };
+};
+&lt;/script&gt;
+&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad" async defer&gt;&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上面的代码段中发生了很多事情：首先，我们创建了一个隐藏的覆盖元素，并覆盖了浏览器的 <code>fetch()</code> 函数。对 <code>fetch()</code> 函数进行了修改，以反省“质询”的 Cf-Mitigated 标头。如果发出质询，初始结果将是不成功的；取而代之的是，我们的 Web 应用程序中将出现 Turnstile 覆盖层（已启用 Pre-Clearance）。完成 Turnstile 质询后，我们将在 Turnstile 获得 cf_clearance cookie 以通过 Cloudflare WAF 后重试之前的请求。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image1-2.png" class="kg-image" alt="" loading="lazy" width="749" height="582"></figure>
+	<p>解决 Turnstile 小部件后，覆盖层消失，并且成功显示请求的 API 结果：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-18-at-12.02.56.png" class="kg-image" alt="" loading="lazy" width="892" height="186"></figure>
+	<h3 id="%E6%89%80%E6%9C%89-cloudflare-%E5%AE%A2%E6%88%B7%E5%9D%87%E5%8F%AF%E4%BD%BF%E7%94%A8-pre-clearance">所有 Cloudflare 客户均可使用 Pre-Clearance</h3>
+	<p>每个拥有 Free 或以上计划的 Cloudflare 用户都可以在托管模式下免费使用 Turnstile，请求数量不限。如果您是 Cloudflare 用户，希望提高关键 API 端点的安全性和用户体验，请立即前往我们的仪表板并<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">创建具有 Pre-Clearance 功能的 Turnstile 小部件</a>。</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/the-net/?utm_campaign=thenet&amp;utm_medium=blog">
+		<img src="https://blog.cloudflare.com/content/images/2023/12/theNET_blog_1-1.png" alt="theNET">
+	</a><!--kg-card-end: html-->
+</div>

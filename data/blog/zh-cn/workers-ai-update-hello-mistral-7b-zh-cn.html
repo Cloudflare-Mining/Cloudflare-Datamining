@@ -1,0 +1,133 @@
+<div class="mb2 gray5">10 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/11/Mistral-1.png" class="kg-image" alt="Workers AI Update: Hello, Mistral 7B!" loading="lazy" width="1600" height="900"></figure>
+	<p>今天，我们很高兴地宣布，我们已将 Mistral-7B-v0.1-instruct 添加到 Workers AI 中。Mistral 7B 是一个 73 亿参数语言模型，具有许多独特的优势。我们将在 Mistral AI 创始人的帮助下介绍 Mistral 7B 模型的一些亮点，并利用这个机会更深入地研究“注意力”及其变体，例如多查询注意力 (multi-query attention) 和分组查询注意力 (grouped-query attention)。</p>
+	<h2 id="mistral-7b-tldr">Mistral 7B tl;dr:</h2>
+	<p>Mistral 7B 是一个 73 亿参数模型，<a href="https://mistral.ai/news/announcing-mistral-7b">在基准测试中得出了令人印象深刻的数据</a>。该模型：</p>
+	<ul>
+		<li>在所有基准测试中都优于 Llama 2 13B；</li>
+		<li>在许多基准测试中都优于 Llama 1 34B；</li>
+		<li>代码性能接近 CodeLlama 7B，同时仍擅长英语任务；以及</li>
+		<li>在 Mistral 提供的基准测试中，我们部署的聊天微调版本优于 Llama 2 13B 聊天。</li>
+	</ul>
+	<p>下面是通过 <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api">REST API</a> 使用流式传输的示例：</p><!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+“https://api.cloudflare.com/client/v4/accounts/{account-id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1” \
+-H “Authorization: Bearer {api-token}” \
+-H “Content-Type:application/json” \
+-d '{ “prompt”: “What is grouped query attention”, “stream”: true }'
+
+API Response: { response: “Grouped query attention is a technique used in natural language processing  (NLP) and machine learning to improve the performance of models…” }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>下面是使用 Worker 脚本的示例：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Ai } from '@cloudflare/ai';
+export default {
+    async fetch(request, env) {
+        const ai = new Ai(env.AI);
+        const stream = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', {
+            prompt: 'What is grouped query attention',
+            stream: true
+        });
+        return Response.json(stream, { headers: { “content-type”: “text/event-stream” } });
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Mistral 利用<a href="https://arxiv.org/abs/2305.13245">分组查询注意力</a>来加快推理速度。这项最近开发的技术提高了推理速度，同时又不影响输出质量。对于 70 亿参数模型，借助分组查询注意力，我们使用 Mistral 每秒生成的令牌数量几乎是 Llama 的 4 倍。</p>
+	<p>您不需要除此之外的任何信息即可开始使用 Mistral-7B，您可以立即在 <a href="https://ai.cloudflare.com">ai.cloudflare.com</a> 上进行测试。要了解有关注意力和分组查询注意力的更多信息，请继续阅读！</p>
+	<h2 id="%E9%82%A3%E4%B9%88%EF%BC%8C%E2%80%9C%E6%B3%A8%E6%84%8F%E5%8A%9B%E2%80%9D%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%91%A2%EF%BC%9F">那么，“注意力”到底是什么呢？</h2>
+	<p>注意力的基本机制，特别是里程碑式论文“<a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>”（注意力就是你所需要的一切）中介绍的“缩放点积注意力 (Scaled Dot-Product Attention)”，相当简单：</p>
+	<blockquote>我们将我们的特定注意力称为“缩放点积注意力”。输入由维度 d_k 的查询和键以及维度 d_v 的值组成。我们使用所有键计算查询的点积，将每个键除以 sqrt(d_k) 并应用 softmax 函数来获取值的权重。</blockquote>
+	<p>更具体地说，是像这样：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/Screenshot-2023-11-21-at-09.12.30.png" class="kg-image" alt="" loading="lazy" width="1882" height="680">
+		<figcaption><a href="https://arxiv.org/abs/1706.03762">来源</a></figcaption>
+	</figure>
+	<p>简而言之，这使得模型能够专注于输入的重要部分。想象一下您正在阅读一个句子并试图理解它。缩放点积注意力使您能够根据某些单词的相关性更加关注它们。它的工作原理是计算句子中每个单词 (K) 与查询 (Q) 之间的相似度。然后，它通过将相似度分数除以查询维度的平方根来缩放相似度分数。这种缩放有助于避免非常小或非常大的值。最后，使用这些缩放后的相似度分数，我们可以确定每个单词应该受到多少关注（或者说其重要性如何）。这种注意力机制有助于模型识别关键信息 (V) 并提高其理解和翻译能力。</p>
+	<p>很简单，对吧？为了从这个简单的机制发展到可以编写“Jerry 学习冒泡排序算法的《宋飞正传》”的人工智能，我们需要让它变得更加复杂。事实上，我们刚刚介绍的所有内容甚至没有任何学习参数，这是在模型训练期间学习的恒定值，用于自定义注意力块的输出！</p>
+	<p>“<em>Attention is All You Need</em>”中的注意力块主要增加了三种类型的复杂性：</p>
+	<h3 id="%E5%AD%A6%E4%B9%A0%E5%8F%82%E6%95%B0">学习参数</h3>
+	<p>学习参数是指在模型训练过程中为了提高模型性能而调整的值或权重。这些参数用于控制模型内的信息流或注意力，使其能够专注于输入数据的最相关部分。简而言之，学习参数就像机器上的可调节旋钮，可以转动它来优化其操作。</p>
+	<h3 id="%E5%9E%82%E7%9B%B4%E5%A0%86%E5%8F%A0%E2%80%94%E2%80%94%E5%88%86%E5%B1%82%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%9D%97">垂直堆叠——分层注意力块</h3>
+	<p>垂直分层堆叠是一种将多个注意力机制堆叠在一起的方法，每一层都建立在前一层的输出之上。这使得模型能够专注于不同抽象级别的输入数据的不同部分，从而可以在某些任务上获得更好的性能。</p>
+	<h3 id="%E6%B0%B4%E5%B9%B3%E5%A0%86%E5%8F%A0%E2%80%94%E2%80%94%E5%8F%88%E5%90%8D%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B-multi-head-attention">水平堆叠——又名多头注意力 (Multi-Head Attention)</h3>
+	<p>论文中的图显示了完整的多头注意力模块。多个注意力操作是并行执行的，每个注意力操作的 Q-K-V 输入是由相同输入数据（由一组唯一的学习参数定义）的唯一线性投影生成的。这些并行的注意力块被称为“注意力头”。所有注意力头的加权和输出被连接成一个向量，并通过另一个参数化线性变换以获得最终输出。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/Screenshot-2023-11-21-at-09.13.49.png" class="kg-image" alt="" loading="lazy" width="1806" height="722">
+		<figcaption><a href="https://arxiv.org/abs/1706.03762">来源</a></figcaption>
+	</figure>
+	<p>这种机制允许模型同时关注输入数据的不同部分。想象一下，您正在尝试理解一条复杂的信息，例如一个句子或一个段落。为了理解它，您需要同时注意它的不同部分。例如，您可能需要同时注意句子的主语、动词和宾语，才能理解句子的含义。多头注意力的工作原理与此类似。它允许模型通过使用多个注意力“头”同时关注输入数据的不同部分。每个注意力头关注输入数据的不同方面，所有注意力头的输出组合起来产生模型的最终输出。</p>
+	<h2 id="%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E7%B1%BB%E5%9E%8B">注意力的类型</h2>
+	<p>近年来开发的大型语言模型使用三种常见的注意力块排列：多头注意力、分组查询注意力和多查询注意力。它们的不同之处在于相对于查询向量数量的 K 和 V 向量的数量。<strong>多头注意力</strong>使用与 Q 向量相同数量的 K 和 V 向量，在下表中用“N”表示。<strong>多查询注意力</strong>仅使用单个 K 和 V 向量。<strong>分组查询注意力</strong>是 Mistral 7B 模型中使用的类型，它将 Q 向量均匀地分成每个包含“G”向量的组，然后为每个组使用单个 K 和 V 向量，总共 N 个向量，除以 G 组 K 和 V 向量。这里简单总结了这些差异，我们将在下面深入探讨这些差异的含义。</p><!--kg-card-begin: html-->
+	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
+		<tbody>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">&nbsp;</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>键/值块数量</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>质量</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>内存使用情况</strong></span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>多头注意力 (MHA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">最佳</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">大多数</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>分组查询注意力 (GQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N / G</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">更好</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">更少</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>多查询注意力 (MQA)</strong></span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">1</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">良性</span></span></span></p>
+				</td>
+				<td style="border-bottom:1px solid #000000; border-left:1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; vertical-align:top; width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">最少</span></span></span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align:center"><span style="font-size:9pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">注意力类型概述</span></span></span></p><!--kg-card-end: html-->
+	<p>这张图有助于说明三种类型之间的区别：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/11/image1-6.png" class="kg-image" alt="" loading="lazy" width="1112" height="388">
+		<figcaption><a href="https://arxiv.org/pdf/2305.13245.pdf">来源</a></figcaption>
+	</figure>
+	<h3 id="%E5%A4%9A%E6%9F%A5%E8%AF%A2%E6%B3%A8%E6%84%8F%E5%8A%9B">多查询注意力</h3>
+	<p>2019 年 Google 的论文“<a href="https://arxiv.org/abs/1911.02150">Fast Transformer Decoding: One Write-Head is All You Need</a>”（快速 Transformer 解码：一个写头即可满足您的需求）描述了多查询注意力。这个理念是，不像上面的多头注意力那样为注意力机制中的每个 Q 向量创建单独的 K 和 V 条目，而是仅将单个 K 和 V 向量用于整个 Q 向量集。因此，多个查询组合成一个单一的注意力机制。在论文中，这是在翻译任务上进行基准测试的，并且在基准任务上表现出与多头注意力相同的性能。</p>
+	<p>最初的想法是减少执行模型推理时访问的内存总大小。从那时起，随着广义模型的出现和参数数量的增长，所需的 GPU 内存往往成为多查询注意力的瓶颈，因为它在三种注意力类型中所需的加速器内存最少。然而，随着模型规模和通用性的增长，多查询注意力的性能相对于多头注意力有所下降。</p>
+	<h3 id="%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2%E6%B3%A8%E6%84%8F%E5%8A%9B">分组查询注意力</h3>
+	<p>其中最新的（也是 Mistral 使用的）是分组查询注意力，这在 2023 年 5 月在 arxiv.org 上发布的论文“<a href="https://arxiv.org/abs/2305.13245">GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</a>”（GQA：从多头检查点训练通用多查询 Transformer 模型）中进行了介绍。多组查询注意力结合了两者的优点：多头注意力的质量与多查询注意力的速度和低内存使用量。不是使用一组 K 和 V 向量，也不是每个 Q 向量使用一组，而是每个 Q 向量使用 1 组 K 和 V 向量的固定比例，从而减少内存使用量，同时在许多任务上保持高性能。</p>
+	<p>通常，为生产任务选择模型不仅仅是选择可用的最佳模型，因为我们必须考虑性能、内存使用、批量大小和可用硬件（或云成本）之间的权衡。了解这三种注意力方式可以帮助指导这些决策，并了解我们何时可以根据具体情况选择特定模型。</p>
+	<h2 id="%E8%BF%9B%E5%85%A5-mistral%E2%80%94%E2%80%94%E7%AB%8B%E5%8D%B3%E8%AF%95%E7%94%A8">进入 Mistral——立即试用</h2>
+	<p>作为第一个利用分组查询注意力并将其与滑动窗口注意力相结合的大型语言模型，Mistral 似乎已经达到了最佳状态——它具有低延迟、高吞吐量的特点，而且即使与更大的模型 (13B) 相比，它在基准测试中也表现得非常好。所有这一切都表明，它的尺寸与功能都达到了巅峰，我们非常高兴今天能够通过 Workers AI 将其提供给所有开发人员。 </p>
+	<p>请前往我们的<a href="https://developers.cloudflare.com/workers-ai/models/text-generation">开发人员文档</a>以开始使用。如果您需要帮助、想要提供反馈或想要分享您正在构建的内容，请进入我们的<a href="https://discord.com/invite/cloudflaredev">开发人员 Discord</a>！<br><br>Workers AI 团队也在扩大和招聘；如果您对人工智能工程充满热情，并希望帮助我们构建和发展我们的全球无服务器 GPU 驱动的推理平台，请查看我们的<a href="https://www.cloudflare.com/careers/jobs">职位页面</a>，了解空缺职位。</p>
+</div>

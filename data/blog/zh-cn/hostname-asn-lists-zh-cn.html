@@ -1,0 +1,107 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/08/image2-1.png" class="kg-image" alt="Introducing hostname and ASN lists to simplify WAF rules creation" loading="lazy" width="1999" height="1125"></figure>
+	<p>如果您负责创建 <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf">Web 应用程序防火墙 (WAF)</a> 规则，则肯定需要引用每个字段可能具有的大量潜在值。如果有大量 WAF 规则，则手动管理和输入所有这些字段肯定会让人头疼。</p>
+	<p>这就是我们引入 <a href="https://blog.cloudflare.com/introducing-ip-lists">IP 列表</a>的原因。拥有可以独立于实际规则进行引用、重用和管理的单独值列表，可以带来更好的 WAF 用户体验。您可以创建一个新列表，例如 <code>$organization_ips</code>，然后在“允许源 IP 位于 <code>$organization_ips</code> 中的请求”之类的规则中使用它。如果您需要添加或删除 IP，您可以在列表中执行此操作，而无需涉及引用该列表的每条规则。您甚至可以添加描述性名称来帮助跟踪其内容。它简单、干净、有条理。</p>
+	<p>这让我们和我们的客户自然而然地提出了下一个问题：为什么要止步于 IP？ </p>
+	<p>Cloudflare 的 WAF 具有高度可配置性，让您能够编写评估一组主机名、自治系统编号 (ASN)、国家/地区、标头值或 JSON 字段值的规则。但要做到这一点，您必须将项目列表直接输入到规则表达式编辑器中，这会带来所有相关的缺点：速度慢（您需要单独修改每个规则）、容易出错，有时甚至无法实现（考虑到自定义规则表达式 4KB 的限制）。 </p>
+	<p>这种情况不会再出现了！今天，我们扩展了自定义列表，让您能够创建主机名和 ASN 列表。所有 Enterprise 计划中均包含新列表类型，因此您在阅读本文后就可以开始创建扩展列表。</p>
+	<h3 id="%E5%9F%9F%E5%90%8D%EF%BC%8F%E5%AD%90%E5%9F%9F%E5%90%8D">域名／子域名</h3>
+	<p>现在，您可以在帐户中导航至<strong>配置</strong> &gt; <strong>列表</strong>。您也可以在这里管理 IP 列表和浏览可用的托管 IP 列表。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 55.87354409317804%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/09526a21aedceb0ec67f2d829aca01a5/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F09526a21aedceb0ec67f2d829aca01a5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23f6821f" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p><!--kg-card-end: html-->
+	<p>创建列表后，您可以在任何 WAF 规则表达式中使用它。这一功能对<a href="https://blog.cloudflare.com/account-waf">帐户 WAF</a> 用户大有用处，因为他们可以在仅与一组主机匹配的流量上运行托管或自定义规则集。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/08/image1-3.png" class="kg-image" alt="Use of hostname lists in the filter of a custom ruleset (available to Account-level WAF users)." loading="lazy" width="1999" height="1246">
+		<figcaption><em>在自定义规则集过滤器中使用主机名列表（对帐户级 WAF 用户可用）。</em></figcaption>
+	</figure>
+	<p>主机名列表对 SSL for SaaS 用户大有用处，因为它们可以限制特定规则或规则集在部分主机上运行。该列表可以通过编程方式更新（通过 API），以便在主机加入到帐户时添加或删除主机。</p>
+	<p>关于列表需要了解的一些事项：您可以将域和子域添加到一个列表，并且一个域不会自动匹配子域。例如，如果您将 example.com 添加到列表中并在自定义规则中使用它来阻止流量，则来自 api.example.com 的请求将不会匹配这条规则。主机名列表接受使用“<code>*</code>”通配符来包含子域。例如，将“<code>*.example.com</code>”添加到列表中将匹配“<code>api.example.com</code>”，但不会匹配“example.com”。最后，“<code>example.com/path/subfolder</code>”不是有效的条目——我们正在为此用例构建字符串列表（更多内容见下文）。</p>
+	<h3 id="asn">ASN</h3>
+	<p><a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system">自治系统</a> (AS) 是具有统一路由策略的大型网络或网络组。每一个连接到互联网的设备都连接到一个 AS。将 AS 想象为一个城镇的邮局，而 IP 则是一个家庭的地址。ASN 不像 IP 那样轮换，这使得 ASN 在管理较大部分 IP 空间时成为更好的选择。通常，每个 AS 由单个大型组织运营，例如互联网服务提供商、大型企业技术公司或政府机构。</p>
+	<p>您可以使用自治系统编号列表来管理来自互联网服务提供商和云提供商的流量，这些提供商可能托管生成自动流量的机器人。使用 IP 不太实用，因为地址范围太广并且变化非常频繁。请注意，虽然 ASN 在这种情况下很有用，但应谨慎使用，因为阻止错误的 ASN 可能会导致大范围的 IP 受到影响。</p>
+	<h3 id="%E6%88%91%E5%8F%AF%E4%BB%A5%E6%8B%A5%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%88%97%E8%A1%A8%EF%BC%9F">我可以拥有多少个列表？</h3>
+	<p>每个 Enterprise 计划帐户最多可以创建 10 个自定义列表，所有列表共享总共 10,000 个项目。当至少购买了 1 个 Enterprise 计划时，帐户将被视为 Enterprise 帐户。配额在所有数据类型（IP、ASN 和主机名）之间共享，并且在帐户级别定义，因此您可以在所有应用程序中使用您的列表。</p>
+	<p>例如，拥有一个（或多个）Enterprise 计划的帐户可以拥有 8 个 IP 列表（每个列表包含 1,000 个项目）、一个包含 1,700 个条目的主机名列表，以及一个包含 300 个 ASN 的列表；此时无法再添加更多列表或项目。 </p>
+	<p>Enterprise 客户可以联系客户团队增加配额。</p>
+	<p>目前，Free、Professional 和 Business 计划帐户只能访问 IP 列表。</p>
+	<h3 id="%E6%88%91%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%93%AA%E9%87%8C%E4%BD%BF%E7%94%A8%E5%AE%83%E4%BB%AC%EF%BC%9F">我可以在哪里使用它们？</h3>
+	<p>下表总结了可用的自定义列表类型以及它们可用于哪些字段。自治系统编号和主机名列表可从基于<a href="https://developers.cloudflare.com/ruleset-engine">规则集</a>引擎构建的任何 WAF 产品访问，包括自定义、速率限制和托管规则。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">列表类型</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">可使用列表的规则字段（仪表板）</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">可使用列表的 API 字段</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IP 列表</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IP 源地址</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ip.src</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">主机名列表</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">域名／子域名</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">http.host</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">自治系统编号列表</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ASN</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ip.src.asnum</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%9A%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%AA%E6%9D%A5%EF%BC%88%E5%8D%B3%E5%B0%86%E6%8E%A8%E5%87%BA%EF%BC%89">字符串：列表的未来（即将推出）</h3>
+	<p>列表的下一步是超灵活的字符串类型。您将能够将其用于标头、cookie、路径、查询、JSON 正文字段、用户代理、JA3、MIME 类型等字段。对于每个条目，您将能够指定不同的匹配运算符，例如“exact match”、“start with”、“ends with”或“contains”。</p>
+	<p>常见应用包括列出您想要阻止的所有用户代理、列出您想要限制访问的 URL 等等。</p>
+	<p>更复杂的用例包括创建适用于可使用 cookie、API 密钥或会话 ID 识别的一组用户的不同速率限制规则。字符串列表还允许您收集已知恶意机器人的 JA3 指纹。</p>
+	<p>我们仍在研究字符串列表，并将在未来几个月内发布。同时，如果您想开始使用我们新的和改进的列表，您今天就可以直接进入仪表板。</p>
+</div>
