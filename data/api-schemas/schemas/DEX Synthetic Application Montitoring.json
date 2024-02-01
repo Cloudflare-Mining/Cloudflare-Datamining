@@ -322,7 +322,7 @@
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
 		"description": "List details for devices using WARP",
-		"operationId": "dex-fleet-status-live-devices",
+		"operationId": "dex-fleet-status-devices",
 		"parameters": [
 			{
 				"in": "path",
