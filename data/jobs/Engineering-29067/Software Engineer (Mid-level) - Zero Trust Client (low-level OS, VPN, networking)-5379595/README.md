@@ -5,35 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Remote Mexico</p>
-<p><strong>About the Team</strong></p>
-<p>The Corporate Finance team is responsible for enterprise level planning, budgeting, forecasting, analysis and capital allocation. As an analyst on this highly strategic &amp; visible team this individual will drive partnership with Cloudflare’s G&amp;A organizations.&nbsp;The ideal candidate possesses excellent analytical, critical reasoning, interpersonal, communication, influencing and leadership skills and is passionate about both problem solving as well as building high quality repeatable processes that scale with our rapid growth.</p>
-<p><strong>What you'll do</strong></p>
+<h1>Software Engineer (Mid-level) - Zero Trust Client (low-level OS, VPN, networking)</h1>
+<h2><span style="font-weight: 400;">What you'll do</span></h2>
+<p><span style="font-weight: 400;">We’re looking for a Software Engineer to join our&nbsp;</span><a href="https://www.cloudflare.com/zero-trust/"><span style="font-weight: 400;">Zero Trust</span></a><span style="font-weight: 400;"> team. You will be working on the </span><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/"><span style="font-weight: 400;">Zero Trust desktop client</span></a><span style="font-weight: 400;">, which protects corporate devices by securely and privately sending traffic from those devices to Cloudflare’s global network, which can apply advanced web filtering and advanced Zero Trust policies.</span></p>
+<p><span style="font-weight: 400;">In your role, you will predominantly be using </span><strong>Rust</strong><span style="font-weight: 400;"> alongside platform-native languages &amp; APIs to implement high-performance networking code that runs on multiple desktop platforms. You’ll be expected to </span><strong>improve the code quality</strong><span style="font-weight: 400;"> and to build solid, </span><strong>testable, </strong><span style="font-weight: 400;">and</span><strong> well-documented</strong><span style="font-weight: 400;"> foundations. You will be most successful in this role if you have a good understanding of </span><strong>operating system concepts</strong><span style="font-weight: 400;"> (virtual memory, multi-threading, process lifecycle, etc.) and <strong>networking concepts &amp; protocols</strong> (VPNs, firewalls, TCP</span><span style="font-weight: 400;">/IP, UDP, DNS, QUIC, H/3, proxying, etc.). You will also have to interact with other languages, such as Swift, C#, C, and python.</span></p>
+<p><span style="font-weight: 400;">As a Software Engineer, you will be expected to make significant contributions to the design and implementation of major development projects, working closely with our product managers and other teams to implement customer-impacting features. You will work on stimulating problems born out of the scale of our deployment, and the stringent quality, performance, and security requirements of our product.</span></p>
+<h2><span style="font-weight: 400;">Examples of desirable skills, knowledge, and experience</span></h2>
 <ul>
-	<li>Business Planning - Lead the business through the quarterly, annual, and long-range planning processes to optimize resource allocation and support Corporate FP&amp;A process and deadlines</li>
-	<li>Financial Analysis &amp; Modeling - Adds value by integrating business acumen and appropriate financial analytical methods to deliver insights and drive action</li>
-	<li>Business Partnership &amp; Communication - Build and maintain relationships with functional managers to understand drivers, trends, opportunities, and to share insights and recommendations</li>
-	<li>Process Excellence - Partner with Accounting to ensure a timely and accurate monthly close process.&nbsp; Identify opportunities for process improvement, automate financial reports, and leverage technology to solve business problems, partnering with internal technical teams.&nbsp; Be a key stakeholder in the Anaplan implementation</li>
-	<li>This is an individual contributor role reporting to the Senior Finance Manager for G&amp;A functions</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent programming skills, with experience writing very </span><strong>high-quality</strong><span style="font-weight: 400;"> and </span><strong>low-complexity</strong><span style="font-weight: 400;"> code with thorough documentation.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience writing </span><strong>easily-testable </strong><span style="font-weight: 400;">and</span><strong> thoroughly-tested code</strong><span style="font-weight: 400;"> (e.g. using dependency injection with the right abstractions)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with </span><strong>systems programming</strong><span style="font-weight: 400;"> and familiarity with </span><strong>core OS concepts</strong><span style="font-weight: 400;"> of one or more desktop OSes (macOS, Windows, Linux)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Great experience using </span><strong>lower-level languages</strong><span style="font-weight: 400;">, such as Rust, C, C++</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Very comfortable writing </span><strong>multithreaded, asynchronous</strong><span style="font-weight: 400;"> code</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience with </span><strong>debugging network-related&nbsp;</strong><strong>problems</strong>, especially on desktop devices</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">An understanding of how </span><strong>VPN technologies</strong><span style="font-weight: 400;"> work, and the trade-offs between privacy, security, and anonymity</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good understanding of, and experience with, </span><strong>security protocols</strong><span style="font-weight: 400;"> and standards</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathetic, proactive, and constructive </span><strong>communication skills</strong><span style="font-weight: 400;">, verbal and written</span></li>
 </ul>
-<p>This role is critical in helping Cloudflare achieve and exceed its growth and profitability goals. You will primarily focus on supporting our G&amp;A organization, providing visibility on all things financial to key stakeholders, surfacing new insights and improving processes. The ideal candidate is highly analytical, able to communicate financial insights and recommend appropriate actions. This role would be remote and would be based in Mexico. The role might involve travel to the US on a quarterly/ bi-annual basis.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Min. 3 years of experience as a Financial Analyst, total of at least 5 years of financial experience&nbsp;</li>
-	<li>Bachelor's degree (MBA preferred)</li>
-	<li>Prior financial analyst experience working in a multinational/ global company highly preferrable</li>
-	<li>Prior G&amp;A finance/ finance business partner experience preferred, not mandatory</li>
-	<li>Financial Modeling: High Proficiency with MS Excel and Google Sheets; ability to build thoughtful, complex and auditable financial models</li>
-	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-	<li>Strong partnering capabilities, with the ability to influence business partners without direct authority and to appropriately push back when required.</li>
-	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
-	<li>Tools &amp; Systems: Proficiency with Enterprise Financial Planning Tools &amp; Systems; experience with Anaplan, Netsuite, Workday a plus</li>
-	<li>Good working knowledge of US GAAP required</li>
-	<li>Advanced/ working proficiency with English mandatory both written and verbal.</li>
-</ul>
-<p><span style="text-decoration: underline;"><em><strong>***Please submit resume in English only.&nbsp;</strong></em></span></p>
-<p><span style="text-decoration: underline;"><em><strong>**This position is based in&nbsp;Mexico and is applicable only to Mexican Citizens**</strong></em></span></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
