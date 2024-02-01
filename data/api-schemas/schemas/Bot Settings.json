@@ -1,30 +1,17 @@
 {
-	"GET /zones/{zone_identifier}/bot_management": {
+	"GET /zones/{zone_id}/bot_management": {
 		"description": "Retrieve a zone's Bot Management Config",
 		"operationId": "bot-management-for-a-zone-get-config",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "header",
-				"name": "Cloudflare-Version",
-				"schema": {
-					"description": "Header used to control which version of the API to use.\nNote: Only the 2.0.0 version is documented. The older 1.0.0 version is deprecated and will soon be removed.\n",
-					"enum": [
-						"2.0.0",
-						"1.0.0"
-					],
-					"example": "2.0.0",
 					"type": "string"
 				}
 			}
@@ -783,32 +770,19 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/bot_management": {
+	"PUT /zones/{zone_id}/bot_management": {
 		"description": "Updates the Bot Management configuration for a zone.\n\nThis API is used to update:\n- **Bot Fight Mode**\n- **Super Bot Fight Mode**\n- **Bot Management for Enterprise**\n\nSee [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans\n",
 		"operationId": "bot-management-for-a-zone-update-config",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"readOnly": true,
-					"type": "string"
-				}
-			},
-			{
-				"in": "header",
-				"name": "Cloudflare-Version",
-				"schema": {
-					"description": "Header used to control which version of the API to use.\nNote: Only the 2.0.0 version is documented. The older 1.0.0 version is deprecated and will soon be removed.\n",
-					"enum": [
-						"2.0.0",
-						"1.0.0"
-					],
-					"example": "2.0.0",
 					"type": "string"
 				}
 			}
