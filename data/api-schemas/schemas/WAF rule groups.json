@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups": {
+	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/groups": {
 		"description": "Fetches the WAF rule groups in a WAF package.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-rule-groups-list-waf-rule-groups",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "package_identifier",
+				"name": "package_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of a WAF package.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -668,13 +668,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups/{identifier}": {
+	"GET /zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}": {
 		"description": "Fetches the details of a WAF rule group.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-rule-groups-get-a-waf-rule-group",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "group_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of a WAF package.",
@@ -686,7 +686,7 @@
 			},
 			{
 				"in": "path",
-				"name": "package_identifier",
+				"name": "package_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of a WAF package.",
@@ -698,7 +698,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1044,13 +1044,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups/{identifier}": {
+	"PATCH /zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}": {
 		"description": "Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group.\n\n**Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
 		"operationId": "waf-rule-groups-update-a-waf-rule-group",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "group_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of a WAF package.",
@@ -1062,7 +1062,7 @@
 			},
 			{
 				"in": "path",
-				"name": "package_identifier",
+				"name": "package_id",
 				"required": true,
 				"schema": {
 					"description": "The unique identifier of a WAF package.",
@@ -1074,7 +1074,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
