@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/schedules": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
 		"description": "Fetches Cron Triggers for a Worker.",
 		"operationId": "worker-cron-trigger-get-cron-triggers",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -341,6 +341,9 @@
 		},
 		"security": [
 			{
+				"api_token": []
+			},
+			{
 				"api_email": [],
 				"api_key": []
 			}
@@ -355,7 +358,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/scripts/{script_name}/schedules": {
+	"PUT /accounts/{account_id}/workers/scripts/{script_name}/schedules": {
 		"description": "Updates Cron Triggers for a Worker.",
 		"operationId": "worker-cron-trigger-update-cron-triggers",
 		"parameters": [
@@ -372,7 +375,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -706,6 +709,9 @@
 			}
 		},
 		"security": [
+			{
+				"api_token": []
+			},
 			{
 				"api_email": [],
 				"api_key": []

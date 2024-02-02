@@ -1,12 +1,12 @@
 {
-	"GET /zones/{zone_identifier}/workers/script/bindings": {
+	"GET /zones/{zone_id}/workers/script/bindings": {
 		"deprecated": true,
 		"description": "List the bindings for a Workers script.",
 		"operationId": "worker-binding-(-deprecated)-list-bindings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

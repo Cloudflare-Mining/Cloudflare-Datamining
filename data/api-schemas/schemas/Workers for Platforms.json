@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
+	"DELETE /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"description": "Delete a worker from a Workers for Platforms namespace. This call has no response body on a successful delete.",
 		"operationId": "namespace-worker-script-delete-worker",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -85,13 +85,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
+	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"description": "Fetch information about a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-script-worker-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -423,13 +423,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
+	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"description": "Fetch script content from a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-get-script-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -575,13 +575,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
+	"GET /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"description": "Get script settings from a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-get-script-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1344,13 +1344,13 @@
 			]
 		}
 	},
-	"PATCH /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
+	"PATCH /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings": {
 		"description": "Patch script metadata, such as bindings",
 		"operationId": "namespace-worker-patch-script-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2740,13 +2740,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
+	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}": {
 		"description": "Upload a worker module to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-script-upload-worker-module",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3468,13 +3468,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
+	"PUT /accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/content": {
 		"description": "Put script content for a script uploaded to a Workers for Platforms namespace.",
 		"operationId": "namespace-worker-put-script-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

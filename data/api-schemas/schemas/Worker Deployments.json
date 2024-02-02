@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_identifier}/workers/deployments/by-script/{script_identifier}": {
+	"GET /accounts/{account_id}/workers/deployments/by-script/{script_id}": {
 		"operationId": "worker-deployments-list-deployments",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "script_identifier",
+				"name": "script_id",
 				"required": true,
 				"schema": {
 					"example": "8ee82b3a2c0f42928b8f14dae4a97121",
@@ -15,7 +15,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -447,12 +447,12 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/deployments/by-script/{script_identifier}/detail/{deployment_identifier}": {
+	"GET /accounts/{account_id}/workers/deployments/by-script/{script_id}/detail/{deployment_id}": {
 		"operationId": "worker-deployments-get-deployment-detail",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_identifier",
+				"name": "deployment_id",
 				"required": true,
 				"schema": {
 					"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
@@ -463,7 +463,7 @@
 			},
 			{
 				"in": "path",
-				"name": "script_identifier",
+				"name": "script_id",
 				"required": true,
 				"schema": {
 					"example": "8ee82b3a2c0f42928b8f14dae4a97121",
@@ -474,7 +474,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/workers/subdomain": {
+	"GET /accounts/{account_id}/workers/subdomain": {
 		"description": "Returns a Workers subdomain for an account.",
 		"operationId": "worker-subdomain-get-subdomain",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -321,13 +321,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/subdomain": {
+	"PUT /accounts/{account_id}/workers/subdomain": {
 		"description": "Creates a Workers subdomain for an account.",
 		"operationId": "worker-subdomain-create-subdomain",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

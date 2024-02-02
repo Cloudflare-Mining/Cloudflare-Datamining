@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/workers/queues/{name}": {
+	"DELETE /accounts/{account_id}/workers/queues/{name}": {
 		"description": "Deletes a queue.",
 		"operationId": "queue-delete-queue",
 		"parameters": [
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -412,7 +412,7 @@
 			]
 		}
 	},
-	"DELETE /accounts/{account_identifier}/workers/queues/{name}/consumers/{consumer_name}": {
+	"DELETE /accounts/{account_id}/workers/queues/{name}/consumers/{consumer_name}": {
 		"description": "Deletes the consumer for a queue.",
 		"operationId": "queue-delete-queue-consumer",
 		"parameters": [
@@ -436,7 +436,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -834,13 +834,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/queues": {
+	"GET /accounts/{account_id}/workers/queues": {
 		"description": "Returns the queues owned by an account.",
 		"operationId": "queue-list-queues",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1390,7 +1390,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/queues/{name}": {
+	"GET /accounts/{account_id}/workers/queues/{name}": {
 		"description": "Get information about a specific queue.",
 		"operationId": "queue-queue-details",
 		"parameters": [
@@ -1405,7 +1405,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1867,7 +1867,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/queues/{name}/consumers": {
+	"GET /accounts/{account_id}/workers/queues/{name}/consumers": {
 		"description": "Returns the consumers for a queue.",
 		"operationId": "queue-list-queue-consumers",
 		"parameters": [
@@ -1882,7 +1882,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2430,13 +2430,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/workers/queues": {
+	"POST /accounts/{account_id}/workers/queues": {
 		"description": "Creates a new queue.",
 		"operationId": "queue-create-queue",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2886,7 +2886,7 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/workers/queues/{name}/consumers": {
+	"POST /accounts/{account_id}/workers/queues/{name}/consumers": {
 		"description": "Creates a new consumer for a queue.",
 		"operationId": "queue-create-queue-consumer",
 		"parameters": [
@@ -2901,7 +2901,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3400,7 +3400,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/queues/{name}": {
+	"PUT /accounts/{account_id}/workers/queues/{name}": {
 		"description": "Updates a queue.",
 		"operationId": "queue-update-queue",
 		"parameters": [
@@ -3415,7 +3415,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3865,7 +3865,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/queues/{name}/consumers/{consumer_name}": {
+	"PUT /accounts/{account_id}/workers/queues/{name}/consumers/{consumer_name}": {
 		"description": "Updates the consumer for a queue, or creates one if it does not exist.",
 		"operationId": "queue-update-queue-consumer",
 		"parameters": [
@@ -3889,7 +3889,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,12 +1,12 @@
 {
-	"DELETE /zones/{zone_identifier}/workers/script": {
+	"DELETE /zones/{zone_id}/workers/script": {
 		"deprecated": true,
 		"description": "Delete your Worker. This call has no response body on a successful delete.",
 		"operationId": "worker-script-(-deprecated)-delete-worker",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -56,14 +56,14 @@
 			"id": "worker_script_deprecation"
 		}
 	},
-	"GET /zones/{zone_identifier}/workers/script": {
+	"GET /zones/{zone_id}/workers/script": {
 		"deprecated": true,
 		"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
 		"operationId": "worker-script-(-deprecated)-download-worker",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -115,14 +115,14 @@
 			"id": "worker_script_deprecation"
 		}
 	},
-	"PUT /zones/{zone_identifier}/workers/script": {
+	"PUT /zones/{zone_id}/workers/script": {
 		"deprecated": true,
 		"description": "Upload a worker, or a new version of a worker.",
 		"operationId": "worker-script-(-deprecated)-upload-worker",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

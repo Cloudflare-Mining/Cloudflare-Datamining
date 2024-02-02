@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/workers/scripts/{script_name}": {
+	"DELETE /accounts/{account_id}/workers/scripts/{script_name}": {
 		"description": "Delete your worker. This call has no response body on a successful delete.",
 		"operationId": "worker-script-delete-worker",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -74,13 +74,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts": {
+	"GET /accounts/{account_id}/workers/scripts": {
 		"description": "Fetch a list of uploaded workers.",
 		"operationId": "worker-script-list-workers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -546,7 +546,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}": {
 		"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
 		"operationId": "worker-script-download-worker",
 		"parameters": [
@@ -563,7 +563,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -615,13 +615,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/content/v2": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/content/v2": {
 		"description": "Fetch script content only",
 		"operationId": "worker-script-get-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -756,13 +756,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/settings": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"description": "Get script metadata and config, such as bindings or usage model",
 		"operationId": "worker-script-get-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1514,7 +1514,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/usage-model": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"description": "Fetches the Usage Model for a given Worker.",
 		"operationId": "worker-script-fetch-usage-model",
 		"parameters": [
@@ -1531,7 +1531,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1847,13 +1847,13 @@
 			]
 		}
 	},
-	"PATCH /accounts/{account_identifier}/workers/scripts/{script_name}/settings": {
+	"PATCH /accounts/{account_id}/workers/scripts/{script_name}/settings": {
 		"description": "Patch script metadata or config, such as bindings or usage model",
 		"operationId": "worker-script-patch-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3237,7 +3237,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/scripts/{script_name}": {
+	"PUT /accounts/{account_id}/workers/scripts/{script_name}": {
 		"description": "Upload a worker module.",
 		"operationId": "worker-script-upload-worker-module",
 		"parameters": [
@@ -3254,7 +3254,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3965,13 +3965,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/scripts/{script_name}/content": {
+	"PUT /accounts/{account_id}/workers/scripts/{script_name}/content": {
 		"description": "Put script content without touching config or metadata",
 		"operationId": "worker-script-put-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4366,7 +4366,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/scripts/{script_name}/usage-model": {
+	"PUT /accounts/{account_id}/workers/scripts/{script_name}/usage-model": {
 		"description": "Updates the Usage Model for a given Worker. Requires a Workers Paid subscription.",
 		"operationId": "worker-script-update-usage-model",
 		"parameters": [
@@ -4383,7 +4383,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

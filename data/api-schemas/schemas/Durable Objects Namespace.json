@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/workers/durable_objects/namespaces": {
+	"GET /accounts/{account_id}/workers/durable_objects/namespaces": {
 		"description": "Returns the Durable Object namespaces owned by an account.",
 		"operationId": "durable-objects-namespace-list-namespaces",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -425,7 +425,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/durable_objects/namespaces/{id}/objects": {
+	"GET /accounts/{account_id}/workers/durable_objects/namespaces/{id}/objects": {
 		"description": "Returns the Durable Objects in a given namespace.",
 		"operationId": "durable-objects-namespace-list-objects",
 		"parameters": [
@@ -441,7 +441,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

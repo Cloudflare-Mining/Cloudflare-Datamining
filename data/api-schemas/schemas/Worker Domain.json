@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/workers/domains/{domain_identifier}": {
+	"DELETE /accounts/{account_id}/workers/domains/{domain_id}": {
 		"description": "Detaches a Worker from a zone and hostname.",
 		"operationId": "worker-domain-detach-from-domain",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "domain_identifier",
+				"name": "domain_id",
 				"required": true,
 				"schema": {
 					"description": "Identifer of the Worker Domain.",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "9a7806061c88ada191ed06f989cc3dac"
@@ -60,13 +60,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/domains": {
+	"GET /accounts/{account_id}/workers/domains": {
 		"description": "Lists all Worker Domains for an account.",
 		"operationId": "worker-domain-list-domains",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "9a7806061c88ada191ed06f989cc3dac"
@@ -92,7 +92,7 @@
 			},
 			{
 				"in": "query",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"schema": {
 					"description": "Identifier of the zone.",
 					"example": "593c9c94de529bbbfaac7c53ced0447d"
@@ -480,13 +480,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/domains/{domain_identifier}": {
+	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
 		"description": "Gets a Worker domain.",
 		"operationId": "worker-domain-get-a-domain",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "domain_identifier",
+				"name": "domain_id",
 				"required": true,
 				"schema": {
 					"description": "Identifer of the Worker Domain.",
@@ -495,7 +495,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "9a7806061c88ada191ed06f989cc3dac"
@@ -859,13 +859,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/domains": {
+	"PUT /accounts/{account_id}/workers/domains": {
 		"description": "Attaches a Worker to a zone and hostname.",
 		"operationId": "worker-domain-attach-to-domain",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "9a7806061c88ada191ed06f989cc3dac"

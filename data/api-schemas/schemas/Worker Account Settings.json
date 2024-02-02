@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/workers/account-settings": {
+	"GET /accounts/{account_id}/workers/account-settings": {
 		"description": "Fetches Worker account settings for an account.",
 		"operationId": "worker-account-settings-fetch-worker-account-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -327,13 +327,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/account-settings": {
+	"PUT /accounts/{account_id}/workers/account-settings": {
 		"description": "Creates Worker account settings for an account.",
 		"operationId": "worker-account-settings-create-worker-account-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

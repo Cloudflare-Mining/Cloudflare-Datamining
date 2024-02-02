@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/workers/scripts/{script_name}/tails/{id}": {
+	"DELETE /accounts/{account_id}/workers/scripts/{script_name}/tails/{id}": {
 		"description": "Deletes a tail from a Worker.",
 		"operationId": "worker-tail-logs-delete-tail",
 		"parameters": [
@@ -26,7 +26,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -317,7 +317,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/scripts/{script_name}/tails": {
+	"GET /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"description": "Get list of tails currently deployed on a Worker.",
 		"operationId": "worker-tail-logs-list-tails",
 		"parameters": [
@@ -334,7 +334,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -662,7 +662,7 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/workers/scripts/{script_name}/tails": {
+	"POST /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"description": "Starts a tail that receives logs and exception from a Worker.",
 		"operationId": "worker-tail-logs-start-tail",
 		"parameters": [
@@ -679,7 +679,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

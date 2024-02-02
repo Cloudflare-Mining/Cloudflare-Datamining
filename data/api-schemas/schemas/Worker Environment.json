@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/workers/services/{service_name}/environments/{environment_name}/content": {
+	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"description": "Get script content from a worker with an environment",
 		"operationId": "worker-environment-get-script-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -158,13 +158,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/workers/services/{service_name}/environments/{environment_name}/settings": {
+	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"description": "Get script settings from a worker with an environment",
 		"operationId": "worker-script-environment-get-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -925,13 +925,13 @@
 			]
 		}
 	},
-	"PATCH /accounts/{account_identifier}/workers/services/{service_name}/environments/{environment_name}/settings": {
+	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"description": "Patch script metadata, such as bindings",
 		"operationId": "worker-script-environment-patch-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2319,13 +2319,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/workers/services/{service_name}/environments/{environment_name}/content": {
+	"PUT /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"description": "Put script content from a worker with an environment",
 		"operationId": "worker-environment-put-script-content",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
