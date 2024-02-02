@@ -1,10 +1,10 @@
 {
-	"POST /accounts/{account_identifier}/intel/miscategorization": {
+	"POST /accounts/{account_id}/intel/miscategorization": {
 		"operationId": "miscategorization-create-miscategorization",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,5 +1,5 @@
 {
-	"GET /accounts/{account_identifier}/intel/asn/{asn}": {
+	"GET /accounts/{account_id}/intel/asn/{asn}": {
 		"operationId": "asn-intelligence-get-asn-overview",
 		"parameters": [
 			{
@@ -46,7 +46,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -385,7 +385,7 @@
 			"ASN Intelligence"
 		]
 	},
-	"GET /accounts/{account_identifier}/intel/asn/{asn}/subnets": {
+	"GET /accounts/{account_id}/intel/asn/{asn}/subnets": {
 		"operationId": "asn-intelligence-get-asn-subnets",
 		"parameters": [
 			{
@@ -398,7 +398,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

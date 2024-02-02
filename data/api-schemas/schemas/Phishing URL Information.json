@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_identifier}/brand-protection/url-info": {
+	"GET /accounts/{account_id}/brand-protection/url-info": {
 		"operationId": "phishing-url-information-get-results-for-a-url-scan",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
