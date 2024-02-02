@@ -574,6 +574,34 @@
 		"rowsWritten": "The number of rows your queries wrote.",
 		"writeQueries": "The number of write queries."
 	},
+	"AccountD1QueriesAdaptiveGroups": {
+		"__description": "Beta. D1 query metrics with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountD1QueriesAdaptiveGroupsAvg": {
+		"__description": "",
+		"queryDurationMs": "The average duration queries in D1 took, observed over the queried time period.",
+		"rowsRead": "The average number of rows scanned, observed over the queried time period.",
+		"rowsWritten": "The average number of rows written, observed over the queried time period.",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountD1QueriesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"databaseId": "The UUID of a D1 database",
+		"date": "D1 query sample timestamp",
+		"datetimeFifteenMinutes": "D1 query sample timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "D1 query sample timestamp, truncated to five minutes",
+		"datetimeHour": "D1 query sample timestamp, truncated to the hour",
+		"datetimeMinute": "D1 query sample timestamp, truncated to the minute",
+		"query": "The SQL query that ran on a D1 database, with parameterized values replaced with placeholders."
+	},
+	"AccountD1QueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountD1QueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountD1StorageAdaptiveGroups": {
 		"__description": "Beta. D1 storage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -3147,6 +3175,7 @@
 		"aiInferenceAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
+		"d1QueriesAdaptiveGroups": "",
 		"d1StorageAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
 		"dosdNetworkAnalyticsAdaptiveGroups": "",
@@ -5678,6 +5707,7 @@
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
+		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
 		"d1StorageAdaptiveGroups": "Beta. D1 storage with adaptive sampling",
 		"dosdAttackAnalyticsGroups": "Attack analytics metadata for attacks detected by dosd",
 		"dosdNetworkAnalyticsAdaptiveGroups": "Network analytics data for dosd",
