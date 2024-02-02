@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_id}/r2/buckets/{bucket_id}": {
+	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Deletes an existing R2 bucket.",
 		"operationId": "r2-delete-bucket",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "bucket_id",
+				"name": "bucket_name",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket",
@@ -430,7 +430,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_id}/r2/buckets/{bucket_id}": {
+	"GET /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Gets metadata for an existing R2 bucket.",
 		"operationId": "r2-get-bucket",
 		"parameters": [
@@ -447,7 +447,7 @@
 			},
 			{
 				"in": "path",
-				"name": "bucket_id",
+				"name": "bucket_name",
 				"required": true,
 				"schema": {
 					"description": "Name of the bucket",
