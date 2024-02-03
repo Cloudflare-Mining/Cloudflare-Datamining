@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h4><strong>What we’re looking for</strong></h4>
-<p><span style="font-weight: 400;">We are looking for a Senior Program Manager who can effectively drive strategic projects, design and implement scalable, key programs, and manage tools and processes for marketing-wide goals. This role will have high visibility and involvement in both strategic and operational aspects of marketing and organizational initiatives. Further, we are looking for someone with the experience and leadership skills to lead the execution of highly cross-functional marketing activities to support the tremendous growth to Cloudflare’s business.</span></p>
+<p><span style="font-weight: 400;">We are looking for a Head of Strategy &amp; Planning Program Management who can effectively drive strategic projects, design and implement scalable, key programs, and manage tools and processes for marketing-wide goals. This role will have high visibility and involvement in both strategic and operational aspects of marketing and organizational initiatives. Further, we are looking for someone with the experience and leadership skills to lead the execution of highly cross-functional marketing activities to support the tremendous growth to Cloudflare’s business.</span></p>
 <p><strong>Location: Remote, Austin or San Francisco&nbsp;</strong></p>
 <p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
