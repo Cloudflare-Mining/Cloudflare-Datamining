@@ -386,6 +386,39 @@
 			]
 		},
 		{
+			"title": "navigation.account.group_title.mcn",
+			"url": "/",
+			"labels": [
+				"separator"
+			],
+			"iconType": "internet-browser"
+		},
+		{
+			"title": "navigation.account.mcn",
+			"url": "/mcn/overview",
+			"additionalMatchUrls": [
+				"/mcn",
+				"/pages"
+			],
+			"iconType": "trace",
+			"hasPermission": null,
+			"testId": "sidenav-mcn-pages-link",
+			"pages": [
+				{
+					"title": "navigation.account.mcn.overview",
+					"url": "/mcn/overview"
+				},
+				{
+					"title": "navigation.account.mcn.cloudspecs",
+					"url": "/mcn/cloudspec"
+				},
+				{
+					"title": "navigation.account.mcn.resources",
+					"url": "/mcn/resources"
+				}
+			]
+		},
+		{
 			"title": "navigation.account.group_title.developer_platform",
 			"url": "/",
 			"labels": [
@@ -495,7 +528,7 @@
 		},
 		{
 			"title": "navigation.account.r2",
-			"url": "/r2",
+			"url": "/r2/overview",
 			"iconType": "r2",
 			"testId": "sidenav-r2-link",
 			"hasPermission": null,

@@ -171,7 +171,7 @@ const navigation = {
 		iconType: "trace",
 		testId: "trace-link",
 		labels: ["beta"],
-		hasPermission: L.T
+		hasPermission: N.T
 	}, {
 		title: "navigation.account.group_title.application_services",
 		url: "/",
@@ -294,6 +294,30 @@ const navigation = {
 			labels: ["external-link"]
 		}]
 	}, {
+		title: "navigation.account.group_title.mcn",
+		url: "/",
+		labels: ["separator"],
+		iconType: "internet-browser"
+	}, {
+		title: "navigation.account.mcn",
+		url: "/mcn/overview",
+		additionalMatchUrls: ["/mcn", "/pages"],
+		iconType: "trace",
+		hasPermission: T => ({
+			REDUX_LOGGER: void 0
+		}).MULTI_CLOUD_NETWORKING ? (0, a.iY)(T) : !1,
+		testId: "sidenav-mcn-pages-link",
+		pages: [{
+			title: "navigation.account.mcn.overview",
+			url: "/mcn/overview"
+		}, {
+			title: "navigation.account.mcn.cloudspecs",
+			url: "/mcn/cloudspec"
+		}, {
+			title: "navigation.account.mcn.resources",
+			url: "/mcn/resources"
+		}]
+	}, {
 		title: "navigation.account.group_title.developer_platform",
 		url: "/",
 		labels: ["separator"],
@@ -374,7 +398,7 @@ const navigation = {
 		}]
 	}, {
 		title: "navigation.account.r2",
-		url: "/r2",
+		url: "/r2/overview",
 		iconType: "r2",
 		testId: "sidenav-r2-link",
 		hasPermission: T => (0, a.iY)(T),
@@ -964,5 +988,5 @@ const navigation = {
 		title: "navigation.account.zero_trust.settings",
 		iconType: "cloudflare-zero-trust"
 	}],
-	support: x.G
+	support: L.G
 }

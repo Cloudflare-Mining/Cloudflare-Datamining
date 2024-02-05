@@ -237,6 +237,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cor_cancelled_notification: "Registrant contact change request was cancelled.",
 	cor_resent_email: "Email Sent",
 	cor_resend_email: "Resend Email",
+	cor_cancel_error_message: "Unable to cancel a partially approved change of registrant request for %{domainName}",
 	renewal_info: {
 		expires_on: (0, e.d)`<0>Expires on</0><1>${"expiresOn"}</1>`,
 		renews_on: (0, e.d)`<0>Renews on</0><1>${"renewsOn"}</1>`,
