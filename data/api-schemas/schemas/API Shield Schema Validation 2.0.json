@@ -406,7 +406,7 @@
 						"schema": {
 							"properties": {
 								"validation_default_mitigation_action": {
-									"description": "The default mitigation action used when there is no mitigation action  defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely  for the request when there is no mitigation action defined on the operation\n",
+									"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
 									"enum": [
 										"none",
 										"log",
@@ -2070,7 +2070,7 @@
 					"schema": {
 						"properties": {
 							"validation_default_mitigation_action": {
-								"description": "The default mitigation action used when there is no mitigation action  defined on the operation\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely  for the request when there is no mitigation action defined on the operation       \n\n`null` will have no effect. \n",
+								"description": "The default mitigation action used when there is no mitigation action defined on the operation\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n\n`null` will have no effect.\n",
 								"enum": [
 									"none",
 									"log",
@@ -2082,7 +2082,7 @@
 								"type": "string"
 							},
 							"validation_override_mitigation_action": {
-								"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n\nTo clear any override, use the special value `disable_override`\n\n`null` will have no effect. \n",
+								"description": "When set, this overrides both zone level and operation level mitigation actions.\n\n  - `none` will skip running schema validation entirely for the request\n\nTo clear any override, use the special value `disable_override`\n\n`null` will have no effect.\n",
 								"enum": [
 									"none",
 									"disable_override",
@@ -2106,7 +2106,7 @@
 						"schema": {
 							"properties": {
 								"validation_default_mitigation_action": {
-									"description": "The default mitigation action used when there is no mitigation action  defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely  for the request when there is no mitigation action defined on the operation\n",
+									"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
 									"enum": [
 										"none",
 										"log",
@@ -3173,7 +3173,7 @@
 					"schema": {
 						"properties": {
 							"validation_default_mitigation_action": {
-								"description": "The default mitigation action used when there is no mitigation action  defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely  for the request when there is no mitigation action defined on the operation\n",
+								"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
 								"enum": [
 									"none",
 									"log",
@@ -3210,7 +3210,7 @@
 						"schema": {
 							"properties": {
 								"validation_default_mitigation_action": {
-									"description": "The default mitigation action used when there is no mitigation action  defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely  for the request when there is no mitigation action defined on the operation\n",
+									"description": "The default mitigation action used when there is no mitigation action defined on the operation\n\nMitigation actions are as follows:\n\n  * `log` - log request when request does not conform to schema\n  * `block` - deny access to the site when request does not conform to schema\n\nA special value of of `none` will skip running schema validation entirely for the request when there is no mitigation action defined on the operation\n",
 									"enum": [
 										"none",
 										"log",
