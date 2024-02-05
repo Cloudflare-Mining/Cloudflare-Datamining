@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/dnssec": {
+	"DELETE /zones/{zone_id}/dnssec": {
 		"description": "Delete DNSSEC.",
 		"operationId": "dnssec-delete-dnssec-records",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -360,13 +360,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/dnssec": {
+	"GET /zones/{zone_id}/dnssec": {
 		"description": "Details about DNSSEC status and configuration.",
 		"operationId": "dnssec-dnssec-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -901,13 +901,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/dnssec": {
+	"PATCH /zones/{zone_id}/dnssec": {
 		"description": "Enable or disable DNSSEC.",
 		"operationId": "dnssec-edit-dnssec-status",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
