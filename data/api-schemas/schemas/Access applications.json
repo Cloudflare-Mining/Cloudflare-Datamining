@@ -441,6 +441,11 @@
 															},
 															{
 																"properties": {
+																	"allow_authenticate_via_warp": {
+																		"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																		"example": true,
+																		"type": "boolean"
+																	},
 																	"allowed_idps": {
 																		"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																		"items": {
@@ -855,6 +860,11 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"allow_authenticate_via_warp": {
+																				"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"allowed_idps": {
 																				"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																				"items": {
@@ -1098,6 +1108,11 @@
 																"allOf": [
 																	{
 																		"properties": {
+																			"allow_authenticate_via_warp": {
+																				"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"allowed_idps": {
 																				"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																				"items": {
@@ -2011,6 +2026,11 @@
 														},
 														{
 															"properties": {
+																"allow_authenticate_via_warp": {
+																	"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"allowed_idps": {
 																	"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																	"items": {
@@ -2425,6 +2445,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -2668,6 +2693,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -3817,6 +3847,11 @@
 									},
 									{
 										"properties": {
+											"allow_authenticate_via_warp": {
+												"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+												"example": true,
+												"type": "boolean"
+											},
 											"allowed_idps": {
 												"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 												"items": {
@@ -4231,6 +4266,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_authenticate_via_warp": {
+														"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -4474,6 +4514,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_authenticate_via_warp": {
+														"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -5240,6 +5285,11 @@
 																},
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -5654,6 +5704,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_authenticate_via_warp": {
+																					"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -5897,6 +5952,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_authenticate_via_warp": {
+																					"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -6561,6 +6621,11 @@
 														},
 														{
 															"properties": {
+																"allow_authenticate_via_warp": {
+																	"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"allowed_idps": {
 																	"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																	"items": {
@@ -6975,6 +7040,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -7218,6 +7288,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -8201,6 +8276,11 @@
 									},
 									{
 										"properties": {
+											"allow_authenticate_via_warp": {
+												"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+												"example": true,
+												"type": "boolean"
+											},
 											"allowed_idps": {
 												"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 												"items": {
@@ -8615,6 +8695,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_authenticate_via_warp": {
+														"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -8858,6 +8943,11 @@
 										"allOf": [
 											{
 												"properties": {
+													"allow_authenticate_via_warp": {
+														"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+														"example": true,
+														"type": "boolean"
+													},
 													"allowed_idps": {
 														"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 														"items": {
@@ -9624,6 +9714,11 @@
 																},
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -10038,6 +10133,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_authenticate_via_warp": {
+																					"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -10281,6 +10381,11 @@
 																	"allOf": [
 																		{
 																			"properties": {
+																				"allow_authenticate_via_warp": {
+																					"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"allowed_idps": {
 																					"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																					"items": {
@@ -10945,6 +11050,11 @@
 														},
 														{
 															"properties": {
+																"allow_authenticate_via_warp": {
+																	"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"allowed_idps": {
 																	"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																	"items": {
@@ -11359,6 +11469,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
@@ -11602,6 +11717,11 @@
 															"allOf": [
 																{
 																	"properties": {
+																		"allow_authenticate_via_warp": {
+																			"description": "When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"allowed_idps": {
 																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {

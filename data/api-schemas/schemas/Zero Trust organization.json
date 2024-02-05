@@ -120,6 +120,11 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"allow_authenticate_via_warp": {
+													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+													"example": "false",
+													"type": "boolean"
+												},
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization.",
 													"example": "test.cloudflareaccess.com",
@@ -208,6 +213,11 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"example": "720h",
+													"type": "string"
+												},
+												"warp_auth_session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+													"example": "24h",
 													"type": "string"
 												}
 											},
@@ -346,6 +356,11 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"allow_authenticate_via_warp": {
+								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+								"example": "false",
+								"type": "boolean"
+							},
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization.",
 								"example": "test.cloudflareaccess.com",
@@ -408,6 +423,11 @@
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 								"example": "720h",
+								"type": "string"
+							},
+							"warp_auth_session_duration": {
+								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+								"example": "24h",
 								"type": "string"
 							}
 						},
@@ -524,6 +544,11 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"allow_authenticate_via_warp": {
+													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+													"example": "false",
+													"type": "boolean"
+												},
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization.",
 													"example": "test.cloudflareaccess.com",
@@ -612,6 +637,11 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"example": "720h",
+													"type": "string"
+												},
+												"warp_auth_session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+													"example": "24h",
 													"type": "string"
 												}
 											},
@@ -921,6 +951,11 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"allow_authenticate_via_warp": {
+								"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+								"example": "false",
+								"type": "boolean"
+							},
 							"auth_domain": {
 								"description": "The unique subdomain assigned to your Zero Trust organization.",
 								"example": "test.cloudflareaccess.com",
@@ -997,6 +1032,11 @@
 							"user_seat_expiration_inactive_time": {
 								"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 								"example": "720h",
+								"type": "string"
+							},
+							"warp_auth_session_duration": {
+								"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+								"example": "24h",
 								"type": "string"
 							}
 						}
@@ -1109,6 +1149,11 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"allow_authenticate_via_warp": {
+													"description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.",
+													"example": "false",
+													"type": "boolean"
+												},
 												"auth_domain": {
 													"description": "The unique subdomain assigned to your Zero Trust organization.",
 													"example": "test.cloudflareaccess.com",
@@ -1197,6 +1242,11 @@
 												"user_seat_expiration_inactive_time": {
 													"description": "The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.",
 													"example": "720h",
+													"type": "string"
+												},
+												"warp_auth_session_duration": {
+													"description": "The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.",
+													"example": "24h",
 													"type": "string"
 												}
 											},
