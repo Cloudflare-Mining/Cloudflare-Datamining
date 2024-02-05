@@ -654,7 +654,7 @@
 
 	function rr(e, r) {
 		var t, o = Ke(r.params, ae),
-			f = "h/".concat("b", "/"),
+			f = "h/".concat("g", "/"),
 			s = document.getElementById(e);
 		if (!s) {
 			v("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
@@ -750,7 +750,7 @@
 					switch (O.label) {
 						case 0:
 							if (i = d.params.sitekey, a = Vt(), !a) return h("Cannot determine Turnstile's embedded location, aborting clearance redemption."), o(d, c, !1), [2];
-							_ = "h/".concat("b", "/"), b = new URL(a), A = "https", E = "", S = "".concat(A, "://").concat(b.host, "/cdn-cgi/challenge-platform/").concat(_, "rc/").concat(l).concat(E), O.label = 1;
+							_ = "h/".concat("g", "/"), b = new URL(a), A = "https", E = "", S = "".concat(A, "://").concat(b.host, "/cdn-cgi/challenge-platform/").concat(_, "rc/").concat(l).concat(E), O.label = 1;
 						case 1:
 							return O.trys.push([1, 6, , 7]), [4, fetch(S, {
 								method: "POST",
@@ -968,7 +968,7 @@
 								cData: i.cData,
 								chlPageData: i.chlPageData,
 								rcV: i.rcV,
-								ch: "24864818",
+								ch: "ea25f566",
 								url: Vt(),
 								retry: i.params.retry,
 								"expiry-interval": i.params["expiry-interval"],
@@ -986,9 +986,7 @@
 										sL: document.scripts.length,
 										ssL: document.styleSheets.length,
 										mL: document.getElementsByTagName("meta").length,
-										t: Wt(document.title),
-										tL: document.getElementsByTagName("*").length,
-										lH: window.location.href
+										t: Wt(document.title)
 									}
 								},
 								turnstileAge: +Date.now() - y.turnstileLoadInitTime,
@@ -1105,7 +1103,7 @@
 					return
 				}
 				var a;
-				i.src = Ze(c, n.params.sitekey, n.params, (a = n.rcV) !== null && a !== void 0 ? a : U, ae, "b", Je(n)), tt(l), n.retryTimeout && window.clearTimeout(n.retryTimeout)
+				i.src = Ze(c, n.params.sitekey, n.params, (a = n.rcV) !== null && a !== void 0 ? a : U, ae, "g", Je(n)), tt(l), n.retryTimeout && window.clearTimeout(n.retryTimeout)
 			} else {
 				v("Widget ".concat(c, " to reset was not found."), 3331);
 				return
@@ -1269,7 +1267,7 @@
 						v("Turnstile Initialization Error ", 3606);
 						return
 					}
-					C.style.display = "none", C.style.border = "none", C.style.overflow = "hidden", C.setAttribute("src", Ze(P, E, a, U, ae, "b", Je(ct))), C.setAttribute("allow", "cross-origin-isolated; fullscreen"), C.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), C.id = B;
+					C.style.display = "none", C.style.border = "none", C.style.overflow = "hidden", C.setAttribute("src", Ze(P, E, a, U, ae, "g", Je(ct))), C.setAttribute("allow", "cross-origin-isolated; fullscreen"), C.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), C.id = B;
 					var Ne;
 					C.tabIndex = (Ne = a.tabindex) !== null && Ne !== void 0 ? Ne : 0, C.title = "Widget containing a Cloudflare security challenge", n.appendChild(C);
 					var ke, Yt = (ke = a["response-field"]) !== null && ke !== void 0 ? ke : !0;
