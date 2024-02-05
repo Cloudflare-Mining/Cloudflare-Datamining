@@ -101,14 +101,8 @@
 														},
 														"tools": {
 															"aJvt": {
-																"component": "facebook-pixel",
-																"defaultFields": {
-																	"testKey": "TEST123456"
-																},
-																"enabled": true,
-																"name": "Facebook Pixel",
-																"neoEvents": [
-																	{
+																"actions": {
+																	"hrnc": {
 																		"actionType": "pageview",
 																		"blockingTriggers": [],
 																		"data": {
@@ -119,7 +113,13 @@
 																			"Pageview"
 																		]
 																	}
-																],
+																},
+																"component": "facebook-pixel",
+																"defaultFields": {
+																	"testKey": "TEST123456"
+																},
+																"enabled": true,
+																"name": "Facebook Pixel",
 																"permissions": [
 																	"access_client_kv"
 																],
@@ -1039,12 +1039,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -1106,8 +1144,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -1177,12 +1214,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -1244,8 +1319,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -1512,14 +1586,8 @@
 														},
 														"tools": {
 															"aJvt": {
-																"component": "facebook-pixel",
-																"defaultFields": {
-																	"testKey": "TEST123456"
-																},
-																"enabled": true,
-																"name": "Facebook Pixel",
-																"neoEvents": [
-																	{
+																"actions": {
+																	"hrnc": {
 																		"actionType": "pageview",
 																		"blockingTriggers": [],
 																		"data": {
@@ -1530,7 +1598,13 @@
 																			"Pageview"
 																		]
 																	}
-																],
+																},
+																"component": "facebook-pixel",
+																"defaultFields": {
+																	"testKey": "TEST123456"
+																},
+																"enabled": true,
+																"name": "Facebook Pixel",
 																"permissions": [
 																	"access_client_kv"
 																],
@@ -2450,12 +2524,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -2517,8 +2629,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -2588,12 +2699,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -2655,8 +2804,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -2861,14 +3009,8 @@
 										},
 										"tools": {
 											"aJvt": {
-												"component": "facebook-pixel",
-												"defaultFields": {
-													"testKey": "TEST123456"
-												},
-												"enabled": true,
-												"name": "Facebook Pixel",
-												"neoEvents": [
-													{
+												"actions": {
+													"hrnc": {
 														"actionType": "pageview",
 														"blockingTriggers": [],
 														"data": {
@@ -2879,7 +3021,13 @@
 															"Pageview"
 														]
 													}
-												],
+												},
+												"component": "facebook-pixel",
+												"defaultFields": {
+													"testKey": "TEST123456"
+												},
+												"enabled": true,
+												"name": "Facebook Pixel",
 												"permissions": [
 													"access_client_kv"
 												],
@@ -3799,12 +3947,50 @@
 																	},
 																	{
 																		"properties": {
+																			"actions": {
+																				"additionalProperties": {
+																					"properties": {
+																						"actionType": {
+																							"description": "Tool event type",
+																							"type": "string"
+																						},
+																						"blockingTriggers": {
+																							"description": "List of blocking triggers IDs",
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"data": {
+																							"description": "Event payload",
+																							"type": "object"
+																						},
+																						"firingTriggers": {
+																							"description": "List of firing triggers IDs",
+																							"items": {
+																								"type": "string"
+																							},
+																							"minItems": 1,
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"actionType",
+																						"blockingTriggers",
+																						"firingTriggers",
+																						"data"
+																					],
+																					"type": "object"
+																				},
+																				"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																				"type": "object"
+																			},
 																			"component": {
 																				"description": "Tool's internal name",
 																				"type": "string"
 																			},
 																			"neoEvents": {
-																				"description": "List of actions configured on a tool",
+																				"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																				"items": {
 																					"properties": {
 																						"actionType": {
@@ -3866,8 +4052,7 @@
 																		"required": [
 																			"component",
 																			"settings",
-																			"permissions",
-																			"neoEvents"
+																			"permissions"
 																		]
 																	}
 																]
@@ -3937,12 +4122,50 @@
 																	},
 																	{
 																		"properties": {
+																			"actions": {
+																				"additionalProperties": {
+																					"properties": {
+																						"actionType": {
+																							"description": "Tool event type",
+																							"type": "string"
+																						},
+																						"blockingTriggers": {
+																							"description": "List of blocking triggers IDs",
+																							"items": {
+																								"type": "string"
+																							},
+																							"type": "array"
+																						},
+																						"data": {
+																							"description": "Event payload",
+																							"type": "object"
+																						},
+																						"firingTriggers": {
+																							"description": "List of firing triggers IDs",
+																							"items": {
+																								"type": "string"
+																							},
+																							"minItems": 1,
+																							"type": "array"
+																						}
+																					},
+																					"required": [
+																						"actionType",
+																						"blockingTriggers",
+																						"firingTriggers",
+																						"data"
+																					],
+																					"type": "object"
+																				},
+																				"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																				"type": "object"
+																			},
 																			"component": {
 																				"description": "Tool's internal name",
 																				"type": "string"
 																			},
 																			"neoEvents": {
-																				"description": "List of actions configured on a tool",
+																				"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																				"items": {
 																					"properties": {
 																						"actionType": {
@@ -4004,8 +4227,7 @@
 																		"required": [
 																			"component",
 																			"settings",
-																			"permissions",
-																			"neoEvents"
+																			"permissions"
 																		]
 																	}
 																]
@@ -4634,14 +4856,8 @@
 																			},
 																			"tools": {
 																				"aJvt": {
-																					"component": "facebook-pixel",
-																					"defaultFields": {
-																						"testKey": "TEST123456"
-																					},
-																					"enabled": true,
-																					"name": "Facebook Pixel",
-																					"neoEvents": [
-																						{
+																					"actions": {
+																						"hrnc": {
 																							"actionType": "pageview",
 																							"blockingTriggers": [],
 																							"data": {
@@ -4652,7 +4868,13 @@
 																								"Pageview"
 																							]
 																						}
-																					],
+																					},
+																					"component": "facebook-pixel",
+																					"defaultFields": {
+																						"testKey": "TEST123456"
+																					},
+																					"enabled": true,
+																					"name": "Facebook Pixel",
 																					"permissions": [
 																						"access_client_kv"
 																					],
@@ -5572,12 +5794,50 @@
 																										},
 																										{
 																											"properties": {
+																												"actions": {
+																													"additionalProperties": {
+																														"properties": {
+																															"actionType": {
+																																"description": "Tool event type",
+																																"type": "string"
+																															},
+																															"blockingTriggers": {
+																																"description": "List of blocking triggers IDs",
+																																"items": {
+																																	"type": "string"
+																																},
+																																"type": "array"
+																															},
+																															"data": {
+																																"description": "Event payload",
+																																"type": "object"
+																															},
+																															"firingTriggers": {
+																																"description": "List of firing triggers IDs",
+																																"items": {
+																																	"type": "string"
+																																},
+																																"minItems": 1,
+																																"type": "array"
+																															}
+																														},
+																														"required": [
+																															"actionType",
+																															"blockingTriggers",
+																															"firingTriggers",
+																															"data"
+																														],
+																														"type": "object"
+																													},
+																													"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																													"type": "object"
+																												},
 																												"component": {
 																													"description": "Tool's internal name",
 																													"type": "string"
 																												},
 																												"neoEvents": {
-																													"description": "List of actions configured on a tool",
+																													"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																													"items": {
 																														"properties": {
 																															"actionType": {
@@ -5639,8 +5899,7 @@
 																											"required": [
 																												"component",
 																												"settings",
-																												"permissions",
-																												"neoEvents"
+																												"permissions"
 																											]
 																										}
 																									]
@@ -5710,12 +5969,50 @@
 																										},
 																										{
 																											"properties": {
+																												"actions": {
+																													"additionalProperties": {
+																														"properties": {
+																															"actionType": {
+																																"description": "Tool event type",
+																																"type": "string"
+																															},
+																															"blockingTriggers": {
+																																"description": "List of blocking triggers IDs",
+																																"items": {
+																																	"type": "string"
+																																},
+																																"type": "array"
+																															},
+																															"data": {
+																																"description": "Event payload",
+																																"type": "object"
+																															},
+																															"firingTriggers": {
+																																"description": "List of firing triggers IDs",
+																																"items": {
+																																	"type": "string"
+																																},
+																																"minItems": 1,
+																																"type": "array"
+																															}
+																														},
+																														"required": [
+																															"actionType",
+																															"blockingTriggers",
+																															"firingTriggers",
+																															"data"
+																														],
+																														"type": "object"
+																													},
+																													"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																													"type": "object"
+																												},
 																												"component": {
 																													"description": "Tool's internal name",
 																													"type": "string"
 																												},
 																												"neoEvents": {
-																													"description": "List of actions configured on a tool",
+																													"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																													"items": {
 																														"properties": {
 																															"actionType": {
@@ -5777,8 +6074,7 @@
 																											"required": [
 																												"component",
 																												"settings",
-																												"permissions",
-																												"neoEvents"
+																												"permissions"
 																											]
 																										}
 																									]
@@ -6499,14 +6795,8 @@
 									},
 									"tools": {
 										"aJvt": {
-											"component": "facebook-pixel",
-											"defaultFields": {
-												"testKey": "TEST123456"
-											},
-											"enabled": true,
-											"name": "Facebook Pixel",
-											"neoEvents": [
-												{
+											"actions": {
+												"hrnc": {
 													"actionType": "pageview",
 													"blockingTriggers": [],
 													"data": {
@@ -6517,7 +6807,13 @@
 														"Pageview"
 													]
 												}
-											],
+											},
+											"component": "facebook-pixel",
+											"defaultFields": {
+												"testKey": "TEST123456"
+											},
+											"enabled": true,
+											"name": "Facebook Pixel",
 											"permissions": [
 												"access_client_kv"
 											],
@@ -7537,12 +7833,50 @@
 																},
 																{
 																	"properties": {
+																		"actions": {
+																			"additionalProperties": {
+																				"properties": {
+																					"actionType": {
+																						"description": "Tool event type",
+																						"type": "string"
+																					},
+																					"blockingTriggers": {
+																						"description": "List of blocking triggers IDs",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"data": {
+																						"description": "Event payload",
+																						"type": "object"
+																					},
+																					"firingTriggers": {
+																						"description": "List of firing triggers IDs",
+																						"items": {
+																							"type": "string"
+																						},
+																						"minItems": 1,
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"actionType",
+																					"blockingTriggers",
+																					"firingTriggers",
+																					"data"
+																				],
+																				"type": "object"
+																			},
+																			"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																			"type": "object"
+																		},
 																		"component": {
 																			"description": "Tool's internal name",
 																			"type": "string"
 																		},
 																		"neoEvents": {
-																			"description": "List of actions configured on a tool",
+																			"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																			"items": {
 																				"properties": {
 																					"actionType": {
@@ -7604,8 +7938,7 @@
 																	"required": [
 																		"component",
 																		"settings",
-																		"permissions",
-																		"neoEvents"
+																		"permissions"
 																	]
 																}
 															]
@@ -7675,12 +8008,50 @@
 																},
 																{
 																	"properties": {
+																		"actions": {
+																			"additionalProperties": {
+																				"properties": {
+																					"actionType": {
+																						"description": "Tool event type",
+																						"type": "string"
+																					},
+																					"blockingTriggers": {
+																						"description": "List of blocking triggers IDs",
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
+																					},
+																					"data": {
+																						"description": "Event payload",
+																						"type": "object"
+																					},
+																					"firingTriggers": {
+																						"description": "List of firing triggers IDs",
+																						"items": {
+																							"type": "string"
+																						},
+																						"minItems": 1,
+																						"type": "array"
+																					}
+																				},
+																				"required": [
+																					"actionType",
+																					"blockingTriggers",
+																					"firingTriggers",
+																					"data"
+																				],
+																				"type": "object"
+																			},
+																			"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																			"type": "object"
+																		},
 																		"component": {
 																			"description": "Tool's internal name",
 																			"type": "string"
 																		},
 																		"neoEvents": {
-																			"description": "List of actions configured on a tool",
+																			"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																			"items": {
 																				"properties": {
 																					"actionType": {
@@ -7742,8 +8113,7 @@
 																	"required": [
 																		"component",
 																		"settings",
-																		"permissions",
-																		"neoEvents"
+																		"permissions"
 																	]
 																}
 															]
@@ -7878,14 +8248,8 @@
 														},
 														"tools": {
 															"aJvt": {
-																"component": "facebook-pixel",
-																"defaultFields": {
-																	"testKey": "TEST123456"
-																},
-																"enabled": true,
-																"name": "Facebook Pixel",
-																"neoEvents": [
-																	{
+																"actions": {
+																	"hrnc": {
 																		"actionType": "pageview",
 																		"blockingTriggers": [],
 																		"data": {
@@ -7896,7 +8260,13 @@
 																			"Pageview"
 																		]
 																	}
-																],
+																},
+																"component": "facebook-pixel",
+																"defaultFields": {
+																	"testKey": "TEST123456"
+																},
+																"enabled": true,
+																"name": "Facebook Pixel",
 																"permissions": [
 																	"access_client_kv"
 																],
@@ -8816,12 +9186,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -8883,8 +9291,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -8954,12 +9361,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -9021,8 +9466,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -9302,14 +9746,8 @@
 														},
 														"tools": {
 															"aJvt": {
-																"component": "facebook-pixel",
-																"defaultFields": {
-																	"testKey": "TEST123456"
-																},
-																"enabled": true,
-																"name": "Facebook Pixel",
-																"neoEvents": [
-																	{
+																"actions": {
+																	"hrnc": {
 																		"actionType": "pageview",
 																		"blockingTriggers": [],
 																		"data": {
@@ -9320,7 +9758,13 @@
 																			"Pageview"
 																		]
 																	}
-																],
+																},
+																"component": "facebook-pixel",
+																"defaultFields": {
+																	"testKey": "TEST123456"
+																},
+																"enabled": true,
+																"name": "Facebook Pixel",
 																"permissions": [
 																	"access_client_kv"
 																],
@@ -10240,12 +10684,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -10307,8 +10789,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
@@ -10378,12 +10859,50 @@
 																					},
 																					{
 																						"properties": {
+																							"actions": {
+																								"additionalProperties": {
+																									"properties": {
+																										"actionType": {
+																											"description": "Tool event type",
+																											"type": "string"
+																										},
+																										"blockingTriggers": {
+																											"description": "List of blocking triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"type": "array"
+																										},
+																										"data": {
+																											"description": "Event payload",
+																											"type": "object"
+																										},
+																										"firingTriggers": {
+																											"description": "List of firing triggers IDs",
+																											"items": {
+																												"type": "string"
+																											},
+																											"minItems": 1,
+																											"type": "array"
+																										}
+																									},
+																									"required": [
+																										"actionType",
+																										"blockingTriggers",
+																										"firingTriggers",
+																										"data"
+																									],
+																									"type": "object"
+																								},
+																								"description": "Actions configured on a tool. Either this or neoEvents field is required.",
+																								"type": "object"
+																							},
 																							"component": {
 																								"description": "Tool's internal name",
 																								"type": "string"
 																							},
 																							"neoEvents": {
-																								"description": "List of actions configured on a tool",
+																								"description": "DEPRECATED - List of actions configured on a tool. Either this or actions field is required. If both are present, actions field will take precedence.",
 																								"items": {
 																									"properties": {
 																										"actionType": {
@@ -10445,8 +10964,7 @@
 																						"required": [
 																							"component",
 																							"settings",
-																							"permissions",
-																							"neoEvents"
+																							"permissions"
 																						]
 																					}
 																				]
