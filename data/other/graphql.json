@@ -577,7 +577,9 @@
 	"AccountD1QueriesAdaptiveGroups": {
 		"__description": "Beta. D1 query metrics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"dimensions": "List of dimensions to group by"
+		"count": "Number of D1 queries processed (approximation when sampleInterval > 1)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountD1QueriesAdaptiveGroupsAvg": {
 		"__description": "",
@@ -601,6 +603,13 @@
 	},
 	"AccountD1QueriesAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountD1QueriesAdaptiveGroupsSum": {
+		"__description": "",
+		"queryDurationMs": "The total duration queries in D1 took, observed over the queried time period.",
+		"rowsRead": "The total number of rows scanned, observed over the queried time period.",
+		"rowsWritten": "The total number of rows written, observed over the queried time period.",
+		"sampleInterval": "The number of sample intervals"
 	},
 	"AccountD1StorageAdaptiveGroups": {
 		"__description": "Beta. D1 storage with adaptive sampling",
