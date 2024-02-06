@@ -6,46 +6,38 @@
 	</div>
 </div>
 <p><strong>What you'll do</strong></p>
-<p>Cloudflare is looking for a global paid media specialist who has a proven track record of campaign execution with a focus on paid social and display. This person will work in conjunction with the Sr. Paid Media Manager to manage and routine optimizations, new launches, testing, and reporting. Please note, that this is a contract role. Duration: 11 months.</p>
+<p>Cloudflare is looking for a global paid search practitioner who has a proven track record of understanding and working with global paid search account structures to drive measurable impact on pipeline creation and closed-won revenue. This person will work in conjunction with the Global Paid Search Manager to execute on routine optimizations, new launches, testing, and reporting. Please note fixed term role. Duration - 11 months</p>
 <p>&nbsp;</p>
-<p><strong>Global Paid Media Specialist</strong></p>
-<p>The Paid Media Specialist is accountable to the Sr. Paid Media Manager for successfully executing the global paid social and display strategy and execution across a portfolio of products, regional accounts and campaigns. This role will work in conjunction with internal teams across the company to execute an industry-leading paid media program in the APJC region and will focus on managing campaigns that have both lead generation and engagement goals. <br><br>You should be strategic, hands-on and independently drive campaign execution and optimization. You will primarily be working on LinkedIn Ads and Meta Ads and must have a strong understanding of these platforms.&nbsp;The ideal candidate will have a track record of success managing paid media to deliver against pipeline targets through tactical implementation, strategic know-how and data-driven analysis.<br><br>This role will work closely with marketing ops and data teams to ensure campaigns are appropriately, measured, executed, and drive results based on funnel metrics, including leads, pipeline, opportunities and closed-won revenue.</p>
+<p><strong>Global Paid Search Specialist</strong></p>
+<p>The Global Paid Search Specialist is accountable to the Global Paid Search Manager for successfully executing the global paid search strategy across a portfolio of products, regional accounts and campaigns. This role will work in conjunction with internal teams across the company to execute an industry-leading paid search program in multiple languages.&nbsp;</p>
 <p>&nbsp;</p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
-	<li>Implement and support global paid social and display campaigns, including but not limited to campaign setup, strategy development, organization, day-to-day management and optimization</li>
-	<li>Coordinate and execute integrated planning across all product categories, crafting comprehensive plans and insightful recaps.</li>
-	<li>Collaborate with key stakeholders to ensure timely delivery of integrated planning tactics aligned with strategic objectives</li>
-	<li>Partner with internal and external partners, overseeing processes and ensuring accuracy while maintaining an quality assurance</li>
-	<li>Daily management of all paid social platforms, reporting, analytics, and trend tools – you will spend a majority of your time directly within ad platforms updating campaigns</li>
-	<li>Responsible for all basic tactical execution for paid social accounts at scale including audiences</li>
-	<li>Campaign optimization: ad copy creation and testing, landing page testing, and bid and budget management.</li>
-	<li>Partner with the regional paid media team leads to understand requirements, market challenges and adjust plans accordingly</li>
-	<li>Collaborate with globalisation team and local teams for asset translation (Mandarin, Japanese, Korean, Bahasa Indonesia, Thai, Vietnamese)</li>
-	<li>Create solutions at a global level that will help drive efficiency for other regions and team members</li>
-	<li>Track and report on campaign results on a weekly/quarterly/ad hoc basis.</li>
-	<li>Campaign budget allocation &amp; monitoring to ensure proper pacing and efficiency</li>
-	<li>Effectively communicate insights and trends based on campaign performance and provide recommendations</li>
+	<li>Implement and support global paid search campaigns, including but not limited to campaign setup, strategy development, organization, and management for Cloudflare’s global enterprise campaigns.&nbsp;</li>
+	<li>Daily use of paid search platforms, reporting, analytics, and trend tools.</li>
+	<li>Campaign optimization: keyword and search term management, ad copy creation and testing, landing page testing, and bid and budget management.</li>
+	<li>Partner with the regional digital marketing team leads to understand requirements, challenges and ongoing resource requirements and create solutions at a global level across multiple languages.</li>
+	<li>Collaborate with globalisation team and local teams for asset translation (Mandarin, Japanese, Korean, Bahasa Indonesia, Thai, Vietnamese)&nbsp;</li>
+	<li>Track and monitor reporting of campaign results on a weekly/quarterly/ad hoc basis.</li>
+	<li>Campaign budget allocation &amp; monitoring to ensure proper pacing and efficiency.</li>
+	<li>Effectively communicate insights and trends based on campaign performance.</li>
 </ul>
-<p><br><br></p>
+<p>&nbsp;</p>
 <p><strong>Required Skills &amp; Experience</strong></p>
 <ul>
-	<li>5+ years working with performance marketing paid media channels, with a heavy focus on paid social and display in a corporate environment</li>
-	<li>Experience in Linkedin and Facebook Ad platforms across multiple campaign types including lead and conversion focused ads across multiple ad types/formats is a must</li>
-	<li>Experience with Reddit, Twitter, Quora, and StackOverflow is an added advantage</li>
-	<li>Experience working with programmatic &amp; display vendors such as StackAdapt, Display &amp; Video 360 and/or The Trade Desk a strong plus</li>
-	<li>Strong understanding of the mechanics of paid media targeting in a B2B environment including 1st and 3rd-party data, intent data and account lists to drive targeting</li>
-	<li>Experience working with ABM platforms 6sense, Demandbase, and/or Metadata&nbsp;</li>
-	<li>Experience with paid social channels using B2B paid social targeting options (such as 1st and 3rd-party CRM data)&nbsp;</li>
-	<li>Excellent autonomy to drive planning, project management and prioritization with great attention to detail, time management and organizational skills</li>
-	<li>Experience working within a larger growth and demand generation team across numerous internal and external stakeholders</li>
-	<li>Strong analytical skills to analyze program effectiveness and ROI</li>
-	<li>Positive and flexible attitude for working in a fast-paced environment and being able to build strong relationships across various departments and functions.&nbsp;</li>
-	<li>Ability to work effectively cross-functionally with a variety of roles, from executives to campaign managers and sales development teams</li>
-	<li>Strong data-management skills and analytical skills to analyze campaign effectiveness and ROI</li>
+	<li>5+ years working with paid search channels including Google Ads and Microsoft Ads</li>
+	<li>3+ year experience working in an agency or in-house environment for a B2B software company</li>
+	<li>Deep experience working directly within paid search advertising accounts with a keen eye for detail at executing bulk changes.</li>
+	<li>Experience optimizing to multiple conversion points within the B2B buying cycle</li>
+	<li>Experience working with enterprise paid search optimization platforms such as Search Ads 360, Marin Software or Skai a plus</li>
+	<li>Experience developing presentation decks summarizing key insights and recommendations</li>
+	<li>Excellent planning, project management, prioritization skills</li>
+	<li>Strong data-management skills</li>
+	<li>Strong analytical skills to analyze campaign effectiveness and ROI</li>
 	<li>Positive and flexible attitude for working in a fast-paced environment</li>
 	<li>Great attention to detail, time management, and organization skills</li>
-	<li>Very strong English language skills</li>
+	<li>Very strong english language skills</li>
+	<li>Experience with Naver and Baidu will be an added advantage</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
