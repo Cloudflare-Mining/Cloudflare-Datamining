@@ -5,27 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Austin Texas, Remote - US</strong></h4>
-<h4><strong>About the Department</strong></h4>
-<p>The Cloudflare Product Delivery / Customer Zero Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers through the use of Cloudflare’s own products. The team is responsible for implementing and operationalizing Cloudflare tools across our global footprint.</p>
-<h4><strong>About the Role</strong></h4>
-<p>The Cloudflare Product Delivery / Customer Zero Security team collaborates with Security, Product, Engineering, Information Technology and many other teams to achieve our goal of securing Cloudflare with our products.</p>
-<p>A Security engineers work may include reviewing reports from various sources (automated scanners, employee reports, logs, etc.), managing and configuring automated tooling (Terraform, Open Policy Agent, Workers, etc.), building controls to enforce policy (two factor authentication requirements, role based access, etc), creating tools, reports or platforms to support the team's goals.&nbsp;</p>
-<p><strong>Desirable skills, knowledge and experience</strong></p>
-<p>Security engineers take part in a wide variety of tasks and projects in the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</p>
+<p><strong>Location(s) Available: Austin, US</strong></p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is seeking a Regional Marketing Programs Analysis Intern with a passion for B2B marketing and an interest in developing and executing data-driven marketing strategies. This intern will work on our Americas field marketing team, focusing on analyzing campaign performance, and industry best practices. The successful candidate will have a strong interest in analyzing and improving marketing campaign performance, channel mix, and will be eager to learn industry standards and best practices for optimizing ROI.</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Experience working in DevOps / DevSecOps&nbsp;</li>
-	<li>Experience working with configuration management tools like Terraform, Ansible, etc.</li>
-	<li>Experience working with Open Policy Agent</li>
-	<li>Experience working with Information Technology platforms and systems</li>
-	<li>Experience with Identity and Access Management policy application and enforcement</li>
-	<li>Experience with SaaS security (Google Workspace, Salesforce, Workday, Atlassian, etc.)</li>
-	<li>Experience in configuration, troubleshooting and maintenance of network security infrastructure (Web content filtering, Firewall, IDS and DLP controls)</li>
-	<li>Experience with API gateways and API security</li>
-	<li>Experience with Zero Trust security</li>
-	<li>Experience in secure configuration of cloud-based storage and data management systems</li>
-	<li>Advanced security knowledge of Linux, MacOS, Windows operating systems</li>
-	<li>Advanced programming experience (Python, TypeScript, Bash, etc.)</li>
+	<li>Monitor the performance of all Americas marketing programs, including events, paid social, display, content syndication, webinars and other marketing channels.</li>
+	<li>Analyze attributed pipeline, efficiency (ROI), and conversion of each marketing channel.&nbsp;</li>
+	<li>Conduct in-depth analysis into ‘time-to-pipeline’ for various marketing channels.</li>
+	<li>Research industry standards for various KPIs, such as MQL and MQL to pipeline conversion to establish benchmarks and identify gaps in current processes.</li>
+	<li>Establish standardized reporting to be leveraged by field marketers and programs team to understand the impact of various programs and make recommendations for optimizing pipeline and ROI.</li>
+	<li>Document Cloudflare’s workflows, data orchestration, and stakeholders involved in the sales funnel to help flag bottlenecks.</li>
+	<li>Partner with our field marketing, programs, and campaigns teams to understand the execution and measurement of campaigns through various channels (email, display, paid social, webinars, etc.) and surface feedback.&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li>Interest in B2B marketing for a technical buyer and audience. Basic understanding of cloud technology is a bonus.</li>
+	<li>Familiarity with account-based marketing and digital marketing channels.</li>
+	<li>Willingness to learn Salesforce, Marketo, Tableau, 6sense, Demandbase, Contentful, and other demand gen tech stack tools.</li>
+	<li>Strong analytical skills with the ability to monitor and evaluate marketing performance data.</li>
+	<li>Excellent written and stellar presentation skills.</li>
+	<li>Curiosity and eagerness to learn about industry standards, KPIs, and best practices.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
