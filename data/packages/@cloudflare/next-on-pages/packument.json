@@ -2,7 +2,7 @@
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
 		"latest": "1.8.6",
-		"beta": "0.0.0-9f31f4f",
+		"beta": "0.0.0-06de52e",
 		"pre-v1": "0.10.2"
 	},
 	"versions": {
@@ -17068,6 +17068,64 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIQC3Ohu9AW2TXyALdMjEDUkQPGqStr0MUs4HfG3P+1GqcgIgFvy12lzzQ23nC0L/Mtf+QsHa7o7+kH7J8Szf3qcrr2Q="
+					}
+				]
+			}
+		},
+		"0.0.0-06de52e": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-06de52e",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"commander": "^11.1.0",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"miniflare": "^3.20231218.1",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.26.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-dj9JDVDogDa/9Qjgfb6vtVIGqzyJAw45RPWxL0zFUcCMC5vGY2yaJrJW+QUDWtbgwLxVqBjczGldtJKaDjrm+Q==",
+				"shasum": "afcc2a1f69c75e4c2ecebbd6fb9f551eab70014e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-06de52e.tgz",
+				"fileCount": 26,
+				"unpackedSize": 698432,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD3F4yNen/FsN0Xjy0MQbJhhmjsd14x46XpGhD4jaU3qQIhAMhxwoAVfz7LYAM5dmGTE/hoZbdkEetzb+R9kS7XsjdR"
 					}
 				]
 			}
