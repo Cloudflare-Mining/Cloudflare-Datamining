@@ -15,7 +15,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: T => (0, n.z1)(h.Mr)(T) && (0, R.z7)(T) && !!(0, R.z$)(T).length
+		hasPermission: T => (0, n.z1)(h.Mr)(T) && (0, S.z7)(T) && !!(0, S.z$)(T).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -642,10 +642,10 @@ const navigation = {
 		hasPermission: T => {
 			const X = (0, i.nA)(T);
 			if ((0, p.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !X) return !1;
-			const ie = !!((0, b.l8)(T) || (0, i.DQ)(T)),
+			const se = !!((0, b.l8)(T) || (0, i.DQ)(T)),
 				te = !!(0, i.ZB)(T, "spectrum", "enabled"),
 				V = !!(0, i.Ns)(X);
-			return te || ie || !V
+			return te || se || !V
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -827,7 +827,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: k.Y
+			tabs: R.Y
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			url: "/rules/redirect-rules",

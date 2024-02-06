@@ -14,9 +14,69 @@
 	build_your_first_ai_application: "Build your first AI application",
 	binding_workers_ai_to_a_worker: "Binding Workers AI to a Worker",
 	binding_workers_ai_to_a_worker_description: "Learn how to access the Workers AI catalogue from a Worker by creating a binding",
+	charts: {
+		units: {
+			cost: "Cost",
+			neurons: "Neurons"
+		},
+		chart_title: {
+			cost: "All Models",
+			neuros: "All Models"
+		},
+		period: (0, t.d)`Last <0>${"days"}</0> days: <1>${"iniDate"}</1> - Today`
+	},
+	sidebar: {
+		cost_summary: {
+			title: "Cost Summary",
+			total_costs: "Total Costs",
+			this_month: "This Month",
+			see_all: "See All >",
+			see_less: "< See Less"
+		},
+		quick_links: {
+			title: "Quick Links",
+			links: {
+				docs: "Docs",
+				plans: "Plans"
+			}
+		},
+		usage: {
+			title: {
+				free: "Daily Usage Limits",
+				paid: "Daily Usage"
+			},
+			limits: {
+				max: "You have reached daily usage limit. Upgrade to the <0>Workers paid plan</0>.",
+				all_most_limit: "Upgrade to the <0>Workers paid plan</0> to increase your daily usage limit."
+			}
+		},
+		invoice_note: {
+			note: "These numbers are estimations and may not reflect final invoices."
+		},
+		neuros: "Neurons",
+		today: "Today"
+	},
+	pagination: {
+		models: {
+			single: "Model",
+			plural: "Models"
+		}
+	},
+	models_details: {
+		status: {
+			new: "New",
+			experimental: "Experimental",
+			active: "Active",
+			active_tooltip: "Request received in the last 30 days"
+		}
+	},
+	models_list: {
+		common: {
+			no_models: "No models"
+		}
+	},
 	create_ai_worker: "Create an AI Model Worker",
 	create_ai_worker_description: "Choose an AI application template.",
-	docs: "Docs",
 	workers_ai_documentation: "Workers AI documentation",
 	explore_catalog: "Explore catalog",
 	explore_workers_templates: "Explore Workers Templates",
@@ -25,11 +85,15 @@
 	join_waitlist: "Join Waitlist",
 	make_your_first_inference_call: "Make your first inference call",
 	make_your_first_inference_call_description: "Substitute your Workers AI API token into the example below to make your first Worker AI API call.",
+	menu: {
+		analytics: "Analytics",
+		models: "Models"
+	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, e.d)`Call Workers AI from anywhere using our API. <0>Workers AI REST API documentation</0>`,
+	using_workers_ai_rest_api_description: (0, t.d)`Call Workers AI from anywhere using our API. <0>Workers AI REST API documentation</0>`,
 	product_title: "Workers AI",
-	provided_by: (0, e.d)`Provided by <0>${"provider"}</0>`,
+	provided_by: (0, t.d)`Provided by <0>${"provider"}</0>`,
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
