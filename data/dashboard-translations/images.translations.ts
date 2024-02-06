@@ -482,6 +482,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		documentation_description: "Read our documentation to learn more about functionality and how to use transformations.",
 		pay_as_you_go: "Pay as you go",
 		updated_plan_required: "Updated Images plan required",
+		no_stream_subscription: "Your subscription is in a custom state. Please contact %{supportEmail} to upgrade to the new unified images.",
 		contact_cm_to_update: "Updated Images Plan required. Contact your Customer Success manager to update"
 	},
 	images_delivered: "Images delivered",

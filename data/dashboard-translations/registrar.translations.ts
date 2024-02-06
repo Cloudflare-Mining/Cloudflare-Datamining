@@ -284,6 +284,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	status_pending_delete: "Pending Delete",
 	status_redemption_period: "Pending Delete - Redemption Period",
 	status_pending_transfer: "Pending Transfer",
+	status_pending_renewal: "Pending Renewal",
+	status_unknown: "Unknown",
 	back_to_domains: "Back to domains",
 	back_to_registration: "Back to registration",
 	back_to_contact: "Back to contact details",
