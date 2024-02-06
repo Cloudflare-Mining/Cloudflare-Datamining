@@ -528,6 +528,24 @@
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"notification_settings": {
+																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Set notification on",
+																					"type": "boolean"
+																				},
+																				"msg": {
+																					"description": "Customize the message shown in the notification.",
+																					"type": "string"
+																				},
+																				"support_url": {
+																					"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		}
 																	},
 																	"type": "object"
@@ -856,6 +874,24 @@
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean"
+																				},
+																				"notification_settings": {
+																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+																					"properties": {
+																						"enabled": {
+																							"description": "Set notification on",
+																							"type": "boolean"
+																						},
+																						"msg": {
+																							"description": "Customize the message shown in the notification.",
+																							"type": "string"
+																						},
+																						"support_url": {
+																							"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
 																			},
 																			"type": "object"
@@ -1971,6 +2007,24 @@
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
 												"type": "boolean"
+											},
+											"notification_settings": {
+												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+												"properties": {
+													"enabled": {
+														"description": "Set notification on",
+														"type": "boolean"
+													},
+													"msg": {
+														"description": "Customize the message shown in the notification.",
+														"type": "string"
+													},
+													"support_url": {
+														"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"type": "object"
@@ -2274,6 +2328,24 @@
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"notification_settings": {
+																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Set notification on",
+																					"type": "boolean"
+																				},
+																				"msg": {
+																					"description": "Customize the message shown in the notification.",
+																					"type": "string"
+																				},
+																				"support_url": {
+																					"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		}
 																	},
 																	"type": "object"
@@ -2602,6 +2674,24 @@
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean"
+																				},
+																				"notification_settings": {
+																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+																					"properties": {
+																						"enabled": {
+																							"description": "Set notification on",
+																							"type": "boolean"
+																						},
+																						"msg": {
+																							"description": "Customize the message shown in the notification.",
+																							"type": "string"
+																						},
+																						"support_url": {
+																							"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
 																			},
 																			"type": "object"
@@ -3317,6 +3407,24 @@
 												"description": "Block requests for files that cannot be scanned.",
 												"example": false,
 												"type": "boolean"
+											},
+											"notification_settings": {
+												"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+												"properties": {
+													"enabled": {
+														"description": "Set notification on",
+														"type": "boolean"
+													},
+													"msg": {
+														"description": "Customize the message shown in the notification.",
+														"type": "string"
+													},
+													"support_url": {
+														"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+														"type": "string"
+													}
+												},
+												"type": "object"
 											}
 										},
 										"type": "object"
@@ -3620,6 +3728,24 @@
 																			"description": "Block requests for files that cannot be scanned.",
 																			"example": false,
 																			"type": "boolean"
+																		},
+																		"notification_settings": {
+																			"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+																			"properties": {
+																				"enabled": {
+																					"description": "Set notification on",
+																					"type": "boolean"
+																				},
+																				"msg": {
+																					"description": "Customize the message shown in the notification.",
+																					"type": "string"
+																				},
+																				"support_url": {
+																					"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
 																		}
 																	},
 																	"type": "object"
@@ -3948,6 +4074,24 @@
 																					"description": "Block requests for files that cannot be scanned.",
 																					"example": false,
 																					"type": "boolean"
+																				},
+																				"notification_settings": {
+																					"description": "Configure a message to display on the user's device when an antivirus search is performed.",
+																					"properties": {
+																						"enabled": {
+																							"description": "Set notification on",
+																							"type": "boolean"
+																						},
+																						"msg": {
+																							"description": "Customize the message shown in the notification.",
+																							"type": "string"
+																						},
+																						"support_url": {
+																							"description": "Optional URL to direct users to additional information. If not set, the notification will open a block page.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
 																				}
 																			},
 																			"type": "object"
