@@ -1,5 +1,7 @@
 <div class="mb2 gray5">11 min read</div>
-<div class="post-content lh-copy gray1">
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/thanksgiving-2023-security-incident-zh-cn">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/thanksgiving-2023-security-incident-zh-tw">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/thanksgiving-2023-security-incident-ja-jp">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/thanksgiving-2023-security-incident-ko-kr">한국어</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<p>On Thanksgiving Day, November 23, 2023, Cloudflare detected a threat actor on our self-hosted Atlassian server. Our security team immediately began an investigation, cut off the threat actor’s access, and on Sunday, November 26, we brought in CrowdStrike’s Forensic team to perform their own independent analysis.</p>
 	<p>Yesterday, CrowdStrike completed its investigation, and we are publishing this blog post to talk about the details of this security incident.</p>
 	<p>We want to emphasize to our customers that no Cloudflare customer data or systems were impacted by this event. Because of our access controls, firewall rules, and use of hard security keys enforced using our own Zero Trust tools, the threat actor’s ability to move laterally was limited. No services were implicated, and no changes were made to our global network systems or configuration. This is the promise of a Zero Trust architecture: it’s like bulkheads in a ship where a compromise in one system is limited from compromising the whole organization.</p>
