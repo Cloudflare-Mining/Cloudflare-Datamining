@@ -1,0 +1,246 @@
+<div class="mb2 gray5">29 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/01/image9.png" class="kg-image" alt="Privacy Pass: Upgrading to the latest protocol version" loading="lazy" width="1800" height="1013"></figure>
+	<h2 id="%E5%88%A9%E7%94%A8%E4%BF%9D%E6%8A%A4%E9%9A%90%E7%A7%81%E7%9A%84%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E5%8C%BF%E5%90%8D%E8%AE%BF%E9%97%AE-web">利用保护隐私的加密技术实现匿名访问 Web</h2>
+	<p>可以说自从 Web 出现，区分人类和机器人的挑战就随之而来。从在线票务供应商到约会应用程序，再到电子商务和金融，您有很多合理的理由想知道访问网站的是人还是机器。</p>
+	<p>遗憾的是，Web 的工具历来都很笨拙，有时还会带来糟糕的用户体验。验证码就是一个令人讨厌的解决方案，人类为此浪费了<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn">大量</a>时间。一种更隐蔽但更具侵扰性的方法是 IP 跟踪，它使用 IP 地址来识别可疑流量并采取相应措施，但这也会带来<a href="https://blog.cloudflare.com/zh-cn/consequences-of-ip-blocking-zh-cn">不可预知的后果</a>。</p>
+	<p>然而，区分合法的人类请求和自动化机器人的问题仍然一如既往地重要。这就是为什么 Cloudflare 多年来一直投资于 Privacy Pass 协议，这是一种依靠密码学而不是简单拼图来建立用户身份的新颖方法，同时为最终用户提供简化、保护隐私且通常无摩擦的体验。 </p>
+	<p>随着 Chrome 和 Firefox 浏览器扩展的发布，Cloudflare 于 2017 年开始支持 <a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">Privacy Pass</a>。在 Cloudflare 上拥有网站的 Web 管理员将在 Cloudflare Dash 中启用 Privacy Pass；在浏览器中安装该扩展程序的用户在访问启用了 Privacy Pass 的网站上会看到更少的验证码。</p>
+	<p>此后，Cloudflare <a href="https://blog.cloudflare.com/end-cloudflare-captcha">停止了验证码的发放</a>，而 Privacy Pass 也取得了长足的进步。Apple 公司在其 <a href="https://developer.apple.com/news/?id=huqjyh7k">Private Access Token</a> 系统中使用了一个版本的 Privacy Pass， 该系统与设备的安全飞地协同工作，以证明用户为人类。Cloudflare 将 Privacy Pass 用作 Web 应用程序防火墙和机器人管理产品中的一个重要信号，这意味着数百万个网站都原生提供 Privacy Pass。</p>
+	<p>在这篇文章中，我们将探讨 Privacy Pass 协议的最新变化。我们还很高兴地推出 <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-16.html">Privacy Pass 协议</a>最新 IETF 草案的公开实施，其中包括一组可用于实施 Privacy Pass <a href="https://github.com/cloudflare/pp-origin"><em>源站</em></a><em>、</em><a href="https://github.com/cloudflare/pp-issuer"><em>发行者</em></a>和<a href="https://github.com/cloudflare/pp-attester"><em>证明者</em></a>的<a href="https://github.com/cloudflare?q=pp-&amp;type=all&amp;language=&amp;sort=#org-repositories">开源模板</a>。这些基于 Cloudflare Workers，是开始部署新 Privacy Pass 的最简单方法。</p>
+	<p>为了补充更新的实施，我们发布了新版本的 Privacy Pass 浏览器扩展（<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>、<a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>），其名称为：<em>Silk - Privacy Pass Client</em>。这些扩展程序的用户将会在 Web 上看到更少的机器人检查，并将通过一组可信的证明者为隐私保护信号的研究做出贡献，这些证明者可以在扩展程序的设置面板中进行配置。</p>
+	<p>最后，我们将讨论除了区分机器人和人类流量外，Privacy Pass 还能如何用于其他一系列场景。 </p>
+	<p><strong>用户须知</strong></p>
+	<ul>
+		<li>如果您使用在 Cloudflare 上控制 Privacy Pass 配置的 Privacy Pass API，则可以移除这些调用。由于我们的质询平台现在已默认包含 Privacy Pass，因此不再需要此 API。出于对客户的谨慎考虑，我们发布了<a href="https://developers.cloudflare.com/fundamentals/api/reference/deprecations">四个月后停用的通知</a>。</li>
+		<li>如果您安装了 Privacy Pass 扩展程序，它应该会在接下来的几天内自动更新为 <em>Silk - Privacy Pass Client</em>（<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>、<a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>）。我们对其进行了重命名，以明确区分协议本身和协议的客户端。</li>
+	</ul>
+	<h2 id="%E7%AE%80%E8%A6%81%E5%8E%86%E5%8F%B2">简要历史</h2>
+	<p>在过去的十年中，我们看到了以隐私为核心的<a href="https://blog.cloudflare.com/next-generation-privacy-protocols">协议的兴起</a>，包括 <a href="https://blog.cloudflare.com/zh-cn/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today-zh-cn">Oblivious HTTP (OHTTP)</a>、<a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">分布式聚合协议 (DAP)</a> 和 <a href="https://blog.cloudflare.com/unlocking-quic-proxying-potential">MASQUE</a>。这些协议提高了在线浏览服务和与服务交互时的隐私性。通过保护用户的隐私，这些协议还要求源站和网站所有者修改他们期望从用户流量中收集的数据。这可能会导致他们重新考虑关于可疑流量的现有假设和缓解措施（例如 <a href="https://blog.cloudflare.com/zh-cn/consequences-of-ip-blocking-zh-cn">IP 过滤</a>），这通常会产生意想不到的后果。</p>
+	<p>2017 年，Cloudflare 宣布<a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass">支持 Privacy Pass</a>。在推出之初，这意味着提高 Web 用户的内容可访问性，因为他们在浏览受 Cloudflare 保护的网站时会看到大量插页（例如<a href="https://www.cloudflare.com/learning/bots/how-captchas-work">验证码</a>）。Privacy Pass 令牌向网站所有者提供有关用户能力的信号，同时通过确保每个令牌兑换无法链接至其发行上下文，来保护他们的隐私。自那之后，在学术界和行业的努力下，该技术已成为数百万人使用的<a href="https://datatracker.ietf.org/wg/privacypass/documents">成熟协议</a>。现有的浏览器扩展程序已获得数十万次下载。与此同时，Cloudflare 极大地改进了允许客户质询访问者的方式，在接收<a href="https://blog.cloudflare.com/end-cloudflare-captcha">信号方面更加灵活</a>，并<a href="https://blog.cloudflare.com/turnstile-ga">不再使用验证码</a>作为二进制合法性信号。</p>
+	<p>这项研究的部署扩大了用例，为不同类型的证明打开了大门。证明是支持事实的加密签名数据点。这可以包括表明用户已成功通过验证码的签名令牌、让用户的硬件证明其未被篡改，或者证明者可以根据另一个数据源验证的一段数据。</p>
+	<p>例如，2022 年，Apple 硬件设备开始向希望减少验证码显示频率的网站提供 Privacy Pass 令牌，使用硬件本身作为证明因素。验证码提供商可以在向用户显示公共汽车和消防栓的图像之前请求 <a href="https://developer.apple.com/news/?id=huqjyh7k">Private Access Token</a> (PAT)。这种原生支持不需要安装扩展程序，也不需要用户采取任何操作，就能获得更流畅、更私密的 Web 浏览体验。</p>
+	<p>以下是我们所参与的协议变更的简要概述：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image8.png" class="kg-image" alt="" loading="lazy" width="1808" height="631"></figure>
+	<p>该时间表展示了密码学的变化、社区的投入和行业的合作。这些变化有助于制定更好的 Web 标准，例如 VOPRF (<a href="https://www.rfc-editor.org/rfc/rfc9497">RFC 9497</a>) 或 RSA 盲签名 (<a href="https://www.rfc-editor.org/rfc/rfc9474">RFC 9474</a>)。在接下来的内容中，我们将深入研究 Privacy Pass 协议，以了解其来龙去脉。</p>
+	<h2 id="%E7%8E%B0%E5%AE%9E%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%8C%BF%E5%90%8D%E5%87%AD%E8%AF%81">现实生活中的匿名凭证</h2>
+	<p>在更深入地解释该协议之前，让我们打个比方。您正在参加一个音乐节，并以学生折扣在线购买了门票。当您到达检票口时，工作人员会扫描您的门票，检查您的学生身份，并给您一个黄色腕带和两张饮品券。</p>
+	<p>节日期间，进出都要出示腕带。当朋友喊您去喝一杯时，您用饮品券付钱。一张为您自己付款，一张为您的朋友付款。您把饮品券交给调酒师，他们检查饮品券，然后给您一杯饮料。使这种互动具有私密性的特点是，饮品券无法追溯到您本人或您的付款方式，但可以验证它们是否未使用且可用于购买饮料。</p>
+	<p>在 Web 用例中，互联网就是节日。当您到达网站门口时，代理会扫描您的请求，并为您提供一个会话 cookie 以及两个 Privacy Pass 令牌。它们可能只给您一个令牌，也可能给您两个以上，但在我们的示例中，“两个令牌”是给定网站的政策。您可以使用这些令牌来证明您是人类、在某些网站上进行身份验证，甚至确认您的硬件的合法性。</p>
+	<p>现在，您可能会问，既然这是我们已经使用多年的技术，为什么还需要花哨的密码学和标准化工作呢？ 怎么说呢，在现实世界的音乐节上，大多数人不会随身携带复印机，但在互联网上，复制令牌却非常容易。例如，我们如何阻止人们两次使用令牌？我们可以在每个令牌上标注一个唯一的号码，并检查它是否被使用了两次，但如果这样，检票处的服务人员就有可能告诉调酒师，哪个号码与哪个人有关。所以，我们需要密码学。</p>
+	<p>当另一个网站向您发出质询时，您可以提供您的 Privacy Pass 令牌，然后就可以查看拥有美丽猫咪图片的图库。与节日的不同之处在于，这个质询可能是互动的，这类似于调酒师给您一张有编号的票，在获得饮料之前必须由代理人签名。网站所有者可以验证令牌是否有效，但无法跟踪用户或将用户连接回为他们提供 Privacy Pass 令牌的操作。在 Privacy Pass 术语中，您是客户端，网站是源站，代理是证明者，酒吧是发行者。下一节将更详细地介绍这些内容。</p>
+	<h2 id="privacy-pass-%E5%8D%8F%E8%AE%AE">Privacy Pass 协议</h2>
+	<p>Privacy Pass 指定了用于创建和兑换匿名和可转让令牌的可扩展协议。事实上，Apple 有自己的 Private Access Token (PAT) 实现，稍后我们将描述另一个使用 Silk 浏览器扩展的实现。鉴于 PAT 是第一个实施 IETF 定义的协议，文献中有时将 Privacy Pass 称为 PAT。</p>
+	<p>该协议是通用协议，定义了四个组成部分：</p>
+	<ul>
+		<li>客户端：具有启用 Privacy Pass 的浏览器的 Web 用户代理。这可能是<a href="https://blog.cloudflare.com/zh-cn/eliminating-captchas-on-iphones-and-macs-using-new-standard-zh-cn">带有 PAT 的 Apple 设备</a>，或者是<a href="https://github.com/cloudflare/pp-browser-extension">安装了 Silk 扩展</a>的 Web 浏览器。通常，这是请求内容并被要求分享自身某些属性的参与者。</li>
+		<li>源站：提供客户端请求的内容。源站信任一个或多个发行者，并向客户端提出 Privacy Pass 质询。例如，Cloudflare 托管质询是一个 Privacy Pass 源站，服务两个 Privacy Pass 质询：一个针对 Apple PAT 发行者，一个针对 Cloudflare Research 发行者。</li>
+		<li>发行者：根据受信任方（证明者或客户端，具体取决于部署模型）的请求签署 Privacy Pass 令牌。不同的发行者有自己的一组信任方，具体取决于他们所寻求的安全级别以及它们的隐私考虑。验证设备完整性的发行者应使用不同的方法来保证该属性，以确认客户端配置的多样性。</li>
+		<li>证明者：验证客户端的属性，并在满足时请求发行者将签名的 Privacy Pass 传回客户端。在为客户端提供保证之前，证明者可能会要求客户端完成特定任务。该任务可能是验证码、位置检查、年龄验证或其他一些将产生单个二进制结果的检查。然后，Privacy Pass 令牌将以不可链接的方式分享这一比特信息。</li>
+	</ul>
+	<p>它们之间的交互如下图所示。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/Frame-699-1-.png" class="kg-image" alt="" loading="lazy" width="1492" height="780"></figure>
+	<p>让我们通过一个例子来深入了解到底发生了什么。用户想要访问一个源站，例如 store.example.com。该网站过去曾遭受过攻击或滥用，且正在使用 Privacy Pass 来帮助避免此类事件再次发生。为此，源站向客户端返回一个<a href="https://www.rfc-editor.org/rfc/rfc9110#field.www-authenticate">身份验证请求</a>：<code>WWW-Authenticate: PrivateToken challenge="A==",token-key="B=="</code>。通过这种方式，源站发出信号，表明它接受具有公钥“B==”的发行者的令牌，以满足质询。该发行者反过来又相信信誉良好的证明者会通过 cookie、验证码、Turnstile 或 <a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn">CAP 质询</a>等方式来保证客户端不是攻击者。出于我们示例的可访问性原因，我们假设客户端可能更喜欢 Turnstile 方法。用户的浏览器提示他们解决 Turnstile 质询。成功后，它会使用该解决方案联系发行者“B==”，然后重放对 store.example.com 的初始请求，这次会发送令牌标头 <code>Authorization: PrivateToken token="C=="</code>，即源站接受并向客户端传回所需的内容。就是这样。</p>
+	<p>我们已经介绍了 Privacy Pass 身份验证协议。基本身份验证 (<a href="https://www.rfc-editor.org/rfc/rfc7617">RFC 7671</a>) 要求您提供用户名和密码，而 PrivateToken 身份验证方案允许浏览器更灵活地选择检查类型，同时保留隐私。源站 store.example.com 不知道您的证明方法，它们只是根据令牌发行者得知您是信誉良好的用户。本着同样的精神，发行者 "B==" 看不到您的 IP，也看不到您正在访问的网站。发行和兑换之间的这种分离（也称为不可链接性）<a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-architecture-16.html">使 Privacy Pass 具有私密性</a>。</p>
+	<h2 id="%E6%BC%94%E7%A4%BA%E6%97%B6%E9%97%B4">演示时间</h2>
+	<p>为了将上述内容付诸实践，让我们看看该协议如何与 Silk（一个提供 Privacy Pass 支持的浏览器扩展程序）配合使用。首先，下载相关的 <a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a> 或 <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a> 扩展程序。</p>
+	<p>然后，前往 <a href="https://demo-pat.research.cloudflare.com/login">https://demo-pat.research.cloudflare.com/login</a>。该页面返回一个不存在的 401 Privacy Pass 令牌。事实上，源站希望您执行 PrivateToken 身份验证。如果您没有安装扩展程序，流程将在此处停止。如果您安装了扩展程序，则扩展程序将编排为您获取源站要求的令牌所需的流程。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image10.png" class="kg-image" alt="" loading="lazy" width="1596" height="1105"></figure>
+	<p>安装扩展程序后，您将被定向到一个新选项卡 <a href="https://pp-attester-turnstile.research.cloudflare.com/challenge">https://pp-attester-turnstile.research.cloudflare.com/challenge</a>。这是由证明者提供的页面，能够向您提供源站要求的发行者签署的令牌。在这种情况下，证明者会检查您是否能够解决 Turnstile 挑战。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image2.png" class="kg-image" alt="" loading="lazy" width="1596" height="1105"></figure>
+	<p>点击一下，就可以了。Turnstile 质询解决方案会发送给证明者，证明者在验证后会发回一个来自所要求发行者的令牌。该页面出现的时间很短，因为一旦扩展程序获得了令牌，就不再需要质询页面了。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image11.png" class="kg-image" alt="" loading="lazy" width="1596" height="1105"></figure>
+	<p>现在，扩展程序获得了源站要求的令牌，它会第二次发送您的初始请求，并附上一个包含有效的发行者 PrivateToken 的授权标头。通过验证后，源站会允许您使用有效的 200 Privacy Pass 令牌进入！</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image3.png" class="kg-image" alt="" loading="lazy" width="1596" height="1105"></figure>
+	<p>如果您想查看幕后情况，可以右键单击扩展程序徽标，然后转到首选项/选项页面。它包含扩展程序信任的证明者列表，每行一个。您可以添加自己的证明方法（下文介绍的 API）。这允许客户端决定其首选的证明方法。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image7.png" class="kg-image" alt="" loading="lazy" width="1596" height="1105"></figure>
+	<h2 id="privacy-pass-%E5%8D%8F%E8%AE%AE%E2%80%94%E2%80%94%E6%89%A9%E5%B1%95">Privacy Pass 协议——扩展</h2>
+	<p>Privacy Pass 协议是新协议，尚未成为标准，这意味着并非所有平台都支持该协议。为了在现有标准提案的基础上提高灵活性，我们引入了两种机制：用于证明者的 API 和用于 Web 客户端的重放 API (replay API)。证明者 API 允许开发人员构建新的证明方法，只需提供其 URL 即可与 Silk 浏览器扩展程序进行交互。Web 客户端的重放 API 是一种机制，使网站能够与扩展程序配合，使 PrivateToken 身份验证在具有 Chrome 用户代理的浏览器上工作。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image12.png" class="kg-image" alt="" loading="lazy" width="1999" height="1119"></figure>
+	<p>由于您的计算机上可能支持多个证明者，因此您的客户端需要根据所要求的发行者了解应使用哪个证明者。如前所述，作为客户端，您不会直接与发行者通信，因为您不一定知道他们与证明者的关系，所以您无法获取其公钥。为此，证明者 API 公开了所述证明者可通过端点访问的所有发行者：/v1/private-token-issuer-directory。这样，您的客户端在触发验证之前会选择合适的证明者——与源站信任的发行者相关的证明者。</p>
+	<p>此外，我们还提出了重放 API。其目标是，如果第一次响应提出 Privacy Pass 质询，则允许客户端第二次获取资源。有些平台会自动执行此操作，例如 Firefox 上的 Silk，但有些平台不会。以 Silk Chrome 扩展程序为例，该扩展程序在支持 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/manifest_version">manifest v3</a> 时无法阻止请求，只能在 onAuthRequired 扩展程序事件中支持基本身份验证。Privacy Pass 身份验证方案建议发送一次请求以获得质询，然后发送第二次以获取实际资源。在对源站发出这两个请求之间的时间里，平台会协调令牌的发行。为了让客户端了解此过程的状态，我们在 WWW-Authenticate 旁边引入了 <code>private-token-client-replay: UUID header</code>。通过使用平台定义的端点，该 UUID 会通知 Web 客户端当前的身份验证状态：待处理、已完成、未找到。</p>
+	<p>要进一步了解当今如何使用这些方法以及如何部署自己的证明方法，请继续阅读。</p>
+	<h2 id="%E5%BD%93%E4%BB%8A%E7%9A%84%E4%BA%BA%E4%BB%AC%E6%98%AF%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-privacy-pass-%E7%9A%84%EF%BC%9F">当今的人们是如何使用 Privacy Pass 的？</h2>
+	<p>如上一节所示，Privacy Pass 围绕四个部分构建：源站、客户端、证明者、发行者。这就是我们创建四个存储库的原因： <a href="https://github.com/cloudflare/pp-origin">cloudflare/pp-origin</a>、<a href="https://github.com/cloudflare/pp-browser-extension">cloudflare/pp-browser-extension</a>、<a href="https://github.com/cloudflare/pp-attester">cloudflare/pp-attester</a>、<a href="https://github.com/cloudflare/pp-issuer">cloudflare/pp-issuer</a>。此外，还提供底层加密库：<a href="https://github.com/cloudflare/privacypass-ts">cloudflare/privacypass-ts</a>、<a href="https://github.com/cloudflare/blindrsa-ts">cloudflare/blindrsa-ts</a> 和 <a href="https://github.com/cloudflare/voprf-ts">cloudflare/voprf-ts</a>。在本节中，我们将根据您的用例深入探讨如何使用其中的每一项。</p>
+	<blockquote>注意：以下所有示例均使用 JavaScript 设计，且针对 Cloudflare Workers。Privacy Pass 也可以用<a href="https://github.com/ietf-wg-privacypass/base-drafts#existing-implementations">其他语言</a>实现，并可根据您的需要部署配置。</blockquote>
+	<h3 id="%E4%BD%9C%E4%B8%BA%E6%BA%90%E7%AB%99%E2%80%94%E2%80%94%E7%BD%91%E7%AB%99%E6%89%80%E6%9C%89%E8%80%85%E3%80%81%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86">作为源站——网站所有者、服务提供商</h3>
+	<p>您是人们非常依赖的在线服务提供商（例如健康或信息服务）。您希望为用户提供私人支付选项，以维护用户隐私。您只有一个订阅层级，每月 10 美元。您<a href="https://datatracker.ietf.org/doc/html/draft-davidson-pp-architecture-00#autoid-60">听说</a>有人在制作保护隐私的应用程序，因此希望使用最新版本的 Privacy Pass。</p>
+	<p>要使用您的服务，用户必须证明他们已通过自己选择的支付提供商（您认为可以接受的）支付了服务费用。该付款提供商确认付款，并为用户申请一个令牌以访问服务。序列图如下：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2024/01/image4.png" class="kg-image" alt="" loading="lazy" width="1615" height="903"></figure>
+	<p>要在 Workers 中实现该功能，我们需要使用 <a href="https://www.npmjs.com/package/@cloudflare/privacypass-ts"><code>@cloudflare/privacypass-ts</code></a> 库，可通过运行以下代码来安装：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">npm i @cloudflare/privacypass-ts
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>本节将着重介绍源站的工作。我们假定您已经安装并运行了发行者，这将在后面的章节中介绍。</p>
+	<p>源站定义了两个流程：</p>
+	<ol>
+		<li>用户兑换令牌</li>
+		<li>用户请求发放令牌</li>
+	</ol><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">import { Client } from '@cloudflare/privacypass-ts'
+
+const issuer = 'static issuer key'
+
+const handleRedemption =&gt; (req) =&gt; {
+    const token = TokenResponse.parse(req.headers.get('authorization'))
+    const isValid = token.verify(issuer.publicKey)
+}
+
+const handleIssuance = () =&gt; {
+    return new Response('Please pay to access the service', {
+        status: 401,
+        headers: { 'www-authenticate': 'PrivateToken challenge=, token-key=, max-age=300' }
+    })
+}
+
+const handleAuth = (req) =&gt; {
+    const authorization = req.headers.get('authorization')
+    if (authorization.startsWith(`PrivateToken token=`)) {
+        return handleRedemption(req)
+    }
+    return handleIssuance(req)
+}
+
+export default {
+    fetch(req: Request) {
+        return handleAuth(req)
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>从用户的角度来看，开销微乎其微。他们的客户端（可能是 Silk 浏览器扩展程序）会收到一个 WWW-Authenticate 标头，其中包含签发令牌所需的信息。然后，根据他们的客户端配置，他们会被带到所选择的支付提供商处，以验证对服务的访问权。</p>
+	<p>在成功响应 PrivateToken 质询后，会话就建立起来了，传统的 Web 服务流程继续进行。</p>
+	<h3 id="%E4%BD%9C%E4%B8%BA%E8%AF%81%E6%98%8E%E8%80%85%E2%80%94%E2%80%94%E9%AA%8C%E8%AF%81%E7%A0%81%E6%8F%90%E4%BE%9B%E5%95%86%E3%80%81%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%E6%8F%90%E4%BE%9B%E5%95%86">作为证明者——验证码提供商、身份验证提供商</h3>
+	<p>您是新证明方法的作者，例如 <a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn">CAP</a>、新的验证码机制或验证 cookie 同意的新方法。您知道网站所有者已经使用 Privacy Pass 在用户端触发此类质询，并且发行者愿意信任您的方法，因为它保证了高安全级别。此外，由于 Privacy Pass 协议，您永远不会看到您的证明正在用于哪个网站。</p>
+	<p>因此，您决定将您的证明方法作为 Privacy Pass 证明者公开。拥有公钥 B== 的发行者信任您，这就是您要向其请求令牌的发行者。您可以使用下面的“是/否证明者”进行检查，其代码位于 <a href="https://cloudflareworkers.com/#eedc5a7a6560c44b23a24cc1414b29d7:https://tutorial.cloudflareworkers.com/v1/challenge">Cloudflare Workers 操练场</a>上</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">const ISSUER_URL = 'https://pp-issuer-public.research.cloudflare.com/token-request'
+
+const b64ToU8 = (b) =&gt;  Uint8Array.from(atob(b), c =&gt; c.charCodeAt(0))
+
+const handleGetChallenge = (req) =&gt; {
+    return new Response(`
+    &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Challenge Response&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    	&lt;button onclick="sendResponse('Yes')"&gt;Yes&lt;/button&gt;
+		&lt;button onclick="sendResponse('No')"&gt;No&lt;/button&gt;
+	&lt;/body&gt;
+	&lt;script&gt;
+	function sendResponse(choice) {
+		fetch(location.href, { method: 'POST', headers: { 'private-token-attester-data': choice } })
+	}
+	&lt;/script&gt;
+	&lt;/html&gt;
+	`, { status: 401, headers: { 'content-type': 'text/html' } })
+}
+
+const handlePostChallenge = (req) =&gt; {
+    const choice = req.headers.get('private-token-attester-data')
+    if (choice !== 'Yes') {
+        return new Response('Unauthorised', { status: 401 })
+    }
+
+    // hardcoded token request
+    // debug here https://pepe-debug.research.cloudflare.com/?challenge=PrivateToken%20challenge=%22AAIAHnR1dG9yaWFsLmNsb3VkZmxhcmV3b3JrZXJzLmNvbSBE-oWKIYqMcyfiMXOZpcopzGBiYRvnFRP3uKknYPv1RQAicGVwZS1kZWJ1Zy5yZXNlYXJjaC5jbG91ZGZsYXJlLmNvbQ==%22,token-key=%22MIIBUjA9BgkqhkiG9w0BAQowMKANMAsGCWCGSAFlAwQCAqEaMBgGCSqGSIb3DQEBCDALBglghkgBZQMEAgKiAwIBMAOCAQ8AMIIBCgKCAQEApqzusqnywE_3PZieStkf6_jwWF-nG6Es1nn5MRGoFSb3aXJFDTTIX8ljBSBZ0qujbhRDPx3ikWwziYiWtvEHSLqjeSWq-M892f9Dfkgpb3kpIfP8eBHPnhRKWo4BX_zk9IGT4H2Kd1vucIW1OmVY0Z_1tybKqYzHS299mvaQspkEcCo1UpFlMlT20JcxB2g2MRI9IZ87sgfdSu632J2OEr8XSfsppNcClU1D32iL_ETMJ8p9KlMoXI1MwTsI-8Kyblft66c7cnBKz3_z8ACdGtZ-HI4AghgW-m-yLpAiCrkCMnmIrVpldJ341yR6lq5uyPej7S8cvpvkScpXBSuyKwIDAQAB%22
+    const body = b64ToU8('AALoAYM+fDO53GVxBRuLbJhjFbwr0uZkl/m3NCNbiT6wal87GEuXuRw3iZUSZ3rSEqyHDhMlIqfyhAXHH8t8RP14ws3nQt1IBGE43Q9UinwglzrMY8e+k3Z9hQCEw7pBm/hVT/JNEPUKigBYSTN2IS59AUGHEB49fgZ0kA6ccu9BCdJBvIQcDyCcW5LCWCsNo57vYppIVzbV2r1R4v+zTk7IUDURTa4Mo7VYtg1krAWiFCoDxUOr+eTsc51bWqMtw2vKOyoM/20Wx2WJ0ox6JWdPvoBEsUVbENgBj11kB6/L9u2OW2APYyUR7dU9tGvExYkydXOfhRFJdKUypwKN70CiGw==')
+    // You can perform some check here to confirm the body is a valid token request
+
+    console.log('requesting token for tutorial.cloudflareworkers.com')
+    return fetch(ISSUER_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/private-token-request' },
+      body: body,
+    })
+}
+
+const handleIssuerDirectory = async () =&gt; {
+    // These are fake issuers
+    // Issuer data can be fetch at https://pp-issuer-public.research.cloudflare.com/.well-known/private-token-issuer-directory
+    const TRUSTED_ISSUERS = {
+        "issuer1": { "token-keys": [{ "token-type": 2, "token-key": "A==" }] },
+        "issuer2": { "token-keys": [{ "token-type": 2, "token-key": "B==" }] },
+    }
+    return new Response(JSON.stringify(TRUSTED_ISSUERS), { headers: { "content-type": "application/json" } })
+}
+
+const handleRequest = (req) =&gt; {
+    const pathname = new URL(req.url).pathname
+    console.log(pathname, req.url)
+    if (pathname === '/v1/challenge') {
+        if (req.method === 'POST') {
+            return handlePostChallenge(req)
+        }
+        return handleGetChallenge(req)
+    }
+    if (pathname === '/v1/private-token-issuer-directory') {
+        return handleIssuerDirectory()
+    }
+    return new Response('Not found', { status: 404 })
+}
+
+addEventListener('fetch', event =&gt; {
+    event.respondWith(handleRequest(event.request))
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上面的验证方法只是检查用户是否选择了“是”。您的方法可能更复杂，但包装是不变的。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/Screenshot-2024-01-04-at-10.30.04.png" class="kg-image" alt="" loading="lazy" width="1356" height="206">
+		<figcaption><em>“是/否证明者”示例截图</em></figcaption>
+	</figure>
+	<p>由于用户可能为给定发行者配置了多个证明者，因此我们建议您的证明者实施一个额外的端点，以公开您所联系的发行者的密钥。您可以在 <a href="https://cloudflareworkers.com/#4eeeef2fa895e519addb3ae442ee351d:https://tutorial.cloudflareworkers.com/v1/private-token-issuer-directory">Cloudflare Workers 操练场</a>上尝试此代码。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">const handleIssuerDirectory = () =&gt; {
+    const TRUSTED_ISSUERS = {
+        "issuer1": { "token-keys": [{ "token-type": 2, "token-key": "A==" }] },
+        "issuer2": { "token-keys": [{ "token-type": 2, "token-key": "B==" }] },
+    }
+    return new Response(JSON.stringify(TRUSTED_ISSUERS), { headers: { "content-type": "application/json" } })
+}
+
+export default {
+    fetch(req: Request) {
+        const pathname = new URL(req.url).pathname
+        if (pathname === '/v1/private-token-issuer-directory') {
+            return handleIssuerDirectory()
+        }
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您有一个可直接与 Silk 浏览器扩展程序（<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>、<a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>）一起使用的证明者。当您进行部署时，它也可以直接集成到您的应用程序中。</p>
+	<p>如果您想拥有更高级的证明者和部署管道，请查看 <a href="https://github.com/cloudflare/pp-attester">cloudflare/pp-attester</a> 模板。</p>
+	<h3 id="%E4%BD%9C%E4%B8%BA%E5%8F%91%E8%A1%8C%E8%80%85%E2%80%94%E2%80%94%E5%9F%BA%E9%87%91%E4%BC%9A%E3%80%81%E8%B4%A2%E5%9B%A2">作为发行者——基金会、财团</h3>
+	<p>我们已经多次提到发行者。发行者的作用是选择一组它希望与之合作的证明者，并将自己的公钥传递给源站。发行者的整个加密行为<a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-protocol-16.html">由 IETF</a> 草案指定。与具有自由裁量行为的客户端和证明者相比，发行者是完全标准化的。它们的机会是选择一个对于源站来说足够强的信号，同时保护客户端的隐私。</p>
+	<p>Cloudflare Research 运营着一个用于实验目的公共发行者，在 <a href="https://pp-issuer-public.research.cloudflare.com">https://pp-issuer-public.research.cloudflare.com</a> 上使用。这是立即开始试用 Privacy Pass 的最简单解决方案。一旦成熟，您可以考虑加入生产发行者，或部署自己的发行者。</p>
+	<p>要部署自己的发行者，您应该：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">git clone github.com/cloudflare/pp-issuer
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>使用您的 Cloudflare Workers 帐户 ID 和区域 ID 更新 wrangler.toml。开源发行者 API 的工作原理如下：</p>
+	<ul>
+		<li>/.well-known/private-token-issuer-directory 返回发行者配置。请注意，它不会公开非标准 token-key-legacy</li>
+		<li>/token-request 返回一个令牌。应对该端点进行门控（例如通过 Cloudflare Access）以仅允许受信任的证明者调用它</li>
+		<li>/admin/rotate 生成新的公钥。这只能由您的团队访问，并在发行者可用之前调用。</li>
+	</ul>
+	<p>然后，<code>wrangler 发布</code>，您就可以上线证明者了。</p>
+	<h2 id="silk-%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8F%91%E5%B1%95">Silk 扩展程序的发展</h2>
+	<p>就像协议一样，证明 Privacy Pass 可行的浏览器技术也发生了变化。五年来，该协议与 Chrome 和 Firefox 的浏览器扩展程序一起部署。2021 年，Chrome 发布了新版本的扩展程序配置，通常称为 <a href="https://developer.chrome.com/docs/extensions/mv3/intro/platform-vision">Manifest v3</a> (MV3)。Chrome 还开始对所有新发布的扩展程序强制执行此新配置。</p>
+	<p>Privacy Pass<em> 扩展程序</em>基于商定的 Privacy Pass <a href="https://datatracker.ietf.org/doc/draft-ietf-privacypass-auth-scheme"><em>身份验证协议</em></a>。根据 <a href="https://developer.chrome.com/docs/extensions/reference/webRequest">Chrome 的 API 文档</a>，我们应该能够使用 onAuthRequired 事件。但是，由于 PrivateToken 身份验证尚未成为标准，因此浏览器没有为扩展程序提供挂钩来向该事件添加逻辑。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/01/Screenshot-2024-01-04-at-10.32.44.png" class="kg-image" alt="" loading="lazy" width="2086" height="972">
+		<figcaption><em>图片根据</em> <a href="https://developer.chrome.com/docs/extensions/reference/webRequest"><em>Google For Developers </em></a>提供的 CC-BY-SA 4.0 提供</figcaption>
+	</figure>
+	<p>我们决定使用的方法是定义客户端重放 API。当响应带有 401 WWW-Authenticate PrivateToken 时，浏览器会允许其通过，但会触发私人令牌兑换流程。当检索到令牌时，原始页面会收到通知，并重放请求。对于第二次请求，浏览器能够附加授权令牌，然后请求成功。这是客户端执行的主动重放，而不是平台完成的透明重放。<a href="https://github.com/cloudflare/pp-browser-extension#chrome-support-via-client-replay-api">GitHub</a> 上提供了规范。</p>
+	<p>我们期待着该标准取得进展，并简化项目的这一部分。这应该会提高证明方法的多样性。正如我们将在下一节中看到的，这是识别可被源站利用的新信号的关键。</p>
+	<h2 id="%E5%8C%BF%E5%90%8D%E5%87%AD%E8%AF%81%E6%A0%87%E5%87%86">匿名凭证标准</h2>
+	<p>IP 仍然是反滥用系统中的一个关键标识符。与此同时，IP 指纹识别技术已成为一个更大的问题，平台已开始取消其中一些跟踪用户的方式。为了使反滥用系统不依赖 IP，同时确保用户隐私，Privacy Pass 提供了合理的替代方案来处理潜在的滥用或可疑流量。证明方法各不相同，可以根据特定部署的需要进行选择。例如，Apple 公司在使用 Privacy Pass 作为 iCloud Private Relay 的授权技术时， 决定用硬件支持他们的证明。另一个例子是 Cloudflare Research，它决定部署 Turnstile 证明者，作为 Cloudflare 质询平台成功解决质询的信号。</p>
+	<p>在所有这些部署中，类似 Privacy Pass 的技术允许分享特定的信息。您的设备不会仅仅通过连接到网站来共享您的位置、过去的流量，甚至是您的姓名和电话号码，而是能够以保护隐私的方式向第三方证明特定信息。哪些用户信息和证明方法足以防止滥用是一个悬而未决的问题。我们希望通过发布这款软件来增强研究人员的能力，帮助他们找到答案。这可以通过新的实验来实现，例如测试新的证明方法，或通过提供特定信息共享的框架来促进其他隐私协议。 </p>
+	<h2 id="%E6%9C%AA%E6%9D%A5%E5%BB%BA%E8%AE%AE">未来建议</h2>
+	<p>正如我们期待最新版本的 Privacy Pass 能带来新的应用和想法，我们也期待该标准和使用该标准的客户端能进一步发展。Privacy Pass 的未来发展有望涵盖批量令牌发行和速率限制等主题。在我们构建和部署这一版本的 Privacy Pass 的过程中，我们遇到了一些限制，我们希望将来也能解决这些限制。</p>
+	<p>证明者和发行者之间的分工，以及源站和发行者之间、发行者和证明者之间的信任关系的明确方向，使得对失信影响的推理变得清晰。发行者可以信任多个证明者，但由于许多当前的 Privacy Pass 部署无法识别导致发行的证明者，因此对一个证明者失去信任，将使所有信任该证明者的发行者发行的所有令牌都变得不受信任。这是因为无法判断哪个证明者参与了发行过程。这是否会促进证明者和发行者之间的一对一通信，让我们等待时间来揭晓答案。</p>
+	<p>开发一个同时受 Firefox 和 Chrome 浏览器支持的浏览器扩展程序，有时可能需要相当复杂（且脆弱）的代码路径。Privacy Pass 协议似乎非常适合 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/onAuthRequired">webRequest.onAuthRequired</a> 浏览器事件的扩展程序。正如 Privacy Pass 在 WWW-Authenticate HTTP 标头中显示为备用身份验证消息一样，浏览器也可以触发 onAuthRequired 事件以进行私有令牌身份验证，并在 onAuthRequired 事件中包含并允许请求阻止支持。这似乎是该事件使用方式的自然演变，目前仅限于现在已经相当老旧的基本身份验证。</p>
+	<h2 id="%E6%80%BB%E7%BB%93">总结</h2>
+	<p>Privacy Pass 为 Web 长期面临的挑战之一——匿名身份验证——提供了解决方案。通过利用加密技术，该协议允许网站从用户那里获取所需的信息，并且仅获取这些信息。它已经被数百万人使用，能够无阻碍地帮助区分人类请求和自动化机器人请求，同时保护隐私。我们对该协议广泛且不断增长的采用情况感到兴奋，也很期待该最新版本可能带来的新颖用例。</p>
+	<p>Cloudflare 的 Privacy Pass 实施可在 GitHub 上获取，并且符合该标准。我们对<a href="https://github.com/cloudflare?q=pp-&amp;type=all&amp;language=&amp;sort=#org-repositories">一组模板</a>进行了开源，这组模板可用于实施 Privacy Pass <a href="https://github.com/cloudflare/pp-origin"><em>源站</em></a><em>、</em><a href="https://github.com/cloudflare/pp-issuer"><em>发行者</em></a>和<a href="https://github.com/cloudflare/pp-attester"><em>证明者</em></a>，它们利用 Cloudflare Workers 快速启动和运行。</p>
+	<p>如果想要立即尝试 Privacy Pass 的人，请立即下载 <em>Silk - Privacy Pass Client</em> 浏览器扩展程序（<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass">Firefox</a>、<a href="https://chromewebstore.google.com/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi">Chrome</a>、<a href="https://github.com/cloudflare/pp-browser-extension">GitHub</a>），并在浏览 Web 的过程中体验更少的机器人检查吧。</p>
+</div>

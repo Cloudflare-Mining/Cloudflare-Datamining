@@ -1,0 +1,144 @@
+<div class="mb2 gray5">18 min read</div>
+<div class="post-content lh-copy gray1">
+	<p>2023 年感恩节（11 月 23 日），Cloudflare 在我们的自托管 Atlassian 伺服器上检测到一个威胁行为者。我们的安全团队立即开始调查，切断了威胁行为者的访问权限。11 月 26 日（星期日），我们邀请了 CrowdStrike 的取证团队进行他们自己的独立分析。 </p>
+	<p>昨天，CrowdStrike 完成了调查，我们发布这篇博文来谈谈这次安全事件的细节。 </p>
+	<p>我们想向客户强调，Cloudflare 客户数据或系统没有受到此次事件的影响。由于我们的访问控制、防火墙规则以及使用我们自己的 Zero Trust 工具强制执行的硬安全密钥，威胁行为者横向移动的能力受到限制。没有影响到任何服务，也没有对我们的全球网络系统或配置进行任何更改。这是 Zero Trust 架构的承诺：它就像一艘船上的隔板，一个系统遭到入侵并不会损害整个组织。</p>
+	<p>从 11 月 14 日到 17 日，威胁行为者进行了侦察，然后访问了我们的内部 wiki（使用 Atlassian Confluence）和我们的错误数据库 (Atlassian Jira)。11 月 20 日和 21 日，我们看到更多访问，表明他们可能已经回来测试访问权限，以确保他们具有连接能力。</p>
+	<p>然后，他们于 11 月 22 日返回，并使用 ScriptRunner for Jira 建立了对我们的 Atlassian 服务器的持久访问，获得了对我们源代码管理系统（使用 Atlassian Bitbucket）的访问权限，并尝试访问有权访问巴西圣保罗数据中心（Cloudflare 尚未将该中心投入生产）的控制台服务器，但没有成功。</p>
+	<p>他们通过使用一个访问令牌和三个盗用的服务帐户凭证来做到这一点，而我们在 <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">2023 年 10 月的 Okta 泄露事件</a>后未能轮换这些凭证。所有威胁参与者的访问和连接均已于 11 月 24 日终止，CrowdStrike 已确认最后一次威胁活动证据出现在 11 月 24 日 10:44。</p>
+	<p><em>（本博文中所有日期和时间均为协调世界时。）</em></p>
+	<p>尽管我们知道这次事件对运营的影响非常有限，但我们还是非常重视这次事件，因为一名威胁行为者使用窃取的凭证访问了我们的 Atlassian 服务器，并访问了一些文档和少量源代码。根据我们与业界和政府部门同事的合作，我们认为这次攻击是由一个民族国家的攻击者实施的，其目的是获得对 Cloudflare 全球网络的持久和广泛访问。</p>
+	<h3 id="%E2%80%9C%E7%BA%A2%E8%89%B2%E8%AD%A6%E6%8A%A5%E2%80%9D%E4%BF%AE%E5%A4%8D%E5%92%8C%E5%8A%A0%E5%9B%BA%E5%B7%A5%E4%BD%9C">“红色警报”修复和加固工作 </h3>
+	<p>11 月24 日，将威胁行为者从我们的环境中驱离后，我们的安全团队在全公司召集了所有相关人员来调查这起入侵事件，确保该威胁行为者已完全无法再访问我们的系统，并确保我们了解他们所访问或尝试访问的全部内容。</p>
+	<p>然后，从 11 月 27 日开始，我们将 Cloudflare 大部分技术人员（安全团队内部和外部人员）的工作重心转移到一个名为“红色警报”的项目，重点是加强、验证和修复我们环境中的任何控制措施，以确保我们免受未来的入侵，并验证威胁行为者无法访问我们的环境。此外，我们继续调查每个系统、帐户和日志，以确保威胁行为者没有持续访问权限，并且我们完全了解他们接触过哪些系统以及他们试图访问哪些系统。</p>
+	<p>CrowdStrike 对威胁行为者活动的范围和程度进行了独立评估，包括寻找他们仍然存在于我们系统中的任何证据。CrowdStrike 的调查为我们的调查提供了有用的佐证和支持，但并没有查到我们遗漏的任何活动。这篇博文详细概述了我们和 CrowdStrike 发现的有关威胁行为者活动的所有内容。</p>
+	<p>威胁行为者可以使用被盗凭证访问的唯一生产系统是我们的 Atlassian 环境。通过分析他们访问的 wiki 页面、错误数据库问题和源代码存储库，他们似乎正在寻找有关我们全球网络的架构、安全性和管理的信息；毫无疑问，他们的目的是为了获得更深的立足点。因此，我们决定要下大力气来进一步强化我们的安全协议，以防止威胁行为者在我们忽略了日志文件中某些内容的情况下获得立足点。</p>
+	<p>我们的目标是防止攻击者使用有关我们网络运行的技术信息作为重新进入的方式。尽管我们相信（后来也证实）攻击者的访问权限有限，但我们还是采取了全面措施，轮换了所有生产凭证（超过 5,000 个个人凭证），对测试和暂存系统进行了物理分割，对 4,893 个系统执行取证分类，重新映像并重新启动我们全球网络中的每台机器，包括威胁行为者访问的所有系统以及所有 Atlassian 产品（Jira、Confluence 和 Bitbucket）。</p>
+	<p>威胁行为者还尝试访问我们位于圣保罗的新数据中心（尚未投入生产）中的控制台服务器。所有获取访问权限的尝试均未成功。为了确保这些系统 100% 安全，巴西数据中心的设备已返还给制造商。制造商的取证团队检查了我们的所有系统，以确保攻击者没有获得任何访问权限或持久性。虽然没有发现任何问题，但我们还是更换了硬件。</p>
+	<p>我们还查找了未更新的软件包、可能创建的用户帐户以及未使用的活跃员工帐户；我们搜索了可能留在 Jira 故障单或源代码中的秘密，检查并删除了上传到 wiki 的所有 HAR 文件，以防它们包含任何类型的令牌。只要有疑问，我们就会做最坏的打算并进行更改，以确保威胁行为者能够访问的任何内容将不再被使用，从而对他们不再有价值。</p>
+	<p>我们鼓励团队的每个成员指出威胁行为者可能接触过的区域，以便我们可以检查日志文件并确定威胁行为者的访问范围。我们让公司内的众多人员参与进来，不遗余力地寻找访问证据或为提高安全性而需要进行的更改。</p>
+	<p>直接的“红色警报”已于 1 月 5 日结束，但整个公司仍在继续围绕凭证管理、软件加固、漏洞管理、额外警报等开展工作。</p>
+	<h3 id="%E6%94%BB%E5%87%BB%E6%97%B6%E9%97%B4%E8%A1%A8">攻击时间表</h3>
+	<p>这次攻击始于 10 月份的 Okta 入侵事件，但威胁行为者直到 11 月中旬才开始使用 Okta 入侵事件中的凭证攻击我们的系统。 </p>
+	<p>以下时间轴显示了主要事件：</p>
+	<h3 id="10-%E6%9C%88-18-%E6%97%A5%EF%BC%9Aokta-%E9%81%AD%E5%88%B0%E5%85%A5%E4%BE%B5">10 月 18 日：Okta 遭到入侵</h3>
+	<p>我们<a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">之前已经写过相关文章</a>，但总而言之，我们（第二次）成为 Okta 系统遭到入侵的受害者，这次入侵导致威胁行为者获得了一组凭证的访问权限。这些凭证本应全部轮换。</p>
+	<p>遗憾的是，我们未能轮换在 Okta 入侵事件中泄露的一个服务令牌和三个服务账户（总共数千个）凭证。 </p>
+	<p>其中之一是 Moveworks 服务令牌，它允许远程访问我们的 Atlassian 系统。第二个凭证是基于 SaaS 的 Smartsheet 应用程序使用的服务帐户，该应用程序对我们的 Atlassian Jira 实例具有管理访问权限；第三个帐户是 Bitbucket 服务帐户，用于访问我们的源代码管理系统；第四个帐户是无法访问全球网络且没有客户或敏感数据的 AWS 环境。 </p>
+	<p>一个服务令牌和三个帐户没有轮换，因为误以为它们没有使用。这种做法是不对的，也是威胁行为者首次进入我们的系统并获得 Atlassian 产品持久性的方式。请注意，这绝不是 AWS、Moveworks 或 Smartsheet 的错误。这些只是我们未能轮换的凭证。</p>
+	<h3 id="11-%E6%9C%88-14-%E6%97%A5-092249%EF%BC%9A%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E5%BC%80%E5%A7%8B%E6%8E%A2%E6%B5%8B">11 月 14 日 09:22:49：威胁行为者开始探测</h3>
+	<p>我们的日志显示，威胁行为者从 11 月 14 日开始对我们的系统进行探测和侦察，寻找使用凭证的方法以及可访问哪些系统。他们尝试登录我们的 Okta 实例，但被拒绝访问。他们尝试访问 Cloudflare 仪表板，也被拒绝访问。</p>
+	<p>此外，威胁参与者还访问了用于为 Cloudflare 应用程序市场提供支持的 AWS 环境。该环境已分段，无法访问全球网络或客户数据。访问该环境的服务帐户已被撤销，我们验证了环境的完整性。 </p>
+	<h3 id="11-%E6%9C%88-15-%E6%97%A5-162838%EF%BC%9A%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E8%8E%B7%E5%8F%96%E4%BA%86-atlassian-%E6%9C%8D%E5%8A%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">11 月 15 日 16:28:38：威胁行为者获取了 Atlassian 服务的访问权限</h3>
+	<p>11 月 15 日，威胁行为者使用 Moveworks 服务令牌通过我们的网关进行身份验证，成功访问了 Atlassian Jira 和 Confluence，然后他们使用 Smartsheet 服务帐户获取了对 Atlassian 套件的访问权限。第二天，他们开始查找有关我们全球网络的配置和管理的信息，并访问了各种 Jira 故障单。</p>
+	<p>威胁行为者在 wiki 中搜索了远程访问、秘密、客户端秘密、openconnect、cloudflared 和令牌等内容。他们访问了 36 个 Jira 故障单（总共 2,059,357 个故障单）和 202 个 wiki 页面（总共 14,099 个页面）。</p>
+	<p>威胁行为者访问了有关漏洞管理、秘密轮换、MFA 绕过、网络访问，甚至我们对 Okta 事件本身的响应的 Jira 故障单。 </p>
+	<p>wiki 搜索和访问的页面表明，威胁行为者对访问我们系统的各个方面都非常感兴趣：密码重置、远程访问、配置、Salt 的使用，但他们并不针对客户数据或客户配置。</p>
+	<h3 id="11-%E6%9C%88-16-%E6%97%A5-143637%EF%BC%9A%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E5%88%9B%E5%BB%BA%E4%BA%86%E4%B8%80%E4%B8%AA-atlassian-%E7%94%A8%E6%88%B7%E5%B8%90%E6%88%B7">11 月 16 日 14:36:37：威胁行为者创建了一个 Atlassian 用户帐户</h3>
+	<p>威胁行为者使用 Smartsheet 凭证创建了一个 Atlassian 帐户，看起来就像一个普通的 Cloudflare 用户。他们将该用户添加到 Atlassian 中的多个组中，以便在 Smartsheet 服务帐户被移除的情况下，他们仍可以持续访问 Atlassian 环境。</p>
+	<h3 id="11-%E6%9C%88-17-%E6%97%A5-143352-%E8%87%B3-11-%E6%9C%88-20-%E6%97%A5-092653%EF%BC%9A%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E6%9A%82%E5%81%9C%E8%AE%BF%E9%97%AE-cloudflare-%E7%B3%BB%E7%BB%9F">11 月 17 日 14:33:52 至 11 月 20 日 09:26:53：威胁行为者暂停访问 Cloudflare 系统</h3>
+	<p>在此期间，攻击者暂停了对我们系统的访问（除了短暂地测试他们是否仍有访问权限），并在感恩节前返回。</p>
+	<h3 id="11-%E6%9C%88-22-%E6%97%A5-141822%EF%BC%9A%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E8%8E%B7%E5%BE%97%E6%8C%81%E4%B9%85%E6%80%A7">11 月 22 日 14:18:22：威胁行为者获得持久性</h3>
+	<p>由于 Smartsheet 服务帐户具有对 Atlassian Jira 的管理访问权限，威胁行为者能够安装 Sliver Adversary Emulation Framework，这是一种广泛使用的工具和框架，红队和攻击者使用它来启用“C2”（命令和控制）， 通过连接性获得对安装它的计算机的持久且隐秘的访问权限。Sliver 是使用 ScriptRunner for Jira 插件安装的。</p>
+	<p>这使得攻击者能够持续访问 Atlassian 服务器，并利用它来尝试横向移动。通过这一访问权限，威胁行为者尝试访问我们巴西圣保罗数据中心的非生产控制台服务器，因为 ACL 未强制执行。访问被拒绝，他们无法访问全球网络的任何部分。</p>
+	<p>第二天，威胁行为者查看了 120 个代码存储库（总共 11,904 个存储库）。在这 120 个存储库中，威胁行为者使用了 76 个存储库上的 Atlassian Bitbucket git 存档功能，将它们下载到 Atlassian 服务器，尽管我们无法确认它们是否已被泄露，但我们决定将它们视为已被泄露。 </p>
+	<p>这 76 个源代码存储库几乎都与备份的工作方式、全球网络的配置和管理方式、Cloudflare 中的身份工作方式、远程访问以及我们对 Terraform 和 Kubernetes 的使用有关。少数存储库包含加密的秘密，尽管它们本身经过严格加密，但还是被立即轮换。</p>
+	<p>我们特别关注这 76 个源代码存储库，以寻找嵌入的秘密（存储在代码中的秘密已轮换）、漏洞以及攻击者可以利用它们发起后续攻击的方式。作为“红色警报”的一部分，这项工作由整个公司的工程团队优先完成。</p>
+	<p>作为一家 SaaS 公司，我们长期以来一直认为，相比向最终用户分发软件的软件公司的源代码，我们的源代码本身并没有那么珍贵。事实上，我们已经开源了大量的源代码，并通过我们的博客公开谈论我们使用的算法和技术。因此，我们的重点不是有人能够访问源代码，而是该源代码是否包含嵌入的秘密（例如密钥或令牌）和漏洞。</p>
+	<h3 id="11-%E6%9C%88-23-%E6%97%A5%EF%BC%9A%E5%BC%80%E5%A7%8B%E5%8F%91%E7%8E%B0%E5%92%8C%E7%BB%88%E6%AD%A2%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E7%9A%84%E8%AE%BF%E9%97%AE">11 月 23 日：开始发现和终止威胁行为者的访问 </h3>
+	<p>我们的安全团队于 16:00 收到存在威胁行为者的警报，并在 35 分钟后停用了 Smartsheet 服务帐户。48 分钟后，我们发现并停用了威胁行为者创建的用户帐户。以下是发出第一个警报后为阻止威胁行为者而采取的主要行动的详细时间表。</p>
+	<p>15:58：该威胁行为者将 Smartsheet 服务帐户添加到管理员组。<br>16:00：系统自动向我们的安全团队发出有关 15:58 所做更改的警报。<br>16:12：Cloudflare SOC 开始调查该警报。<br>16:35：Smartsheet 服务帐户被 Cloudflare SOC 停用。<br>17:23：发现并停用威胁行为者创建的 Atlassian 用户帐户。<br>17:43：宣布发生内部 Cloudflare 事件。<br>21:31：设置防火墙规则，阻止威胁行为者的已知 IP 地址。</p>
+	<h3 id="11-%E6%9C%88-24-%E6%97%A5%EF%BC%9A%E5%88%A0%E9%99%A4-sliver%EF%BC%9B%E7%BB%88%E6%AD%A2%E6%89%80%E6%9C%89%E5%A8%81%E8%83%81%E8%A1%8C%E4%B8%BA%E8%80%85%E7%9A%84%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">11 月 24 日：删除 Sliver；终止所有威胁行为者的访问权限</h3>
+	<p>10:44：发生最后一次已知的威胁行为者活动。<br>11:59：删除 Sliver。</p>
+	<p>在整个时间线中，威胁行为者试图访问 Cloudflare 的许多其他系统，但由于我们的访问控制、防火墙规则和使用我们自己的 Zero Trust 工具强制执行的硬安全密钥，这些尝试都失败了。</p>
+	<p>需要明确的是，我们没有看到任何证据表明威胁行为者可以访问我们的全球网络、数据中心、SSL 密钥、客户数据库或配置信息、我们或客户部署的 Cloudflare Workers、AI 模型、网络基础设施或我们的任何数据存储（如 Workers KV、R2 或 Quicksilver 等）。他们的访问权限仅限于 Atlassian 套件和运行 Atlassian 的服务器。</p>
+	<p>我们“红色警报”工作的很大一部分是了解威胁行为者可以访问什么以及他们试图访问什么。通过查看各系统的日志记录，我们能够跟踪对内部指标、网络配置、构建系统、警报系统和发布管理系统的尝试访问。根据我们的审查，他们对这些系统的访问尝试均未成功。CrowdStrike 独立地对威胁行为者的活动范围和程度进行了评估，没有发现我们遗漏的活动，并得出结论认为，威胁活动的最后证据出现在 11 月 24 日上午 10:44。 </p>
+	<p>我们相信，通过我们的调查和 CrowdStrike 的调查，我们完全了解了威胁行为者的行为，并且这些操作仅限于我们看到其活动的系统。</p>
+	<h3 id="%E6%80%BB%E7%BB%93">总结</h3>
+	<p>这起安全事件的参与者经验丰富，很可能是一个民族国家，其行动方式深思熟虑、有条不紊。我们已采取努力，确保该事件不会产生持续影响，并做好充分准备，抵御未来任何复杂的攻击。这需要大量 Cloudflare 工程人员的努力，并且在一个多月的时间里，这是 Cloudflare 的最高优先事项。整个 Cloudflare 团队努力确保我们的系统安全，了解威胁行为者的访问情况，补救当务之急（例如大规模凭证轮换），并根据在此过程中发现的有待改进的领域，制定长期工作计划，以提高我们的整体安全性。</p>
+	<p>我非常感谢 Cloudflare 的每一位员工，他们在感恩节假期期间迅速做出反应，对威胁行为者进行了初步分析和锁定。我还要感谢所有为此做出贡献的人。我们无法一一列举所有相关人员的姓名，但他们长时间的辛勤工作使我们能够对 Cloudflare 的安全性进行必要的审查和更改，同时保持我们全球网络的正常运行和客户服务的正常运行。<br><br>我们非常感谢 CrowdStrike 立即开展独立评估。现在他们的最终报告已经完成，我们对自己的内部分析和入侵修复措施充满信心，并发布了这篇博文。</p>
+	<h4 id="ioc"><strong>IOC</strong></h4>
+	<p>以下是我们从该威胁行为者处看到的入侵指标 (IOC)。我们发布这些信息，以便其他组织（尤其是那些可能受到 Okta 泄漏事件影响的组织）可以搜索其日志以确认同一威胁行为者没有访问其系统。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指标</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指标类型</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SHA256</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">描述</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.]126 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不适用</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">主要威胁行为者</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">基础设施，由</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247 Europe SRL 所有（罗马尼亚</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">布加勒斯特）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.]214 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不适用</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver C2 服务器，由</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS 所有（英国伦敦）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.]com</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">域</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不适用</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">为 Sliver 服务的基础设施</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">有效负载</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvm-agent</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">文件名</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4<br>6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver 有效负载</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+</div>

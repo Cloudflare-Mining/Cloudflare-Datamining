@@ -1,0 +1,100 @@
+<div class="mb2 gray5">15 min read</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image2-3.png" class="kg-image" alt="Using DNS to estimate the worldwide state of IPv6 adoption" loading="lazy" width="1200" height="676"></figure>
+	<p>为了使一台设备能够使用恰当命名的<a href="https://en.wikipedia.org/wiki/Internet_Protocol">互联网协议 </a>(IP) 与互联网上的其他设备进行通信，首先必须为其分配一个唯一的数字地址。该地址的外观取决于所使用的 IP 版本：<a href="https://en.wikipedia.org/wiki/Internet_Protocol_version_4">IPv4</a> 还是 <a href="https://en.wikipedia.org/wiki/IPv6">IPv6</a>。</p>
+	<p>IPv4 于 1983 年首次部署。它是催生了现代互联网的 IP 版本，并且至今仍然占据主导地位。IPv6 的历史可以追溯到 1998 年，但直到最近十年，它才开始获得巨大的关注——从不到 1% 上升到 30% 到 40% 之间，具体取决于报告方、报告内容和测量方式。</p>
+	<p>随着连接设备的增长远远超过可用的 IPv4 地址数量，<a href="https://blog.cloudflare.com/zh-cn/amazon-2bn-ipv4-tax-how-avoid-paying-zh-cn">并且其成本不断上升</a>，IPv6 提供的更大地址空间本应该使其成为目前的主导协议。然而，正如我们将看到的，事实并非如此。</p><!--kg-card-begin: markdown-->
+	<p>Cloudflare <a href="https://www.cloudflare.com/press-releases/2011/cloudflare-announces-the-automatic-ipv6-gateway">多年来</a>一直是 IPv6 的坚定倡导者，并且我们一直通过 <a href="https://radar.cloudflare.com">Cloudflare Radar</a> 密切关注 IPv6 在互联网上的采用情况。Radar 已经推出三年了，仍然是一个相对较新的平台。如果要追溯到更早的时间，我们可以简单地向 <a href="https://stats.labs.apnic.net/ipv6/XA">APNIC</a><sup>1</sup> （五个地区互联网注册管理机构 (<a href="https://en.wikipedia.org/wiki/Regional_Internet_registry">RIRs</a>)之一）的朋友求助。通过他们追溯到 2012 年的数据，我们可以看到 IPv6 在 2017 年年中之前经历了一段看似指数级的增长期，之后进入了线性增长期，目前仍在持续：</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--7--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="700"></figure>
+	<p>由于两种协议之间缺乏兼容性（必须同时为设备分配 IPv4 和 IPv6 地址）<em>以及</em>事实上互联网上的所有设备仍然支持 IPv4，IPv6 的采用速度减慢了。然而，IPv6 对于互联网的未来至关重要，因此需要继续努力增加其部署。</p>
+	<p>Cloudflare Radar 与 APNIC 和当今大多数其他来源一样，发布的数据主要反映了互联网服务提供商 (ISP) 部署 IPv6 的程度：<em>客户端</em>。这是一个非常重要的角度，直接影响最终用户，但还有等式的另一端：<em>服务器端</em>。</p>
+	<p>考虑到这一点，我们邀请您跟随我们进行一个快速实验，我们的目的是了解服务器端 IPv6 的采用情况，以及客户端实际上（或可能）能够通过 IPv6 与服务器通信的频率。我们将依靠 DNS 进行此探索，正如他们所说，结果可能会让您感到惊讶。</p>
+	<h3 id="%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84-ipv6-%E9%87%87%E7%94%A8%E6%83%85%E5%86%B5%EF%BC%88%E6%9D%A5%E8%87%AA-http%EF%BC%89">客户端的 IPv6 采用情况（来自 HTTP）</h3>
+	<p>从 Cloudflare 的<a href="https://radar.cloudflare.com/adoption-and-usage?dateStart=2023-08-01&amp;dateEnd=2023-10-31">角度</a>来看，截至 2023 年 10 月，整个互联网的 IPv6 采用率约为所有流量的 <strong>36%</strong>，根据一天中的时间和一周中的日期略有变化。如果排除机器人，这一估计值将上升至 46% 以上，而如果排除人类，则该估计值会下降到近 24%。这些数字指的是通过 IPv6 提供的 HTTP 请求<a href="https://developers.cloudflare.com/radar/glossary/#ipv6-adoption">在所有启用 IPv6 的内容（默认设置）中</a>所占的份额。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0-2.png" class="kg-image" alt="" loading="lazy" width="1600" height="900"></figure>
+	<p>对于这项工作来说，最重要的是人类<em>和</em>机器人的数量。造成这两种流量采用率差距的原因有很多——从所使用的大量客户端软件对 IPv6 的支持程度不同，到流量来源的众多网络内部 IPv6 部署程度不同，再到这些网络的规模不同，等等，但这都是后话了。如果您对某个国家或网络的数字感到好奇，可以查阅 <a href="https://radar.cloudflare.com/adoption-and-usage">Cloudflare Radar</a> 和我们的 2023 <a href="https://radar.cloudflare.com/year-in-review/2023#ipv6-adoption">年度回顾</a>报告。</p>
+	<h3 id="%E7%AD%89%E5%BC%8F%E7%9A%84%E4%B8%A4%E7%AB%AF">等式的两端</h3>
+	<p>读者可能会指出，对“客户端-服务器”等式中的“客户端”一侧进行测量，只能说明问题的一半：要让支持 IPv6 的“客户端”通过 IPv6 与服务器建立连接，服务器也必须支持 IPv6。</p>
+	<p>这就提出了两个问题：</p>
+	<ol>
+		<li>服务器端采用 IPv6 的程度如何？</li>
+		<li>客户端采用 IPv6 与服务器采用 IPv6 的一致性如何？</li>
+	</ol>
+	<p>有几种可能的答案，取决于我们谈论的是用户、设备还是传输的字节数等等。我们将把重点放在<em>连接</em>（稍后就会明白为什么），我们提出的综合问题是：</p>
+	<blockquote><em>在典型的使用模式下，支持 IPv6 的客户端在连接互联网上的服务器时，能够使用 IPv6 的频率如何？</em><br></blockquote>
+	<p>典型的使用模式包括人们每天访问某些网站的频率高于其他网站，或者自动客户端调用 API。我们将通过 DNS 来了解这一点。</p>
+	<h3 id="%E8%BF%9B%E5%85%A5-dns">进入 DNS</h3>
+	<p>无论是使用传统的 IPv4 协议还是更现代的 IPv6 协议，客户端在尝试通过名称与服务器建立连接之前，都必须在互联网的<a href="https://en.wikipedia.org/wiki/Telephone_directory">电话簿</a>——<a href="https://www.cloudflare.com/learning/dns/what-is-dns">域名系统 (DNS)</a>——中查找服务器的 IP 地址。</p><!--kg-card-begin: markdown-->
+	<p>在 DNS 中查找主机名<a href="https://www.cloudflare.com/learning/dns/what-is-dns">是一个递归过程</a>。要查找服务器的 IP 地址，必须在多个 DNS 权威服务器上跟踪域层次结构（服务器名称的点分隔组件），直到其中一个服务器返回所需的响应<sup>2</sup>。不过，大多数客户端不会直接这样做，而是让一个称为<a href="https://www.cloudflare.com/learning/dns/what-is-recursive-dns">递归解析器</a>的中间服务器代劳。Cloudflare 就运营着这样一个任何人都可以使用的递归解析器：<a href="https://one.one.one.one/dns">1.1.1.1</a>。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--1--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="800"></figure><!--kg-card-begin: markdown-->
+	<p>举个简单的例子，当客户端向 1.1.1.1 询问 “www.example.com” 所在的 IP 地址时，1.1.1.1 会先向 DNS 根服务器<sup>3</sup>询问有关“.com”的信息，然后向 .com DNS 服务器询问有关“example.com”的信息，最后向 example.com DNS 服务器询问有关 “www.example.com”的信息，后者直接了解该信息并用 IP 地址进行答复。为了让下一个提出类似问题的客户端更快地得到答案，1.1.1.1 会缓存（暂时记忆）最终答案和中间的步骤。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--2--3.png" class="kg-image" alt="" loading="lazy" width="1600" height="384"></figure>
+	<p>这意味着 1.1.1.1 能够很好地统计客户端尝试查找 IPv4 地址（A 类查询）的频率<em>与</em>尝试查找 IPv6 地址（AAAA 类查询）的频率，覆盖了大部分可观察到的互联网。</p>
+	<p>但是，客户端如何知道何时询问服务器的 IPv4 地址或 IPv6 地址？</p>
+	<p>简而言之，可以使用 IPv6 的客户端会同时请求 IPv4 和 IPv6 地址，即为它們希望连接的每台服务器进行单独的 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record">A</a> 和 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-aaaa-record">AAAA</a> 查找。这些支持 IPv6 的客户端在获得非空 AAAA 答复时将优先通过 IPv6 进行连接，无论它们是否也获得非空 A 答复（正如我们将看到的，它们几乎总是会得到非空的 A 答复）。推动这种现代性偏好的算法被称为 <a href="https://en.wikipedia.org/wiki/Happy_Eyeballs">Happy Eyeballs</a>，如果您对细节感兴趣，可在此查看。</p>
+	<p>我们现在可以开始查看一些实际数据了…</p>
+	<h2 id="%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84-ipv6-%E9%87%87%E7%94%A8%E6%83%85%E5%86%B5%EF%BC%88%E6%9D%A5%E8%87%AA-dns%EF%BC%89">客户端的 IPv6 采用情况（来自 DNS）<br></h2>
+	<p>第一步是通过从 1.1.1.1 的角度测量客户端 IPv6 部署并将其与我们开始时的 HTTP 请求数量进行比较来建立基线。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--3--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="529"></figure>
+	<p>计算客户端使用 IPv6 连接到 1.1.1.1 的频率很有诱惑力，但由于以下几个原因，结果会产生误导，其中最重要的一个原因隐藏在显而易见的地方：在客户端可用来通过 1.1.1.1 <strong>服务</strong>执行 DNS 查找的 IPv4 和 IPv6 地址集合中，1.1.1.1 是最容易记住的<strong>地址</strong>。理想情况下，使用 1.1.1.1 作为递归解析器的支持 IPv6 的客户端应配置以下所有四个 IP 地址，而不仅仅是前两个：</p>
+	<ul>
+		<li><strong>1.1.1.1</strong> (IPv4)</li>
+		<li><strong>1.0.0.1</strong> (IPv4)</li>
+		<li><strong>2606:4700:4700::1111</strong> (IPv6)</li>
+		<li><strong>2606:4700:4700::1001</strong> (IPv6)</li>
+	</ul><!--kg-card-begin: markdown-->
+	<p>但是，当涉及手动配置时<sup>4</sup>，人类会发现 IPv6 地址不如 IPv4 地址好记，而且不太可能进行配置，因此认为 IPv4 地址就足够了。</p>
+	<!--kg-card-end: markdown-->
+	<p>与此相关但不太明显的干扰因素是，许多支持 IPv6 的客户端即使配置了 1.1.1.1 的 IPv6 地址，仍然会通过 IPv4 执行 DNS 查找，因为分散查找可用地址是一种流行的默认选项。</p><!--kg-card-begin: markdown-->
+	<p>从 DNS 客户端活动评估 IPv6 采用情况的更合理方法是计算 AAAA 类型查询占 A 类型查询总量的百分比（假设 IPv6 客户端始终同时执行这两种查询<sup>5</sup>，如前所述）。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--4--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="555"></figure>
+	<p>那么，从 1.1.1.1 的角度来看，按查询量计算，<strong>客户端</strong>的 IPv6 采用率估计为<strong> 30.5%</strong>。这略低于我们从 HTTP 流量中观察到的同期数据 (35.9%)，但两种不同视角之间的差异并不出人意料。</p>
+	<h3 id="%E5%85%B3%E4%BA%8E-ttl-%E7%9A%84%E8%AF%B4%E6%98%8E">关于 TTL 的说明</h3>
+	<p>不仅递归解析器会缓存 DNS 响应，大多数 DNS 客户端也有自己的本地缓存。您的 Web 浏览器、操作系统甚至是家用路由器都会保留答案，希望能加快后续查询的速度。</p>
+	<p>每个答案在缓存中保留的时间取决于随 DNS 记录传回的<a href="https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl">生存时间</a> (TTL) 字段。如果您熟悉 DNS，可能会想知道 A 和 AAAA 记录是否具有相似的 TTL。如果不相似，则对于这两种类型种的一种，我们可能会收到更少的查询（因为它在客户端级别缓存的时间更长），从而使最终的采用数据产生偏差。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--5--2.png" class="kg-image" alt="" loading="lazy" width="1256" height="708"></figure><!--kg-card-begin: markdown-->
+	<p>这里的饼图细分了 1.1.1.1 响应 A 和 AAAA 查询时传回的最小 TTL<sup>6</sup>。两种类型之间存在一定差异，但差异很小。</p>
+	<!--kg-card-end: markdown-->
+	<h3 id="%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84-ipv6-%E9%87%87%E7%94%A8%E6%83%85%E5%86%B5">服务器端的 IPv6 采用情况</h3>
+	<p>下图显示了 A 和 AAAA 类型查询获得非空响应的频率，揭示了<strong>服务器端</strong>的 IPv6 采用情况，让我们更接近我们想要的答案：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--6--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="549"></figure>
+	<p>按查询量计算，服务器采用 IPv6 的比例估计为 <strong>43.3%</strong>，明显高于客户端。</p>
+	<h3 id="%E5%8F%8C%E6%96%B9%E5%90%8C%E6%97%B6%E6%8E%A5%E5%8F%97%E7%9A%84%E9%A2%91%E7%8E%87">双方同时接受的频率</h3>
+	<p>如果由 1.1.1.1 处理的 IP 地址查询中有 30.5% 可以使用 IPv6 地址连接到预定目的地，但其中只有 43.3% 的查询得到了非空响应，那么这就为我们提供了一个很好的基础，说明客户端和服务器之间的 IPv6 连接频率大约为 <strong>13.2%</strong>。</p>
+	<h3 id="%E7%83%AD%E9%97%A8%E5%9F%9F%E5%90%8D%E7%9A%84%E6%BD%9C%E5%9C%A8%E5%BD%B1%E5%93%8D">热门域名的潜在影响</h3>
+	<p>根据 Radar <a href="https://radar.cloudflare.com/domains">前 100 </a>列表中的域的查询量衡量，IPv6 服务器端采用率为 60.8%。如果我们从整体计算中排除这些域，之前的 13.2% 数字将下降至 8%。这是一个显着差异，但并不意外，因为前 100 个域占 1.1.1.1 所有 A 和 AAAA 查询量的 55% 以上。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0--8--2.png" class="kg-image" alt="" loading="lazy" width="1600" height="552"></figure>
+	<p>如果今天在这些非常受欢迎的域中有更多部署 IPv6，那么观察到的采用率就会明显提高，支持 IPv6 的客户端使用 IPv6 建立连接的机会也会随之增加。</p>
+	<h3 id="%E7%BB%93%E6%9D%9F%E8%AF%AD">结束语</h3>
+	<p>观察整个互联网采用 IPv6 的程度可能意味着不同的事情：</p>
+	<ul>
+		<li>计算具有 IPv6 互联网访问能力的<strong>用户</strong>；</li>
+		<li>计算支持 IPv6 的<strong>设备</strong>或这些设备（客户端和/或服务器）上的软件；</li>
+		<li>计算流经 IPv6 连接的<strong>流量</strong>（以字节为单位）；</li>
+		<li>计算 IPv6 <strong>连接</strong>（或单个<strong>请求</strong>）的比例。</li>
+	</ul>
+	<p>在本次练习中，我们选择查看连接和请求。考虑到只有从几个不同的角度才能真正理解基本现实，我们看到了三种不同的 IPv6 采用数据：</p>
+	<ul>
+		<li>在计算 Cloudflare CDN 提供的 HTTP 请求时为 <strong>35.9%</strong>（客户端）；</li>
+		<li>在计算 <a href="https://one.one.one.one/dns">1.1.1.1</a> 处理的 A 和 AAAA 类型 DNS 查询时，为 <strong>30.5%</strong>（客户端）；</li>
+		<li>对同样来自 1.1.1.1 的 AAAA 类型 DNS 查询的积极回复率为 <strong>43.3%</strong>（服务器端）。</li>
+	</ul>
+	<p>我们从 DNS 角度结合了<em>客户端</em>和<em>服务器端</em>的数据，来估计通过 IPv6 而非 IPv4 与第三方服务器建立连接的频率：仅为 <strong>13.2%</strong>。</p>
+	<p>要提高这些数字，ISP、云和托管提供商以及企业都必须提高其网络设备的 IPv6 可用率。但是，大型网站和内容源在使支持 IPv6 的客户端更频繁地使用 IPv6 方面也发挥着关键作用，因为在对 Radar <a href="https://radar.cloudflare.com/domains">前 100</a> 的域的查询中，有 <strong>39.2%</strong>（占 1.1.1.1 的所有 A 和 AAAA 查询的一半以上）仍然限于仅 IPv4 的响应。</p>
+	<p>对于全面采用 IPv6 的目标，互联网还没有完全实现。但是，所有相关各方的持续努力可以帮助它继续向前发展，甚至可能加速进展。</p>
+	<p><em>在服务器端，Cloudflare 多年来一直通过为所有域提供免费的</em> <a href="https://developers.cloudflare.com/support/network/understanding-and-configuring-cloudflares-ipv6-support"><em>IPv6 支持</em></a><em>来推进这项全球性的工作。在客户端，</em><a href="https://one.one.one.one"><em>1.1.1.1 应用程序</em></a><em>会自动为您的设备启用 IPv6，即使您的 ISP 不提供任何 IPv6 支持。而且，如果您碰巧管理仅 IPv6 的网络，1.1.1.1 的</em> <a href="https://developers.cloudflare.com/1.1.1.1/infrastructure/ipv6-networks"><em>DNS64 支持</em></a><em>也可以满足您的需求。</em></p><!--kg-card-begin: markdown-->
+	<p><small>***</small><br>
+		<small><sup>1</sup>Cloudflare 的公共 DNS 解析器 (1.1.1.1) 与 APNIC 合作运营。您可以在原始<a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">公告博客文章</a>和 1.1.1.1 的<a href="https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver">隐私政策</a>中阅读更多相关信息。<br>
+			<sup>2</sup>有关 DNS 如何工作的更多信息，请参阅我们网站中的“<a href="https://www.cloudflare.com/learning/dns/what-is-dns">什么是 DNS？</a>”部分。如果您喜欢动手学习，我们建议您看看 Julia Evans 的“<a href="https://messwithdns.net">mess with dns</a>”。<br>
+			<sup>3</sup>任何递归解析器都已经事先知道 <a href="https://www.iana.org/domains/root/servers">13 个根服务器</a>的 IP 地址。Cloudflare 还通过向 E 和 F-Root 实例<a href="https://blog.cloudflare.com/f-root">提供 Anycast 服务</a>来参与 DNS 的最顶层，这意味着 1.1.1.1 不需要走很远就能完成第一个查找步骤。<br>
+			<sup>4</sup>使用 <a href="https://one.one.one.one">1.1.1.1 应用程序</a>时，会自动配置全部四个 IP 地址。<br>
+			<sup>5</sup>为了简单起见，我们假定纯 IPv6 客户端的数量仍然少得可以忽略不计。总体而言，这是一个合理的假设，我们所掌握的其他数据集也证实了这一点。<br>
+			<sup>6</sup>1.1.1.1 与其他递归解析器一样，返回调整后的 TTL：记录的原始 TTL 减去自上次缓存记录以来的秒数。空 A 和 AAAA 答复将按照 RFC 2308 指定的域<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-soa-record">授权机构起始</a> (SOA) 记录中定义的时间进行缓存。<br>
+		</small>
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

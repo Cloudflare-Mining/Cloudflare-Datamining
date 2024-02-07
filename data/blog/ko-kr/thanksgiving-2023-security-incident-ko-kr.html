@@ -1,0 +1,143 @@
+<div class="mb2 gray5">22 min read</div>
+<div class="post-content lh-copy gray1">
+	<p>2023년 11월 23일 추수감사절 당일, Cloudflare에서는 자체 호스팅되는 Atlassian 서버에서 위협 행위자를 감지했습니다. 저희 보안팀에서는 즉시 조사를 시작하여 위협 행위자의 접속을 차단하고, 11월 26일(일) CrowdStrike의 포렌식 팀을 투입하여 자체적으로 독립적인 분석을 수행했습니다. </p>
+	<p>CrowdStrike는 어제 조사를 완료했으며, 이 블로그 게시물을 통해 해당 보안 사고에 대한 자세한 내용을 알려드리겠습니다. </p>
+	<p>이번 사건으로 인해 Cloudflare 고객 데이터나 시스템이 영향을 받지는 않았음 고객 여러분께 강조하고 싶습니다. 액세스 제어, 방화벽 규칙, 자체 Zero Trust 도구를 사용하여 시행되는 하드 보안 키 사용으로 인해 위협 행위자의 내부망 이동 능력은 제한되었습니다. 어떤 서비스도 영향을 받지 않았으며, 전역 네트워크 시스템이나 구성도 변경되지 않았습니다. Zero Trust 아키텍처는 배의 격벽처럼 하나의 시스템에서 문제가 발생하더라도 조직 전체가 손상되는 것을 제한하는 역할을 합니다.</p>
+	<p>11월 14일부터 17일까지 위협 행위자가 정찰을 한 다음 당사의 내부 위키(Atlassian Confluence 사용)와 당사의 버그 데이터베이스(Atlassian Jira)에 액세스했습니다. 11월 20일과 21일에 추가 접속이 확인되었는데, 이는 접속이 가능한지 테스트하려고 다시 접속한 것일 수 있습니다.</p>
+	<p>위협 행위자는 그 후 11월 22일에 돌아와서 Jira용 ScriptRunner를 사용하여 Atlassian 서버에 지속해서 액세스하고 Atlassian Bitbucket을 사용하는 소스 코드 관리 시스템에 액세스하고 Cloudflare에서 브라질 상파울루에 아직 프로덕션에 투입하지 않은 데이터 센터에 액세스할 수 있는 콘솔 서버에 액세스하려고 시도했지만, 모두 성공하지 못했습니다.</p>
+	<p>위협 행위자는 <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">2023년 10월 Okta 손상</a> 사고 이후 유출되어 당사에서 교체하지 못한 액세스 토큰 1개와 서비스 계정 자격 증명 3개를 사용하여 이 작업을 수행했습니다. 위협 행위자의 액세스 및 연결은 모두 11월 24일에 종료되었으며, CrowdStrike는 위협 활동의 마지막 증거가 11월 24일 10:44에 있었음을 확인했습니다.</p>
+	<p><em>(이 블로그 게시물에 나오는 모든 날짜와 시간은 UTC 기준입니다.)</em></p>
+	<p>이 사건으로 인한 운영상의 영향은 극히 제한적일 것으로 예상되지만, 위협 행위자가 훔친 자격 증명을 사용하여 Atlassian 서버에 액세스하고 일부 문서와 제한된 양의 소스 코드에 액세스했으므로 우리는 이 사고를 매우 심각하게 받아들이고 있습니다. 업계 및 정부 기관과의 협력에 따르면, 이번 공격은 Cloudflare의 전역 네트워크에 지속해서 광범위하게 액세스하려는 목적으로 국가 차원의 공격자가 수행한 것으로 추정됩니다.</p>
+	<h3 id="%EC%BD%94%EB%93%9C-%EB%A0%88%EB%93%9C-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EB%B0%8F-%EA%B0%95%ED%99%94-%EB%85%B8%EB%A0%A5">"코드 레드" 문제 해결 및 강화 노력 </h3>
+	<p>11월 24일, 위협 행위자가 환경에서 제거된 후 우리 보안팀에서는 침입을 조사하고 위협 행위자의 시스템 액세스가 완전히 거부되었는지, 그리고 위협 행위자가 액세스하거나 액세스하려고 시도한 내용을 모두 파악하려고 회사 전체에서 필요한 모든 인력을 동원했습니다.</p>
+	<p>그런 다음 11월 27일부터 보안팀 내부와 외부의 Cloudflare 기술 직원 대부분을 "코드 레드"라는 단일 프로젝트에 투입했습니다. 이 프로젝트의 초점은 향후 침입에 대한 보안을 보장하고 위협 행위자가 환경에 액세스할 수 없음을 검증하기 위해 환경에 대한 모든 제어 능력을 강화, 검증, 수정하는 것이었습니다. 또한 모든 시스템, 계정, 로그를 계속 조사하여 위협 행위자가 지속해서 액세스하지 못하도록 확인하고, 위협 행위자가 어떤 시스템을 건드렸고 어떤 시스템에 액세스하려고 시도했는지 완전히 파악했습니다.</p>
+	<p>CrowdStrike에서는 위협 행위자의 활동 범위와 정도에 대하여 독자적으로 평가를 수행했으며, 여기에는 위협 행위자가 여전히 저희 시스템에 남아 있다는 증거를 찾는 작업도 포함되었습니다. CrowdStrike의 조사는 저희 조사에 도움이 되는 확증과 지원을 제공했지만, 저희가 놓쳤던 활동을 밝혀내지는 못했습니다. 이 블로그 게시물에서는 위협 행위자의 활동에 대해 저희와 CrowdStrike에서 발견한 모든 것을 자세히 설명합니다.</p>
+	<p>위협 행위자가 탈취한 자격 증명을 사용하여 액세스할 수 있었던 프로덕션 시스템은 당사의 Atlassian 환경밖에 없었습니다. 위협 행위자가 액세스한 위키 페이지, 버그 데이터베이스 이슈, 소스 코드 리포지터리를 분석한 결과, 이들은 전역 네트워크의 아키텍처, 보안, 관리에 대한 정보를 찾고 있었던 것으로 보입니다. 따라서 위협 행위자가 로그 파일에서 저희가 간과했던 무언가를 이용하여 공격의 발판을 마련하지 못하도록 보안 프로토콜을 더욱 강화하는 데 많은 노력이 필요하다고 판단했습니다.</p>
+	<p>저희 목표는 공격자가 네트워크 운영에 관한 기술 정보를 다시 침입하는 수단으로 사용하지 못하도록 하는 것이었습니다. 공격자의 액세스 권한이 제한적이라고 믿었고 이를 나중에 확인했지만, Cloudflare에서는 모든 프로덕션 자격 증명(5,000여 개의 개별 자격 증명)을 로테이팅하고, 테스트 및 스테이징 시스템을 물리적으로 분할하며, 4,893개 시스템에서 포렌식 분류를 수행하고, 위협 행위자가 액세스한 모든 시스템과 모든 Atlassian 제품(Jira, Confluence, Bitbucket) 등 전역 네트워크의 모든 시스템을 다시 이미징하고 재부팅하는 등 포괄적인 노력을 수행했습니다.</p>
+	<p>위협 행위자는 상파울루에 있는 아직 운영 중이 아닌 새로운 데이터 센터의 콘솔 서버에도 액세스하려고 시도했습니다. 액세스 권한을 얻으려는 모든 시도가 실패했습니다. 이들 시스템의 보안을 100% 보장하기 위해 브라질 데이터 센터의 장비를 제조업체에 반환했습니다. 제조업체의 포렌식 팀이 모든 시스템을 조사하여 액세스 권한이나 지속성이 확보되지 않은 것을 확인했습니다. 아무것도 발견되지 않았지만, 저희는 어쨌든 하드웨어를 교체했습니다.</p>
+	<p>또한 업데이트되지 않은 소프트웨어 패키지, 생성되었을 수 있는 사용자 계정, 사용하지 않는 활성 직원 계정을 찾고, Jira 티켓이나 소스 코드에 남아있을 수 있는 비밀을 검색하며, 위키에 업로드된 모든 HAR 파일에 어떤 종류의 토큰이 포함되어 있는지 조사하고 삭제했습니다. 의심스러울 때마다 최악의 상황을 가정하고 위협 행위자가 액세스할 수 있는 모든 것이 더 이상 사용되지 않아 더 이상 가치가 없게 되도록 변경했습니다.</p>
+	<p>모든 팀원에게 위협 행위자가 건드렸을 수 있는 영역을 지적하도록 권장하여 로그 파일을 조사하고 위협 행위자의 액세스 범위를 파악할 수 있도록 했습니다. 회사 전체에 걸쳐 이처럼 많은 인원을 동원하여 보안을 개선하기 위해 필요한 액세스 증거나 변경 사항을 하나도 빠짐없이 찾아내려고 했습니다.</p>
+	<p>즉각적인 '코드 레드' 조치는 1월 5일에 종료되었지만, 자격 증명 관리, 소프트웨어 강화, 취약성 관리, 추가 알림 등의 작업은 회사 전체에서 계속 진행되고 있습니다.</p>
+	<h3 id="%EA%B3%B5%EA%B2%A9-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8">공격 타임라인</h3>
+	<p>공격은 10월에 Okta가 손상되면서 시작되었지만, 위협 행위자는 11월 중순에야 Okta 손상에서 얻은 자격 증명을 사용하여 시스템을 겨냥하기 시작했습니다. </p>
+	<p>다음 타임라인에는 주요 이벤트가 나와 있습니다.</p>
+	<h3 id="10%EC%9B%94-18%EC%9D%BCokta-%EC%B9%A8%ED%95%B4">10월 18일 - Okta 침해</h3>
+	<p><a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">이전에도 이에 대한 글을 작성</a>한 적이 있지만, 간단히 요약하자면, 저희는(두 번째로) Okta의 시스템 손상으로 인해 위협 행위자가 일련의 자격 증명에 대한 액세스 권한을 획득하는 피해를 입었습니다. 이러한 자격 증명은 모두 교체되어야 했습니다.</p>
+	<p>안타깝게도 Okta 손상 사고로 유출된 서비스 토큰 1개와 서비스 계정 3개(수천 개 중)의 자격 증명을 교체하는 데 실패했습니다. </p>
+	<p>그 하나의 토큰은 Atlassian 시스템에 대한 원격 액세스 권한을 부여하는 Moveworks 서비스 토큰이었습니다. 두 번째 자격 증명은 Atlassian Jira 인스턴스에 대한 관리 액세스 권한이 있는 SaaS 기반 Smartsheet 앱에서 사용하는 서비스 계정, 세 번째 계정은 소스 코드 관리 시스템에 액세스하는 데 사용되는 Bitbucket 서비스 계정, 네 번째 계정은 전역 네트워크에 액세스할 수 없고 고객 또는 민감한 데이터가 없는 AWS 환경이었습니다. </p>
+	<p>서비스 토큰 1개와 계정 3개는 사용되지 않는 것으로 잘못 판단되어 교체되지 않았습니다. 이는 잘못된 것이었으며, 위협 행위자가 처음 시스템에 침입하여 Atlassian 제품에 대한 지속성을 확보한 방법이었습니다. 이는 AWS, Moveworks, Smartsheet 측의 오류가 아님을 알려드립니다. 우리가 교체하지 못한 자격 증명일 뿐입니다.</p>
+	<h3 id="11%EC%9B%94-14%EC%9D%BC-092249%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90%EA%B0%80-%ED%83%90%EC%83%89-%EC%8B%9C%EC%9E%91">11월 14일 09:22:49 - 위협 행위자가 탐색 시작</h3>
+	<p>저희 로그에 따르면 위협 행위자는 11월 14일부터 자격 증명을 사용하는 방법과 액세스 가능한 시스템을 찾기 위해 저희 시스템을 조사하고 정찰하기 시작했습니다. 위협 행위자는 Okta 인스턴스에 로그인하려고 시도했지만, 액세스가 거부되었습니다. Cloudflare 대시보드에 액세스를 시도했지만, 액세스가 거부되었습니다.</p>
+	<p>또한, 위협 행위자는 Cloudflare Apps 마켓플레이스를 구동하는 데 사용되는 AWS 환경에 액세스했습니다. 이 환경은 전역 네트워크나 고객 데이터에 액세스할 수 없는 세분화된 환경이었습니다. 이 환경에 액세스할 수 있는 서비스 계정은 해지되었으며, 환경의 무결성을 확인했습니다. </p>
+	<h3 id="11%EC%9B%94-15%EC%9D%BC-162838%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90%EA%B0%80-atlassian-%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%9C-%EC%95%A1%EC%84%B8%EC%8A%A4-%EA%B6%8C%ED%95%9C-%ED%9A%8D%EB%93%9D">11월 15일 16:28:38 - 위협 행위자가 Atlassian 서비스에 대한 액세스 권한 획득</h3>
+	<p>위협 행위자는 11월 15일에 Moveworks 서비스 토큰을 사용하여 Atlassian 게이트웨이를 통해 인증한 후 Smartsheet 서비스 계정을 사용하여 Atlassian 제품군에 대한 액세스 권한을 얻는 데 성공했습니다. 위협 행위자는 다음 날 전역 네트워크의 구성 및 관리에 대한 정보를 찾기 시작했고, 다양한 Jira 티켓에 액세스했습니다.</p>
+	<p>위협 행위자는 위키에서 원격 액세스, 비밀, 클라이언트 비밀, 오픈커넥트, 클라우드플레어드, 토큰 등의 항목을 검색했습니다. 위협 행위자는 총 2,059,357개의 티켓 중 36개의 Jira 티켓과 총 14,099페이지 중 202 위키 페이지에 액세스했습니다.</p>
+	<p>위협 행위자는 취약성 관리, 비밀 교체, MFA 우회, 네트워크 액세스, 심지어 Okta 사고 자체에 대한 당사의 대응에 관한 Jira 티켓에 액세스했습니다. </p>
+	<p>위키 검색과 액세스한 페이지를 보면 위협 행위자가 비밀번호 재설정, 원격 액세스, 구성, Salt 사용 등 시스템에 대한 액세스의 모든 측면에 관심이 많았음을 알 수 있지만, 고객 데이터나 고객 구성을 겨냥하지는 않았습니다.</p>
+	<h3 id="11%EC%9B%94-16%EC%9D%BC-143637%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90%EA%B0%80-atlassian-%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B3%84%EC%A0%95%EC%9D%84-%EB%A7%8C%EB%93%AD%EB%8B%88%EB%8B%A4">11월 16일 14:36:37 - 위협 행위자가 Atlassian 사용자 계정을 만듭니다</h3>
+	<p>위협 행위자는 Smartsheet 자격 증명을 사용하여 일반 Cloudflare 사용자처럼 보이는 Atlassian 계정을 만들었습니다. 이 사용자를 Atlassian 내의 여러 그룹에 추가하여 Smartsheet 서비스 계정이 제거되는 경우에도 Atlassian 환경에 지속해서 액세스할 수 있도록 했습니다.</p>
+	<h3 id="11%EC%9B%94-17%EC%9D%BC-14335211%EC%9B%94-20%EC%9D%BC-092653%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90%EA%B0%80-cloudflare-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%A0%91%EC%86%8D%EC%9D%84-%EC%A4%91%EB%8B%A8%ED%95%A9%EB%8B%88%EB%8B%A4">11월 17일 14:33:52~11월 20일 09:26:53 - 위협 행위자가 Cloudflare 시스템 접속을 중단합니다</h3>
+	<p>이 기간에 공격자는 시스템 접속을 잠시 중단했다가(접속이 가능한지 잠시 테스트한 것 외에는) 추수감사절 직전에 복귀했습니다.</p>
+	<h3 id="11%EC%9B%94-22%EC%9D%BC-141822%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90%EA%B0%80-%EC%A7%80%EC%86%8D%EC%84%B1-%ED%99%95%EB%B3%B4%ED%95%A8">11월 22일 14:18:22 - 위협 행위자가 지속성 확보함</h3>
+	<p>Smartsheet 서비스 계정에 Atlassian Jira에 대한 관리 액세스 권한이 있었으므로 위협 행위자는 레드팀과 공격자가 "C2"(명령 및 제어)를 활성화하는 데 널리 사용되는 도구 및 프레임워크인 Sliver Adversary Emulation Framework를 설치할 수 있었고, 이 프레임워크가 설치된 컴퓨터에 지속애서 은밀하게 액세스하는 연결성을 확보할 수 있었습니다. Sliver는 Jira용 ScriptRunner 플러그인을 사용하여 설치되었습니다.</p>
+	<p>위협 행위자는 이를 통해 Atlassian 서버에 지속해서 액세스할 수 있었고, 이를 사용하여 내부망 이동을 시도했습니다. 이 액세스를 통해 위협 행위자는 적용되지 않은 ACL로 인해 브라질 상파울루 데이터 센터에 있는 비프로덕션 콘솔 서버에 액세스하려고 시도했습니다. 액세스가 거부되어 위협 행위자는 전역 네트워크에 액세스할 수 없었습니다.</p>
+	<p>다음 날, 위협 행위자는 총 11,904개의 리포지터리 중 120개의 코드 리포지터리를 확인했습니다. 위협 행위자는 120개 중 76개 리포지터리에서 Atlassian Bitbucket git 아카이브 기능을 사용하여 이들 리포지터리를 Atlassian 서버로 다운로드했으며, 저희는 유출 여부를 확인할 수는 없었지만, 유출된 것으로 처리하기로 결정했습니다. </p>
+	<p>76개의 소스 코드 리포지터리는 거의 모두 백업 작동 방식, 전역 네트워크 구성 및 관리 방식, Cloudflare에서 ID가 작동하는 방식, 원격 액세스, Terraform 및 Kubernetes 사용과 관련된 것들이었습니다. 소수의 리포지터리에는 자체적으로 강력하게 암호화되어 있음에도 불구하고 즉시 교체되는 암호화된 비밀이 포함되어 있었습니다.</p>
+	<p>특히 76개의 소스 코드 리포지터리를 집중적으로 분석하여 임베디드 비밀(코드에 저장된 비밀이 교체됨), 취약점, 공격자가 후속 공격에 사용할 수 있는 방법을 찾아냈습니다. 이 작업은 '코드 레드'의 일환으로 회사 전반의 엔지니어링 팀에서 우선적으로 수행했습니다.</p>
+	<p>SaaS 기업으로서 저희는 오랫동안 저희의 소스 코드 자체가 최종 사용자에게 소프트웨어를 배포하는 소프트웨어 회사의 소스 코드만큼 소중하지는 않다고 생각해 왔습니다. 실제로 저희는 많은 양의 소스 코드를 오픈소스화했으며, 블로그를 통해 저희가 사용하는 알고리즘과 기술에 대해 공개적으로 설명하고 있습니다. 따라서 누군가 소스 코드에 액세스할 수 있는지 여부가 아니라 소스 코드에 내장된 비밀(예: 키 또는 토큰)과 취약점이 포함되어 있는지 여부에 초점을 두었습니다.</p>
+	<h3 id="11%EC%9B%94-23%EC%9D%BC%EB%B0%9C%EA%B2%AC-%EB%B0%8F-%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90-%EC%95%A1%EC%84%B8%EC%8A%A4-%EC%A2%85%EB%A3%8C-%EC%8B%9C%EC%9E%91">11월 23일 - 발견 및 위협 행위자 액세스 종료 시작 </h3>
+	<p>저희 보안팀에서는 16:00에 위협 행위자의 존재를 인지하고 35분 후에 Smartsheet 서비스 계정을 비활성화했습니다. 48분 후 위협 행위자가 만든 사용자 계정이 발견되어 비활성화되었습니다. 다음은 첫 번째 경보가 발생한 후 위협 행위자를 차단하기 위해 취한 주요 조치에 대한 자세한 타임라인입니다.</p>
+	<p>15:58 - 위협 행위자가 관리자 그룹에 Smartsheet 서비스 계정을 추가합니다.<br>16:00 - 15:58에 있었던 저희 보안팀에 변경 사항에 대한 자동 알림이 전송됩니다.<br>16:12 - Cloudflare SOC에서 알림 조사를 시작합니다.<br>16:35 - Cloudflare SOC에 의해 Smartsheet 서비스 계정이 비활성화되었습니다.<br>17:23 - 위협 행위자가 만든 Atlassian 사용자 계정이 발견되어 비활성화되었습니다.<br>17:43 - Cloudflare 내부 사고가 선언되었습니다.<br>21:31 - 위협 행위자의 알려진 IP 주소를 차단하기 위하여 방화벽 규칙이 적용되었습니다.</p>
+	<h3 id="11%EC%9B%94-24%EC%9D%BCsliver-%EC%A0%9C%EA%B1%B0-%EB%AA%A8%EB%93%A0-%EC%9C%84%ED%98%91-%ED%96%89%EC%9C%84%EC%9E%90-%EC%95%A1%EC%84%B8%EC%8A%A4-%EC%A2%85%EB%A3%8C">11월 24일 - Sliver 제거, 모든 위협 행위자 액세스 종료</h3>
+	<p>10:44 - 마지막으로 알려진 위협 행위자의 활동.<br>11:59 - Sliver 제거됨.</p>
+	<p>이 타임라인 내내 위협 행위자는 Cloudflare의 수많은 다른 시스템에 액세스를 시도했지만, Cloudflare의 액세스 제어, 방화벽 규칙, 자체 Zero Trust 도구를 사용하여 시행된 하드 보안 키 사용으로 인해 실패했습니다.</p>
+	<p>분명히 말씀드리지만, 위협 행위자가 당사의 전역 네트워크, 데이터 센터, SSL 키, 고객 데이터베이스 또는 구성 정보, 당사 또는 고객이 배포한 Cloudflare Workers, AI 모델, 네트워크 인프라, Workers KV, R2 또는 Quicksilver와 같은 데이터 리포지터리에 액세스했다는 증거는 전혀 발견하지 못했습니다. 위협 행위자의 액세스는 Atlassian 제품군 및 Atlassian이 실행되는 서버에 국한되었습니다.</p>
+	<p>'코드 레드' 활동의 대부분은 위협 행위자가 어떤 정보에 액세스했고 어떤 정보에 액세스하려고 했는지 파악하는 작업이었습니다. 시스템 전반의 로깅을 살펴봄으로써 내부 메트릭, 네트워크 구성, 빌드 시스템, 알림 시스템, 릴리스 관리 시스템에 대한 액세스 시도를 추적할 수 있었습니다. 검토 결과, 이러한 시스템에 액세스하려는 시도는 모두 성공하지 못했습니다. CrowdStrike에서는 독자적으로 위협 행위자의 활동 범위와 정도에 대한 평가를 수행했으며, 그 결과로 저희가 놓친 활동을 밝혀내지는 못했고 위협 활동의 마지막 증거가 11월 24일 10:44에 있었다는 결론을 내렸습니다. </p>
+	<p>저희 조사와 CrowdStrike의 조사를 통해 위협 행위자의 행동을 완전히 파악했으며, 위협 행위자의 활동이 확인된 시스템에만 국한되었다고 확신합니다.</p>
+	<h3 id="%EA%B2%B0%EB%A1%A0">결론</h3>
+	<p>이 사고는 어느 국가로 추정되는 정교한 공격자가 치밀하고 계획적인 방식으로 수행한 보안 사고입니다. Cloudflare에서는 사건의 지속적인 영향을 제한하고 향후 어떠한 정교한 공격이라도 방어할 수 있도록 잘 준비하기 위해 노력했습니다. 이를 위해서는 상당수의 Cloudflare 엔지니어링 직원의 노력이 필요했으며, 저희는 한 달이 넘는 기간 동안 이 문제를 최우선 과제로 삼았습니다. Cloudflare 팀 전체가 시스템의 보안을 유지하고, 위협 행위자의 액세스를 파악하며, 즉각적인 우선순위(예: 대량 자격 증명 교체)를 해결하고, 이 과정에서 발견된 개선 영역을 기반으로 전반적인 보안을 개선하기 위하여 장기적인 작업 계획을 마련하기 위해 노력했습니다.</p>
+	<p>추수감사절 연휴 기간에 신속하게 대응하여 초기 분석을 수행하고 위협 행위자를 차단한 Cloudflare의 모든 분과 이러한 노력에 기여해 주신 모든 분께 진심으로 감사드립니다. 관련된 모든 분의 이름을 일일이 거론하는 것은 불가능하지만, 이분들이 투입한 긴 시간과 헌신적인 노력 덕분에 전 세계 네트워크와 고객 서비스를 계속 운영하면서 Cloudflare의 보안을 필수적으로 검토하고 변경하는 작업을 수행할 수 있었습니다.<br><br>즉시 독자적인 평가를 실시하여 지원해 준 CrowdStrike에 감사드립니다. 이제 최종 보고서가 완성되었으므로 침입에 대한 내부 분석과 해결책을 이 블로그 게시물을 통해 자신있게 공개합니다.</p>
+	<p><strong>IOC</strong><br>다음은 저희가 이 위협 행위자로부터 확인한 손상 징후(IOC)입니다. 다른 조직, 특히 Okta 손상 사고의 영향을 받았을 수 있는 조직에서 로그를 검색하여 동일한 위협 행위자가 시스템에 액세스하지 않는지 확인할 수 있도록 이들 징후를 게시합니다.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">지표</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">지표 유형</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SHA256</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">설명</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.]126 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">해당사항 없음</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">주요 위협 행위자</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">인프라, 소유자</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247 유럽 SRL(부쿠레슈티,</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">루마니아</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.]214 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">해당사항 없음</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS(영국 런던) 소유의</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver C2 서버</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.]com</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">도메인</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">해당사항 없음</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver를 지원하는 인프라</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">페이로드</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvm-agent</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">파일 이름</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4<br>6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver 페이로드</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+</div>
