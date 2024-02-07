@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5625054?gh_jid=5625054",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/5316363?gh_jid=5316363",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -9,9 +9,9 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2762838,
+	"internal_job_id": 2644996,
 	"location": {
-		"name": "Remote US"
+		"name": "Montreal, QC"
 	},
 	"metadata": [
 		{
@@ -23,52 +23,49 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5500 - Marketing",
+			"value": "4300 - Systems Engineering",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US",
-				"San Francisco, US",
 				"US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 5625054,
-	"updated_at": "2024-02-06T10:54:52-05:00",
-	"requisition_id": "MKT_AMER_BF_2024_027",
-	"title": "Product Marketing Manager - Data Protection (Zero Trust / SASE)",
+	"id": 5316363,
+	"updated_at": "2024-02-07T12:48:56-05:00",
+	"requisition_id": null,
+	"title": "Mid-Senior Software Engineer- Zero Trust Client GUI",
 	"departments": [
 		{
-			"id": 29070,
-			"name": "Marketing",
+			"id": 29067,
+			"name": "Engineering",
 			"child_ids": [],
 			"parent_id": null
 		}
 	],
 	"offices": [
 		{
-			"id": 19983,
-			"name": "Austin, TX",
-			"location": "Austin, TX, United States",
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 19991,
-			"name": "San Francisco, CA",
-			"location": "San Francisco, CA, United States",
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75883,
+			"name": "Canada",
+			"location": null,
+			"child_ids": [
+				73335,
+				75596,
+				75884,
+				75885,
+				75886
+			],
 			"parent_id": 48752
 		}
 	]

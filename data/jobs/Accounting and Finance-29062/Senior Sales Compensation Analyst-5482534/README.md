@@ -5,35 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote US, Austin, TX or San Francisco, CA</h4>
-<p><strong>About the department</strong></p>
-<p>Cloudflare is looking for an experienced product marketer to join our Zero Trust SASE product marketing team. This is a high-impact, results-oriented role, where you will work directly with Sales, Product Management, and Marketing to take new products to market and develop messaging and campaigns that drive acquisition and expansion.</p>
-<p><strong>What you'll do</strong></p>
-<p>We are looking for a Product Marketing Manager with a thorough understanding of cloud-based data protection products (e.g. CASB, DLP, SSPM/DSPM), compliance frameworks (e.g. GDPR, HIPAA, PCI), and security paradigms &amp; platforms (e.g. Zero Trust, SSE/SASE). As a Product Marketing Manager, you will be responsible for driving the growth and success of expanding Cloudflare’s security opportunities to include solving data protection use cases (e.g. compliance) by working closely with cross-functional teams and developing effective marketing strategies.&nbsp;</p>
-<p>Successful candidates will have a passion for helping any organization more easily keep users and data safe across increasingly distributed hybrid work and multi-cloud environments. You will have a drive to understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives. You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h4>Available Locations: Remote Mexico</h4>
+<h4>About the role</h4>
+<p>We are looking for a strong leader to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Commissions Program &amp; Strategy.</p>
+<h4>What you'll do</h4>
 <ul>
-	<li>Develop and execute go-to-market strategies for Cloudflare's Zero Trust SASE platform.</li>
-	<li>Create compelling messaging and positioning that differentiates Cloudflare's data protection and compliance capabilities in the market.</li>
-	<li>Develop content for marketing campaigns, including presentations, product briefs, solution/use case briefs, whitepapers, and case studies.</li>
-	<li>Collaborate with the demand generation team to create and execute campaigns that drive leads and pipeline.</li>
-	<li>Drive sales enablement through product training, sales tools, and competitive intelligence.</li>
-	<li>Conduct market research and gather insights to inform product positioning, messaging, and roadmap decisions.</li>
-	<li>Analyze market trends, customer feedback, and competitive landscape to identify areas for product differentiation and growth.</li>
-	<li>Work with product management and sales teams to define and prioritize product features and roadmap.</li>
+	<li>Support accuracy and timely distribution of commission payments and statements for the Cloudflare Sales Team&nbsp;</li>
+	<li>Help to drive Cloudflare’s Incentive Compensation Management (ICM) Tool strategy, operations, configuration and enhancement</li>
+	<li>Drive alignment amongst cross-functional stakeholders and project manage timely assignment of commissions calculation inputs</li>
+	<li>Own sales performance analytics for the Cloudflare Sales Team, surfacing key findings and expanding systematic visibility for leadership and business partners</li>
+	<li>Scale consistent practices, documentation and desktop procedures for all commissions processes</li>
+	<li>Implement appropriate SOX Controls, partnering closely with the Controllership and Internal Audit Organizations</li>
+	<li>Partner with the Sales Compensation Design Team to ensure feasibility and timely implementation of compensation plan changes</li>
 </ul>
-<p><strong>Qualifications:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Bachelor's degree in marketing, business, or related field; MBA preferred.</li>
-	<li>4+ years of experience in product marketing, preferably at companies that sold or managed CASB, DLP, or other data security offerings to enterprise-sized organizations.</li>
-	<li>Thorough understanding of cloud-based data protection and compliance frameworks, including key trends, technologies, and competitive landscape.</li>
-	<li>Proven ability to develop and execute go-to-market strategies for cloud-based products with a strong security focus.</li>
-	<li>Strong written and verbal communication skills, with the ability to develop compelling messaging and content that resonates with customers.</li>
-	<li>Analytical mindset with experience in market research, data analysis, and customer segmentation.</li>
-	<li>Strong project management skills with the ability to manage multiple projects and priorities simultaneously.</li>
-	<li>Ability to work collaboratively with cross-functional teams, including product management, sales, and engineering.</li>
+	<li>Minimum 8 years of FP&amp;A, Consulting, Incentive Compensation Administration or Commissions Finance experience; experience with a Saas business model preferred</li>
+	<li>Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</li>
+	<li>Experience with commissions-specific SOX Controls</li>
+	<li>Highly proficient in Excel / GoogleSheets&nbsp;</li>
+	<li>Experience with SQL platforms and queries is a plus</li>
+	<li>Experience with sales compensation software and systems</li>
+	<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
+	<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
+	<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
+	<li>Bi-lingual Spanish and English required, written and verbal.</li>
 </ul>
-<p>If you are a self-starter who thrives in a fast-paced, innovative environment and has a passion for cloud-based data protection, we encourage you to apply for this exciting Product Marketing Manager opportunity at Cloudflare.</p>
+<p>&nbsp;</p>
+<h4><strong>**This position is based in&nbsp;<span style="text-decoration: underline;">Mexico and is applicable only to Mexican Citizens</span>**</strong></h4>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
