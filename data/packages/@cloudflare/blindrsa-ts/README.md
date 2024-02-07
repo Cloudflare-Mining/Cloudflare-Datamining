@@ -44,6 +44,11 @@ const variants = [
 ]
 ```
 
+#### Platform specific configuration
+
+By default, this library uses the [WebCrypto API](https://w3c.github.io/webcrypto/). Certain platforms, such as [Cloudflare Workers](https://github.com/cloudflare/workerd/blob/6b63c701e263a311c2a3ce64e2aeada69afc32a1/src/workerd/api/crypto-impl-asymmetric.c%2B%2B#L827-L868), have implemented native operation. These can be enabled by passing `{ supportRSARAW: true }` when retrieving a suite.
+At the time of writing, this dedicated optimisation is done only for the `BlindSign` operation. Key type does not have to be modified, and will be set to `RSA-RAW` by the library for the time of the operation.
+
 
 #### Setup
 
