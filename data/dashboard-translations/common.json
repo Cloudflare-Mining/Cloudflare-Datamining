@@ -489,7 +489,7 @@
 	"account.magic_transit.configuration.interconnects.form.ttl": "TTL",
 	"account.magic_transit.configuration.interconnects.form.ttl.tooltip": "Time To Live (TTL) in number of hops for the GRE tunnel. Default value is 64.",
 	"account.magic_transit.configuration.interconnects.form.mtu": "MTU",
-	"account.magic_transit.configuration.interconnects.form.mtu.tooltip": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Default value is 1476.",
+	"account.magic_transit.configuration.interconnects.form.mtu.tooltip": "Maximum Transmission Unit (MTU) in bytes for the interconnect. Default value for GRE interconnects is 1372 and IP interconnects is 1500.",
 	"account.magic_transit.configuration.interconnects.form.customer_endpoint": "Customer GRE endpoint",
 	"account.magic_transit.configuration.interconnects.form.cloudflare_endpoint": "Cloudflare endpoint",
 	"account.magic_transit.configuration.interconnects.form.cloudflare_endpoint.tooltip": "The Cloudflare Anycast IP is assigned by your account team by email.",

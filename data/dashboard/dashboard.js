@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "5980fda424f6799e2c0a4db0778681acbf0ce4be",
+					commit: "55453976ad357812959e825021c22d12e81dc6ca",
 					env: "production",
-					builtAt: 1707258715710,
-					dashVersion: "7485c245e7209ff66cedd910e301b3cc06d67024",
+					builtAt: 1707339912586,
+					dashVersion: "5971896538afecbbc3edab038006b6490de87cb4",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -8874,7 +8874,7 @@
 					verifyEmail: (0, t.BC)`/${"accountId"}/pages/verify-email`,
 					access: (0, t.BC)`/${"accountId"}?zone=access`,
 					members: (0, t.BC)`/${"accountId"}/members`,
-					zoneOnboarding: (0, t.BC)`/${"accountId"}/add-zone`,
+					zoneOnboarding: (0, t.BC)`/${"accountId"}/add-site`,
 					zoneDNS: (0, t.BC)`/${"accountId"}/${"zoneName"}/dns`,
 					signUp: (0, t.BC)`/sign-up/pages`,
 					defaultUsageModel: (0, t.BC)`/${"accountId"}/pages/default-usage-model`,
@@ -8992,6 +8992,7 @@
 					bucketCors: (0, t.BC)`/accounts/${"accountId"}/r2/buckets/${"bucketName"}/cors`,
 					bucketLifecycle: (0, t.BC)`/accounts/${"accountId"}/r2/buckets/${"bucketName"}/lifecycle`,
 					bucketMultipartUploads: (0, t.BC)`/accounts/${"accountId"}/r2/buckets/${"bucketName"}/uploads`,
+					bucketSippy: (0, t.BC)`/accounts/${"accountId"}/r2/buckets/${"bucketName"}/sippy`,
 					apiTokens: (0, t.BC)`/user/tokens`,
 					apiToken: (0, t.BC)`/user/tokens/${"tokenId"}`,
 					rollApiToken: (0, t.BC)`/user/tokens/${"tokenId"}/value`,
@@ -9084,7 +9085,7 @@
 			var t = n("../../../../node_modules/@cloudflare/util-routes/es/index.js");
 			const o = {
 				default: (0, t.BC)`/${"accountId"}/`,
-				addSite: (0, t.BC)`/${"accountId"}/add-zone`,
+				addSite: (0, t.BC)`/${"accountId"}/add-site`,
 				root: (0, t.BC)`/${"accountId"}/welcome`
 			}
 		},
@@ -9448,6 +9449,7 @@
 					cli: (0, t.BC)`/${"accountId"}/workers/cli`,
 					kvRoot: (0, t.BC)`/${"accountId"}/workers/kv`,
 					kvStore: (0, t.BC)`/${"accountId"}/workers/kv/namespaces`,
+					d1Store: (0, t.BC)`/${"accountId"}/workers/d1`,
 					plans: (0, t.BC)`/${"accountId"}/workers/plans`,
 					purchase: (0, t.BC)`/${"accountId"}/workers/plans/purchase`,
 					standardOptIn: (0, t.BC)`/${"accountId"}/workers/standard/opt-in`,
@@ -10253,7 +10255,7 @@
 			} = s.default, u = (j, oe) => {
 				const ce = j.replace(r, "").split("/");
 				return ce.slice(0, 2).concat([oe]).concat(ce.slice(3)).join("/")
-			}, f = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), c = j => `/${j.replace(r,"").replace(/^\//,"")}`, C = j => T("add-zone", j), p = j => T("billing", j), T = (j, oe) => oe ? `/${oe}${j?`/${j}`:""}` : `/?to=/:account/${j}`, x = () => {
+			}, f = () => window.location.hostname.includes("dash.staging.cloudflare") || window.location.hostname.includes("dash.cloudflare"), c = j => `/${j.replace(r,"").replace(/^\//,"")}`, C = j => T("add-site", j), p = j => T("billing", j), T = (j, oe) => oe ? `/${oe}${j?`/${j}`:""}` : `/?to=/:account/${j}`, x = () => {
 				const j = location ? location.pathname.match(/^\/([0-9a-f]{32})/) || location.pathname.match(/^\/a\/([0-9a-f]{32})/) : null;
 				return j ? j[1] : null
 			}, S = (j, oe) => o().stringify(a({}, o().parse(j), oe)), L = (j = "") => j.toString().replace(/([\/]{1,})$/, ""), _ = ["/login", "/sign-up", "/two-factor", "/forgot-password", "/forgot-email", "/login-help", "/profile", "/zones"], m = /^\/(\w*)\/(([^./]*\.[^./]*))+(\/.*)?/, w = /^\/(\w{32,})(\/[^.]*)?/, F = j => _.includes(j), U = j => !F(j), Ee = j => !F(j) && w.test(j), q = j => !F(j) && m.test(j), H = j => m.exec(j), G = j => {
