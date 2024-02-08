@@ -227,7 +227,7 @@
 		]
 	},
 	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bindings": {
-		"description": "List the Cloudflare services this prefix is currently bound to. Traffic sent to an address within an IP prefix will be routed to the Cloudflare service of the most-specific Service Binding matching the address. \n**Example:** binding `192.0.2.0/24` to Cloudflare Magic Transit and `192.0.2.1/32` to the Cloudflare CDN would route traffic  for `192.0.2.1` to the CDN, and traffic for all other IPs in the prefix to Cloudflare Magic Transit.\n",
+		"description": "List the Cloudflare services this prefix is currently bound to. Traffic sent to an address within an IP prefix will be routed to the Cloudflare service of the most-specific Service Binding matching the address.\n**Example:** binding `192.0.2.0/24` to Cloudflare Magic Transit and `192.0.2.1/32` to the Cloudflare CDN would route traffic for `192.0.2.1` to the CDN, and traffic for all other IPs in the prefix to Cloudflare Magic Transit.\n",
 		"operationId": "ip-address-management-service-bindings-list-service-bindings",
 		"parameters": [
 			{
@@ -357,7 +357,7 @@
 														"description": "Status of a Service Binding's deployment to the Cloudflare network",
 														"properties": {
 															"state": {
-																"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active  and can be used with its associated service.\n",
+																"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service.\n",
 																"enum": [
 																	"provisioning",
 																	"active"
@@ -637,7 +637,7 @@
 													"description": "Status of a Service Binding's deployment to the Cloudflare network",
 													"properties": {
 														"state": {
-															"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active  and can be used with its associated service.\n",
+															"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service.\n",
 															"enum": [
 																"provisioning",
 																"active"
@@ -1003,7 +1003,7 @@
 		]
 	},
 	"POST /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bindings": {
-		"description": "Creates a new Service Binding, routing traffic to IPs within the given CIDR to a service running on Cloudflare's network. \n**Note:** This API may only be used on prefixes currently configured with a Magic Transit service binding, and only allows creating service bindings for the Cloudflare CDN or Cloudflare Spectrum.\n",
+		"description": "Creates a new Service Binding, routing traffic to IPs within the given CIDR to a service running on Cloudflare's network.\n**Note:** This API may only be used on prefixes currently configured with a Magic Transit service binding, and only allows creating service bindings for the Cloudflare CDN or Cloudflare Spectrum.\n",
 		"operationId": "ip-address-management-service-bindings-create-service-binding",
 		"parameters": [
 			{
@@ -1154,7 +1154,7 @@
 													"description": "Status of a Service Binding's deployment to the Cloudflare network",
 													"properties": {
 														"state": {
-															"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active  and can be used with its associated service.\n",
+															"description": "When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service.\n",
 															"enum": [
 																"provisioning",
 																"active"

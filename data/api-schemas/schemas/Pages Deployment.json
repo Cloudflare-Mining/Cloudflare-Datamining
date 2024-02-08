@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}": {
+	"DELETE /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}": {
 		"description": "Delete a deployment.",
 		"operationId": "pages-deployment-delete-deployment",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_identifier",
+				"name": "deployment_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -28,7 +28,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -173,7 +173,7 @@
 			"Pages Deployment"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects/{project_name}/deployments": {
+	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"description": "Fetch a list of project deployments.",
 		"operationId": "pages-deployment-get-deployments",
 		"parameters": [
@@ -190,7 +190,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -937,13 +937,13 @@
 			"Pages Deployment"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}": {
+	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}": {
 		"description": "Fetch information about a deployment.",
 		"operationId": "pages-deployment-get-deployment-info",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_identifier",
+				"name": "deployment_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -966,7 +966,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1665,13 +1665,13 @@
 			"Pages Deployment"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/logs": {
+	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs": {
 		"description": "Fetch deployment logs for a project.",
 		"operationId": "pages-deployment-get-deployment-logs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_identifier",
+				"name": "deployment_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1694,7 +1694,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2241,7 +2241,7 @@
 			"Pages Deployment"
 		]
 	},
-	"POST /accounts/{account_identifier}/pages/projects/{project_name}/deployments": {
+	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"description": "Start a new deployment from production. The repository and account must have already been authorized on the Cloudflare Pages dashboard.",
 		"operationId": "pages-deployment-create-deployment",
 		"parameters": [
@@ -2258,7 +2258,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2974,13 +2974,13 @@
 			"Pages Deployment"
 		]
 	},
-	"POST /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/retry": {
+	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/retry": {
 		"description": "Retry a previous deployment.",
 		"operationId": "pages-deployment-retry-deployment",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_identifier",
+				"name": "deployment_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3003,7 +3003,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3708,13 +3708,13 @@
 			"Pages Deployment"
 		]
 	},
-	"POST /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/rollback": {
+	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback": {
 		"description": "Rollback the production deployment to a previous deployment. You can only rollback to succesful builds on production.",
 		"operationId": "pages-deployment-rollback-deployment",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "deployment_identifier",
+				"name": "deployment_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3737,7 +3737,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

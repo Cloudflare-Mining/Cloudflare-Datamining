@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/pages/projects/{project_name}": {
+	"DELETE /accounts/{account_id}/pages/projects/{project_name}": {
 		"description": "Delete a project by name.",
 		"operationId": "pages-project-delete-project",
 		"parameters": [
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -161,13 +161,13 @@
 			"Pages Project"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects": {
+	"GET /accounts/{account_id}/pages/projects": {
 		"description": "Fetch a list of all user projects.",
 		"operationId": "pages-project-get-projects",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -914,7 +914,7 @@
 			"Pages Project"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects/{project_name}": {
+	"GET /accounts/{account_id}/pages/projects/{project_name}": {
 		"description": "Fetch a project by name.",
 		"operationId": "pages-project-get-project",
 		"parameters": [
@@ -931,7 +931,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3162,7 +3162,7 @@
 			"Pages Project"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/pages/projects/{project_name}": {
+	"PATCH /accounts/{account_id}/pages/projects/{project_name}": {
 		"description": "Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null.",
 		"operationId": "pages-project-update-project",
 		"parameters": [
@@ -3179,7 +3179,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3503,13 +3503,13 @@
 			"Pages Project"
 		]
 	},
-	"POST /accounts/{account_identifier}/pages/projects": {
+	"POST /accounts/{account_id}/pages/projects": {
 		"description": "Create a new project.",
 		"operationId": "pages-project-create-project",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

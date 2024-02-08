@@ -1,5 +1,5 @@
 {
-	"DELETE /accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+	"DELETE /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
 		"description": "Delete a Pages project's domain.",
 		"operationId": "pages-domains-delete-domain",
 		"parameters": [
@@ -27,7 +27,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -172,7 +172,7 @@
 			"Pages Domains"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects/{project_name}/domains": {
+	"GET /accounts/{account_id}/pages/projects/{project_name}/domains": {
 		"description": "Fetch a list of all domains associated with a Pages project.",
 		"operationId": "pages-domains-get-domains",
 		"parameters": [
@@ -189,7 +189,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -532,7 +532,7 @@
 			"Pages Domains"
 		]
 	},
-	"GET /accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+	"GET /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
 		"description": "Fetch a single domain.",
 		"operationId": "pages-domains-get-domain",
 		"parameters": [
@@ -560,7 +560,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -881,7 +881,7 @@
 			"Pages Domains"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+	"PATCH /accounts/{account_id}/pages/projects/{project_name}/domains/{domain_name}": {
 		"description": "Retry the validation status of a single domain.",
 		"operationId": "pages-domains-patch-domain",
 		"parameters": [
@@ -909,7 +909,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1236,7 +1236,7 @@
 			"Pages Domains"
 		]
 	},
-	"POST /accounts/{account_identifier}/pages/projects/{project_name}/domains": {
+	"POST /accounts/{account_id}/pages/projects/{project_name}/domains": {
 		"description": "Add a new domain for the Pages project.",
 		"operationId": "pages-domains-add-domain",
 		"parameters": [
@@ -1253,7 +1253,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
