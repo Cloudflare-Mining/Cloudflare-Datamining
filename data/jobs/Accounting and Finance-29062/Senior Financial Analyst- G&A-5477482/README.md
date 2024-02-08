@@ -19,7 +19,7 @@
 <p>This role is critical in helping Cloudflare achieve and exceed its growth and profitability goals. You will primarily focus on supporting our G&amp;A organization, providing visibility on all things financial to key stakeholders, surfacing new insights and improving processes. The ideal candidate is highly analytical, able to communicate financial insights and recommend appropriate actions. This role would be remote and would be based in Mexico. The role might involve travel to the US on a quarterly/ bi-annual basis.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Min. 3 years of experience as a Financial Analyst, total of at least 5 years of financial experience&nbsp;</li>
+	<li>Min. 5 years of experience as a Financial Analyst, total of at least 8 years of financial experience&nbsp;</li>
 	<li>Bachelor's degree (MBA preferred)</li>
 	<li>Prior financial analyst experience working in a multinational/ global company highly preferrable</li>
 	<li>Prior G&amp;A finance/ finance business partner experience preferred, not mandatory</li>
