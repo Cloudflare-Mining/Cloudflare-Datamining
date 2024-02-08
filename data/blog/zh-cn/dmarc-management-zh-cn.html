@@ -25,7 +25,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--7.png" class="kg-image" alt="电子邮件消息到达目的地，服务器根据我们的 DNS 记录中发布的 DMARC 策略进行操作。然后，接收者向来源发送一个报告。" loading="lazy"></figure>
 	<p>但请注意，您可能不希望将 DMARC 报告发送到人工监控的电子邮件地址，因为报告又多又快——几乎接收贵组织邮件的每个电子邮件提供商均会发送 XML 格式的报告。通常，管理员将报告设置为发送到 DMARC Management 等服务，并将它们归纳成更好理解的形式。<em>注意：这些报告中不含个人可识别信息 (PII)。</em></p>
 	<p>DMARC Management 自动创建接收这些报告的电子邮件地址，向您的 Cloudflare DNS 添加相应的 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record">RUA 记录</a>，通知邮件提供商将报告发送到哪里。您要是好奇的话，我可以告诉您，这些电子邮件地址是使用 <a href="https://www.cloudflare.com/products/email-routing">Cloudflare 电子邮件路由</a>创建的。</p>
-	<p><em>注意：现在，Cloudflare DNS 是 DMARC Management 的必要条件。Cloudflare Area 1 客户很快也能查看 DMARC 报告，哪怕他们使用的是第三方 DNS 服务。</em></p>
+	<p><em>注意：现在，Cloudflare DNS 是 DMARC Management 的必要条件。</em></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC--1--1.jpg" class="kg-image" alt="这是使用此 URA 创建 DMARC 记录的预览" loading="lazy"></figure>
 	<p>这个专用电子邮件地址收到报告后，一个 <a href="https://workers.cloudflare.com">Worker</a> 将处理报告，从中提取相关数据，然后发送到我们的分析解决方案。您可能又猜到了，这是使用<a href="https://developers.cloudflare.com/email-routing/email-workers"> Email Workers</a> 实现的。如果希望进一步了解该技术实现，请查看<a href="https://blog.cloudflare.com/how-we-built-dmarc-management">这里</a>。</p>
 	<h3 id="--1">采取行动</h3>

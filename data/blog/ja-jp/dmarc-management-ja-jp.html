@@ -25,7 +25,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--7.png" class="kg-image" alt="電子メールメッセージが宛先に到達すると、当社のDNSレコードに公開されているDMARCポリシーに従って、サーバーでアクションが実行されます。そして、受信者は送信元へレポートを返送します。" loading="lazy"></figure>
 	<p>DMARCレポートは、組織がメッセージを送信するほぼすべてのメールプロバイダから大量に送られてきており、XML形式で配信されるため、人間が監視するメールアドレスには送らないほうがよいでしょう。通常、管理者は、DMARC Managementのようなサービスにレポートを送信するように設定し、より理解しやすい形にまとめられます。<em>注意：これらのレポートには、個人特定可能情報（PII）は含まれません。</em></p>
 	<p>DMARC Managementは、これらのレポートの送信先となるメールアドレスを自動的に作成し、対応する<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record">RUAレコード</a>をCloudflare DNSに追加して、メールボックスプロバイダーにレポートの送信先を通知します。これらのメールアドレスは、<a href="https://www.cloudflare.com/products/email-routing">Cloudflare Email Routing</a>を使って作成されています。</p>
-	<p><em>注：現在、DMARC管理にはCloudflare DNSが必須となっています。Cloudflare Area 1のお客様は、サードパーティーのDNSサービスを利用している場合でも、近日中にDMARCレポートを見ることができるようになります。</em></p>
+	<p><em>注：現在、DMARC管理にはCloudflare DNSが必須となっています。</em></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC--1--1.jpg" class="kg-image" alt="このRUAで作成されるDMARCレコードのプレビューがあります" loading="lazy"></figure>
 	<p>この専用メールアドレスに届いたレポートは、<a href="https://workers.cloudflare.com">Worker</a>によって処理され、関連データを抽出、解析して分析ソリューションに送信されます。そして、ご推察の通り、<a href="https://developers.cloudflare.com/email-routing/email-workers">Email Workers</a>を使用して実装されています。技術的な実装については<a href="https://blog.cloudflare.com/how-we-built-dmarc-management">こちら</a>をご覧ください。</p>
 	<h3 id="--1">行動する</h3>
