@@ -7,8 +7,8 @@
 **Specification:** Compliant with IETF [draft-ietf-privacypass-protocol](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/) and tests vectors match with draft [v11](https://datatracker.ietf.org/doc/draft-ietf-privacypass-protocol/11/).
 
 **Support:**
- - ✅ Public-Verifiable tokens (Blind-RSA)
- - 🚧 Private-Verifiable tokens (VOPRF)
+ - Public-Verifiable tokens (Blind-RSA)
+ - Private-Verifiable tokens (VOPRF)
 
 
 ### Development

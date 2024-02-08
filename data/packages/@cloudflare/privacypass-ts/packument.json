@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/privacypass-ts",
 	"dist-tags": {
-		"latest": "0.4.0"
+		"latest": "0.5.0"
 	},
 	"versions": {
 		"0.2.1": {
@@ -126,6 +126,50 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEQCIHbWoudhaxbHS+VMIhSqawtzf7QkHUpeMJDVOkiLmmYRAiAsDHU+CE0S0XG6WJEm575rd4nhOIEBWYOsR7/owqDg5A=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=18"
+			}
+		},
+		"0.5.0": {
+			"name": "@cloudflare/privacypass-ts",
+			"version": "0.5.0",
+			"dependencies": {
+				"@cloudflare/blindrsa-ts": "0.3.2",
+				"@cloudflare/voprf-ts": "0.21.2",
+				"asn1-parser": "1.1.8",
+				"asn1js": "3.0.5",
+				"rfc4648": "1.5.2"
+			},
+			"devDependencies": {
+				"@types/benchmark": "2.1.3",
+				"@types/jest": "29.5.5",
+				"@typescript-eslint/eslint-plugin": "6.7.4",
+				"@typescript-eslint/parser": "6.7.4",
+				"benchmark": "2.1.4",
+				"eslint": "8.51.0",
+				"eslint-config-prettier": "9.0.0",
+				"eslint-plugin-jest": "27.4.2",
+				"eslint-plugin-jest-formatting": "3.1.0",
+				"eslint-plugin-prettier": "5.0.0",
+				"eslint-plugin-security": "1.7.1",
+				"jest": "29.7.0",
+				"prettier": "3.0.3",
+				"rimraf": "5.0.5",
+				"typescript": "5.2.2"
+			},
+			"dist": {
+				"integrity": "sha512-BveinpeIDZ7UeTNyAxRz11561pFQcGhR7ncmFwub4JBBcH3kdeUKfFJEK5GveprUMFBQtpUfB58OEdfUreEZWA==",
+				"shasum": "094d770081c901974091fa34939714cf808ab59d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/privacypass-ts/-/privacypass-ts-0.5.0.tgz",
+				"fileCount": 31,
+				"unpackedSize": 98744,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICsXI2FaDPTjm3FQIqSxnqfE+csTafS7ZmQ0bfGKhgFtAiAN/5/eHM7Bz+yEBHrWUe6u9YhijxYkc9Vww0bnU+ddSQ=="
 					}
 				]
 			},
