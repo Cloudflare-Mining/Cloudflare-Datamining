@@ -5,63 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: Lisbon or London</strong></h4>
-<h4><strong>About the department</strong></h4>
-<p>In this role, you will be focused on maintaining the Cloudflare global network. You'll work closely with Cloudflare’s SRE (Site Reliability Engineering) team, Network Engineering team, Network Deployment Engineering team and with various vendors and partners (including hardware vendors, datacenter and network providers, and ISPs) to maintain and improve our global infrastructure. You will further be responsible for the development and implementation of consistent processes and visibility measurements for consistent and effective management of our infrastructure. This is a highly visible position that requires deep technical understanding of datacenter infrastructure, networking (physical), and basic experience with data analysis and project management.</p>
-<p>To be successful in this position, you should have excellent technical skills, communication skills, and be able to navigate a range of challenges and constraints (e.g. schedule adherence, time zones, and cultures). You will have the opportunity to (literally) build a faster, safer Internet for our millions of users and the billions of web surfers that visit their sites each month.</p>
-<p><strong>Who you are</strong></p>
-<p>&nbsp;</p>
-<p>You will thrive in a hypergrowth engineering environment and be self driven with a keen attention to detail. You will come with a deep technical understanding of Data Center colocation environments, network architecture and server technologies. You will be used to working through partners to support infrastructure delivery to a number of remote locations. You will have had experience managing operational environments, and used to developing new approaches to improve delivery efficiency or operational stability.&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<h1>Trust &amp; Safety Critical Escalations Manager</h1>
+<p><strong>Location</strong>: Lisbon</p>
+<p>We are looking for a Manager of Cloudflare’s Trust and Safety Critical Escalations team. In this role, you will manage and mentor a team of investigators who triage sensitive, high profile, and escalated Trust &amp; Safety requests. Not only will you address requests that affect our customers, but you will lead the team that proactively identifies and mitigates high risk situations with a significant potential for broad impact. You possess a proven track record of leading high-performance teams and have experience in dynamic and fast pasted environments.&nbsp;</p>
+<p><strong>Responsibilities</strong><strong>:&nbsp;</strong></p>
 <ul>
-	<li>Collaborating with internal teams (Infrastructure, Network Engineering and SRE). Create documentation and manage remote contractors to complete datacenter tasks, working with hardware manufacturers, datacenter and network providers, logistics partners and other service providers in support of our 300+ datacenter locations</li>
-	<li>Maintain Data Center environment operational availability</li>
-	<li>Creating and maintaining documentation, plans, SOP’s, MOP’s etc.</li>
-	<li>Support and configure network infrastructure where required</li>
-	<li>Providing feedback to internal teams to support internal tools and external vendor partnerships</li>
+	<li>Help build a world class globally-distributed team through leadership, guidance, and career development.</li>
+	<li>Be responsible for ensuring timely triage of tasks, while also building meaningful metrics that clearly demonstrate the effectiveness of the team.</li>
+	<li>Provide monthly and quarterly reports to senior. leadership and supporting teams on trends and issues that our customers experience, with recommendations to improve policies, procedures, and products.</li>
+	<li>Partner with the Sales, Customer Support, Legal, and the Product teams to ensure our policies and guidelines can be enforced in a scalable fashion.</li>
+	<li>Deal with sensitive content and emotionally charged escalations with tact and a calm demeanor.</li>
 </ul>
-<p><strong>Required Experience</strong></p>
+<h2><strong>Requirements:</strong></h2>
 <ul>
-	<li>Minimum of 5 yrs of Linux systems administration</li>
-	<li>Experience with Juniper, Cisco and DWDM network equipment</li>
-	<li>Experience managing and instructing remote contractors&nbsp;</li>
-	<li>Familiarity with work required to stand up infrastructure in remote colocation facilities&nbsp;</li>
-	<li>Experience running and improving operational processes, including automation tooling, in a rapidly changing environment</li>
-	<li>Familiarity with day-to-day tasks and projects common to Data Center Operations (deployment, migration, decommissioning etc.)</li>
-	<li>Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting) such as JIRA</li>
-	<li>Incident management&nbsp;</li>
+	<li>5+ years experience in a Trust &amp; Safety or customer support role at an Internet service provider or hosting provider processing abuse reports and time sensitive escalations.</li>
+	<li>5+ years experience managing a remote team effectively with a strong desire to help others learn and grow.</li>
+	<li>You know how to deal with ambiguity and be able to navigate through it with perseverance, a positive mentality and a point of view; We’re still growing and learning and will look to you to help us establish and evolve processes.</li>
+	<li>Experience with analytics and experience solving problems using data and providing practical business insights.</li>
+	<li>Intermediate understanding of Cloudflare and the types of services we offer.</li>
+	<li>Become a technical resource that earns the trust of customer stakeholders.</li>
+	<li>Technical background to be able to understand the interaction between Trust &amp; Safety considerations and Cloudflare’s services.</li>
+	<li>Excellent written and verbal communication and comfortable interacting with variety of senior stakeholders across various disciplines.</li>
+	<li>Ensure quality work in all aspects of Escalation Management in support tickets, customer-facing Root Cause Analysis (RCA) documents, senior executive readouts as applicable, etc.</li>
+	<li>On-call required.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Other Responsibilities May Include</strong></p>
+<h2><strong>Bonus Points:</strong></h2>
 <ul>
-	<li>Aggressively seek opportunities to introduce cutting-edge technology and automation solutions that are effective, efficient and scalable in order to improve our ability to deploy and maintain our global infrastructure</li>
-	<li>Assist with the definition, documentation and implementation of consistent processes across all region</li>
-	<li>Limited travel</li>
+	<li>You understand DNS and how the Internet works.</li>
+	<li>Familiarity with DMCA (Digital Millennium Copyright Act), copyright, and trademark issues.</li>
+	<li>Experience with defusing high pressure situations.</li>
+	<li>Have experience working closely with Public Policy, Legal, and Communication teams.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Bachelor’s degree; technical background in engineering, computer science, or MIS</li>
-	<li>Direct experience executing on complex data center/infrastructure projects</li>
-	<li>Previous experience installing / maintaining data center (and other IT) infrastructure and DCIM tools</li>
-	<li>Experience running and improving operational processes in a rapidly changing environment</li>
-	<li>Strong verbal and written communication skills, problem-solving skills, attention to detail, and interpersonal skills</li>
-	<li>Must be proactive with proven ability to learn fast and execute on multiple tasks simultaneously</li>
-	<li>Ability to manage MS excel and Google spreadsheets</li>
-	<li>Comfortable handling basic program management responsibilities (prioritization, planning, scheduling, status reporting) such as JIRA</li>
-	<li>Must be a team player</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Multi-lingual; experience working with infrastructure in multiple countries</li>
-	<li>Comfortable with remote “lights-out” and out-of-band access to data center resources</li>
-	<li>Linux certifications (RHCSA etc.)</li>
-	<li>Network certifications (CCNA, JNCIA or higher)</li>
-	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
-	<li>Scripting or software development experience in Bash, Python or Go-lang</li>
-	<li>Familiarity with load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
-	<li>Experience in working within a large scale SaaS vendor</li>
-</ul>
+<p>Please note: This job description is intended to provide a general overview of the role and may be modified as necessary to align with the company's evolving needs.</p>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
