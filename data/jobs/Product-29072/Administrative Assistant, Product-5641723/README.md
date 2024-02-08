@@ -7,7 +7,7 @@
 </div>
 <p><strong>Available Locations: San Francisco, CA OR PST</strong></p>
 <p><strong>About the role</strong></p>
-<p>Cloudflare is looking for a bright, proactive and detail-oriented Administrative Assistant to support two VPs in the Product organization: the VP of Product Platform (to whom this role reports) and the VP of Application Performance.</p>
+<p>Cloudflare is looking for a bright, proactive and detail-oriented Administrative Assistant to support 3 VPs in the Product organization: the VP of Product Platform (to whom this role reports), the VP of Application Performance and the VP of Product Experience.</p>
 <p>Your job is to keep these leaders organized, prioritized and productive while we grow the business. This role requires superior attention to detail, great organizational skills, and the ability to juggle multiple high-priority requests. It also requires the ability to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information is important, as is a positive attitude. The ideal candidate is a seasoned administrative assistant who can cultivate great working relationships, communicate directly, and organize around a common goal. The candidate must be based in the Pacific time zone.</p>
 <p><strong>What you'll do</strong></p>
 <ul>
@@ -26,7 +26,7 @@
 	<li>Incredibly organized and resourceful, able to juggle and multi-task with acute attention to detail and follow through</li>
 	<li>Personable with a can-do attitude that sees no task or project to be too small or too big</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
@@ -61,7 +61,7 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

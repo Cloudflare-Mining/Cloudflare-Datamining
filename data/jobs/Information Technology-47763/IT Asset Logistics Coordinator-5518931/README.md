@@ -6,29 +6,32 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p>We’re looking for an IT Asset Logistics Coordinator to provide enterprise level service for our corporate teams.&nbsp; You will prepare, route and manage IT’s purchase orders.&nbsp; Main duties include processing purchase requests, managing shipments for employees and new hire onboarding.&nbsp; This role works cross-functionality with People Operations, Finance, Procurement, Asset Management, and IT.&nbsp; This role reports to the IT Operations Manager.</p>
+<p>&nbsp;</p>
+<p>The IT Assets and Logistics Coordinator will be responsible for overseeing the entire lifecycle of IT assets, from procurement to disposal, ensuring optimal utilization and compliance with company policies and regulations. This role involves coordinating logistics operations, managing inventory, and liaising with vendors and internal teams to ensure the timely and cost-effective acquisition, maintenance, and disposal of IT assets.&nbsp; This role reports to the Sr. IT Operations Manager.</p>
+<p>&nbsp;</p>
 <p><strong>About the Team</strong></p>
-<p>You will join a team of IT professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.</p>
+<p>&nbsp;</p>
+<p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.&nbsp; Not only that, we are obsessed with creating the best user experience.</p>
+<p>&nbsp;</p>
 <p><strong>What You'll Do</strong></p>
+<p>&nbsp;</p>
 <ul>
-	<li>Coordinating transportation providers to ensure prompt and proper movement of shipments</li>
-	<li>Responding to employee purchase and shipment inquiries</li>
-	<li>Reviewing purchase orders and shipping documents to ensure accuracy</li>
-	<li>Making special shipping arrangements as necessary</li>
-	<li>Tracking and fixing shipping errors</li>
-	<li>Seek guidance from the team when needed</li>
-	<li>Be flexible and available for after hours support</li>
-	<li>Processing hardware and software requests</li>
-	<li>Evaluating suppliers by considering price, quality, availability and other criteria</li>
-	<li>Interviewing vendors and visiting suppliers’ facilities to learn about products, services and pricing</li>
-	<li>Negotiating contracts with vendors and suppliers to obtain the best deals on behalf of the company</li>
-	<li>Verifying purchases by comparing them to a master list and recommending alternatives for expensive or irrelevant products</li>
-	<li>Interacting with suppliers to schedule delivery times and resolve shipping errors</li>
-	<li>Maintain receipts, records and inventories</li>
-	<li>Work in a team environment</li>
-	<li>Create and update technical documentation</li>
+	<li>Develop and implement processes for tracking and managing IT assets throughout their lifecycle.</li>
 </ul>
+<ul>
+	<li>Coordinate the acquisition of new IT assets, including requisition, procurement, and deployment.</li>
+	<li>Manage logistics operations, including shipping, receiving, and the secure and efficient movement of IT assets within and between locations.</li>
+	<li>Conduct regular audits and inventories to ensure accuracy and compliance with company policies.</li>
+	<li>Liaise with vendors and suppliers to negotiate contracts, resolve issues, and ensure timely delivery of IT assets and services.</li>
+	<li>Collaborate with IT and finance departments to forecast budget needs, track expenditures, and optimize costs related to IT assets.</li>
+	<li>Develop and maintain documentation related to IT asset management policies, procedures, and records.</li>
+	<li>Coordinate the disposal or recycling of retired or obsolete IT assets in accordance with environmental regulations and company policies.</li>
+	<li>Provide support and training to staff on IT asset management practices and tools.</li>
+	<li>Stay informed about the latest trends and regulations in IT asset management and logistics.</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>What You'll Bring</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>Ability to work in a fast-paced environment</li>
 	<li>Understanding of the supply chain, including common obstacles and effective solutions</li>
@@ -44,14 +47,36 @@
 	<li>Strong written and verbal communication skills</li>
 	<li>Interpersonal skills</li>
 </ul>
+<p>&nbsp;</p>
+<ul>
+	<li>Bachelor’s degree in Information Technology, Business Administration, Supply Chain Management, or a related field.</li>
+	<li>Proven experience in IT asset management, logistics, or a similar role.</li>
+	<li>Strong understanding of IT hardware and software, including licensing and warranties.</li>
+	<li>Excellent organizational, communication, and negotiation skills.</li>
+	<li>Proficiency in IT asset management software, Google Workspace and/or Microsoft Office Suite.</li>
+	<li>Ability to work independently and manage multiple tasks and projects simultaneously.</li>
+	<li>Attention to detail and problem-solving skills.</li>
+	<li>Experience in vendor management and contract negotiations.</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
 <ul>
 	<li>Experience with Jira Service Management, Jira Software, Confluence</li>
 	<li>Experience working in the technology industry</li>
 	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
 	<li>Buyer experience</li>
 	<li>Supply chain management experience</li>
-	<li>Asset management experience</li>
+	<li>Certified IT Asset Manager (CITAM)</li>
+	<li>CompTIA IT Fundamentals (ITF+)</li>
+	<li>Certified in Logistics, Transportation and Distribution (CLTD)</li>
+	<li>Certified Supply Chain Professional (CSCP)</li>
+	<li>Certified Information Systems Auditor (CISA)</li>
+	<li>Project Management Professional (PMP)</li>
+	<li>ITIL® 4 Foundation</li>
+	<li>Certified Business Continuity Professional (CBCP)</li>
+	<li>Six Sigma Certification (Yellow Belt, Green Belt, Black Belt)</li>
+	<li>Microsoft Certified: Dynamics 365 Supply Chain Management, Manufacturing</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
