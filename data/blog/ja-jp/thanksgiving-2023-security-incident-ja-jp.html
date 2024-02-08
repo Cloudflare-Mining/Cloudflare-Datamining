@@ -1,0 +1,144 @@
+<div class="mb2 gray5">9 min read</div>
+<div class="post-content lh-copy gray1">
+	<p>感謝祭の2023年11月23日、Cloudflareは自社のセルフホスト型Atlassianサーバー上で脅威アクターを検出しました。セキュリティチームは直ちに調査を開始し、脅威アクターのアクセスを遮断し、11月26日の日曜日にCrowdStrikeのフォレンジックチームに独自の分析を依頼しました。 </p>
+	<p>昨日、CrowdStrikeは調査を完了しました。このセキュリティインシデントの詳細について、このブログ記事で公開します。 </p>
+	<p>Cloudflareの顧客データやシステムには、このインシデントの影響はありませんでした。お客様にはこの点を強調しておきたいと思います。アクセス制御、ファイアウォールルール、そして独自のツール（Zero Trust）を使用したハードセキュリティキーの使用が、脅威アクターのラテラル（水平方向）の移動を制限しました。どのサービスにも影響はなく、当社のグローバルネットワークシステムや構成にも変更はありませんでした。これがZero Trustアーキテクチャの成果です。これは船の隔壁のようなもので、システムの一つが侵害されても組織全体が危険にさらされるのを防ぐことができます。</p>
+	<p>11月14日から17日にかけて、脅威アクターが社内システムの偵察を行い、Wiki（Atlassian Confluenceを使用）とバグデータベース（Atlassian Jiraを使用）にアクセスしました。11月20日、21日にはさらなるアクセスがありました。接続を確認するためのアクセスのテストに戻ってきたと思われます。</p>
+	<p>11月22日、脅威アクターは、ScriptRunner for Jiraを使用して当社のAtlassianサーバーへの持続的なアクセスを確立し、当社のソースコード管理システム（Atlassian Bitbucketを使用）にアクセスし、サンパウロ（ブラジル）の、まだ本稼働していないデータセンターにアクセスできるコンソールサーバーへのアクセスを試みましたが、失敗に終わりました。</p>
+	<p>この攻撃には、<a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">2023年10月のOktaの侵害</a>の後、Cloudflareがローテーションに失敗していたアクセストークン1つと3つのサービスアカウントの認証情報を使用されました。11月24日にすべての脅威アクターのアクセスと接続が停止され、CrowdStrikeは脅威アクティビティが11月24日10:44に解決されたことを確認しました。</p>
+	<p><em>（このブログ記事において、日付と時刻はすべてUTC表記です。）</em></p>
+	<p>このインシデントの業務への影響は極めて限定的であると解されますが、脅威アクターが盗んだ認証情報を使ってAtlassianサーバーにアクセスし、一部のドキュメントと（限られた量の）ソースコードにアクセスしたというこのインシデントを、Cloudflareは非常に深刻に受け止めています。この攻撃は、Cloudflareのグローバルネットワークへの持続的かつ広範なアクセスを得ることを目的とした国家攻撃者によるものであると、業界および政府の同僚との協力に基づき、私たちは確信しています。</p>
+	<h3 id="%E3%80%8C%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AC%E3%83%83%E3%83%89%E3%80%8D%E5%AF%BE%E5%BF%9C%E3%81%A8%E3%83%8F%E3%83%BC%E3%83%89%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%8F%96%E3%82%8A%E7%B5%84%E3%81%BF">「コードレッド」対応とハードニングの取り組み </h3>
+	<p>11月24日、脅威アクターがCloudflareの環境から排除された後、セキュリティチームは、侵入を調査し、脅威アクターによる当社のシステムへのアクセスが完全にブロックされたことを確認し、彼らがアクセスしたもの、またはアクセスしようとしたものの全容を把握するために、全社から必要な人員を集めました。</p>
+	<p>そして11月27日以降、Cloudflareの、セキュリティチーム内外の技術スタッフの大部分を、「コードレッド」と名付けられたプロジェクトに割り当てました。このプロジェクトの焦点は、Cloudflareの環境におけるあらゆる制御の強化、検証、修正を行い、将来的な侵入に対して確実にセキュアであることを確認し、脅威アクターがCloudflareの環境にアクセスできないことを検証することでした。さらに、脅威アクターに持続的なアクセス権が残されていないことを確認し、彼らがどのシステムに接触し、どのシステムにアクセスしようとしたかを完全に把握するために、あらゆるシステム、アカウント、ログの調査を続けました。</p>
+	<p>CrowdStrikeは、独自に脅威アクターのアクティビティの範囲と程度を評価しました。これには、脅威アクターがまだ当社のシステムに潜んでいる形跡があるかどうかの調査も含まれます。CrowdStrikeの調査は、Cloudflareの調査の裏付けとサポートにはなりましたが、Cloudflareが見逃していたかもしれないアクティビティは発見されませんでした。このブログ記事では、当社とCrowdStrikeが明らかにした脅威アクターの活動について、その概要を詳しく説明します。</p>
+	<p>盗まれた認証情報を使って脅威アクターがアクセスできた本番システムは、当社のAtlassian環境だけでした。彼らがアクセスしたWikiページ、バグデータベースの問題、ソースコードリポジトリを分析すると、彼らはCloudflareのグローバルネットワークのアーキテクチャ、セキュリティ、管理に関する情報を探していたようです。そのため、私たちは、ログファイルから何かを見落としていたとしても、脅威アクターがそれを足がかりとできないよう、セキュリティプロトコルをさらに強化するために大きな努力が必要だと判断しました。</p>
+	<p>私たちの狙いは、攻撃者が私たちのネットワークの運用に関する技術情報を悪用して、再び侵入するのを防ぐことでした。攻撃者が得られたアクセスは限定的であったと考えられ、後にそれは確認されましたが、私たちは包括的な取り組みを実施し、すべての本番用クレデンシャル（5,000を超える個々のクレデンシャル）のローテーション、テストシステムとステージングシステムの物理的なセグメント化、4,893台のシステムでのフォレンジックトリアージの実施を行い、さらに脅威行為者がアクセスしたすべてのシステムとすべてのAtlassian製品（Jira、Confluence、Bitbucket）を含む、私たちのグローバルネットワーク内のすべてのマシンをリイメージして再起動しました。</p>
+	<p>脅威アクターは、サンパウロにあるCloudflareの新しい、まだ本稼働していないデータセンターのコンソールサーバーにもアクセスしようとしました。その試みはすべて失敗しています。これらのシステムが100％セキュアであることを確認するため、サンパウロのデータセンターの機器はメーカーに返却されました。メーカーのフォレンジックチームは、Cloudflareのすべてのシステムを調査し、アクセスやパーシステンスが得られていないことを確認しました。何も見つかりませんでしたが、私たちはハードウェアを交換しました。</p>
+	<p>また、更新されていないソフトウェアパッケージ、作成された可能性のあるユーザーアカウント、使用されていないアクティブな従業員アカウントも調べました。Jiraチケットやソースコードに残された可能性のある形跡を探し、WikiにアップロードされたすべてのHARファイルを検査し、何らかのトークンが含まれている場合に備えて削除しました。疑わしい場合は、常に最悪の事態を想定し、脅威アクターがアクセスできるものはすべて不使用として、脅威アクターにとって価値がなくなるように変更を加えました。</p>
+	<p>チームのメンバー全員に、脅威アクターが接触した可能性のある箇所を挙げるよう奨励したことで、ログファイルを調査し、脅威アクターがアクセスした範囲を特定することができました。私たちは、社内の多くの人を対象にすることで、セキュリティ向上のために必要なアクセスや変更の証拠を徹底的に探し出すことを目指しました。</p>
+	<p>当面の「コードレッド」対応は1月5日に終了しましたが、クレデンシャル管理、ソフトウェアのハードニング、脆弱性管理、追加アラートなど、全社的な取り組みは継続しています。</p>
+	<h3 id="%E6%94%BB%E6%92%83%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3">攻撃のタイムライン</h3>
+	<p>攻撃は10月のOktaの侵害から始まりました。脅威アクターは11月中旬以降、Oktaの侵害で得た認証情報を使って当社のシステムを標的にしています。 </p>
+	<p>以下のタイムラインで主なイベントを示します。</p>
+	<h3 id="10%E6%9C%8818%E6%97%A5okta%E3%81%AE%E4%BE%B5%E5%AE%B3">10月18日 - Oktaの侵害</h3>
+	<p>この件に関しては<a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">以前お知らせ</a>していますが、要約すると、CloudflareでｇOktaのシステムが2回侵害され、脅威アクターが一連の認証情報にアクセス可能な状態でした。これらの認証情報はすべてローテーションされることになっていました。</p>
+	<p>残念ながら、Oktaの侵害で流出した認証情報のうち、数千のうちサービストークン1つと3つのサービスアカウントのローテーションが失敗していました。 </p>
+	<p>一つは、Atlassianシステムへのリモートアクセスを許可するMoveworksサービストークンでした。2つ目の認証情報は、SaaSベースのSmartsheetアプリが使用するサービスアカウントで、当社のAtlassian Jiraインスタンスへの管理アクセス権が扶養されていました。3つ目のアカウントはBitbucketサービスアカウントで、当社のソースコード管理システムへのアクセスに使用されていました。4つ目はAWS環境で、グローバルネットワークにはアクセスできず、顧客データや機密データも存在しませんでした。 </p>
+	<p>そのサービストークンと3つのアカウントは、未使用であると誤って認識され、ローテーションされませんでした。これは誤りであり、これにより脅威アクターは私たちのシステムに侵入し、Atlassian製品への持続性を獲得しました。これは決してAWS、Moveworks、Smartsheet側のミスではないことにご注意ください。これらは純粋に、Cloudflareがローテーションに失敗した認証情報です。</p>
+	<h3 id="11%E6%9C%8814%E6%97%A5092249%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%8C%E3%83%97%E3%83%AD%E3%83%BC%E3%83%93%E3%83%B3%E3%82%B0%E3%82%92%E9%96%8B%E5%A7%8B">11月14日09:22:49 - 脅威アクターがプロービングを開始</h3>
+	<p>私たちのログによると、この脅威アクターは11月14日に私たちのシステムのプローブと偵察を開始し、認証情報を使用する方法とアクセス可能なシステムを探し始めました。彼らはOktaインスタンスにログインしようとしましたが、アクセスは拒否されました。また、Cloudflare Dashboardへのアクセスを試みましたが、アクセスは拒否されました。</p>
+	<p>さらに、この脅威アクターはCloudflare Appsマーケットプレイスに使用されているAWS環境にアクセスしました。この環境はセグメント化されており、グローバルネットワークや顧客データにアクセスすることはできませんでした。この環境にアクセスするためのサービスアカウントは失効しており、私たちは環境が完全であることを検証しています。 </p>
+	<h3 id="11%E6%9C%8815%E6%97%A5-162838%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%8Catlassian%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9">11月15日 16:28:38 - 脅威アクターがAtlassianサービスにアクセス</h3>
+	<p>この脅威アクターは、11月15日、Moveworksのサービストークンを使用して当社のゲートウェイ経由で認証を行い、Atlassian JiraとConfluenceへのアクセスに成功し、その後Smartsheetのサービスアカウントを使用してAtlassianスイートへアクセスしました。翌日、彼らはCloudflareのグローバルネットワークの構成と管理に関する情報を探し始め、さまざまなJiraチケットへのアクセスを開始しました。</p>
+	<p>脅威者はWikiでリモートアクセス、シークレット、client-secret、openconnect、cloudflared、トークンなどを検索しました。彼らは合計2,059,357チケットのうちの36のJiraチケットと、合計14,099ページのうちの202のWikiページにアクセスしました。</p>
+	<p>また、彼らは、脆弱性管理、シークレットローテーション、MFAバイパス、ネットワークアクセス、さらにはOktaインシデントへの対応そのものに関するJiraチケットにアクセスしました。 </p>
+	<p>Wikiの検索やアクセスされたページから、脅威アクターは当社のシステムへのアクセスに関するあらゆる要素（パスワードのリセット、リモートアクセス、コンフィギュレーション、Saltの使用など）に非常に興味を持っていたことがうかがえますが、顧客データや顧客コンフィギュレーションは標的ではありませんでした。</p>
+	<h3 id="1116-143637%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AB%E3%82%88%E3%82%8Batlassian%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90">11/16 14:36:37 - 脅威アクターによるAtlassianユーザーアカウントの作成</h3>
+	<p>脅威アクターはSmartsheetのクレデンシャルを使用して、通常のCloudflareユーザーに見せかけたAtlassianアカウントを作成しました。彼らはこのユーザーをAtlassian内の多くのグループに追加し、Smartsheetサービスアカウントが削除された場合でも、Atlassian環境に持続的にアクセスできるようにしました。</p>
+	<h3 id="11%E6%9C%8817%E6%97%A5143352%EF%BD%9E11%E6%9C%8820%E6%97%A5092653%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%8Ccloudflare%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E4%B8%AD%E6%96%AD">11月17日14:33:52～11月20日09:26:53 - 脅威アクターがCloudflareシステムへのアクセスを中断</h3>
+	<p>この間、攻撃者は私たちのシステムへのアクセスを停止し（アクセスできる状態であることをテストした形跡あり）、感謝祭の直前に戻ってきました。</p>
+	<h3 id="11%E6%9C%8822%E6%97%A5141822%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%8C%E6%8C%81%E7%B6%9A%E6%80%A7%E3%82%92%E7%8D%B2%E5%BE%97">11月22日14:18:22 - 脅威アクターが持続性を獲得</h3>
+	<p>SmartsheetのサービスアカウントにはAtlassian Jiraへの管理者アクセス権が付与されていたため、脅威アクターはSliver Adversary Emulation Frameworkをインストールしました。Sliver Adversary Emulation Frameworkは、レッドチームや攻撃者が「C2」（コマンドアンドコントロール）を可能にするために使用する、一般的に使用されているツールおよびフレームワークで、インストールされたコンピュータへの持続的かつステルス的なアクセスを可能にするものです。Sliverのインストールには、ScriptRunner for Jiraプラグインが使用されました。</p>
+	<p>これにより、彼らはアトラシアンのサーバーに持続的にアクセスできるようになり、これを利用してラテラル（水平方向）の移動を試みました。脅威アクターはこのアクセスを利用して、サンパウロのデータセンターにある非本番コンソールサーバーへのアクセスを試みました。アクセスは拒否され、グローバルネットワークには一切アクセスできませんでした。</p>
+	<p>翌日、脅威者は合計11,904リポジトリのうちの120のコードリポジトリを閲覧しました。脅威アクターは、120のうちの76のリポジトリでAtlassian Bitbucketのgitアーカイブ機能を使用して、Atlassianサーバーにダウンロードしました。これらのリポジトリが流出したかどうかを確認することはできませんでしたが、私たちはこれを流出したものとして扱うことにしました。 </p>
+	<p>76のソースコードリポジトリは、バックアップの仕組み、グローバルネットワークの構成と管理方法、CloudflareでのIDの仕組み、リモートアクセス、TerraformとKubernetesの使用方法に関するものでした。少数のリポジトリには暗号化されたシークレットが含まれ、それ自体は強力に暗号化されていたにもかかわらず、すぐにローテーションされました。</p>
+	<p>私たちは、特にこの76のソースコードリポジトリに焦点を当て、埋め込まれたシークレット（コードに格納されたシークレットはローテーションされている）、脆弱性、および攻撃者が後続の攻撃を行うためにそれらを使用する方法を探しました。この作業は、「コードレッド」の一環として、全社的なエンジニアリングチームによって優先的に行われました。</p>
+	<p>SaaS企業として、私たちは長い間、自社のソースコード自体は、エンドユーザーにソフトウェアを配布するソフトウェア企業のソースコードほど貴重ではないと考えてきました。実際、私たちはソースコードの大部分をオープンソース化し、私たちが使用しているアルゴリズムや技術についてブログを通じてオープンにしています。ですから、私たちが注目したのは、誰かがソースコードにアクセスできるかどうかではなく、そのソースコードにシークレット（キーやトークンなど）や脆弱性が埋め込まれているかどうかでした。</p>
+	<h3 id="11%E6%9C%8823%E6%97%A5%E8%84%85%E5%A8%81%E3%81%AE%E7%99%BA%E8%A6%8B%E3%81%A8%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E5%81%9C%E6%AD%A2%E9%96%8B%E5%A7%8B">11月23日 - 脅威の発見と脅威アクターのアクセス停止開始 </h3>
+	<p>Cloudflareのセキュリティチームは、16:00に脅威アクターの存在を警告され、その35分後に Smartsheetサービスアカウントを停止しました。48分後、脅威アクターによって作成されたユーザーアカウントが発見され、無効化されました。最初の警告が発せられてから、脅威アクターを阻止するために取られた主な行動の詳細なタイムラインは以下の通りです。</p>
+	<p>15:58 - 脅威アクターがSmartsheetサービスアカウントを管理者グループに追加<br>16:00 - 15:58の変更について、セキュリティチームに自動アラート<br>16:12 - Cloudflare SOCがアラートの調査を開始<br>16:35 - Cloudflare SOCがSmartsheetサービスアカウントを無効化<br>17:23 - 脅威アクターが作成したAtlassianユーザーアカウントの発見、無効化<br>17:43 - Cloudflareの内部でインシデントが宣言される。<br>21:31 - 脅威アクターの既知のIPアドレスをブロックするためにファイアウォールルールを設置</p>
+	<h3 id="11%E6%9C%8824%E6%97%A5%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC%E3%81%8C%E5%89%8A%E9%99%A4%E3%81%95%E3%82%8C%E3%80%81%E3%81%99%E3%81%B9%E3%81%A6%E3%81%AE%E8%84%85%E5%A8%81%E3%82%A2%E3%82%AF%E3%82%BF%E3%83%BC%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%8C%E5%81%9C%E6%AD%A2">11月24日 - スライバーが削除され、すべての脅威アクターのアクセスが停止</h3>
+	<p>10:44 - 最後に確認された脅威アクターの活動<br>11:59- Sliverを除去</p>
+	<p>このタイムラインを通じて、脅威アクターはCloudflareの他の無数のシステムにアクセスしようと試みましたが、当社のアクセス制御、ファイアウォールルール、および当社独自のZero Trustツールを使用して強制されるハードセキュリティキーの使用により失敗しました。</p>
+	<p>ここで明らかにしたいのは、脅威アクターが当社のグローバルネットワーク、データセンター、SSLキー、顧客データベースや設定情報、当社や顧客が導入したCloudflare Workers、AIモデル、ネットワークインフラ、さらにはWorkers KV、R2、Quicksilverなどのデータストアにアクセスしたという証拠は一切ないということです。彼らのアクセスはAtlassianスイートとAtlassianが動作するサーバーに限定されていました。</p>
+	<p>Cloudflareの「コードレッド」の取り組みの大部分は、脅威アクターが何にアクセスし、何にアクセスしようとしたかを把握することでした。システム全体のログを調べることで、私たちは内部メトリクス、ネットワーク構成、ビルドシステム、アラートシステム、リリース管理システムへのアクセス試行を追跡することができました。Cloudflareの調査によれば、これらのシステムへのアクセスの試みはいずれも成功していません。CrowdStrikeは独自に、脅威アクターのアクティビティの範囲と程度について評価を行いましたが、Cloudflareが見逃していたかもしれないアクティビティが発見されることはなく、最後の脅威アクティビティは11月24日10時44分であったと結論づけられました。 </p>
+	<p>私たちは、CloudflareとCrowdStrikeの調査により、脅威アクターの行動を完全に把握し、彼らのアクティビティは私たちが確認したシステムに限定されていたことを確信しています。</p>
+	<h3 id="%E3%81%BE%E3%81%A8%E3%82%81">まとめ</h3>
+	<p>これはおそらく、国家レベルの巧妙なアクターが、思慮深く計画的に行動したセキュリティインシデントです。Cloudflareの取り組みにより、このインシデントの持続的な影響は限定的なものになり、今後どのような巧妙な攻撃も撃退できる十分な準備が整いました。これには、Cloudflareの技術スタッフの多大な努力が必要であり、1ヶ月以上に渡りCloudflareの最優先事項でした。Cloudflareチーム全体が、当社のシステムの安全性、脅威アクターのアクセス状況の把握、緊急の優先事項（大量のクレデンシャルのローテーションなど）の修正、そしてこのプロセスで発見された改善点に基づいて当社のセキュリティ全体を改善するための長期的な作業計画の構築に取り組みました。</p>
+	<p>感謝祭の休暇中に迅速に対応し、初期分析と脅威アクターのロックアウトを行ってくれたCloudflareの皆さん、そしてこの取り組みに貢献してくれたすべての皆さんに心から感謝します。関係者全員の名前を挙げることは不可能ですが、彼らの長時間に及ぶ献身的な働きにより、当社のグローバルネットワークの稼働と顧客サービスの継続を維持しながら、Cloudflareのセキュリティの本質的な見直しと変更を行うことができました。<br><br>CrowdStrikeが即座に独立した評価を行ってくれたことに感謝します。CrowdStrikeの最終報告書が完成した今、私たちは社内の分析と侵入の修復に確信を持ち、このブログ記事を公開いたします。</p>
+	<h4 id="ioc"><strong>IOC</strong></h4>
+	<p>以下は、この脅威アクターから確認された侵害の兆候（IOC）です。他の組織、特にOktaの侵害によって影響を受けた可能性のある組織が、ログを検索して同じ脅威要因多層防御が自分たちのシステムにアクセスしていないことを確認できるように、このログを公開します。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">インジケータ</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指標タイプ</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">シェア256</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">説明</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.]126 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">該当なし</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">主要な脅威アクター</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">インフラストラクチャー、所有者</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247ヨーロッパSRL（ブカレスト、</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ルーマニア）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.]214 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">該当なし</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver C2サーバー、所有者</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS（イギリス、ロンドン）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.]com</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Domain</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">該当なし</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliverにサービスを提供するインフラ</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ペイロード</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvmエージェント</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ファイル名</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4<br>6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliverペイロード</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+</div>
