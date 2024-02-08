@@ -1,1 +1,3087 @@
-{}
+{
+	"adduser": {
+		"version": "3.118ubuntu5",
+		"short_description": "add and remove users and groups",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"adwaita-icon-theme": {
+		"version": "41.0-1ubuntu1",
+		"short_description": "default icon theme of GNOME (small subset)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"apparmor": {
+		"version": "3.0.4-2ubuntu2.3",
+		"short_description": "user-space parser utility for AppArmor",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"apt": {
+		"version": "2.4.9",
+		"short_description": "commandline package manager",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"autoconf": {
+		"version": "2.71-2",
+		"short_description": "automatic configure script builder",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"automake": {
+		"version": "1:1.16.5-1.3",
+		"short_description": "Tool for generating GNU Standards-compliant Makefiles",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"autotools-dev": {
+		"version": "20220109.1",
+		"short_description": "Update infrastructure for config.{guess,sub} files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"base-files": {
+		"version": "12ubuntu4.3",
+		"short_description": "Debian base system miscellaneous files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"base-passwd": {
+		"version": "3.5.52build1",
+		"short_description": "Debian base system master password and group files",
+		"author": "Colin Watson <cjwatson@debian.org>"
+	},
+	"bash": {
+		"version": "5.1-6ubuntu1",
+		"short_description": "GNU Bourne Again SHell",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"binutils": {
+		"version": "2.38-4ubuntu2.5",
+		"short_description": "GNU assembler, linker and binary utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"binutils-common:amd64": {
+		"version": "2.38-4ubuntu2.5",
+		"short_description": "Common files for the GNU assembler, linker and binary utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"binutils-x86-64-linux-gnu": {
+		"version": "2.38-4ubuntu2.5",
+		"short_description": "GNU binary utilities, for x86-64-linux-gnu target",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"bison": {
+		"version": "2:3.8.2+dfsg-1build1",
+		"short_description": "YACC-compatible parser generator",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"bsdutils": {
+		"version": "1:2.37.2-4ubuntu3",
+		"short_description": "basic utilities from 4.4BSD-Lite",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"build-essential": {
+		"version": "12.9ubuntu3",
+		"short_description": "Informational list of build-essential packages",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"bzip2": {
+		"version": "1.0.8-5build1",
+		"short_description": "high-quality block-sorting file compressor - utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"bzip2-doc": {
+		"version": "1.0.8-5build1",
+		"short_description": "high-quality block-sorting file compressor - documentation",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"ca-certificates": {
+		"version": "20230311ubuntu0.22.04.1",
+		"short_description": "Common CA certificates",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"coreutils": {
+		"version": "8.32-4.1ubuntu1",
+		"short_description": "GNU core utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"cpp": {
+		"version": "4:11.2.0-1ubuntu1",
+		"short_description": "GNU C preprocessor (cpp)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"cpp-11": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "GNU C preprocessor",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"curl": {
+		"version": "7.81.0-1ubuntu1.15",
+		"short_description": "command line tool for transferring data with URL syntax",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dash": {
+		"version": "0.5.11+git20210903+057cd650a4ed-3build1",
+		"short_description": "POSIX-compliant shell",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dbus": {
+		"version": "1.12.20-2ubuntu4.1",
+		"short_description": "simple interprocess messaging system (daemon and utilities)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dbus-user-session": {
+		"version": "1.12.20-2ubuntu4.1",
+		"short_description": "simple interprocess messaging system (systemd --user integration)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dconf-gsettings-backend:amd64": {
+		"version": "0.40.0-3",
+		"short_description": "simple configuration storage system - GSettings back-end",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dconf-service": {
+		"version": "0.40.0-3",
+		"short_description": "simple configuration storage system - D-Bus service",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"debconf": {
+		"version": "1.5.79ubuntu1",
+		"short_description": "Debian configuration management system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"debianutils": {
+		"version": "5.5-1ubuntu2",
+		"short_description": "Miscellaneous utilities specific to Debian",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"diffutils": {
+		"version": "1:3.8-0ubuntu2",
+		"short_description": "File comparison utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dirmngr": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - network certificate management service",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dmsetup": {
+		"version": "2:1.02.175-2.1ubuntu4",
+		"short_description": "Linux Kernel Device Mapper userspace library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dpkg": {
+		"version": "1.21.1ubuntu2.1",
+		"short_description": "Debian package management system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"dpkg-dev": {
+		"version": "1.21.1ubuntu2.2",
+		"short_description": "Debian package development tools",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"e2fsprogs": {
+		"version": "1.46.5-2ubuntu1.1",
+		"short_description": "ext2/ext3/ext4 file system utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fakeroot": {
+		"version": "1.28-1ubuntu1",
+		"short_description": "tool for simulating superuser privileges",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"file": {
+		"version": "1:5.41-3ubuntu0.1",
+		"short_description": "Recognize the type of data in a file using \"magic\" numbers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"findutils": {
+		"version": "4.8.0-1ubuntu3",
+		"short_description": "utilities for finding files--find, xargs",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"firefox": {
+		"version": "1:1snap1-0ubuntu2",
+		"short_description": "Transitional package - firefox -> firefox snap",
+		"author": "Ubuntu Mozilla Team <ubuntu-mozillateam@lists.ubuntu.com>"
+	},
+	"fontconfig": {
+		"version": "2.13.1-4.2ubuntu5",
+		"short_description": "generic font configuration library - support binaries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fontconfig-config": {
+		"version": "2.13.1-4.2ubuntu5",
+		"short_description": "generic font configuration library - configuration",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-dejavu-core": {
+		"version": "2.37-2build1",
+		"short_description": "Vera font family derivate with additional characters",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-droid-fallback": {
+		"version": "1:6.0.1r16-1.1build1",
+		"short_description": "handheld device font with extensive style and language support (fallback)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-freefont-ttf": {
+		"version": "20120503-10build1",
+		"short_description": "Freefont Serif, Sans and Mono Truetype fonts",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-ipafont-gothic": {
+		"version": "00303-21ubuntu1",
+		"short_description": "Japanese OpenType font set, IPA Gothic and IPA P Gothic Fonts",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-kacst": {
+		"version": "2.01+mry-15",
+		"short_description": "KACST free TrueType Arabic fonts",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-khmeros": {
+		"version": "5.0-9ubuntu1",
+		"short_description": "KhmerOS Unicode fonts for the Khmer language of Cambodia",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-khmeros-core": {
+		"version": "5.0-9ubuntu1",
+		"short_description": "KhmerOS Unicode fonts for the Khmer language of Cambodia",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-liberation": {
+		"version": "1:1.07.4-11",
+		"short_description": "Fonts with the same metrics as Times, Arial and Courier",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-noto-mono": {
+		"version": "20201225-1build1",
+		"short_description": "\"No Tofu\" monospaced font family with large Unicode coverage",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-thai-tlwg": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai fonts maintained by TLWG (metapackage)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-garuda": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Garuda font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-garuda-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Garuda TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-kinnari": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Kinnari font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-kinnari-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Kinnari TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-laksaman": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Laksaman font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-laksaman-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Laksaman TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-loma": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Loma font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-loma-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Loma TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-mono": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgMono font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-mono-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgMono TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-norasi": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Norasi font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-norasi-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Norasi TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-purisa": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Purisa font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-purisa-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Purisa TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-sawasdee": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Sawasdee font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-sawasdee-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Sawasdee TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-typewriter": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgTypewriter font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-typewriter-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgTypewriter TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-typist": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgTypist font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-typist-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgTypist TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-typo": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgTypo font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-typo-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai TlwgTypo TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-umpush": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Umpush font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-umpush-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Umpush TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-waree": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Waree font (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-tlwg-waree-ttf": {
+		"version": "1:0.7.3-1",
+		"short_description": "Thai Waree TrueType font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-urw-base35": {
+		"version": "20200910-1",
+		"short_description": "font set metric-compatible with the 35 PostScript Level 2 Base Fonts",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fonts-wqy-zenhei": {
+		"version": "0.9.45-8",
+		"short_description": "\"WenQuanYi Zen Hei\" A Hei-Ti Style (sans-serif) Chinese font",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"fuse3": {
+		"version": "3.10.5-1build1",
+		"short_description": "Filesystem in Userspace (3.x version)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"g++": {
+		"version": "4:11.2.0-1ubuntu1",
+		"short_description": "GNU C++ compiler",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"g++-11": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "GNU C++ compiler",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gcc": {
+		"version": "4:11.2.0-1ubuntu1",
+		"short_description": "GNU C compiler",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gcc-11": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "GNU C compiler",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gcc-11-base:amd64": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "GCC, the GNU Compiler Collection (base package)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gcc-12-base:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GCC, the GNU Compiler Collection (base package)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gettext": {
+		"version": "0.21-4ubuntu4",
+		"short_description": "GNU Internationalization utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gettext-base": {
+		"version": "0.21-4ubuntu4",
+		"short_description": "GNU Internationalization utilities for the base system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"ghostscript": {
+		"version": "9.55.0~dfsg1-0ubuntu5.6",
+		"short_description": "interpreter for the PostScript language and for PDF",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-freedesktop:amd64": {
+		"version": "1.72.0-1",
+		"short_description": "Introspection data for some FreeDesktop components",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-gdkpixbuf-2.0:amd64": {
+		"version": "2.42.8+dfsg-1ubuntu0.2",
+		"short_description": "GDK Pixbuf library - GObject-Introspection",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-glib-2.0:amd64": {
+		"version": "1.72.0-1",
+		"short_description": "Introspection data for GLib, GObject, Gio and GModule",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-gsf-1:amd64": {
+		"version": "1.14.47-1build2",
+		"short_description": "GObject introspection data for the Structured File Library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-harfbuzz-0.0:amd64": {
+		"version": "2.7.4-1ubuntu3.1",
+		"short_description": "OpenType text shaping engine (GObject introspection data)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-pango-1.0:amd64": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Layout and rendering of internationalized text - gir bindings",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-poppler-0.18:amd64": {
+		"version": "22.02.0-2ubuntu0.3",
+		"short_description": "GObject introspection data for poppler-glib",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-rsvg-2.0:amd64": {
+		"version": "2.52.5+dfsg-3ubuntu0.2",
+		"short_description": "gir files for renderer library for SVG files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gir1.2-vips-8.0": {
+		"version": "8.12.1-1build1",
+		"short_description": "GObject introspection data for VIPS",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"git": {
+		"version": "1:2.34.1-1ubuntu1.10",
+		"short_description": "fast, scalable, distributed revision control system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"git-lfs": {
+		"version": "3.0.2-1ubuntu0.2",
+		"short_description": "Git Large File Support",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"git-man": {
+		"version": "1:2.34.1-1ubuntu1.10",
+		"short_description": "fast, scalable, distributed revision control system (manual pages)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gnupg": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - a free PGP replacement",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gnupg-l10n": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - localization files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gnupg-utils": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - utility programs",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"google-chrome-stable": {
+		"version": "121.0.6167.85-1",
+		"short_description": "The web browser from Google",
+		"author": "Chrome Linux Team <chromium-dev@chromium.org>"
+	},
+	"gpg": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU Privacy Guard -- minimalist public key operations",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gpg-agent": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - cryptographic agent",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gpg-wks-client": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - Web Key Service client",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gpg-wks-server": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - Web Key Service server",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gpgconf": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - core configuration utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gpgsm": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - S/MIME version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gpgv": {
+		"version": "2.2.27-3ubuntu2.1",
+		"short_description": "GNU privacy guard - signature verification tool",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"grep": {
+		"version": "3.7-1build1",
+		"short_description": "GNU grep, egrep and fgrep",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gsfonts": {
+		"version": "1:8.11+urwcyr1.0.7~pre44-4.5",
+		"short_description": "Fonts for the Ghostscript interpreter(s)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gtk-update-icon-cache": {
+		"version": "3.24.33-1ubuntu2",
+		"short_description": "icon theme caching utility",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"gzip": {
+		"version": "1.10-4ubuntu4.1",
+		"short_description": "GNU compression utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"hdf5-helpers": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 - Helper tools",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"hicolor-icon-theme": {
+		"version": "0.17-2",
+		"short_description": "default fallback theme for FreeDesktop.org icon themes",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"hostname": {
+		"version": "3.23ubuntu2",
+		"short_description": "utility to set/show the host name or domain name",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"humanity-icon-theme": {
+		"version": "0.6.16",
+		"short_description": "Humanity Icon theme",
+		"author": "Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>"
+	},
+	"icu-devtools": {
+		"version": "70.1-2",
+		"short_description": "Development utilities for International Components for Unicode",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"imagemagick-6-common": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "image manipulation programs -- infrastructure",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"init-system-helpers": {
+		"version": "1.62",
+		"short_description": "helper tools for all init systems",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"less": {
+		"version": "590-1ubuntu0.22.04.1",
+		"short_description": "pager program similar to more",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libacl1:amd64": {
+		"version": "2.3.1-1",
+		"short_description": "access control list - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libaec-dev:amd64": {
+		"version": "1.0.6-1",
+		"short_description": "Development files for the Adaptive Entropy Coding library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libaec0:amd64": {
+		"version": "1.0.6-1",
+		"short_description": "Adaptive Entropy Coding library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libalgorithm-diff-perl": {
+		"version": "1.201-1",
+		"short_description": "module to find differences between files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libalgorithm-diff-xs-perl": {
+		"version": "0.04-6build3",
+		"short_description": "module to find differences between files (XS accelerated)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libalgorithm-merge-perl": {
+		"version": "0.08-3",
+		"short_description": "Perl module for three-way merge of textual data",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libaom-dev:amd64": {
+		"version": "3.3.0-1",
+		"short_description": "AV1 Video Codec Library -- Development Files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libaom3:amd64": {
+		"version": "3.3.0-1",
+		"short_description": "AV1 Video Codec Library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libapparmor1:amd64": {
+		"version": "3.0.4-2ubuntu2.3",
+		"short_description": "changehat AppArmor library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libapt-pkg6.0:amd64": {
+		"version": "2.4.9",
+		"short_description": "package management runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libargon2-1:amd64": {
+		"version": "0~20171227-0.3",
+		"short_description": "memory-hard hashing function - runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libasan6:amd64": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "AddressSanitizer -- a fast memory error detector",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libasound2-data": {
+		"version": "1.2.6.1-1ubuntu1",
+		"short_description": "Configuration files and profiles for ALSA drivers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libasound2:amd64": {
+		"version": "1.2.6.1-1ubuntu1",
+		"short_description": "shared library for ALSA applications",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libassuan0:amd64": {
+		"version": "2.5.5-1build1",
+		"short_description": "IPC library for the GnuPG components",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libatk-bridge2.0-0:amd64": {
+		"version": "2.38.0-3",
+		"short_description": "AT-SPI 2 toolkit bridge - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libatk1.0-0:amd64": {
+		"version": "2.36.0-3build1",
+		"short_description": "ATK accessibility toolkit",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libatk1.0-data": {
+		"version": "2.36.0-3build1",
+		"short_description": "Common files for the ATK accessibility toolkit",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libatomic1:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "support library providing __atomic built-in functions",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libatspi2.0-0:amd64": {
+		"version": "2.44.0-3",
+		"short_description": "Assistive Technology Service Provider Interface - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libattr1:amd64": {
+		"version": "1:2.5.1-1build1",
+		"short_description": "extended attribute handling - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libaudit-common": {
+		"version": "1:3.0.7-1build1",
+		"short_description": "Dynamic library for security auditing - common files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libaudit1:amd64": {
+		"version": "1:3.0.7-1build1",
+		"short_description": "Dynamic library for security auditing",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libavahi-client3:amd64": {
+		"version": "0.8-5ubuntu5.2",
+		"short_description": "Avahi client library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libavahi-common-data:amd64": {
+		"version": "0.8-5ubuntu5.2",
+		"short_description": "Avahi common data files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libavahi-common3:amd64": {
+		"version": "0.8-5ubuntu5.2",
+		"short_description": "Avahi common library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libbinutils:amd64": {
+		"version": "2.38-4ubuntu2.5",
+		"short_description": "GNU binary utilities (private shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libblkid-dev:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "block device ID library - headers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libblkid1:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "block device ID library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libbrotli-dev:amd64": {
+		"version": "1.0.9-2build6",
+		"short_description": "library implementing brotli encoder and decoder (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libbrotli1:amd64": {
+		"version": "1.0.9-2build6",
+		"short_description": "library implementing brotli encoder and decoder (shared libraries)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libbsd0:amd64": {
+		"version": "0.11.5-1",
+		"short_description": "utility functions from BSD systems - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libbz2-1.0:amd64": {
+		"version": "1.0.8-5build1",
+		"short_description": "high-quality block-sorting file compressor library - runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libbz2-dev:amd64": {
+		"version": "1.0.8-5build1",
+		"short_description": "high-quality block-sorting file compressor library - development",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc-bin": {
+		"version": "2.35-0ubuntu3.1",
+		"short_description": "GNU C Library: Binaries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc-dev-bin": {
+		"version": "2.35-0ubuntu3.6",
+		"short_description": "GNU C Library: Development binaries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc-devtools": {
+		"version": "2.35-0ubuntu3.6",
+		"short_description": "GNU C Library: Development tools",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc++1-14:amd64": {
+		"version": "1:14.0.0-1ubuntu1.1",
+		"short_description": "LLVM C++ Standard library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc++1:amd64": {
+		"version": "1:14.0-55~exp2",
+		"short_description": "LLVM C++ Standard library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc++abi1-14:amd64": {
+		"version": "1:14.0.0-1ubuntu1.1",
+		"short_description": "LLVM low level support for a standard C++ library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc6-dev:amd64": {
+		"version": "2.35-0ubuntu3.6",
+		"short_description": "GNU C Library: Development Libraries and Header Files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libc6:amd64": {
+		"version": "2.35-0ubuntu3.6",
+		"short_description": "GNU C Library: Shared libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcairo-gobject2:amd64": {
+		"version": "1.16.0-5ubuntu2",
+		"short_description": "Cairo 2D vector graphics library (GObject library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcairo-script-interpreter2:amd64": {
+		"version": "1.16.0-5ubuntu2",
+		"short_description": "Cairo 2D vector graphics library (script interpreter)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcairo2-dev:amd64": {
+		"version": "1.16.0-5ubuntu2",
+		"short_description": "Development files for the Cairo 2D graphics library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcairo2:amd64": {
+		"version": "1.16.0-5ubuntu2",
+		"short_description": "Cairo 2D vector graphics library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcap-ng0:amd64": {
+		"version": "0.7.9-2.2build3",
+		"short_description": "An alternate POSIX capabilities library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcap2:amd64": {
+		"version": "1:2.44-1build3",
+		"short_description": "POSIX 1003.1e capabilities (library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcbor0.8:amd64": {
+		"version": "0.8.0-2ubuntu1",
+		"short_description": "library for parsing and generating CBOR (RFC 7049)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcc1-0:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GCC cc1 plugin for GDB",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcdt5:amd64": {
+		"version": "2.42.2-6",
+		"short_description": "rich set of graph drawing tools - cdt library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcfitsio-dev:amd64": {
+		"version": "4.0.0-1",
+		"short_description": "library for I/O with FITS format data files (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcfitsio-doc": {
+		"version": "4.0.0-1",
+		"short_description": "documentation for CFITSIO",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcfitsio9:amd64": {
+		"version": "4.0.0-1",
+		"short_description": "shared library for I/O with FITS format data files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcgif-dev": {
+		"version": "0.2.0-1",
+		"short_description": "GIF encoder written in C (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcgif0": {
+		"version": "0.2.0-1",
+		"short_description": "GIF encoder written in C (shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcgraph6:amd64": {
+		"version": "2.42.2-6",
+		"short_description": "rich set of graph drawing tools - cgraph library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcolord2:amd64": {
+		"version": "1.4.6-1",
+		"short_description": "system service to manage device colour profiles -- runtime",
+		"author": "Christopher James Halse Rogers <raof@ubuntu.com>"
+	},
+	"libcom-err2:amd64": {
+		"version": "1.46.5-2ubuntu1.1",
+		"short_description": "common error description library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcrypt-dev:amd64": {
+		"version": "1:4.4.27-1",
+		"short_description": "libcrypt development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcrypt1:amd64": {
+		"version": "1:4.4.27-1",
+		"short_description": "libcrypt shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcryptsetup12:amd64": {
+		"version": "2:2.4.3-1ubuntu1.2",
+		"short_description": "disk encryption support - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libctf-nobfd0:amd64": {
+		"version": "2.38-4ubuntu2.5",
+		"short_description": "Compact C Type Format library (runtime, no BFD dependency)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libctf0:amd64": {
+		"version": "2.38-4ubuntu2.5",
+		"short_description": "Compact C Type Format library (runtime, BFD dependency)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcups2:amd64": {
+		"version": "2.4.1op1-1ubuntu4.7",
+		"short_description": "Common UNIX Printing System(tm) - Core library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcurl3-gnutls:amd64": {
+		"version": "7.81.0-1ubuntu1.15",
+		"short_description": "easy-to-use client-side URL transfer library (GnuTLS flavour)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcurl4-openssl-dev:amd64": {
+		"version": "7.81.0-1ubuntu1.15",
+		"short_description": "development files and documentation for libcurl (OpenSSL flavour)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libcurl4:amd64": {
+		"version": "7.81.0-1ubuntu1.15",
+		"short_description": "easy-to-use client-side URL transfer library (OpenSSL flavour)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdatrie-dev:amd64": {
+		"version": "0.2.13-2",
+		"short_description": "Development files for double-array trie library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdatrie1:amd64": {
+		"version": "0.2.13-2",
+		"short_description": "Double-array trie library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdav1d-dev:amd64": {
+		"version": "0.9.2-1",
+		"short_description": "fast and small AV1 video stream decoder (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdav1d5:amd64": {
+		"version": "0.9.2-1",
+		"short_description": "fast and small AV1 video stream decoder (shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdb-dev:amd64": {
+		"version": "1:5.3.21~exp1ubuntu4",
+		"short_description": "Berkeley Database Libraries [development]",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdb5.3-dev": {
+		"version": "5.3.28+dfsg1-0.8ubuntu3",
+		"short_description": "Berkeley v5.3 Database Libraries [development]",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdb5.3:amd64": {
+		"version": "5.3.28+dfsg1-0.8ubuntu3",
+		"short_description": "Berkeley v5.3 Database Libraries [runtime]",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdbus-1-3:amd64": {
+		"version": "1.12.20-2ubuntu4.1",
+		"short_description": "simple interprocess messaging system (library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdconf1:amd64": {
+		"version": "0.40.0-3",
+		"short_description": "simple configuration storage system - runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libde265-0:amd64": {
+		"version": "1.0.8-1",
+		"short_description": "Open H.265 video codec implementation",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libde265-dev:amd64": {
+		"version": "1.0.8-1",
+		"short_description": "Open H.265 video codec implementation - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdebconfclient0:amd64": {
+		"version": "0.261ubuntu1",
+		"short_description": "Debian Configuration Management System (C-implementation library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdeflate-dev:amd64": {
+		"version": "1.10-2",
+		"short_description": "headers for whole-buffer compression and decompression library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdeflate0:amd64": {
+		"version": "1.10-2",
+		"short_description": "fast, whole-buffer DEFLATE-based compression and decompression",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdevmapper1.02.1:amd64": {
+		"version": "2:1.02.175-2.1ubuntu4",
+		"short_description": "Linux Kernel Device Mapper userspace library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdjvulibre-dev:amd64": {
+		"version": "3.5.28-2build2",
+		"short_description": "Development files for the DjVu image format",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdjvulibre-text": {
+		"version": "3.5.28-2build2",
+		"short_description": "Linguistic support files for libdjvulibre",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdjvulibre21:amd64": {
+		"version": "3.5.28-2build2",
+		"short_description": "Runtime support for the DjVu image format",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdpkg-perl": {
+		"version": "1.21.1ubuntu2.2",
+		"short_description": "Dpkg perl modules",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdrm-common": {
+		"version": "2.4.113-2~ubuntu0.22.04.1",
+		"short_description": "Userspace interface to kernel DRM services -- common files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libdrm2:amd64": {
+		"version": "2.4.113-2~ubuntu0.22.04.1",
+		"short_description": "Userspace interface to kernel DRM services -- runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libedit2:amd64": {
+		"version": "3.1-20210910-1build1",
+		"short_description": "BSD editline and history libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libelf1:amd64": {
+		"version": "0.186-1build1",
+		"short_description": "library to read and write ELF files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libepoxy0:amd64": {
+		"version": "1.5.10-1",
+		"short_description": "OpenGL function pointer management library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liberror-perl": {
+		"version": "0.17029-1",
+		"short_description": "Perl module for error/exception handling in an OO-ish way",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libexif-dev:amd64": {
+		"version": "0.6.24-1build1",
+		"short_description": "library to parse EXIF files (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libexif-doc": {
+		"version": "0.6.24-1build1",
+		"short_description": "library to parse EXIF files (documentation)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libexif12:amd64": {
+		"version": "0.6.24-1build1",
+		"short_description": "library to parse EXIF files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libexpat1-dev:amd64": {
+		"version": "2.4.7-1ubuntu0.2",
+		"short_description": "XML parsing C library - development kit",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libexpat1:amd64": {
+		"version": "2.4.7-1ubuntu0.2",
+		"short_description": "XML parsing C library - runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libext2fs2:amd64": {
+		"version": "1.46.5-2ubuntu1.1",
+		"short_description": "ext2/ext3/ext4 file system libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfakeroot:amd64": {
+		"version": "1.28-1ubuntu1",
+		"short_description": "tool for simulating superuser privileges - shared libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libffi-dev:amd64": {
+		"version": "3.4.2-4",
+		"short_description": "Foreign Function Interface library (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libffi8:amd64": {
+		"version": "3.4.2-4",
+		"short_description": "Foreign Function Interface library runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfftw3-bin": {
+		"version": "3.3.8-2ubuntu8",
+		"short_description": "Library for computing Fast Fourier Transforms - Tools",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfftw3-dev:amd64": {
+		"version": "3.3.8-2ubuntu8",
+		"short_description": "Library for computing Fast Fourier Transforms - development",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfftw3-double3:amd64": {
+		"version": "3.3.8-2ubuntu8",
+		"short_description": "Library for computing Fast Fourier Transforms - Double precision",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfftw3-long3:amd64": {
+		"version": "3.3.8-2ubuntu8",
+		"short_description": "Library for computing Fast Fourier Transforms - Long precision",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfftw3-quad3:amd64": {
+		"version": "3.3.8-2ubuntu8",
+		"short_description": "Library for computing Fast Fourier Transforms - Quad precision",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfftw3-single3:amd64": {
+		"version": "3.3.8-2ubuntu8",
+		"short_description": "Library for computing Fast Fourier Transforms - Single precision",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfido2-1:amd64": {
+		"version": "1.10.0-1",
+		"short_description": "library for generating and verifying FIDO 2.0 objects",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfile-fcntllock-perl": {
+		"version": "0.22-3build7",
+		"short_description": "Perl module for file locking with fcntl(2)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfontconfig-dev:amd64": {
+		"version": "2.13.1-4.2ubuntu5",
+		"short_description": "generic font configuration library - development",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfontconfig1-dev:amd64": {
+		"version": "2.13.1-4.2ubuntu5",
+		"short_description": "generic font configuration library - dummy package",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfontconfig1:amd64": {
+		"version": "2.13.1-4.2ubuntu5",
+		"short_description": "generic font configuration library - runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfreetype-dev:amd64": {
+		"version": "2.11.1+dfsg-1ubuntu0.2",
+		"short_description": "FreeType 2 font engine, development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfreetype6-dev:amd64": {
+		"version": "2.11.1+dfsg-1ubuntu0.2",
+		"short_description": "FreeType 2 font engine, development files (transitional package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfreetype6:amd64": {
+		"version": "2.11.1+dfsg-1ubuntu0.2",
+		"short_description": "FreeType 2 font engine, shared library files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfribidi-dev:amd64": {
+		"version": "1.0.8-2ubuntu3.1",
+		"short_description": "Development files for FreeBidi library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfribidi0:amd64": {
+		"version": "1.0.8-2ubuntu3.1",
+		"short_description": "Free Implementation of the Unicode BiDi algorithm",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libfuse3-3:amd64": {
+		"version": "3.10.5-1build1",
+		"short_description": "Filesystem in Userspace (library) (3.x version)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgail-common:amd64": {
+		"version": "2.24.33-2ubuntu2",
+		"short_description": "GNOME Accessibility Implementation Library -- common modules",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgail18:amd64": {
+		"version": "2.24.33-2ubuntu2",
+		"short_description": "GNOME Accessibility Implementation Library -- shared libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgbm1:amd64": {
+		"version": "23.0.4-0ubuntu1~22.04.1",
+		"short_description": "generic buffer management API -- runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgcc-11-dev:amd64": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "GCC support library (development files)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgcc-s1:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GCC support library",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgcrypt20:amd64": {
+		"version": "1.9.4-3ubuntu3",
+		"short_description": "LGPL Crypto library - runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgd3:amd64": {
+		"version": "2.3.0-2ubuntu2",
+		"short_description": "GD Graphics Library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdbm-compat4:amd64": {
+		"version": "1.23-1",
+		"short_description": "GNU dbm database routines (legacy support runtime version) ",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdbm-dev:amd64": {
+		"version": "1.23-1",
+		"short_description": "GNU dbm database routines (development files) ",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdbm6:amd64": {
+		"version": "1.23-1",
+		"short_description": "GNU dbm database routines (runtime version) ",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdk-pixbuf-2.0-0:amd64": {
+		"version": "2.42.8+dfsg-1ubuntu0.2",
+		"short_description": "GDK Pixbuf library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdk-pixbuf-2.0-dev:amd64": {
+		"version": "2.42.8+dfsg-1ubuntu0.2",
+		"short_description": "GDK Pixbuf library (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdk-pixbuf2.0-bin": {
+		"version": "2.42.8+dfsg-1ubuntu0.2",
+		"short_description": "GDK Pixbuf library (thumbnailer)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgdk-pixbuf2.0-common": {
+		"version": "2.42.8+dfsg-1ubuntu0.2",
+		"short_description": "GDK Pixbuf library - data files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgfortran5:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "Runtime library for GNU Fortran applications",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgif-dev": {
+		"version": "5.1.9-2build2",
+		"short_description": "library for GIF images (development)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgif7:amd64": {
+		"version": "5.1.9-2build2",
+		"short_description": "library for GIF images (library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgirepository-1.0-1:amd64": {
+		"version": "1.72.0-1",
+		"short_description": "Library for handling GObject introspection data (runtime library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libglib2.0-0:amd64": {
+		"version": "2.72.4-0ubuntu2.2",
+		"short_description": "GLib library of C routines",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libglib2.0-bin": {
+		"version": "2.72.4-0ubuntu2.2",
+		"short_description": "Programs for the GLib library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libglib2.0-data": {
+		"version": "2.72.4-0ubuntu2.2",
+		"short_description": "Common files for GLib library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libglib2.0-dev-bin": {
+		"version": "2.72.4-0ubuntu2.2",
+		"short_description": "Development utilities for the GLib library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libglib2.0-dev:amd64": {
+		"version": "2.72.4-0ubuntu2.2",
+		"short_description": "Development files for the GLib library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgmp-dev:amd64": {
+		"version": "2:6.2.1+dfsg-3ubuntu1",
+		"short_description": "Multiprecision arithmetic library developers tools",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgmp10:amd64": {
+		"version": "2:6.2.1+dfsg-3ubuntu1",
+		"short_description": "Multiprecision arithmetic library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgmpxx4ldbl:amd64": {
+		"version": "2:6.2.1+dfsg-3ubuntu1",
+		"short_description": "Multiprecision arithmetic library (C++ bindings)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgnutls30:amd64": {
+		"version": "3.7.3-4ubuntu1.2",
+		"short_description": "GNU TLS library - main runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgomp1:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GCC OpenMP (GOMP) support library",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgpg-error0:amd64": {
+		"version": "1.43-3",
+		"short_description": "GnuPG development runtime library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgraphite2-3:amd64": {
+		"version": "1.3.14-1build2",
+		"short_description": "Font rendering engine for Complex Scripts -- library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgraphite2-dev:amd64": {
+		"version": "1.3.14-1build2",
+		"short_description": "Development files for libgraphite2",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgs9-common": {
+		"version": "9.55.0~dfsg1-0ubuntu5.6",
+		"short_description": "interpreter for the PostScript language and for PDF - common files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgs9:amd64": {
+		"version": "9.55.0~dfsg1-0ubuntu5.6",
+		"short_description": "interpreter for the PostScript language and for PDF - Library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgsf-1-114:amd64": {
+		"version": "1.14.47-1build2",
+		"short_description": "Structured File Library - runtime version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgsf-1-common": {
+		"version": "1.14.47-1build2",
+		"short_description": "Structured File Library - common files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgsf-1-dev:amd64": {
+		"version": "1.14.47-1build2",
+		"short_description": "Structured File Library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgsl27:amd64": {
+		"version": "2.7.1+dfsg-3",
+		"short_description": "GNU Scientific Library (GSL) -- library package",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgslcblas0:amd64": {
+		"version": "2.7.1+dfsg-3",
+		"short_description": "GNU Scientific Library (GSL) -- blas library package",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgssapi-krb5-2:amd64": {
+		"version": "1.19.2-2ubuntu0.1",
+		"short_description": "MIT Kerberos runtime libraries - krb5 GSS-API Mechanism",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgtk-3-0:amd64": {
+		"version": "3.24.33-1ubuntu2",
+		"short_description": "GTK graphical user interface library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgtk-3-common": {
+		"version": "3.24.33-1ubuntu2",
+		"short_description": "common files for the GTK graphical user interface library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgtk2.0-0:amd64": {
+		"version": "2.24.33-2ubuntu2",
+		"short_description": "GTK graphical user interface library - old version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgtk2.0-bin": {
+		"version": "2.24.33-2ubuntu2",
+		"short_description": "programs for the GTK graphical user interface library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgtk2.0-common": {
+		"version": "2.24.33-2ubuntu2",
+		"short_description": "common files for the GTK graphical user interface library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgts-0.7-5:amd64": {
+		"version": "0.7.6+darcs121130-5",
+		"short_description": "library to deal with 3D computational surface meshes",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgts-bin": {
+		"version": "0.7.6+darcs121130-5",
+		"short_description": "utility binaries for libgts",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libgvc6": {
+		"version": "2.42.2-6",
+		"short_description": "rich set of graph drawing tools - gvc library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libharfbuzz-dev:amd64": {
+		"version": "2.7.4-1ubuntu3.1",
+		"short_description": "Development files for OpenType text shaping engine",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libharfbuzz-gobject0:amd64": {
+		"version": "2.7.4-1ubuntu3.1",
+		"short_description": "OpenType text shaping engine ICU backend (GObject library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libharfbuzz-icu0:amd64": {
+		"version": "2.7.4-1ubuntu3.1",
+		"short_description": "OpenType text shaping engine ICU backend",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libharfbuzz0b:amd64": {
+		"version": "2.7.4-1ubuntu3.1",
+		"short_description": "OpenType text shaping engine (shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-103-1:amd64": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 C runtime files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-cpp-103-1:amd64": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 - C++ runtime files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-dev": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 - development files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-fortran-102:amd64": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 Fortran runtime files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-hl-100:amd64": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 High Level runtime files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-hl-cpp-100:amd64": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 High Level C++ runtime files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhdf5-hl-fortran-100:amd64": {
+		"version": "1.10.7+repack-4ubuntu2",
+		"short_description": "HDF5 High Level Fortran runtime files - serial version",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libheif-dev:amd64": {
+		"version": "1.12.0-2build1",
+		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libheif1:amd64": {
+		"version": "1.12.0-2build1",
+		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libhogweed6:amd64": {
+		"version": "3.7.3-1build2",
+		"short_description": "low level cryptographic library (public-key cryptos)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libice-dev:amd64": {
+		"version": "2:1.0.10-1build2",
+		"short_description": "X11 Inter-Client Exchange library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libice6:amd64": {
+		"version": "2:1.0.10-1build2",
+		"short_description": "X11 Inter-Client Exchange library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libicu-dev:amd64": {
+		"version": "70.1-2",
+		"short_description": "Development files for International Components for Unicode",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libicu70:amd64": {
+		"version": "70.1-2",
+		"short_description": "International Components for Unicode",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libidn12:amd64": {
+		"version": "1.38-4ubuntu1",
+		"short_description": "GNU Libidn library, implementation of IETF IDN specifications",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libidn2-0:amd64": {
+		"version": "2.3.2-2build1",
+		"short_description": "Internationalized domain names (IDNA2008/TR46) library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libijs-0.35:amd64": {
+		"version": "0.35-15build2",
+		"short_description": "IJS raster image transport protocol: shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libilmbase-dev:amd64": {
+		"version": "2.5.7-2",
+		"short_description": "development files for IlmBase",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libilmbase25:amd64": {
+		"version": "2.5.7-2",
+		"short_description": "several utility libraries from ILM used by OpenEXR",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libimagequant-dev:amd64": {
+		"version": "2.17.0-1",
+		"short_description": "palette quantization library (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libimagequant0:amd64": {
+		"version": "2.17.0-1",
+		"short_description": "palette quantization library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libio-pty-perl": {
+		"version": "1:1.15-2build2",
+		"short_description": "Perl module for pseudo tty IO",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libip4tc2:amd64": {
+		"version": "1.8.7-1ubuntu5.1",
+		"short_description": "netfilter libip4tc library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libipc-run-perl": {
+		"version": "20200505.0-1",
+		"short_description": "Perl module for running processes",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libisl23:amd64": {
+		"version": "0.24-2build1",
+		"short_description": "manipulating sets and relations of integer points bounded by linear constraints",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libitm1:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GNU Transactional Memory Library",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjbig-dev:amd64": {
+		"version": "2.1-3.1ubuntu0.22.04.1",
+		"short_description": "JBIGkit development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjbig0:amd64": {
+		"version": "2.1-3.1ubuntu0.22.04.1",
+		"short_description": "JBIGkit libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjbig2dec0:amd64": {
+		"version": "0.19-3build2",
+		"short_description": "JBIG2 decoder library - shared libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjpeg-dev:amd64": {
+		"version": "8c-2ubuntu10",
+		"short_description": "Independent JPEG Group's JPEG runtime library (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjpeg-turbo8-dev:amd64": {
+		"version": "2.1.2-0ubuntu1",
+		"short_description": "Development files for the IJG JPEG library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjpeg-turbo8:amd64": {
+		"version": "2.1.2-0ubuntu1",
+		"short_description": "IJG JPEG compliant runtime library.",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjpeg8-dev:amd64": {
+		"version": "8c-2ubuntu10",
+		"short_description": "Independent JPEG Group's JPEG runtime library (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjpeg8:amd64": {
+		"version": "8c-2ubuntu10",
+		"short_description": "Independent JPEG Group's JPEG runtime library (dependency package)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjson-c5:amd64": {
+		"version": "0.15-3~ubuntu1.22.04.2",
+		"short_description": "JSON manipulation library - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjxr-tools": {
+		"version": "1.2~git20170615.f752187-5",
+		"short_description": "JPEG-XR lib - command line apps",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libjxr0:amd64": {
+		"version": "1.2~git20170615.f752187-5",
+		"short_description": "JPEG-XR lib - libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libk5crypto3:amd64": {
+		"version": "1.19.2-2ubuntu0.1",
+		"short_description": "MIT Kerberos runtime libraries - Crypto Library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libkeyutils1:amd64": {
+		"version": "1.6.1-2ubuntu3",
+		"short_description": "Linux Key Management Utilities (library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libkmod2:amd64": {
+		"version": "29-1ubuntu1",
+		"short_description": "libkmod shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libkrb5-3:amd64": {
+		"version": "1.19.2-2ubuntu0.1",
+		"short_description": "MIT Kerberos runtime libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libkrb5support0:amd64": {
+		"version": "1.19.2-2ubuntu0.1",
+		"short_description": "MIT Kerberos runtime libraries - Support library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libksba8:amd64": {
+		"version": "1.6.0-2ubuntu0.2",
+		"short_description": "X.509 and CMS support library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblcms2-2:amd64": {
+		"version": "2.12~rc1-2build2",
+		"short_description": "Little CMS 2 color management library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblcms2-dev:amd64": {
+		"version": "2.12~rc1-2build2",
+		"short_description": "Little CMS 2 color management library development headers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libldap-2.5-0:amd64": {
+		"version": "2.5.16+dfsg-0ubuntu0.22.04.2",
+		"short_description": "OpenLDAP libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libldap-common": {
+		"version": "2.5.16+dfsg-0ubuntu0.22.04.2",
+		"short_description": "OpenLDAP common files for libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblocale-gettext-perl": {
+		"version": "1.07-4build3",
+		"short_description": "module using libc functions for internationalization in Perl",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblqr-1-0-dev:amd64": {
+		"version": "0.4.2-2.1",
+		"short_description": "converts plain array images into multi-size representation (developments files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblqr-1-0:amd64": {
+		"version": "0.4.2-2.1",
+		"short_description": "converts plain array images into multi-size representation",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblsan0:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "LeakSanitizer -- a memory leak detector (runtime)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libltdl-dev:amd64": {
+		"version": "2.4.6-15build2",
+		"short_description": "System independent dlopen wrapper for GNU libtool",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libltdl7:amd64": {
+		"version": "2.4.6-15build2",
+		"short_description": "System independent dlopen wrapper for GNU libtool",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblz4-1:amd64": {
+		"version": "1.9.3-2build2",
+		"short_description": "Fast LZ compression algorithm library - runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblzma-dev:amd64": {
+		"version": "5.2.5-2ubuntu1",
+		"short_description": "XZ-format compression library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblzma5:amd64": {
+		"version": "5.2.5-2ubuntu1",
+		"short_description": "XZ-format compression library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liblzo2-2:amd64": {
+		"version": "2.10-2build3",
+		"short_description": "data compression library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagic-mgc": {
+		"version": "1:5.41-3ubuntu0.1",
+		"short_description": "File type determination library using \"magic\" numbers (compiled magic file)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagic1:amd64": {
+		"version": "1:5.41-3ubuntu0.1",
+		"short_description": "Recognize the type of data in a file using \"magic\" numbers - library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickcore-6-arch-config:amd64": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "low-level image manipulation library - architecture header files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickcore-6-headers": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "low-level image manipulation library - header files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickcore-6.q16-6-extra:amd64": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "low-level image manipulation library - extra codecs (Q16)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickcore-6.q16-6:amd64": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "low-level image manipulation library -- quantum depth Q16",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickcore-6.q16-dev:amd64": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "low-level image manipulation library - development files (Q16)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickcore-dev": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "low-level image manipulation library -- dummy package",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickwand-6-headers": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "image manipulation library - headers files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickwand-6.q16-6:amd64": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "image manipulation library -- quantum depth Q16",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickwand-6.q16-dev:amd64": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "image manipulation library - development files (Q16)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmagickwand-dev": {
+		"version": "8:6.9.11.60+dfsg-1.3ubuntu0.22.04.3",
+		"short_description": "image manipulation library -- dummy package",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmatio-dev:amd64": {
+		"version": "1.5.21-1",
+		"short_description": "MATLAB MAT File I/O Library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmatio11:amd64": {
+		"version": "1.5.21-1",
+		"short_description": "MATLAB MAT File I/O Library - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmd0:amd64": {
+		"version": "1.0.4-1build1",
+		"short_description": "message digest functions from BSD systems - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmount-dev:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "device mounting library - headers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmount1:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "device mounting library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmpc3:amd64": {
+		"version": "1.2.1-2build1",
+		"short_description": "multiple precision complex floating-point library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmpdec3:amd64": {
+		"version": "2.5.1-2build2",
+		"short_description": "library for decimal floating point arithmetic (runtime library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libmpfr6:amd64": {
+		"version": "4.1.0-3build3",
+		"short_description": "multiple precision floating-point computation",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libncurses-dev:amd64": {
+		"version": "6.3-2ubuntu0.1",
+		"short_description": "developer's libraries for ncurses",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libncurses5-dev:amd64": {
+		"version": "6.3-2ubuntu0.1",
+		"short_description": "transitional package for libncurses-dev",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libncurses6:amd64": {
+		"version": "6.3-2ubuntu0.1",
+		"short_description": "shared libraries for terminal handling",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libncursesw6:amd64": {
+		"version": "6.3-2ubuntu0.1",
+		"short_description": "shared libraries for terminal handling (wide character support)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnettle8:amd64": {
+		"version": "3.7.3-1build2",
+		"short_description": "low level cryptographic library (symmetric and one-way cryptos)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnghttp2-14:amd64": {
+		"version": "1.43.0-1ubuntu0.1",
+		"short_description": "library implementing HTTP/2 protocol (shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnpth0:amd64": {
+		"version": "1.6-3build2",
+		"short_description": "replacement for GNU Pth using system threads",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnsl-dev:amd64": {
+		"version": "1.3.0-2build2",
+		"short_description": "libnsl development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnsl2:amd64": {
+		"version": "1.3.0-2build2",
+		"short_description": "Public client interface for NIS(YP) and NIS+",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnspr4:amd64": {
+		"version": "2:4.32-3build1",
+		"short_description": "NetScape Portable Runtime Library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnss-systemd:amd64": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "nss module providing dynamic user and group name resolution",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnss3:amd64": {
+		"version": "2:3.68.2-0ubuntu1.2",
+		"short_description": "Network Security Service libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libnuma1:amd64": {
+		"version": "2.0.14-3ubuntu2",
+		"short_description": "Libraries for controlling NUMA policy",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libopenexr-dev": {
+		"version": "2.5.7-1",
+		"short_description": "development files for the OpenEXR image library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libopenexr25:amd64": {
+		"version": "2.5.7-1",
+		"short_description": "runtime files for the OpenEXR image library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libopenjp2-7-dev:amd64": {
+		"version": "2.4.0-6",
+		"short_description": "development files for OpenJPEG, a JPEG 2000 image library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libopenjp2-7:amd64": {
+		"version": "2.4.0-6",
+		"short_description": "JPEG 2000 image compression/decompression library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libopenslide-dev": {
+		"version": "3.4.1+dfsg-5build1",
+		"short_description": "Development files for the OpenSlide library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libopenslide0": {
+		"version": "3.4.1+dfsg-5build1",
+		"short_description": "library for reading whole slide image files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liborc-0.4-0:amd64": {
+		"version": "1:0.4.32-2",
+		"short_description": "Library of Optimized Inner Loops Runtime Compiler",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liborc-0.4-dev-bin": {
+		"version": "1:0.4.32-2",
+		"short_description": "Library of Optimized Inner Loops Runtime Compiler (development tools)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"liborc-0.4-dev:amd64": {
+		"version": "1:0.4.32-2",
+		"short_description": "Library of Optimized Inner Loops Runtime Compiler (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libp11-kit0:amd64": {
+		"version": "0.24.0-6build1",
+		"short_description": "library for loading and coordinating access to PKCS#11 modules - runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpam-modules-bin": {
+		"version": "1.4.0-11ubuntu2.3",
+		"short_description": "Pluggable Authentication Modules for PAM - helper binaries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpam-modules:amd64": {
+		"version": "1.4.0-11ubuntu2.3",
+		"short_description": "Pluggable Authentication Modules for PAM",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpam-runtime": {
+		"version": "1.4.0-11ubuntu2.3",
+		"short_description": "Runtime support for the PAM library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpam-systemd:amd64": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "system and service manager - PAM module",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpam0g:amd64": {
+		"version": "1.4.0-11ubuntu2.3",
+		"short_description": "Pluggable Authentication Modules library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpango-1.0-0:amd64": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Layout and rendering of internationalized text",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpango1.0-dev:amd64": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Development files for the Pango",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpangocairo-1.0-0:amd64": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Layout and rendering of internationalized text",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpangoft2-1.0-0:amd64": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Layout and rendering of internationalized text",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpangoxft-1.0-0:amd64": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Layout and rendering of internationalized text",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpaper-utils": {
+		"version": "1.1.28build2",
+		"short_description": "library for handling paper characteristics (utilities)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpaper1:amd64": {
+		"version": "1.1.28build2",
+		"short_description": "library for handling paper characteristics",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpathplan4:amd64": {
+		"version": "2.42.2-6",
+		"short_description": "rich set of graph drawing tools - pathplan library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre16-3:amd64": {
+		"version": "2:8.39-13ubuntu0.22.04.1",
+		"short_description": "Old Perl 5 Compatible Regular Expression Library - 16 bit runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre2-16-0:amd64": {
+		"version": "10.39-3ubuntu0.1",
+		"short_description": "New Perl Compatible Regular Expression Library - 16 bit runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre2-32-0:amd64": {
+		"version": "10.39-3ubuntu0.1",
+		"short_description": "New Perl Compatible Regular Expression Library - 32 bit runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre2-8-0:amd64": {
+		"version": "10.39-3ubuntu0.1",
+		"short_description": "New Perl Compatible Regular Expression Library- 8 bit runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre2-dev:amd64": {
+		"version": "10.39-3ubuntu0.1",
+		"short_description": "New Perl Compatible Regular Expression Library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre2-posix3:amd64": {
+		"version": "10.39-3ubuntu0.1",
+		"short_description": "New Perl Compatible Regular Expression Library - posix-compatible runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre3-dev:amd64": {
+		"version": "2:8.39-13ubuntu0.22.04.1",
+		"short_description": "Old Perl 5 Compatible Regular Expression Library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre3:amd64": {
+		"version": "2:8.39-13ubuntu0.22.04.1",
+		"short_description": "Old Perl 5 Compatible Regular Expression Library - runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcre32-3:amd64": {
+		"version": "2:8.39-13ubuntu0.22.04.1",
+		"short_description": "Old Perl 5 Compatible Regular Expression Library - 32 bit runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpcrecpp0v5:amd64": {
+		"version": "2:8.39-13ubuntu0.22.04.1",
+		"short_description": "Old Perl 5 Compatible Regular Expression Library - C++ runtime files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libperl5.34:amd64": {
+		"version": "5.34.0-3ubuntu1.3",
+		"short_description": "shared Perl library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpixman-1-0:amd64": {
+		"version": "0.40.0-1ubuntu0.22.04.1",
+		"short_description": "pixel-manipulation library for X and cairo",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpixman-1-dev:amd64": {
+		"version": "0.40.0-1ubuntu0.22.04.1",
+		"short_description": "pixel-manipulation library for X and cairo (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpng-dev:amd64": {
+		"version": "1.6.37-3build5",
+		"short_description": "PNG library - development (version 1.6)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpng-tools": {
+		"version": "1.6.37-3build5",
+		"short_description": "PNG library - tools (version 1.6)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpng16-16:amd64": {
+		"version": "1.6.37-3build5",
+		"short_description": "PNG library - runtime (version 1.6)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpoppler-dev:amd64": {
+		"version": "22.02.0-2ubuntu0.3",
+		"short_description": "PDF rendering library -- development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpoppler-glib-dev": {
+		"version": "22.02.0-2ubuntu0.3",
+		"short_description": "PDF rendering library -- development files (GLib interface)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpoppler-glib8:amd64": {
+		"version": "22.02.0-2ubuntu0.3",
+		"short_description": "PDF rendering library (GLib-based shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpoppler118:amd64": {
+		"version": "22.02.0-2ubuntu0.3",
+		"short_description": "PDF rendering library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libprocps8:amd64": {
+		"version": "2:3.3.17-6ubuntu2",
+		"short_description": "library for accessing process information from /proc",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpsl5:amd64": {
+		"version": "0.21.0-1.2build2",
+		"short_description": "Library for Public Suffix List (shared libraries)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpthread-stubs0-dev:amd64": {
+		"version": "0.4-1build2",
+		"short_description": "pthread stubs not provided by native libc, development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpython3-stdlib:amd64": {
+		"version": "3.10.6-1~22.04",
+		"short_description": "interactive high-level object-oriented language (default python3 version)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpython3.10-minimal:amd64": {
+		"version": "3.10.12-1~22.04.3",
+		"short_description": "Minimal subset of the Python language (version 3.10)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libpython3.10-stdlib:amd64": {
+		"version": "3.10.12-1~22.04.3",
+		"short_description": "Interactive high-level object-oriented language (standard library, version 3.10)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libquadmath0:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GCC Quad-Precision Math Library",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libreadline-dev:amd64": {
+		"version": "8.1.2-1",
+		"short_description": "GNU readline and history libraries, development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libreadline8:amd64": {
+		"version": "8.1.2-1",
+		"short_description": "GNU readline and history libraries, run-time libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"librsvg2-2:amd64": {
+		"version": "2.52.5+dfsg-3ubuntu0.2",
+		"short_description": "SAX-based renderer library for SVG files (runtime)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"librsvg2-common:amd64": {
+		"version": "2.52.5+dfsg-3ubuntu0.2",
+		"short_description": "SAX-based renderer library for SVG files (extra runtime)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"librsvg2-dev:amd64": {
+		"version": "2.52.5+dfsg-3ubuntu0.2",
+		"short_description": "SAX-based renderer library for SVG files (development)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"librtmp1:amd64": {
+		"version": "2.4+20151223.gitfa8646d.1-2build4",
+		"short_description": "toolkit for RTMP streams (shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsasl2-2:amd64": {
+		"version": "2.1.27+dfsg2-3ubuntu1.2",
+		"short_description": "Cyrus SASL - authentication abstraction library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsasl2-modules-db:amd64": {
+		"version": "2.1.27+dfsg2-3ubuntu1.2",
+		"short_description": "Cyrus SASL - pluggable authentication modules (DB)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsasl2-modules:amd64": {
+		"version": "2.1.27+dfsg2-3ubuntu1.2",
+		"short_description": "Cyrus SASL - pluggable authentication modules",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libseccomp2:amd64": {
+		"version": "2.5.3-2ubuntu2",
+		"short_description": "high level interface to Linux seccomp filter",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libselinux1-dev:amd64": {
+		"version": "3.3-1build2",
+		"short_description": "SELinux development headers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libselinux1:amd64": {
+		"version": "3.3-1build2",
+		"short_description": "SELinux runtime shared libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsemanage-common": {
+		"version": "3.3-1build2",
+		"short_description": "Common files for SELinux policy management libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsemanage2:amd64": {
+		"version": "3.3-1build2",
+		"short_description": "SELinux policy management library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsepol-dev:amd64": {
+		"version": "3.3-1build1",
+		"short_description": "SELinux binary policy manipulation library and development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsepol2:amd64": {
+		"version": "3.3-1build1",
+		"short_description": "SELinux library for manipulating binary security policies",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsigsegv2:amd64": {
+		"version": "2.13-1ubuntu3",
+		"short_description": "Library for handling page faults in a portable way",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsm-dev:amd64": {
+		"version": "2:1.2.3-1build2",
+		"short_description": "X11 Session Management library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsm6:amd64": {
+		"version": "2:1.2.3-1build2",
+		"short_description": "X11 Session Management library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsmartcols1:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "smart column output alignment library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsqlite3-0:amd64": {
+		"version": "3.37.2-2ubuntu0.3",
+		"short_description": "SQLite 3 shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsqlite3-dev:amd64": {
+		"version": "3.37.2-2ubuntu0.3",
+		"short_description": "SQLite 3 development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libss2:amd64": {
+		"version": "1.46.5-2ubuntu1.1",
+		"short_description": "command-line interface parsing library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libssh-4:amd64": {
+		"version": "0.9.6-2ubuntu0.22.04.3",
+		"short_description": "tiny C SSH library (OpenSSL flavor)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libssl-dev:amd64": {
+		"version": "3.0.2-0ubuntu1.13",
+		"short_description": "Secure Sockets Layer toolkit - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libssl3:amd64": {
+		"version": "3.0.2-0ubuntu1.13",
+		"short_description": "Secure Sockets Layer toolkit - shared libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libstdc++-11-dev:amd64": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "GNU Standard C++ Library v3 (development files)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libstdc++6:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "GNU Standard C++ Library v3",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsystemd0:amd64": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "systemd utility library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libsz2:amd64": {
+		"version": "1.0.6-1",
+		"short_description": "Adaptive Entropy Coding library - SZIP",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtasn1-6:amd64": {
+		"version": "4.18.0-4build1",
+		"short_description": "Manage ASN.1 structures (runtime)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libthai-data": {
+		"version": "0.1.29-1build1",
+		"short_description": "Data files for Thai language support library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libthai-dev:amd64": {
+		"version": "0.1.29-1build1",
+		"short_description": "Development files for Thai language support library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libthai0:amd64": {
+		"version": "0.1.29-1build1",
+		"short_description": "Thai language support library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtiff-dev:amd64": {
+		"version": "4.3.0-6ubuntu0.7",
+		"short_description": "Tag Image File Format library (TIFF), development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtiff5:amd64": {
+		"version": "4.3.0-6ubuntu0.7",
+		"short_description": "Tag Image File Format (TIFF) library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtiffxx5:amd64": {
+		"version": "4.3.0-6ubuntu0.7",
+		"short_description": "Tag Image File Format (TIFF) library -- C++ interface",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtime-duration-perl": {
+		"version": "1.21-1",
+		"short_description": "module for rounded or exact English expression of durations",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtimedate-perl": {
+		"version": "2.3300-2",
+		"short_description": "collection of modules to manipulate date/time information",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtinfo6:amd64": {
+		"version": "6.3-2ubuntu0.1",
+		"short_description": "shared low-level terminfo library for terminal handling",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtirpc-common": {
+		"version": "1.3.2-2ubuntu0.1",
+		"short_description": "transport-independent RPC library - common files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtirpc-dev:amd64": {
+		"version": "1.3.2-2ubuntu0.1",
+		"short_description": "transport-independent RPC library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtirpc3:amd64": {
+		"version": "1.3.2-2ubuntu0.1",
+		"short_description": "transport-independent RPC library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtool": {
+		"version": "2.4.6-15build2",
+		"short_description": "Generic library support script",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libtsan0:amd64": {
+		"version": "11.4.0-1ubuntu1~22.04",
+		"short_description": "ThreadSanitizer -- a Valgrind-based detector of data races (runtime)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libu2f-udev": {
+		"version": "1.1.10-3build2",
+		"short_description": "Universal 2nd Factor (U2F) — transitional package",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libubsan1:amd64": {
+		"version": "12.3.0-1ubuntu1~22.04",
+		"short_description": "UBSan -- undefined behaviour sanitizer (runtime)",
+		"author": "Ubuntu Core developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libudev1:amd64": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "libudev shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libunistring2:amd64": {
+		"version": "1.0-1",
+		"short_description": "Unicode string library for C",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libunwind-14:amd64": {
+		"version": "1:14.0.0-1ubuntu1.1",
+		"short_description": "production-quality unwinder",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libuuid1:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "Universally Unique ID library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libvips-dev": {
+		"version": "8.12.1-1build1",
+		"short_description": "image processing system good for very large ones (dev)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libvips-doc": {
+		"version": "8.12.1-1build1",
+		"short_description": "image processing system good for very large ones (doc)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libvips-tools": {
+		"version": "8.12.1-1build1",
+		"short_description": "image processing system good for very large ones (tools)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libvips42:amd64": {
+		"version": "8.12.1-1build1",
+		"short_description": "image processing system good for very large ones",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libvulkan1:amd64": {
+		"version": "1.3.204.1-2",
+		"short_description": "Vulkan loader library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwayland-client0:amd64": {
+		"version": "1.20.0-1ubuntu0.1",
+		"short_description": "wayland compositor infrastructure - client library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwayland-cursor0:amd64": {
+		"version": "1.20.0-1ubuntu0.1",
+		"short_description": "wayland compositor infrastructure - cursor library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwayland-egl1:amd64": {
+		"version": "1.20.0-1ubuntu0.1",
+		"short_description": "wayland compositor infrastructure - EGL library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwayland-server0:amd64": {
+		"version": "1.20.0-1ubuntu0.1",
+		"short_description": "wayland compositor infrastructure - server library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwebp-dev:amd64": {
+		"version": "1.2.2-2ubuntu0.22.04.2",
+		"short_description": "Lossy compression of digital photographic images",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwebp7:amd64": {
+		"version": "1.2.2-2ubuntu0.22.04.2",
+		"short_description": "Lossy compression of digital photographic images",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwebpdemux2:amd64": {
+		"version": "1.2.2-2ubuntu0.22.04.2",
+		"short_description": "Lossy compression of digital photographic images.",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwebpmux3:amd64": {
+		"version": "1.2.2-2ubuntu0.22.04.2",
+		"short_description": "Lossy compression of digital photographic images",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwmf-0.2-7:amd64": {
+		"version": "0.2.12-5ubuntu1",
+		"short_description": "Windows metafile conversion library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwmf-dev": {
+		"version": "0.2.12-5ubuntu1",
+		"short_description": "Windows metafile conversion development",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwmflite-0.2-7:amd64": {
+		"version": "0.2.12-5ubuntu1",
+		"short_description": "Windows metafile conversion lite library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libx11-6:amd64": {
+		"version": "2:1.7.5-1ubuntu0.3",
+		"short_description": "X11 client-side library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libx11-data": {
+		"version": "2:1.7.5-1ubuntu0.3",
+		"short_description": "X11 client-side library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libx11-dev:amd64": {
+		"version": "2:1.7.5-1ubuntu0.3",
+		"short_description": "X11 client-side library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libx265-199:amd64": {
+		"version": "3.5-2",
+		"short_description": "H.265/HEVC video stream encoder (shared library)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libx265-dev:amd64": {
+		"version": "3.5-2",
+		"short_description": "H.265/HEVC video stream encoder (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxau-dev:amd64": {
+		"version": "1:1.0.9-1build5",
+		"short_description": "X11 authorisation library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxau6:amd64": {
+		"version": "1:1.0.9-1build5",
+		"short_description": "X11 authorisation library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcb-render0-dev:amd64": {
+		"version": "1.14-3ubuntu3",
+		"short_description": "X C Binding, render extension, development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcb-render0:amd64": {
+		"version": "1.14-3ubuntu3",
+		"short_description": "X C Binding, render extension",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcb-shm0-dev:amd64": {
+		"version": "1.14-3ubuntu3",
+		"short_description": "X C Binding, shm extension, development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcb-shm0:amd64": {
+		"version": "1.14-3ubuntu3",
+		"short_description": "X C Binding, shm extension",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcb1-dev:amd64": {
+		"version": "1.14-3ubuntu3",
+		"short_description": "X C Binding, development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcb1:amd64": {
+		"version": "1.14-3ubuntu3",
+		"short_description": "X C Binding",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcomposite1:amd64": {
+		"version": "1:0.4.5-1build2",
+		"short_description": "X11 Composite extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxcursor1:amd64": {
+		"version": "1:1.2.0-2build4",
+		"short_description": "X cursor management library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxdamage1:amd64": {
+		"version": "1:1.1.5-2build2",
+		"short_description": "X11 damaged region extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxdmcp-dev:amd64": {
+		"version": "1:1.1.3-0ubuntu5",
+		"short_description": "X11 authorisation library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxdmcp6:amd64": {
+		"version": "1:1.1.3-0ubuntu5",
+		"short_description": "X11 Display Manager Control Protocol library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxext-dev:amd64": {
+		"version": "2:1.3.4-1build1",
+		"short_description": "X11 miscellaneous extensions library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxext6:amd64": {
+		"version": "2:1.3.4-1build1",
+		"short_description": "X11 miscellaneous extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxfixes3:amd64": {
+		"version": "1:6.0.0-1",
+		"short_description": "X11 miscellaneous 'fixes' extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxft-dev:amd64": {
+		"version": "2.3.4-1",
+		"short_description": "FreeType-based font drawing library for X (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxft2:amd64": {
+		"version": "2.3.4-1",
+		"short_description": "FreeType-based font drawing library for X",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxi6:amd64": {
+		"version": "2:1.8-1build1",
+		"short_description": "X11 Input extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxinerama1:amd64": {
+		"version": "2:1.1.4-3",
+		"short_description": "X11 Xinerama extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxkbcommon0:amd64": {
+		"version": "1.4.0-1",
+		"short_description": "library interface to the XKB compiler - shared library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxml2-dev:amd64": {
+		"version": "2.9.13+dfsg-1ubuntu0.3",
+		"short_description": "GNOME XML library - development files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxml2:amd64": {
+		"version": "2.9.13+dfsg-1ubuntu0.3",
+		"short_description": "GNOME XML library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxmuu1:amd64": {
+		"version": "2:1.1.3-3",
+		"short_description": "X11 miscellaneous micro-utility library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxpm4:amd64": {
+		"version": "1:3.5.12-1ubuntu0.22.04.2",
+		"short_description": "X11 pixmap library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxrandr2:amd64": {
+		"version": "2:1.5.2-1build1",
+		"short_description": "X11 RandR extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxrender-dev:amd64": {
+		"version": "1:0.9.10-1build4",
+		"short_description": "X Rendering Extension client library (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxrender1:amd64": {
+		"version": "1:0.9.10-1build4",
+		"short_description": "X Rendering Extension client library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxss1:amd64": {
+		"version": "1:1.2.3-1build2",
+		"short_description": "X11 Screen Saver extension library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxt-dev:amd64": {
+		"version": "1:1.2.1-1",
+		"short_description": "X11 toolkit intrinsics library (development headers)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxt6:amd64": {
+		"version": "1:1.2.1-1",
+		"short_description": "X11 toolkit intrinsics library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libxxhash0:amd64": {
+		"version": "0.8.1-1",
+		"short_description": "shared library for xxhash",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libyaml-0-2:amd64": {
+		"version": "0.2.2-1build2",
+		"short_description": "Fast YAML 1.1 parser and emitter library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libyaml-dev:amd64": {
+		"version": "0.2.2-1build2",
+		"short_description": "Fast YAML 1.1 parser and emitter library (development)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libzstd1:amd64": {
+		"version": "1.4.8+dfsg-3build1",
+		"short_description": "fast lossless compression algorithm",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"linux-libc-dev:amd64": {
+		"version": "5.15.0-92.102",
+		"short_description": "Linux Kernel Headers for development",
+		"author": "Ubuntu Kernel Team <kernel-team@lists.ubuntu.com>"
+	},
+	"login": {
+		"version": "1:4.8.1-2ubuntu2.1",
+		"short_description": "system login tools",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"logsave": {
+		"version": "1.46.5-2ubuntu1.1",
+		"short_description": "save the output of a command in a log file",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"lsb-base": {
+		"version": "11.1.0ubuntu4",
+		"short_description": "Linux Standard Base init script functionality",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"lto-disabled-list": {
+		"version": "24",
+		"short_description": "list of packages not to build with LTO",
+		"author": "Matthias Klose <doko@ubuntu.com>"
+	},
+	"m4": {
+		"version": "1.4.18-5ubuntu2",
+		"short_description": "macro processing language",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"make": {
+		"version": "4.3-4.1build1",
+		"short_description": "utility for directing compilation",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"manpages": {
+		"version": "5.10-1ubuntu1",
+		"short_description": "Manual pages about using a GNU/Linux system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"manpages-dev": {
+		"version": "5.10-1ubuntu1",
+		"short_description": "Manual pages about using GNU/Linux for development",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"mawk": {
+		"version": "1.3.4.20200120-3",
+		"short_description": "Pattern scanning and text processing language",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"media-types": {
+		"version": "7.0.0",
+		"short_description": "List of standard media types and their usual file extension",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"moreutils": {
+		"version": "0.66-1",
+		"short_description": "additional Unix utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"mount": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "tools for mounting and manipulating filesystems",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"ncurses-base": {
+		"version": "6.3-2",
+		"short_description": "basic terminal type definitions",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"ncurses-bin": {
+		"version": "6.3-2",
+		"short_description": "terminal-related programs and man pages",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"netbase": {
+		"version": "6.3",
+		"short_description": "Basic TCP/IP networking system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"networkd-dispatcher": {
+		"version": "2.1-2ubuntu0.22.04.2",
+		"short_description": "Dispatcher service for systemd-networkd connection status changes",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"nip2": {
+		"version": "8.7.1-2build1",
+		"short_description": "spreadsheet-like graphical image manipulation tool",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"openssh-client": {
+		"version": "1:8.9p1-3ubuntu0.6",
+		"short_description": "secure shell (SSH) client, for secure access to remote machines",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"openssl": {
+		"version": "3.0.2-0ubuntu1.13",
+		"short_description": "Secure Sockets Layer toolkit - cryptographic utility",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"pango1.0-tools": {
+		"version": "1.50.6+ds-2ubuntu1",
+		"short_description": "Development utilities for Pango",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"passwd": {
+		"version": "1:4.8.1-2ubuntu2.1",
+		"short_description": "change and administer password and group data",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"patch": {
+		"version": "2.7.6-7build2",
+		"short_description": "Apply a diff file to an original",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"perl": {
+		"version": "5.34.0-3ubuntu1.3",
+		"short_description": "Larry Wall's Practical Extraction and Report Language",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"perl-base": {
+		"version": "5.34.0-3ubuntu1.3",
+		"short_description": "minimal Perl system",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"perl-modules-5.34": {
+		"version": "5.34.0-3ubuntu1.3",
+		"short_description": "Core Perl modules",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"pinentry-curses": {
+		"version": "1.1.1-1build2",
+		"short_description": "curses-based PIN or pass-phrase entry dialog for GnuPG",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"pkg-config": {
+		"version": "0.29.2-1ubuntu3",
+		"short_description": "manage compile and link flags for libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"poppler-data": {
+		"version": "0.4.11-1",
+		"short_description": "encoding data for the poppler PDF rendering library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"procps": {
+		"version": "2:3.3.17-6ubuntu2",
+		"short_description": "/proc file system utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"publicsuffix": {
+		"version": "20211207.1025-1",
+		"short_description": "accurate, machine-readable list of domain name suffixes",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3": {
+		"version": "3.10.6-1~22.04",
+		"short_description": "interactive high-level object-oriented language (default python3 version)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3-dbus": {
+		"version": "1.2.18-3build1",
+		"short_description": "simple interprocess messaging system (Python 3 interface)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3-distutils": {
+		"version": "3.10.8-1~22.04",
+		"short_description": "distutils package for Python 3.x",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3-gi": {
+		"version": "3.42.1-0ubuntu1",
+		"short_description": "Python 3 bindings for gobject-introspection libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3-lib2to3": {
+		"version": "3.10.8-1~22.04",
+		"short_description": "Interactive high-level object-oriented language (lib2to3)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3-minimal": {
+		"version": "3.10.6-1~22.04",
+		"short_description": "minimal subset of the Python language (default python3 version)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3.10": {
+		"version": "3.10.12-1~22.04.3",
+		"short_description": "Interactive high-level object-oriented language (version 3.10)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"python3.10-minimal": {
+		"version": "3.10.12-1~22.04.3",
+		"short_description": "Minimal subset of the Python language (version 3.10)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"readline-common": {
+		"version": "8.1.2-1",
+		"short_description": "GNU readline and history libraries, common files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"rpcsvc-proto": {
+		"version": "1.4.2-0ubuntu6",
+		"short_description": "RPC protocol compiler and definitions",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"sed": {
+		"version": "4.8-1ubuntu2",
+		"short_description": "GNU stream editor for filtering/transforming text",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"sensible-utils": {
+		"version": "0.0.17",
+		"short_description": "Utilities for sensible alternative selection",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"shared-mime-info": {
+		"version": "2.1-2",
+		"short_description": "FreeDesktop.org shared MIME database and spec",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"snapd": {
+		"version": "2.58+22.04.1",
+		"short_description": "Daemon and tooling that enable snap packages",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"squashfs-tools": {
+		"version": "1:4.5-3build1",
+		"short_description": "Tool to create and append to squashfs filesystems",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"sudo": {
+		"version": "1.9.9-1ubuntu2.4",
+		"short_description": "Provide limited super user privileges to specific users",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"systemd": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "system and service manager",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"systemd-hwe-hwdb": {
+		"version": "249.11.5",
+		"short_description": "udev rules for hardware enablement (HWE)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"systemd-sysv": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "system and service manager - SysV links",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"systemd-timesyncd": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "minimalistic service to synchronize local time with NTP servers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"sysvinit-utils": {
+		"version": "3.01-1ubuntu1",
+		"short_description": "System-V-like utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"tar": {
+		"version": "1.34+dfsg-1ubuntu0.1.22.04.1",
+		"short_description": "GNU version of the tar archiving utility",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"tzdata": {
+		"version": "2023d-0ubuntu0.22.04",
+		"short_description": "time zone and daylight-saving time data",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"ubuntu-keyring": {
+		"version": "2021.03.26",
+		"short_description": "GnuPG keys of the Ubuntu archive",
+		"author": "Dimitri John Ledkov <dimitri.ledkov@canonical.com>"
+	},
+	"ubuntu-mono": {
+		"version": "20.10-0ubuntu2",
+		"short_description": "Ubuntu Mono Icon theme",
+		"author": "Ubuntu Artwork Team <ubuntu-art@lists.ubuntu.com>"
+	},
+	"ucf": {
+		"version": "3.0043",
+		"short_description": "Update Configuration File(s): preserve user changes to config files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"udev": {
+		"version": "249.11-0ubuntu3.12",
+		"short_description": "/dev/ and hotplug management daemon",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"unzip": {
+		"version": "6.0-26ubuntu3.1",
+		"short_description": "De-archiver for .zip files",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"usrmerge": {
+		"version": "25ubuntu2",
+		"short_description": "Convert the system to the merged /usr directories scheme",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"util-linux": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "miscellaneous system utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"uuid-dev:amd64": {
+		"version": "2.37.2-4ubuntu3",
+		"short_description": "Universally Unique ID library - headers and static libraries",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"wget": {
+		"version": "1.21.2-2ubuntu1",
+		"short_description": "retrieves files from the web",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"x11-common": {
+		"version": "1:7.7+23ubuntu2",
+		"short_description": "X Window System (X.Org) infrastructure",
+		"author": "Ubuntu X-SWAT <ubuntu-x@lists.ubuntu.com>"
+	},
+	"x11proto-dev": {
+		"version": "2021.5-1",
+		"short_description": "X11 extension protocols and auxiliary headers",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xauth": {
+		"version": "1:1.1-1build2",
+		"short_description": "X authentication utility",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xdg-user-dirs": {
+		"version": "0.17-2ubuntu4",
+		"short_description": "tool to manage well known user directories",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xdg-utils": {
+		"version": "1.1.3-4.1ubuntu3~22.04.1",
+		"short_description": "desktop integration utilities from freedesktop.org",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xkb-data": {
+		"version": "2.33-1",
+		"short_description": "X Keyboard Extension (XKB) configuration data",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xorg-sgml-doctools": {
+		"version": "1:1.11-1.1",
+		"short_description": "Common tools for building X.Org SGML documentation",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xtrans-dev": {
+		"version": "1.4.0-1",
+		"short_description": "X transport library (development files)",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"xz-utils": {
+		"version": "5.2.5-2ubuntu1",
+		"short_description": "XZ-format compression utilities",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"zlib1g-dev:amd64": {
+		"version": "1:1.2.11.dfsg-2ubuntu9.2",
+		"short_description": "compression library - development",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"zlib1g:amd64": {
+		"version": "1:1.2.11.dfsg-2ubuntu9.2",
+		"short_description": "compression library - runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"zstd": {
+		"version": "1.4.8+dfsg-3build1",
+		"short_description": "fast lossless compression algorithm -- CLI tool",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	}
+}
