@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/hyperdrive/configs/{hyperdrive_identifier}": {
+	"DELETE /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"description": "Deletes the specified Hyperdrive.",
 		"operationId": "delete-hyperdrive",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "hyperdrive_identifier",
+				"name": "hyperdrive_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -368,13 +368,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/hyperdrive/configs": {
+	"GET /accounts/{account_id}/hyperdrive/configs": {
 		"description": "Returns a list of Hyperdrives",
 		"operationId": "list-hyperdrive",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -794,13 +794,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/hyperdrive/configs/{hyperdrive_identifier}": {
+	"GET /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"description": "Returns the specified Hyperdrive configuration.",
 		"operationId": "get-hyperdrive",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -812,7 +812,7 @@
 			},
 			{
 				"in": "path",
-				"name": "hyperdrive_identifier",
+				"name": "hyperdrive_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1250,13 +1250,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/hyperdrive/configs": {
+	"POST /accounts/{account_id}/hyperdrive/configs": {
 		"description": "Creates and returns a new Hyperdrive configuration.",
 		"operationId": "create-hyperdrive",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1793,13 +1793,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/hyperdrive/configs/{hyperdrive_identifier}": {
+	"PUT /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"description": "Updates and returns the specified Hyperdrive configuration.",
 		"operationId": "update-hyperdrive",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1811,7 +1811,7 @@
 			},
 			{
 				"in": "path",
-				"name": "hyperdrive_identifier",
+				"name": "hyperdrive_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
