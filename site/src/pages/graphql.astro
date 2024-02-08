@@ -24,12 +24,10 @@ const sections = importFiles[0].default;
 					headers = {['Field', 'Description']}
 					widths={['w-1/4', 'w-3/4']}
 					data = {
-						Object.keys(sections[section]).map((field: string) =>
-							field !== '__description' && [
-								field,
-								sections[section][field]
-							] || []
-						)
+						Object.keys(sections[section]).map((field: string) => field !== '__description' && [
+							field,
+							sections[section][field],
+						] || [])
 					}
 				></Table>
 			</div>

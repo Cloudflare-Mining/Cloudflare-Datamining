@@ -29,21 +29,21 @@ const { id, headers, data, widths, useHtml } = Astro.props;
 									<td class={['whitespace-nowrap py-2 pl-2 first:pl-4 pr-3 text-sm text-gray-500 dark:text-gray-300 truncate font-mono', widths?.[index]].join(' ').trim()}>
 										{
 											!Array.isArray(value)
-											? (
-												useHtml
-												? <span class="inline truncate font-mono text-sm text-gray-500 dark:text-gray-300" set:html={value}></span>
-												: <span class="inline truncate font-mono text-sm text-gray-500 dark:text-gray-300">{value}</span>
-											)
-											: (
-												<ul class="list-inside list-none">
-													{value.map((item: string) => (
-														useHtml
-														? <li class="inline truncate font-mono text-sm text-gray-500 after:content-[',_'] last:after:content-[''] dark:text-gray-300" set:html={item}></li>
-														: <li class="inline truncate font-mono text-sm text-gray-500 after:content-[',_'] last:after:content-[''] dark:text-gray-300">{item}</li>
-													))}
-												</ul>
-											)
-									}
+												? (
+													useHtml
+														? <span class="inline truncate font-mono text-sm text-gray-500 dark:text-gray-300" set:html={value}></span>
+														: <span class="inline truncate font-mono text-sm text-gray-500 dark:text-gray-300">{value}</span>
+												)
+												: (
+													<ul class="list-inside list-none">
+														{value.map((item: string) => (
+															useHtml
+																? <li class="inline truncate font-mono text-sm text-gray-500 after:content-[',_'] last:after:content-[''] dark:text-gray-300" set:html={item}></li>
+																: <li class="inline truncate font-mono text-sm text-gray-500 after:content-[',_'] last:after:content-[''] dark:text-gray-300">{item}</li>
+														))}
+													</ul>
+												)
+										}
 									</td>
 								))}
 							</tr>

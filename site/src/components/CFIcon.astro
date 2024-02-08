@@ -18,7 +18,7 @@ const Icon = icon;
 ---
 
 <button
-	class="copyButton group relative flex h-full w-full flex-col items-center rounded-md bg-white p-2 shadow-md dark:bg-gray-800"
+	class="copyButton group relative flex size-full flex-col items-center rounded-md bg-white p-2 shadow-md dark:bg-gray-800"
 	data-name={key}
 	title={`Copy ${key} to clipboard`}
 >
@@ -35,7 +35,7 @@ const Icon = icon;
 		{key}
 	</p>
 	<div
-		class="absolute right-0.5 top-0.5 m-0 h-8 w-8 rounded-full p-2 text-gray-600 group-hover:bg-gray-200 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:bg-gray-600 dark:group-hover:text-gray-100"
+		class="absolute right-0.5 top-0.5 m-0 size-8 rounded-full p-2 text-gray-600 group-hover:bg-gray-200 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:bg-gray-600 dark:group-hover:text-gray-100"
 	>
 		<CopyIcon />
 	</div>

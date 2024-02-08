@@ -214,6 +214,11 @@ if (startMemtotalIndex && endMemtotalIndex) {
 		obj[key] = memInfo[key];
 		return obj;
 	}, {});
+
+	if (!filteredMemInfo.MemTotal) {
+		console.warn('MemTotal is missing, something is broken');
+		process.exit(0);
+	}
 	await fs.writeJson(path.resolve(dir, 'deployments-logs-memory.json'), filteredMemInfo, { spaces: '\t' });
 }
 
@@ -229,6 +234,11 @@ if (startOsReleaseIndex && endOsReleaseIndex) {
 			continue;
 		}
 		osRelease[line[0]] = line.slice(1).join('=');
+	}
+	if (!osRelease.ID) {
+		// os-release is missing ID, something is broken
+		console.warn('os-release is missing ID, something is broken');
+		process.exit(0);
 	}
 	await fs.writeJson(path.resolve(dir, 'deployments-logs-os-release.json'), osRelease, { spaces: '\t' });
 }
