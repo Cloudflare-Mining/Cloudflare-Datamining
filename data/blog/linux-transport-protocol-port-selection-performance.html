@@ -16,7 +16,7 @@
 		<li>Handler machine returns cached asset, or if miss</li>
 		<li>Handler machine reaches to origin server (owned by a customer) to pull the requested asset</li>
 	</ol>
-	<p>The particularly interesting part is the cache miss case. When a very popular origin has an uncached asset that many Internet Users are trying to access at once, we may make upwards of:<br>50k TCP unicast connections to a single destination<em><strong>.</strong></em></p>
+	<p>The particularly interesting part is the cache miss case. When a website suddenly becomes very popular, many uncached assets may need to be fetched all at once. Hence we may make an upwards of: 50k TCP unicast connections to a single destination<em>.</em></p>
 	<p>That is a lot of connections! We have strategies in place to limit the impact of this or avoid this problem altogether. But in these rare cases when it occurs, we will then balance these connections over two source IPv4 addresses.</p>
 	<p>Our goal is to remove the load balancing and prefer one IPv4 address. To do that, we need to understand the performance impact of two IPv4 addresses vs one.</p>
 	<h2 id="tcp-connect-performance-of-two-source-ipv4-addresses-vs-one-ipv4-address">TCP connect() performance of two source IPv4 addresses vs one IPv4 address</h2>
