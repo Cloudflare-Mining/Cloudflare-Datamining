@@ -932,6 +932,11 @@
 																"gcs"
 															],
 															"type": "string"
+														},
+														"region": {
+															"description": "Region where the bucket resides (AWS only)",
+															"nullable": true,
+															"type": "string"
 														}
 													},
 													"type": "object"
@@ -1478,6 +1483,11 @@
 																"aws",
 																"gcs"
 															],
+															"type": "string"
+														},
+														"region": {
+															"description": "Region where the bucket resides (AWS only)",
+															"nullable": true,
 															"type": "string"
 														}
 													},
