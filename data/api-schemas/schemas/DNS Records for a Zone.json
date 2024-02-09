@@ -14165,6 +14165,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/dns_records/{dns_record_id}": {
+		"description": "Update an existing DNS record.\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
 		"operationId": "dns-records-for-a-zone-patch-dns-record",
 		"parameters": [
 			{
@@ -24118,7 +24119,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Patch DNS Record",
+		"summary": "Update DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
 		],
@@ -34972,7 +34973,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/dns_records/{dns_record_id}": {
-		"description": "Update an existing DNS record.\n\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
+		"description": "Overwrite an existing DNS record.\nNotes:\n- A/AAAA records cannot exist on the same name as CNAME records.\n- NS records cannot exist on the same name as any other record type.\n- Domain names are always represented in Punycode, even if Unicode\n  characters were used when creating the record.\n",
 		"operationId": "dns-records-for-a-zone-update-dns-record",
 		"parameters": [
 			{
@@ -44926,7 +44927,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update DNS Record",
+		"summary": "Overwrite DNS Record",
 		"tags": [
 			"DNS Records for a Zone"
 		],
