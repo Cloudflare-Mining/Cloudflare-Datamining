@@ -52,7 +52,15 @@
 				"contentfulId": "1oxTNE35eCzGRub0RB3k1i",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "7DX6gGKsnSDa7jqLAgtv2o",
+					"text": "Need Help Eliminating VPN Vulnerabilities Immediately?\n",
+					"learnMoreText": "Get help",
+					"learnMoreUrl": "https://www.cloudflare.com/vpn-vulnerability/",
+					"backgroundColor": "blue0",
+					"hideCloseButton": false
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -1390,7 +1398,7 @@
 				"ru-RU",
 				"pl-PL"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": false,
 			"baseURL": "https://www.cloudflare.com"
 		}

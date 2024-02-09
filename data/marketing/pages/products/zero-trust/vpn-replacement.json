@@ -57,7 +57,15 @@
 					"linkUrl": "https://www.cloudflare.com/lp/securitybuildersworkshops",
 					"desktopText": "Deep-dive into the latest innovations for protecting your applications, employees, and networks."
 				},
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "7DX6gGKsnSDa7jqLAgtv2o",
+					"text": "Need Help Eliminating VPN Vulnerabilities Immediately?\n",
+					"learnMoreText": "Get help",
+					"learnMoreUrl": "https://www.cloudflare.com/vpn-vulnerability/",
+					"backgroundColor": "blue0",
+					"hideCloseButton": false
+				},
 				"customTopNav": {
 					"contentTypeId": "navNavigationGroup",
 					"contentfulId": "1x9L7UUrSDQWzsi0wF27RK",
@@ -3765,7 +3773,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"hasAdobeExperiment": null,
 			"baseURL": "https://www.cloudflare.com"
 		}
