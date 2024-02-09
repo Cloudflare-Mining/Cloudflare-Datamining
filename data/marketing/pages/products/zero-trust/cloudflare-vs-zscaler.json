@@ -3440,6 +3440,82 @@
 						]
 					},
 					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "3szBZFVlSzKsEHtpVWNaVQ",
+						"title": "Adopt Zero Trust & SASE at your own pace",
+						"titleSize": null,
+						"backgroundColor": "image-background",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "30lgC34TC2UN5dJwDGNOVH",
+							"elementName": "Beat Zscaler Modal [Button] ",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"buttonModal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "5tBtXO7Swx0pqLBXFlH1fY",
+								"modalName": "Beat Zscaler Zero Trust",
+								"modalId": "beat-zscaler-zero-trust",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "2ToRbc0xBbh6UFnaETm9F9",
+									"bladeName": "Beat Zscaler Zero Trust 2022",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Beat Zscaler Cloudflare Zero Trust Inbound Web Form",
+									"marketoFormHeaderText": "Cloudflare Zero Trust",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": null,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": "Learn more about how Cloudflare compares to Zscaler with this comparison brief.",
+									"marketoFormPdfDownload": {
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf"
+										},
+										"description": "Zero Trust implementation doesn't have to be so hard. Cloudflare helps you move quickly and nimbly as the future of networking evolves. Simple deployment, network resiliency, and swift innovation provide a stronger foundation for true transformation of networking, security, and applications."
+									},
+									"marketoFormPdfDownloadI18n": [],
+									"marketoFormAssetDownloadButtonText": "Download Now",
+									"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf",
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": "orange",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Ready to explore Cloudflare Zero Trust?",
+								"regularCopy": "Fill out the form below, and a Cloudflare representative will help you evaluate Cloudflare vs. Zscaler.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null,
+						"eyebrow": null
+					},
+					{
 						"contentfulId": "1c8l7wGZPm8yqfPWC4EeHo",
 						"contentTypeId": "bladePlansMatrix",
 						"hasFilter": true,
@@ -3509,6 +3585,58 @@
 								"contentTypeId": "planElementFeaturesGroup",
 								"name": "Deployment Simplicity",
 								"features": [
+									{
+										"contentfulId": "4ZHBhVtEiSd6yyDRORUQlY",
+										"contentTypeId": "planElementFeatures",
+										"name": "On-ramps and services",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5eJ9bgWtamLjueHwr1gjqp",
+												"textValue": "Composable and work together",
+												"plan": {
+													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
+													"name": "Cloudflare",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "wT2QwVuZa6vc7F9iUHbbP",
+												"textValue": "Many run separate from others",
+												"plan": {
+													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
+													"name": "Zscaler",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
 									{
 										"contentfulId": "KI4YQgLVh9ugSVb6VKKij",
 										"contentTypeId": "planElementFeatures",
@@ -3593,6 +3721,58 @@
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "4KYMRUQutTsBQhjLguTJIW",
 												"textValue": "AWS/Azure-augmented network, many control planes",
+												"plan": {
+													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
+													"name": "Zscaler",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6pTeoeydihVmvNFIkA3RPI",
+										"contentTypeId": "planElementFeatures",
+										"name": "Setup requirements",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "1ASdIi58XfxCsxILgneNLg",
+												"textValue": "Often clientless, VM-free software, one-time integrations",
+												"plan": {
+													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
+													"name": "Cloudflare",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "eABeLWj6lZFYz2XR2WeTz",
+												"textValue": "Often clients, VM sizing logistics, repeated integrations",
 												"plan": {
 													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
 													"contentTypeId": "planElementPlan",
@@ -3704,6 +3884,58 @@
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "7uXXyvM4fW6Sr6j8PszxnP",
 												"textValue": "No: Private service VMs bypass Zscaler cloud, not the Internet",
+												"plan": {
+													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Zscaler - Element Plan",
+													"name": "Zscaler",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4JvvGVTqXi1e6rEFRhR5AV",
+										"contentTypeId": "planElementFeatures",
+										"name": "Network location availability",
+										"description": null,
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5cqeVao59wTEHHB93RmPW1",
+												"textValue": "Every location available to every customer",
+												"plan": {
+													"contentfulId": "7HP6TygM31Rj4QlpNxqAMB",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "[ZT PMM] Beat Zscaler - Cloudflare - Element Plan",
+													"name": "Cloudflare",
+													"description": null,
+													"pricingDescription": null,
+													"price": null,
+													"currency": null,
+													"customPricingText": null,
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "r7XkwwLHTsXUtuO6c3bHn",
+												"textValue": "Only a subset of locations available to every customer",
 												"plan": {
 													"contentfulId": "6VsRusFnST7kiCZuYxcEdb",
 													"contentTypeId": "planElementPlan",
@@ -4197,7 +4429,37 @@
 						"modalName": "Beat Zscaler Zero Trust",
 						"modalId": "beat-zscaler-zero-trust",
 						"modalType": "single-form",
-						"marketoForm": null,
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "2ToRbc0xBbh6UFnaETm9F9",
+							"bladeName": "Beat Zscaler Zero Trust 2022",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q1'22 WEB - GBL - Beat Zscaler Cloudflare Zero Trust Inbound Web Form",
+							"marketoFormHeaderText": "Cloudflare Zero Trust",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": "Learn more about how Cloudflare compares to Zscaler with this comparison brief.",
+							"marketoFormPdfDownload": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf"
+								},
+								"description": "Zero Trust implementation doesn't have to be so hard. Cloudflare helps you move quickly and nimbly as the future of networking evolves. Simple deployment, network resiliency, and swift innovation provide a stronger foundation for true transformation of networking, security, and applications."
+							},
+							"marketoFormPdfDownloadI18n": [],
+							"marketoFormAssetDownloadButtonText": "Download Now",
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4QByTU8u1mjNvpxr1PTeB1/e89b118b217ff62a0d8d6b44e21123ed/Cloudflare_vs._Zscaler_Comparison_Brief.pdf",
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": "orange",
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
 						"title": "Ready to explore Cloudflare Zero Trust?",
 						"regularCopy": "Fill out the form below, and a Cloudflare representative will help you evaluate Cloudflare vs. Zscaler.",
 						"splitFormDefaultTab": null,
