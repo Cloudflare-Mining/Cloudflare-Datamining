@@ -5,45 +5,23 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position Locations:</strong> Austin, TX</p>
-<p><strong>This is a hybrid role with <span style="text-decoration: underline;">3 days a week required</span> to be in the Austin office.&nbsp;</strong></p>
-<p>It’s an exciting time to join our rapidly growing Tax team and be a part of the fast growth the Company is experiencing. We are helping the business solve complex challenges while building out a sustainable infrastructure to support the Cloudflare of the future.</p>
-<h4><strong>About The Role</strong></h4>
-<p>The role will be part of the Indirect Tax function, supporting Cloudflare’s growing Indirect Tax responsibilities. This role will focus on domestic (U.S.) indirect tax, but will also support global indirect tax responsibilities. The key area of focus of this role will be to:</p>
+<h4>Available Locations: <strong>Lisbon, Portugal; London, UK</strong><br><br></h4>
+<h4><strong>About Cloudflare’s Product Management teams</strong></h4>
+<p>We are looking for a Product Manager intern to join our Product Management team, focusing on our Threat Intelligence Data Platform.&nbsp;</p>
+<p>The Product Management team at Cloudflare sits at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software. Cloudflare customers range from individual consumers to large multinational corporations and they use a wide range of products that help them make their sites and apps faster and more secure.&nbsp;</p>
+<p><strong>About the internship program</strong></p>
+<p>Interns at Cloudflare get to explore and work with some of the newest and most innovative advances in security, networking and performance. You will work closely with Software Engineers and designers to discover, invent, and build at the largest scale. You will be exploring challenges in data mining, machine learning,&nbsp; privacy and security, networking, storage, data management, and much more. You will be working in a fast-paced environment where you will be expected to take ownership of one or multiple features or products.&nbsp;</p>
+<p>PMs at Cloudflare are very technical. You will need a background in engineering, computer science, mathematics or statistics and are looking to explore a role that is very customer and business focused. You enjoy wearing multiple hats and have an entrepreneurial mindset.</p>
+<p>Aside from working on impactful projects, you will network and meet with our executives including our co-founders. All interns are paired with a mentor on the team to ramp up quickly and also with a buddy to connect with other folks across the company. Interns will present on their project to the company at the end of the summer.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Support management of Cloudflare’s indirect tax reporting responsibilities</li>
-	<li>Implement improvements to system, processes, control, and automation, with an eye towards long-term sustainability and scalability</li>
-	<li>Own key deliverables that make an immediate impact.&nbsp;</li>
-</ul>
-<p>You will report to the Senior Indirect Tax Manager, and primarily work with the Senior Indirect Tax Analyst, on our Tax team. We expect this role to be hybrid with some time in-office and some time remote. The candidate will need to be able to build successful relationships within Tax and across the broader company.</p>
-<h4><strong>What you’ll do</strong></h4>
-<ul>
-	<li>Prepare monthly reconciliations of transaction reports to activity and associated journal entries</li>
-	<li>Perform analysis for the accrual of use tax and preparation for compliance</li>
-	<li>Assist in the preparation and review of tax returns</li>
-	<li>Ensure timely and accurate filings to minimize assessments and penalties by maintaining the tax calendar</li>
-	<li>Assist with responses to tax inquiries from customers (including processing of exemption certificates), vendors, and internal departments &amp; tax jurisdictions</li>
-	<li>Support compilation of property tax data, working with external providers throughout the property tax cycle</li>
-	<li>Research and document conclusions for transactions</li>
-	<li>Support various system, process, controls, and automation implementation initiatives</li>
-	<li>Support indirect tax audits, as needed</li>
-	<li>Assist with other ad hoc projects</li>
-</ul>
-<h4><strong>Requirements</strong></h4>
-<ul>
-	<li>BA/BS Degree in Accountancy, or a similar field of study</li>
-	<li>1-2 years of indirect tax experience</li>
-	<li>Experience working in an ERP environment</li>
-	<li>Experience with Microsoft Office and Google products</li>
-	<li>Strong attention to detail and analytical, organizational, and problem-solving skills.</li>
-	<li>Ability to manage multiple projects and prioritize work independently.</li>
-	<li>Curiosity and drive to find the right answer.</li>
-</ul>
-<h4><strong>Nice to have:</strong></h4>
-<ul>
-	<li>CPA/CPA candidacy and/or Masters in Tax or Accounting</li>
-	<li>Proficiency with tax research tools</li>
-	<li>Experience with Avalara, NetSuite, Coupa and/or Blackline</li>
+	<li>Currently pursuing a degree in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</li>
+	<li>Demonstrated critical thinking skills and drive to learn and adapt to new technologies.</li>
+	<li>Solid interpersonal and organizational skills, with the ability to drive and implement ideas in a changing environment.</li>
+	<li>Analytical skills, and ability to solve highly strategic and difficult business problems</li>
+	<li>Exceptional people skills and empathy.</li>
+	<li>Interest and understanding of technical subjects and the internet.</li>
+	<li>Ability to commit to a 12 week (summer) internship.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

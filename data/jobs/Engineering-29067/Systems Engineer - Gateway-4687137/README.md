@@ -5,45 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position Locations:</strong> Austin, TX</p>
-<p><strong>This is a hybrid role with <span style="text-decoration: underline;">3 days a week required</span> to be in the Austin office.&nbsp;</strong></p>
-<p>It’s an exciting time to join our rapidly growing Tax team and be a part of the fast growth the Company is experiencing. We are helping the business solve complex challenges while building out a sustainable infrastructure to support the Cloudflare of the future.</p>
-<h4><strong>About The Role</strong></h4>
-<p>The role will be part of the Indirect Tax function, supporting Cloudflare’s growing Indirect Tax responsibilities. This role will focus on domestic (U.S.) indirect tax, but will also support global indirect tax responsibilities. The key area of focus of this role will be to:</p>
+<p><strong>Available Locations:</strong> Lisbon or Remote Portugal, London or Remote UK.</p>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base.</span></p>
+<p><span style="font-weight: 400;">The Cloudflare for Teams group within the Engineering organization is taking on the mission of ensuring the people and teams within an organization can access the tools they need to do their job safe from malware and other online threats with the speed and reliability that Cloudflare is known for.</span></p>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">In this role you’ll help us build Gateway, an ambitious product that aims to be the most secure and performant method for an organization’s devices to connect to the Internet. As an engineer on the Gateway team, you will focus on our high-performance global edge network data plane services and will also contribute to the control plane API’s that configure the edge services. You will be joining a </span><a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"><span style="font-weight: 400;">global team</span></a><span style="font-weight: 400;"> of bright, hard-working, and supportive engineers who really care about their craft.</span></p>
+<p><span style="font-weight: 400;">Example of systems that the team currently is building:</span></p>
 <ul>
-	<li>Support management of Cloudflare’s indirect tax reporting responsibilities</li>
-	<li>Implement improvements to system, processes, control, and automation, with an eye towards long-term sustainability and scalability</li>
-	<li>Own key deliverables that make an immediate impact.&nbsp;</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A forward-proxy service running on every machine of Cloudflare’s extensive edge network, responsible for inspecting, filtering, and blocking device requests based on an organization’s configured policy.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A DNS resolver running on our edge that leverages a Wirefilter based filtering rules engine.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Microservices that allow organizations to configure, manage, and observe their organization's devices and their respective traffic.</span></li>
 </ul>
-<p>You will report to the Senior Indirect Tax Manager, and primarily work with the Senior Indirect Tax Analyst, on our Tax team. We expect this role to be hybrid with some time in-office and some time remote. The candidate will need to be able to build successful relationships within Tax and across the broader company.</p>
-<h4><strong>What you’ll do</strong></h4>
+<p><span style="font-weight: 400;">Technologies we use:</span></p>
 <ul>
-	<li>Prepare monthly reconciliations of transaction reports to activity and associated journal entries</li>
-	<li>Perform analysis for the accrual of use tax and preparation for compliance</li>
-	<li>Assist in the preparation and review of tax returns</li>
-	<li>Ensure timely and accurate filings to minimize assessments and penalties by maintaining the tax calendar</li>
-	<li>Assist with responses to tax inquiries from customers (including processing of exemption certificates), vendors, and internal departments &amp; tax jurisdictions</li>
-	<li>Support compilation of property tax data, working with external providers throughout the property tax cycle</li>
-	<li>Research and document conclusions for transactions</li>
-	<li>Support various system, process, controls, and automation implementation initiatives</li>
-	<li>Support indirect tax audits, as needed</li>
-	<li>Assist with other ad hoc projects</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Gateway’s core edge services are written in Rust and deployed globally to 200+ data centers&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Our frontend is written in Typescript and React.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For service monitoring we use Prometheus and Grafana.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For service logging we use Elasticsearch and Kibana.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For product analytics we use Clickhouse and BigQuery.&nbsp;</span></li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<p><span style="font-weight: 400;">Because you’ll be </span><a href="https://blog.cloudflare.com/gateway-swg/"><span style="font-weight: 400;">solving problems of massive scale and significance</span></a><span style="font-weight: 400;">, and </span><a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"><span style="font-weight: 400;">shaping the future of the Internet</span></a><span style="font-weight: 400;">, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="font-weight: 400;">As an ideal candidate for this position, you are curious, hard-working, and passionate.</span></p>
+<p><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
 <ul>
-	<li>BA/BS Degree in Accountancy, or a similar field of study</li>
-	<li>1-2 years of indirect tax experience</li>
-	<li>Experience working in an ERP environment</li>
-	<li>Experience with Microsoft Office and Google products</li>
-	<li>Strong attention to detail and analytical, organizational, and problem-solving skills.</li>
-	<li>Ability to manage multiple projects and prioritize work independently.</li>
-	<li>Curiosity and drive to find the right answer.</li>
-</ul>
-<h4><strong>Nice to have:</strong></h4>
-<ul>
-	<li>CPA/CPA candidacy and/or Masters in Tax or Accounting</li>
-	<li>Proficiency with tax research tools</li>
-	<li>Experience with Avalara, NetSuite, Coupa and/or Blackline</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Rust, C++, or similar low level languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go and/or Typescript is a plus, but not required</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A strong grasp of networking protocols in Layers 3-7 of the OSI Model</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of HTTP protocols - including experience with HTTP/2 and bonus for HTTP/3 experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,46 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position Locations:</strong> Austin, TX</p>
-<p><strong>This is a hybrid role with <span style="text-decoration: underline;">3 days a week required</span> to be in the Austin office.&nbsp;</strong></p>
-<p>It’s an exciting time to join our rapidly growing Tax team and be a part of the fast growth the Company is experiencing. We are helping the business solve complex challenges while building out a sustainable infrastructure to support the Cloudflare of the future.</p>
-<h4><strong>About The Role</strong></h4>
-<p>The role will be part of the Indirect Tax function, supporting Cloudflare’s growing Indirect Tax responsibilities. This role will focus on domestic (U.S.) indirect tax, but will also support global indirect tax responsibilities. The key area of focus of this role will be to:</p>
+<p><strong>Available Locations: </strong>London or Remote UK, Munich or Remote Germany, Amsterdam or Remote Netherlands</p>
+<p><strong>About The Team</strong></p>
+<p>We build security products for our customers and work mostly in Go and Rust. One of our challenges is designing architecture that can withstand a huge scale of 50 million peak requests per second. Our flagship products are Managed Rules, Firewall Rules, Rate Limiting and Analytics.&nbsp;</p>
+<p>Software engineers will work with our Product Managers and Security Analysts to define managed protection products which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analysing data passing through our network. We also build systems to help customers understand this data themselves.</p>
+<p><strong>What you'll do</strong></p>
+<p>Working in the security portfolio, that includes the Firewall and Managed Rules, you will take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Support management of Cloudflare’s indirect tax reporting responsibilities</li>
-	<li>Implement improvements to system, processes, control, and automation, with an eye towards long-term sustainability and scalability</li>
-	<li>Own key deliverables that make an immediate impact.&nbsp;</li>
+	<li>Prior commercial software development experience</li>
+	<li>Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</li>
+	<li>Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</li>
+	<li>Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</li>
+	<li>Can analyse and communicate complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver</li>
+	<li>Driving communication and consensus across teams</li>
+	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
+	<li>A drive for continuous improvement when it comes to both operations and new product development</li>
 </ul>
-<p>You will report to the Senior Indirect Tax Manager, and primarily work with the Senior Indirect Tax Analyst, on our Tax team. We expect this role to be hybrid with some time in-office and some time remote. The candidate will need to be able to build successful relationships within Tax and across the broader company.</p>
-<h4><strong>What you’ll do</strong></h4>
+<p><strong>Bonus Points</strong></p>
+<p>These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</p>
 <ul>
-	<li>Prepare monthly reconciliations of transaction reports to activity and associated journal entries</li>
-	<li>Perform analysis for the accrual of use tax and preparation for compliance</li>
-	<li>Assist in the preparation and review of tax returns</li>
-	<li>Ensure timely and accurate filings to minimize assessments and penalties by maintaining the tax calendar</li>
-	<li>Assist with responses to tax inquiries from customers (including processing of exemption certificates), vendors, and internal departments &amp; tax jurisdictions</li>
-	<li>Support compilation of property tax data, working with external providers throughout the property tax cycle</li>
-	<li>Research and document conclusions for transactions</li>
-	<li>Support various system, process, controls, and automation implementation initiatives</li>
-	<li>Support indirect tax audits, as needed</li>
-	<li>Assist with other ad hoc projects</li>
+	<li>Deep knowledge of web servers and web protocols</li>
+	<li>Distributed systems</li>
+	<li>Logging pipelines</li>
+	<li>Production API design</li>
+	<li>Web security issues and industry standards</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
-<ul>
-	<li>BA/BS Degree in Accountancy, or a similar field of study</li>
-	<li>1-2 years of indirect tax experience</li>
-	<li>Experience working in an ERP environment</li>
-	<li>Experience with Microsoft Office and Google products</li>
-	<li>Strong attention to detail and analytical, organizational, and problem-solving skills.</li>
-	<li>Ability to manage multiple projects and prioritize work independently.</li>
-	<li>Curiosity and drive to find the right answer.</li>
-</ul>
-<h4><strong>Nice to have:</strong></h4>
-<ul>
-	<li>CPA/CPA candidacy and/or Masters in Tax or Accounting</li>
-	<li>Proficiency with tax research tools</li>
-	<li>Experience with Avalara, NetSuite, Coupa and/or Blackline</li>
-</ul>
+<h4><br><br></h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,45 +5,61 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Position Locations:</strong> Austin, TX</p>
-<p><strong>This is a hybrid role with <span style="text-decoration: underline;">3 days a week required</span> to be in the Austin office.&nbsp;</strong></p>
-<p>It’s an exciting time to join our rapidly growing Tax team and be a part of the fast growth the Company is experiencing. We are helping the business solve complex challenges while building out a sustainable infrastructure to support the Cloudflare of the future.</p>
-<h4><strong>About The Role</strong></h4>
-<p>The role will be part of the Indirect Tax function, supporting Cloudflare’s growing Indirect Tax responsibilities. This role will focus on domestic (U.S.) indirect tax, but will also support global indirect tax responsibilities. The key area of focus of this role will be to:</p>
+<p><strong>About the Role</strong></p>
+<p>An engineering role at Cloudflare provides an opportunity to address some big challenges, at scale.&nbsp; We believe that with our talented team, we can solve some of the biggest security, reliability and performance problems facing the Internet. Just how big?&nbsp;&nbsp;</p>
 <ul>
-	<li>Support management of Cloudflare’s indirect tax reporting responsibilities</li>
-	<li>Implement improvements to system, processes, control, and automation, with an eye towards long-term sustainability and scalability</li>
-	<li>Own key deliverables that make an immediate impact.&nbsp;</li>
+	<li>We have in excess of 15 Terabits of network transit capacity</li>
+	<li>We operate 250 Points-of-presence around the world</li>
+	<li>We serve more traffic than <em>Twitter, Amazon, Apple, Instagram, Bing, &amp; Wikipedia </em>combined</li>
+	<li>Anytime we push code, it immediately affects over 200 million internet users</li>
+	<li>Every day, up to 20,000 new customers sign-up for Cloudflare service</li>
+	<li>Every week, the average Internet user touches us more than 500 times</li>
 </ul>
-<p>You will report to the Senior Indirect Tax Manager, and primarily work with the Senior Indirect Tax Analyst, on our Tax team. We expect this role to be hybrid with some time in-office and some time remote. The candidate will need to be able to build successful relationships within Tax and across the broader company.</p>
-<h4><strong>What you’ll do</strong></h4>
+<p>We are looking for talented Software Engineers to build and develop the platform which makes Cloudflare customers place their trust in us.&nbsp; Our Software Engineers come from a variety of technical backgrounds and have built up their knowledge working in different environments. But the common factors across all of our reliability-focused engineers include a passion for automation, scalability, and operational excellence.&nbsp; Our Infrastructure Engineering team focuses on the automation to scale our infrastructure.</p>
+<p>Our team is well-funded and focused on building an extraordinary company.&nbsp; This is a superb opportunity to join a high-performing team and scale our high-growth network as Cloudflare’s business grows.&nbsp; You will build tools to constantly improve our scale and speed of deployment.&nbsp; You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale.&nbsp;&nbsp;&nbsp;</p>
+<p>Cloudflare Software Engineers focus on automating our infrastructure installations and decommissions at scale.&nbsp; We enable our Data Centre Engineering teams by allowing them to install new data centers, replace servers and networking in existing data centers as quickly and efficiently as possible while not impacting existing infrastructure and customer services.&nbsp; While our focus is on automating all infrastructure requirements, there is an element of ongoing operational support of Data Center Engineers and other teams.&nbsp; We also review upcoming hardware changes and update automation and configuration management to cater to these advances.</p>
+<p>Many of our Software Engineers have had the opportunity to work at multiple offices on interim and long-term project assignments. The ideal Software Engineering candidate has a passionate curiosity about how the Internet fundamentally works and has a strong knowledge of Linux and Hardware.&nbsp; We require strong coding ability in Bash, Python or Go. We prefer to hire experienced candidates; however raw skill trumps experience and we welcome strong junior applicants.</p>
+<p><strong>Requisite Skills</strong></p>
 <ul>
-	<li>Prepare monthly reconciliations of transaction reports to activity and associated journal entries</li>
-	<li>Perform analysis for the accrual of use tax and preparation for compliance</li>
-	<li>Assist in the preparation and review of tax returns</li>
-	<li>Ensure timely and accurate filings to minimize assessments and penalties by maintaining the tax calendar</li>
-	<li>Assist with responses to tax inquiries from customers (including processing of exemption certificates), vendors, and internal departments &amp; tax jurisdictions</li>
-	<li>Support compilation of property tax data, working with external providers throughout the property tax cycle</li>
-	<li>Research and document conclusions for transactions</li>
-	<li>Support various system, process, controls, and automation implementation initiatives</li>
-	<li>Support indirect tax audits, as needed</li>
-	<li>Assist with other ad hoc projects</li>
+	<li>Intermediate level software development skills in Python and Go</li>
+	<li>Linux systems administration experience</li>
+	<li>5 years of relevant Development experience</li>
+	<li>Strong skills in network services, including Rest APIs and HTTP</li>
 </ul>
-<h4><strong>Requirements</strong></h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BA/BS Degree in Accountancy, or a similar field of study</li>
-	<li>1-2 years of indirect tax experience</li>
-	<li>Experience working in an ERP environment</li>
-	<li>Experience with Microsoft Office and Google products</li>
-	<li>Strong attention to detail and analytical, organizational, and problem-solving skills.</li>
-	<li>Ability to manage multiple projects and prioritize work independently.</li>
-	<li>Curiosity and drive to find the right answer.</li>
+	<li>5 years of relevant work experience</li>
+	<li>Strong tooling and automations development experience</li>
+	<li>Network fundamentals DHCP, ARP, subnetting, routing, firewalls, IPv6</li>
+	<li>Configuration management systems such as Saltstack, Chef, Puppet or Ansible</li>
+	<li>Load balancing and reverse proxies such as Nginx, Varnish, HAProxy, Apache</li>
+	<li>SQL databases (Postgres or MySQL)</li>
+	<li>Time series databases (OpenTSDB, Graphite, Prometheus)</li>
+	<li>The ability to understand service and device metrics and visualize them using Grafana</li>
+	<li>Key/Value stores (Redis, KyotoTycoon, Cassandra, LevelDB)</li>
 </ul>
-<h4><strong>Nice to have:</strong></h4>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>CPA/CPA candidacy and/or Masters in Tax or Accounting</li>
-	<li>Proficiency with tax research tools</li>
-	<li>Experience with Avalara, NetSuite, Coupa and/or Blackline</li>
+	<li>Experience programming in C, C++, Rust or Go</li>
+	<li>Experience with continuous / rapid release engineering</li>
+	<li>Experience developing systems that are highly available and redundant across regions</li>
+	<li>High-bandwidth transit Internetworking and routing experience</li>
+	<li>Performance analysis and debugging with tools like perf, sar, strace, dtrace</li>
+	<li>Experience with the Linux kernel and Linux software packaging</li>
+	<li>Internetworking and BGP</li>
+</ul>
+<p><strong>Some tools that we use</strong></p>
+<ul>
+	<li>Apache Airflow&nbsp;</li>
+	<li>Salt</li>
+	<li>Netbox</li>
+	<li>Docker</li>
+	<li>Kubernetes</li>
+	<li>Nginx</li>
+	<li>Python</li>
+	<li>PostgreSQL</li>
+	<li>Redis</li>
+	<li>Prometheus</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
