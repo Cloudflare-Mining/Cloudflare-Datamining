@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/pagerules/settings": {
+	"GET /zones/{zone_id}/pagerules/settings": {
 		"description": "Returns a list of settings (and their details) that Page Rules can apply to matching requests.",
 		"operationId": "available-page-rules-settings-list-available-page-rules-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

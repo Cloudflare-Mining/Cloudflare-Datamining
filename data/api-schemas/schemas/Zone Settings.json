@@ -1,269 +1,11 @@
 {
-	"GET /zones/{zone_id}/settings/fonts": {
-		"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
-		"operationId": "zone-settings-get-fonts-setting",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "zone_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"allOf": [
-												{
-													"properties": {
-														"editable": {
-															"default": true,
-															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
-															"enum": [
-																true,
-																false
-															],
-															"readOnly": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier of the zone setting.",
-															"example": "development_mode",
-															"type": "string"
-														},
-														"modified_on": {
-															"description": "last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														},
-														"value": {
-															"description": "Current value of the zone setting.",
-															"example": "on"
-														}
-													},
-													"required": [
-														"id",
-														"value"
-													]
-												},
-												{
-													"properties": {
-														"id": {
-															"description": "ID of the zone setting.",
-															"enum": [
-																"fonts"
-															],
-															"example": "fonts"
-														},
-														"value": {
-															"default": "off",
-															"description": "Whether the feature is enabled or disabled.",
-															"enum": [
-																"on",
-																"off"
-															],
-															"type": "string"
-														}
-													}
-												}
-											],
-											"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
-											"title": "Cloudflare Fonts"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Get Cloudflare Fonts setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": []
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Get Cloudflare Fonts setting response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Cloudflare Fonts setting",
-		"tags": [
-			"Zone Settings"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /zones/{zone_identifier}/settings": {
+	"GET /zones/{zone_id}/settings": {
 		"description": "Available settings for your user in relation to a zone.",
 		"operationId": "zone-settings-get-all-zone-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2490,34 +2232,6 @@
 														"allOf": [
 															{
 																"properties": {
-																	"id": {
-																		"description": "Identifier of the zone setting.",
-																		"enum": [
-																			"origin_max_http_version"
-																		],
-																		"example": "origin_max_http_version"
-																	},
-																	"modified_on": {
-																		"description": "last time this setting was modified.",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id"
-																]
-															}
-														],
-														"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
-														"title": "Origin Max HTTP version"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
 																	"editable": {
 																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -3965,13 +3679,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/0rtt": {
+	"GET /zones/{zone_id}/settings/0rtt": {
 		"description": "Gets 0-RTT session resumption setting.",
 		"operationId": "zone-settings-get-0-rtt-session-resumption-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4237,13 +3951,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/advanced_ddos": {
+	"GET /zones/{zone_id}/settings/advanced_ddos": {
 		"description": "Advanced protection from Distributed Denial of Service (DDoS) attacks on your website. This is an uneditable value that is 'on' in the case of Business and Enterprise zones.",
 		"operationId": "zone-settings-get-advanced-ddos-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4509,13 +4223,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/always_online": {
+	"GET /zones/{zone_id}/settings/always_online": {
 		"description": "When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information.",
 		"operationId": "zone-settings-get-always-online-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4781,13 +4495,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/always_use_https": {
+	"GET /zones/{zone_id}/settings/always_use_https": {
 		"description": "Reply to all requests for URLs that use \"http\" with a 301 redirect to the equivalent \"https\" URL. If you only want to redirect for a subset of requests, consider creating an \"Always use HTTPS\" page rule.",
 		"operationId": "zone-settings-get-always-use-https-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5054,13 +4768,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/automatic_https_rewrites": {
+	"GET /zones/{zone_id}/settings/automatic_https_rewrites": {
 		"description": "Enable the Automatic HTTPS Rewrites feature for this zone.",
 		"operationId": "zone-settings-get-automatic-https-rewrites-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5327,13 +5041,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/automatic_platform_optimization": {
+	"GET /zones/{zone_id}/settings/automatic_platform_optimization": {
 		"description": "[Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/)\nserves your WordPress site from Cloudflare's edge network and caches\nthird-party fonts.\n",
 		"operationId": "zone-settings-get-automatic_platform_optimization-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5593,13 +5307,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/brotli": {
+	"GET /zones/{zone_id}/settings/brotli": {
 		"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 		"operationId": "zone-settings-get-brotli-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5865,13 +5579,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/browser_cache_ttl": {
+	"GET /zones/{zone_id}/settings/browser_cache_ttl": {
 		"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276).",
 		"operationId": "zone-settings-get-browser-cache-ttl-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6163,13 +5877,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/browser_check": {
+	"GET /zones/{zone_id}/settings/browser_check": {
 		"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086).",
 		"operationId": "zone-settings-get-browser-check-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6435,13 +6149,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/cache_level": {
+	"GET /zones/{zone_id}/settings/cache_level": {
 		"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256).",
 		"operationId": "zone-settings-get-cache-level-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6708,13 +6422,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/challenge_ttl": {
+	"GET /zones/{zone_id}/settings/challenge_ttl": {
 		"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136).",
 		"operationId": "zone-settings-get-challenge-ttl-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6992,13 +6706,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/ciphers": {
+	"GET /zones/{zone_id}/settings/ciphers": {
 		"description": "Gets ciphers setting.",
 		"operationId": "zone-settings-get-ciphers-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7269,13 +6983,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/development_mode": {
+	"GET /zones/{zone_id}/settings/development_mode": {
 		"description": "Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off.",
 		"operationId": "zone-settings-get-development-mode-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7547,13 +7261,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/early_hints": {
+	"GET /zones/{zone_id}/settings/early_hints": {
 		"description": "When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information.",
 		"operationId": "zone-settings-get-early-hints-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -7819,13 +7533,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/email_obfuscation": {
+	"GET /zones/{zone_id}/settings/email_obfuscation": {
 		"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016).",
 		"operationId": "zone-settings-get-email-obfuscation-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -8091,13 +7805,271 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/h2_prioritization": {
+	"GET /zones/{zone_id}/settings/fonts": {
+		"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
+		"operationId": "zone-settings-get-fonts-setting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"default": true,
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"example": "development_mode",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"example": "on"
+														}
+													},
+													"required": [
+														"id",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"enum": [
+																"fonts"
+															],
+															"example": "fonts"
+														},
+														"value": {
+															"default": "off",
+															"description": "Whether the feature is enabled or disabled.",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
+														}
+													}
+												}
+											],
+											"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
+											"title": "Cloudflare Fonts"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Cloudflare Fonts setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get Cloudflare Fonts setting response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Cloudflare Fonts setting",
+		"tags": [
+			"Zone Settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /zones/{zone_id}/settings/h2_prioritization": {
 		"description": "Gets HTTP/2 Edge Prioritization setting.\n",
 		"operationId": "zone-settings-get-h2_prioritization-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -8364,13 +8336,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/hotlink_protection": {
+	"GET /zones/{zone_id}/settings/hotlink_protection": {
 		"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026).",
 		"operationId": "zone-settings-get-hotlink-protection-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -8636,13 +8608,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/http2": {
+	"GET /zones/{zone_id}/settings/http2": {
 		"description": "Value of the HTTP2 setting.",
 		"operationId": "zone-settings-get-h-t-t-p-2-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -8908,13 +8880,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/http3": {
+	"GET /zones/{zone_id}/settings/http3": {
 		"description": "Value of the HTTP3 setting.",
 		"operationId": "zone-settings-get-h-t-t-p-3-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -9180,13 +9152,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/image_resizing": {
+	"GET /zones/{zone_id}/settings/image_resizing": {
 		"description": "Image Resizing provides on-demand resizing, conversion and optimisation\nfor images served through Cloudflare's network. Refer to the\n[Image Resizing documentation](https://developers.cloudflare.com/images/)\nfor more information.\n",
 		"operationId": "zone-settings-get-image_resizing-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -9453,13 +9425,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/ip_geolocation": {
+	"GET /zones/{zone_id}/settings/ip_geolocation": {
 		"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236).",
 		"operationId": "zone-settings-get-ip-geolocation-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -9725,13 +9697,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/ipv6": {
+	"GET /zones/{zone_id}/settings/ipv6": {
 		"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586).",
 		"operationId": "zone-settings-get-i-pv6-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -9997,13 +9969,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/min_tls_version": {
+	"GET /zones/{zone_id}/settings/min_tls_version": {
 		"description": "Gets Minimum TLS Version setting.",
 		"operationId": "zone-settings-get-minimum-tls-version-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -10272,13 +10244,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/minify": {
+	"GET /zones/{zone_id}/settings/minify": {
 		"description": "Automatically minify certain assets for your website. Refer to [Using Cloudflare Auto Minify](https://support.cloudflare.com/hc/en-us/articles/200168196) for more information.",
 		"operationId": "zone-settings-get-minify-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -10570,13 +10542,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/mirage": {
+	"GET /zones/{zone_id}/settings/mirage": {
 		"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to our [blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed)\nfor more information.\n",
 		"operationId": "zone-settings-get-mirage-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -10842,13 +10814,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/mobile_redirect": {
+	"GET /zones/{zone_id}/settings/mobile_redirect": {
 		"description": "Automatically redirect visitors on mobile devices to a mobile-optimized subdomain. Refer to [Understanding Cloudflare Mobile Redirect](https://support.cloudflare.com/hc/articles/200168336) for more information.",
 		"operationId": "zone-settings-get-mobile-redirect-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -11137,13 +11109,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/nel": {
+	"GET /zones/{zone_id}/settings/nel": {
 		"description": "Enable Network Error Logging reporting on your zone. (Beta)\n",
 		"operationId": "zone-settings-get-nel-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -11414,13 +11386,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/opportunistic_encryption": {
+	"GET /zones/{zone_id}/settings/opportunistic_encryption": {
 		"description": "Gets Opportunistic Encryption setting.",
 		"operationId": "zone-settings-get-opportunistic-encryption-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -11686,13 +11658,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/opportunistic_onion": {
+	"GET /zones/{zone_id}/settings/opportunistic_onion": {
 		"description": "Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes.",
 		"operationId": "zone-settings-get-opportunistic-onion-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -11959,13 +11931,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/orange_to_orange": {
+	"GET /zones/{zone_id}/settings/orange_to_orange": {
 		"description": "Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other\nzones also on Cloudflare.\n",
 		"operationId": "zone-settings-get-orange_to_orange-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -12231,13 +12203,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/origin_error_page_pass_thru": {
+	"GET /zones/{zone_id}/settings/origin_error_page_pass_thru": {
 		"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
 		"operationId": "zone-settings-get-enable-error-pages-on-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -12504,252 +12476,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/origin_max_http_version": {
-		"description": "The highest HTTP version Cloudflare will attempt to use with your\norigin. This setting allows Cloudflare to make HTTP/2 requests to your\norigin. (Refer to \n[Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/),\nfor more information.).\n",
-		"operationId": "zone-settings-get-origin_max_http_version-setting",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "zone_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"result": {
-											"allOf": [
-												{
-													"properties": {
-														"id": {
-															"description": "Identifier of the zone setting.",
-															"enum": [
-																"origin_max_http_version"
-															],
-															"example": "origin_max_http_version"
-														},
-														"modified_on": {
-															"description": "last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id"
-													]
-												}
-											],
-											"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
-											"title": "Origin Max HTTP version"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Get Origin Max HTTP Version setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": []
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Get Origin Max HTTP Version setting response failure"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Origin Max HTTP Version setting",
-		"tags": [
-			"Zone Settings"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /zones/{zone_identifier}/settings/polish": {
+	"GET /zones/{zone_id}/settings/polish": {
 		"description": "Automatically optimize image loading for website visitors on mobile\ndevices. Refer to our [blog post](http://blog.cloudflare.com/polish-solving-mobile-speed)\nfor more information.\n",
 		"operationId": "zone-settings-get-polish-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -13016,13 +12749,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/prefetch_preload": {
+	"GET /zones/{zone_id}/settings/prefetch_preload": {
 		"description": "Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-get-prefetch-preload-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -13289,13 +13022,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/proxy_read_timeout": {
+	"GET /zones/{zone_id}/settings/proxy_read_timeout": {
 		"description": "Maximum time between two read operations from origin.\n",
 		"operationId": "zone-settings-get-proxy_read_timeout-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -13557,13 +13290,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/pseudo_ipv4": {
+	"GET /zones/{zone_id}/settings/pseudo_ipv4": {
 		"description": "Value of the Pseudo IPv4 setting.",
 		"operationId": "zone-settings-get-pseudo-i-pv4-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -13830,13 +13563,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/response_buffering": {
+	"GET /zones/{zone_id}/settings/response_buffering": {
 		"description": "Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-get-response-buffering-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14103,13 +13836,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/rocket_loader": {
-		"description": "Rocket Loader is a general-purpose asynchronous JavaScript optimisation\nthat prioritises rendering your content while loading your site's\nJavascript asynchronously. Turning on Rocket Loader will immediately\nimprove a web page's rendering time sometimes measured as Time to First\nPaint (TTFP), and also the `window.onload` time (assuming there is\nJavaScript on the page). This can have a positive impact on your Google\nsearch ranking. When turned on, Rocket Loader will automatically defer\nthe loading of all Javascript referenced in your HTML, with no\nconfiguration required. Refer to \n[Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056)\nfor more information.\n",
+	"GET /zones/{zone_id}/settings/rocket_loader": {
+		"description": "Rocket Loader is a general-purpose asynchronous JavaScript optimisation\nthat prioritises rendering your content while loading your site's\nJavascript asynchronously. Turning on Rocket Loader will immediately\nimprove a web page's rendering time sometimes measured as Time to First\nPaint (TTFP), and also the `window.onload` time (assuming there is\nJavaScript on the page). This can have a positive impact on your Google\nsearch ranking. When turned on, Rocket Loader will automatically defer\nthe loading of all Javascript referenced in your HTML, with no\nconfiguration required. Refer to\n[Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056)\nfor more information.\n",
 		"operationId": "zone-settings-get-rocket_loader-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14375,13 +14108,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/security_header": {
+	"GET /zones/{zone_id}/settings/security_header": {
 		"description": "Cloudflare security header for a zone.",
 		"operationId": "zone-settings-get-security-header-(-hsts)-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14677,13 +14410,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/security_level": {
+	"GET /zones/{zone_id}/settings/security_level": {
 		"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056).",
 		"operationId": "zone-settings-get-security-level-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -14953,13 +14686,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/server_side_exclude": {
+	"GET /zones/{zone_id}/settings/server_side_exclude": {
 		"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036).",
 		"operationId": "zone-settings-get-server-side-exclude-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -15225,13 +14958,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/sort_query_string_for_cache": {
+	"GET /zones/{zone_id}/settings/sort_query_string_for_cache": {
 		"description": "Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-get-enable-query-string-sort-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -15498,13 +15231,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/ssl": {
+	"GET /zones/{zone_id}/settings/ssl": {
 		"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416).",
 		"operationId": "zone-settings-get-ssl-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -15772,13 +15505,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/ssl_recommender": {
+	"GET /zones/{zone_id}/settings/ssl_recommender": {
 		"description": "Enrollment in the SSL/TLS Recommender service which tries to detect and\nrecommend (by sending periodic emails) the most secure SSL/TLS setting\nyour origin servers support.\n",
 		"operationId": "zone-settings-get-ssl_recommender-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16005,13 +15738,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/tls_1_3": {
+	"GET /zones/{zone_id}/settings/tls_1_3": {
 		"description": "Gets TLS 1.3 setting enabled for a zone.",
 		"operationId": "zone-settings-get-tls-1.-3-setting-enabled-for-a-zone",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16279,13 +16012,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/tls_client_auth": {
+	"GET /zones/{zone_id}/settings/tls_client_auth": {
 		"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only).",
 		"operationId": "zone-settings-get-tls-client-auth-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16551,13 +16284,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/true_client_ip_header": {
+	"GET /zones/{zone_id}/settings/true_client_ip_header": {
 		"description": "Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-get-true-client-ip-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16824,13 +16557,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/waf": {
+	"GET /zones/{zone_id}/settings/waf": {
 		"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016).",
 		"operationId": "zone-settings-get-web-application-firewall-(-waf)-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17096,13 +16829,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/webp": {
+	"GET /zones/{zone_id}/settings/webp": {
 		"description": "When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image.",
 		"operationId": "zone-settings-get-web-p-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17368,13 +17101,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/settings/websockets": {
+	"GET /zones/{zone_id}/settings/websockets": {
 		"description": "Gets Websockets setting. For more information about Websockets, please refer to [Using Cloudflare with WebSockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Using-Cloudflare-with-WebSockets).",
 		"operationId": "zone-settings-get-web-sockets-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17640,294 +17373,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_id}/settings/fonts": {
-		"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
-		"operationId": "zone-settings-change-fonts-setting",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "zone_id",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"value": {
-								"default": "off",
-								"description": "Whether the feature is enabled or disabled.",
-								"enum": [
-									"on",
-									"off"
-								],
-								"type": "string"
-							}
-						},
-						"required": [
-							"value"
-						]
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"properties": {
-										"errors": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"messages": {
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										},
-										"success": {
-											"description": "Whether the API call was successful",
-											"example": true,
-											"type": "boolean"
-										}
-									},
-									"required": [
-										"success",
-										"errors",
-										"messages"
-									],
-									"type": "object"
-								},
-								{
-									"properties": {
-										"result": {
-											"allOf": [
-												{
-													"properties": {
-														"editable": {
-															"default": true,
-															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
-															"enum": [
-																true,
-																false
-															],
-															"readOnly": true,
-															"type": "boolean"
-														},
-														"id": {
-															"description": "Identifier of the zone setting.",
-															"example": "development_mode",
-															"type": "string"
-														},
-														"modified_on": {
-															"description": "last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														},
-														"value": {
-															"description": "Current value of the zone setting.",
-															"example": "on"
-														}
-													},
-													"required": [
-														"id",
-														"value"
-													]
-												},
-												{
-													"properties": {
-														"id": {
-															"description": "ID of the zone setting.",
-															"enum": [
-																"fonts"
-															],
-															"example": "fonts"
-														},
-														"value": {
-															"default": "off",
-															"description": "Whether the feature is enabled or disabled.",
-															"enum": [
-																"on",
-																"off"
-															],
-															"type": "string"
-														}
-													}
-												}
-											],
-											"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
-											"title": "Cloudflare Fonts"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Change Cloudflare Fonts setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": []
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Change Cloudflare Fonts setting response failure"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Change Cloudflare Fonts setting",
-		"tags": [
-			"Zone Settings"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:edit"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"PATCH /zones/{zone_identifier}/settings": {
+	"PATCH /zones/{zone_id}/settings": {
 		"description": "Edit settings for a zone.",
 		"operationId": "zone-settings-edit-zone-settings-info",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -20104,34 +19556,6 @@
 											"default": "off",
 											"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
 											"title": "Error Pages On"
-										},
-										{
-											"allOf": [
-												{
-													"properties": {
-														"id": {
-															"description": "Identifier of the zone setting.",
-															"enum": [
-																"origin_max_http_version"
-															],
-															"example": "origin_max_http_version"
-														},
-														"modified_on": {
-															"description": "last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id"
-													]
-												}
-											],
-											"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
-											"title": "Origin Max HTTP version"
 										},
 										{
 											"allOf": [
@@ -23693,34 +23117,6 @@
 														"allOf": [
 															{
 																"properties": {
-																	"id": {
-																		"description": "Identifier of the zone setting.",
-																		"enum": [
-																			"origin_max_http_version"
-																		],
-																		"example": "origin_max_http_version"
-																	},
-																	"modified_on": {
-																		"description": "last time this setting was modified.",
-																		"example": "2014-01-01T05:20:00.12345Z",
-																		"format": "date-time",
-																		"nullable": true,
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"id"
-																]
-															}
-														],
-														"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
-														"title": "Origin Max HTTP version"
-													},
-													{
-														"allOf": [
-															{
-																"properties": {
 																	"editable": {
 																		"default": true,
 																		"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
@@ -25168,13 +24564,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/0rtt": {
+	"PATCH /zones/{zone_id}/settings/0rtt": {
 		"description": "Changes the 0-RTT session resumption setting.",
 		"operationId": "zone-settings-change-0-rtt-session-resumption-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -25463,13 +24859,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/always_online": {
+	"PATCH /zones/{zone_id}/settings/always_online": {
 		"description": "When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information.",
 		"operationId": "zone-settings-change-always-online-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -25758,13 +25154,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/always_use_https": {
+	"PATCH /zones/{zone_id}/settings/always_use_https": {
 		"description": "Reply to all requests for URLs that use \"http\" with a 301 redirect to the equivalent \"https\" URL. If you only want to redirect for a subset of requests, consider creating an \"Always use HTTPS\" page rule.",
 		"operationId": "zone-settings-change-always-use-https-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -26054,13 +25450,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/automatic_https_rewrites": {
+	"PATCH /zones/{zone_id}/settings/automatic_https_rewrites": {
 		"description": "Enable the Automatic HTTPS Rewrites feature for this zone.",
 		"operationId": "zone-settings-change-automatic-https-rewrites-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -26350,13 +25746,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/automatic_platform_optimization": {
+	"PATCH /zones/{zone_id}/settings/automatic_platform_optimization": {
 		"description": "[Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/)\nserves your WordPress site from Cloudflare's edge network and caches\nthird-party fonts.\n",
 		"operationId": "zone-settings-change-automatic_platform_optimization-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -26685,13 +26081,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/brotli": {
+	"PATCH /zones/{zone_id}/settings/brotli": {
 		"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 		"operationId": "zone-settings-change-brotli-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -26980,13 +26376,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/browser_cache_ttl": {
+	"PATCH /zones/{zone_id}/settings/browser_cache_ttl": {
 		"description": "Browser Cache TTL (in seconds) specifies how long Cloudflare-cached resources will remain on your visitors' computers. Cloudflare will honor any larger times specified by your server. (https://support.cloudflare.com/hc/en-us/articles/200168276).",
 		"operationId": "zone-settings-change-browser-cache-ttl-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -27327,13 +26723,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/browser_check": {
+	"PATCH /zones/{zone_id}/settings/browser_check": {
 		"description": "Browser Integrity Check is similar to Bad Behavior and looks for common HTTP headers abused most commonly by spammers and denies access to your page.  It will also challenge visitors that do not have a user agent or a non standard user agent (also commonly used by abuse bots, crawlers or visitors). (https://support.cloudflare.com/hc/en-us/articles/200170086).",
 		"operationId": "zone-settings-change-browser-check-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -27622,13 +27018,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/cache_level": {
+	"PATCH /zones/{zone_id}/settings/cache_level": {
 		"description": "Cache Level functions based off the setting level. The basic setting will cache most static resources (i.e., css, images, and JavaScript). The simplified setting will ignore the query string when delivering a cached resource. The aggressive setting will cache all static resources, including ones with a query string. (https://support.cloudflare.com/hc/en-us/articles/200168256).",
 		"operationId": "zone-settings-change-cache-level-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -27919,13 +27315,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/challenge_ttl": {
+	"PATCH /zones/{zone_id}/settings/challenge_ttl": {
 		"description": "Specify how long a visitor is allowed access to your site after successfully completing a challenge (such as a CAPTCHA). After the TTL has expired the visitor will have to complete a new challenge. We recommend a 15 - 45 minute setting and will attempt to honor any setting above 45 minutes. (https://support.cloudflare.com/hc/en-us/articles/200170136).",
 		"operationId": "zone-settings-change-challenge-ttl-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -28238,13 +27634,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/ciphers": {
+	"PATCH /zones/{zone_id}/settings/ciphers": {
 		"description": "Changes ciphers setting.",
 		"operationId": "zone-settings-change-ciphers-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -28542,13 +27938,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/development_mode": {
+	"PATCH /zones/{zone_id}/settings/development_mode": {
 		"description": "Development Mode temporarily allows you to enter development mode for your websites if you need to make changes to your site. This will bypass Cloudflare's accelerated cache and slow down your site, but is useful if you are making changes to cacheable content (like images, css, or JavaScript) and would like to see those changes right away. Once entered, development mode will last for 3 hours and then automatically toggle off.",
 		"operationId": "zone-settings-change-development-mode-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -28843,13 +28239,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/early_hints": {
+	"PATCH /zones/{zone_id}/settings/early_hints": {
 		"description": "When enabled, Cloudflare will attempt to speed up overall page loads by serving `103` responses with `Link` headers from the final response. Refer to [Early Hints](https://developers.cloudflare.com/cache/about/early-hints) for more information.",
 		"operationId": "zone-settings-change-early-hints-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29138,13 +28534,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/email_obfuscation": {
+	"PATCH /zones/{zone_id}/settings/email_obfuscation": {
 		"description": "Encrypt email adresses on your web page from bots, while keeping them visible to humans. (https://support.cloudflare.com/hc/en-us/articles/200170016).",
 		"operationId": "zone-settings-change-email-obfuscation-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29433,13 +28829,294 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/h2_prioritization": {
+	"PATCH /zones/{zone_id}/settings/fonts": {
+		"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
+		"operationId": "zone-settings-change-fonts-setting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"value": {
+								"default": "off",
+								"description": "Whether the feature is enabled or disabled.",
+								"enum": [
+									"on",
+									"off"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"editable": {
+															"default": true,
+															"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+															"enum": [
+																true,
+																false
+															],
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"id": {
+															"description": "Identifier of the zone setting.",
+															"example": "development_mode",
+															"type": "string"
+														},
+														"modified_on": {
+															"description": "last time this setting was modified.",
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"value": {
+															"description": "Current value of the zone setting.",
+															"example": "on"
+														}
+													},
+													"required": [
+														"id",
+														"value"
+													]
+												},
+												{
+													"properties": {
+														"id": {
+															"description": "ID of the zone setting.",
+															"enum": [
+																"fonts"
+															],
+															"example": "fonts"
+														},
+														"value": {
+															"default": "off",
+															"description": "Whether the feature is enabled or disabled.",
+															"enum": [
+																"on",
+																"off"
+															],
+															"type": "string"
+														}
+													}
+												}
+											],
+											"description": "Enhance your website's font delivery with Cloudflare Fonts. Deliver Google Hosted fonts from your own domain,\nboost performance, and enhance user privacy. Refer to the Cloudflare Fonts documentation for more information.\n",
+											"title": "Cloudflare Fonts"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Change Cloudflare Fonts setting response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Change Cloudflare Fonts setting response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Change Cloudflare Fonts setting",
+		"tags": [
+			"Zone Settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/settings/h2_prioritization": {
 		"description": "Gets HTTP/2 Edge Prioritization setting.\n",
 		"operationId": "zone-settings-change-h2_prioritization-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29782,13 +29459,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/hotlink_protection": {
+	"PATCH /zones/{zone_id}/settings/hotlink_protection": {
 		"description": "When enabled, the Hotlink Protection option ensures that other sites cannot suck up your bandwidth by building pages that use images hosted on your site. Anytime a request for an image on your site hits Cloudflare, we check to ensure that it's not another site requesting them. People will still be able to download and view images from your page, but other sites won't be able to steal them for use on their own pages. (https://support.cloudflare.com/hc/en-us/articles/200170026).",
 		"operationId": "zone-settings-change-hotlink-protection-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -30077,13 +29754,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/http2": {
+	"PATCH /zones/{zone_id}/settings/http2": {
 		"description": "Value of the HTTP2 setting.",
 		"operationId": "zone-settings-change-h-t-t-p-2-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -30372,13 +30049,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/http3": {
+	"PATCH /zones/{zone_id}/settings/http3": {
 		"description": "Value of the HTTP3 setting.",
 		"operationId": "zone-settings-change-h-t-t-p-3-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -30667,13 +30344,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/image_resizing": {
+	"PATCH /zones/{zone_id}/settings/image_resizing": {
 		"description": "Image Resizing provides on-demand resizing, conversion and optimisation\nfor images served through Cloudflare's network. Refer to the\n[Image Resizing documentation](https://developers.cloudflare.com/images/)\nfor more information.\n",
 		"operationId": "zone-settings-change-image_resizing-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -31016,13 +30693,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/ip_geolocation": {
+	"PATCH /zones/{zone_id}/settings/ip_geolocation": {
 		"description": "Enable IP Geolocation to have Cloudflare geolocate visitors to your website and pass the country code to you. (https://support.cloudflare.com/hc/en-us/articles/200168236).",
 		"operationId": "zone-settings-change-ip-geolocation-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -31311,13 +30988,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/ipv6": {
+	"PATCH /zones/{zone_id}/settings/ipv6": {
 		"description": "Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.cloudflare.com/hc/en-us/articles/200168586).",
 		"operationId": "zone-settings-change-i-pv6-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -31606,13 +31283,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/min_tls_version": {
+	"PATCH /zones/{zone_id}/settings/min_tls_version": {
 		"description": "Changes Minimum TLS Version setting.",
 		"operationId": "zone-settings-change-minimum-tls-version-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -31906,13 +31583,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/minify": {
+	"PATCH /zones/{zone_id}/settings/minify": {
 		"description": "Automatically minify certain assets for your website. Refer to [Using Cloudflare Auto Minify](https://support.cloudflare.com/hc/en-us/articles/200168196) for more information.",
 		"operationId": "zone-settings-change-minify-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -32253,13 +31930,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/mirage": {
+	"PATCH /zones/{zone_id}/settings/mirage": {
 		"description": "Automatically optimize image loading for website visitors on mobile devices. Refer to our [blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed) for more information.",
 		"operationId": "zone-settings-change-web-mirage-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -32548,13 +32225,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/mobile_redirect": {
+	"PATCH /zones/{zone_id}/settings/mobile_redirect": {
 		"description": "Automatically redirect visitors on mobile devices to a mobile-optimized subdomain. Refer to [Understanding Cloudflare Mobile Redirect](https://support.cloudflare.com/hc/articles/200168336) for more information.",
 		"operationId": "zone-settings-change-mobile-redirect-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -32889,13 +32566,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/nel": {
+	"PATCH /zones/{zone_id}/settings/nel": {
 		"description": "Automatically optimize image loading for website visitors on mobile devices. Refer to our [blog post](http://blog.cloudflare.com/nel-solving-mobile-speed) for more information.",
 		"operationId": "zone-settings-change-nel-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -33246,13 +32923,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/opportunistic_encryption": {
+	"PATCH /zones/{zone_id}/settings/opportunistic_encryption": {
 		"description": "Changes Opportunistic Encryption setting.",
 		"operationId": "zone-settings-change-opportunistic-encryption-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -33541,13 +33218,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/opportunistic_onion": {
+	"PATCH /zones/{zone_id}/settings/opportunistic_onion": {
 		"description": "Add an Alt-Svc header to all legitimate requests from Tor, allowing the connection to use our onion services instead of exit nodes.",
 		"operationId": "zone-settings-change-opportunistic-onion-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -33837,13 +33514,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/orange_to_orange": {
+	"PATCH /zones/{zone_id}/settings/orange_to_orange": {
 		"description": "Orange to Orange (O2O) allows zones on Cloudflare to CNAME to other\nzones also on Cloudflare.\n",
 		"operationId": "zone-settings-change-orange_to_orange-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -34184,13 +33861,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/origin_error_page_pass_thru": {
+	"PATCH /zones/{zone_id}/settings/origin_error_page_pass_thru": {
 		"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
 		"operationId": "zone-settings-change-enable-error-pages-on-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -34480,294 +34157,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/origin_max_http_version": {
-		"description": "The highest HTTP version Cloudflare will attempt to use with your\norigin. This setting allows Cloudflare to make HTTP/2 requests to your\norigin. (Refer to \n[Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/),\nfor more information.).\n",
-		"operationId": "zone-settings-change-origin_max_http_version-setting",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "zone_identifier",
-				"required": true,
-				"schema": {
-					"description": "Identifier",
-					"example": "023e105f4ecef8ad9ca31a8372d0c353",
-					"maxLength": 32,
-					"type": "string"
-				}
-			}
-		],
-		"requestBody": {
-			"content": {
-				"application/json": {
-					"schema": {
-						"properties": {
-							"value": {
-								"allOf": [
-									{
-										"properties": {
-											"id": {
-												"description": "Identifier of the zone setting.",
-												"enum": [
-													"origin_max_http_version"
-												],
-												"example": "origin_max_http_version"
-											},
-											"modified_on": {
-												"description": "last time this setting was modified.",
-												"example": "2014-01-01T05:20:00.12345Z",
-												"format": "date-time",
-												"nullable": true,
-												"readOnly": true,
-												"type": "string"
-											}
-										},
-										"required": [
-											"id"
-										]
-									}
-								],
-								"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
-								"title": "Origin Max HTTP version"
-							}
-						},
-						"required": [
-							"value"
-						]
-					}
-				}
-			},
-			"required": true
-		},
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"allOf": [
-								{
-									"allOf": [
-										{
-											"properties": {
-												"errors": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"messages": {
-													"example": [],
-													"items": {
-														"properties": {
-															"code": {
-																"minimum": 1000,
-																"type": "integer"
-															},
-															"message": {
-																"type": "string"
-															}
-														},
-														"required": [
-															"code",
-															"message"
-														],
-														"type": "object",
-														"uniqueItems": true
-													},
-													"type": "array"
-												},
-												"success": {
-													"description": "Whether the API call was successful",
-													"example": true,
-													"type": "boolean"
-												}
-											},
-											"required": [
-												"success",
-												"errors",
-												"messages"
-											],
-											"type": "object"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
-										}
-									]
-								},
-								{
-									"properties": {
-										"result": {
-											"allOf": [
-												{
-													"properties": {
-														"id": {
-															"description": "Identifier of the zone setting.",
-															"enum": [
-																"origin_max_http_version"
-															],
-															"example": "origin_max_http_version"
-														},
-														"modified_on": {
-															"description": "last time this setting was modified.",
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"nullable": true,
-															"readOnly": true,
-															"type": "string"
-														}
-													},
-													"required": [
-														"id"
-													]
-												}
-											],
-											"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.).",
-											"title": "Origin Max HTTP version"
-										}
-									}
-								}
-							]
-						}
-					}
-				},
-				"description": "Change Origin Max HTTP Version setting response"
-			},
-			"4XX": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": [
-										{
-											"code": 7003,
-											"message": "No route for the URI"
-										}
-									],
-									"minLength": 1
-								},
-								"messages": {
-									"allOf": [
-										{
-											"example": [],
-											"items": {
-												"properties": {
-													"code": {
-														"minimum": 1000,
-														"type": "integer"
-													},
-													"message": {
-														"type": "string"
-													}
-												},
-												"required": [
-													"code",
-													"message"
-												],
-												"type": "object",
-												"uniqueItems": true
-											},
-											"type": "array"
-										}
-									],
-									"example": []
-								},
-								"result": {
-									"nullable": true,
-									"type": "object"
-								},
-								"success": {
-									"description": "Whether the API call was successful",
-									"example": false,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"success",
-								"errors",
-								"messages",
-								"result"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Change Origin Max HTTP Version setting response failure"
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			},
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Change Origin Max HTTP Version setting",
-		"tags": [
-			"Zone Settings"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"#zone_settings:edit"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"PATCH /zones/{zone_identifier}/settings/polish": {
+	"PATCH /zones/{zone_id}/settings/polish": {
 		"description": "Automatically optimize image loading for website visitors on mobile devices. Refer to our [blog post](http://blog.cloudflare.com/polish-solving-mobile-speed) for more information.",
 		"operationId": "zone-settings-change-polish-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -35110,13 +34506,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/prefetch_preload": {
+	"PATCH /zones/{zone_id}/settings/prefetch_preload": {
 		"description": "Cloudflare will prefetch any URLs that are included in the response headers. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-change-prefetch-preload-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -35406,13 +34802,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/proxy_read_timeout": {
+	"PATCH /zones/{zone_id}/settings/proxy_read_timeout": {
 		"description": "Maximum time between two read operations from origin.\n",
 		"operationId": "zone-settings-change-proxy_read_timeout-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -35745,13 +35141,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/pseudo_ipv4": {
+	"PATCH /zones/{zone_id}/settings/pseudo_ipv4": {
 		"description": "Value of the Pseudo IPv4 setting.",
 		"operationId": "zone-settings-change-pseudo-i-pv4-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -36042,13 +35438,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/response_buffering": {
+	"PATCH /zones/{zone_id}/settings/response_buffering": {
 		"description": "Enables or disables buffering of responses from the proxied server. Cloudflare may buffer the whole payload to deliver it at once to the client versus allowing it to be delivered in chunks. By default, the proxied server streams directly and is not buffered by Cloudflare. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-change-response-buffering-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -36338,13 +35734,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/rocket_loader": {
-		"description": "Rocket Loader is a general-purpose asynchronous JavaScript optimisation\nthat prioritises rendering your content while loading your site's\nJavascript asynchronously. Turning on Rocket Loader will immediately\nimprove a web page's rendering time sometimes measured as Time to First\nPaint (TTFP), and also the `window.onload` time (assuming there is\nJavaScript on the page). This can have a positive impact on your Google\nsearch ranking. When turned on, Rocket Loader will automatically defer\nthe loading of all Javascript referenced in your HTML, with no\nconfiguration required. Refer to \n[Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056)\nfor more information.\n",
+	"PATCH /zones/{zone_id}/settings/rocket_loader": {
+		"description": "Rocket Loader is a general-purpose asynchronous JavaScript optimisation\nthat prioritises rendering your content while loading your site's\nJavascript asynchronously. Turning on Rocket Loader will immediately\nimprove a web page's rendering time sometimes measured as Time to First\nPaint (TTFP), and also the `window.onload` time (assuming there is\nJavaScript on the page). This can have a positive impact on your Google\nsearch ranking. When turned on, Rocket Loader will automatically defer\nthe loading of all Javascript referenced in your HTML, with no\nconfiguration required. Refer to\n[Understanding Rocket Loader](https://support.cloudflare.com/hc/articles/200168056)\nfor more information.\n",
 		"operationId": "zone-settings-change-rocket_loader-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -36685,13 +36081,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/security_header": {
+	"PATCH /zones/{zone_id}/settings/security_header": {
 		"description": "Cloudflare security header for a zone.",
 		"operationId": "zone-settings-change-security-header-(-hsts)-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -37040,13 +36436,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/security_level": {
+	"PATCH /zones/{zone_id}/settings/security_level": {
 		"description": "Choose the appropriate security profile for your website, which will automatically adjust each of the security settings. If you choose to customize an individual security setting, the profile will become Custom. (https://support.cloudflare.com/hc/en-us/articles/200170056).",
 		"operationId": "zone-settings-change-security-level-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -37343,13 +36739,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/server_side_exclude": {
+	"PATCH /zones/{zone_id}/settings/server_side_exclude": {
 		"description": "If there is sensitive content on your website that you want visible to real visitors, but that you want to hide from suspicious visitors, all you have to do is wrap the content with Cloudflare SSE tags. Wrap any content that you want to be excluded from suspicious visitors in the following SSE tags: <!--sse--><!--/sse-->. For example: <!--sse-->  Bad visitors won't see my phone number, 555-555-5555 <!--/sse-->. Note: SSE only will work with HTML. If you have HTML minification enabled, you won't see the SSE tags in your HTML source when it's served through Cloudflare. SSE will still function in this case, as Cloudflare's HTML minification and SSE functionality occur on-the-fly as the resource moves through our network to the visitor's computer. (https://support.cloudflare.com/hc/en-us/articles/200170036).",
 		"operationId": "zone-settings-change-server-side-exclude-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -37638,13 +37034,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/sort_query_string_for_cache": {
+	"PATCH /zones/{zone_id}/settings/sort_query_string_for_cache": {
 		"description": "Cloudflare will treat files with the same query strings as the same file in cache, regardless of the order of the query strings. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-change-enable-query-string-sort-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -37934,13 +37330,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/ssl": {
+	"PATCH /zones/{zone_id}/settings/ssl": {
 		"description": "SSL encrypts your visitor's connection and safeguards credit card numbers and other personal data to and from your website. SSL can take up to 5 minutes to fully activate. Requires Cloudflare active on your root domain or www domain. Off: no SSL between the visitor and Cloudflare, and no SSL between Cloudflare and your web server  (all HTTP traffic). Flexible: SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, but no SSL between Cloudflare and your web server. You don't need to have an SSL cert on your web server, but your vistors will still see the site as being HTTPS enabled. Full:  SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have your own SSL cert or self-signed cert at the very least. Full (Strict): SSL between the visitor and Cloudflare -- visitor sees HTTPS on your site, and SSL between Cloudflare and your web server. You'll need to have a valid SSL certificate installed on your web server. This certificate must be signed by a certificate authority, have an expiration date in the future, and respond for the request domain name (hostname). (https://support.cloudflare.com/hc/en-us/articles/200170416).",
 		"operationId": "zone-settings-change-ssl-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -38233,13 +37629,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/ssl_recommender": {
+	"PATCH /zones/{zone_id}/settings/ssl_recommender": {
 		"description": "Enrollment in the SSL/TLS Recommender service which tries to detect and\nrecommend (by sending periodic emails) the most secure SSL/TLS setting\nyour origin servers support.\n",
 		"operationId": "zone-settings-change-ssl_recommender-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -38502,13 +37898,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/tls_1_3": {
+	"PATCH /zones/{zone_id}/settings/tls_1_3": {
 		"description": "Changes TLS 1.3 setting.",
 		"operationId": "zone-settings-change-tls-1.-3-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -38800,13 +38196,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/tls_client_auth": {
+	"PATCH /zones/{zone_id}/settings/tls_client_auth": {
 		"description": "TLS Client Auth requires Cloudflare to connect to your origin server using a client certificate (Enterprise Only).",
 		"operationId": "zone-settings-change-tls-client-auth-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -39095,13 +38491,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/true_client_ip_header": {
+	"PATCH /zones/{zone_id}/settings/true_client_ip_header": {
 		"description": "Allows customer to continue to use True Client IP (Akamai feature) in the headers we send to the origin. This is limited to Enterprise Zones.",
 		"operationId": "zone-settings-change-true-client-ip-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -39391,13 +38787,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/waf": {
+	"PATCH /zones/{zone_id}/settings/waf": {
 		"description": "The WAF examines HTTP requests to your website.  It inspects both GET and POST requests and applies rules to help filter out illegitimate traffic from legitimate website visitors. The Cloudflare WAF inspects website addresses or URLs to detect anything out of the ordinary. If the Cloudflare WAF determines suspicious user behavior, then the WAF will 'challenge' the web visitor with a page that asks them to submit a CAPTCHA successfully  to continue their action. If the challenge is failed, the action will be stopped. What this means is that Cloudflare's WAF will block any traffic identified as illegitimate before it reaches your origin web server. (https://support.cloudflare.com/hc/en-us/articles/200172016).",
 		"operationId": "zone-settings-change-web-application-firewall-(-waf)-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -39686,13 +39082,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/webp": {
+	"PATCH /zones/{zone_id}/settings/webp": {
 		"description": "When the client requesting the image supports the WebP image codec, and WebP offers a performance advantage over the original image format, Cloudflare will serve a WebP version of the original image.",
 		"operationId": "zone-settings-change-web-p-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -39981,13 +39377,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/settings/websockets": {
+	"PATCH /zones/{zone_id}/settings/websockets": {
 		"description": "Changes Websockets setting. For more information about Websockets, please refer to [Using Cloudflare with WebSockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Using-Cloudflare-with-WebSockets).",
 		"operationId": "zone-settings-change-web-sockets-setting",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

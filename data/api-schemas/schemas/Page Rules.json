@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/pagerules/{identifier}": {
+	"DELETE /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Deletes an existing Page Rule.",
 		"operationId": "page-rules-delete-a-page-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pagerule_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -363,13 +363,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/pagerules": {
+	"GET /zones/{zone_id}/pagerules": {
 		"description": "Fetches Page Rules in a zone.",
 		"operationId": "page-rules-list-page-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1088,13 +1088,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/pagerules/{identifier}": {
+	"GET /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Fetches the details of a Page Rule.",
 		"operationId": "page-rules-get-a-page-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pagerule_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1106,7 +1106,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1456,13 +1456,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/pagerules/{identifier}": {
+	"PATCH /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Updates one or more fields of an existing Page Rule.",
 		"operationId": "page-rules-edit-a-page-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pagerule_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1474,7 +1474,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1977,13 +1977,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/pagerules": {
+	"POST /zones/{zone_id}/pagerules": {
 		"description": "Creates a new Page Rule.",
 		"operationId": "page-rules-create-a-page-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2490,13 +2490,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/pagerules/{identifier}": {
+	"PUT /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
 		"operationId": "page-rules-update-a-page-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pagerule_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2508,7 +2508,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

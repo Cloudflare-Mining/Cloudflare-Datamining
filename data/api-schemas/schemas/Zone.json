@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{identifier}": {
+	"DELETE /zones/{zone_id}": {
 		"description": "Deletes an existing zone.",
 		"operationId": "zones-0-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -741,12 +741,12 @@
 			"Zone"
 		]
 	},
-	"GET /zones/{identifier}": {
+	"GET /zones/{zone_id}": {
 		"operationId": "zones-0-get",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1122,13 +1122,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{identifier}": {
+	"PATCH /zones/{zone_id}": {
 		"description": "Edits a zone. Only one zone property can be changed at a time.",
 		"operationId": "zones-0-patch",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1153,7 +1153,7 @@
 								"type": "boolean"
 							},
 							"plan": {
-								"description": "(Deprecated) Please use the `/zones/{identifier}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee Zone Plans.\n",
+								"description": "(Deprecated) Please use the `/zones/{zone_id}/subscription` API\nto update a zone's plan. Changing this value will create/cancel\nassociated subscriptions. To view available plans for this zone,\nsee Zone Plans.\n",
 								"properties": {
 									"id": {
 										"description": "Identifier",
@@ -1165,7 +1165,7 @@
 								"type": "object"
 							},
 							"type": {
-								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial \nzone is typically a partner-hosted zone or a CNAME setup. This \nparameter is only available to Enterprise customers or if it has \nbeen explicitly enabled on a zone.\n",
+								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial\nzone is typically a partner-hosted zone or a CNAME setup. This\nparameter is only available to Enterprise customers or if it has\nbeen explicitly enabled on a zone.\n",
 								"enum": [
 									"full",
 									"partial",
@@ -1581,7 +1581,7 @@
 								"type": "string"
 							},
 							"type": {
-								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is \ntypically a partner-hosted zone or a CNAME setup.\n",
+								"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is\ntypically a partner-hosted zone or a CNAME setup.\n",
 								"enum": [
 									"full",
 									"partial",
