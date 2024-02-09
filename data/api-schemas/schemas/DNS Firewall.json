@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/dns_firewall/{identifier}": {
+	"DELETE /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
 		"description": "Delete a configured DNS Firewall Cluster.",
 		"operationId": "dns-firewall-delete-dns-firewall-cluster",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -386,13 +386,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/dns_firewall": {
+	"GET /accounts/{account_id}/dns_firewall": {
 		"description": "List configured DNS Firewall clusters for an account.",
 		"operationId": "dns-firewall-list-dns-firewall-clusters",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1122,13 +1122,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/dns_firewall/{identifier}": {
+	"GET /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
 		"description": "Show a single configured DNS Firewall cluster for an account.",
 		"operationId": "dns-firewall-dns-firewall-cluster-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1140,7 +1140,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1803,13 +1803,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /accounts/{account_identifier}/dns_firewall/{identifier}": {
+	"PATCH /accounts/{account_id}/dns_firewall/{dns_firewall_id}": {
 		"description": "Modify a DNS Firewall Cluster configuration.",
 		"operationId": "dns-firewall-update-dns-firewall-cluster",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "dns_firewall_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1821,7 +1821,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2657,13 +2657,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/dns_firewall": {
+	"POST /accounts/{account_id}/dns_firewall": {
 		"description": "Create a configured DNS Firewall Cluster.",
 		"operationId": "dns-firewall-create-dns-firewall-cluster",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
