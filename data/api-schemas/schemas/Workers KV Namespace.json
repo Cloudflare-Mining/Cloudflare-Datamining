@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}": {
+	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"description": "Deletes the namespace corresponding to the given ID.",
 		"operationId": "workers-kv-namespace-remove-a-namespace",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -345,13 +345,13 @@
 			]
 		}
 	},
-	"DELETE /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/bulk": {
+	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
 		"description": "Remove multiple KV pairs from the namespace. Body should be an array of up to 10,000 keys to be removed.",
 		"operationId": "workers-kv-namespace-delete-multiple-key-value-pairs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -363,7 +363,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -701,7 +701,7 @@
 			]
 		}
 	},
-	"DELETE /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}": {
+	"DELETE /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"description": "Remove a KV pair from the namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name.",
 		"operationId": "workers-kv-namespace-delete-key-value-pair",
 		"parameters": [
@@ -718,7 +718,7 @@
 			},
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -730,7 +730,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1058,13 +1058,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/storage/kv/namespaces": {
+	"GET /accounts/{account_id}/storage/kv/namespaces": {
 		"description": "Returns the namespaces owned by an account.",
 		"operationId": "workers-kv-namespace-list-namespaces",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1549,13 +1549,13 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/keys": {
+	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/keys": {
 		"description": "Lists a namespace's keys.",
 		"operationId": "workers-kv-namespace-list-a-namespace'-s-keys",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -1567,7 +1567,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1984,7 +1984,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/metadata/{key_name}": {
+	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/metadata/{key_name}": {
 		"description": "Returns the metadata associated with the given key in the given namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name.",
 		"operationId": "workers-kv-namespace-read-the-metadata-for-a-key",
 		"parameters": [
@@ -2001,7 +2001,7 @@
 			},
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -2013,7 +2013,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2365,7 +2365,7 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}": {
+	"GET /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"description": "Returns the value associated with the given key in the given namespace. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name. If the KV-pair is set to expire at some point, the expiration time as measured in seconds since the UNIX epoch will be returned in the `expiration` response header.",
 		"operationId": "workers-kv-namespace-read-key-value-pair",
 		"parameters": [
@@ -2382,7 +2382,7 @@
 			},
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -2394,7 +2394,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2538,13 +2538,13 @@
 			]
 		}
 	},
-	"POST /accounts/{account_identifier}/storage/kv/namespaces": {
+	"POST /accounts/{account_id}/storage/kv/namespaces": {
 		"description": "Creates a namespace under the given title. A `400` is returned if the account already owns a namespace with this title. A namespace must be explicitly deleted to be replaced.",
 		"operationId": "workers-kv-namespace-create-a-namespace",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2958,13 +2958,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}": {
+	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}": {
 		"description": "Modifies a namespace's title.",
 		"operationId": "workers-kv-namespace-rename-a-namespace",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -2976,7 +2976,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3318,13 +3318,13 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/bulk": {
+	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/bulk": {
 		"description": "Write multiple keys and values at once. Body should be an array of up to 10,000 key-value pairs to be stored, along with optional expiration information. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored. The entire request size must be 100 megabytes or less.",
 		"operationId": "workers-kv-namespace-write-multiple-key-value-pairs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -3336,7 +3336,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3711,7 +3711,7 @@
 			]
 		}
 	},
-	"PUT /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}": {
+	"PUT /accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}": {
 		"description": "Write a value identified by a key. Use URL-encoding to use special characters (for example, `:`, `!`, `%`) in the key name. Body should be the value to be stored along with JSON metadata to be associated with the key/value pair. Existing values, expirations, and metadata will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
 		"operationId": "workers-kv-namespace-write-key-value-pair-with-metadata",
 		"parameters": [
@@ -3728,7 +3728,7 @@
 			},
 			{
 				"in": "path",
-				"name": "namespace_identifier",
+				"name": "namespace_id",
 				"required": true,
 				"schema": {
 					"description": "Namespace identifier tag.",
@@ -3740,7 +3740,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

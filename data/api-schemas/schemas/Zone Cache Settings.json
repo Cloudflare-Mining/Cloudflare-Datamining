@@ -2767,6 +2767,520 @@
 			"pro": true
 		}
 	},
+	"GET /zones/{zone_id}/settings/origin_max_http_version": {
+		"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except ENT where it is \"1\"",
+		"operationId": "zone-cache-settings-get-origin-max-http-version-setting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"max_http_version_2": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_max_http_version",
+										"value": "2"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"modified_on"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_max_http_version"
+																	],
+																	"example": "origin_max_http_version"
+																}
+															}
+														}
+													],
+													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except ENT where it is \"1\"",
+													"title": "Origin Max HTTP Version"
+												},
+												{
+													"properties": {
+														"value": {
+															"description": "Value of the Origin Max HTTP Version Setting.",
+															"enum": [
+																"2",
+																"1"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Origin Max HTTP Version Setting Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Error": {
+								"value": {
+									"errors": [
+										{
+											"code": 12345,
+											"message": "Some error message"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"errors": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"messages": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"success": {
+																	"description": "Whether the API call was successful",
+																	"enum": [
+																		true
+																	],
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"success",
+																"errors",
+																"messages",
+																"result"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the zone setting.",
+																			"type": "string"
+																		},
+																		"modified_on": {
+																			"description": "last time this setting was modified.",
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"nullable": true,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"modified_on"
+																	]
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Value of the zone setting.",
+																			"enum": [
+																				"origin_max_http_version"
+																			],
+																			"example": "origin_max_http_version"
+																		}
+																	}
+																}
+															],
+															"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except ENT where it is \"1\"",
+															"title": "Origin Max HTTP Version"
+														},
+														{
+															"properties": {
+																"value": {
+																	"description": "Value of the Origin Max HTTP Version Setting.",
+																	"enum": [
+																		"2",
+																		"1"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"value"
+															]
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get Origin Max HTTP Version Setting Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Origin Max HTTP Version Setting",
+		"tags": [
+			"Zone Cache Settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"PATCH /zones/{zone_id}/cache/cache_reserve": {
 		"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
 		"operationId": "zone-cache-settings-change-cache-reserve-setting",
@@ -4700,6 +5214,542 @@
 			"business": true,
 			"enterprise": true,
 			"free": false,
+			"pro": true
+		}
+	},
+	"PATCH /zones/{zone_id}/settings/origin_max_http_version": {
+		"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except ENT where it is \"1\"",
+		"operationId": "zone-cache-settings-change-origin-max-http-version-setting",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"value": {
+								"description": "Value of the Origin Max HTTP Version Setting.",
+								"enum": [
+									"2",
+									"1"
+								],
+								"type": "string"
+							}
+						},
+						"required": [
+							"value"
+						]
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"max_http_version_2": {
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"editable": true,
+										"id": "origin_max_http_version",
+										"value": "2"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"nullable": true,
+																	"type": "object"
+																},
+																{
+																	"nullable": true,
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"description": "Identifier of the zone setting.",
+																	"type": "string"
+																},
+																"modified_on": {
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.12345Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"id",
+																"modified_on"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"description": "Value of the zone setting.",
+																	"enum": [
+																		"origin_max_http_version"
+																	],
+																	"example": "origin_max_http_version"
+																}
+															}
+														}
+													],
+													"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except ENT where it is \"1\"",
+													"title": "Origin Max HTTP Version"
+												},
+												{
+													"properties": {
+														"value": {
+															"description": "Value of the Origin Max HTTP Version Setting.",
+															"enum": [
+																"2",
+																"1"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													]
+												}
+											]
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Change Origin Max HTTP Version Setting Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Error": {
+								"value": {
+									"errors": [
+										{
+											"code": 12345,
+											"message": "Some error message"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"properties": {
+																"errors": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"messages": {
+																	"example": [],
+																	"items": {
+																		"properties": {
+																			"code": {
+																				"minimum": 1000,
+																				"type": "integer"
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"type": "object",
+																		"uniqueItems": true
+																	},
+																	"type": "array"
+																},
+																"result": {
+																	"anyOf": [
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"items": {},
+																			"type": "array"
+																		},
+																		{
+																			"type": "string"
+																		}
+																	]
+																},
+																"success": {
+																	"description": "Whether the API call was successful",
+																	"enum": [
+																		true
+																	],
+																	"example": true,
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"success",
+																"errors",
+																"messages",
+																"result"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"result": {
+																	"anyOf": [
+																		{
+																			"nullable": true,
+																			"type": "object"
+																		},
+																		{
+																			"nullable": true,
+																			"type": "string"
+																		}
+																	]
+																}
+															}
+														}
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"allOf": [
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Identifier of the zone setting.",
+																			"type": "string"
+																		},
+																		"modified_on": {
+																			"description": "last time this setting was modified.",
+																			"example": "2014-01-01T05:20:00.12345Z",
+																			"format": "date-time",
+																			"nullable": true,
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"modified_on"
+																	]
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"description": "Value of the zone setting.",
+																			"enum": [
+																				"origin_max_http_version"
+																			],
+																			"example": "origin_max_http_version"
+																		}
+																	}
+																}
+															],
+															"description": "Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.). The default value is \"2\" for all plan types except ENT where it is \"1\"",
+															"title": "Origin Max HTTP Version"
+														},
+														{
+															"properties": {
+																"value": {
+																	"description": "Value of the Origin Max HTTP Version Setting.",
+																	"enum": [
+																		"2",
+																		"1"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"value"
+															]
+														}
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Change Origin Max HTTP Version Response Failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Change Origin Max HTTP Version Setting",
+		"tags": [
+			"Zone Cache Settings"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#zone_settings:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
 			"pro": true
 		}
 	},
