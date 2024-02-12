@@ -1,11 +1,11 @@
 {
-	"DELETE /user/organizations/{identifier}": {
+	"DELETE /user/organizations/{organization_id}": {
 		"description": "Removes association to an organization.",
 		"operationId": "user'-s-organizations-leave-organization",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -723,13 +723,13 @@
 			"pro": false
 		}
 	},
-	"GET /user/organizations/{identifier}": {
+	"GET /user/organizations/{organization_id}": {
 		"description": "Gets a specific organization the user is associated with.",
 		"operationId": "user'-s-organizations-organization-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

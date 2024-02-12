@@ -1,11 +1,11 @@
 {
-	"DELETE /user/tokens/{identifier}": {
+	"DELETE /user/tokens/{token_id}": {
 		"description": "Destroy a token.",
 		"operationId": "user-api-tokens-delete-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "token_id",
 				"required": true,
 				"schema": {}
 			}
@@ -763,13 +763,13 @@
 			"pro": true
 		}
 	},
-	"GET /user/tokens/{identifier}": {
+	"GET /user/tokens/{token_id}": {
 		"description": "Get information about a specific token.",
 		"operationId": "user-api-tokens-token-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "token_id",
 				"required": true,
 				"schema": {}
 			}
@@ -1532,7 +1532,7 @@
 						"properties": {
 							"condition": {
 								"properties": {
-									"request.ip": {
+									"request_ip": {
 										"description": "Client IP restrictions.",
 										"example": {
 											"in": [
@@ -1801,7 +1801,8 @@
 															"maxLength": 80,
 															"minLength": 40,
 															"readOnly": true,
-															"type": "string"
+															"type": "string",
+															"x-sensitive": true
 														}
 													},
 													"type": "object"
@@ -1935,7 +1936,8 @@
 																	"maxLength": 80,
 																	"minLength": 40,
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-sensitive": true
 																}
 															},
 															"type": "object"
@@ -2059,13 +2061,13 @@
 			"pro": true
 		}
 	},
-	"PUT /user/tokens/{identifier}": {
+	"PUT /user/tokens/{token_id}": {
 		"description": "Update an existing token.",
 		"operationId": "user-api-tokens-update-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "token_id",
 				"required": true,
 				"schema": {}
 			}
@@ -2079,7 +2081,7 @@
 								"properties": {
 									"condition": {
 										"properties": {
-											"request.ip": {
+											"request_ip": {
 												"description": "Client IP restrictions.",
 												"example": {
 													"in": [
@@ -2607,13 +2609,13 @@
 			"pro": true
 		}
 	},
-	"PUT /user/tokens/{identifier}/value": {
+	"PUT /user/tokens/{token_id}/value": {
 		"description": "Roll the token secret.",
 		"operationId": "user-api-tokens-roll-token",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "token_id",
 				"required": true,
 				"schema": {}
 			}
@@ -2738,7 +2740,8 @@
 											"maxLength": 80,
 											"minLength": 40,
 											"readOnly": true,
-											"type": "string"
+											"type": "string",
+											"x-sensitive": true
 										}
 									},
 									"type": "object"
@@ -2860,7 +2863,8 @@
 													"maxLength": 80,
 													"minLength": 40,
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												}
 											},
 											"type": "object"

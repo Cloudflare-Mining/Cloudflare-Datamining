@@ -1,12 +1,12 @@
 {
-	"GET /organizations/{identifier}": {
+	"GET /organizations/{organization_id}": {
 		"deprecated": true,
 		"description": "Get information about a specific organization that you are a member of.",
 		"operationId": "organizations-(-deprecated)-organization-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -133,7 +133,7 @@
 				},
 				"description": "Organization Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -365,14 +365,14 @@
 			"pro": false
 		}
 	},
-	"PATCH /organizations/{identifier}": {
+	"PATCH /organizations/{organization_id}": {
 		"deprecated": true,
 		"description": "Update an existing Organization.",
 		"operationId": "organizations-(-deprecated)-edit-organization",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -517,7 +517,7 @@
 				},
 				"description": "Edit Organization response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

@@ -1,12 +1,12 @@
 {
-	"DELETE /organizations/{organization_identifier}/members/{identifier}": {
+	"DELETE /organizations/{organization_id}/members/{member_id}": {
 		"deprecated": true,
 		"description": "Remove a member from an organization.",
 		"operationId": "organization-members-remove-member",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "member_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier tag.",
@@ -189,14 +189,14 @@
 			"pro": false
 		}
 	},
-	"GET /organizations/{organization_identifier}/members": {
+	"GET /organizations/{organization_id}/members": {
 		"deprecated": true,
 		"description": "List all members of a organization.",
 		"operationId": "organization-members-list-members",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier tag.",
@@ -425,7 +425,7 @@
 				},
 				"description": "List Members response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -759,14 +759,14 @@
 			"pro": false
 		}
 	},
-	"GET /organizations/{organization_identifier}/members/{identifier}": {
+	"GET /organizations/{organization_id}/members/{member_id}": {
 		"deprecated": true,
 		"description": "Get information about a specific member of an organization.",
 		"operationId": "organization-members-member-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "member_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",
@@ -778,7 +778,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier tag.",
@@ -1225,7 +1225,7 @@
 				},
 				"description": "Member Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1777,14 +1777,14 @@
 			"pro": false
 		}
 	},
-	"PATCH /organizations/{organization_identifier}/members/{identifier}": {
+	"PATCH /organizations/{organization_id}/members/{member_id}": {
 		"deprecated": true,
 		"description": "Change the Roles of an Organization's Member.",
 		"operationId": "organization-members-edit-member-roles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "member_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1796,7 +1796,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier tag.",

@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/members/{identifier}": {
+	"DELETE /accounts/{account_id}/members/{member_id}": {
 		"description": "Remove a member from an account.",
 		"operationId": "account-members-remove-member",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "member_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -136,7 +136,7 @@
 				},
 				"description": "Remove Member response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -354,13 +354,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/members": {
+	"GET /accounts/{account_id}/members": {
 		"description": "List all members of an account.",
 		"operationId": "account-members-list-members",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			},
@@ -645,7 +645,7 @@
 				},
 				"description": "List Members response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -892,13 +892,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/members/{identifier}": {
+	"GET /accounts/{account_id}/members/{member_id}": {
 		"description": "Get information about a specific member of an account.",
 		"operationId": "account-members-member-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "member_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",
@@ -910,7 +910,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -1351,7 +1351,7 @@
 				},
 				"description": "Member Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1577,13 +1577,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/members": {
+	"POST /accounts/{account_id}/members": {
 		"description": "Add a user to the list of members for this account.",
 		"operationId": "account-members-add-member",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -2079,7 +2079,7 @@
 				},
 				"description": "Add Member response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2305,13 +2305,13 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_identifier}/members/{identifier}": {
+	"PUT /accounts/{account_id}/members/{member_id}": {
 		"description": "Modify an account member.",
 		"operationId": "account-members-update-member",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "member_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",
@@ -2323,7 +2323,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -3098,7 +3098,7 @@
 				},
 				"description": "Update Member response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

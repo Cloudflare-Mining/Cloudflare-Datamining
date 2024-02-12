@@ -1,12 +1,12 @@
 {
-	"GET /organizations/{organization_identifier}/roles": {
+	"GET /organizations/{organization_id}/roles": {
 		"deprecated": true,
 		"description": "Get all available roles for an organization.",
 		"operationId": "organization-roles-list-roles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier tag.",
@@ -481,14 +481,14 @@
 			"pro": false
 		}
 	},
-	"GET /organizations/{organization_identifier}/roles/{identifier}": {
+	"GET /organizations/{organization_id}/roles/{role_id}": {
 		"deprecated": true,
 		"description": "Get information about a specific role for an organization.",
 		"operationId": "organization-roles-role-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "role_id",
 				"required": true,
 				"schema": {
 					"description": "Role identifier tag.",
@@ -499,7 +499,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Organization identifier tag.",

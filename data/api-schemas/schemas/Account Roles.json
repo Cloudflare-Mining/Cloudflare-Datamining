@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/roles": {
+	"GET /accounts/{account_id}/roles": {
 		"description": "Get all available roles for an account.",
 		"operationId": "account-roles-list-roles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -184,7 +184,7 @@
 				},
 				"description": "List Roles response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -425,19 +425,19 @@
 			]
 		}
 	},
-	"GET /accounts/{account_identifier}/roles/{identifier}": {
+	"GET /accounts/{account_id}/roles/{role_id}": {
 		"description": "Get information about a specific role for an account.",
 		"operationId": "account-roles-role-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "role_id",
 				"required": true,
 				"schema": {}
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -558,7 +558,7 @@
 				},
 				"description": "Role Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

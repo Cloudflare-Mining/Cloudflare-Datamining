@@ -1,12 +1,12 @@
 {
-	"DELETE /organizations/{organization_identifier}/invites/{identifier}": {
+	"DELETE /organizations/{organization_id}/invites/{invite_id}": {
 		"deprecated": true,
 		"description": "Cancel an existing invitation.",
 		"operationId": "organization-invites-cancel-invitation",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "invite_id",
 				"required": true,
 				"schema": {
 					"description": "Invite identifier tag.",
@@ -18,7 +18,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -54,7 +54,7 @@
 				},
 				"description": "Cancel Invitation response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -189,14 +189,14 @@
 			"pro": false
 		}
 	},
-	"GET /organizations/{organization_identifier}/invites": {
+	"GET /organizations/{organization_id}/invites": {
 		"deprecated": true,
 		"description": "List all invitations associated with an organization.",
 		"operationId": "organization-invites-list-invitations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -481,7 +481,7 @@
 				},
 				"description": "List Invitations response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -871,14 +871,14 @@
 			"pro": false
 		}
 	},
-	"GET /organizations/{organization_identifier}/invites/{identifier}": {
+	"GET /organizations/{organization_id}/invites/{invite_id}": {
 		"deprecated": true,
 		"description": "Get the details of an invitation.",
 		"operationId": "organization-invites-invitation-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "invite_id",
 				"required": true,
 				"schema": {
 					"description": "Invite identifier tag.",
@@ -890,7 +890,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1017,7 +1017,7 @@
 				},
 				"description": "Invitation Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1249,14 +1249,14 @@
 			"pro": false
 		}
 	},
-	"PATCH /organizations/{organization_identifier}/invites/{identifier}": {
+	"PATCH /organizations/{organization_id}/invites/{invite_id}": {
 		"deprecated": true,
 		"description": "Change the Roles of a Pending Invite.",
 		"operationId": "organization-invites-edit-invitation-roles",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "invite_id",
 				"required": true,
 				"schema": {
 					"description": "Invite identifier tag.",
@@ -1268,7 +1268,7 @@
 			},
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1417,7 +1417,7 @@
 				},
 				"description": "Edit Invitation Roles response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1649,14 +1649,14 @@
 			"pro": false
 		}
 	},
-	"POST /organizations/{organization_identifier}/invites": {
+	"POST /organizations/{organization_id}/invites": {
 		"deprecated": true,
 		"description": "Invite a User to become a Member of an Organization.",
 		"operationId": "organization-invites-create-invitation",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "organization_identifier",
+				"name": "organization_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1860,7 +1860,7 @@
 				},
 				"description": "Create Invitation response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

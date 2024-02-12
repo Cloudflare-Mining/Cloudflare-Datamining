@@ -637,13 +637,13 @@
 			"pro": false
 		}
 	},
-	"GET /user/invites/{identifier}": {
+	"GET /user/invites/{invite_id}": {
 		"description": "Gets the details of an invitation.",
 		"operationId": "user'-s-invites-invitation-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "invite_id",
 				"required": true,
 				"schema": {
 					"description": "Invite identifier tag.",
@@ -991,13 +991,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /user/invites/{identifier}": {
+	"PATCH /user/invites/{invite_id}": {
 		"description": "Responds to an invitation.",
 		"operationId": "user'-s-invites-respond-to-invitation",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "invite_id",
 				"required": true,
 				"schema": {
 					"description": "Invite identifier tag.",

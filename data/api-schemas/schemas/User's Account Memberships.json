@@ -1,11 +1,11 @@
 {
-	"DELETE /memberships/{identifier}": {
+	"DELETE /memberships/{membership_id}": {
 		"description": "Remove the associated member from an account.",
 		"operationId": "user'-s-account-memberships-delete-membership",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "membership_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",
@@ -625,7 +625,8 @@
 																			},
 																			"use_account_custom_ns_by_default": {
 																				"default": false,
-																				"description": "Indicates whether new zones should use the account-level custom\nnameservers by default",
+																				"deprecated": true,
+																				"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
 																				"type": "boolean"
 																			}
 																		},
@@ -1090,7 +1091,8 @@
 																					},
 																					"use_account_custom_ns_by_default": {
 																						"default": false,
-																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default",
+																						"deprecated": true,
+																						"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
 																						"type": "boolean"
 																					}
 																				},
@@ -1483,13 +1485,13 @@
 			"User's Account Memberships"
 		]
 	},
-	"GET /memberships/{identifier}": {
+	"GET /memberships/{membership_id}": {
 		"description": "Get a specific membership.",
 		"operationId": "user'-s-account-memberships-membership-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "membership_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",
@@ -1831,13 +1833,13 @@
 			"User's Account Memberships"
 		]
 	},
-	"PUT /memberships/{identifier}": {
+	"PUT /memberships/{membership_id}": {
 		"description": "Accept or reject this account invitation.",
 		"operationId": "user'-s-account-memberships-update-membership",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "membership_id",
 				"required": true,
 				"schema": {
 					"description": "Membership identifier tag.",

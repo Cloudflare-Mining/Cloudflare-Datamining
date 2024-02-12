@@ -432,13 +432,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{identifier}": {
+	"GET /accounts/{account_id}": {
 		"description": "Get information about a specific account that you are a member of.",
 		"operationId": "accounts-account-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -785,13 +785,13 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{identifier}": {
+	"PUT /accounts/{account_id}": {
 		"description": "Update an existing account.",
 		"operationId": "accounts-update-account",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {}
 			}
@@ -843,7 +843,8 @@
 											},
 											"use_account_custom_ns_by_default": {
 												"default": false,
-												"description": "Indicates whether new zones should use the account-level custom\nnameservers by default",
+												"deprecated": true,
+												"description": "Indicates whether new zones should use the account-level custom\nnameservers by default.\n\nDeprecated in favor of `default_nameservers`.",
 												"type": "boolean"
 											}
 										},
