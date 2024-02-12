@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/custom_hostnames/{identifier}": {
+	"DELETE /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
 		"operationId": "custom-hostname-for-a-zone-delete-custom-hostname-(-and-any-issued-ssl-certificates)",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "custom_hostname_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -183,13 +183,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/custom_hostnames": {
+	"GET /zones/{zone_id}/custom_hostnames": {
 		"description": "List, search, sort, and filter all of your custom hostnames.",
 		"operationId": "custom-hostname-for-a-zone-list-custom-hostnames",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1941,12 +1941,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/custom_hostnames/{identifier}": {
+	"GET /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
 		"operationId": "custom-hostname-for-a-zone-custom-hostname-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "custom_hostname_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1958,7 +1958,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3595,13 +3595,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/custom_hostnames/{identifier}": {
+	"PATCH /zones/{zone_id}/custom_hostnames/{custom_hostname_id}": {
 		"description": "Modify SSL configuration for a custom hostname. When sent with SSL config that matches existing config, used to indicate that hostname should pass domain control validation (DCV). Can also be used to change validation type, e.g., from 'http' to 'email'.",
 		"operationId": "custom-hostname-for-a-zone-edit-custom-hostname",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "custom_hostname_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3613,7 +3613,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5403,13 +5403,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/custom_hostnames": {
+	"POST /zones/{zone_id}/custom_hostnames": {
 		"description": "Add a new custom hostname and request that an SSL certificate be issued for it. One of three validation methods—http, txt, email—should be used, with 'http' recommended if the CNAME is already in place (or will be soon). Specifying 'email' will send an email to the WHOIS contacts on file for the base domain plus hostmaster, postmaster, webmaster, admin, administrator. If http is used and the domain is not already pointing to the Managed CNAME host, the PATCH method must be used once it is (to complete validation).",
 		"operationId": "custom-hostname-for-a-zone-create-custom-hostname",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

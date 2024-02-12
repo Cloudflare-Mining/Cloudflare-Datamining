@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/origin_tls_client_auth/hostnames/certificates/{identifier}": {
+	"DELETE /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}": {
 		"operationId": "per-hostname-authenticated-origin-pull-delete-hostname-client-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -483,7 +483,7 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/origin_tls_client_auth/hostnames/{hostname}": {
+	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}": {
 		"operationId": "per-hostname-authenticated-origin-pull-get-the-hostname-status-for-client-authentication",
 		"parameters": [
 			{
@@ -499,7 +499,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1054,12 +1054,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/origin_tls_client_auth/hostnames/certificates": {
+	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
 		"operationId": "per-hostname-authenticated-origin-pull-list-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1746,13 +1746,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/origin_tls_client_auth/hostnames/certificates/{identifier}": {
+	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}": {
 		"description": "Get the certificate by ID to be used for client authentication on a hostname.",
 		"operationId": "per-hostname-authenticated-origin-pull-get-the-hostname-client-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1764,7 +1764,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2225,13 +2225,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/origin_tls_client_auth/hostnames/certificates": {
+	"POST /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
 		"description": "Upload a certificate to be used for client authentication on a hostname. 10 hostname certificates per zone are allowed.",
 		"operationId": "per-hostname-authenticated-origin-pull-upload-a-hostname-client-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2718,13 +2718,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/origin_tls_client_auth/hostnames": {
+	"PUT /zones/{zone_id}/origin_tls_client_auth/hostnames": {
 		"description": "Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter *enabled* to invalidate the association.",
 		"operationId": "per-hostname-authenticated-origin-pull-enable-or-disable-a-hostname-for-client-authentication",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

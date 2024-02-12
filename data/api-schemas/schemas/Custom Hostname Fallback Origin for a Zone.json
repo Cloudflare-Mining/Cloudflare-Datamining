@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/custom_hostnames/fallback_origin": {
+	"DELETE /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-delete-fallback-origin-for-custom-hostnames",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -357,12 +357,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/custom_hostnames/fallback_origin": {
+	"GET /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-get-fallback-origin-for-custom-hostnames",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -709,12 +709,12 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/custom_hostnames/fallback_origin": {
+	"PUT /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"operationId": "custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

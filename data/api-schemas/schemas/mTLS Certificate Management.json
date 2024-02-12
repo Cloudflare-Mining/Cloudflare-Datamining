@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/mtls_certificates/{identifier}": {
+	"DELETE /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}": {
 		"description": "Deletes the mTLS certificate unless the certificate is in use by one or more Cloudflare services.",
 		"operationId": "m-tls-certificate-management-delete-m-tls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "mtls_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -488,13 +488,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/mtls_certificates": {
+	"GET /accounts/{account_id}/mtls_certificates": {
 		"description": "Lists all mTLS certificates.",
 		"operationId": "m-tls-certificate-management-list-m-tls-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1043,13 +1043,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/mtls_certificates/{identifier}": {
+	"GET /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}": {
 		"description": "Fetches a single mTLS certificate.",
 		"operationId": "m-tls-certificate-management-get-m-tls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "mtls_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1061,7 +1061,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1526,13 +1526,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/mtls_certificates/{identifier}/associations": {
+	"GET /accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations": {
 		"description": "Lists all active associations between the certificate and Cloudflare services.",
 		"operationId": "m-tls-certificate-management-list-m-tls-certificate-associations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "mtls_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1544,7 +1544,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1959,13 +1959,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/mtls_certificates": {
+	"POST /accounts/{account_id}/mtls_certificates": {
 		"description": "Upload a certificate that you want to use with mTLS-enabled Cloudflare services.",
 		"operationId": "m-tls-certificate-management-upload-m-tls-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

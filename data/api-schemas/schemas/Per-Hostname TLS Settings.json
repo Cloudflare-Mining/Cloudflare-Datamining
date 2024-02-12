@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/hostnames/settings/{tls_setting}/{hostname}": {
+	"DELETE /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
 		"description": "Delete the tls setting value for the hostname.",
 		"operationId": "per-hostname-tls-settings-delete",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "tls_setting",
+				"name": "setting_id",
 				"required": true,
 				"schema": {
 					"description": "The TLS Setting name.",
@@ -434,13 +434,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/hostnames/settings/{tls_setting}": {
+	"GET /zones/{zone_id}/hostnames/settings/{setting_id}": {
 		"description": "List the requested TLS setting for the hostnames under this zone.",
 		"operationId": "per-hostname-tls-settings-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -452,7 +452,7 @@
 			},
 			{
 				"in": "path",
-				"name": "tls_setting",
+				"name": "setting_id",
 				"required": true,
 				"schema": {
 					"description": "The TLS Setting name.",
@@ -987,13 +987,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/hostnames/settings/{tls_setting}/{hostname}": {
+	"PUT /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
 		"description": "Update the tls setting value for the hostname.",
 		"operationId": "per-hostname-tls-settings-put",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1005,7 +1005,7 @@
 			},
 			{
 				"in": "path",
-				"name": "tls_setting",
+				"name": "setting_id",
 				"required": true,
 				"schema": {
 					"description": "The TLS Setting name.",

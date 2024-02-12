@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/ssl/verification": {
+	"GET /zones/{zone_id}/ssl/verification": {
 		"description": "Get SSL Verification Info for a Zone.",
 		"operationId": "ssl-verification-ssl-verification-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -365,13 +365,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/ssl/verification/{cert_pack_uuid}": {
+	"PATCH /zones/{zone_id}/ssl/verification/{certificate_pack_id}": {
 		"description": "Edit SSL validation method for a certificate pack. A PATCH request will request an immediate validation check on any certificate, and return the updated status. If a validation method is provided, the validation will be immediately attempted using that method.",
 		"operationId": "ssl-verification-edit-ssl-certificate-pack-validation-method",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "cert_pack_uuid",
+				"name": "certificate_pack_id",
 				"required": true,
 				"schema": {
 					"description": "Certificate Pack UUID.",
@@ -381,7 +381,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

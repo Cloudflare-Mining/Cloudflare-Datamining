@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/keyless_certificates/{identifier}": {
+	"DELETE /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"operationId": "keyless-ssl-for-a-zone-delete-keyless-ssl-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "keyless_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -387,13 +387,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/keyless_certificates": {
+	"GET /zones/{zone_id}/keyless_certificates": {
 		"description": "List all Keyless SSL configurations for a given zone.",
 		"operationId": "keyless-ssl-for-a-zone-list-keyless-ssl-configurations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -998,13 +998,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/keyless_certificates/{identifier}": {
+	"GET /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"description": "Get details for one Keyless SSL configuration.",
 		"operationId": "keyless-ssl-for-a-zone-get-keyless-ssl-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "keyless_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1016,7 +1016,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1575,13 +1575,13 @@
 			"pro": false
 		}
 	},
-	"PATCH /zones/{zone_identifier}/keyless_certificates/{identifier}": {
+	"PATCH /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port.",
 		"operationId": "keyless-ssl-for-a-zone-edit-keyless-ssl-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "keyless_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1593,7 +1593,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2210,12 +2210,12 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/keyless_certificates": {
+	"POST /zones/{zone_id}/keyless_certificates": {
 		"operationId": "keyless-ssl-for-a-zone-create-keyless-ssl-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

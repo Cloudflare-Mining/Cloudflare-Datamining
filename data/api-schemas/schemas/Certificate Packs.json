@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/ssl/certificate_packs/{identifier}": {
+	"DELETE /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"description": "For a given zone, delete an advanced certificate pack.",
 		"operationId": "certificate-packs-delete-advanced-certificate-manager-certificate-pack",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_pack_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -391,13 +391,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/ssl/certificate_packs": {
+	"GET /zones/{zone_id}/ssl/certificate_packs": {
 		"description": "For a given zone, list all active certificate packs.",
 		"operationId": "certificate-packs-list-certificate-packs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -801,13 +801,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/ssl/certificate_packs/{identifier}": {
+	"GET /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"description": "For a given zone, get a certificate pack.",
 		"operationId": "certificate-packs-get-certificate-pack",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_pack_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -819,7 +819,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1168,13 +1168,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/ssl/certificate_packs/quota": {
+	"GET /zones/{zone_id}/ssl/certificate_packs/quota": {
 		"description": "For a given zone, list certificate pack quotas.",
 		"operationId": "certificate-packs-get-certificate-pack-quotas",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1553,13 +1553,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/ssl/certificate_packs/{identifier}": {
+	"PATCH /zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}": {
 		"description": "For a given zone, restart validation for an advanced certificate pack.  This is only a validation operation for a Certificate Pack in a validation_timed_out status.",
 		"operationId": "certificate-packs-restart-validation-for-advanced-certificate-manager-certificate-pack",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_pack_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1571,7 +1571,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2109,13 +2109,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/ssl/certificate_packs/order": {
+	"POST /zones/{zone_id}/ssl/certificate_packs/order": {
 		"description": "For a given zone, order an advanced certificate pack.",
 		"operationId": "certificate-packs-order-advanced-certificate-manager-certificate-pack",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

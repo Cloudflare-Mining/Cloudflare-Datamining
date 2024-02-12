@@ -1,11 +1,11 @@
 {
-	"DELETE /certificates/{identifier}": {
+	"DELETE /certificates/{certificate_id}": {
 		"description": "Revoke an existing Origin CA certificate by its serial number. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-revoke-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -920,13 +920,13 @@
 			"pro": true
 		}
 	},
-	"GET /certificates/{identifier}": {
+	"GET /certificates/{certificate_id}": {
 		"description": "Get an existing Origin CA certificate by its serial number. Use your Origin CA Key as your User Service Key when calling this endpoint ([see above](#requests)).",
 		"operationId": "origin-ca-get-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

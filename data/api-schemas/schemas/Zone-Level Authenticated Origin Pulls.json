@@ -1,10 +1,10 @@
 {
-	"DELETE /zones/{zone_identifier}/origin_tls_client_auth/{identifier}": {
+	"DELETE /zones/{zone_id}/origin_tls_client_auth/{certificate_id}": {
 		"operationId": "zone-level-authenticated-origin-pulls-delete-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -369,12 +369,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/origin_tls_client_auth": {
+	"GET /zones/{zone_id}/origin_tls_client_auth": {
 		"operationId": "zone-level-authenticated-origin-pulls-list-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -927,12 +927,12 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/origin_tls_client_auth/{identifier}": {
+	"GET /zones/{zone_id}/origin_tls_client_auth/{certificate_id}": {
 		"operationId": "zone-level-authenticated-origin-pulls-get-certificate-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -944,7 +944,7 @@
 			},
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1291,13 +1291,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/origin_tls_client_auth/settings": {
+	"GET /zones/{zone_id}/origin_tls_client_auth/settings": {
 		"description": "Get whether zone-level authenticated origin pulls is enabled or not. It is false by default.",
 		"operationId": "zone-level-authenticated-origin-pulls-get-enablement-setting-for-zone",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1656,13 +1656,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/origin_tls_client_auth": {
+	"POST /zones/{zone_id}/origin_tls_client_auth": {
 		"description": "Upload your own certificate you want Cloudflare to use for edge-to-origin communication to override the shared certificate. Please note that it is important to keep only one certificate active. Also, make sure to enable zone-level authenticated origin pulls by making a PUT call to settings endpoint to see the uploaded certificate in use.",
 		"operationId": "zone-level-authenticated-origin-pulls-upload-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2035,13 +2035,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/origin_tls_client_auth/settings": {
+	"PUT /zones/{zone_id}/origin_tls_client_auth/settings": {
 		"description": "Enable or disable zone-level authenticated origin pulls. 'enabled' should be set true either before/after the certificate is uploaded to see the certificate in use.",
 		"operationId": "zone-level-authenticated-origin-pulls-set-enablement-for-zone",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/dcv_delegation/uuid": {
+	"GET /zones/{zone_id}/dcv_delegation/uuid": {
 		"description": "Retrieve the account and zone specific unique identifier used as part of the CNAME target for DCV Delegation.",
 		"operationId": "dcv-delegation-uuid-get",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

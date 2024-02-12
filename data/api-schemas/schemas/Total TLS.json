@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/acm/total_tls": {
+	"GET /zones/{zone_id}/acm/total_tls": {
 		"description": "Get Total TLS Settings for a Zone.",
 		"operationId": "total-tls-total-tls-settings-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -396,13 +396,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/acm/total_tls": {
+	"POST /zones/{zone_id}/acm/total_tls": {
 		"description": "Set Total TLS Settings or disable the feature for a Zone.",
 		"operationId": "total-tls-enable-or-disable-total-tls",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

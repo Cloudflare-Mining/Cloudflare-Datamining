@@ -1,11 +1,11 @@
 {
-	"POST /zones/{identifier}/ssl/analyze": {
+	"POST /zones/{zone_id}/ssl/analyze": {
 		"description": "Returns the set of hostnames, the signature algorithm, and the expiration date of the certificate.",
 		"operationId": "analyze-certificate-analyze-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

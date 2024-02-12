@@ -1,11 +1,11 @@
 {
-	"GET /zones/{zone_identifier}/ssl/universal/settings": {
+	"GET /zones/{zone_id}/ssl/universal/settings": {
 		"description": "Get Universal SSL Settings for a Zone.",
 		"operationId": "universal-ssl-settings-for-a-zone-universal-ssl-settings-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -366,13 +366,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/ssl/universal/settings": {
+	"PATCH /zones/{zone_id}/ssl/universal/settings": {
 		"description": "Patch Universal SSL Settings for a Zone.",
 		"operationId": "universal-ssl-settings-for-a-zone-edit-universal-ssl-settings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

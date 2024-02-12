@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/client_certificates/{client_certificate_identifier}": {
+	"DELETE /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"description": "Set a API Shield mTLS Client Certificate to pending_revocation status for processing to revoked status.",
 		"operationId": "client-certificate-for-a-zone-delete-client-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "client_certificate_identifier",
+				"name": "client_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -261,7 +261,7 @@
 				},
 				"description": "Revoke Client Certificate Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -375,13 +375,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/certificate_authorities/hostname_associations": {
+	"GET /zones/{zone_id}/certificate_authorities/hostname_associations": {
 		"description": "List Hostname Associations",
 		"operationId": "client-certificate-for-a-zone-list-hostname-associations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -531,7 +531,7 @@
 				},
 				"description": "List Hostname Associations Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -649,13 +649,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/client_certificates": {
+	"GET /zones/{zone_id}/client_certificates": {
 		"description": "List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination",
 		"operationId": "client-certificate-for-a-zone-list-client-certificates",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -976,7 +976,7 @@
 				},
 				"description": "List Client Certificates Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1094,13 +1094,13 @@
 			"pro": true
 		}
 	},
-	"GET /zones/{zone_identifier}/client_certificates/{client_certificate_identifier}": {
+	"GET /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"description": "Get Details for a single mTLS API Shield Client Certificate",
 		"operationId": "client-certificate-for-a-zone-client-certificate-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1112,7 +1112,7 @@
 			},
 			{
 				"in": "path",
-				"name": "client_certificate_identifier",
+				"name": "client_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1356,7 +1356,7 @@
 				},
 				"description": "Client Certificate Details Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1470,13 +1470,13 @@
 			"pro": true
 		}
 	},
-	"PATCH /zones/{zone_identifier}/client_certificates/{client_certificate_identifier}": {
+	"PATCH /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"description": "If a API Shield mTLS Client Certificate is in a pending_revocation state, you may reactivate it with this endpoint.",
 		"operationId": "client-certificate-for-a-zone-edit-client-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1488,7 +1488,7 @@
 			},
 			{
 				"in": "path",
-				"name": "client_certificate_identifier",
+				"name": "client_certificate_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1732,7 +1732,7 @@
 				},
 				"description": "Reactivate Client Certificate Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1846,13 +1846,13 @@
 			"pro": true
 		}
 	},
-	"POST /zones/{zone_identifier}/client_certificates": {
+	"POST /zones/{zone_id}/client_certificates": {
 		"description": "Create a new API Shield mTLS Client Certificate",
 		"operationId": "client-certificate-for-a-zone-create-client-certificate",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2122,7 +2122,7 @@
 				},
 				"description": "Create Client Certificate Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2465,13 +2465,13 @@
 			"pro": true
 		}
 	},
-	"PUT /zones/{zone_identifier}/certificate_authorities/hostname_associations": {
+	"PUT /zones/{zone_id}/certificate_authorities/hostname_associations": {
 		"description": "Replace Hostname Associations",
 		"operationId": "client-certificate-for-a-zone-put-hostname-associations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2635,7 +2635,7 @@
 				},
 				"description": "Replace Hostname Associations Response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
