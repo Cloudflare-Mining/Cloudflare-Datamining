@@ -10,17 +10,17 @@
 <p>Cloudflare’s Application Security department builds and runs the software that detects and mitigates malicious, abusive, and fraudulent HTTP requests going through Cloudflare network before they reach our customer sites. We achieve this by harnessing the vast amount of internet traffic data available to us to create and manage products including WAF, Bot Management, Fraud Detection and more. We use state of art Artificial Intelligence and Machine Learning techniques in security attack detection and mitigation. The team is a multidisciplinary team where system and software engineers, security researchers and analysts, and data scientists work together to identify active adversaries or attackers, and design and implement machine learning models and engineering solutions to protect customers from these security attacks.&nbsp;</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Hands-on experience working with abuse and fraud detection and prevention product engineering teams, understanding vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
+	<li>Hands-on experience working with threat detection and prevention product engineering teams, recognizing vulnerabilities and configuring mitigations or managing risks in existing and new products.</li>
 	<li>Apply a deep understanding of security vulnerabilities in web application and application security.</li>
-	<li>Proactively detect patterns of attacks, review false positive and false negative reports, and recommend security configurations.</li>
-	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences.</li>
+	<li>Reverse and research n-day exploits, proactively detect patterns of bot and fraud attacks, review false positive and false negative reports, and recommend security configurations.</li>
+	<li>Excellent at communicating the details about security forensics to technical and non-technical audiences.&nbsp;Including writing public facing research blogs.</li>
 	<li>Authoring periodic report on trends on Internet traffic and security attack insights</li>
 	<li>Experience with modern cloud-based technologies used to deliver rapidly-changing products at scale.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>A degree in computer science, IT, systems engineering, or related qualification.</li>
-	<li>4 years of work experience with incident detection, incident response, forensics, or similar.</li>
+	<li>4 years of work experience with incident detection, incident response, forensics, reverse engineering, security research or similar.</li>
 	<li>Ability to work under pressure in a fast-paced environment.</li>
 	<li>Strong attention to detail with an analytical mind and outstanding problem-solving skills. Excellent organizational skills.</li>
 	<li>Great awareness of cybersecurity trends and hacking techniques.</li>
@@ -36,6 +36,7 @@
 	<li>Knowledge and experience with columnar database like Clickhouse</li>
 	<li>Familiarity writing and optimizing advanced SQL queries</li>
 	<li>Good Linux/UNIX systems knowledge</li>
+	<li>Presented in security conferences such as Blackhat, Defcon, Bsides etc.</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
