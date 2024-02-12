@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/rum/site_info/{site_identifier}": {
+	"DELETE /accounts/{account_id}/rum/site_info/{site_id}": {
 		"description": "Deletes an existing Web Analytics site.",
 		"operationId": "web-analytics-delete-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -225,13 +225,13 @@
 			"pro": true
 		}
 	},
-	"DELETE /accounts/{account_identifier}/rum/v2/{ruleset_identifier}/rule/{rule_identifier}": {
+	"DELETE /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
 		"description": "Deletes an existing rule from a Web Analytics ruleset.",
 		"operationId": "web-analytics-delete-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -243,7 +243,7 @@
 			},
 			{
 				"in": "path",
-				"name": "ruleset_identifier",
+				"name": "ruleset_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
@@ -253,7 +253,7 @@
 			},
 			{
 				"in": "path",
-				"name": "rule_identifier",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics rule identifier.",
@@ -459,13 +459,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rum/site_info/{site_identifier}": {
+	"GET /accounts/{account_id}/rum/site_info/{site_id}": {
 		"description": "Retrieves a Web Analytics site.",
 		"operationId": "web-analytics-get-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -477,7 +477,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -779,13 +779,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rum/site_info/list": {
+	"GET /accounts/{account_id}/rum/site_info/list": {
 		"description": "Lists all Web Analytics sites of an account.",
 		"operationId": "web-analytics-list-sites",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1152,13 +1152,13 @@
 			"pro": true
 		}
 	},
-	"GET /accounts/{account_identifier}/rum/v2/{ruleset_identifier}/rules": {
+	"GET /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
 		"description": "Lists all the rules in a Web Analytics ruleset.",
 		"operationId": "web-analytics-list-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1170,7 +1170,7 @@
 			},
 			{
 				"in": "path",
-				"name": "ruleset_identifier",
+				"name": "ruleset_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
@@ -1444,13 +1444,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/rum/site_info": {
+	"POST /accounts/{account_id}/rum/site_info": {
 		"description": "Creates a new Web Analytics site.",
 		"operationId": "web-analytics-create-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1779,13 +1779,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/rum/v2/{ruleset_identifier}/rule": {
+	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rule": {
 		"description": "Creates a new rule in a Web Analytics ruleset.",
 		"operationId": "web-analytics-create-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1797,7 +1797,7 @@
 			},
 			{
 				"in": "path",
-				"name": "ruleset_identifier",
+				"name": "ruleset_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
@@ -2073,13 +2073,13 @@
 			"pro": true
 		}
 	},
-	"POST /accounts/{account_identifier}/rum/v2/{ruleset_identifier}/rules": {
+	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
 		"description": "Modifies one or more rules in a Web Analytics ruleset with a single request.",
 		"operationId": "web-analytics-modify-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2091,7 +2091,7 @@
 			},
 			{
 				"in": "path",
-				"name": "ruleset_identifier",
+				"name": "ruleset_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
@@ -2421,13 +2421,13 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_identifier}/rum/site_info/{site_identifier}": {
+	"PUT /accounts/{account_id}/rum/site_info/{site_id}": {
 		"description": "Updates an existing Web Analytics site.",
 		"operationId": "web-analytics-update-site",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2439,7 +2439,7 @@
 			},
 			{
 				"in": "path",
-				"name": "site_identifier",
+				"name": "site_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2768,13 +2768,13 @@
 			"pro": true
 		}
 	},
-	"PUT /accounts/{account_identifier}/rum/v2/{ruleset_identifier}/rule/{rule_identifier}": {
+	"PUT /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
 		"description": "Updates a rule in a Web Analytics ruleset.",
 		"operationId": "web-analytics-update-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2786,7 +2786,7 @@
 			},
 			{
 				"in": "path",
-				"name": "ruleset_identifier",
+				"name": "ruleset_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics ruleset identifier.",
@@ -2796,7 +2796,7 @@
 			},
 			{
 				"in": "path",
-				"name": "rule_identifier",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "The Web Analytics rule identifier.",
