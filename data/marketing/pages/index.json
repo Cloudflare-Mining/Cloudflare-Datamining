@@ -329,7 +329,11 @@
 															"uri": null
 														},
 														"value": "",
-														"marks": [],
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
 														"content": null
 													},
 													{
@@ -348,6 +352,20 @@
 																	"uri": null
 																},
 																"value": "Learn more",
+																"marks": [
+																	{
+																		"type": "bold"
+																	}
+																],
+																"content": null
+															},
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": " >",
 																"marks": [],
 																"content": null
 															}
@@ -359,7 +377,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "",
+														"value": " ",
 														"marks": [],
 														"content": null
 													}
