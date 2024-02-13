@@ -5,11 +5,11 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><span style="font-size: 12pt;">About the department</span></h2>
+<h2><strong>About the department</strong></h2>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h2><span style="font-size: 12pt;">What you’ll do</span></h2>
+<h2><strong>What you’ll do</strong></h2>
 <p>Here at Cloudflare, privacy is core to what we do. This includes giving users more control over their data, working with browser and operating system vendors to reduce cross-site tracking, and/or building first-party, privacy-focused products for customers ourselves, we’re increasingly working to improve the default state of privacy and security on the web.</p>
-<p>On the job, you will be part of the team building our globally deployed, production-grade <a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/">privacy proxy platform</a> – the technology that powers <a href="https://blog.cloudflare.com/icloud-private-relay/">Private Relay</a> and <a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/">Microsoft Edge Secure Network</a>. You will also have the opportunity to work on the cutting edge of <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today/">privacy Internet standards</a>. We’re looking for someone excited about building – and helping us brainstorm – the future of privacy infrastructure at Cloudflare.&nbsp;</p>
+<p>On the job, you will be part of the team building our globally deployed, production-grade<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/"> privacy proxy platform</a> – the technology that powers<a href="https://blog.cloudflare.com/icloud-private-relay/"> Private Relay</a> and<a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/"> Microsoft Edge Secure Network</a>. You will also have the opportunity to work on the cutting edge of Internet privacy standards, such as <a href="https://developers.cloudflare.com/privacy-gateway/">Oblivious HTTP</a> and <a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">Distributed Aggregation Protocol</a>.<a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today/"> </a>We’re looking for someone excited about building – and helping us brainstorm – the future of privacy infrastructure at Cloudflare.&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
 	<li>Minimum 8 years of experience building high performance distributed code and/or building privacy solutions</li>
@@ -18,26 +18,28 @@
 	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
 	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
 	<li>You feel that documenting your work is just as important as delivering the code</li>
-	<li>Fluent in Rust (double bonus points for async Rust)</li>
+	<li>Fluent in Rust, especially async Rust</li>
+	<li>Proven track record of mentoring junior engineers&nbsp;</li>
 </ul>
-<h2><span style="font-size: 12pt;">Responsibilities</span></h2>
+<h2><strong>Responsibilities</strong></h2>
 <ul>
-	<li>Working hands-on with your team and our customers to ship production ready, industry-standard, secure code.</li>
-	<li>Collaborating with engineers, researchers, product managers, designers, and other stakeholders.</li>
-	<li>Advocating for end-user privacy in the applications and services you build and contribute to maintaining a high degree of reliability and stability for the applications we ship.</li>
-	<li>Communicating effectively across the team.</li>
+	<li>Working hands-on with your team and our customers to ship production ready, industry-standard, secure code</li>
+	<li>Collaborating with engineers, researchers, product managers, designers, and other stakeholders</li>
+	<li>Advocating for end-user privacy in the applications and services you build and contribute to while maintaining a high degree of reliability and stability for the applications we ship</li>
+	<li>Mentoring junior engineers&nbsp;</li>
+	<li>Communicating effectively across the team</li>
 </ul>
-<h2><span style="font-size: 12pt;">Bonus Points:</span></h2>
+<h2><strong>Bonus Points:</strong></h2>
 <ul>
-	<li>Past experience contributing to a major browser, web framework, proxy or distributed project</li>
 	<li>Past experience in the CDN industry and/or writing code for a bare metal backend cloud provider</li>
-	<li>Contributions to open source projects (Rust projects double bonus points)&nbsp;</li>
-	<li>Delivered proven improvements to a product and/or service by debugging and resolving network level and application level performance bottlenecks&nbsp;</li>
-	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc.</li>
-	<li>An interest in collaborating on new Internet standards surrounding privacy and security.</li>
+	<li>Past experience contributing to a browser, web framework, proxy or distributed project</li>
+	<li>Contributions to open source Rust projects</li>
+	<li>Delivered proven improvements to products and services by debugging and resolving network level and application level performance bottlenecks&nbsp;</li>
+	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc</li>
+	<li>An interest in collaborating on new Internet standards surrounding privacy and security</li>
 	<li>Able to work in Go&nbsp;</li>
 </ul>
-<p><strong>Available Locations</strong>: Austin or Remote US</p>
+<p><strong>Available Locations</strong>: Austin or Remote US, London or Remote UK, Paris of Remote FR, Lisbon or remote PT, Munich or Remote DE&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
 <p><strong>Equity</strong></p>
@@ -67,6 +69,8 @@
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
+<h2><br><br></h2>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

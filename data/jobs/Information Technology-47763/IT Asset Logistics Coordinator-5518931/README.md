@@ -6,15 +6,12 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p>&nbsp;</p>
 <p>The IT Assets and Logistics Coordinator will be responsible for overseeing the entire lifecycle of IT assets, from procurement to disposal, ensuring optimal utilization and compliance with company policies and regulations. This role involves coordinating logistics operations, managing inventory, and liaising with vendors and internal teams to ensure the timely and cost-effective acquisition, maintenance, and disposal of IT assets.&nbsp; This role reports to the Sr. IT Operations Manager.</p>
 <p>&nbsp;</p>
 <p><strong>About the Team</strong></p>
-<p>&nbsp;</p>
 <p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.&nbsp; Not only that, we are obsessed with creating the best user experience.</p>
 <p>&nbsp;</p>
 <p><strong>What You'll Do</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Develop and implement processes for tracking and managing IT assets throughout their lifecycle.</li>
 </ul>
@@ -31,7 +28,6 @@
 </ul>
 <p>&nbsp;</p>
 <p><strong>What You'll Bring</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Ability to work in a fast-paced environment</li>
 	<li>Understanding of the supply chain, including common obstacles and effective solutions</li>
@@ -60,7 +56,6 @@
 </ul>
 <p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
-<p>&nbsp;</p>
 <ul>
 	<li>Experience with Jira Service Management, Jira Software, Confluence</li>
 	<li>Experience working in the technology industry</li>
