@@ -994,6 +994,82 @@
 														"target": null,
 														"uri": null
 													},
+													"value": "Neuron",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" is a measure of compute capacity used for machine learning model workloads, as determined based on factors such as operations required to perform computation for a given inference request. The output capacity of a single Neuron is relative to the machine learning model chosen and computational complexity required for inference requests, as may be further described and estimated in the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://developers.cloudflare.com/workers-ai/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "developer documentation",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
 													"value": "Operation",
 													"marks": [
 														{
@@ -1654,7 +1730,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Zaraz Load",
+													"value": "Zaraz Event",
 													"marks": [
 														{
 															"type": "bold"
@@ -1668,7 +1744,17 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" means each time the Zaraz script is loaded on a website/application or the pageview trigger of the Zaraz tool is activated. For Customers with single page applications, each URL navigation (i.e., every time the URL changes) is counted as a new Zaraz Load.",
+													"value": "\" means ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "an event (e.g., pageview, 'zaraz.track', etc.) sent to the Zaraz Service.",
 													"marks": [],
 													"content": null
 												}
@@ -3497,149 +3583,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Customer's use of Cloudflare's Magic Transit On-demand Service is limited to a maximum of 240 hours per month.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Configuration Changes.\n\n",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "a. ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "General.",
-																	"marks": [
-																		{
-																			"type": "italic"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Customer shall administer Layer 3 DDoS mitigation, traffic filtering and traffic management configurations for Magic Transit directly or through Cloudflare as described in this Section 4.\n\nb. ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Procedure.",
-																	"marks": [
-																		{
-																			"type": "italic"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Configuration changes for Customer's use of Magic Transit may be completed by Cloudflare. To initiate a configuration change, Customer will issue Cloudflare a support ticket through Cloudflare's ticketing system indicating the requested configuration change (a \"",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Configuration Ticket",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "\"). Cloudflare will implement the requested configuration change on behalf of Customer based on the information provided in the Configuration Ticket. Customer acknowledges and agrees that it is responsible for all such requested configuration changes. Cloudflare will have no liability for any harm or damage arising out of or in connection with any configuration change requested by Customer unless such harm or damage is the result of Cloudflare's failure to follow Customer's instructions provided in the Configuration Ticket or unless Cloudflare has carried out the configuration changes in an imprudent or defective manner.\n\nc. ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Emergency Configurations.",
-																	"marks": [
-																		{
-																			"type": "italic"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Customer pre-authorizes Cloudflare to implement emergency configuration changes without following the configuration change process set forth in Section 4(b) in order to mitigate adverse effects on the Customer Network in the event of a DDoS attack. Cloudflare will have no liability for any harm or damage arising out of or in connection with any emergency configuration changes unless such changes have been carried out in an imprudent or defective manner.\n",
+																	"value": "Customer's use of Cloudflare's Magic Transit On-demand Service is limited to a maximum of 240 hours per month.\n",
 																	"marks": [],
 																	"content": null
 																}
@@ -4960,6 +4904,48 @@
 																		"target": null,
 																		"uri": null
 																	},
+																	"value": "You may only use the Brand Protection search tools to search for domains that may be attempting to impersonate your brand or a brand that has authorized you to conduct such search on its behalf.",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "\n",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
 																	"value": "CLOUDFLARE SECURITY CENTER IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT CLOUDFLARE SECURITY CENTER WILL DETECT ALL SECURITY INSIGHTS OR PROTECT YOUR NETWORK AND SYSTEMS FROM MALICIOUS CODE, INTRUSIONS, OR OTHER SECURITY BREACHES.\n",
 																	"marks": [],
 																	"content": null
@@ -5529,7 +5515,17 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "(Cloudflare Workers; Cloudflare Pages; Workers KV; D1; Durable Objects; Vectorize; Hyperdrive; Cloudflare Queues; R2; and Workers AI)",
+													"value": "(Cloudflare Workers; Cloudflare Pages; Workers KV; D1; Durable Objects; Vectorize; Hyperdrive; Cloudflare Queues; R2; ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Workers AI; and Workers for Platforms)",
 													"marks": [],
 													"content": null
 												}
@@ -5613,7 +5609,17 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; (iv) Workers KV, D1, Durable Objects, Vectorize, Hyperdrive, and R2, storage offerings used to serve HTML and non-HTML content; and (v) Workers AI, a Service that allows customers to use Cloudflare's inference infrastructure to invoke select third-party machine learning models (subject to applicable open source licenses or third-party terms of use for such models).",
+																	"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; (iv) Workers KV, D1, Durable Objects, Vectorize, Hyperdrive, and R2, storage offerings used to serve HTML and non-HTML content; (v) Workers AI, a Service that allows customers to use Cloudflare's inference infrastructure to invoke select third-party machine learning models (subject to applicable open source licenses or third-party terms of use for such models)",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "; and (vi) Workers for Platforms, a Service that may be used to provide programmability via Workers to your End Customers. ",
 																	"marks": [],
 																	"content": null
 																}
@@ -5645,7 +5651,17 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare may, with or without notice to you and without liability of any kind, temporarily limit your storage and/or the number of requests you can make or receive using the Developer Platform for any reason (in its sole reasonable discretion), including without limitation, if processing such requests would put an undue burden on the Cloudflare network, adversely impact the Service, or otherwise threaten the integrity of Cloudflare's networks.",
+																	"value": "Cloudflare may, without liability of any kind, temporarily limit your storage and/or the number of requests you can make or receive using the Developer Platform for any reason (in its sole reasonable discretion), including without limitation, if processing such requests would put an undue burden on the Cloudflare network, adversely impact the Service, or otherwise threaten the integrity of Cloudflare's networks.  ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "While we generally try to provide notice of such actions, we reserve the right to take action without notice.",
 																	"marks": [],
 																	"content": null
 																}
@@ -5709,7 +5725,17 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare or your End Users related to your Customer Content and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with their use of your Customer Content or Internet Properties.",
+																	"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare or your End Users related to your Customer Content and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with their use of your Customer Content or Internet Properties.  ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "You acknowledge and agree that you are solely responsible for the acts of your End Users. Cloudflare may, but is not obligated to, limit or suspend your or your End Users access to any Developer Platform services or functionality made available to End Users via a Developer Platform service for any suspected violations of the Agreement. While we generally try to provide notice of such actions, we reserve the right to take action without notice. ",
 																	"marks": [],
 																	"content": null
 																}
@@ -5773,7 +5799,37 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "You understand and agree that Cloudflare is constantly enhancing its Services and we may enhance our Services in a way that is competitive with your Customer Content and associated Internet Properties, or other products, services, or ideas that you have, regardless of whether you have shared them with us. Although Cloudflare affirms that you retain intellectual property rights in the source code to your Customer Content, you acknowledge that Cloudflare has the right to make, use, develop, acquire, license, market, promote, or distribute products, software, or technologies that perform the same or similar functions as, or otherwise compete with, any of your Customer Content and associated Internet Properties as well as other products, software, or technologies that you may develop, produce, market, or distribute now or in the future.",
+																	"value": "You understand and agree that Cloudflare is constantly enhancing its Services and may enhance our Services in a way that may be competitive with your Customer Content and associated Internet Properties, or other products, services, or ideas that you have.   Cloudflare ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "does not reference or use any Customer Content except as needed to provide the Services and ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "affirms that you retain intellectual property rights in the source code to your Customer Content, you acknowledge that Cloudflare has the right to make, use, develop, acquire, license, market, promote, or distribute products, software, or technologies that perform the same or similar functions as, or otherwise compete with, any of your Customer Content and associated Internet Properties as well as other products, software, or technologies that you may develop, produce, market, or distribute now or in the future; ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "provided, for clarity, that Cloudflare will not do so using, referencing, or relying on your Customer Content.",
 																	"marks": [],
 																	"content": null
 																}
@@ -5965,6 +6021,38 @@
 																		"uri": null
 																	},
 																	"value": " for additional information on applicable third-party terms. While we will generally try to provide notice, any suspected violation of applicable third-party terms may result in immediate suspension of Cloudflare Services.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Notwithstanding anything to the contrary in the Agreement, you may use Workers for Platforms to make available certain Workers functionality for use by your End Users on your Internet Properties, provided that such use by your End Users complies with the requirements and restrictions set forth in the Agreement.    ",
 																	"marks": [],
 																	"content": null
 																}
