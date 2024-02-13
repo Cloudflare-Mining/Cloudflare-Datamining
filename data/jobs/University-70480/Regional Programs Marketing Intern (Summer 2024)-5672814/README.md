@@ -7,8 +7,7 @@
 </div>
 <p><strong>Location(s) Available: Austin, US</strong></p>
 <p><strong>About the Role</strong></p>
-<p>Cloudflare is seeking a Regional Marketing Programs Analysis Intern with a passion for B2B marketing and an interest in developing and executing data-driven marketing strategies. This intern will work on our Americas field marketing team, focusing on analyzing campaign performance, and industry best practices. The successful candidate will have a strong interest in analyzing and improving marketing campaign performance, channel mix, and will be eager to learn industry standards and best practices for optimizing ROI.</p>
-<p>&nbsp;</p>
+<p>Cloudflare is seeking a Regional Programs Marketing Intern with a passion for B2B marketing and an interest in developing and executing data-driven marketing strategies. This intern will work on our Americas field marketing team, focusing on analyzing campaign performance, and industry best practices. The successful candidate will have a strong interest in analyzing and improving marketing campaign performance, channel mix, and will be eager to learn industry standards and best practices for optimizing ROI.</p>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li>Monitor the performance of all Americas marketing programs, including events, paid social, display, content syndication, webinars and other marketing channels.</li>
@@ -19,7 +18,6 @@
 	<li>Document Cloudflare’s workflows, data orchestration, and stakeholders involved in the sales funnel to help flag bottlenecks.</li>
 	<li>Partner with our field marketing, programs, and campaigns teams to understand the execution and measurement of campaigns through various channels (email, display, paid social, webinars, etc.) and surface feedback.&nbsp;</li>
 </ul>
-<p>&nbsp;</p>
 <p><strong>Requirements</strong></p>
 <ul>
 	<li>Interest in B2B marketing for a technical buyer and audience. Basic understanding of cloud technology is a bonus.</li>
