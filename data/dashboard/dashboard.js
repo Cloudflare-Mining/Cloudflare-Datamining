@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "ab97100d13a99a8f8f3910887a67e168a138a43b",
+					commit: "5c55bdceb080efda834da480e3d8b43fa805aa66",
 					env: "production",
-					builtAt: 1707769697702,
-					dashVersion: "b245ea92647e2c86aba9cf5a69233f80a7772d8d",
+					builtAt: 1707846126385,
+					dashVersion: "1cda942073a21f139ffcdd10e2a6906233906374",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "16.16.0",
@@ -11238,7 +11238,7 @@
       --cf-black: ${t.Rl.colors.black};
       ${g(t.Rl)}
     }
-
+    
     .mode-transition *,
     .mode-transition body,
     .mode-transition input,
@@ -11247,7 +11247,7 @@
     .mode-transition header,
     .mode-transition div {
       transition-duration: ${t.Rl.modeTransitionTime}ms !important;
-      transition-property: all !important;
+      transition-property: color, background, background-color, fill, opacity, border, border-color !important;
       transition-timing-function: ease-out !important;
     }
 
