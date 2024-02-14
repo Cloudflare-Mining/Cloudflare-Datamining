@@ -5,59 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Location, Austin TX</h4>
-<h4>About the department</h4>
-<p>Cloudflare’s Billing Engineering Team built and maintains all the internal/external billing related services, product provisioning services and services related to entitlements. This is a vital team centric to every product launch, campaign or initiative Cloudlfare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.</p>
-<h4>What you'll do</h4>
-<p>We are looking for an engineer to join our Billing Team; an energetic team focused person who is growth mindset oriented, able to drive his work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
+<p><strong>Available Locations:&nbsp;<span class="collapsed-field-text">Lisbon, Portugal</span></strong></p>
+<p><strong>About Cloudflare's Engineering teams</strong></p>
+<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 300 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</span></p>
+<p><strong>About the Internship Program</strong></p>
+<p><span style="font-weight: 400;">The ideal summer intern is passionate about making the Internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</span></p>
+<p>What would you do as a Cloudflare intern?</p>
+<ul>
+	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Make friends across the company through our Cloudfriends Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
+</ul>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Minimum 3 years professional experience as a developer/engineer</li>
-	<li>Knowledge of Golang or desire to learn it</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated critical thinking skills and drive to learn and adapt new technologies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity, empathy and ability to get things done.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to commit to a 12 week summer internship.</span></li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p><strong>Please note</strong></p>
 <ul>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete.&nbsp;</span></li>
 </ul>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

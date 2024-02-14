@@ -5,58 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Location, Austin TX</h4>
-<h4>About the department</h4>
-<p>Cloudflare’s Billing Engineering Team built and maintains all the internal/external billing related services, product provisioning services and services related to entitlements. This is a vital team centric to every product launch, campaign or initiative Cloudlfare undertakes. There are constantly multiple high profile initiatives going on, therefore the ability to context switch, communicate proactively and manage expectations is a key.</p>
-<p>Billing Team is a place where you will learn fast, interface with all other engineering product teams, work with empathetic and team driven engineers, solve hard challenges and celebrate wins. Introspection, project/incident retrospectives, team communication is central to our success.</p>
-<h4>What you'll do</h4>
-<p>We are looking for an engineer to join our Billing Team; an energetic team focused person who is growth mindset oriented, able to drive his work from inception, requirements definition, technical specification phase, development, testing and go live.</p>
-<p>You will work on a range of transactional microservices written in Go. You will be involved in helping to maintain our operational excellence by triaging, solving various inbound tickets related to issues across services billing maintains. As you grow within the team you will be given opportunities to own bigger initiatives and lead projects from start to finish solo or as part of a smaller team.</p>
-<p>Our tech stack is a modern container-based microservice architecture. Technologies we use include Docker, Go (golang), PostgreSQL, Redis, Kafka and the usual Unix/Linux tools and workflows. We strive to build reliable, fault tolerant systems that can operate at Cloudflare’s scale.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>About The Team</strong></p>
+<p>Providing competitive intelligence to our go-to-market teams is an important part of the Product Marketing mission.You will be part of the Technical Product Marketing team with highly skilled technical experts who can support your competitive research.</p>
+<p><strong>About The Internship</strong></p>
+<p>As a Competitive Intelligence Product Marketing Intern, you will play a crucial role in our strategic planning process by conducting in-depth research and analysis of our competitors and the market. You will be responsible for gathering, analyzing, and synthesizing data to provide actionable insights that will inform our go-to-market teams..</p>
+<p>The ideal candidate has an analytical mindset, a get-it-done attitude and is not afraid of challenging the status quo. In everything you do you promote legal and ethical standards.</p>
+<p><strong>What You’ll Get To Do In This Role</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>Minimum 3 years professional experience as a developer/engineer</li>
-	<li>Knowledge of Golang or desire to learn it</li>
-	<li>Solid understanding of RESTful APIs and service security</li>
-	<li>Working knowledge of SQL and relational databases such as PostgreSQL or MySQL</li>
-	<li>Experience with modern Unix/Linux development and runtime environment</li>
+	<li>Conduct comprehensive competitive research and analysis across various sources, including primary/secondary research, industry reports, market studies, and digital media.</li>
+	<li>Utilize data exploration techniques to uncover trends, patterns, and insights within complex datasets.</li>
+	<li>Collaborate with cross-functional teams to understand business needs and objectives, ensuring relevant and impactful competitive intelligence.</li>
+	<li>Present findings and insights to stakeholders through clear, concise reports and presentations, highlighting key implications for our business strategy.</li>
+	<li>Monitor industry trends and provide timely updates on significant developments affecting our market position.</li>
+	<li>Translate complex technical information into simple and concise language. Distril insights into enablement content such as battle cards and technical deep dives.</li>
+	<li>Partner with our Product Management and Special Projects team to improve strategies, products and services.</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p><strong>Qualifications</strong></p>
 <ul>
-	<li>Experience implementing secure and highly-available distributed systems/microservices</li>
-	<li>Familiarity with event driven architecture</li>
-	<li>Experience with API tooling and standards (Swagger/OpenAPI, OAuth/JWT)</li>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-</ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Currently pursuing a degree in Business, Marketing, Economics, Statistics, or a related field.</li>
+	<li>Strong analytical skills with the ability to collect, organize, analyze, and disseminate significant amounts of information with attention to detail and accuracy.</li>
+	<li>Proficient in data analysis tools and software (e.g., Tableau, Salesforce CRM, Excel).</li>
+	<li>Good at visualizing complex research findings and driving attention to key insights while keeping an eye on sales engagement and adoption</li>
+	<li>Previous experience in product marketing/product management/competitive intelligence is a plus</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, product management, sales, and marketing</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
