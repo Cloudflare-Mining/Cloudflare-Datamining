@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/secondary_dns/acls/{identifier}": {
+	"DELETE /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"description": "Delete ACL.",
 		"operationId": "secondary-dns-(-acl)-delete-acl",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -377,13 +377,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/secondary_dns/acls": {
+	"GET /accounts/{account_id}/secondary_dns/acls": {
 		"description": "List ACLs.",
 		"operationId": "secondary-dns-(-acl)-list-ac-ls",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -815,13 +815,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/secondary_dns/acls/{identifier}": {
+	"GET /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"description": "Get ACL.",
 		"operationId": "secondary-dns-(-acl)-acl-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
@@ -830,7 +830,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1216,13 +1216,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/secondary_dns/acls": {
+	"POST /accounts/{account_id}/secondary_dns/acls": {
 		"description": "Create ACL.",
 		"operationId": "secondary-dns-(-acl)-create-acl",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1622,13 +1622,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/secondary_dns/acls/{identifier}": {
+	"PUT /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"description": "Modify ACL.",
 		"operationId": "secondary-dns-(-acl)-update-acl",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "acl_id",
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
@@ -1637,7 +1637,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",

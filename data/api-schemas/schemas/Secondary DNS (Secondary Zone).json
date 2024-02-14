@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/secondary_dns/incoming": {
+	"DELETE /zones/{zone_id}/secondary_dns/incoming": {
 		"description": "Delete secondary zone configuration for incoming zone transfers.",
 		"operationId": "secondary-dns-(-secondary-zone)-delete-secondary-zone-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -367,13 +367,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/secondary_dns/incoming": {
+	"GET /zones/{zone_id}/secondary_dns/incoming": {
 		"description": "Get secondary zone configuration for incoming zone transfers.",
 		"operationId": "secondary-dns-(-secondary-zone)-secondary-zone-configuration-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -807,13 +807,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/secondary_dns/force_axfr": {
+	"POST /zones/{zone_id}/secondary_dns/force_axfr": {
 		"description": "Sends AXFR zone transfer request to primary nameserver(s).",
 		"operationId": "secondary-dns-(-secondary-zone)-force-axfr",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -1167,13 +1167,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/secondary_dns/incoming": {
+	"POST /zones/{zone_id}/secondary_dns/incoming": {
 		"description": "Create secondary zone configuration for incoming zone transfers.",
 		"operationId": "secondary-dns-(-secondary-zone)-create-secondary-zone-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -1648,13 +1648,13 @@
 			"pro": false
 		}
 	},
-	"PUT /zones/{zone_identifier}/secondary_dns/incoming": {
+	"PUT /zones/{zone_id}/secondary_dns/incoming": {
 		"description": "Update secondary zone configuration for incoming zone transfers.",
 		"operationId": "secondary-dns-(-secondary-zone)-update-secondary-zone-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",

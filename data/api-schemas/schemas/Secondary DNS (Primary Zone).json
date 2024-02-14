@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{zone_identifier}/secondary_dns/outgoing": {
+	"DELETE /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Delete primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-delete-primary-zone-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -362,13 +362,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/secondary_dns/outgoing": {
+	"GET /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Get primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-primary-zone-configuration-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -787,13 +787,13 @@
 			"pro": false
 		}
 	},
-	"GET /zones/{zone_identifier}/secondary_dns/outgoing/status": {
+	"GET /zones/{zone_id}/secondary_dns/outgoing/status": {
 		"description": "Get primary zone transfer status.",
 		"operationId": "secondary-dns-(-primary-zone)-get-outgoing-zone-transfer-status",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -1136,13 +1136,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/secondary_dns/outgoing": {
+	"POST /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Create primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-create-primary-zone-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -1595,13 +1595,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/secondary_dns/outgoing/disable": {
+	"POST /zones/{zone_id}/secondary_dns/outgoing/disable": {
 		"description": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone.",
 		"operationId": "secondary-dns-(-primary-zone)-disable-outgoing-zone-transfers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -1950,13 +1950,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/secondary_dns/outgoing/enable": {
+	"POST /zones/{zone_id}/secondary_dns/outgoing/enable": {
 		"description": "Enable outgoing zone transfers for primary zone.",
 		"operationId": "secondary-dns-(-primary-zone)-enable-outgoing-zone-transfers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -2305,13 +2305,13 @@
 			"pro": false
 		}
 	},
-	"POST /zones/{zone_identifier}/secondary_dns/outgoing/force_notify": {
+	"POST /zones/{zone_id}/secondary_dns/outgoing/force_notify": {
 		"description": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone.",
 		"operationId": "secondary-dns-(-primary-zone)-force-dns-notify",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",
@@ -2660,13 +2660,13 @@
 			"pro": false
 		}
 	},
-	"PUT /zones/{zone_identifier}/secondary_dns/outgoing": {
+	"PUT /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Update primary zone configuration for outgoing zone transfers.",
 		"operationId": "secondary-dns-(-primary-zone)-update-primary-zone-configuration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "zone_identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "269d8f4853475ca241c4e730be286b20",

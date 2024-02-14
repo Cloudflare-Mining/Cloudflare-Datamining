@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/secondary_dns/peers/{identifier}": {
+	"DELETE /accounts/{account_id}/secondary_dns/peers/{peer_id}": {
 		"description": "Delete Peer.",
 		"operationId": "secondary-dns-(-peer)-delete-peer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "peer_id",
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -377,13 +377,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/secondary_dns/peers": {
+	"GET /accounts/{account_id}/secondary_dns/peers": {
 		"description": "List Peers.",
 		"operationId": "secondary-dns-(-peer)-list-peers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -844,13 +844,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/secondary_dns/peers/{identifier}": {
+	"GET /accounts/{account_id}/secondary_dns/peers/{peer_id}": {
 		"description": "Get Peer.",
 		"operationId": "secondary-dns-(-peer)-peer-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "peer_id",
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
@@ -859,7 +859,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1274,13 +1274,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/secondary_dns/peers": {
+	"POST /accounts/{account_id}/secondary_dns/peers": {
 		"description": "Create Peer.",
 		"operationId": "secondary-dns-(-peer)-create-peer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1707,13 +1707,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/secondary_dns/peers/{identifier}": {
+	"PUT /accounts/{account_id}/secondary_dns/peers/{peer_id}": {
 		"description": "Modify Peer.",
 		"operationId": "secondary-dns-(-peer)-update-peer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "peer_id",
 				"required": true,
 				"schema": {
 					"example": "23ff594956f20c2a721606e94745a8aa",
@@ -1722,7 +1722,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",

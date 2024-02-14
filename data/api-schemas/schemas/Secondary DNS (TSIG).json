@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/secondary_dns/tsigs/{identifier}": {
+	"DELETE /accounts/{account_id}/secondary_dns/tsigs/{tsig_id}": {
 		"description": "Delete TSIG.",
 		"operationId": "secondary-dns-(-tsig)-delete-tsig",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "tsig_id",
 				"required": true,
 				"schema": {
 					"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -377,13 +377,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/secondary_dns/tsigs": {
+	"GET /accounts/{account_id}/secondary_dns/tsigs": {
 		"description": "List TSIGs.",
 		"operationId": "secondary-dns-(-tsig)-list-tsi-gs",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -828,13 +828,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/secondary_dns/tsigs/{identifier}": {
+	"GET /accounts/{account_id}/secondary_dns/tsigs/{tsig_id}": {
 		"description": "Get TSIG.",
 		"operationId": "secondary-dns-(-tsig)-tsig-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "tsig_id",
 				"required": true,
 				"schema": {
 					"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
@@ -843,7 +843,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1242,13 +1242,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/secondary_dns/tsigs": {
+	"POST /accounts/{account_id}/secondary_dns/tsigs": {
 		"description": "Create TSIG.",
 		"operationId": "secondary-dns-(-tsig)-create-tsig",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
@@ -1684,13 +1684,13 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_identifier}/secondary_dns/tsigs/{identifier}": {
+	"PUT /accounts/{account_id}/secondary_dns/tsigs/{tsig_id}": {
 		"description": "Modify TSIG.",
 		"operationId": "secondary-dns-(-tsig)-update-tsig",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "tsig_id",
 				"required": true,
 				"schema": {
 					"example": "69cd1e104af3e6ed3cb344f263fd0d5a",
@@ -1699,7 +1699,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "01a7362d577a6c3019a474fd6f485823",
