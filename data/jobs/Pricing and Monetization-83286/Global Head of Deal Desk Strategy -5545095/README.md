@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Location: San Francisco, Austin, or Remote US</strong></p>
 <p>Cloudflare is seeking a Global Head of Deal Desk Strategy to support our growth to $5B revenue.&nbsp; This leader will leverage their deal desk experience supporting standard, non-standard, and custom deals in B2B SaaS. They will work to create processes and infrastructure to enable efficient growth while remaining agile enough to seize high value opportunities and respond to a dynamic market.&nbsp; Candidates will have passion, energy, drive, and the ability to collaborate with Sales, Finance, Legal, and Product as well as other cross functional teams.</p>
 <p>This is a team leadership role, reporting to the Vice President of Monetization Strategy.&nbsp; Ideal location is Greater Bay Area, CA or Austin, TX.&nbsp; Remote candidates will also be considered.&nbsp;&nbsp;</p>
 <p><strong>Responsibilities</strong></p>
@@ -38,13 +39,13 @@
 	<li>Familiarity with common quote-to-cash systems and tools (e.g., Salesforce CRM, Salesforce CPQ, Ironclad CLM, Stripe billing)</li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<p>Compensation may be adjusted depending on work location and experience.</p>
 <ul>
 	<li>
 		<ul>
-			<li>For Colorado-based hires: Estimated annual salary of $221,000 - $270,000</li>
-			<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $248,000 - $303,000</li>
-			<li>For Bay Area-based hires: Estimated annual salary of $260,000 - $318,000</li>
+			<li>For Colorado-based hires: Estimated annual salary of $248,000 - $303,000</li>
+			<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $270,000 - $330,000</li>
+			<li>For Bay Area-based hires: Estimated annual salary of $284,000 - $347,000</li>
 		</ul>
 	</li>
 </ul>
