@@ -655,7 +655,7 @@
 
 	function cr(e, r) {
 		var t, i = rt(r.params, oe),
-			f = "h/".concat("b", "/"),
+			f = "h/".concat("g", "/"),
 			s = document.getElementById(e);
 		if (!s) {
 			m("Cannot initialize Widget, Element not found (#".concat(e, ")."), 3074);
@@ -751,7 +751,7 @@
 					switch (I.label) {
 						case 0:
 							if (a = d.params.sitekey, v = Xt(), !v) return x("Cannot determine Turnstile's embedded location, aborting clearance redemption."), i(d, o, !1), [2];
-							h = "h/".concat("b", "/"), l = new URL(v), w = "https", E = "", O = "".concat(w, "://").concat(l.host, "/cdn-cgi/challenge-platform/").concat(h, "rc/").concat(c).concat(E), I.label = 1;
+							h = "h/".concat("g", "/"), l = new URL(v), w = "https", E = "", O = "".concat(w, "://").concat(l.host, "/cdn-cgi/challenge-platform/").concat(h, "rc/").concat(c).concat(E), I.label = 1;
 						case 1:
 							return I.trys.push([1, 6, , 7]), [4, fetch(O, {
 								method: "POST",
@@ -978,7 +978,7 @@
 								cData: a.cData,
 								chlPageData: a.chlPageData,
 								rcV: a.rcV,
-								ch: "a990e557",
+								ch: "16c3caa4cd49",
 								url: Xt(),
 								retry: a.params.retry,
 								"expiry-interval": a.params["expiry-interval"],
@@ -1115,7 +1115,7 @@
 					return
 				}
 				var v;
-				a.src = nt(o, n.params.sitekey, n.params, (v = n.rcV) !== null && v !== void 0 ? v : W, oe, "b", tt(n)), it(c), n.retryTimeout && window.clearTimeout(n.retryTimeout)
+				a.src = nt(o, n.params.sitekey, n.params, (v = n.rcV) !== null && v !== void 0 ? v : W, oe, "g", tt(n)), it(c), n.retryTimeout && window.clearTimeout(n.retryTimeout)
 			} else {
 				m("Widget ".concat(o, " to reset was not found."), 3331);
 				return
@@ -1279,7 +1279,7 @@
 						m("Turnstile Initialization Error ", 3606);
 						return
 					}
-					N.style.display = "none", N.style.border = "none", N.style.overflow = "hidden", N.setAttribute("src", nt(D, C, l, W, oe, "b", tt(ft)));
+					N.style.display = "none", N.style.border = "none", N.style.overflow = "hidden", N.setAttribute("src", nt(D, C, l, W, oe, "g", tt(ft)));
 					var dt = ["cross-origin-isolated", "fullscreen"],
 						Le;
 					U((Le = (c = document.featurePolicy) === null || c === void 0 || (n = c.features) === null || n === void 0 ? void 0 : n.call(c)) !== null && Le !== void 0 ? Le : [], Ke) && dt.push(Ke), N.setAttribute("allow", dt.join("; ")), N.setAttribute("sandbox", "allow-same-origin allow-scripts allow-popups"), N.id = B;
