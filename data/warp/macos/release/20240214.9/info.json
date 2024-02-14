@@ -1,0 +1,40 @@
+{
+	"app_name": "1.1.1.1-macOS-1",
+	"app_display_name": "Cloudflare WARP macOS Release",
+	"app_os": "macOS",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 58,
+	"version": "20240214.9",
+	"short_version": "2024.2.68.0",
+	"size": 67362170,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "a0f8e52c5b53b8c890d2a09ebe3e21a5",
+	"fingerprint": "ea7636cf6d616684b9992323148d73be",
+	"uploaded_at": "2024-02-14T21:46:30.690Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "pkg",
+	"is_latest": true,
+	"release_notes": "This release contains no new features and is focused exclusively on squashing a few bugs.\n\n## Notable updates\n- Fixed an issue that caused high memory usage of the daemon process.\n\n## Known issues\n - No known issues.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "0807c194-3166-4f4e-a039-75d33e019368",
+	"distribution_groups": [
+		{
+			"id": "0807c194-3166-4f4e-a039-75d33e019368",
+			"name": "release",
+			"origin": "appcenter",
+			"display_name": "release",
+			"is_public": true
+		}
+	]
+}

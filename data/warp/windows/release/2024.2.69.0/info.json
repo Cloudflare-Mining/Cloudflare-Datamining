@@ -1,0 +1,42 @@
+{
+	"app_name": "1.1.1.1-Windows-1",
+	"app_display_name": "Cloudflare WARP Windows Release",
+	"app_os": "Windows",
+	"owner": {
+		"name": "Cloudflare",
+		"display_name": "Cloudflare"
+	},
+	"is_external_build": false,
+	"origin": "appcenter",
+	"id": 67,
+	"version": "2024.2.69.0",
+	"short_version": "",
+	"size": 115097600,
+	"min_os": null,
+	"device_family": null,
+	"bundle_identifier": "8a54caa2d921d57fde5eebe4dc692c3c",
+	"fingerprint": "356e3da923d12208ae0f67fc4f46eae1",
+	"uploaded_at": "2024-02-14T21:44:43.598Z",
+	"mandatory_update": false,
+	"enabled": true,
+	"fileExtension": "msi",
+	"is_latest": true,
+	"release_notes": "This release contains no new features and is focused exclusively on squashing a few bugs.\r\n\r\n## Notable updates\r\n- Fixed an issue that resulted in high memory usage of the UI application.\r\n- Fixed an issue where the Windows version was missing on the Dashboard for devices using various non-English localizations.\r\n\r\n## Known issues\r\n- No known issues.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"is_udid_provisioned": null,
+	"can_resign": null,
+	"package_hashes": [
+		"c8f281bc7c01c130bd0dc9679bda3e4103af5de592ee8d9cbadcb3fbba07c185"
+	],
+	"destination_type": "group",
+	"status": "available",
+	"distribution_group_id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+	"distribution_groups": [
+		{
+			"id": "d85ff7fd-8cbb-443d-a77b-a81748eb0bd4",
+			"name": "Release",
+			"origin": "appcenter",
+			"display_name": "Release",
+			"is_public": true
+		}
+	]
+}
