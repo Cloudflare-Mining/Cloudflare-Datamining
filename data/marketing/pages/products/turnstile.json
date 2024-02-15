@@ -301,7 +301,7 @@
 						"showInModal": false,
 						"title": null,
 						"modalButtonText": null,
-						"mobileMode": "Tabbed",
+						"mobileMode": "Cards",
 						"sectionPadding": "tile--no-bottom-padding",
 						"showMonthlyVsAnnualToggle": false,
 						"priceToggleDescription": null,
@@ -698,7 +698,7 @@
 								"contentfulId": "MwdSCK5KUjqe3MSCPAtWK",
 								"contentTypeId": "planElementFeatures",
 								"name": "Interactivity modes",
-								"description": "__Managed mode:__ \nCloudflare logic determines which users see widget\n\n__Always interactive mode:__ \nAll users see widget",
+								"description": "__Managed mode:__ \nCloudflare logic determines which users see widget\n\n__Never interactive mode:__ \nAll users see widget",
 								"planValues": [
 									{
 										"contentTypeId": "planElementFeatureValueText",
@@ -738,7 +738,7 @@
 									{
 										"contentTypeId": "planElementFeatureValueText",
 										"contentfulId": "4hNUNaVEJi4qgWfmZ9NxL9",
-										"textValue": "Managed or always interactive",
+										"textValue": "Managed or never interactive",
 										"plan": {
 											"contentfulId": "6G9xkI2VUTSHHsJkjaBMlA",
 											"contentTypeId": "planElementPlan",
