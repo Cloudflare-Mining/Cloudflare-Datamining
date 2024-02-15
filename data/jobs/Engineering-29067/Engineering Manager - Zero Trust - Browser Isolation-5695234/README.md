@@ -5,31 +5,67 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations are Remote US</strong></p>
-<p><strong>About Cloudflare’s content marketing team</strong></p>
-<p>The content marketing team writes, edits, and manages content for use in marketing and sales campaigns — articles, event presentations, videos, promotional copy, and more. We work most closely with designers, web producers, product marketers, campaign managers, and event planners, but also collaborate as needed with people across the entire organization.</p>
-<p><strong>About the Senior Content Marketer role</strong></p>
-<p>The Senior Content Marketer will develop a strong understanding of Cloudflare’s prospects, products, and differentiators, and use that knowledge to create content for use in a variety of marketing activities. This is a writing-heavy role, but the ideal candidate will also understand best practices for using content in marketing programs, especially events and campaigns.&nbsp;</p>
-<p>The role’s primary responsibilities are:</p>
+<h4>Location: Remote US, Remote UK, Remote Portugal</h4>
+<h3>What you'll do</h3>
+<p>We are looking for an <strong>Engineering Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation/">Browser Isolation</a> team which complements Cloudflare’s Secure Web Gateway and Zero Trust Network Access solutions by executing active webpage content in a secure isolated browser. Our novel approach to remote browser isolation allows organizations to layer additional threat defense and data protection controls across browsing activities and insulate local devices from malware by running all browser code on Cloudflare's global network.</p>
+<p>You will play a key role in shaping the product’s engineering strategy, working with other engineering teams, product management, and external stakeholders to implement&nbsp;<strong>customer-impacting features</strong> and meet the team’s ambitious goals of <strong>quality and velocity</strong>. You will work closely with your team to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations.</p>
+<p>As a manager in our team, you will be expected to&nbsp;<strong>lead</strong>, <strong>inspire</strong>, and <strong>foster a culture of diversity</strong>. You will communicate <strong>clearly</strong> and with <strong>empathy</strong>, and work towards building a <strong>cohesive and collaborative</strong> team. You will be expected to interact with our customers and internal stakeholders, to identify gaps and areas of improvements in our product and processes alike, and to work with your own stakeholders to transform those into <strong>innovative</strong>, <strong>actionable</strong>, and <strong>achievable</strong> <strong>solutions</strong>.</p>
+<h3>Examples of desirable skills, knowledge, and experience:</h3>
 <ul>
-	<li>Writing thought leadership content (e.g. blogs, ebooks, whitepapers) and working with marketing colleagues (e.g designers and web producers) to publish and promote it</li>
-	<li>Working with colleagues, partners, and customers to create content for owned and third-party conferences</li>
-	<li>Working with marketing colleagues to identify content gaps and opportunities</li>
-	<li>Editing content written by colleagues and freelancers</li>
+	<li>Experience leading a team of geographically distributed engineers, including hiring, coaching, and professional development</li>
+	<li>Solid track record of building <strong>cohesive</strong> and <strong>collaborative</strong> teams</li>
+	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
+	<li>Experience working with <strong>browser</strong> based (Chromium, WebKit) technologies</li>
+	<li>Experience working with container orchestrators (Nomad, Kubernetes) and familiar with different container security technologies (gVisor, Firecracker)</li>
+	<li>Programming experience in<strong> Rust, C++</strong>, or similar low level languages</li>
+	<li>Programming experience in Go and/or Typescript is a plus, but not required</li>
+	<li>A strong grasp of <strong>networking</strong> and <strong>HTTP</strong> protocols</li>
+	<li>Experience working with networking&nbsp;</li>
+	<li>Excellent technical leadership skills, driving for very <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation</li>
+	<li>Experience driving for <strong>easily-testable</strong> and <strong>thoroughly-tested code</strong></li>
+	<li>A passion for fostering <strong>diversity</strong>, <strong>equity</strong>, and<strong> inclusion</strong></li>
+	<li>A strong and tangible <strong>customer empathy</strong></li>
+	<li>A good understanding of how the big-picture goals inform technical details</li>
+	<li>A drive for implementing tools, documentations, processes, instrumentation, and metrics to enhance the team’s velocity and performance</li>
+	<li>A knack for finding <strong>inspiring</strong> and <strong>innovative solutions</strong> to problems and blockages</li>
 </ul>
-<p><strong>Who we’re looking for in a candidate:</strong></p>
-<p>The ideal candidate is someone with 5+ years' full-time experience in a writing-heavy marketing role. Prior experience in enterprise technology / software is required, and IT or cybersecurity experience is highly desirable.&nbsp;</p>
-<p>Based on this experience, we expect the ideal candidate to be:</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location and experience.</p>
 <ul>
-	<li>An excellent writer, who is capable of clear, concise, persuasive communication</li>
-	<li>A thoughtful editor, who can improve a written piece’s grammar and structure to increase clarity and impact&nbsp;</li>
-	<li>A determined project manager, who can work independently and creatively to drive complex content projects through fast turnarounds and multiple review rounds</li>
-	<li>Sincerely interested in the deep technical details of how the Internet and related technologies work — and healthily skeptical about buzzwords, jargon, and flimsy business logic</li>
+	<li>
+		<ul>
+			<li>For Colorado-based hires: Estimated annual salary of $162,000 - $233,000</li>
+			<li>For New York City, Washington, and California (excluding Bay Area) based hires: Estimated annual salary of $195,000 - $261,000</li>
+			<li>For Bay Area-based hires: Estimated annual salary of $205,000 - $275,000</li>
+		</ul>
+	</li>
 </ul>
-<p><strong>Please provide the following in your application:</strong></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>A resume demonstrating that you match the above descriptions</li>
-	<li>A brief (1 page or less) cover letter answering the question “What interests you about this position?”</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,31 +5,26 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations are Remote US</strong></p>
-<p><strong>About Cloudflare’s content marketing team</strong></p>
-<p>The content marketing team writes, edits, and manages content for use in marketing and sales campaigns — articles, event presentations, videos, promotional copy, and more. We work most closely with designers, web producers, product marketers, campaign managers, and event planners, but also collaborate as needed with people across the entire organization.</p>
-<p><strong>About the Senior Content Marketer role</strong></p>
-<p>The Senior Content Marketer will develop a strong understanding of Cloudflare’s prospects, products, and differentiators, and use that knowledge to create content for use in a variety of marketing activities. This is a writing-heavy role, but the ideal candidate will also understand best practices for using content in marketing programs, especially events and campaigns.&nbsp;</p>
-<p>The role’s primary responsibilities are:</p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>Cloudflare's R2 Storage is distributed object storage accessible through Cloudflare's infrastructure allowing customers–both internal and external–the convenience of accessing their data from anywhere with the reliability and performance of Cloudflare infrastructure. In this role, you'll work with a top-notch engineering team to drive R2 Storage forward by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Writing thought leadership content (e.g. blogs, ebooks, whitepapers) and working with marketing colleagues (e.g designers and web producers) to publish and promote it</li>
-	<li>Working with colleagues, partners, and customers to create content for owned and third-party conferences</li>
-	<li>Working with marketing colleagues to identify content gaps and opportunities</li>
-	<li>Editing content written by colleagues and freelancers</li>
+	<li>Minimum 8 years of experience working with distributed systems.</li>
+	<li>Experience building and managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use Go, TypeScript, and Rust.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale distributed system</span>.</li>
 </ul>
-<p><strong>Who we’re looking for in a candidate:</strong></p>
-<p>The ideal candidate is someone with 5+ years' full-time experience in a writing-heavy marketing role. Prior experience in enterprise technology / software is required, and IT or cybersecurity experience is highly desirable.&nbsp;</p>
-<p>Based on this experience, we expect the ideal candidate to be:</p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-BonusPoints"><strong><span class="inline-comment-marker" data-ref="9d2723d0-7d67-4963-9e09-d584d29788bf">Bonus Points</span></strong></h3>
 <ul>
-	<li>An excellent writer, who is capable of clear, concise, persuasive communication</li>
-	<li>A thoughtful editor, who can improve a written piece’s grammar and structure to increase clarity and impact&nbsp;</li>
-	<li>A determined project manager, who can work independently and creatively to drive complex content projects through fast turnarounds and multiple review rounds</li>
-	<li>Sincerely interested in the deep technical details of how the Internet and related technologies work — and healthily skeptical about buzzwords, jargon, and flimsy business logic</li>
-</ul>
-<p><strong>Please provide the following in your application:</strong></p>
-<ul>
-	<li>A resume demonstrating that you match the above descriptions</li>
-	<li>A brief (1 page or less) cover letter answering the question “What interests you about this position?”</li>
+	<li>Experience building and managing a large scale data storage platform.&nbsp;</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
+	<li>Experience writing Javascript and Typescript.&nbsp;</li>
+	<li>Deep Linux / UNIX systems knowledge.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
