@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/load_balancers/search": {
+	"GET /accounts/{account_id}/load_balancers/search": {
 		"description": "Search for Load Balancing resources.",
 		"operationId": "account-load-balancer-search-search-resources",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

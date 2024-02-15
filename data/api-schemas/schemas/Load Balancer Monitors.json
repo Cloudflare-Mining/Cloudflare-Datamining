@@ -1,11 +1,11 @@
 {
-	"DELETE /user/load_balancers/monitors/{identifier}": {
+	"DELETE /user/load_balancers/monitors/{monitor_id}": {
 		"description": "Delete a configured monitor.",
 		"operationId": "load-balancer-monitors-delete-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -990,13 +990,13 @@
 			"Load Balancer Monitors"
 		]
 	},
-	"GET /user/load_balancers/monitors/{identifier}": {
+	"GET /user/load_balancers/monitors/{monitor_id}": {
 		"description": "List a single configured monitor for a user.",
 		"operationId": "load-balancer-monitors-monitor-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -1589,13 +1589,13 @@
 			"Load Balancer Monitors"
 		]
 	},
-	"GET /user/load_balancers/monitors/{identifier}/references": {
+	"GET /user/load_balancers/monitors/{monitor_id}/references": {
 		"description": "Get the list of resources that reference the provided monitor.",
 		"operationId": "load-balancer-monitors-list-monitor-references",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -2484,13 +2484,13 @@
 			"Load Balancer Monitors"
 		]
 	},
-	"PATCH /user/load_balancers/monitors/{identifier}": {
+	"PATCH /user/load_balancers/monitors/{monitor_id}": {
 		"description": "Apply changes to an existing monitor, overwriting the supplied properties.",
 		"operationId": "load-balancer-monitors-patch-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -3915,13 +3915,13 @@
 			"Load Balancer Monitors"
 		]
 	},
-	"POST /user/load_balancers/monitors/{identifier}/preview": {
+	"POST /user/load_balancers/monitors/{monitor_id}/preview": {
 		"description": "Preview pools using the specified monitor with provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results.",
 		"operationId": "load-balancer-monitors-preview-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -4416,13 +4416,13 @@
 			"Load Balancer Monitors"
 		]
 	},
-	"PUT /user/load_balancers/monitors/{identifier}": {
+	"PUT /user/load_balancers/monitors/{monitor_id}": {
 		"description": "Modify a configured monitor.",
 		"operationId": "load-balancer-monitors-update-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",

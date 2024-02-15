@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/load_balancers/monitors/{identifier}": {
+	"DELETE /accounts/{account_id}/load_balancers/monitors/{monitor_id}": {
 		"description": "Delete a configured monitor.",
 		"operationId": "account-load-balancer-monitors-delete-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -372,13 +372,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/monitors": {
+	"GET /accounts/{account_id}/load_balancers/monitors": {
 		"description": "List configured monitors for an account.",
 		"operationId": "account-load-balancer-monitors-list-monitors",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1016,13 +1016,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/monitors/{identifier}": {
+	"GET /accounts/{account_id}/load_balancers/monitors/{monitor_id}": {
 		"description": "List a single configured monitor for an account.",
 		"operationId": "account-load-balancer-monitors-monitor-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -1031,7 +1031,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1627,13 +1627,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/monitors/{identifier}/references": {
+	"GET /accounts/{account_id}/load_balancers/monitors/{monitor_id}/references": {
 		"description": "Get the list of resources that reference the provided monitor.",
 		"operationId": "account-load-balancer-monitors-list-monitor-references",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -1642,7 +1642,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2080,7 +2080,7 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/preview/{preview_id}": {
+	"GET /accounts/{account_id}/load_balancers/preview/{preview_id}": {
 		"description": "Get the result of a previous preview operation using the provided preview_id.",
 		"operationId": "account-load-balancer-monitors-preview-result",
 		"parameters": [
@@ -2094,7 +2094,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2546,13 +2546,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/load_balancers/monitors/{identifier}": {
+	"PATCH /accounts/{account_id}/load_balancers/monitors/{monitor_id}": {
 		"description": "Apply changes to an existing monitor, overwriting the supplied properties.",
 		"operationId": "account-load-balancer-monitors-patch-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -2561,7 +2561,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3279,13 +3279,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"POST /accounts/{account_identifier}/load_balancers/monitors": {
+	"POST /accounts/{account_id}/load_balancers/monitors": {
 		"description": "Create a configured monitor.",
 		"operationId": "account-load-balancer-monitors-create-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4003,13 +4003,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"POST /accounts/{account_identifier}/load_balancers/monitors/{identifier}/preview": {
+	"POST /accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview": {
 		"description": "Preview pools using the specified monitor with provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results.",
 		"operationId": "account-load-balancer-monitors-preview-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -4018,7 +4018,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -4516,13 +4516,13 @@
 			"Account Load Balancer Monitors"
 		]
 	},
-	"PUT /accounts/{account_identifier}/load_balancers/monitors/{identifier}": {
+	"PUT /accounts/{account_id}/load_balancers/monitors/{monitor_id}": {
 		"description": "Modify a configured monitor.",
 		"operationId": "account-load-balancer-monitors-update-monitor",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "monitor_id",
 				"required": true,
 				"schema": {
 					"example": "f1aba936b94213e5b8dca0c0dbf1f9cc",
@@ -4531,7 +4531,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

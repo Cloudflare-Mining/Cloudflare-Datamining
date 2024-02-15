@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+	"DELETE /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"description": "Delete a configured pool.",
 		"operationId": "account-load-balancer-pools-delete-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -372,13 +372,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/pools": {
+	"GET /accounts/{account_id}/load_balancers/pools": {
 		"description": "List configured pools.",
 		"operationId": "account-load-balancer-pools-list-pools",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1271,13 +1271,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"description": "Fetch a single configured pool.",
 		"operationId": "account-load-balancer-pools-pool-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -1286,7 +1286,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2130,13 +2130,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/pools/{identifier}/health": {
+	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}/health": {
 		"description": "Fetch the latest pool health status for a single pool.",
 		"operationId": "account-load-balancer-pools-pool-health-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -2145,7 +2145,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2523,13 +2523,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"GET /accounts/{account_identifier}/load_balancers/pools/{identifier}/references": {
+	"GET /accounts/{account_id}/load_balancers/pools/{pool_id}/references": {
 		"description": "Get the list of resources that reference the provided pool.",
 		"operationId": "account-load-balancer-pools-list-pool-references",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -2538,7 +2538,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2988,13 +2988,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/load_balancers/pools": {
+	"PATCH /accounts/{account_id}/load_balancers/pools": {
 		"description": "Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`.",
 		"operationId": "account-load-balancer-pools-patch-pools",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3899,13 +3899,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+	"PATCH /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"description": "Apply changes to an existing pool, overwriting the supplied properties.",
 		"operationId": "account-load-balancer-pools-patch-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -3914,7 +3914,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -5003,13 +5003,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"POST /accounts/{account_identifier}/load_balancers/pools": {
+	"POST /accounts/{account_id}/load_balancers/pools": {
 		"description": "Create a new pool.",
 		"operationId": "account-load-balancer-pools-create-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6067,13 +6067,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"POST /accounts/{account_identifier}/load_balancers/pools/{identifier}/preview": {
+	"POST /accounts/{account_id}/load_balancers/pools/{pool_id}/preview": {
 		"description": "Preview pool health using provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results.",
 		"operationId": "account-load-balancer-pools-preview-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -6082,7 +6082,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -6580,13 +6580,13 @@
 			"Account Load Balancer Pools"
 		]
 	},
-	"PUT /accounts/{account_identifier}/load_balancers/pools/{identifier}": {
+	"PUT /accounts/{account_id}/load_balancers/pools/{pool_id}": {
 		"description": "Modify a configured pool.",
 		"operationId": "account-load-balancer-pools-update-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -6595,7 +6595,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

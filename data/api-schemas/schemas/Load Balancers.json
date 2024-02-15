@@ -1,11 +1,11 @@
 {
-	"DELETE /zones/{identifier1}/load_balancers/{identifier}": {
+	"DELETE /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"description": "Delete a configured load balancer.",
 		"operationId": "load-balancers-delete-load-balancer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -14,7 +14,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier1",
+				"name": "load_balancer_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -369,13 +369,13 @@
 			"Load Balancers"
 		]
 	},
-	"GET /zones/{identifier}/load_balancers": {
+	"GET /zones/{zone_id}/load_balancers": {
 		"description": "List configured load balancers.",
 		"operationId": "load-balancers-list-load-balancers",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -1874,13 +1874,13 @@
 			"Load Balancers"
 		]
 	},
-	"GET /zones/{identifier1}/load_balancers/{identifier}": {
+	"GET /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"description": "Fetch a single configured load balancer.",
 		"operationId": "load-balancers-load-balancer-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -1889,7 +1889,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier1",
+				"name": "load_balancer_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -3346,13 +3346,13 @@
 			"Load Balancers"
 		]
 	},
-	"PATCH /zones/{identifier1}/load_balancers/{identifier}": {
+	"PATCH /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"description": "Apply changes to an existing load balancer, overwriting the supplied properties.",
 		"operationId": "load-balancers-patch-load-balancer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -3361,7 +3361,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier1",
+				"name": "load_balancer_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -5371,13 +5371,13 @@
 			"Load Balancers"
 		]
 	},
-	"POST /zones/{identifier}/load_balancers": {
+	"POST /zones/{zone_id}/load_balancers": {
 		"description": "Create a new load balancer.",
 		"operationId": "load-balancers-create-load-balancer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -7386,13 +7386,13 @@
 			"Load Balancers"
 		]
 	},
-	"PUT /zones/{identifier1}/load_balancers/{identifier}": {
+	"PUT /zones/{zone_id}/load_balancers/{load_balancer_id}": {
 		"description": "Update a configured load balancer.",
 		"operationId": "load-balancers-update-load-balancer",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "zone_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",
@@ -7401,7 +7401,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier1",
+				"name": "load_balancer_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252",

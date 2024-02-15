@@ -1,11 +1,11 @@
 {
-	"DELETE /user/load_balancers/pools/{identifier}": {
+	"DELETE /user/load_balancers/pools/{pool_id}": {
 		"description": "Delete a configured pool.",
 		"operationId": "load-balancer-pools-delete-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -1247,13 +1247,13 @@
 			"Load Balancer Pools"
 		]
 	},
-	"GET /user/load_balancers/pools/{identifier}": {
+	"GET /user/load_balancers/pools/{pool_id}": {
 		"description": "Fetch a single configured pool.",
 		"operationId": "load-balancer-pools-pool-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -2094,13 +2094,13 @@
 			"Load Balancer Pools"
 		]
 	},
-	"GET /user/load_balancers/pools/{identifier}/health": {
+	"GET /user/load_balancers/pools/{pool_id}/health": {
 		"description": "Fetch the latest pool health status for a single pool.",
 		"operationId": "load-balancer-pools-pool-health-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -2475,13 +2475,13 @@
 			"Load Balancer Pools"
 		]
 	},
-	"GET /user/load_balancers/pools/{identifier}/references": {
+	"GET /user/load_balancers/pools/{pool_id}/references": {
 		"description": "Get the list of resources that reference the provided pool.",
 		"operationId": "load-balancer-pools-list-pool-references",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -3825,13 +3825,13 @@
 			"Load Balancer Pools"
 		]
 	},
-	"PATCH /user/load_balancers/pools/{identifier}": {
+	"PATCH /user/load_balancers/pools/{pool_id}": {
 		"description": "Apply changes to an existing pool, overwriting the supplied properties.",
 		"operationId": "load-balancer-pools-patch-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -5996,13 +5996,13 @@
 			"Load Balancer Pools"
 		]
 	},
-	"POST /user/load_balancers/pools/{identifier}/preview": {
+	"POST /user/load_balancers/pools/{pool_id}/preview": {
 		"description": "Preview pool health using provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results.",
 		"operationId": "load-balancer-pools-preview-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
@@ -6497,13 +6497,13 @@
 			"Load Balancer Pools"
 		]
 	},
-	"PUT /user/load_balancers/pools/{identifier}": {
+	"PUT /user/load_balancers/pools/{pool_id}": {
 		"description": "Modify a configured pool.",
 		"operationId": "load-balancer-pools-update-pool",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pool_id",
 				"required": true,
 				"schema": {
 					"example": "17b5962d775c646f3f9725cbc7a53df4",
