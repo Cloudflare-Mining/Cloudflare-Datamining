@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- 1a477091fa: Update @cloudflare/component-icon version
+
 ## 8.0.2
 
 ## 8.0.1
