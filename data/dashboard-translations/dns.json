@@ -563,5 +563,19 @@
 	"dns.dns_file_upload.success.description": "We successfully imported your records.",
 	"dns.dns_file_upload.failure": "Some records failed to upload",
 	"dns.dns_file_upload.error": "Unable to upload DNS records",
-	"dns.dns_file_export.start": "DNS file export has started. Check your browser's download folder."
+	"dns.dns_file_export.start": "DNS file export has started. Check your browser's download folder.",
+	"dns.setup": "DNS Setup",
+	"dns.setup.full.label": "Full",
+	"dns.setup.partial.label": "Partial",
+	"dns.setup.secondary.label": "Secondary",
+	"dns.setup.full.tooltip.summary": "Cloudflare is the primary DNS provider for this domain, meaning:",
+	"dns.setup.full.tooltip.list.0": "DNS records are managed at Cloudflare",
+	"dns.setup.full.tooltip.list.1": "Cloudflare authoritatively answers all DNS queries",
+	"dns.setup.full.tooltip.learn_more": "Learn more about <0>full DNS setup</0><1></1>",
+	"dns.setup.secondary.tooltip.summary": "Cloudflare is your secondary DNS provider, meaning:",
+	"dns.setup.secondary.tooltip.list.0": "DNS records are transferred from your primary DNS provider to Cloudflare using incoming <0>zone transfers</0><1></1>",
+	"dns.setup.secondary.tooltip.list.1": "Cloudflare authoritatively answers all DNS queries",
+	"dns.setup.secondary.tooltip.learn_more": "Learn more about <0>secondary DNS setup</0><1></1>",
+	"dns.setup.partial.tooltip.summary": "Cloudflare is not your authoritative DNS provider, but the subdomains you have specified can be <0>proxied</0><1></1> through Cloudflare via a CNAME record at your authoritative DNS provider. Check your authoritative DNS provider to find out which records are resolving to Cloudflare.",
+	"dns.setup.partial.tooltip.learn_more": "Learn more about <0>partial (CNAME) setup</0><1></1>"
 }
