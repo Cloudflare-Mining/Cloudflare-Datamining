@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}": {
+	"DELETE /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"description": "Delete an unapproved prefix owned by the account.",
 		"operationId": "ip-address-management-prefixes-delete-prefix",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -156,7 +156,7 @@
 				},
 				"description": "Delete Prefix response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -377,13 +377,13 @@
 			"IP Address Management Prefixes"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/loa_documents/{loa_document_identifier}/download": {
+	"GET /accounts/{account_id}/addressing/loa_documents/{loa_document_id}/download": {
 		"description": "Download specified LOA document under the account.",
 		"operationId": "ip-address-management-prefixes-download-loa-document",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "loa_document_identifier",
+				"name": "loa_document_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier for the uploaded LOA document.",
@@ -395,7 +395,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -415,7 +415,7 @@
 				},
 				"description": "Download LOA Document response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -523,13 +523,13 @@
 			"IP Address Management Prefixes"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/prefixes": {
+	"GET /accounts/{account_id}/addressing/prefixes": {
 		"description": "List all prefixes owned by the account.",
 		"operationId": "ip-address-management-prefixes-list-prefixes",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -756,7 +756,7 @@
 				},
 				"description": "List Prefixes response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1071,13 +1071,13 @@
 			"IP Address Management Prefixes"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"description": "List a particular prefix owned by the account.",
 		"operationId": "ip-address-management-prefixes-prefix-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1089,7 +1089,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1293,7 +1293,7 @@
 				},
 				"description": "Prefix Details response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1585,13 +1585,13 @@
 			"IP Address Management Prefixes"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}": {
+	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}": {
 		"description": "Modify the description for a prefix owned by the account.",
 		"operationId": "ip-address-management-prefixes-update-prefix-description",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1603,7 +1603,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1827,7 +1827,7 @@
 				},
 				"description": "Update Prefix Description response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2119,13 +2119,13 @@
 			"IP Address Management Prefixes"
 		]
 	},
-	"POST /accounts/{account_identifier}/addressing/loa_documents": {
+	"POST /accounts/{account_id}/addressing/loa_documents": {
 		"description": "Submit LOA document (pdf format) under the account.",
 		"operationId": "ip-address-management-prefixes-upload-loa-document",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2276,7 +2276,7 @@
 				},
 				"description": "Upload LOA Document response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -2495,13 +2495,13 @@
 			"IP Address Management Prefixes"
 		]
 	},
-	"POST /accounts/{account_identifier}/addressing/prefixes": {
+	"POST /accounts/{account_id}/addressing/prefixes": {
 		"description": "Add a new prefix under the account.",
 		"operationId": "ip-address-management-prefixes-add-prefix",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2739,7 +2739,7 @@
 				},
 				"description": "Add Prefix response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

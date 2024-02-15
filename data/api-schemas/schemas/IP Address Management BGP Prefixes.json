@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bgp/prefixes": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes": {
 		"description": "List all BGP Prefixes within the specified IP Prefix. BGP Prefixes are used to control which specific subnets are advertised to the Internet. It is possible to advertise subnets more specific than an IP Prefix by creating more specific BGP Prefixes.",
 		"operationId": "ip-address-management-prefixes-list-bgp-prefixes",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -241,7 +241,7 @@
 				},
 				"description": "List BGP Prefixes response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -553,13 +553,13 @@
 			"IP Address Management BGP Prefixes"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bgp/prefixes/{bgp_prefix_identifier}": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"description": "Retrieve a single BGP Prefix according to its identifier",
 		"operationId": "ip-address-management-prefixes-fetch-bgp-prefix",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -571,7 +571,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -583,7 +583,7 @@
 			},
 			{
 				"in": "path",
-				"name": "bgp_prefix_identifier",
+				"name": "bgp_prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -784,7 +784,7 @@
 				},
 				"description": "Fetch BGP Prefix response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1073,13 +1073,13 @@
 			"IP Address Management BGP Prefixes"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bgp/prefixes/{bgp_prefix_identifier}": {
+	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/prefixes/{bgp_prefix_id}": {
 		"description": "Update the properties of a BGP Prefix, such as the on demand advertisement status (advertised or withdrawn).",
 		"operationId": "ip-address-management-prefixes-update-bgp-prefix",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1091,7 +1091,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1103,7 +1103,7 @@
 			},
 			{
 				"in": "path",
-				"name": "bgp_prefix_identifier",
+				"name": "bgp_prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1324,7 +1324,7 @@
 				},
 				"description": "Update BGP Prefix response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

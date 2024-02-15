@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bindings/{binding_identifier}": {
+	"DELETE /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings/{binding_id}": {
 		"description": "Delete a Service Binding",
 		"operationId": "ip-address-management-service-bindings-delete-service-binding",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29,7 +29,7 @@
 			},
 			{
 				"in": "path",
-				"name": "binding_identifier",
+				"name": "binding_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -123,7 +123,7 @@
 				},
 				"description": "Service Binding deleted"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -226,13 +226,13 @@
 			"IP Address Management Service Bindings"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bindings": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {
 		"description": "List the Cloudflare services this prefix is currently bound to. Traffic sent to an address within an IP prefix will be routed to the Cloudflare service of the most-specific Service Binding matching the address.\n**Example:** binding `192.0.2.0/24` to Cloudflare Magic Transit and `192.0.2.1/32` to the Cloudflare CDN would route traffic for `192.0.2.1` to the CDN, and traffic for all other IPs in the prefix to Cloudflare Magic Transit.\n",
 		"operationId": "ip-address-management-service-bindings-list-service-bindings",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -244,7 +244,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -392,7 +392,7 @@
 				},
 				"description": "Service Bindings attached to the Prefix"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -495,13 +495,13 @@
 			"IP Address Management Service Bindings"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bindings/{binding_identifier}": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings/{binding_id}": {
 		"description": "Fetch a single Service Binding",
 		"operationId": "ip-address-management-service-bindings-get-service-binding",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -513,7 +513,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -525,7 +525,7 @@
 			},
 			{
 				"in": "path",
-				"name": "binding_identifier",
+				"name": "binding_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -670,7 +670,7 @@
 				},
 				"description": "The Service Binding with the requested ID"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -773,13 +773,13 @@
 			"IP Address Management Service Bindings"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/services": {
+	"GET /accounts/{account_id}/addressing/services": {
 		"description": "Bring-Your-Own IP (BYOIP) prefixes onboarded to Cloudflare must be bound to a service running on the Cloudflare network to enable a Cloudflare product on the IP addresses. This endpoint can be used as a reference of available services on the Cloudflare network, and their service IDs.\n",
 		"operationId": "ip-address-management-service-bindings-list-services",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -899,7 +899,7 @@
 				},
 				"description": "Service names and IDs"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -1002,13 +1002,13 @@
 			"IP Address Management Service Bindings"
 		]
 	},
-	"POST /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bindings": {
+	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/bindings": {
 		"description": "Creates a new Service Binding, routing traffic to IPs within the given CIDR to a service running on Cloudflare's network.\n**Note:** This API may only be used on prefixes currently configured with a Magic Transit service binding, and only allows creating service bindings for the Cloudflare CDN or Cloudflare Spectrum.\n",
 		"operationId": "ip-address-management-service-bindings-create-service-binding",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1020,7 +1020,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1187,7 +1187,7 @@
 				},
 				"description": "The created Service Binding"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

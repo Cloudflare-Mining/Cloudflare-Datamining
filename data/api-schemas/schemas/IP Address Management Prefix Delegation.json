@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/delegations/{delegation_identifier}": {
+	"DELETE /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations/{delegation_id}": {
 		"description": "Delete an account delegation for a given IP prefix.",
 		"operationId": "ip-address-management-prefix-delegation-delete-prefix-delegation",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "delegation_identifier",
+				"name": "delegation_id",
 				"required": true,
 				"schema": {
 					"description": "Delegation identifier tag.",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -29,7 +29,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -168,7 +168,7 @@
 				},
 				"description": "Delete Prefix Delegation response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -389,13 +389,13 @@
 			"IP Address Management Prefix Delegation"
 		]
 	},
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/delegations": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
 		"description": "List all delegations for a given account IP prefix.",
 		"operationId": "ip-address-management-prefix-delegation-list-prefix-delegations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -407,7 +407,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -593,7 +593,7 @@
 				},
 				"description": "List Prefix Delegations response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -867,13 +867,13 @@
 			"IP Address Management Prefix Delegation"
 		]
 	},
-	"POST /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/delegations": {
+	"POST /accounts/{account_id}/addressing/prefixes/{prefix_id}/delegations": {
 		"description": "Create a new account delegation for a given IP prefix.",
 		"operationId": "ip-address-management-prefix-delegation-create-prefix-delegation",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -885,7 +885,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1074,7 +1074,7 @@
 				},
 				"description": "Create Prefix Delegation response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {

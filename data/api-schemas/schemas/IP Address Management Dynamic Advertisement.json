@@ -1,11 +1,11 @@
 {
-	"GET /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bgp/status": {
+	"GET /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
 		"description": "List the current advertisement state for a prefix.",
 		"operationId": "ip-address-management-dynamic-advertisement-get-advertisement-status",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -155,7 +155,7 @@
 				},
 				"description": "Get Advertisement Status response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -381,13 +381,13 @@
 			"IP Address Management Dynamic Advertisement"
 		]
 	},
-	"PATCH /accounts/{account_identifier}/addressing/prefixes/{prefix_identifier}/bgp/status": {
+	"PATCH /accounts/{account_id}/addressing/prefixes/{prefix_id}/bgp/status": {
 		"description": "Advertise or withdraw BGP route for a prefix.",
 		"operationId": "ip-address-management-dynamic-advertisement-update-prefix-dynamic-advertisement-status",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "prefix_identifier",
+				"name": "prefix_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -399,7 +399,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -556,7 +556,7 @@
 				},
 				"description": "Update Prefix Dynamic Advertisement Status response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
