@@ -5,36 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Locations Available - Austin, TX, this position is eligible for being remote in Austin Texas only.&nbsp;</strong></p>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data Engineer to join our team to scale our data platform and product insights initiatives. You will work with a wide array of data sources to build integrated data pipelines that process billions of records each day and influence our critical business initiatives.&nbsp;</p>
-<p>Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</p>
+<p><strong>Position Location: Austin, TX</strong></p>
+<p><strong>About the team</strong></p>
+<p><a href="https://pages.cloudflare.com/">Cloudflare Pages</a> is a collaborative web development platform that provides users with a fast and secure way to build and host web applications. We work hard to remove barriers between vision and execution for content creators, large and small. Pages is part of Cloudflare's Emerging Technology and Incubation team where new, bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a successful business, ETI leverages our network to deliver entirely new tools and products to our customers.&nbsp;</p>
 <p><strong>What you'll do</strong></p>
 <ul>
-	<li>Design, implement and support end to end scalable data pipelines for multiple data products&nbsp;</li>
-	<li>Work closely with a cross functional team of data scientists and analysts and internal stakeholders on strategic initiatives&nbsp;</li>
-	<li>Contribute in improving an evolving data platform for scalability, observability and reliability</li>
-	<li>Partner with product and other data engineering teams to extract, transform and load data from various sources using big data technologies</li>
-	<li>Build rich data sets that drive innovation in data driven insights at scale within the company</li>
-	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team in Austin and San Francisco to improve the data collection and quality</li>
+	<li>Help build the next generation of CI/CD for Cloudflare's Developer Platform</li>
+	<li>Scale and improve the Pages API, a highly interconnected service that incorporates many other Cloudflare services into the Pages product</li>
+	<li>Collaborate with engineers across Cloudflare, and contribute at many layers of the stack&nbsp;</li>
+	<li>Own your work from early discussions on. You will plan, craft milestones, and effectively communicate scope and blockers as your project progresses. You will help implement metrics and dashboards to monitor operational health after the project ships</li>
+	<li>Leverage your creativity and developer prowess to seek out new ways to improve the platform</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>About you</strong></p>
 <ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>3+ years of industry experience in software engineering, data engineering, or related fields</li>
-	<li>Strong programming skills with Go, Python or any JVM based programming language</li>
-	<li>Experience in writing advanced SQL queries</li>
-	<li>Knowledge of data management fundamentals and data storage/computing principles</li>
-	<li>Solid understanding of big data technologies such as Spark, BigQuery, Kafka etc.&nbsp;</li>
-	<li>Strong communication skills</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with container based deployments such as Docker &amp; Kubernetes</li>
-	<li>Experience with Google Cloud Platform or other cloud storage platforms</li>
-	<li>Experience in building RESTful and microservices applications is a plus</li>
+	<li>You are security focused. You understand that running untrusted code in a multitenant environment requires careful and deliberate work</li>
+	<li>You are a solid backend developer with a strong understanding of Kubernetes, relational databases, and RESTful APIs</li>
+	<li>You have experience with CI/CD, maybe even on a large scale</li>
+	<li>Our backend is written primarily in Go, Python, and TypeScript. We recommend you have worked in one of these languages before, preferably professionally</li>
+	<li>Although our backend isn't a mesh, parts of it rely on a decentralized architecture of Cloudflare Workers. You are familiar with Workers or have worked with microservices&nbsp;</li>
+	<li>You are empathic to the developer experience and knowledgeable of best practices, trends, and pain points&nbsp;&nbsp;</li>
+	<li>You are naturally curious and willing to take a step to learn something you don’t have experience in</li>
+	<li>Above all, you are a collaborator. You want to join a team that upholds a culture of support, open and honest communication, and vulnerability, and that values collaboration over heroism. We celebrate our achievements, support each other when we make mistakes, and hold each other and our work to the highest standard</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
