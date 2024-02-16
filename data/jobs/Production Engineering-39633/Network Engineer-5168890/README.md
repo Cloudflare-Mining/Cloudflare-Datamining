@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Locations: <span class="collapsed-field-text">Remote Australia, Singapore</span></strong></h4>
+<h4><strong>Available Locations: </strong><strong><span class="collapsed-field-text">Remote Australia, Singapore, Tokyo, Japan</span></strong></h4>
 <h4><strong>A</strong><strong>bout the department</strong></h4>
 <p>As an engineer on one of our Production Engineering teams, you'll be building the network infrastructure that makes Cloudflare work. Our mission is to provide a reliable and flexible platform to help product teams release new services efficiently and safely.</p>
 <p><strong>About the role:</strong></p>
