@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_identifier}/intel/sinkholes": {
+	"GET /accounts/{account_id}/intel/sinkholes": {
 		"operationId": "sinkhole-config-get-sinkholes",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",

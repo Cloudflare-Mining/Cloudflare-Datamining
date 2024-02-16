@@ -1,10 +1,10 @@
 {
-	"GET /accounts/{account_identifier}/intel/indicator-feeds": {
+	"GET /accounts/{account_id}/intel/indicator-feeds": {
 		"operationId": "custom-indicator-feeds-get-indicator-feeds",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -400,12 +400,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"GET /accounts/{account_identifier}/intel/indicator-feeds/{feed_id}": {
+	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}": {
 		"operationId": "custom-indicator-feeds-get-indicator-feed-metadata",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -837,12 +837,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"GET /accounts/{account_identifier}/intel/indicator-feeds/{feed_id}/data": {
+	"GET /accounts/{account_id}/intel/indicator-feeds/{feed_id}/data": {
 		"operationId": "custom-indicator-feeds-get-indicator-feed-data",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -981,12 +981,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"GET /accounts/{account_identifier}/intel/indicator-feeds/permissions/view": {
+	"GET /accounts/{account_id}/intel/indicator-feeds/permissions/view": {
 		"operationId": "custom-indicator-feeds-view-permissions",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1340,12 +1340,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"POST /accounts/{account_identifier}/intel/indicator-feeds": {
+	"POST /accounts/{account_id}/intel/indicator-feeds": {
 		"operationId": "custom-indicator-feeds-create-indicator-feeds",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1764,12 +1764,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"PUT /accounts/{account_identifier}/intel/indicator-feeds/{feed_id}/snapshot": {
+	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
 		"operationId": "custom-indicator-feeds-update-indicator-feed-data",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2043,12 +2043,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"PUT /accounts/{account_identifier}/intel/indicator-feeds/permissions/add": {
+	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/add": {
 		"operationId": "custom-indicator-feeds-add-permission",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2415,12 +2415,12 @@
 			"Custom Indicator Feeds"
 		]
 	},
-	"PUT /accounts/{account_identifier}/intel/indicator-feeds/permissions/remove": {
+	"PUT /accounts/{account_id}/intel/indicator-feeds/permissions/remove": {
 		"operationId": "custom-indicator-feeds-remove-permission",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
