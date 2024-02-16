@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "677817a3555e0927c3be97e43dcabd4b12343aee",
+					commit: "07e24a23953d3851be83bcf85e8cedd6a42ee870",
 					env: "production",
-					builtAt: 1708029656367,
-					dashVersion: "bc6619fe19935586f14eed083a0dd5c3b7e2e4f1",
+					builtAt: 1708116847172,
+					dashVersion: "2fc0fae4bb8f86fd3ef599119556c07f3c0fefef",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -8941,7 +8941,6 @@
 					accountSettings: (0, t.BC)`/accounts/${"accountId"}/pages/account-settings`,
 					checkMissing: (0, t.BC)`/pages/assets/check-missing`,
 					metrics: (0, t.BC)`/accounts/${"accountId"}/pages/metrics`,
-					migrateUsageModelsBulk: (0, t.BC)`/accounts/${"accountId"}/pages/migrate-usage-model`,
 					projects: (0, t.BC)`/accounts/${"accountId"}/pages/projects`,
 					projectDetails: (0, t.BC)`/accounts/${"accountId"}/pages/projects/${"projectName"}`,
 					purgeCache: (0, t.BC)`/accounts/${"accountId"}/pages/projects/${"projectName"}/purge_build_cache`,
@@ -9622,8 +9621,7 @@
 					scriptsByHandler: (0, t.BC)`/accounts/${"accountId"}/workers/scripts?handlers=${"handler"}`,
 					tailsByConsumer: (0, t.BC)`/accounts/${"accountId"}/workers/tails/by-consumer/${"serviceId"}/environment/${"environment"}`,
 					outboundDispatchers: (0, t.BC)`/accounts/${"accountId"}/workers/dispatch_outbounds/by-outbound/${"serviceId"}/environment/${"environmentName"}`,
-					standard: (0, t.BC)`/accounts/${"accountId"}/workers/standard`,
-					migrateUsageModelsBulk: (0, t.BC)`/accounts/${"accountId"}/workers/scripts/migrate-usage-model`
+					standard: (0, t.BC)`/accounts/${"accountId"}/workers/standard`
 				}
 		},
 		"../react/shims/focus-visible.js": function() {

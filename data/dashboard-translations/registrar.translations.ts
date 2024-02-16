@@ -97,7 +97,10 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		view_contacts: "View Contacts",
 		registration: "Registration",
 		contacts: "Contacts",
-		configuration: "Configuration"
+		configuration: "Configuration",
+		error: {
+			deletion_irredeemable: (0, e.d)`This domain expired on ${"paymentExpiresAt"} and can no longer be restored or renewed. Once the domain has been released by the Registry it may be re-registered again.`
+		}
 	},
 	domains_page: {
 		manage: "Manage",
@@ -635,6 +638,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	registration_checkout_loading_1: "Confirming domain name availability...",
 	registration_checkout_loading_2: "Checking for trademark claims...",
 	registration_checkout_loading_3: "Loading checkout cart...",
+	registration_checkout_refund_disclaimer: (0, e.d)`You are about to register ${"domainName"}. Please double check that this is the domain you wish to register. All registrations are final and no refunds will be issued.`,
 	registration_checkout_tmch_title: "Trademark claim for domain <strong>%{domainName}</strong>",
 	registration_checkout_tmch_description: "This domain matches at least one trademark record. If you would like to register this domain, you must review the following agreement and accept the terms of the trademark notice to proceed.",
 	registration_checkout_tmch_expand_button: "Read trademark notice",
