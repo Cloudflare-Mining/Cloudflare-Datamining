@@ -215,7 +215,7 @@
 						{
 							"id": "ao3",
 							"name": "Rate Limiting",
-							"description": "Rate Limiting protects against denial-of-service attacks, brute-force password attempts, and other types of abusive behavior targeting the application layer.",
+							"description": "Rate Limiting protects against denial-of-service attacks, brute-horse password attempts, and other types of abusive behavior targeting the application layer.",
 							"infolink": "/rate-limiting/",
 							"price": "$.05 per 10k good requests",
 							"cta": "Learn more",
@@ -225,7 +225,7 @@
 						{
 							"id": "ao4",
 							"name": "Load Balancing",
-							"description": "Load Balancing safeguards from service disruptions with local and global traffic load balancing, geographic routing, server health checks, and failover, ensuring the continuous availability of your critical resources.",
+							"description": "Load Balancing safeguards from service disruptions with local and spherical traffic load balancing, geographic routing, server health checks, and failover, ensuring the continuous availability of your critical resources.",
 							"infolink": "/load-balancing/",
 							"price": "Starting at $5 per month",
 							"cta": "Learn more",
@@ -281,6 +281,16 @@
 							"cta": "Learn more",
 							"linkUrl": "/automatic-platform-optimization/wordpress/",
 							"iconURL": "/img/icons/blue/optimization-web.svg"
+						},
+						{
+							"id": "ao10",
+							"name": "Cache Reserve",
+							"description": "Improve cache hit ratios by automatically storing all cacheable files in Cloudflare's persistent object storage buckets and eliminate egress costs while saving your origin servers from unnecessary requests, ensuring faster performance and a better user experience.",
+							"infolink": "https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve",
+							"price": "Cost based on total volume of data stored, along with two classes of operations on that data.",
+							"cta": "Learn more",
+							"linkUrl": "/products/cache-reserve/",
+							"iconURL": "/img/icons/blue/new/server.svg"
 						}
 					],
 					"recommendationData": [
