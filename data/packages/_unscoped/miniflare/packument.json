@@ -1,7 +1,7 @@
 {
 	"name": "miniflare",
 	"dist-tags": {
-		"latest": "3.20240129.2",
+		"latest": "3.20240129.3",
 		"beta": "0.20230908.0",
 		"latest-2": "2.14.2"
 	},
@@ -5250,6 +5250,79 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEYCIQCqdfhSmBMsvfcwvkAC0A4ovl731810rBEafA8BzPsFJwIhAJYbPBvq+CJjtnY13G2u5qrcZTetwDk6BGtOYiLykqCm"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.13"
+			}
+		},
+		"3.20240129.3": {
+			"name": "miniflare",
+			"version": "3.20240129.3",
+			"dependencies": {
+				"@cspotcode/source-map-support": "0.8.1",
+				"acorn": "^8.8.0",
+				"acorn-walk": "^8.2.0",
+				"capnp-ts": "^0.7.0",
+				"exit-hook": "^2.2.1",
+				"glob-to-regexp": "^0.4.1",
+				"stoppable": "^1.1.0",
+				"undici": "^5.28.2",
+				"workerd": "1.20240129.0",
+				"ws": "^8.11.0",
+				"youch": "^3.2.2",
+				"zod": "^3.20.6"
+			},
+			"devDependencies": {
+				"@ava/typescript": "^4.0.0",
+				"@cloudflare/workers-types": "^4.20231002.0",
+				"@microsoft/api-extractor": "^7.36.3",
+				"@types/debug": "^4.1.7",
+				"@types/estree": "^1.0.0",
+				"@types/glob-to-regexp": "^0.4.1",
+				"@types/http-cache-semantics": "^4.0.1",
+				"@types/node": "^18.11.9",
+				"@types/rimraf": "^3.0.2",
+				"@types/stoppable": "^1.1.1",
+				"@types/which": "^2.0.1",
+				"@types/ws": "^8.5.3",
+				"@typescript-eslint/eslint-plugin": "^6.9.0",
+				"@typescript-eslint/parser": "^6.9.0",
+				"ava": "^5.2.0",
+				"capnpc-ts": "^0.7.0",
+				"concurrently": "^8.2.2",
+				"devalue": "^4.3.0",
+				"devtools-protocol": "^0.0.1182435",
+				"esbuild": "^0.16.17",
+				"eslint": "^8.6.0",
+				"eslint-config-prettier": "^9.0.0",
+				"eslint-plugin-es": "^4.1.0",
+				"eslint-plugin-import": "2.26.x",
+				"eslint-plugin-prettier": "^5.0.1",
+				"expect-type": "^0.15.0",
+				"http-cache-semantics": "^4.1.0",
+				"kleur": "^4.1.5",
+				"prettier": "^3.0.3",
+				"rimraf": "^3.0.2",
+				"source-map": "^0.6.0",
+				"typescript": "~5.0.4",
+				"which": "^2.0.2",
+				"@cloudflare/kv-asset-handler": "0.3.1"
+			},
+			"bin": {
+				"miniflare": "bootstrap.js"
+			},
+			"dist": {
+				"integrity": "sha512-PCmLJ+UvtbpPj/fgNzTGbd+U5QBkt3akRNcdks9RBJU2SH+gUCp7iahsaI4GA344NX5MIbC6ctw1A6TfcA+aFA==",
+				"shasum": "cb21be53a455116240779c844e2c102082a47323",
+				"tarball": "https://registry.npmjs.org/miniflare/-/miniflare-3.20240129.3.tgz",
+				"fileCount": 31,
+				"unpackedSize": 1520934,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEI3aYUlBh0IcLdPGh2Oz8g1jMfIgquWJXivEnWzmqVGAiEAshXmOJ0IEPC0ewQWNTx7B0LOg2KcE2u2g7dOW6TAA08="
 					}
 				]
 			},
