@@ -1,11 +1,11 @@
 {
-	"POST /accounts/{account_identifier}/diagnostics/traceroute": {
+	"POST /accounts/{account_id}/diagnostics/traceroute": {
 		"description": "Run traceroutes from Cloudflare colos.",
 		"operationId": "diagnostics-traceroute",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
