@@ -9,7 +9,6 @@
 <p><strong>What you'll do</strong></p>
 <ul>
 	<li>Assist with the preparation of the Company’s annual and quarterly tax provision (ASC 740), including but not limited to calculating book/tax differences and reconciling ending deferred balances</li>
-	<li>Prepare transfer pricing calculations</li>
 	<li>Assist with the preparation of the U.S. federal and state income tax returns and quarterly estimated tax payments. Responsibilities include both U.S. domestic and international aspects of the preparation</li>
 	<li>Proactively manage and maintain provision and compliance calendars and deadlines</li>
 	<li>Prepare monthly, quarterly and annual journal entries and account reconciliations</li>
