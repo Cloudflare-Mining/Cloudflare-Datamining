@@ -47,7 +47,13 @@ async function run() {
 		...await search('maintainer:cf-ci2', {
 			limit: 1000,
 		}),
+		...await search('maintainer:cf-radar', {
+			limit: 1000,
+		}),
 		...await search('maintainer:wrangler-publisher', {
+			limit: 1000,
+		}),
+		...await search('maintainer:dash_service_account', {
 			limit: 1000,
 		}),
 		...await search('wrangler maintainer:threepointone ', {

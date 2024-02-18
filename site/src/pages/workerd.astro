@@ -83,7 +83,7 @@ for (const flag of flagsInfo as WorkerdFlagInfo[]) {
 		usable: false,
 	};
 	if (remoteFlag) {
-		flagInfo.description = marked.parse(remoteFlag.description);
+		flagInfo.description = await marked.parse(remoteFlag.description);
 		flagInfo.experimental = remoteFlag.experimental;
 		flagInfo.friendly_name = remoteFlag.name;
 		flagInfo.publicly_documented = true;
