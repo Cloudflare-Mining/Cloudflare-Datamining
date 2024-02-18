@@ -84,7 +84,7 @@ async function run() {
 				'data/github-repos/*',
 				'data/github-repos/**/*.json',
 			],
-			`${prefix} - GitHub Data was updated!`,
+			`${prefix} - GitHub Data was updated! [skip ci]`,
 			'CFData - GitHub Data Update',
 			'Pushed GitHub Data: ' + prefix,
 			'DISCORD_WEBHOOK_GITHUB',

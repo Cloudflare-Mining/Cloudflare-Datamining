@@ -147,7 +147,7 @@ await tryAndPush(
 		'data/products/turnstile/*.html',
 		'data/products/turnstile/*.css',
 	],
-	`${prefix} - Product: Turnstile Data was updated!`,
+	`${prefix} - Product: Turnstile Data was updated! [skip ci]`,
 	'CFData - Product: Turnstile Data Update',
 	'Pushed Product: Turnstile Data: ' + prefix + ' (<@922118393178517545>)',
 	'DISCORD_WEBHOOK_PRODUCT_TURNSTILE',
