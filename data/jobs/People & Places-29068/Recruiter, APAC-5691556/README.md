@@ -5,46 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p>We’re looking for an IT Support Technician to provide enterprise level service for our corporate teams.&nbsp; You will solve hardware and software issues and requests for a variety of computer and mobile platforms.&nbsp; This role will provide support for our corporate events, on-site management of computer inventory, new hire onboarding, and work with teams across the organization.&nbsp; This role reports to the IT Operations Manager.</p>
-<p><strong>About the Team</strong></p>
-<p>You will join a team of technical support professionals that provide enterprise level service for our corporate teams globally.&nbsp; We strive to provide helpful and knowledgeable technical assistance on a daily basis.&nbsp; We’re focused on providing a positive customer service and user experience.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>What You Would Do Here:</strong></p>
+<p>Our focus is getting the best people to work at Cloudflare and then allowing you to do your best work. You will work closely with other Recruiters, our People Team Business Partners, Coordinator, and business leaders across Sales and Engineering to build capability across the organization, with special focus on Malaysia.</p>
 <ul>
-	<li>Solve computer hardware and software issues</li>
-	<li>Provide on-site and remote technical support</li>
-	<li>Seek guidance from the team when needed</li>
-	<li>Be flexible and available for after hours support</li>
-	<li>Setup and configure MacOS, Windows, Linux, and Chromebook computers</li>
-	<li>Provide audio and video support for company events</li>
-	<li>Processing hardware and software requests</li>
-	<li>Work in a team environment</li>
-	<li>Create and update technical documentation</li>
+	<li>Design and execute customized, candidate recruiting plans, partnering closely with hiring managers to achieve the best results possible</li>
+	<li>Act as an experienced trusted advisor to hiring managers; providing guidance, insights and best practice on their hiring strategies</li>
+	<li>Identify and engage unique and qualified candidates through creative techniques, coordinating interviews as needed</li>
+	<li>Regularly manage pipeline activity and maintain data integrity, proactively share data-centric updates with internal stakeholders</li>
+	<li>Partner with hiring teams to improve attraction and hiring of diverse candidates</li>
+	<li>Collaborate with others on the recruiting team on initiatives and/or hiring needs that may spike in other areas.</li>
 </ul>
-<p><strong>What You'll Bring</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>2+ years of proven work experience in a technical support or similar role</li>
-	<li>Hands-on experience with Windows/Linux/Mac OS environments</li>
-	<li>Good understanding of computer systems, mobile devices and other tech products</li>
-	<li>Ability to diagnose and troubleshoot basic technical issues</li>
-	<li>Familiarity with remote desktop applications and help desk software (eg. Jira Service Desk)</li>
-	<li>Excellent problem-solving and communication skills</li>
-	<li>Ability to provide step-by-step technical help, both written and verbal</li>
-	<li>BS degree in Information Technology, Computer Science or relevant field</li>
-	<li>Additional certification in Microsoft, Linux, Cisco or similar technologies is a plus</li>
-	<li>Experience with support events using Zoom or similar tools</li>
-</ul>
-<h4>&nbsp;</h4>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience with Jira Service Desk, JAMF, InTune</li>
-	<li>Experience working in the technology industry</li>
-	<li>Experience working in a Service Desk, Help Desk, or Call Center environment</li>
-	<li>Microsoft Support Certification</li>
-	<li>Apple Support Certification</li>
-	<li>ITIL Foundations</li>
-	<li>HDI Support Center Agent</li>
-	<li>CompTIA A+ Certified</li>
+	<li>Min. 1-2 years full-cycle recruiting experience</li>
+	<li>Experience independently partnering with senior leadership on hiring initiatives</li>
+	<li>Ability to effectively influence and drive toward results in a fast-paced environment</li>
+	<li>Ability to identify bottlenecks or issues before they arise</li>
+	<li>Creativity in problem-solving, resourcefulness across all stages of the hiring cycle</li>
+	<li>Experience in driving diversity within the recruiting process</li>
+	<li>Demonstrated ability to be detail-oriented, and have strong organizational skills</li>
+	<li>Experience in compensation and general HR requirements as related to hiring</li>
+	<li>Ability to work effectively in a highly team-based environment</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
