@@ -7,16 +7,15 @@
 </div>
 <p><strong>Position Locations: Remote, US (Preference East Coast)</strong></p>
 <p><strong>About the Role</strong></p>
-<p>The SLED/FED Deal Desk Analyst will help accelerate revenue growth of our FED/SLED business by supporting our sales motion to create quality deals. As the deal desk leader for our SLED/FED sales team, you will be responsible for:</p>
+<p>The&nbsp; Deal Desk Analyst will help accelerate revenue growth of our enterprise business by supporting our sales motion to create quality deals. As the deal desk leader for our sales team, you will be responsible for:</p>
 <ul>
-	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for SLED/FED</li>
-	<li>Manage our government deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
+	<li>Supporting the sales team in structuring and executing large/strategic deals, including bid management for enterprise deals.</li>
+	<li>Manage our enterprise deal approval process to ensure compliance while enabling unique contracting needs and requirements</li>
 	<li>Ensure sales motion reflects a healthy sales discovery process so that deals reflect the customer’s needs</li>
 	<li>Understand an evolving competitive landscape to help create competitive differentiation</li>
-	<li>Provide additional deal desk supporting to other commercial businesses based on business need</li>
+	<li>Provide additional deal desk supporting to other enterprise businesses based on business need</li>
 </ul>
 <p>If you’re excited by driving growth through global, cross-channel and cross-product initiatives and want to be part of a company that is helping to build a better internet, Cloudflare would love to talk to you.</p>
-<p>***<strong>Must be able to work <span style="text-decoration: underline;">East Coast Hours</span>.</strong></p>
 <p><strong>What you'll do</strong></p>
 <ul>
 	<li>Collaborate with the sales team in structuring and executing large/strategic deals, liaison with all organizations involved in the agreement process (e.g., finance, legal, order management, product, services/support).</li>
@@ -30,7 +29,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>Must be comfortable in a fast-paced sales environment</li>
-	<li>Understand the buying process and negotiating dynamic for US government entities</li>
+	<li>Understand the buying process and negotiating dynamic for enterprise entities</li>
 	<li>Experience working the deal desk/contract management team:</li>
 	<ul>
 		<li>Develop an in-depth understanding of the pricing models</li>
@@ -42,8 +41,8 @@
 	<li>Enjoys engaging with complex, cross-functional teams and individuals</li>
 	<li>Experience with&nbsp;</li>
 	<ul>
-		<li>Minimum 3 years of SLED/FED experience&nbsp;</li>
-		<li>Minimum 3 years of deal desk experience</li>
+		<li>3+ years of&nbsp; experience&nbsp;</li>
+		<li>3+ years of deal desk experience</li>
 	</ul>
 	<li>Possess excellent written and oral communication skills</li>
 	<li>Proactive, creative, and results oriented individual</li>
