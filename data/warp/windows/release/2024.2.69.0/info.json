@@ -21,7 +21,7 @@
 	"enabled": true,
 	"fileExtension": "msi",
 	"is_latest": true,
-	"release_notes": "This release contains no new features and is focused exclusively on squashing a few bugs.\r\n\r\n## Notable updates\r\n- Fixed an issue that resulted in high memory usage of the UI application.\r\n- Fixed an issue where the Windows version was missing on the Dashboard for devices using various non-English localizations.\r\n\r\n## Known issues\r\n- No known issues.\r\n\r\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\r\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\r\n",
+	"release_notes": "This release contains no new features and is focused exclusively on squashing a few bugs.\n\n## Notable updates\n- Fixed an issue that resulted in high memory usage of the UI application.\n- Fixed an issue where the Windows version was missing on the Dashboard for devices using various non-English localizations.\n\n## Known issues\n- When `Install CA to system certificate store` is enabled, the certificate is not always properly left behind in `%ProgramData%\\Cloudflare\\installed_cert.pem`. This issue will be fixed in a future release.\n\nFor Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp\nFor Consumer documentation please see: https://developers.cloudflare.com/warp-client/\n",
 	"is_udid_provisioned": null,
 	"can_resign": null,
 	"package_hashes": [
