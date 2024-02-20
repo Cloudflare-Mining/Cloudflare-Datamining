@@ -31,6 +31,10 @@ import Copy from './Copy';
 import CreditCard from './CreditCard';
 import D1 from './D1';
 import DdosAttack from './DdosAttack';
+import DeviceDesktop from './DeviceDesktop';
+import DeviceLaptop from './DeviceLaptop';
+import DeviceMobile from './DeviceMobile';
+import DeviceTablet from './DeviceTablet';
 import Discord from './Discord';
 import Discover from './Discover';
 import Documentation from './Documentation';
@@ -40,6 +44,7 @@ import Edgeworker from './Edgeworker';
 import Edit from './Edit';
 import EmailForwarding from './EmailForwarding';
 import ExclamationSign from './ExclamationSign';
+import Expand from './Expand';
 import ExternalLink from './ExternalLink';
 import Eye from './Eye';
 import Facebook from './Facebook';
@@ -184,6 +189,10 @@ export default {
   'credit-card': CreditCard,
   d1: D1,
   'ddos-attack': DdosAttack,
+  'device-desktop': DeviceDesktop,
+  'device-laptop': DeviceLaptop,
+  'device-mobile': DeviceMobile,
+  'device-tablet': DeviceTablet,
   discord: Discord,
   discover: Discover,
   documentation: Documentation,
@@ -193,6 +202,7 @@ export default {
   edit: Edit,
   'email-forwarding': EmailForwarding,
   'exclamation-sign': ExclamationSign,
+  expand: Expand,
   'external-link': ExternalLink,
   eye: Eye,
   facebook: Facebook,

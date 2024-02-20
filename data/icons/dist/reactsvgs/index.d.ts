@@ -33,6 +33,10 @@ declare const _default: {
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     d1: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ddos-attack': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'device-desktop': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'device-laptop': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'device-mobile': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'device-tablet': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -42,6 +46,7 @@ declare const _default: {
     edit: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'email-forwarding': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'exclamation-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    expand: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'external-link': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     eye: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     facebook: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
