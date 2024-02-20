@@ -18,7 +18,6 @@
 	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
 	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
 	<li>You feel that documenting your work is just as important as delivering the code</li>
-	<li>Fluent in Rust, especially async Rust</li>
 	<li>Proven track record of mentoring junior engineers&nbsp;</li>
 </ul>
 <h2><strong>Responsibilities</strong></h2>
@@ -33,6 +32,7 @@
 <ul>
 	<li>Past experience in the CDN industry and/or writing code for a bare metal backend cloud provider</li>
 	<li>Past experience contributing to a browser, web framework, proxy or distributed project</li>
+	<li>Fluent in Rust (async Rust a plus)</li>
 	<li>Contributions to open source Rust projects</li>
 	<li>Delivered proven improvements to products and services by debugging and resolving network level and application level performance bottlenecks&nbsp;</li>
 	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc</li>

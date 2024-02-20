@@ -5,71 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><strong>About the department</strong></h2>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h2><strong>What you’ll do</strong></h2>
-<p>Here at Cloudflare, privacy is core to what we do. This includes giving users more control over their data, working with browser and operating system vendors to reduce cross-site tracking, and/or building first-party, privacy-focused products for customers ourselves, we’re increasingly working to improve the default state of privacy and security on the web.</p>
-<p>On the job, you will be part of the team building our globally deployed, production-grade<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/"> privacy proxy platform</a> – the technology that powers<a href="https://blog.cloudflare.com/icloud-private-relay/"> Private Relay</a> and<a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/"> Microsoft Edge Secure Network</a>. You will also have the opportunity to work on the cutting edge of Internet privacy standards, such as <a href="https://developers.cloudflare.com/privacy-gateway/">Oblivious HTTP</a> and <a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">Distributed Aggregation Protocol</a>.<a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today/"> </a>We’re looking for someone excited about building – and helping us brainstorm – the future of privacy infrastructure at Cloudflare.&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<h4>About the department</h4>
+<p>Cloudflare’s IT Enterprise Applications Team is a crucial pillar of the CIO Organization. The team operates Cloudflare’s enterprise systems end-to-end, providing process cohesiveness across the functional business areas.</p>
+<h4>What you'll do</h4>
+<p>Cloudflare’s Enterprise Applications Team is seeking a highly skilled and motivated Business Systems Analyst with a specialization in Data Integrity to join our team. As a key contributor to our organization, you will play a crucial role in ensuring the Integrity, reliability, and efficiency of Cloudflare’ data and its supporting processes. The ideal candidate will possess a strong background in best practices for data management, has experience creating comprehensive Data Flow Diagrams, and is adept at analyzing data architecture and integrations with a focus on Salesforce CRM and other key business systems platforms.</p>
+<p>&nbsp;</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Minimum 8 years of experience building high performance distributed code and/or building privacy solutions</li>
-	<li>Solid foundation in computer science and software engineering with strong competencies in software design and distributed systems</li>
-	<li>Excellent understanding of internet technologies such as TCP, UDP, DNS, HTTP/S</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
-	<li>You feel that documenting your work is just as important as delivering the code</li>
-	<li>Proven track record of mentoring junior engineers&nbsp;</li>
+	<li>Develop and implement best practices for data management to ensure data accuracy, consistency, and reliability.</li>
+	<li>Gain expertise in the complex data flows across Cloudflare systems, serving as a subject matter expert on data integrity of the GTM Platform ecosystem.</li>
+	<li>Maintain a thorough record of how data is gathered, stored &amp; accessed, including the accuracy, consistency and reliability of Cloudflare’s organizational data.</li>
+	<li>Create and maintain detailed Data Flow Diagrams (DFDs) to provide insights into the company's data architecture and integrations with a particular emphasis on Salesforce CRM and other critical business systems platforms.</li>
+	<li>Identify opportunities to streamline and reduce redundancy in data transit, ensuring optimal utilization of CRM &amp; other sales GTM platform resources.</li>
+	<li>In partnership with management, identify areas for process improvement related to data integrity and collaborate with respective departments to implement enhancements as needed.</li>
+	<li>Maintain detailed documentation of data quality issues, corrective actions and preventive measures.</li>
+	<li>Working closely with various departments to support and coordinate the creation of data integrity processes and protocols and be a trusted advisor to business stakeholders to establish data governance policies .</li>
+	<li>Provide strategic insights into data usage and recommend improvements to align with business objectives.</li>
+	<li>Possess excellent communication skills to interact effectively with senior leadership, cross-functional teams, and stakeholders to understand business needs and align data management strategies accordingly.</li>
+	<li>Conduct data-cleansing procedures to rectify errors and inconsistencies in datasets.</li>
+	<li>The nature of the work will require perseverance, accountability, attention to detail and the ability to react to ever changing business needs.</li>
 </ul>
-<h2><strong>Responsibilities</strong></h2>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Working hands-on with your team and our customers to ship production ready, industry-standard, secure code</li>
-	<li>Collaborating with engineers, researchers, product managers, designers, and other stakeholders</li>
-	<li>Advocating for end-user privacy in the applications and services you build and contribute to while maintaining a high degree of reliability and stability for the applications we ship</li>
-	<li>Mentoring junior engineers&nbsp;</li>
-	<li>Communicating effectively across the team</li>
+	<li>Bachelor's degree in Computer Science, Information Systems Management, or related field.</li>
+	<li>Proven experience as a Business Systems Analyst, with a focus on database management and integrations.</li>
+	<li>Strong understanding of best practices in Data Integrity &amp; governance, Data quality, and Data security.</li>
+	<li>Proficient in creating Data Flow Diagrams (DFDs) and conducting Data analysis.</li>
+	<li>Extensive experience working with Salesforce CRM and other key business systems platforms (Big Query, Netsuite, Marketo, Gainsight, Zendesk &amp; GTM Tools)</li>
+	<li>Excellent communication skills with the ability to convey complex technical concepts to non-technical stakeholders.</li>
+	<li>Strong analytical and problem-solving skills.</li>
 </ul>
-<h2><strong>Bonus Points:</strong></h2>
+<p>&nbsp;</p>
+<p><strong>Bonus Skills:</strong></p>
 <ul>
-	<li>Past experience in the CDN industry and/or writing code for a bare metal backend cloud provider</li>
-	<li>Past experience contributing to a browser, web framework, proxy or distributed project</li>
-	<li>Fluent in Rust (async Rust a plus)</li>
-	<li>Contributions to open source Rust projects</li>
-	<li>Delivered proven improvements to products and services by debugging and resolving network level and application level performance bottlenecks&nbsp;</li>
-	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc</li>
-	<li>An interest in collaborating on new Internet standards surrounding privacy and security</li>
-	<li>Able to work in Go&nbsp;</li>
+	<li>Salesforce certification (e.g., Salesforce Administrator) is a big plus.</li>
+	<li>Experience with CRM &amp; GTM platform enhancements and optimization.</li>
+	<li>Extensive with data reduction and platform resource conservation strategies.</li>
+	<li>Extensive experience with DFD Tooling (Lucid Chart, Miro, MS Visio, Etc.)&nbsp;</li>
 </ul>
-<p><strong>Available Locations</strong>: Austin or Remote US, London or Remote UK, Paris of Remote FR, Lisbon or remote PT, Munich or Remote DE&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<h2><br><br></h2>
+<p><br><br></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,71 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><strong>About the department</strong></h2>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h2><strong>What you’ll do</strong></h2>
-<p>Here at Cloudflare, privacy is core to what we do. This includes giving users more control over their data, working with browser and operating system vendors to reduce cross-site tracking, and/or building first-party, privacy-focused products for customers ourselves, we’re increasingly working to improve the default state of privacy and security on the web.</p>
-<p>On the job, you will be part of the team building our globally deployed, production-grade<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/"> privacy proxy platform</a> – the technology that powers<a href="https://blog.cloudflare.com/icloud-private-relay/"> Private Relay</a> and<a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/"> Microsoft Edge Secure Network</a>. You will also have the opportunity to work on the cutting edge of Internet privacy standards, such as <a href="https://developers.cloudflare.com/privacy-gateway/">Oblivious HTTP</a> and <a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">Distributed Aggregation Protocol</a>.<a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today/"> </a>We’re looking for someone excited about building – and helping us brainstorm – the future of privacy infrastructure at Cloudflare.&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<h4>Location, Remote, US</h4>
+<h4>About the department</h4>
+<p>Cloudflare’s IT/Enterprise Engineering, Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering, enabling Cloudflare internal teams to operate at their most efficient level. The team establishes end-to-end governance principles and frameworks, leads business partnering, and drives program planning, execution, and demand capacity management.</p>
+<h4>What you'll do</h4>
+<p>We are looking for a highly skilled and self-motivated Technical Program Manager, IT/Enterprise Engineering with excellent communication skills who thrives on solving challenges to join our team. Your main role will be to work with the team to plan and manage programs to successful completion. Our large programs span over multiple quarters involving IT, various Business Verticals and Technical Operations teams.&nbsp;</p>
+<p>You bring a passion for matching up business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You are able to implement and drive processes and persistently make progress.&nbsp; The ideal candidate is flexible and comfortable in playing multiple roles (diplomat, moderator, negotiator, reporter, coach, etc.), leading initiatives, and is able to adapt to changing situations. Combined with technical expertise, you have the ability to build trust and strong partnership with counterparts in Engineering, Development, Operations, and Business teams.</p>
+<p><strong>Re</strong><strong>sponsibilities:</strong></p>
 <ul>
-	<li>Minimum 8 years of experience building high performance distributed code and/or building privacy solutions</li>
-	<li>Solid foundation in computer science and software engineering with strong competencies in software design and distributed systems</li>
-	<li>Excellent understanding of internet technologies such as TCP, UDP, DNS, HTTP/S</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
-	<li>You feel that documenting your work is just as important as delivering the code</li>
-	<li>Proven track record of mentoring junior engineers&nbsp;</li>
+	<li>Build&nbsp; bridges across Cloudflare to ensure programs/ projects are effectively planned, developed, integrated and deployed with quality and on time delivery into our production systems.</li>
+	<li>Be&nbsp; the glue that binds a highly cohesive cross functional core team in the planning and execution of tasks required to ensure success of the multitude of projects comprising&nbsp; a program.</li>
+	<li>Gather business requirements and assist with translating requirements into future state design options, while deftly incorporating sound architecture and design principles into the final solution.</li>
+	<li>Build clear and transparent communication channels to align business stakeholders, IT, and third-party vendors to ensure relevant audiences receive appropriate updates on programs and projects.</li>
+	<li>Work with stakeholders in controlling program scope&nbsp; and executing to committed schedules, as well as maintaining and reporting out program deliverables across&nbsp; multiple teams and business units.</li>
+	<li>Establish and maintain relationships with vendors, ensuring adherence to best practices and accountability throughout the program lifecycle.</li>
+	<li>Maintain clear line-of-site on the critical path timeline; managing risks, and facilitating resolution of blockers to ensure project success.</li>
+	<li>Collaborate with Business PMs on internal processes, tools and workflows across multiple teams and functions across Cloudflare, in support of IT governance and project management methodologies, processes and procedures.</li>
 </ul>
-<h2><strong>Responsibilities</strong></h2>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Working hands-on with your team and our customers to ship production ready, industry-standard, secure code</li>
-	<li>Collaborating with engineers, researchers, product managers, designers, and other stakeholders</li>
-	<li>Advocating for end-user privacy in the applications and services you build and contribute to while maintaining a high degree of reliability and stability for the applications we ship</li>
-	<li>Mentoring junior engineers&nbsp;</li>
-	<li>Communicating effectively across the team</li>
+	<li>3+ years experience in program and project management</li>
+	<li>A strong engineering or development background to facilitate architecture and integration discussion&nbsp;</li>
+	<li>Track record of delivering technical programs through the full end to end program management lifecycle</li>
+	<li>Have a balance of people, organizational, and technical skills to deliver and guide decision making without authority</li>
+	<li>Work independently in a dynamic and high-pressure environment with timely delivery despite ambiguous and changing business requirements</li>
+	<li>Experience with with project management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Waterfall, Scrum, etc)&nbsp;&nbsp;</li>
+	<li>Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications in English (writing sample will be requested)</li>
+	<li>Thrive in a fast-paced hyper-growth engineering environment, with the ability to learn new technologies quickly, and extremely comfortable&nbsp; with ambiguity</li>
+	<li>Bachelor's degree in Computer Science, Information Systems Management, Technology management, Business management or comparable work experience</li>
 </ul>
-<h2><strong>Bonus Points:</strong></h2>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Past experience in the CDN industry and/or writing code for a bare metal backend cloud provider</li>
-	<li>Past experience contributing to a browser, web framework, proxy or distributed project</li>
-	<li>Fluent in Rust (async Rust a plus)</li>
-	<li>Contributions to open source Rust projects</li>
-	<li>Delivered proven improvements to products and services by debugging and resolving network level and application level performance bottlenecks&nbsp;</li>
-	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc</li>
-	<li>An interest in collaborating on new Internet standards surrounding privacy and security</li>
-	<li>Able to work in Go&nbsp;</li>
+	<li>Proven working experience as a program manager in the technology sector, preferably within an IT or Corporate Technology department</li>
+	<li>Experience with both waterfall and Agile development methodologies</li>
+	<li>PMP/PgMP and Agile certifications</li>
+	<li>Fluency in organizational change management methodologies (Prosci, etc.)</li>
 </ul>
-<p><strong>Available Locations</strong>: Austin or Remote US, London or Remote UK, Paris of Remote FR, Lisbon or remote PT, Munich or Remote DE&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<h2><br><br></h2>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

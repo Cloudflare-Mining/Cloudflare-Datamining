@@ -5,72 +5,71 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><strong>About the department</strong></h2>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h2><strong>What you’ll do</strong></h2>
-<p>Here at Cloudflare, privacy is core to what we do. This includes giving users more control over their data, working with browser and operating system vendors to reduce cross-site tracking, and/or building first-party, privacy-focused products for customers ourselves, we’re increasingly working to improve the default state of privacy and security on the web.</p>
-<p>On the job, you will be part of the team building our globally deployed, production-grade<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/"> privacy proxy platform</a> – the technology that powers<a href="https://blog.cloudflare.com/icloud-private-relay/"> Private Relay</a> and<a href="https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/"> Microsoft Edge Secure Network</a>. You will also have the opportunity to work on the cutting edge of Internet privacy standards, such as <a href="https://developers.cloudflare.com/privacy-gateway/">Oblivious HTTP</a> and <a href="https://blog.cloudflare.com/deep-dive-privacy-preserving-measurement">Distributed Aggregation Protocol</a>.<a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today/"> </a>We’re looking for someone excited about building – and helping us brainstorm – the future of privacy infrastructure at Cloudflare.&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><strong>About the department</strong></p>
+<p>Cloudflare’s CIO organization has an Enterprise Applications Team that operates our Enterprise Systems end-to-end, providing process cohesiveness across the functional areas. This enables our Cloudflare internal teams to operate efficiently and enable our customers and partners to do business with us.&nbsp;</p>
+<p>Within the Enterprise Applications Team is a Finance &amp; Legal team whose main responsibility is to manage our Finance and Legal platforms in addition to other platforms that support our financial/ legal functional areas.&nbsp;&nbsp;</p>
+<p><strong>About the role</strong></p>
+<p>Cloudflare is looking for Enterprise Systems Admin to help administrate, configure KlarityLaw application and maintain the system, as well as peripheral financial systems. In this role you will be supporting Klarity Law application,&nbsp; features integrations, workflows creation, configuring, integrations to NetSuite etc. The ideal candidate should have a solid analytical mindset, excellent interpersonal communications, diligent time management skills, be team-oriented and have a strong work ethic. This role will assist other core business systems analysts/architects across IT for strategic and business as usual projects.</p>
+<h4>What you'll do</h4>
 <ul>
-	<li>Minimum 8 years of experience building high performance distributed code and/or building privacy solutions</li>
-	<li>Solid foundation in computer science and software engineering with strong competencies in software design and distributed systems</li>
-	<li>Excellent understanding of internet technologies such as TCP, UDP, DNS, HTTP/S</li>
-	<li>Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</li>
-	<li>Ability to scope, work on and deliver initiatives independently&nbsp;</li>
-	<li>You feel that documenting your work is just as important as delivering the code</li>
-	<li>Proven track record of mentoring junior engineers&nbsp;</li>
+	<li>
+		<h4><strong>Y</strong>ou will <strong>contribute to all aspects of an agile software development life cycle including design, architecture, development, documentation, testing and operations</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>You will push your design and architecture limits by owning all aspects of solutions end-to-end</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Support/build integrations with select enterprise systems</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Ensure all configurations and integrations are thoroughly tested and ready for deployment</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Identify gaps and opportunities for automation and work on Proof of Concepts for new requirements as appropriate</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Work with external vendors and product support teams to troubleshoot system issues as they arise</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Perform day-to-day maintenance of the application in operation, including tasks related to identifying issue root cause(s), troubleshooting issues, and issue resolution, dispatch to partner teams, and/or escalation</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Serve as the primary point of contact for designated business system(s), as well as the liaison between teams internally and at external application(s)&nbsp;</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Seek opportunities to streamline and/or automate procedure</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Build and streamline solution configuration processes with focus on reusability via a no-code designer leveraging JSON, XML, and selected system’s configuration engine</strong></h4>
+	</li>
+	<li style="font-weight: bold;">
+		<h4><strong>Respond promptly to application alerts, production issues and follow through to resolution per established SLAs</strong></h4>
+	</li>
 </ul>
-<h2><strong>Responsibilities</strong></h2>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Working hands-on with your team and our customers to ship production ready, industry-standard, secure code</li>
-	<li>Collaborating with engineers, researchers, product managers, designers, and other stakeholders</li>
-	<li>Advocating for end-user privacy in the applications and services you build and contribute to while maintaining a high degree of reliability and stability for the applications we ship</li>
-	<li>Mentoring junior engineers&nbsp;</li>
-	<li>Communicating effectively across the team</li>
+	<li>2+ years of experience in implementations and ongoing operations of enterprise systems in a technical admin role</li>
+	<li>Possess excellent communication skills – written and oral, interpersonal and organizational</li>
+	<li>Demonstrated experience working with business functions to understand and map processes to functional and technical specifications</li>
+	<li>Ability to understand and represent the needs of the end user in a software development environment</li>
+	<li>Advanced knowledge of no-code applications, advanced business rules engines, business intelligence and reporting tools, techniques, and algorithms</li>
+	<li>Experience in implementing and sustaining best of breed SaaS applications implementations in an enterprise environment</li>
+	<li>Experience in building strong working relationships with business partners, application users, project managers, internal IT team, and external application consultants</li>
+	<li>Highly organized, results-driven, with exceptional attention to detail with great end-to-end program management</li>
+	<li>Bachelor's Degree or higher in technology-related field or relevant experience in implementing Business systems</li>
 </ul>
-<h2><strong>Bonus Points:</strong></h2>
-<ul>
-	<li>Past experience in the CDN industry and/or writing code for a bare metal backend cloud provider</li>
-	<li>Past experience contributing to a browser, web framework, proxy or distributed project</li>
-	<li>Fluent in Rust (async Rust a plus)</li>
-	<li>Contributions to open source Rust projects</li>
-	<li>Delivered proven improvements to products and services by debugging and resolving network level and application level performance bottlenecks&nbsp;</li>
-	<li>Understanding of cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc</li>
-	<li>An interest in collaborating on new Internet standards surrounding privacy and security</li>
-	<li>Able to work in Go&nbsp;</li>
-</ul>
-<p><strong>Available Locations</strong>: Austin or Remote US, London or Remote UK, Paris of Remote FR, Lisbon or remote PT, Munich or Remote DE&nbsp;</p>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<h2><br><br></h2>
 <p>&nbsp;</p>
+<p><strong>Required Technical Skills</strong></p>
+<ul>
+	<li>Modern programming languages (e.g., Java, Javascript, Python)</li>
+	<li>Process documentation and data visualization</li>
+	<li>Business intelligence and reporting software</li>
+	<li>Development &amp; management methodologies including Scrum, Agile, Kanban, and Jira</li>
+	<li>UI/UX experience, and ability to work with designers/analytics</li>
+	<li>Well versed with ERP &amp; BSM systems such Oracle NetSuite and Coupa</li>
+	<li>Strong experience with SOAP/Rest API Integrations</li>
+	<li>Understanding of standard operators, constraints, Boolean logic, etc.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
