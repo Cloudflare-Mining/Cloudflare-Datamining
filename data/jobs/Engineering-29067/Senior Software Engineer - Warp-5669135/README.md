@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h4>Senior Systems Engineer - Warp</h4>
-<p>Available locations: Austin, United States,&nbsp;London, United Kingdom, Lisbon, Portugal</p>
+<p>Available locations: Austin, United States, London, United Kingdom, Lisbon, Portugal, Remote Portugal, Remote UK, Remote US</p>
 <p><strong>What you'll do</strong></p>
 <p>As a Senior Systems engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
 <p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
@@ -19,7 +19,7 @@
 	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
 	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>At least 3 years of experience of technical leadership</li>
@@ -32,7 +32,7 @@
 	<li>Excellent debugging experience and optimization skills</li>
 	<li>Experience with Kubernetes</li>
 </ul>
-<p></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,38 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the Department</strong></h3>
-<p>Cloudflare’s Production Engineering Team builds and runs the systems and software that support our solutions that handle trillions of requests per month, representing over 20% of global Internet traffic. Production Engineering ensures all of the new and existing features and functionality that Cloudflare offers can be managed at scale and meet the needs of our massively growing customer base.</p>
-<p>The Release Manager Team within the Production Engineering organization is responsible for&nbsp; ensuring that we can deliver new features to production in a manner that supports both rapid innovation and safe change at scale to provide the speed and reliability that Cloudflare is known for.</p>
-<p><strong>Available Location</strong>: Remote US</p>
-<h3><strong>What you’ll do</strong></h3>
-<p>In this role you’ll help us build the deployment mechanisms that allow speed of innovation and safety through health meditation.&nbsp; You will be joining a<a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"> global team</a> of bright, hard-working, and supportive engineers who really care about their craft and will be accelerating innovation across all products that Cloudflare offers.<br><br>Technologies we use:</p>
+<h4>Senior Systems Engineer - Warp</h4>
+<p>Available locations: Austin, United States, London, United Kingdom, Lisbon, Portugal, Remote Portugal, Remote UK, Remote US</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Senior Systems engineer in the WARP team you will join a team that works on the backend system that allows our customers to manage their devices via our Zero Trust Network solution.&nbsp; <br>In this role, you will work on the design, capacity planning, development, maintenance and enhancement of features that make our WARP and Zero Trust product, such as Device Posture, Orchestration and Notification.</p>
+<p>We are looking for engineers that are versatile and display leadership qualities capable of setting technical direction of the product, with a focus on growth, scalability and high-availability.<br>You will support the management team on the planning, priority, deadlines and deliverables of solutions to our customers requirements.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Salt</li>
-	<li>Go</li>
-	<li>Postgres</li>
-	<li>Temporal</li>
-	<li>Kubernetes</li>
-	<li>For service monitoring we use Prometheus, Grafana and Sentry.</li>
-</ul>
-<p>Because you’ll be<a href="https://blog.cloudflare.com/gateway-swg/"> solving problems of massive scale and significance</a>, and<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"> shaping the future of the Internet</a>, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<p>As an ideal candidate for this position, you are curious, hard-working, and passionate.</p>
-<p>A rough list of the skills we would love to see you bring:</p>
-<ul>
-	<li>A degree in Computer Science, Engineering, Mathematics, Statistics or related field; OR have relevant background/experience to the field.</li>
-	<li>Programming experience in Go, or similar languages</li>
-	<li>Experience in designing and implementing secure and highly-available distributed systems</li>
-	<li>Experience (and love) for debugging to ensure the system works in all cases</li>
-	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
-	<li>Experience with continuous delivery and deployment of a k8s hosted application</li>
-	<li>​​Understanding of security issues and responsibilities</li>
-	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
-	<li>Fluent in analyses of data sets such as logs</li>
-	<li>Strong English language oral and written communications skills</li>
-	<li>Designing and building APIs</li>
+	<li>Design, develop, test, deploy, maintain, and enhance large scale software solutions.</li>
+	<li>Provide technical leadership to the team projects and objectives</li>
+	<li>Influence a team of engineers, coach and mentor a distributed team.</li>
+	<li>Support the management team on the strategy and roadmap of the team, identifying opportunities and critical projects for the success of the team and product.</li>
+	<li>Facilitate alignment and clarity across the Zero Trust teams on goals, outcomes, and timelines.</li>
+	<li>Support on the management of project priorities, deadlines, and deliverables.</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>At least 3 years of experience of technical leadership</li>
+	<li>Experience managing high available systems with disaster recovery support.</li>
+	<li>Experience in at least of the following languages: Go, Rust</li>
+	<li>Experience in Typescript</li>
+	<li>Experience designing and integrating RESTful APIs at scale</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Knowledge on distributed NoSQL databases</li>
+	<li>Excellent debugging experience and optimization skills</li>
+	<li>Experience with Kubernetes</li>
+</ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
