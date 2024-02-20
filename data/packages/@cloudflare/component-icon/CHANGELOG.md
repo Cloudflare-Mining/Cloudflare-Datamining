@@ -1,5 +1,12 @@
 # Change Log
 
+## 12.1.2
+
+### Patch Changes
+
+- de9968fd00: add expand icon and fix device-desktop typo
+- 5aad9c18cb: Add device-desktop device-laptop device-mobile device-tablet icons
+
 ## 12.1.1
 
 ### Patch Changes
