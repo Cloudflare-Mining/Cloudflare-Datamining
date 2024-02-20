@@ -2,7 +2,7 @@
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
 		"latest": "1.9.0",
-		"beta": "0.0.0-3846730",
+		"beta": "0.0.0-90e140c",
 		"pre-v1": "0.10.2"
 	},
 	"versions": {
@@ -17421,6 +17421,124 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCICJzRaBv8puzfpSHgUFiAy5sROAVWdoqembBie/eEMcRAiEAu01K85BvXLTc9lNKV75ZjtlBbzBvTcUf0Lv//qfhm9E="
+					}
+				]
+			}
+		},
+		"0.0.0-1cdde11": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-1cdde11",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"commander": "^11.1.0",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"miniflare": "^3.20231218.1",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.28.2",
+				"@cloudflare/workers-types": "^4.20240208.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-gqU4xcH+zIZ+5MXV12KJnQ5+4fK9wj9zevFmdNyc/oTwUmfWcAmq5mYqmiW6Vb8fV2afcTCxYKLJ5x/oibiNVg==",
+				"shasum": "f6ff67750847a9c1485b0bc339fa1bb5256db39b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-1cdde11.tgz",
+				"fileCount": 31,
+				"unpackedSize": 705237,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDtRZqwxt7rdclW12kYe/1AVH51j5AHavlz+ephjqBwBAiEA6MCPzuaMhAWQAri4NX5lvYHjBxVxC8kZSRgACpyoc0s="
+					}
+				]
+			}
+		},
+		"0.0.0-90e140c": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-90e140c",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"commander": "^11.1.0",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"miniflare": "^3.20231218.1",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.28.2",
+				"@cloudflare/workers-types": "^4.20240208.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-y8lnUzMb9thVUxVDxxztpVFmaaKMPFjzdqUCVGQeV4YQ6Fda+pfsxy+DJ2yxOoanQ4SHUafdwlPDOGOVaEnjFQ==",
+				"shasum": "df34f694e99f0aef6b5eefdf561fe8c2376d2878",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-90e140c.tgz",
+				"fileCount": 31,
+				"unpackedSize": 707429,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICMJc7oI95fDfliImrpzCABGPH0oPz1TaG6FqSysVA/OAiEA8XVvmkw+ps100467UBWaqGb04TDBsUpr9rlinlLK/h4="
 					}
 				]
 			}
