@@ -1390,6 +1390,53 @@
 										"example": "Tunnel for ISP X",
 										"type": "string"
 									},
+									"health_check": {
+										"properties": {
+											"direction": {
+												"default": "unidirectional",
+												"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. Note in the case of bidirecitonal healthchecks, the target field in health_check is ignored as the interface_address is used to send traffic into the tunnel.",
+												"enum": [
+													"unidirectional",
+													"bidirectional"
+												],
+												"example": "bidirectional",
+												"type": "string"
+											},
+											"enabled": {
+												"default": true,
+												"description": "Determines whether to run healthchecks for a tunnel.",
+												"example": true,
+												"type": "boolean"
+											},
+											"rate": {
+												"default": "mid",
+												"description": "How frequent the health check is run. The default value is `mid`.",
+												"enum": [
+													"low",
+													"mid",
+													"high"
+												],
+												"example": "low",
+												"type": "string"
+											},
+											"target": {
+												"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+												"example": "203.0.113.1",
+												"type": "string"
+											},
+											"type": {
+												"default": "reply",
+												"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+												"enum": [
+													"reply",
+													"request"
+												],
+												"example": "request",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
 									"interface_address": {
 										"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 										"example": "192.0.2.0/31",
@@ -3088,6 +3135,53 @@
 										"description": "An optional description forthe IPsec tunnel.",
 										"example": "Tunnel for ISP X",
 										"type": "string"
+									},
+									"health_check": {
+										"properties": {
+											"direction": {
+												"default": "unidirectional",
+												"description": "The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. Note in the case of bidirecitonal healthchecks, the target field in health_check is ignored as the interface_address is used to send traffic into the tunnel.",
+												"enum": [
+													"unidirectional",
+													"bidirectional"
+												],
+												"example": "bidirectional",
+												"type": "string"
+											},
+											"enabled": {
+												"default": true,
+												"description": "Determines whether to run healthchecks for a tunnel.",
+												"example": true,
+												"type": "boolean"
+											},
+											"rate": {
+												"default": "mid",
+												"description": "How frequent the health check is run. The default value is `mid`.",
+												"enum": [
+													"low",
+													"mid",
+													"high"
+												],
+												"example": "low",
+												"type": "string"
+											},
+											"target": {
+												"description": "The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target.",
+												"example": "203.0.113.1",
+												"type": "string"
+											},
+											"type": {
+												"default": "reply",
+												"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+												"enum": [
+													"reply",
+													"request"
+												],
+												"example": "request",
+												"type": "string"
+											}
+										},
+										"type": "object"
 									},
 									"interface_address": {
 										"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
