@@ -4,7 +4,7 @@
 	api_tokens: "API Tokens",
 	api_token_instructions: {
 		step_one: "Select **Create Token**.",
-		step_two: "In *API Token Templates*, select **Workers AI**.",
+		step_two: "Optionally, change the token name.",
 		step_three: "Finish by selecting **Continue to Summary** > **Create Token**."
 	},
 	api_spec: "API Spec",

@@ -240,6 +240,8 @@
 	"zaraz.settings.trackPath.description": "Path to send all tracking requests. Leave empty to use default, <code>/cdn-cgi/zaraz/t</code>",
 	"zaraz.settings.eventsApiPath.title": "HTTP Events API",
 	"zaraz.settings.eventsApiPath.description": "Path to send all server-side track events. Leave empty to disable the endpoint.",
+	"zaraz.settings.mcRootPath.title": "Managed Components root path",
+	"zaraz.settings.mcRootPath.description": "Path used for Managed Components server functionalities (/route, /embed etc). Leave empty to use default, <code>/cdn-cgi/zaraz/components</code>",
 	"zaraz.settings.contextEnricher.title": "Context Enricher Worker",
 	"zaraz.settings.contextEnricher.description": "A Worker that receives the <a target=\"_BLANK\" href=\"https://developers.cloudflare.com/zaraz/reference/context/\">Zaraz Context</a> object and manipulates it by adding, editing, or removing information from it. <a target=\"_BLANK\" href=\"https://developers.cloudflare.com/zaraz/advanced/context-enricher/\">Learn more</a>",
 	"zaraz.permissions.workersMissing": "Workers permissions are required.",
