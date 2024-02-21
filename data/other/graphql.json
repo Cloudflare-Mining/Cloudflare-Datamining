@@ -533,7 +533,7 @@
 	"AccountD1AnalyticsAdaptiveGroups": {
 		"__description": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"count": "Number of requests to D1 processed (approximation when sampleInterval > 1)",
+		"count": "Number of requests to D1 processed",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
@@ -577,7 +577,7 @@
 	"AccountD1QueriesAdaptiveGroups": {
 		"__description": "Beta. D1 query metrics with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
-		"count": "Number of D1 queries processed (approximation when sampleInterval > 1)",
+		"count": "Number of D1 queries processed",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
@@ -608,8 +608,7 @@
 		"__description": "",
 		"queryDurationMs": "The total duration queries in D1 took, observed over the queried time period.",
 		"rowsRead": "The total number of rows scanned, observed over the queried time period.",
-		"rowsWritten": "The total number of rows written, observed over the queried time period.",
-		"sampleInterval": "The number of sample intervals"
+		"rowsWritten": "The total number of rows written, observed over the queried time period."
 	},
 	"AccountD1StorageAdaptiveGroups": {
 		"__description": "Beta. D1 storage with adaptive sampling",
@@ -3273,7 +3272,7 @@
 	},
 	"AccountSinkholeRequestLogsAdaptiveGroups": {
 		"__description": "Sinkhole Request Logs",
-		"count": "Number of requests logged (approximation when sampleInterval > 1)",
+		"count": "Number of requests logged",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountSinkholeRequestLogsAdaptiveGroupsDimensions": {
@@ -4217,6 +4216,9 @@
 	"ZoneDnsAnalyticsAdaptive": {
 		"__description": "Analytics data for DNS queries (currently, only Foundation DNS zones are supported)",
 		"coloName": "IATA airport code of the data center that processed the query",
+		"date": "Date on which the query was received",
+		"datetime": "Time at which the query was received",
+		"destinationIP": "Cloudflare edge IP address that the query was received at",
 		"ipVersion": "Internet Protocol version over which the query was received",
 		"protocol": "Transport protocol over which the query was received",
 		"queryName": "DNS query name without trailing dot",
@@ -4227,8 +4229,8 @@
 		"responseSize": "Size of the DNS response in bytes",
 		"responseStale": "Whether a stale DNS response was served from cache",
 		"sampleInterval": "ABR sample interval",
-		"timestamp": "Time at which the query was received",
-		"upstream": "Upstream server that the query was forwarded to"
+		"sourceIP": "IP address of the client that sent the query (usually this is the resolver's IP address)",
+		"upstreamIP": "Upstream server that the query was forwarded to"
 	},
 	"ZoneDnsAnalyticsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -4248,6 +4250,14 @@
 	"ZoneDnsAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"coloName": "IATA airport code of the data center that processed the query",
+		"date": "Date on which the query was received",
+		"datetime": "Time at which the query was received",
+		"datetimeFifteenMinutes": "Time at which the query was received, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Time at which the query was received, truncated to multiple of 5 minutes",
+		"datetimeHalfOfHour": "Time at which the query was received, truncated to multiple of 30 minutes",
+		"datetimeHour": "Time at which the query was received, truncated to the hour",
+		"datetimeMinute": "Time at which the query was received, truncated to the minute",
+		"destinationIP": "Cloudflare edge IP address that the query was received at",
 		"ipVersion": "Internet Protocol version over which the query was received",
 		"protocol": "Transport protocol over which the query was received",
 		"queryName": "DNS query name without trailing dot",
@@ -4257,13 +4267,8 @@
 		"responseCode": "DNS response code",
 		"responseSizeBucket": "Size of the DNS response in bytes (in multiples of 16)",
 		"responseStale": "Whether a stale DNS response was served from cache",
-		"timestamp": "Time at which the query was received",
-		"timestampFifteenMinutes": "Time at which the query was received, truncated to multiple of 15 minutes",
-		"timestampFiveMinutes": "Time at which the query was received, truncated to multiple of 5 minutes",
-		"timestampHalfOfHour": "Time at which the query was received, truncated to multiple of 30 minutes",
-		"timestampHour": "Time at which the query was received, truncated to the hour",
-		"timestampMinute": "Time at which the query was received, truncated to the minute",
-		"upstream": "Upstream server that the query was forwarded to"
+		"sourceIP": "IP address of the client that sent the query (usually this is the resolver's IP address)",
+		"upstreamIP": "Upstream server that the query was forwarded to"
 	},
 	"ZoneDnsAnalyticsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -4302,7 +4307,7 @@
 	},
 	"ZoneEmailRoutingAdaptiveGroups": {
 		"__description": "Beta. Aggregated email routing logs with adaptive sampling",
-		"count": "Number of emails processed (approximation when sampleInterval > 1)",
+		"count": "Number of emails processed",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneEmailRoutingAdaptiveGroupsDimensions": {
