@@ -5,27 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What You Would Do Here:</strong></p>
-<p>Our focus is getting the best people to work at Cloudflare and then allowing you to do your best work. You will work closely with other Recruiters, our People Team Business Partners, Coordinator, and business leaders across Sales and Engineering to build capability across the organization, with special focus on Malaysia.</p>
+<p><strong>Location(s) Available: Remote US; Austin, US</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
+<p><strong>About the Role</strong></p>
+<p>As an intern on the Internal Audit (IA) team, you will support the IA team in executing all aspects of Cloudflare’s IT &amp; Cybersecurity Audits, as well as testing of IT internal controls (SOX), as deemed necessary.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Design and execute customized, candidate recruiting plans, partnering closely with hiring managers to achieve the best results possible</li>
-	<li>Act as an experienced trusted advisor to hiring managers; providing guidance, insights and best practice on their hiring strategies</li>
-	<li>Identify and engage unique and qualified candidates through creative techniques, coordinating interviews as needed</li>
-	<li>Regularly manage pipeline activity and maintain data integrity, proactively share data-centric updates with internal stakeholders</li>
-	<li>Partner with hiring teams to improve attraction and hiring of diverse candidates</li>
-	<li>Collaborate with others on the recruiting team on initiatives and/or hiring needs that may spike in other areas.</li>
+	<li>Assist in executing the Internal Audit plan under the supervision of an IA IT Audit Manager. This includes IT audit planning, risk assessment, fieldwork, issues validation, and reporting</li>
+	<li>Execute operational audits in accordance with department and professional standards (for example; Detection/Response, Security and Asset Management), and complete assignments timely in an efficient manner</li>
+	<li>Help design testing procedures relevant to risk and test objectives</li>
+	<li>Prepare cybersecurity audit workpapers and reports with direct supervision.</li>
+	<li>Build relationships with key stakeholders and business owners.</li>
+	<li>Execute test of design and operating effectiveness for IT internal controls (SOX), as deemed necessary</li>
+	<li>Document all Cybersecurity Internal Audit work in the AuditBoard tool</li>
+	<li>Reports to an IA Cybersecurity Audit Manager based</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals</li>
+	<li>Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Min. 1-2 years full-cycle recruiting experience</li>
-	<li>Experience independently partnering with senior leadership on hiring initiatives</li>
-	<li>Ability to effectively influence and drive toward results in a fast-paced environment</li>
-	<li>Ability to identify bottlenecks or issues before they arise</li>
-	<li>Creativity in problem-solving, resourcefulness across all stages of the hiring cycle</li>
-	<li>Experience in driving diversity within the recruiting process</li>
-	<li>Demonstrated ability to be detail-oriented, and have strong organizational skills</li>
-	<li>Experience in compensation and general HR requirements as related to hiring</li>
-	<li>Ability to work effectively in a highly team-based environment</li>
+	<li>Computer Science, Data Analytics, Management Information Systems, Engineering, major/minor preferred</li>
+	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
+	<li>Time management skills and ability to plan and prioritize effectively</li>
+</ul>
+<ul>
+	<li>Ability to work effectively in a team environment</li>
+</ul>
+<ul>
+	<li>Critical thinking &amp; decision making/problem solving skills</li>
+	<li>Curious mindset &amp; initiative</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,29 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3>Location: Lisbon or Remote Portugal</h3>
-<h3>What you'll do</h3>
-<p>We are looking for an <strong>Engineering Manager</strong> to lead the <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation/">Browser Isolation</a> team which complements Cloudflare’s Secure Web Gateway and Zero Trust Network Access solutions by executing active webpage content in a secure isolated browser. Our novel approach to remote browser isolation allows organizations to layer additional threat defense and data protection controls across browsing activities and insulate local devices from malware by running all browser code on Cloudflare's global network.</p>
-<p>You will play a key role in shaping the product’s engineering strategy, working with other engineering teams, product management, and external stakeholders to implement&nbsp;<strong>customer-impacting features</strong> and meet the team’s ambitious goals of <strong>quality and velocity</strong>. You will work closely with your team to <strong>improve the code quality</strong> and to build solid, <strong>testable, </strong>and<strong> well-documented</strong> foundations.</p>
-<p>As a manager in our team, you will be expected to&nbsp;<strong>lead</strong>, <strong>inspire</strong>, and <strong>foster a culture of diversity</strong>. You will communicate <strong>clearly</strong> and with <strong>empathy</strong>, and work towards building a <strong>cohesive and collaborative</strong> team. You will be expected to interact with our customers and internal stakeholders, to identify gaps and areas of improvements in our product and processes alike, and to work with your own stakeholders to transform those into <strong>innovative</strong>, <strong>actionable</strong>, and <strong>achievable</strong> <strong>solutions</strong>.</p>
-<h3>Examples of desirable skills, knowledge, and experience:</h3>
+<p><strong>Location(s) Available: Remote US; Austin, US</strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
+<p><strong>About the Role</strong></p>
+<p>As an intern on the Internal Audit (IA) team, you will support the IA team in executing all aspects of Cloudflare’s Operational Audits, as well as testing of internal controls (SOX), as deemed necessary.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Experience leading a team of geographically distributed engineers, including hiring, coaching, and professional development</li>
-	<li>Solid track record of building <strong>cohesive</strong> and <strong>collaborative</strong> teams</li>
-	<li>Empathetic, proactive, and constructive <strong>communication skills</strong>, verbal and written</li>
-	<li>Experience working with <strong>browser</strong> based (Chromium, WebKit) technologies</li>
-	<li>Experience working with container orchestrators (Nomad, Kubernetes) and familiar with different container security technologies (gVisor, Firecracker)</li>
-	<li>Programming experience in<strong> Rust, C++</strong>, or similar low level languages</li>
-	<li>Programming experience in Go and/or Typescript is a plus, but not required</li>
-	<li>A strong grasp of <strong>networking</strong> and <strong>HTTP</strong> protocols</li>
-	<li>Experience working with networking&nbsp;</li>
-	<li>Excellent technical leadership skills, driving for very <strong>high-quality</strong> and <strong>low-complexity</strong> code with thorough documentation</li>
-	<li>Experience driving for <strong>easily-testable</strong> and <strong>thoroughly-tested code</strong></li>
-	<li>A passion for fostering <strong>diversity</strong>, <strong>equity</strong>, and<strong> inclusion</strong></li>
-	<li>A strong and tangible <strong>customer empathy</strong></li>
-	<li>A good understanding of how the big-picture goals inform technical details</li>
-	<li>A drive for implementing tools, documentations, processes, instrumentation, and metrics to enhance the team’s velocity and performance</li>
-	<li>A knack for finding <strong>inspiring</strong> and <strong>innovative solutions</strong> to problems and blockages</li>
+	<li>Assist in executing the Internal Audit plan under the supervision of an IA Manager. This includes operational audit planning, risk assessment, fieldwork, issues validation, and reporting.</li>
+	<li>Execute operational audits in accordance with department and professional standards, and complete assignments timely in an efficient manner</li>
+	<li>Help design testing procedures relevant to risk and test objectives</li>
+	<li>Identify and document operational audit processes, risks, and controls</li>
+	<li>Prepare audit workpapers and reports with direct supervision</li>
+	<li>Build relationships with key stakeholders and business owners</li>
+	<li>Execute test of design and operating effectiveness for internal controls (SOX), as deemed necessary</li>
+	<li>Document all Internal Audit work in the AuditBoard tool</li>
+	<li>Report to an IA Manager</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals</li>
+	<li>Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship</li>
+	<li>Get direct access to our executives and leadership team, including our co-founders</li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>Accounting, Finance, Business, Economics, Data Analytics major preferred</li>
+	<li>Effective communicator, ability to build relations &amp; manage expectations&nbsp;</li>
+	<li>Time management skills and ability to plan and prioritize effectively</li>
+	<li>Proficiency in Microsoft Excel/Google Sheets required&nbsp;</li>
+	<li>Ability to work effectively in a team environment</li>
+	<li>Critical thinking decision making/problem solving skills</li>
+	<li>Curious mindset &amp; initiative</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
