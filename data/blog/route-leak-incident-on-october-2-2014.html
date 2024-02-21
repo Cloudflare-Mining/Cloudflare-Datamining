@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">2 min read</div>
+<div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Today, CloudFlare suffered downtime which caused customers’ sites to be inaccessible in certain parts of the world. We take the availability of our customers’ web properties very seriously. Incidents like this get the absolute highest priority, attention, and follow up. The pain felt by our customers is also felt deeply by the CloudFlare team in London and San Francisco.</p>
 	<p>This downtime was the result of a BGP route leak by Internexa, an ISP in Latin America. Internexa accidentally directed large amounts of traffic destined for CloudFlare data centers around the world to a single data center in Medellín, Colombia. At the same time Internexa also leaked routes belonging to Telecom Argentina causing disruption in Argentina. This was the result of Internexa announcing via BGP that their network, instead of ours, handled traffic for CloudFlare. This miscommunication caused a flood of traffic to quickly overwhelm the data center in Medellín. The incident lasted 49 minutes, from 15:08UTC to 15:57UTC.</p>
