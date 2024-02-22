@@ -482,7 +482,7 @@
 																	},
 																	"max_age": {
 																		"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																		"example": 30,
+																		"example": 60,
 																		"type": "integer"
 																	},
 																	"stale_while_revalidate": {
@@ -498,61 +498,47 @@
 																"type": "string"
 															},
 															"origin": {
-																"allOf": [
-																	{
-																		"properties": {
-																			"database": {
-																				"description": "The name of your origin database.",
-																				"example": "postgres",
-																				"type": "string"
-																			},
-																			"host": {
-																				"description": "The host (hostname or IP) of your origin database.",
-																				"example": "database.example.com",
-																				"type": "string"
-																			},
-																			"port": {
-																				"description": "The port (default: 5432 for Postgres) of your origin database.",
-																				"example": "5432",
-																				"type": "integer"
-																			},
-																			"scheme": {
-																				"default": "postgres",
-																				"description": "Specifies the URL scheme used to connect to your origin database.",
-																				"enum": [
-																					"postgres",
-																					"postgresql"
-																				],
-																				"type": "string"
-																			},
-																			"user": {
-																				"description": "The user of your origin database.",
-																				"example": "postgres",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"host",
-																			"port",
-																			"scheme",
-																			"database",
-																			"user"
-																		],
-																		"type": "object"
+																"properties": {
+																	"database": {
+																		"description": "The name of your origin database.",
+																		"example": "postgres",
+																		"type": "string"
 																	},
-																	{
-																		"required": [
-																			"host",
-																			"port"
-																		]
+																	"host": {
+																		"description": "The host (hostname or IP) of your origin database.",
+																		"example": "database.example.com",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "The port (default: 5432 for Postgres) of your origin database.",
+																		"example": "5432",
+																		"type": "integer"
+																	},
+																	"scheme": {
+																		"default": "postgres",
+																		"description": "Specifies the URL scheme used to connect to your origin database.",
+																		"enum": [
+																			"postgres",
+																			"postgresql"
+																		],
+																		"type": "string"
+																	},
+																	"user": {
+																		"description": "The user of your origin database.",
+																		"example": "postgres",
+																		"type": "string"
 																	}
-																]
+																},
+																"required": [
+																	"host",
+																	"port",
+																	"scheme",
+																	"database",
+																	"user"
+																],
+																"type": "object"
 															}
 														},
-														"required": [
-															"name",
-															"origin"
-														],
 														"type": "object"
 													}
 												],
@@ -947,7 +933,7 @@
 																},
 																"max_age": {
 																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 30,
+																	"example": 60,
 																	"type": "integer"
 																},
 																"stale_while_revalidate": {
@@ -963,61 +949,47 @@
 															"type": "string"
 														},
 														"origin": {
-															"allOf": [
-																{
-																	"properties": {
-																		"database": {
-																			"description": "The name of your origin database.",
-																			"example": "postgres",
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The host (hostname or IP) of your origin database.",
-																			"example": "database.example.com",
-																			"type": "string"
-																		},
-																		"port": {
-																			"description": "The port (default: 5432 for Postgres) of your origin database.",
-																			"example": "5432",
-																			"type": "integer"
-																		},
-																		"scheme": {
-																			"default": "postgres",
-																			"description": "Specifies the URL scheme used to connect to your origin database.",
-																			"enum": [
-																				"postgres",
-																				"postgresql"
-																			],
-																			"type": "string"
-																		},
-																		"user": {
-																			"description": "The user of your origin database.",
-																			"example": "postgres",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"host",
-																		"port",
-																		"scheme",
-																		"database",
-																		"user"
-																	],
-																	"type": "object"
+															"properties": {
+																"database": {
+																	"description": "The name of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
 																},
-																{
-																	"required": [
-																		"host",
-																		"port"
-																	]
+																"host": {
+																	"description": "The host (hostname or IP) of your origin database.",
+																	"example": "database.example.com",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "The port (default: 5432 for Postgres) of your origin database.",
+																	"example": "5432",
+																	"type": "integer"
+																},
+																"scheme": {
+																	"default": "postgres",
+																	"description": "Specifies the URL scheme used to connect to your origin database.",
+																	"enum": [
+																		"postgres",
+																		"postgresql"
+																	],
+																	"type": "string"
+																},
+																"user": {
+																	"description": "The user of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
 																}
-															]
+															},
+															"required": [
+																"host",
+																"port",
+																"scheme",
+																"database",
+																"user"
+															],
+															"type": "object"
 														}
 													},
-													"required": [
-														"name",
-														"origin"
-													],
 													"type": "object"
 												}
 											],
@@ -1264,13 +1236,25 @@
 			]
 		}
 	},
-	"POST /accounts/{account_id}/hyperdrive/configs": {
-		"description": "Creates and returns a new Hyperdrive configuration.",
-		"operationId": "create-hyperdrive",
+	"PATCH /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
+		"description": "Patches and returns the specified Hyperdrive configuration. Updates to the origin and caching settings are applied with an all-or-nothing approach.",
+		"operationId": "patch-hyperdrive",
 		"parameters": [
 			{
 				"in": "path",
 				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "hyperdrive_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1297,7 +1281,7 @@
 											},
 											"max_age": {
 												"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-												"example": 30,
+												"example": 60,
 												"type": "integer"
 											},
 											"stale_while_revalidate": {
@@ -1313,61 +1297,47 @@
 										"type": "string"
 									},
 									"origin": {
-										"allOf": [
-											{
-												"properties": {
-													"database": {
-														"description": "The name of your origin database.",
-														"example": "postgres",
-														"type": "string"
-													},
-													"host": {
-														"description": "The host (hostname or IP) of your origin database.",
-														"example": "database.example.com",
-														"type": "string"
-													},
-													"port": {
-														"description": "The port (default: 5432 for Postgres) of your origin database.",
-														"example": "5432",
-														"type": "integer"
-													},
-													"scheme": {
-														"default": "postgres",
-														"description": "Specifies the URL scheme used to connect to your origin database.",
-														"enum": [
-															"postgres",
-															"postgresql"
-														],
-														"type": "string"
-													},
-													"user": {
-														"description": "The user of your origin database.",
-														"example": "postgres",
-														"type": "string"
-													}
-												},
-												"required": [
-													"host",
-													"port",
-													"scheme",
-													"database",
-													"user"
-												],
-												"type": "object"
+										"properties": {
+											"database": {
+												"description": "The name of your origin database.",
+												"example": "postgres",
+												"type": "string"
 											},
-											{
-												"required": [
-													"host",
-													"port"
-												]
+											"host": {
+												"description": "The host (hostname or IP) of your origin database.",
+												"example": "database.example.com",
+												"type": "string"
+											},
+											"port": {
+												"description": "The port (default: 5432 for Postgres) of your origin database.",
+												"example": "5432",
+												"type": "integer"
+											},
+											"scheme": {
+												"default": "postgres",
+												"description": "Specifies the URL scheme used to connect to your origin database.",
+												"enum": [
+													"postgres",
+													"postgresql"
+												],
+												"type": "string"
+											},
+											"user": {
+												"description": "The user of your origin database.",
+												"example": "postgres",
+												"type": "string"
 											}
-										]
+										},
+										"required": [
+											"host",
+											"port",
+											"scheme",
+											"database",
+											"user"
+										],
+										"type": "object"
 									}
 								},
-								"required": [
-									"name",
-									"origin"
-								],
 								"type": "object"
 							}
 						],
@@ -1552,7 +1522,7 @@
 																},
 																"max_age": {
 																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 30,
+																	"example": 60,
 																	"type": "integer"
 																},
 																"stale_while_revalidate": {
@@ -1568,61 +1538,628 @@
 															"type": "string"
 														},
 														"origin": {
-															"allOf": [
-																{
-																	"properties": {
-																		"database": {
-																			"description": "The name of your origin database.",
-																			"example": "postgres",
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The host (hostname or IP) of your origin database.",
-																			"example": "database.example.com",
-																			"type": "string"
-																		},
-																		"port": {
-																			"description": "The port (default: 5432 for Postgres) of your origin database.",
-																			"example": "5432",
-																			"type": "integer"
-																		},
-																		"scheme": {
-																			"default": "postgres",
-																			"description": "Specifies the URL scheme used to connect to your origin database.",
-																			"enum": [
-																				"postgres",
-																				"postgresql"
-																			],
-																			"type": "string"
-																		},
-																		"user": {
-																			"description": "The user of your origin database.",
-																			"example": "postgres",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"host",
-																		"port",
-																		"scheme",
-																		"database",
-																		"user"
+															"properties": {
+																"database": {
+																	"description": "The name of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
+																},
+																"host": {
+																	"description": "The host (hostname or IP) of your origin database.",
+																	"example": "database.example.com",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "The port (default: 5432 for Postgres) of your origin database.",
+																	"example": "5432",
+																	"type": "integer"
+																},
+																"scheme": {
+																	"default": "postgres",
+																	"description": "Specifies the URL scheme used to connect to your origin database.",
+																	"enum": [
+																		"postgres",
+																		"postgresql"
 																	],
+																	"type": "string"
+																},
+																"user": {
+																	"description": "The user of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"host",
+																"port",
+																"scheme",
+																"database",
+																"user"
+															],
+															"type": "object"
+														}
+													},
+													"type": "object"
+												}
+											],
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Hyperdrive Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer"
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
 																	"type": "object"
 																},
 																{
-																	"required": [
-																		"host",
-																		"port"
-																	]
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
 																}
 															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean"
 														}
 													},
 													"required": [
-														"name",
-														"origin"
+														"success",
+														"errors",
+														"messages",
+														"result"
 													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															],
+															"nullable": true,
+															"type": "object"
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true,
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Patch Hyperdrive Failure Response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Patch Hyperdrive",
+		"tags": [
+			"Hyperdrive"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.hyperdrive.database.update"
+			]
+		}
+	},
+	"POST /accounts/{account_id}/hyperdrive/configs": {
+		"description": "Creates and returns a new Hyperdrive configuration.",
+		"operationId": "create-hyperdrive",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"properties": {
+									"caching": {
+										"properties": {
+											"disabled": {
+												"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+												"example": false,
+												"type": "boolean"
+											},
+											"max_age": {
+												"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
+												"example": 60,
+												"type": "integer"
+											},
+											"stale_while_revalidate": {
+												"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
+												"example": 15,
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"name": {
+										"example": "example-hyperdrive",
+										"type": "string"
+									},
+									"origin": {
+										"properties": {
+											"database": {
+												"description": "The name of your origin database.",
+												"example": "postgres",
+												"type": "string"
+											},
+											"host": {
+												"description": "The host (hostname or IP) of your origin database.",
+												"example": "database.example.com",
+												"type": "string"
+											},
+											"port": {
+												"description": "The port (default: 5432 for Postgres) of your origin database.",
+												"example": "5432",
+												"type": "integer"
+											},
+											"scheme": {
+												"default": "postgres",
+												"description": "Specifies the URL scheme used to connect to your origin database.",
+												"enum": [
+													"postgres",
+													"postgresql"
+												],
+												"type": "string"
+											},
+											"user": {
+												"description": "The user of your origin database.",
+												"example": "postgres",
+												"type": "string"
+											}
+										},
+										"required": [
+											"host",
+											"port",
+											"scheme",
+											"database",
+											"user"
+										],
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"properties": {
+							"origin": {
+								"allOf": [
+									{
+										"properties": {
+											"database": {
+												"description": "The name of your origin database.",
+												"example": "postgres",
+												"type": "string"
+											},
+											"host": {
+												"description": "The host (hostname or IP) of your origin database.",
+												"example": "database.example.com",
+												"type": "string"
+											},
+											"port": {
+												"description": "The port (default: 5432 for Postgres) of your origin database.",
+												"example": "5432",
+												"type": "integer"
+											},
+											"scheme": {
+												"default": "postgres",
+												"description": "Specifies the URL scheme used to connect to your origin database.",
+												"enum": [
+													"postgres",
+													"postgresql"
+												],
+												"type": "string"
+											},
+											"user": {
+												"description": "The user of your origin database.",
+												"example": "postgres",
+												"type": "string"
+											}
+										},
+										"required": [
+											"host",
+											"port",
+											"scheme",
+											"database",
+											"user"
+										],
+										"type": "object"
+									}
+								],
+								"properties": {
+									"password": {
+										"description": "The password required to access your origin database. This value is write-only and never returned by the API.",
+										"example": "password1234!",
+										"type": "string"
+									}
+								},
+								"required": [
+									"password"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"name",
+							"origin"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													],
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"properties": {
+														"caching": {
+															"properties": {
+																"disabled": {
+																	"description": "When set to true, disables the caching of SQL responses. (Default: false)",
+																	"example": false,
+																	"type": "boolean"
+																},
+																"max_age": {
+																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
+																	"example": 60,
+																	"type": "integer"
+																},
+																"stale_while_revalidate": {
+																	"description": "When present, indicates the number of seconds cache may serve the response after it becomes stale. (Default: 15)",
+																	"example": 15,
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"name": {
+															"example": "example-hyperdrive",
+															"type": "string"
+														},
+														"origin": {
+															"properties": {
+																"database": {
+																	"description": "The name of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
+																},
+																"host": {
+																	"description": "The host (hostname or IP) of your origin database.",
+																	"example": "database.example.com",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "The port (default: 5432 for Postgres) of your origin database.",
+																	"example": "5432",
+																	"type": "integer"
+																},
+																"scheme": {
+																	"default": "postgres",
+																	"description": "Specifies the URL scheme used to connect to your origin database.",
+																	"enum": [
+																		"postgres",
+																		"postgresql"
+																	],
+																	"type": "string"
+																},
+																"user": {
+																	"description": "The user of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"host",
+																"port",
+																"scheme",
+																"database",
+																"user"
+															],
+															"type": "object"
+														}
+													},
 													"type": "object"
 												}
 											],
@@ -1914,7 +2451,7 @@
 											},
 											"max_age": {
 												"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-												"example": 30,
+												"example": 60,
 												"type": "integer"
 											},
 											"stale_while_revalidate": {
@@ -1930,61 +2467,47 @@
 										"type": "string"
 									},
 									"origin": {
-										"allOf": [
-											{
-												"properties": {
-													"database": {
-														"description": "The name of your origin database.",
-														"example": "postgres",
-														"type": "string"
-													},
-													"host": {
-														"description": "The host (hostname or IP) of your origin database.",
-														"example": "database.example.com",
-														"type": "string"
-													},
-													"port": {
-														"description": "The port (default: 5432 for Postgres) of your origin database.",
-														"example": "5432",
-														"type": "integer"
-													},
-													"scheme": {
-														"default": "postgres",
-														"description": "Specifies the URL scheme used to connect to your origin database.",
-														"enum": [
-															"postgres",
-															"postgresql"
-														],
-														"type": "string"
-													},
-													"user": {
-														"description": "The user of your origin database.",
-														"example": "postgres",
-														"type": "string"
-													}
-												},
-												"required": [
-													"host",
-													"port",
-													"scheme",
-													"database",
-													"user"
-												],
-												"type": "object"
+										"properties": {
+											"database": {
+												"description": "The name of your origin database.",
+												"example": "postgres",
+												"type": "string"
 											},
-											{
-												"required": [
-													"host",
-													"port"
-												]
+											"host": {
+												"description": "The host (hostname or IP) of your origin database.",
+												"example": "database.example.com",
+												"type": "string"
+											},
+											"port": {
+												"description": "The port (default: 5432 for Postgres) of your origin database.",
+												"example": "5432",
+												"type": "integer"
+											},
+											"scheme": {
+												"default": "postgres",
+												"description": "Specifies the URL scheme used to connect to your origin database.",
+												"enum": [
+													"postgres",
+													"postgresql"
+												],
+												"type": "string"
+											},
+											"user": {
+												"description": "The user of your origin database.",
+												"example": "postgres",
+												"type": "string"
 											}
-										]
+										},
+										"required": [
+											"host",
+											"port",
+											"scheme",
+											"database",
+											"user"
+										],
+										"type": "object"
 									}
 								},
-								"required": [
-									"name",
-									"origin"
-								],
 								"type": "object"
 							}
 						],
@@ -2046,6 +2569,10 @@
 								"type": "object"
 							}
 						},
+						"required": [
+							"name",
+							"origin"
+						],
 						"type": "object"
 					}
 				}
@@ -2169,7 +2696,7 @@
 																},
 																"max_age": {
 																	"description": "When present, specifies max duration for which items should persist in the cache. (Default: 60)",
-																	"example": 30,
+																	"example": 60,
 																	"type": "integer"
 																},
 																"stale_while_revalidate": {
@@ -2185,61 +2712,47 @@
 															"type": "string"
 														},
 														"origin": {
-															"allOf": [
-																{
-																	"properties": {
-																		"database": {
-																			"description": "The name of your origin database.",
-																			"example": "postgres",
-																			"type": "string"
-																		},
-																		"host": {
-																			"description": "The host (hostname or IP) of your origin database.",
-																			"example": "database.example.com",
-																			"type": "string"
-																		},
-																		"port": {
-																			"description": "The port (default: 5432 for Postgres) of your origin database.",
-																			"example": "5432",
-																			"type": "integer"
-																		},
-																		"scheme": {
-																			"default": "postgres",
-																			"description": "Specifies the URL scheme used to connect to your origin database.",
-																			"enum": [
-																				"postgres",
-																				"postgresql"
-																			],
-																			"type": "string"
-																		},
-																		"user": {
-																			"description": "The user of your origin database.",
-																			"example": "postgres",
-																			"type": "string"
-																		}
-																	},
-																	"required": [
-																		"host",
-																		"port",
-																		"scheme",
-																		"database",
-																		"user"
-																	],
-																	"type": "object"
+															"properties": {
+																"database": {
+																	"description": "The name of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
 																},
-																{
-																	"required": [
-																		"host",
-																		"port"
-																	]
+																"host": {
+																	"description": "The host (hostname or IP) of your origin database.",
+																	"example": "database.example.com",
+																	"type": "string"
+																},
+																"port": {
+																	"description": "The port (default: 5432 for Postgres) of your origin database.",
+																	"example": "5432",
+																	"type": "integer"
+																},
+																"scheme": {
+																	"default": "postgres",
+																	"description": "Specifies the URL scheme used to connect to your origin database.",
+																	"enum": [
+																		"postgres",
+																		"postgresql"
+																	],
+																	"type": "string"
+																},
+																"user": {
+																	"description": "The user of your origin database.",
+																	"example": "postgres",
+																	"type": "string"
 																}
-															]
+															},
+															"required": [
+																"host",
+																"port",
+																"scheme",
+																"database",
+																"user"
+															],
+															"type": "object"
 														}
 													},
-													"required": [
-														"name",
-														"origin"
-													],
 													"type": "object"
 												}
 											],
