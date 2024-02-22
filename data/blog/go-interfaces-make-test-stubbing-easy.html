@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">2 min read</div>
+<div class="mb2 gray5">2 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>Go's "object-orientation" approach is through <a href="https://golang.org/doc/effective_go.html#interfaces">interfaces</a>. Interfaces provide a way of specifying the behavior expected of an object, but rather than saying what an object itself can do, they specify what's expected of an object. If any object meets the interface specification it can be used anywhere that interface is expected.</p>
 	<p>I was working on a new, small piece of software that does <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-image-compression">image compression</a> for CloudFlare and found a nice use for interfaces when stubbing out a complex piece of code in the unit test suite. Central to this code is a collection of goroutines that run jobs. Jobs are provided from a priority queue and performed in priority order.</p>
