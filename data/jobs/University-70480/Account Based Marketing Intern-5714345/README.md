@@ -5,11 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: <strong>London, UK</strong><br><br></h4>
-<h4><strong>About Cloudflare’s Product Management teams</strong></h4>
-<p>We are looking for a Product Manager intern to join our Product Management team, focusing on our Threat Intelligence Data Platform.&nbsp;</p>
-<p>The Product Management team at Cloudflare sits at the intersection of software development, design, and business strategy. We shape high-level product goals but also get our hands dirty. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software. Cloudflare customers range from individual consumers to large multinational corporations and they use a wide range of products that help them make their sites and apps faster and more secure.&nbsp;</p>
-<p><strong>About the Role</strong></p>
+<h4>Available Locations: <strong>London, UK</strong></h4>
+<h4><strong>About the Role</strong></h4>
 <p>Cloudflare is looking for an Account Based Marketing (ABM) Insights guru to work alongside our ABM team to provide insights on key industry verticals and key accounts we are looking to penetrate. The individual must have a curious and creative mindset and some experience and motivation of learning about B2B Account Based Marketing and how insights play a pivotal role in providing hooks for messaging and content for key personas and accounts to accelerate engagement.</p>
 <p><strong>Responsibilities:</strong><strong><br></strong><strong><br></strong><strong>Verticals/Industry Research:</strong></p>
 <ul>
