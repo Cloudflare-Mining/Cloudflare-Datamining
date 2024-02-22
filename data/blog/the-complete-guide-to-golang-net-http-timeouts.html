@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">7 min read</div>
+<div class="mb2 gray5">7 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>When writing an HTTP server or client in Go, timeouts are amongst the easiest and most subtle things to get wrong: there’s many to choose from, and a mistake can have no consequences for a long time, until the network glitches and the process hangs.</p>
 	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http">HTTP</a> is a complex multi-stage protocol, so there's no one-size fits all solution to timeouts. Think about a <a href="https://www.cloudflare.com/learning/video/what-is-streaming">streaming</a> endpoint versus a JSON API versus a <a href="https://en.wikipedia.org/wiki/Comet_%28programming%29">Comet</a> endpoint. Indeed, the defaults are often not what you want.</p>
