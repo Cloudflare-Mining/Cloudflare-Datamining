@@ -85,6 +85,15 @@
 			},
 			{
 				"in": "query",
+				"name": "ip",
+				"schema": {
+					"description": "Filter scans by IP address (IPv4 or IPv6) of _any_ request made by the webpage.",
+					"example": "1.1.1.1",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
 				"name": "page_url",
 				"schema": {
 					"description": "Filter scans by exact match to scanned URL (_after redirects_)",
@@ -104,6 +113,14 @@
 				"name": "page_path",
 				"schema": {
 					"description": "Filter scans by exact match URL path (also supports suffix search).",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page_ip",
+				"schema": {
+					"description": "Filter scans by  main page IP address (IPv4 or IPv6).",
 					"type": "string"
 				}
 			},
@@ -157,6 +174,10 @@
 										"tasks": {
 											"items": {
 												"properties": {
+													"country": {
+														"description": "Alpha-2 country code",
+														"type": "string"
+													},
 													"success": {
 														"description": "Whether scan was successful or not",
 														"type": "boolean"
@@ -175,13 +196,20 @@
 														"description": "Scan id",
 														"format": "uuid",
 														"type": "string"
+													},
+													"visibility": {
+														"description": "Visibility status.",
+														"example": "public",
+														"type": "string"
 													}
 												},
 												"required": [
 													"uuid",
 													"url",
 													"success",
-													"time"
+													"time",
+													"country",
+													"visibility"
 												],
 												"type": "object"
 											},
