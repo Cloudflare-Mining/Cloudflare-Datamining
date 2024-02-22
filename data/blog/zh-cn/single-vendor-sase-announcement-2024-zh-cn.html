@@ -1,0 +1,59 @@
+<div class="mb2 gray5 ">17 分钟（阅读时间）</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/Single-vendor-SASE-simplified-for-security--networking--and-DevOps-1.png" class="kg-image" alt="Fulfilling the promise of single-vendor SASE through network modernization" loading="lazy" width="2400" height="1350"></figure>
+	<p>随着越来越多的组织共同努力采用 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase">SASE</a> 架构， 显然传统的 &nbsp;SASE 市场定义（<a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse">SSE</a> + <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan">SD-WAN</a>）并不足够。这迫使一些团队与多家供应商合作以满足其特定需求，导致在性能和安全之间的折衷。更令人担忧的是，这使将更多注意力集中在服务清单上，而不是供应商的底层架构。如果组织最终通过碎片化、有缺陷的网络发送流量，即使是最先进的个别安全服务或流量入口也无济于事。</p>
+	<p>单一供应商 SASE 是一个关键趋势，将不同的安全和网络技术融合在一起，然而企业的“任意对任意连接”需要真正的网络现代化，才能使 SASE 适用于所有团队。过去<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-one-zh-cn">几年</a>来， Cloudflare 已经推出了一些功能来帮助组织在推进 SASE 用例的短期和长期路线图过程中实现网络现代化。我们帮助简化了 SASE 实施，无论哪一个团队负责领导计划。</p>
+	<h2 id="%E9%9A%86%E9%87%8D%E5%AE%A3%E5%B8%83%EF%BC%88%E6%9B%B4%E5%8A%A0%EF%BC%89%E7%81%B5%E6%B4%BB%E7%9A%84%E5%8D%95%E4%B8%80%E4%BE%9B%E5%BA%94%E5%95%86-sase-%E5%85%A5%E5%8F%A3">隆重宣布（更加）灵活的单一供应商 SASE 入口</h2>
+	<p>今天，我们的 SASE 平台 —— &nbsp;<a href="https://www.cloudflare.com/zero-trust">Cloudflare One</a> —— 隆重推出一系列更新，进一步实现了单一供应商 SASE 架构的承诺。通过这些新的能力，Cloudflare 使 SASE 网络对安全团队更灵活和更易用，对传统网络团队更高效，并在更大的 SASE 连接相关讨论中将覆盖延伸至支持不足的 DevOps 团队。 </p>
+	<p>有关平台更新包括：</p>
+	<ul>
+		<li>适用于站点对站点连接的灵活入口，实现基于代理 (agent/proxy) 和基于设备/路由的实施，同时为安全和网络团队简化 SASE 网络。</li>
+		<li>全新的 WAN 即服务(WANaaS)能力，例如高可用性、应用程序感知、虚拟机部署选项以及增强的可见性和分析，通过“轻分支重云”方式提高运营效率，同时降低网络成本。</li>
+		<li>适用于 DevOps 的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust">Zero Trust</a> 连接： 网状和点对点 (P2P) 安全联网能力，扩展 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">ZTNA</a> 以支持服务到服务的工作流程和双向流量。</li>
+	</ul>
+	<p>Cloudflare 提供广泛的 SASE 入口和出口，包括用于广域网、应用程序、服务、系统、设备或任何其他内部网络资源的连接器，以便更轻松地将流量路由到 Cloudflare 服务及反之。这有助于组织根据现有环境、技术熟悉程度和工作角色来与最适配的连接范式保持一致。</p>
+	<p>我们最近在另一篇博客文章中深入探讨了 <a href="https://blog.cloudflare.com/magic-wan-connector-general-availability">Magic WAN Connector</a>，解释了我们的所有入口如何在我们的 <a href="https://developers.cloudflare.com/reference-architecture/architectures/sase">SASE 参考架构中组合在一起</a>，包括我们新推出的 &nbsp;<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector">WARP Connector</a>。本文侧重于这些技术对以不同方式接近 SASE 网络的客户所产生的主要影响。</p>
+	<h2 id="%E5%AF%B9%E5%AE%89%E5%85%A8%E5%9B%A2%E9%98%9F%E6%9B%B4%E7%81%B5%E6%B4%BB%E3%80%81%E6%9B%B4%E6%98%93%E7%94%A8">对安全团队更灵活、更易用</h2>
+	<p>实施 SASE 架构的过程可能挑战组织的内部责任和 IT、安全和网络之间协作的现状。不同团队负责各种安全或网络技术，其更换周期不一定一致，这可能会降低组织支持特定项目的意愿。</p>
+	<p>安全或 IT 从业人员需要能够保护资源，无论其位于何处。有时，一个小小的连接变化会帮助他们更有效地保护特定资源，但这项任务超出了他们的控制范围。安全团队不希望在工作中依赖网络团队，但他们也不希望现有网络基础设施导致下游问题。例如，他们需要以一种更简便的方式来连接子网，而不会感到被官僚主义拖后腿。 </p>
+	<h3 id="%E5%9F%BA%E4%BA%8E%E4%BB%A3%E7%90%86%E7%9A%84%E7%AB%99%E7%82%B9%E5%AF%B9%E7%AB%99%E7%82%B9%E8%BF%9E%E6%8E%A5">基于代理的站点对站点连接</h3>
+	<p>为了帮助克服传统孤岛所带来的挑战，Cloudflare 提供了基于代理和基于设备/路由的实现，用于站点到站点或子网到子网的连接。网络团队可以通过我们基于设备/路由的 WANaaS 追求他们熟悉的传统网络概念——现代架构 vs 传统 SD-WAN。与此同时，安全/IT 团队可以通过基于代理的软件连接器（例如 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector">WARP Connector</a>）实现连接，这种方法可能更易于实施。这种基于代理的方法模糊了分支连接器和应用连接器行业常态之间的界限，使 WAN 和 ZTNA 技术更紧密地联系在一起，以帮助实现任何地方的最低特权访问。</p>
+	<p>基于代理（agent/proxy）的连接可能适合于组织总体网络连接的一个子集。这些软件驱动的站点到站点用例可包括没有路由器或防火墙的微型站点，或者可能是团队无法配置 <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec">IPsec</a> 或 GRE 隧道的情况（例如在受到严格监管的网络或 Kubernetes 等云环境中）。组织可以混合和匹配流量入口以满足其需求；所有选项都均可组合和并行使用。</p>
+	<p>我们基于代理的站点到站点连接方法使用的底层技术与帮助安全团队完全替代 VPN 的相同，支持适用于应用程序的 ZTNA，具有服务器发起流量或双向流量。其中包括的服务例如互联网协议语音 (VoIP) 和会话初始协议 (SIP) 流量，Microsoft 系统中心配置管理器 (SCCM)，活动目录 (AD) 域复制，以及下文将详细介绍的 DevOps 工作流程。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/02/Any-to-Any-Diagram---SVSASE-Blog.png" class="kg-image" alt="Diagram showing Cloudflare’s software connectors (on-ramps) simultaneously connecting headquarters, branch offices, data centers, public clouds, and remote users." loading="lazy" width="1600" height="1217">
+		<figcaption>图中展示 Cloudflare 的软件连接器（入口）同时连接总部、分支机构、数据中心、公共云和远程用户。</figcaption>
+	</figure>
+	<p>这种新的 Cloudflare 入口使站点到站点、双向和网状网络连接成为可能，而无需更改基础网络路由基础设施，作为私有网络中子网的路由器，将流量发送到 Cloudflare /从 Cloudflare 接收流量。</p>
+	<h2 id="%E5%AF%B9%E7%BD%91%E7%BB%9C%E5%9B%A2%E9%98%9F%E6%9B%B4%E9%AB%98%E6%95%88">对网络团队更高效</h2>
+	<p>同时，对于更倾向于站点到站点连接的网络团队而言，基于网络层设备/路由的实现仍然在安全性、行业常态依然在性能、成本和可靠性之间强加了太多的折衷。许多（如果不是大多数）大型企业仍然依赖于诸如 <a href="https://www.cloudflare.com/learning/network-layer/what-is-mpls">MPLS</a> 的传统专用连接形式。 MPLS 通常被认为昂贵且缺乏灵活性，但它非常可靠，并且具有诸如服务质量 (QoS) 的功能用于带宽管理。 </p>
+	<p>商品互联网连接在大多数有人居住的地区都是广泛可用的，但存在一系列挑战，导致并不能完全取代 MPLS。在许多国家，高速互联网又快又便宜，但并非普遍如此。速度和成本取决于当地的基础设施和地区服务提供商的市场。总的来说，宽带互联网也不像 MPLS 那样可靠。中断和降速并不罕见，客户对中断服务的频率和持续时间有不同程度的容忍度。对企业而言，中断和降速是不可容忍的。网络服务中断意味着业务损失、客户不满、生产力下降、员工沮丧。因此，尽管大量企业流量已经转移到互联网，但许多组织依然难以放弃 MPLS。</p>
+	<p>SD-WAN 引入了 MPLS 替代方案，不受传输技术限制，可以提高网络稳定性，优于仅仅依靠传统宽带。然而，它引入了新的拓扑和安全挑战。例如，如果在分支之间绕过检查，许多 SD-WAN 实现可能增加风险。它还具有特定于实施的挑战，例如如何解决中间连接基础设施的扩展和使用/控制（或者更准确的说，是缺乏）。因此，对于许多组织来说，完全转用互联网连接并淘汰 MPLS 的承诺仍未兑现。这些问题在购买时对一些客户并不是很明显，需要持续的市场教育。 </p>
+	<h3 id="%E4%BC%81%E4%B8%9A-wan-%E7%9A%84%E6%BC%94%E5%8F%98">企业 WAN 的演变 </h3>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/magic-wan">Magic WAN</a> 遵循一种不同的范式，在 Cloudflare 的<a href="https://www.cloudflare.com/connectivity-cloud">全球连通云</a>中从头构建； 它采用“轻分支重云”的方式来增强并最终取代现有的网络架构，包括 MPLS 电路和 SD-WAN 覆盖层。虽然 Magic WAN 具有类似于传统 SD-WAN 的云原生路由和配置控制，但它更易于部署、管理和使用。它可以根据不断变化的业务需求进行扩展，并内置安全性。像 Solocal 这样的客户认为，这种架构的好处最终降低他们的总拥有成本：</p>
+	<blockquote><em>“Cloudflare 的 Magic WAN Connector 以直观的方式提供了对网络和安全基础设施的集中化和自动化管理。作为 Cloudflare 的 SASE 平台的一部分，它提供了一个基于市场标准和最佳实践打造的一致且同构的单一供应商架构。确保对所有数据流的控制，并减少违规或安全漏洞风险。对 Solocal 而言，这显然可以为我们提供显著的节省，将获取、安装、维护和升级分支网络设备的所有相关成本降低多达 40％。这是一个高潜力的连接解决方案，支持我们的 IT 团队现代化我们的网络。”</em><br><em><strong>– Maxime Lacour，网络运营经理 Solocal</strong></em></blockquote>
+	<p>这完全不同于其他单一供应商 SASE 供应商的方法，后者一直试图解决通过收购获得的单点解决方案之间的冲突，因为它们是基于根本不同的设计理念而构建的。这些“拼凑起来”的解决方案会导致不统一的体验，因为它们的架构支离破碎，类似于组织在管理多个独立供应商时可能看到的情况。通过构建了统一集成解决方案的供应商来整合 SASE 的组件，而非将不同的网络和安全解决方案拼凑在一起，从而降低复杂性、避免绕过安全控制和潜在的集成或连接挑战，最终大幅简化部署和管理。</p>
+	<p>Magic WAN 可以通过我们的 Connector 设备自动建立到 Cloudflare 的 IPsec 隧道，也可以通过客户边缘路由器或防火墙上手动启动 的 Anycast IPsec 或 GRE 隧道，或者通过在私有对等连接位置或公共云实例上的 Cloudflare 网络互连(CNI)。它超越了 SSE 所提出的“集成”，真正融合了安全和网络功能，帮助组织更高效地实现网络现代化。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/02/Magic-WAN-Diagram---SVSASE-Blog.png" class="kg-image" alt="Diagram showing Cloudflare Magic WAN connecting branch offices, data centers, and VPCs to security services on Cloudflare’s global network." loading="lazy" width="1600" height="861">
+		<figcaption>图中显示 Cloudflare Magic WAN 将分支办公室、数据中心和 VPC 连接到Cloudflare 全球网络上的安全服务。</figcaption>
+	</figure>
+	<h3 id="magic-wan-connector-%E6%96%B0%E5%8A%9F%E8%83%BD">Magic WAN Connector 新功能</h3>
+	<p>在 2023 年 10 月，我们宣布 Magic WAN Connector 普遍可用，这是一种轻量级设备，供客户置入其现有网络环境，实现与 Cloudflare One 的零接触连接，最终用于替换其他网络硬件，例如传统 SD-WAN 设备、路由器和防火墙。今天，我们非常高兴能宣布 Magic WAN Connector 的新功能，包括：</p>
+	<ul>
+		<li><strong>适用于关键环境的高可用性 (HA) 配置：</strong> 在企业部署中，组织通常希望支持高可用性，以减轻硬件故障的风险。高可用性使用一对 Magic WAN Connector（作为虚拟机或在支持的硬件设备上运行），两者相互配合，以便在一个设备发生故障时无缝恢复运行。客户可以像管理 Magic WAN Connector 的所有其他方面一样，从统一的 Cloudflare One 仪表板管理 HA 配置。</li>
+		<li><strong>应用程序感知：</strong>SD-WAN 与更传统的网络设备相比一个核心区别特性是，除了网络层属性如 IP 和端口范围外，还能够创建基于知名应用程序的流量策略。应用程序感知策略提供了更容易管理和更精细化的流量流动控制。Cloudflare 的应用程序感知实现利用了我们全球网络的情报，使用已经在安全工具中共享的相同分类，因此 IT 和安全团队可以期望在路由和检查决策上获得一致的行为，这是双供应商或拼凑在一起的 SASE 解决方案所不具备的能力。</li>
+		<li><strong>虚拟机部署选项: </strong>Magic WAN Connector 现在可作为虚拟设备软件映像进行下载，可立即部署在任何支持的虚拟化平台/虚拟机监控程序上。虚拟 Magic WAN &nbsp;Connector 具有与硬件设备相同的超低接触部署模型和集中式设备管理体验，并向所有 Magic WAN 客户免费提供。</li>
+		<li><strong><strong><strong>增强的可见性和分析：</strong></strong></strong>Magic WAN Connector 具有针对关键指标的增强可见性，例如连接状态、CPU 利用率、内存消耗和设备温度。这些分析数据可以通过仪表板和 API 获得，以便运维团队将数据集成到其网络运营中心。</li>
+	</ul>
+	<h2 id="%E5%B0%86-sase-%E8%A6%86%E7%9B%96%E8%8C%83%E5%9B%B4%E6%89%A9%E5%B1%95%E5%88%B0-devops">将 SASE 覆盖范围扩展到 DevOps</h2>
+	<p>复杂的持续集成和持续交付 (CI/CD) 流水线交互因其敏捷性而闻名，因此支持这些工作流程的连接和安全性应该相匹配。DevOps 团队过度依赖于传统 <a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn">VPN</a> 来实现对各种开发和运营工具的远程访问。VPN 管理繁琐，易受已知或零日漏洞利用攻击，采用传统轴幅式连接模型，对于现代工作流程来说速度太慢。</p>
+	<p>在所有员工群体中，开发人员特别擅长找到创造性的解决方案，以减少他们日常工作流程中的摩擦，因此所有企业安全措施仅需“能够工作”，不要妨碍到他们。理想情况下，无论使用什么组件和工具，无论位于何处，构建、模拟和生产环境中的所有用户和服务器都应通过集中的、Zero Trust <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control">访问控制</a>进行编排。应该容许临时的策略改变，以及适用于承包商或甚至生产服务器事件紧急响应人员的临时 Zero Trust 访问。</p>
+	<h3 id="%E9%80%82%E7%94%A8%E4%BA%8E-devops-%E7%9A%84-zero-trust-%E8%BF%9E%E6%8E%A5">适用于 DevOps 的 Zero Trust 连接</h3>
+	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ztna">ZTNA</a> 作为安全的最低特权用户-应用程序访问的行业范式表现良好，但它应该进一步扩展以保护涉及服务器发起或双向流量的网络用例。这遵循了一种新兴趋势，即构想一种跨云、VPC 或网络分段的覆盖式网状连接模型，无需依赖路由器。对于真正的任意对任意连接，客户需要涵盖其所有网络连接和应用程序访问用例的灵活性，并非每个 SASE 供应商的网络入口都能在不需要网络路由更改或做出安全折衷的情况下扩展到客户端发起的流量之外，因此通用的“任意对任意连接”声明可能并非最初看起来的那样。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2024/02/DevOps-Diagram---SVSASE-Blog.png" class="kg-image" alt="Diagram showing Cloudflare’s software connectors (on-ramps) securing DevOps workflows involving bidirectional traffic between developers and servers." loading="lazy" width="1600" height="891">
+		<figcaption>图中显示 Cloudflare 的软件连接器（入口）保护着涉及开发人员和服务器之间双向流量的 DevOps 工作流程。</figcaption>
+	</figure>
+	<p>Cloudflare 扩展了 ZTNA 的覆盖范围，以确保涵盖所有用户到应用程序的使用情况，同时提供网状和 P2P 安全网络，使连接选项尽可能广泛和灵活。DevOps 服务到服务的工作流程可以在实现 ZTNA、VPN 替代或企业级 SASE 的同一平台上高效运行。Cloudflare 充当连接“胶水”，覆盖所有 DevOps 用户和资源，无论在每一步中流量如何流动。同样的技术，即 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector">WARP Connector</a>，使管理员能够管理具有重叠 IP 范围的不同专用网络——VPC 和 RFC1918，支持服务器发起的流量和 P2P 应用（例如 SCCM、AD、VoIP 和 SIP 流量）通过现有专用网络进行连接，构建 P2P 专用网络（例如 CI/CD 资源流动），并确定性地路由流量。组织还可以使用 Cloudflare 的 Terraform 程序自动管理其 SASE 平台。</p>
+	<h2 id="cloudflare-%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84">Cloudflare 的不同之处</h2>
+	<p>Cloudflare 的单一供应商 SASE 平台—— <a href="https://www.cloudflare.com/zero-trust">Cloudflare One</a> 在我们的<a href="https://www.cloudflare.com/connectivity-cloud">全球连通云</a>（公共云的下一次演进）上构建， 提供一个统一、智能的可编程、可组合服务平台，实现所有网络（企业和互联网）、云、应用程序和用户之间的连接。我们的全球连通云具备足够的灵活性，使得“任意对任意连接”对于实施 SASE 架构的组织而言更具可行性，容纳部署偏好并提供规范指导。Cloudflare 旨在通过单一供应商 SASE 及更多功能来提供组织重新掌控 IT 所需的广度和深度，同时为这个过程中做出贡献的每一个团队简化工作流程。</p>
+	<p>其他 SASE 供应商将其数据中心设计成向互联网发送流量。它们并非设计用于处理或保护“东西向”流量，对于分支机构到总部或分支机构之间的流量，既不提供中间网络连接，也不提供安全服务。Cloudflare 的中间全球骨干网络支持适用于任意到任意连接的安全和网络服务，无论用户是在本地还是远程，无论应用程序是在数据中心还是在云中。<br><br>如需了解更多信息，请阅读我们的参考架构 《<a href="https://developers.cloudflare.com/reference-architecture/sase-reference-architecture">使用 Cloudflare 进化到 SASE 架构</a>》，或者<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise">联系 Cloudflare One 专家</a>。</p>
+</div>

@@ -1,0 +1,118 @@
+<div class="mb2 gray5 ">12 min czytania</div>
+<div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2020/02/bloom-filter@2x.png" alt="bloom-filter@2x" loading="lazy"></p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<p>Znam <a href="https://en.wikipedia.org/wiki/Bloom_filter">filtry Blooma</a> (nazwane na cześć Burtona Blooma) od czasów uniwersyteckich, ale nie miałem okazji używać ich w praktyce. W zeszłym miesiącu to się zmieniło — zafascynowały mnie możliwości tej struktury danych, ale szybko zdałem sobie sprawę, że ma ona pewne wady. Ten wpis to opowieść o moim przelotnym romansie z filtrami Blooma.</p>
+	<p>Podczas poszukiwania informacji na temat <a href="https://blog.cloudflare.com/the-root-cause-of-large-ddos-ip-spoofing">podszywania się pod adresy IP</a> musiałem sprawdzić, czy źródłowe adresy IP wydobyte z pakietów docierających do naszych serwerów są prawidłowe, biorąc pod uwagę położenie geograficzne naszych centrów danych. Na przykład, źródłowe adresy IP należące do legalnego włoskiego dostawcy usług internetowych nie powinny docierać do centrum danych w Brazylii. Problem ten może wydawać się prosty, ale w nieustannie zmieniającym się krajobrazie Internetu jego rozwiązanie nie jest wcale łatwe. Wystarczy powiedzieć, że skończyłem z wieloma dużymi plikami tekstowymi zawierającymi następujące dane:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-01-23-57-10.png" alt="Screenshot-from-2020-03-01-23-57-10" loading="lazy"></p>
+	<p>Pierwsza linia oznacza, że adres IP 192.0.2.1 został zarejestrowany z chwilą dotarcia prawidłowego żądania do centrum danych Cloudflare o numerze 107. Dane te pochodziły z wielu źródeł, w tym z naszych aktywnych i pasywnych sond, dzienników niektórych posiadanych przez nas domen (takich jak cloudflare.com), źródeł publicznych (takich jak tablica BGP) itp. Identyczna linia powtarzałaby się zazwyczaj w wielu plikach.</p>
+	<p>Uzyskałem więc gigantyczny zbiór danych tego typu. W pewnym momencie naliczyłem miliard linii we wszystkich przeanalizowanych źródłach. Zwykle piszę skrypty bash do wstępnego przetwarzania danych wejściowych, ale takie podejście nie sprawdzało się przy takiej skali. Na przykład usunięcie duplikatów z tego niewielkiego pliku o skromnym rozmiarze 600 MiB z 40 mln linii trwało... mniej więcej wieczność:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-01-23-25-19a.png" alt="Screenshot-from-2020-03-01-23-25-19a" loading="lazy"></p>
+	<p>Dość powiedzieć, że usuwanie duplikatów przy użyciu typowych poleceń bash (takich jak 'sort') w różnych konfiguracjach (zobacz '--parallel', '--buffer-size' i '--unique') nie było optymalne w odniesieniu do tak dużego zbioru danych.</p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="filtry-blooma-na-ratunek">Filtry Blooma na ratunek</h2>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Bloom_filter.png" alt="Bloom_filter" loading="lazy"></p>
+	<center><small><a href="https://en.wikipedia.org/wiki/Bloom_filter#/media/File:Bloom_filter.svg">Rysunek</a> autorstwa <a href="https://commons.wikimedia.org/wiki/User:David_Eppstein">David Eppstein</a> domena publiczna</small></center>
+	<p>Wtedy doznałem olśnienia — nie muszę sortować linii! Wystarczy tylko usunąć zduplikowane linie, przy czym użycie jakiegoś rodzaju struktury danych „zbioru” powinno być znacznie szybsze. Co więcej, znam mniej więcej kardynalność pliku wejściowego (liczbę unikalnych linii), mogę więc pogodzić się z utratą niektórych punktów danych — użycie probabilistycznej struktury danych jest do przyjęcia!</p>
+	<p>Filtry Blooma są idealnym rozwiązaniem!</p>
+	<p>Choć zachęcam do zapoznania się z <a href="https://en.wikipedia.org/wiki/Bloom_filter#Algorithm_description">artykułem o filtrach Blooma dostępnym w Wikipedii,</a>, oto jak ja postrzegam tę strukturę danych.</p>
+	<p>Jak można by zaimplementować "<a href="https://en.wikipedia.org/wiki/Set_(abstract_data_type)">zbió</a>"? Przy założeniu doskonałej funkcji skrótu i nieskończonej pamięci moglibyśmy po prostu utworzyć nieskończoną tablicę bitową i ustawić bit o numerze 'hash(item)' dla każdego napotkanego elementu. To dałoby nam idealną strukturę danych „zbioru”, prawda? Trywialne. Niestety, funkcje skrótu mają kolizje, a nieskończona pamięć nie istnieje, dlatego w naszych realiach trzeba iść na kompromis. Możemy jednak obliczyć prawdopodobieństwo kolizji i nim zarządzać. Wyobraźmy sobie na przykład, że mamy dobrą funkcję skrótu i 128 GiB pamięci. Możemy obliczyć, że prawdopodobieństwo kolizji drugiego elementu dodanego do tablicy bitowej wynosiłoby 1 na 1099511627776. Prawdopodobieństwo kolizji przy dodawaniu kolejnych elementów zwiększa się wraz wypełnianiem tablicy bitowej.</p>
+	<p>Ponadto, moglibyśmy użyć więcej niż jednej funkcji skrótu, co skutkowałoby gęstszą tablicą bitową. To właśnie optymalizują filtry Blooma. Filtr Blooma to kilka operacji matematycznych opartych na czterech zmiennych:</p>
+	<ul>
+		<li>n — liczba elementów wejściowych (kardynalność)</li>
+		<li>m — pamięć zajęta przez tablicę bitową</li>
+		<li>k — liczba funkcji skrótu uwzględnianych dla każdego wejścia</li>
+		<li>p — prawdopodobieństwo dopasowania fałszywie pozytywnego</li>
+	</ul>
+	<p>Przy ustalonej kardynalności wejściowej (n) i oczekiwanym prawdopodobieństwie wyniku fałszywie pozytywnego (p) operacje matematyczne filtra Blooma zwracają rozmiar wymaganej pamięci (m) oraz liczbę potrzebnych funkcji skrótu (k).</p>
+	<p>Świetna wizualizacja autorstwa Thomasa Hursta pokazuje, jak parametry te wzajemnie na siebie wpływają:</p>
+	<ul>
+		<li><a href="https://hur.st/bloomfilter">https://hur.st/bloomfilter/</a></li>
+	</ul>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="mmuniq-bloom">mmuniq-bloom</h2>
+	<p>Wiedziony tą intuicją udałem się w podróż, aby dodać nowe narzędzie do mojego zestawu — 'mmuniq-bloom'. Jest to narzędzie probabilistyczne, które po przyjęciu danych do STDIN zwraca do STDOUT jedynie unikalne linie; mam nadzieję, że znacznie szybciej niż kombinacja 'sort' + 'uniq'!</p>
+	<p>Oto ono:</p>
+	<ul>
+		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-02-mmuniq/mmuniq-bloom.c">'mmuniq-bloom.c'</a></li>
+	</ul>
+	<p>Dla uproszczenia i szybkości zaprojektowałem 'mmuniq-bloom' z kilkoma założeniami. Po pierwsze, jeśli nie zaznaczono inaczej, program korzysta z 8 funkcji skrótu, czyli k=8. Wydaje się to być liczbą bliską optymalnej dla rozmiarów danych, z którymi pracuję, a funkcja skrótu może szybko wygenerować 8 przyzwoitych skrótów. Następnie dobieramy m, czyli liczbę bitów w tablicy bitowej, w taki sposób, aby była potęgą liczby dwa. Ma to na celu uniknięcie kosztownej operacji modulo %, która kompiluje się do powolnego asemblerowego 'div'. Przy rozmiarach stanowiących potęgę liczby dwa możemy po prostu użyć operatora bitowego AND (z ciekawości można sprawdzić, <a href="https://stackoverflow.com/questions/41183935/why-does-gcc-use-multiplication-by-a-strange-number-in-implementing-integer-divi">jak kompilatory optymalizują niektóre dzielenia, wykorzystując mnożenie przez magiczną stałą</a>.)</p>
+	<p>Teraz możemy uruchomić to narzędzie na tym samym pliku danych, którego używaliśmy wcześniej:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image11.png" alt="image11" loading="lazy"></p>
+	<p>O, jest znacznie lepiej! 12 sekund w porównaniu z 2 minutami wygląda dużo lepiej. Ale chwilę... Program korzysta ze zoptymalizowanej struktury danych, charakteryzuje się stosunkowo niewielkim użyciem pamięci, zoptymalizowanym parsowaniem linii oraz dobrym buforowaniem wyjścia, lecz 12 sekund to nadal wieczność w porównaniu z narzędziem 'wc -l':</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image5.png" alt="image5" loading="lazy"></p>
+	<p>Co się dzieje? Rozumiem, że zliczanie linii przez 'wc' jest prostsze niż ustalanie unikalnych linii, ale czy naprawdę jest to warte 26‑krotnej różnicy? Dokąd są przekazywane wszystkie instrukcje procesora w programie 'mmuniq-bloom'?</p>
+	<p>Musi chodzić o moją funkcję skrótu. 'wc' nie musi angażować całej mocy procesora do wykonania wszystkich tych dziwnych obliczeń dla każdej z 40 milionów linii na wejściu. Korzystam z dość nietrywialnej funkcji skrótu 'siphash24', więc na pewno obciąża ona procesor, prawda? Sprawdźmy to, uruchamiając kod obliczający funkcję skrótu, ale niewykonujący żadnych operacji filtra Blooma:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image2.png" alt="image2" loading="lazy"></p>
+	<p>Dziwne. Zliczenie funkcji skrótu faktycznie trwa około 2 sekund, ale w poprzednim uruchomieniu zajęło to programowi 12 sekund. Operacje samego filtra Blooma trwają 10 sekund? Jak to możliwe? To taka prosta struktura danych...</p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="tajna-bro%C5%84-%E2%80%94-profiler">Tajna broń — profiler</h2>
+	<p>Nadszedł czas, aby użyć narzędzia odpowiedniego do zadania — uruchommy profilera i zobaczmy, gdzie podziewają się zasoby CPU. Uruchomienie 'strace' pozwoli potwierdzić, że nie wykonujemy żadnych nieoczekiwanych wywołań systemowych:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image14.png" alt="image14" loading="lazy"></p>
+	<p>Wszystko wygląda dobrze. Dziesięć wywołań 'mmap', z których każde zajmuje 4 ms (3971 μs), jest intrygujące, ale to w porządku. Wstępnie zapełniamy pamięć za pomocą 'MAP_POPULATE', aby ograniczyć liczbę późniejszych błędów strony.</p>
+	<p>Jaki jest kolejny krok? Oczywiście linuksowy 'perf'!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image10.png" alt="image10" loading="lazy"></p>
+	<p>Następnie możemy sprawdzić wyniki:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image6.png" alt="image6" loading="lazy"></p>
+	<p>Zgadza się — faktycznie zużywamy 87,2% cykli w naszym krytycznym kodzie. Zobaczmy, gdzie dokładnie. Po wykonaniu instrukcji 'perf annotate process_line --source' szybko dostrzegam coś, czego się nie spodziewałem.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image3.png" alt="image3" loading="lazy"></p>
+	<p>Widać, że 26,90% mocy obliczeniowej CPU jest zużywane przez instrukcję 'mov', ale to nie wszystko! Kompilator poprawnie umieścił funkcję w kodzie i rozwinął pętlę ośmiokrotnie. Podsumowując, linia 'mov' lub 'uint64_t v = *p' generuje większości cykli!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image4.png" alt="image4" loading="lazy"></p>
+	<p>Najwyraźniej instrukcja 'perf' musi być błędna — jak taka prosta linia może skutkować takim obciążeniem? Możemy powtórzyć test wydajności z użyciem innego profilera i uwidoczni on nam ten sam problem. Lubię na przykład używać instrukcji 'google-perftools' z parametrem kcachegrind, ponieważ generuje ona atrakcyjne wizualnie wykresy:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-02-00-08-23.png" alt="Screenshot-from-2020-03-02-00-08-23" loading="lazy"></p>
+	<p>Uzyskany wynik wygląda następująco:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image13.png" alt="image13" loading="lazy"></p>
+	<p>Podsumujmy dotychczasowe ustalenia.</p>
+	<p>Ogólnodostępne narzędzie 'wc' potrzebuje 0,45 s czasu procesora do przetworzenia pliku o rozmiarze 600 MiB. Nasze zoptymalizowane narzędzie 'mmuniq-bloom' potrzebuje 12 sekund. Procesor jest obciążony przez jedną instrukcję 'mov', wyłuskanie pamięci...</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/6784957048_4661ea7dfc_c.jpg" alt="6784957048_4661ea7dfc_c" loading="lazy"></p>
+	<center><small><a href="https://flickr.com/photos/jonicdao/6784957048">Zdjęcie</a> autorstwa <a href="https://flickr.com/photos/jonicdao">Jose Nicdao</a> CC BY/2.0</small></center>
+	<p>Och, jak mogłem o tym zapomnieć! Pamięć RAM jest powolna! Bardzo, bardzo, bardzo powolna!</p>
+	<p>Zgodnie z ogólną zasadą dotyczącą <a href="http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html">"wartości opóźnień, które każdy programista powinien znać"</a> czas jednego pobrania danych z pamięci RAM wynosi około 100 ns. Wykonajmy obliczenia: 40 milionów linii, 8 funkcji skrótu zliczonych dla każdej linii. Nasz filtr Blooma ma rozmiar 128 MiB, dlatego na <a href="https://blog.cloudflare.com/gen-x-performance-tuning">starszym sprzęcie</a> nie mieści się w pamięci podręcznej L3! Funkcje skrótu są równomiernie rozłożone w dużym zakresie pamięci, a każda z nich generuje brak trafienia w pamięci. Składając to wszystko razem, otrzymujemy...</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-02-00-34-29.png" alt="Screenshot-from-2020-03-02-00-34-29" loading="lazy"></p>
+	<p>To sugeruje, że tylko operacje pobierania danych z pamięci trwały łącznie 32 sekundy. Rzeczywisty program jest szybszy, gdyż jego działanie zajmuje tylko 12 sekund. Wynika to z faktu, że chociaż dane filtra Blooma nie mieszczą się w całości w pamięci podręcznej L3, to i tak częściowy ich zapis w tej pamięci przynosi pewne korzyści. Można to łatwo zaobserwować, używając instrukcji 'perf stat -d':</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image9.png" alt="image9" loading="lazy"></p>
+	<p>Tak jest — powinniśmy mieć przynajmniej 320 milionów braków trafień w pamięci podręcznej ostatniego poziomu (LLC‑load‑misses), a mieliśmy tylko 280 milionów. To nadal nie wyjaśnia, dlaczego program działał tylko 12 sekund. Nie ma to jednak większego znaczenia. Ważne jest, że liczba braków trafień w pamięci podręcznej jest prawdziwym problemem i można go rozwiązać tylko poprzez zmniejszenie liczby dostępów do pamięci. Spróbujmy dostroić filtr Blooma tak, aby używał tylko jednej funkcji skrótu:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image12.png" alt="image12" loading="lazy"></p>
+	<p>Auć! To naprawdę zabolało! Filtr Blooma wymagał 64 GiB pamięci, aby osiągnąć pożądany stosunek prawdopodobieństwa wyników fałszywie dodatnich wynoszący 1 błąd na 10 tysięcy linii. To straszne!</p>
+	<p>Ponadto, nie wydaje się, abyśmy wiele poprawili. System operacyjny potrzebował 22 sekund, aby przygotować dla nas pamięć, ale nadal poświęcaliśmy 11 sekund na operacje w przestrzeni użytkownika. Wydaje się, że tym razem wszelkie korzyści z rzadszego dostępu do pamięci zostały zniwelowane przez niższe prawdopodobieństwo trafienia w pamięć podręczną ze względu na drastycznie zwiększony rozmiar pamięci. W poprzednich uruchomieniach potrzebowaliśmy zaledwie 128 MiB dla filtra Blooma!</p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="ca%C5%82kowita-rezygnacja-z-filtr%C3%B3w-blooma">Całkowita rezygnacja z filtrów Blooma</h2>
+	<p>To staje się absurdalne. Aby uzyskać te same gwarancje wyników fałszywie pozytywnych, albo musimy używać wielu funkcji skrótu w filtrze Blooma (na przykład 8) i tym samym wykonywać wiele operacji w pamięci, albo możemy użyć jednej funkcji skrótu przy ogromnych wymaganiach dotyczących pamięci.</p>
+	<p>Nie jesteśmy w sumie ograniczeni dostępną pamięcią — zamiast tego chcemy optymalizacji pod kątem zredukowania dostępów do pamięci. Wszystko, czego potrzebujemy, to struktura danych, która wymaga co najwyżej jednego braku trafienia w pamięci na element i wykorzystuje mniej niż 64 GB pamięci RAM...</p>
+	<p>Moglibyśmy rozważyć bardziej zaawansowane struktury danych, takie jak <a href="https://en.wikipedia.org/wiki/Cuckoo_filter">filtr Cuckoo</a>, ale być może znajdzie się prostsze rozwiązanie. Co powiesz na starą, dobrą, prostą tablicę mieszającą z sondowaniem liniowym?</p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/linear-probing.png" alt="linear-probing" loading="lazy"><br>
+		<small><a href="https://www.sysadmins.lv/blog-en/array-search-hash-tables-behind-the-scenes.aspx">Rysunek</a> autorstwa <a href="https://www.sysadmins.lv/about.aspx">Vadims Podāns</a></small>
+	</p>
+	<h2 id="powitajmy-mmuniq-hash">Powitajmy mmuniq-hash</h2>
+	<p>Tutaj można znaleźć zmodyfikowaną wersję filtra mmuniq-bloom, ale wykorzystującą tablicę mieszającą:</p>
+	<ul>
+		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-02-mmuniq/mmuniq-hash.c">'mmuniq-hash.c'</a></li>
+	</ul>
+	<p>Zamiast przechowywania bitów, jak w przypadku filtra Blooma, teraz przechowujemy 64‑bitowe funkcje skrótu pochodzące z <a href="https://idea.popcount.org/2013-01-24-siphash">funkcji 'siphash24'</a>. Daje nam to znacznie większe gwarancje prawdopodobieństwa, z prawdopodobieństwem wyników fałszywie pozytywnych znacznie lepszym niż jeden błąd na 10 tysięcy linii.</p>
+	<p>Przeprowadźmy obliczenia. Dodanie nowego elementu do tablicy mieszającej zawierającej, powiedzmy, 40 milionów wpisów daje 40M/2^64 szans na wystąpienie kolizji funkcji skrótu. Jest to zatem bardzo niskie prawdopodobieństwo wynoszące w przybliżeniu jeden na 461 miliardów. Nie dodajemy jednak jednego elementu do wstępnie wypełnionego zbioru, lecz 40 milionów linii do początkowo pustego zbioru! Zgodnie z <a href="https://en.wikipedia.org/wiki/Birthday_problem">paradoksem urodzin</a> zwiększa to znacznie szanse na wystąpienie kolizji w pewnym momencie. Przyzwoite przybliżenie to ~n^2/2m, co w naszym przypadku wynosi ~(40M2)/(2*(264)), czyli szansa jedna na 23000. Innymi słowy, zakładając, że używamy dobrej funkcji skrótu, jeden spośród 23 tysięcy losowych zbiorów zawierających 40 mln elementów będzie miał kolizję funkcji skrótu. Ta praktyczna szansa na wystąpienie kolizji jest nie do pominięcia, ale jest to nadal lepiej niż w przypadku filtra Blooma oraz całkowicie akceptowalne dla mojego przypadku użycia.</p>
+	<p>Kod tablicy mieszającej działa szybciej, ma lepsze wzorce dostępu do pamięci oraz charakteryzuje się niższym prawdopodobieństwem wyników fałszywie pozytywnych, niż w przypadku podejścia z wykorzystaniem filtra Blooma.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/image7.png" alt="image7" loading="lazy"></p>
+	<p>Nie martw się o linię „konfliktów funkcji skrótu” — wskazuje ona jedynie stopień zapełnienia tablicy mieszającej. Korzystamy z sondowania liniowego, zatem gdy wiadro jest już używane, po prostu wybieramy następne puste wiadro. W naszym przypadku musieliśmy przeskoczyć średnio 0,7 wiadra, aby znaleźć puste miejsce w tablicy. To jest w porządku, a ponieważ przeprowadzamy iterację po wiadrach w kolejności liniowej, możemy oczekiwać sprawnego wstępnego pobierania danych z pamięci.</p>
+	<p>Z poprzedniego ćwiczenia wiemy, że czas przetwarzania naszej funkcji skrótu wynosi około 2 sekundy. Tym samym można uczciwie stwierdzić, że przetworzenie 40 milionów trafień w pamięci zajmie około 4 sekundy.</p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="czego-si%C4%99-dowiedzieli%C5%9Bmy">Czego się dowiedzieliśmy</h2>
+	<p>Nowoczesne procesory są naprawdę dobre w sekwencyjnym dostępie do pamięci, gdy można przewidzieć wzorce pobierania danych z pamięci (zobacz: <a href="https://en.wikipedia.org/wiki/Cache_prefetching#Methods_of_hardware_prefetching">Wstępne pobieranie danych z pamięci podręcznej</a>). Z drugiej strony, pamięć RAM jest bardzo kosztowna.</p>
+	<p>Zaawansowane struktury danych są bardzo interesujące, lecz należy zachować ostrożność. Nowoczesne komputery wymagają algorytmów zoptymalizowanych pod kątem pamięci podręcznej. Pracując z dużymi zbiorami danych, które nie mieszczą się w pamięci L3, lepiej jest zoptymalizować algorytmy pod kątem zmniejszenia liczby operacji ładowania danych, niż optymalizować ilość używanej pamięci.</p>
+	<p>Moim zdaniem można uczciwie powiedzieć, że filtry Blooma są świetne, dopóki mieszczą się w pamięci podręcznej L3. Z chwilą, gdy to założenie przestaje być spełnione, stają się okropne. To nic nowego — filtry Blooma są zoptymalizowane pod kątem wykorzystania pamięci, a nie dostępu do niej (zobacz np. publikację dotyczącą <a href="https://www.cs.cmu.edu/~dga/papers/cuckoo-conext2014.pdf">filtrów Cuckoo</a>.</p>
+	<p>Inną kwestią jest niekończąca się dyskusja na temat funkcji skrótu. Szczerze mówiąc, w większości przypadków nie ma to znaczenia. Koszt zliczania nawet skomplikowanych funkcji skrótu, takich jak 'siphash24', jest mały w porównaniu z kosztem pamięci RAM. W naszym przypadku uproszczenie funkcji skrótu przyniesie tylko niewielkie korzyści. Czas pracy procesora jest po prostu marnowany gdzie indziej — na oczekiwaniu na pamięć!</p>
+	<p>Jeden z kolegów często powtarza: „Możesz zakładać, że nowoczesne procesory są nieskończenie szybkie. Pracują z nieskończoną szybkością, dopóki <a href="http://www.di-srv.unisa.it/~vitsca/SC-2011/DesignPrinciplesMulticoreProcessors/Wulf1995.pdf">nie zderzą się ze ścianą pamięci</a>".</p>
+	<p>Na koniec: nie popełniaj moich błędów — każdy powinien zacząć profilowanie od użycia instrukcji 'perf stat -d' i przyjrzenia się licznikowi instrukcji na cykl (IPC). Jego wartość mniejsza niż 1 zazwyczaj oznacza, że program utknął i oczekuje na pamięć. Wartości powyżej 2 byłyby świetne, gdyż oznaczałoby to, że obciążenie jest głównie związane z pracą procesora. Niestety, jeszcze nie widziałem wysokich wartości przy obciążeniach, z którymi mam do czynienia...</p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="ulepszona-wersja-mmuniq">Ulepszona wersja mmuniq</h2>
+	<p>Z pomocą moich kolegów przygotowałem jeszcze bardziej ulepszoną wersję narzędzia opartego na tablicy mieszającej 'mmuniq'. Oto odpowiedni kod:</p>
+	<ul>
+		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2020-02-mmuniq/mmuniq.c">'mmuniq.c'</a></li>
+	</ul>
+	<p>Jest on w stanie dynamicznie zmieniać rozmiar tablicy mieszającej, aby obsługiwać dane wejściowe o nieznanej mocy zbioru (kardynalności). Następnie, dzięki tworzeniu plików wsadowych może efektywnie wykorzystać podpowiedź 'prefetch' dotyczącą procesora, przyspieszając program o 35–40%. Należy uważać, gdyż dodanie do kodu instrukcji 'prefetch' rzadko przynosi efekty. Zamiast tego, celowo zmieniłem przepływ algorytmów, aby wykorzystać tę instrukcję. Z wszystkimi ulepszeniami udało mi się skrócić czas działania do 2,1 sekundy:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2020/03/Screenshot-from-2020-03-01-23-52-18.png" alt="Screenshot-from-2020-03-01-23-52-18" loading="lazy"></p>
+	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
+	<h2 id="zako%C5%84czenie">Zakończenie</h2>
+	<p>W trakcie pisania tego podstawowego narzędzia, które stara się być szybsze niż kombinacja 'sort | uniq', ujawniły się pewne ukryte klejnoty nowoczesnego przetwarzania danych. Przy odrobinie pracy udało nam się je przyspieszyć z ponad dwóch minut do 2 sekund. Podczas tej podróży dowiedzieliśmy się o opóźnieniach pamięci RAM oraz o potędze struktur danych przyjaznych dla pamięci podręcznej. Wymyślne struktury danych są ekscytujące, ale w praktyce zmniejszenie obciążenia pamięci RAM często przynosi lepsze rezultaty.</p>
+	<!--kg-card-end: markdown-->
+</div>

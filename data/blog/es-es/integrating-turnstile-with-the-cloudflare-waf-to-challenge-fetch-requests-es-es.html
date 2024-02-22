@@ -1,0 +1,133 @@
+<div class="mb2 gray5 ">8 min de lectura</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image8-1-6.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Hace dos meses, lanzamos la versión de Cloudflare Turnstile <a href="https://blog.cloudflare.com/turnstile-ga">disponible para el público en general</a>, para ofrecer a los propietarios de sitios web de todo el mundo una forma sencilla de evitar los bots sin la necesidad de generar un desafío CAPTCHA. Turnstile permite a cualquier propietario de un sitio web integrar fácilmente un desafío de Cloudflare en su sitio web con un simple fragmento de código, facilitando así la tarea de garantizar el acceso solo de tráfico humano. Además de proteger el frontend de un sitio web, Turnstile también permite a los administradores web reforzar las llamadas API iniciadas por el navegador (AJAX) que se ejecutan en segundo plano. Estas API se utilizan habitualmente en aplicaciones web dinámicas de una sola página, como las creadas con React, Angular o Vue.js.</p>
+	<p>Hoy nos complace anunciar que hemos integrado Turnstile con el <a href="https://www.cloudflare.com/application-services/products/waf">WAF de Cloudflare</a>. Desde ahora, los administradores web pueden añadir el fragmento de código de Turnstile a su sitio web y, a continuación, configurar el WAF de Cloudflare para gestionar estas solicitudes. La configuración es completamente personalizable usando las reglas del WAF. Por ejemplo, puedes permitir que un usuario autenticado por Turnstile interactúe con todos los puntos finales de la API de una aplicación sin desafíos, o puedes configurar ciertos puntos finales sensibles, como el inicio de sesión, para que siempre generen un desafío.</p>
+	<h3 id="c%C3%B3mo-desafiar-las-solicitudes-fetch-en-el-waf-de-cloudflare">Cómo desafiar las solicitudes fetch en el WAF de Cloudflare</h3>
+	<p>Millones de sitios web protegidos por el WAF de Cloudflare usan nuestros desafíos JS Challenge, Managed Challenge e Interactive Challenge para detener a los bots y permitir el acceso a los humanos. Para cada uno de estos desafíos, Cloudflare intercepta la solicitud coincidente y responde con una página HTML representada por el navegador, donde el usuario completa una tarea básica para demostrar que es humano. Cuando un usuario logra completar un desafío, recibe una <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform">cookie cf_clearance</a>, que indica a Cloudflare que un usuario ha superado con éxito un desafío, el tipo de desafío y cuándo se completó. Una cookie de autorización no se puede compartir entre usuarios y solo es válida durante el tiempo establecido por el cliente de Cloudflare en su panel de configuración de seguridad. </p>
+	<p>Este proceso funciona bien, excepto cuando un navegador recibe un desafío en una solicitud fetch y el navegador no ha superado previamente un desafío. En una solicitud fetch o una solicitud HTTP XML (XHR), el navegador espera obtener texto simple (en formatos JSON o XML) y no puede representar el código HTML necesario para ejecutar un desafío.</p>
+	<p>Por ejemplo, imaginemos al propietario de una pizzería que creó un formulario de pedido en línea en React con una página de pago que envía datos a un punto final de la API que procesa los pagos. Cuando un usuario visualiza el formulario web para añadir los datos de su tarjeta de crédito puede pasar un desafío gestionado, pero cuando el usuario envía los datos de su tarjeta de crédito haciendo una solicitud fetch, el navegador no ejecutará el código necesario para la ejecución de un desafío. La única opción del propietario de la pizzería para gestionar las solicitudes sospechosas (pero potencialmente legítimas) es bloquearlas, pero existe el riesgo de falsos positivos que podrían costar ventas al restaurante.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Group-3955.png" class="kg-image" alt="" loading="lazy" width="1048" height="515"></figure>
+	<p>Aquí es donde Turnstile puede ayudar. Turnstile permite a cualquier usuario en Internet integrar un desafío de Cloudflare en cualquier lugar de su sitio web. Anteriormente, Turnstile solo ofrecía un token de un solo uso. Para que los clientes puedan generar desafíos para estas solicitudes fetch, Turnstile puede emitir ahora una cookie de autorización para el dominio en el que está integrado. Los clientes pueden generar su desafío dentro de la página HTML antes de una solicitud fetch, <em>autorizando previamente </em>al visitante a interactuar con la API de pago.</p>
+	<h3 id="modo-pre-clearance-de-turnstile">Modo Pre-Clearance de Turnstile</h3>
+	<p>Volviendo a nuestro ejemplo de la pizzería, las tres grandes ventajas de utilizar la función Pre-Clearance para integrar Turnstile con el WAF de Cloudflare son:</p>
+	<ol>
+		<li><strong>Mejora de la experiencia del usuario</strong>: el desafío integrado de Turnstile se puede ejecutar en segundo plano mientras el visitante introduce sus datos de pago.</li>
+		<li><strong><strong>Bloqueo de más solicitudes en el perímetro</strong>: </strong>dado que Turnstile ahora emite una cookie de autorización para el dominio en el que está integrado, el propietario de nuestra pizzería puede utilizar una regla personalizada para generar un desafío gestionado para cada solicitud a la API de pago. De esta forma, se garantiza que Cloudflare detenga los ataques automatizados que intentan dirigirse directamente a la API de pago antes de que lleguen a la API.</li>
+		<li><strong>(Opcional) Protección de la acción y el usuario</strong>: no es necesario realizar cambios en el código backend para disfrutar de las ventajas de la función Pre-Clearance. Sin embargo, una mayor integración de Turnstile aumentará la seguridad de la API integrada. El propietario de la pizzería puede ajustar su formulario de pago para <a href="https://developers.cloudflare.com/turnstile/get-started/server-side-validation">validar el token de Turnstile recibido</a>, garantizando que cada intento de pago sea validado individualmente por Turnstile para proteger su punto final de pago del secuestro de sesión.</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Pre-clearance.png" class="kg-image" alt="" loading="lazy" width="1059" height="582"></figure>
+	<p>Un widget de Turnstile con la función Pre-Clearance activada seguirá generando los tokens de Turnstile, lo que ofrece a los clientes la flexibilidad de decidir si un punto final es lo suficientemente crítico como para requerir una comprobación de seguridad en cada solicitud que se le haga, o solo una vez por sesión. Las cookies de autorización emitidas por un widget de Turnstile se aplican automáticamente a la zona de Cloudflare en la que está integrado el widget de Turnstile, sin necesidad de configuración. El tiempo de autorización para el que es válido el token sigue estando controlado por el tiempo de "duración del acceso autorizado" específico de la zona.</p>
+	<h3 id="implementaci%C3%B3n-de-turnstile-con-pre-clearance">Implementación de Turnstile con Pre-Clearance</h3>
+	<p>Vamos a concretarlo con una implementación básica. Antes de empezar, hemos configurado una sencilla aplicación de demostración en la que simulamos un frontend que se comunica con un backend en un punto final <code>/your-api</code>.</p>
+	<p>Para ello, contamos con el siguiente código:</p><!--kg-card-begin: markdown-->
+	<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+   &lt;title&gt;Turnstile Pre-Clearance Demo &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="pre-clearance-demo"&gt;
+    &lt;h2&gt;Pre-clearance Demo&lt;/h2&gt;
+    &lt;button id="fetchBtn"&gt;Fetch Data&lt;/button&gt;
+    &lt;div id="response"&gt;&lt;/div&gt;
+&lt;/main&gt;
+
+
+&lt;script&gt;
+  const button = document.getElementById('fetchBtn');
+  const responseDiv = document.getElementById('response');
+  button.addEventListener('click', async () =&gt; {
+  try {
+    let result = await fetch('/your-api');
+    if (result.ok) {
+      let data = await result.json();
+      responseDiv.textContent = JSON.stringify(data);
+    } else {
+      responseDiv.textContent = 'Error fetching data';
+    }
+  } catch (error) {
+    responseDiv.textContent = 'Network error';
+  }
+});
+&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hemos creado un botón. Al hacer clic, Cloudflare hace una solicitud<strong> </strong><code>fetch()</code> al punto final <code>/your-api</code> que muestra el resultado en el contenedor de respuesta.</p>
+	<p>Ahora consideremos que tenemos una regla del WAF de Cloudflare configurada que protege el punto final <code>/your-api</code> con Managed Challenge.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy" width="1237" height="975"></figure>
+	<p>Debido a esta regla, la aplicación que acabamos de escribir fallará por la razón descrita anteriormente (el navegador está esperando una respuesta JSON, pero en su lugar recibe la página de desafío como HTML).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-18-at-12.00.16.png" class="kg-image" alt="" loading="lazy" width="704" height="132"></figure>
+	<p>Si inspeccionamos la pestaña Red (Network), podemos ver que la solicitud a <code>/your-api</code> ha recibido una respuesta 403.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/image10.png" class="kg-image" alt="" loading="lazy" width="928" height="54"></figure>
+	<p>Tras la inspección, el encabezado Cf-Mitigated muestra que el firewall de Cloudflare desafió la respuesta, ya que el visitante no resolvió el desafío con anterioridad.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/image6.png" class="kg-image" alt="" loading="lazy" width="1658" height="381"></figure>
+	<p>Para solucionar este problema en nuestra aplicación, configuramos un widget Turnstile en modo Pre-Clearance para la clave del sitio Turnstile que queremos utilizar.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image2-4.png" class="kg-image" alt="" loading="lazy" width="858" height="504"></figure>
+	<p>En nuestra aplicación, anulamos la función <code>fetch()</code> para invocar a Turnstile una vez recibida una respuesta Cf-Mitigated.</p><!--kg-card-begin: markdown-->
+	<pre><code>&lt;script&gt;
+turnstileLoad = function () {
+  // Save a reference to the original fetch function
+  const originalFetch = window.fetch;
+
+  // A simple modal to contain Cloudflare Turnstile
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.right = '0';
+  overlay.style.bottom = '0';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  overlay.style.border = '1px solid grey';
+  overlay.style.zIndex = '10000';
+  overlay.style.display = 'none';
+  overlay.innerHTML =       '&lt;p style="color: white; text-align: center; margin-top: 50vh;"&gt;One more step before you proceed...&lt;/p&gt;&lt;div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"&gt;&lt;/div&gt;';
+  document.body.appendChild(overlay);
+
+  // Override the native fetch function
+  window.fetch = async function (...args) {
+      let response = await originalFetch(...args);
+
+      // If the original request was challenged...
+      if (response.headers.has('cf-mitigated') &amp;&amp; response.headers.get('cf-mitigated') === 'challenge') {
+          // The request has been challenged...
+          overlay.style.display = 'block';
+
+          await new Promise((resolve, reject) =&gt; {
+              turnstile.render('#turnstile_widget', {
+                  'sitekey': ‘YOUR_TURNSTILE_SITEKEY',
+                  'error-callback': function (e) {
+                      overlay.style.display = 'none';
+                      reject(e);
+                  },
+                  'callback': function (token, preClearanceObtained) {
+                      if (preClearanceObtained) {
+                          // The visitor successfully solved the challenge on the page. 
+                          overlay.style.display = 'none';
+                          resolve();
+                      } else {
+                          reject(new Error('Unable to obtain pre-clearance'));
+                      }
+                  },
+              });
+          });
+
+          // Replay the original fetch request, this time it will have the cf_clearance Cookie
+          response = await originalFetch(...args);
+      }
+      return response;
+  };
+};
+&lt;/script&gt;
+&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad" async defer&gt;&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hay muchas cosas que suceden en el fragmento anterior. Primero, creamos un elemento superpuesto oculto y anulamos la función <code>fetch()</code> del navegador. La función <code>fetch()</code> se cambia para analizar el encabezado Cf-Mitigated para 'challenge'. Si se genera un desafío, el resultado inicial será infructuoso. En su lugar, aparecerá una superposición de Turnstile (con la función Pre-Clearance activada) en nuestra aplicación web. Una vez completado el desafío de Turnstile, volveremos a intentar la solicitud anterior después de que Turnstile haya obtenido la cookie cf_clearance para atravesar el WAF de Cloudflare.<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image1-2.png" class="kg-image" alt="" loading="lazy" width="749" height="582"></figure>
+	<p>Una vez que se ha resuelto el widget de Turnstile, la superposición desaparece y el resultado de la API solicitada se muestra correctamente:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-18-at-12.02.56.png" class="kg-image" alt="" loading="lazy" width="892" height="186"></figure>
+	<h3 id="funci%C3%B3n-pre-clearance-disponible-para-todos-los-clientes-de-cloudflare">Función Pre-Clearance, disponible para todos los clientes de Cloudflare</h3>
+	<p>Todos los usuarios de Cloudflare con un plan gratuito o superior pueden utilizar Turnstile en modo administrado de forma gratuita para un número ilimitado de solicitudes. Si eres usuario de Cloudflare y quieres mejorar la seguridad y la experiencia del usuario para tus puntos finales de API críticos, ve a nuestro panel de control y <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">crea un widget de Turnstile con la función Pre-Clearance</a> hoy mismo.</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/the-net/?utm_campaign=thenet&amp;utm_medium=blog">
+		<img src="https://blog.cloudflare.com/content/images/2023/12/theNET_blog_1-1.png" alt="theNET">
+	</a><!--kg-card-end: html-->
+</div>

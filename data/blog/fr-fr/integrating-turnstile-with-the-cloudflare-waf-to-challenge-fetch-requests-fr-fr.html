@@ -1,0 +1,133 @@
+<div class="mb2 gray5 ">8 min. de lecture</div>
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2024/02/image8-1-10.png" class="kg-image" alt="" loading="lazy" width="1999" height="1126"></figure>
+	<p>Il y a deux mois, nous avons publié Cloudflare Turnstile <a href="https://blog.cloudflare.com/turnstile-ga">en disponibilité générale</a>, offrant ainsi aux propriétaires de sites web du monde entier une solution simple pour repousser les bots, sans jamais afficher un CAPTCHA. Turnstile permet à n'importe quel propriétaire de site web d'intégrer, avec un simple extrait de code, une vérification par Cloudflare, n'entraînant pas de frustration pour les utilisateurs ; cette fonctionnalité permet d'assurer facilement que seul le trafic d'origine humaine est autorisé. En plus de protéger l'interface d'un site web, Turnstile permet également aux administrateurs web de renforcer les appels d'API initiés par le navigateur (AJAX), exécutés en arrière-plan. Ces API sont fréquemment utilisées par les applications web dynamiques pour pages uniques, à l'image de celles créées avec React, Angular et Vue.js.</p>
+	<p>Aujourd'hui, nous sommes ravis d'annoncer que nous avons intégré Turnstile au <a href="https://www.cloudflare.com/application-services/products/waf">pare-feu d'applications web (WAF) de Cloudflare</a>. Cela signifie que les administrateurs web peuvent ajouter l'extrait de code Turnstile à leur site web, puis configurer le pare-feu WAF de Cloudflare afin de gérer ces requêtes. Cette configuration est entièrement personnalisable à l'aide des règles de pare-feu WAF. Vous pouvez, par exemple, permettre à un utilisateur authentifié par Turnstile d'interagir avec tous les points de terminaison d'API d'une application sans autre vérification, ou vous pouvez configurer certains points de terminaison sensibles, tels que Login, afin de toujours imposer une vérification.</p>
+	<h3 id="v%C3%A9rification-des-requ%C3%AAtes-fetch-dans-le-pare-feu-waf-de-cloudflare">Vérification des requêtes fetch dans le pare-feu WAF de Cloudflare</h3>
+	<p>Des millions de sites web protégés par le pare-feu WAF de Cloudflare utilisent nos vérifications JS, Managed Challenge et Interactive Challenge pour arrêter les bots, tout en autorisant le trafic d'origine humaine. Pour chacune de ces vérifications, Cloudflare intercepte la requête correspondante et répond avec une page HTML affichée par le navigateur, sur laquelle l'utilisateur doit effectuer une tâche simple afin de démontrer qu'il est humain. Lorsqu'un utilisateur réussit une vérification, il reçoit un <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform">cookie cf_clearance</a> qui indique à Cloudflare qu'un utilisateur a réussi une vérification, le type de vérification et la date à laquelle la vérification a été réussie. Un cookie d'autorisation ne peut pas être partagé entre des utilisateurs, et il est uniquement valide pour la durée définie par le client Cloudflare depuis son tableau de bord de paramètres de sécurité. </p>
+	<p>Ce processus s'avère efficace, sauf lorsqu'un navigateur reçoit une demande de vérification suivant une requête fetch et que le navigateur n'a encore jamais effectué de vérification. Après une requête fetch ou une requête HTTP XML (XHR), le navigateur s'attend à recevoir du texte simple (au format JSON ou XML) et ne peut pas afficher le code HTML nécessaire à l'exécution d'une vérification.</p>
+	<p>À titre d'exemple, imaginons que le propriétaire d'une pizzeria a créé un formulaire de commande en ligne dans React, avec une page de paiement permettant de transmettre les données à un point de terminaison d'API assurant le traitement des paiements. Lorsqu'un utilisateur consulte le formulaire web afin de saisir les informations de sa carte de paiement, il peut effectuer une vérification Managed Challenge ; toutefois, lorsque l'utilisateur transmet les informations de sa carte de paiement au moyen d'une requête fetch, le navigateur n'exécute pas le code nécessaire pour effectuer cette vérification. Le seul choix dont dispose le propriétaire de la pizzeria pour traiter les requêtes suspectes (mais potentiellement légitimes) consiste à les bloquer, ce qui risque d'entraîner des faux positifs susceptibles de faire perdre une vente au restaurant.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Group-3955.png" class="kg-image" alt="" loading="lazy" width="1048" height="515"></figure>
+	<p>C'est ici que Turnstile peut vous aider. Turnstile permet à n'importe quel utilisateur d'Internet d'intégrer une vérification Cloudflare sur n'importe quelle page de son site web. Jusqu'à aujourd'hui, le résultat de Turnstile n'était qu'un jeton à usage unique. Pour permettre aux clients d'imposer des vérifications pour ces requêtes fetch, Turnstile peut désormais émettre un cookie d'autorisation pour le domaine sur lequel il est intégré. Les clients peuvent configurer leur vérification dans la page HTML avant une requête fetch, <em>en autorisant au préalable</em> le visiteur à interagir avec l'API de paiement.</p>
+	<h3 id="mode-pre-clearance-de-turnstile">Mode Pre-Clearance de Turnstile</h3>
+	<p>Reprenons maintenant l'exemple de notre pizzeria. Les trois principaux avantages qu'offre l'utilisation de la fonction Pre-Clearance pour l'intégration de Turnstile au pare-feu WAF de Cloudflare sont les suivants :</p>
+	<ol>
+		<li><strong>Amélioration de l'expérience utilisateur</strong> : la fonctionnalité de vérification intégrée de Turnstile peut s'exécuter en arrière-plan pendant que le visiteur saisit les informations de sa carte de paiement.</li>
+		<li><strong>Blocage d'un plus grand nombre de requêtes à la périphérie</strong> : puisque Turnstile émet désormais un cookie d'autorisation pour le domaine sur lequel il est intégré, le propriétaire de la pizzeria peut définir une règle personnalisée afin d'imposer une vérification Managed Challenge pour chaque requête adressée à l'API de paiement. Ceci garantit que les attaques automatisées qui tentent de cibler directement l'API de paiement sont arrêtées par Cloudflare avant qu'elles ne puissent atteindre l'API.</li>
+		<li><strong><strong>(Facultatif) Sécurisation de l'action et de l'utilisateur</strong> :</strong> aucune modification du code backend n'est nécessaire pour bénéficier de la fonctionnalité Pre-Clearance. Cependant, une intégration plus poussée de Turnstile renforcera la sécurité de l'API intégrée. Le propriétaire de la pizzeria peut ajuster son formulaire de paiement pour <a href="https://developers.cloudflare.com/turnstile/get-started/server-side-validation">valider le jeton Turnstile reçu</a>, en veillant à ce que chaque tentative de paiement soit validée individuellement par Turnstile, afin de protéger son point de terminaison de paiement contre le piratage de session.</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Pre-clearance.png" class="kg-image" alt="" loading="lazy" width="1059" height="582"></figure>
+	<p>Un widget Turnstile pour lequel la fonctionnalité Pre-Clearance est activée générera toujours des jetons Turnstile, offrant aux clients la possibilité de choisir si un point de terminaison est suffisamment critique pour nécessiter une vérification de la sécurité à chaque requête qui lui est adressée, ou seulement une fois par session. Les cookies d'autorisation émis par un widget Turnstile sont automatiquement appliqués à la zone de Cloudflare à laquelle est intégré le widget Turnstile, sans qu'aucune configuration ne soit nécessaire. L'heure d'autorisation pour laquelle le jeton est valide est toujours contrôlée par l'heure « Challenge Passage » spécifique à la zone.</p>
+	<h3 id="mise-en-%C5%93uvre-de-turnstile-avec-la-fonctionnalit%C3%A9-pre-clearance">Mise en œuvre de Turnstile avec la fonctionnalité Pre-Clearance</h3>
+	<p>Examinons maintenant une mise en œuvre concrète, avec une implémentation simple. Avant de commencer, nous avons configuré une application de démonstration simple, dans laquelle nous émulons un frontend qui communique avec un backend sur un point de terminaison <code>/your-api</code>.</p>
+	<p>À cette fin, nous disposons du code suivant :</p><!--kg-card-begin: markdown-->
+	<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+   &lt;title&gt;Turnstile Pre-Clearance Demo &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="pre-clearance-demo"&gt;
+    &lt;h2&gt;Pre-clearance Demo&lt;/h2&gt;
+    &lt;button id="fetchBtn"&gt;Fetch Data&lt;/button&gt;
+    &lt;div id="response"&gt;&lt;/div&gt;
+&lt;/main&gt;
+
+
+&lt;script&gt;
+  const button = document.getElementById('fetchBtn');
+  const responseDiv = document.getElementById('response');
+  button.addEventListener('click', async () =&gt; {
+  try {
+    let result = await fetch('/your-api');
+    if (result.ok) {
+      let data = await result.json();
+      responseDiv.textContent = JSON.stringify(data);
+    } else {
+      responseDiv.textContent = 'Error fetching data';
+    }
+  } catch (error) {
+    responseDiv.textContent = 'Network error';
+  }
+});
+&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Nous avons créé un bouton. Lorsqu'un utilisateur clique dessus, Cloudflare transmet une requête <code>fetch()</code> au point de terminaison <code>/your-api</code>, puis affiche le résultat dans le conteneur de la réponse.</p>
+	<p>Considérons maintenant que nous avons mis en place une règle du pare-feu WAF de Cloudflare qui protège le point de terminaison <code>/your-api</code> avec une vérification Managed Challenge.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/pasted-image-0-3.png" class="kg-image" alt="" loading="lazy" width="1237" height="975"></figure>
+	<p>En raison de cette règle, l'application que nous venons d'écrire va échouer, pour la raison décrite plus haut (le navigateur attend une réponse JSON, mais reçoit à la place la page de test au format HTML).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-18-at-12.00.16.png" class="kg-image" alt="" loading="lazy" width="704" height="132"></figure>
+	<p>Si nous examinons l'onglet Network (Réseau), nous voyons que la requête transmise au point de terminaison <code>/your-api</code> a reçu une réponse 403.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/image10.png" class="kg-image" alt="" loading="lazy" width="928" height="54"></figure>
+	<p>Lors de l'inspection, l'en-tête Cf-Mitigated indique que la réponse a été soumise à une vérification par le pare-feu de Cloudflare, car le visiteur n'a pas réussi de vérification auparavant.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/12/image6.png" class="kg-image" alt="" loading="lazy" width="1658" height="381"></figure>
+	<p>Pour remédier à ce problème dans notre application, nous avons configuré un widget Turnstile en mode Pre-Clearance pour le fichier SiteKey Turnstile que nous souhaitons utiliser. </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image2-4.png" class="kg-image" alt="" loading="lazy" width="858" height="504"></figure>
+	<p>Dans notre application, nous passons outre la fonction <code>fetch()</code> pour invoquer Turnstile lorsqu'une réponse Cf-Mitigated a été reçue.</p><!--kg-card-begin: markdown-->
+	<pre><code>&lt;script&gt;
+turnstileLoad = function () {
+  // Save a reference to the original fetch function
+  const originalFetch = window.fetch;
+
+  // A simple modal to contain Cloudflare Turnstile
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.right = '0';
+  overlay.style.bottom = '0';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  overlay.style.border = '1px solid grey';
+  overlay.style.zIndex = '10000';
+  overlay.style.display = 'none';
+  overlay.innerHTML =       '&lt;p style="color: white; text-align: center; margin-top: 50vh;"&gt;One more step before you proceed...&lt;/p&gt;&lt;div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"&gt;&lt;/div&gt;';
+  document.body.appendChild(overlay);
+
+  // Override the native fetch function
+  window.fetch = async function (...args) {
+      let response = await originalFetch(...args);
+
+      // If the original request was challenged...
+      if (response.headers.has('cf-mitigated') &amp;&amp; response.headers.get('cf-mitigated') === 'challenge') {
+          // The request has been challenged...
+          overlay.style.display = 'block';
+
+          await new Promise((resolve, reject) =&gt; {
+              turnstile.render('#turnstile_widget', {
+                  'sitekey': ‘YOUR_TURNSTILE_SITEKEY',
+                  'error-callback': function (e) {
+                      overlay.style.display = 'none';
+                      reject(e);
+                  },
+                  'callback': function (token, preClearanceObtained) {
+                      if (preClearanceObtained) {
+                          // The visitor successfully solved the challenge on the page. 
+                          overlay.style.display = 'none';
+                          resolve();
+                      } else {
+                          reject(new Error('Unable to obtain pre-clearance'));
+                      }
+                  },
+              });
+          });
+
+          // Replay the original fetch request, this time it will have the cf_clearance Cookie
+          response = await originalFetch(...args);
+      }
+      return response;
+  };
+};
+&lt;/script&gt;
+&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad" async defer&gt;&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Il se passe beaucoup de choses dans l'extrait de code ci-dessus : tout d'abord, nous créons un élément superposé masqué, puis nous passons outre la fonction <code>fetch()</code> du navigateur. La fonction <code>fetch()</code> est modifiée afin d'inspecter l'en-tête Cf-Mitigated à la recherche de « challenge » (vérification). Si une vérification est imposée, le résultat initial sera un échec ; au lieu de cela, une page Turnstile (avec fonction Pre-Clearance activée) sera affichée dans notre application web . Une fois la vérification Turnstile terminée, nous réessaierons la requête précédente lorsque Turnstile aura obtenu le cookie cf_clearance pour franchir le pare-feu WAF de Cloudflare.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/image1-2.png" class="kg-image" alt="" loading="lazy" width="749" height="582"></figure>
+	<p>Lors de la résolution du widget Turnstile, l'élément superposé disparaît et le résultat d'API concerné par la requête est affiché avec succès :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/12/Screenshot-2023-12-18-at-12.02.56.png" class="kg-image" alt="" loading="lazy" width="892" height="186"></figure>
+	<h3 id="pre-clearance-est-disponible-pour-tous-les-clients-de-cloudflare">Pre-Clearance est disponible pour tous les clients de Cloudflare</h3>
+	<p>Tous les utilisateurs de Cloudflare ayant souscrit à l'offre gratuite ou une offre supérieure peuvent utiliser gratuitement Turnstile en mode géré pour un nombre illimité de requêtes. Si vous êtes un utilisateur de Cloudflare et vous souhaitez améliorer votre sécurité et votre expérience utilisateur pour vos points de terminaison d'API critiques, accédez à notre tableau de bord et créez dès aujourd'hui un <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile">widget Turnstile avec la fonction Pre-Clearance</a>.</p><!--kg-card-begin: html--><a href="https://www.cloudflare.com/the-net/?utm_campaign=thenet&amp;utm_medium=blog">
+		<img src="https://blog.cloudflare.com/content/images/2023/12/theNET_blog_1-1.png" alt="theNET">
+	</a><!--kg-card-end: html-->
+</div>

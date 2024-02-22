@@ -1,0 +1,145 @@
+<div class="mb2 gray5 ">12 min. de leitura</div>
+<div class="post-content lh-copy gray1">
+	<p>No Dia de ação de graças, 23 de novembro de 2023, a Cloudflare detectou um agente de ameaças em nosso servidor Atlassian auto-hospedado. Nossa equipe de segurança iniciou imediatamente uma investigação, cortou o acesso do agente da ameaça e, no domingo, 26 de novembro, trouxemos a equipe forense da CrowdStrike para realizar sua própria análise independente. </p>
+	<p>Ontem, a CrowdStrike concluiu sua investigação e estamos publicando este post no blog para falar sobre os detalhes desse incidente de segurança. </p>
+	<p>Queremos enfatizar aos nossos clientes que nenhum sistema ou dados de clientes da Cloudflare foram afetados por este evento. &nbsp;Devido aos nossos controles de acesso, regras de firewall e uso de chaves de segurança rígidas aplicadas por meio de nossas próprias ferramentas Zero Trust, a capacidade do agente da ameaça de se mover lateralmente foi limitada. &nbsp;Nenhum serviço foi implicado e nenhuma alteração foi feita em nossos sistemas ou configurações de rede global. &nbsp;Esta é a promessa de uma arquitetura Zero Trust: é como compartimentos estanques em um navio, onde um comprometimento em um sistema é limitado para não comprometer toda a organização.</p>
+	<p>De 14 a 17 de novembro, um agente de ameaças fez reconhecimento e depois acessou nosso wiki interno (que usa o Atlassian Confluence) e nosso banco de dados de bugs (Atlassian Jira). &nbsp;Nos dias 20 e 21 de novembro, observamos acesso adicional indicando que o agente poderia ter voltado para testar o acesso e garantir que tinha conectividade.</p>
+	<p>Ele então retornou em 22 de novembro e estabeleceu acesso persistente ao nosso servidor Atlassian usando ScriptRunner for Jira, obteve acesso ao nosso sistema de gerenciamento de código-fonte (que usa Atlassian Bitbucket) e tentou, sem sucesso, acessar um servidor de console que tinha acesso ao data center que a Cloudflare ainda não havia colocado em produção em São Paulo, Brasil.</p>
+	<p>O agente fez isso usando um token de acesso e três credenciais de conta de serviço que foram obtidas e que não conseguimos alternar, após o <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">comprometimento do Okta de outubro de 2023</a>. Todos os acessos e conexões do agente da ameaça foram encerrados em 24 de novembro e a CrowdStrike confirmou que o a última evidência de atividade de ameaça foi em 24 de novembro às 10h44.</p>
+	<p><em>(Em todo este post do blog, todas as datas e horários são UTC.)</em></p>
+	<p>Embora entendamos que o impacto operacional do incidente foi extremamente limitado, levamos esse incidente muito a sério porque um agente de ameaça usou credenciais roubadas para obter acesso ao nosso servidor Atlassian e acessou alguma documentação e uma quantidade limitada de código-fonte. &nbsp;Com base em nossa colaboração com colegas do setor e do governo, acreditamos que este ataque foi realizado por um invasor de um estado-nação com o objetivo de obter acesso persistente e generalizado à rede global da Cloudflare.</p>
+	<h3 id="%E2%80%9Ccode-red%E2%80%9D-remediation-and-hardening-effort">“Code Red” Remediation and Hardening Effort </h3>
+	<p>Em 24 de novembro, depois que o agente da ameaça foi removido do nosso ambiente, nossa equipe de segurança reuniu todas as pessoas necessárias na empresa para investigar a intrusão e garantir que o acesso do agente da ameaça tinha sido completamente negado aos nossos sistemas, e para garantir que conhecíamos toda a extensão do que ele acessou ou tentou acessar.</p>
+	<p>Então, a partir de 27 de novembro, redirecionamos os esforços de grande parte do pessoal técnico da Cloudflare (dentro e fora da equipe de segurança) para trabalhar em um único projeto chamado de “Code Red”. O foco foi fortalecer, validar e corrigir qualquer controle em nosso ambiente para garantir que estamos seguros contra futuras intrusões e para validar que o agente da ameaça não poderia obter acesso ao nosso ambiente. &nbsp;Além disso, continuamos investigando cada sistema, conta e registro para garantir que o agente da ameaça não tivesse acesso persistente e que conhecíamos completamente quais sistemas ele tinha tocado e quais tinha tentado acessar.</p>
+	<p>A CrowdStrike realizou uma avaliação independente do escopo e extensão da atividade do agente da ameaça, incluindo uma busca por qualquer evidência de que ele ainda persistia em nossos sistemas. &nbsp;A investigação da CrowdStrike forneceu corroboração e apoio úteis para a nossa investigação, mas não trouxe à luz quaisquer atividades que não detectamos. &nbsp;Este post do blog descreve em detalhes tudo o que nós e a CrowdStrike descobrimos sobre a atividade do agente da ameaça.</p>
+	<p>Os únicos sistemas de produção que o agente da ameaça conseguiu acessar usando as credenciais roubadas foi o nosso ambiente Atlassian. &nbsp;Analisando as páginas wiki que ele acessou, problemas de banco de dados de bugs e repositórios de código-fonte, parece que ele estava procurando informações sobre a arquitetura, segurança e gerenciamento de nossa rede global; sem dúvida com o objetivo de ganhar uma posição mais profunda. &nbsp;Por causa disso, decidimos que era necessário um grande esforço para fortalecer ainda mais nossos protocolos de segurança para evitar que o agente da ameaça conseguisse obter essa posição caso tivéssemos deixado passar algo em nossos arquivos de log.</p>
+	<p>Nosso objetivo era evitar que o invasor usasse as informações técnicas sobre as operações de nossa rede como um caminho para entrar novamente. &nbsp;Embora acreditássemos, e posteriormente confirmamos, que o invasor tinha acesso limitado, empreendemos um esforço abrangente para alternar cada credencial de produção (mais de 5.000 credenciais individuais), segmentar fisicamente sistemas de teste e preparação, realizar triagens forenses em 4.893 sistemas, recriar imagens e reinicializar todas as máquinas em nossa rede global, incluindo todos os sistemas que o agente da ameaça acessou e todos os produtos Atlassian (Jira, Confluence e Bitbucket).</p>
+	<p>O agente da ameaça também tentou acessar um servidor de console em nosso novo data center, ainda não em produção, em São Paulo. &nbsp;Todas as tentativas de obter acesso foram infrutíferas. &nbsp;Para garantir que esses sistemas sejam 100% seguros, os equipamentos do data center brasileiro foram devolvidos aos fabricantes. &nbsp;As equipes forenses dos fabricantes examinaram todos os nossos sistemas para garantir que nenhum acesso ou persistência foi obtido. &nbsp;Nada foi encontrado, mas substituímos o hardware mesmo assim.</p>
+	<p>Também procuramos pacotes de software que não tenham sido atualizados, contas de usuários que possam ter sido criadas e contas ativas de funcionários não utilizadas; procuramos segredos que poderiam ter sido deixados em tickets do Jira ou no código-fonte, examinamos e excluímos todos os arquivos HAR carregados no wiki, caso contivessem tokens de qualquer tipo. Em caso de dúvida, presumimos o pior e fizemos alterações para garantir que qualquer coisa que o agente da ameaça conseguiu acessar não estaria mais em uso e, portanto, não teria mais valor para ele.</p>
+	<p>Cada membro da equipe foi incentivado a apontar áreas que o agente da ameaça poderia ter tocado, para que pudéssemos examinar os arquivos de log e determinar a extensão do acesso do agente da ameaça. &nbsp;Ao incluir um número tão grande de pessoas em toda a empresa, pretendemos não deixar pedra sobre pedra em busca de evidências de acesso ou alterações que precisassem ser feitas para melhorar a segurança.</p>
+	<p>O esforço imediato do “Code Red” terminou em 5 de janeiro, mas o trabalho continua em toda a empresa em torno do gerenciamento de credenciais, proteção de software, gerenciamento de vulnerabilidades, alertas adicionais e muito mais.</p>
+	<h3 id="cronograma-de-ataque">Cronograma de ataque</h3>
+	<p>O ataque começou em outubro com o comprometimento do Okta, mas o agente da ameaça só começou a atacar nossos sistemas usando essas credenciais do comprometimento do Okta em meados de novembro. </p>
+	<p>O cronograma a seguir mostra os principais eventos:</p>
+	<h3 id="18-de-outubrocomprometimento-do-okta">18 de outubro - comprometimento do Okta</h3>
+	<p>Já <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">escrevemos sobre isso antes</a>, mas, em resumo, fomos (pela segunda vez) vítimas de um comprometimento dos sistemas do Okta, que resultou no acesso de um agente de ameaça a um conjunto de credenciais. Essas credenciais deveriam todas ter sido alteradas.</p>
+	<p>Infelizmente, não conseguimos alterar um token de serviço e três contas de serviço (entre milhares) de credenciais que vazaram durante o comprometimento do Okta.</p>
+	<p>Um deles era um token de serviço Moveworks que concedia acesso remoto ao nosso sistema Atlassian. &nbsp;A segunda credencial era uma conta de serviço usada pelo aplicativo Smartsheet baseado em SaaS que tinha acesso administrativo à nossa instância Atlassian Jira, a terceira conta era uma conta de serviço Bitbucket usada para acessar nosso sistema de gerenciamento de código-fonte e a quarta era um ambiente AWS que não tinha acesso à rede global e a nenhum dado confidencial ou de cliente. </p>
+	<p>O token de serviço e as três contas não foram alterados porque erroneamente se acreditou que não eram utilizados. &nbsp;Isso estava incorreto e foi assim que o agente da ameaça entrou em nossos sistemas e ganhou persistência em nossos produtos Atlassian. &nbsp;Observe que isso não foi de forma alguma um erro por parte da Atlassian, AWS, Moveworks ou Smartsheet. &nbsp;Estas eram apenas credenciais que não deixamos de alterar.</p>
+	<h3 id="14-de-novembro-092249o-agente-da-amea%C3%A7a-come%C3%A7a-a-sondar">14 de novembro 09:22:49 - o agente da ameaça começa a sondar</h3>
+	<p>Nossos registros mostram que o agente da ameaça começou a sondar e realizar o reconhecimento de nossos sistemas a partir de 14 de novembro, procurando uma maneira de usar as credenciais e quais sistemas estavam acessíveis. &nbsp;Ele tentou fazer login em nossa instância do Okta e teve acesso negado. &nbsp;Ele tentou acessar o painel da Cloudflare e teve acesso negado.</p>
+	<p>Além disso, o agente da ameaça acessou um ambiente AWS que é usado para alimentar o marketplace de aplicativos da Cloudflare. &nbsp;Este ambiente foi segmentado sem acesso à rede global ou aos dados de clientes. &nbsp;A conta de serviço para acessar este ambiente foi revogada e validamos a integridade do ambiente. </p>
+	<h3 id="15-de-novembro-162838o-agente-da-amea%C3%A7a-obt%C3%A9m-acesso-aos-servi%C3%A7os-atlassian">15 de novembro 16:28:38 - o agente da ameaça obtém acesso aos serviços Atlassian</h3>
+	<p>O agente da ameaça acessou com sucesso o Atlassian Jira e o Confluence em 15 de novembro usando o token de serviço Moveworks para se autenticar por meio de nosso gateway e, em seguida, usou a conta de serviços Smartsheet para obter acesso ao pacote Atlassian. &nbsp;No dia seguinte, ele começou a procurar informações sobre a configuração e o gerenciamento da nossa rede global e acessou vários tickets do Jira.</p>
+	<p>O agente da ameaça pesquisou no wiki coisas como acesso remoto, segredo, segredo do cliente, openconnect, cloudflared e token. &nbsp;Ele acessou 36 tickets do Jira (de um total de 2.059.357 tickets) e 202 páginas wiki (de um total de 194.100 páginas).</p>
+	<p>O agente da ameaça acessou tickets do Jira sobre gerenciamento de vulnerabilidades, rotação de segredos, desvio de MFA, acesso à rede e até mesmo nossa resposta ao próprio incidente do Okta. </p>
+	<p>As pesquisas no wiki e as páginas acessadas sugerem que o agente da ameaça estava muito interessado em todos os aspectos do acesso aos nossos sistemas: redefinições de senha, acesso remoto, configuração, nosso uso do Salt, mas ele não tinha como alvo os dados ou configurações de clientes.</p>
+	<h3 id="16-de-novembro-143637o-agente-da-amea%C3%A7a-cria-uma-conta-de-usu%C3%A1rio-atlassian">16 de novembro 14:36:37 - o agente da ameaça cria uma conta de usuário Atlassian</h3>
+	<p>O agente da ameaça usou a credencial do Smartsheet para criar uma conta Atlassian que parecia um usuário normal da Cloudflare. &nbsp;Ele adicionou esse usuário a vários grupos no Atlassian para que tivesse acesso persistente ao ambiente Atlassian caso a conta de serviço do Smartsheet fosse removida.</p>
+	<h3 id="17-de-novembro-143352-a-20-de-novembro-092653o-agente-da-amea%C3%A7a-faz-uma-pausa-no-acesso-aos-sistemas-da-cloudflare">17 de novembro 14:33:52 a 20 de novembro 09:26:53 - o agente da ameaça faz uma pausa no acesso aos sistemas da Cloudflare</h3>
+	<p>Durante esse período, o invasor fez uma pausa no acesso aos nossos sistemas (além de aparentemente testar brevemente se ainda tinha acesso) e retornou pouco antes do Dia de ação de graças.</p>
+	<h3 id="22-de-novembro-141822o-agente-da-amea%C3%A7a-ganha-persist%C3%AAncia">22 de novembro 14:18:22 - o agente da ameaça ganha persistência</h3>
+	<p>Como a conta de serviço do Smartsheet tinha acesso administrativo ao Atlassian Jira, o agente da ameaça conseguiu instalar o Sliver Adversary Emulation Framework, que é uma ferramenta e estrutura amplamente utilizada por equipes vermelhas e invasores para habilitar “C2” (comando e controle), estabelecendo uma conexão persistente e discreta a um computador no qual está instalado. O Sliver foi instalado utilizando o plugin ScriptRunner for Jira.</p>
+	<p>Isso permitiu que ele tivesse acesso contínuo ao servidor Atlassian, e ele usou isso para tentar movimento lateral. &nbsp;Com esse acesso, o agente da ameaça tentou obter acesso a um servidor de console que não estava em produção em nosso data center de São Paulo, Brasil, devido a uma ACL não aplicada. &nbsp;O acesso foi negado e ele não conseguiu acessar nenhuma rede global.</p>
+	<p>No dia seguinte, o agente da ameaça visualizou 120 repositórios de código (de um total de 11.904 repositórios). &nbsp;Dos 120, o agente da ameaça usou o recurso de arquivo Atlassian Bitbucket git em 76 repositórios para baixá-los para o servidor Atlassian e, embora não tenhamos conseguido confirmar se eles foram ou não exfiltrados, decidimos tratá-los como tendo sido exfiltrados. </p>
+	<p>Os 76 repositórios de código-fonte estavam quase todos relacionados ao funcionamento dos backups, como a rede global é configurada e gerenciada, como funciona a identidade na Cloudflare, acesso remoto e nosso uso do Terraform e Kubernetes. &nbsp;Um pequeno número de repositórios continha segredos criptografados que foram alterados imediatamente, embora eles próprios estivessem fortemente criptografados.</p>
+	<p>Nos concentramos particularmente nesses 76 repositórios de código-fonte para procurar segredos incorporados (os segredos armazenados no código foram alterados), vulnerabilidades e maneiras pelas quais um invasor poderia usá-los para montar um ataque subsequente. &nbsp;Este trabalho foi realizado prioritariamente pelas equipes de engenharia de toda a empresa como parte do “Code Red”.</p>
+	<p>Como uma empresa de SaaS, há muito acreditamos que o nosso código-fonte em si não é tão precioso quanto o código-fonte das empresas de software que distribuem software aos usuários finais. &nbsp;Na verdade, abrimos uma grande quantidade de nosso código-fonte e falamos abertamente em nosso blog sobre algoritmos e técnicas que usamos. &nbsp;Portanto, nosso foco não estava em alguém ter acesso ao código-fonte, mas se esse código-fonte continha segredos incorporados (como uma chave ou token) e vulnerabilidades.</p>
+	<h3 id="23-de-novembroin%C3%ADcio-da-descoberta-e-encerramento-do-acesso-do-agente-da-amea%C3%A7a">23 de novembro - início da descoberta e encerramento do acesso do agente da ameaça </h3>
+	<p>Nossa equipe de segurança foi alertada sobre a presença do agente da ameaça às 16h e desativou a conta de serviço do Smartsheet 35 minutos depois. &nbsp;48 minutos depois, a conta de usuário criada pelo agente da ameaça foi encontrada e desativada. &nbsp;Aqui está o cronograma detalhado das principais ações tomadas para bloquear o agente da ameaça assim que o primeiro alerta foi acionado.</p>
+	<p>15h58 - O agente da ameaça adiciona a conta de serviço do Smartsheet a um grupo de administradores.<br>16h - Alerta automático sobre a alteração às 15h58 para nossa equipe de segurança.<br>16h12 - A Cloudflare SOC começa a investigar o alerta.<br>16h35 - Conta de serviço Smartsheet desativada pela Cloudflare SOC.<br>17h23 - A conta de usuário Atlassian criada pelo agente da ameaça é encontrada e desativada.<br>17h43 - Incidente interno da Cloudflare declarado.<br>21:31 - Regras de firewall implementadas para bloquear os endereços de IP conhecidos do agente da ameaça.</p>
+	<h3 id="24-de-novembrosliver-removido-todo-o-acesso-do-agente-da-amea%C3%A7a-foi-encerrado">24 de novembro - Sliver removido. Todo o acesso do agente da ameaça foi encerrado</h3>
+	<p>10:44 - Última atividade conhecida do agente da ameaça.<br>11:59 - Sliver removido.</p>
+	<p>Ao longo deste cronograma, o agente da ameaça tentou acessar uma infinidade de outros sistemas na Cloudflare, mas falhou devido aos nossos controles de acesso, regras de firewall e uso de chaves de segurança rígidas aplicadas por meio de nossas próprias ferramentas Zero Trust.</p>
+	<p>Para ser claro, não vimos nenhuma evidência de que o agente da ameaça obteve acesso à nossa rede global, data centers, chaves SSL, bancos de dados de clientes ou informações de configuração, o Cloudflare Workers implantado por nós ou por clientes, modelos de IA, infraestrutura de rede ou qualquer um de nossos armazenamentos de dados como Workers KV, R2 ou Quicksilver. O acesso dele foi limitado ao pacote Atlassian e ao servidor no qual nosso Atlassian é executado.</p>
+	<p>Uma grande parte do nosso esforço “Code Red” foi entender ao que o agente da ameaça teve acesso e o que tentou acessar. &nbsp;Ao observar o registro em log nos sistemas, conseguimos rastrear tentativas de acesso às nossas métricas internas, configuração de rede, sistema de compilação, sistemas de alerta e sistema de gerenciamento de liberação. &nbsp;Com base na nossa análise, nenhuma das tentativas dele de acessar estes sistemas foi bem sucedida. &nbsp;De forma independente, a CrowdStrike realizou uma avaliação do escopo e extensão da atividade do agente da ameaça, não identificando atividades que tínhamos deixado passar, e concluiu que a última evidência de atividade de ameaça foi em 24 de novembro às 10:44. </p>
+	<p>Estamos confiantes de que, entre a nossa investigação e a da CrowdStrike, compreendemos perfeitamente as ações do autor da ameaça e que elas se limitaram aos sistemas nos quais observamos sua atividade.</p>
+	<h3 id="conclus%C3%A3o">Conclusão</h3>
+	<p>Este foi um incidente de segurança envolvendo um agente sofisticado, provavelmente um estado-nação, que agiu de forma calculada e metódica. &nbsp;Os esforços que desenvolvemos garantem que o impacto contínuo do incidente foi limitado e que estamos bem preparados para evitar quaisquer ataques sofisticados no futuro. &nbsp;Isso exigiu os esforços de grande parte da equipe de engenharia da Cloudflare e, por mais de um mês, essa foi a maior prioridade da Cloudflare. &nbsp;Toda a equipe da Cloudflare trabalhou para garantir que nossos sistemas estivessem seguros, que o acesso do agente da ameaça fosse conhecido, para corrigir prioridades imediatas (como rotação de credenciais em massa) e para criar um plano de trabalho de longa duração para melhorar nossa segurança geral com base em áreas para melhorias descobertas durante este processo.</p>
+	<p>Somos extremamente gratos a todos na Cloudflare que responderam rapidamente durante o feriado de Ação de Graças para realizar uma análise inicial e bloquear o agente da ameaça, e a todos aqueles que contribuíram para esse esforço. &nbsp;Seria impossível nomear todos os envolvidos, mas suas longas horas de trabalho e dedicação tornaram possível realizar uma análise e uma mudança essencial na segurança da Cloudflare, mantendo nossa rede global e o serviço de nossos clientes funcionando.</p>
+	<p>Agradecemos à CrowdStrike por estar imediatamente disponível para realizar uma avaliação independente. Agora que o relatório final foi concluído, estamos confiantes em nossa análise interna e na correção da intrusão e disponibilizamos esta postagem no blog.</p>
+	<h4 id="iocs">IOCs</h4>
+	<p>Abaixo estão as indicações de comprometimento (IOCs) que observamos deste agente de ameaça. &nbsp;Estamos publicando tais indicações para que outras organizações, e especialmente aquelas que possam ter sido afetadas pela violação do Okta, possam pesquisar seus logs para confirmar se o mesmo agente da ameaça não acessou seus sistemas.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Indicador</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tipo de indicador</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SHA256</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Descrição</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.]126 </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Agente da ameaça principal</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infraestrutura, de propriedade da </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247 Europe SRL (Bucareste, </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Romênia</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.]214 </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Servidor Sliver C2, propriedade da</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS (Londres, Inglaterra)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.].com</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Domínio</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infraestrutura servindo conteúdo malicioso</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Payload</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvm-agent</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nome do arquivo</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4<br>6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Conteúdo malicioso do Sliver</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+</div>

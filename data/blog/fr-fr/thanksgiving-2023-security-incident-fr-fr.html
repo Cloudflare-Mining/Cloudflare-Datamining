@@ -1,0 +1,144 @@
+<div class="mb2 gray5 ">14 min. de lecture</div>
+<div class="post-content lh-copy gray1">
+	<p>Le jour de Thanksgiving, le 23 novembre 2023, Cloudflare a détecté la présence d'un acteur malveillant sur son serveur Atlassian auto-hébergé. Notre équipe de sécurité a immédiatement ouvert une enquête et désactivé l'accès de l'acteur malveillant et, le dimanche 26 novembre, nous avons fait appel à l'équipe d'investigation de CrowdStrike afin qu'elle réalise une analyse indépendante. </p>
+	<p>CrowdStrike a terminé son enquête hier, et nous publions cet article de blog afin de présenter les détails de cet incident de sécurité. </p>
+	<p>Nous tenons à souligner, pour nos clients, qu'aucune donnée de client et aucun système de Cloudflare n'ont été affectés par cet événement. Nos contrôles d'accès, nos règles de pare-feu et l'utilisation de clés de sécurité physiques mises en œuvre avec nos outils Zero Trust ont permis de limiter la capacité de l'acteur malveillant à se déplacer latéralement. Aucun service n'a été impliqué, et aucune modification n'a été apportée aux systèmes ou à la configuration de notre réseau mondial. C'est la promesse tenue par l'architecture Zero Trust, qui s'apparente aux cloisons d'un navire : la limitation de la compromission d'un système permet d'éviter la compromission de l'ensemble de l'entreprise.</p>
+	<p>Du 14 au 17 novembre, un acteur malveillant a effectué une reconnaissance en profondeur, puis a accédé à notre wiki interne (qui utilise Atlassian Confluence) et à notre base de données de bugs (Atlassian Jira). Les 20 et 21 novembre, nous avons observé d'autres accès, indiquant que l'acteur malveillant était peut-être revenu afin de tester son accès et sa connectivité.</p>
+	<p>L'acteur est ensuite revenu le 22 novembre et a établi un accès persistant à notre serveur Atlassian en utilisant ScriptRunner for Jira. Il est parvenu à accéder à notre système de gestion du code source (qui utilise Atlassian Bitbucket) et a essayé, sans succès, d'accéder à un serveur de console doté d'un accès au datacenter de São Paulo (Brésil), que Cloudflare n'a pas encore mis en production.</p>
+	<p>Pour cela, il a utilisé un jeton d'accès et trois identifiants de compte de service qui avaient été dérobés, et que nous n'avons pas renouvelés, suite à la <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">compromission d'Okta au mois d'octobre 2023</a>. Tous les accès et connexions de l'acteur malveillant ont été désactivés le 24 novembre, et CrowdStrike a confirmé que la dernière trace d'activité malveillante remonte au 24 novembre à 10h44.</p>
+	<p>(Toutes les dates et heures mentionnées dans cet article de blog sont indiquées au format UTC.)</p>
+	<p>Bien que l'impact opérationnel de l'incident soit, à notre connaissance, extrêmement limité, nous avons pris cet incident très au sérieux, car un acteur malveillant a utilisé des informations d'identification dérobées pour accéder à notre serveur Atlassian et a accédé à de la documentation et à une quantité limitée de code source. Sur la base des connaissances issues de notre collaboration avec nos collègues au sein de l'industrie et des services gouvernementaux, nous pensons que cette attaque a été lancée par un acteur malveillant d'État avec l'objectif d'obtenir un accès persistant et généralisé au réseau mondial de Cloudflare.</p>
+	<h3 id="%E2%80%9Ccode-red%E2%80%9D-remediation-and-hardening-effort">“Code Red” Remediation and Hardening Effort</h3>
+	<p>Le 24 novembre, après que l'acteur malveillant a été exclu de notre environnement, notre équipe de sécurité a fait appel à l'ensemble du personnel nécessaire, dans toute l'entreprise, afin d'enquêter sur cette intrusion et s'assurer que l'accès de l'acteur malveillant à nos systèmes avait été complètement révoqué, et afin de s'assurer de comprendre toute l'étendue des ressources auxquelles il avait accédé ou tenté d'accéder.</p>
+	<p>Puis, à partir du 27 novembre, nous avons réorienté les efforts d'une grande partie de l'équipe technique de Cloudflare (à l'intérieur et à l'extérieur de l'équipe de sécurité) afin de travailler sur un projet unique, baptisé « Code Red ». La priorité de ce projet était le renforcement, la validation et la correction de tout contrôle au sein de notre environnement, afin de nous assurer d'être protégés contre toute intrusion future et de valider que l'acteur malveillant ne pouvait pas accéder à notre environnement. Par ailleurs, nous avons continué d'enquêter sur chaque système, compte et journal, afin de nous assurer que l'acteur malveillant ne disposait pas d'un accès persistant et que nous comprenions parfaitement les systèmes avec lesquels il avait interagi et ceux auxquels il avait tenté d'accéder.</p>
+	<p>CrowdStrike a réalisé une évaluation indépendante de la portée et de l'étendue de l'activité de l'acteur malveillant, notamment la recherche de toute preuve de sa persistance dans nos systèmes. L'enquête de CrowdStrike a fourni une corroboration et une assistance utiles dans le cadre de notre enquête, mais n'a pas mis en lumière d'activités que nous avions omises. Cet article de blog décrit dans le détail tout ce que CrowdStrike et nous-mêmes avons découvert concernant les activités de l'acteur malveillant.</p>
+	<p>Les seuls systèmes de production auxquels l'acteur malveillant pouvait accéder à l'aide des informations d'identification volées étaient ceux de notre environnement Atlassian. L'analyse des pages wiki auxquelles il a accédé, des problèmes de la base de données de bugs et des référentiels de code source semble indiquer qu'il recherchait des informations sur l'architecture, la sécurité et la gestion de notre réseau mondial, sans aucun doute dans le but d'y établir une présence approfondie. Pour cette raison, nous avons décidé qu'un immense effort était nécessaire pour renforcer davantage nos protocoles de sécurité, afin d'empêcher l'acteur malveillant de pouvoir établir la présence qu'il convoitait, dans l'éventualité où nous aurions omis une information dans nos fichiers journaux.</p>
+	<p>Notre objectif était d'empêcher l'acteur malveillant d'utiliser les informations techniques concernant le fonctionnement de notre réseau afin de s'y réintroduire. Même si nous croyions (et avons ultérieurement confirmé) que l'acteur malveillant disposait d'un accès limité, nous avons entrepris de renouveler toutes les informations d'identification de production (soit plus de 5 000 identifiants individuels), de segmenter physiquement les systèmes de test et de préproduction, de réaliser des triages après incident sur 4 893 systèmes, de renouveler les images et de redémarrer toutes les machines de notre réseau mondial, y compris tous les systèmes auxquels l'auteur malveillant avait accédé, ainsi que tous les produits Atlassian (Jira, Confluence et Bitbucket).</p>
+	<p>L'acteur malveillant a également tenté d'accéder à un serveur de console de notre nouveau datacenter à São Paulo, qui n'est pas encore en production. Toutes ses tentatives d'accès ont échoué. Afin d'assurer la sécurité intégrale de ces systèmes, les équipements du datacenter brésilien ont été retournés aux fabricants. Les équipes d'analyse après incident des fabricants ont examiné tous nos systèmes, afin de s'assurer que l'acteur n'avait obtenu aucun accès ou présence persistants. Ces recherches n'ont rien donné, mais nous avons malgré tout remplacé le matériel.</p>
+	<p>Nous avons également recherché des suites logicielles qui n'avaient pas été mises à jour, des comptes d'utilisateurs qui auraient pu être créés et des comptes inutilisés de collaborateurs actifs ; nous avons recherché des secrets qui auraient pu être laissés dans des tickets Jira ou du code source, et nous avons examiné et supprimé tous les fichiers HAR transférés vers la wiki, au cas où ils contiendraient des jetons de quelque nature que ce soit. Chaque fois que nous avions un doute, nous avons supposé le pire et avons apporté des modifications afin de nous assurer que toutes les ressources auxquelles l'acteur malveillant avait pu accéder ne seraient plus utilisées, et qu'elles ne lui seraient donc plus utiles.</p>
+	<p>Chaque membre de l'équipe a été encouragé à signaler les éléments avec lesquels l'acteur malveillant aurait pu interagir, afin de nous permettre d'examiner les fichiers journaux et de déterminer l'étendue de l'accès qu'avait obtenu l'acteur malveillant. En incluant de très nombreux collaborateurs issus de l'ensemble de l'entreprise, notre objectif était de tout mettre en œuvre pour rechercher des preuves d'accès ou des modifications à apporter afin d'améliorer la sécurité.</p>
+	<p>L'initiative immédiate baptisée « Code Red » a pris fin le 5 janvier ; cependant, les travaux se poursuivent dans toute l'entreprise autour de la gestion des informations d'identification, de la consolidation des logiciels, de la gestion des vulnérabilités, de l'émission d'alertes supplémentaires, etc.</p>
+	<h3 id="chronologie-de-lattaque">Chronologie de l'attaque</h3>
+	<p>L'attaque a commencé au mois d'octobre, avec la compromission d'Okta ; toutefois, ce n'est qu'à la mi-novembre que l'acteur malveillant a commencé à cibler nos systèmes à l'aide des informations d'identification issues de la compromission d'Okta. </p>
+	<p>La chronologie suivante présente les principaux événements :</p>
+	<h3 id="18-octobre-%E2%80%93-compromission-dokta">18 octobre – Compromission d'Okta</h3>
+	<p>Nous avons <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">déjà publié un article de blog à ce sujet</a>, mais en résumé, nous avons été victimes (pour la deuxième fois) de la compromission des systèmes d'Okta, qui a permis à un acteur malveillant d'accéder à un ensemble d'informations d'identification. Ces informations d'identification étaient toutes destinées à être renouvelées.</p>
+	<p>Malheureusement, sur les milliers d'informations d'identification qui ont été divulguées lors de la compromission d'Okta, nous n'avons pas renouvelé un jeton de service et trois comptes de service. </p>
+	<p>L'un d'entre eux était un jeton de service Moveworks, qui permettait d'accéder à distance à notre système Atlassian. Le deuxième identifiant était un compte de service utilisé par l'application SaaS Smartsheet, qui disposait d'un accès administratif à notre instance Atlassian Jira ; le troisième compte était un compte de service Bitbucket utilisé pour accéder à notre système de gestion du code source, et le quatrième compte était un environnement AWS qui ne disposait d'aucun accès au réseau mondial ou à des données de clients ou des données sensibles. </p>
+	<p>Ce jeton de service et ces trois comptes n'ont pas été renouvelés, car nous croyions à tort qu'ils étaient inutilisés. Cependant, ces informations étaient incorrectes, et c'est ainsi que l'acteur malveillant s'est introduit pour la première fois dans nos systèmes et a acquis un accès persistant à nos produits Atlassian. Il convient de noter qu'il ne s'agissait en aucun cas d'une erreur de la part d'AWS, de Moveworks ou de Smartsheet. Il s'agissait simplement d'informations d'identification que nous n'avons pas renouvelées.</p>
+	<h3 id="14-novembre-092249-%E2%80%93-lacteur-malveillant-commence-%C3%A0-sonder">14 novembre 09:22:49 – L'acteur malveillant commence à sonder</h3>
+	<p>Nos journaux révèlent que l'acteur malveillant a commencé à sonder et effectuer une reconnaissance de nos systèmes à partir du 14 novembre, à la recherche d'un moyen d'utiliser les informations d'identification et les systèmes accessibles. Il a tenté de se connecter à notre instance Okta, à laquelle l'accès lui a été refusé. Il a tenté d'accéder au tableau de bord Cloudflare, auquel l'accès lui a également été refusé.</p>
+	<p>Par ailleurs, l'acteur malveillant a accédé à un environnement AWS utilisé pour l'exécution de la marketplace Cloudflare Apps. Cet environnement était segmenté et ne disposait d'aucun accès au réseau mondial ou aux données de clients. Le compte de service permettant d'accéder à cet environnement a été révoqué, et nous avons validé l'intégrité de l'environnement.</p>
+	<h3 id="15-novembre-162838-%E2%80%93-lacteur-malveillant-acc%C3%A8de-aux-services-atlassian">15 novembre 16:28:38 – L'acteur malveillant accède aux services Atlassian</h3>
+	<p>L'acteur malveillant est parvenu à accéder à Atlassian Jira et Confluence le 15 novembre, en utilisant le jeton de service Moveworks pour s'authentifier via notre passerelle ; il a ensuite utilisé le compte de service Smartsheet pour accéder à la suite Atlassian. Le lendemain, il a commencé à rechercher des informations sur la configuration et la gestion de notre réseau mondial, puis il a accédé à différents tickets Jira.</p>
+	<p>L'acteur malveillant a recherché, dans la wiki, des sujets tels que les suivants : accès à distance, secret, client-secret, openconnect, cloudflared et jeton. Il a accédé à 36 tickets Jira (sur un total de 2 059 357 tickets) et à 202 pages de la wiki (sur un total de 14 099 pages).</p>
+	<p>L'acteur malveillant a accédé à des tickets Jira consacrés à la gestion des vulnérabilités, le renouvellement des secrets, le contournement de l'authentification multifacteur, l'accès au réseau et même notre réponse à l'incident affectant Okta. </p>
+	<p>Les recherches effectuées sur la wiki et les pages consultées suggèrent que l'acteur malveillant s'intéressait de près à tous les aspects de l'accès à nos systèmes : réinitialisation des mots de passe, accès à distance, configuration et utilisation de Salt. Cependant, il ne ciblait pas les données de clients, ni les configurations de clients.</p>
+	<h3 id="16-novembre-143637-%E2%80%93-lacteur-malveillant-cr%C3%A9e-un-compte-dutilisateur-atlassian">16 novembre 14:36:37 – L'acteur malveillant crée un compte d'utilisateur Atlassian</h3>
+	<p>L'acteur malveillant a utilisé les informations d'identification Smartsheet pour créer un compte Atlassian semblable à celui d'un utilisateur Cloudflare normal. Il a ajouté cet utilisateur à plusieurs groupes dans Atlassian, afin de disposer d'un accès permanent à l'environnement Atlassian en cas de suppression du compte de service Smartsheet.</p>
+	<h3 id="du-17-novembre-143352-au-20-novembre-092653-%E2%80%93-lacteur-malveillant-cesse-dacc%C3%A9der-aux-syst%C3%A8mes-de-cloudflare">Du 17 novembre 14:33:52 au 20 novembre 09:26:53 – L'acteur malveillant cesse d'accéder aux systèmes de Cloudflare</h3>
+	<p>Durant cette période, l'acteur malveillant a cessé d'accéder à nos systèmes (hormis dans le but de brièvement vérifier qu'il y avait toujours accès, apparemment). Puis, il est revenu, juste avant Thanksgiving.</p>
+	<h3 id="22-novembre-141822-%E2%80%93-lacteur-malveillant-acquiert-un-acc%C3%A8s-persistant">22 novembre 14:18:22 – L'acteur malveillant acquiert un accès persistant</h3>
+	<p>Étant donné que le compte de service Smartsheet disposait d'un accès administratif à Atlassian Jira, l'acteur malveillant a pu installer Sliver Adversary Emulation Framework, un outil et une infrastructure largement utilisés par les « équipes rouges » et les acteurs malveillants pour activer la connectivité « C2 » (commande et contrôle), dans le but d'acquérir un accès persistant et furtif à un ordinateur sur lequel est installée la suite. L'acteur malveillant a installé Sliver à l'aide du plugin ScriptRunner for Jira.</p>
+	<p>Ceci lui a permis d'obtenir un accès permanent au serveur Atlassian, qu'il a utilisé pour tenter d'effectuer des mouvements latéraux. Avec cet accès, l'acteur malveillant a tenté d'accéder à un serveur de console hors production situé dans notre datacenter à São Paulo, au Brésil, en tirant parti d'une liste de contrôle d'accès non appliquée. L'accès lui a été refusé, et il n'a pu accéder à aucune partie du réseau mondial.</p>
+	<p>Le lendemain, l'acteur malveillant a consulté 120 référentiels de code (sur un total de 11 904 référentiels). Sur les 120 référentiels consultés, l'acteur malveillant a utilisé la fonctionnalité d'archivage git d'Atlassian Bitbucket sur 76 référentiels afin de les télécharger sur le serveur Atlassian. Bien que nous n'ayons pas été en mesure de confirmer si ces référentiels ont été exfiltrés ou non, nous avons décidé de considérer qu'ils ont été exfiltrés. </p>
+	<p>Les 76 référentiels de code source étaient presque tous liés au fonctionnement des sauvegardes, à la configuration et à la gestion du réseau mondial, au fonctionnement de l'identité chez Cloudflare, à l'accès à distance, ainsi qu'à notre utilisation de Terraform et de Kubernetes. Un petit nombre de référentiels contenaient des secrets chiffrés, qui ont été immédiatement renouvelés, même s'ils étaient fortement chiffrés.</p>
+	<p>Nous nous sommes tout particulièrement concentrés sur ces 76 référentiels de code source afin d'y rechercher les secrets intégrés (les secrets stockés dans le code ont été renouvelés), les vulnérabilités et les manières dont un acteur malveillant pourrait les utiliser pour exécuter une nouvelle attaque. Ce travail a été réalisé en priorité par les équipes d'ingénierie de toute l'entreprise, dans le cadre de l'initiative « Code Red ».</p>
+	<p>En tant qu'entreprise SaaS, nous pensons depuis longtemps que notre code source lui-même n'est pas aussi précieux que le code source des éditeurs de logiciels qui diffusent des logiciels auprès des utilisateurs finaux. En réalité, nous avons publié une grande partie de notre code source en open source, et nous communiquons ouvertement, sur notre blog, au sujet des algorithmes et des techniques que nous utilisons. Nous n'avons donc pas priorisé le fait qu'un individu ait accès au code source, mais plutôt le fait que ce code source contienne des secrets intégrés (tels qu'une clé ou un jeton) et des vulnérabilités.</p>
+	<h3 id="23-novembre-%E2%80%93-d%C3%A9but-de-la-d%C3%A9tection-et-de-la-d%C3%A9sactivation-de-lacc%C3%A8s-de-lacteur-malveillant">23 novembre – Début de la détection et de la désactivation de l'accès de l'acteur malveillant </h3>
+	<p>Notre équipe de sécurité a été alertée de la présence de l'acteur malveillant à 16h00, et a désactivé le compte de service Smartsheet 35 minutes plus tard. 48 minutes plus tard, le compte d'utilisateur créé par l'acteur malveillant a été identifié et désactivé. Voici la chronologie détaillée des principales mesures prises pour bloquer l'acteur malveillant lorsque la première alerte a été déclenchée.</p>
+	<p>15:58 – L'acteur malveillant ajoute le compte de service Smartsheet à un groupe d'administrateurs.<br>16:00 – Une alerte automatique concernant le changement est transmise à 15h58 à notre équipe de sécurité.<br>16:12 – Le SOC de Cloudflare commence à enquêter sur l'alerte.<br>16:35 – Le compte de service Smartsheet est désactivé par le SOC de Cloudflare.<br>17:23 – Le compte d'utilisateur Atlassian créé par l'acteur malveillant est détecté et désactivé.<br>17:43 – Déclaration en interne d'un incident affectant Cloudflare.<br>21:31 – Des règles de pare-feu sont mises en place pour bloquer les adresses IP connues de l'acteur malveillant.</p>
+	<h3 id="24-novembre-%E2%80%93-d%C3%A9sinstallation-de-sliver-tous-les-acc%C3%A8s-de-lacteur-malveillant-sont-d%C3%A9sactiv%C3%A9s">24 novembre – Désinstallation de Sliver ; tous les accès de l'acteur malveillant sont désactivés.</h3>
+	<p>10:44 – Dernière activité connue de l'acteur malveillant.<br>11:59 – Désinstallation de Sliver.</p>
+	<p>Tout au long de cette chronologie, l'acteur malveillant a tenté d'accéder à une pléthore d'autres systèmes de Cloudflare ; toutefois, ses tentatives ont échoué en raison de nos contrôles d'accès, de nos règles de pare-feu et de l'utilisation de clés de sécurité physiques mises en œuvre avec nos outils Zero Trust.</p>
+	<p>Pour être clairs, nous n'avons observé aucune preuve indiquant que l'acteur malveillant ait eu accès à notre réseau mondial, à notre datacenter, à nos clés SSL, aux bases de données de clients ou aux informations de configuration, aux instances Cloudflare Workers déployées par nous-mêmes ou par nos clients, aux modèles d'IA, à l'infrastructure réseau ou à l'un quelconque de nos magasins de données, tels que Workers KV, R2 ou Quicksilver. Son accès a été limité à la suite Atlassian et au serveur sur lequel s'exécute notre instance d'Atlassian.</p>
+	<p>Une grande partie de notre initiative « Code Red » a consisté à comprendre les ressources auxquelles l'acteur malveillant avait eu accès et celles auxquelles il tentait d'accéder. En examinant la journalisation des différents systèmes, nous avons pu suivre les tentatives d'accès à nos indicateurs internes, à la configuration du réseau, au système de développement, aux systèmes d'alerte et au système de gestion des versions. Notre examen a révélé qu'aucune des tentatives d'accès à ces systèmes n'a été couronnée de succès. Indépendamment, CrowdStrike a effectué une évaluation de la portée et de l'étendue de l'activité de l'acteur malveillant ; celle-ci n'a pas permis de révéler des activités que nous avions omises, et a conclu que la dernière preuve d'activité liée à la menace remontait au 24 novembre à 10:44. </p>
+	<p>Nous sommes convaincus qu'entre notre enquête et celle réalisée par CrowdStrike, nous avons parfaitement compris les actions de l'acteur malveillant, et que celles-ci se limitaient aux systèmes sur lesquels nous avons observé son activité.</p>
+	<h3 id="conclusion">Conclusion</h3>
+	<p>Il s'agissait d'un incident de sécurité impliquant un acteur sophistiqué, probablement un État-nation, qui a agi de manière réfléchie et méthodique. Les efforts que nous avons mis en œuvre ont permis de limiter l'impact de l'incident dans le temps et de nous assurer d'être bien préparés à repousser d'éventuelles attaques sophistiquées à l'avenir. Ces efforts ont nécessité l'intervention d'un nombre considérable d'ingénieurs de Cloudflare et, pendant plus d'un mois, ont a été la priorité absolue de Cloudflare. Toute l'équipe Cloudflare s'est efforcée de s'assurer que nos systèmes étaient sécurisés, que l'accès de l'acteur malveillant avait été compris, de remédier aux priorités immédiates (telles que le renouvellement de très grande ampleur des informations d'identification) et d'établir un programme de travaux dans la durée visant à améliorer notre sécurité globale en fonction des domaines d'amélioration identifiés durant ce processus.</p>
+	<p>Je suis extrêmement reconnaissant à tous les collaborateurs de Cloudflare qui ont réagi rapidement pendant la période de Thanksgiving pour réaliser une analyse initiale et exclure l'acteur malveillant, ainsi qu'à tous ceux qui ont contribué à cette initiative. Il serait impossible de nommer toutes les personnes impliquées, mais leurs longues heures de travail et leur travail dévoué ont permis d'effectuer un examen et une modification essentiels de la sécurité de Cloudflare, tout en préservant le bon fonctionnement de notre réseau mondial et du service que nous assurons à nos clients.<br>Nous sommes reconnaissants à CrowdStrike de s'être rendu immédiatement disponible afin de réaliser une évaluation indépendante. Maintenant que le rapport final de son équipe est finalisé, nous avons confiance dans notre analyse interne et dans les mesures de résolution de l'intrusion, et nous publions cet article de blog.</p>
+	<p><strong>Indicateurs de compromission</strong><br>Vous trouverez ci-dessous les indicateurs de compromission (IOC) que nous avons observés au regard de cet acteur malveillant. Nous les publions afin que d'autres organisations, et en particulier celles qui ont pu être affectées par la violation de données d'Okta, puissent effectuer des recherches dans leurs journaux afin de confirmer que le même acteur malveillant n'a pas accédé à leurs systèmes.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Indicateur</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Type d'indicateur</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SHA256</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.]126 </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">S.O.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Acteur malveillant principal</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infrastructure, propriété de</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247 Europe SRL (Bucarest,</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roumanie</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.]214 </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">S.O.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Serveur Sliver C2, propriété de</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS (Londres, Angleterre)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.].com</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Domaine</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">S.O.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infrastructure servant Sliver</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Charge utile</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvm-agent</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nom de fichier</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4
+						6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Charge utile de Sliver</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+</div>

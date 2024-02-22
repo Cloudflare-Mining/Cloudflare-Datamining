@@ -1,0 +1,145 @@
+<div class="mb2 gray5 ">12 min de lectura</div>
+<div class="post-content lh-copy gray1">
+	<p>El 23 de noviembre de 2023, Día de Acción de Gracias, Cloudflare detectó una amenaza en Atlassian, nuestro servidor autoalojado. Nuestro equipo de seguridad inició una investigación de inmediato, interrumpió el acceso de los atacantes y ningún dato o sistema de los clientes de Cloudflare se vio afectado por este incidente. </p>
+	<p>CrowdStrike completó ayer su investigación y vamos a aprovechar esta publicación del blog para hablar sobre los detalles de este incidente de seguridad. </p>
+	<p>Queremos recalcar a nuestros clientes que ninguno de sus datos o sistemas se ha visto afectado por este suceso. Gracias a nuestros controles de acceso, las reglas de firewall y el uso de claves de seguridad físicas que implementamos con nuestras propias herramientas Zero Trust, limitamos la capacidad de los atacantes para moverse lateralmente. Ningún servicio se vio comprometido y no se realizaron cambios en los sistemas ni en la configuración de nuestra red global. Esta es la promesa de una arquitectura Zero Trust. Es como los compartimentos de un barco, donde los riesgos identificados en un sistema no ponen en peligro a toda la organización.</p>
+	<p>Del 14 al 17 de noviembre, un grupo de atacantes realizó un reconocimiento, y luego accedió a nuestro sitio wiki interno (que utiliza Atlassian Confluence) y a nuestra base de datos de errores (Atlassian Jira). El 20 y el 21 de noviembre, observamos nuevos accesos que indicaban que los atacantes podrían haber regresado para probar el acceso y asegurarse de que tenían conectividad.</p>
+	<p>Volvieron el 22 de noviembre y crearon un acceso persistente a nuestro servidor de Atlassian utilizando ScriptRunner para Jira. Consiguieron acceder a nuestro sistema de gestión de código fuente (que utiliza Bitbucket de Atlassian) e intentaron, sin éxito, acceder a un servidor de consola que tenía acceso al centro de datos que Cloudflare aún no había puesto en producción en São Paulo, Brasil.</p>
+	<p>Para ello, utilizaron un token de acceso y tres credenciales de cuenta de servicio robadas, y que no pudimos rotar, después del <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">ataque a Okta en octubre de 2023</a>. Todos los accesos y conexiones de los atacantes se interrumpieron el 24 de noviembre y CrowdStrike ha confirmado que la última evidencia de actividad de la amenaza fue el 24 de noviembre a las 10:44.</p>
+	<p><em>(Todas las fechas y horas de esta publicación son UTC).</em></p>
+	<p>Aunque entendemos que el impacto operativo fue muy limitado, nos tomamos muy en serio este incidente, ya que un grupo de atacantes utilizó credenciales robadas para acceder a nuestro servidor de Atlassian y tuvo acceso a cierta documentación y a una cantidad limitada de código fuente. Basándonos en nuestra colaboración con colegas del sector y el Gobierno, creemos que fue un ciberataque de Estado nación con el objetivo de obtener acceso persistente y generalizado a la red global de Cloudflare.</p>
+	<h3 id="%E2%80%9Ccode-red%E2%80%9D-remediation-and-hardening-effort">“Code Red” Remediation and Hardening Effort </h3>
+	<p>El 24 de noviembre, tras eliminar la amenaza de nuestro entorno, nuestro equipo de seguridad reunió a todas las personas necesarias para investigar la intrusión y asegurarse de que se había denegado completamente el acceso de los atacantes a nuestros sistemas, y garantizar que comprendíamos el alcance de aquello a lo que se había accedido o intentado acceder.</p>
+	<p>El 27 de noviembre, reorientamos los esfuerzos de gran parte del personal técnico de Cloudflare (dentro y fuera del equipo de seguridad) a un único proyecto denominado "Código rojo". El objetivo era reforzar, ratificar y remediar cualquier control en nuestro entorno para garantizar nuestra protección ante futuras intrusiones y para confirmar la incapacidad de los atacantes para acceder al mismo. Además, continuamos investigando cada sistema, cuenta y registro para asegurarnos de que los atacantes no tenían acceso persistente y de que comprendíamos plenamente a qué sistemas habían accedido y a cuáles habían intentado acceder.</p>
+	<p>CrowdStrike realizó una evaluación independiente del alcance y la magnitud de la actividad de la amenaza, incluida la búsqueda de evidencias de que los atacantes seguían persistiendo en nuestros sistemas. La investigación de CrowdStrike corroboró y respaldó nuestra investigación, pero no detectó actividades que se nos hubieran pasado por alto. Esta publicación del blog describe en detalle todo lo que nosotros y CrowdStrike descubrimos sobre la actividad de los atacantes.</p>
+	<p>El único sistema de producción al que pudieron acceder con las credenciales robadas fue nuestro entorno Atlassian. Tras analizar las páginas wiki a las que accedieron, los problemas de la base de datos de errores y los repositorios de código fuente, parece que estaban buscando información sobre la arquitectura, la seguridad y la administración de nuestra red global, sin duda, con el objetivo de propagarse en nuestros sistemas. Por ello, decidimos que era necesario trabajar para reforzar nuestro protocolo de seguridad y evitar que los atacantes pudieran conseguir ese punto de entrada si hubiéramos pasado por alto algo de nuestros archivos de registro.</p>
+	<p>Nuestro objetivo era evitar que los atacantes utilizaran la información técnica sobre las operaciones de nuestra red como una forma de volver a entrar. Aunque creíamos, y más tarde confirmamos, que los atacantes tenían acceso limitado, redoblamos los esfuerzos para rotar todas las credenciales de producción (más de 5000 credenciales individuales), segmentar físicamente los sistemas de prueba y de ensayo, realizar análisis forenses en 4893 sistemas, reimaginar y reiniciar todas las máquinas de nuestra red global, incluidos todos los sistemas a los que accedió el atacante y todos los productos de Atlassian (Jira, Confluence y Bitbucket).</p>
+	<p>El atacante también intentó acceder a un servidor de consola en nuestro nuevo centro de datos de São Paulo, que aún no está en producción. Todos los intentos fueron infructuosos. Para garantizar que estos sistemas son 100 % seguros, los equipos del centro de datos de Brasil se devolvieron a los fabricantes. Los equipos forenses de los fabricantes examinaron todos nuestros sistemas para asegurarse de que no se había producido ningún acceso ni persistencia. No se encontró nada, pero reemplazamos el hardware de todos modos.</p>
+	<p>También buscamos paquetes de software que no se hubieran actualizado, cuentas de usuario que pudieran haberse creado y cuentas de empleados activas sin utilizar. Buscamos secretos que pudieran haber quedado en incidencias de Jira o código fuente, examinamos y borramos todos los archivos HAR cargados a wiki por si contenían tokens de algún tipo. En caso de duda, nos pusimos en lo peor e hicimos cambios para asegurarnos de que todo aquello a lo que los atacantes pudieran acceder ya no estuviera en uso y, por tanto, ya no fuera útil para ellos.</p>
+	<p>Se animó a todos los miembros del equipo a que indicaran las zonas que podrían haber alcanzado los atacantes, para que pudiéramos examinar los archivos de registro y determinar el alcance del acceso. De esta manera, estábamos decididos a no escatimar esfuerzos para buscar pruebas de acceso o cambios que debían realizarse para mejorar la seguridad.</p>
+	<p>El trabajo del proyecto de "Código rojo" finalizó el 5 de enero, pero seguimos trabajando en torno a la gestión de credenciales, la reducción de las vulnerabilidades de software, la gestión de vulnerabilidades, las alertas adicionales y mucho más.</p>
+	<h3 id="cronolog%C3%ADa-del-ataque">Cronología del ataque</h3>
+	<p>El ataque comenzó en octubre con la vulnerabilidad de Okta, pero los atacantes no empezaron a atacar nuestros sistemas utilizando las credenciales del ataque de Okta hasta mediados de noviembre. </p>
+	<p>La siguiente cronología muestra los sucesos más importantes:</p>
+	<h3 id="18-de-octubreataque-de-okta">18 de octubre - ataque de Okta</h3>
+	<p>Ya hemos <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">hablado sobre ello antes</a> pero, en resumen, fuimos (por segunda vez) víctimas de un ataque a los sistemas de Okta que permitió a los ciberdelincuentes acceder a un conjunto de credenciales, que se iban a rotar.</p>
+	<p>Lamentablemente, no pudimos rotar un token de servicio y tres cuentas de servicio (de miles) de credenciales que se filtraron durante el ataque a Okta. </p>
+	<p>Uno era un token de servicio de Moveworks que concedía acceso remoto a nuestro sistema Atlassian. La segunda credencial era una cuenta de servicio utilizada por la aplicación Smartsheet basada en SaaS que tenía acceso administrativo a nuestra instancia de Atlassian Jira. La tercera era un cuenta de servicio de Bitbucket que se utilizaba para acceder a nuestro sistema de gestión de código fuente, y la cuarta era un entorno de AWS que no tenía acceso a la red global ni a datos confidenciales o de clientes. </p>
+	<p>El servicio token y estas tres cuentas no se rotaron porque se creyó, de forma errónea, que no se utilizaban. Fue un error, y sirvió a los atacantes para introducirse por primera vez en nuestros sistemas y obtener persistencia en nuestros productos Atlassian. De ninguna manera fue un error de AWS, Moveworks o Smartsheet. Fueron simplemente credenciales que no se rotaron.</p>
+	<h3 id="14-de-noviembre-a-las-092249empieza-la-exploraci%C3%B3n-de-los-atacantes">14 de noviembre a las 09:22:49 - empieza la exploración de los atacantes</h3>
+	<p>Nuestros registros muestran que los atacantes empezaron a explorar y a realizar reconocimientos de nuestros sistemas el 14 de noviembre, buscando la forma de utilizar las credenciales y los sistemas accesibles. Intentaron iniciar sesión en nuestra instancia de Okta y se les denegó el acceso. Trataron de acceder al panel de control de Cloudflare y también se les denegó el acceso.</p>
+	<p>Además, los atacantes accedieron a un entorno de AWS que se utiliza para que funcione el marketplace de aplicaciones de Cloudflare. Este entorno estaba segmentado sin acceso a la red global ni a los datos de los clientes. Se revocó la cuenta de servicio para acceder a este entorno y se validó la integridad del mismo. </p>
+	<h3 id="15-de-noviembre-a-las-162838los-atacantes-acceden-a-los-servicios-de-atlassian">15 de noviembre a las 16:28:38 - los atacantes acceden a los servicios de Atlassian</h3>
+	<p>Los atacantes lograron acceder a Atlassian Jira y Confluence el 15 de noviembre utilizando el token de servicio de Moveworks para autenticarse a través de nuestra puerta de enlace y, a continuación, utilizaron la cuenta de servicio de Smartsheet para acceder a la suite de Atlassian. Al día siguiente comenzaron a buscar información sobre la configuración y gestión de nuestra red global, y accedieron a varias incidencias en Jira.</p>
+	<p>Buscaron en wiki cosas como acceso remoto, secreto, cliente-secreto, openconnect, cloudflared y token. Accedieron a 36 incidencias en Jira (de un total de 2 059 357 incidencias) y a 202 páginas wiki (de un total de 14 099 páginas).</p>
+	<p>Accedieron a incidencias en Jira sobre gestión de vulnerabilidades, rotación de secretos, elusión de la autenticación multifactor (MFA), acceso a la red e incluso a nuestra respuesta al incidente de Okta. </p>
+	<p>Las búsquedas y páginas en wiki a las que accedieron sugieren que estaban muy interesados en todos los aspectos del acceso a nuestros sistemas: restablecimiento de contraseñas, acceso remoto, configuración, nuestro uso de Salt, pero no tenían como objetivo datos o configuraciones de clientes.</p>
+	<h3 id="16-de-noviembre-a-las-143637los-atacantes-crean-una-cuenta-de-usuario-de-atlassian">16 de noviembre a las 14:36:37 - los atacantes crean una cuenta de usuario de Atlassian</h3>
+	<p>Los atacantes utilizaron las credenciales de Smartsheet para crear una cuenta de Atlassian que parecía un usuario normal de Cloudflare. Añadieron a este usuario a una serie de grupos en Atlassian para que tuvieran acceso persistente al entorno de Atlassian en caso de que se eliminara la cuenta de servicio de Smartsheet.</p>
+	<h3 id="del-17-de-noviembre-a-las-143352-al-20-de-noviembre-a-las-092653los-atacantes-dejan-de-acceder-temporalmente-a-los-sistemas-de-cloudflare">Del 17 de noviembre a las 14:33:52 al 20 de noviembre a las 09:26:53 - los atacantes dejan de acceder temporalmente a los sistemas de Cloudflare</h3>
+	<p>Durante este periodo, los atacantes dejaron de acceder de manera temporal a nuestros sistemas (al parecer solo probaron brevemente que seguían teniendo acceso) y regresaron justo antes del Día de Acción de Gracias.</p>
+	<h3 id="22-de-noviembre-a-las-141822los-atacantes-ganan-persistencia">22 de noviembre a las 14:18:22 - los atacantes ganan persistencia</h3>
+	<p>Dado que la cuenta de servicio de Smartsheet tenía acceso administrativo a Atlassian Jira, los atacantes instalaron Sliver Adversary Emulation Framework, que es una herramienta y un marco muy utilizado que los equipos de simulacro de ataque y los atacantes utilizan para habilitar "C2" (comando y control), con la intención de conseguir acceso persistente e indetectable a un equipo en el que está instalado. Sliver se instaló con ScriptRunner, el complemento de Jira.</p>
+	<p>De esta manera, consiguieron acceso permanente al servidor de Atlassian y lo utilizaron para intentar moverse lateralmente. Con este acceso, los atacantes trataron de acceder a un servidor de consola que no estaba en producción en nuestro centro de datos de São Paulo, Brasil, debido a una lista de control de acceso (ACL) no ejecutada. Se les denegó el acceso y no pudieron acceder a ninguno de la red global.</p>
+	<p>Al día siguiente, los atacantes visitaron 120 repositorios de código (de un total de 11 904 repositorios). De estos 120 repositorios, los atacantes utilizaron la función de archivo git de Bitbucket de Atlassian en 76 repositorios para descargarlos en el servidor de Atlassian y, aunque no pudimos confirmar si se habían filtrado o no, decidimos tratarlos como si lo hubieran sido. </p>
+	<p>Casi todos los 76 repositorios de código fuente estaban relacionados con cómo funcionan las copias de seguridad, cómo se configura y gestiona la red global, cómo funciona la identidad en Cloudflare, el acceso remoto y nuestro uso de Terraform y Kubernetes. Un número menor de repositorios contenía secretos cifrados que se rotaron inmediatamente a pesar de que estaban encriptados de forma segura.</p>
+	<p>Nos centramos especialmente en estos 76 repositorios de código fuente para buscar secretos incrustados (los secretos almacenados en el código se rotaron), vulnerabilidades y formas en que un atacante podría utilizarlos para lanzar un ataque posterior. Este trabajo fue la prioridad de los equipos de ingeniería de toda la empresa como parte del "Código rojo".</p>
+	<p>Como empresa de SaaS, hace tiempo que creemos que nuestro código fuente no es tan útil como el de las empresas de software que lo distribuyen a los usuarios finales. De hecho, se puede acceder a gran parte de nuestro código fuente y hablamos sin tapujos en nuestro blog sobre los algoritmos y las técnicas que utilizamos. Por lo tanto, nuestra atención no se centró en que alguien tuviera acceso al código fuente, sino en si ese código fuente contenía secretos incrustados (como una clave o un token) y vulnerabilidades.</p>
+	<h3 id="23-de-noviembredetecci%C3%B3n-e-inicio-de-la-interrupci%C3%B3n-del-acceso-de-los-atacantes">23 de noviembre - detección e inicio de la interrupción del acceso de los atacantes </h3>
+	<p>Nuestro equipo de seguridad fue alertado de la presencia de los atacantes a las 16:00 y desactivó la cuenta de servicio de Smartsheet 35 minutos después. 48 minutos más tarde se identificó y desactivó la cuenta de usuario creada por los atacantes. A continuación, detallamos la cronología de las principales medidas adoptadas para bloquear a los atacantes una vez que se emitió la primera alerta.</p>
+	<p>15:58: los atacantes añaden la cuenta de servicio de Smartsheet a un grupo de administradores.<br>16:00: nuestro equipo de seguridad recibe una alerta automatizada sobre el cambio a las 15:58.<br>16:12: el centro de operaciones de seguridad (SOC) de Cloudflare comienza a investigar la alerta.<br>16:35: el SOC de Cloudflare desactiva la cuenta de servicio de Smartsheet.<br>17:23: se descubre y desactiva la cuenta de usuario de Atlassian creada por los atacantes.<br>17:43: se declara un incidente interno en Cloudflare.<br>21:31: se crean reglas de firewall para bloquear las direcciones IP conocidas de los atacantes.</p>
+	<h3 id="24-de-noviembrese-elimina-sliver-y-se-interrumpe-el-acceso-de-todos-los-atacantes">24 de noviembre - se elimina Sliver, y se interrumpe el acceso de todos los atacantes</h3>
+	<p>10:44: última actividad conocida de los atacantes.<br>11:59: Eliminación de Sliver.</p>
+	<p>A lo largo de esta cronología, los atacantes trataron de acceder a un sinfín de sistemas en Cloudflare, pero no lo lograron gracias a nuestros controles de acceso, a nuestras reglas de firewall, y al uso de claves de seguridad físicas implementadas con nuestras propias herramientas Zero Trust.</p>
+	<p>Para que quede claro, no encontramos ningún indicio de que los atacantes accedieran a nuestra red global, centros de datos, claves SSL, bases de datos de clientes o información de configuración, Cloudflare Workers implementados por nosotros o por clientes, modelos de IA, infraestructura de red o cualquiera de nuestros almacenes de datos como Workers KV, R2 o Quicksilver. Solo accedieron a la suite de Atlassian y al servidor en el que se ejecuta nuestro entorno Atlassian.</p>
+	<p>Una gran parte del trabajo del "Código rojo" consistió en comprender a qué elementos accedieron los atacantes y a qué intentaron acceder. Cuando observamos el registro en todos los sistemas, pudimos realizar un seguimiento de los intentos de acceso a nuestras métricas internas, la configuración de la red, el sistema de compilación, los sistemas de alerta y el sistema de administración de versiones. Según nuestro análisis, ninguno de sus intentos de acceder a estos sistemas fue fructífero. De forma independiente, CrowdStrike realizó una evaluación del alcance y la magnitud de las actividades de los atacantes, pero no reveló actividades que podríamos haber pasado por alto, y concluyó que la última evidencia de actividad de la amenaza fue el 24 de noviembre a las 10:44. </p>
+	<p>Estamos seguros de que, entre nuestra investigación y la de CrowdStrike, comprendemos perfectamente las acciones de los atacantes, que se limitaron a los sistemas en los que observamos su actividad.</p>
+	<h3 id="conclusi%C3%B3n">Conclusión</h3>
+	<p>Este incidente de seguridad fue obra de atacantes sofisticados, probablemente un Estado nación, que operó de manera reflexiva y metódica. El trabajo que hemos realizado limitó el impacto del incidente, y garantiza que estamos bien preparados para defendernos de cualquier ataque sofisticado en el futuro. Este ataque exigió un esfuerzo importante del equipo de ingenieros de Cloudflare, y, durante más de un mes, fue la máxima prioridad en Cloudflare. Todo el equipo de Cloudflare trabajó para garantizar que nuestros sistemas fueran seguros, para entender el acceso de los atacantes, para solucionar las prioridades inmediatas (como la rotación masiva de credenciales), y para crear un plan de trabajo a largo plazo que permita mejorar nuestra seguridad general basándonos en las áreas de mejora identificadas durante este proceso.</p>
+	<p>Estoy increíblemente agradecido a todo el equipo de Cloudflare que, en el Día de Acción de Gracias, respondió ágilmente para llevar a cabo un análisis inicial y bloquear a los atacantes, y a todos los que contribuyeron a este trabajo. Sería imposible nombrar a todos los implicados, pero la dedicación de su trabajo hizo posible llevar a cabo una evaluación y un cambio esencial en la seguridad de Cloudflare, manteniendo al mismo tiempo el funcionamiento de nuestra red global y el servicio para nuestros clientes.</p>
+	<p>Agradecemos a CrowdStrike su disposición inmediata para llevar a cabo una evaluación independiente. Ahora que han completado su informe final, confiamos en nuestro análisis interno y en la corrección de la intrusión, y ponemos a disposición esta publicación de blog.</p>
+	<h4 id="indicadores-de-compromiso">Indicadores de compromiso</h4>
+	<p>A continuación mostramos las indicaciones de compromiso (IOC) que observamos. Lo hacemos público para que otras organizaciones, y especialmente aquellas que puedan haber resultado afectadas por el ataque de Okta, puedan buscar en sus registros y confirmar que los mismos atacantes no accedieron a sus sistemas.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Indicador</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tipo de indicador</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SHA256</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Descripción</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.] 126 </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">n/a</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infraestructura principal</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">del atacante, propiedad de</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247 Europe SRL (Bucarest,</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rumanía</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.] 214 </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">n/a</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Servidor Sliver C2, propiedad de</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS (Londres, Inglaterra)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.]. COM</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dominio</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">n/a</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infraestructura al servicio de Sliver</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Carga</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvm-agente</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nombre del archivo</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4<br>6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Carga malintencionada de Sliver</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+</div>
