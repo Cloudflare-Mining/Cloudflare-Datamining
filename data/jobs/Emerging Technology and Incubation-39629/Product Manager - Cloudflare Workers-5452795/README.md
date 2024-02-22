@@ -24,7 +24,7 @@
 	<li>Proven track record of shipping developer-facing products from ideation to launch</li>
 	<li>Developer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</li>
 	<li>BS/MS in a technology field.&nbsp;</li>
-	<li>Professional product management experience (3-4 years)</li>
+	<li>Professional product management experience min 3 years</li>
 	<li>Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</li>
 	<li>A desire to sweat the details and ship great developer experiences</li>
 	<li>Experience using developer tools (such as source-control management tools, CLIs, etc)</li>
