@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">12 min read</div>
+<div class="mb2 gray5">12 min read</div>
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/10/image1-5.png" class="kg-image" alt="Virtual networking 101: bridging the gap to understanding TAP" loading="lazy" width="1999" height="1125"></figure>
 	<p>It's a never-ending effort to improve the performance of our infrastructure. As part of that quest, we wanted to squeeze as much network oomph as possible from our virtual machines. Internally for some projects we use <a href="https://firecracker-microvm.github.io">Firecracker</a>, which is a KVM-based virtual machine manager (VMM) that runs light-weight “Micro-VM”s. Each Firecracker instance uses a tap device to communicate with a host system. Not knowing much about tap, I had to up my game, however, it wasn't easy — the documentation is messy and spread across the Internet.</p>
