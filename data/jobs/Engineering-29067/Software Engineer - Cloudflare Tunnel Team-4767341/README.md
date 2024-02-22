@@ -5,29 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong><em>About the team</em></strong></h4>
-<p><em>You'll be part of a engineering team focused on building products that secure and manage our customers’ API traffic. We are a group of experienced engineers and data scientists passionate about building new and scalable features for Cloudflare’s API Gateway.</em></p>
-<h4><strong><em>What you'll do</em></strong></h4>
-<p><em>You will build software systems that secure, monitor, and manage our customers’ API endpoints. Scale will be always on your mind: our systems will run on thousands of machines all over the globe, processing trillions of requests per month. Additionally, you’ll be tackling real-world security problems by leveraging the massive amounts of data and insights from Cloudflare’s entire network. Helping build Cloudflare’s API Gateway will enable you to make a real and substantial impact on the global API and security landscape.&nbsp;</em></p>
-<p><em>Our tech stack includes Go, Rust, Kafka, Kubernetes, ClickHouse, PostgreSQL, Lua, Python, Jupyter notebooks.</em></p>
-<p><strong><em>Examples of desirable skills, knowledge and experience</em></strong></p>
+<h4><strong>About the department</strong></h4>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 250+ cities worldwide.</span></p>
+<h4><strong>What you'll do</strong></h4>
+<p><span style="font-weight: 400;">In this role you’ll help us build Cloudflare Tunnel, an ambitious product that aims to be the best and most secure way to connect any machine to the Cloudflare network. As an engineer on the Cloudflare Tunnel team, you will be responsible for building and maintaining the technologies and systems that comprise Cloudflare Tunnel, both in our high-performance global edge network and in our centralized microservice cluster. You will be joining a team of bright, hard-working, and supportive engineers who really care about their craft.</span></p>
+<p><span style="font-weight: 400;">Examples of software systems that you’ll be working with include:</span></p>
 <ul>
-	<li><em>4+ years experience designing, implementing, integrating, and optimizing distributed data processing pipelines</em></li>
-	<li><em>Experience writing high-quality data processing code in Go, Rust or other high-performance languages</em></li>
-	<li><em>Experience building and administering alerting and monitoring systems around data processing pipelines</em></li>
-	<li><em>Strong systems-level debugging</em></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A service running on every machine of Cloudflare’s extensive edge network, responsible for proxying data to customer servers through persistent network connections</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A cross-platform, open-source client service application that connects machines to the Cloudflare network</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Microservices and APIs that enable and facilitate fast and reliable information exchange between Cloudflare and the rest of the Internet</span></li>
 </ul>
-<p><strong><em>Bonus Points</em></strong></p>
+<p><span style="font-weight: 400;">You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Lua, REST APIs, various SQL and no-SQL databases, Salt, Prometheus and Grafana, Docker, Kubernetes, the list goes on.</span></p>
+<p><span style="font-weight: 400;">Other responsibilities include:</span></p>
 <ul>
-	<li><em>Affinity with the API Gateway or API Security space</em></li>
-	<li><em>Prior experience in (Web) Security or HTTP protocols is a huge plus</em></li>
-	<li><em>Knowledge and experience with productionizing machine learning and statistical models is valuable</em></li>
-	<li><em>Knowledge and experience with columnar databases such as Clickhouse</em></li>
-	<li><em>Experience building REST APIs for analytics services</em></li>
-	<li><em>Experience with cluster and configuration management systems such as Docker, Salt and Kubernetes</em></li>
-	<li><em>Familiarity writing and optimizing advanced SQL queries</em></li>
-	<li><em>Familiarity with Python and Jupyter Notebooks.</em></li>
-	<li><em>Good Linux/UNIX systems knowledge</em><br><br><br></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with internal teams (security, network engineering, SRE, product management) to design effective and scalable solutions to difficult technical problems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Reviewing work from your peers throughout all stages of the development lifecycle</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentoring team members to help bring out their best work</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working with our support teams to ensure customer delight</span></li>
+</ul>
+<p><span style="font-weight: 400;">Because you’ll be solving problems of massive scale and significance, and shaping the future of performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sane work environment.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="font-weight: 400;">As an ideal candidate for this position, you are curious, hard-working, and passionate.</span></p>
+<p><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go, Rust, C++, or similar languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working knowledge of modern Unix/Linux development and runtime environments</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to debug issues in complex systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A grasp of networking protocols in any of Layers 3-7 of the OSI Model, experience with network programming</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
