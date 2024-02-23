@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">6 min read</div>
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>At CloudFlare, We use Go for a variety of services and applications. In this blog post, We're going to take a deep dive into some of the technical intricacies of Go.</p>
 	<p>One of the more important features of Go is goroutines. They are cheap, cooperatively scheduled threads of execution that are used for a variety of operations, like timeouts, generators and racing multiple backends against each other. To make goroutines suitable for as many tasks as possible, we have to make sure that each goroutine takes up the least amount of memory, but also have people be able to start them up with a minimal amount of configuration.</p>

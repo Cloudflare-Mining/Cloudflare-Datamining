@@ -1,4 +1,4 @@
-<div class="mb2 gray5 ">6 min read</div>
+<div class="mb2 gray5">6 min read</div>
 <div class="post-content lh-copy gray1"><!--kg-card-begin: markdown-->
 	<p>At CloudFlare we spend a lot of time thinking about the best way to keep our customers’ data safe. Despite <a href="https://blog.cloudflare.com/staying-ahead-of-openssl-vulnerabilities">recent</a> <a href="http://arstechnica.com/security/2014/02/four-days-in-and-still-no-patch-for-os-x-critical-goto-fail-bug">troubles</a>, HTTPS is still the best way to deliver encrypted content for the web. As the threat landscape changes we try to keep up with best practices with respect to which cryptographic primitives we use.</p>
 	<p>We <a href="https://blog.cloudflare.com/killing-rc4">recently</a> removed support for RC4 for browsers using TLS 1.1+. Now we are removing RC4 as the preferred cipher. Servers behind CloudFlare will prefer AES-based cipher suites for all HTTPS connections and only use RC4 as a cipher as a last resort. We believe this is the right choice for the safety and security of our customers.</p>
