@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/devices/networks/{uuid}": {
+	"DELETE /accounts/{account_id}/devices/networks/{network_id}": {
 		"description": "Deletes a device managed network and fetches a list of the remaining device managed networks for an account.",
 		"operationId": "device-managed-networks-delete-device-managed-network",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "network_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -500,13 +500,13 @@
 			"Device Managed Networks"
 		]
 	},
-	"GET /accounts/{identifier}/devices/networks": {
+	"GET /accounts/{account_id}/devices/networks": {
 		"description": "Fetches a list of managed networks for an account.",
 		"operationId": "device-managed-networks-list-device-managed-networks",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -984,13 +984,13 @@
 			"Device Managed Networks"
 		]
 	},
-	"GET /accounts/{identifier}/devices/networks/{uuid}": {
+	"GET /accounts/{account_id}/devices/networks/{network_id}": {
 		"description": "Fetches details for a single managed network.",
 		"operationId": "device-managed-networks-device-managed-network-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "network_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -1001,7 +1001,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1437,13 +1437,13 @@
 			"Device Managed Networks"
 		]
 	},
-	"POST /accounts/{identifier}/devices/networks": {
+	"POST /accounts/{account_id}/devices/networks": {
 		"description": "Creates a new device managed network.",
 		"operationId": "device-managed-networks-create-device-managed-network",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1936,13 +1936,13 @@
 			"Device Managed Networks"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/networks/{uuid}": {
+	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
 		"description": "Updates a configured device managed network.",
 		"operationId": "device-managed-networks-update-device-managed-network",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "network_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -1953,7 +1953,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

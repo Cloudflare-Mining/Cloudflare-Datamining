@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/devices/posture/integration/{uuid}": {
+	"DELETE /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"description": "Delete a configured device posture integration.",
 		"operationId": "device-posture-integrations-delete-device-posture-integration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "integration_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -360,13 +360,13 @@
 			"Device Posture Integrations"
 		]
 	},
-	"GET /accounts/{identifier}/devices/posture/integration": {
+	"GET /accounts/{account_id}/devices/posture/integration": {
 		"description": "Fetches the list of device posture integrations for an account.",
 		"operationId": "device-posture-integrations-list-device-posture-integrations",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -882,13 +882,13 @@
 			"Device Posture Integrations"
 		]
 	},
-	"GET /accounts/{identifier}/devices/posture/integration/{uuid}": {
+	"GET /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"description": "Fetches details for a single device posture integration.",
 		"operationId": "device-posture-integrations-device-posture-integration-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "integration_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -899,7 +899,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1373,13 +1373,13 @@
 			"Device Posture Integrations"
 		]
 	},
-	"PATCH /accounts/{identifier}/devices/posture/integration/{uuid}": {
+	"PATCH /accounts/{account_id}/devices/posture/integration/{integration_id}": {
 		"description": "Updates a configured device posture integration.",
 		"operationId": "device-posture-integrations-update-device-posture-integration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "integration_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -1390,7 +1390,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2103,13 +2103,13 @@
 			"Device Posture Integrations"
 		]
 	},
-	"POST /accounts/{identifier}/devices/posture/integration": {
+	"POST /accounts/{account_id}/devices/posture/integration": {
 		"description": "Create a new device posture integration.",
 		"operationId": "device-posture-integrations-create-device-posture-integration",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"

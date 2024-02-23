@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/devices/posture/{uuid}": {
+	"DELETE /accounts/{account_id}/devices/posture/{rule_id}": {
 		"description": "Deletes a device posture rule.",
 		"operationId": "device-posture-rules-delete-device-posture-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -374,13 +374,13 @@
 			"Device posture rules"
 		]
 	},
-	"GET /accounts/{identifier}/devices/posture": {
+	"GET /accounts/{account_id}/devices/posture": {
 		"description": "Fetches device posture rules for a Zero Trust account.",
 		"operationId": "device-posture-rules-list-device-posture-rules",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -879,6 +879,11 @@
 																		"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																		"type": "string"
 																	},
+																	"last_seen": {
+																		"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																		"example": "2023-07-20T23:16:32Z",
+																		"type": "string"
+																	},
 																	"operator": {
 																		"description": "Operator",
 																		"enum": [
@@ -904,6 +909,16 @@
 																	"sensor_config": {
 																		"description": "SensorConfig",
 																		"example": 90,
+																		"type": "string"
+																	},
+																	"state": {
+																		"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																		"enum": [
+																			"online",
+																			"offline",
+																			"unknown"
+																		],
+																		"example": "online",
 																		"type": "string"
 																	},
 																	"version": {
@@ -1667,6 +1682,11 @@
 																				"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																				"type": "string"
 																			},
+																			"last_seen": {
+																				"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																				"example": "2023-07-20T23:16:32Z",
+																				"type": "string"
+																			},
 																			"operator": {
 																				"description": "Operator",
 																				"enum": [
@@ -1692,6 +1712,16 @@
 																			"sensor_config": {
 																				"description": "SensorConfig",
 																				"example": 90,
+																				"type": "string"
+																			},
+																			"state": {
+																				"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																				"enum": [
+																					"online",
+																					"offline",
+																					"unknown"
+																				],
+																				"example": "online",
 																				"type": "string"
 																			},
 																			"version": {
@@ -2060,13 +2090,13 @@
 			"Device posture rules"
 		]
 	},
-	"GET /accounts/{identifier}/devices/posture/{uuid}": {
+	"GET /accounts/{account_id}/devices/posture/{rule_id}": {
 		"description": "Fetches a single device posture rule.",
 		"operationId": "device-posture-rules-device-posture-rules-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -2077,7 +2107,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2557,6 +2587,11 @@
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																	"type": "string"
 																},
+																"last_seen": {
+																	"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																	"example": "2023-07-20T23:16:32Z",
+																	"type": "string"
+																},
 																"operator": {
 																	"description": "Operator",
 																	"enum": [
@@ -2582,6 +2617,16 @@
 																"sensor_config": {
 																	"description": "SensorConfig",
 																	"example": 90,
+																	"type": "string"
+																},
+																"state": {
+																	"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																	"enum": [
+																		"online",
+																		"offline",
+																		"unknown"
+																	],
+																	"example": "online",
 																	"type": "string"
 																},
 																"version": {
@@ -3324,6 +3369,11 @@
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																			"type": "string"
 																		},
+																		"last_seen": {
+																			"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																			"example": "2023-07-20T23:16:32Z",
+																			"type": "string"
+																		},
 																		"operator": {
 																			"description": "Operator",
 																			"enum": [
@@ -3349,6 +3399,16 @@
 																		"sensor_config": {
 																			"description": "SensorConfig",
 																			"example": 90,
+																			"type": "string"
+																		},
+																		"state": {
+																			"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																			"enum": [
+																				"online",
+																				"offline",
+																				"unknown"
+																			],
+																			"example": "online",
 																			"type": "string"
 																		},
 																		"version": {
@@ -3715,13 +3775,13 @@
 			"Device posture rules"
 		]
 	},
-	"POST /accounts/{identifier}/devices/posture": {
+	"POST /accounts/{account_id}/devices/posture": {
 		"description": "Creates a new device posture rule.",
 		"operationId": "device-posture-rules-create-device-posture-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -4094,6 +4154,11 @@
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 												"type": "string"
 											},
+											"last_seen": {
+												"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+												"example": "2023-07-20T23:16:32Z",
+												"type": "string"
+											},
 											"operator": {
 												"description": "Operator",
 												"enum": [
@@ -4119,6 +4184,16 @@
 											"sensor_config": {
 												"description": "SensorConfig",
 												"example": 90,
+												"type": "string"
+											},
+											"state": {
+												"description": "For more details on state, please refer to the Crowdstrike documentation.",
+												"enum": [
+													"online",
+													"offline",
+													"unknown"
+												],
+												"example": "online",
 												"type": "string"
 											},
 											"version": {
@@ -4859,6 +4934,11 @@
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																	"type": "string"
 																},
+																"last_seen": {
+																	"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																	"example": "2023-07-20T23:16:32Z",
+																	"type": "string"
+																},
 																"operator": {
 																	"description": "Operator",
 																	"enum": [
@@ -4884,6 +4964,16 @@
 																"sensor_config": {
 																	"description": "SensorConfig",
 																	"example": 90,
+																	"type": "string"
+																},
+																"state": {
+																	"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																	"enum": [
+																		"online",
+																		"offline",
+																		"unknown"
+																	],
+																	"example": "online",
 																	"type": "string"
 																},
 																"version": {
@@ -5626,6 +5716,11 @@
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																			"type": "string"
 																		},
+																		"last_seen": {
+																			"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																			"example": "2023-07-20T23:16:32Z",
+																			"type": "string"
+																		},
 																		"operator": {
 																			"description": "Operator",
 																			"enum": [
@@ -5651,6 +5746,16 @@
 																		"sensor_config": {
 																			"description": "SensorConfig",
 																			"example": 90,
+																			"type": "string"
+																		},
+																		"state": {
+																			"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																			"enum": [
+																				"online",
+																				"offline",
+																				"unknown"
+																			],
+																			"example": "online",
 																			"type": "string"
 																		},
 																		"version": {
@@ -6017,13 +6122,13 @@
 			"Device posture rules"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/posture/{uuid}": {
+	"PUT /accounts/{account_id}/devices/posture/{rule_id}": {
 		"description": "Updates a device posture rule.",
 		"operationId": "device-posture-rules-update-device-posture-rule",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "rule_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -6034,7 +6139,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -6407,6 +6512,11 @@
 												"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 												"type": "string"
 											},
+											"last_seen": {
+												"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+												"example": "2023-07-20T23:16:32Z",
+												"type": "string"
+											},
 											"operator": {
 												"description": "Operator",
 												"enum": [
@@ -6432,6 +6542,16 @@
 											"sensor_config": {
 												"description": "SensorConfig",
 												"example": 90,
+												"type": "string"
+											},
+											"state": {
+												"description": "For more details on state, please refer to the Crowdstrike documentation.",
+												"enum": [
+													"online",
+													"offline",
+													"unknown"
+												],
+												"example": "online",
 												"type": "string"
 											},
 											"version": {
@@ -7172,6 +7292,11 @@
 																	"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																	"type": "string"
 																},
+																"last_seen": {
+																	"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																	"example": "2023-07-20T23:16:32Z",
+																	"type": "string"
+																},
 																"operator": {
 																	"description": "Operator",
 																	"enum": [
@@ -7197,6 +7322,16 @@
 																"sensor_config": {
 																	"description": "SensorConfig",
 																	"example": 90,
+																	"type": "string"
+																},
+																"state": {
+																	"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																	"enum": [
+																		"online",
+																		"offline",
+																		"unknown"
+																	],
+																	"example": "online",
 																	"type": "string"
 																},
 																"version": {
@@ -7939,6 +8074,11 @@
 																			"example": "bc7cbfbb-600a-42e4-8a23-45b5e85f804f",
 																			"type": "string"
 																		},
+																		"last_seen": {
+																			"description": "For more details on last seen, please refer to the Crowdstrike documentation.",
+																			"example": "2023-07-20T23:16:32Z",
+																			"type": "string"
+																		},
 																		"operator": {
 																			"description": "Operator",
 																			"enum": [
@@ -7964,6 +8104,16 @@
 																		"sensor_config": {
 																			"description": "SensorConfig",
 																			"example": 90,
+																			"type": "string"
+																		},
+																		"state": {
+																			"description": "For more details on state, please refer to the Crowdstrike documentation.",
+																			"enum": [
+																				"online",
+																				"offline",
+																				"unknown"
+																			],
+																			"example": "online",
 																			"type": "string"
 																		},
 																		"version": {

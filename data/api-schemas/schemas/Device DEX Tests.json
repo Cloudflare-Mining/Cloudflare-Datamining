@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/devices/dex_tests/{uuid}": {
+	"DELETE /accounts/{account_id}/devices/dex_tests/{dex_test_id}": {
 		"description": "Delete a Device DEX test. Returns the remaining device dex tests for the account.",
 		"operationId": "device-dex-test-delete-device-dex-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -13,7 +13,7 @@
 			},
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "dex_test_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -452,13 +452,13 @@
 			"Device DEX Tests"
 		]
 	},
-	"GET /accounts/{identifier}/devices/dex_tests": {
+	"GET /accounts/{account_id}/devices/dex_tests": {
 		"description": "Fetch all DEX tests.",
 		"operationId": "device-dex-test-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -898,13 +898,13 @@
 			"Device DEX Tests"
 		]
 	},
-	"GET /accounts/{identifier}/devices/dex_tests/{uuid}": {
+	"GET /accounts/{account_id}/devices/dex_tests/{dex_test_id}": {
 		"description": "Fetch a single DEX test.",
 		"operationId": "device-dex-test-get-device-dex-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -912,7 +912,7 @@
 			},
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "dex_test_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",
@@ -1359,13 +1359,13 @@
 			"Device DEX Tests"
 		]
 	},
-	"POST /accounts/{identifier}/devices/dex_tests": {
+	"POST /accounts/{account_id}/devices/dex_tests": {
 		"description": "Create a DEX test.",
 		"operationId": "device-dex-test-create-device-dex-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1873,13 +1873,13 @@
 			"Device DEX Tests"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/dex_tests/{uuid}": {
+	"PUT /accounts/{account_id}/devices/dex_tests/{dex_test_id}": {
 		"description": "Update a DEX test.",
 		"operationId": "device-dex-test-update-device-dex-test",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1887,7 +1887,7 @@
 			},
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "dex_test_id",
 				"required": true,
 				"schema": {
 					"description": "API UUID.",

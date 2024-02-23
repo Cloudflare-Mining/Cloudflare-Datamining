@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{identifier}/devices/policy/{uuid}": {
+	"DELETE /accounts/{account_id}/devices/policy/{policy_id}": {
 		"description": "Deletes a device settings profile and fetches a list of the remaining profiles for an account.",
 		"operationId": "devices-delete-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -16,7 +16,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -796,13 +796,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices": {
+	"GET /accounts/{account_id}/devices": {
 		"description": "Fetches a list of enrolled devices.",
 		"operationId": "devices-list-devices",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1442,13 +1442,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/{uuid}": {
+	"GET /accounts/{account_id}/devices/{device_id}": {
 		"description": "Fetches details for a single device.",
 		"operationId": "devices-device-details",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "device_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -1459,7 +1459,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -1795,13 +1795,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/{uuid}/override_codes": {
+	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
 		"description": "Fetches a one-time use admin override code for a device. This relies on the **Admin Override** setting being enabled in your device configuration.",
 		"operationId": "devices-list-admin-override-code-for-device",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "device_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -1812,7 +1812,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -2238,13 +2238,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policies": {
+	"GET /accounts/{account_id}/devices/policies": {
 		"description": "Fetches a list of the device settings profiles for an account.",
 		"operationId": "devices-list-device-settings-policies",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -3018,13 +3018,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy": {
+	"GET /accounts/{account_id}/devices/policy": {
 		"description": "Fetches the default device settings profile for an account.",
 		"operationId": "devices-get-default-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -3714,13 +3714,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/{uuid}": {
+	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
 		"description": "Fetches a device settings profile by ID.",
 		"operationId": "devices-get-device-settings-policy-by-id",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -3731,7 +3731,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -4499,13 +4499,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/{uuid}/exclude": {
+	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"description": "Fetches the list of routes excluded from the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-get-split-tunnel-exclude-list-for-a-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -4516,7 +4516,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -4938,13 +4938,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/{uuid}/fallback_domains": {
+	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"description": "Fetches the list of domains to bypass Gateway DNS resolution from a specified device settings profile. These domains will use the specified local DNS resolver instead.",
 		"operationId": "devices-get-local-domain-fallback-list-for-a-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -4955,7 +4955,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -5375,13 +5375,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/{uuid}/include": {
+	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
 		"description": "Fetches the list of routes included in the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-get-split-tunnel-include-list-for-a-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -5392,7 +5392,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -5814,13 +5814,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/exclude": {
+	"GET /accounts/{account_id}/devices/policy/exclude": {
 		"description": "Fetches the list of routes excluded from the WARP client's tunnel.",
 		"operationId": "devices-get-split-tunnel-exclude-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -6242,13 +6242,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/fallback_domains": {
+	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
 		"description": "Fetches a list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead.",
 		"operationId": "devices-get-local-domain-fallback-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -6668,13 +6668,13 @@
 			"Devices"
 		]
 	},
-	"GET /accounts/{identifier}/devices/policy/include": {
+	"GET /accounts/{account_id}/devices/policy/include": {
 		"description": "Fetches the list of routes included in the WARP client's tunnel.",
 		"operationId": "devices-get-split-tunnel-include-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -7096,13 +7096,13 @@
 			"Devices"
 		]
 	},
-	"PATCH /accounts/{identifier}/devices/policy": {
+	"PATCH /accounts/{account_id}/devices/policy": {
 		"description": "Updates the default device settings profile for an account.",
 		"operationId": "devices-update-default-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -7863,13 +7863,13 @@
 			"Devices"
 		]
 	},
-	"PATCH /accounts/{identifier}/devices/policy/{uuid}": {
+	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
 		"description": "Updates a configured device settings profile.",
 		"operationId": "devices-update-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -7880,7 +7880,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -8747,13 +8747,13 @@
 			"Devices"
 		]
 	},
-	"POST /accounts/{identifier}/devices/policy": {
+	"POST /accounts/{account_id}/devices/policy": {
 		"description": "Creates a device settings profile to be applied to certain devices matching the criteria.",
 		"operationId": "devices-create-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -9635,13 +9635,13 @@
 			"Devices"
 		]
 	},
-	"POST /accounts/{identifier}/devices/revoke": {
+	"POST /accounts/{account_id}/devices/revoke": {
 		"description": "Revokes a list of devices.",
 		"operationId": "devices-revoke-devices",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -9973,13 +9973,13 @@
 			"Devices"
 		]
 	},
-	"POST /accounts/{identifier}/devices/unrevoke": {
+	"POST /accounts/{account_id}/devices/unrevoke": {
 		"description": "Unrevokes a list of devices.",
 		"operationId": "devices-unrevoke-devices",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -10311,13 +10311,13 @@
 			"Devices"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/policy/{uuid}/exclude": {
+	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"description": "Sets the list of routes excluded from the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-set-split-tunnel-exclude-list-for-a-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -10328,7 +10328,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -10528,7 +10528,7 @@
 				},
 				"description": "Set the Split Tunnel exclude list for a device settings profile response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -10785,13 +10785,13 @@
 			"Devices"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/policy/{uuid}/fallback_domains": {
+	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"description": "Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. This will only apply to the specified device settings profile.",
 		"operationId": "devices-set-local-domain-fallback-list-for-a-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -10802,7 +10802,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -11256,13 +11256,13 @@
 			"Devices"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/policy/{uuid}/include": {
+	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
 		"description": "Sets the list of routes included in the WARP client's tunnel for a specific device settings profile.",
 		"operationId": "devices-set-split-tunnel-include-list-for-a-device-settings-policy",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "uuid",
+				"name": "policy_id",
 				"required": true,
 				"schema": {
 					"description": "Device ID.",
@@ -11273,7 +11273,7 @@
 			},
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -11473,7 +11473,7 @@
 				},
 				"description": "Set the Split Tunnel include list for a device settings profile response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -11730,13 +11730,13 @@
 			"Devices"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/policy/exclude": {
+	"PUT /accounts/{account_id}/devices/policy/exclude": {
 		"description": "Sets the list of routes excluded from the WARP client's tunnel.",
 		"operationId": "devices-set-split-tunnel-exclude-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -11936,7 +11936,7 @@
 				},
 				"description": "Set the Split Tunnel exclude list response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -12193,13 +12193,13 @@
 			"Devices"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/policy/fallback_domains": {
+	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
 		"description": "Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead.",
 		"operationId": "devices-set-local-domain-fallback-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -12653,13 +12653,13 @@
 			"Devices"
 		]
 	},
-	"PUT /accounts/{identifier}/devices/policy/include": {
+	"PUT /accounts/{account_id}/devices/policy/include": {
 		"description": "Sets the list of routes included in the WARP client's tunnel.",
 		"operationId": "devices-set-split-tunnel-include-list",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"example": "699d98642c564d2e855e9661899b7252"
@@ -12859,7 +12859,7 @@
 				},
 				"description": "Set the Split Tunnel include list response"
 			},
-			"4xx": {
+			"4XX": {
 				"content": {
 					"application/json": {
 						"schema": {
