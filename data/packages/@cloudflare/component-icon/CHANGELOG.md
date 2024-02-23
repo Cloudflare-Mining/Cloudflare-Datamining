@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.2.0
+
+### Minor Changes
+
+- 4a5f16bfab: Add Calls icon
+
 ## 12.1.2
 
 ### Patch Changes

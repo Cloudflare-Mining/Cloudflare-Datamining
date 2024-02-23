@@ -1,11 +1,29 @@
 # Change Log
 
+## 6.0.4
+
+### Patch Changes
+
+- @cloudflare/component-button@8.1.1
+- @cloudflare/component-grid@3.0.4
+- @cloudflare/component-listbox@2.0.4
+- @cloudflare/component-search@8.0.4
+- @cloudflare/component-select-2@7.0.4
+- @cloudflare/component-time-period-picker@6.0.4
+- @cloudflare/util-responsive@2.0.4
+
 ## 6.0.3
 
 ### Patch Changes
 
 - Updated dependencies [1a477091fa]
   - @cloudflare/component-button@8.1.0
+  - @cloudflare/component-grid@3.0.3
+  - @cloudflare/component-listbox@2.0.3
+  - @cloudflare/component-search@8.0.3
+  - @cloudflare/component-select-2@7.0.3
+  - @cloudflare/component-time-period-picker@6.0.3
+  - @cloudflare/util-responsive@2.0.3
 
 ## 6.0.2
 

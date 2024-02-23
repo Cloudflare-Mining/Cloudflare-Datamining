@@ -1,11 +1,19 @@
 # Change Log
 
+## 5.0.4
+
+### Patch Changes
+
+- @cloudflare/component-arrow-swivel@8.0.4
+- @cloudflare/component-button@8.1.1
+
 ## 5.0.3
 
 ### Patch Changes
 
 - Updated dependencies [1a477091fa]
   - @cloudflare/component-button@8.1.0
+  - @cloudflare/component-arrow-swivel@8.0.3
 
 ## 5.0.2
 
