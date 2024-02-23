@@ -10,6 +10,7 @@ import Backward from './Backward';
 import Bolt from './Bolt';
 import Byoip from './Byoip';
 import Calendar from './Calendar';
+import Calls from './Calls';
 import Carbon from './Carbon';
 import CaretDoubleLeft from './CaretDoubleLeft';
 import CaretDoubleRight from './CaretDoubleRight';
@@ -168,6 +169,7 @@ export default {
   bolt: Bolt,
   byoip: Byoip,
   calendar: Calendar,
+  calls: Calls,
   carbon: Carbon,
   'caret-double-left': CaretDoubleLeft,
   'caret-double-right': CaretDoubleRight,

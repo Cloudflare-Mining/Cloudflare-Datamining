@@ -12,6 +12,7 @@ declare const _default: {
     bolt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     byoip: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     calendar: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    calls: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     carbon: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-double-left': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'caret-double-right': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
