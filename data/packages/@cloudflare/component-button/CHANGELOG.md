@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.2.0
+
+### Minor Changes
+
+- a956e75f72: Update icon package version
+
 ## 8.1.1
 
 ## 8.1.0
