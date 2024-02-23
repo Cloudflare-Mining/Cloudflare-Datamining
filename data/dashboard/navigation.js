@@ -15,7 +15,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: T => (0, n.z1)(A.Mr)(T) && (0, j.z7)(T) && !!(0, j.z$)(T).length
+		hasPermission: T => (0, n.z1)(A.Mr)(T) && (0, S.z7)(T) && !!(0, S.z$)(T).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -182,7 +182,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		hasPermission: T => !!(0, a.AB)(T),
-		tabs: M.DW
+		tabs: h.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -223,7 +223,7 @@ const navigation = {
 		url: "/network-security/magic_firewall",
 		iconType: "magic-firewall",
 		hasPermission: T => !!(0, a.zJ)(T),
-		tabs: M.$$
+		tabs: h.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -232,7 +232,7 @@ const navigation = {
 			const ne = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
 			return !!(0, a.Tk)(T) || ne
 		},
-		tabs: M.Dn
+		tabs: h.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -647,10 +647,10 @@ const navigation = {
 		hasPermission: T => {
 			const ne = (0, l.nA)(T);
 			if ((0, m.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !ne) return !1;
-			const te = !!((0, h.l8)(T) || (0, l.DQ)(T)),
+			const ee = !!((0, M.l8)(T) || (0, l.DQ)(T)),
 				H = !!(0, l.ZB)(T, "spectrum", "enabled"),
-				ee = !!(0, l.Ns)(ne);
-			return H || te || !ee
+				te = !!(0, l.Ns)(ne);
+			return H || ee || !te
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -730,7 +730,7 @@ const navigation = {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
 			labels: ["new"],
-			navigationType: "global-settings",
+			navigationType: "version",
 			hasPermission: T => {
 				const ne = (0, l.nA)(T);
 				return ne ? !!(0, l.ZB)(T, "firewall", "api_shield_tab") && (0, l.tU)(ne, "business") && (0, a.$n)(T, "waf", "firewall.rule") : !1

@@ -72,7 +72,11 @@
 	},
 	models_list: {
 		common: {
-			no_models: "No models"
+			no_models: "No models",
+			clear: "Clear",
+			all_provideres: "All Providers",
+			all_authors: "All Authors",
+			all_types: "All Types"
 		}
 	},
 	create_ai_worker: "Create an AI Model Worker",

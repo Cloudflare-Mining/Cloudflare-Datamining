@@ -778,7 +778,7 @@
 			var Ht = n("../react/app/components/Persistence/index.tsx"),
 				Yt = n("../../../../node_modules/@cloudflare/elements/es/index.js"),
 				Jt = n("../react/app/components/LoadingSuspense.tsx");
-			const Qt = he().lazy(() => Promise.all([n.e(2480), n.e(18741), n.e(4616), n.e(56310), n.e(83031), n.e(98283), n.e(76725), n.e(98210), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
+			const Qt = he().lazy(() => Promise.all([n.e(2480), n.e(18741), n.e(4616), n.e(56310), n.e(45928), n.e(98283), n.e(76725), n.e(98210), n.e(40453)]).then(n.bind(n, "../react/common/components/DevPanel/Main.tsx")));
 			var Xt = () => he().createElement(Jt.Z, null, he().createElement(Qt, null));
 			const qt = () => (De.useEffect(() => S, []), null);
 			var en = n("../../../../node_modules/moment/moment.js"),
@@ -832,7 +832,7 @@
 						}
 					}, [v.search])
 				},
-				sn = he().lazy(() => Promise.all([n.e(2480), n.e(18741), n.e(4616), n.e(56310), n.e(83031), n.e(81778), n.e(72019), n.e(4292), n.e(76725), n.e(98210), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				sn = he().lazy(() => Promise.all([n.e(2480), n.e(18741), n.e(4616), n.e(56310), n.e(45928), n.e(81778), n.e(72019), n.e(4292), n.e(76725), n.e(98210), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				cn = he().lazy(() => Promise.all([n.e(18741), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: v
@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "5608c674edfd955dfc54443bb709376904e7644e",
+					commit: "45d4874fdb80bd482537d3c6828730b0cd25ad29",
 					env: "production",
-					builtAt: 1708683100409,
-					dashVersion: "c5e9d8ee7034a42fc1ed646310e4353baeaedf7c",
+					builtAt: 1708701116425,
+					dashVersion: "645947a0d35060df0e436b87537efa7cf6d33e1e",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
