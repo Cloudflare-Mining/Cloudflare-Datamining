@@ -396,7 +396,7 @@ declare interface DurableObject {
   ): void | Promise<void>;
   webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
 }
-declare interface DurableObjectStub extends WorkerRpc {
+declare interface DurableObjectStub extends Fetcher {
   readonly id: DurableObjectId;
   readonly name?: string;
 }
@@ -1144,6 +1144,7 @@ declare abstract class Fetcher {
     messages: ServiceBindingQueueMessage[]
   ): Promise<FetcherQueueResult>;
   scheduled(options?: FetcherScheduledOptions): Promise<FetcherScheduledResult>;
+  getRpcMethodForTestOnly(name: string): (() => any | Promise<any>) | null;
 }
 declare interface FetcherPutOptions {
   expiration?: number;
@@ -1479,7 +1480,6 @@ declare type R2Objects = {
       truncated: false;
     }
 );
-declare abstract class WorkerRpc extends Fetcher {}
 declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
@@ -1619,6 +1619,9 @@ declare class ReadableStreamBYOBReader {
     minElements: number,
     view: T
   ): Promise<ReadableStreamReadResult<T>>;
+}
+declare interface ReadableStreamBYOBReaderReadableStreamBYOBReaderReadOptions {
+  min?: number;
 }
 declare interface ReadableStreamGetReaderOptions {
   mode: "byob";
@@ -3580,7 +3583,10 @@ declare abstract class D1PreparedStatement {
   first<T = Record<string, unknown>>(): Promise<T | null>;
   run(): Promise<D1Response>;
   all<T = Record<string, unknown>>(): Promise<D1Result<T>>;
-  raw<T = unknown[]>(): Promise<T[]>;
+  raw<T = unknown[]>(options: {
+    columnNames: true;
+  }): Promise<[string[], ...T[]]>;
+  raw<T = unknown[]>(options?: { columnNames?: false }): Promise<T[]>;
 }
 /**
  * An email message that can be sent from a Worker.
@@ -3695,7 +3701,7 @@ declare interface Hyperdrive {
 }
 declare type Params<P extends string = any> = Record<P, string | string[]>;
 declare type EventContext<Env, P extends string, Data> = {
-  request: Request;
+  request: Request<unknown, IncomingRequestCfProperties<unknown>>;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
   passThroughOnException: () => void;
@@ -3714,7 +3720,7 @@ declare type PagesFunction<
   Data extends Record<string, unknown> = Record<string, unknown>
 > = (context: EventContext<Env, Params, Data>) => Response | Promise<Response>;
 declare type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
-  request: Request;
+  request: Request<unknown, IncomingRequestCfProperties<unknown>>;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
   passThroughOnException: () => void;

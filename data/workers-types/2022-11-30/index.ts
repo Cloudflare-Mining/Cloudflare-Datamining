@@ -398,7 +398,7 @@ export interface DurableObject {
   ): void | Promise<void>;
   webSocketError?(ws: WebSocket, error: unknown): void | Promise<void>;
 }
-export interface DurableObjectStub extends WorkerRpc {
+export interface DurableObjectStub extends Fetcher {
   readonly id: DurableObjectId;
   readonly name?: string;
 }
@@ -1440,7 +1440,6 @@ export type R2Objects = {
       truncated: false;
     }
 );
-export declare abstract class WorkerRpc extends Fetcher {}
 export declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
@@ -1580,6 +1579,9 @@ export declare class ReadableStreamBYOBReader {
     minElements: number,
     view: T
   ): Promise<ReadableStreamReadResult<T>>;
+}
+export interface ReadableStreamBYOBReaderReadableStreamBYOBReaderReadOptions {
+  min?: number;
 }
 export interface ReadableStreamGetReaderOptions {
   mode: "byob";
@@ -3527,7 +3529,10 @@ export declare abstract class D1PreparedStatement {
   first<T = Record<string, unknown>>(): Promise<T | null>;
   run(): Promise<D1Response>;
   all<T = Record<string, unknown>>(): Promise<D1Result<T>>;
-  raw<T = unknown[]>(): Promise<T[]>;
+  raw<T = unknown[]>(options: {
+    columnNames: true;
+  }): Promise<[string[], ...T[]]>;
+  raw<T = unknown[]>(options?: { columnNames?: false }): Promise<T[]>;
 }
 /**
  * An email message that can be sent from a Worker.
@@ -3635,7 +3640,7 @@ export interface Hyperdrive {
 }
 export type Params<P extends string = any> = Record<P, string | string[]>;
 export type EventContext<Env, P extends string, Data> = {
-  request: Request;
+  request: Request<unknown, IncomingRequestCfProperties<unknown>>;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
   passThroughOnException: () => void;
@@ -3654,7 +3659,7 @@ export type PagesFunction<
   Data extends Record<string, unknown> = Record<string, unknown>
 > = (context: EventContext<Env, Params, Data>) => Response | Promise<Response>;
 export type EventPluginContext<Env, P extends string, Data, PluginArgs> = {
-  request: Request;
+  request: Request<unknown, IncomingRequestCfProperties<unknown>>;
   functionPath: string;
   waitUntil: (promise: Promise<any>) => void;
   passThroughOnException: () => void;
