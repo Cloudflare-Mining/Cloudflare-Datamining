@@ -1,11 +1,11 @@
 {
-	"DELETE /accounts/{account_identifier}/pcaps/ownership/{identifier}": {
+	"DELETE /accounts/{account_id}/pcaps/ownership/{ownership_id}": {
 		"description": "Deletes buckets added to the packet captures API.",
 		"operationId": "magic-pcap-collection-delete-buckets-for-full-packet-captures",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "ownership_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -17,7 +17,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -56,13 +56,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/pcaps": {
+	"GET /accounts/{account_id}/pcaps": {
 		"description": "Lists all packet capture requests for an account.",
 		"operationId": "magic-pcap-collection-list-packet-capture-requests",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -844,13 +844,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/pcaps/{identifier}": {
+	"GET /accounts/{account_id}/pcaps/{pcap_id}": {
 		"description": "Get information for a PCAP request by id.",
 		"operationId": "magic-pcap-collection-get-pcap-request",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pcap_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -862,7 +862,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1598,13 +1598,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/pcaps/{identifier}/download": {
+	"GET /accounts/{account_id}/pcaps/{pcap_id}/download": {
 		"description": "Download PCAP information into a file. Response is a binary PCAP file.",
 		"operationId": "magic-pcap-collection-download-simple-pcap",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "identifier",
+				"name": "pcap_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1616,7 +1616,7 @@
 			},
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -1658,13 +1658,13 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_identifier}/pcaps/ownership": {
+	"GET /accounts/{account_id}/pcaps/ownership": {
 		"description": "List all buckets configured for use with PCAPs API.",
 		"operationId": "magic-pcap-collection-list-pca-ps-bucket-ownership",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -2146,13 +2146,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/pcaps": {
+	"POST /accounts/{account_id}/pcaps": {
 		"description": "Create new PCAP request for account.",
 		"operationId": "magic-pcap-collection-create-pcap-request",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3063,13 +3063,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/pcaps/ownership": {
+	"POST /accounts/{account_id}/pcaps/ownership": {
 		"description": "Adds an AWS or GCP bucket to use with full packet captures.",
 		"operationId": "magic-pcap-collection-add-buckets-for-full-packet-captures",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
@@ -3485,13 +3485,13 @@
 			"pro": false
 		}
 	},
-	"POST /accounts/{account_identifier}/pcaps/ownership/validate": {
+	"POST /accounts/{account_id}/pcaps/ownership/validate": {
 		"description": "Validates buckets added to the packet captures API.",
 		"operationId": "magic-pcap-collection-validate-buckets-for-full-packet-captures",
 		"parameters": [
 			{
 				"in": "path",
-				"name": "account_identifier",
+				"name": "account_id",
 				"required": true,
 				"schema": {
 					"description": "Identifier",
