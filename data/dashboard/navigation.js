@@ -15,7 +15,7 @@ const navigation = {
 		title: "navigation.root.partners",
 		url: "/partners/tenant",
 		iconType: "carbon",
-		hasPermission: T => (0, n.z1)(b.Mr)(T) && (0, j.z7)(T) && !!(0, j.z$)(T).length
+		hasPermission: T => (0, n.z1)(A.Mr)(T) && (0, j.z7)(T) && !!(0, j.z$)(T).length
 	}],
 	partners: [{
 		title: "navigation.partners.tenant",
@@ -105,7 +105,7 @@ const navigation = {
 			title: "navigation.account.logs",
 			url: "/logs",
 			labels: ["new"],
-			hasPermission: T => (0, a.iY)(T) && (0, A.S6)(T) && !!(0, n.z1)("account-logpush")(T)
+			hasPermission: T => (0, a.iY)(T) && (0, D.S6)(T) && !!(0, n.z1)("account-logpush")(T)
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
@@ -119,51 +119,51 @@ const navigation = {
 		title: "navigation.account.security_center",
 		url: "/security-center",
 		iconType: "product-security-center",
-		hasPermission: T => (0, a.iY)(T) && (0, c.xU)(T),
+		hasPermission: T => (0, a.iY)(T) && (0, u.xU)(T),
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
-			hasPermission: T => (0, a.iY)(T) && (0, c.sL)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.sL)(T)
 		}, {
 			title: "navigation.account.security_center.security_analytics",
 			url: "/security-center/analytics",
 			labels: ["beta"],
-			hasPermission: T => (0, a.iY)(T) && (0, c.B_)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.B_)(T)
 		}, {
 			title: "navigation.account.security_center.security_events",
 			url: "/security-center/events",
 			labels: ["beta"],
-			hasPermission: T => (0, a.iY)(T) && (0, c.B_)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.B_)(T)
 		}, {
 			title: "navigation.account.security_center.infrastructure",
 			url: "/security-center/inventory",
-			hasPermission: T => (0, a.iY)(T) && (0, c.sL)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.sL)(T)
 		}, {
 			title: "navigation.account.security_center.investigate",
 			url: "/security-center/investigate",
-			hasPermission: T => (0, a.iY)(T) && (0, c.TT)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.TT)(T)
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
 			labels: ["beta"],
-			hasPermission: T => (0, a.iY)(T) && (0, c.jD)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.jD)(T)
 		}, {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			labels: ["beta"],
-			hasPermission: T => (0, a.iY)(T) && (0, c.BU)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.BU)(T)
 		}, {
 			title: "navigation.account.security_center.cfone_priorities",
 			url: "/cloudforce-one/priorities",
-			hasPermission: T => (0, a.iY)(T) && (0, c.fs)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.fs)(T)
 		}, {
 			title: "navigation.account.security_center.cfone_reports",
 			url: "/cloudforce-one/reports",
-			hasPermission: T => (0, a.iY)(T) && (0, c.Bc)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.Bc)(T)
 		}, {
 			title: "navigation.account.security_center.cfone_requests",
 			url: "/cloudforce-one/requests",
-			hasPermission: T => (0, a.iY)(T) && (0, c.gA)(T)
+			hasPermission: T => (0, a.iY)(T) && (0, u.gA)(T)
 		}]
 	}, {
 		title: "navigation.account.request_tracer",
@@ -200,6 +200,11 @@ const navigation = {
 		url: "/",
 		labels: ["separator"],
 		iconType: "internet-browser"
+	}, {
+		title: "navigation.account.interconnects",
+		url: "/interconnects",
+		iconType: "magic-transit-logo",
+		hasPermission: T => !!((0, a.iY)(T) && (0, n.z1)("magic-interconnects")(T) && (!!(0, r.Le)(T, "magic_wan", "mw_home") || !!(0, r.Le)(T, "magic_transit", "mt_home")))
 	}, {
 		title: "navigation.account.magic_transit",
 		url: "/magic-transit",
@@ -466,7 +471,7 @@ const navigation = {
 		url: "/calls",
 		labels: ["beta"],
 		iconType: "user-multi",
-		hasPermission: T => (0, a.iY)(T) && (!!(0, r.Le)(T, "calls", "enabled") || !!(0, r.Le)(T, "Calls", "enabled"))
+		hasPermission: T => (0, a.iY)(T) && (!!(0, r.Le)(T, "calls", "visible") || !!(0, r.Le)(T, "Calls", "visible"))
 	}, {
 		title: "navigation.account.group_title.account_management",
 		url: "/",
@@ -571,7 +576,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			navigationType: "both",
-			hasPermission: T => (0, A.Xu)(T)
+			hasPermission: T => (0, D.Xu)(T)
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
@@ -591,7 +596,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
 		tabs: z.bB,
-		hasPermission: T => !(0, m.yD)(T) && (0, D.m7)(T)
+		hasPermission: T => !(0, m.yD)(T) && (0, b.m7)(T)
 	}, {
 		title: "navigation.zone.dns",
 		url: "/dns",
@@ -693,7 +698,7 @@ const navigation = {
 			navigationType: "version",
 			url: "/security/analytics",
 			labels: ["beta"],
-			hasPermission: T => (0, u.B_)(T) && (0, a.$n)(T, "waf", "firewall.rule")
+			hasPermission: T => (0, c.B_)(T) && (0, a.$n)(T, "waf", "firewall.rule")
 		}, {
 			title: "navigation.zone.security.events",
 			url: "/security/events",
