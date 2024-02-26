@@ -5,31 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About Product Experience (PX) team</strong></p>
-<p>We're a diverse group of creative people that love to learn, collaborate, and solve large-scale problems. We're looking for an inquisitive, curious, and talented Senior Product Designer to join our team.</p>
-<p>Your work will impact and influence the user experience of a product used by millions of people daily. As a Senior Product Designer, you will work closely with other designers, engineers, product managers, and cross-functional stakeholders. While this is not a managerial role with direct reports, we expect our Senior Product Designers to lead by example and coach the team into doing their best work.</p>
-<p>If you're a systems-thinking Senior Product Designer who's excited to work on significant, meaningful, and complex problems with real-world impact, come help us make the Internet better! We'd love to hear from you.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>About the Role</strong><strong><br></strong>Cloudflare is seeking an innovative EMEA Content and Campaigns Manager to join our growing marketing team. You will own the strategy and execution of content and campaigns across EMEA, measuring effectiveness and optimizing programs to fuel our regional growth.</p>
+<p>In this cross-functional role, you will collaborate with stakeholders across sales, marketing, and local teams to support the usage and production of content that engages prospects and progresses them through the funnel. You will also be responsible for owning the strategy and execution of key lead generation and content syndication campaigns that drive Enterprise-level marketing qualified leads and sales pipeline for the EMEA business. If you’re passionate about leading pipeline-driving marketing campaigns and want to level up your expertise with a trailblazing brand - this is the perfect opportunity.<br><br></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Demonstrate talent and passion for designing end-to-end user experiences.</li>
-	<li>Distill complex problems into approachable steps through researching, sketching, and sharing ideas with your cross-functional team.</li>
-	<li>Creation of low and high fidelity user interface designs and prototypes using Figma.</li>
-	<li>Partner with product managers and engineering leaders to work through technical tradeoffs that affect product roadmaps.</li>
-	<li>Partner with other designers to collaborate on shared patterns, product vision, and design goals.</li>
-	<li>Facilitate design reviews with cross-functional teams.</li>
-	<li>Influence and contribute to the internal design process and team culture</li>
-	<li>Make time to mentor other designers on the team and share your craft, learning as you teach.</li>
-	<li>Find ways to grow design's impact, spending time to share design decisions throughout the organisation.</li>
+	<li>Build and manage the EMEA campaigns content plan in alignment with the EMEA Field Marketers, Localisation team, and the Global Content and Campaigns teams&nbsp;</li>
+	<li>Liaise with EMEA Field Marketers to coordinate and manage content requests from local markets&nbsp;</li>
+	<li>Collaborate with fellow EMEA digital channel owners to build a cohesive content distribution strategy&nbsp;</li>
+	<li>Plan and manage EMEA-wide content syndication campaigns across 1:many and 1:few ABM campaigns, and partner with regional managers to support localised in-country content syndication initiatives&nbsp;</li>
+	<li>Own budget, metrics, and reporting for the EMEA content syndication channel (inc. engagement, MQLs, and marketing-influenced pipeline)&nbsp;</li>
+	<li>Inform the nurture strategy for leads from EMEA paid campaigns and work with Global Campaigns and Marketing Operations teams to optimise and drive MQLs</li>
+	<li>Define target account lists for your campaigns in alignment with sales, EMEA Field Marketers, MOPS &amp; Global Campaigns&nbsp;&nbsp;</li>
+	<li>Collaborate with BDR and sales teams to ensure alignment on campaign plans and follow up actions&nbsp;</li>
+	<li>Evaluate and manage local vendors for EMEA campaigns&nbsp;</li>
+	<li>Run regular analysis on content and campaign performance and communicate results to key stakeholders<br><br></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Deep understanding of human-centered design.</li>
-	<li>8+ years working in professional UX or product design roles.</li>
-	<li>Effective visual, written, and verbal communication skills.</li>
-	<li>Technical expertise and an understanding of network services/developer tools are a plus.</li>
-	<li>If possible, please submit a 1-2 case studies or portfolio with your applicaion</li>
+	<li>Must have 4+ years of proven demand generation and campaign management experience within B2B technology</li>
+	<li>Ability to effectively align content to funnel stages and build plans for nurture campaigns&nbsp;</li>
+	<li>Full understanding of marketing funnel and opportunity/campaign ROI tracking</li>
+	<li>Knowledge of account based marketing fundamentals and some ABM experience preferred&nbsp;</li>
+	<li>Hands-on experience with Excel, Salesforce, Marketo, HubSpot, Eloqua, Tableau (or other marketing automation/CRM and reporting tools)</li>
+	<li>Proven success managing time and multiple projects in a high growth environment with tight deadlines</li>
+	<li>Must be comfortable with reporting and communicating campaign efforts and impact across the organization</li>
+	<li>Analytically inclined, exceptional organizational skills with rigorous attention to detail</li>
+	<li>Excellent written and stellar presentation skills</li>
+	<li>Budget and vendor management skills&nbsp;</li>
+	<li>Having a strong sense of curiosity and passion for learning&nbsp;</li>
+	<li>Positive and flexible attitude for working in a fast-paced environment and being able to build strong relationships across various departments and functions</li>
+	<li>Ability to work effectively cross-functionally with a variety of roles, from executives to campaign managers and sales development teams</li>
 </ul>
-<p><strong>Available Locations:&nbsp;</strong>Lisbon or Remote Portugal, and London or Remote UK</p>
+<p><strong>Bonus points</strong></p>
+<ul>
+	<li>Prior demand generation experience in a high growth company in the SaaS, security, or network space (or work with an agency supporting clients in that space)</li>
+	<li>Experience with various marketing technology tools like ON24, Demandbase, Reachdesk, TechTarget, Folloze, Google Analytics&nbsp;</li>
+	<li>Knowledge of how the Internet works</li>
+	<li>Bilingual Spanish, French, German or Polish</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
