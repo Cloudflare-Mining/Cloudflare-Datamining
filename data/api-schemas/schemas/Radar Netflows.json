@@ -126,6 +126,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "normalization",
 				"schema": {
 					"description": "Normalization method applied. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
@@ -460,6 +472,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "format",
 				"schema": {
 					"description": "Format results are returned in.",
@@ -684,6 +708,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},

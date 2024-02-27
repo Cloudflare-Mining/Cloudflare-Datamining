@@ -95,6 +95,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "deviceType",
 				"schema": {
 					"description": "Filter for device type.",
@@ -499,6 +511,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -923,6 +947,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -1327,6 +1363,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -1751,6 +1799,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -2163,6 +2223,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -2562,6 +2634,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -3009,6 +3093,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "deviceType",
 				"schema": {
 					"description": "Filter for device type.",
@@ -3352,6 +3448,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -3736,6 +3844,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -4103,6 +4223,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -4460,6 +4592,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -4803,6 +4947,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -5168,6 +5324,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -5519,6 +5687,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -5857,6 +6037,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -6220,6 +6412,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -6662,6 +6866,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "deviceType",
 				"schema": {
 					"description": "Filter for device type.",
@@ -7081,6 +7297,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -7490,6 +7718,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -7916,6 +8156,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -8325,6 +8577,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -8756,6 +9020,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -9172,6 +9448,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -9566,6 +9854,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -9989,6 +10289,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -10396,6 +10708,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -10838,6 +11162,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "deviceType",
 				"schema": {
 					"description": "Filter for device type.",
@@ -11257,6 +11593,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -11666,6 +12014,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -12092,6 +12452,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -12501,6 +12873,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},
@@ -12932,6 +13316,18 @@
 			},
 			{
 				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "botClass",
 				"schema": {
 					"description": "Filter for bot class. Refer to [Bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes/).",
@@ -13340,6 +13736,18 @@
 				"schema": {
 					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
 					"example": "US,CA",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "continent",
+				"schema": {
+					"description": "Array of comma separated list of continents (alpha-2 continent codes). Start with `-` to exclude from results. For example, `-EU,NA` excludes results from Europe, but includes results from North America.",
+					"example": "EU,NA",
 					"items": {
 						"type": "string"
 					},

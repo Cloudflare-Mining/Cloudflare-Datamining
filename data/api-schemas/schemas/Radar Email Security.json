@@ -71,30 +71,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "dkim",
 				"schema": {
 					"description": "Filter for dkim.",
@@ -138,6 +114,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -433,30 +427,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -500,6 +470,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -795,30 +783,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -862,6 +826,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -1157,30 +1139,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -1241,6 +1199,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -1531,30 +1507,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -1615,6 +1567,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -1905,30 +1875,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -1972,6 +1918,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -2195,6 +2159,374 @@
 			"pro": true
 		}
 	},
+	"GET /radar/email/security/summary/spoof": {
+		"description": "Proportion of emails categorized as either spoof or legitimate (non-spoof).",
+		"operationId": "radar-get-email-security-summary-by-spoof",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "arc",
+				"schema": {
+					"description": "Filter for arc (Authenticated Received Chain).",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dkim",
+				"schema": {
+					"description": "Filter for dkim.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dmarc",
+				"schema": {
+					"description": "Filter for dmarc.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "spf",
+				"schema": {
+					"description": "Filter for spf.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"NOT_SPOOF": {
+													"example": "35",
+													"type": "string"
+												},
+												"SPOOF": {
+													"example": "65",
+													"type": "string"
+												}
+											},
+											"required": [
+												"SPOOF",
+												"NOT_SPOOF"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get SPOOF Summary",
+		"tags": [
+			"Radar Email Security"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/email/security/summary/threat_category": {
 		"description": "Percentage distribution of emails classified in Threat Categories.",
 		"operationId": "radar-get-email-security-summary-by-threat-category",
@@ -2267,30 +2599,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -2351,6 +2659,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -2579,6 +2905,366 @@
 			"pro": true
 		}
 	},
+	"GET /radar/email/security/summary/tls_version": {
+		"description": "Percentage distribution of emails classified per TLS Version.",
+		"operationId": "radar-get-email-security-summary-by-tls-version",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "arc",
+				"schema": {
+					"description": "Filter for arc (Authenticated Received Chain).",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dkim",
+				"schema": {
+					"description": "Filter for dkim.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dmarc",
+				"schema": {
+					"description": "Filter for dmarc.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "spf",
+				"schema": {
+					"description": "Filter for spf.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												},
+												"normalization": {
+													"example": "PERCENTAGE",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"normalization",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"summary_0": {
+											"properties": {
+												"TLS 1.0": {
+													"example": "3",
+													"type": "string"
+												},
+												"TLS 1.1": {
+													"example": "12",
+													"type": "string"
+												},
+												"TLS 1.2": {
+													"example": "41",
+													"type": "string"
+												},
+												"TLS 1.3": {
+													"example": "44",
+													"type": "string"
+												}
+											},
+											"required": [
+												"TLS 1.0",
+												"TLS 1.1",
+												"TLS 1.2",
+												"TLS 1.3"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"summary_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get TLS Version Summary",
+		"tags": [
+			"Radar Email Security"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/email/security/timeseries_groups/arc": {
 		"description": "Percentage distribution of emails classified per Arc validation over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-arc",
@@ -2666,30 +3352,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "dkim",
 				"schema": {
 					"description": "Filter for dkim.",
@@ -2733,6 +3395,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -2965,30 +3645,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -3032,6 +3688,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -3264,30 +3938,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -3331,6 +3981,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -3563,30 +4231,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -3647,6 +4291,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -3871,30 +4533,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -3955,6 +4593,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -4179,30 +4835,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -4246,6 +4878,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -4391,6 +5041,308 @@
 			"pro": true
 		}
 	},
+	"GET /radar/email/security/timeseries_groups/spoof": {
+		"description": "Percentage distribution of emails classified as SPOOF over time.",
+		"operationId": "radar-get-email-security-timeseries-group-by-spoof",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "aggInterval",
+				"schema": {
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "arc",
+				"schema": {
+					"description": "Filter for arc (Authenticated Received Chain).",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dkim",
+				"schema": {
+					"description": "Filter for dkim.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dmarc",
+				"schema": {
+					"description": "Filter for dmarc.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "spf",
+				"schema": {
+					"description": "Filter for spf.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
+											"properties": {
+												"NOT_SPOOF": {
+													"items": {
+														"example": "35",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"SPOOF": {
+													"items": {
+														"example": "65",
+														"type": "string"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"SPOOF",
+												"NOT_SPOOF"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get SPOOF Validations Time Series",
+		"tags": [
+			"Radar Email Security"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/email/security/timeseries_groups/threat_category": {
 		"description": "Percentage distribution of emails classified in Threat Categories over time.",
 		"operationId": "radar-get-email-security-timeseries-group-by-threat-category",
@@ -4478,30 +5430,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -4562,6 +5490,24 @@
 							"PASS",
 							"NONE",
 							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
 						],
 						"type": "string"
 					},
@@ -4715,17 +5661,23 @@
 			"pro": true
 		}
 	},
-	"GET /radar/email/security/top/ases": {
-		"description": "Get the top autonomous systems (AS) by email messages. Values are a percentage out of the total emails.",
-		"operationId": "radar-get-email-security-top-ases-by-messages",
+	"GET /radar/email/security/timeseries_groups/tls_version": {
+		"description": "Percentage distribution of emails classified per TLS Version over time.",
+		"operationId": "radar-get-email-security-timeseries-group-by-tls-version",
 		"parameters": [
 			{
 				"in": "query",
-				"name": "limit",
+				"name": "aggInterval",
 				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
+					"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals). Refer to [Aggregation intervals](https://developers.cloudflare.com/radar/concepts/aggregation-intervals/).",
+					"enum": [
+						"15m",
+						"1h",
+						"1d",
+						"1w"
+					],
+					"example": "1h",
+					"type": "string"
 				}
 			},
 			{
@@ -4789,30 +5741,6 @@
 					"example": "2023-09-01T11:41:33.782Z",
 					"items": {
 						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
 						"type": "string"
 					},
 					"type": "array"
@@ -4909,119 +5837,51 @@
 								"result": {
 									"properties": {
 										"meta": {
+											"type": "object"
+										},
+										"serie_0": {
 											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
+												"TLS 1.0": {
 													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
+														"example": "3",
+														"type": "string"
 													},
 													"type": "array"
 												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
+												"TLS 1.1": {
+													"items": {
+														"example": "12",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"TLS 1.2": {
+													"items": {
+														"example": "41",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"TLS 1.3": {
+													"items": {
+														"example": "44",
+														"type": "string"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
-												"dateRange",
-												"lastUpdated"
+												"TLS 1.0",
+												"TLS 1.1",
+												"TLS 1.2",
+												"TLS 1.3"
 											],
 											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
-														"type": "string"
-													},
-													"value": {
-														"example": "3",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientASN",
-													"clientASName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
 										}
 									},
 									"required": [
 										"meta",
-										"top_0"
+										"serie_0"
 									],
 									"type": "object"
 								},
@@ -5040,24 +5900,43 @@
 				},
 				"description": "Successful Response"
 			},
-			"404": {
+			"400": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
 								}
 							},
 							"required": [
-								"error"
+								"result",
+								"success",
+								"errors"
 							],
 							"type": "object"
 						}
 					}
 				},
-				"description": "Not found"
+				"description": "Bad Request"
 			}
 		},
 		"security": [
@@ -5066,7 +5945,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get top autonomous systems by email messages",
+		"summary": "Get TLS Version Time Series",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5082,25 +5961,10 @@
 			"pro": true
 		}
 	},
-	"GET /radar/email/security/top/ases/arc/{arc}": {
-		"description": "Get the top autonomous systems (AS) by emails ARC validation.",
-		"operationId": "radar-get-email-security-top-ases-by-arc",
+	"GET /radar/email/security/top/tlds": {
+		"description": "Get the top TLDs by email messages. Values are a percentage out of the total emails.",
+		"operationId": "radar-get-email-security-top-tlds-by-messages",
 		"parameters": [
-			{
-				"in": "path",
-				"name": "arc",
-				"required": true,
-				"schema": {
-					"description": "ARC.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
 			{
 				"in": "query",
 				"name": "limit",
@@ -5178,23 +6042,16 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
+				"name": "arc",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"description": "Filter for arc (Authenticated Received Chain).",
+					"example": "PASS",
 					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
 						"type": "string"
 					},
 					"type": "array"
@@ -5253,367 +6110,33 @@
 			},
 			{
 				"in": "query",
-				"name": "format",
+				"name": "tlsVersion",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tldCategory",
+				"schema": {
+					"description": "Filter for TLDs by category.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"CLASSIC",
+						"COUNTRY"
 					],
-					"example": "json",
+					"example": "CLASSIC",
 					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
-														"type": "string"
-													},
-													"value": {
-														"example": "3",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientASN",
-													"clientASName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Autonomous Systems By ARC Validation",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/ases/dkim/{dkim}": {
-		"description": "Get the top autonomous systems (AS), by email DKIM validation.",
-		"operationId": "radar-get-email-security-top-ases-by-dkim",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "dkim",
-				"required": true,
-				"schema": {
-					"description": "DKIM.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
 				}
 			},
 			{
@@ -5726,22 +6249,17 @@
 										"top_0": {
 											"items": {
 												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
+													"name": {
+														"example": "com.",
 														"type": "string"
 													},
 													"value": {
-														"example": "3",
+														"example": "65",
 														"type": "string"
 													}
 												},
 												"required": [
-													"clientASN",
-													"clientASName",
+													"name",
 													"value"
 												],
 												"type": "object"
@@ -5796,7 +6314,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Top Autonomous Systems By DKIM Validation",
+		"summary": "Get Top TLDs By Email Messages",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -5812,374 +6330,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/email/security/top/ases/dmarc/{dmarc}": {
-		"description": "Get the top autonomous systems (AS) by emails DMARC validation.",
-		"operationId": "radar-get-email-security-top-ases-by-dmarc",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "dmarc",
-				"required": true,
-				"schema": {
-					"description": "DMARC.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
-														"type": "string"
-													},
-													"value": {
-														"example": "3",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientASN",
-													"clientASName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Autonomous Systems By DMARC Validation",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/ases/malicious/{malicious}": {
-		"description": "Get the top autonomous systems (AS), by emails classified as Malicious or not.",
-		"operationId": "radar-get-email-security-top-ases-by-malicious",
+	"GET /radar/email/security/top/tlds/malicious/{malicious}": {
+		"description": "Get the TLDs by emails classified as malicious or not.",
+		"operationId": "radar-get-email-security-top-tlds-by-malicious",
 		"parameters": [
 			{
 				"in": "path",
@@ -6272,30 +6425,6 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
 				"name": "arc",
 				"schema": {
 					"description": "Filter for arc (Authenticated Received Chain).",
@@ -6360,6 +6489,37 @@
 						"type": "string"
 					},
 					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tldCategory",
+				"schema": {
+					"description": "Filter for TLDs by category.",
+					"enum": [
+						"CLASSIC",
+						"COUNTRY"
+					],
+					"example": "CLASSIC",
+					"type": "string"
 				}
 			},
 			{
@@ -6472,22 +6632,17 @@
 										"top_0": {
 											"items": {
 												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
+													"name": {
+														"example": "com.",
 														"type": "string"
 													},
 													"value": {
-														"example": "3",
+														"example": "65",
 														"type": "string"
 													}
 												},
 												"required": [
-													"clientASN",
-													"clientASName",
+													"name",
 													"value"
 												],
 												"type": "object"
@@ -6542,7 +6697,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Top Autonomous Systems By Malicious Classification",
+		"summary": "Get Top TLDs By Malicious Classification",
 		"tags": [
 			"Radar Email Security"
 		],
@@ -6558,9 +6713,9 @@
 			"pro": true
 		}
 	},
-	"GET /radar/email/security/top/ases/spam/{spam}": {
-		"description": "Get the top autonomous systems (AS), by emails classified, of Spam validations.",
-		"operationId": "radar-get-email-security-top-ases-by-spam",
+	"GET /radar/email/security/top/tlds/spam/{spam}": {
+		"description": "Get the top TLDs by emails classified as Spam or not.",
+		"operationId": "radar-get-email-security-top-tlds-by-spam",
 		"parameters": [
 			{
 				"in": "path",
@@ -6653,10 +6808,327 @@
 			},
 			{
 				"in": "query",
-				"name": "asn",
+				"name": "arc",
 				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
+					"description": "Filter for arc (Authenticated Received Chain).",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dkim",
+				"schema": {
+					"description": "Filter for dkim.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dmarc",
+				"schema": {
+					"description": "Filter for dmarc.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "spf",
+				"schema": {
+					"description": "Filter for spf.",
+					"example": "PASS",
+					"items": {
+						"enum": [
+							"PASS",
+							"NONE",
+							"FAIL"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tlsVersion",
+				"schema": {
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tldCategory",
+				"schema": {
+					"description": "Filter for TLDs by category.",
+					"enum": [
+						"CLASSIC",
+						"COUNTRY"
+					],
+					"example": "CLASSIC",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"confidenceInfo": {
+													"properties": {
+														"annotations": {
+															"items": {
+																"properties": {
+																	"dataSource": {
+																		"example": "ALL",
+																		"type": "string"
+																	},
+																	"description": {
+																		"example": "Cable cut in Tonga",
+																		"type": "string"
+																	},
+																	"endTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"example": "OUTAGE",
+																		"type": "string"
+																	},
+																	"isInstantaneous": {
+																		"type": "object"
+																	},
+																	"linkedUrl": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"dataSource",
+																	"eventType",
+																	"description",
+																	"isInstantaneous"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"level": {
+															"type": "integer"
+														}
+													},
+													"type": "object"
+												},
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"lastUpdated": {
+													"example": "2023-07-26T08:59:57Z",
+													"type": "string"
+												}
+											},
+											"required": [
+												"dateRange",
+												"lastUpdated"
+											],
+											"type": "object"
+										},
+										"top_0": {
+											"items": {
+												"properties": {
+													"name": {
+														"example": "com.",
+														"type": "string"
+													},
+													"value": {
+														"example": "65",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"value"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"meta",
+										"top_0"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"example": "Not Found",
+									"type": "string"
+								}
+							},
+							"required": [
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Top TLDs By Spam Classification",
+		"tags": [
+			"Radar Email Security"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /radar/email/security/top/tlds/spoof/{spoof}": {
+		"description": "Get the TLDs by emails classified as spoof or not.",
+		"operationId": "radar-get-email-security-top-tlds-by-spoof",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "spoof",
+				"required": true,
+				"schema": {
+					"description": "Spoof.",
+					"enum": [
+						"SPOOF",
+						"NOT_SPOOF"
+					],
+					"example": "SPOOF",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Limit the number of objects in the response.",
+					"example": 5,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Array of names that will be used to name the series in responses.",
+					"example": "main_series",
 					"items": {
 						"type": "string"
 					},
@@ -6665,11 +7137,53 @@
 			},
 			{
 				"in": "query",
-				"name": "location",
+				"name": "dateRange",
 				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
+					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 					"items": {
+						"enum": [
+							"1d",
+							"2d",
+							"7d",
+							"14d",
+							"28d",
+							"12w",
+							"24w",
+							"52w",
+							"1dControl",
+							"2dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl",
+							"12wControl",
+							"24wControl"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Array of datetimes to filter the start of a series.",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"items": {
+						"format": "date-time",
 						"type": "string"
 					},
 					"type": "array"
@@ -6745,367 +7259,33 @@
 			},
 			{
 				"in": "query",
-				"name": "format",
+				"name": "tlsVersion",
 				"schema": {
-					"description": "Format results are returned in.",
+					"description": "Filter for tls version.",
+					"example": "TLSv1_2",
+					"items": {
+						"enum": [
+							"TLSv1_0",
+							"TLSv1_1",
+							"TLSv1_2",
+							"TLSv1_3"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "tldCategory",
+				"schema": {
+					"description": "Filter for TLDs by category.",
 					"enum": [
-						"JSON",
-						"CSV"
+						"CLASSIC",
+						"COUNTRY"
 					],
-					"example": "json",
+					"example": "CLASSIC",
 					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
-														"type": "string"
-													},
-													"value": {
-														"example": "3",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientASN",
-													"clientASName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get top autonomous systems by Spam validations",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/ases/spf/{spf}": {
-		"description": "Get the top autonomous systems (AS) by email SPF validation.",
-		"operationId": "radar-get-email-security-top-ases-by-spf",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "spf",
-				"required": true,
-				"schema": {
-					"description": "SPF.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
 				}
 			},
 			{
@@ -7218,379 +7398,8 @@
 										"top_0": {
 											"items": {
 												"properties": {
-													"clientASN": {
-														"example": 3243,
-														"type": "integer"
-													},
-													"clientASName": {
-														"example": "MEO",
-														"type": "string"
-													},
-													"value": {
-														"example": "3",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientASN",
-													"clientASName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Autonomous Systems By SPF Validation",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations": {
-		"description": "Get the top locations by email messages. Values are a percentage out of the total emails.",
-		"operationId": "radar-get-email-security-top-locations-by-messages",
-		"parameters": [
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
+													"name": {
+														"example": "com.",
 														"type": "string"
 													},
 													"value": {
@@ -7599,8 +7408,7 @@
 													}
 												},
 												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
+													"name",
 													"value"
 												],
 												"type": "object"
@@ -7655,2229 +7463,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get Top Locations By Email Messages",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations/arc/{arc}": {
-		"description": "Get the locations, by emails ARC validation.",
-		"operationId": "radar-get-email-security-top-locations-by-arc",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "arc",
-				"required": true,
-				"schema": {
-					"description": "ARC.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
-														"type": "string"
-													},
-													"value": {
-														"example": "65",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Locations By ARC Validations",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations/dkim/{dkim}": {
-		"description": "Get the locations, by email DKIM validation.",
-		"operationId": "radar-get-email-security-top-locations-by-dkim",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "dkim",
-				"required": true,
-				"schema": {
-					"description": "DKIM.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
-														"type": "string"
-													},
-													"value": {
-														"example": "65",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Locations By DKIM Validation",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations/dmarc/{dmarc}": {
-		"description": "Get the locations by email DMARC validation.",
-		"operationId": "radar-get-email-security-top-locations-by-dmarc",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "dmarc",
-				"required": true,
-				"schema": {
-					"description": "DMARC.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
-														"type": "string"
-													},
-													"value": {
-														"example": "65",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Locations By DMARC Validations",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations/malicious/{malicious}": {
-		"description": "Get the locations by emails classified as malicious or not.",
-		"operationId": "radar-get-email-security-top-locations-by-malicious",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "malicious",
-				"required": true,
-				"schema": {
-					"description": "Malicious.",
-					"enum": [
-						"MALICIOUS",
-						"NOT_MALICIOUS"
-					],
-					"example": "MALICIOUS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
-														"type": "string"
-													},
-													"value": {
-														"example": "65",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Locations By Malicious Classification",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations/spam/{spam}": {
-		"description": "Get the top locations by emails classified as Spam or not.",
-		"operationId": "radar-get-email-security-top-locations-by-spam",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "spam",
-				"required": true,
-				"schema": {
-					"description": "Spam.",
-					"enum": [
-						"SPAM",
-						"NOT_SPAM"
-					],
-					"example": "SPAM",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "spf",
-				"schema": {
-					"description": "Filter for spf.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
-														"type": "string"
-													},
-													"value": {
-														"example": "65",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get Top Locations By Spam Classification",
-		"tags": [
-			"Radar Email Security"
-		],
-		"x-cfPermissionsRequired": {
-			"enum": [
-				"com.cloudflare.api.user.read"
-			]
-		},
-		"x-cfPlanAvailability": {
-			"business": true,
-			"enterprise": true,
-			"free": true,
-			"pro": true
-		}
-	},
-	"GET /radar/email/security/top/locations/spf/{spf}": {
-		"description": "Get the top locations by email SPF validation.",
-		"operationId": "radar-get-email-security-top-locations-by-spf",
-		"parameters": [
-			{
-				"in": "path",
-				"name": "spf",
-				"required": true,
-				"schema": {
-					"description": "SPF.",
-					"enum": [
-						"PASS",
-						"NONE",
-						"FAIL"
-					],
-					"example": "PASS",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "limit",
-				"schema": {
-					"description": "Limit the number of objects in the response.",
-					"example": 5,
-					"type": "integer"
-				}
-			},
-			{
-				"in": "query",
-				"name": "name",
-				"schema": {
-					"description": "Array of names that will be used to name the series in responses.",
-					"example": "main_series",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateRange",
-				"schema": {
-					"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
-					"items": {
-						"enum": [
-							"1d",
-							"2d",
-							"7d",
-							"14d",
-							"28d",
-							"12w",
-							"24w",
-							"52w",
-							"1dControl",
-							"2dControl",
-							"7dControl",
-							"14dControl",
-							"28dControl",
-							"12wControl",
-							"24wControl"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateStart",
-				"schema": {
-					"description": "Array of datetimes to filter the start of a series.",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dateEnd",
-				"schema": {
-					"description": "End of the date range (inclusive).",
-					"example": "2023-09-01T11:41:33.782Z",
-					"items": {
-						"format": "date-time",
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "asn",
-				"schema": {
-					"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `-174, 3356` excludes results from AS174, but includes results from AS3356.",
-					"example": "15169",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "location",
-				"schema": {
-					"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `-US,PT` excludes results from the US, but includes results from PT.",
-					"example": "US,CA",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "arc",
-				"schema": {
-					"description": "Filter for arc (Authenticated Received Chain).",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dkim",
-				"schema": {
-					"description": "Filter for dkim.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "dmarc",
-				"schema": {
-					"description": "Filter for dmarc.",
-					"example": "PASS",
-					"items": {
-						"enum": [
-							"PASS",
-							"NONE",
-							"FAIL"
-						],
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"in": "query",
-				"name": "format",
-				"schema": {
-					"description": "Format results are returned in.",
-					"enum": [
-						"JSON",
-						"CSV"
-					],
-					"example": "json",
-					"type": "string"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"result": {
-									"properties": {
-										"meta": {
-											"properties": {
-												"confidenceInfo": {
-													"properties": {
-														"annotations": {
-															"items": {
-																"properties": {
-																	"dataSource": {
-																		"example": "ALL",
-																		"type": "string"
-																	},
-																	"description": {
-																		"example": "Cable cut in Tonga",
-																		"type": "string"
-																	},
-																	"endTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"example": "OUTAGE",
-																		"type": "string"
-																	},
-																	"isInstantaneous": {
-																		"type": "object"
-																	},
-																	"linkedUrl": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"format": "date-time",
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"dataSource",
-																	"eventType",
-																	"description",
-																	"isInstantaneous"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"level": {
-															"type": "integer"
-														}
-													},
-													"type": "object"
-												},
-												"dateRange": {
-													"items": {
-														"properties": {
-															"endTime": {
-																"description": "Adjusted end of date range.",
-																"example": "2022-09-17T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															},
-															"startTime": {
-																"description": "Adjusted start of date range.",
-																"example": "2022-09-16T10:22:57.555Z",
-																"format": "date-time",
-																"type": "string"
-															}
-														},
-														"required": [
-															"startTime",
-															"endTime"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"lastUpdated": {
-													"example": "2023-07-26T08:59:57Z",
-													"type": "string"
-												}
-											},
-											"required": [
-												"dateRange",
-												"lastUpdated"
-											],
-											"type": "object"
-										},
-										"top_0": {
-											"items": {
-												"properties": {
-													"clientCountryAlpha2": {
-														"example": "US",
-														"type": "string"
-													},
-													"clientCountryName": {
-														"example": "United States",
-														"type": "string"
-													},
-													"value": {
-														"example": "65",
-														"type": "string"
-													}
-												},
-												"required": [
-													"clientCountryAlpha2",
-													"clientCountryName",
-													"value"
-												],
-												"type": "object"
-											},
-											"type": "array"
-										}
-									},
-									"required": [
-										"meta",
-										"top_0"
-									],
-									"type": "object"
-								},
-								"success": {
-									"example": true,
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Successful Response"
-			},
-			"404": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"error": {
-									"example": "Not Found",
-									"type": "string"
-								}
-							},
-							"required": [
-								"error"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Not found"
-			}
-		},
-		"security": [
-			{
-				"api_email": [],
-				"api_key": []
-			}
-		],
-		"summary": "Get top locations by SPF validation",
+		"summary": "Get Top TLDs By Spoof Classification",
 		"tags": [
 			"Radar Email Security"
 		],

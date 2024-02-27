@@ -1366,6 +1366,249 @@
 			"pro": true
 		}
 	},
+	"GET /radar/bgp/routes/timeseries": {
+		"description": "Gets time-series data for the announced IP space count, represented as the number of IPv4 /24s and IPv6 /48s, for a given ASN.",
+		"operationId": "radar-get-bgp-ip-space-timeseries",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "dateRange",
+				"schema": {
+					"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
+					"enum": [
+						"1d",
+						"2d",
+						"7d",
+						"14d",
+						"28d",
+						"12w",
+						"24w",
+						"52w",
+						"1dControl",
+						"2dControl",
+						"7dControl",
+						"14dControl",
+						"28dControl",
+						"12wControl",
+						"24wControl"
+					],
+					"example": "7d",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateStart",
+				"schema": {
+					"description": "Start of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "dateEnd",
+				"schema": {
+					"description": "End of the date range (inclusive).",
+					"example": "2023-09-01T11:41:33.782Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "asn",
+				"schema": {
+					"description": "Single ASN as integer.",
+					"example": "174",
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"description": "Format results are returned in.",
+					"enum": [
+						"JSON",
+						"CSV"
+					],
+					"example": "json",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"meta": {
+											"properties": {
+												"dateRange": {
+													"items": {
+														"properties": {
+															"endTime": {
+																"description": "Adjusted end of date range.",
+																"example": "2022-09-17T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"startTime": {
+																"description": "Adjusted start of date range.",
+																"example": "2022-09-16T10:22:57.555Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"startTime",
+															"endTime"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"dateRange"
+											],
+											"type": "object"
+										},
+										"serie_ipv4_24s": {
+											"properties": {
+												"timestamps": {
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"values": {
+													"items": {
+														"example": 30,
+														"type": "integer"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"values"
+											],
+											"type": "object"
+										},
+										"serie_ipv6_48s": {
+											"properties": {
+												"timestamps": {
+													"items": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"values": {
+													"items": {
+														"example": 1234,
+														"type": "integer"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"timestamps",
+												"values"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"meta",
+										"serie_ipv4_24s",
+										"serie_ipv6_48s"
+									],
+									"type": "object"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get BGP IP space time series",
+		"tags": [
+			"Radar BGP"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.user.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /radar/bgp/timeseries": {
 		"description": "Gets BGP updates change over time. Raw values are returned. When requesting updates of an autonomous system (AS), only BGP updates of type announcement are returned.",
 		"operationId": "radar-get-bgp-timeseries",
