@@ -5,40 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote Mexico</h4>
-<p><strong>About the Team</strong></p>
-<p>The GTM Finance team is responsible for top-down planning, budgeting, forecasting, analysis that supports our go-to-market strategy and execution. We are looking for an individual with strong analytical horsepower to join the team to provide analytics and decision-making support to Cloudflare’s GTM Leadership Team. The ideal candidate is passionate about problem solving and insight discovery, as well as building high quality repeatable processes that scale with our rapid growth.</p>
-<p><strong>What you'll do</strong></p>
+<h4><strong>Position Location: Lisbon, Portugal</strong></h4>
+<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
+<p>The Workers Onboarding team aims to provide the best in class experience for Workers users to move fast and quickly bring ideas to life.</p>
+<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-Whatyouwilldo"><strong>What you will do</strong></h3>
+<p>As a member of the Workers team, you will collaborate with Engineers, Designers, and Product Managers to design, build and support large scale, customer facing systems that push the boundaries of what is possible at Cloudflare's edge computing platform. You will drive projects from idea to release, delivering solutions at all layers of the software stack to empower the Cloudflare customers. You can expect to interact with a variety of languages and technologies including, but not limited to Go, JavaScript, Typescript, SQL, GraphQL, Rust, and C++.</p>
+<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-RequisiteSkills"><strong>Requisite Skills</strong></h3>
 <ul>
-	<li>Support strategic decision making with data and analytics, surfacing findings to GTM Leadership</li>
-	<li>Support annual planning and quarterly business review&nbsp;</li>
-	<li>Own, maintain and improve the analytics infrastructure for GTM Performance Reporting</li>
-	<li>Work with Business Intelligence Team to develop visibility and insights into new initiatives and flag areas with potential for improvement or efficiency&nbsp;</li>
-	<li>Provide ad-hoc analytical support to Finance, Revenue Operations &amp; Executive Leadership</li>
+	<li>4+ years professional software engineering experience</li>
+	<li>Experience with large-scale systems</li>
+	<li>Must have strong experience with Javascript, Typescript, and one of the following: Go, C++, Rust</li>
+	<li>Experience working in frontend frameworks such as React</li>
+	<li>Experience with SQL and common relational database systems such as PostgreSQL</li>
+	<li>Experience with Kubernetes or similar deployment tools</li>
+	<li>Product mindset and comfortable talking to customers and partners</li>
+	<li>Experience delivering projects end-to-end – gathering requirements, writing technical specifications, implementing, testing, and releasing</li>
+	<li>Comfortable managing multiple projects simultaneously</li>
+	<li>Comfortable working on an oncall shift</li>
 </ul>
-<p>The role might involve travel to the US on a bi-annual basis.</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3 id="Jobdescription:SeniorSystemsEngineerWorkersOnboarding-BonusPoints"><strong>Bonus Points</strong></h3>
 <ul>
-	<li>
-		<ul>
-			<li>Minimum 5 years of Business Operations, Strategic Finance, FP&amp;A, Investment Banking or Consulting experience</li>
-			<li>Bachelor's degree, MBA a plus&nbsp;&nbsp;</li>
-			<li>Strategic thinker, balancing near term deliverables with long-term considerations&nbsp;</li>
-			<li>Experience using data and metrics to drive improvements or decision making</li>
-			<li>Experience working and communicating with Executive stakeholders</li>
-			<li>Experience working in Finance function in a global/ multinational experience, a strong plus</li>
-			<li>Modeling: High Proficiency with MS Excel and Google Sheets; ability to build thoughtful, complex and auditable business model and present the outcome in an easy-to-understand format&nbsp;</li>
-			<li>Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</li>
-			<li>Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</li>
-			<li>Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</li>
-			<li>Advanced/ high proficiency in SQL required&nbsp;</li>
-			<li>Advanced/ working proficiency with English mandatory both written and verbal.</li>
-		</ul>
-	</li>
+	<li>Experience with metrics and observability tools such as Prometheus, Grafana</li>
+	<li>Experience using Workers and Pages</li>
+	<li>Experience scaling systems to meet increasing performance and usability demands</li>
+	<li>Knowledge of OAuth and building integrations with third-parties</li>
+	<li>Has managed interns or mentored junior engineers</li>
 </ul>
-<p></p>
-<h4><strong>**This position is based in <span style="text-decoration: underline;">Mexico and is applicable ONLY to Mexican Citizens</span>**</strong></h4>
-<p></p>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
