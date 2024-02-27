@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "792e192f0227bbe19f8329f379a2473b11ede739",
+					commit: "2817bb4ee06c46450cfcab01a8e55cbf90378c2b",
 					env: "production",
-					builtAt: 1709049302848,
-					dashVersion: "676996659d566e23ff2fccc95d47d1f190f77962",
+					builtAt: 1709075760787,
+					dashVersion: "8b3788f7835df293f468b1489cb2e994a32957b3",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",
@@ -2125,7 +2125,7 @@
 				}, o().createElement(oe, {
 					target: "_blank",
 					rel: "noopener noreferrer",
-					href: "https://www.cloudflare.com/terms"
+					href: "https://www.cloudflare.com/website-terms/"
 				}, (0, e.ZP)("footer.tos"))), o().createElement(l.Dd, {
 					mb: 2
 				}, o().createElement(oe, {

@@ -203,7 +203,7 @@ const navigation = {
 	}, {
 		title: "navigation.account.interconnects",
 		url: "/interconnects",
-		iconType: "magic-transit-logo",
+		iconType: "cloudflare-magic-wan",
 		hasPermission: T => !!((0, a.iY)(T) && (0, n.z1)("magic-interconnects")(T) && (!!(0, r.Le)(T, "magic_wan", "mw_home") || !!(0, r.Le)(T, "magic_transit", "mt_home")))
 	}, {
 		title: "navigation.account.magic_transit",
@@ -470,7 +470,7 @@ const navigation = {
 		title: "navigation.account.calls",
 		url: "/calls",
 		labels: ["beta"],
-		iconType: "user-multi",
+		iconType: "calls",
 		hasPermission: T => (0, a.iY)(T) && (!!(0, r.Le)(T, "calls", "visible") || !!(0, r.Le)(T, "Calls", "visible"))
 	}, {
 		title: "navigation.account.group_title.account_management",
