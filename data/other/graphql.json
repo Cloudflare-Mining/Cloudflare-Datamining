@@ -411,6 +411,48 @@
 	"AccountAiInferenceAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"AccountCallsStatusAdaptive": {
+		"__description": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
+		"appId": "The appId that generated traffic",
+		"datetime": "The date and time the event was recorded",
+		"event": "The description of the event related to a session or a track",
+		"sessionId": "The generated string that identifies a PeerConnection",
+		"trackId": "The track identifier provided to us within a PeerConnection"
+	},
+	"AccountCallsStatusAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCallsStatusAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"AccountCallsUsageAdaptiveGroups": {
+		"__description": "Beta. Aggregated Calls bandwidth usage with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountCallsUsageAdaptiveGroupsDimensions": {
+		"__description": "",
+		"appId": "The appId that generated traffic",
+		"date": "Calls bandwidth metrics date",
+		"datetimeFifteenMinutes": "Calls bandwidth metrics timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Calls bandwidth metrics timestamp, truncated to five minutes",
+		"datetimeHour": "Calls bandwidth metrics timestamp, truncated to the hour",
+		"datetimeMinute": "Calls bandwidth metrics timestamp, truncated to the minute",
+		"sessionId": "The generated string that identifies a PeerConnection",
+		"trackId": "The track identifier provided to us within a PeerConnection",
+		"trackType": "Describes if the track contains video, audio, or data"
+	},
+	"AccountCallsUsageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCallsUsageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCallsUsageAdaptiveGroupsSum": {
+		"__description": "",
+		"egressBytes": "The total bytes sent by Calls, observed over the queried time period",
+		"ingressBytes": "The total bytes received by Calls, observed over the queried time period"
+	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroups": {
 		"__description": "Network analytics data for Cloudflare CDN traffic",
 		"avg": "The average of values for a metric per dimension",
@@ -1798,6 +1840,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"rayName": "The RayId of the request",
 		"requestSource": "",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
@@ -3181,6 +3224,8 @@
 		"aiGatewayRequestsAdaptiveGroups": "",
 		"aiInferenceAdaptive": "",
 		"aiInferenceAdaptiveGroups": "",
+		"callsStatusAdaptive": "",
+		"callsUsageAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"d1AnalyticsAdaptiveGroups": "",
 		"d1QueriesAdaptiveGroups": "",
@@ -5004,6 +5049,7 @@
 		"originIP": "",
 		"originResponseDurationMs": "",
 		"originResponseStatus": "HTTP origin response status code returned to browser",
+		"rayName": "The RayId of the request",
 		"requestSource": "",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
@@ -5719,6 +5765,8 @@
 		"aiGatewayRequestsAdaptiveGroups": "AI Gateway Requests",
 		"aiInferenceAdaptive": "AI Inference logs with adaptive sampling",
 		"aiInferenceAdaptiveGroups": "Aggregated AI Inference logs with adaptive sampling",
+		"callsStatusAdaptive": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
+		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls bandwidth usage with adaptive sampling",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
 		"d1AnalyticsAdaptiveGroups": "Beta. Aggregated D1 analytics with adaptive sampling",
 		"d1QueriesAdaptiveGroups": "Beta. D1 query metrics with adaptive sampling",
