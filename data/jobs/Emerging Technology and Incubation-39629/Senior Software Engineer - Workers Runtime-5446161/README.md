@@ -15,7 +15,7 @@
 <p>You bring a passion for meeting business needs while building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment.</p>
 <h3 id="SeniorSystemsEngineerWorkersRuntime-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>At least 2 years of recent professional experience with C++.</li>
+	<li>At least 3 years of recent professional experience with C++.</li>
 	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
 	<li>An operational mindset - we don't just write code, we also own it in production</li>
 	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
