@@ -2,11 +2,11 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available" loading="lazy"></figure>
 	<p>R2 umożliwia deweloperom przechowywanie obiektów bez opłat za ruch wychodzący. Przed R2 dostawcy chmur przyzwyczaili nas do opłat za transfer przy każdym użyciu przechowywanych w chmurze danych. Kto przechowuje dane, nie mając zamiaru ich później odczytywać? Nikt. A jednak za każdym razem, gdy odczytujesz dane, musisz zapłacić. R2 daje programistom wolny dostęp do danych, zrywając z uzależnieniem od jednego ekosystemu, które od dawna ograniczało deweloperów aplikacji.</p>
-	<p>W maju 2022 roku udostępniliśmy R2 w otwartej wersji beta. W ciągu zaledwie czterech miesięcy zostaliśmy zasypani zgłoszeniami od ponad 12 tysięcy deweloperów (a liczba ta szybko rośnie), którzy zaczęli korzystać z R2. Przyszli do nas z rozmaitymi przypadkami użycia, od aplikacji podcastowych przez platformy wideo po portale e-commerce, a wśród nich znalazło się m. in. <a href="https://www.vecteezy.com">Vecteezy</a>, wydające na opłaty za ruch wychodzący setki tysięcy dolarów. W tym czasie wiele się nauczyliśmy o potrzebach klientów i otrzymaliśmy bardzo pozytywne informacje zwrotne, a teraz mamy przyjemność ogłosić, że R2 jest już ogólnie dostępne.</p>
+	<p>W maju 2022 roku udostępniliśmy R2 w otwartej wersji beta. W ciągu zaledwie czterech miesięcy zostaliśmy zasypani zgłoszeniami od ponad 12 tysięcy deweloperów (a liczba ta szybko rośnie), którzy zaczęli korzystać z R2. Przyszli do nas z rozmaitymi przypadkami użycia, od aplikacji podcastowych przez platformy wideo po portale e‑commerce, a wśród nich znalazło się m. in. <a href="https://www.vecteezy.com">Vecteezy</a>, wydające na opłaty za ruch wychodzący setki tysięcy dolarów. W tym czasie wiele się nauczyliśmy o potrzebach klientów i otrzymaliśmy bardzo pozytywne informacje zwrotne, a teraz mamy przyjemność ogłosić, że R2 jest już ogólnie dostępne.</p>
 	<p>Nie prosilibyśmy o zaufanie technologii, w którą sami nie wierzymy w 100%. Podczas otwartej bety przenieśliśmy do R2 własne produkty. Przykładowo Cloudflare Images, które obsługuje tysiące klientów, oparte jest teraz na R2.</p>
 	<h2 id="czego-mo-na-si-spodziewa-po-r2">Czego można się spodziewać po R2?</h2>
 	<h3 id="zgodno-z-s3">Zgodność z S3</h3>
-	<p>R2 oferuje deweloperom dobrze znany interfejs do przechowywania obiektów – API S3. Zgodność z S3 umożliwia bezproblemową migrację aplikacji i natychmiastowe wykorzystywanie zalet R2.</p>
+	<p>R2 oferuje deweloperom dobrze znany interfejs do przechowywania obiektów — API S3. Zgodność z S3 umożliwia bezproblemową migrację aplikacji i natychmiastowe wykorzystywanie zalet R2.</p>
 	<p>Przyjrzyjmy się podstawowym operacjom na danych w języku javascript. Jeśli chcesz je samodzielnie przeprowadzić, musisz <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens">wygenerować klucz dostępu</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">// First we import our bindings as usual
 import {
@@ -32,7 +32,7 @@ console.log(
 );
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>W interfejsie API S3 odnajdzie się każdy, bez względu na język programowania. Mamy przykłady w <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3">Javie</a></p>
+	<p>W interfejsie API S3 odnajdzie się każdy, bez względu na język programowania. Mamy przykłady w <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3">Javie</a>, <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php">PHP</a> i <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby">Ruby</a>.</p>
 	<h3 id="region-automatyczny">Region: automatyczny</h3>
 	<p>Nie chcemy żyć w świecie, gdzie deweloperzy tracą czas na próby przewidzenia, skąd może pochodzić ruch aplikacji. Wybór regionu na samym początku tworzenia aplikacji wymusza podejmowanie decyzji o optymalizacji na długo, zanim pojawią się pierwsi użytkownicy.</p>
 	<p>Choć zgodność z S3 wymaga wskazania regionu, jedynym wyborem w R2 jest „automatyczny”. Obecnie R2 automatycznie wybiera lokalizację wiadra w najbliższym żądaniu utworzenia wiadra regionie, jaki jest dostępny. Jeśli utworzę wiadro z mojego domu w Austin, wiadro to będzie się znajdowało w najbliższym Austin regionie R2, jaki jest dostępny.</p>
