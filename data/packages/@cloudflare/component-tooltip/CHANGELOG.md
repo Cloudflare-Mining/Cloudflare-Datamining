@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.4.0
+
+### Minor Changes
+
+- 0aee17e0c6: Add Component prop to enable elements to be used in place of a button, display tooltip on focus
+
 ## 4.3.2
 
 ### Patch Changes
