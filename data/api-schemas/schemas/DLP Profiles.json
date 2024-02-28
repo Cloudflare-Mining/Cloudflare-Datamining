@@ -499,6 +499,33 @@
 																"minimum": 0,
 																"type": "number"
 															},
+															"context_awareness": {
+																"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																"properties": {
+																	"enabled": {
+																		"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																		"type": "boolean"
+																	},
+																	"skip": {
+																		"description": "Content types to exclude from context analysis and return all matches.",
+																		"properties": {
+																			"files": {
+																				"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"files"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"enabled",
+																	"skip"
+																],
+																"type": "object"
+															},
 															"entries": {
 																"description": "The entries for this profile.",
 																"items": {
@@ -575,6 +602,33 @@
 																"maximum": 1000,
 																"minimum": 0,
 																"type": "number"
+															},
+															"context_awareness": {
+																"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																"properties": {
+																	"enabled": {
+																		"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																		"type": "boolean"
+																	},
+																	"skip": {
+																		"description": "Content types to exclude from context analysis and return all matches.",
+																		"properties": {
+																			"files": {
+																				"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"files"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"enabled",
+																	"skip"
+																],
+																"type": "object"
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -940,6 +994,33 @@
 																		"minimum": 0,
 																		"type": "number"
 																	},
+																	"context_awareness": {
+																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																		"properties": {
+																			"enabled": {
+																				"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																				"type": "boolean"
+																			},
+																			"skip": {
+																				"description": "Content types to exclude from context analysis and return all matches.",
+																				"properties": {
+																					"files": {
+																						"description": "If the content type is a file, skip context analysis and return all matches.",
+																						"type": "boolean"
+																					}
+																				},
+																				"required": [
+																					"files"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"enabled",
+																			"skip"
+																		],
+																		"type": "object"
+																	},
 																	"entries": {
 																		"description": "The entries for this profile.",
 																		"items": {
@@ -1016,6 +1097,33 @@
 																		"maximum": 1000,
 																		"minimum": 0,
 																		"type": "number"
+																	},
+																	"context_awareness": {
+																		"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																		"properties": {
+																			"enabled": {
+																				"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																				"type": "boolean"
+																			},
+																			"skip": {
+																				"description": "Content types to exclude from context analysis and return all matches.",
+																				"properties": {
+																					"files": {
+																						"description": "If the content type is a file, skip context analysis and return all matches.",
+																						"type": "boolean"
+																					}
+																				},
+																				"required": [
+																					"files"
+																				],
+																				"type": "object"
+																			}
+																		},
+																		"required": [
+																			"enabled",
+																			"skip"
+																		],
+																		"type": "object"
 																	},
 																	"created_at": {
 																		"example": "2014-01-01T05:20:00.12345Z",
@@ -1494,6 +1602,33 @@
 															"minimum": 0,
 															"type": "number"
 														},
+														"context_awareness": {
+															"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+															"properties": {
+																"enabled": {
+																	"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"type": "boolean"
+																},
+																"skip": {
+																	"description": "Content types to exclude from context analysis and return all matches.",
+																	"properties": {
+																		"files": {
+																			"description": "If the content type is a file, skip context analysis and return all matches.",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"files"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled",
+																"skip"
+															],
+															"type": "object"
+														},
 														"entries": {
 															"description": "The entries for this profile.",
 															"items": {
@@ -1570,6 +1705,33 @@
 															"maximum": 1000,
 															"minimum": 0,
 															"type": "number"
+														},
+														"context_awareness": {
+															"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+															"properties": {
+																"enabled": {
+																	"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"type": "boolean"
+																},
+																"skip": {
+																	"description": "Content types to exclude from context analysis and return all matches.",
+																	"properties": {
+																		"files": {
+																			"description": "If the content type is a file, skip context analysis and return all matches.",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"files"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled",
+																"skip"
+															],
+															"type": "object"
 														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -1914,6 +2076,33 @@
 																	"minimum": 0,
 																	"type": "number"
 																},
+																"context_awareness": {
+																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"properties": {
+																		"enabled": {
+																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																			"type": "boolean"
+																		},
+																		"skip": {
+																			"description": "Content types to exclude from context analysis and return all matches.",
+																			"properties": {
+																				"files": {
+																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"enabled",
+																		"skip"
+																	],
+																	"type": "object"
+																},
 																"entries": {
 																	"description": "The entries for this profile.",
 																	"items": {
@@ -1990,6 +2179,33 @@
 																	"maximum": 1000,
 																	"minimum": 0,
 																	"type": "number"
+																},
+																"context_awareness": {
+																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"properties": {
+																		"enabled": {
+																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																			"type": "boolean"
+																		},
+																		"skip": {
+																			"description": "Content types to exclude from context analysis and return all matches.",
+																			"properties": {
+																				"files": {
+																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"enabled",
+																		"skip"
+																	],
+																	"type": "object"
 																},
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -2466,6 +2682,33 @@
 															"minimum": 0,
 															"type": "number"
 														},
+														"context_awareness": {
+															"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+															"properties": {
+																"enabled": {
+																	"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"type": "boolean"
+																},
+																"skip": {
+																	"description": "Content types to exclude from context analysis and return all matches.",
+																	"properties": {
+																		"files": {
+																			"description": "If the content type is a file, skip context analysis and return all matches.",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"files"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled",
+																"skip"
+															],
+															"type": "object"
+														},
 														"created_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
 															"format": "date-time",
@@ -2711,6 +2954,33 @@
 																	"maximum": 1000,
 																	"minimum": 0,
 																	"type": "number"
+																},
+																"context_awareness": {
+																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"properties": {
+																		"enabled": {
+																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																			"type": "boolean"
+																		},
+																		"skip": {
+																			"description": "Content types to exclude from context analysis and return all matches.",
+																			"properties": {
+																				"files": {
+																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"enabled",
+																		"skip"
+																	],
+																	"type": "object"
 																},
 																"created_at": {
 																	"example": "2014-01-01T05:20:00.12345Z",
@@ -3090,6 +3360,33 @@
 															"minimum": 0,
 															"type": "number"
 														},
+														"context_awareness": {
+															"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+															"properties": {
+																"enabled": {
+																	"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"type": "boolean"
+																},
+																"skip": {
+																	"description": "Content types to exclude from context analysis and return all matches.",
+																	"properties": {
+																		"files": {
+																			"description": "If the content type is a file, skip context analysis and return all matches.",
+																			"type": "boolean"
+																		}
+																	},
+																	"required": [
+																		"files"
+																	],
+																	"type": "object"
+																}
+															},
+															"required": [
+																"enabled",
+																"skip"
+															],
+															"type": "object"
+														},
 														"entries": {
 															"description": "The entries for this profile.",
 															"items": {
@@ -3283,6 +3580,33 @@
 																	"maximum": 1000,
 																	"minimum": 0,
 																	"type": "number"
+																},
+																"context_awareness": {
+																	"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																	"properties": {
+																		"enabled": {
+																			"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																			"type": "boolean"
+																		},
+																		"skip": {
+																			"description": "Content types to exclude from context analysis and return all matches.",
+																			"properties": {
+																				"files": {
+																					"description": "If the content type is a file, skip context analysis and return all matches.",
+																					"type": "boolean"
+																				}
+																			},
+																			"required": [
+																				"files"
+																			],
+																			"type": "object"
+																		}
+																	},
+																	"required": [
+																		"enabled",
+																		"skip"
+																	],
+																	"type": "object"
 																},
 																"entries": {
 																	"description": "The entries for this profile.",
@@ -3491,6 +3815,33 @@
 											"maximum": 1000,
 											"minimum": 0,
 											"type": "number"
+										},
+										"context_awareness": {
+											"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+											"properties": {
+												"enabled": {
+													"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+													"type": "boolean"
+												},
+												"skip": {
+													"description": "Content types to exclude from context analysis and return all matches.",
+													"properties": {
+														"files": {
+															"description": "If the content type is a file, skip context analysis and return all matches.",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"files"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"enabled",
+												"skip"
+											],
+											"type": "object"
 										},
 										"description": {
 											"description": "The description of the profile.",
@@ -3701,6 +4052,33 @@
 														"maximum": 1000,
 														"minimum": 0,
 														"type": "number"
+													},
+													"context_awareness": {
+														"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+														"properties": {
+															"enabled": {
+																"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																"type": "boolean"
+															},
+															"skip": {
+																"description": "Content types to exclude from context analysis and return all matches.",
+																"properties": {
+																	"files": {
+																		"description": "If the content type is a file, skip context analysis and return all matches.",
+																		"type": "boolean"
+																	}
+																},
+																"required": [
+																	"files"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"enabled",
+															"skip"
+														],
+														"type": "object"
 													},
 													"created_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -3964,6 +4342,33 @@
 																"maximum": 1000,
 																"minimum": 0,
 																"type": "number"
+															},
+															"context_awareness": {
+																"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+																"properties": {
+																	"enabled": {
+																		"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+																		"type": "boolean"
+																	},
+																	"skip": {
+																		"description": "Content types to exclude from context analysis and return all matches.",
+																		"properties": {
+																			"files": {
+																				"description": "If the content type is a file, skip context analysis and return all matches.",
+																				"type": "boolean"
+																			}
+																		},
+																		"required": [
+																			"files"
+																		],
+																		"type": "object"
+																	}
+																},
+																"required": [
+																	"enabled",
+																	"skip"
+																],
+																"type": "object"
 															},
 															"created_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -4240,6 +4645,33 @@
 								"minimum": 0,
 								"type": "number"
 							},
+							"context_awareness": {
+								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+								"properties": {
+									"enabled": {
+										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+										"type": "boolean"
+									},
+									"skip": {
+										"description": "Content types to exclude from context analysis and return all matches.",
+										"properties": {
+											"files": {
+												"description": "If the content type is a file, skip context analysis and return all matches.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"files"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"enabled",
+									"skip"
+								],
+								"type": "object"
+							},
 							"description": {
 								"description": "The description of the profile.",
 								"example": "A standard CVV card number",
@@ -4401,6 +4833,33 @@
 									"minimum": 0,
 									"type": "number"
 								},
+								"context_awareness": {
+									"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+									"properties": {
+										"enabled": {
+											"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+											"type": "boolean"
+										},
+										"skip": {
+											"description": "Content types to exclude from context analysis and return all matches.",
+											"properties": {
+												"files": {
+													"description": "If the content type is a file, skip context analysis and return all matches.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"files"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"enabled",
+										"skip"
+									],
+									"type": "object"
+								},
 								"created_at": {
 									"example": "2014-01-01T05:20:00.12345Z",
 									"format": "date-time",
@@ -4538,6 +4997,33 @@
 											"maximum": 1000,
 											"minimum": 0,
 											"type": "number"
+										},
+										"context_awareness": {
+											"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+											"properties": {
+												"enabled": {
+													"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+													"type": "boolean"
+												},
+												"skip": {
+													"description": "Content types to exclude from context analysis and return all matches.",
+													"properties": {
+														"files": {
+															"description": "If the content type is a file, skip context analysis and return all matches.",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"files"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"enabled",
+												"skip"
+											],
+											"type": "object"
 										},
 										"created_at": {
 											"example": "2014-01-01T05:20:00.12345Z",
@@ -4808,6 +5294,33 @@
 								"minimum": 0,
 								"type": "number"
 							},
+							"context_awareness": {
+								"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+								"properties": {
+									"enabled": {
+										"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+										"type": "boolean"
+									},
+									"skip": {
+										"description": "Content types to exclude from context analysis and return all matches.",
+										"properties": {
+											"files": {
+												"description": "If the content type is a file, skip context analysis and return all matches.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"files"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"enabled",
+									"skip"
+								],
+								"type": "object"
+							},
 							"entries": {
 								"description": "The entries for this profile.",
 								"items": {
@@ -4855,6 +5368,33 @@
 									"maximum": 1000,
 									"minimum": 0,
 									"type": "number"
+								},
+								"context_awareness": {
+									"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+									"properties": {
+										"enabled": {
+											"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+											"type": "boolean"
+										},
+										"skip": {
+											"description": "Content types to exclude from context analysis and return all matches.",
+											"properties": {
+												"files": {
+													"description": "If the content type is a file, skip context analysis and return all matches.",
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"files"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"enabled",
+										"skip"
+									],
+									"type": "object"
 								},
 								"entries": {
 									"description": "The entries for this profile.",
@@ -4941,6 +5481,33 @@
 											"maximum": 1000,
 											"minimum": 0,
 											"type": "number"
+										},
+										"context_awareness": {
+											"description": "Scan the context of predefined entries to only return matches surrounded by keywords.",
+											"properties": {
+												"enabled": {
+													"description": "If true, scan the context of predefined entries to only return matches surrounded by keywords.",
+													"type": "boolean"
+												},
+												"skip": {
+													"description": "Content types to exclude from context analysis and return all matches.",
+													"properties": {
+														"files": {
+															"description": "If the content type is a file, skip context analysis and return all matches.",
+															"type": "boolean"
+														}
+													},
+													"required": [
+														"files"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"enabled",
+												"skip"
+											],
+											"type": "object"
 										},
 										"entries": {
 											"description": "The entries for this profile.",
