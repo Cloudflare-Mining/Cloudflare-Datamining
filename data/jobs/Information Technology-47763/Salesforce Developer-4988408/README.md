@@ -5,35 +5,32 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Available Location - Lisbon&nbsp;</strong></h4>
-<h4><strong>About the team</strong></h4>
-<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
-<h4><strong>About the role</strong></h4>
-<p>We are looking for an experienced Data Analyst to join our Austin or Lisbon teams to scale our product insights initiatives. You will work with a wide array of datasets to analyze and build interactive reports and self-serve dashboards which will influence our critical business initiatives and will provide actionable insights to Sales, Marketing and Product teams.</p>
-<p>Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.</p>
-<p><strong>What you'll do</strong></p>
+<p><strong>Salesforce Developer</strong></p>
+<h4><strong>About the department</strong></h4>
+<p><span style="font-weight: 400;">Cloudflare’s IT Business Systems Team is a crucial pillar of the CIO Organization.&nbsp; It operates our enterprise systems end-to-end, providing process cohesiveness across the functional business areas</span></p>
+<p><strong>About the role</strong></p>
+<p><span style="font-weight: 400;">Cloudflare is expanding its IT business application group and searching for a dynamic, forward thinking Salesforce Developer to join our team. A Salesforce Developer will be responsible for building world-class applications to automate and improve productivity of the business processes for core business teams (Sales, Partner, Marketing, Support, Legal, and Finance) for a rapidly growing organization.</span></p>
+<p><span style="font-weight: 400;">&nbsp;The candidate will be responsible for partnering with other Engineers, Business Analysts and Salesforce Administrators. A team player with a collaboration-oriented mindset is essential!</span></p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Provide quantitative support, market understanding and a strategic perspective to our partners throughout the organization</li>
-	<li>Partner and align with data engineers, data analysts, data scientists, business leaders, stakeholders, product managers and internal teams to enable data driven solutions to key business problems</li>
-	<li>Take initiative and ask questions to iteratively define, build, and maintain new business metrics</li>
-	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale</li>
-	<li>Weave stories with data to help stakeholders understand analytic insights</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Successful candidates will be technical professionals, experienced in web application development and have strong hands-on background in building custom solutions using JQuery, Apex, Lightning (LWC, Aura) and Visualforce with a focus on delivering functional solutions on the Salesforce.com platform.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with senior members of the team to analyze business requirements, translating those requirements into customized solutions using Apex and/or standard Salesforce out of the box functionality.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement Salesforce solutions that adhere to industry best practices, and perform peer code reviews.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep Knowledge of Salesforce platform best practices, coding, design guidelines and governor limits</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Typical Salesforce implementations will include (but not limited to) custom platform development (Apex, Visualforce, Lightning Components), integrations with back office systems (often through the use of middle-ware tools).</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide development support, from design through testing and deployment, often working with other members of the team.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement, deploy and document projects that leverage the Salesforce.com toolset.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Post-delivery: work with client teams in supporting the live application and perform hand-off and knowledge transfer activities with team members, positioning our users for long term success.</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
-	<li>3+ years of experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
-	<li>Experience in writing advanced SQL queries</li>
-	<li>Experience in translating analysis results into business recommendations and business questions into an analysis framework</li>
-	<li>Knowledge of data management, data modeling and data warehousing fundamentals</li>
-	<li>Experience in presenting analysis findings to business stakeholders</li>
-	<li>Experience with statistical analysis programming languages (R, Python, etc)</li>
-</ul>
-<p><strong>Bonus points</strong></p>
-<ul>
-	<li>Experience in front-end development, JavaScript, and/or other scripting languages is a plus</li>
-	<li>Experience with a fast-growing SaaS business based company preferred</li>
-</ul>
+<p><strong>Desired skills and </strong><strong>experience</strong></p>
+<p><span style="font-weight: 400;">BS in Computer science, Software engineering or related field involving code development</span></p>
+<p><span style="font-weight: 400;">Advance knowledge of Salesforce CRM Platform - Sales/Service Cloud.</span></p>
+<p><span style="font-weight: 400;">Experience developing customer-facing interfaces.</span></p>
+<p><span style="font-weight: 400;">Proficient in MYSQL, Apex, JavaScript, Native, and VisualForce.</span></p>
+<p><span style="font-weight: 400;">Excellent Verbal and Written communication skills.</span></p>
+<p><span style="font-weight: 400;">Experience with custom integration with cloud business applications such as CLM, E-sign, Boomi, Marketo</span></p>
+<p><span style="font-weight: 400;">Salesforce Certified Platform Developer(I, II) certification strongly desired</span></p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
