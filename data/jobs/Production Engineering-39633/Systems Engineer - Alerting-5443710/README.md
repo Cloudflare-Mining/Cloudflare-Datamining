@@ -10,7 +10,7 @@
 <p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
 <p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
 <p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p><strong>In this role, you can expect to:</strong></p>
+<h3><strong>In this role, you can expect to:</strong></h3>
 <ul>
 	<li>Design, deliver, and operate software that progresses Cloudflare's Observability competency</li>
 	<li>Solve scaling bottlenecks in critical services in our Logging pipeline</li>
@@ -21,14 +21,13 @@
 	<li>Contribute to open-source</li>
 </ul>
 <p>We are a small team, well-funded, growing and focused on building an extraordinary company. This is a systems engineering role and is a superb opportunity to be part of a high performing team to help to support Cloudflare’s mission and help build a better internet.</p>
-<h3><strong>You may be a good fit for our team if you have:</strong></h3>
+<h3>You may be a good fit for our team if you have:</h3>
 <ul>
 	<li>Proficiency in distributed Linux environments</li>
 	<li>Proficiency in designing high-scale distributed systems</li>
 	<li>Proficiency in high-level programming languages (e.g., Golang)</li>
-	<li>Proficiency in Kafka, Elasticsearch, Kubernetes, and other open-source components</li>
+	<li>Proficiency in Prometheus, Alertmanager, Thanos</li>
 	<li>Proficiency in networking protocols Layer 2-7 of the OSI model</li>
-	<li>Experience working with Open Telemetry</li>
 	<li>Experience working in a fast, high-growth environment</li>
 	<li>Experience working in a 24/7/365 service environment</li>
 	<li>Exquisite written and verbal communication skills</li>
