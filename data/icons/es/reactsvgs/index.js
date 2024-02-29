@@ -64,6 +64,7 @@ import Github from './Github';
 import Globe from './Globe';
 import Hamburger from './Hamburger';
 import Help from './Help';
+import HideEye from './HideEye';
 import Home from './Home';
 import Image from './Image';
 import InfoSign from './InfoSign';
@@ -223,6 +224,7 @@ export default {
   globe: Globe,
   hamburger: Hamburger,
   help: Help,
+  'hide-eye': HideEye,
   home: Home,
   image: Image,
   'info-sign': InfoSign,

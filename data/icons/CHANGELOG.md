@@ -1,5 +1,11 @@
 # Change Log
 
+## 12.3.0
+
+### Minor Changes
+
+- a44597bad6: add hide-eye icon
+
 ## 12.2.0
 
 ### Minor Changes

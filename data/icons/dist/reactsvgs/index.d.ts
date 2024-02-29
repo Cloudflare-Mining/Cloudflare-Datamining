@@ -66,6 +66,7 @@ declare const _default: {
     globe: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     hamburger: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     help: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'hide-eye': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     home: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     image: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'info-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

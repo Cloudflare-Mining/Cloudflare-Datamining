@@ -3,8 +3,8 @@ function _extends() { _extends = Object.assign ? Object.assign.bind() : function
 import * as React from 'react';
 
 var SvgDeviceLaptop = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
-  xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 64 64",
+  xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
   focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
