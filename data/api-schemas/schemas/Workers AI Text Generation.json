@@ -1,0 +1,5154 @@
+{
+	"POST /accounts/{account_id}/ai/run/@cf/deepseek-ai/deepseek-math-7b-base": {
+		"operationId": "workers-ai-post-run-cf-deepseek-ai-deepseek-math-7b-base",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepseek-ai/deepseek-math-7b-base model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/deepseek-ai/deepseek-math-7b-instruct": {
+		"operationId": "workers-ai-post-run-cf-deepseek-ai-deepseek-math-7b-instruct",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/deepseek-ai/deepseek-math-7b-instruct model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/defog/sqlcoder-7b-2": {
+		"operationId": "workers-ai-post-run-cf-defog-sqlcoder-7b-2",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/defog/sqlcoder-7b-2 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-2-7b-chat-fp16": {
+		"operationId": "workers-ai-post-run-cf-meta-llama-2-7b-chat-fp16",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/meta/llama-2-7b-chat-fp16 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/meta/llama-2-7b-chat-int8": {
+		"operationId": "workers-ai-post-run-cf-meta-llama-2-7b-chat-int8",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/meta/llama-2-7b-chat-int8 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/microsoft/phi-2": {
+		"operationId": "workers-ai-post-run-cf-microsoft-phi-2",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/microsoft/phi-2 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1": {
+		"operationId": "workers-ai-post-run-cf-mistral-mistral-7b-instruct-v0-1",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/mistral/mistral-7b-instruct-v0.1 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/openchat/openchat-3.5-0106": {
+		"operationId": "workers-ai-post-run-cf-openchat-openchat-3-5-0106",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/openchat/openchat-3.5-0106 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-0.5b-chat": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-0-5b-chat",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwen1.5-0.5b-chat model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-1.8b-chat": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-1-8b-chat",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwen1.5-1.8b-chat model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-14b-chat-awq": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-14b-chat-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwen1.5-14b-chat-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/qwen/qwen1.5-7b-chat-awq": {
+		"operationId": "workers-ai-post-run-cf-qwen-qwen1-5-7b-chat-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/qwen/qwen1.5-7b-chat-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/thebloke/discolm-german-7b-v1-awq": {
+		"operationId": "workers-ai-post-run-cf-thebloke-discolm-german-7b-v1-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/thebloke/discolm-german-7b-v1-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/thebloke/yarn-mistral-7b-64k-awq": {
+		"operationId": "workers-ai-post-run-cf-thebloke-yarn-mistral-7b-64k-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/thebloke/yarn-mistral-7b-64k-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/tiiuae/falcon-7b-instruct": {
+		"operationId": "workers-ai-post-run-cf-tiiuae-falcon-7b-instruct",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/tiiuae/falcon-7b-instruct model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@cf/tinyllama/tinyllama-1.1b-chat-v1.0": {
+		"operationId": "workers-ai-post-run-cf-tinyllama-tinyllama-1-1b-chat-v1-0",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @cf/tinyllama/tinyllama-1.1b-chat-v1.0 model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/codellama-7b-instruct-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-codellama-7b-instruct-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/codellama-7b-instruct-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/deepseek-coder-6.7b-base-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-deepseek-coder-6-7b-base-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/deepseek-coder-6.7b-base-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/deepseek-coder-6.7b-instruct-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-deepseek-coder-6-7b-instruct-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/deepseek-coder-6.7b-instruct-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/llama-2-13b-chat-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-llama-2-13b-chat-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/llama-2-13b-chat-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/llamaguard-7b-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-llamaguard-7b-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/llamaguard-7b-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/mistral-7b-instruct-v0.1-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-mistral-7b-instruct-v0-1-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/mistral-7b-instruct-v0.1-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/neural-chat-7b-v3-1-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-neural-chat-7b-v3-1-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/neural-chat-7b-v3-1-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/openchat_3.5-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-openchat_3-5-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/openchat_3.5-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/openhermes-2.5-mistral-7b-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-openhermes-2-5-mistral-7b-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/openhermes-2.5-mistral-7b-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/orca-2-13b-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-orca-2-13b-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/orca-2-13b-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/starling-lm-7b-alpha-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-starling-lm-7b-alpha-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/starling-lm-7b-alpha-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/ai/run/@hf/thebloke/zephyr-7b-beta-awq": {
+		"operationId": "workers-ai-post-run-hf-thebloke-zephyr-7b-beta-awq",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"oneOf": [
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"prompt": {
+										"maxLength": 4096,
+										"type": "string"
+									},
+									"raw": {
+										"default": false,
+										"type": "boolean"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"prompt"
+								]
+							},
+							{
+								"properties": {
+									"max_tokens": {
+										"default": 256,
+										"type": "integer"
+									},
+									"messages": {
+										"items": {
+											"properties": {
+												"content": {
+													"maxLength": 4096,
+													"type": "string"
+												},
+												"role": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role",
+												"content"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"stream": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"required": [
+									"messages"
+								]
+							}
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"oneOf": [
+										{
+											"properties": {
+												"response": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										{
+											"format": "binary",
+											"type": "string"
+										}
+									]
+								},
+								"success": {
+									"default": "true",
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					},
+					"text/event-stream": {
+						"schema": {}
+					}
+				},
+				"description": "Successful response"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "string"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Execute @hf/thebloke/zephyr-7b-beta-awq model.",
+		"tags": [
+			"Workers AI Text Generation"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.ai"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
