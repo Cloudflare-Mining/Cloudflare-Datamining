@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.0
+
+### Major Changes
+
+- 738071bb3c: move react-router-dom to peer dependencies
+
 ## 6.0.5
 
 ## 6.0.4

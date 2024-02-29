@@ -1,5 +1,12 @@
 # Change Log
 
+## 6.0.0
+
+### Patch Changes
+
+- Updated dependencies [738071bb3c]
+  - @cloudflare/component-page@9.0.0
+
 ## 5.0.7
 
 ### Patch Changes
