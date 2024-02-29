@@ -182,7 +182,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		hasPermission: T => !!(0, a.AB)(T),
-		tabs: h.DW
+		tabs: M.DW
 	}, {
 		title: "navigation.account.dns_firewall",
 		url: "/dns-firewall",
@@ -217,13 +217,16 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-transit/tunnel-healthchecks"
+		}, {
+			title: "account.magic.packet_captures.menu",
+			url: "/magic-transit/packet-captures/captures"
 		}]
 	}, {
 		title: "navigation.account.magic_firewall",
 		url: "/network-security/magic_firewall",
 		iconType: "magic-firewall",
 		hasPermission: T => !!(0, a.zJ)(T),
-		tabs: h.$$
+		tabs: M.$$
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
@@ -232,7 +235,7 @@ const navigation = {
 			const ne = !!(0, a.Wq)(T) && !!(0, a.fO)(T);
 			return !!(0, a.Tk)(T) || ne
 		},
-		tabs: h.Dn
+		tabs: M.Dn
 	}, {
 		title: "navigation.account.ip_addresses",
 		url: "/ip-addresses/ip-prefixes",
@@ -279,6 +282,9 @@ const navigation = {
 		}, {
 			title: "navigation.account.magic.tunnel_healthcheck",
 			url: "/magic-wan/tunnel-healthchecks"
+		}, {
+			title: "account.magic.packet_captures.menu",
+			url: "/magic-wan/packet-captures/captures"
 		}]
 	}, {
 		hasPermission: T => (0, a.iY)(T),
@@ -647,7 +653,7 @@ const navigation = {
 		hasPermission: T => {
 			const ne = (0, l.nA)(T);
 			if ((0, m.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !ne) return !1;
-			const ee = !!((0, M.l8)(T) || (0, l.DQ)(T)),
+			const ee = !!((0, h.l8)(T) || (0, l.DQ)(T)),
 				H = !!(0, l.ZB)(T, "spectrum", "enabled"),
 				te = !!(0, l.Ns)(ne);
 			return H || ee || !te

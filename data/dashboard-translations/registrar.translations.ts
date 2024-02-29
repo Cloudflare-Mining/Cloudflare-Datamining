@@ -402,11 +402,11 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment. Don't worry, we're attempting to determine the current state of each  domain. This process may take some time so please try back in 5 minutes. If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: r,
-	instructions_godaddy: _,
-	instructions_namecheap: l,
+	instructions_enom: o,
+	instructions_godaddy: l,
+	instructions_namecheap: _,
 	instructions_network_solutions: c,
-	instructions_one_and_one: o,
+	instructions_one_and_one: r,
 	instructions_unknown: d,
 	instructions_uk: n,
 	instructions_restrictions: s,
@@ -860,5 +860,43 @@ Payment will be charged in US dollars.`,
 	nexus_information_description: "Registrants of .us domains are required to meet certain Nexus requirements. Please select from the options below that best describe your Nexus to the United States and the intended use of the domain name.",
 	nexus_form_category_label: "Please identify your Nexus category:",
 	nexus_form_application_purpose_label: "Please indicate how you intend to use the domain name:",
-	nexus_form_placeholder: "Select a value"
+	nexus_form_placeholder: "Select a value",
+	delete_domain: {
+		card: {
+			title: (0, e.d)`Delete domain ${"domainName"}`,
+			description: "This domain registration is eligible for deletion.",
+			description_delete_not_available: "Domain delete isn't available at this time, contact support if you would like to delete this domain.<0></0>This domain is currently not able to be deleted due to one of the following reasons:",
+			description_delete_not_available_reason_1: "The status of the domain does not permit deletions",
+			description_delete_not_available_reason_2: "There is an administrative lock on the domain",
+			description_delete_not_available_reason_3: "You are not a Super Admin on the account",
+			description_delete_not_available_reason_4: "Domain is temporarily blocked for deletion",
+			button: "Delete"
+		},
+		warning_modal: {
+			description: "Clicking Continue will send an email to all Super Admins in the account. The email will contain a confirmation code that must be provided to complete the deletion.<br /><br />Please be sure that you wish to permanently delete the registration. Once the deletion has been confirmed, the domain will no longer resolve and the domain may be immediately available for re-registration by any party.<br /><br />Please note that a refund will <strong>NOT</strong> be provided.",
+			button: "Continue"
+		},
+		verification_modal: {
+			description: "We need to confirm that you really intend to delete the domain and an email has been sent with a confirmation code.<0></0>Enter the code below and click Verify Code.",
+			expiration_notice: (0, e.d)`The code will expire in ${"minutesLeft"} minutes and ${"secondsLeft"} seconds`,
+			new_code: (0, e.d)`Didn't get a code? <0>Send new code</0>`,
+			button: "Verify Code",
+			error: {
+				too_many_attempts: (0, e.d)`You are temporarily blocked because of too many attempts to get a confirmation code in a short period of time. Try again ${"date"}.`
+			}
+		},
+		confirmation_modal: {
+			description: "I acknowledge by confirming the domain will be permanently deleted and it will no longer resolve. The domain may be immediately available for re-registration by any party.<br /><br />Please note that a refund will <strong>NOT</strong> be provided.",
+			button: "Delete Domain Permanently"
+		},
+		notifications: {
+			success: (0, e.d)`The domain ${"domainName"} has been sucessfully deleted.`
+		},
+		errors: {
+			title: "Error:",
+			invalid_confirmation_code: "The confirmation code entered is not valid.",
+			no_permission: "Your account does not have permission to delete this domain.",
+			generic: (0, e.d)`Something went wrong and we were unable to delete the domain ${"domainName"}. Please try again later or contact support for assistance.`
+		}
+	}
 }
