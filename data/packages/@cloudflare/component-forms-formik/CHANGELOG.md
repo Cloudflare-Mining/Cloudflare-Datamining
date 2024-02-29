@@ -1,5 +1,21 @@
 # Change Log
 
+## 7.0.7
+
+### Patch Changes
+
+- Updated dependencies [20e6c08c22]
+  - @cloudflare/component-button@8.3.0
+  - @cloudflare/component-forms@6.0.7
+
+## 7.0.6
+
+### Patch Changes
+
+- @cloudflare/component-button@8.2.1
+- @cloudflare/component-forms@6.0.6
+- @cloudflare/component-listbox@2.0.5
+
 ## 7.0.5
 
 ### Patch Changes
