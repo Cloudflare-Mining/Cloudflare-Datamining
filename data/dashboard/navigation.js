@@ -653,10 +653,10 @@ const navigation = {
 		hasPermission: T => {
 			const ne = (0, l.nA)(T);
 			if ((0, m.yD)(T) || !(0, a.wB)(T, "zone_settings", "spectrum.app") || !ne) return !1;
-			const ee = !!((0, h.l8)(T) || (0, l.DQ)(T)),
+			const te = !!((0, h.l8)(T) || (0, l.DQ)(T)),
 				H = !!(0, l.ZB)(T, "spectrum", "enabled"),
-				te = !!(0, l.Ns)(ne);
-			return H || ee || !te
+				ee = !!(0, l.Ns)(ne);
+			return H || te || !ee
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -833,7 +833,7 @@ const navigation = {
 			url: "/rules/snippets",
 			labels: ["alpha"],
 			navigationType: "version",
-			hasPermission: T => !!(0, G.GM)(T) && (0, a.$n)(T, "waf", "page-rule", "read")
+			hasPermission: T => !!(0, F.GM)(T) && (0, a.$n)(T, "waf", "page-rule", "read")
 		}, {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
