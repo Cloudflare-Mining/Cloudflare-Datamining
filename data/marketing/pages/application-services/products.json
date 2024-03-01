@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Application Services: Product Hub (combined)",
+				"pageName": "Application Services - Product Hub (combined)",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -51,12 +51,7 @@
 				},
 				"contentfulId": "4rFhEbg2Zq18lpchzjHXrz",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "Featured ebook",
-					"linkText": "Download now",
-					"linkUrl": "/lp/ciso-guide-to-api-security/",
-					"desktopText": "CISO's Guide to API Security ebook"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -158,28 +153,68 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "3tLDJFrPv05a61CRgfXtRN",
-						"menuTitle": null,
-						"mobileOnlyMenuTitle": null,
-						"stickyNav": true,
+						"contentfulId": "V3uiwLEbtCaN0UqFOsw6L",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Secure & deliver applications",
+						"titleSize": null,
+						"subtitle": "2022 Gartner Peer Insights — Cloudflare is \"Customer's Choice\" for Global CDN¹",
+						"subtitleSize": null,
+						"copy": "With Cloudflare, your business will deliver superior experiences through faster performance and world-class application security, all on an integrated and easy-to-use platform.",
+						"buttonColor": "blue",
+						"buttonColor2": "blue",
+						"buttonText1": "View security products",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "#security-services",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "View performance products",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "#performance-services",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
 						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "5Ln2aTISfbF57qA4BNaCKA",
-								"linkText": "Security Services",
-								"page": null,
-								"url": "#security-services",
-								"subMenuItems": []
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": false,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Large",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": "[Compare plans and pricing to get started today!](#price-matrix)",
+						"leftLinkLoggedIn": "[Compare plans and pricing](#price-matrix)",
+						"leftLinkOptions": "show",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "a3fe5227-779f-5c68-b261-a33721d14ab9",
+							"altText": "Map of global Cloudflare network",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qkAxZ673cqHFDwafV08rB/a84fce9776746b777d06625170646cbc/Application_Services_current_network_map.svg"
+								},
+								"description": null
 							},
-							{
-								"contentfulId": "42Q1IY3NWVrkpdrN6OsW2z",
-								"linkText": "Performance Services",
-								"page": null,
-								"url": "#performance-services",
-								"subMenuItems": []
-							}
-						]
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "1rKZeknLcHKupsZOSqBrGJ",
