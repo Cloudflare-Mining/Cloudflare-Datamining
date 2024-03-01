@@ -5,36 +5,45 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>Available Locations: Remote US, Austin, TX or San Francisco, CA</h4>
-<p><strong>About the department</strong></p>
-<p>Cloudflare is looking for an experienced product marketer to join our Zero Trust SASE product marketing team. This is a high-impact, results-oriented role, where you will work directly with Sales, Product Management, and Marketing to take new products to market and develop messaging and campaigns that drive acquisition and expansion.</p>
-<p><strong>What you'll do</strong></p>
-<p>We are looking for up to a Sr. Level Product Marketing Manager with a thorough understanding of cloud-based data protection products (e.g. CASB, DLP, SSPM/DSPM), compliance frameworks (e.g. GDPR, HIPAA, PCI), and security paradigms &amp; platforms (e.g. Zero Trust, SSE/SASE). As a Product Marketing Manager, you will be responsible for driving the growth and success of expanding Cloudflare’s security opportunities to include solving data protection use cases (e.g. compliance) by working closely with cross-functional teams and developing effective marketing strategies.&nbsp;</p>
-<p>Successful candidates will have a passion for helping any organization more easily keep users and data safe across increasingly distributed hybrid work and multi-cloud environments. You will have a drive to understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives. You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<p><strong>Available Locations: Preferred location is San Francisco remote, but open to US Remote</strong></p>
+<p><strong>Responsibilities</strong></p>
+<p>The Customer Advocacy Manager will be responsible for building, managing and growing customer marketing programs. Reporting to the Head of Customer Advocacy, the ideal candidate should have previous experience in both customer engagement and scaling customer programs in high growth SaaS companies. This is a fantastic opportunity to join a high growth company.</p>
+<p>You will work cross functionally to build customer participation with enterprise customers across many industries and partnering closely with stakeholders in Sales, Customer Success, Marketing, and PR/AR.&nbsp;</p>
+<p>The candidate is an individual contributor who will work closely with the global Customer Advocacy team, who are driving all Customer Marketing and Customer Advocacy programs. Success is measured by quantity and quality of content, amount of engagement with each account, brand equity, and levels/titles of participating customers.</p>
+<p>The main responsibilities are:</p>
+<p><strong>Customer References:</strong></p>
 <ul>
-	<li>Develop and execute go-to-market strategies for Cloudflare's Zero Trust SASE platform.</li>
-	<li>Create compelling messaging and positioning that differentiates Cloudflare's data protection and compliance capabilities in the market.</li>
-	<li>Develop content for marketing campaigns, including presentations, product briefs, solution/use case briefs, whitepapers, and case studies.</li>
-	<li>Collaborate with the demand generation team to create and execute campaigns that drive leads and pipeline.</li>
-	<li>Drive sales enablement through product training, sales tools, and competitive intelligence.</li>
-	<li>Conduct market research and gather insights to inform product positioning, messaging, and roadmap decisions.</li>
-	<li>Analyze market trends, customer feedback, and competitive landscape to identify areas for product differentiation and growth.</li>
-	<li>Work with product management and sales teams to define and prioritize product features and roadmap.</li>
+	<ul>
+		<li>Cultivate, grow and maintain an active customer reference pipeline.&nbsp;</li>
+		<li>Support and fulfill sales 1:1 and RFP requests for customer references.</li>
+		<li>Support customer reference requests from event and campaign managers, and analyst and public relations teams.&nbsp;</li>
+	</ul>
+	<li><strong>Customer Advocacy:&nbsp;</strong></li>
+	<ul>
+		<li>Recruit and engage customers for participation in speaking engagements, webinars, press releases, blogs/articles, analysts reports and interviews, and other marketing activities.</li>
+		<li>Lead process to produce high quality customer story content, including case studies, story slides, and customer video content.</li>
+		<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships.&nbsp;</li>
+	</ul>
 </ul>
-<p><strong>Qualifications:</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Bachelor's degree in marketing, business, or related field; MBA preferred.</li>
-	<li>4 - 6+ years of experience in product marketing, preferably at companies that sold or managed CASB, DLP, or other data security offerings to enterprise-sized organizations.</li>
-	<li>Thorough understanding of cloud-based data protection and compliance frameworks, including key trends, technologies, and competitive landscape.</li>
-	<li>Proven ability to develop and execute go-to-market strategies for cloud-based products with a strong security focus.</li>
-	<li>Strong written and verbal communication skills, with the ability to develop compelling messaging and content that resonates with customers.</li>
-	<li>Analytical mindset with experience in market research, data analysis, and customer segmentation.</li>
-	<li>Strong project management skills with the ability to manage multiple projects and priorities simultaneously.</li>
-	<li>Ability to work collaboratively with cross-functional teams, including product management, sales, and engineering.</li>
+	<li>Proven success in customer advocacy/marketing role(s).</li>
+	<li>Ability to identify and cultivate new relationships with customers across market segments and industries with particular focus on well known global brands</li>
+	<li>Professional and self-motivated team member, who can organize and manage multiple projects across functions (especially with Marketing and Sales) and with multiple stakeholders and contributors.</li>
+	<li>Experience with Reference Management, Customer Advocacy/Marketing tools.</li>
+	<li>Outgoing with dynamic interpersonal and top-notch verbal and written communication skills.</li>
 </ul>
-<p>If you are a self-starter who thrives in a fast-paced, innovative environment and has a passion for cloud-based data protection, we encourage you to apply for this exciting Product Marketing Manager opportunity at Cloudflare.</p>
-<p>&nbsp;</p>
+<p><strong>Skills, knowledge and experience</strong></p>
+<ul>
+	<li>Bachelor’s Degree in Business/Marketing or Communications related field&nbsp;</li>
+	<li>3+ years of customer advocacy/marketing experience</li>
+	<li>Significant experience in B2B technology marketing with a keen understanding of the Internet ecosystem and technical audiences&nbsp;&nbsp;&nbsp;</li>
+	<li>Customer-first mentality</li>
+	<li>Collaborative, team-oriented attitude</li>
+	<li>Ability to effectively influence both internal and external stakeholders across all levels of the organization</li>
+	<li>Have a bias to action and the ability to not only manage but thrive in a fast-paced environment</li>
+	<li>A passion for Cloudflare’s mission and the success of our customers, partners, and community.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
