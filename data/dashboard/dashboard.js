@@ -832,7 +832,7 @@
 						}
 					}, [v.search])
 				},
-				sn = he().lazy(() => Promise.all([n.e(2480), n.e(18741), n.e(4616), n.e(56310), n.e(45928), n.e(81778), n.e(72019), n.e(4292), n.e(76725), n.e(98210), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
+				sn = he().lazy(() => Promise.all([n.e(2480), n.e(18741), n.e(4616), n.e(56310), n.e(45928), n.e(81778), n.e(72019), n.e(26976), n.e(76725), n.e(98210), n.e(47261), n.e(35812), n.e(77637), n.e(85918), n.e(42864)]).then(n.bind(n, "../react/AuthenticatedApp.jsx"))),
 				cn = he().lazy(() => Promise.all([n.e(18741), n.e(81778), n.e(76725), n.e(69088), n.e(35812), n.e(76472)]).then(n.bind(n, "../react/UnauthenticatedApp.tsx")));
 			var ln = ({
 					userIsAuthed: v
@@ -956,10 +956,10 @@
 				n.g.build = fn({}, {
 					branch: "master",
 					isReleaseCandidate: "true",
-					commit: "eb5c62bd301db5a813084f851223bd15d13a9768",
+					commit: "7a2b37d344fc6e59839a15f595ce4aaad498f1bf",
 					env: "production",
-					builtAt: 1709240996191,
-					dashVersion: "8d99ac9e97502b957bd936bfae6cc88d0f4816c5",
+					builtAt: 1709312161191,
+					dashVersion: "a9924de6e5a34120080d56a09844edf93b64d4a6",
 					versions: {
 						"@cloudflare/app-dash": "25.161.21",
 						node: "20.10.0",

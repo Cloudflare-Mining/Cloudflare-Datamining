@@ -776,7 +776,7 @@ const navigation = {
 			title: "navigation.zone.speed.optimization",
 			url: "/speed/optimization",
 			navigationType: "version",
-			tabs: Z.x
+			tabs: Q.x
 		}]
 	}, {
 		title: "navigation.zone.caching",

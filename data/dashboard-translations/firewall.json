@@ -1695,7 +1695,7 @@
 	"security_analytics.table.view_sampled_logs": "Showing raw logs. <0>Switch back to sampled logs</0>",
 	"security_analytics.table.query_raw_logs_loading": "Raw logs are loading. <0>Switch back to sampled logs</0>",
 	"security_analytics.table.view.viewing_sampled": "Raw logs are not available in this view for the selected filters. <0>Go to Log Explorer</0> to query raw logs with the selected filters.",
-	"security_analytics.table.raw.time_filter_warning": "Your time filters include time before Log Explorer job creation, raw logs will not be returned from before this date.",
+	"security_analytics.table.raw.time_filter_warning": "Raw logs will not include logs from before the date Log Explorer was set up: %{date}. ",
 	"security_analytics.table.mitigation": "Mitigation",
 	"security_analytics.table.not_mitigated": "Not mitigated",
 	"security_analytics.table.mitigation_explanation": "%{action} by %{service}",

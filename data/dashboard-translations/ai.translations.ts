@@ -9,7 +9,7 @@
 	},
 	api_spec: "API Spec",
 	api_spec_description: "Review the Workers AI API spec to build your application using the REST API",
-	beta_banner: "Workers AI is currently in Open Beta and limits & access are subject to change",
+	beta_banner: (0, e.d)`Workers AI will start billing on April 1st, 2024, learn more about plans and pricing <0>here</0>`,
 	browse_model_catalog: "Browse Model Catalog",
 	build_your_first_ai_application: "Build your first AI application",
 	binding_workers_ai_to_a_worker: "Binding Workers AI to a Worker",
@@ -23,7 +23,7 @@
 			cost: "All Models",
 			neuros: "All Models"
 		},
-		period: (0, t.d)`Last <0>${"days"}</0> days: <1>${"iniDate"}</1> - Today`
+		period: (0, e.d)`Last <0>${"days"}</0> days: <1>${"iniDate"}</1> - Today`
 	},
 	sidebar: {
 		cost_summary: {
@@ -53,7 +53,12 @@
 		invoice_note: {
 			note: "These numbers are estimations and may not reflect final invoices."
 		},
-		neuros: "Neurons",
+		neurons_card: {
+			title: "Estimated Daily Neurons",
+			neurons_tooltip: "Neurons is a metric that aggregates model usage and is subject to change. Workers Free and Paid plans will both have access to 10K free daily neurons. Workers Paid customers can use more than 10K daily neurons at a rate of $0.011 / 1k Neurons after their free allocation.",
+			note: (0, e.d)`Workers AI will start billing for neuron usage on April 1st. <0>Learn more</0>`
+		},
+		neurons: "Neurons",
 		today: "Today"
 	},
 	pagination: {
@@ -72,6 +77,7 @@
 	},
 	models_list: {
 		common: {
+			documentation: "Documentation",
 			no_models: "No models",
 			clear: "Clear",
 			all_provideres: "All Providers",
@@ -95,9 +101,9 @@
 	},
 	model_catalog: "Model Catalog",
 	using_workers_ai_rest_api: "Using Workers AI REST API",
-	using_workers_ai_rest_api_description: (0, t.d)`Call Workers AI from anywhere using our API. <0>Workers AI REST API documentation</0>`,
+	using_workers_ai_rest_api_description: (0, e.d)`Call Workers AI from anywhere using our API. <0>Workers AI REST API documentation</0>`,
 	product_title: "Workers AI",
-	provided_by: (0, t.d)`Provided by <0>${"provider"}</0>`,
+	provided_by: (0, e.d)`Provided by <0>${"provider"}</0>`,
 	request_access: "Request access",
 	reserve_a_full_access_seat: "Reserve spot on waitlist",
 	reserve_a_full_access_seat_description: "Join the waitlist for access to production scale Workers AI ",
@@ -136,6 +142,7 @@
 	welcome_tagline: "Workers AI offers a catalog of AI inference models that you can access from a Worker or via the REST API",
 	workers_ai_api_key: "Workers AI API Key",
 	workers_ai_docs: "Workers AI docs",
+	workers_ai_docs_allmodels: "Browse All Models",
 	workers_ai_examples: "Workers AI Examples",
 	workers_ai_examples_description: "Get inspired by projects build by the Cloudflare developer community ",
 	workers_ai_workers_templates: "Workers AI Workers Templates",
