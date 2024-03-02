@@ -13,17 +13,23 @@
 <p>The main responsibilities are:</p>
 <p><strong>Customer References:</strong></p>
 <ul>
-	<ul>
-		<li>Cultivate, grow and maintain an active customer reference pipeline.&nbsp;</li>
-		<li>Support and fulfill sales 1:1 and RFP requests for customer references.</li>
-		<li>Support customer reference requests from event and campaign managers, and analyst and public relations teams.&nbsp;</li>
-	</ul>
-	<li><strong>Customer Advocacy:&nbsp;</strong></li>
-	<ul>
-		<li>Recruit and engage customers for participation in speaking engagements, webinars, press releases, blogs/articles, analysts reports and interviews, and other marketing activities.</li>
-		<li>Lead process to produce high quality customer story content, including case studies, story slides, and customer video content.</li>
-		<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships.&nbsp;</li>
-	</ul>
+	<li>
+		<ul>
+			<li>Cultivate, grow and maintain an active customer reference pipeline.&nbsp;</li>
+			<li>Support and fulfill sales 1:1 and RFP requests for customer references.</li>
+			<li>Support customer reference requests from event and campaign managers, and analyst and public relations teams.&nbsp;</li>
+		</ul>
+	</li>
+</ul>
+<p><strong>Customer Advocacy:&nbsp;</strong></p>
+<ul>
+	<li>
+		<ul>
+			<li>Recruit and engage customers for participation in speaking engagements, webinars, press releases, blogs/articles, analysts reports and interviews, and other marketing activities.</li>
+			<li>Lead process to produce high quality customer story content, including case studies, story slides, and customer video content.</li>
+			<li>Qualify, develop and maintain a targeted pipeline of strategic customer relationships.&nbsp;</li>
+		</ul>
+	</li>
 </ul>
 <p><strong>Requirements</strong></p>
 <ul>
