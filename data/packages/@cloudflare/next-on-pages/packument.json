@@ -2,7 +2,7 @@
 	"name": "@cloudflare/next-on-pages",
 	"dist-tags": {
 		"latest": "1.9.0",
-		"beta": "0.0.0-9b1d951",
+		"beta": "0.0.0-b46977c",
 		"pre-v1": "0.10.2"
 	},
 	"versions": {
@@ -17834,6 +17834,65 @@
 					{
 						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
 						"sig": "MEUCIC7NKH44A/+IkKVFl2ax5WA1hp9j6r+kAJDmQU7xMQr4AiEA1UoRsFIJsCIUXY0d9vkwoWGkOgRUxz/pcF1L0bZC8+I="
+					}
+				]
+			}
+		},
+		"0.0.0-b46977c": {
+			"name": "@cloudflare/next-on-pages",
+			"version": "0.0.0-b46977c",
+			"dependencies": {
+				"acorn": "^8.8.0",
+				"ast-types": "^0.14.2",
+				"chalk": "^5.2.0",
+				"chokidar": "^3.5.3",
+				"commander": "^11.1.0",
+				"cookie": "^0.5.0",
+				"esbuild": "^0.15.3",
+				"js-yaml": "^4.1.0",
+				"miniflare": "^3.20231218.1",
+				"package-manager-manager": "^0.2.0",
+				"pcre-to-regexp": "^1.1.0",
+				"semver": "^7.5.2"
+			},
+			"devDependencies": {
+				"@changesets/cli": "^2.26.0",
+				"@cloudflare/next-on-pages-next-dev": "*",
+				"@cloudflare/next-on-pages-tsconfig": "*",
+				"@cloudflare/workers-types": "^4.20230404.0",
+				"@tsconfig/strictest": "^2.0.0",
+				"@types/cookie": "^0.5.1",
+				"@types/js-yaml": "^4.0.5",
+				"@types/mock-fs": "^4.13.1",
+				"@types/node": "^20.1.4",
+				"dedent-tabs": "^0.10.3",
+				"eslint": "^8.35.0",
+				"image-to-base64": "^2.2.0",
+				"mock-fs": "^5.2.0",
+				"p-limit": "^4.0.0",
+				"prettier": "^2.8.4",
+				"typescript": "^5.0.4",
+				"vitest": "^0.32.2",
+				"vitest-environment-miniflare": "^2.13.0"
+			},
+			"peerDependencies": {
+				"vercel": ">=30.0.0",
+				"wrangler": "^3.28.2",
+				"@cloudflare/workers-types": "^4.20240208.0"
+			},
+			"bin": {
+				"next-on-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-fft1gUImOKudejxTacjwLB5tn7avZvtscvC0Pnm8TfwsBeCdYFc8+EBjFjJVc52bPd3RoGL+JAdMaPd69gMBSw==",
+				"shasum": "aa69786928414e03276a4afc25ab4a8fbe90c286",
+				"tarball": "https://registry.npmjs.org/@cloudflare/next-on-pages/-/next-on-pages-0.0.0-b46977c.tgz",
+				"fileCount": 31,
+				"unpackedSize": 708338,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDx9m+gOeokrA2UJAWwyjuJQvRqwjU/0ILgl8FJvYrv7AiEAg86dk/fMGPchp2etpyjHFX2we87j1wvYVo9jqc9/v9Y="
 					}
 				]
 			}
