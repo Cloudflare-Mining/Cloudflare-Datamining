@@ -429,7 +429,15 @@
 		"enabled": false
 	},
 	"gurjinder-feature-test": {
-		"enabled": false
+		"enabled": true
+	},
+	"gurjinder-live-exposure": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment",
+			"branch-2"
+		]
 	},
 	"gurjinder-test": {
 		"enabled": false,
@@ -644,7 +652,7 @@
 		"enabled": true
 	},
 	"security-analytics-ai": {
-		"enabled": false
+		"enabled": true
 	},
 	"security-analytics-log-explorer-integration": {
 		"enabled": true
