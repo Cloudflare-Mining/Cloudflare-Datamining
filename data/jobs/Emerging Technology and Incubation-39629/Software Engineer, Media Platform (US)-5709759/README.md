@@ -9,10 +9,11 @@
 <h3><strong>About the team</strong></h3>
 <p>We love the Internet and media is a huge part of it. We’re working hard on building tools that change the possibilities of what Creators can do with video and images on the web. We make advanced video technologies such as adaptive bitrate, multi-codec, low latency across devices available to every developer. We enable Creators to unleash creativity on the web.</p>
 <p>Media Platform is part of Cloudflare's Emerging Technology and Incubation organization. This is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>We are a hybrid team with offices in Austin, Washington, NY and San Francisco, and many members working remotely.</p>
+<p>We are a hybrid team with offices in Austin and San Francisco, and many members working remotely.</p>
 <h3><strong>What you'll do</strong></h3>
 <ul>
 	<li>Help build and manage a complex software system that ingests, processes and delivers petabytes of video.</li>
+	<li>Push forward the capabilities of real-time and low latency video communication.</li>
 	<li>Maintain a focus on customer experience and product quality while scaling a young product.</li>
 	<li>Collaborate with engineers across the whole stack and teams across Cloudflare, and contribute at many layers of the architecture.</li>
 	<li>Own your work from early discussions to the day it ships.</li>
@@ -23,10 +24,10 @@
 	<li>We primarily work in Golang and TypeScript. We recommend you have worked in one of these languages before, preferably professionally</li>
 	<li>You are naturally curious and willing to take a step to learn something you don’t have experience in.</li>
 	<li>You enjoy getting things done and have a bias for action: you're a builder and a creator.</li>
-	<li>You are comfortable with large scale distributed systems, and may have experience working in low-latency or real-time environments, although this is not a requirement.</li>
-	<li>You lead. We are a growing team, and you will have a huge role shaping the product from the ground up.</li>
+	<li>You are comfortable with large scale distributed systems, and may have experience working in low-latency or real-time environments.</li>
+	<li>You lead. We are a growing team and you will have a huge role shaping the product from the ground up.</li>
 	<li>You have solid engineering fundamentals (formal computer science education a plus).</li>
-	<li>You may have experience with media on the internet (for example with Media Source Extensions API on browsers, FFmpeg, livestreaming tools) but this is not a requirement.</li>
+	<li>You may have experience with media on the internet (for example with Media Source Extensions API on browsers, FFmpeg, live streaming tools).</li>
 	<li>You would like to join a team that is honest and open with each other and holds each other to the highest standard. We celebrate each other's achievements and support each other when we make mistakes.</li>
 </ul>
 <div class="content-conclusion">
