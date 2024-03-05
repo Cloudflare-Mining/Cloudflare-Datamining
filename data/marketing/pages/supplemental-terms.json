@@ -111,7 +111,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Last updated September 27, 2023",
+													"value": "Last updated ",
 													"marks": [
 														{
 															"type": "bold"
@@ -125,7 +125,21 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " (note that the \"Supplemental Terms\" have been renamed to the \"Service-Specific Terms\" as of May 10, 2023)",
+													"value": "[DATE]",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " (note that the \"Supplemental Terms\" have been renamed to the \"Service-Specific Terms\" as of March 5, 2024)",
 													"marks": [],
 													"content": null
 												}
@@ -190,7 +204,11 @@
 																"uri": null
 															},
 															"value": "Self-Serve Subscription Agreement",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -221,7 +239,11 @@
 																"uri": null
 															},
 															"value": "Enterprise Subscription Agreement",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -325,7 +347,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Please click on the following links to navigate to the Service-Specific Terms applicable to your specific Cloudflare Services. ",
+													"value": "Please click on the following links to navigate to the Service-Specific Terms applicable to your specific Cloudflare Services.",
 													"marks": [],
 													"content": null
 												}
@@ -5663,17 +5685,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "(Cloudflare Workers; Cloudflare Pages; Workers KV; D1; Durable Objects; Vectorize; Hyperdrive; Cloudflare Queues; R2; ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Workers AI; and Workers for Platforms)",
+													"value": "(Cloudflare Workers; Cloudflare Pages; Workers KV; D1; Durable Objects; Vectorize; Hyperdrive; Cloudflare Queues; R2; Workers AI; and Workers for Platforms)",
 													"marks": [],
 													"content": null
 												}
@@ -5757,17 +5769,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; (iv) Workers KV, D1, Durable Objects, Vectorize, Hyperdrive, and R2, storage offerings used to serve HTML and non-HTML content; (v) Workers AI, a Service that allows customers to use Cloudflare's inference infrastructure to invoke select third-party machine learning models (subject to applicable open source licenses or third-party terms of use for such models)",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "; and (vi) Workers for Platforms, a Service that may be used to provide programmability via Workers to your End Customers. ",
+																	"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; (iv) Workers KV, D1, Durable Objects, Vectorize, Hyperdrive, and R2, storage offerings used to serve HTML and non-HTML content; (v) Workers AI, a Service that allows customers to use Cloudflare's inference infrastructure to invoke select third-party machine learning models (subject to applicable open source licenses or third-party terms of use for such models); and (vi) Workers for Platforms, a Service that may be used to provide programmability via Workers to your End Customers. ",
 																	"marks": [],
 																	"content": null
 																}
@@ -5799,17 +5801,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cloudflare may, without liability of any kind, temporarily limit your storage and/or the number of requests you can make or receive using the Developer Platform for any reason (in its sole reasonable discretion), including without limitation, if processing such requests would put an undue burden on the Cloudflare network, adversely impact the Service, or otherwise threaten the integrity of Cloudflare's networks.  ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "While we generally try to provide notice of such actions, we reserve the right to take action without notice.",
+																	"value": "Cloudflare may, without liability of any kind, temporarily limit your storage and/or the number of requests you can make or receive using the Developer Platform for any reason (in its sole reasonable discretion), including without limitation, if processing such requests would put an undue burden on the Cloudflare network, adversely impact the Service, or otherwise threaten the integrity of Cloudflare's networks.  While we generally try to provide notice of such actions, we reserve the right to take action without notice.",
 																	"marks": [],
 																	"content": null
 																}
@@ -5873,17 +5865,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare or your End Users related to your Customer Content and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with their use of your Customer Content or Internet Properties.  ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "You acknowledge and agree that you are solely responsible for the acts of your End Users. Cloudflare may, but is not obligated to, limit or suspend your or your End Users access to any Developer Platform services or functionality made available to End Users via a Developer Platform service for any suspected violations of the Agreement. While we generally try to provide notice of such actions, we reserve the right to take action without notice. ",
+																	"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare or your End Users related to your Customer Content and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with their use of your Customer Content or Internet Properties.  You acknowledge and agree that you are solely responsible for the acts of your End Users. Cloudflare may, but is not obligated to, limit or suspend your or your End Users access to any Developer Platform services or functionality made available to End Users via a Developer Platform service for any suspected violations of the Agreement. While we generally try to provide notice of such actions, we reserve the right to take action without notice. ",
 																	"marks": [],
 																	"content": null
 																}
@@ -5947,37 +5929,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "You understand and agree that Cloudflare is constantly enhancing its Services and may enhance our Services in a way that may be competitive with your Customer Content and associated Internet Properties, or other products, services, or ideas that you have.   Cloudflare ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "does not reference or use any Customer Content except as needed to provide the Services and ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "affirms that you retain intellectual property rights in the source code to your Customer Content, you acknowledge that Cloudflare has the right to make, use, develop, acquire, license, market, promote, or distribute products, software, or technologies that perform the same or similar functions as, or otherwise compete with, any of your Customer Content and associated Internet Properties as well as other products, software, or technologies that you may develop, produce, market, or distribute now or in the future; ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "provided, for clarity, that Cloudflare will not do so using, referencing, or relying on your Customer Content.",
+																	"value": "You understand and agree that Cloudflare is constantly enhancing its Services and may enhance our Services in a way that may be competitive with your Customer Content and associated Internet Properties, or other products, services, or ideas that you have.   Cloudflare does not reference or use any Customer Content except as needed to provide the Services and affirms that you retain intellectual property rights in the source code to your Customer Content. You acknowledge that Cloudflare has the right to make, use, develop, acquire, license, market, promote, or distribute products, software, or technologies that perform the same or similar functions as, or otherwise compete with, any of your Customer Content and associated Internet Properties as well as other products, software, or technologies that you may develop, produce, market, or distribute now or in the future; provided, for clarity, that Cloudflare will not do so using, referencing, or relying on your Customer Content.",
 																	"marks": [],
 																	"content": null
 																}

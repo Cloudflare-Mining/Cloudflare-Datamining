@@ -120,7 +120,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Last updated September 27, 2023",
+														"value": "Last updated ",
 														"marks": [
 															{
 																"type": "bold"
@@ -134,7 +134,21 @@
 															"target": null,
 															"uri": null
 														},
-														"value": " (note that the \"Supplemental Terms\" have been renamed to the \"Service-Specific Terms\" as of May 10, 2023)",
+														"value": "[DATE]",
+														"marks": [
+															{
+																"type": "italic"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": " (note that the \"Supplemental Terms\" have been renamed to the \"Service-Specific Terms\" as of March 5, 2024)",
 														"marks": [],
 														"content": null
 													}
@@ -199,7 +213,11 @@
 																	"uri": null
 																},
 																"value": "Self-Serve Subscription Agreement",
-																"marks": [],
+																"marks": [
+																	{
+																		"type": "underline"
+																	}
+																],
 																"content": null
 															}
 														]
@@ -230,7 +248,11 @@
 																	"uri": null
 																},
 																"value": "Enterprise Subscription Agreement",
-																"marks": [],
+																"marks": [
+																	{
+																		"type": "underline"
+																	}
+																],
 																"content": null
 															}
 														]
@@ -334,7 +356,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Please click on the following links to navigate to the Service-Specific Terms applicable to your specific Cloudflare Services. ",
+														"value": "Please click on the following links to navigate to the Service-Specific Terms applicable to your specific Cloudflare Services.",
 														"marks": [],
 														"content": null
 													}
