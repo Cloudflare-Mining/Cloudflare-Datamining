@@ -2492,6 +2492,8 @@
 		"ipv6Identification": "Value of the Identification extension header field in the IPv6 packet",
 		"leaseTag": "IP lease tag associated with the packet",
 		"mitigationSystem": "Which system dropped the packet (possible values: dosd, flowtrackd, magic-firewall)",
+		"offRamp": "Offramp method for Magic WAN and Magic Transit traffic - GRE, IPSec, CNI, Warp, Cloudflared",
+		"onRamp": "Onramp method for Magic WAN and Magic Transit traffic - GRE, IPSec, CNI, Warp, Cloudflared",
 		"outcome": "The action that was taken on the packet (possible values: pass, drop)",
 		"prefixTag": "IP prefix tag associated with the packet",
 		"sampleInterval": "ABR sample interval",
