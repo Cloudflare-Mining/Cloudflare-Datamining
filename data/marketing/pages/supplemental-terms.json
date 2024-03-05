@@ -814,6 +814,96 @@
 														"target": null,
 														"uri": null
 													},
+													"value": "Endpoint",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" is any service or hardware that intercepts and processes incoming public or private traffic. This includes Origins, hostnames, private or public IP addresses, virtual IP addresses (VIPs), servers, and other dedicated hardware boxes.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Enterprise DNS-only domain",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\" is any Zone that only utilizes Cloudflare for DNS resolution and has 0 Gigabytes (GB) of data transfer per month.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "\"",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
 													"value": "Enterprise primary domain",
 													"marks": [
 														{
@@ -873,7 +963,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" is any domain receiving Enterprise Services that utilizes 50 GB or less of data transfer per month, including all DNS-only domains.",
+													"value": "\" is any domain receiving Enterprise Services that utilizes 50 GB or less of data transfer per month.",
 													"marks": [],
 													"content": null
 												}
@@ -1744,17 +1834,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "\" means ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "an event (e.g., pageview, 'zaraz.track', etc.) sent to the Zaraz Service.",
+													"value": "\" means an event (e.g., pageview, 'zaraz.track', etc.) sent to the Zaraz Service.",
 													"marks": [],
 													"content": null
 												}
