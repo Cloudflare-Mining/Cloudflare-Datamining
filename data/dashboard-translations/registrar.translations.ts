@@ -175,7 +175,10 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 				billing_line_item_2: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
 				billing_line_item_3: "ICANN fee",
 				billing_total_due: "Total due now",
-				tax_disclaimer: "*Your invoice will include any final sales tax, including state and local taxes when applicable."
+				tax_disclaimer: "*Your invoice will include any final sales tax, including state and local taxes when applicable.",
+				error: {
+					no_payment_method: "A payment method is required to restore a domain."
+				}
 			},
 			messages: {
 				success: (0, e.d)`Domain restoration process initiated for ${"domainName"}`,

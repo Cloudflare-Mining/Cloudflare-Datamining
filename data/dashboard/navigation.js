@@ -312,15 +312,17 @@ const navigation = {
 	}, {
 		title: "navigation.account.mcn",
 		url: "/mcn/overview",
+		labels: ["beta"],
 		additionalMatchUrls: ["/mcn", "/pages"],
 		iconType: "trace",
-		hasPermission: T => ({
-			REDUX_LOGGER: void 0
-		}).MULTI_CLOUD_NETWORKING ? (0, a.iY)(T) : !1,
+		hasPermission: T => !!((0, a.iY)(T) && (0, n.z1)("magic-cloud-networking")(T)),
 		testId: "sidenav-mcn-pages-link",
 		pages: [{
 			title: "navigation.account.mcn.overview",
 			url: "/mcn/overview"
+		}, {
+			title: "navigation.account.mcn.providers",
+			url: "/mcn/providers"
 		}, {
 			title: "navigation.account.mcn.cloudspecs",
 			url: "/mcn/cloudspec"
