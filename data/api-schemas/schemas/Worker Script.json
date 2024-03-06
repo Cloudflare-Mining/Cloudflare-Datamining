@@ -3308,7 +3308,13 @@
 										"properties": {
 											"bindings": {
 												"description": "List of bindings available to the worker.",
-												"example": "[{\"name\":\"MY_ENV_VAR\", \"type\":\"plain_text\", \"text\":\"my_data\"}]",
+												"example": [
+													{
+														"name": "MY_ENV_VAR",
+														"text": "my_data",
+														"type": "plain_text"
+													}
+												],
 												"items": {
 													"type": "object"
 												},
