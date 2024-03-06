@@ -820,13 +820,6 @@
 																	],
 																	"type": "object"
 																},
-																"google_safe_browsing": {
-																	"items": {
-																		"example": "Malware",
-																		"type": "string"
-																	},
-																	"type": "array"
-																},
 																"phishing": {
 																	"items": {
 																		"example": "CredentialHarvester",
@@ -1011,8 +1004,7 @@
 																"tech",
 																"categories",
 																"rank",
-																"phishing",
-																"google_safe_browsing"
+																"phishing"
 															],
 															"type": "object"
 														}
@@ -1548,15 +1540,6 @@
 																	},
 																	"type": "array"
 																},
-																"gsb_threat_types": {
-																	"description": "Please visit https://safebrowsing.google.com/ for more information.",
-																	"items": {
-																		"description": "Please visit https://safebrowsing.google.com/ for more information.",
-																		"example": "Malware",
-																		"type": "string"
-																	},
-																	"type": "array"
-																},
 																"malicious": {
 																	"description": "At least one of our subsystems marked the site as potentially malicious at the time of the scan.",
 																	"example": true,
@@ -1573,7 +1556,6 @@
 															"required": [
 																"malicious",
 																"categories",
-																"gsb_threat_types",
 																"phishing"
 															],
 															"type": "object"
