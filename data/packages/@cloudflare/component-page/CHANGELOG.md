@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.1.0
+
+### Minor Changes
+
+- 47cd1e5858: add support for rendering documentation button instead of a link in page header
+
 ## 9.0.0
 
 ### Major Changes
