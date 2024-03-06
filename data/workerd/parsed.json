@@ -2476,6 +2476,14 @@
 					"annotations": {
 						"compatEnableFlag": "python_workers"
 					}
+				},
+				{
+					"name": "fetcherNoGetPutDelete",
+					"annotations": {
+						"compatDisableFlag": "fetcher_has_get_put_delete",
+						"compatEnableDate": "2024-03-26",
+						"compatEnableFlag": "fetcher_no_get_put_delete"
+					}
 				}
 			]
 		},
