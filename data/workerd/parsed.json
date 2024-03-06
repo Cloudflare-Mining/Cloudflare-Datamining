@@ -3315,6 +3315,10 @@
 				{
 					"name": "unsafeEval",
 					"annotations": {}
+				},
+				{
+					"name": "memoryCache",
+					"annotations": {}
 				}
 			]
 		},
@@ -3447,6 +3451,36 @@
 				},
 				{
 					"name": "scheme",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.MemoryCacheLimits",
+			"fields": [
+				{
+					"name": "maxKeys",
+					"annotations": {}
+				},
+				{
+					"name": "maxValueSize",
+					"annotations": {}
+				},
+				{
+					"name": "maxTotalValueSize",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.memoryCache",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": {}
+				},
+				{
+					"name": "limits",
 					"annotations": {}
 				}
 			]
