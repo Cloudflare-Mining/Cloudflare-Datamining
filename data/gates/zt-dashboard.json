@@ -59,14 +59,6 @@
 	"zt-access-global-policies": {
 		"enabled": false
 	},
-	"zt-banner-surveys": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"tech-validate",
-			"gartner-insight"
-		]
-	},
 	"zt-canary-for-cloudflare-employees": {
 		"enabled": true
 	},
@@ -117,6 +109,9 @@
 	},
 	"zt-dlp-predefined-health-info": {
 		"enabled": true
+	},
+	"zt-gartner-banner-2024-q1": {
+		"enabled": false
 	},
 	"zt-gw-raw-wirefilter": {
 		"enabled": false
