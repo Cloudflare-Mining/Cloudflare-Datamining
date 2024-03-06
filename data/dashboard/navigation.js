@@ -883,7 +883,7 @@ const navigation = {
 		pages: [{
 			title: "navigation.zone.traffic.argo",
 			url: "/traffic",
-			navigationType: "version",
+			navigationType: "global-settings",
 			hasPermission: T => !(0, m.yD)(T)
 		}, {
 			title: "navigation.zone.traffic.load_balancing",
