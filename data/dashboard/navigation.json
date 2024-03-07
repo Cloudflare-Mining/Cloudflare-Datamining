@@ -168,9 +168,6 @@
 				{
 					"title": "navigation.account.security_center.security_analytics",
 					"url": "/security-center/analytics",
-					"labels": [
-						"beta"
-					],
 					"hasPermission": null
 				},
 				{
@@ -641,7 +638,17 @@
 				"beta"
 			],
 			"iconType": "calls",
-			"hasPermission": null
+			"hasPermission": null,
+			"pages": [
+				{
+					"title": "navigation.account.calls.applications",
+					"url": "/calls"
+				},
+				{
+					"title": "navigation.common.analytics",
+					"url": "/calls/analytics"
+				}
+			]
 		},
 		{
 			"title": "navigation.account.group_title.account_management",
@@ -905,9 +912,6 @@
 					"title": "navigation.zone.security.analytics",
 					"navigationType": "version",
 					"url": "/security/analytics",
-					"labels": [
-						"beta"
-					],
 					"hasPermission": null
 				},
 				{

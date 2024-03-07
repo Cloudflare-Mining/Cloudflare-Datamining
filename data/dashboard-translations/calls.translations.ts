@@ -1,4 +1,15 @@
 {
+	analytics: {
+		title: "Calls Analytics",
+		gb: "GB",
+		ingressEgressChartTitle: "Ingress & Egress",
+		filters: {
+			appId: "App ID",
+			sessionId: "Session ID",
+			trackId: "Track ID",
+			trackType: "Track Type"
+		}
+	},
 	analyticsComingSoon: "Analytics coming soon",
 	appId: "App ID",
 	applicationName: "Application Name",
