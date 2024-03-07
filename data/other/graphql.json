@@ -627,6 +627,7 @@
 		"__description": "",
 		"queryDurationMs": "The average duration queries in D1 took, observed over the queried time period.",
 		"rowsRead": "The average number of rows scanned, observed over the queried time period.",
+		"rowsReturned": "The average number of rows returned, observed over the queried time period.",
 		"rowsWritten": "The average number of rows written, observed over the queried time period.",
 		"sampleInterval": "The average value used for sample interval"
 	},
@@ -650,6 +651,7 @@
 		"__description": "",
 		"queryDurationMs": "The total duration queries in D1 took, observed over the queried time period.",
 		"rowsRead": "The total number of rows scanned, observed over the queried time period.",
+		"rowsReturned": "The total number of rows returned, observed over the queried time period.",
 		"rowsWritten": "The total number of rows written, observed over the queried time period."
 	},
 	"AccountD1StorageAdaptiveGroups": {
@@ -2728,6 +2730,21 @@
 	"AccountNelReportsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountOhttpMetricsAdaptive": {
+		"__description": "oHTTP request metrics with adaptive sampling",
+		"bytesToClient": "Bytes returned to client",
+		"bytesToGateway": "Total bytes received from the client",
+		"colo": "The airport code of the Cloudflare datacenter that served this request",
+		"datetime": "The date and time the event was recorded",
+		"gatewayStatusCode": "The status code returned by the gateway",
+		"relayStatusCode": "The status code returned by the relay"
+	},
+	"AccountOhttpMetricsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountOhttpMetricsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroups": {
 		"__description": "Pages Functions invocations with adaptive sampling",
 		"avg": "",
@@ -3267,6 +3284,7 @@
 		"magicTransitTunnelTrafficAdaptiveGroups": "",
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
+		"ohttpMetricsAdaptive": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
 		"queueConsumerMetricsAdaptiveGroups": "",
@@ -5808,6 +5826,7 @@
 		"magicTransitTunnelTrafficAdaptiveGroups": "Bandwidth usage metric of a Magic Transit tunnel.",
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
+		"ohttpMetricsAdaptive": "oHTTP request metrics with adaptive sampling",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
 		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
