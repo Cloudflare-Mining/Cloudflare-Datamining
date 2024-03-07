@@ -5,43 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Available Locations: Mexico and Lisbon Remote</strong></p>
-<p><strong>About Us</strong></p>
-<p>At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today, Cloudflare runs one of the world’s largest distributed networks that powers more than 39 million requests per second. We connect, protect and accelerate web applications, websites, APIs, corporate networks and employees globally.</p>
-<p>We have millions of customers ranging from Fortune 500 companies and nonprofits to small businesses and budding entrepreneurs. We are working to create a faster, more secure, more reliable and more private experience for anyone online. Given the scale at which we operate, this is a big task. Our team is hard at work shaping the future of the Internet by solving some of its toughest challenges. Come join us!</p>
-<p><strong>About The Role</strong></p>
-<p>Do you have a passion for creating high impact communication through motion graphics and animation? Does your portfolio demonstrate a range of storytelling, 2D/2.5 D animation, motion design, compositing, and maybe even video editing? Cloudflare is looking for an animator/motion designer for Cloudflare’s Brand Design team. You’ll be creating a wide range of interesting and highly visible videos and motion graphic projects for brand advertising campaigns, event and trade shows, employee-facing branding, corporate website, digital campaigns and more. Our ideal candidate will have knowledge and practical experience working within brand guidelines and creative briefs. We’re looking for a highly capable animator and editor that can work well independently and as a collaborative team member.</p>
-<p><strong>You will&nbsp;</strong></p>
+<h4><strong>Available Locations - Austin, TX Only</strong></h4>
+<h4><strong>About the team</strong></h4>
+<p>The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</p>
+<h4><strong>About the role</strong></h4>
+<p>We are looking for an experienced Data Analyst to join our Austin or Lisbon teams to scale our product insights initiatives. You will work with a wide array of datasets to analyze and build interactive reports and self-serve dashboards which will influence our critical business initiatives and will provide actionable insights to Sales, Marketing and Product teams.</p>
+<p>Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Create and animate designs/illustrations (either custom or from existing assets), starting with storyboards and then through production; including 30 seconds to 2 minute explainer animations, kinetic text animation, and animatics.</li>
-	<li>Design high-quality animated motion graphics, transitions, bumpers, lower thirds, etc. for marketing experiences</li>
-	<li>Contribute to team best practices for establishing and creating motion graphics along with setting up scalable project templates</li>
-	<li>Analyze timelines, set accurate estimates for delivery expectations and effectively inform applicable stakeholders via status updates</li>
-	<li>Brainstorm and prototype ideas quickly and produce strong conceptual animations that are engaging and unique</li>
-	<li>Execute edit notes from business stakeholders without supervision utilizing independent judgment and ability to effectively prioritize</li>
-	<li>Deliver high-quality, scalable, on-brand motion solutions&nbsp;</li>
-	<li>Work with the brand design team to expand upon the brand system and style guide through the use of motion and potentially sound</li>
-	<li>Create and maintain motion graphics-specific templates, instructions, documentation, and best practices/scalable project templates;</li>
+	<li>Provide quantitative support, market understanding and a strategic perspective to our partners throughout the organization</li>
+	<li>Partner and align with data engineers, data analysts, data scientists, business leaders, stakeholders, product managers and internal teams to enable data driven solutions to key business problems</li>
+	<li>Take initiative and ask questions to iteratively define, build, and maintain new business metrics</li>
+	<li>Develop and automate reports and iteratively build and prototype dashboards to provide insights at scale</li>
+	<li>Weave stories with data to help stakeholders understand analytic insights</li>
 </ul>
-<p><strong>Qualifications</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience creating pre-production materials including storyboards and animatic cuts</li>
-	<li>Fluency (minimum 5 years) in After Effects and Illustrator—with 2D animation capabilities, including character animation.&nbsp;</li>
-	<li>Ability to create storyboards, animatics and illustrations to share with design leaders and key stakeholders</li>
-	<li>Video post-production experience including editing, audio sweetening and sound effects</li>
-	<li>Experience with sourcing b-roll and stock footage from stock houses, customers, etc.</li>
-	<li>Understanding of video codecs and render settings and ability to export video in whatever format, bit rate, etc. is required for the job at hand&nbsp;</li>
-	<li>Deep understanding of fundamental motion design principles (keyframing, easing, masking, blocking, typography, iconography, composition, color, composition, etc.) and how they affect the user experience</li>
-	<li>Ability to collaborate cross functionally with product, strategy, and marketing stakeholders</li>
-	<li>Ability to concurrently fulfill multiple projects requests while simultaneously meeting tight deadlines</li>
-	<li>Ability to think in design systems, with attention to detail and an understanding of a variety of aesthetics</li>
-	<li>Sound critical thinking &amp; problem-solving approaches, comes to the table with solutions&nbsp;</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields</li>
+	<li>3+ years of experience with data visualization tools such as Tableau, Google Data Studio etc.&nbsp;</li>
+	<li>Experience in writing advanced SQL queries</li>
+	<li>Experience in translating analysis results into business recommendations and business questions into an analysis framework</li>
+	<li>Knowledge of data management, data modeling and data warehousing fundamentals</li>
+	<li>Experience in presenting analysis findings to business stakeholders</li>
+	<li>Experience with statistical analysis programming languages (R, Python, etc)</li>
 </ul>
-<p><strong>Nice to have&nbsp;</strong></p>
+<p><strong>Bonus points</strong></p>
 <ul>
-	<li>Intermediate 3D modeling, texturing, lighting, and animation skills (Cinema 4D or 3DS MAX)</li>
-	<li>Experience with live video shooting, including camera operation, sound capture, lighting and cinematography</li>
-	<li>Execute VFX, including, but not limited to, green screen compositing, rotoscoping, alpha mattes, and motion tracking</li>
+	<li>Experience in front-end development, JavaScript, and/or other scripting languages is a plus</li>
+	<li>Experience with a fast-growing SaaS business based company preferred</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
