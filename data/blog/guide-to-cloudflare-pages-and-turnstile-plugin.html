@@ -149,7 +149,7 @@
 	<h3 id="step-3-validate-the-token">Step 3: Validate the token</h3>
 	<p>Now that the Turnstile widget is rendered on the front end, let’s validate it on the server side and check out the Turnstile outcome. We need to make a call to the <code>/siteverify</code> API with the token in the submit function under <code>./functions/api/submit.js</code>.</p>
 	<p>First, grab the token issued from Turnstile under cf-turnstile-response. Then, call the <code>/siteverify</code> API to ensure that the token is valid. In this tutorial, we’ll attach the Turnstile outcome to the response to verify everything is working well. You can decide on the expected behavior and where to direct the user based on the <code>/siteverify</code> response.</p><!--kg-card-begin: markdown-->
-	<pre><code class="language-json">/**
+	<pre><code class="language-JavaScript">/**
  * POST /api/submit
  */
 
